@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#120d08">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23140f0a'/%3E%3Cpath d='M16 4l9 3v8c0 6-4 10-9 13-5-3-9-7-9-13V7z' fill='%23c9953f' stroke='%23f5d78b' stroke-width='1.5'/%3E%3Cpath d='M16 9v11M11 14h10' stroke='%23140f0a' stroke-width='2'/%3E%3C/svg%3E">
+<title>Age of Empires II: Roguelite</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg class="svg-sprite" aria-hidden="true">
+  <symbol id="i-food" viewBox="0 0 24 24">
+    <path d="M12 21V9M12 13l-4-3M12 16l4-3M8 6l4 3 4-3M9 3l3 2 3-2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 5.2c0-1.2.6-2 1.4-2.2M15 5.2c0-1.2-.6-2-1.4-2.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-wood" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+      <path d="M4 8.5 15 5l5 3.5-11 3.5z"/>
+      <path d="M4 13.5 15 10l5 3.5-11 3.5z"/>
+      <path d="M4 18.5 15 15l5 3.5-11 3.5z"/>
+      <path d="M15 5v5M15 10v5M15 15v5"/>
+    </g>
+    <ellipse cx="15" cy="7.6" rx="1.7" ry="1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+  </symbol>
+  <symbol id="i-gold" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="17.5" rx="7" ry="3" fill="currentColor" opacity=".32"/>
+    <ellipse cx="12" cy="17.5" rx="7" ry="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="12" cy="11" r="6.2" fill="currentColor" opacity=".2"/>
+    <circle cx="12" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M12 7.3l1.1 2.3 2.5.3-1.8 1.7.5 2.5-2.3-1.3-2.3 1.3.5-2.5-1.8-1.7 2.5-.3z" fill="currentColor" opacity=".8"/>
+  </symbol>
+  <symbol id="i-stone" viewBox="0 0 24 24">
+    <path d="M4 17l2-7 5-4 6 2 3 6-3 5H7z" fill="currentColor" opacity=".2"/>
+    <path d="M4 17l2-7 5-4 6 2 3 6-3 5H7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M9 8l-1 5 3 2 3-6M13 15l2 4" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
+  </symbol>
+  <symbol id="i-pop" viewBox="0 0 24 24">
+    <circle cx="12" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M5 21c.6-4.4 3.2-6.6 7-6.6s6.4 2.2 7 6.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24">
+    <path d="M5 4l14 15M19 4L5 19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+    <path d="M4 3l3 1-2 2zM20 3l-3 1 2 2zM4 21l3-1-2-2zM20 21l-3-1 2-2z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-house" viewBox="0 0 24 24">
+    <path d="M3 12 12 4l9 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.5 11v9h13v-9M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3 12h18" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+  </symbol>
+  <symbol id="i-farm" viewBox="0 0 24 24">
+    <path d="M4 17 12 20l8-3-8-3z" fill="currentColor" opacity=".16"/>
+    <path d="M4 17 12 20l8-3-8-3zM4 12l8 3 8-3M4 7l8 3 8-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M4 7v10M20 7v10M12 10v10" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".55"/>
+  </symbol>
+  <symbol id="i-barracks" viewBox="0 0 24 24">
+    <path d="M3 20V9l9-5 9 5v11z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M7 20v-7h10v7M12 6v5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M9 3h6l-1.5 3h-3z" fill="currentColor" opacity=".8"/>
+  </symbol>
+  <symbol id="i-range" viewBox="0 0 24 24">
+    <path d="M5 20c3-2 4-5 4-9M19 20c-3-2-4-5-4-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M12 4v12M9 7h6" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="12" cy="11" r="3.6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="12" cy="11" r="1" fill="currentColor"/>
+    <path d="M7 21h10" stroke="currentColor" stroke-width="1.4" opacity=".6"/>
+  </symbol>
+  <symbol id="i-tower" viewBox="0 0 24 24">
+    <path d="M7 21V6h10v15M5 6h4V3h2v3h2V3h2v3h4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M10 21v-5h4v5M10 11h4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  </symbol>
+  <symbol id="i-villager" viewBox="0 0 24 24">
+    <circle cx="12" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M5 21c0-4 3-6.2 7-6.2S19 17 19 21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M8.5 5.2 12 2l3.5 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-militia" viewBox="0 0 24 24">
+    <path d="M12 3v9M9 6h6M7 21c.3-3.6 2.4-5.6 5-5.6s4.7 2 5 5.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M12 3l4 2-4 2z" fill="currentColor"/>
+    <path d="M8 13.5 5.5 17H9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-archer" viewBox="0 0 24 24">
+    <path d="M6 20c5-1.5 8-5.5 8-11M6.5 4.5 16 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M18.5 2.5 16 9l-5-2z" fill="currentColor"/>
+    <path d="M8 21c0-3.2 1.8-5 4-5s4 1.8 4 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="12" cy="12" r="2.2" fill="none" stroke="currentColor" stroke-width="1.3"/>
+  </symbol>
+  <symbol id="i-boost" viewBox="0 0 24 24">
+    <path d="M12 2l2.6 6.4L21 11l-6.4 2.6L12 20l-2.6-6.4L3 11l6.4-2.6z" fill="currentColor" opacity=".25"/>
+    <path d="M12 2l2.6 6.4L21 11l-6.4 2.6L12 20l-2.6-6.4L3 11l6.4-2.6z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24">
+    <rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor"/>
+    <rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24">
+    <path d="M4 9h4l5-4v14l-5-4H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M16 8c2 2.2 2 5.8 0 8M18.6 5.5c3.2 3.5 3.2 9.5 0 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24">
+    <path d="M4 9h4l5-4v14l-5-4H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-help" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M9.4 9a2.7 2.7 0 1 1 3.8 2.5c-.8.4-1.2.9-1.2 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="12" cy="16.6" r="1" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-skull" viewBox="0 0 24 24">
+    <path d="M12 3c-5 0-8 3.2-8 7.6 0 2.7 1.2 4.5 3 5.6V21h10v-4.8c1.8-1.1 3-2.9 3-5.6C20 6.2 17 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="9" cy="11" r="1.6" fill="currentColor"/><circle cx="15" cy="11" r="1.6" fill="currentColor"/>
+    <path d="M10 17v4M14 17v4" stroke="currentColor" stroke-width="1.4"/>
+  </symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24">
+    <path d="M8 4h8v6a4 4 0 0 1-8 0zM8 6H4v2c0 2.2 1.6 3.6 4 3.8M16 6h4v2c0 2.2-1.6 3.6-4 3.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M12 14v4M8 21h8M9 18h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24">
+    <path d="M4 20 19 5M12 5h7v7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M12 7v5.4l3.4 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-crown" viewBox="0 0 24 24">
+    <path d="M4 18h16l-1.5-9-4.5 3L12 5l-2 7-4.5-3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M4 21h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M12 3 20 6v6c0 4.6-3.3 7.8-8 9-4.7-1.2-8-4.4-8-9V6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M12 7v9M9 11h6" stroke="currentColor" stroke-width="1.3" opacity=".65"/>
+  </symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24">
+    <path d="M12 2c1 4-3 5.5-3 9a3 3 0 0 0 6 0c0-1.2-.4-2.2-1-3 3 1.7 5 4.2 5 7a7 7 0 0 1-14 0c0-5 4.5-7.5 7-13z" fill="currentColor" opacity=".22"/>
+    <path d="M12 2c1 4-3 5.5-3 9a3 3 0 0 0 6 0c0-1.2-.4-2.2-1-3 3 1.7 5 4.2 5 7a7 7 0 0 1-14 0c0-5 4.5-7.5 7-13z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<div id="app">
+  <canvas id="game-canvas"></canvas>
+  <div id="atmosphere"></div>
+
+  <section id="title-screen" class="screen active">
+    <div class="title-scrim"></div>
+    <div class="title-content">
+      <div class="title-kicker"><span></span>A FAN-MADE ROGUELITE<span></span></div>
+      <h1 class="title-logo">
+        <span class="logo-small">AGE OF</span>
+        <span class="logo-main">EMPIRES <i>II</i></span>
+        <span class="logo-tag">ROGUELITE</span>
+      </h1>
+      <div class="ornament"><i></i><svg><use href="#i-crown"/></svg><i></i></div>
+      <p class="title-blurb">Build a village. Raise an army.<br>Survive ten waves of raiders.</p>
+      <div class="difficulty" id="difficulty">
+        <button data-difficulty="squire" class="diff-btn">Squire</button>
+        <button data-difficulty="knight" class="diff-btn active">Knight</button>
+        <button data-difficulty="emperor" class="diff-btn">Emperor</button>
+      </div>
+      <button id="btn-start" class="btn btn-primary btn-hero">
+        <svg><use href="#i-shield"/></svg>
+        <span>Start Game</span>
+      </button>
+      <div class="title-meta">
+        <span>BEST: WAVE <b id="best-wave">1</b></span>
+        <span class="dot"></span>
+        <span>10 WAVES</span>
+        <span class="dot"></span>
+        <span>~15 MIN</span>
+      </div>
+      <div class="controls-hint">Left-click select · Right-click command · Space call wave · Esc cancel</div>
+    </div>
+    <div class="title-footer">
+      <span>© A fan-made tribute. Not affiliated with Microsoft or Forgotten Empires.</span>
+      <span>v1.0 · DESKTOP</span>
+    </div>
+  </section>
+
+  <header id="hud" class="hidden">
+    <div class="hud-left">
+      <div class="crest" title="Your settlement"><svg><use href="#i-shield"/></svg></div>
+      <div class="resource-bar">
+        <div class="res" id="res-food" title="Food"><svg><use href="#i-food"/></svg><b>0</b><em>+0</em></div>
+        <div class="res" id="res-wood" title="Wood"><svg><use href="#i-wood"/></svg><b>0</b><em>+0</em></div>
+        <div class="res" id="res-gold" title="Gold"><svg><use href="#i-gold"/></svg><b>0</b><em>+0</em></div>
+        <div class="res" id="res-stone" title="Stone"><svg><use href="#i-stone"/></svg><b>0</b><em>+0</em></div>
+      </div>
+      <div class="pop-chip" title="Population"><svg><use href="#i-pop"/></svg><b id="pop-value">0/0</b></div>
+    </div>
+    <div class="hud-center">
+      <div class="wave-badge"><svg><use href="#i-wave"/></svg><span>WAVE <b id="wave-value">0</b> / 10</span></div>
+      <div class="wave-status" id="wave-status">Prepare your defenses</div>
+    </div>
+    <div class="hud-right">
+      <button class="icon-btn" id="btn-help" title="How to play"><svg><use href="#i-help"/></svg></button>
+      <button class="icon-btn" id="btn-sound" title="Toggle sound"><svg><use href="#i-sound"/></svg></button>
+      <button class="icon-btn" id="btn-pause" title="Pause (P)"><svg><use href="#i-pause"/></svg></button>
+      <button class="btn btn-wave" id="btn-call-wave" title="Call the next wave early for bonus gold">
+        <svg><use href="#i-arrow"/></svg><span>Call Wave</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="wave-clock" class="hidden"><span id="wave-clock-label">NEXT WAVE</span><b id="wave-clock-value">45</b></div>
+  <div id="toasts"></div>
+
+  <footer id="command-panel" class="hidden">
+    <div id="selection-card" class="selection-card">
+      <div class="portrait" id="selection-portrait"><svg><use href="#i-crown"/></svg></div>
+      <div class="selection-copy">
+        <div class="selection-name" id="selection-name">Town Center</div>
+        <div class="selection-sub" id="selection-sub">The heart of your settlement</div>
+        <div class="hp-track"><div class="hp-fill" id="selection-hp"></div><span id="selection-hp-text"></span></div>
+        <div class="selection-actions" id="selection-actions"></div>
+      </div>
+    </div>
+    <div class="command-body">
+      <div class="command-row">
+        <div class="command-label"><span>TRAIN</span><i></i></div>
+        <div class="cards" id="train-cards">
+          <button class="card" data-train="villager" title="Villager — gathers resources and constructs the economy">
+            <span class="hotkey">Q</span><svg class="card-icon"><use href="#i-villager"/></svg>
+            <span class="card-name">Villager</span><span class="card-cost"><svg><use href="#i-food"/></svg>50</span>
+          </button>
+          <button class="card" data-train="militia" title="Militia — sturdy melee infantry. Requires a Barracks">
+            <span class="hotkey">W</span><svg class="card-icon"><use href="#i-militia"/></svg>
+            <span class="card-name">Militia</span><span class="card-cost"><svg><use href="#i-food"/></svg>60 <svg><use href="#i-gold"/></svg>20</span>
+          </button>
+          <button class="card" data-train="archer" title="Archer — ranged support. Requires an Archery Range">
+            <span class="hotkey">E</span><svg class="card-icon"><use href="#i-archer"/></svg>
+            <span class="card-name">Archer</span><span class="card-cost"><svg><use href="#i-food"/></svg>40 <svg><use href="#i-wood"/></svg>30</span>
+          </button>
+        </div>
+      </div>
+      <div class="command-row">
+        <div class="command-label"><span>BUILD</span><i></i></div>
+        <div class="cards" id="build-cards">
+          <button class="card" data-build="house" title="House — raises population capacity by 5">
+            <span class="hotkey">1</span><svg class="card-icon"><use href="#i-house"/></svg>
+            <span class="card-name">House</span><span class="card-cost"><svg><use href="#i-wood"/></svg>30</span>
+          </button>
+          <button class="card" data-build="farm" title="Farm — passively produces food">
+            <span class="hotkey">2</span><svg class="card-icon"><use href="#i-farm"/></svg>
+            <span class="card-name">Farm</span><span class="card-cost"><svg><use href="#i-wood"/></svg>60</span>
+          </button>
+          <button class="card" data-build="barracks" title="Barracks — unlocks Militia">
+            <span class="hotkey">3</span><svg class="card-icon"><use href="#i-barracks"/></svg>
+            <span class="card-name">Barracks</span><span class="card-cost"><svg><use href="#i-wood"/></svg>100</span>
+          </button>
+          <button class="card" data-build="range" title="Archery Range — unlocks Archers">
+            <span class="hotkey">4</span><svg class="card-icon"><use href="#i-range"/></svg>
+            <span class="card-name">Archery</span><span class="card-cost"><svg><use href="#i-wood"/></svg>120 <svg><use href="#i-stone"/></svg>20</span>
+          </button>
+          <button class="card" data-build="tower" title="Watch Tower — automatic arrow fire">
+            <span class="hotkey">5</span><svg class="card-icon"><use href="#i-tower"/></svg>
+            <span class="card-name">Tower</span><span class="card-cost"><svg><use href="#i-wood"/></svg>40 <svg><use href="#i-stone"/></svg>60</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="queue-strip" id="queue-strip">
+      <span class="queue-label">QUEUE</span><div class="queue-items" id="queue-items"><span class="queue-empty">Idle</span></div>
+    </div>
+  </footer>
+
+  <div id="placement-hint" class="hidden"><span id="placement-text">Place building</span><b>· Esc to cancel</b></div>
+
+  <section id="boon-overlay" class="screen overlay hidden">
+    <div class="overlay-scrim"></div>
+    <div class="boon-content">
+      <div class="boon-kicker">THE PEOPLE REJOICE</div>
+      <h2>Choose a Blessing</h2>
+      <p>Your settlement survives. Claim the favor of the realm.</p>
+      <div class="boon-cards" id="boon-cards"></div>
+      <div class="boon-hint">Click a blessing or press <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></div>
+    </div>
+  </section>
+
+  <section id="pause-overlay" class="screen overlay hidden">
+    <div class="overlay-scrim"></div>
+    <div class="pause-content">
+      <div class="boon-kicker">THE WORLD HOLDS ITS BREATH</div>
+      <h2>Paused</h2>
+      <p>Take a moment. Your village will wait.</p>
+      <div class="overlay-actions">
+        <button class="btn btn-primary" id="btn-resume">Resume</button>
+        <button class="btn" id="btn-quit">Abandon Run</button>
+      </div>
+      <div class="controls-grid">
+        <div><kbd>Left click</kbd><span>Select a unit or building</span></div>
+        <div><kbd>Drag</kbd><span>Box-select your army</span></div>
+        <div><kbd>Right click</kbd><span>Move, attack, or gather</span></div>
+        <div><kbd>Q W E</kbd><span>Train villager, militia, archer</span></div>
+        <div><kbd>1 – 5</kbd><span>Place a building</span></div>
+        <div><kbd>Space</kbd><span>Call the next wave early</span></div>
+        <div><kbd>Esc</kbd><span>Cancel placement or pause</span></div>
+        <div><kbd>P / M</kbd><span>Pause / mute</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="end-overlay" class="screen overlay hidden">
+    <div class="overlay-scrim"></div>
+    <div class="end-content">
+      <div class="end-icon" id="end-icon"><svg><use href="#i-skull"/></svg></div>
+      <div class="boon-kicker" id="end-kicker">THE TOWN HAS FALLEN</div>
+      <h2 id="end-title">Defeat</h2>
+      <p id="end-sub">The raiders broke through. Your story ends here — for now.</p>
+      <div class="end-stats" id="end-stats"></div>
+      <div class="overlay-actions">
+        <button class="btn btn-primary" id="btn-retry">Play Again</button>
+        <button class="btn" id="btn-title">Return to Title</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="hint-bar" class="hidden">Select a building card, then click the ground to place it.</div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
