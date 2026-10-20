@@ -18,31 +18,37 @@ export const BIOMES = {
   hills:    { top: 0x5c8348, side: 0x6b5a3c, yields: { production: 2 }, hills: true, passable: true },
   mountain: { top: 0xa9abad, side: 0x7d7870, yields: { production: 1 }, mountain: true, passable: false },
   lake:     { top: 0x1f6672, side: 0x14424f, yields: { food: 2 }, water: true, passable: false },
+  lava:     { top: 0x6b2f24, side: 0x3a1712, yields: { production: 2 }, mountain: true, passable: false },
+  crystal:  { top: 0x6f73b8, side: 0x333a67, yields: { science: 2, production: 1 }, passable: true },
 };
 
 export const FEATURES = {
-  forest:  { label: 'Woods',  yields: { production: 1 }, move: 2, defense: 0.25 },
-  jungle:  { label: 'Jungle', yields: { food: 1 }, move: 2, defense: 0.25 },
-  marsh:   { label: 'Marsh',  yields: { food: 1 }, move: 2, defense: 0.15 },
-  oasis:   { label: 'Oasis',  yields: { food: 2, gold: 1 } },
-  floodplains: { label: 'Floodplains', yields: { food: 1 } },
-  ice:     { label: 'Ice',    yields: {} },
-  reef:    { label: 'Reef',   yields: { food: 1 } },
+  forest:  { label: '森林',  yields: { production: 1 }, move: 2, defense: 0.25 },
+  jungle:  { label: '叢林', yields: { food: 1 }, move: 2, defense: 0.25 },
+  marsh:   { label: '沼澤', yields: { food: 1 }, move: 2, defense: 0.15 },
+  oasis:   { label: '綠洲',  yields: { food: 2, gold: 1 } },
+  floodplains: { label: '氾濫平原', yields: { food: 1 } },
+  ice:     { label: '浮冰',    yields: {} },
+  reef:    { label: '珊瑚礁',   yields: { food: 1 } },
 };
 
 export const RESOURCES = {
-  wheat:   { name: 'Wheat',   shape: 'grain', color: '#e3bf62', yields: { food: 2 } },
-  cattle:  { name: 'Cattle',  shape: 'cattle', color: '#c98d5a', yields: { food: 1, production: 1 } },
-  deer:    { name: 'Deer',    shape: 'deer', color: '#b07a4b', yields: { food: 1, production: 1 } },
-  fish:    { name: 'Fish',    shape: 'fish', color: '#6fc7d6', yields: { food: 2 } },
-  horses:  { name: 'Horses',  shape: 'horse', color: '#a9784a', yields: { production: 2 } },
-  iron:    { name: 'Iron',    shape: 'ingot', color: '#9aa4ad', yields: { production: 2 } },
-  stone:   { name: 'Stone',   shape: 'stone', color: '#b8bcc0', yields: { production: 1, gold: 1 } },
-  copper:  { name: 'Copper',  shape: 'ingot', color: '#d08a5a', yields: { production: 1, gold: 2 } },
-  gold:    { name: 'Gold',    shape: 'coin', color: '#f0cd71', yields: { gold: 3 } },
-  spices:  { name: 'Spices',  shape: 'spice', color: '#d8843f', yields: { food: 1, gold: 2 } },
-  silk:    { name: 'Silk',    shape: 'silk', color: '#e6a9c4', yields: { culture: 1, gold: 2 } },
-  wine:    { name: 'Wine',    shape: 'grapes', color: '#8e4b7a', yields: { gold: 1, culture: 1 } },
+  wheat:   { name: '小麥',   shape: 'grain', color: '#e3bf62', yields: { food: 2 } },
+  cattle:  { name: '牛隻',  shape: 'cattle', color: '#c98d5a', yields: { food: 1, production: 1 } },
+  deer:    { name: '鹿',    shape: 'deer', color: '#b07a4b', yields: { food: 1, production: 1 } },
+  fish:    { name: '魚',    shape: 'fish', color: '#6fc7d6', yields: { food: 2 } },
+  horses:  { name: '馬匹',  shape: 'horse', color: '#a9784a', yields: { production: 2 } },
+  iron:    { name: '鐵',    shape: 'ingot', color: '#9aa4ad', yields: { production: 2 }, strategic: 'iron' },
+  stone:   { name: '石材',   shape: 'stone', color: '#b8bcc0', yields: { production: 1, gold: 1 } },
+  copper:  { name: '銅',  shape: 'ingot', color: '#d08a5a', yields: { production: 1, gold: 2 }, strategic: 'copper' },
+  gold:    { name: '黃金',    shape: 'coin', color: '#f0cd71', yields: { gold: 3 } },
+  spices:  { name: '香料',  shape: 'spice', color: '#d8843f', yields: { food: 1, gold: 2 } },
+  silk:    { name: '絲綢',  shape: 'silk', color: '#e6a9c4', yields: { culture: 1, gold: 2 } },
+  wine:    { name: '葡萄酒',    shape: 'grapes', color: '#8e4b7a', yields: { gold: 1, culture: 1 } },
+  quartz:  { name: '石英',   shape: 'stone', color: '#d8d9ef', yields: { production: 1, science: 1 }, strategic: 'quartz' },
+  rareEarth:{ name: '稀土',  shape: 'stone', color: '#b89be8', yields: { production: 1, science: 1 }, strategic: 'rareEarth' },
+  oil:     { name: '石油',   shape: 'spice', color: '#43404a', yields: { production: 2 }, strategic: 'oil' },
+  helium3: { name: '氦-3',  shape: 'coin', color: '#a8e7ff', yields: { science: 2 }, strategic: 'helium3' },
 };
 
 const TERRAIN_ORDER = ['grassland', 'plains', 'desert', 'tundra', 'snow'];
@@ -53,6 +59,9 @@ export class World {
     this.seed = opts.seed ?? 20261019;
     this.cols = opts.cols ?? 21;
     this.rows = opts.rows ?? 13;
+    this.mutation = opts.mutation ?? 0;
+    this.scenarioId = opts.scenario ?? 'legacy';
+    this.anomalyTiles = [];
     this.sunDir = opts.sunDir ? opts.sunDir.clone().normalize() : new THREE.Vector3(0.62, 0.5, 0.42).normalize();
     this.rng = new RNG(this.seed);
     this.tiles = new Map();
@@ -68,6 +77,7 @@ export class World {
     this.buildTerrain();
     this.buildWater();
     this.buildSky();
+    this.refreshEffects();
   }
 
   _buildGroups() {
@@ -82,6 +92,10 @@ export class World {
     g.cities = new THREE.Group();
     g.effects = new THREE.Group();
     g.territory = new THREE.Group();
+    g.fx = new THREE.Group();
+    g.tactical = new THREE.Group();
+    g.supply = new THREE.Group();
+    g.orbitals = new THREE.Group();
     for (const key of Object.keys(g)) this.scene.add(g[key]);
   }
 
@@ -134,7 +148,9 @@ export class World {
     this._findCoastsAndLakes();
     this._placeFeatures();
     this._placeResources();
+    this._placeStrategicResources();
     this._carveRivers();
+    this._placeAnomalies();
     this._computeBounds();
   }
 
@@ -236,6 +252,62 @@ export class World {
       else if (tile.feature === 'jungle') candidates = ['spices', 'silk', 'wine'];
       else candidates = ['wheat', 'cattle', 'horses', 'stone', 'wine', 'silk', 'spices', 'copper', 'gold'];
       tile.resource = rng.pick(candidates);
+    }
+  }
+
+  _placeStrategicResources() {
+    const { rng } = this;
+    for (const tile of this.tileList) {
+      if (!BIOMES[tile.terrain].passable || tile.city || tile.anomaly) continue;
+      if (tile.resource && rng.chance(0.55)) continue;
+      let candidates = null;
+      if (tile.terrain === 'hills') candidates = ['quartz', 'rareEarth', 'quartz'];
+      else if (tile.terrain === 'desert') candidates = ['oil', 'oil', 'quartz'];
+      else if (tile.terrain === 'snow' || tile.terrain === 'tundra') candidates = ['helium3', 'quartz', 'rareEarth'];
+      else if (tile.terrain === 'coast') candidates = ['oil'];
+      if (!candidates || !rng.chance(tile.terrain === 'coast' ? 0.035 : 0.09)) continue;
+      tile.resource = rng.pick(candidates);
+    }
+    const needs = {
+      copper: ['hills', 'desert', 'plains', 'grassland', 'tundra'],
+      iron: ['hills', 'snow', 'tundra', 'plains', 'grassland'],
+      quartz: ['hills', 'desert', 'snow', 'tundra'],
+      rareEarth: ['hills', 'snow', 'tundra', 'desert'],
+      oil: ['desert', 'coast'],
+      helium3: ['snow', 'tundra'],
+    };
+    for (const [resource, terrains] of Object.entries(needs)) {
+      let count = this.tileList.filter((t) => t.resource === resource).length;
+      if (count >= 2) continue;
+      const candidates = rng.shuffle(this.tileList.filter((t) =>
+        !t.resource && !t.city && !t.anomaly && BIOMES[t.terrain].passable && terrains.includes(t.terrain)));
+      const fallback = rng.shuffle(this.tileList.filter((t) => !t.resource && !t.anomaly && BIOMES[t.terrain].passable));
+      for (const tile of [...candidates, ...fallback]) {
+        if (count >= 2) break;
+        tile.resource = resource;
+        count++;
+      }
+    }
+  }
+
+  _placeAnomalies() {
+    const level = clamp(this.mutation ?? 0, 0, 4);
+    this.anomalyTiles = [];
+    if (!level) return;
+    const candidates = this.tileList
+      .filter((t) => BIOMES[t.terrain].passable && !t.city && !t.resource && t.terrain !== 'mountain')
+      .sort(() => this.rng.float(-1, 1));
+    const kinds = ['atlantis', 'alien', 'ruins', 'crystal'];
+    const count = Math.min(candidates.length, 2 + level * 2);
+    for (let i = 0; i < count; i++) {
+      const tile = candidates[i];
+      if (!tile) break;
+      const kind = kinds[this.rng.int(0, kinds.length - 1)];
+      const names = { atlantis: '亞特蘭提斯遺跡', alien: '外星墜毀點', ruins: '失落文明遺跡', crystal: '結晶異常區' };
+      tile.anomaly = { kind, name: names[kind], level };
+      tile.feature = kind === 'crystal' ? 'forest' : tile.feature;
+      tile.resource = null;
+      this.anomalyTiles.push(tile);
     }
   }
 
@@ -937,6 +1009,173 @@ export class World {
     this.attackMesh.count = 0;
   }
 
+  refreshEffects() {
+    if (!this.groups.fx) return;
+    const g = this.groups.fx;
+    g.clear();
+    this.fxAnimated = [];
+    for (const tile of this.tileList) {
+      if (tile.anomaly) {
+        const group = new THREE.Group();
+        group.position.set(tile.x, tile.h, tile.z);
+        const crystal = new THREE.Mesh(
+          new THREE.ConeGeometry(0.24, 1.25, 5),
+          new THREE.MeshStandardMaterial({ color: 0x9d8cff, emissive: 0x5f4dcc, emissiveIntensity: 0.7, roughness: 0.35, metalness: 0.4, flatShading: true })
+        );
+        crystal.position.y = 0.62;
+        crystal.rotation.z = 0.18;
+        group.add(crystal);
+        const ring = new THREE.Mesh(
+          new THREE.TorusGeometry(0.55, 0.018, 5, 20).rotateX(Math.PI / 2),
+          new THREE.MeshBasicMaterial({ color: 0xc3b6ff, transparent: true, opacity: 0.8 })
+        );
+        ring.position.y = 0.08;
+        group.add(ring);
+        const label = makeWorldLabel(tile.anomaly.name, '#c3b6ff');
+        label.position.y = 1.55;
+        group.add(label);
+        g.add(group);
+        this.fxAnimated.push({ kind: 'anomaly', group, crystal, ring, phase: this.rng.float(0, 6) });
+      }
+      if (!tile.effect) continue;
+      const group = new THREE.Group();
+      group.position.set(tile.x, tile.h, tile.z);
+      const rng = new RNG(this.seed + tile.q * 97 + tile.r * 31);
+      let anim = null;
+      if (tile.effect === 'fire') {
+        for (let i = 0; i < 5; i++) {
+          const flame = new THREE.Mesh(
+            new THREE.ConeGeometry(rng.float(0.12, 0.24), rng.float(0.4, 0.8), 5),
+            new THREE.MeshBasicMaterial({ color: i % 2 ? 0xff7a2f : 0xffc24a, transparent: true, opacity: 0.85 })
+          );
+          flame.position.set(rng.float(-0.45, 0.45), 0.28, rng.float(-0.45, 0.45));
+          group.add(flame);
+        }
+        const smoke = makeWorldLabel('火', '#ffb057');
+        smoke.position.y = 1.15;
+        group.add(smoke);
+        anim = { kind: 'fire' };
+      } else if (tile.effect === 'flood' || tile.effect === 'submerged') {
+        const water = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.88, 0.88, 0.1, 6).rotateY(Math.PI / 6),
+          new THREE.MeshStandardMaterial({ color: 0x3f9fd0, transparent: true, opacity: 0.55, roughness: 0.15, metalness: 0.2 })
+        );
+        water.position.y = 0.08;
+        group.add(water);
+        anim = { kind: 'water', material: water.material };
+      } else if (tile.effect === 'rubble') {
+        for (let i = 0; i < 6; i++) {
+          const rock = new THREE.Mesh(
+            new THREE.DodecahedronGeometry(rng.float(0.08, 0.2), 0),
+            new THREE.MeshStandardMaterial({ color: 0x7d7468, roughness: 0.95, flatShading: true })
+          );
+          rock.position.set(rng.float(-0.55, 0.55), 0.1, rng.float(-0.55, 0.55));
+          rock.rotation.set(rng.float(0, 3), rng.float(0, 3), rng.float(0, 3));
+          group.add(rock);
+        }
+      } else if (tile.effect === 'storm') {
+        const cloud = new THREE.Mesh(
+          new THREE.IcosahedronGeometry(0.62, 1),
+          new THREE.MeshStandardMaterial({ color: 0x3d4758, roughness: 0.9, flatShading: true })
+        );
+        cloud.position.y = 1.2;
+        group.add(cloud);
+        const rain = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.5, 0.7, 0.9, 8, 1, true),
+          new THREE.MeshBasicMaterial({ color: 0x8fb7d8, transparent: true, opacity: 0.18, side: THREE.DoubleSide })
+        );
+        rain.position.y = 0.7;
+        group.add(rain);
+        anim = { kind: 'storm', cloud };
+      } else if (tile.effect === 'scorched') {
+        const ash = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.82, 0.82, 0.03, 6).rotateY(Math.PI / 6),
+          new THREE.MeshStandardMaterial({ color: 0x2f2b26, roughness: 1 })
+        );
+        ash.position.y = 0.06;
+        group.add(ash);
+      } else if (tile.effect === 'terraformed') {
+        const ring = new THREE.Mesh(
+          new THREE.RingGeometry(0.55, 0.8, 6).rotateX(-Math.PI / 2),
+          new THREE.MeshBasicMaterial({ color: 0x7fe08d, transparent: true, opacity: 0.7, side: THREE.DoubleSide })
+        );
+        ring.position.y = 0.11;
+        group.add(ring);
+        anim = { kind: 'pulse', ring };
+      }
+      g.add(group);
+      if (anim) this.fxAnimated.push({ ...anim, group, phase: rng.float(0, 6) });
+    }
+  }
+
+  showTacticalTargets(tiles, type = 'fire') {
+    this.clearTacticalTargets();
+    if (!tiles?.length) return;
+    const colors = { fire: 0xff6a2f, rockslide: 0xc7bda7, flood: 0x4da9ff, orbital: 0xffe08a, storm: 0x8b7cff, terraform: 0x7fe08d };
+    const geo = new THREE.CylinderGeometry(0.94, 0.94, 0.05, 6).rotateY(Math.PI / 6);
+    const mat = new THREE.MeshBasicMaterial({ color: colors[type] ?? 0xffffff, transparent: true, opacity: 0.55, depthWrite: false, depthTest: false });
+    this.tacticalMesh = new THREE.InstancedMesh(geo, mat, Math.max(1, tiles.length));
+    const m = new THREE.Matrix4();
+    const q = new THREE.Quaternion();
+    const s = new THREE.Vector3(1, 1, 1);
+    tiles.forEach((t, i) => {
+      m.compose(new THREE.Vector3(t.x, t.h + 0.12, t.z), q, s);
+      this.tacticalMesh.setMatrixAt(i, m);
+    });
+    this.tacticalMesh.count = tiles.length;
+    this.tacticalMesh.renderOrder = 7;
+    this.groups.tactical.add(this.tacticalMesh);
+    this.tacticalTiles = tiles;
+  }
+  clearTacticalTargets() {
+    this.groups.tactical.clear();
+    this.tacticalTiles = null;
+    this.tacticalMesh = null;
+  }
+
+  attachGeneral(unit, general) {
+    this.detachGeneral(unit);
+    if (!unit?.mesh || !general) return;
+    const label = makeWorldLabel(`◆ ${general.name}`, '#ffe1a2');
+    label.position.set(0, 1.55, 0);
+    label.userData.isGeneral = true;
+    unit.mesh.add(label);
+    unit.generalMarker = label;
+  }
+  detachGeneral(unit) {
+    if (unit?.generalMarker) {
+      unit.generalMarker.parent?.remove(unit.generalMarker);
+      unit.generalMarker = null;
+    }
+  }
+
+  clearSupplyLine() { this.groups.supply.clear(); }
+  showSupplyLine(tiles) {
+    this.groups.supply.clear();
+    if (!tiles || tiles.length < 2) return;
+    const pts = tiles.map((t) => new THREE.Vector3(t.x, t.h + 0.14, t.z));
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    const line = new THREE.Line(geo, new THREE.LineBasicMaterial({ color: 0x8fe6b0, transparent: true, opacity: 0.75 }));
+    line.renderOrder = 7;
+    this.groups.supply.add(line);
+  }
+
+  addOrbital(tile, color = 0xffe08a) {
+    const group = new THREE.Group();
+    group.position.set(tile.x, tile.h + 3.4, tile.z);
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.03, 5, 18), new THREE.MeshBasicMaterial({ color }));
+    ring.rotation.x = Math.PI / 2;
+    group.add(ring);
+    const core = new THREE.Mesh(new THREE.OctahedronGeometry(0.16, 0), new THREE.MeshBasicMaterial({ color }));
+    group.add(core);
+    const label = makeWorldLabel('軌道資產', '#ffe6ad');
+    label.position.y = 0.75;
+    group.add(label);
+    this.groups.orbitals.add(group);
+    this.fxAnimated.push({ kind: 'orbital', group, ring, core, phase: this.rng.float(0, 6) });
+    return group;
+  }
+
   setSelectionRing(tile) {
     if (!tile) { this.selectionRing.visible = false; return; }
     this.selectionRing.position.set(tile.x, tile.h + 0.08, tile.z);
@@ -1034,6 +1273,38 @@ export class World {
     if (this.billboardSprites) {
       for (const s of this.billboardSprites) {
         s.position.y = s.userData.baseY + Math.sin(this.clocks.time * 1.8 + s.userData.phase) * 0.06;
+      }
+    }
+    if (this.fxAnimated) {
+      for (const fx of this.fxAnimated) {
+        const t = this.clocks.time + fx.phase;
+        if (fx.kind === 'fire') {
+          fx.group.children.forEach((c, i) => {
+            if (!c.material) return;
+            c.scale.y = 0.75 + Math.sin(t * 9 + i * 1.7) * 0.22 + i * 0.04;
+            c.position.y = 0.25 + Math.sin(t * 7 + i) * 0.05;
+          });
+        } else if (fx.kind === 'water') {
+          fx.material.opacity = 0.42 + Math.sin(t * 1.6) * 0.08;
+        } else if (fx.kind === 'storm') {
+          fx.group.rotation.y += dt * 0.6;
+          fx.cloud.position.y = 1.2 + Math.sin(t * 1.3) * 0.16;
+          const flash = (Math.sin(t * 7.7) > 0.98);
+          fx.cloud.material.emissive = fx.cloud.material.emissive ?? new THREE.Color();
+          fx.cloud.material.emissive.setHex(flash ? 0xbfd8ff : 0x000000);
+        } else if (fx.kind === 'pulse') {
+          const s = 1 + Math.sin(t * 2.4) * 0.08;
+          fx.ring.scale.set(s, 1, s);
+        } else if (fx.kind === 'anomaly') {
+          fx.crystal.rotation.y += dt * 0.7;
+          fx.crystal.position.y = 0.62 + Math.sin(t * 1.5) * 0.08;
+          fx.ring.rotation.z += dt * 0.4;
+          fx.ring.material.opacity = 0.55 + Math.sin(t * 2) * 0.25;
+        } else if (fx.kind === 'orbital') {
+          fx.group.position.y += Math.sin(t * 1.3) * 0.002;
+          fx.ring.rotation.z += dt * 1.2;
+          fx.core.rotation.y += dt * 2;
+        }
       }
     }
     for (const city of this.cities) {
@@ -1236,6 +1507,25 @@ function drawResourceSymbol(ctx, shape, color, cx, cy) {
       ctx.beginPath(); ctx.arc(0, 0, 16, 0, Math.PI * 2); ctx.fill();
   }
   ctx.restore();
+}
+
+function makeWorldLabel(text, color = '#f6ead1') {
+  const canvas = document.createElement('canvas');
+  canvas.width = 320; canvas.height = 72;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.font = '600 30px "Noto Serif TC", "WenQuanYi Zen Hei", Georgia, serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = 'rgba(8,13,20,0.78)';
+  roundRect(ctx, 8, 10, canvas.width - 16, 52, 12); ctx.fill();
+  ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = color;
+  ctx.fillText(text, canvas.width / 2, 37);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, depthTest: false }));
+  sprite.scale.set(1.35, 0.3, 1);
+  return sprite;
 }
 
 function makeGlowTexture() {
@@ -1655,19 +1945,19 @@ export function createCityLabel(city) {
     ctx.fillStyle = 'rgba(8,13,20,0.78)';
     roundRect(ctx, gx, gy, gw, gh, 10); ctx.fill();
     ctx.strokeStyle = civ?.colorHex ?? '#e3bd74'; ctx.lineWidth = 3; ctx.stroke();
-    ctx.font = '600 34px Cinzel, Georgia, serif';
+    ctx.font = '600 34px Cinzel, "Noto Serif TC", "WenQuanYi Zen Hei", Georgia, serif';
     ctx.fillStyle = '#f6ead1';
     ctx.shadowColor = 'rgba(0,0,0,0.8)'; ctx.shadowBlur = 8;
-    ctx.fillText(city.name.toUpperCase(), canvas.width / 2, gy + gh / 2 + 2);
+    ctx.fillText(city.name, canvas.width / 2, gy + gh / 2 + 2);
     ctx.shadowBlur = 0;
     // population banner
     ctx.fillStyle = civ?.colorHex ?? '#e3bd74';
     ctx.beginPath(); ctx.arc(gx + 22, gy + gh / 2, 17, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = '#0a1219';
-    ctx.font = '700 22px Cinzel, Georgia, serif';
+    ctx.font = '700 22px Cinzel, "Noto Serif TC", "WenQuanYi Zen Hei", Georgia, serif';
     ctx.fillText(String(city.population), gx + 22, gy + gh / 2 + 1);
     // production pips under
-    ctx.font = '500 18px Cormorant Garamond, Georgia, serif';
+    ctx.font = '500 18px "Cormorant Garamond", "Noto Serif TC", "WenQuanYi Zen Hei", Georgia, serif';
     ctx.fillStyle = 'rgba(230,220,200,0.85)';
     if (city.producing) ctx.fillText(`⚒ ${city.producing.name}`, canvas.width / 2, gy + gh + 26);
   };

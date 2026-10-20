@@ -3,6 +3,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { World } from './world.js';
 import { Game, UNIT_TYPES, TECHS } from './game.js';
 import { UI } from './ui.js';
+import { AudioEngine } from './audio.js';
+import { SCENARIOS } from './expansions.js';
 import { axialKey, axialToWorld, clamp } from './core.js';
 
 const canvas = document.getElementById('scene');
@@ -49,9 +51,14 @@ const ambient = new THREE.AmbientLight(0xffffff, 0.22);
 scene.add(ambient);
 
 /* ---------------- world + game ---------------- */
-const world = new World(scene, { seed: 20261019, cols: 21, rows: 13, sunDir });
-const game = new Game(world);
+const params = new URLSearchParams(window.location.search);
+const scenarioId = SCENARIOS[params.get('scenario')] ? params.get('scenario') : 'legacy';
+const mutation = Math.max(0, Math.min(3, Number(params.get('mutation') ?? SCENARIOS[scenarioId].mutation ?? 1)));
+const world = new World(scene, { seed: 20261019, cols: 21, rows: 13, sunDir, scenario: scenarioId, mutation });
+const game = new Game(world, { scenario: scenarioId });
+const audio = new AudioEngine();
 game.setup();
+audio.setEra(game.eraIndex);
 
 const sunTarget = world.civs.get(game.playerId).capital.tile;
 sun.position.copy(sunDir.clone().multiplyScalar(70).add(new THREE.Vector3(sunTarget.x, 0, sunTarget.z)));
@@ -89,6 +96,7 @@ setCameraTo(sunTarget, { distance: 19, azimuth: -0.82, polar: 0.8 });
 
 /* ---------------- UI ---------------- */
 const ui = new UI(game, world);
+ui.setAudio?.(audio);
 
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
@@ -130,9 +138,14 @@ function computeRange(unit) {
 }
 
 function refreshRange() {
-  if (game.selected?.type === 'unit' && game.selected.ref.moves > 0) computeRange(game.selected.ref);
-  else if (game.selected?.type === 'unit') { computeRange(game.selected.ref); }
-  else { world.clearMoveRange(); selectedRange = null; }
+  if (game.selected?.type === 'unit') {
+    computeRange(game.selected.ref);
+    world.showSupplyLine(game.supplyPath(game.selected.ref));
+  } else {
+    world.clearMoveRange();
+    world.clearSupplyLine();
+    selectedRange = null;
+  }
 }
 
 async function handleClick(clientX, clientY) {
@@ -140,6 +153,21 @@ async function handleClick(clientX, clientY) {
   const tile = tileFromEvent(clientX, clientY);
   if (!tile) return;
   const player = world.civs.get(game.playerId);
+  if (game.schemeMode) {
+    const unit = world.units.find((u) => u.id === game.schemeMode.unitId);
+    const type = game.schemeMode.type;
+    const valid = unit && game.schemeTargets(type, unit).some((t) => t.key === tile.key);
+    if (valid && game.performScheme(type, unit, tile)) {
+      audio.event('war');
+      game.cancelScheme();
+      world.clearTacticalTargets();
+      refreshRange();
+      ui.renderAll();
+    } else {
+      ui.toast({ title: '目標無效', body: '請選擇高亮顯示的可行地格，或按 Esc 取消計略。', kind: 'warn', icon: 'i-defense' });
+    }
+    return;
+  }
   // select own unit
   const ownUnit = tile.units.find((u) => u.civId === game.playerId);
   if (ownUnit && !ownUnit.asleep) {
@@ -190,6 +218,8 @@ ui.setActions({
       case 'help': ui.helpModal(); break;
       case 'found': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].found) game.foundCity(sel.ref); break;
       case 'improve': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.improve(sel.ref); break;
+      case 'depot': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.buildDepot(sel.ref); break;
+      case 'scheme': ui.councilModal('schemes'); break;
       case 'fortify': if (sel?.type === 'unit') game.fortify(sel.ref); break;
       case 'sleep': if (sel?.type === 'unit') game.sleep(sel.ref); break;
       case 'skip': if (sel?.type === 'unit') { sel.ref.moves = 0; game.emit('change'); } break;
@@ -205,6 +235,26 @@ ui.setActions({
     animateTarget(new THREE.Vector3(tile.x, tile.h, tile.z));
   },
   getCameraTarget() { return controls.target; },
+  armScheme(type) {
+    const unit = game.schemeActor();
+    if (!unit) return [];
+    const targets = game.armScheme(type, unit);
+    if (targets.length) world.showTacticalTargets(targets, type);
+    return targets;
+  },
+  audioEnabled() { return audio.enabled; },
+  toggleAudio() {
+    const on = audio.toggle();
+    ui.toast({ title: on ? '天籟響起' : '歸於寂靜', body: on ? '依時代變化的樂音已開啟。' : '樂音已關閉。', kind: 'info', icon: 'i-wonder' });
+    return on;
+  },
+  setScenario(id, mutationValue = '1') {
+    if (!SCENARIOS[id]) return;
+    const next = new URL(window.location.href);
+    next.searchParams.set('scenario', id);
+    next.searchParams.set('mutation', String(mutationValue));
+    window.location.href = next.toString();
+  },
 });
 
 function selectNextUnit() {
@@ -252,11 +302,15 @@ window.addEventListener('keydown', (e) => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
   const key = e.key.toLowerCase();
   const sel = game.selected;
-  if (key === 'escape') { ui.closeModal(); game.select(null); return; }
+  if (key === 'escape') {
+    if (game.schemeMode) { game.cancelScheme(); world.clearTacticalTargets(); ui.toast({ title: '計略取消', body: '單位恢復待命。', kind: 'info', icon: 'i-defense' }); }
+    ui.closeModal(); game.select(null); return;
+  }
   if (game.busy) return;
   switch (key) {
     case ' ': case 'enter': e.preventDefault(); game.endTurn(); break;
     case 't': ui.techTree(); break;
+    case 'm': ui.councilModal(); break;
     case 'c':
       if (sel?.type === 'city') ui.cityModal(sel.ref);
       else if (sel?.type === 'unit') { const t = world.tiles.get(axialKey(sel.ref.q, sel.ref.r)); if (t.city && t.city.civId === game.playerId) ui.cityModal(t.city); }
@@ -265,7 +319,11 @@ window.addEventListener('keydown', (e) => {
     case 'n': selectNextUnit(); break;
     case 'f': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].found) game.foundCity(sel.ref); break;
     case 'b': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.improve(sel.ref); break;
+    case 'g': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.buildDepot(sel.ref); break;
+    case 'q': ui.councilModal('schemes'); break;
     case 'z': if (sel?.type === 'unit') game.sleep(sel.ref); break;
+    case 'v': if (sel?.type === 'unit') game.fortify(sel.ref); break;
+    case 's': if (sel?.type === 'unit') { sel.ref.moves = 0; game.emit('change'); } break;
     case 'h': ui.helpModal(); break;
     default: break;
   }
@@ -291,6 +349,7 @@ game.on('selection', (sel) => {
   } else {
     world.setSelectionRing(null);
     world.clearMoveRange();
+    world.clearSupplyLine();
     selectedRange = null;
   }
 });
@@ -299,7 +358,15 @@ game.on('change', () => {
     world.setSelectionRing(world.tiles.get(axialKey(game.selected.ref.q, game.selected.ref.r)));
   }
 });
-game.on('turnEnd', () => { refreshRange(); });
+game.on('turnEnd', () => {
+  refreshRange();
+  const era = game.eraIndex;
+  if (era !== lastEra) { audio.setEra(era); audio.event('era'); lastEra = era; }
+});
+let lastEra = game.eraIndex;
+game.on('combat', () => audio.event('war'));
+game.on('crisis', () => audio.event('crisis'));
+game.on('techComplete', (info) => { if (info.civId === game.playerId) audio.event('good'); });
 
 /* ---------------- loop ---------------- */
 let prevTime = performance.now();
@@ -333,7 +400,8 @@ tick();
 /* ---------------- reveal & landing ---------------- */
 setTimeout(() => {
   ui.el.loading.classList.add('gone');
-  ui.toast({ title: 'The Age of Antiquity', body: 'Your people look to you, Empress. Lead them well.', kind: 'info', icon: 'i-wonder' });
+  const player = world.civs.get(game.playerId);
+  ui.toast({ title: ui.el.age.textContent, body: `你的子民仰望著你，${player.leader}。好好引領他們。`, kind: 'info', icon: 'i-wonder' });
 }, 700);
 
-window.__civ = { game, world, ui, camera, controls };
+window.__civ = { game, world, ui, audio, camera, controls };

@@ -1,6 +1,10 @@
 import { axialToWorld, axialKey, clamp, worldToAxial } from './core.js';
 import { BIOMES, FEATURES, RESOURCES } from './world.js';
 import { CIVS, UNIT_TYPES, BUILDINGS, WONDERS, TECHS, CIVICS } from './game.js';
+import {
+  GENERALS, DOCTRINES, SCENARIOS, CRISES, SCHEMES, STRATEGIC,
+  TECH_ERA_ORDER, TECH_ERA_NAMES,
+} from './expansions.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -8,12 +12,17 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const icon = (name) => `<svg class="ic"><use href="#${name}"/></svg>`;
 
 const RES_META = {
-  science: { icon: 'i-science', label: 'Science' },
-  culture: { icon: 'i-culture', label: 'Culture' },
-  gold: { icon: 'i-gold', label: 'Gold' },
-  faith: { icon: 'i-faith', label: 'Faith' },
-  influence: { icon: 'i-influence', label: 'Influence' },
+  science: { icon: 'i-science', label: '科學' },
+  culture: { icon: 'i-culture', label: '文化' },
+  gold: { icon: 'i-gold', label: '金幣' },
+  faith: { icon: 'i-faith', label: '信仰' },
+  influence: { icon: 'i-influence', label: '影響力' },
 };
+const ERA_LABELS = TECH_ERA_NAMES;
+const ERA_NAMES = TECH_ERA_ORDER.map((era) => ERA_LABELS[era]);
+const ERA_CHIPS = [...ERA_NAMES];
+const IMPROVEMENT_NAMES = { farm: '農場', mine: '礦場', depot: '補給站' };
+const SCHEME_ICON = { fire: 'i-attack', rockslide: 'i-defense', flood: 'i-influence', orbital: 'i-wonder', storm: 'i-influence', terraform: 'i-wonder' };
 const YIELD_ORDER = ['food', 'production', 'gold', 'science', 'culture', 'faith'];
 const YIELD_ICON = { food: 'i-food', production: 'i-production', gold: 'i-gold', science: 'i-science', culture: 'i-culture', faith: 'i-faith', influence: 'i-influence' };
 
@@ -50,6 +59,10 @@ export class UI {
       turnBanner: $('#turn-banner'),
       loading: $('#loading-screen'),
       playerAge: $('#player-age'),
+      councilBtn: $('#open-council'),
+      weatherStatus: $('#weather-status'),
+      climateStatus: $('#climate-status'),
+      crisisStatus: $('#crisis-status'),
     };
     this.el.modals.classList.add('hidden');
     this.bindStatic();
@@ -65,18 +78,21 @@ export class UI {
     g.on('turnEnd', ({ turn }) => { this.el.turn.textContent = turn; this.renderAll(); });
     g.on('newEra', (era) => this.turnBanner(era));
     g.on('techComplete', ({ civId }) => { if (civId === g.playerId) this.renderResearch(); });
-    g.on('meet', (civ) => this.toast({ title: 'First Contact', body: `${civ.leader} of ${civ.name} has found your people.`, kind: 'info', icon: 'i-influence' }));
-    g.on('cityFounded', (city) => { this.toast({ title: 'City Founded', body: `${city.name} is founded. May it stand for ages.`, kind: 'good', icon: 'i-city' }); });
-    g.on('cityCaptured', ({ city, conqueror }) => this.toast({ title: 'City Captured', body: `${city.name} now flies the banner of ${conqueror.name}.`, kind: 'war', icon: 'i-attack' }));
-    g.on('wonderBuilt', ({ city, id }) => this.toast({ title: 'Wonder Complete', body: `${WONDERS[id].name} rises in ${city.name}.`, kind: 'good', icon: 'i-wonder' }));
+    g.on('meet', (civ) => this.toast({ title: '初次接觸', body: `${civ.name}的${civ.leader}發現了你的子民。`, kind: 'info', icon: 'i-influence' }));
+    g.on('cityFounded', (city) => { this.toast({ title: '城市建立', body: `${city.name}已建立。願它屹立千古。`, kind: 'good', icon: 'i-city' }); });
+    g.on('cityCaptured', ({ city, conqueror }) => this.toast({ title: '城市陷落', body: `${city.name}如今高懸${conqueror.name}的旗幟。`, kind: 'war', icon: 'i-attack' }));
+    g.on('wonderBuilt', ({ city, id }) => this.toast({ title: '奇觀落成', body: `${WONDERS[id].name}在${city.name}拔地而起。`, kind: 'good', icon: 'i-wonder' }));
     g.on('combatFlash', () => this.flash());
-    g.on('objectiveDone', (o) => this.toast({ title: 'Legacy Advanced', body: o.text, kind: 'good', icon: 'i-wonder' }));
+    g.on('objectiveDone', (o) => this.toast({ title: '傳承邁進', body: o.text, kind: 'good', icon: 'i-wonder' }));
     g.on('gameOver', (res) => this.gameOver(res));
   }
+
+  setAudio(audio) { this.audio = audio; }
 
   bindStatic() {
     this.el.endTurn.addEventListener('click', () => this.actions?.command('endTurn'));
     $('#open-tech').addEventListener('click', () => this.techTree());
+    this.el.councilBtn.addEventListener('click', () => this.councilModal());
     window.addEventListener('resize', () => this.drawMinimap());
     const minimap = this.el.minimap;
     minimap.addEventListener('click', (e) => {
@@ -100,18 +116,36 @@ export class UI {
     const player = world.civs.get(g.playerId);
     this.el.civName.textContent = player.name;
     this.el.leader.textContent = player.leader;
-    this.el.age.textContent = `Age of ${['Antiquity', 'Exploration', 'Modern', 'Future'][g.eraIndex]}`;
+    this.el.age.textContent = ERA_NAMES[g.eraIndex];
     this.el.crest.innerHTML = crestSVG(player);
-    this.el.eraChip.textContent = ['ANTIQUITY', 'EXPLORATION', 'MODERN', 'FUTURE'][g.eraIndex];
+    this.el.eraChip.textContent = ERA_CHIPS[g.eraIndex];
     this.el.turn.textContent = g.turn;
     this.renderResources();
     this.renderResearch();
     this.renderObjectives();
     this.renderLeaders();
+    this.renderWorldStatus();
     this.renderSelection();
     this.renderCommands();
     this.drawMinimap();
     this.updateHint();
+  }
+
+  renderWorldStatus() {
+    const g = this.game;
+    if (this.el.weatherStatus) {
+      this.el.weatherStatus.textContent = `風：${g.weather?.name ?? '微風'}${g.weather?.stormy ? ' • 風暴' : ''}`;
+      this.el.weatherStatus.className = g.weather?.stormy ? 'cold' : '';
+    }
+    if (this.el.climateStatus) {
+      const c = g.climate ?? { emissions: 0, temperature: 0 };
+      this.el.climateStatus.textContent = `排放 ${Math.round(c.emissions)} • +${c.temperature}°C`;
+      this.el.climateStatus.className = c.emissions > 80 ? 'hot' : c.emissions > 40 ? 'cold' : '';
+    }
+    if (this.el.crisisStatus) {
+      this.el.crisisStatus.textContent = g.activeCrisis ? `危機：${g.activeCrisis.def.name}` : '天下太平';
+      this.el.crisisStatus.className = g.activeCrisis ? 'hot' : '';
+    }
   }
 
   renderResources() {
@@ -119,11 +153,11 @@ export class UI {
     const y = g.civYields(g.playerId);
     const stock = g.stocks[g.playerId];
     const items = [
-      { kind: 'science', value: y.science, delta: true, icon: 'i-science', title: 'Science per turn' },
-      { kind: 'culture', value: y.culture, delta: true, icon: 'i-culture', title: 'Culture per turn' },
-      { kind: 'gold', value: stock.gold, delta: y.gold, icon: 'i-gold', title: 'Treasury / Gold per turn' },
-      { kind: 'faith', value: stock.faith, delta: y.faith, icon: 'i-faith', title: 'Faith / per turn' },
-      { kind: 'influence', value: stock.influence, delta: y.influence, icon: 'i-influence', title: 'Influence / per turn' },
+      { kind: 'science', value: y.science, delta: true, icon: 'i-science', title: '每回合科學' },
+      { kind: 'culture', value: y.culture, delta: true, icon: 'i-culture', title: '每回合文化' },
+      { kind: 'gold', value: stock.gold, delta: y.gold, icon: 'i-gold', title: '國庫／每回合金幣' },
+      { kind: 'faith', value: stock.faith, delta: y.faith, icon: 'i-faith', title: '信仰／每回合' },
+      { kind: 'influence', value: stock.influence, delta: y.influence, icon: 'i-influence', title: '影響力／每回合' },
     ];
     this.el.resourceBar.innerHTML = items.map((it) => {
       const delta = typeof it.delta === 'number' ? it.delta : it.value;
@@ -144,17 +178,18 @@ export class UI {
     const y = g.civYields(civId);
     this.el.sciencePerTurn.textContent = `+${fmt(y.science)}`;
     if (!tech) {
-      this.el.currentTech.textContent = 'All technologies discovered';
-      this.el.techProgress.style.width = '100%';
+      const capped = g.maxEra < TECH_ERA_ORDER.length - 1;
+      this.el.currentTech.textContent = capped ? '此劇本科技已臻上限' : '所有科技已發現';
+      this.el.techProgress.style.width = capped ? '0%' : '100%';
       this.el.techTurns.textContent = '—';
-      this.el.techBlurb.textContent = 'Your scholars have mastered the known world.';
+      this.el.techBlurb.textContent = capped ? '切換至完整劇本，才能繼續走向未來。' : '你的學者已掌握已知世界。';
       return;
     }
     const progress = g.techProgress[civId] || 0;
     const pct = clamp((progress / tech.cost) * 100, 0, 100);
     this.el.currentTech.textContent = tech.name;
     this.el.techProgress.style.width = `${pct}%`;
-    this.el.techTurns.textContent = `${g.researchTurns(civId)}t`;
+    this.el.techTurns.textContent = `${g.researchTurns(civId)} 回合`;
     this.el.techBlurb.textContent = tech.bonus;
   }
 
@@ -172,7 +207,7 @@ export class UI {
       const met = g.met.has(civ.id);
       return `<div class="leader-row" data-civ="${civ.id}" style="--c:${civ.colorHex}">
         <div class="av">${leaderSVG(civ)}</div>
-        <div class="who"><b>${met ? esc(civ.name) : 'Unknown Power'}</b><span>${met ? esc(civ.leader) : 'unmet'}</span></div>
+        <div class="who"><b>${met ? esc(civ.name) : '未知勢力'}</b><span>${met ? esc(civ.leader) : '尚未接觸'}</span></div>
         <span class="att ${relation.cls}">${relation.label}</span>
       </div>`;
     }).join('');
@@ -201,27 +236,33 @@ export class UI {
     const tile = this.world.tiles.get(axialKey(unit.q, unit.r));
     const y = g.tileYields(tile, unit.civId);
     const hpPct = (unit.hp / unit.maxHp) * 100;
-    const pips = Array.from({ length: def.moves }, (_, i) => `<span class="pip ${i < unit.moves ? 'on' : ''}"></span>`).join('');
+    const pips = Array.from({ length: Math.max(1, def.moves) }, (_, i) => `<span class="pip ${i < unit.moves ? 'on' : ''}"></span>`).join('');
+    const supply = g.supplyInfo(unit);
+    const gen = g.generalForUnit(unit);
+    const supplied = def.domain === 'air' || supply.ok;
     this.el.selection.innerHTML = `
       <div class="sel-head">
         <div class="sel-portrait" style="--c:${unit.civ.colorHex}">${icon(def.icon)}</div>
         <div class="sel-titles">
-          <div class="sel-kind">UNIT</div>
+          <div class="sel-kind">單位</div>
           <div class="sel-name">${esc(def.name)}</div>
-          <div class="sel-sub">${esc(unit.civ.name)} • Lv ${unit.level + 1}${unit.fortified ? ' • Fortified' : ''}</div>
+          <div class="sel-sub">${esc(unit.civ.name)} • 等級 ${unit.level + 1}${unit.fortified ? ' • 固守中' : ''}</div>
         </div>
         <button class="sel-close" data-close="1">×</button>
       </div>
       <div class="sel-body">
         <div class="stat-row">
-          <div class="stat"><div class="k">Strength</div><div class="v">${def.rangedStr ? `${def.str}/${def.rangedStr}` : def.str}</div></div>
-          <div class="stat"><div class="k">Health</div><div class="v">${Math.round(unit.hp)}</div></div>
-          <div class="stat"><div class="k">Moves</div><div class="v">${unit.moves}</div></div>
+          <div class="stat"><div class="k">戰鬥力</div><div class="v">${Math.round(g.attackStrength(unit))}</div></div>
+          <div class="stat"><div class="k">生命</div><div class="v">${Math.round(unit.hp)}</div></div>
+          <div class="stat"><div class="k">移動</div><div class="v">${unit.moves}</div></div>
         </div>
         <div class="hpbar ${hpPct < 40 ? 'low' : ''}"><i style="width:${hpPct}%"></i></div>
         <div class="pips">${pips}</div>
         <div class="yields">${yieldChips(y, { production: false })}</div>
-        <div class="diplo-line">Position: ${terrainName(tile)}${tile.feature ? ` — ${FEATURES[tile.feature].label}` : ''}${tile.resource ? ` • ${RESOURCES[tile.resource].name}` : ''}</div>
+        <div class="diplo-line">位置：${terrainName(tile)}${tile.feature ? ` — ${FEATURES[tile.feature].label}` : ''}${tile.resource ? ` • ${RESOURCES[tile.resource].name}` : ''}</div>
+        <div class="diplo-line">補給：<b style="color:${supplied ? '#8fdc94' : '#ef8a80'}">${supplied ? '暢通' : '中斷（每回合 -7 生命）'}</b>${def.domain === 'air' ? ' • 空中補給' : ` • 來源距離 ${supply.distance}/${supply.range}`}</div>
+        <div class="diplo-line">軍團：${gen ? `<b>${esc(gen.name)}</b> • 忠誠 ${gen.loyalty} • ${{ strPct: '戰力', sciencePct: '科學', move: '移動', supply: '補給' }[Object.keys(gen.bonuses)[0]] ?? '統御'}加成` : '無指揮官 — 可在議會任命'}</div>
+        ${tile.effect ? `<div class="diplo-line" style="color:#ffbb87">地貌效應：${tile.effect === 'fire' ? '火災' : tile.effect === 'flood' ? '洪水' : tile.effect === 'storm' ? '風暴' : tile.effect === 'rubble' ? '瓦礫阻斷' : tile.effect === 'scorched' ? '焦土' : tile.effect}</div>` : ''}
       </div>`;
     $('[data-close]', this.el.selection)?.addEventListener('click', () => this.game.select(null));
   }
@@ -236,29 +277,29 @@ export class UI {
       <div class="sel-head">
         <div class="sel-portrait" style="--c:${city.civ.colorHex}">${icon('i-city')}</div>
         <div class="sel-titles">
-          <div class="sel-kind">${city.isCapital ? 'CAPITAL' : 'CITY'} • ${city.civ.name}</div>
+          <div class="sel-kind">${city.isCapital ? '首都' : '城市'} • ${city.civ.name}</div>
           <div class="sel-name">${esc(city.name)}</div>
-          <div class="sel-sub">Population ${city.population} • ${city.buildings.length} buildings${city.wonders.length ? ` • ${city.wonders.length} wonders` : ''}</div>
+          <div class="sel-sub">人口 ${city.population} • ${city.buildings.length} 棟建築${city.wonders.length ? ` • ${city.wonders.length} 座奇觀` : ''}</div>
         </div>
         <button class="sel-close" data-close="1">×</button>
       </div>
       <div class="sel-body">
         <div class="stat-row">
-          <div class="stat"><div class="k">Defence</div><div class="v">${Math.round(city.defense)}</div></div>
-          <div class="stat"><div class="k">City HP</div><div class="v">${Math.round(city.hp)}</div></div>
-          <div class="stat"><div class="k">Territory</div><div class="v">${this.world.tileList.filter((t) => t.owner === city.civId).length}</div></div>
+          <div class="stat"><div class="k">防禦</div><div class="v">${Math.round(city.defense)}</div></div>
+          <div class="stat"><div class="k">城市生命</div><div class="v">${Math.round(city.hp)}</div></div>
+          <div class="stat"><div class="k">領土</div><div class="v">${this.world.tileList.filter((t) => t.owner === city.civId).length}</div></div>
         </div>
         <div class="hpbar ${city.hp < city.maxHp * 0.4 ? 'low' : ''}"><i style="width:${(city.hp / city.maxHp) * 100}%"></i></div>
         <div class="city-prod">
           <div class="prod-card" data-open-city="1">
             ${icon(city.producing?.icon ?? 'i-production')}
-            <div><div class="t">${city.producing ? esc(city.producing.name) : 'Choose production'}</div>
-            <div class="s">${city.producing ? `${Math.round(prodPct)}% complete` : 'Production idle'}</div></div>
-            <span class="turns">${city.producing ? g.estimateTurns(city, city.producing.cost) + 't' : '—'}</span>
+            <div><div class="t">${city.producing ? esc(city.producing.name) : '選擇生產'}</div>
+            <div class="s">${city.producing ? `完成 ${Math.round(prodPct)}%` : '生產閒置'}</div></div>
+            <span class="turns">${city.producing ? g.estimateTurns(city, city.producing.cost) + ' 回合' : '—'}</span>
           </div>
         </div>
         <div class="yields">${yieldChips(y)}</div>
-        <div class="diplo-line">Growth ${Math.round(growthPct)}% • Producing ${fmt(y.production + city.population)} per turn</div>
+        <div class="diplo-line">成長 ${Math.round(growthPct)}% • 每回合生產 ${fmt(y.production + city.population)}</div>
       </div>`;
     $('[data-close]', this.el.selection)?.addEventListener('click', () => this.game.select(null));
     $('[data-open-city]', this.el.selection)?.addEventListener('click', () => this.cityModal(city));
@@ -273,20 +314,22 @@ export class UI {
     if (sel?.type === 'unit') {
       const unit = sel.ref;
       const def = UNIT_TYPES[unit.type];
-      if (def.found) cmds.push({ id: 'found', icon: 'i-settle', label: 'Found', key: 'F' });
-      if (def.build) cmds.push({ id: 'improve', icon: 'i-production', label: 'Build', key: 'B' });
-      if (!def.civilian) cmds.push({ id: 'fortify', icon: 'i-fortify', label: 'Fortify', key: 'T' });
-      cmds.push({ id: 'sleep', icon: 'i-sleep', label: 'Sleep', key: 'Z' });
-      cmds.push({ id: 'skip', icon: 'i-skip', label: 'Skip', key: 'S' });
-      cmds.push({ id: 'next', icon: 'i-move', label: 'Next', key: 'N' });
+      if (def.found) cmds.push({ id: 'found', icon: 'i-settle', label: '建城', key: 'F' });
+      if (def.build) cmds.push({ id: 'improve', icon: 'i-production', label: '建造', key: 'B' });
+      if (def.build) cmds.push({ id: 'depot', icon: 'i-influence', label: '補給站', key: 'G' });
+      if (!def.civilian) cmds.push({ id: 'scheme', icon: 'i-attack', label: '計略', key: 'Q' });
+      if (!def.civilian) cmds.push({ id: 'fortify', icon: 'i-fortify', label: '固守', key: 'V' });
+      cmds.push({ id: 'sleep', icon: 'i-sleep', label: '休眠', key: 'Z' });
+      cmds.push({ id: 'skip', icon: 'i-skip', label: '跳過', key: 'S' });
+      cmds.push({ id: 'next', icon: 'i-move', label: '下一個', key: 'N' });
     } else if (sel?.type === 'city') {
-      cmds.push({ id: 'cityPanel', icon: 'i-city', label: 'Manage', key: 'C' });
-      cmds.push({ id: 'next', icon: 'i-move', label: 'Next', key: 'N' });
-      cmds.push({ id: 'tech', icon: 'i-research', label: 'Tech', key: 'T' });
+      cmds.push({ id: 'cityPanel', icon: 'i-city', label: '管理', key: 'C' });
+      cmds.push({ id: 'next', icon: 'i-move', label: '下一個', key: 'N' });
+      cmds.push({ id: 'tech', icon: 'i-research', label: '科技', key: 'T' });
     } else {
-      cmds.push({ id: 'next', icon: 'i-move', label: 'Next Unit', key: 'N' });
-      cmds.push({ id: 'tech', icon: 'i-research', label: 'Tech Tree', key: 'T' });
-      cmds.push({ id: 'help', icon: 'i-wonder', label: 'Help', key: 'H' });
+      cmds.push({ id: 'next', icon: 'i-move', label: '下一單位', key: 'N' });
+      cmds.push({ id: 'tech', icon: 'i-research', label: '科技樹', key: 'T' });
+      cmds.push({ id: 'help', icon: 'i-wonder', label: '說明', key: 'H' });
     }
     bar.innerHTML = cmds.map((c) =>
       `<button class="cmd" data-id="${c.id}" title="${c.label} (${c.key})">${icon(c.icon)}<small>${c.label}</small><kbd>${c.key}</kbd></button>`).join('');
@@ -306,18 +349,18 @@ export class UI {
     const g = this.game;
     const sel = g.selected;
     const hint = this.el.actionHint;
-    if (g.busy) { hint.textContent = 'Rivals are taking their turn…'; hint.classList.remove('hidden'); return; }
+    if (g.busy) { hint.textContent = '對手正在行動…'; hint.classList.remove('hidden'); return; }
     let text = '';
     if (sel?.type === 'unit') {
       const def = UNIT_TYPES[sel.ref.type];
-      if (def.found) text = 'Click a highlighted tile to move, then press Found to establish a city.';
-      else if (def.build) text = 'Move onto a tile and press Build to raise a farm or mine.';
-      else if (def.civilian) text = 'Use the command bar to act.';
-      else text = 'Click a blue tile to move, or a red tile to attack.';
+      if (def.found) text = '點擊高亮地格移動，然後按「建城」建立城市。';
+      else if (def.build) text = '移動到地格並按「建造」，興建農場或礦場。';
+      else if (def.civilian) text = '使用指令列執行行動。';
+      else text = '點擊藍色地格移動，或點擊紅色地格攻擊。';
     } else if (sel?.type === 'city') {
-      text = 'Open Manage to queue production. The city grows and expands on its own.';
+      text = '開啟「管理」安排生產。城市會自行成長與擴張。';
     } else {
-      text = 'Drag to orbit, right-drag to pan, scroll to zoom. Select a unit or city to begin.';
+      text = '拖曳環繞、右鍵拖曳平移、滾輪縮放。選擇單位或城市開始。';
     }
     hint.textContent = text;
     hint.classList.remove('hidden');
@@ -390,7 +433,7 @@ export class UI {
   }
 
   setMinimapCoords(tile) {
-    if (!tile) { this.el.minimapCoords.textContent = 'Hex —'; return; }
+    if (!tile) { this.el.minimapCoords.textContent = '六角格 —'; return; }
     this.el.minimapCoords.textContent = `${terrainName(tile)} · ${tile.q},${tile.r}`;
   }
 
@@ -419,12 +462,12 @@ export class UI {
     const owner = tile.owner ? world.civs.get(tile.owner) : null;
     tt.innerHTML = `
       <div class="tt-name">${terrainName(tile)}</div>
-      <div class="tt-sub">${tile.q}, ${tile.r}${owner ? ` • ${owner.name} territory` : ''}</div>
+      <div class="tt-sub">${tile.q}, ${tile.r}${owner ? ` • ${owner.name}領土` : ''}</div>
       ${tile.feature ? `<span class="tt-feature">${FEATURES[tile.feature].label}</span>` : ''}
       ${tile.resource ? `<span class="tt-feature" style="color:${RESOURCES[tile.resource].color};border-color:${RESOURCES[tile.resource].color}55">${RESOURCES[tile.resource].name}</span>` : ''}
       <div class="tt-yields">${yieldChips(y2, { production: true })}</div>
-      ${tile.improvement ? `<div class="tt-note">Improved: ${tile.improvement}</div>` : ''}
-      ${tile.city ? `<div class="tt-note">${tile.city.name} — population ${tile.city.population}</div>` : ''}
+      ${tile.improvement ? `<div class="tt-note">已改良：${IMPROVEMENT_NAMES[tile.improvement] ?? tile.improvement}</div>` : ''}
+      ${tile.city ? `<div class="tt-note">${tile.city.name} — 人口 ${tile.city.population}</div>` : ''}
       ${tile.units.length ? `<div class="tt-note">${tile.units.map((u) => `${UNIT_TYPES[u.type].name} (${u.civ.name})`).join(', ')}</div>` : ''}
     `;
     tt.classList.remove('hidden');
@@ -437,7 +480,7 @@ export class UI {
 
   turnBanner(era) {
     const el = this.el.turnBanner;
-    el.innerHTML = `<div class="tb"><div class="tb-era">A New Chapter</div><div class="tb-main">Age of ${era.name}</div><div class="tb-sub">Turn ${this.game.turn} — the world turns, and your legend grows</div></div>`;
+    el.innerHTML = `<div class="tb"><div class="tb-era">新的篇章</div><div class="tb-main">${era.name}</div><div class="tb-sub">第 ${this.game.turn} 回合 — 世界流轉，你的傳奇漸長</div></div>`;
     el.classList.remove('hidden');
     setTimeout(() => el.classList.add('hidden'), 2700);
   }
@@ -457,32 +500,278 @@ export class UI {
     const civId = g.playerId;
     const acquired = g.techStateFor(civId);
     const current = g.currentTech[civId];
-    const eras = ['Antiquity', 'Exploration', 'Modern'];
+    const available = new Set(g.availableTechs(civId).map((t) => t.id));
+    const doctrine = g.doctrines[civId];
+    const eras = TECH_ERA_ORDER;
     const body = eras.map((era) => {
       const techs = TECHS.filter((t) => t.era === era);
-      return `<div class="tech-era"><h3>${era.toUpperCase()}</h3><div class="tech-grid">${techs.map((t) => {
+      const core = techs.filter((t) => !t.branch);
+      const branches = techs.filter((t) => t.branch);
+      const renderNode = (t) => {
         const done = acquired.has(t.id);
-        const avail = !done && t.prereq.every((p) => acquired.has(p));
         const isCurrent = t.id === current;
+        const avail = available.has(t.id);
+        const lockedBranch = t.branch && doctrine && doctrine !== t.branch;
+        const blackLocked = t.requiresBlack && !g.blackUnlocks[civId]?.has(t.requiresBlack);
+        const eraLocked = TECH_ERA_ORDER.indexOf(t.era) > g.maxEra;
         const cls = done ? 'done' : isCurrent ? 'current available' : avail ? 'available' : 'locked';
-        const foot = done ? 'Discovered' : isCurrent ? `Researching • ${g.researchTurns(civId)}t` : avail ? 'Click to research' : 'Requires ' + t.prereq.map((p) => TECHS.find((x) => x.id === p).name).join(', ');
-        return `<div class="tech-node ${cls}" data-tech="${t.id}">
-          <div class="tn-head">${icon(t.icon)}<span class="tn-name">${esc(t.name)}</span></div>
-          <div class="tn-cost">${t.cost} science • ${era}</div>
+        let foot = done ? '已發現' : isCurrent ? `研究中 • ${g.researchTurns(civId)} 回合` : '需要 ' + t.prereq.map((p) => TECHS.find((x) => x.id === p)?.name ?? p).join('、');
+        if (avail) foot = t.branch ? `選擇路線 • ${DOCTRINES[t.branch].name}` : '點擊研究';
+        if (lockedBranch) foot = `已鎖定 • ${DOCTRINES[doctrine].name}`;
+        if (blackLocked) foot = '需要遠古黑科技';
+        if (eraLocked) foot = '此劇本時代上限之外';
+        return `<div class="tech-node ${cls}${t.branch ? ' branch' : ''}" data-tech="${t.id}">
+          <div class="tn-head">${icon(t.icon)}<span class="tn-name">${esc(t.name)}</span>${t.branch ? `<span class="tn-branch" style="color:${DOCTRINES[t.branch].color}">${DOCTRINES[t.branch].name.slice(0, 2)}</span>` : ''}</div>
+          <div class="tn-cost">${g.techCost(t)} 科學 • ${ERA_LABELS[era]}</div>
           <div class="tn-desc">${esc(t.bonus)}</div>
           <div class="tn-foot">${foot}</div>
         </div>`;
-      }).join('')}</div></div>`;
+      };
+      const branchBlock = branches.length ? `<div class="tech-branch-label">專屬路線（僅能擇一）</div><div class="tech-grid">${branches.map(renderNode).join('')}</div>` : '';
+      return `<div class="tech-era"><h3>${ERA_LABELS[era]}</h3><div class="tech-grid">${core.map(renderNode).join('')}</div>${branchBlock}</div>`;
     }).join('');
     this.openModal(`
-      <div class="modal-head">${icon('i-research')}<div><h2>TECHNOLOGY</h2><div class="sub">Chart the path of progress — ${acquired.size} of ${TECHS.length} discovered</div></div><button class="close">×</button></div>
+      <div class="modal-head">${icon('i-research')}<div><h2>科技</h2><div class="sub">八個時代、專屬分支與黑科技 — 已發現 ${acquired.size} / ${TECHS.length} 項${doctrine ? ` • 路線：${DOCTRINES[doctrine].name}` : ''}</div></div><button class="close">×</button></div>
       <div class="modal-body">${body}</div>`);
     $$('.tech-node.available', this.el.modals).forEach((node) => {
       node.addEventListener('click', () => {
         const id = node.dataset.tech;
-        if (g.setResearch(civId, id)) { this.closeModal(); this.renderAll(); this.toast({ title: 'Research begun', body: `Scholars turn to ${TECHS.find((t) => t.id === id).name}.`, kind: 'good', icon: 'i-research' }); }
+        const tech = TECHS.find((t) => t.id === id);
+        if (tech?.branch && !g.doctrines[civId]) {
+          if (!confirm(`選擇「${DOCTRINES[tech.branch].name}」後，其他兩條未來路線將永久鎖定。確定嗎？`)) return;
+        }
+        if (g.setResearch(civId, id)) {
+          this.closeModal();
+          this.renderAll();
+          this.toast({ title: '開始研究', body: `學者們投入${tech.name}的研究。`, kind: 'good', icon: 'i-research' });
+        }
       });
     });
+  }
+
+  councilModal(tab = 'schemes') {
+    const g = this.game;
+    const player = this.world.civs.get(g.playerId);
+    const tabs = [
+      ['schemes', '天時'], ['army', '軍團'], ['generals', '名將'],
+      ['future', '未來'], ['crisis', '危機'], ['scenario', '劇本'],
+    ];
+    const body = this.councilBody(tab, player);
+    this.openModal(`
+      <div class="modal-head">${icon('i-wonder')}<div><h2>帝國議會</h2><div class="sub">${esc(player.name)} • ${ERA_LABELS[TECH_ERA_ORDER[g.eraIndex]] ?? '上古時代'} • 第 ${g.turn} 回合</div></div><button class="close">×</button></div>
+      <div class="council-tabs">${tabs.map(([id, label]) => `<button class="council-tab ${id === tab ? 'active' : ''}" data-council-tab="${id}">${label}</button>`).join('')}</div>
+      <div class="modal-body council-body">${body}</div>`, 'council-modal');
+    $$('[data-council-tab]', this.el.modals).forEach((b) => b.addEventListener('click', () => this.councilModal(b.dataset.councilTab)));
+    $$('[data-scheme]', this.el.modals).forEach((b) => b.addEventListener('click', () => {
+      const type = b.dataset.scheme;
+      const targets = this.actions?.armScheme(type) ?? [];
+      if (targets.length) {
+        this.closeModal();
+        this.toast({ title: `計略：${SCHEMES[type].name}`, body: `請在地圖上選擇目標（${targets.length} 個可行地格）。`, kind: 'info', icon: SCHEME_ICON[type] ?? 'i-attack' });
+      } else this.toast({ title: '無法施展', body: '需要選取可行單位、足夠移動力與相應科技。', kind: 'warn', icon: 'i-defense' });
+    }));
+    $$('[data-recruit]', this.el.modals).forEach((b) => b.addEventListener('click', () => {
+      if (g.recruitGeneral(g.playerId, b.dataset.recruit)) { this.councilModal('generals'); }
+      else this.toast({ title: '無法招募', body: '國庫金幣不足。', kind: 'warn', icon: 'i-gold' });
+    }));
+    $$('[data-assign-gen]', this.el.modals).forEach((b) => b.addEventListener('click', () => {
+      const unit = g.schemeActor();
+      if (!unit) { this.toast({ title: '未選取單位', body: '先在地圖上選取一支我軍。', kind: 'warn', icon: 'i-strength' }); return; }
+      if (g.assignGeneral(g.playerId, b.dataset.assignGen, unit)) this.councilModal('generals');
+    }));
+    $$('[data-detach-unit]', this.el.modals).forEach((b) => b.addEventListener('click', () => {
+      const unit = this.world.units.find((u) => u.id === b.dataset.detachUnit);
+      if (unit) { g.detachGeneral(unit); this.councilModal('army'); }
+    }));
+    $$('[data-assign-select]', this.el.modals).forEach((sel) => sel.addEventListener('change', () => {
+      const unit = this.world.units.find((u) => u.id === sel.dataset.assignSelect);
+      if (!unit) return;
+      if (sel.value === 'detach') { g.detachGeneral(unit); this.councilModal('army'); return; }
+      if (g.assignGeneral(g.playerId, sel.value, unit)) this.councilModal('army');
+    }));
+    $$('[data-doctrine]', this.el.modals).forEach((b) => b.addEventListener('click', () => {
+      if (g.chooseDoctrine(g.playerId, b.dataset.doctrine)) this.councilModal('future');
+    }));
+    $$('[data-crisis-choice]', this.el.modals).forEach((b) => b.addEventListener('click', () => {
+      if (g.resolveCrisis(b.dataset.crisisChoice)) this.councilModal('crisis');
+      else this.toast({ title: '資源不足', body: '無法支付此應對方案。', kind: 'warn', icon: 'i-gold' });
+    }));
+    $$('[data-scenario]', this.el.modals).forEach((b) => b.addEventListener('click', () => {
+      this.actions?.setScenario?.(b.dataset.scenario, b.dataset.mutation ?? '1');
+    }));
+    $$('[data-audio]', this.el.modals).forEach((b) => b.addEventListener('click', () => {
+      this.actions?.toggleAudio?.();
+      this.councilModal('scenario');
+    }));
+  }
+
+  councilBody(tab, player) {
+    const g = this.game;
+    if (tab === 'army') return this.councilArmy(player);
+    if (tab === 'generals') return this.councilGenerals(player);
+    if (tab === 'future') return this.councilFuture(player);
+    if (tab === 'crisis') return this.councilCrisis(player);
+    if (tab === 'scenario') return this.councilScenario(player);
+    return this.councilSchemes(player);
+  }
+
+  councilSchemes(player) {
+    const g = this.game;
+    const actor = g.schemeActor();
+    const fires = this.world.tileList.filter((t) => t.effect === 'fire').length;
+    const storms = this.world.tileList.filter((t) => t.effect === 'storm').length;
+    const anomaly = this.world.tileList.filter((t) => t.anomaly).length;
+    const schemeCards = Object.values(SCHEMES).map((scheme) => {
+      const techOk = !scheme.tech || g.hasTech(g.playerId, scheme.tech);
+      const chargeOk = scheme.id !== 'orbital' || (g.orbitals[g.playerId] > 0);
+      const targets = techOk && chargeOk && actor ? g.schemeTargets(scheme.id, actor) : [];
+      const can = targets.length > 0;
+      return `<div class="council-card">
+        <h3>${icon(SCHEME_ICON[scheme.id] ?? 'i-attack')} ${esc(scheme.name)}</h3>
+        <p>${esc(scheme.desc)}</p>
+        <div class="meta"><span>射程 <b>${scheme.range}</b></span>${scheme.tech ? `<span>科技 <b>${esc(TECHS.find((t) => t.id === scheme.tech)?.name ?? scheme.tech)}</b></span>` : '<span>無需科技</span>'}<span>可行 <b>${targets.length}</b></span>${scheme.id === 'orbital' ? `<span>軌道 <b>${g.orbitals[g.playerId]}</b></span>` : ''}</div>
+        <div class="council-actions"><button data-scheme="${scheme.id}" ${can ? '' : 'disabled'}>${techOk ? '選定目標' : '尚未解鎖'}</button></div>
+      </div>`;
+    }).join('');
+    return `
+      <div class="council-stat-grid">
+        <div class="council-stat"><div class="k">風向</div><div class="v">${esc(g.weather.name)} <small>${g.weather.stormy ? '風暴' : '穩定'}</small></div></div>
+        <div class="council-stat"><div class="k">全球排放</div><div class="v">${Math.round(g.climate.emissions)} <small>+${g.climate.temperature}°C</small></div></div>
+        <div class="council-stat"><div class="k">火場／風暴</div><div class="v">${fires} <small>／${storms}</small></div></div>
+        <div class="council-stat"><div class="k">異常生態區</div><div class="v">${anomaly}</div></div>
+      </div>
+      <div class="climate-bar"><i style="width:${Math.min(100, (g.climate.emissions / g.climate.nextThreshold) * 100)}%"></i></div>
+      <div class="diplo-line" style="margin-bottom:12px">升溫門檻：${Math.round(g.climate.emissions)} / ${Math.round(g.climate.nextThreshold)} 排放 • 下一次海岸淹沒將吞沒 ${2 + g.climate.seaLevel} 個地格。</div>
+      <div class="diplo-line" style="margin-bottom:12px">${actor ? `目前施術者：<b>${esc(UNIT_TYPES[actor.type].name)}</b> • 移動力 ${actor.moves}` : '先在地圖上選取一支我方單位，才能施展計略。'}<br/>火勢會順風蔓延；落石與洪水會破壞改良與道路；軌道打擊消耗軌道資產；地球工程永久改變地貌並降低排放。</div>
+      <div class="council-grid">${schemeCards}</div>`;
+  }
+
+  councilArmy(player) {
+    const g = this.game;
+    const units = player.units.filter((u) => !UNIT_TYPES[u.type].civilian && !u.guardian);
+    const owned = g.ownedGenerals(player.id);
+    const rows = units.map((u) => {
+      const supply = g.supplyInfo(u);
+      const gen = g.generalForUnit(u);
+      const opts = [`<option value="">— 指派名將 —</option>`, ...owned.map((x) => `<option value="${x.id}" ${gen?.id === x.id ? 'selected' : ''}>${esc(x.name)}</option>`)];
+      if (gen) opts.push('<option value="detach">解除指揮</option>');
+      return `<div class="unit-row">
+        <div><div class="nm">${icon(UNIT_TYPES[u.type].icon)} ${esc(UNIT_TYPES[u.type].name)}</div><div class="sub">${u.hp}/${u.maxHp} 生命 • 等級 ${u.level + 1}${gen ? ` • ${esc(gen.name)}` : ''}</div></div>
+        <span class="tag ${supply.ok ? 'ok' : 'bad'}">${supply.ok ? '補給暢通' : '補給中斷'}</span>
+        <span class="tag">${supply.ok ? `${supply.distance}/${supply.range}` : `-7 HP/回合`}</span>
+        <select data-assign-select="${u.id}" style="background:rgba(0,0,0,.3);color:var(--cream);border:1px solid rgba(255,255,255,.14);border-radius:6px;font-size:10px;padding:4px">${opts.join('')}</select>
+      </div>`;
+    }).join('') || '<p class="diplo-line">尚無軍事單位。</p>';
+    const auraCount = units.filter((u) => g.generalForUnit(u)).length;
+    return `
+      <div class="council-stat-grid">
+        <div class="council-stat"><div class="k">軍團</div><div class="v">${units.length}</div></div>
+        <div class="council-stat"><div class="k">受指揮</div><div class="v">${auraCount}</div></div>
+        <div class="council-stat"><div class="k">補給中斷</div><div class="v">${units.filter((u) => !g.supplyInfo(u).ok).length}</div></div>
+        <div class="council-stat"><div class="k">名將</div><div class="v">${owned.length}</div></div>
+      </div>
+      <p class="diplo-line" style="margin-bottom:10px">名將提供戰力、射程、移動與補給加成；同一名將 2 格內的友軍獲得軍團光環 +8% 戰力。補給由城市與補給站延伸，中斷的單位每回合損失生命與戰力。</p>
+      <div class="council-card">${rows}</div>`;
+  }
+
+  councilGenerals(player) {
+    const g = this.game;
+    const owned = g.ownedGenerals(player.id);
+    const selected = g.schemeActor();
+    const candidates = g.availableGenerals(player.id);
+    const ownedRows = owned.map((gen) => {
+      const unit = this.world.units.find((u) => u.generalId === gen.id);
+      return `<div class="gen-row">
+        <div class="general-portrait">${esc(gen.name.slice(0, 1))}</div>
+        <div style="flex:1">
+          <div><b style="color:var(--cream)">${esc(gen.name)}</b> <span style="color:var(--muted-2);font-size:11px">${esc(gen.title)} • ${esc(gen.role)}</span></div>
+          <div class="quote">“${esc(gen.quote)}”</div>
+          <div class="meta" style="font-size:10.5px;color:var(--muted-2);margin-top:4px">忠誠 <b style="color:${gen.loyalty < 30 ? '#ef8a80' : '#8fdc94'}">${gen.loyalty}</b> • 年齡 ${gen.age}/${gen.lifespan} • ${unit ? `率領 ${esc(UNIT_TYPES[unit.type].name)}` : '待命'} • 傳承 ${gen.legacy}</div>
+          <div class="council-actions">
+            ${unit ? `<button class="alt" data-detach-unit="${unit.id}">解除指揮</button>` : `<button data-assign-gen="${gen.id}" ${selected ? '' : 'disabled'}>${selected ? `指派給${esc(UNIT_TYPES[selected.type].name)}` : '先選取單位'}</button>`}
+          </div>
+        </div>
+      </div>`;
+    }).join('') || '<p class="diplo-line">尚未招募名將。名將由金幣招募，死後留下傳承。</p>';
+    const recruitRows = candidates.slice(0, 8).map((gen) => `<div class="council-card">
+      <h3>${esc(gen.name)} <span style="color:var(--muted-2);font-size:10px">${esc(gen.title)}</span></h3>
+      <p>${esc(gen.desc)}</p>
+      <div class="meta"><span>金幣 <b>${gen.cost}</b></span><span>忠誠 <b>${gen.loyalty}</b></span><span>壽命 <b>${gen.lifespan}</b></span></div>
+      <div class="council-actions"><button data-recruit="${gen.id}">招募</button></div>
+    </div>`).join('') || '<p class="diplo-line">所有名將皆已投效或逝去。</p>';
+    return `
+      <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px">麾下名將</h3>
+      <div class="council-card" style="margin-bottom:16px">${ownedRows}</div>
+      <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px">可招募</h3>
+      <div class="council-grid">${recruitRows}</div>`;
+  }
+
+  councilFuture(player) {
+    const g = this.game;
+    const doctrine = g.doctrines[player.id];
+    const stock = g.strategic[player.id] ?? {};
+    const doctrineCards = Object.entries(DOCTRINES).map(([id, d]) => {
+      const chosen = doctrine === id;
+      const locked = doctrine && !chosen;
+      return `<div class="council-card doctrine-card ${chosen ? 'chosen' : ''} ${locked ? 'locked' : ''}" style="border-color:${d.color}55">
+        <h3 style="color:${d.color}">${esc(d.name)}</h3>
+        <p>${esc(d.desc)}</p>
+        <div class="meta"><span>${esc(d.blurb)}</span></div>
+        <div class="council-actions">${chosen ? '<button disabled>已選擇</button>' : `<button data-doctrine="${id}" ${locked ? 'disabled' : ''}>${locked ? '已鎖定' : '確立路線'}</button>`}</div>
+      </div>`;
+    }).join('');
+    const stocks = Object.entries({ ...STRATEGIC.raw, ...STRATEGIC.refined }).map(([id, def]) =>
+      `<div class="stock"><span>${esc(def.name)}</span><b>${Math.floor(stock[id] ?? 0)}</b></div>`).join('');
+    const recipes = STRATEGIC.recipes.map((r) => `<div class="meta" style="margin-top:4px">${esc(r.name)}：${Object.entries(r.inputs).map(([k, n]) => `${STRATEGIC.raw[k]?.name ?? STRATEGIC.refined[k]?.name ?? k}×${n}`).join(' + ')} → ${r.output}（${esc(BUILDINGS[r.building]?.name ?? r.building)}）</div>`).join('');
+    const black = [...(g.blackUnlocks[player.id] ?? [])].map((x) => x === 'atlantis' ? '亞特蘭提斯' : '外星遺物').join('、') || '尚未取得';
+    return `
+      <div class="council-stat-grid">
+        <div class="council-stat"><div class="k">時代</div><div class="v">${ERA_LABELS[TECH_ERA_ORDER[g.eraIndex]] ?? '—'}</div></div>
+        <div class="council-stat"><div class="k">科技</div><div class="v">${g.techStateFor(player.id).size}<small>/${TECHS.length}</small></div></div>
+        <div class="council-stat"><div class="k">軌道資產</div><div class="v">${g.orbitals[player.id] ?? 0}</div></div>
+        <div class="council-stat"><div class="k">黑科技</div><div class="v" style="font-size:12px">${black}</div></div>
+      </div>
+      <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px">三條未來路線</h3>
+      <div class="council-grid" style="margin-bottom:16px">${doctrineCards}</div>
+      <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px">戰略資源與全球供應鏈</h3>
+      <div class="stock-grid">${stocks}</div>
+      <div class="council-card" style="margin-top:10px"><p>${recipes}</p><p class="diplo-line" style="margin-top:6px">深海層由「海底圓頂」開啟；軌道層由太空港、軌道船塢與上帝之杖構成；黑科技需擊敗異常生態區的守護獸。</p></div>`;
+  }
+
+  councilCrisis(player) {
+    const g = this.game;
+    const costLabel = (cost) => Object.entries(cost ?? {}).map(([k, n]) => `${STRATEGIC.raw[k]?.name ?? STRATEGIC.refined[k]?.name ?? (k === 'gold' ? '金幣' : k === 'influence' ? '影響力' : k)}×${n}`).join('、');
+    if (g.activeCrisis) {
+      const c = g.activeCrisis;
+      const choices = c.def.choices.map((ch) => `<div class="council-card">
+        <h3>${esc(ch.label)}</h3><p>${esc(ch.desc)}</p>
+        <div class="meta"><span>代價 <b>${costLabel(ch.cost)}</b></span></div>
+        <div class="council-actions"><button data-crisis-choice="${ch.id}">執行</button></div>
+      </div>`).join('');
+      return `<div class="crisis-banner"><h3>${esc(c.def.name)}</h3><p>${esc(c.def.desc)}<br/>${esc(c.def.effect)} • 剩餘 ${c.turnsLeft} 回合</p></div><div class="council-grid">${choices}</div>`;
+    }
+    const history = g.crisisHistory.slice(-4).reverse().map((h) => `<div class="unit-row"><div><div class="nm">${esc(h.name)}</div><div class="sub">第 ${h.turn} 回合 • ${esc(h.choice)}</div></div></div>`).join('') || '<p class="diplo-line">尚未經歷重大危機。</p>';
+    return `<div class="council-card"><h3>天下大勢</h3><p>下一次危機預計在第 <b>${g.nextCrisisTurn}</b> 回合前後降臨。時代越進步，危機越致命。</p><div class="meta"><span>目前時代 <b>${ERA_LABELS[TECH_ERA_ORDER[g.eraIndex]]}</b></span><span>已發生 <b>${g.crisisHistory.length}</b></span></div></div>
+      <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px;margin-top:16px">危機編年史</h3>
+      <div class="council-card">${history}</div>`;
+  }
+
+  councilScenario(player) {
+    const g = this.game;
+    const cards = Object.values(SCENARIOS).map((s) => {
+      const active = g.scenarioId === s.id;
+      return `<div class="council-card scenario-card ${active ? 'active' : ''}">
+        ${active ? '<span class="tag">進行中</span>' : ''}
+        <h3>${esc(s.name)}</h3>
+        <p>${esc(s.desc)}</p>
+        <div class="meta"><span>起始 <b>${ERA_LABELS[TECH_ERA_ORDER[s.startEra]]}</b></span><span>上限 <b>${ERA_LABELS[TECH_ERA_ORDER[s.maxEra]]}</b></span><span>回合 <b>${s.turnLimit}</b></span><span>異變 <b>${s.mutation}</b></span></div>
+        <div class="council-actions"><button data-scenario="${s.id}" data-mutation="${s.mutation}" ${active ? 'disabled' : ''}>${active ? '目前劇本' : '切換並重啟'}</button></div>
+      </div>`;
+    }).join('');
+    const audio = this.actions?.audioEnabled?.() ? '音效：開' : '音效：關';
+    return `<div class="council-grid">${cards}</div>
+      <div class="council-card" style="margin-top:14px"><h3>體驗設定</h3><p>切換劇本會重新載入世界；三國志限制於近代，時空裂縫從核融合時代開始，名將不老，異變生態區更多。</p>
+      <div class="council-actions"><button class="alt" data-audio="1">${audio}</button></div></div>`;
   }
 
   cityModal(city) {
@@ -491,43 +780,44 @@ export class UI {
     const y = g.civYields(city.civId);
     const growth = 14 + city.population * 9;
     const prod = opts.map((o) => `
-      <div class="prod-option" data-kind="${o.kind}" data-id="${o.id}">
+      <div class="prod-option ${o.afford === false ? 'disabled' : ''}" data-kind="${o.kind}" data-id="${o.id}">
         ${icon(o.icon)}
         <div><div class="po-t">${esc(o.name)}</div><div class="po-d">${esc(o.blurb)}</div></div>
-        <div class="po-cost"><b>${o.turns}t</b>${o.cost} prod</div>
-      </div>`).join('') || '<p class="diplo-line">No options available.</p>';
+        <div class="po-cost"><b>${o.turns} 回合</b>${o.cost} 生產${o.afford === false ? '<br/><span style="color:#ef8a80">資源不足</span>' : ''}</div>
+      </div>`).join('') || '<p class="diplo-line">暫無可選項目。</p>';
     const built = [...city.buildings.map((b) => BUILDINGS[b]?.name), ...city.wonders.map((w) => WONDERS[w]?.name)]
-      .map((n) => `<span class="building-chip">${icon('i-wonder')}${esc(n)}</span>`).join('') || '<span class="diplo-line">No buildings yet.</span>';
+      .map((n) => `<span class="building-chip">${icon('i-wonder')}${esc(n)}</span>`).join('') || '<span class="diplo-line">尚無建築。</span>';
     this.openModal(`
-      <div class="modal-head">${icon('i-city')}<div><h2>${esc(city.name)}</h2><div class="sub">${esc(city.civ.name)} ${city.isCapital ? '• Capital' : '• City'} — population ${city.population}</div></div><button class="close">×</button></div>
+      <div class="modal-head">${icon('i-city')}<div><h2>${esc(city.name)}</h2><div class="sub">${esc(city.civ.name)} ${city.isCapital ? '• 首都' : '• 城市'} — 人口 ${city.population}</div></div><button class="close">×</button></div>
       <div class="modal-body city-modal" style="display:grid;grid-template-columns:1.1fr 1fr;gap:20px">
         <div class="city-col">
-          <h3>PRODUCTION</h3>
+          <h3>生產</h3>
           ${prod}
         </div>
         <div class="city-col">
-          <h3>CITY SUMMARY</h3>
+          <h3>城市總覽</h3>
           <div class="city-stats">
-            <div class="city-stat"><div class="k">Food</div><div class="v">${fmt(y.food)}<small>/t</small></div></div>
-            <div class="city-stat"><div class="k">Production</div><div class="v">${fmt(y.production + city.population)}<small>/t</small></div></div>
-            <div class="city-stat"><div class="k">Gold</div><div class="v">${fmt(y.gold)}<small>/t</small></div></div>
-            <div class="city-stat"><div class="k">Science</div><div class="v">${fmt(y.science)}<small>/t</small></div></div>
-            <div class="city-stat"><div class="k">Culture</div><div class="v">${fmt(y.culture)}<small>/t</small></div></div>
-            <div class="city-stat"><div class="k">Faith</div><div class="v">${fmt(y.faith)}<small>/t</small></div></div>
+            <div class="city-stat"><div class="k">食物</div><div class="v">${fmt(y.food)}<small>/回合</small></div></div>
+            <div class="city-stat"><div class="k">生產</div><div class="v">${fmt(y.production + city.population)}<small>/回合</small></div></div>
+            <div class="city-stat"><div class="k">金幣</div><div class="v">${fmt(y.gold)}<small>/回合</small></div></div>
+            <div class="city-stat"><div class="k">科學</div><div class="v">${fmt(y.science)}<small>/回合</small></div></div>
+            <div class="city-stat"><div class="k">文化</div><div class="v">${fmt(y.culture)}<small>/回合</small></div></div>
+            <div class="city-stat"><div class="k">信仰</div><div class="v">${fmt(y.faith)}<small>/回合</small></div></div>
           </div>
-          <h3>GROWTH &amp; DEFENCE</h3>
+          <h3>成長與防禦</h3>
           <div class="hpbar" style="margin-bottom:8px"><i style="width:${clamp((city.food / growth) * 100, 0, 100)}%"></i></div>
-          <div class="diplo-line">Growing to ${city.population + 1} citizens • Defence ${Math.round(city.defense)} • City HP ${Math.round(city.hp)}/${city.maxHp}</div>
-          <h3 style="margin-top:16px">BUILDINGS &amp; WONDERS</h3>
+          <div class="diplo-line">成長至 ${city.population + 1} 名市民 • 防禦 ${Math.round(city.defense)} • 城市生命 ${Math.round(city.hp)}/${city.maxHp}</div>
+          <h3 style="margin-top:16px">建築與奇觀</h3>
           <div>${built}</div>
         </div>
       </div>`);
     $$('.prod-option', this.el.modals).forEach((el) => {
       el.addEventListener('click', () => {
+        if (el.classList.contains('disabled')) { this.toast({ title: '戰略資源不足', body: '需要更多精煉資源才能生產此單位。', kind: 'warn', icon: 'i-production' }); return; }
         g.setProduction(city, el.dataset.kind, el.dataset.id);
         this.closeModal();
         this.renderAll();
-        this.toast({ title: 'Production set', body: `${city.name} begins work.`, kind: 'good', icon: 'i-production' });
+        this.toast({ title: '已設定生產', body: `${city.name}開始動工。`, kind: 'good', icon: 'i-production' });
       });
     });
   }
@@ -536,12 +826,12 @@ export class UI {
     const g = this.game;
     const relation = g.leaderRelations(civ);
     const quote = civ.id === 'norlund'
-      ? 'Your walls look sturdy. We shall test them.'
+      ? '你的城牆看來堅固。我們會好好試一試。'
       : civ.id === 'kemet'
-        ? 'The river binds our peoples. Trade would suit us both.'
+        ? '河流連結我們的子民。貿易對彼此都有好處。'
         : civ.id === 'xian'
-          ? 'Heaven watches your deeds, sovereign. Prove yourself worthy.'
-          : 'Friendship is the truest conquest.';
+          ? '上天正注視你的作為，君主。證明你值得。'
+          : '友誼才是最真實的征服。';
     this.openModal(`
       <div class="modal-head">${icon('i-influence')}<div><h2>${esc(civ.name)}</h2><div class="sub">${esc(civ.leader)} — ${esc(civ.title)}</div></div><button class="close">×</button></div>
       <div class="modal-body">
@@ -549,11 +839,11 @@ export class UI {
           <div class="diplo-portrait" style="color:${civ.colorHex}">${leaderSVG(civ, true)}</div>
           <div class="diplo-text">
             <p class="diplo-quote">“${esc(quote)}”</p>
-            <div class="diplo-line" style="margin-bottom:12px">Status: <b style="color:${relation.cls === 'war' ? '#ff9c8f' : '#a9e8dc'}">${relation.label}</b> · Trait: <b>${esc(civ.traitName)}</b><br/>${esc(civ.trait)}</div>
+            <div class="diplo-line" style="margin-bottom:12px">狀態：<b style="color:${relation.cls === 'war' ? '#ff9c8f' : '#a9e8dc'}">${relation.label}</b> · 特性：<b>${esc(civ.traitName)}</b><br/>${esc(civ.trait)}</div>
             <div class="diplo-actions">
-              <button class="act-btn" data-act="embassy">Establish Embassy</button>
-              <button class="act-btn ghost" data-act="gift">Send Gift</button>
-              <button class="act-btn ghost" data-act="close">Leave</button>
+              <button class="act-btn" data-act="embassy">建立大使館</button>
+              <button class="act-btn ghost" data-act="gift">贈送禮物</button>
+              <button class="act-btn ghost" data-act="close">離開</button>
             </div>
           </div>
         </div>
@@ -561,28 +851,29 @@ export class UI {
     $$('[data-act]', this.el.modals).forEach((b) => b.addEventListener('click', () => {
       if (b.dataset.act === 'close') return this.closeModal();
       this.closeModal();
-      this.toast({ title: b.dataset.act === 'embassy' ? 'Embassy Established' : 'Gift Sent', body: `${civ.leader} acknowledges your gesture.`, kind: 'good', icon: 'i-influence' });
+      this.toast({ title: b.dataset.act === 'embassy' ? '大使館已建立' : '禮物已送出', body: `${civ.leader}感謝你的善意。`, kind: 'good', icon: 'i-influence' });
     }));
   }
 
   helpModal() {
     this.openModal(`
-      <div class="modal-head">${icon('i-wonder')}<div><h2>HOW TO RULE</h2><div class="sub">Guide your civilization from the Age of Antiquity to legend</div></div><button class="close">×</button></div>
+      <div class="modal-head">${icon('i-wonder')}<div><h2>治國之道</h2><div class="sub">引領你的文明從上古時代走向傳奇</div></div><button class="close">×</button></div>
       <div class="modal-body">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
           <div>
-            <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px">CONTROLS</h3>
-            <p class="diplo-line"><b>Left-drag</b> orbit • <b>Right-drag</b> pan • <b>Wheel</b> zoom<br/><b>Click</b> select unit/city or order a move<br/><b>Space</b> end turn • <b>T</b> tech tree • <b>C</b> manage city • <b>N</b> next unit • <b>Esc</b> close<br/><b>F</b> found city • <b>B</b> build improvement • <b>Z</b> sleep</p>
-            <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px;margin-top:16px">THE GOAL</h3>
-            <p class="diplo-line">Grow cities, discover technologies, claim territory and command armies. Score the highest legacy by turn ${50}, or conquer every rival capital for a domination victory.</p>
+            <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px">操作</h3>
+            <p class="diplo-line"><b>左鍵拖曳</b> 環繞 • <b>右鍵拖曳</b> 平移 • <b>滾輪</b> 縮放<br/><b>點擊</b> 選擇單位／城市或下令移動<br/><b>空白鍵</b> 結束回合 • <b>T</b> 科技樹 • <b>M</b> 帝國議會 • <b>C</b> 管理城市 • <b>N</b> 下一單位 • <b>Esc</b> 關閉<br/><b>F</b> 建城 • <b>B</b> 建造改良 • <b>G</b> 補給站 • <b>Q</b> 計略 • <b>V</b> 固守 • <b>S</b> 跳過 • <b>Z</b> 休眠</p>
+            <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px;margin-top:16px">目標</h3>
+            <p class="diplo-line">發展城市、發現科技、開拓領土並統帥大軍。在第 ${this.game.turnLimit} 回合前締造最高的傳承分數，或征服所有對手首都，贏得征服勝利。火攻、落石、水攻、補給線、名將、氣候與八時代科技樹都會改變戰局。</p>
           </div>
           <div>
-            <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px">FIRST MOVES</h3>
+            <h3 style="font-family:var(--display);color:var(--gold);letter-spacing:.2em;font-size:12px">開局步驟</h3>
             <ul class="objective-list">
-              <li><span class="tick"></span><span>Scout with your Scout to reveal the map and meet rivals.</span></li>
-              <li><span class="tick"></span><span>Found a second city with your Settler on fertile land.</span></li>
-              <li><span class="tick"></span><span>Queue a Warrior in the capital to defend your borders.</span></li>
-              <li><span class="tick"></span><span>Improve tiles with your Builder to grow faster.</span></li>
+              <li><span class="tick"></span><span>用斥候探索地圖，會見對手。</span></li>
+              <li><span class="tick"></span><span>用開拓者在肥沃土地上建立第二座城市。</span></li>
+              <li><span class="tick"></span><span>在首都排程訓練戰士，守衛邊疆。</span></li>
+              <li><span class="tick"></span><span>用建造者改良地格，或建立補給站延伸軍團補給。</span></li>
+              <li><span class="tick"></span><span>在議會選擇未來路線，並用天時計略改變地貌。</span></li>
             </ul>
           </div>
         </div>
@@ -591,16 +882,17 @@ export class UI {
 
   gameOver({ victory, score }) {
     const won = victory === 'domination' || score > 0;
+    const leader = this.world.civs.get(this.game.playerId)?.leader ?? '你的君主';
     this.openModal(`
-      <div class="modal-head">${icon('i-wonder')}<div><h2>${victory === 'domination' ? 'DOMINATION VICTORY' : 'THE AGE CONCLUDES'}</h2><div class="sub">Legacy Score: ${score}</div></div><button class="close">×</button></div>
+      <div class="modal-head">${icon('i-wonder')}<div><h2>${victory === 'domination' ? '征服勝利' : '時代落幕'}</h2><div class="sub">傳承分數：${score}</div></div><button class="close">×</button></div>
       <div class="modal-body" style="text-align:center">
-        <p class="diplo-quote" style="font-size:20px">${victory === 'domination' ? 'Every capital answers to your banner. History will remember Aurelia as eternal.' : 'The chronicles close on your reign. Your people\'s story will echo through the ages.'}</p>
+        <p class="diplo-quote" style="font-size:20px">${victory === 'domination' ? `所有首都都臣服於你的旗幟。歷史將銘記${esc(leader)}，直到永恆。` : '編年史為你的統治畫下句點。你子民的故事將迴盪於千秋萬世。'}</p>
         <div class="city-stats" style="max-width:520px;margin:14px auto">
-          <div class="city-stat"><div class="k">Legacy</div><div class="v">${score}</div></div>
-          <div class="city-stat"><div class="k">Cities</div><div class="v">${this.world.civs.get(this.game.playerId).cities.length}</div></div>
-          <div class="city-stat"><div class="k">Technologies</div><div class="v">${this.game.techStateFor(this.game.playerId).size}</div></div>
+          <div class="city-stat"><div class="k">傳承</div><div class="v">${score}</div></div>
+          <div class="city-stat"><div class="k">城市</div><div class="v">${this.world.civs.get(this.game.playerId).cities.length}</div></div>
+          <div class="city-stat"><div class="k">科技</div><div class="v">${this.game.techStateFor(this.game.playerId).size}</div></div>
         </div>
-        <button class="act-btn" id="restart">Begin a New Age</button>
+        <button class="act-btn" id="restart">開啟新時代</button>
       </div>`);
     $('#restart')?.addEventListener('click', () => location.reload());
   }
@@ -619,10 +911,10 @@ function yieldChips(y, opts = {}) {
     if (Math.abs(v) < 0.05) continue;
     parts.push(`<span class="yield">${icon(YIELD_ICON[k])}${fmt(v)}</span>`);
   }
-  return parts.join('') || '<span class="yield" style="opacity:.5">No yields</span>';
+  return parts.join('') || '<span class="yield" style="opacity:.5">無產出</span>';
 }
 function terrainName(tile) {
-  const names = { ocean: 'Open Ocean', coast: 'Coast', lake: 'Lake', grassland: 'Grassland', plains: 'Plains', desert: 'Desert', tundra: 'Tundra', snow: 'Snow', hills: 'Hills', mountain: 'Mountains' };
+  const names = { ocean: '開闊海洋', coast: '海岸', lake: '湖泊', grassland: '草原', plains: '平原', desert: '沙漠', tundra: '苔原', snow: '雪地', hills: '丘陵', mountain: '山地' };
   return names[tile.terrain] ?? tile.terrain;
 }
 function roundRectPath(g, x, y, w, h, r) {
