@@ -1,13 +1,93 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { World } from './world.js';
-import { Game, UNIT_TYPES, TECHS } from './game.js';
+import { World, BIOMES, FEATURES } from './world.js';
+import { Game, UNIT_TYPES, TECHS, BUILDINGS } from './game.js';
 import { UI } from './ui.js';
 import { AudioEngine } from './audio.js';
 import { SCENARIOS } from './expansions.js';
+import { GameMasterConfig } from './config.js';
+import { Frontend } from './app.js';
 import { axialKey, axialToWorld, clamp } from './core.js';
 
 const canvas = document.getElementById('scene');
+const params = new URLSearchParams(window.location.search);
+const directScenario = SCENARIOS[params.get('scenario')] ? params.get('scenario') : null;
+const playRequested = params.get('play') === '1' || !!directScenario;
+
+function readLastLaunch() {
+  try { return JSON.parse(localStorage.getItem('civ7.lastLaunch') ?? 'null'); } catch (err) { return null; }
+}
+
+function scenarioPool(id) {
+  const factions = GameMasterConfig.allFactions();
+  if (id === 'threeKingdoms') return factions.filter((f) => f.group === 'threeKingdoms');
+  if (id === 'chrono') return factions.filter((f) => ['wei', 'shu', 'japan', 'china'].includes(f.id));
+  return factions.filter((f) => f.group === 'historical' || f.group === 'alien');
+}
+
+function scenarioDefaults(id) {
+  const pool = scenarioPool(id);
+  const preferred = { legacy: 'rome', threeKingdoms: 'wei', chrono: 'wei' }[id] ?? 'rome';
+  const player = pool.find((f) => f.id === preferred) ?? pool[0];
+  const opponents = pool.filter((f) => f.id !== player?.id).slice(0, id === 'legacy' ? 5 : 3).map((f) => f.id);
+  return { playerFaction: player?.id ?? 'rome', opponents };
+}
+
+function normalizeLaunch(raw = {}) {
+  const scenario = SCENARIOS[raw.scenario] ? raw.scenario : (SCENARIOS[raw.mode] ? raw.mode : 'legacy');
+  const pool = scenarioPool(scenario);
+  const defaults = scenarioDefaults(scenario);
+  const valid = new Set(pool.map((f) => f.id));
+  const requestedPlayer = valid.has(raw.playerFaction) ? raw.playerFaction : defaults.playerFaction;
+  const opponents = [...new Set((raw.opponents ?? []).filter((id) => valid.has(id) && id !== requestedPlayer))];
+  for (const id of defaults.opponents) {
+    if (opponents.length >= (scenario === 'legacy' ? 5 : 3)) break;
+    if (id !== requestedPlayer && !opponents.includes(id)) opponents.push(id);
+  }
+  const payload = {
+    mode: raw.mode ?? scenario,
+    scenario,
+    mapType: ['continents', 'pangaea', 'archipelago', 'highlands'].includes(raw.mapType) ? raw.mapType : 'continents',
+    seed: Number(raw.seed) || 20261019,
+    mutation: Math.max(0, Math.min(3, Number(raw.mutation ?? SCENARIOS[scenario].mutation ?? 1))),
+    sea: clamp(Number(raw.sea ?? 40), 30, 60),
+    mountain: clamp(Number(raw.mountain ?? 50), 20, 90),
+    playerFaction: requestedPlayer,
+    opponents,
+    difficulty: GameMasterConfig.data.difficulty[raw.difficulty] ? raw.difficulty : (GameMasterConfig.data.options.difficulty ?? 'standard'),
+    startEra: Math.max(0, Math.min(7, Number(raw.startEra ?? SCENARIOS[scenario].startEra ?? 0))),
+    musicStyle: GameMasterConfig.data.musicStyles[raw.musicStyle] ? raw.musicStyle : (GameMasterConfig.data.options.musicStyle ?? 'auto'),
+    language: raw.language ?? GameMasterConfig.data.options.language ?? 'zh',
+    aliens: raw.aliens ?? []
+  };
+  const ids = [payload.playerFaction, ...payload.opponents];
+  return { payload, factions: GameMasterConfig.resolveFactions(ids) };
+}
+
+function directLaunch(id) {
+  const defaults = scenarioDefaults(id);
+  const query = Object.fromEntries(params.entries());
+  return normalizeLaunch({
+    ...defaults,
+    ...query,
+    mapType: query.mapType ?? query.map ?? 'continents',
+    mode: id,
+    scenario: id,
+    startEra: query.startEra ?? SCENARIOS[id].startEra ?? 0
+  });
+}
+
+function initialLaunch() {
+  if (directScenario) return directLaunch(directScenario);
+  const stored = readLastLaunch();
+  if (playRequested && stored) return normalizeLaunch(stored);
+  if (playRequested) return normalizeLaunch({ mode: 'legacy' });
+  return normalizeLaunch(stored ?? { mode: 'legacy' });
+}
+
+const campaign = initialLaunch();
+const launch = campaign.payload;
+GameMasterConfig.bindRuntime({ UNIT_TYPES, TECHS, BUILDINGS, BIOMES, FEATURES });
 
 /* ---------------- renderer ---------------- */
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
@@ -51,14 +131,26 @@ const ambient = new THREE.AmbientLight(0xffffff, 0.22);
 scene.add(ambient);
 
 /* ---------------- world + game ---------------- */
-const params = new URLSearchParams(window.location.search);
-const scenarioId = SCENARIOS[params.get('scenario')] ? params.get('scenario') : 'legacy';
-const mutation = Math.max(0, Math.min(3, Number(params.get('mutation') ?? SCENARIOS[scenarioId].mutation ?? 1)));
-const world = new World(scene, { seed: 20261019, cols: 21, rows: 13, sunDir, scenario: scenarioId, mutation });
-const game = new Game(world, { scenario: scenarioId });
+const world = new World(scene, {
+  seed: launch.seed,
+  cols: 21,
+  rows: 13,
+  sunDir,
+  scenario: launch.scenario,
+  mutation: launch.mutation,
+  map: { type: launch.mapType, sea: launch.sea, mountain: launch.mountain }
+});
+const game = new Game(world, {
+  scenario: launch.scenario,
+  factions: campaign.factions,
+  playerId: launch.playerFaction,
+  setup: launch,
+  difficulty: launch.difficulty
+});
 const audio = new AudioEngine();
 game.setup();
 audio.setEra(game.eraIndex);
+audio.setStyle?.(launch.musicStyle);
 
 const sunTarget = world.civs.get(game.playerId).capital.tile;
 sun.position.copy(sunDir.clone().multiplyScalar(70).add(new THREE.Vector3(sunTarget.x, 0, sunTarget.z)));
@@ -257,6 +349,28 @@ ui.setActions({
   },
 });
 
+const app = new Frontend({
+  game,
+  world,
+  ui,
+  audio,
+  renderer,
+  camera,
+  controls,
+  sun,
+  inGame: playRequested,
+  onLaunch(payload) {
+    localStorage.setItem('civ7.lastLaunch', JSON.stringify(payload));
+    const next = new URL(window.location.href);
+    next.search = '';
+    next.searchParams.set('play', '1');
+    window.location.href = next.toString();
+  }
+});
+
+document.getElementById('open-gm')?.addEventListener('click', () => app.openGM());
+document.getElementById('open-options')?.addEventListener('click', () => app.openOptions());
+
 function selectNextUnit() {
   const player = world.civs.get(game.playerId);
   const ready = player.units.filter((u) => u.moves > 0 && !u.asleep);
@@ -299,13 +413,25 @@ renderer.domElement.addEventListener('contextmenu', (e) => e.preventDefault());
 renderer.domElement.addEventListener('wheel', () => { lastInteraction = performance.now(); }, { passive: true });
 
 window.addEventListener('keydown', (e) => {
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
   const key = e.key.toLowerCase();
+  if (key === 'f12') { e.preventDefault(); app.openGM(); return; }
+  if (!app.inGame) {
+    if (key === 'escape') app.handleEscape();
+    if (key === 'g') { e.preventDefault(); app.openGM(); }
+    return;
+  }
+  if (app.overlay) {
+    if (key === 'escape') app.handleEscape();
+    return;
+  }
+  if (key === 'escape' && app.handleEscape()) return;
   const sel = game.selected;
   if (key === 'escape') {
     if (game.schemeMode) { game.cancelScheme(); world.clearTacticalTargets(); ui.toast({ title: '計略取消', body: '單位恢復待命。', kind: 'info', icon: 'i-defense' }); }
     ui.closeModal(); game.select(null); return;
   }
+  if (key === 'g') { e.preventDefault(); app.openGM(); return; }
   if (game.busy) return;
   switch (key) {
     case ' ': case 'enter': e.preventDefault(); game.endTurn(); break;
@@ -319,7 +445,7 @@ window.addEventListener('keydown', (e) => {
     case 'n': selectNextUnit(); break;
     case 'f': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].found) game.foundCity(sel.ref); break;
     case 'b': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.improve(sel.ref); break;
-    case 'g': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.buildDepot(sel.ref); break;
+    case 'r': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.buildDepot(sel.ref); break;
     case 'q': ui.councilModal('schemes'); break;
     case 'z': if (sel?.type === 'unit') game.sleep(sel.ref); break;
     case 'v': if (sel?.type === 'unit') game.fortify(sel.ref); break;
@@ -400,8 +526,9 @@ tick();
 /* ---------------- reveal & landing ---------------- */
 setTimeout(() => {
   ui.el.loading.classList.add('gone');
+  if (!app.inGame) return;
   const player = world.civs.get(game.playerId);
   ui.toast({ title: ui.el.age.textContent, body: `你的子民仰望著你，${player.leader}。好好引領他們。`, kind: 'info', icon: 'i-wonder' });
 }, 700);
 
-window.__civ = { game, world, ui, audio, camera, controls };
+window.__civ = { game, world, ui, audio, camera, controls, app, config: GameMasterConfig };

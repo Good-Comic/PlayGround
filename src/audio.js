@@ -1,3 +1,5 @@
+import { GameMasterConfig } from './config.js';
+
 const ERA_MUSIC = [
   { root: 110.0, scale: [0, 3, 5, 7, 10], tempo: 2.8, timbre: 'sine' },
   { root: 123.47, scale: [0, 2, 5, 7, 9], tempo: 2.5, timbre: 'triangle' },
@@ -15,6 +17,9 @@ export class AudioEngine {
     this.master = null;
     this.droneGain = null;
     this.sfxGain = null;
+    this.uiGain = null;
+    this.style = 'auto';
+    this.volumes = { master: 0.8, bgm: 0.65, sfx: 0.75, ui: 0.7 };
     this.drones = [];
     this.on = false;
     this.era = 0;
@@ -32,12 +37,15 @@ export class AudioEngine {
     this.master.gain.value = 0.0;
     this.master.connect(this.ctx.destination);
     this.droneGain = this.ctx.createGain();
-    this.droneGain.gain.value = 0.16;
+    this.droneGain.gain.value = 0.65;
     this.droneGain.connect(this.master);
     this.sfxGain = this.ctx.createGain();
-    this.sfxGain.gain.value = 0.55;
+    this.sfxGain.gain.value = 0.75;
     this.sfxGain.connect(this.master);
-    const cfg = ERA_MUSIC[this.era];
+    this.uiGain = this.ctx.createGain();
+    this.uiGain.gain.value = 0.7;
+    this.uiGain.connect(this.master);
+    const cfg = this.currentMusic();
     for (let i = 0; i < 2; i += 1) {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
@@ -61,7 +69,7 @@ export class AudioEngine {
     if (this.on) {
       this.ctx.resume?.();
       this.master.gain.cancelScheduledValues(this.ctx.currentTime);
-      this.master.gain.linearRampToValueAtTime(0.16, this.ctx.currentTime + 0.6);
+      this.master.gain.linearRampToValueAtTime(Math.max(0.001, this.volumes.master), this.ctx.currentTime + 0.6);
       this.startLoop();
     } else {
       this.master.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.35);
@@ -75,9 +83,31 @@ export class AudioEngine {
     if (this.ctx) this.applyEra();
   }
 
+  setStyle(style) {
+    this.style = style;
+    if (this.ctx) this.applyEra();
+  }
+
+  setVolumes(volumes = {}) {
+    Object.assign(this.volumes, volumes);
+    if (!this.ctx) return;
+    this.droneGain.gain.linearRampToValueAtTime(Math.max(0.0001, this.volumes.bgm), this.ctx.currentTime + 0.25);
+    this.sfxGain.gain.linearRampToValueAtTime(Math.max(0.0001, this.volumes.sfx), this.ctx.currentTime + 0.25);
+    this.uiGain.gain.linearRampToValueAtTime(Math.max(0.0001, this.volumes.ui), this.ctx.currentTime + 0.25);
+    if (this.on) this.master.gain.linearRampToValueAtTime(Math.max(0.001, this.volumes.master), this.ctx.currentTime + 0.25);
+  }
+
+  currentMusic() {
+    if (this.style !== 'auto') {
+      const style = GameMasterConfig.data.musicStyles[this.style];
+      if (style?.root) return { ...style, tempo: 2.2 };
+    }
+    return ERA_MUSIC[this.era];
+  }
+
   applyEra() {
     if (!this.ctx) return;
-    const cfg = ERA_MUSIC[this.era];
+    const cfg = this.currentMusic();
     const now = this.ctx.currentTime;
     this.drones.forEach(({ osc, gain }, i) => {
       osc.frequency.cancelScheduledValues(now);
@@ -96,7 +126,7 @@ export class AudioEngine {
     const run = () => {
       if (!this.on) return;
       this.playBar();
-      const cfg = ERA_MUSIC[this.era];
+      const cfg = this.currentMusic();
       this.timer = setTimeout(run, cfg.tempo * 1000 * (1 - this.tension * 0.28));
     };
     run();
@@ -109,7 +139,7 @@ export class AudioEngine {
 
   playBar() {
     if (!this.ctx || !this.on) return;
-    const cfg = ERA_MUSIC[this.era];
+    const cfg = this.currentMusic();
     const beat = (cfg.tempo * 1000) / 4;
     const density = 0.45 + this.tension * 0.45;
     for (let i = 0; i < 4; i += 1) {
@@ -126,7 +156,7 @@ export class AudioEngine {
     this.step += 1;
   }
 
-  note(freq, duration, type, volume, delay = 0) {
+  note(freq, duration, type, volume, delay = 0, channel = 'bgm') {
     if (!this.ctx || !this.on) return;
     const now = this.ctx.currentTime + delay;
     const osc = this.ctx.createOscillator();
@@ -141,7 +171,7 @@ export class AudioEngine {
     gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
     osc.connect(filter);
     filter.connect(gain);
-    gain.connect(this.droneGain);
+    gain.connect(channel === 'sfx' ? this.sfxGain : channel === 'ui' ? this.uiGain : this.droneGain);
     osc.start(now);
     osc.stop(now + duration + 0.05);
   }
@@ -149,20 +179,26 @@ export class AudioEngine {
   event(kind) {
     this.ensure();
     if (!this.ctx || !this.on) return;
-    const cfg = ERA_MUSIC[this.era];
+    const cfg = this.currentMusic();
     if (kind === 'war') {
-      this.note(cfg.root * 0.75, 0.55, 'sawtooth', 0.12, 0);
-      this.note(cfg.root * 1.12, 0.32, 'square', 0.06, 0.08);
+      this.note(cfg.root * 0.75, 0.55, 'sawtooth', 0.12, 0, 'sfx');
+      this.note(cfg.root * 1.12, 0.32, 'square', 0.06, 0.08, 'sfx');
       this.tension = Math.min(1, this.tension + 0.25);
     } else if (kind === 'good') {
-      [0, 4, 7].forEach((d, i) => this.note(cfg.root * 2 * Math.pow(2, d / 12), 0.45, 'sine', 0.07, i * 0.09));
+      [0, 4, 7].forEach((d, i) => this.note(cfg.root * 2 * Math.pow(2, d / 12), 0.45, 'sine', 0.07, i * 0.09, 'sfx'));
     } else if (kind === 'era') {
-      [0, 5, 7, 12].forEach((d, i) => this.note(cfg.root * 2 * Math.pow(2, d / 12), 0.8, 'triangle', 0.08, i * 0.16));
+      [0, 5, 7, 12].forEach((d, i) => this.note(cfg.root * 2 * Math.pow(2, d / 12), 0.8, 'triangle', 0.08, i * 0.16, 'sfx'));
     } else if (kind === 'crisis') {
-      this.note(cfg.root * 0.5, 1.1, 'sawtooth', 0.11, 0);
-      this.note(cfg.root * 0.66, 1.1, 'sawtooth', 0.07, 0.18);
+      this.note(cfg.root * 0.5, 1.1, 'sawtooth', 0.11, 0, 'sfx');
+      this.note(cfg.root * 0.66, 1.1, 'sawtooth', 0.07, 0.18, 'sfx');
     } else {
-      this.note(cfg.root * 1.5, 0.12, 'sine', 0.035, 0);
+      this.note(cfg.root * 1.5, 0.12, 'sine', 0.035, 0, 'ui');
     }
+  }
+
+  ui() {
+    this.ensure();
+    if (!this.ctx || !this.on) return;
+    this.note(this.currentMusic().root * 1.8, 0.08, 'sine', 0.025, 0, 'ui');
   }
 }

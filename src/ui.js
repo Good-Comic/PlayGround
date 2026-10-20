@@ -202,7 +202,8 @@ export class UI {
 
   renderLeaders() {
     const g = this.game;
-    this.el.leaders.innerHTML = CIVS.filter((c) => c.id !== g.playerId).map((civ) => {
+    const roster = g.civDefs?.length ? g.civDefs : CIVS;
+    this.el.leaders.innerHTML = roster.filter((c) => c.id !== g.playerId).map((civ) => {
       const relation = g.leaderRelations(civ);
       const met = g.met.has(civ.id);
       return `<div class="leader-row" data-civ="${civ.id}" style="--c:${civ.colorHex}">
@@ -503,8 +504,9 @@ export class UI {
     const available = new Set(g.availableTechs(civId).map((t) => t.id));
     const doctrine = g.doctrines[civId];
     const eras = TECH_ERA_ORDER;
+    const visibleTechs = TECHS.filter((t) => !t.faction || t.faction === civId);
     const body = eras.map((era) => {
-      const techs = TECHS.filter((t) => t.era === era);
+      const techs = visibleTechs.filter((t) => t.era === era);
       const core = techs.filter((t) => !t.branch);
       const branches = techs.filter((t) => t.branch);
       const renderNode = (t) => {
@@ -528,11 +530,14 @@ export class UI {
         </div>`;
       };
       const branchBlock = branches.length ? `<div class="tech-branch-label">專屬路線（僅能擇一）</div><div class="tech-grid">${branches.map(renderNode).join('')}</div>` : '';
-      return `<div class="tech-era"><h3>${ERA_LABELS[era]}</h3><div class="tech-grid">${core.map(renderNode).join('')}</div>${branchBlock}</div>`;
+      return `<div class="tech-era" data-tech-era="${era}"><h3>${ERA_LABELS[era]}</h3><div class="tech-grid">${core.map(renderNode).join('')}</div>${branchBlock}</div>`;
     }).join('');
     this.openModal(`
-      <div class="modal-head">${icon('i-research')}<div><h2>科技</h2><div class="sub">八個時代、專屬分支與黑科技 — 已發現 ${acquired.size} / ${TECHS.length} 項${doctrine ? ` • 路線：${DOCTRINES[doctrine].name}` : ''}</div></div><button class="close">×</button></div>
-      <div class="modal-body">${body}</div>`);
+      <div class="modal-head">${icon('i-research')}<div><h2>科技</h2><div class="sub">八個時代、專屬分支與黑科技 — 已發現 ${acquired.size} / ${visibleTechs.length} 項${doctrine ? ` • 路線：${DOCTRINES[doctrine].name}` : ''}</div></div><button class="close">×</button></div>
+      <div class="modal-body"><div class="tech-era-nav">${eras.map((era) => `<button data-tech-jump="${era}">${ERA_LABELS[era]}</button>`).join('')}</div>${body}</div>`);
+    $$('[data-tech-jump]', this.el.modals).forEach((button) => button.addEventListener('click', () => {
+      this.el.modals.querySelector(`[data-tech-era="${button.dataset.techJump}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
     $$('.tech-node.available', this.el.modals).forEach((node) => {
       node.addEventListener('click', () => {
         const id = node.dataset.tech;
@@ -825,11 +830,11 @@ export class UI {
   diplomacy(civ) {
     const g = this.game;
     const relation = g.leaderRelations(civ);
-    const quote = civ.id === 'norlund'
+    const quote = civ.id === 'wu'
       ? '你的城牆看來堅固。我們會好好試一試。'
-      : civ.id === 'kemet'
+      : civ.id === 'shu'
         ? '河流連結我們的子民。貿易對彼此都有好處。'
-        : civ.id === 'xian'
+        : civ.id === 'warlord'
           ? '上天正注視你的作為，君主。證明你值得。'
           : '友誼才是最真實的征服。';
     this.openModal(`

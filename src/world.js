@@ -4,6 +4,7 @@ import {
   HEX_R, HEX_DIRS, SQRT3, axialToWorld, worldToAxial, axialKey,
   axialDistance, hexesWithin, hexCorners,
 } from './core.js';
+import { GameMasterConfig } from './config.js';
 
 const WATER_Y = 0.3;
 
@@ -61,6 +62,8 @@ export class World {
     this.rows = opts.rows ?? 13;
     this.mutation = opts.mutation ?? 0;
     this.scenarioId = opts.scenario ?? 'legacy';
+    this.mapConfig = opts.map ?? {};
+    this.mapType = this.mapConfig.type ?? 'continents';
     this.anomalyTiles = [];
     this.sunDir = opts.sunDir ? opts.sunDir.clone().normalize() : new THREE.Vector3(0.62, 0.5, 0.42).normalize();
     this.rng = new RNG(this.seed);
@@ -116,18 +119,23 @@ export class World {
         const nz = w.z / (Math.max(Math.abs(minR), Math.abs(maxR)) * SQRT3 + 1);
         let e = fbm2(nx * 2.05 + 11.3, nz * 2.05 - 4.7, 5, this.seed, 2.05, 0.52);
         const radial = Math.sqrt(nx * nx + nz * nz);
-        const continent = 1 - smoothstep(0.12, 0.96, radial);
-        e = e * 0.52 + continent * 0.44 + 0.05 - smoothstep(0.95, 1.15, radial) * 0.3;
+        const continentRadius = this.mapType === 'pangaea' ? 1.18 : this.mapType === 'archipelago' ? 0.82 : 0.98;
+        const continent = 1 - smoothstep(0.12, continentRadius, radial);
+        const fragmentation = this.mapType === 'archipelago' ? 0.72 : this.mapType === 'highlands' ? 0.42 : 0.52;
+        e = e * fragmentation + continent * (this.mapType === 'pangaea' ? 0.52 : 0.44) + 0.05 - smoothstep(0.95, 1.15, radial) * 0.3;
+        if (this.mapType === 'highlands') e += 0.09;
         const m = fbm2(nx * 3.1 - 9.1, nz * 3.1 + 6.4, 4, this.seed + 777, 2.1, 0.5);
         elevation.push({ q, r, e });
         moisture.push({ q, r, m });
       }
     }
     const eSorted = elevation.map((x) => x.e).sort((a, b) => a - b);
-    const seaLevel = eSorted[Math.floor(eSorted.length * 0.4)];
+    const seaPercent = clamp((this.mapConfig.sea ?? (this.mapType === 'archipelago' ? 58 : 40)) / 100, 0.28, 0.6);
+    const seaLevel = eSorted[Math.floor(eSorted.length * seaPercent)];
     const landEs = eSorted.filter((x) => x > seaLevel);
     const quant = (p) => landEs[Math.min(landEs.length - 1, Math.floor(landEs.length * p))] ?? seaLevel + 0.02;
-    const highT = quant(0.9), midT = quant(0.68);
+    const mountainAmount = clamp((this.mapConfig.mountain ?? (this.mapType === 'highlands' ? 78 : 50)) / 100, 0.2, 0.9);
+    const highT = quant(clamp(0.96 - mountainAmount * 0.16, 0.78, 0.94)), midT = quant(0.68);
 
     for (const entry of elevation) {
       const { q, r, e } = entry;
@@ -142,6 +150,8 @@ export class World {
         yields: {}, move: 1, defense: 0,
       };
       this._classify(tile, e, m, seaLevel, highT, midT);
+      tile.defense = BIOMES[tile.terrain].defense ?? 0;
+      tile.sight = BIOMES[tile.terrain].sight ?? 0;
       this.tiles.set(tile.key, tile);
       this.tileList.push(tile);
     }
@@ -858,7 +868,7 @@ export class World {
     unit.mesh.rotation.y = unit.facing ?? 0;
     unit.bar = createHealthBar();
     unit.mesh.add(unit.bar);
-    unit.bar.position.set(0, 0.82, 0);
+    unit.bar.position.set(0, unit.mesh.userData.barY ?? 0.82, 0);
     updateHealthBar(unit);
     this.groups.units.add(unit.mesh);
     return unit;
@@ -887,6 +897,61 @@ export class World {
     if (tile) tile.units = tile.units.filter((u) => u !== unit);
     this.units = this.units.filter((u) => u !== unit);
     unit.mesh.parent?.remove(unit.mesh);
+  }
+
+  refreshCivVisuals() {
+    this.groups.cities.clear();
+    this.groups.units.clear();
+    for (const city of this.cities) {
+      city.civ = this.civs.get(city.civId) ?? city.civ;
+      const tile = this.tiles.get(axialKey(city.q, city.r));
+      city.mesh = createCityMesh(city, this);
+      city.mesh.position.set(tile.x, tile.h, tile.z);
+      city.label = createCityLabel(city);
+      city.label.position.set(tile.x, tile.h + 2.35, tile.z);
+      this.groups.cities.add(city.mesh);
+      this.groups.cities.add(city.label);
+    }
+    for (const unit of this.units) {
+      unit.civ = this.civs.get(unit.civId) ?? unit.civ;
+      const tile = this.tiles.get(axialKey(unit.q, unit.r));
+      unit.mesh = createUnitMesh(unit, this);
+      unit.mesh.position.set(tile.x, tile.h, tile.z);
+      unit.mesh.rotation.y = unit.facing ?? 0;
+      unit.bar = createHealthBar();
+      unit.mesh.add(unit.bar);
+      unit.bar.position.set(0, unit.mesh.userData.barY ?? 0.82, 0);
+      updateHealthBar(unit);
+      this.groups.units.add(unit.mesh);
+    }
+    this.rebuildTerritory();
+    this.updateUnitVisibility?.();
+  }
+
+  rebuildWorldVisuals() {
+    if (this.waterMesh) this.scene.remove(this.waterMesh);
+    this.groups.terrain.clear();
+    this.groups.props.clear();
+    this.groups.resources.clear();
+    this.groups.rivers.clear();
+    this.groups.effects.clear();
+    this.billboardSprites = [];
+    this.fxAnimated = [];
+    this.buildTerrain();
+    this.buildWater();
+    for (const city of this.cities) {
+      const tile = this.tiles.get(axialKey(city.q, city.r));
+      city.mesh.position.set(tile.x, tile.h, tile.z);
+      city.label.position.set(tile.x, tile.h + 2.35, tile.z);
+    }
+    for (const unit of this.units) {
+      const tile = this.tiles.get(axialKey(unit.q, unit.r));
+      unit.mesh.position.set(tile.x, tile.h, tile.z);
+      unit.bar.position.set(0, unit.mesh.userData.barY ?? 0.82, 0);
+    }
+    this.refreshFog();
+    this.updateDimOverlay();
+    this.rebuildTerritory();
   }
 
   /* ============================ VISUALS: FOG / OVERLAYS / TERRITORY ============================ */
@@ -968,6 +1033,26 @@ export class World {
     this.dimMesh.count = 0;
     this.dimMesh.renderOrder = 5;
     this.groups.overlay.add(this.dimMesh);
+
+    const gridPos = [];
+    for (const tile of this.tileList) {
+      const corners = hexCorners(tile.x, tile.z, HEX_R * 0.995);
+      for (let i = 0; i < 6; i++) {
+        const a = corners[i], b = corners[(i + 1) % 6];
+        const y = tile.h + 0.045;
+        gridPos.push(a.x, y, a.z, b.x, y, b.z);
+      }
+    }
+    const gridGeo = new THREE.BufferGeometry();
+    gridGeo.setAttribute('position', new THREE.Float32BufferAttribute(gridPos, 3));
+    this.hexGrid = new THREE.LineSegments(gridGeo, new THREE.LineBasicMaterial({ color: 0xe3bd74, transparent: true, opacity: 0.12, depthWrite: false }));
+    this.hexGrid.renderOrder = 6;
+    this.hexGrid.visible = GameMasterConfig.data.options.hexEdges !== false;
+    this.groups.overlay.add(this.hexGrid);
+  }
+
+  setHexEdges(visible) {
+    if (this.hexGrid) this.hexGrid.visible = visible;
   }
 
   updateDimOverlay() {
@@ -1573,7 +1658,15 @@ export function createUnitMesh(unit, world) {
   const color = new THREE.Color(civ?.color ?? 0xe0b060);
   const accent = new THREE.Color(civ?.accent ?? 0x2b3a4a);
   const type = unit.type;
+  const asset = GameMasterConfig.data.assets?.[civ?.id] ?? {};
+  const scale = asset.scale ?? 1;
+  const weapon = asset.weapon ?? civ?.weapon ?? 'sword';
+  const mount = asset.mount ?? unit.mount ?? civ?.mount ?? 'none';
   const group = new THREE.Group();
+  const unitScale = { titanMech: 1.9, mech: 1.5, hoverTank: 1.18, skyCarrier: 1.45, spaceplane: 1.18, drone: 0.9, exoTrooper: 1.08, powerArmor: 1.14 }[type] ?? 1;
+  group.scale.setScalar(scale * unitScale);
+  const barY = { titanMech: 0.98, mech: 0.98, hoverTank: 0.62, skyCarrier: 0.96, spaceplane: 0.96, drone: 0.96 }[type] ?? 0.82;
+  group.userData.barY = barY;
   const parts = {};
   const M = {
     cloth: new THREE.MeshStandardMaterial({ color, roughness: 0.7, metalness: 0.08, flatShading: true }),
@@ -1585,6 +1678,8 @@ export function createUnitMesh(unit, world) {
     gold: new THREE.MeshStandardMaterial({ color: 0xe3bd74, roughness: 0.3, metalness: 0.7, flatShading: true }),
     canvas: new THREE.MeshStandardMaterial({ color: 0xe8ddc4, roughness: 0.9, flatShading: true }),
     horse: new THREE.MeshStandardMaterial({ color: 0x6b4a32, roughness: 0.85, flatShading: true }),
+    glow: new THREE.MeshStandardMaterial({ color: 0x7fd7ff, emissive: 0x48bfe8, emissiveIntensity: 1.4, roughness: 0.3 }),
+    plasma: new THREE.MeshStandardMaterial({ color: 0xffc46b, emissive: 0xff8a32, emissiveIntensity: 1.6, roughness: 0.25 }),
   };
 
   const add = (geo, mat, x, y, z, parent = group) => {
@@ -1596,9 +1691,74 @@ export function createUnitMesh(unit, world) {
   };
 
   const base = add(new THREE.CylinderGeometry(0.27, 0.29, 0.05, 12), M.cloth, 0, 0.025, 0);
-  add(new THREE.TorusGeometry(0.275, 0.014, 6, 18).rotateX(Math.PI / 2), M.gold, 0, 0.05, 0);
+  const baseRing = add(new THREE.TorusGeometry(0.275, 0.014, 6, 18).rotateX(Math.PI / 2), M.gold, 0, 0.05, 0);
 
-  if (type === 'settler') {
+  if (type === 'hoverTank') {
+    group.remove(base, baseRing);
+    const hull = add(new THREE.BoxGeometry(0.62, 0.13, 0.34), M.metal, 0, 0.3, 0);
+    add(new THREE.BoxGeometry(0.48, 0.09, 0.26), M.accent, -0.02, 0.4, 0);
+    add(new THREE.CylinderGeometry(0.1, 0.13, 0.09, 8), M.dark, 0.02, 0.47, 0);
+    const barrel = add(new THREE.CylinderGeometry(0.022, 0.03, 0.54, 6).rotateZ(Math.PI / 2), M.gold, 0.3, 0.48, 0);
+    add(new THREE.BoxGeometry(0.1, 0.055, 0.055), M.dark, 0.59, 0.48, 0);
+    for (const s of [-1, 1]) {
+      add(new THREE.BoxGeometry(0.2, 0.07, 0.08), M.dark, -0.16, 0.34, s * 0.19);
+      add(new THREE.CylinderGeometry(0.075, 0.09, 0.03, 10), M.glow, 0.2, 0.22, s * 0.16);
+    }
+    parts.hoverGlow = M.glow;
+    parts.hoverHull = hull;
+    parts.hoverBarrel = barrel;
+  } else if (type === 'spaceplane' || type === 'skyCarrier' || type === 'drone') {
+    group.remove(base, baseRing);
+    const air = new THREE.Group();
+    air.position.y = 0.72;
+    group.add(air);
+    const big = type === 'skyCarrier';
+    const bodyLen = big ? 0.8 : type === 'drone' ? 0.28 : 0.56;
+    const body = add(new THREE.CapsuleGeometry(big ? 0.13 : 0.095, bodyLen, 4, 8).rotateZ(Math.PI / 2), M.metal, 0, 0, 0, air);
+    add(new THREE.ConeGeometry(big ? 0.11 : 0.08, big ? 0.3 : 0.2, 8).rotateZ(-Math.PI / 2), M.gold, bodyLen * 0.5 + 0.1, 0, 0, air);
+    const wing = add(new THREE.BoxGeometry(big ? 0.28 : 0.18, 0.035, big ? 0.78 : 0.5), M.accent, -0.08, -0.01, 0, air);
+    add(new THREE.BoxGeometry(big ? 0.2 : 0.13, 0.03, big ? 0.34 : 0.24), M.accent, -bodyLen * 0.48, 0.04, 0, air);
+    add(new THREE.BoxGeometry(0.08, 0.03, big ? 0.26 : 0.18), M.dark, -bodyLen * 0.52, 0.1, 0, air);
+    add(new THREE.SphereGeometry(big ? 0.08 : 0.06, 10, 8), M.glow, bodyLen * 0.18, 0.06, 0, air);
+    for (const s of [-1, 1]) {
+      add(new THREE.CylinderGeometry(0.045, 0.055, 0.12, 8).rotateZ(Math.PI / 2), M.dark, -bodyLen * 0.45, -0.04, s * 0.13, air);
+      add(new THREE.CylinderGeometry(0.032, 0.038, 0.04, 8).rotateZ(Math.PI / 2), M.glow, -bodyLen * 0.52, -0.04, s * 0.13, air);
+    }
+    parts.air = air;
+    parts.airBody = body;
+    parts.airWing = wing;
+    parts.airGlow = M.glow;
+  } else if (type === 'titanMech' || type === 'mech') {
+    group.remove(base, baseRing);
+    const rig = new THREE.Group();
+    group.add(rig);
+    parts.rig = rig;
+    const hip = new THREE.Group();
+    hip.position.y = 0.52;
+    rig.add(hip);
+    parts.hip = hip;
+    parts.hipBaseY = 0.52;
+    add(new THREE.BoxGeometry(0.34, 0.3, 0.28), M.metal, 0, 0.18, 0, hip);
+    add(new THREE.BoxGeometry(0.52, 0.16, 0.32), M.accent, 0, 0.4, 0, hip);
+    add(new THREE.BoxGeometry(0.22, 0.17, 0.2), M.dark, 0, 0.58, 0, hip);
+    add(new THREE.BoxGeometry(0.03, 0.06, 0.13), M.glow, 0.12, 0.58, 0, hip);
+    for (const s of [-1, 1]) {
+      const leg = new THREE.Group();
+      leg.position.set(0, 0.42, s * 0.14);
+      rig.add(leg);
+      if (s < 0) parts.legL = leg; else parts.legR = leg;
+      add(new THREE.BoxGeometry(0.14, 0.38, 0.13), M.dark, 0, -0.17, 0, leg);
+      add(new THREE.BoxGeometry(0.26, 0.08, 0.18), M.metal, 0.05, -0.38, 0, leg);
+      const arm = new THREE.Group();
+      arm.position.set(0, 0.42, s * 0.31);
+      hip.add(arm);
+      if (s < 0) parts.armL = arm; else parts.armR = arm;
+      add(new THREE.BoxGeometry(0.13, 0.34, 0.13), M.metal, 0, -0.12, 0, arm);
+      add(new THREE.BoxGeometry(0.1, 0.1, 0.2), M.accent, 0, 0.02, 0, arm);
+    }
+    add(new THREE.CylinderGeometry(0.025, 0.032, 0.5, 6).rotateZ(Math.PI / 2), M.gold, 0.36, 0.3, 0.31, hip);
+    add(new THREE.CylinderGeometry(0.02, 0.025, 0.36, 6).rotateZ(Math.PI / 2), M.plasma, 0.35, 0.3, -0.31, hip);
+  } else if (type === 'settler') {
     // covered wagon
     add(new THREE.BoxGeometry(0.5, 0.11, 0.3), M.wood, 0, 0.3, 0);
     const canopy = add(new THREE.CylinderGeometry(0.16, 0.16, 0.5, 8, 1, false, 0, Math.PI).rotateZ(Math.PI / 2), M.canvas, 0, 0.38, 0);
@@ -1611,17 +1771,32 @@ export function createUnitMesh(unit, world) {
     const driver = add(new THREE.CapsuleGeometry(0.05, 0.12, 3, 6), M.cloth, 0, 0.42, 0.22);
     add(new THREE.SphereGeometry(0.05, 8, 6), M.skin, 0, 0.53, 0.22);
     add(new THREE.ConeGeometry(0.06, 0.08, 8), M.accent, 0, 0.6, 0.22);
-  } else if (type === 'horseman' || type === 'knight') {
+  } else if (!['exoTrooper', 'powerArmor'].includes(type) && (unit.cls === 'cavalry' || mount === 'horse' || mount === 'camel' || mount === 'llama' || mount === 'elephant' || mount === 'chariot')) {
     const horse = new THREE.Group();
     horse.position.y = 0.12;
     group.add(horse);
-    add(new THREE.CapsuleGeometry(0.11, 0.26, 3, 8).rotateZ(Math.PI / 2), M.horse, 0, 0.34, 0, horse);
-    add(new THREE.BoxGeometry(0.14, 0.14, 0.16), M.horse, 0.22, 0.44, 0, horse);
-    add(new THREE.ConeGeometry(0.05, 0.14, 5), M.horse, 0.28, 0.52, 0, horse);
-    for (const [x, z] of [[0.18, 0.09], [0.18, -0.09], [-0.18, 0.09], [-0.18, -0.09]]) {
-      add(new THREE.CylinderGeometry(0.028, 0.024, 0.3, 6), M.dark, x, 0.15, z, horse);
+    const large = mount === 'elephant';
+    const mountMat = mount === 'camel' ? new THREE.MeshStandardMaterial({ color: 0xb08a56, roughness: 0.85, flatShading: true }) : M.horse;
+    const bodyR = large ? 0.2 : mount === 'llama' ? 0.09 : 0.11;
+    const bodyL = large ? 0.4 : mount === 'llama' ? 0.22 : 0.26;
+    add(new THREE.CapsuleGeometry(bodyR, bodyL, 3, 8).rotateZ(Math.PI / 2), mountMat, 0, large ? 0.46 : 0.34, 0, horse);
+    add(new THREE.BoxGeometry(large ? 0.22 : 0.14, large ? 0.2 : 0.14, large ? 0.24 : 0.16), mountMat, large ? 0.3 : 0.22, large ? 0.62 : 0.44, 0, horse);
+    add(new THREE.ConeGeometry(large ? 0.07 : 0.05, large ? 0.22 : 0.14, 5), mountMat, large ? 0.4 : 0.28, large ? 0.78 : 0.52, 0, horse);
+    if (large) {
+      add(new THREE.CylinderGeometry(0.035, 0.045, 0.32, 6), mountMat, 0.46, 0.38, 0, horse).rotation.z = 1.15;
+      for (const s of [-1, 1]) add(new THREE.ConeGeometry(0.025, 0.18, 5), M.canvas, 0.38, 0.5, s * 0.1, horse).rotation.z = 0.5;
     }
-    add(new THREE.ConeGeometry(0.05, 0.16, 6), M.dark, -0.26, 0.42, 0, horse).rotation.z = -1.0;
+    for (const [x, z] of [[0.18, 0.09], [0.18, -0.09], [-0.18, 0.09], [-0.18, -0.09]]) {
+      add(new THREE.CylinderGeometry(large ? 0.045 : 0.028, large ? 0.04 : 0.024, large ? 0.42 : 0.3, 6), M.dark, x, large ? 0.21 : 0.15, z, horse);
+    }
+    if (mount !== 'chariot') add(new THREE.ConeGeometry(0.05, 0.16, 6), M.dark, -0.26, large ? 0.56 : 0.42, 0, horse).rotation.z = -1.0;
+    if (mount === 'chariot') {
+      for (const s of [-1, 1]) {
+        const wheel = add(new THREE.CylinderGeometry(0.16, 0.16, 0.035, 12).rotateX(Math.PI / 2), M.wood, -0.02, 0.16, s * 0.2, horse);
+        wheel.rotation.z = Math.PI / 2;
+        add(new THREE.BoxGeometry(0.34, 0.13, 0.3), M.wood, 0, 0.24, 0, horse);
+      }
+    }
     const rider = new THREE.Group();
     rider.position.set(0, 0.5, 0);
     horse.add(rider);
@@ -1657,22 +1832,7 @@ export function createUnitMesh(unit, world) {
     const legR = new THREE.Group(); legR.position.set(0.05, 0.24, 0); rig.add(legR); parts.legR = legR;
     add(new THREE.CapsuleGeometry(0.038, 0.14, 3, 6), M.accent, 0, -0.09, 0, legR);
 
-    if (type === 'warrior' || type === 'swordsman') {
-      add(new THREE.CylinderGeometry(0.012, 0.012, 0.42, 5), M.metal, 0, -0.2, 0, armR).rotation.z = 0.15;
-      add(new THREE.BoxGeometry(0.03, 0.1, 0.02), M.gold, 0, -0.4, 0, armR);
-      add(new THREE.CylinderGeometry(0.14, 0.14, 0.03, 14), type === 'swordsman' ? M.metal : M.wood, 0, -0.14, 0.02, armL).rotation.x = Math.PI / 2;
-      add(new THREE.CylinderGeometry(0.03, 0.03, 0.05, 8), M.gold, 0, -0.14, 0.04, armL).rotation.x = Math.PI / 2;
-    } else if (type === 'archer' || type === 'scout') {
-      const bow = add(new THREE.TorusGeometry(0.16, 0.01, 5, 12, Math.PI * 1.2), M.wood, 0, -0.16, 0.06, armL);
-      bow.rotation.z = Math.PI / 2;
-      add(new THREE.CylinderGeometry(0.006, 0.006, 0.32, 4), M.canvas, 0.14, 0.2, -0.06, hip).rotation.z = -0.4;
-    } else if (type === 'spearman' || type === 'builder') {
-      const tool = add(new THREE.CylinderGeometry(0.012, 0.014, type === 'spearman' ? 0.62 : 0.4, 5), M.wood, 0, -0.12, 0, armR);
-      if (type === 'spearman') add(new THREE.ConeGeometry(0.026, 0.12, 6), M.metal, 0, 0.24, 0, armR);
-      else add(new THREE.BoxGeometry(0.1, 0.08, 0.06), M.metal, 0, -0.3, 0, armR);
-      add(new THREE.CylinderGeometry(0.11, 0.11, 0.03, 12), M.accent, 0, -0.14, 0.02, armL).rotation.x = Math.PI / 2;
-    } else if (type === 'catapult') {
-      // replace humanoid with siege engine for clarity
+    if (type === 'catapult' || unit.cls === 'siege') {
       rig.clear();
       add(new THREE.BoxGeometry(0.5, 0.12, 0.32), M.wood, 0, 0.24, 0, rig);
       for (const [x, z] of [[-0.2, 0.16], [-0.2, -0.16], [0.2, 0.16], [0.2, -0.16]]) {
@@ -1681,8 +1841,48 @@ export function createUnitMesh(unit, world) {
       const arm = add(new THREE.BoxGeometry(0.5, 0.05, 0.06), M.wood, -0.1, 0.42, 0, rig);
       arm.rotation.z = 0.7;
       add(new THREE.IcosahedronGeometry(0.09, 0), M.metal, -0.32, 0.6, 0, rig);
+      if (weapon === 'beam') add(new THREE.CylinderGeometry(0.03, 0.04, 0.4, 6), M.gold, 0.24, 0.42, 0, rig).rotation.z = -0.2;
       parts.siegeArm = arm;
+    } else if (weapon === 'bow' || weapon === 'crossbow' || weapon === 'sling' || weapon === 'rifle' || type === 'archer' || type === 'scout') {
+      if (weapon === 'rifle') {
+        add(new THREE.CylinderGeometry(0.014, 0.018, 0.48, 5), M.dark, 0, -0.12, 0.06, armR).rotation.z = 0.08;
+        add(new THREE.BoxGeometry(0.04, 0.1, 0.04), M.wood, 0, -0.26, 0.06, armR);
+      } else {
+        const bow = add(new THREE.TorusGeometry(0.16, 0.01, 5, 12, Math.PI * 1.2), M.wood, 0, -0.16, 0.06, armL);
+        bow.rotation.z = Math.PI / 2;
+        add(new THREE.CylinderGeometry(0.006, 0.006, 0.32, 4), M.canvas, 0.14, 0.2, -0.06, hip).rotation.z = -0.4;
+        if (weapon === 'crossbow') add(new THREE.BoxGeometry(0.12, 0.03, 0.05), M.wood, 0, 0.06, 0, armL);
+      }
+    } else if (weapon === 'spear' || weapon === 'halberd' || weapon === 'staff' || type === 'spearman' || type === 'builder') {
+      const long = weapon !== 'staff';
+      const tool = add(new THREE.CylinderGeometry(0.012, 0.014, long ? 0.62 : 0.4, 5), M.wood, 0, -0.12, 0, armR);
+      if (weapon === 'halberd') {
+        add(new THREE.ConeGeometry(0.03, 0.14, 5), M.metal, 0, 0.24, 0, armR);
+        add(new THREE.BoxGeometry(0.12, 0.03, 0.02), M.metal, 0.05, 0.18, 0, armR).rotation.z = 0.5;
+      } else if (weapon === 'spear' || type === 'spearman') add(new THREE.ConeGeometry(0.026, 0.12, 6), M.metal, 0, 0.24, 0, armR);
+      else if (weapon === 'staff') add(new THREE.SphereGeometry(0.035, 8, 6), M.gold, 0, 0.12, 0, armR);
+      else add(new THREE.BoxGeometry(0.1, 0.08, 0.06), M.metal, 0, -0.3, 0, armR);
+      add(new THREE.CylinderGeometry(0.11, 0.11, 0.03, 12), M.accent, 0, -0.14, 0.02, armL).rotation.x = Math.PI / 2;
+    } else if (weapon === 'beam' || weapon === 'psiblade' || weapon === 'claw') {
+      add(new THREE.CylinderGeometry(0.018, 0.026, 0.48, 6), M.gold, 0.06, -0.08, 0, armR).rotation.z = 0.3;
+      const glow = new THREE.MeshStandardMaterial({ color: color, emissive: color, emissiveIntensity: 1.8, roughness: 0.25 });
+      add(new THREE.ConeGeometry(0.03, 0.24, 6), glow, 0.16, 0.2, 0, armR).rotation.z = 0.3;
+    } else {
+      const blade = weapon === 'katana' ? 0.5 : 0.42;
+      add(new THREE.CylinderGeometry(0.012, 0.012, blade, 5), M.metal, 0, -0.2, 0, armR).rotation.z = 0.15;
+      add(new THREE.BoxGeometry(0.03, 0.1, 0.02), M.gold, 0, -0.4, 0, armR);
+      add(new THREE.CylinderGeometry(0.14, 0.14, 0.03, 14), type === 'swordsman' ? M.metal : M.wood, 0, -0.14, 0.02, armL).rotation.x = Math.PI / 2;
+      add(new THREE.CylinderGeometry(0.03, 0.03, 0.05, 8), M.gold, 0, -0.14, 0.04, armL).rotation.x = Math.PI / 2;
     }
+  }
+
+  if (type === 'exoTrooper' || type === 'powerArmor') {
+    parts.torso.scale.set(1.35, 1.15, 1.35);
+    parts.torso.material = M.metal;
+    parts.helmet.material = M.gold;
+    add(new THREE.BoxGeometry(0.24, 0.08, 0.2), M.accent, 0, 0.29, 0, parts.hip);
+    add(new THREE.BoxGeometry(0.12, 0.03, 0.03), M.glow, 0.08, 0.34, 0.05, parts.hip);
+    add(new THREE.CylinderGeometry(0.014, 0.018, 0.42, 5), M.dark, 0, -0.15, 0.06, parts.armR).rotation.z = 0.12;
   }
 
   // banner pole
@@ -1696,8 +1896,9 @@ export function createUnitMesh(unit, world) {
 
   const animate = (dt, time, u) => {
     if (u?.moving) return;
-    const bob = Math.sin(time * 1.4 + (unit.phase ?? 0)) * 0.012;
-    if (parts.hip) parts.hip.position.y = 0.24 + bob;
+    const state = group.userData.animState ?? 'idle';
+    const bob = Math.sin(time * 1.4 * (asset.speed ?? 1) + (unit.phase ?? 0)) * 0.012;
+    if (parts.hip) parts.hip.position.y = (parts.hipBaseY ?? 0.24) + bob;
     if (parts.rig) parts.rig.position.y = bob * 0.5;
     if (parts.flag?.geometry) {
       const p = parts.flag.geometry.attributes.position;
@@ -1707,9 +1908,35 @@ export function createUnitMesh(unit, world) {
       }
       p.needsUpdate = true;
     }
-    if (parts.armL) parts.armL.rotation.x = Math.sin(time * 1.3 + (unit.phase ?? 0)) * 0.06;
+    if (parts.armL && state !== 'attack') parts.armL.rotation.x = Math.sin(time * 1.3 + (unit.phase ?? 0)) * 0.06;
     if (parts.horse) parts.horse.position.y = 0.12 + Math.sin(time * 1.6) * 0.008;
+    if (parts.air) parts.air.position.y = 0.72 + Math.sin(time * 1.2 + (unit.phase ?? 0)) * 0.025;
+    if (parts.hoverGlow) parts.hoverGlow.emissiveIntensity = 1.05 + Math.sin(time * 5 + (unit.phase ?? 0)) * 0.35;
+    if (parts.airGlow) parts.airGlow.emissiveIntensity = 1.3 + Math.sin(time * 3 + (unit.phase ?? 0)) * 0.3;
+    if (state === 'attack') {
+      group.userData.attackT = Math.min(1, (group.userData.attackT ?? 0) + dt * 4.2);
+      const t = group.userData.attackT;
+      const swing = Math.sin(t * Math.PI);
+      if (parts.armR) parts.armR.rotation.x = -1.6 * swing;
+      if (parts.rig) parts.rig.rotation.x = -0.22 * swing;
+      if (parts.siegeArm) parts.siegeArm.rotation.z = 0.7 - swing * 1.6;
+      if (parts.horse) parts.horse.rotation.x = -0.12 * swing;
+      if (t >= 1) {
+        group.userData.animState = 'idle';
+        if (parts.rig) parts.rig.rotation.x = 0;
+        if (parts.armR) parts.armR.rotation.x = 0;
+        if (parts.siegeArm) parts.siegeArm.rotation.z = 0.7;
+        if (parts.horse) parts.horse.rotation.x = 0;
+      }
+    }
   };
+  group.userData.animState = 'idle';
+  group.userData.attackT = 0;
+  group.userData.playAttack = () => new Promise((resolve) => {
+    group.userData.animState = 'attack';
+    group.userData.attackT = 0;
+    setTimeout(resolve, 280 / (asset.speed ?? 1));
+  });
   group.userData.animate = animate;
   group.userData.parts = parts;
   return group;
@@ -1721,6 +1948,7 @@ function animateWalk(unit, dest, world) {
     const dist = start.distanceTo(dest);
     const dur = clamp(dist * 0.28, 0.32, 1.4);
     unit.moving = true;
+    if (unit.mesh?.userData) unit.mesh.userData.animState = 'move';
     const t0 = performance.now();
     const parts = unit.mesh.userData.parts || {};
     let last = t0;
@@ -1741,6 +1969,7 @@ function animateWalk(unit, dest, world) {
         if (parts.legL) parts.legL.rotation.x = 0;
         if (parts.legR) parts.legR.rotation.x = 0;
         unit.moving = false;
+        if (unit.mesh?.userData) unit.mesh.userData.animState = 'idle';
         resolve();
       }
     };
@@ -1793,15 +2022,21 @@ export function createCityMesh(city, world) {
   const civ = world.civs.get(city.civId);
   const color = new THREE.Color(civ?.color ?? 0xe0b060);
   const accent = new THREE.Color(civ?.accent ?? 0x2b3a4a);
+  const asset = GameMasterConfig.data.assets?.[civ?.id] ?? {};
+  const style = asset.architecture ?? civ?.architecture ?? 'default';
+  const roofHex = asset.roofColor ?? civ?.roofColor ?? '#8a4a33';
   const group = new THREE.Group();
+  group.scale.setScalar(asset.scale ?? 1);
   const M = {
     stone: new THREE.MeshStandardMaterial({ color: 0xcfc4ab, roughness: 0.85, flatShading: true }),
     stoneDark: new THREE.MeshStandardMaterial({ color: 0xa89a7e, roughness: 0.9, flatShading: true }),
-    roof: new THREE.MeshStandardMaterial({ color: 0x8a4a33, roughness: 0.8, flatShading: true }),
+    roof: new THREE.MeshStandardMaterial({ color: roofHex, roughness: 0.8, flatShading: true }),
     cloth: new THREE.MeshStandardMaterial({ color, roughness: 0.7, flatShading: true }),
     accent: new THREE.MeshStandardMaterial({ color: accent, roughness: 0.8, flatShading: true }),
     gold: new THREE.MeshStandardMaterial({ color: 0xe3bd74, roughness: 0.3, metalness: 0.7, flatShading: true }),
     wood: new THREE.MeshStandardMaterial({ color: 0x6b4a2c, roughness: 0.9, flatShading: true }),
+    crystal: new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.55, roughness: 0.2, metalness: 0.35, flatShading: true }),
+    alloy: new THREE.MeshStandardMaterial({ color: 0x6d7d86, roughness: 0.35, metalness: 0.85, flatShading: true }),
     window: new THREE.MeshStandardMaterial({ color: 0xffca7a, emissive: 0xffab4d, emissiveIntensity: 1.2, roughness: 0.5 }),
   };
   const add = (geo, mat, x, y, z, parent = group) => {
@@ -1867,6 +2102,65 @@ export function createCityMesh(city, world) {
   add(new THREE.BoxGeometry(0.05, 0.5, 0.05), M.gold, -0.34, 0.42, -0.3);
   add(new THREE.ConeGeometry(0.05, 0.12, 4), M.gold, -0.34, 0.72, -0.3);
 
+  if (style === 'chinese' || style === 'japanese' || style === 'threeKingdoms') {
+    for (const [x, z, s] of [[0.38, -0.18, 1], [-0.38, 0.18, 0.8]]) {
+      add(new THREE.BoxGeometry(0.22 * s, 0.5 * s, 0.22 * s), M.wood, x, 0.4 * s, z);
+      for (let i = 0; i < 3; i++) {
+        add(new THREE.ConeGeometry((0.24 - i * 0.05) * s, 0.12 * s, 4).rotateY(Math.PI / 4), M.roof, x, (0.63 + i * 0.16) * s, z);
+      }
+    }
+    add(new THREE.TorusGeometry(0.16, 0.018, 5, 14), M.gold, 0, 0.86, 0).rotation.x = Math.PI / 2;
+  } else if (style === 'roman' || style === 'greek') {
+    for (let i = 0; i < 7; i++) {
+      const a = (i / 7) * Math.PI * 2;
+      add(new THREE.CylinderGeometry(0.025, 0.03, 0.36, 8), M.stone, Math.cos(a) * 0.5, 0.34, Math.sin(a) * 0.5);
+    }
+    add(new THREE.BoxGeometry(1.14, 0.06, 0.18), M.stoneDark, 0, 0.55, 0);
+    add(new THREE.ConeGeometry(0.16, 0.12, 4).rotateY(Math.PI / 4), M.roof, 0, 0.66, 0);
+  } else if (style === 'egyptian') {
+    for (const s of [-1, 1]) {
+      add(new THREE.BoxGeometry(0.06, 0.62, 0.06), M.gold, s * 0.42, 0.48, -0.28);
+      add(new THREE.ConeGeometry(0.06, 0.16, 4), M.gold, s * 0.42, 0.84, -0.28);
+    }
+    add(new THREE.BoxGeometry(0.26, 0.12, 0.26), M.stoneDark, 0.36, 0.2, 0.3);
+  } else if (style === 'arabic' || style === 'ottoman' || style === 'persian') {
+    for (const [x, z, s] of [[0.36, 0.2, 0.22], [-0.36, -0.18, 0.17]]) {
+      add(new THREE.SphereGeometry(s, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), M.roof, x, 0.18, z);
+      add(new THREE.ConeGeometry(0.02, 0.1, 5), M.gold, x, 0.4, z);
+    }
+  } else if (style === 'norse' || style === 'steppe') {
+    for (const [x, z] of [[0.38, 0.2], [-0.4, -0.2]]) {
+      add(new THREE.ConeGeometry(0.2, 0.28, 6), M.roof, x, 0.22, z);
+      add(new THREE.CylinderGeometry(0.012, 0.012, 0.34, 4), M.wood, x + 0.1, 0.42, z);
+    }
+  } else if (style === 'aztec' || style === 'inca') {
+    for (let i = 0; i < 4; i++) {
+      add(new THREE.BoxGeometry(0.5 - i * 0.1, 0.1, 0.4 - i * 0.08), M.stoneDark, 0.34, 0.2 + i * 0.1, 0.28);
+    }
+    add(new THREE.BoxGeometry(0.05, 0.28, 0.05), M.gold, 0.34, 0.62, 0.28);
+  } else if (style === 'alienCrystal') {
+    for (let i = 0; i < 5; i++) {
+      const a = (i / 5) * Math.PI * 2;
+      add(new THREE.ConeGeometry(0.07, 0.5 + i * 0.06, 5), M.crystal, Math.cos(a) * 0.38, 0.3, Math.sin(a) * 0.38);
+    }
+    add(new THREE.OctahedronGeometry(0.16, 0), M.crystal, 0, 0.92, 0);
+  } else if (style === 'hive') {
+    for (const [x, z, s] of [[0.34, 0.24, 0.2], [-0.38, -0.12, 0.16], [0.1, -0.4, 0.14]]) {
+      add(new THREE.SphereGeometry(s, 10, 7), M.accent, x, 0.22, z);
+      add(new THREE.ConeGeometry(s * 0.8, 0.24, 7), M.roof, x, 0.38, z);
+    }
+  } else if (style === 'machine') {
+    add(new THREE.BoxGeometry(0.2, 0.7, 0.2), M.alloy, 0.36, 0.5, 0.2);
+    add(new THREE.CylinderGeometry(0.01, 0.01, 0.6, 4), M.gold, 0.36, 0.96, 0.2);
+    add(new THREE.TorusGeometry(0.2, 0.02, 5, 16), M.alloy, -0.34, 0.7, -0.2).rotation.x = Math.PI / 2;
+  } else if (style === 'psionic') {
+    for (let i = 0; i < 3; i++) {
+      const ring = add(new THREE.TorusGeometry(0.28 + i * 0.08, 0.012, 5, 18), M.crystal, 0, 0.6 + i * 0.18, 0);
+      ring.rotation.x = Math.PI / 2 + i * 0.3;
+    }
+    add(new THREE.IcosahedronGeometry(0.12, 0), M.crystal, 0, 0.8, 0);
+  }
+
   // wonder slot
   const wonderGroup = new THREE.Group();
   wonderGroup.visible = false;
@@ -1906,6 +2200,7 @@ export function createCityMesh(city, world) {
     smoke.push(s);
   }
 
+  group.userData.style = style;
   group.userData.animate = (dt, time) => {
     for (const s of smoke) {
       s.userData.t += dt * s.userData.speed;
