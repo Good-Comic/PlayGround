@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { CULTURE_META } from './config.js';
 import {
   RNG, clamp, lerp, smoothstep, fbm2,
   HEX_R, HEX_DIRS, SQRT3, axialToWorld, worldToAxial, axialKey,
@@ -60,6 +61,7 @@ export class World {
     this.cols = opts.cols ?? 21;
     this.rows = opts.rows ?? 13;
     this.mutation = opts.mutation ?? 0;
+    this.showBorders = opts.showBorders !== false;
     this.scenarioId = opts.scenario ?? 'legacy';
     this.anomalyTiles = [];
     this.sunDir = opts.sunDir ? opts.sunDir.clone().normalize() : new THREE.Vector3(0.62, 0.5, 0.42).normalize();
@@ -848,6 +850,18 @@ export class World {
     return city;
   }
 
+  refreshCityEra(era) {
+    for (const city of this.cities) {
+      city.era = era;
+      if (!city.mesh) continue;
+      this.groups.cities.remove(city.mesh);
+      city.mesh = createCityMesh(city, this);
+      city.mesh.position.set(city.tile.x, city.tile.h, city.tile.z);
+      this.groups.cities.add(city.mesh);
+      if (city.wonders?.length) city.mesh.userData.setWonder?.(city.wonders[city.wonders.length - 1].id);
+    }
+  }
+
   addUnit(unit) {
     this.units.push(unit);
     const tile = this.tiles.get(axialKey(unit.q, unit.r));
@@ -880,6 +894,57 @@ export class World {
       return Promise.resolve();
     }
     return animateWalk(unit, dest, this);
+  }
+
+  playAttack(unit, targetTile, ranged = false) {
+    if (!unit?.mesh || !targetTile) return;
+    const start = unit.mesh.position.clone();
+    const target = new THREE.Vector3(targetTile.x, targetTile.h, targetTile.z);
+    const dir = target.clone().sub(start);
+    const dist = dir.length();
+    if (dist < 0.01) return;
+    dir.normalize();
+    unit.mesh.rotation.y = Math.atan2(dir.x, dir.z);
+    const dur = 320;
+    const t0 = performance.now();
+    const parts = unit.mesh.userData.parts || {};
+    const step = () => {
+      const now = performance.now();
+      const t = clamp((now - t0) / dur, 0, 1);
+      const lunge = ranged ? 0 : Math.sin(t * Math.PI) * Math.min(0.42, dist * 0.22);
+      unit.mesh.position.copy(start).addScaledVector(dir, lunge);
+      if (parts.armR) parts.armR.rotation.x = -Math.sin(t * Math.PI) * 1.4;
+      if (parts.armL) parts.armL.rotation.x = Math.sin(t * Math.PI) * 0.7;
+      if (t < 1) requestAnimationFrame(step);
+      else {
+        unit.mesh.position.copy(start);
+        if (parts.armR) parts.armR.rotation.x = 0;
+        if (parts.armL) parts.armL.rotation.x = 0;
+      }
+    };
+    requestAnimationFrame(step);
+    const color = unit.civ?.border ?? unit.civ?.color ?? 0xe3bd74;
+    const burst = new THREE.Group();
+    burst.position.copy(target).add(new THREE.Vector3(0, 0.35, 0));
+    this.scene.add(burst);
+    const sparks = [];
+    for (let i = 0; i < 8; i++) {
+      const m = new THREE.Mesh(new THREE.SphereGeometry(ranged ? 0.025 : 0.04, 5, 4), new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.9 }));
+      m.userData.v = new THREE.Vector3((Math.random() - 0.5) * 0.8, Math.random() * 0.7 + 0.2, (Math.random() - 0.5) * 0.8);
+      burst.add(m); sparks.push(m);
+    }
+    const bt0 = performance.now();
+    const animateBurst = () => {
+      const t = clamp((performance.now() - bt0) / 620, 0, 1);
+      for (const m of sparks) {
+        m.position.addScaledVector(m.userData.v, 0.016);
+        m.userData.v.y -= 0.035;
+        m.material.opacity = 0.9 * (1 - t);
+      }
+      if (t < 1) requestAnimationFrame(animateBurst);
+      else { this.scene.remove(burst); burst.traverse((o) => { o.geometry?.dispose(); o.material?.dispose(); }); }
+    };
+    animateBurst();
   }
 
   removeUnit(unit) {
@@ -1217,6 +1282,7 @@ export class World {
       fill.renderOrder = 4;
       g.add(fill);
 
+      if (!this.showBorders) continue;
       // borders
       const bpos = [];
       const width = 0.055;
@@ -1694,8 +1760,43 @@ export function createUnitMesh(unit, world) {
   group.add(flag);
   parts.flag = flag;
 
+  const culture = civ?.culture || 'europe';
+  const glossy = new THREE.MeshStandardMaterial({ color: accent, roughness: 0.3, metalness: 0.6, flatShading: true });
+  if (String(culture).startsWith('alien')) {
+    const glowMat = new THREE.MeshStandardMaterial({ color: civ?.border ?? accent, emissive: civ?.border ?? accent, emissiveIntensity: 1.4, roughness: 0.2, metalness: 0.3, flatShading: true });
+    const halo = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.012, 5, 18).rotateX(Math.PI / 2), glowMat);
+    halo.position.set(0, 0.48, 0);
+    group.add(halo);
+    parts.alienHalo = halo;
+    for (let i = 0; i < 3; i++) {
+      const a = i * Math.PI * 2 / 3;
+      const shard = add(new THREE.OctahedronGeometry(0.045, 0), glowMat, Math.cos(a) * 0.18, 0.52 + i * 0.07, Math.sin(a) * 0.18);
+      shard.rotation.y = a;
+    }
+    add(new THREE.OctahedronGeometry(0.035, 0), glowMat, 0, 0.63, 0.055);
+  } else if (culture === 'eastAsia') {
+    add(new THREE.BoxGeometry(0.11, 0.05, 0.08), glossy, 0, 0.31, 0.045);
+    const sash = add(new THREE.BoxGeometry(0.05, 0.3, 0.02), new THREE.MeshStandardMaterial({ color: 0xe3bd74, roughness: 0.4, metalness: 0.5 }), -0.08, 0.17, 0.06);
+    sash.rotation.z = -0.22;
+  } else if (culture === 'middleEast') {
+    add(new THREE.SphereGeometry(0.09, 9, 6), new THREE.MeshStandardMaterial({ color: 0xe8ddc4, roughness: 0.9 }), 0, 0.4, 0).scale.set(1, 0.65, 1);
+    add(new THREE.ConeGeometry(0.1, 0.1, 7), glossy, 0, 0.48, 0);
+  } else if (culture === 'americas') {
+    const featherMat = new THREE.MeshStandardMaterial({ color: 0xd8b45a, roughness: 0.6, side: THREE.DoubleSide });
+    for (const s of [-1, 1]) {
+      const feather = add(new THREE.ConeGeometry(0.025, 0.24, 4), featherMat, s * 0.07, 0.55, -0.04);
+      feather.rotation.z = s * 0.5;
+    }
+  } else if (culture === 'steppe') {
+    add(new THREE.TorusGeometry(0.085, 0.018, 5, 12).rotateX(Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0x6d5c3e, roughness: 0.95 }), 0, 0.405, 0);
+  }
+
   const animate = (dt, time, u) => {
     if (u?.moving) return;
+    if (parts.alienHalo) {
+      parts.alienHalo.rotation.z += dt * 1.2;
+      parts.alienHalo.position.y = 0.48 + Math.sin(time * 2 + (unit.phase ?? 0)) * 0.02;
+    }
     const bob = Math.sin(time * 1.4 + (unit.phase ?? 0)) * 0.012;
     if (parts.hip) parts.hip.position.y = 0.24 + bob;
     if (parts.rig) parts.rig.position.y = bob * 0.5;
@@ -1789,18 +1890,116 @@ function roundRect(ctx, x, y, w, h, r) {
 
 /* ------------------------ Cities ------------------------ */
 const cityMaterials = null;
+function createAlienCityMesh(city, world, color, accent, meta) {
+  const group = new THREE.Group();
+  const culture = city.civ?.culture || 'alienCrystal';
+  const glowColor = meta?.accent ?? 0x8ff5ff;
+  const roofColor = meta?.roof ?? 0x5c7dff;
+  const M = {
+    shell: new THREE.MeshStandardMaterial({ color: roofColor, roughness: 0.42, metalness: 0.35, flatShading: true }),
+    flesh: new THREE.MeshStandardMaterial({ color: 0x4a3a2c, roughness: 0.92, flatShading: true }),
+    body: new THREE.MeshStandardMaterial({ color, roughness: 0.55, metalness: 0.28, flatShading: true }),
+    accent: new THREE.MeshStandardMaterial({ color: accent, roughness: 0.7, flatShading: true }),
+    glow: new THREE.MeshStandardMaterial({ color: glowColor, emissive: glowColor, emissiveIntensity: 1.5, roughness: 0.24, metalness: 0.25, flatShading: true }),
+    dark: new THREE.MeshStandardMaterial({ color: 0x1a2030, roughness: 0.65, metalness: 0.4, flatShading: true }),
+  };
+  const add = (geo, mat, x, y, z, parent = group, ry = 0) => {
+    const m = new THREE.Mesh(geo, mat);
+    m.position.set(x, y, z); m.rotation.y = ry;
+    m.castShadow = true; m.receiveShadow = true;
+    parent.add(m);
+    return m;
+  };
+  const rng = new RNG(world.seed + city.q * 41 + city.r * 23);
+  add(new THREE.CylinderGeometry(0.96, 1.03, 0.16, 6).rotateY(Math.PI / 6), M.dark, 0, 0.08, 0);
+  add(new THREE.CylinderGeometry(0.9, 0.94, 0.09, 6).rotateY(Math.PI / 6), M.shell, 0, 0.19, 0);
+  for (let i = 0; i < 6; i++) {
+    const a = (i / 6) * Math.PI * 2;
+    add(new THREE.BoxGeometry(0.3, 0.06, 0.06), M.glow, Math.cos(a) * 0.82, 0.26, Math.sin(a) * 0.82, group, -a);
+  }
+  if (culture === 'alienSwarm') {
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * Math.PI * 2 + rng.float(-0.2, 0.2);
+      const h = rng.float(0.5, 1.35);
+      const pod = add(new THREE.CapsuleGeometry(0.16 + rng.float(0, 0.14), h, 5, 8), i % 3 ? M.body : M.flesh, Math.cos(a) * rng.float(0.35, 0.65), 0.24 + h / 2, Math.sin(a) * rng.float(0.35, 0.65));
+      pod.rotation.z = rng.float(-0.28, 0.28);
+    }
+    add(new THREE.SphereGeometry(0.42, 12, 8), M.glow, 0, 0.9, 0);
+    for (let i = 0; i < 3; i++) {
+      const a = i * Math.PI * 2 / 3;
+      add(new THREE.SphereGeometry(0.18, 8, 6), M.body, Math.cos(a) * 0.35, 0.72, Math.sin(a) * 0.35);
+    }
+  } else if (culture === 'alienMachine') {
+    for (let i = 0; i < 4; i++) {
+      const a = (i / 4) * Math.PI * 2;
+      add(new THREE.BoxGeometry(0.42, 0.9 + i * 0.18, 0.42), i % 2 ? M.body : M.shell, Math.cos(a) * 0.48, 0.65 + i * 0.09, Math.sin(a) * 0.48, group, -a);
+    }
+    add(new THREE.CylinderGeometry(0.34, 0.46, 1.1, 8), M.dark, 0, 0.8, 0);
+    add(new THREE.TorusGeometry(0.62, 0.05, 8, 28).rotateX(Math.PI / 2), M.glow, 0, 1.28, 0);
+    add(new THREE.TorusGeometry(0.45, 0.035, 8, 24).rotateX(Math.PI / 2), M.accent, 0, 1.46, 0);
+  } else if (culture === 'alienEnergy') {
+    add(new THREE.OctahedronGeometry(0.5, 0), M.glow, 0, 1.05, 0);
+    add(new THREE.TorusGeometry(0.62, 0.025, 6, 30), M.accent, 0, 1.05, 0).rotation.x = 1.1;
+    add(new THREE.TorusGeometry(0.76, 0.018, 6, 30), M.glow, 0, 1.05, 0).rotation.z = 0.72;
+    for (let i = 0; i < 5; i++) {
+      const a = (i / 5) * Math.PI * 2;
+      add(new THREE.ConeGeometry(0.15, 1.05, 5), i % 2 ? M.body : M.shell, Math.cos(a) * 0.58, 0.68, Math.sin(a) * 0.58);
+    }
+  } else {
+    for (let i = 0; i < 7; i++) {
+      const a = (i / 7) * Math.PI * 2 + rng.float(-0.15, 0.15);
+      const h = rng.float(0.9, 2.1);
+      const shard = add(new THREE.ConeGeometry(rng.float(0.12, 0.24), h, 5), i % 3 ? M.shell : M.glow, Math.cos(a) * rng.float(0.34, 0.62), 0.2 + h / 2, Math.sin(a) * rng.float(0.34, 0.62));
+      shard.rotation.z = rng.float(-0.3, 0.3);
+    }
+    add(new THREE.IcosahedronGeometry(0.38, 0), M.glow, 0, 0.98, 0);
+  }
+  for (let i = 0; i < 5; i++) {
+    const a = rng.float(0, Math.PI * 2), rr = rng.float(0.48, 0.7);
+    const h = rng.float(0.3, 0.75);
+    add(new THREE.ConeGeometry(0.15, h, rng.chance(0.5) ? 5 : 3), M.shell, Math.cos(a) * rr, 0.24 + h / 2, Math.sin(a) * rr);
+    add(new THREE.SphereGeometry(0.035, 6, 4), M.glow, Math.cos(a) * rr, 0.28 + h, Math.sin(a) * rr);
+  }
+  const era = Number(city.era || 0);
+  if (era >= 4) {
+    for (let i = 0; i < 3; i++) {
+      const a = i * Math.PI * 2 / 3 + 0.5;
+      add(new THREE.CylinderGeometry(0.07, 0.11, 0.65 + i * 0.15, 6), i % 2 ? M.body : M.shell, Math.cos(a) * 0.56, 0.55 + i * 0.08, Math.sin(a) * 0.56);
+      add(new THREE.SphereGeometry(0.06, 6, 4), M.glow, Math.cos(a) * 0.56, 0.92 + i * 0.15, Math.sin(a) * 0.56);
+    }
+  }
+  if (era >= 6) {
+    add(new THREE.TorusGeometry(0.84, 0.02, 6, 30).rotateX(Math.PI / 2), M.glow, 0, 1.58, 0);
+    add(new THREE.OctahedronGeometry(0.1, 0), M.glow, 0, 1.58, 0);
+  }
+  const wonderGroup = new THREE.Group();
+  wonderGroup.visible = false;
+  group.add(wonderGroup);
+  group.userData.wonderGroup = wonderGroup;
+  group.userData.setWonder = (kind) => { wonderGroup.visible = !!kind; };
+  const glows = [M.glow];
+  group.userData.animate = (dt, time) => {
+    for (const mat of glows) mat.emissiveIntensity = 1.15 + Math.sin(time * 2.4 + city.q) * 0.45;
+    wonderGroup.rotation.y += dt * 0.25;
+  };
+  return group;
+}
+
 export function createCityMesh(city, world) {
   const civ = world.civs.get(city.civId);
   const color = new THREE.Color(civ?.color ?? 0xe0b060);
   const accent = new THREE.Color(civ?.accent ?? 0x2b3a4a);
+  const culture = civ?.culture || 'europe';
+  const meta = CULTURE_META[culture] || CULTURE_META.europe;
+  if (String(culture).startsWith('alien')) return createAlienCityMesh(city, world, color, accent, meta);
   const group = new THREE.Group();
   const M = {
-    stone: new THREE.MeshStandardMaterial({ color: 0xcfc4ab, roughness: 0.85, flatShading: true }),
-    stoneDark: new THREE.MeshStandardMaterial({ color: 0xa89a7e, roughness: 0.9, flatShading: true }),
-    roof: new THREE.MeshStandardMaterial({ color: 0x8a4a33, roughness: 0.8, flatShading: true }),
+    stone: new THREE.MeshStandardMaterial({ color: meta.wall ?? 0xcfc4ab, roughness: 0.85, flatShading: true }),
+    stoneDark: new THREE.MeshStandardMaterial({ color: meta.pillar ?? 0xa89a7e, roughness: 0.9, flatShading: true }),
+    roof: new THREE.MeshStandardMaterial({ color: meta.roof ?? 0x8a4a33, roughness: 0.8, flatShading: true }),
     cloth: new THREE.MeshStandardMaterial({ color, roughness: 0.7, flatShading: true }),
     accent: new THREE.MeshStandardMaterial({ color: accent, roughness: 0.8, flatShading: true }),
-    gold: new THREE.MeshStandardMaterial({ color: 0xe3bd74, roughness: 0.3, metalness: 0.7, flatShading: true }),
+    gold: new THREE.MeshStandardMaterial({ color: meta.accent ?? 0xe3bd74, roughness: 0.3, metalness: 0.7, flatShading: true }),
     wood: new THREE.MeshStandardMaterial({ color: 0x6b4a2c, roughness: 0.9, flatShading: true }),
     window: new THREE.MeshStandardMaterial({ color: 0xffca7a, emissive: 0xffab4d, emissiveIntensity: 1.2, roughness: 0.5 }),
   };
@@ -1866,6 +2065,47 @@ export function createCityMesh(city, world) {
   // monument / obelisk
   add(new THREE.BoxGeometry(0.05, 0.5, 0.05), M.gold, -0.34, 0.42, -0.3);
   add(new THREE.ConeGeometry(0.05, 0.12, 4), M.gold, -0.34, 0.72, -0.3);
+
+  if (culture === 'eastAsia') {
+    for (let i = 0; i < 3; i++) {
+      add(new THREE.ConeGeometry(0.42 - i * 0.09, 0.16, 8), M.roof, 0, 0.8 + i * 0.2, 0);
+    }
+    for (const [x, z] of [[-0.42, 0.34], [0.42, -0.3]]) {
+      add(new THREE.CylinderGeometry(0.035, 0.045, 0.55, 6), M.wood, x, 0.48, z);
+      add(new THREE.ConeGeometry(0.12, 0.15, 6), M.roof, x, 0.82, z);
+    }
+  } else if (culture === 'middleEast') {
+    add(new THREE.SphereGeometry(0.26, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2), M.gold, 0, 0.72, 0);
+    add(new THREE.CylinderGeometry(0.07, 0.1, 1.05, 8), M.stone, 0.52, 0.68, -0.32);
+    add(new THREE.ConeGeometry(0.12, 0.2, 8), M.gold, 0.52, 1.3, -0.32);
+  } else if (culture === 'americas') {
+    for (let i = 0; i < 4; i++) {
+      add(new THREE.BoxGeometry(0.7 - i * 0.14, 0.1, 0.7 - i * 0.14), M.stone, 0, 0.28 + i * 0.12, 0);
+    }
+    add(new THREE.BoxGeometry(0.12, 0.16, 0.12), M.gold, 0, 0.8, 0);
+  } else if (culture === 'steppe') {
+    for (let i = 0; i < 3; i++) {
+      const a = i * Math.PI * 2 / 3;
+      add(new THREE.CylinderGeometry(0.2, 0.23, 0.18, 10), M.stone, Math.cos(a) * 0.42, 0.32, Math.sin(a) * 0.42);
+      add(new THREE.ConeGeometry(0.26, 0.18, 10), M.roof, Math.cos(a) * 0.42, 0.5, Math.sin(a) * 0.42);
+    }
+  }
+
+  const era = Number(city.era || 0);
+  if (era >= 4) {
+    for (let i = 0; i < 3; i++) {
+      const a = i * Math.PI * 2 / 3 + 0.4;
+      const h = 0.65 + i * 0.18;
+      add(new THREE.BoxGeometry(0.18, h, 0.18), M.stoneDark, Math.cos(a) * 0.62, 0.36 + h / 2, Math.sin(a) * 0.62);
+      add(new THREE.BoxGeometry(0.2, 0.025, 0.2), M.window, Math.cos(a) * 0.62, 0.36 + h, Math.sin(a) * 0.62);
+    }
+    add(new THREE.CylinderGeometry(0.09, 0.13, 0.7, 8), M.gold, -0.5, 0.6, 0.5);
+    add(new THREE.SphereGeometry(0.09, 8, 6), M.window, -0.5, 1.0, 0.5);
+  }
+  if (era >= 6) {
+    add(new THREE.TorusGeometry(0.86, 0.018, 6, 32).rotateX(Math.PI / 2), M.gold, 0, 1.5, 0);
+    add(new THREE.OctahedronGeometry(0.12, 0), M.window, 0, 1.5, 0);
+  }
 
   // wonder slot
   const wonderGroup = new THREE.Group();

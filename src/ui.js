@@ -502,9 +502,10 @@ export class UI {
     const current = g.currentTech[civId];
     const available = new Set(g.availableTechs(civId).map((t) => t.id));
     const doctrine = g.doctrines[civId];
+    const factionKey = this.world.civs.get(civId)?.factionKey ?? civId;
     const eras = TECH_ERA_ORDER;
     const body = eras.map((era) => {
-      const techs = TECHS.filter((t) => t.era === era);
+      const techs = TECHS.filter((t) => t.era === era && (!t.unique || t.faction === factionKey) && (this.showMastery || !t.mastery));
       const core = techs.filter((t) => !t.branch);
       const branches = techs.filter((t) => t.branch);
       const renderNode = (t) => {
@@ -520,19 +521,26 @@ export class UI {
         if (lockedBranch) foot = `已鎖定 • ${DOCTRINES[doctrine].name}`;
         if (blackLocked) foot = '需要遠古黑科技';
         if (eraLocked) foot = '此劇本時代上限之外';
-        return `<div class="tech-node ${cls}${t.branch ? ' branch' : ''}" data-tech="${t.id}">
-          <div class="tn-head">${icon(t.icon)}<span class="tn-name">${esc(t.name)}</span>${t.branch ? `<span class="tn-branch" style="color:${DOCTRINES[t.branch].color}">${DOCTRINES[t.branch].name.slice(0, 2)}</span>` : ''}</div>
+        return `<div class="tech-node ${cls}${t.branch ? ' branch' : ''}${t.mastery ? ' mastery' : ''}" data-tech="${t.id}">
+          <div class="tn-head">${icon(t.icon)}<span class="tn-name">${esc(t.name)}</span>${t.unique ? '<span class="tn-branch tn-unique">專屬</span>' : ''}${t.branch ? `<span class="tn-branch" style="color:${DOCTRINES[t.branch].color}">${DOCTRINES[t.branch].name.slice(0, 2)}</span>` : ''}</div>
           <div class="tn-cost">${g.techCost(t)} 科學 • ${ERA_LABELS[era]}</div>
           <div class="tn-desc">${esc(t.bonus)}</div>
           <div class="tn-foot">${foot}</div>
         </div>`;
       };
       const branchBlock = branches.length ? `<div class="tech-branch-label">專屬路線（僅能擇一）</div><div class="tech-grid">${branches.map(renderNode).join('')}</div>` : '';
-      return `<div class="tech-era"><h3>${ERA_LABELS[era]}</h3><div class="tech-grid">${core.map(renderNode).join('')}</div>${branchBlock}</div>`;
+      const grid = core.length ? `<div class="tech-grid">${core.map(renderNode).join('')}</div>` : '<div class="tech-empty">此時代沒有可顯示的科技。</div>';
+      return `<div class="tech-era"><h3>${ERA_LABELS[era]}</h3>${grid}${branchBlock}</div>`;
     }).join('');
+    const masteryCount = TECHS.filter((t) => t.mastery).length;
     this.openModal(`
-      <div class="modal-head">${icon('i-research')}<div><h2>科技</h2><div class="sub">八個時代、專屬分支與黑科技 — 已發現 ${acquired.size} / ${TECHS.length} 項${doctrine ? ` • 路線：${DOCTRINES[doctrine].name}` : ''}</div></div><button class="close">×</button></div>
+      <div class="modal-head">${icon('i-research')}<div><h2>科技</h2><div class="sub">八個時代、專屬分支與黑科技 — 已發現 ${acquired.size} / ${TECHS.length} 項${doctrine ? ` • 路線：${DOCTRINES[doctrine].name}` : ''}</div></div><button class="tech-toggle" data-toggle-mastery>${this.showMastery ? '隱藏' : '顯示'}精通節點 +${masteryCount}</button><button class="close">×</button></div>
       <div class="modal-body">${body}</div>`);
+    this.el.modals.querySelector('[data-toggle-mastery]')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.showMastery = !this.showMastery;
+      this.techTree();
+    });
     $$('.tech-node.available', this.el.modals).forEach((node) => {
       node.addEventListener('click', () => {
         const id = node.dataset.tech;

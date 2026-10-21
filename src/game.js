@@ -4,6 +4,10 @@ import {
   FUTURE_TECHS, FUTURE_UNITS, FUTURE_BUILDINGS, GENERALS, SCENARIOS, CRISES,
   DOCTRINES, SCHEMES, STRATEGIC, TECH_ERA_ORDER,
 } from './expansions.js';
+import {
+  GameMasterConfig, getFaction, buildUniqueTechs, buildMasteryTechs,
+  difficultyInfo,
+} from './config.js';
 
 export const CIVS = [
   {
@@ -76,6 +80,17 @@ for (const [id, def] of Object.entries(FUTURE_UNITS)) if (!UNIT_TYPES[id]) UNIT_
 for (const [id, def] of Object.entries(FUTURE_BUILDINGS)) if (!BUILDINGS[id]) BUILDINGS[id] = def;
 const CIV_DEFAULTS = CIVS.map((civ) => ({ ...civ }));
 
+export function configureCivs(defs) {
+  if (!Array.isArray(defs) || !defs.length) return;
+  CIVS.splice(0, CIVS.length, ...defs);
+  CIV_DEFAULTS.splice(0, CIV_DEFAULTS.length, ...defs.map((c) => ({ ...c })));
+  for (const def of defs) {
+    const u = def.uniqueUnit;
+    if (!u?.id) continue;
+    UNIT_TYPES[u.id] = { ...u.def, unique: true, faction: u.def?.faction || def.factionKey || def.id };
+  }
+}
+
 export const TECHS = [
   { id: 'pottery',        name: '陶器',         era: 'Antiquity', cost: 30,  prereq: [],                          bonus: '擁有淡水的城市 +1 食物。', yields: { food: 1 }, icon: 'i-food' },
   { id: 'animalHusbandry',name: '畜牧',era: 'Antiquity', cost: 35,  prereq: [],                          bonus: '揭示馬匹。牧場可改良地格。', icon: 'i-food' },
@@ -104,6 +119,12 @@ export const TECHS = [
 ];
 
 for (const tech of FUTURE_TECHS) if (!TECHS.some((t) => t.id === tech.id)) TECHS.push(tech);
+for (const tech of buildUniqueTechs()) if (!TECHS.some((t) => t.id === tech.id)) TECHS.push(tech);
+for (const tech of buildMasteryTechs(TECHS)) if (!TECHS.some((t) => t.id === tech.id)) TECHS.push(tech);
+for (const faction of Object.values(GameMasterConfig.factions)) {
+  const u = faction.uniqueUnit;
+  if (u && !UNIT_TYPES[u.id]) UNIT_TYPES[u.id] = { ...u.def, unique: true, faction: faction.key || faction.id };
+}
 
 export const CIVICS = [
   { name: '法典',       at: 25,  desc: '每回合 +1 影響力。治理由此開始。' },
@@ -117,31 +138,35 @@ export const CIVICS = [
 
 const ERAS = [
   { name: '上古時代',   from: 1 },
-  { name: '探索時代', from: 14 },
-  { name: '近代',      from: 28 },
-  { name: '工業時代', from: 42 },
-  { name: '資訊時代', from: 56 },
-  { name: '核融合時代', from: 70 },
-  { name: '軌道時代', from: 84 },
-  { name: '奇點時代', from: 98 },
+  { name: '古典時代', from: 14 },
+  { name: '中古時代',      from: 28 },
+  { name: '文藝復興時代', from: 42 },
+  { name: '工業時代', from: 56 },
+  { name: '現代', from: 70 },
+  { name: '2050', from: 84 },
+  { name: '2100', from: 98 },
 ];
 
 const TURN_LIMIT = 120;
+const DEFAULT_ERA_TECH_COST = [30, 170, 320, 430, 650, 980, 1450, 2100];
 
 export class Game {
   constructor(world, opts = {}) {
     this.world = world;
     this.listeners = new Map();
     this.turn = 1;
-    this.playerId = 'aurelia';
+    this.playerId = opts.playerId ?? CIVS[0]?.id ?? 'aurelia';
     this.rng = new RNG(world.seed + 2024);
     this.selected = null; // {type:'unit'|'city', ref}
     this.hoverTile = null;
     this.scenarioId = SCENARIOS[opts.scenario] ? opts.scenario : 'legacy';
     this.scenario = SCENARIOS[this.scenarioId];
-    this.turnLimit = this.scenario.turnLimit ?? TURN_LIMIT;
-    this.maxEra = this.scenario.maxEra ?? ERAS.length - 1;
-    this.eraFloor = this.scenario.startEra ?? 0;
+    this.turnLimit = opts.turnLimit ?? this.scenario.turnLimit ?? TURN_LIMIT;
+    this.difficulty = opts.difficulty ?? GameMasterConfig.options.difficulty ?? 'normal';
+    this.mapType = opts.mapType ?? 'random';
+    this.seed = opts.seed ?? world.seed;
+    this.maxEra = opts.maxEra ?? this.scenario.maxEra ?? ERAS.length - 1;
+    this.eraFloor = opts.startEra ?? this.scenario.startEra ?? 0;
     this.eraIndex = this.eraFloor;
     this.stocks = {};
     this.perTurn = {};
@@ -376,11 +401,11 @@ export class Game {
       xian: ['長安', '洛陽', '建康', '臨安', '郢', '邯鄲', '曲阜', '成都'],
     };
     const override = this.scenario?.civOverrides?.[civ.id];
-    const names = override?.cityNames ?? baseNames[civ.id] ?? ['城市'];
+    const names = override?.cityNames ?? civ.cityNames ?? baseNames[civ.id] ?? ['城市'];
     const index = civ.cities.length;
     const city = {
       civId: civ.id, civ,
-      q: tile.q, r: tile.r, name: capital && override?.capital ? override.capital : names[index % names.length],
+      q: tile.q, r: tile.r, name: capital ? (override?.capital ?? civ.capitalName ?? names[0]) : names[index % names.length],
       population: capital ? 2 : 1,
       hp: 200, maxHp: 200,
       production: 0, food: 0, culture: 0, isCapital: capital,
@@ -388,6 +413,7 @@ export class Game {
       producing: null, produceProgress: 0,
       defense: capital ? 12 : 6,
       level: capital ? 2 : 1,
+      era: this.eraIndex,
     };
     civ.cities.push(city);
     world.addCity(city);
@@ -421,10 +447,11 @@ export class Game {
     const def = UNIT_TYPES[type];
     const tile = world.tiles.get(axialKey(q, r));
     if (!tile) return null;
+    const maxHp = def.hp ?? 100;
     const unit = {
       id: `u${this.rng.int(100000, 999999)}`,
       civId: civ.id, civ, type, name: def.name,
-      q, r, hp: 100, maxHp: 100, moves: def.moves, maxMoves: def.moves,
+      q, r, hp: maxHp, maxHp, moves: def.moves, maxMoves: def.moves,
       str: def.str + (civ.id === this.playerId ? 0 : 0),
       xp: 0, level: 0, fortified: false, asleep: false,
       supplied: true, supplyDistance: 0, supplyTurns: 0, generalId: null,
@@ -461,6 +488,8 @@ export class Game {
   }
   terrainSightBonus(tile) {
     if (!tile) return 0;
+    const def = BIOMES[tile.terrain];
+    if (def?.sight != null) return def.sight;
     return tile.terrain === 'mountain' ? 2 : tile.terrain === 'hills' ? 1 : 0;
   }
   losBlocked(source, target) {
@@ -547,6 +576,10 @@ export class Game {
   }
 
   /* ============================ YIELDS ============================ */
+  factionFor(civId) {
+    const civ = this.world?.civs?.get(civId);
+    return getFaction(civ?.factionKey ?? civId);
+  }
   tileYields(tile, civId = this.playerId) {
     const y = { food: 0, production: 0, gold: 0, science: 0, culture: 0, faith: 0 };
     if (!tile.explored && civId === this.playerId) return y;
@@ -652,6 +685,20 @@ export class Game {
     total.science += pop;
     total.food -= pop;
     total.influence += 1;
+    const faction = this.factionFor(civId);
+    const fb = faction?.bonus ?? {};
+    if (fb.yields) {
+      for (const [k, v] of Object.entries(fb.yields)) total[k] += v * Math.max(1, civ.cities.length);
+    }
+    if (fb.yieldPct) {
+      for (const [k, v] of Object.entries(fb.yieldPct)) total[k] *= 1 + v;
+    }
+    const diff = difficultyInfo(this.difficulty);
+    if (civId !== this.playerId) {
+      total.food *= diff.aiYield; total.production *= diff.aiYield; total.gold *= diff.aiYield; total.science *= diff.aiYield;
+    } else {
+      total.food *= diff.playerYield; total.production *= diff.playerYield; total.gold *= diff.playerYield; total.science *= diff.playerYield;
+    }
     const mods = this.crisisMods(civId);
     total.food *= mods.food;
     total.production *= mods.production;
@@ -702,9 +749,8 @@ export class Game {
     if (def?.riverine && (tile.river || bt.water)) return 1;
     if (bt.mountain) return Infinity;
     if (bt.water) return Infinity;
-    let cost = 1;
+    let cost = bt.move ?? 1;
     if (tile.feature && FEATURES[tile.feature]?.move) cost = FEATURES[tile.feature].move;
-    if (tile.terrain === 'hills') cost = 2;
     if (tile.river) cost += 0.5;
     if (tile.effect === 'flood' || tile.effect === 'storm') cost += 1;
     if (tile.effect === 'fire') cost += 1;
@@ -840,15 +886,19 @@ export class Game {
     const def = UNIT_TYPES[unit.type];
     const tile = this.world.tiles.get(axialKey(unit.q, unit.r));
     const gen = this.generalForUnit(unit);
+    const faction = this.factionFor(unit.civId);
+    const fb = faction?.bonus ?? {};
+    const formula = GameMasterConfig.formulas.combat;
     let str = (ranged ? (def.rangedStr ?? def.str) : def.str);
     str *= 1 + unit.level * 0.08;
     str *= 1 + (gen?.bonuses?.strPct ?? 0);
-    if (ranged) str *= 1 + (gen?.bonuses?.rangedPct ?? 0);
-    if (def.domain === 'water') str *= 1 + (gen?.bonuses?.navy ?? 0);
+    if (ranged) str *= 1 + (gen?.bonuses?.rangedPct ?? 0) + (fb.ranged ?? 0);
+    if (def.domain === 'water') str *= 1 + (gen?.bonuses?.navy ?? 0) + (fb.navy ?? 0);
+    str *= 1 + (fb.combat ?? 0);
     if (this.scenarioId === 'threeKingdoms' && unit.civId === 'norlund' && (def.domain === 'water' || tile?.terrain === 'coast')) str *= 1.2;
     if (this.scenarioId === 'chrono' && unit.civId === 'norlund' && ranged) str *= 1.2;
     str *= 1 + this.legionBonus(unit);
-    if (tile && (tile.terrain === 'hills' || tile.terrain === 'mountain')) str *= 1.25;
+    if (tile && (tile.terrain === 'hills' || tile.terrain === 'mountain')) str *= formula.highGround;
     if (!unit.supplied) str *= 0.75;
     if (this.doctrines[unit.civId] === 'bio') str *= 1.08;
     return str;
@@ -868,11 +918,14 @@ export class Game {
     }
     const attackerCiv = world.civs.get(unit.civId);
     const atkStr = this.attackStrength(unit, (def.rangedStr ?? def.str) > def.str);
+    const f = GameMasterConfig.formulas.combat;
+    const srcTile = world.tiles.get(axialKey(unit.q, unit.r));
     this.emit('combatFlash');
+    world.playAttack?.(unit, targetTile, (def.range ?? 1) > 1);
     if (enemyCity) {
       const defStr = enemyCity.defense + enemyCity.hp * 0.05;
       const bonus = unit.civId === 'norlund' ? 1.2 : 1;
-      const dmg = clamp((atkStr * bonus - defStr * 0.5) * this.rng.float(0.85, 1.15) + 10, 6, 60);
+      const dmg = clamp((atkStr * bonus - defStr * f.attackExponent) * this.rng.float(0.85, 1.15) + f.cityBase, 6, 60);
       enemyCity.hp = Math.max(0, enemyCity.hp - dmg);
       enemyCity.defense = Math.max(0, enemyCity.defense - 1);
       const retaliate = (def.range ?? 1) <= 1 ? clamp(defStr * 0.35, 4, 26) : 0;
@@ -885,7 +938,10 @@ export class Game {
       if (eDef.antiCav && def.cls === 'cavalry') defStr *= 1.5;
       if (!enemyUnit.supplied) defStr *= 0.8;
       if (targetTile.effect === 'fire' && eDef.cls !== 'siege') defStr *= 0.9;
-      const dmg = clamp((atkStr - defStr * 0.55) * this.rng.float(0.85, 1.15) + 22, 8, 75);
+      const targetTerrain = BIOMES[targetTile.terrain];
+      if (targetTerrain?.defense) defStr *= 1 + targetTerrain.defense;
+      const riverPenalty = srcTile?.river && targetTile.river ? f.riverPenalty : 1;
+      const dmg = clamp((atkStr * riverPenalty - defStr * f.attackExponent) * this.rng.float(0.85, 1.15) + f.baseDamage, 8, 75);
       enemyUnit.hp = Math.max(0, enemyUnit.hp - dmg);
       const retaliate = (def.range ?? 1) <= 1 ? clamp(defStr * 0.42 - atkStr * 0.08, 4, 32) : 0;
       unit.hp -= retaliate;
@@ -959,8 +1015,10 @@ export class Game {
   productionOptions(city) {
     const civId = city.civId;
     const opts = [];
+    const factionKey = this.world.civs.get(civId)?.factionKey ?? civId;
     for (const [id, def] of Object.entries(UNIT_TYPES)) {
       if (def.tech && !this.hasTech(civId, def.tech)) continue;
+      if (def.faction && def.faction !== factionKey) continue;
       if (def.guardian) continue;
       if (id === 'settler' && city.population < 2) continue;
       const afford = this.hasStrategic(civId, def.strategic);
@@ -1073,7 +1131,13 @@ export class Game {
 
   techCost(tech) {
     if (!tech) return 0;
-    return Math.round(tech.cost * (this.scenario.techCost ?? 1));
+    const f = GameMasterConfig.formulas.tech;
+    const era = TECH_ERA_ORDER.indexOf(tech.era);
+    const eraBase = f.eraBase?.[Math.max(0, era)] ?? DEFAULT_ERA_TECH_COST[Math.max(0, era)];
+    const eraRatio = eraBase / DEFAULT_ERA_TECH_COST[Math.max(0, era)];
+    const base = tech.unique ? Math.round(tech.cost * (f.uniqueMultiplier ?? 1)) : Math.round(tech.cost * eraRatio);
+    const diff = difficultyInfo(this.difficulty);
+    return Math.max(5, Math.round(base * (this.scenario.techCost ?? 1) * diff.cost * (GameMasterConfig.options.techCostMultiplier ?? 1)));
   }
   doctrineLocked(civId, tech) {
     if (!tech?.branch) return false;
@@ -1082,12 +1146,15 @@ export class Game {
   }
   availableTechs(civId) {
     const acquired = this.techStateFor(civId);
+    const civ = this.world.civs.get(civId);
+    const factionKey = civ?.factionKey ?? civId;
     return TECHS.filter((t) => {
       if (acquired.has(t.id)) return false;
       const era = TECH_ERA_ORDER.indexOf(t.era);
       if (era > this.maxEra) return false;
       if (!t.prereq.every((p) => acquired.has(p))) return false;
       if (this.doctrineLocked(civId, t)) return false;
+      if (t.faction && t.faction !== factionKey) return false;
       if (t.requiresBlack && !this.blackUnlocks[civId]?.has(t.requiresBlack)) return false;
       return true;
     });
@@ -1331,7 +1398,7 @@ export class Game {
     for (const unit of civ.units) {
       const gen = this.generalForUnit(unit);
       const tile = this.world.tiles.get(axialKey(unit.q, unit.r));
-      const ownLand = this.scenarioId === 'threeKingdoms' && civ.id === 'kemet' && tile?.owner === civ.id ? 3 : 0;
+      const ownLand = (this.scenarioId === 'threeKingdoms' && civ.id === 'kemet' && tile?.owner === civ.id ? 3 : 0) + (tile?.owner === civ.id ? (this.factionFor(civ.id)?.bonus?.healOwn ?? 0) : 0);
       const heal = healBase + ownLand + (gen?.bonuses?.heal ? Math.round(unit.maxHp * gen.bonuses.heal) : 0);
       if (heal > 0 && unit.hp < unit.maxHp) {
         unit.hp = Math.min(unit.maxHp, unit.hp + heal);
@@ -1354,6 +1421,8 @@ export class Game {
         }
         emissions += Math.max(0, city.population - 3) * 0.4;
       }
+      const fb = this.factionFor(civ.id)?.bonus ?? {};
+      if (fb.emissions) emissions += fb.emissions;
       if (this.doctrines[civ.id] === 'cyber') emissions += 2;
       for (const tech of TECHS) {
         if (tech.clean && this.hasTech(civ.id, tech.id)) emissions -= tech.clean;

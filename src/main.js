@@ -1,11 +1,21 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { World } from './world.js';
-import { Game, UNIT_TYPES, TECHS } from './game.js';
+import { World, BIOMES, FEATURES } from './world.js';
+import { Game, UNIT_TYPES, TECHS, configureCivs } from './game.js';
 import { UI } from './ui.js';
 import { AudioEngine } from './audio.js';
 import { SCENARIOS } from './expansions.js';
 import { axialKey, axialToWorld, clamp } from './core.js';
+import {
+  GameMasterConfig, loadConfig, loadSetup, buildActiveCivDefs, applyTerrainToWorld,
+  getFaction, saveSetup, DIFFICULTIES,
+} from './config.js';
+import { createApp } from './app.js';
+import { GMStudio } from './gm.js';
+
+loadConfig();
+window.GameMasterConfig = GameMasterConfig;
+applyTerrainToWorld(BIOMES, FEATURES);
 
 const canvas = document.getElementById('scene');
 
@@ -52,15 +62,30 @@ scene.add(ambient);
 
 /* ---------------- world + game ---------------- */
 const params = new URLSearchParams(window.location.search);
-const scenarioId = SCENARIOS[params.get('scenario')] ? params.get('scenario') : 'legacy';
+const setupData = loadSetup();
+const playMode = params.get('play') === '1';
+const directGame = playMode || params.has('scenario') || params.has('hud');
+const scenarioId = SCENARIOS[params.get('scenario')] ? params.get('scenario') : (setupData?.mode === 'threeKingdoms' ? 'threeKingdoms' : 'legacy');
+const seed = Math.abs(Number(params.get('seed') ?? 20261019)) || 20261019;
 const mutation = Math.max(0, Math.min(3, Number(params.get('mutation') ?? SCENARIOS[scenarioId].mutation ?? 1)));
-const world = new World(scene, { seed: 20261019, cols: 21, rows: 13, sunDir, scenario: scenarioId, mutation });
-const game = new Game(world, { scenario: scenarioId });
+if (playMode && setupData?.playerFaction) configureCivs(buildActiveCivDefs(setupData));
+const world = new World(scene, { seed, cols: 21, rows: 13, sunDir, scenario: scenarioId, mutation });
+const game = new Game(world, {
+  scenario: scenarioId,
+  playerId: playMode && setupData?.playerFaction ? setupData.playerFaction : undefined,
+  difficulty: setupData?.difficulty ?? GameMasterConfig.options.difficulty,
+  startEra: playMode && setupData ? Number(setupData.startEra) || 0 : (Number(params.get('era')) || 0),
+  mapType: setupData?.mapType,
+  seed,
+});
 const audio = new AudioEngine();
 game.setup();
+if (playMode && setupData) world.mutation = mutation;
 audio.setEra(game.eraIndex);
+audio.setStyle(GameMasterConfig.options.musicStyle || setupData?.musicStyle || 'auto');
 
-const sunTarget = world.civs.get(game.playerId).capital.tile;
+const startCiv = world.civs.get(game.playerId);
+const sunTarget = startCiv?.capital?.tile || world.tiles.get(axialKey(0, 0)) || world.tileList[Math.floor(world.tileList.length / 2)];
 sun.position.copy(sunDir.clone().multiplyScalar(70).add(new THREE.Vector3(sunTarget.x, 0, sunTarget.z)));
 sun.target.position.set(sunTarget.x, 0, sunTarget.z);
 sun.target.updateMatrixWorld();
@@ -97,6 +122,113 @@ setCameraTo(sunTarget, { distance: 19, azimuth: -0.82, polar: 0.8 });
 /* ---------------- UI ---------------- */
 const ui = new UI(game, world);
 ui.setAudio?.(audio);
+
+let gmStudio = null;
+const app = createApp({
+  mode: directGame ? 'inGame' : 'menu',
+  notify: (title, body, kind) => ui.toast({ title, body, kind: kind || 'info', icon: 'i-wonder' }),
+  onOpenGM: (tab) => gmStudio?.open(tab || 'visual'),
+  onApplyOptions: (opts) => applyRuntimeOptions(opts),
+});
+gmStudio = new GMStudio({
+  getGame: () => game,
+  getWorld: () => world,
+  notify: (title, body, kind) => ui.toast({ title, body, kind: kind || 'info', icon: 'i-wonder' }),
+  onApply: (kind) => applyGMChanges(kind),
+});
+let autoEndTimer = null;
+game.on('change', () => {
+  if (autoEndTimer || !GameMasterConfig.options.autoEndTurn || app.state !== 'IN_GAME' || game.busy) return;
+  const player = world.civs.get(game.playerId);
+  if (!player?.units?.length) return;
+  if (player.units.some((u) => u.moves > 0 && !u.asleep)) return;
+  autoEndTimer = setTimeout(async () => {
+    autoEndTimer = null;
+    if (GameMasterConfig.options.autoEndTurn && app.state === 'IN_GAME' && !game.busy) await game.endTurn();
+  }, 650);
+});
+const hudTools = document.createElement('div');
+hudTools.id = 'hud-tools';
+hudTools.innerHTML = '<button id="hud-gm" title="GM Studio（G / F12）">GM</button><button id="hud-options" title="選項">⚙</button>';
+document.getElementById('topbar').insertBefore(hudTools, document.querySelector('.turn-clock'));
+document.getElementById('hud-gm').onclick = () => { audio.ui('open'); gmStudio.open('visual'); };
+document.getElementById('hud-options').onclick = () => { audio.ui('open'); app.openOptions(); };
+
+function applyRuntimeOptions(opts = GameMasterConfig.options) {
+  try {
+    const ratio = Math.min(window.devicePixelRatio || 1, 1.5) * Math.max(0.5, Number(opts.renderScale) || 1);
+    renderer.setPixelRatio(Math.min(3, ratio));
+    renderer.setSize(window.innerWidth, window.innerHeight, false);
+    renderer.shadowMap.enabled = opts.shadows !== 'off';
+    sun.castShadow = opts.shadows !== 'off';
+    if (sun.shadow.mapSize.width !== (opts.shadows === 'high' ? 1024 : 512)) {
+      sun.shadow.mapSize.set(opts.shadows === 'high' ? 1024 : 512, opts.shadows === 'high' ? 1024 : 512);
+      sun.shadow.map?.dispose();
+      sun.shadow.map = null;
+    }
+    controls.panSpeed = 0.85 * (opts.cameraPan || 1);
+    controls.zoomSpeed = 0.9 * (opts.cameraZoom || 1);
+    audio.setStyle(opts.musicStyle || 'auto');
+    audio.applyVolumes();
+    world.showBorders = opts.hexBorders !== false;
+    world.rebuildTerritory();
+    document.documentElement.style.setProperty('--ui-scale', opts.uiScale || 1);
+  } catch (e) { console.warn('Options apply failed', e); }
+}
+
+function syncConfiguredUnits() {
+  for (const faction of Object.values(GameMasterConfig.factions)) {
+    const u = faction.uniqueUnit;
+    if (!u) continue;
+    if (!UNIT_TYPES[u.id]) UNIT_TYPES[u.id] = { ...u.def, unique: true, faction: u.def?.faction || faction.key || faction.id };
+    else Object.assign(UNIT_TYPES[u.id], u.def);
+  }
+}
+
+function applyGMChanges(kind = 'all') {
+  window.GameMasterConfig = GameMasterConfig;
+  if (kind === 'terrain' || kind === 'all') {
+    applyTerrainToWorld(BIOMES, FEATURES);
+    world.rebuildTerritory();
+    game.recomputeVision?.();
+  }
+  if (kind === 'visual' || kind === 'stats' || kind === 'all') {
+    syncConfiguredUnits();
+    for (const civ of world.civs.values()) {
+      if (civ.isWilds) continue;
+      const faction = getFaction(civ.factionKey || civ.id);
+      if (!faction) continue;
+      const next = parseInt(String(faction.colors.primary).replace('#', ''), 16) || civ.color;
+      const nextAccent = parseInt(String(faction.colors.secondary).replace('#', ''), 16) || civ.accent;
+      const nextBorder = parseInt(String(faction.colors.border).replace('#', ''), 16) || civ.border;
+      const old = civ.color, oldAccent = civ.accent;
+      civ.name = faction.name || civ.name;
+      civ.leader = faction.leader || civ.leader;
+      civ.title = faction.title || civ.title;
+      civ.traitName = faction.traitName || civ.traitName;
+      civ.trait = faction.trait || civ.trait;
+      civ.color = next; civ.accent = nextAccent; civ.border = nextBorder;
+      for (const city of civ.cities || []) recolorObject(city.mesh, old, oldAccent, next, nextAccent);
+      for (const unit of civ.units || []) recolorObject(unit.mesh, old, oldAccent, next, nextAccent);
+    }
+    world.rebuildTerritory();
+  }
+  game.emit('change');
+  ui.renderAll?.();
+}
+
+function recolorObject(rootObj, oldColor, oldAccent, nextColor, nextAccent) {
+  rootObj?.traverse?.((obj) => {
+    const materials = Array.isArray(obj.material) ? obj.material : obj.material ? [obj.material] : [];
+    for (const mat of materials) {
+      if (!mat?.color) continue;
+      const hex = mat.color.getHex();
+      if (hex === oldColor) mat.color.setHex(nextColor);
+      else if (hex === oldAccent) mat.color.setHex(nextAccent);
+      if (mat.emissive && mat.emissive.getHex() !== 0 && hex === oldColor) mat.emissive.setHex(nextColor);
+    }
+  });
+}
 
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
@@ -149,7 +281,7 @@ function refreshRange() {
 }
 
 async function handleClick(clientX, clientY) {
-  if (game.busy) return;
+  if (game.busy || app.state !== 'IN_GAME') return;
   const tile = tileFromEvent(clientX, clientY);
   if (!tile) return;
   const player = world.civs.get(game.playerId);
@@ -216,6 +348,9 @@ ui.setActions({
       case 'endTurn': game.endTurn(); break;
       case 'tech': ui.techTree(); break;
       case 'help': ui.helpModal(); break;
+      case 'options': app.openOptions(); break;
+      case 'gm': gmStudio.open('visual'); break;
+      case 'menu': window.location.href = window.location.pathname; break;
       case 'found': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].found) game.foundCity(sel.ref); break;
       case 'improve': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.improve(sel.ref); break;
       case 'depot': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.buildDepot(sel.ref); break;
@@ -299,8 +434,17 @@ renderer.domElement.addEventListener('contextmenu', (e) => e.preventDefault());
 renderer.domElement.addEventListener('wheel', () => { lastInteraction = performance.now(); }, { passive: true });
 
 window.addEventListener('keydown', (e) => {
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
   const key = e.key.toLowerCase();
+  if (key === 'f12' || key === 'g') {
+    e.preventDefault();
+    if (gmStudio) gmStudio.open('visual');
+    return;
+  }
+  if (app.state !== 'IN_GAME') {
+    if (key === 'escape' && gmStudio) gmStudio.close();
+    return;
+  }
   const sel = game.selected;
   if (key === 'escape') {
     if (game.schemeMode) { game.cancelScheme(); world.clearTacticalTargets(); ui.toast({ title: '計略取消', body: '單位恢復待命。', kind: 'info', icon: 'i-defense' }); }
@@ -319,7 +463,7 @@ window.addEventListener('keydown', (e) => {
     case 'n': selectNextUnit(); break;
     case 'f': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].found) game.foundCity(sel.ref); break;
     case 'b': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.improve(sel.ref); break;
-    case 'g': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.buildDepot(sel.ref); break;
+    case 'y': if (sel?.type === 'unit' && UNIT_TYPES[sel.ref.type].build) game.buildDepot(sel.ref); break;
     case 'q': ui.councilModal('schemes'); break;
     case 'z': if (sel?.type === 'unit') game.sleep(sel.ref); break;
     case 'v': if (sel?.type === 'unit') game.fortify(sel.ref); break;
@@ -333,7 +477,7 @@ window.addEventListener('keydown', (e) => {
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight, false);
+  applyRuntimeOptions(GameMasterConfig.options);
 });
 
 /* selection ring + range updates */
@@ -357,6 +501,10 @@ game.on('change', () => {
   if (game.selected?.type === 'unit') {
     world.setSelectionRing(world.tiles.get(axialKey(game.selected.ref.q, game.selected.ref.r)));
   }
+});
+game.on('newEra', () => {
+  world.refreshCityEra(game.eraIndex);
+  ui.renderAll?.();
 });
 game.on('turnEnd', () => {
   refreshRange();
@@ -385,6 +533,8 @@ function tick() {
     controls.target.lerpVectors(tweenTarget.from, tweenTarget.to, e);
     if (tweenTarget.t >= 1) tweenTarget = null;
   }
+  controls.autoRotate = app.state !== 'IN_GAME';
+  controls.autoRotateSpeed = 0.38;
   controls.update();
   // keep target above terrain and within map
   const b = world.bounds;
@@ -400,8 +550,9 @@ tick();
 /* ---------------- reveal & landing ---------------- */
 setTimeout(() => {
   ui.el.loading.classList.add('gone');
+  if (app.state !== 'IN_GAME') return;
   const player = world.civs.get(game.playerId);
   ui.toast({ title: ui.el.age.textContent, body: `你的子民仰望著你，${player.leader}。好好引領他們。`, kind: 'info', icon: 'i-wonder' });
 }, 700);
 
-window.__civ = { game, world, ui, audio, camera, controls };
+window.__civ = { game, world, ui, audio, camera, controls, app, gm: gmStudio, config: GameMasterConfig };

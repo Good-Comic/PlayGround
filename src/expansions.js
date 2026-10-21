@@ -2,8 +2,8 @@
 
 export const TECH_ERA_ORDER = ['Antiquity', 'Exploration', 'Modern', 'Industrial', 'Information', 'Fusion', 'Orbital', 'Singularity'];
 export const TECH_ERA_NAMES = {
-  Antiquity: '上古時代', Exploration: '探索時代', Modern: '近代', Industrial: '工業時代',
-  Information: '資訊時代', Fusion: '核融合時代', Orbital: '軌道時代', Singularity: '奇點時代',
+  Antiquity: '上古', Exploration: '古典', Modern: '中古', Industrial: '文藝復興',
+  Information: '工業', Fusion: '現代', Orbital: '2050', Singularity: '2100',
 };
 
 const BRANCHES = { cyber: '賽博機械流', bio: '基因進化流', quantum: '量子能源流' };
