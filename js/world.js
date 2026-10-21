@@ -1,10 +1,11 @@
-import { mulberry32, rand, randInt, dist, pointSegmentDist, pick } from './utils.js';
+import { mulberry32, rand, randInt, dist, pointSegmentDist, pick, hash2 } from './utils.js';
 
 export const WORLD_SIZE = 50;
 
 const CAMPS = [
   { x: 26, y: 3.5, name: 'The Northern Pyres', angle: 0.2 },
   { x: 46, y: 27, name: 'The Red Camp', angle: 2.8 },
+  { x: 27, y: 46.3, name: 'The Broken Causeway', angle: 5.5 },
   { x: 5.5, y: 42, name: 'The Sunken Fens', angle: 4.2 },
 ];
 
@@ -43,7 +44,7 @@ const BERRY_PATCHES = [
   { x: 25.5, y: 37.5, count: 4 },
 ];
 
-export function createWorld(seed) {
+export function createWorld(seed, biomeId = 'ashlands') {
   const rng = mulberry32(seed);
   const tiles = new Array(WORLD_SIZE * WORLD_SIZE);
   const resources = [];
@@ -63,20 +64,31 @@ export function createWorld(seed) {
   }
 
   const base = { x: 24.5, y: 26.5 };
+  const lakeScale = biomeId === 'isles' ? 1.75 : biomeId === 'fjord' ? 1.45 : biomeId === 'dunes' ? 0.45 : 1;
   const inLake = (x, y) => {
     const cx = 44.5, cy = 43.5;
     const wobble = Math.sin(x * 1.7 + y * 0.8) * 1.2 + Math.cos(y * 2.1) * 0.8;
-    return dist(x, y, cx, cy) + wobble < 7.8 && x > 36 && y > 34;
+    return dist(x, y, cx, cy) + wobble < 7.8 * lakeScale && x > 36 - lakeScale * 2 && y > 34 - lakeScale * 2;
   };
+  const inRiver = (x, y) => {
+    if (biomeId !== 'riverlands') return false;
+    const center = 11.5 + Math.sin(y * 0.33) * 1.6 + Math.cos(y * 0.11) * 0.9;
+    return Math.abs(x + 0.5 - center) < 1.7;
+  };
+  const onBridge = (x, y) => biomeId === 'riverlands' && ((y >= 19 && y <= 21) || (y >= 34 && y <= 39));
 
   for (let y = 0; y < WORLD_SIZE; y++) {
     for (let x = 0; x < WORLD_SIZE; x++) {
       const tile = tiles[y * WORLD_SIZE + x];
-      if (inLake(x, y)) {
+      if (inLake(x, y) || (inRiver(x, y) && !onBridge(x, y))) {
         tile.terrain = 'water';
         continue;
       }
-      if (x > 36 && y > 34 && dist(x, y, 43, 42) < 9.2) tile.terrain = 'sand';
+      if (onBridge(x, y)) { tile.terrain = 'cobble'; continue; }
+      if (biomeId === 'dunes' && dist(x, y, base.x, base.y) > 8 && hash2(x, y, seed) > 0.64) tile.terrain = 'sand';
+      if (biomeId === 'ashlands' && dist(x, y, base.x, base.y) > 9 && hash2(x, y, seed + 9) > 0.84) tile.terrain = 'rock';
+      if (biomeId === 'highlands' && dist(x, y, base.x, base.y) > 11 && hash2(x, y, seed + 4) > 0.9) tile.terrain = 'rock';
+      if (x > 36 && y > 34 && dist(x, y, 43, 42) < 9.2 * Math.min(1.4, lakeScale)) tile.terrain = 'sand';
       const d = dist(x + 0.5, y + 0.5, base.x, base.y);
       if (d < 7.8) {
         const roadNoise = Math.sin(x * 1.2 + y * 2.3) * 0.7 + Math.cos(x * 2.7 - y) * 0.5;
@@ -102,8 +114,10 @@ export function createWorld(seed) {
     }
   }
 
+  const forestScale = biomeId === 'blackforest' ? 1.45 : biomeId === 'steppe' ? 0.6 : biomeId === 'dunes' ? 0.38 : biomeId === 'ashlands' ? 0.72 : 1;
   for (const cluster of FOREST_CLUSTERS) {
-    for (let i = 0; i < cluster.count; i++) {
+    const clusterCount = Math.round(cluster.count * forestScale);
+    for (let i = 0; i < clusterCount; i++) {
       const ang = rng() * Math.PI * 2;
       const rad = Math.sqrt(rng()) * cluster.r;
       const x = cluster.x + Math.cos(ang) * rad;
@@ -197,6 +211,20 @@ export function createWorld(seed) {
     props.push({ kind: pick(rng, ['bush', 'bush', 'rocks', 'flowers']), x, y, angle: rng() * 6, size: rand(rng, .65, 1.05) });
   }
 
+  if (biomeId === 'dunes') {
+    for (let i = 0; i < 16; i++) {
+      const x = rand(rng, 3, WORLD_SIZE - 3), y = rand(rng, 3, WORLD_SIZE - 3);
+      if (dist(x, y, base.x, base.y) < 7) continue;
+      props.push({ kind: pick(rng, ['rocks', 'bush']), x, y, angle: rng() * 6, size: rand(rng, .55, .9) });
+    }
+  } else if (biomeId === 'ashlands') {
+    for (let i = 0; i < 14; i++) {
+      const x = rand(rng, 3, WORLD_SIZE - 3), y = rand(rng, 3, WORLD_SIZE - 3);
+      if (dist(x, y, base.x, base.y) < 7) continue;
+      props.push({ kind: 'rocks', x, y, angle: rng() * 6, size: rand(rng, .7, 1.2) });
+    }
+  }
+
   const wildlife = [
     { kind: 'deer', x: 12.5, y: 24.5, phase: 0.2, homeX: 12.5, homeY: 24.5 },
     { kind: 'deer', x: 35.1, y: 18.8, phase: 2.4, homeX: 35.1, homeY: 18.8 },
@@ -204,8 +232,14 @@ export function createWorld(seed) {
     { kind: 'deer', x: 33.2, y: 38.1, phase: 1.2, homeX: 33.2, homeY: 38.1 },
   ];
 
+  for (let i = resources.length - 1; i >= 0; i--) {
+    const n = resources[i];
+    const t = tiles[Math.floor(n.y) * WORLD_SIZE + Math.floor(n.x)];
+    if (!t || t.terrain === 'water') resources.splice(i, 1);
+  }
+
   return {
-    size: WORLD_SIZE, tiles, resources, props, camps, base, wildlife, seed,
+    size: WORLD_SIZE, tiles, resources, props, camps, base, wildlife, seed, biome: biomeId,
     tile(x, y) {
       const tx = Math.floor(x), ty = Math.floor(y);
       if (tx < 0 || ty < 0 || tx >= WORLD_SIZE || ty >= WORLD_SIZE) return null;

@@ -1,6 +1,7 @@
 import {
-  UNIT_TYPES, BUILDING_TYPES, TRAINABLE, WAVES, WAVE_COMPOSITIONS,
-  START_RESOURCES, BOONS,
+  UNIT_TYPES, BUILDING_TYPES, TRAINABLE, BUILD_OPTIONS, WAVES, BOONS,
+  START_RESOURCES, CIVILIZATIONS, BIOMES, AGE_NAMES, AGE_COSTS,
+  RARITY_WEIGHT, PLAYER_COLORS,
 } from './data.js';
 import { createWorld } from './world.js';
 import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, rand, randInt, seedFromDate, formatNumber } from './utils.js';
@@ -11,6 +12,16 @@ const DEFAULT_EFFECTS = () => ({
   militarySpeedMul: 1, trainSpeedMul: 1, goldCostMul: 1, buildingHpMul: 1,
   buildSpeedMul: 1, villagerSpeedMul: 1, carryBonus: 0, bountyGold: 0,
   tcRegen: 0, towerRange: 0, towerDamageMul: 1, militaryHpMul: 1,
+  infantryHpMul: 1, infantryDamageMul: 1, infantryPopMul: 1, infantryCostMul: 1,
+  infantryAttackSpeedMul: 1, infantryArmor: 0, infantrySlow: 0,
+  cavalryHpMul: 1, cavalryDamageMul: 1, cavalryCostMul: 1, cavalrySpeedMul: 1,
+  rangedAttackSpeedMul: 1, siegeHpMul: 1, siegeCostMul: 1, siegeSpeedMul: 1,
+  siegeSplash: 0, extraArrowEvery: 0, slowOnHit: 0, splash: 0, chainEvery: 0,
+  lifesteal: 0, thorns: 0, houseArrows: false, veteran: false, decoyWave: 0,
+  convertChance: 0, rescue: false, retreat: false, prototype: false,
+  villagerHpBonus: 0, villagerAttackBonus: 0, unitRegen: 0,
+  elephantUnlocked: false, elephantCostMul: 1, killFoodRate: 0, killGoldRate: 0,
+  killFoodCap: 0, killGoldCap: 0, heroHpMul: 1, heroDamageMul: 1, heroCooldownMul: 1,
 });
 
 export class Game {
@@ -32,15 +43,22 @@ export class Game {
     this.newRun(seedFromDate());
   }
 
-  newRun(seed) {
+  newRun(seed, options = {}) {
     this.seed = seed;
-    this.world = createWorld(seed);
+    this.civ = CIVILIZATIONS.find(c => c.id === (options.civId || options.civ)) || CIVILIZATIONS[1];
+    this.biome = BIOMES.find(b => b.id === (options.biomeId || options.biome)) || BIOMES.find(b => b.id === 'ashlands') || BIOMES[0];
+    this.runConfig = { civId: this.civ.id, biomeId: this.biome.id };
+    this.playerColors = { ...PLAYER_COLORS, primary: this.civ.accent, cloth: this.civ.accent };
+    this.world = createWorld(seed, this.biome.id);
     this.resources = { ...START_RESOURCES };
     this.effects = DEFAULT_EFFECTS();
+    this.applyModifiers(this.civ.bonuses);
+    this.applyModifiers(this.biome.mods);
     this.buildings = [];
     this.units = [];
     this.projectiles = [];
     this.particles = [];
+    this.zones = [];
     this.selection = [];
     this.selected = null;
     this.hovered = null;
@@ -53,7 +71,10 @@ export class Game {
     this.prepTimer = 35;
     this.waveTotal = 0;
     this.waveName = WAVES[0].name;
+    this.waveClock = 0;
+    this.waveSpawns = [];
     this.waveEndTimer = 0;
+    this.waveEnraged = false;
     this.endShown = false;
     this.dragBox = null;
     this.placement = null;
@@ -65,11 +86,31 @@ export class Game {
     this.nextId = 1;
     this.lastWaveAnnounce = -1;
     this.enemyPressure = false;
+    this.ageLevel = 1;
+    this.hero = null;
+    this.heroControl = false;
+    this.heroReviveTimer = 0;
+    this.autoEconomy = true;
+    this.autoMilitary = true;
+    this.autoTimers = { gather: 0, villager: 0, military: 0 };
+    this.retreatUsed = false;
+    this.killFoodEarned = 0;
+    this.killGoldEarned = 0;
     this.buildInitialBase();
     const center = iso(this.world.base.x, this.world.base.y);
     this.camera = { x: center.x, y: center.y, targetX: center.x, targetY: center.y, zoom: 1.0, targetZoom: 1.0 };
     this.inMenu = true;
   }
+
+  applyModifiers(mods = {}) {
+    for (const [key, value] of Object.entries(mods)) {
+      if (typeof value === 'boolean') this.effects[key] = value;
+      else if (key.endsWith('Mul')) this.effects[key] = (this.effects[key] ?? 1) * value;
+      else this.effects[key] = (this.effects[key] ?? 0) + value;
+    }
+  }
+
+  get ageName() { return AGE_NAMES[this.ageLevel] || ''; }
 
   hook(name, fn) { this.hooks[name] = fn; }
   toast(text, type = '', duration) { this.hooks.toast?.(text, type, duration); }
@@ -79,7 +120,6 @@ export class Game {
     this.addBuilding('barracks', 18, 28, true);
     this.addBuilding('house', 28, 21, true);
     this.addBuilding('house', 30, 23, true);
-    this.addBuilding('house', 27, 30, true);
     this.addBuilding('tower', 20, 21, true);
     this.addBuilding('farm', 31, 28, true);
 
@@ -90,11 +130,14 @@ export class Game {
       this.spawnUnit('villager', 26.1, 28.7),
       this.spawnUnit('villager', 21.1, 27.7),
       this.spawnUnit('villager', 20.2, 26.9),
+      this.spawnUnit('villager', 27.4, 29.1),
+      this.spawnUnit('villager', 24.2, 30.2),
     ];
     this.spawnUnit('militia', 21.2, 24.2);
     this.spawnUnit('militia', 22.1, 24.7);
     this.spawnUnit('archer', 27.1, 24.6);
     this.spawnUnit('knight', 27.4, 25.8);
+    this.hero = this.spawnUnit('commander', 25.4, 23.3, 'player', { hero: true });
 
     const wood1 = this.findResource('wood', 18.5, 22);
     const wood2 = this.findResource('wood', 30.4, 29.8);
@@ -108,14 +151,17 @@ export class Game {
     if (food2) this.orderGather(villagers[3], food2);
     if (gold) this.orderGather(villagers[4], gold);
     if (stone) this.orderGather(villagers[5], stone);
+    if (wood2) this.orderGather(villagers[6], wood2);
+    if (food1) this.orderGather(villagers[7], food1);
   }
 
   start() {
     this.inMenu = false;
     this.camera.targetZoom = 1.12;
     this.paused = false;
-    this.toast('Survive five raids. The Town Center must not fall.', '', 4600);
-    setTimeout(() => this.toast('Right-click trees, berries, gold, or stone to gather.', '', 4200), 1400);
+    this.toast(`Ten raids stand between ${this.civ.name} and the rift. Hold the Town Center.`, '', 4800);
+    setTimeout(() => this.toast('Your Riftwarden is ready. Press Tab for direct control, Q to mark, E for aegis.', '', 5200), 1500);
+    setTimeout(() => this.toast('An auto-steward is active. Your pause menu can turn aid on or off.', '', 4600), 3300);
   }
 
   focusAt(x, y) {
@@ -125,19 +171,30 @@ export class Game {
   }
 
   getTownCenter() { return this.buildings.find(b => b.type === 'towncenter' && b.team === 'player' && b.alive); }
-  get population() { return this.units.filter(u => u.alive && u.team === 'player').reduce((s, u) => s + u.typeDef.pop, 0); }
+  get population() { return this.units.filter(u => u.alive && u.team === 'player').reduce((s, u) => s + (u.pop ?? u.typeDef.pop ?? 0), 0); }
   get popCap() { return this.buildings.filter(b => b.alive && b.team === 'player' && b.construction >= 1).reduce((s, b) => s + (b.typeDef.pop || 0), 0); }
   get idleVillagers() { return this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager' && (u.state === 'idle' || u.state === 'hold')).length; }
   get enemiesAlive() { return this.units.filter(u => u.alive && u.team === 'enemy').length; }
   get ownedUnitCount() { return this.units.filter(u => u.alive && u.team === 'player').length; }
+  get bossAlive() { return this.units.find(u => u.alive && u.team === 'enemy' && u.typeDef.boss) || null; }
+  unitCategory(u) { return u.typeDef?.category || 'infantry'; }
+  unitCategoryMul(u, kind) {
+    const cat = this.unitCategory(u);
+    if (cat === 'infantry') return this.effects[`infantry${kind}`] ?? 1;
+    if (cat === 'cavalry') return this.effects[`cavalry${kind}`] ?? 1;
+    if (cat === 'ranged') return this.effects[`ranged${kind}`] ?? 1;
+    if (cat === 'siege') return this.effects[`siege${kind}`] ?? 1;
+    return 1;
+  }
 
   addBuilding(type, x, y, instant = false) {
     const def = BUILDING_TYPES[type];
-    const newMaxHp = Math.round(def.hp * (type === 'towncenter' || type === 'house' ? 1 : this.effects.buildingHpMul));
+    const newMaxHp = Math.round(def.hp * this.effects.buildingHpMul);
     const b = {
       id: this.nextId++, kind: 'building', team: 'player', type, typeDef: def,
       x, y, w: def.w, h: def.h, hp: instant ? newMaxHp : Math.round(newMaxHp * 0.14),
-      maxHp: newMaxHp, construction: instant ? 1 : 0.02, alive: true, selected: false,
+      maxHp: newMaxHp, baseMaxHp: def.hp, armor: def.armor || 6,
+      construction: instant ? 1 : 0.02, alive: true, selected: false,
       queue: [], cooldown: this.rng() * 0.5, rally: null, hitFlash: 0,
     };
     this.buildings.push(b);
@@ -146,18 +203,88 @@ export class Game {
 
   spawnUnit(type, x, y, team = 'player', options = {}) {
     const def = UNIT_TYPES[type];
-    const hpMul = team === 'player' && type !== 'villager' ? this.effects.militaryHpMul : 1;
-    const maxHp = Math.round(def.hp * hpMul);
+    if (!def) return null;
+    const maxHp = team === 'enemy'
+      ? Math.round(def.hp * this.computeUnitHpMul(def, team))
+      : this.computeUnitMaxHpFor(def, def.hp);
     const u = {
       id: this.nextId++, kind: 'unit', team, type, typeDef: def,
       x: clamp(x, 0.6, this.world.size - 0.6), y: clamp(y, 0.6, this.world.size - 0.6),
-      hp: maxHp, maxHp, state: 'idle', target: null, targetPos: null, gatherTarget: null,
+      hp: maxHp, maxHp, baseMaxHp: def.hp, pop: this.computeUnitPop(def),
+      armor: (def.armor || 0) + (team === 'player' && def.category === 'infantry' ? this.effects.infantryArmor : 0),
+      attack: def.attack * (team === 'enemy' ? 1 + this.waveIndex * 0.035 : 1),
+      state: 'idle', target: null, targetPos: null, gatherTarget: null,
       buildTarget: null, carry: 0, carryType: null, cooldown: this.rng() * 0.4,
       attackAnim: 0, walkPhase: this.rng() * 6.28, facing: 1, selected: false,
       hitFlash: 0, alive: true, retargetTimer: this.rng() * 0.8, hold: false,
       idleTimer: this.rng(), buildingHint: options.buildingHint || null,
+      hero: !!(def.hero || options.hero), shield: 0, marked: 0, slowUntil: 0,
+      shots: 0, rescueUsed: false, expireIn: options.expireIn || 0,
+      bossSkillTimer: def.boss ? 6 : 0, rageStage: 0, summoned: !!options.summoned,
+      markCd: 0, aegisCd: 0,
     };
     this.units.push(u);
+    if (u.hero && team === 'player') this.hero = u;
+    return u;
+  }
+
+  computeUnitHpMul(def, team) {
+    if (team === 'enemy') {
+      return 1 + this.waveIndex * (def.boss ? 0.045 : 0.055);
+    }
+    if (def.category === 'hero') return this.effects.heroHpMul * (1 + (this.ageLevel - 1) * 0.1);
+    if (def.category === 'villager') return 1;
+    const category = this.effects[`${def.category}HpMul`] ?? 1;
+    return this.effects.militaryHpMul * category * (1 + (this.ageLevel - 1) * 0.1);
+  }
+
+  computeUnitPop(def) {
+    let pop = def.pop ?? 0;
+    if (def.category === 'infantry') pop *= this.effects.infantryPopMul;
+    return Math.round(pop * 2) / 2;
+  }
+
+  computeUnitMaxHpFor(def, baseHp) {
+    let hp;
+    if (def.category === 'villager') hp = baseHp + this.effects.villagerHpBonus;
+    else if (def.category === 'hero') hp = baseHp * this.effects.heroHpMul * (1 + (this.ageLevel - 1) * 0.1);
+    else hp = baseHp * this.effects.militaryHpMul * (this.effects[`${def.category}HpMul`] ?? 1) * (1 + (this.ageLevel - 1) * 0.1);
+    return Math.round(hp);
+  }
+
+  computeUnitMaxHp(u) {
+    if (u.team === 'enemy') return Math.round(u.baseMaxHp * this.computeUnitHpMul(u.typeDef, 'enemy'));
+    return this.computeUnitMaxHpFor(u.typeDef, u.baseMaxHp);
+  }
+
+  refreshPlayerStats() {
+    for (const u of this.units) {
+      if (!u.alive || u.team !== 'player') continue;
+      const oldMax = u.maxHp;
+      u.maxHp = this.computeUnitMaxHp(u);
+      if (u.maxHp > oldMax) u.hp = Math.min(u.maxHp, u.hp + u.maxHp - oldMax);
+      else u.hp = Math.min(u.hp, u.maxHp);
+      u.pop = this.computeUnitPop(u.typeDef);
+      u.armor = (u.typeDef.armor || 0) + (u.typeDef.category === 'infantry' ? this.effects.infantryArmor : 0);
+    }
+  }
+
+  refreshBuildingStats() {
+    for (const b of this.buildings) {
+      if (!b.alive || b.team !== 'player') continue;
+      const oldMax = b.maxHp;
+      b.maxHp = Math.round(b.baseMaxHp * this.effects.buildingHpMul);
+      if (b.maxHp > oldMax) b.hp = Math.min(b.maxHp, b.hp + b.maxHp - oldMax);
+      else b.hp = Math.min(b.hp, b.maxHp);
+    }
+  }
+
+  spawnPrototype() {
+    const tc = this.getTownCenter();
+    const x = tc ? tc.x + tc.w + 1.5 : this.world.base.x + 3;
+    const y = tc ? tc.y + 1 : this.world.base.y + 3;
+    const u = this.spawnUnit('prototype', x, y);
+    if (u) this.toast('A Rift Prototype wakes beneath the keep.', 'good', 3600);
     return u;
   }
 
@@ -190,28 +317,67 @@ export class Game {
 
   unitRange(u) {
     let r = u.typeDef.range;
-    if (u.team === 'player' && u.type === 'archer') r += this.effects.archerRange;
+    if (u.team === 'player' && u.typeDef.category === 'ranged') r += this.effects.archerRange;
     return r;
   }
 
+  unitAttack(u) {
+    if (u.team === 'enemy') return u.attack;
+    let attack = u.attack;
+    const category = this.unitCategory(u);
+    if (category === 'infantry') attack *= this.effects.infantryDamageMul;
+    else if (category === 'cavalry') attack *= this.effects.cavalryDamageMul;
+    else if (category === 'ranged') attack *= this.effects.archerDamageMul;
+    else if (category === 'hero') attack *= this.effects.heroDamageMul;
+    attack *= 1 + (this.ageLevel - 1) * 0.1;
+    if (this.effects.veteran) attack *= 1 + Math.min(0.4, this.stats.kills * 0.01);
+    if (u.type === 'villager') attack += this.effects.villagerAttackBonus;
+    return attack;
+  }
+
   damageMul(u) {
-    if (u.team !== 'player') return 1;
-    if (u.type === 'archer') return this.effects.archerDamageMul;
-    return 1;
+    if (u.team !== 'player' || !u.typeDef.attack) return 1;
+    return this.unitAttack(u) / Math.max(1, u.typeDef.attack);
+  }
+
+  attackCooldown(u) {
+    let cd = u.typeDef.cooldown;
+    if (u.team === 'player') {
+      const category = this.unitCategory(u);
+      if (category === 'infantry') cd /= this.effects.infantryAttackSpeedMul;
+      else if (category === 'ranged') cd /= this.effects.rangedAttackSpeedMul;
+      else if (category === 'hero') cd /= this.effects.heroCooldownMul;
+      if (!cd || !Number.isFinite(cd)) cd = u.typeDef.cooldown;
+      cd /= this.effects.attackSpeedMul;
+    } else if (this.waveEnraged) {
+      cd /= 1.15;
+    }
+    return Math.max(0.25, cd);
   }
 
   unitSpeed(u) {
     let s = u.typeDef.speed;
     if (u.team === 'player') {
-      if (u.type === 'villager') s *= this.effects.villagerSpeedMul;
-      else s *= this.effects.militarySpeedMul;
+      if (u.typeDef.category === 'villager') s *= this.effects.villagerSpeedMul;
+      else {
+        s *= this.effects.militarySpeedMul;
+        if (u.typeDef.category === 'cavalry') s *= this.effects.cavalrySpeedMul;
+        if (u.typeDef.category === 'siege') s *= this.effects.siegeSpeedMul;
+      }
+    } else if (this.waveEnraged) {
+      s *= 1.12;
     }
+    if (u.slowUntil > this.time) s *= 1 - (u.slowAmount || 0.15);
     return s;
   }
 
   unitCost(type) {
     const def = UNIT_TYPES[type];
     const cost = { ...def.cost };
+    if (def.category === 'infantry') for (const k of Object.keys(cost)) cost[k] = Math.round(cost[k] * this.effects.infantryCostMul);
+    if (def.category === 'cavalry') for (const k of Object.keys(cost)) cost[k] = Math.round(cost[k] * this.effects.cavalryCostMul);
+    if (def.category === 'siege') for (const k of Object.keys(cost)) cost[k] = Math.round(cost[k] * this.effects.siegeCostMul);
+    if (type === 'elephant') for (const k of Object.keys(cost)) cost[k] = Math.round(cost[k] * this.effects.elephantCostMul);
     if (cost.gold) cost.gold = Math.round(cost.gold * this.effects.goldCostMul);
     return cost;
   }
@@ -232,26 +398,18 @@ export class Game {
       if (this.prepTimer <= 0) this.startWave();
     } else if (this.phase === 'wave') {
       this.runTime += dt;
-      if (this.enemiesAlive === 0 && this.waveTotal > 0) {
-        if (this.waveEndTimer <= 0) this.waveEndTimer = 1.4;
-      }
-    } else if (this.phase === 'boon') {
-      this.runTime += dt * 0;
+      this.updateWave(dt);
     }
 
-    if (this.waveEndTimer > 0) {
-      this.waveEndTimer -= dt;
-      if (this.waveEndTimer <= 0) {
-        this.waveEndTimer = 0;
-        this.completeWave();
-      }
-    }
-
+    this.updateAutoAids(dt);
+    this.updateHeroLife(dt);
     this.updateBuildings(dt);
     this.updateUnits(dt);
     this.updateProjectiles(dt);
+    this.updateZones(dt);
     this.updateParticles(dt);
     this.updateMarkers(dt);
+    this.checkRetreat();
     this.recalcSelection();
     this.enemyPressure = this.units.some(u => u.alive && u.team === 'enemy' && dist(u.x, u.y, this.world.base.x, this.world.base.y) < 8.5);
     this.refreshHover();
@@ -260,16 +418,22 @@ export class Game {
   updateCamera(dt) {
     const speed = 720 / this.camera.zoom;
     let dx = 0, dy = 0;
-    if (this.keys.has('a') || this.keys.has('arrowleft')) dx -= 1;
-    if (this.keys.has('d') || this.keys.has('arrowright')) dx += 1;
-    if (this.keys.has('w') || this.keys.has('arrowup')) dy -= 1;
-    if (this.keys.has('s') || this.keys.has('arrowdown')) dy += 1;
+    if (!this.heroControl) {
+      if (this.keys.has('a') || this.keys.has('arrowleft')) dx -= 1;
+      if (this.keys.has('d') || this.keys.has('arrowright')) dx += 1;
+      if (this.keys.has('w') || this.keys.has('arrowup')) dy -= 1;
+      if (this.keys.has('s') || this.keys.has('arrowdown')) dy += 1;
+    }
     if (dx || dy) {
       const len = Math.hypot(dx, dy) || 1;
       this.camera.targetX += dx / len * speed * dt;
       this.camera.targetY += dy / len * speed * dt;
     }
-    const b = iso(this.world.base.x, this.world.base.y);
+    if (this.heroControl && this.hero?.alive) {
+      const hp = iso(this.hero.x, this.hero.y);
+      this.camera.targetX = hp.x;
+      this.camera.targetY = hp.y;
+    }
     this.camera.targetX = clamp(this.camera.targetX, -this.world.size * 12, this.world.size * 12);
     this.camera.targetY = clamp(this.camera.targetY, -200, this.world.size * 34);
     const k = 1 - Math.pow(0.001, dt);
@@ -299,15 +463,19 @@ export class Game {
         }
         continue;
       }
-      if (b.type === 'towncenter' || b.type === 'tower') {
+      const shoots = b.type === 'towncenter' || b.type === 'tower' || (b.type === 'house' && this.effects.houseArrows);
+      if (shoots) {
         b.cooldown -= dt;
         if (b.cooldown <= 0) {
-          const range = b.type === 'tower' ? b.typeDef.range + this.effects.towerRange : b.typeDef.range;
+          let range = b.typeDef.range || 5;
+          if (b.type === 'tower') range += this.effects.towerRange;
+          if (b.type === 'house') range = 5;
           const target = this.nearestEnemyAt(b.x + b.w / 2, b.y + b.h / 2, range);
           if (target) {
-            const damage = b.typeDef.attack * (b.type === 'tower' ? this.effects.towerDamageMul : 1);
-            this.spawnProjectile(b.x + b.w / 2, b.y + b.h / 2 - 0.5, target, damage, 'player', 0.9);
-            b.cooldown = b.typeDef.cooldown;
+            let damage = b.typeDef.attack || (b.type === 'house' ? 5 : 4);
+            if (b.type === 'tower') damage *= this.effects.towerDamageMul;
+            this.spawnProjectile(b.x + b.w / 2, b.y + b.h / 2 - 0.5, target, damage, 'player', 0.9, b);
+            b.cooldown = b.typeDef.cooldown || 1.5;
             this.sound?.arrow();
           } else {
             b.cooldown = 0.25;
@@ -342,12 +510,149 @@ export class Game {
       u.cooldown = Math.max(0, u.cooldown - dt);
       u.attackAnim = Math.max(0, u.attackAnim - dt * 5.5);
       u.hitFlash = Math.max(0, u.hitFlash - dt * 5);
+      u.shield = Math.max(0, u.shield - dt * 8);
+      u.marked = Math.max(0, u.marked - dt);
+      if (u.markCd > 0) u.markCd = Math.max(0, u.markCd - dt);
+      if (u.aegisCd > 0) u.aegisCd = Math.max(0, u.aegisCd - dt);
+      if (u.expireIn > 0) {
+        u.expireIn -= dt;
+        if (u.expireIn <= 0) { this.killEntity(u, null); continue; }
+      }
+      if (u.team === 'player' && u.typeDef.category !== 'villager' && this.effects.unitRegen > 0 && u.hp < u.maxHp) {
+        u.hp = Math.min(u.maxHp, u.hp + u.maxHp * this.effects.unitRegen * dt);
+      }
+      if (u.hero && this.heroControl && u.team === 'player') {
+        this.updateHeroDirect(u, dt);
+        continue;
+      }
       if (u.team === 'enemy') this.updateEnemy(u, dt);
       else this.updatePlayerUnit(u, dt);
     }
   }
 
+  updateHeroDirect(u, dt) {
+    let dx = 0, dy = 0;
+    if (this.keys.has('w') || this.keys.has('arrowup')) { dx -= 1; dy -= 1; }
+    if (this.keys.has('s') || this.keys.has('arrowdown')) { dx += 1; dy += 1; }
+    if (this.keys.has('a') || this.keys.has('arrowleft')) { dx -= 1; dy += 1; }
+    if (this.keys.has('d') || this.keys.has('arrowright')) { dx += 1; dy -= 1; }
+    if (dx || dy) {
+      const len = Math.hypot(dx, dy);
+      const speed = this.unitSpeed(u);
+      const nx = u.x + dx / len * speed * dt;
+      const ny = u.y + dy / len * speed * dt;
+      if (this.isWalkable(nx, ny, u)) { u.x = nx; u.y = ny; }
+      else if (this.isWalkable(nx, u.y, u)) u.x = nx;
+      else if (this.isWalkable(u.x, ny, u)) u.y = ny;
+      u.walkPhase += speed * dt * 5.3;
+      u.facing = dx >= 0 ? 1 : -1;
+      u.state = 'move';
+      u.targetPos = null;
+    } else {
+      u.state = 'hold';
+      if (u.cooldown <= 0) {
+        const near = this.nearestEnemyAt(u.x, u.y, Math.max(1.5, this.unitRange(u) + 0.5));
+        if (near) this.attackUnit(u, near);
+      }
+    }
+  }
+
+  updateHeroLife(dt) {
+    if (this.hero?.alive) return;
+    if (this.heroReviveTimer <= 0) return;
+    this.heroReviveTimer -= dt;
+    if (this.heroReviveTimer <= 0) {
+      const tc = this.getTownCenter();
+      if (!tc) return;
+      const cost = { gold: 100 };
+      if (!this.canAfford(cost)) {
+        this.heroReviveTimer = 12;
+        this.toast('The Riftwarden waits for 100 gold to return.', 'bad', 2600);
+        return;
+      }
+      this.pay(cost);
+      this.hero = this.spawnUnit('commander', tc.x + tc.w / 2 + 1.2, tc.y + tc.h + 0.8);
+      this.hero.hp = Math.round(this.hero.maxHp * 0.6);
+      this.toast('The Riftwarden returns to the field.', 'good', 3000);
+      this.sound?.complete();
+    }
+  }
+
+  updateAutoAids(dt) {
+    const timers = this.autoTimers;
+    if (this.autoEconomy) {
+      timers.gather += dt;
+      timers.villager += dt;
+      if (timers.gather >= 2.4) {
+        timers.gather = 0;
+        this.autoAssignVillagers();
+      }
+      if (timers.villager >= 11) {
+        timers.villager = 0;
+        const tc = this.getTownCenter();
+        const villagers = this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager').length;
+        if (tc && !tc.queue.length && villagers < 22 && this.population + 1 <= this.popCap && this.resources.food >= 70) {
+          this.trainUnit(tc, 'villager', true);
+        }
+      }
+    }
+    if (this.autoMilitary) {
+      timers.military += dt;
+      if (timers.military >= 13) {
+        timers.military = 0;
+        this.autoTrainSoldier();
+      }
+    }
+  }
+
+  autoAssignVillagers() {
+    const idle = this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager' && u.state === 'idle');
+    if (!idle.length) return;
+    const counts = { food: 0, wood: 0, gold: 0, stone: 0 };
+    for (const u of this.units) {
+      if (!u.alive || u.team !== 'player' || u.type !== 'villager' || u.state === 'idle') continue;
+      const type = u.gatherTarget?.resource || u.carryType || (u.dropTarget ? 'food' : null);
+      if (type) counts[type] = (counts[type] || 0) + 1;
+    }
+    const order = ['food', 'wood', 'gold', 'stone'];
+    const target = { food: 0.34, wood: 0.32, gold: 0.22, stone: 0.12 };
+    let pickType = null, best = -1;
+    for (const type of order) {
+      const ratio = counts[type] / Math.max(1, Object.values(counts).reduce((a, b) => a + b, 0));
+      if (target[type] - ratio > best && this.findResource(type, this.world.base.x, this.world.base.y)) {
+        best = target[type] - ratio;
+        pickType = type;
+      }
+    }
+    if (!pickType) pickType = 'wood';
+    for (const u of idle) {
+      const node = this.findResource(pickType, u.x, u.y) || this.findResource('wood', u.x, u.y) || this.findResource('food', u.x, u.y);
+      if (node) this.orderGather(u, node);
+    }
+  }
+
+  autoTrainSoldier() {
+    const options = [
+      ['barracks', 'spearman'], ['archery_range', 'archer'], ['stable', 'knight'],
+      ['barracks', 'militia'], ['archery_range', 'skirmisher'],
+    ];
+    const enemies = this.units.filter(u => u.alive && u.team === 'enemy');
+    const cavalry = enemies.filter(u => u.typeDef.category === 'cavalry').length;
+    if (cavalry > 2) options.unshift(['barracks', 'spearman'], ['barracks', 'spearman']);
+    for (const [type, unitType] of options) {
+      if (unitType === 'elephant' && !this.effects.elephantUnlocked) continue;
+      const b = this.buildings.find(x => x.alive && x.team === 'player' && x.type === type && x.construction >= 1 && !x.queue.length);
+      if (!b) continue;
+      const def = UNIT_TYPES[unitType];
+      if (this.population + this.computeUnitPop(def) > this.popCap) continue;
+      if (!this.canAfford(this.unitCost(unitType))) continue;
+      this.trainUnit(b, unitType, true);
+      return;
+    }
+  }
+
   updateEnemy(u, dt) {
+    if (u.typeDef.boss) this.updateBoss(u, dt);
     u.retargetTimer -= dt;
     const targetValid = u.target && u.target.alive;
     if (!targetValid || u.retargetTimer <= 0) {
@@ -374,6 +679,46 @@ export class Game {
       u.state = 'move';
       this.stepToward(u, target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), dt);
       this.tryAutoAttack(u, target);
+    }
+  }
+
+  updateBoss(u, dt) {
+    u.bossSkillTimer -= dt;
+    if (u.bossSkillTimer <= 0) {
+      u.bossSkillTimer = u.type === 'warlord2' ? 7.5 : 9;
+      const tc = this.getTownCenter();
+      const targets = this.units.filter(o => o.alive && o.team === 'player');
+      let tx = tc ? tc.x + tc.w / 2 : this.world.base.x;
+      let ty = tc ? tc.y + tc.h / 2 : this.world.base.y;
+      if (targets.length) {
+        let best = null, bestD = Infinity;
+        for (const o of targets) {
+          const d = dist2(o.x, o.y, u.x, u.y);
+          if (d < bestD) { bestD = d; best = o; }
+        }
+        tx = best.x; ty = best.y;
+      }
+      this.zones.push({
+        x: tx, y: ty, r: u.type === 'warlord2' ? 3.3 : 2.8,
+        delay: 2.4, elapsed: 0, damage: u.type === 'warlord2' ? 105 : 65,
+        source: u, kind: 'boss', done: false,
+      });
+      this.toast(`${u.typeDef.name} calls down a rift strike. Move!`, 'bad', 2400);
+      this.sound?.horn();
+    }
+    const ratio = u.hp / u.maxHp;
+    const stage = ratio < 0.3 ? 2 : ratio < 0.6 ? 1 : 0;
+    if (stage > u.rageStage) {
+      u.rageStage = stage;
+      u.attack *= 1.12;
+      u.bossSkillTimer = Math.min(u.bossSkillTimer, 2.5);
+      this.toast(`${u.typeDef.name} enters phase ${stage + 1}.`, 'bad', 2800);
+      const adds = u.type === 'warlord2' ? 4 : 3;
+      for (let i = 0; i < adds; i++) {
+        const a = this.rng() * Math.PI * 2;
+        const add = this.spawnUnit(u.type === 'warlord2' ? 'marauder' : 'raider', u.x + Math.cos(a) * 2, u.y + Math.sin(a) * 2, 'enemy');
+        if (add) { add.target = this.getTownCenter(); add.state = 'move'; }
+      }
     }
   }
 
@@ -425,6 +770,7 @@ export class Game {
   }
 
   updateAttack(u, dt) {
+    if (u.typeDef.noAttack) { u.state = u.hold ? 'hold' : 'idle'; return; }
     const target = u.target;
     if (!target || !target.alive) { u.state = u.hold ? 'hold' : 'idle'; u.target = null; return; }
     const d = this.distanceTo(u, target);
@@ -664,33 +1010,50 @@ export class Game {
     return best;
   }
 
+  counterMultiplier(u, target) {
+    if (!target) return 1;
+    if (target.w) return this.unitCategory(u) === 'siege' ? 2.6 : 1;
+    const a = u.type, t = target.type;
+    if (a === 'spearman' && (target.typeDef.category === 'cavalry')) return 2;
+    if (a === 'skirmisher' && target.typeDef.category === 'ranged') return 1.6;
+    if (a === 'knight' && ['villager', 'archer', 'skirmisher', 'marauder'].includes(t)) return 1.35;
+    if (a === 'elephant' && target.typeDef.category === 'infantry') return 1.2;
+    if (a === 'militia' && target.typeDef.category === 'siege') return 1.4;
+    if ((a === 'archer' || a === 'marauder') && target.typeDef.category === 'siege') return 0.5;
+    if (this.unitCategory(u) === 'siege') return 0.25;
+    return 1;
+  }
+
   attackUnit(u, target) {
-    if (!target || !target.alive) return;
+    if (!target || !target.alive || u.typeDef.noAttack) return;
     const def = u.typeDef;
     u.attackAnim = 1;
-    u.cooldown = def.cooldown / (u.team === 'player' && u.type !== 'villager' ? this.effects.attackSpeedMul : 1);
+    u.cooldown = this.attackCooldown(u);
     u.state = 'attack';
     u.target = target;
+    let damage = this.unitAttack(u) * this.counterMultiplier(u, target);
+    if (u.team === 'player' && target.marked > 0) damage *= 1.12;
     if (def.projectile) {
-      const damage = def.attack * this.damageMul(u);
-      this.spawnProjectile(u.x, u.y - 0.4, target, damage, u.team, 1);
+      this.spawnProjectile(u.x, u.y - 0.4, target, damage, u.team, 1, u);
+      u.shots++;
+      if (u.team === 'player' && this.effects.extraArrowEvery && u.shots % this.effects.extraArrowEvery === 0) {
+        const second = this.nearestEnemyAt(target.x, target.y, 4.5) || target;
+        this.spawnProjectile(u.x, u.y - 0.45, second, damage * 0.8, u.team, 0.85, u);
+      }
       this.sound?.arrow();
     } else {
-      const damage = def.attack * this.damageMul(u);
-      setTimeout(() => {
-        if (!this.paused && target.alive) this.applyDamage(target, damage, u);
-      }, 140);
+      this.applyDamage(target, damage, u);
       this.sound?.attack();
       if (u.team === 'player' && this.selection.includes(u)) {
-        this.addParticles(target.x, target.y, 'slash', 'rgba(244,226,178,ALPHA)', 1, 1, 0.35);
+        this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'slash', 'rgba(244,226,178,ALPHA)', 1, 1, 0.35);
       }
     }
   }
 
-  spawnProjectile(x, y, target, damage, team, scale = 1) {
+  spawnProjectile(x, y, target, damage, team, scale = 1, source = null) {
     this.projectiles.push({
       x, y, target, tx: target.x + (target.w ? target.w / 2 : 0), ty: target.y + (target.h ? target.h / 2 : 0),
-      team, damage, speed: 8.4, alive: true, scale,
+      team, damage, speed: 8.4, alive: true, scale, source,
     });
   }
 
@@ -705,7 +1068,28 @@ export class Game {
       const d = Math.hypot(dx, dy);
       if (d < 0.24) {
         p.alive = false;
-        this.applyDamage(target, p.damage, null);
+        const source = p.source;
+        this.applyDamage(target, p.damage, source);
+        if (source?.team === 'player' && !target.w) {
+          if (this.effects.slowOnHit > 0 && this.unitCategory(source) === 'ranged') {
+            target.slowUntil = this.time + 1.5;
+            target.slowAmount = this.effects.slowOnHit;
+          }
+          if (this.effects.splash > 0 && this.unitCategory(source) === 'ranged') {
+            for (const e of this.units) {
+              if (e === target || !e.alive || e.team !== 'enemy') continue;
+              if (dist(e.x, e.y, target.x, target.y) <= 1.5) this.applyDamage(e, p.damage * this.effects.splash, source);
+            }
+            this.addParticles(target.x, target.y, 'ring', 'rgba(227,134,65,ALPHA)', 1, 4, 0.4);
+          }
+          if (this.effects.chainEvery && source.shots % this.effects.chainEvery === 0) {
+            const chained = this.units
+              .filter(e => e.alive && e.team === 'enemy' && e !== target && dist(e.x, e.y, target.x, target.y) <= 4)
+              .slice(0, 2);
+            for (const e of chained) this.applyDamage(e, p.damage * 0.55, source);
+            this.addParticles(target.x, target.y, 'ring', 'rgba(137,190,222,ALPHA)', 1, 3, 0.35);
+          }
+        }
         this.sound?.hit();
         this.addParticles(p.tx, p.ty, 'spark', 'rgba(230,213,171,ALPHA)', 1, 4, 0.7);
         continue;
@@ -716,15 +1100,69 @@ export class Game {
     this.projectiles = this.projectiles.filter(p => p.alive);
   }
 
+  updateZones(dt) {
+    for (const zone of this.zones) {
+      zone.elapsed += dt;
+      if (!zone.done && zone.elapsed >= zone.delay) {
+        zone.done = true;
+        for (const u of this.units) {
+          if (!u.alive || u.team !== 'player') continue;
+          if (dist(u.x, u.y, zone.x, zone.y) <= zone.r) this.applyDamage(u, zone.damage, zone.source);
+        }
+        for (const b of this.buildings) {
+          if (!b.alive || b.team !== 'player') continue;
+          const dx = Math.max(b.x - zone.x, 0, zone.x - (b.x + b.w));
+          const dy = Math.max(b.y - zone.y, 0, zone.y - (b.y + b.h));
+          if (Math.hypot(dx, dy) <= zone.r) this.applyDamage(b, zone.damage * 0.8, zone.source);
+        }
+        this.addParticles(zone.x, zone.y, 'ring', 'rgba(229,92,68,ALPHA)', 2.2, 12, 0.8);
+        this.addParticles(zone.x, zone.y, 'smoke', 'rgba(80,35,29,ALPHA)', 5, 12, 1.1);
+        this.sound?.hit();
+      }
+    }
+    this.zones = this.zones.filter(z => z.elapsed < z.delay + 0.9);
+  }
+
   applyDamage(target, amount, source) {
-    if (!target.alive) return;
-    target.hp -= amount;
+    if (!target || !target.alive) return;
+    let damage = amount;
+    if (source?.typeDef?.category === 'siege' && target.w) damage *= 1.6;
+    damage = Math.max(1, damage - (target.armor || 0) * 0.6);
+    if (target.shield > 0) {
+      const absorbed = Math.min(target.shield, damage);
+      target.shield -= absorbed;
+      damage -= absorbed;
+      if (target.shield <= 0) target.shield = 0;
+      if (damage <= 0) {
+        this.addFloating(target.x, target.y, 'shielded', 'rgba(147,197,220,ALPHA)');
+        return;
+      }
+    }
+    target.hp -= damage;
     target.hitFlash = 1;
     this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'spark', 'rgba(178,64,49,ALPHA)', 1, 4, 0.5);
-    if (target.hp <= 0) this.killEntity(target, source);
+    if (source?.team === 'player' && source.alive && this.effects.lifesteal > 0) {
+      source.hp = Math.min(source.maxHp, source.hp + damage * this.effects.lifesteal);
+    }
+    if (target.team === 'player' && target.w && this.effects.thorns > 0 && source?.team === 'enemy') {
+      this.applyDamage(source, damage * this.effects.thorns, null);
+    }
+    if (target.hp <= 0) {
+      const elite = target.hero || ['knight', 'elephant', 'prototype', 'warlord', 'warlord2'].includes(target.type);
+      if (target.team === 'player' && this.effects.rescue && elite && !target.rescueUsed) {
+        target.rescueUsed = true;
+        target.hp = 1;
+        target.shield = 80;
+        this.toast('The Rescue Writ burns. An elite is pulled back from death.', 'good', 3200);
+        this.addParticles(target.x, target.y, 'ring', 'rgba(232,201,126,ALPHA)', 2, 8, 0.8);
+        return;
+      }
+      this.killEntity(target, source);
+    }
   }
 
   killEntity(target, source) {
+    if (!target.alive) return;
     target.alive = false;
     target.selected = false;
     if (target.w) {
@@ -735,13 +1173,42 @@ export class Game {
     } else {
       this.addParticles(target.x, target.y, 'spark', 'rgba(157,58,45,ALPHA)', 1.2, 8, 0.7);
       this.addParticles(target.x, target.y, 'smoke', 'rgba(61,48,36,ALPHA)', 3, 4, 1.1);
-      this.addFloating(target.x, target.y, 'slain', 'rgba(216,190,150,ALPHA)');
+      if (target.hero && target.team === 'player') {
+        this.heroReviveTimer = 30;
+        this.heroControl = false;
+        this.toast('The Riftwarden has fallen. They will return in 30 seconds if you hold.', 'bad', 5000);
+      } else {
+        this.addFloating(target.x, target.y, 'slain', 'rgba(216,190,150,ALPHA)');
+      }
       if (target.team === 'enemy') {
         this.stats.kills++;
         const bounty = (target.typeDef.bounty || 0) + this.effects.bountyGold;
         this.resources.gold += bounty;
         if (bounty > 0) this.addFloating(target.x, target.y, `+${Math.round(bounty)}g`, 'rgba(223,190,102,ALPHA)');
-        this.sound?.hit();
+        if (this.effects.killGoldRate > 0 && this.killGoldEarned < this.effects.killGoldCap) {
+          const gain = Math.min(12, this.effects.killGoldCap - this.killGoldEarned);
+          this.killGoldEarned += gain;
+          this.resources.gold += gain;
+        }
+        if (this.effects.killFoodRate > 0 && this.killFoodEarned < this.effects.killFoodCap) {
+          const gain = Math.min(14, this.effects.killFoodCap - this.killFoodEarned);
+          this.killFoodEarned += gain;
+          this.resources.food += gain;
+        }
+        if (this.effects.convertChance > 0 && !target.typeDef.boss && this.rng() < this.effects.convertChance) {
+          const convert = this.spawnUnit('militia', target.x, target.y, 'player', { summoned: true, expireIn: 20 });
+          if (convert) {
+            convert.hp = convert.maxHp;
+            this.addParticles(target.x, target.y, 'ring', 'rgba(129,181,199,ALPHA)', 1.5, 6, 0.7);
+            this.toast('A raider rises under your banner.', 'good', 2200);
+          }
+        }
+        if (target.typeDef.boss) {
+          this.sound?.victory();
+          this.toast(`${target.typeDef.name} is broken.`, 'good', 4200);
+        } else {
+          this.sound?.hit();
+        }
       }
     }
     this.recalcSelection();
@@ -768,7 +1235,7 @@ export class Game {
     if (this.phase === 'defeat' || this.phase === 'victory') return;
     this.phase = 'victory';
     this.sound?.victory();
-    this.stats.waves = 5;
+    this.stats.waves = WAVES.length;
     setTimeout(() => this.showEnd(true), 1600);
   }
 
@@ -776,62 +1243,119 @@ export class Game {
     if (this.endShown) return;
     this.endShown = true;
     this.hooks.end?.(victory, {
-      waves: victory ? 5 : this.waveIndex,
+      waves: victory ? WAVES.length : this.waveIndex,
       kills: this.stats.kills,
       gathered: this.stats.gathered,
       time: this.runTime,
+      civId: this.civ.id,
+      biomeId: this.biome.id,
     });
   }
 
   startWave() {
+    const wave = WAVES[Math.min(this.waveIndex, WAVES.length - 1)];
     this.phase = 'wave';
-    this.waveName = WAVES[Math.min(this.waveIndex, WAVES.length - 1)].name;
-    const comp = WAVE_COMPOSITIONS[Math.min(this.waveIndex, WAVE_COMPOSITIONS.length - 1)];
-    const campCount = this.waveIndex === 0 ? 1 : this.waveIndex < 3 ? 2 : 3;
-    const camps = [...this.world.camps].slice(0, campCount);
-    let count = 0;
-    for (const n of Object.values(comp)) count += n;
-    this.waveTotal = count;
+    this.waveName = wave.name;
+    this.waveClock = 0;
+    this.waveEnraged = false;
     this.waveEndTimer = 0;
+    this.waveSpawns = wave.spawns.map(group => ({ ...group, spawned: false }));
+    this.waveTotal = this.waveSpawns.reduce((sum, group) => sum + Object.values(group.units).reduce((s, n) => s + n, 0), 0);
+    for (const u of this.units) if (u.alive && u.team === 'player') u.rescueUsed = false;
+
+    if (this.effects.decoyWave > 0) {
+      const tc = this.getTownCenter();
+      for (let i = 0; i < this.effects.decoyWave; i++) {
+        const decoy = this.spawnUnit('decoy', (tc?.x || this.world.base.x) + 2 + i, (tc?.y || this.world.base.y) + 4, 'player', { expireIn: 45 });
+        if (decoy) decoy.state = 'hold';
+      }
+    }
+
+    this.sound?.horn();
+    const gates = [...new Set(this.waveSpawns.map(g => this.world.camps[g.gate % this.world.camps.length]?.name).filter(Boolean))];
+    const dirs = gates.map(name => name.replace('The ', '')).join(' and ');
+    this.toast(`Raiders approach from ${dirs}.`, 'bad', 4200);
+    if (wave.boss) {
+      const bossGroup = this.waveSpawns.find(g => Object.keys(g.units).some(type => UNIT_TYPES[type]?.boss));
+      const at = bossGroup ? bossGroup.at : 0;
+      setTimeout(() => {
+        const boss = this.bossAlive;
+        if (boss) this.toast(`${boss.typeDef.name} has entered the field.`, 'bad', 5000);
+      }, (at + 0.8) * 1000);
+    }
+  }
+
+  updateWave(dt) {
+    this.waveClock += dt;
+    const wave = WAVES[Math.min(this.waveIndex, WAVES.length - 1)];
+    for (const group of this.waveSpawns) {
+      if (!group.spawned && this.waveClock >= group.at) {
+        group.spawned = true;
+        this.spawnWaveGroup(group);
+      }
+    }
+    if (!this.waveEnraged && this.waveClock >= wave.duration) {
+      this.waveEnraged = true;
+      this.toast('The raid is enraged. They will not tire.', 'bad', 3600);
+      this.sound?.horn();
+    }
+    if (this.waveSpawns.every(g => g.spawned) && this.enemiesAlive === 0) {
+      if (this.waveEndTimer <= 0) this.waveEndTimer = 1.4;
+    }
+    if (this.waveEndTimer > 0) {
+      this.waveEndTimer -= dt;
+      if (this.waveEndTimer <= 0) {
+        this.waveEndTimer = 0;
+        this.completeWave();
+      }
+    }
+  }
+
+  spawnWaveGroup(group) {
+    const camp = this.world.camps[group.gate % this.world.camps.length];
+    if (!camp) return;
     let index = 0;
-    for (const [type, num] of Object.entries(comp)) {
-      for (let i = 0; i < num; i++) {
-        const camp = camps[index % camps.length];
+    for (const [type, count] of Object.entries(group.units)) {
+      for (let i = 0; i < count; i++) {
         const angle = this.rng() * Math.PI * 2;
-        const radius = 1.4 + this.rng() * 2.2;
+        const radius = 1.1 + this.rng() * 2.6;
         let sx = camp.x + Math.cos(angle) * radius;
         let sy = camp.y + Math.sin(angle) * radius;
         if (!this.isWalkable(sx, sy, { team: 'enemy' })) {
-          sx = camp.x + rand(this.rng, -1, 1);
-          sy = camp.y + rand(this.rng, -1, 1);
+          sx = camp.x + rand(this.rng, -1.2, 1.2);
+          sy = camp.y + rand(this.rng, -1.2, 1.2);
         }
         const u = this.spawnUnit(type, sx, sy, 'enemy');
+        if (!u) continue;
         u.target = this.getTownCenter();
         u.state = 'move';
         index++;
       }
     }
-    this.sound?.horn();
-    const dirs = camps.map(c => c.name.replace('The ', '')).join(' and ');
-    this.toast(`Raiders approach from ${dirs}.`, 'bad', 4200);
-    if (this.waveIndex === 4) setTimeout(() => this.toast('Vask the Unburnt has entered the field.', 'bad', 5000), 900);
+    if (index > 0) {
+      this.addParticles(camp.x, camp.y, 'smoke', 'rgba(89,56,40,ALPHA)', 4, 8, 1.0);
+    }
   }
 
   completeWave() {
-    if (this.waveIndex >= 4) {
+    if (this.phase !== 'wave') return;
+    if (this.waveIndex >= WAVES.length - 1) {
       this.triggerVictory();
       return;
     }
     this.stats.waves = this.waveIndex + 1;
-    const reward = { food: 100 + this.waveIndex * 20, wood: 80 + this.waveIndex * 20, gold: 55 + this.waveIndex * 15 };
-    this.resources.food += reward.food;
-    this.resources.wood += reward.wood;
-    this.resources.gold += reward.gold;
+    const reward = {
+      food: 110 + this.waveIndex * 28,
+      wood: 90 + this.waveIndex * 24,
+      gold: 60 + this.waveIndex * 20,
+      stone: 24 + this.waveIndex * 8,
+    };
+    for (const [key, value] of Object.entries(reward)) this.resources[key] += value;
     for (const u of this.units) {
-      if (u.alive && u.team === 'player') u.hp = Math.min(u.maxHp, u.hp + u.maxHp * 0.25);
+      if (u.alive && u.team === 'player') u.hp = Math.min(u.maxHp, u.hp + u.maxHp * 0.3);
     }
     for (const b of this.buildings) {
-      if (b.alive && b.team === 'player') b.hp = Math.min(b.maxHp, b.hp + b.maxHp * 0.12);
+      if (b.alive && b.team === 'player') b.hp = Math.min(b.maxHp, b.hp + b.maxHp * 0.15);
     }
     this.phase = 'boon';
     this.toast(`Raid broken. Spoils: +${reward.food} food, +${reward.wood} wood, +${reward.gold} gold.`, 'good', 3800);
@@ -844,8 +1368,15 @@ export class Game {
     const chosen = [];
     const pool = [...available];
     while (chosen.length < 3 && pool.length) {
-      const idx = Math.floor(this.rng() * pool.length);
-      chosen.push(pool.splice(idx, 1)[0]);
+      let total = 0;
+      for (const card of pool) total += RARITY_WEIGHT[card.rarity] || 1;
+      let roll = this.rng() * total;
+      let index = 0;
+      for (let i = 0; i < pool.length; i++) {
+        roll -= RARITY_WEIGHT[pool[i].rarity] || 1;
+        if (roll <= 0) { index = i; break; }
+      }
+      chosen.push(pool.splice(index, 1)[0]);
     }
     return chosen;
   }
@@ -853,12 +1384,14 @@ export class Game {
   chooseBoon(boon) {
     if (!boon) return;
     boon.apply(this);
+    this.refreshPlayerStats();
+    this.refreshBuildingStats();
     this.boons.push(boon);
     this.waveIndex++;
     this.waveName = WAVES[Math.min(this.waveIndex, WAVES.length - 1)].name;
     this.phase = 'prep';
-    this.prepTotal = 26;
-    this.prepTimer = 26;
+    this.prepTotal = 30;
+    this.prepTimer = 30;
     this.camera.targetZoom = 1.12;
     this.toast(`Boon claimed: ${boon.name}.`, 'good', 3800);
     this.hooks.selectionChanged?.();
@@ -957,6 +1490,10 @@ export class Game {
       if (b?.w && b.team === 'player') this.trainUnit(b, id.slice(6));
       return;
     }
+    if (id === 'age:advance') { this.advanceAge(); return; }
+    if (id === 'hero:mark') { this.heroMark(); return; }
+    if (id === 'hero:control') { this.toggleHeroControl(); this.hooks.selectionChanged?.(); return; }
+    if (id === 'hero:aegis') { this.heroAegis(); return; }
     const units = this.selection.filter(e => e.team === 'player' && !e.w);
     if (id === 'stop') {
       for (const u of units) {
@@ -972,25 +1509,121 @@ export class Game {
     }
   }
 
-  trainUnit(building, type) {
+  advanceAge() {
+    if (this.ageLevel >= 3) { this.sound?.error(); this.toast('Your realm has reached the Imperial Age.', '', 2000); return; }
+    const tc = this.getTownCenter();
+    if (!tc) return;
+    const cost = AGE_COSTS[this.ageLevel];
+    if (!this.canAfford(cost)) {
+      this.sound?.error();
+      this.toast(`Advancing needs ${Object.entries(cost).map(([k, v]) => `${v} ${k}`).join(' and ')}.`, 'bad', 2600);
+      return;
+    }
+    this.pay(cost);
+    this.ageLevel++;
+    this.refreshPlayerStats();
+    this.sound?.complete();
+    this.addParticles(tc.x + tc.w / 2, tc.y + tc.h / 2, 'ring', 'rgba(232,201,126,ALPHA)', 2, 14, 1.0);
+    this.toast(`The realm enters the ${this.ageName}. Soldiers grow stronger.`, 'good', 4000);
+    this.hooks.selectionChanged?.();
+  }
+
+  heroMark() {
+    const hero = this.hero;
+    if (!hero?.alive) { this.sound?.error(); this.toast('The Riftwarden is not on the field.', 'bad', 2200); return; }
+    if (hero.markCd > 0) { this.sound?.error(); this.toast(`Mark is ready in ${Math.ceil(hero.markCd)}s.`, '', 1600); return; }
+    const target = this.nearestEnemyAt(hero.x, hero.y, 9);
+    if (!target) { this.sound?.error(); this.toast('No raider within reach of the mark.', '', 2000); return; }
+    target.marked = 6;
+    hero.markCd = 9;
+    this.addCommandMarker(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), true);
+    this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'ring', 'rgba(229,160,74,ALPHA)', 1.4, 6, 0.6);
+    this.sound?.command();
+    this.toast(`${target.typeDef?.name || 'Target'} marked. Your soldiers deal 12% more damage to it.`, 'good', 2600);
+  }
+
+  heroAegis() {
+    const hero = this.hero;
+    if (!hero?.alive) { this.sound?.error(); this.toast('The Riftwarden is not on the field.', 'bad', 2200); return; }
+    if (hero.aegisCd > 0) { this.sound?.error(); this.toast(`Aegis is ready in ${Math.ceil(hero.aegisCd)}s.`, '', 1600); return; }
+    let count = 0;
+    for (const u of this.units) {
+      if (!u.alive || u.team !== 'player') continue;
+      if (dist(u.x, u.y, hero.x, hero.y) > 5) continue;
+      u.shield = Math.max(u.shield, 70);
+      count++;
+    }
+    hero.aegisCd = 15;
+    this.addParticles(hero.x, hero.y, 'ring', 'rgba(147,197,220,ALPHA)', 2.5, 12, 0.8);
+    this.sound?.boon();
+    this.toast(`Aegis shields ${count} soldiers for 70.`, 'good', 2600);
+  }
+
+  toggleHeroControl() {
+    if (!this.hero?.alive) {
+      this.sound?.error();
+      this.toast('The Riftwarden is unavailable.', 'bad', 1800);
+      return false;
+    }
+    this.heroControl = !this.heroControl;
+    if (this.heroControl) {
+      this.setSelection([this.hero]);
+      this.focusAt(this.hero.x, this.hero.y);
+      this.toast('Riftwarden under direct control: WASD move, Q mark, E aegis, Tab release.', 'good', 4200);
+    } else {
+      this.toast('Direct control released.', '', 1800);
+    }
+    return this.heroControl;
+  }
+
+  checkRetreat() {
+    if (!this.effects.retreat || this.retreatUsed) return;
+    const tc = this.getTownCenter();
+    if (!tc || tc.hp / tc.maxHp >= 0.3) return;
+    this.retreatUsed = true;
+    for (const u of this.units) {
+      if (u.alive && u.team === 'player') u.hp = Math.min(u.maxHp, u.hp + u.maxHp * 0.25);
+    }
+    for (const b of this.buildings) {
+      if (b.alive && b.team === 'player') b.hp = Math.min(b.maxHp, b.hp + b.maxHp * 0.1);
+    }
+    this.toast('The Retreat Standard is raised. Your host is restored.', 'good', 3600);
+  }
+
+  trainUnit(building, type, silent = false) {
     if (building.construction < 1) return;
     if (!TRAINABLE[building.type]?.includes(type)) return;
     const def = UNIT_TYPES[type];
+    if (type === 'elephant' && !this.effects.elephantUnlocked) {
+      if (!silent) { this.sound?.error(); this.toast('War elephants require a civilization or card that unlocks them.', 'bad', 2600); }
+      return;
+    }
     const cost = this.unitCost(type);
-    const queuedPop = building.queue.reduce((s, q) => s + UNIT_TYPES[q.type].pop, 0);
-    if (!this.canAfford(cost)) { this.sound?.error(); this.toast(`Not enough resources for ${def.name}.`, 'bad', 2000); return; }
-    if (this.population + queuedPop + def.pop > this.popCap) { this.sound?.error(); this.toast('Population limit reached. Raise more houses.', 'bad', 2400); return; }
-    if (building.queue.length >= 5) { this.sound?.error(); this.toast('Training queue is full.', 'bad', 2000); return; }
+    const pop = this.computeUnitPop(def);
+    const queuedPop = building.queue.reduce((s, q) => s + this.computeUnitPop(UNIT_TYPES[q.type]), 0);
+    if (!this.canAfford(cost)) {
+      if (!silent) { this.sound?.error(); this.toast(`Not enough resources for ${def.name}.`, 'bad', 2000); }
+      return;
+    }
+    if (this.population + queuedPop + pop > this.popCap) {
+      if (!silent) { this.sound?.error(); this.toast('Population limit reached. Raise more houses.', 'bad', 2400); }
+      return;
+    }
+    if (building.queue.length >= 5) {
+      if (!silent) { this.sound?.error(); this.toast('Training queue is full.', 'bad', 2000); }
+      return;
+    }
     this.pay(cost);
     const time = def.trainTime / this.effects.trainSpeedMul;
     building.queue.push({ type, total: time, remaining: time });
-    this.sound?.train();
+    if (!silent) this.sound?.train();
     this.hooks.selectionChanged?.();
   }
 
   canTrainNow(type) {
     const def = UNIT_TYPES[type];
-    return this.population + def.pop <= this.popCap;
+    if (type === 'elephant' && !this.effects.elephantUnlocked) return false;
+    return this.population + this.computeUnitPop(def) <= this.popCap;
   }
 
   selectIdleVillager() {

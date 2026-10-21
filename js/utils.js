@@ -99,3 +99,15 @@ export function nearest(list, x, y, predicate = null) {
 export function seedFromDate() {
   return (Date.now() ^ (Math.random() * 0xffffffff)) >>> 0;
 }
+
+export function seedFromString(value) {
+  const text = String(value || '').trim();
+  if (!text) return seedFromDate();
+  if (/^\d+$/.test(text)) return Number(text) >>> 0;
+  let hash = 2166136261;
+  for (let i = 0; i < text.length; i++) {
+    hash ^= text.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}

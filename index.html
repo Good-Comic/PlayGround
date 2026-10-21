@@ -4,22 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <meta name="theme-color" content="#17150f" />
-  <title>Age of Empires II-Roguelite — Ages of Ash</title>
+  <title>Riftwatch — Confluence Empires</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2317150f'/%3E%3Cpath d='M6 12l5 4 5-8 5 8 5-4-2.5 12h-15z' fill='none' stroke='%23d5ad58' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M9 25h14' stroke='%23d5ad58' stroke-width='1.8'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div id="app">
-    <canvas id="game" aria-label="Age of Empires II-Roguelite battlefield"></canvas>
+    <canvas id="game" aria-label="Riftwatch battlefield"></canvas>
     <div class="canvas-vignette"></div>
 
     <div class="menu-screen" id="menu-screen">
       <div class="menu-shade"></div>
       <div class="menu-rail">
-        <div class="menu-kicker"><span></span> AN AGE OF EMPIRES II ROGUELITE <span></span></div>
-        <h1 class="menu-title"><span>AGES</span><span class="of">of</span><span>ASH</span></h1>
+        <div class="menu-kicker"><span></span> CONFLUENCE EMPIRES <span></span></div>
+        <h1 class="menu-title single"><span>RIFT</span><span class="title-watch">WATCH</span></h1>
         <div class="title-flourish"><i></i><svg><use href="#i-crown"/></svg><i></i></div>
-        <p class="menu-lede">The fire took your kingdom. Five raids stand between you and the throne.</p>
+        <p class="menu-lede">The Rift has opened. Ten raids stand between your people and the Confluence.</p>
+        <div class="menu-setup">
+          <label class="setup-field">
+            <span>Civilization</span>
+            <select id="setup-civ"></select>
+            <small id="setup-civ-blurb"></small>
+          </label>
+          <label class="setup-field">
+            <span>Biome</span>
+            <select id="setup-biome"></select>
+            <small id="setup-biome-blurb"></small>
+          </label>
+          <label class="setup-field seed">
+            <span>Seed</span>
+            <input id="setup-seed" type="text" maxlength="16" autocomplete="off" spellcheck="false" placeholder="random" />
+            <small>Same seed, same frontier.</small>
+          </label>
+        </div>
         <div class="menu-actions">
           <button class="primary-button" id="btn-start">
             <span class="btn-shine"></span>
@@ -32,13 +49,13 @@
           </button>
         </div>
         <div class="menu-facts">
-          <div><b>5</b><span>RAIDS</span></div>
+          <div><b>16</b><span>CIVILIZATIONS</span></div>
           <i></i>
-          <div><b>12</b><span>BOONS</span></div>
+          <div><b>10</b><span>RAIDS</span></div>
           <i></i>
-          <div><b>1</b><span>LAST STAND</span></div>
+          <div><b>32</b><span>BOONS</span></div>
         </div>
-        <div class="menu-tip"><span>WASD</span> to march <i></i> <span>RIGHT-CLICK</span> to command <i></i> <span>SPACE</span> to pause</div>
+        <div class="menu-tip"><span>WASD</span> to march <i></i> <span>RIGHT-CLICK</span> to command <i></i> <span>TAB</span> to lead the hero</div>
       </div>
       <div class="menu-side">
         <div class="menu-seal">
@@ -51,12 +68,12 @@
           </svg>
           <span>EST. 1152</span>
         </div>
-        <div class="menu-quote">“A king is only as mighty as the ash from which he rises.”<small>— The Chronicle of Vael</small></div>
+        <div class="menu-quote">“Where the worlds touch, someone must stand watch.”<small>— The Confluence Chronicle</small></div>
       </div>
       <div class="menu-footer">
         <span>An original 2D real-time roguelite</span>
         <span class="footer-mark">⚜</span>
-        <span>Forged in the Ashlands</span>
+        <span>Stand watch at the Rift</span>
       </div>
     </div>
 
@@ -64,7 +81,7 @@
       <header class="topbar">
         <div class="brand-lockup">
           <span class="brand-sigil"><svg><use href="#i-crown"/></svg></span>
-          <span class="brand-word">AGES <em>of</em> ASH</span>
+          <span class="brand-word">RIFTWATCH</span>
         </div>
 
         <div class="resource-strip" role="status" aria-live="polite">
@@ -103,7 +120,7 @@
       <div class="wave-banner" id="wave-banner">
         <span class="wave-rule"></span>
         <div class="wave-copy">
-          <span class="wave-kicker" id="wave-kicker">WAVE I OF V</span>
+          <span class="wave-kicker" id="wave-kicker">WAVE I OF X</span>
           <span class="wave-title" id="wave-title">The First Raid</span>
         </div>
         <span class="wave-rule"></span>
@@ -114,11 +131,17 @@
       <aside class="objective-card" id="objective-card">
         <div class="objective-head"><svg><use href="#i-banner"/></svg><span>THE LAST MARCH</span></div>
         <div class="objective-body">
-          <div class="objective-row"><span>Survive the raids</span><b id="objective-waves">0 / 5</b></div>
+          <div class="objective-row"><span>Survive the raids</span><b id="objective-waves">0 / 10</b></div>
           <div class="objective-row"><span>Defend the Town Center</span><b id="objective-hp">100%</b></div>
+          <div class="objective-row"><span>Current age</span><b id="objective-age">Dark Age</b></div>
           <div class="objective-row subtle"><span>Boons claimed</span><b id="objective-boons">0</b></div>
         </div>
       </aside>
+
+      <div class="boss-bar" id="boss-bar" hidden>
+        <div class="boss-head"><span class="boss-kicker">WARLORD OF THE RIFT</span><b id="boss-name">The Ashen Warlord</b><span id="boss-hp">0 / 0</span></div>
+        <div class="boss-track"><i id="boss-fill"></i></div>
+      </div>
 
       <div class="toast-stack" id="toast-stack"></div>
       <div class="hover-tooltip" id="hover-tooltip"></div>
@@ -156,7 +179,7 @@
 
         <section class="minimap-panel">
           <div class="minimap-head">
-            <span><svg><use href="#i-compass"/></svg> The Ashlands</span>
+            <span><svg><use href="#i-compass"/></svg> <b id="minimap-title">The Ashlands</b></span>
             <span id="minimap-day">DAY I</span>
           </div>
           <div class="minimap-wrap">
@@ -197,16 +220,16 @@
           <div class="howto-item">
             <span class="howto-icon"><svg><use href="#i-crown"/></svg></span>
             <h3>Endure</h3>
-            <p>Survive five raids. After each victory, claim one of three boons to shape your kingdom's fate.</p>
+            <p>Survive ten raids. After each victory, claim one of three boons to shape your kingdom's fate.</p>
           </div>
         </div>
         <div class="howto-controls">
           <span><b>W A S D</b> / arrows — pan</span>
           <span><b>Left-drag</b> — select</span>
           <span><b>Right-click</b> — command</span>
-          <span><b>1–6</b> — commands</span>
-          <span><b>I</b> — idle villager</span>
-          <span><b>Space</b> — pause</span>
+          <span><b>Tab</b> — control hero</span>
+          <span><b>Q / E</b> — mark / aegis</span>
+          <span><b>1–6</b> — commands · <b>Space</b> pause</span>
         </div>
         <button class="primary-button small" id="btn-howto-play"><span>To Arms</span></button>
       </div>
@@ -217,7 +240,11 @@
         <div class="modal-kicker">THE BATTLE WAITS</div>
         <h2>Paused</h2>
         <div class="modal-rule"></div>
-        <p class="pause-flavor">“Hold the line. The ash will settle.”</p>
+        <p class="pause-flavor">“Hold the line. The Rift will settle.”</p>
+        <div class="pause-toggles">
+          <label><input type="checkbox" id="auto-econ" checked /> <span><b>Village steward</b><small>Auto-assign idle villagers and maintain houses</small></span></label>
+          <label><input type="checkbox" id="auto-mil" checked /> <span><b>War steward</b><small>Auto-train soldiers and keep the barracks busy</small></span></label>
+        </div>
         <div class="pause-actions">
           <button class="primary-button small" id="btn-resume"><span>Resume</span></button>
           <button class="secondary-button small" id="btn-restart">Restart Run</button>
@@ -240,11 +267,11 @@
     <div class="modal-overlay end-overlay" id="end-overlay" hidden>
       <div class="end-card">
         <div class="end-ribbons"><i></i><svg id="end-icon"><use href="#i-crown"/></svg><i></i></div>
-        <div class="modal-kicker" id="end-kicker">THE ASHLANDS ARE YOURS</div>
-        <h2 id="end-title">A Crown of Ash</h2>
-        <p id="end-desc">Five raids broken. The chronicles will remember your name.</p>
+        <div class="modal-kicker" id="end-kicker">THE FRONTIER IS YOURS</div>
+        <h2 id="end-title">A Crown of Riftwatch</h2>
+        <p id="end-desc">Ten raids broken. The chronicles will remember your name.</p>
         <div class="end-stats">
-          <div><b id="end-waves">5</b><span>Raids survived</span></div>
+          <div><b id="end-waves">10</b><span>Raids survived</span></div>
           <div><b id="end-kills">0</b><span>Raiders slain</span></div>
           <div><b id="end-gathered">0</b><span>Resources gathered</span></div>
           <div><b id="end-time">0:00</b><span>Reign</span></div>

@@ -2,7 +2,7 @@ import { Sound } from './audio.js';
 import { Game } from './game.js';
 import { Renderer } from './renderer.js';
 import { UI } from './ui.js';
-import { clamp, seedFromDate } from './utils.js';
+import { clamp, seedFromDate, seedFromString } from './utils.js';
 
 const canvas = document.getElementById('game');
 const sound = new Sound();
@@ -10,8 +10,12 @@ const game = new Game({ sound });
 const renderer = new Renderer(canvas);
 
 let ui;
+let currentSetup = { civ: 'TEU', biome: 'ashlands' };
 
-function startGame() {
+function startGame(setup = {}) {
+  currentSetup = { civ: setup.civ || 'TEU', biome: setup.biome || 'ashlands' };
+  const seed = setup.seed ? seedFromString(setup.seed) : seedFromDate();
+  game.newRun(seed, currentSetup);
   sound.init();
   ui.hideMenu();
   ui.hideEnd();
@@ -22,12 +26,14 @@ function startGame() {
   game.paused = false;
   game.start();
   ui.lastSignature = '';
+  ui.lastCommandSignature = '';
   ui.updateSelection(true);
+  ui.renderCommands(game);
 }
 
 function restartRun() {
   sound.init();
-  game.newRun(seedFromDate());
+  game.newRun(seedFromDate(), currentSetup);
   ui.hideEnd();
   ui.hideBoons();
   ui.showPause(false);
@@ -41,7 +47,7 @@ function restartRun() {
 }
 
 function quitToMenu() {
-  game.newRun(seedFromDate());
+  game.newRun(seedFromDate(), currentSetup);
   game.inMenu = true;
   ui.hideEnd();
   ui.hideBoons();
@@ -102,7 +108,7 @@ window.addEventListener('keydown', e => {
   }
   if (ui.boonsOpen) return;
   if (game.inMenu) {
-    if (e.key === 'Enter') { e.preventDefault(); startGame(); }
+    if (e.key === 'Enter') { e.preventDefault(); ui.startWithSetup(); }
     return;
   }
   if (e.key === 'Escape') {
@@ -123,6 +129,15 @@ window.addEventListener('keydown', e => {
     if (key.startsWith('arrow')) e.preventDefault();
     return;
   }
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    game.toggleHeroControl();
+    ui.updateSelection(true);
+    ui.renderCommands(game);
+    return;
+  }
+  if (key === 'q') { game.heroMark(); return; }
+  if (key === 'e') { game.heroAegis(); return; }
   if (key === 'i') { game.selectIdleVillager(); return; }
   if (key === 'm') {
     sound.init();
@@ -242,7 +257,7 @@ requestAnimationFrame(frame);
 
 window.addEventListener('resize', () => { menuNeedsFrame = true; });
 
-window.ageOfAsh = { game, renderer, ui, startGame, restartRun };
+window.ageOfAsh = { game, renderer, ui, startGame, restartRun, seedFromString };
 
 window.addEventListener('error', e => {
   console.error(e.error || e.message);

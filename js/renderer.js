@@ -1,5 +1,5 @@
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
-import { PLAYER_COLORS, ENEMY_COLORS } from './data.js';
+import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 
 const TERRAIN_COLORS = {
   grass: ['#62753a', '#697d3f', '#5d7037', '#708341'],
@@ -10,6 +10,71 @@ const TERRAIN_COLORS = {
   water: ['#2d5b60', '#306066', '#29565b', '#35656a'],
   rock: ['#726d5d', '#787362', '#6b6758', '#7e7866'],
 };
+
+const BIOME_COLORS = {
+  steppe: {
+    grass: ['#7b7c3f', '#848346', '#73753b', '#8c894b'],
+    forest: ['#596334', '#606c39', '#535e31', '#68733f'],
+    dirt: ['#987b4c', '#a08353', '#8f7447', '#a88b59'],
+    sand: ['#b39963', '#baa26b', '#ac925d', '#c0a972'],
+    water: ['#3b6769', '#406d6f', '#386265', '#447274'],
+  },
+  blackforest: {
+    grass: ['#4a5c30', '#506237', '#44562c', '#566836'],
+    forest: ['#354625', '#3a4c29', '#314121', '#40522e'],
+    dirt: ['#6f5c3b', '#766341', '#685536', '#7d6a47'],
+    water: ['#264c50', '#294f54', '#23474b', '#2d555a'],
+  },
+  dunes: {
+    grass: ['#a2884f', '#aa9157', '#9a814a', '#b1985f'],
+    forest: ['#7b6b3d', '#817144', '#746437', '#887649'],
+    dirt: ['#9b7c4b', '#a38451', '#927445', '#aa8b58'],
+    sand: ['#c3a36a', '#cbaa71', '#bb9b63', '#d0b077'],
+    water: ['#3d6867', '#426e6d', '#396261', '#487572'],
+    rock: ['#8c7b5d', '#948265', '#847455', '#9b8869'],
+  },
+  riverlands: {
+    grass: ['#5c793d', '#647f42', '#567339', '#6b8648'],
+    forest: ['#425e31', '#486536', '#3e582d', '#4f6b3b'],
+    dirt: ['#837048', '#8a774f', '#7b6842', '#917d55'],
+    sand: ['#a99261', '#b09867', '#a18a5b', '#b7a06e'],
+    water: ['#2e6772', '#326d79', '#2a626c', '#397480'],
+  },
+  highlands: {
+    grass: ['#6a6f40', '#717646', '#64693b', '#797e4c'],
+    forest: ['#4c5834', '#515f38', '#48532f', '#58653e'],
+    dirt: ['#8a7350', '#917a56', '#826b49', '#997f5c'],
+    rock: ['#777264', '#7e796a', '#706b5d', '#857f70'],
+    water: ['#335c66', '#37616b', '#305762', '#3c6872'],
+  },
+  fjord: {
+    grass: ['#536d4f', '#5a7355', '#4e674a', '#617a5b'],
+    forest: ['#3d5940', '#425e44', '#39533c', '#486449'],
+    dirt: ['#79705a', '#807762', '#726954', '#867c68'],
+    sand: ['#9b9a85', '#a4a28d', '#93927e', '#aca992'],
+    water: ['#2b5867', '#2f5e6e', '#285262', '#34707e'],
+    rock: ['#70756f', '#777c76', '#696e68', '#80847d'],
+  },
+  isles: {
+    grass: ['#587a47', '#60824e', '#527543', '#688a55'],
+    forest: ['#3e6239', '#44693e', '#3a5b35', '#4b7044'],
+    dirt: ['#85704d', '#8c7753', '#7d6847', '#94805b'],
+    sand: ['#b2a171', '#baa879', '#aa996b', '#c1b081'],
+    water: ['#2b6a78', '#307180', '#286471', '#377b8a'],
+  },
+  ashlands: {
+    grass: ['#5a613f', '#616945', '#555c3a', '#687049'],
+    forest: ['#414b34', '#465138', '#3d4730', '#4d583c'],
+    dirt: ['#7d6949', '#846f4e', '#766244', '#8a7655'],
+    sand: ['#8f8058', '#96875f', '#877952', '#9e8f66'],
+    water: ['#294d54', '#2c5259', '#274850', '#31585f'],
+    rock: ['#666356', '#6d6a5c', '#5f5c50', '#74705f'],
+  },
+};
+
+function terrainPalette(biome, terrain) {
+  return BIOME_COLORS[biome]?.[terrain] || TERRAIN_COLORS[terrain] || TERRAIN_COLORS.grass;
+}
 
 export class Renderer {
   constructor(canvas) {
@@ -49,20 +114,22 @@ export class Renderer {
   }
 
   buildTileSprites() {
-    for (const terrain of Object.keys(TERRAIN_COLORS)) {
-      for (let v = 0; v < 4; v++) {
-        const c = document.createElement('canvas');
-        c.width = 128; c.height = 64;
-        const x = c.getContext('2d');
-        x.scale(2, 2);
-        this.paintTile(x, terrain, v);
-        this.tileSprites.set(`${terrain}-${v}`, c);
+    for (const biome of BIOMES.map(b => b.id)) {
+      for (const terrain of Object.keys(TERRAIN_COLORS)) {
+        for (let v = 0; v < 4; v++) {
+          const c = document.createElement('canvas');
+          c.width = 128; c.height = 64;
+          const x = c.getContext('2d');
+          x.scale(2, 2);
+          this.paintTile(x, terrain, v, biome);
+          this.tileSprites.set(`${biome}:${terrain}-${v}`, c);
+        }
       }
     }
   }
 
-  paintTile(ctx, terrain, variant) {
-    const palette = TERRAIN_COLORS[terrain];
+  paintTile(ctx, terrain, variant, biome = 'ashlands') {
+    const palette = terrainPalette(biome, terrain);
     const base = palette[variant % palette.length];
     ctx.save();
     ctx.beginPath();
@@ -165,6 +232,7 @@ export class Renderer {
     ctx.fillRect(0, 0, this.w, this.h);
     this.drawTerrain(game, time);
     this.drawGroundMarks(game, time);
+    this.drawZones(game, time);
     this.drawCommandMarkers(game);
     this.drawSelectionMarks(game, time);
 
@@ -220,7 +288,7 @@ export class Renderer {
     const layer = this.terrainLayer;
     const lctx = this.terrainCtx;
     const z = game.camera.zoom;
-    const key = `${game.camera.x}|${game.camera.y}|${z}|${this.w}|${this.h}|${this.dpr}`;
+    const key = `${game.world.biome || 'ashlands'}|${game.camera.x}|${game.camera.y}|${z}|${this.w}|${this.h}|${this.dpr}`;
     if (this.terrainKey !== key) {
       lctx.setTransform(1, 0, 0, 1, 0, 0);
       lctx.fillStyle = '#141a10';
@@ -232,7 +300,7 @@ export class Renderer {
         for (let x = b.x0; x <= b.x1; x++) {
           const tile = game.world.tiles[y * game.world.size + x];
           const p = this.screen(game, x + 0.5, y + 0.5);
-          const sprite = this.tileSprites.get(`${tile.terrain}-${tile.variant}`);
+          const sprite = this.tileSprites.get(`${game.world.biome || 'ashlands'}:${tile.terrain}-${tile.variant}`);
           if (sprite) lctx.drawImage(sprite, p.x - tw / 2, p.y - th / 2, tw, th);
         }
       }
@@ -299,6 +367,32 @@ export class Renderer {
       ctx.strokeStyle = 'rgba(229,204,139,0.42)';
       ctx.lineWidth = 1;
       ctx.beginPath(); ctx.ellipse(p.x, p.y, 17 * z, 8 * z, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+    }
+  }
+
+  drawZones(game, time) {
+    const ctx = this.ctx, z = game.camera.zoom;
+    for (const zone of game.zones) {
+      const p = this.screen(game, zone.x, zone.y);
+      const progress = Math.min(1, zone.elapsed / zone.delay);
+      const alpha = zone.done ? Math.max(0, 1 - (zone.elapsed - zone.delay) / 0.9) : 0.12 + progress * 0.2;
+      ctx.save();
+      ctx.fillStyle = `rgba(171,48,35,${alpha * 0.5})`;
+      ctx.strokeStyle = zone.done ? `rgba(255,198,153,${alpha})` : `rgba(224,92,69,${0.45 + progress * 0.45})`;
+      ctx.lineWidth = (zone.done ? 2.4 : 1.6) * z;
+      ctx.setLineDash(zone.done ? [] : [8 * z, 5 * z]);
+      ctx.lineDashOffset = -time * 14;
+      ctx.beginPath();
+      ctx.ellipse(p.x, p.y, zone.r * 32 * z, zone.r * 16 * z, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.strokeStyle = `rgba(245,186,135,${0.5 + progress * 0.4})`;
+      ctx.lineWidth = 2.2 * z;
+      ctx.beginPath();
+      ctx.ellipse(p.x, p.y, zone.r * 32 * z * progress, zone.r * 16 * z * progress, 0, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
     }
   }
 
@@ -475,6 +569,9 @@ export class Renderer {
     else if (b.type === 'barracks') this.drawBarracks(b, game, time);
     else if (b.type === 'tower') this.drawTower(b, game, time);
     else if (b.type === 'farm') this.drawFarm(b, game, time);
+    else if (b.type === 'archery_range') this.drawArcheryRange(b, game, time);
+    else if (b.type === 'stable') this.drawStable(b, game, time);
+    else this.drawBarracks(b, game, time);
     this.drawBuildingBar(b, game);
   }
 
@@ -783,6 +880,49 @@ export class Renderer {
     if (b.hp < b.maxHp) this.drawBuildingBar(b, game);
   }
 
+  drawArcheryRange(b, game, time) {
+    const ctx = this.ctx, z = game.camera.zoom;
+    const f = this.footprint(game, b);
+    this.drawPlatform(f, z, '#766f5c');
+    const walls = this.prism(f, 29 * z, '#7d755f', '#968b70', '#92866a');
+    this.roof(f, 29 * z, 24 * z, '#3e5a35', '#557344', '#2d4528');
+    ctx.fillStyle = '#392817'; ctx.fillRect(f.C.x - 7 * z, f.C.y - 19 * z, 14 * z, 19 * z);
+    this.drawWindow(f.C.x - 29 * z, f.C.y - 18 * z, 6 * z, 8 * z, '#d6a354');
+    this.drawWindow(f.C.x + 30 * z, f.C.y - 18 * z, 6 * z, 8 * z, '#e1ae5d');
+    ctx.strokeStyle = '#9a7740'; ctx.lineWidth = 2 * z;
+    ctx.beginPath(); ctx.arc(f.C.x + 36 * z, f.C.y - 28 * z, 8 * z, 0, 6.3); ctx.stroke();
+    ctx.strokeStyle = '#d5cba7'; ctx.lineWidth = 1 * z;
+    ctx.beginPath(); ctx.arc(f.C.x + 36 * z, f.C.y - 28 * z, 5 * z, 0, 6.3); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(f.C.x + 36 * z, f.C.y - 33 * z); ctx.lineTo(f.C.x + 36 * z, f.C.y - 23 * z); ctx.stroke();
+    ctx.strokeStyle = '#6b512b'; ctx.lineWidth = 1.2 * z;
+    for (let i = 0; i < 3; i++) {
+      ctx.beginPath(); ctx.moveTo(f.D.x + (6 + i * 3) * z, f.D.y + 2 * z); ctx.lineTo(f.D.x + (10 + i * 3) * z, f.D.y - 20 * z); ctx.stroke();
+    }
+    this.flag(f.C.x + 4 * z, f.C.y - 52 * z, 18 * z, z, time, 1.7);
+    if (b.hp < b.maxHp) this.drawDamageSmoke(f, z, time, 1 - b.hp / b.maxHp);
+  }
+
+  drawStable(b, game, time) {
+    const ctx = this.ctx, z = game.camera.zoom;
+    const f = this.footprint(game, b);
+    this.drawPlatform(f, z, '#7b7059');
+    const walls = this.prism(f, 27 * z, '#877252', '#a08a64', '#98825e');
+    this.roof(f, 27 * z, 21 * z, '#5b412e', '#75563b', '#423023');
+    ctx.fillStyle = '#3c2817'; ctx.fillRect(f.C.x - 11 * z, f.C.y - 21 * z, 22 * z, 21 * z);
+    ctx.fillStyle = '#624225';
+    ctx.beginPath(); ctx.ellipse(f.C.x + 33 * z, f.C.y - 17 * z, 9 * z, 5 * z, 0, 0, 6.3); ctx.fill();
+    ctx.fillRect(f.C.x + 27 * z, f.C.y - 17 * z, 3 * z, 10 * z);
+    ctx.fillRect(f.C.x + 37 * z, f.C.y - 17 * z, 3 * z, 10 * z);
+    ctx.strokeStyle = '#624225'; ctx.lineWidth = 3 * z;
+    ctx.beginPath(); ctx.moveTo(f.C.x + 40 * z, f.C.y - 19 * z); ctx.lineTo(f.C.x + 44 * z, f.C.y - 27 * z); ctx.stroke();
+    ctx.fillStyle = '#6f4a2b';
+    ctx.beginPath(); ctx.ellipse(f.C.x + 45 * z, f.C.y - 28 * z, 4 * z, 2.4 * z, -0.4, 0, 6.3); ctx.fill();
+    ctx.strokeStyle = '#5d4327'; ctx.lineWidth = 1.2 * z;
+    ctx.beginPath(); ctx.moveTo(f.D.x + 4 * z, f.D.y); ctx.lineTo(f.D.x + 4 * z, f.D.y - 23 * z); ctx.lineTo(f.C.x - 20 * z, f.C.y - 12 * z); ctx.stroke();
+    this.drawWindow(f.C.x - 27 * z, f.C.y - 18 * z, 5 * z, 7 * z, '#d09f4d');
+    if (b.hp < b.maxHp) this.drawDamageSmoke(f, z, time, 1 - b.hp / b.maxHp);
+  }
+
   drawConstruction(b, game, time) {
     const ctx = this.ctx, z = game.camera.zoom;
     const f = this.footprint(game, b);
@@ -843,16 +983,30 @@ export class Renderer {
     ctxSave(this.ctx, () => {
       const ctx = this.ctx;
       ctx.fillStyle = 'rgba(7,9,5,0.34)';
-      ctx.beginPath(); ctx.ellipse(p.x + 2 * scale, p.y + 1.5 * scale, (u.type === 'knight' ? 19 : 12) * scale, (u.type === 'knight' ? 7 : 4.5) * scale, 0, 0, 6.3); ctx.fill();
+      const big = ['knight', 'elephant', 'ram', 'prototype'].includes(u.type) ? 19 : 12;
+      ctx.beginPath(); ctx.ellipse(p.x + 2 * scale, p.y + 1.5 * scale, big * scale, (big === 19 ? 7 : 4.5) * scale, 0, 0, 6.3); ctx.fill();
       if (u.type === 'knight') this.drawKnightUnit(p, u, scale, team, walk, time, bob);
-      else if (u.type === 'archer' || u.type === 'marauder') this.drawArcherUnit(p, u, scale, team, walk, time, bob);
+      else if (u.type === 'archer' || u.type === 'marauder' || u.type === 'skirmisher') this.drawArcherUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'villager') this.drawVillagerUnit(p, u, scale, team, walk, time, bob);
-      else if (u.type === 'brute' || u.type === 'warlord') this.drawBruteUnit(p, u, scale, team, walk, time, bob);
+      else if (u.type === 'elephant') this.drawElephantUnit(p, u, scale, team, walk, time, bob);
+      else if (u.type === 'ram') this.drawRamUnit(p, u, scale, team, walk, time, bob);
+      else if (u.type === 'commander') this.drawHeroUnit(p, u, scale, team, walk, time, bob);
+      else if (u.type === 'prototype') this.drawPrototypeUnit(p, u, scale, team, walk, time, bob);
+      else if (u.type === 'decoy') this.drawDecoyUnit(p, u, scale, team, walk, time, bob);
+      else if (u.type === 'spearman') this.drawSpearUnit(p, u, scale, team, walk, time, bob);
+      else if (['brute', 'warlord', 'warlord2'].includes(u.type)) this.drawBruteUnit(p, u, scale, team, walk, time, bob);
       else this.drawInfantryUnit(p, u, scale, team, walk, time, bob);
       if (u.selected || u.hp < u.maxHp) {
-        const w = (u.type === 'warlord' ? 40 : 24) * scale;
-        const y = p.y - (u.type === 'knight' ? 48 : u.type === 'warlord' ? 64 : 38) * scale;
+        const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram'].includes(u.type);
+        const w = (wide ? 40 : 24) * scale;
+        const high = u.type === 'knight' ? 48 : wide ? 62 : 38;
+        const y = p.y - high * scale;
         this.healthBar(p.x - w / 2, y, w, 3.6 * scale, Math.max(0, u.hp / u.maxHp), u.team === 'player' ? '#78a95b' : '#b25046');
+      }
+      if (u.shield > 0) {
+        this.ctx.strokeStyle = 'rgba(147,197,220,0.72)';
+        this.ctx.lineWidth = 1.4 * scale;
+        this.ctx.beginPath(); this.ctx.ellipse(p.x, p.y - 16 * scale, 14 * scale, 18 * scale, 0, 0, 6.3); this.ctx.stroke();
       }
       if (u.carry > 0 && u.type === 'villager') {
         this.ctx.fillStyle = u.carryType === 'gold' ? '#b28b3e' : u.carryType === 'stone' ? '#7f7c70' : u.carryType === 'wood' ? '#6a4829' : '#a27a45';
@@ -958,10 +1112,132 @@ export class Renderer {
     ctx.beginPath(); ctx.moveTo(x - 8 * s, y - 29 * s + riderBob); ctx.lineTo(x - 4 * s, y - 33 * s + riderBob); ctx.lineTo(x - 3 * s, y - 24 * s + riderBob); ctx.lineTo(x - 7 * s, y - 22 * s + riderBob); ctx.closePath(); ctx.fill();
   }
 
+  drawSpearUnit(p, u, s, team, walk, time, bob) {
+    const ctx = this.ctx;
+    const x = p.x, y = p.y - bob * s;
+    ctx.strokeStyle = '#3c3022'; ctx.lineWidth = 2 * s;
+    ctx.beginPath(); ctx.moveTo(x - 3 * s, y - 10 * s); ctx.lineTo(x - 4 * s - walk * 1.5 * s, y); ctx.moveTo(x + 3 * s, y - 10 * s); ctx.lineTo(x + 4 * s + walk * 1.5 * s, y); ctx.stroke();
+    ctx.fillStyle = team.cloth;
+    ctx.beginPath(); ctx.moveTo(x - 7 * s, y - 25 * s); ctx.lineTo(x + 7 * s, y - 25 * s); ctx.lineTo(x + 6 * s, y - 9 * s); ctx.lineTo(x - 6 * s, y - 9 * s); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = team.primary; ctx.fillRect(x - 7 * s, y - 18 * s, 14 * s, 2 * s);
+    ctx.fillStyle = '#c69a76'; ctx.beginPath(); ctx.arc(x, y - 30 * s, 3.8 * s, 0, 6.3); ctx.fill();
+    ctx.fillStyle = '#777b72'; ctx.beginPath(); ctx.arc(x, y - 31.5 * s, 4.3 * s, Math.PI, 0); ctx.fill();
+    ctx.fillStyle = team.primary;
+    ctx.beginPath(); ctx.ellipse(x - 8 * s, y - 19 * s, 4 * s, 5.8 * s, 0.1, 0, 6.3); ctx.fill();
+    const thrust = u.attackAnim > 0 ? Math.sin(u.attackAnim * Math.PI) : 0;
+    ctx.strokeStyle = '#7a603a'; ctx.lineWidth = 1.6 * s;
+    ctx.save(); ctx.translate(x + 7 * s, y - 23 * s); ctx.rotate(-0.8 + thrust * 0.75); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(31 * s, 0); ctx.stroke();
+    ctx.fillStyle = '#d9dbd2'; ctx.beginPath(); ctx.moveTo(31 * s, -2.4 * s); ctx.lineTo(39 * s, 0); ctx.lineTo(31 * s, 2.4 * s); ctx.closePath(); ctx.fill(); ctx.restore();
+  }
+
+  drawElephantUnit(p, u, s, team, walk, time, bob) {
+    const ctx = this.ctx;
+    const x = p.x, y = p.y - bob * 0.4 * s;
+    ctx.strokeStyle = '#554334'; ctx.lineWidth = 4 * s;
+    for (const ox of [-12, -4, 7, 14]) {
+      const sway = ox < 0 ? walk * 2 * s : -walk * 2 * s;
+      ctx.beginPath(); ctx.moveTo(x + ox * s, y - 13 * s); ctx.lineTo(x + ox * s + sway, y); ctx.stroke();
+    }
+    ctx.fillStyle = '#6c6254';
+    ctx.beginPath(); ctx.ellipse(x, y - 22 * s, 20 * s, 11 * s, 0, 0, 6.3); ctx.fill();
+    ctx.fillStyle = '#7c7262';
+    ctx.beginPath(); ctx.ellipse(x - 2 * s, y - 25 * s, 16 * s, 7 * s, 0, 0, 6.3); ctx.fill();
+    ctx.fillStyle = team.primary;
+    ctx.fillRect(x - 13 * s, y - 25 * s, 26 * s, 5 * s);
+    ctx.fillStyle = '#6c6254';
+    ctx.beginPath(); ctx.ellipse(x + 20 * s, y - 26 * s, 8 * s, 9 * s, 0.15, 0, 6.3); ctx.fill();
+    ctx.strokeStyle = '#6c6254'; ctx.lineWidth = 4 * s;
+    ctx.beginPath(); ctx.moveTo(x + 24 * s, y - 24 * s); ctx.quadraticCurveTo(x + 31 * s, y - 13 * s, x + 28 * s, y - 4 * s); ctx.stroke();
+    ctx.strokeStyle = '#ddd3b8'; ctx.lineWidth = 2 * s;
+    ctx.beginPath(); ctx.moveTo(x + 25 * s, y - 19 * s); ctx.quadraticCurveTo(x + 33 * s, y - 15 * s, x + 34 * s, y - 9 * s); ctx.stroke();
+    ctx.fillStyle = '#3f3227'; ctx.beginPath(); ctx.arc(x + 25 * s, y - 29 * s, 1.2 * s, 0, 6.3); ctx.fill();
+    ctx.fillStyle = '#8b3d2d';
+    ctx.beginPath(); ctx.moveTo(x - 10 * s, y - 34 * s); ctx.lineTo(x + 8 * s, y - 34 * s); ctx.lineTo(x + 6 * s, y - 27 * s); ctx.lineTo(x - 8 * s, y - 27 * s); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#cba875'; ctx.beginPath(); ctx.arc(x, y - 38 * s, 3 * s, 0, 6.3); ctx.fill();
+    ctx.fillStyle = team.trim; ctx.beginPath(); ctx.arc(x, y - 39 * s, 3.5 * s, Math.PI, 0); ctx.fill();
+  }
+
+  drawRamUnit(p, u, s, team, walk, time, bob) {
+    const ctx = this.ctx;
+    const x = p.x, y = p.y - bob * 0.5 * s;
+    ctx.fillStyle = '#4a3827';
+    ctx.beginPath(); ctx.ellipse(x, y - 13 * s, 21 * s, 10 * s, 0, 0, 6.3); ctx.fill();
+    ctx.fillStyle = '#6d4d2d';
+    ctx.beginPath(); ctx.moveTo(x - 22 * s, y - 13 * s); ctx.lineTo(x - 17 * s, y - 32 * s); ctx.lineTo(x + 17 * s, y - 32 * s); ctx.lineTo(x + 22 * s, y - 13 * s); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#855f38';
+    for (let i = -2; i <= 2; i++) ctx.fillRect(x + i * 8 * s - 1.5 * s, y - 30 * s, 3 * s, 16 * s);
+    ctx.strokeStyle = '#40301f'; ctx.lineWidth = 3 * s;
+    ctx.beginPath(); ctx.arc(x - 12 * s, y - 4 * s, 6 * s, 0, 6.3); ctx.stroke();
+    ctx.beginPath(); ctx.arc(x + 12 * s, y - 4 * s, 6 * s, 0, 6.3); ctx.stroke();
+    ctx.strokeStyle = '#5c4026'; ctx.lineWidth = 3.4 * s;
+    ctx.beginPath(); ctx.moveTo(x - 8 * s, y - 13 * s); ctx.lineTo(x + 24 * s, y - 13 * s); ctx.stroke();
+    ctx.fillStyle = '#8e8a7d'; ctx.beginPath(); ctx.arc(x + 25 * s, y - 13 * s, 4.2 * s, 0, 6.3); ctx.fill();
+    ctx.fillStyle = team.primary; ctx.fillRect(x - 18 * s, y - 25 * s, 36 * s, 3 * s);
+    this.flag(x + 12 * s, y - 32 * s, 18 * s, s, time, 2.1);
+  }
+
+  drawHeroUnit(p, u, s, team, walk, time, bob) {
+    const ctx = this.ctx;
+    const x = p.x, y = p.y - bob * s;
+    ctx.fillStyle = 'rgba(232,201,126,0.12)';
+    ctx.beginPath(); ctx.arc(x, y - 24 * s, 23 * s + Math.sin(time * 2.4) * 1.5 * s, 0, 6.3); ctx.fill();
+    ctx.strokeStyle = '#3b2e20'; ctx.lineWidth = 2.2 * s;
+    ctx.beginPath(); ctx.moveTo(x - 4 * s, y - 11 * s); ctx.lineTo(x - 5 * s - walk * 1.6 * s, y); ctx.moveTo(x + 4 * s, y - 11 * s); ctx.lineTo(x + 5 * s + walk * 1.6 * s, y); ctx.stroke();
+    ctx.fillStyle = '#6d2d27';
+    ctx.beginPath(); ctx.moveTo(x - 8 * s, y - 27 * s); ctx.lineTo(x + 8 * s, y - 27 * s); ctx.lineTo(x + 12 * s, y - 8 * s); ctx.lineTo(x - 2 * s, y - 12 * s); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = team.cloth;
+    ctx.beginPath(); ctx.moveTo(x - 8 * s, y - 27 * s); ctx.lineTo(x + 8 * s, y - 27 * s); ctx.lineTo(x + 6 * s, y - 12 * s); ctx.lineTo(x - 6 * s, y - 12 * s); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = team.trim; ctx.fillRect(x - 8 * s, y - 20 * s, 16 * s, 2.4 * s);
+    ctx.fillStyle = '#c89a72'; ctx.beginPath(); ctx.arc(x, y - 32 * s, 4 * s, 0, 6.3); ctx.fill();
+    ctx.fillStyle = '#9b9b90'; ctx.beginPath(); ctx.arc(x, y - 33.5 * s, 4.5 * s, Math.PI, 0); ctx.fill();
+    ctx.fillStyle = '#d6b15f';
+    ctx.beginPath(); ctx.moveTo(x - 4 * s, y - 36 * s); ctx.lineTo(x - 8 * s, y - 44 * s); ctx.lineTo(x - 2 * s, y - 40 * s); ctx.lineTo(x, y - 46 * s); ctx.lineTo(x + 2 * s, y - 40 * s); ctx.lineTo(x + 8 * s, y - 44 * s); ctx.lineTo(x + 4 * s, y - 36 * s); ctx.closePath(); ctx.fill();
+    const swing = u.attackAnim > 0 ? Math.sin(u.attackAnim * Math.PI) : 0;
+    ctx.strokeStyle = '#dfd7bf'; ctx.lineWidth = 2.2 * s;
+    ctx.beginPath(); ctx.moveTo(x + 8 * s, y - 24 * s); ctx.lineTo(x + 15 * s + swing * 7 * s, y - 35 * s - swing * 5 * s); ctx.stroke();
+    ctx.strokeStyle = '#a9863d'; ctx.lineWidth = 1 * s;
+    ctx.beginPath(); ctx.moveTo(x + 15 * s + swing * 7 * s, y - 35 * s - swing * 5 * s); ctx.lineTo(x + 19 * s + swing * 8 * s, y - 39 * s - swing * 5 * s); ctx.stroke();
+  }
+
+  drawPrototypeUnit(p, u, s, team, walk, time, bob) {
+    const ctx = this.ctx;
+    const x = p.x, y = p.y - bob * 0.6 * s;
+    ctx.fillStyle = 'rgba(216,167,84,0.12)';
+    ctx.beginPath(); ctx.arc(x, y - 28 * s, 26 * s + Math.sin(time * 3) * 2 * s, 0, 6.3); ctx.fill();
+    ctx.strokeStyle = '#37352e'; ctx.lineWidth = 4 * s;
+    for (const ox of [-9, 9]) { ctx.beginPath(); ctx.moveTo(x + ox * s, y - 13 * s); ctx.lineTo(x + ox * s + walk * 2 * s, y); ctx.stroke(); }
+    ctx.fillStyle = '#69675d';
+    ctx.beginPath(); ctx.moveTo(x - 15 * s, y - 13 * s); ctx.lineTo(x - 14 * s, y - 39 * s); ctx.lineTo(x + 14 * s, y - 39 * s); ctx.lineTo(x + 15 * s, y - 13 * s); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#8a887c';
+    ctx.beginPath(); ctx.moveTo(x - 11 * s, y - 37 * s); ctx.lineTo(x + 3 * s, y - 42 * s); ctx.lineTo(x + 10 * s, y - 36 * s); ctx.lineTo(x - 2 * s, y - 30 * s); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#d1a457'; ctx.fillRect(x - 13 * s, y - 27 * s, 26 * s, 3 * s);
+    ctx.fillStyle = '#5d5a50';
+    ctx.beginPath(); ctx.arc(x, y - 45 * s, 5.5 * s, 0, 6.3); ctx.fill();
+    ctx.fillStyle = '#c99c45'; ctx.beginPath(); ctx.arc(x + 1 * s, y - 46 * s, 1.4 * s, 0, 6.3); ctx.fill();
+    const swing = u.attackAnim > 0 ? Math.sin(u.attackAnim * Math.PI) : 0;
+    ctx.strokeStyle = '#8f7b4f'; ctx.lineWidth = 3 * s;
+    ctx.beginPath(); ctx.moveTo(x + 13 * s, y - 31 * s); ctx.lineTo(x + 20 * s + swing * 6 * s, y - 19 * s - swing * 8 * s); ctx.stroke();
+    ctx.fillStyle = '#b8b4a5';
+    ctx.beginPath(); ctx.arc(x + 21 * s + swing * 6 * s, y - 19 * s - swing * 8 * s, 5 * s, 0, 6.3); ctx.fill();
+  }
+
+  drawDecoyUnit(p, u, s, team, walk, time, bob) {
+    const ctx = this.ctx;
+    const x = p.x, y = p.y - Math.abs(Math.sin(time * 1.6 + u.id)) * 0.8 * s;
+    ctx.strokeStyle = '#6d5430'; ctx.lineWidth = 2 * s;
+    ctx.beginPath(); ctx.moveTo(x, y - 7 * s); ctx.lineTo(x, y - 27 * s); ctx.moveTo(x - 8 * s, y - 20 * s); ctx.lineTo(x + 8 * s, y - 20 * s); ctx.stroke();
+    ctx.fillStyle = '#a78b51';
+    ctx.beginPath(); ctx.moveTo(x - 8 * s, y - 24 * s); ctx.lineTo(x + 8 * s, y - 24 * s); ctx.lineTo(x + 5 * s, y - 8 * s); ctx.lineTo(x - 5 * s, y - 8 * s); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#c0a36a'; ctx.beginPath(); ctx.arc(x, y - 31 * s, 4 * s, 0, 6.3); ctx.fill();
+    ctx.strokeStyle = '#806336'; ctx.lineWidth = 1.2 * s;
+    for (let i = -2; i <= 2; i++) { ctx.beginPath(); ctx.moveTo(x + i * 2.5 * s, y - 27 * s); ctx.lineTo(x + i * 3 * s, y - 9 * s); ctx.stroke(); }
+    ctx.fillStyle = '#7d5f34'; ctx.beginPath(); ctx.ellipse(x, y - 35 * s, 6 * s, 1.8 * s, 0, 0, 6.3); ctx.fill();
+  }
+
   drawBruteUnit(p, u, s, team, walk, time, bob) {
     const ctx = this.ctx;
     const x = p.x, y = p.y - bob * s;
-    const boss = u.type === 'warlord';
+    const boss = !!u.typeDef.boss;
     if (boss) {
       ctx.fillStyle = 'rgba(173,54,36,0.16)';
       ctx.beginPath(); ctx.arc(x, y - 25 * s, 27 * s + Math.sin(time * 3) * 2 * s, 0, 6.3); ctx.fill();

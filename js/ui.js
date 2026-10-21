@@ -1,4 +1,4 @@
-import { BUILDING_TYPES, UNIT_TYPES, TRAINABLE, BOONS, PLAYER_COLORS, ENEMY_COLORS } from './data.js';
+import { BUILDING_TYPES, UNIT_TYPES, TRAINABLE, BUILD_OPTIONS, BOONS, WAVES, AGE_COSTS, CIVILIZATIONS, BIOMES, PLAYER_COLORS, ENEMY_COLORS } from './data.js';
 import { formatNumber, formatTime, roman, clamp } from './utils.js';
 
 const ICON_FOR = {
@@ -8,6 +8,8 @@ const ICON_FOR = {
   stop: 'stop', hold: 'hold', sword: 'sword', bow: 'bow', horse: 'horse',
   hammer: 'hammer', skull: 'skull', speed: 'speed', hourglass: 'hourglass',
   shield: 'shield', flame: 'flame', coin: 'coin', crown: 'crown', scroll: 'scroll',
+  spear: 'sword', javelin: 'bow', elephant: 'shield', ram: 'hammer', commander: 'crown',
+  decoy: 'scroll', age: 'hourglass', aegis: 'shield', mark: 'flame', control: 'speed',
 };
 
 const shortCost = cost => Object.entries(cost).map(([k, v]) => `${v}${k[0]}`).join(' · ');
@@ -55,6 +57,11 @@ export class UI {
       endKicker: this.$('end-kicker'), endTitle: this.$('end-title'), endDesc: this.$('end-desc'),
       endWaves: this.$('end-waves'), endKills: this.$('end-kills'), endGathered: this.$('end-gathered'), endTime: this.$('end-time'),
       endIcon: this.$('end-icon'), selectionPanel: this.$('selection-panel'),
+      bossBar: this.$('boss-bar'), bossName: this.$('boss-name'), bossFill: this.$('boss-fill'),
+      bossHp: this.$('boss-hp'), ageLabel: this.$('objective-age'), minimapTitle: this.$('minimap-title'),
+      civSelect: this.$('setup-civ'), biomeSelect: this.$('setup-biome'), seedInput: this.$('setup-seed'),
+      civBlurb: this.$('setup-civ-blurb'), biomeBlurb: this.$('setup-biome-blurb'),
+      autoEcon: this.$('auto-econ'), autoMil: this.$('auto-mil'),
     };
     this.portraitCtx = this.el.portrait.getContext('2d');
     this.miniCtx = this.el.minimap.getContext('2d');
@@ -62,10 +69,21 @@ export class UI {
 
   bind() {
     const clickSound = () => this.sound?.click();
-    this.$('btn-start').addEventListener('click', () => { clickSound(); this.callbacks.start?.(); });
+    this.populateSetup();
+    this.$('btn-start').addEventListener('click', () => { clickSound(); this.startWithSetup(); });
     this.$('btn-howto').addEventListener('click', () => { clickSound(); this.openHowTo(); });
     this.$('btn-howto-close').addEventListener('click', () => { clickSound(); this.closeHowTo(); });
-    this.$('btn-howto-play').addEventListener('click', () => { clickSound(); this.closeHowTo(); this.callbacks.start?.(); });
+    this.$('btn-howto-play').addEventListener('click', () => { clickSound(); this.closeHowTo(); this.startWithSetup(); });
+    this.$('setup-civ')?.addEventListener('change', () => this.paintSetupBlurbs());
+    this.$('setup-biome')?.addEventListener('change', () => this.paintSetupBlurbs());
+    this.$('auto-econ')?.addEventListener('change', e => {
+      this.game.autoEconomy = e.target.checked;
+      this.toast(`Village steward ${e.target.checked ? 'enabled' : 'paused'}.`, '', 1800);
+    });
+    this.$('auto-mil')?.addEventListener('change', e => {
+      this.game.autoMilitary = e.target.checked;
+      this.toast(`War steward ${e.target.checked ? 'enabled' : 'paused'}.`, '', 1800);
+    });
     this.$('btn-pause').addEventListener('click', () => { clickSound(); this.callbacks.pause?.(); });
     this.$('btn-resume').addEventListener('click', () => { clickSound(); this.callbacks.resume?.(); });
     this.$('btn-restart').addEventListener('click', () => { clickSound(); this.callbacks.restart?.(); });
@@ -93,6 +111,32 @@ export class UI {
     });
   }
 
+  populateSetup() {
+    if (!this.el.civSelect || !this.el.biomeSelect) return;
+    this.el.civSelect.innerHTML = CIVILIZATIONS.map(c => `<option value="${c.id}">${c.name} · ${c.epithet}</option>`).join('');
+    this.el.biomeSelect.innerHTML = BIOMES.map(b => `<option value="${b.id}">${b.name}</option>`).join('');
+    this.el.civSelect.value = 'TEU';
+    this.el.biomeSelect.value = 'ashlands';
+    this.paintSetupBlurbs();
+  }
+
+  paintSetupBlurbs() {
+    const civ = CIVILIZATIONS.find(c => c.id === this.el.civSelect?.value);
+    const biome = BIOMES.find(b => b.id === this.el.biomeSelect?.value);
+    if (this.el.civBlurb && civ) this.el.civBlurb.textContent = civ.blurb;
+    if (this.el.biomeBlurb && biome) this.el.biomeBlurb.textContent = biome.modifier;
+  }
+
+  startWithSetup() {
+    const seed = this.el.seedInput?.value.trim();
+    const setup = {
+      civ: this.el.civSelect?.value || 'TEU',
+      biome: this.el.biomeSelect?.value || 'ashlands',
+      seed: seed || null,
+    };
+    this.callbacks.start?.(setup);
+  }
+
   setSound(enabled) {
     this.el.soundIcon.innerHTML = `<use href="#${enabled ? 'i-sound' : 'i-muted'}"/>`;
   }
@@ -117,15 +161,21 @@ export class UI {
   showPause(show) {
     this.pauseOpen = show;
     this.el.pause.hidden = !show;
+    if (show) {
+      if (this.el.autoEcon) this.el.autoEcon.checked = this.game.autoEconomy;
+      if (this.el.autoMil) this.el.autoMil.checked = this.game.autoMilitary;
+    }
   }
 
   showEnd(victory, stats) {
     this.el.end.hidden = false;
     this.el.end.classList.toggle('defeat', !victory);
-    this.el.endKicker.textContent = victory ? 'THE ASHLANDS ARE YOURS' : 'THE FIRE RETURNS';
-    this.el.endTitle.textContent = victory ? 'A Crown of Ash' : 'The Last Hearth Fails';
+    const civ = CIVILIZATIONS.find(c => c.id === (stats.civId || stats.civ?.id || stats.civ));
+    const biome = BIOMES.find(b => b.id === (stats.biomeId || stats.biome?.id || stats.biome));
+    this.el.endKicker.textContent = victory ? `${(biome?.name || 'THE FRONTIER').toUpperCase()} IS YOURS` : 'THE RIFT CLOSES';
+    this.el.endTitle.textContent = victory ? `A Crown of ${civ?.name ? civ.name.replace(/^The /, '') : 'Riftwatch'}` : 'The Last Hearth Fails';
     this.el.endDesc.textContent = victory
-      ? 'Five raids broken. The chronicles will remember your name.'
+      ? `${WAVES.length} raids broken beneath the banner of ${civ?.name || 'your realm'}. The chronicles will remember this stand.`
       : 'The Town Center has fallen. Your kingdom returns to embers.';
     this.el.endWaves.textContent = stats.waves;
     this.el.endKills.textContent = formatNumber(stats.kills);
@@ -148,7 +198,7 @@ export class UI {
     this.el.boonGrid.innerHTML = '';
     choices.forEach((boon, i) => {
       const card = document.createElement('button');
-      card.className = 'boon-card';
+      card.className = `boon-card rarity-${String(boon.rarity || 'common').toLowerCase()}`;
       card.dataset.index = i;
       card.innerHTML = `
         <div class="boon-rarity">${boon.rarity}</div>
@@ -236,8 +286,10 @@ export class UI {
     this.el.idleCount.textContent = game.idleVillagers;
     this.el.idleButton.classList.toggle('empty', game.idleVillagers === 0);
 
-    const waveNum = Math.min(5, game.waveIndex + 1);
-    this.el.objectiveWaves.textContent = `${Math.min(game.waveIndex, 5)} / 5`;
+    const waveNum = Math.min(WAVES.length, game.waveIndex + 1);
+    this.el.objectiveWaves.textContent = `${Math.min(game.waveIndex, WAVES.length)} / ${WAVES.length}`;
+    if (this.el.ageLabel) this.el.ageLabel.textContent = game.ageName;
+    if (this.el.minimapTitle) this.el.minimapTitle.textContent = game.biome?.name || 'The Frontier';
     const tc = game.getTownCenter();
     this.el.objectiveHp.textContent = tc ? `${Math.max(0, Math.round(tc.hp / tc.maxHp * 100))}%` : 'LOST';
     this.el.objectiveBoons.textContent = game.boons.length;
@@ -245,7 +297,7 @@ export class UI {
 
     if (game.phase === 'prep') {
       const remaining = Math.max(0, game.prepTimer);
-      this.el.waveKicker.textContent = `WAVE ${roman(waveNum)} OF V`;
+      this.el.waveKicker.textContent = `WAVE ${roman(waveNum)} OF ${roman(WAVES.length)}`;
       this.el.waveTitle.textContent = game.waveName;
       this.el.waveClock.textContent = formatTime(remaining);
       this.el.waveProgress.style.width = `${(1 - remaining / game.prepTotal) * 100}%`;
@@ -263,15 +315,24 @@ export class UI {
       this.el.waveClock.textContent = '—';
       this.el.waveProgress.style.width = '100%';
     } else if (game.phase === 'victory') {
-      this.el.waveKicker.textContent = 'THE ASHLANDS ARE YOURS';
-      this.el.waveTitle.textContent = 'A Crown of Ash';
-      this.el.waveClock.textContent = 'V / V';
+      this.el.waveKicker.textContent = 'RIFTWATCH ENDURES';
+      this.el.waveTitle.textContent = 'The Confluence Is Yours';
+      this.el.waveClock.textContent = `${roman(WAVES.length)} / ${roman(WAVES.length)}`;
       this.el.waveProgress.style.width = '100%';
     } else if (game.phase === 'defeat') {
-      this.el.waveKicker.textContent = 'THE FIRE RETURNS';
+      this.el.waveKicker.textContent = 'THE RIFT CLOSES';
       this.el.waveTitle.textContent = 'The Last Hearth Fails';
       this.el.waveClock.textContent = '—';
       this.el.waveProgress.style.width = '0%';
+    }
+    const boss = game.bossAlive;
+    if (this.el.bossBar) {
+      this.el.bossBar.hidden = !boss || game.phase !== 'wave';
+      if (boss) {
+        this.el.bossName.textContent = boss.typeDef.name;
+        this.el.bossFill.style.width = `${clamp(boss.hp / boss.maxHp, 0, 1) * 100}%`;
+        this.el.bossHp.textContent = `${Math.max(0, Math.ceil(boss.hp))} / ${Math.ceil(boss.maxHp)}`;
+      }
     }
     this.updateCommandAffordability(game);
   }
@@ -308,8 +369,10 @@ export class UI {
   updateSelection(force = false) {
     const game = this.game;
     const sig = this.selectionSignature(game);
-    if (force || sig !== this.lastSignature) {
+    const cmdSig = this.commandSignature(game);
+    if (force || sig !== this.lastSignature || cmdSig !== this.lastCommandSignature) {
       this.lastSignature = sig;
+      this.lastCommandSignature = cmdSig;
       this.renderSelection(game);
       this.renderCommands(game);
     } else {
@@ -366,10 +429,10 @@ export class UI {
       el.selectionHpText.textContent = `${Math.max(0, Math.round(e.hp))} / ${Math.round(e.maxHp)}`;
       let stats = `<span><b>${Math.round(e.maxHp)}</b> hp</span>`;
       if (def.pop) stats += `<span><b>+${def.pop}</b> pop</span>`;
-      if (def.attack) stats += `<span><b>${Math.round(def.attack * (e.team === 'player' ? game.effects.towerDamageMul : 1))}</b> atk</span>`;
+      if (def.attack) stats += `<span><b>${Math.round(def.attack * (e.team === 'player' && e.type === 'tower' ? game.effects.towerDamageMul : 1))}</b> atk</span>`;
       if (e.queue?.length) stats += `<span><b>Training:</b> ${UNIT_TYPES[e.queue[0].type].name} (${Math.ceil(e.queue[0].remaining)}s)</span>`;
       el.selectionStats.innerHTML = stats;
-      el.panelHint.textContent = def.dropoff ? 'Training hall · Right-click raiders to defend' : def.pop ? 'Provides shelter and population' : 'Your command post';
+      el.panelHint.textContent = def.dropoff ? 'Training hall · Right-click raiders to defend' : def.pop ? 'Provides shelter and population' : e.type === 'towncenter' ? 'Advance your age here · Right-click raiders to defend' : 'Your command post';
       this.drawPortrait(e);
     } else {
       const def = UNIT_TYPES[e.type];
@@ -379,10 +442,14 @@ export class UI {
       el.selectionHp.style.width = `${ratio * 100}%`;
       el.selectionHp.style.background = ratio < 0.3 ? 'linear-gradient(90deg,#7d3328,#b95043)' : 'linear-gradient(90deg,#3f7145,#79a45d)';
       el.selectionHpText.textContent = `${Math.max(0, Math.round(e.hp))} / ${Math.round(e.maxHp)}`;
-      el.selectionStats.innerHTML = `<span><b>${Math.round(def.attack * (e.team === 'player' ? game.damageMul(e) : 1))}</b> atk</span><span><b>${def.range > 2 ? def.range + game.effects.archerRange * (e.type === 'archer' ? 1 : 0) : 'melee'}</b> range</span><span><b>${def.role}</b></span>${e.carry > 0 ? `<span><b>${Math.round(e.carry)}</b> ${e.carryType}</span>` : ''}`;
+      const atk = e.team === 'player' ? game.unitAttack(e) : def.attack;
+      const range = e.team === 'player' ? game.unitRange(e) : def.range;
+      el.selectionStats.innerHTML = `<span><b>${Math.round(atk)}</b> atk</span><span><b>${range > 2 ? range.toFixed(1) : 'melee'}</b> range</span><span><b>${def.armor || 0}</b> armor</span>${e.carry > 0 ? `<span><b>${Math.round(e.carry)}</b> ${e.carryType}</span>` : ''}`;
       el.panelHint.textContent = e.type === 'villager'
         ? 'Right-click a resource to gather · Build with the commands above'
-        : 'Right-click an enemy to attack · Right-click ground to march';
+        : e.type === 'commander'
+          ? 'Tab or Control to take direct command · Q mark · E aegis'
+          : 'Right-click an enemy to attack · Right-click ground to march';
       this.drawPortrait(e);
     }
     el.selectionPanel.classList.toggle('is-villager', e.type === 'villager');
@@ -418,7 +485,8 @@ export class UI {
   }
 
   commandSignature(game) {
-    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}`;
+    const hero = game.hero;
+    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:h${game.heroControl}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
   }
 
   getCommands(game) {
@@ -428,27 +496,42 @@ export class UI {
     if (onlyBuildings && sel.length === 1) {
       const b = sel[0];
       if (b.team !== 'player' || b.construction < 1) return [];
+      const commands = [];
+      if (b.type === 'towncenter' && b.team === 'player' && game.ageLevel < 3) {
+        const cost = AGE_COSTS[game.ageLevel];
+        commands.push({
+          id: 'age:advance', label: 'Advance Age', icon: 'age',
+          cost: shortCost(cost), tooltip: `Advance to the ${['Feudal', 'Castle', 'Imperial'][game.ageLevel] || 'next'} Age — ${shortCost(cost)}`,
+        });
+      }
       const trainable = TRAINABLE[b.type] || [];
-      return trainable.map(type => {
+      commands.push(...trainable.map(type => {
         const def = UNIT_TYPES[type];
         return {
           id: `train:${type}`, label: def.name, icon: def.icon,
           cost: shortCost(game.unitCost(type)), hotkey: def.hotkey,
           tooltip: `Train ${def.name} — ${shortCost(game.unitCost(type))} · ${def.trainTime}s`,
         };
-      });
+      }));
+      return commands;
     }
     const playerSel = sel.filter(e => e.team === 'player' && !e.w);
     const hasVillager = playerSel.some(u => u.type === 'villager');
     const commands = [];
     if (hasVillager && playerSel.every(u => u.type === 'villager')) {
-      for (const type of ['house', 'farm', 'barracks', 'tower']) {
+      for (const type of BUILD_OPTIONS) {
         const def = BUILDING_TYPES[type];
         commands.push({
-          id: `build:${type}`, label: def.name, icon: def.icon,
+          id: `build:${type}`, label: def.shortName || def.name, icon: def.icon,
           cost: shortCost(def.cost), tooltip: `Build ${def.name} — ${shortCost(def.cost)} · ${def.buildTime}s`,
         });
       }
+    }
+    const hero = playerSel.find(u => u.type === 'commander');
+    if (hero) {
+      commands.push({ id: 'hero:control', label: game.heroControl ? 'Release' : 'Control', icon: 'control', tag: 'TAB', tooltip: 'Take direct control of the Riftwarden (Tab). WASD move · Q mark · E aegis.' });
+      commands.push({ id: 'hero:mark', label: 'Mark', icon: 'mark', tag: hero.markCd > 0 ? `${Math.ceil(hero.markCd)}s` : 'Q', tooltip: 'Mark a nearby enemy: your soldiers deal 12% more damage for 6s.' });
+      commands.push({ id: 'hero:aegis', label: 'Aegis', icon: 'aegis', tag: hero.aegisCd > 0 ? `${Math.ceil(hero.aegisCd)}s` : 'E', tooltip: 'Shield nearby soldiers for 70 damage. Lasts about 9s.' });
     }
     if (playerSel.some(u => u.type !== 'villager')) {
       commands.push({ id: 'stop', label: 'Stop', icon: 'stop', tooltip: 'Halt current orders (1)' });
@@ -467,10 +550,12 @@ export class UI {
       let cost = null;
       if (id.startsWith('train:')) cost = game.unitCost(id.slice(6));
       else if (id.startsWith('build:')) cost = BUILDING_TYPES[id.slice(6)].cost;
-      if (cost) {
-        const afford = game.canAfford(cost);
-        b.classList.toggle('unaffordable', !afford);
-      }
+      else if (id === 'age:advance') cost = AGE_COSTS[game.ageLevel];
+      if (cost) b.classList.toggle('unaffordable', !game.canAfford(cost));
+      if (id === 'train:elephant' && !game.effects.elephantUnlocked) b.classList.add('unaffordable');
+      if (id === 'hero:mark') b.classList.toggle('is-cooling', game.hero?.markCd > 0);
+      if (id === 'hero:aegis') b.classList.toggle('is-cooling', game.hero?.aegisCd > 0);
+      if (id === 'hero:control') b.classList.toggle('is-active', game.heroControl);
     }
     this.updateCommandProgress();
   }
@@ -642,7 +727,8 @@ export class UI {
     ctx.clearRect(0, 0, W, H);
     ctx.fillStyle = '#101711'; ctx.fillRect(0, 0, W, H);
     const cellW = W / game.world.size, cellH = H / game.world.size;
-    if (!this.minimapCache || this.minimapCacheSeed !== game.world.seed) {
+    const cacheKey = `${game.world.seed}:${game.world.biome || 'ashlands'}`;
+    if (!this.minimapCache || this.minimapCacheKey !== cacheKey) {
       const cache = document.createElement('canvas');
       cache.width = W; cache.height = H;
       const c = cache.getContext('2d');
@@ -667,7 +753,7 @@ export class UI {
         c.fillRect(n.x * cellW - 1, n.y * cellH - 1, 2.5, 2.5);
       }
       this.minimapCache = cache;
-      this.minimapCacheSeed = game.world.seed;
+      this.minimapCacheKey = cacheKey;
     }
     ctx.drawImage(this.minimapCache, 0, 0, W, H);
     ctx.fillStyle = 'rgba(32, 22, 12, 0.16)';
