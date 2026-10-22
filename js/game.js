@@ -1,7 +1,7 @@
 import {
   UNIT_TYPES, BUILDING_TYPES, TRAINABLE, BUILD_OPTIONS, WAVES, BOONS,
   START_RESOURCES, CIVILIZATIONS, BIOMES, AGE_COSTS,
-  RARITY_WEIGHT, PLAYER_COLORS,
+  RARITY_WEIGHT, MAX_BOONS, PLAYER_COLORS,
 } from './data.js';
 import { createWorld } from './world.js';
 import { NemesisDirector } from './director.js';
@@ -66,12 +66,17 @@ export class Game {
     this.hovered = null;
     this.hoveredResource = null;
     this.boons = [];
+    this.boonChoices = [];
+    this.boonRerolls = 0;
     this.stats = { kills: 0, gathered: 0, trained: 0, waves: 0, assists: 0 };
     this.director = new NemesisDirector(seed);
     this.lastWaveReport = null;
     this.waveReports = [];
     this.waveStats = this.director.emptyStats();
     this.pendingWavePlan = null;
+    this.waveEvent = null;
+    this.waveEventMods = null;
+    this.waveDuelAssigned = false;
     this.intel = null;
     this.assistActive = false;
     this.waveIndex = 0;
@@ -232,7 +237,9 @@ export class Game {
       hero: !!(def.hero || options.hero), shield: 0, shieldTime: 0, marked: 0, slowUntil: 0,
       shots: 0, rescueUsed: false, expireIn: options.expireIn || 0,
       bossSkillTimer: def.boss ? 6 : 0, rageStage: 0, summoned: !!options.summoned,
-      markCd: 0, aegisCd: 0,
+      markCd: 0, aegisCd: 0, eventFlags: [], eventSpeedMul: 1, eventAttackSpeedMul: 1,
+      eventRegen: 0, buildingDamageMul: 1, convertResist: false, eventRetreat: 0,
+      eventRetreatCd: 0, eventFireCd: 0, duel: false,
     };
     this.units.push(u);
     if (u.hero && team === 'player') this.hero = u;
@@ -329,7 +336,12 @@ export class Game {
   unitRange(u) {
     let r = u.typeDef.range;
     if (u.team === 'player' && u.typeDef.category === 'ranged') r += this.effects.archerRange;
-    return r;
+    if (u.team === 'player' && this.insideZone(u.x, u.y, 'smoke')) r -= 2;
+    return Math.max(0.5, r);
+  }
+
+  insideZone(x, y, kind) {
+    return this.zones.some(zone => zone.persist && zone.kind === kind && dist(x, y, zone.x, zone.y) <= zone.r);
   }
 
   unitAttack(u) {
@@ -360,8 +372,9 @@ export class Game {
       else if (category === 'hero') cd /= this.effects.heroCooldownMul;
       if (!cd || !Number.isFinite(cd)) cd = u.typeDef.cooldown;
       cd /= this.effects.attackSpeedMul;
-    } else if (this.waveEnraged) {
-      cd /= 1.15;
+    } else {
+      cd /= u.eventAttackSpeedMul || 1;
+      if (this.waveEnraged) cd /= 1.15;
     }
     return Math.max(0.25, cd);
   }
@@ -375,9 +388,11 @@ export class Game {
         if (u.typeDef.category === 'cavalry') s *= this.effects.cavalrySpeedMul;
         if (u.typeDef.category === 'siege') s *= this.effects.siegeSpeedMul;
       }
-    } else if (this.waveEnraged) {
-      s *= 1.12;
+    } else {
+      s *= u.eventSpeedMul || 1;
+      if (this.waveEnraged) s *= 1.12;
     }
+    if (u.team === 'player' && this.insideZone(u.x, u.y, 'net')) s *= .6;
     if (u.slowUntil > this.time) s *= 1 - (u.slowAmount || 0.15);
     return s;
   }
@@ -527,6 +542,10 @@ export class Game {
         if (u.shieldTime === 0) u.shield = 0;
       }
       u.marked = Math.max(0, u.marked - dt);
+      u.eventRetreat = Math.max(0, (u.eventRetreat || 0) - dt);
+      u.eventRetreatCd = Math.max(0, (u.eventRetreatCd || 0) - dt);
+      u.eventFireCd = Math.max(0, (u.eventFireCd || 0) - dt);
+      if (u.team === 'enemy' && u.eventRegen > 0 && u.hp < u.maxHp) u.hp = Math.min(u.maxHp, u.hp + u.maxHp * u.eventRegen * dt);
       if (u.markCd > 0) u.markCd = Math.max(0, u.markCd - dt);
       if (u.aegisCd > 0) u.aegisCd = Math.max(0, u.aegisCd - dt);
       if (u.expireIn > 0) {
@@ -668,16 +687,63 @@ export class Game {
 
   updateEnemy(u, dt) {
     if (u.typeDef.boss) this.updateBoss(u, dt);
+    const flags = u.eventFlags || [];
+    if (u.eventRetreat > 0) {
+      const camp = this.world.camps[(u.spawnGate || 0) % this.world.camps.length];
+      if (camp) this.stepToward(u, camp.x, camp.y, dt);
+      u.state = 'move';
+      return;
+    }
+    if (flags.includes('kite') && u.typeDef.category === 'ranged' && u.eventRetreatCd <= 0) {
+      const threat = this.units.find(o => o.alive && o.team === 'player' && o.typeDef.category === 'infantry' && dist(o.x, o.y, u.x, u.y) < 2.6);
+      if (threat) { u.eventRetreat = 1.6; u.eventRetreatCd = 4.2; }
+    }
+    if (flags.includes('morale') && !u.moraleUsed && u.hp / u.maxHp < .3) {
+      u.moraleUsed = true;
+      u.eventRetreat = 2.4;
+    }
+    if ((flags.includes('lure') && !u.lureUsed) || (flags.includes('feint') && !u.feintUsed && this.waveClock > 8)) {
+      const near = this.units.some(o => o.alive && o.team === 'player' && dist(o.x, o.y, u.x, u.y) < 3.4);
+      if (near) {
+        if (flags.includes('lure')) u.lureUsed = true;
+        if (flags.includes('feint')) u.feintUsed = true;
+        u.eventRetreat = 2.2;
+      }
+    }
     u.retargetTimer -= dt;
     const targetValid = u.target && u.target.alive;
     if (!targetValid || u.retargetTimer <= 0) {
       u.retargetTimer = 0.9 + this.rng() * 0.5;
       const tc = this.getTownCenter();
       const playerUnits = this.units.filter(o => o.alive && o.team === 'player');
-      let best = null, bestD = Infinity;
-      for (const o of playerUnits) {
-        const d = dist2(u.x, u.y, o.x, o.y);
-        if (d < bestD && d < 49) { best = o; bestD = d; }
+      let priority = null;
+      if (flags.includes('breach')) {
+        priority = this.buildings
+          .filter(b => b.alive && b.team === 'player')
+          .sort((a, b) => a.hp - b.hp)[0] || null;
+      } else if (flags.includes('raid')) {
+        const villagers = playerUnits.filter(o => o.type === 'villager');
+        const farms = this.buildings.filter(b => b.alive && b.team === 'player' && b.type === 'farm');
+        priority = [...villagers, ...farms]
+          .map(o => ({ o, d: dist2(u.x, u.y, o.x + (o.w ? o.w / 2 : 0), o.y + (o.h ? o.h / 2 : 0)) }))
+          .filter(entry => entry.d < 196)
+          .sort((a, b) => a.d - b.d)[0]?.o || null;
+      } else if (flags.includes('hunt')) {
+        const prey = [
+          ...playerUnits.filter(o => o.typeDef.category === 'cavalry'),
+          ...playerUnits.filter(o => o.type === 'villager'),
+        ];
+        priority = prey
+          .map(o => ({ o, d: dist2(u.x, u.y, o.x, o.y) }))
+          .filter(entry => entry.d < 196)
+          .sort((a, b) => a.d - b.d)[0]?.o || null;
+      }
+      let best = priority, bestD = priority ? dist2(u.x, u.y, priority.x + (priority.w ? priority.w / 2 : 0), priority.y + (priority.h ? priority.h / 2 : 0)) : Infinity;
+      if (!best) {
+        for (const o of playerUnits) {
+          const d = dist2(u.x, u.y, o.x, o.y);
+          if (d < bestD && d < 49) { best = o; bestD = d; }
+        }
       }
       if (best) u.target = best;
       else if (tc) u.target = tc;
@@ -732,7 +798,7 @@ export class Game {
       for (let i = 0; i < adds; i++) {
         const a = this.rng() * Math.PI * 2;
         const add = this.spawnUnit(u.type === 'warlord2' ? 'marauder' : 'raider', u.x + Math.cos(a) * 2, u.y + Math.sin(a) * 2, 'enemy');
-        if (add) { add.target = this.getTownCenter(); add.state = 'move'; }
+        if (add) { add.eventFlags = [...(u.eventFlags || [])]; this.applyEventMods(add); add.target = this.getTownCenter(); add.state = 'move'; }
       }
     }
   }
@@ -826,6 +892,7 @@ export class Game {
       return;
     }
     let rate = 1.25;
+    if (this.insideZone(u.x, u.y, 'drain')) rate *= .5;
     if (node.resource === 'wood') rate *= this.effects.woodMul;
     else if (node.resource === 'food') rate *= this.effects.foodMul;
     else if (node.resource === 'gold') rate *= this.effects.goldMul;
@@ -1118,6 +1185,7 @@ export class Game {
   updateZones(dt) {
     for (const zone of this.zones) {
       zone.elapsed += dt;
+      if (zone.persist) continue;
       if (!zone.done && zone.elapsed >= zone.delay) {
         zone.done = true;
         for (const u of this.units) {
@@ -1135,13 +1203,20 @@ export class Game {
         this.sound?.hit();
       }
     }
-    this.zones = this.zones.filter(z => z.elapsed < z.delay + 0.9);
+    this.zones = this.zones.filter(z => z.persist ? z.elapsed < (z.duration || 60) : z.elapsed < z.delay + 0.9);
   }
 
   applyDamage(target, amount, source) {
     if (!target || !target.alive) return;
     let damage = amount;
     if (source?.typeDef?.category === 'siege' && target.w) damage *= 1.6;
+    if (source?.team === 'enemy' && target.w && source.buildingDamageMul > 1) {
+      const flags = source.eventFlags || [];
+      const category = source.typeDef.category;
+      if (category === 'siege' || flags.includes('breach') || (flags.includes('sapper') && category === 'infantry')) {
+        damage *= source.buildingDamageMul;
+      }
+    }
     damage = Math.max(1, damage - (target.armor || 0) * 0.6);
     if (target.shield > 0) {
       const absorbed = Math.min(target.shield, damage);
@@ -1154,6 +1229,10 @@ export class Game {
       }
     }
     if (target.team === 'enemy' && source?.team === 'player') this.director.recordDamage(source, damage);
+    if (source?.team === 'enemy' && target.team === 'player' && target.alive && source.eventFlags?.includes('fire') && source.typeDef.category === 'ranged' && (source.eventFireCd || 0) <= 0) {
+      source.eventFireCd = 3;
+      this.zones.push({ x: target.x, y: target.y, r: 1.7, delay: .45, damage: 8, source, kind: 'fire', elapsed: 0, done: false });
+    }
     target.hp -= damage;
     target.hitFlash = 1;
     this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'spark', 'rgba(178,64,49,ALPHA)', 1, 4, 0.5);
@@ -1216,13 +1295,20 @@ export class Game {
           this.killFoodEarned += gain;
           this.resources.food += gain;
         }
-        if (this.effects.convertChance > 0 && !target.typeDef.boss && this.rng() < this.effects.convertChance) {
+        if (this.effects.convertChance > 0 && !target.typeDef.boss && !target.convertResist && this.rng() < this.effects.convertChance) {
           const convert = this.spawnUnit('militia', target.x, target.y, 'player', { summoned: true, expireIn: 20 });
           if (convert) {
             convert.hp = convert.maxHp;
             this.addParticles(target.x, target.y, 'ring', 'rgba(129,181,199,ALPHA)', 1.5, 6, 0.7);
             this.toast(t('toast.converted'), 'good', 2200);
           }
+        }
+        if (target.duel) {
+          if (this.hero?.alive) {
+            this.hero.shield = Math.max(this.hero.shield, 60);
+            this.hero.shieldTime = Math.max(this.hero.shieldTime || 0, 5);
+          }
+          this.toast(t('toast.duelWon'), 'good', 3200);
         }
         if (target.typeDef.boss) {
           this.sound?.victory();
@@ -1314,6 +1400,9 @@ export class Game {
       : this.prepareNextWavePlan();
     this.pendingWavePlan = null;
     this.intel = plan.intel;
+    this.waveEvent = plan.event || null;
+    this.waveEventMods = plan.eventMods || {};
+    this.waveDuelAssigned = false;
     this.director.beginWave();
     this.assistActive = false;
     this.phase = 'wave';
@@ -1336,6 +1425,7 @@ export class Game {
     } else {
       this.spawnRiftfallHazards(plan);
     }
+    this.spawnEventZone(plan);
     for (const u of this.units) if (u.alive && u.team === 'player') u.rescueUsed = false;
 
     if (this.effects.decoyWave > 0) {
@@ -1386,6 +1476,43 @@ export class Game {
     }
   }
 
+  applyEventMods(u) {
+    const mods = this.waveEventMods;
+    if (!mods) return;
+    if (mods.hpMul) {
+      u.maxHp = Math.round(u.maxHp * mods.hpMul);
+      u.hp = u.maxHp;
+    }
+    if (mods.attackMul) u.attack *= mods.attackMul;
+    if (mods.armorBonus) u.armor += mods.armorBonus;
+    u.eventSpeedMul = mods.speedMul || 1;
+    u.eventAttackSpeedMul = mods.attackSpeedMul || 1;
+    u.eventRegen = mods.regen || 0;
+    u.buildingDamageMul = mods.buildingDamageMul || 1;
+    u.convertResist = !!mods.convertResist;
+  }
+
+  spawnEventZone(plan) {
+    if (!plan?.eventZone) return;
+    const camp = this.world.camps[plan.eventZone.gate % this.world.camps.length];
+    if (!camp) return;
+    const base = this.world.base;
+    const t = .56;
+    this.zones.push({
+      x: camp.x + (base.x - camp.x) * t,
+      y: camp.y + (base.y - camp.y) * t,
+      r: plan.eventZone.radius,
+      delay: 0.01,
+      damage: 0,
+      source: null,
+      kind: plan.eventZone.kind,
+      elapsed: 0,
+      done: true,
+      persist: true,
+      duration: WAVES[Math.min(this.waveIndex, WAVES.length - 1)].duration,
+    });
+  }
+
   spawnWaveGroup(group) {
     const camp = this.world.camps[group.gate % this.world.camps.length];
     if (!camp) return;
@@ -1402,6 +1529,17 @@ export class Game {
         }
         const u = this.spawnUnit(type, sx, sy, 'enemy');
         if (!u) continue;
+        u.eventFlags = [...(group.eventFlags || [])];
+        u.spawnGate = group.gate;
+        this.applyEventMods(u);
+        if (u.eventFlags.includes('duel') && !this.waveDuelAssigned) {
+          this.waveDuelAssigned = true;
+          u.duel = true;
+          u.maxHp = Math.round(u.maxHp * 1.35);
+          u.hp = u.maxHp;
+          u.attack *= 1.2;
+          u.scale = (u.typeDef.scale || 1) * 1.12;
+        }
         u.target = this.getTownCenter();
         u.state = 'move';
         index++;
@@ -1438,12 +1576,14 @@ export class Game {
     }
     this.phase = 'boon';
     this.toast(t('toast.spoils', reward), 'good', 3800);
+    this.boonRerolls = 0;
     const choices = this.pickBoons();
+    this.boonChoices = choices;
     this.hooks.boons?.(choices, boon => this.chooseBoon(boon));
   }
 
-  pickBoons() {
-    const available = BOONS.filter(b => !this.boons.some(c => c.id === b.id));
+  pickBoons(exclude = []) {
+    const available = BOONS.filter(b => !this.boons.some(c => c.id === b.id) && !exclude.includes(b.id));
     const chosen = [];
     const pool = [...available];
     while (chosen.length < 3 && pool.length) {
@@ -1462,11 +1602,14 @@ export class Game {
 
   chooseBoon(boon) {
     if (!boon) return;
+    if (this.boons.length >= MAX_BOONS) { this.sound?.error(); return; }
     boon.apply(this);
     this.refreshPlayerStats();
     this.refreshBuildingStats();
     this.boons.push(boon);
     this.waveIndex++;
+    this.boonChoices = [];
+    this.boonRerolls = 0;
     this.waveName = t(`wave.${Math.min(this.waveIndex, WAVES.length - 1)}.name`);
     this.phase = 'prep';
     this.prepTotal = 30;
@@ -1475,6 +1618,25 @@ export class Game {
     this.camera.targetZoom = 1.12;
     this.toast(t('toast.boonClaimed', { name: t(`boon.${boon.id}.name`) }), 'good', 3800);
     this.hooks.selectionChanged?.();
+  }
+
+  rerollBoons() {
+    if (this.phase !== 'boon' || !this.boonChoices.length) return false;
+    const cost = 25 + this.boonRerolls * 15;
+    if (this.resources.gold < cost) {
+      this.sound?.error();
+      this.toast(t('toast.rerollNeeds', { cost }), 'bad', 2200);
+      return false;
+    }
+    this.resources.gold -= cost;
+    this.boonRerolls++;
+    const exclude = this.boonChoices.map(card => card.id);
+    const choices = this.pickBoons(exclude);
+    if (!choices.length) return false;
+    this.boonChoices = choices;
+    this.sound?.select();
+    this.hooks.boons?.(choices, boon => this.chooseBoon(boon));
+    return true;
   }
 
   beginPlacement(type) {

@@ -1,4 +1,5 @@
 import { AGE_NAMES, BIOMES, BOONS, BUILDING_TYPES, CIVILIZATIONS, UNIT_TYPES, WAVES } from './data.js';
+import { EVENT_MODULES } from './events.js';
 import { content as zhHantContent, ui as zhHantUi } from './locales/zh-Hant.js';
 import { content as zhHansContent, ui as zhHansUi } from './locales/zh-Hans.js';
 import { content as jaContent, ui as jaUi } from './locales/ja.js';
@@ -51,6 +52,10 @@ function englishContent() {
     out[`wave.${index}.name`] = wave.name;
     out[`wave.${index}.sub`] = wave.sub;
   });
+  for (const event of Object.values(EVENT_MODULES)) {
+    out[`event.${event.id}.name`] = event.name;
+    out[`event.${event.id}.desc`] = event.desc;
+  }
   CAMP_NAMES.forEach((name, index) => { out[`camp.${index}`] = name; });
   for (const [id, label] of Object.entries(TACTIC_LABELS)) out[`tactic.${id}`] = label;
   return out;
@@ -109,6 +114,7 @@ const EN_UI = {
   'objective.lost': 'LOST',
   'intel.kicker': 'SCOUT REPORT · NEXT RAID',
   'intel.mainForce': 'Main force',
+  'intel.event': 'Raid event',
   'intel.gates': 'Likely gates',
   'intel.hazard': 'Riftfall hazard reported · {gates}',
   'intel.assistDisabled': 'Riftfall hazard disabled at low Town Center health. The announced host is unchanged.',
@@ -195,6 +201,8 @@ const EN_UI = {
   'boon.title': 'Choose Your Boon',
   'boon.desc': 'One gift of the old kingdom. It will shape the raids to come.',
   'boon.claim': 'Claim Boon',
+  'boon.reroll': 'Reroll · {cost} {gold}',
+  'boon.rerollTooltip': 'Spend {cost} gold for a new hand of three cards.',
   'boon.hint': 'Press {keys} to choose',
   'boon.key': 'KEY {n}',
   'rarity.COMMON': 'COMMON',
@@ -282,6 +290,8 @@ const EN_UI = {
   'toast.enraged': 'The raid is enraged. They will not tire.',
   'toast.spoils': 'Raid broken. Spoils: +{food} food, +{wood} wood, +{gold} gold.',
   'toast.boonClaimed': 'Boon claimed: {name}.',
+  'toast.rerollNeeds': 'Rerolling needs {cost} gold.',
+  'toast.duelWon': "Champion slain. Your hero gains a 60 shield.",
   'toast.notEnoughBuild': 'Not enough resources for {name}.',
   'toast.selectVillager': 'Select a villager to raise this structure.',
   'toast.cannotPlace': 'Cannot raise that structure here.',
@@ -346,6 +356,11 @@ function flattenContent(content) {
   for (const [index, entry] of Object.entries(content.wave || {})) {
     for (const field of ['name', 'sub']) {
       if (entry[field] != null) out[`wave.${index}.${field}`] = entry[field];
+    }
+  }
+  for (const [id, entry] of Object.entries(content.event || {})) {
+    for (const field of ['name', 'desc']) {
+      if (entry[field] != null) out[`event.${id}.${field}`] = entry[field];
     }
   }
   (content.camp || []).forEach((name, index) => { out[`camp.${index}`] = name; });

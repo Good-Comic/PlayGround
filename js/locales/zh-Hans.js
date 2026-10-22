@@ -51,6 +51,7 @@ export const ui = {
   "objective.lost": "失守",
   "intel.kicker": "斥候报告 · 下次袭击",
   "intel.mainForce": "主力部队",
+  "intel.event": "袭击事件",
   "intel.gates": "可能入口",
   "intel.hazard": "侦测到裂界灾害 · {gates}",
   "intel.assistDisabled": "城镇中心生命过低，裂界灾害已停用。敌军编成不变。",
@@ -137,6 +138,8 @@ export const ui = {
   "boon.title": "选择你的恩赐",
   "boon.desc": "旧王国的一份赠礼。它将塑造未来的袭击。",
   "boon.claim": "领取恩赐",
+  "boon.reroll": "重抽 · {cost} {gold}",
+  "boon.rerollTooltip": "花费 {cost} 金币，重新抽取三张卡牌。",
   "boon.hint": "按 {keys} 选择",
   "boon.key": "按键 {n}",
   "rarity.COMMON": "普通",
@@ -223,6 +226,8 @@ export const ui = {
   "toast.bossEntered": "{name}已进入战场。",
   "toast.enraged": "袭击陷入狂怒。他们不会疲倦。",
   "toast.spoils": "袭击已破。战利品：食物 +{food}、木材 +{wood}、黄金 +{gold}。",
+  "toast.rerollNeeds": "重抽需要 {cost} 金币。",
+  "toast.duelWon": "勇士对决胜利！英雄获得 60 护盾。",
   "toast.boonClaimed": "已领取恩赐：{name}。",
   "toast.notEnoughBuild": "资源不足，无法建造{name}。",
   "toast.selectVillager": "请选取村民来建造此建筑。",
@@ -656,6 +661,104 @@ export const content = {
       "name": "最后守望",
       "sub": "裂界元帅降临"
     }
+  },
+  event: {
+    "FLANK": {
+      "name": "侧翼",
+      "desc": "第二支部队从另一道门抵达。"
+    },
+    "RAID": {
+      "name": "掠袭队",
+      "desc": "掠袭者优先攻击村民与农田。"
+    },
+    "SHIELD": {
+      "name": "盾墙",
+      "desc": "敌军护甲 +2。"
+    },
+    "KITE": {
+      "name": "风筝",
+      "desc": "远程掠袭者会从近战压力中后退。"
+    },
+    "SIEGE": {
+      "name": "攻城队",
+      "desc": "攻城单位对建筑伤害 +50%。"
+    },
+    "BREACH": {
+      "name": "破口",
+      "desc": "敌军寻找最脆弱的建筑。"
+    },
+    "SMOKE": {
+      "name": "烟幕",
+      "desc": "烟幕使玩家远程射程 -2。"
+    },
+    "CONVOY": {
+      "name": "补给车队",
+      "desc": "敌军缓慢恢复生命。"
+    },
+    "NET": {
+      "name": "绊网",
+      "desc": "绊网区域使玩家单位减速。"
+    },
+    "LURE": {
+      "name": "诱敌",
+      "desc": "敌军前线假装撤退。"
+    },
+    "DUEL": {
+      "name": "勇士对决",
+      "desc": "一名勇士率领袭击；击杀它可为英雄提供护盾。"
+    },
+    "RELAY": {
+      "name": "传令手",
+      "desc": "敌军移动速度 +15%。"
+    },
+    "FEINT": {
+      "name": "佯攻",
+      "desc": "一支牵制部队稍后从另一道门抵达。"
+    },
+    "BLOCK": {
+      "name": "封锁",
+      "desc": "敌军以更重护甲坚守通道。"
+    },
+    "LAND": {
+      "name": "登陆",
+      "desc": "整支袭击队从一道出人意料的门登陆。"
+    },
+    "FIRE": {
+      "name": "火箭",
+      "desc": "远程命中会点燃火焰区域。"
+    },
+    "RALLY": {
+      "name": "集结",
+      "desc": "敌军攻击速度 +15%"
+    },
+    "SCOUT": {
+      "name": "斥候",
+      "desc": "敌军移动速度 +25%。"
+    },
+    "DRAIN": {
+      "name": "汲取",
+      "desc": "汲取区域使玩家采集速度减半。"
+    },
+    "BELL": {
+      "name": "警钟",
+      "desc": "袭击后段会有增援抵达。"
+    },
+    "HUNT": {
+      "name": "猎杀",
+      "desc": "掠袭者猎杀骑兵与村民。"
+    },
+    "SAPPER": {
+      "name": "工兵",
+      "desc": "步兵对建筑伤害加倍。"
+    },
+    "MORALE": {
+      "name": "士气",
+      "desc": "受伤敌军会撤退一次。"
+    },
+    "WARD": {
+      "name": "守护",
+      "desc": "敌军护甲 +3 并抵抗转化。"
+    },
   },
   "camp": [
     "北境火堆",

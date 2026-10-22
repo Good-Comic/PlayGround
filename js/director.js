@@ -1,4 +1,5 @@
 import { UNIT_TYPES } from './data.js';
+import { eventFor } from './events.js';
 import { clamp, hash2 } from './utils.js';
 import { t } from './i18n.js';
 
@@ -171,6 +172,43 @@ export class NemesisDirector {
       addedCount++;
     }
 
+    const event = eventFor(civ?.id, waveIndex);
+    if (event.gateMode === 'single' && camps?.length) {
+      const gate = (spawns[0]?.gate ?? 0) + 2 + waveIndex;
+      for (const group of spawns) group.gate = gate % camps.length;
+    }
+    if (event.extra) {
+      const gate = ((spawns[0]?.gate ?? 0) + 2) % (camps?.length || 4);
+      const desired = 2 + Math.floor(waveIndex / 2);
+      const moved = {};
+      let remaining = desired;
+      const donors = [...spawns].sort((a, b) => sumUnits([b]) - sumUnits([a]));
+      for (const group of donors) {
+        if (remaining <= 0) break;
+        for (const [type, count] of Object.entries(group.units)) {
+          if (remaining <= 0) break;
+          if (count <= 0 || UNIT_TYPES[type]?.boss) continue;
+          const take = Math.min(count, remaining);
+          group.units[type] -= take;
+          if (group.units[type] <= 0) delete group.units[type];
+          moved[type] = (moved[type] || 0) + take;
+          remaining -= take;
+        }
+      }
+      if (Object.keys(moved).length) {
+        const at = event.extra === 'bell' ? 38 : event.extra === 'feint' ? 22 : 14 + waveIndex;
+        spawns.push({
+          at: Math.min(at, Math.max(1, wave.duration - 4)),
+          gate,
+          units: moved,
+          eventFlags: [...(event.tags || [])],
+          eventExtra: event.extra,
+        });
+      }
+    }
+    for (const group of spawns) {
+      group.eventFlags = [...new Set([...(group.eventFlags || []), ...(event.tags || [])])];
+    }
     const totalUnits = sumUnits(spawns);
     const identityShare = baseUnits > 0 ? clamp(1 - removedCount / baseUnits, 0, 1) : 1;
     const gateUse = new Map();
@@ -205,6 +243,7 @@ export class NemesisDirector {
       units: mainUnits,
       entrances,
       hazard,
+      event,
       assist: null,
     };
     return {
@@ -223,6 +262,9 @@ export class NemesisDirector {
       addedCount,
       spawns,
       hazard,
+      event,
+      eventMods: event.mods || {},
+      eventZone: event.zone ? { kind: event.zone, gate: entrances[0]?.gate ?? 0, radius: event.zone === 'smoke' ? 3.6 : 4.2 } : null,
       intel,
     };
   }

@@ -51,6 +51,7 @@ export const ui = {
   'objective.lost': '陥落',
   'intel.kicker': '斥候報告 · 次の襲撃',
   'intel.mainForce': '主力',
+  'intel.event': '襲撃イベント',
   'intel.gates': '推定侵入口',
   'intel.hazard': 'リフト災害を確認 · {gates}',
   'intel.assistDisabled': '町の中心の体力が低いため、リフト災害を停止しました。敵の編成は変わりません。',
@@ -137,6 +138,8 @@ export const ui = {
   'boon.title': '恩恵を選べ',
   'boon.desc': '古き王国の贈り物。これからの襲撃を形作る。',
   'boon.claim': '恩恵を得る',
+  'boon.reroll': 'リロール · {cost} {gold}',
+  'boon.rerollTooltip': '{cost}ゴールドで3枚のカードを引き直す。',
   'boon.hint': '{keys} を押して選択',
   'boon.key': 'キー {n}',
   'rarity.COMMON': 'コモン',
@@ -223,6 +226,8 @@ export const ui = {
   'toast.bossEntered': '{name}が戦場に現れた。',
   'toast.enraged': '襲撃は激怒した。彼らは疲れない。',
   'toast.spoils': '襲撃を破った。戦利品：食料 +{food}、木材 +{wood}、金 +{gold}。',
+  'toast.rerollNeeds': 'リロールには{cost}ゴールドが必要。',
+  'toast.duelWon': '決闘に勝利。英雄に60の盾。',
   'toast.boonClaimed': '恩恵を得た：{name}。',
   'toast.notEnoughBuild': '{name}を建てる資源が足りない。',
   'toast.selectVillager': 'この建物を建てる村人を選べ。',
@@ -357,6 +362,104 @@ export const content = {
     7: { name: '二つの突破口', sub: '二つの門、一つの墓' },
     8: { name: '長い腕', sub: 'リフトが狩人を送る' },
     9: { name: '最後の見張り', sub: 'リフト元帥が来る' },
+  },
+  event: {
+    "FLANK": {
+      "name": "側面攻撃",
+      "desc": "別の門から第二部隊が到着。"
+    },
+    "RAID": {
+      "name": "掠奪隊",
+      "desc": "略奪者は村人と農場を優先。"
+    },
+    "SHIELD": {
+      "name": "盾壁",
+      "desc": "敵の装甲 +2。"
+    },
+    "KITE": {
+      "name": "カイト",
+      "desc": "遠距離の略奪者は近接圧力から下がる。"
+    },
+    "SIEGE": {
+      "name": "攻城部隊",
+      "desc": "攻城単位の建物ダメージ +50%。"
+    },
+    "BREACH": {
+      "name": "突破",
+      "desc": "敵は最も弱い建物を狙う。"
+    },
+    "SMOKE": {
+      "name": "煙幕",
+      "desc": "煙幕でプレイヤーの射程 -2。"
+    },
+    "CONVOY": {
+      "name": "補給隊",
+      "desc": "敵は徐々に体力を回復。"
+    },
+    "NET": {
+      "name": "網",
+      "desc": "網の領域でプレイヤー単位が減速。"
+    },
+    "LURE": {
+      "name": "誘引",
+      "desc": "敵の前線が偽の撤退を行う。"
+    },
+    "DUEL": {
+      "name": "決闘",
+      "desc": "勇士が襲撃を率いる。倒すと英雄に盾。"
+    },
+    "RELAY": {
+      "name": "伝令",
+      "desc": "敵の移動速度 +15%。"
+    },
+    "FEINT": {
+      "name": "陽動",
+      "desc": "陽動部隊が後から別の門に到着。"
+    },
+    "BLOCK": {
+      "name": "封鎖",
+      "desc": "敵は重装甲で進路を保持。"
+    },
+    "LAND": {
+      "name": "上陸",
+      "desc": "襲撃隊全体が意外な門から上陸。"
+    },
+    "FIRE": {
+      "name": "火矢",
+      "desc": "遠距離攻撃が炎の領域を生む。"
+    },
+    "RALLY": {
+      "name": "集結",
+      "desc": "敵の攻撃速度 +15%。"
+    },
+    "SCOUT": {
+      "name": "斥候",
+      "desc": "敵の移動速度 +25%。"
+    },
+    "DRAIN": {
+      "name": "吸収",
+      "desc": "吸収領域でプレイヤーの採集速度が半減。"
+    },
+    "BELL": {
+      "name": "警鐘",
+      "desc": "襲撃後半に増援が到着。"
+    },
+    "HUNT": {
+      "name": "狩り",
+      "desc": "略奪者は騎兵と村人を狩る。"
+    },
+    "SAPPER": {
+      "name": "工兵",
+      "desc": "歩兵の建物ダメージが2倍。"
+    },
+    "MORALE": {
+      "name": "士気",
+      "desc": "負傷した敵は一度撤退。"
+    },
+    "WARD": {
+      "name": "守護",
+      "desc": "敵の装甲 +3、変換に抵抗。"
+    },
   },
   camp: ['北の火堆', '赤い野営地', '折れた土手道', '沈んだ湿地'],
   tactic: {

@@ -374,13 +374,15 @@ export class Renderer {
     const ctx = this.ctx, z = game.camera.zoom;
     for (const zone of game.zones) {
       const p = this.screen(game, zone.x, zone.y);
-      const progress = Math.min(1, zone.elapsed / zone.delay);
-      const alpha = zone.done ? Math.max(0, 1 - (zone.elapsed - zone.delay) / 0.9) : 0.12 + progress * 0.2;
+      const persist = !!zone.persist;
+      const progress = persist ? 1 : Math.min(1, zone.elapsed / zone.delay);
+      const alpha = persist ? 0.18 : zone.done ? Math.max(0, 1 - (zone.elapsed - zone.delay) / 0.9) : 0.12 + progress * 0.2;
       ctx.save();
-      ctx.fillStyle = `rgba(171,48,35,${alpha * 0.5})`;
-      ctx.strokeStyle = zone.done ? `rgba(255,198,153,${alpha})` : `rgba(224,92,69,${0.45 + progress * 0.45})`;
+      const tint = zone.kind === 'smoke' ? '120,120,120' : zone.kind === 'net' ? '150,120,60' : zone.kind === 'drain' ? '90,150,90' : '171,48,35';
+      ctx.fillStyle = `rgba(${tint},${alpha * 0.5})`;
+      ctx.strokeStyle = persist ? `rgba(${tint},${alpha + 0.25})` : zone.done ? `rgba(255,198,153,${alpha})` : `rgba(224,92,69,${0.45 + progress * 0.45})`;
       ctx.lineWidth = (zone.done ? 2.4 : 1.6) * z;
-      ctx.setLineDash(zone.done ? [] : [8 * z, 5 * z]);
+      ctx.setLineDash(zone.done || persist ? [] : [8 * z, 5 * z]);
       ctx.lineDashOffset = -time * 14;
       ctx.beginPath();
       ctx.ellipse(p.x, p.y, zone.r * 32 * z, zone.r * 16 * z, 0, 0, Math.PI * 2);

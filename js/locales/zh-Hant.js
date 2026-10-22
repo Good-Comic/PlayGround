@@ -51,6 +51,7 @@ export const ui = {
   'objective.lost': '失守',
   'intel.kicker': '斥候報告 · 下次襲擊',
   'intel.mainForce': '主力部隊',
+  'intel.event': '襲擊事件',
   'intel.gates': '可能入口',
   'intel.hazard': '偵測到裂界災害 · {gates}',
   'intel.assistDisabled': '城鎮中心生命過低，裂界災害已停用。敵軍編成不變。',
@@ -137,6 +138,8 @@ export const ui = {
   'boon.title': '選擇你的恩賜',
   'boon.desc': '舊王國的一份贈禮。它將塑造未來的襲擊。',
   'boon.claim': '領取恩賜',
+  'boon.reroll': '重抽 · {cost} {gold}',
+  'boon.rerollTooltip': '花費 {cost} 金幣，重新抽取三張卡牌。',
   'boon.hint': '按 {keys} 選擇',
   'boon.key': '按鍵 {n}',
   'rarity.COMMON': '普通',
@@ -223,6 +226,8 @@ export const ui = {
   'toast.bossEntered': '{name}已進入戰場。',
   'toast.enraged': '襲擊陷入狂怒。他們不會疲倦。',
   'toast.spoils': '襲擊已破。戰利品：食物 +{food}、木材 +{wood}、黃金 +{gold}。',
+  'toast.rerollNeeds': '重抽需要 {cost} 金幣。',
+  'toast.duelWon': '勇士對決勝利！英雄獲得 60 護盾。',
   'toast.boonClaimed': '已領取恩賜：{name}。',
   'toast.notEnoughBuild': '資源不足，無法建造{name}。',
   'toast.selectVillager': '請選取村民來建造此建築。',
@@ -357,6 +362,104 @@ export const content = {
     7: { name: '雙重突破', sub: '兩道門，一座墳' },
     8: { name: '長臂', sub: '裂界派出獵手' },
     9: { name: '最後守望', sub: '裂界元帥降臨' },
+  },
+  event: {
+    "FLANK": {
+      "name": "側翼",
+      "desc": "第二支部隊從另一道門抵達。"
+    },
+    "RAID": {
+      "name": "掠襲隊",
+      "desc": "掠襲者優先攻擊村民與農田。"
+    },
+    "SHIELD": {
+      "name": "盾牆",
+      "desc": "敵軍護甲 +2。"
+    },
+    "KITE": {
+      "name": "風箏",
+      "desc": "遠程掠襲者會從近戰壓力中後退。"
+    },
+    "SIEGE": {
+      "name": "攻城隊",
+      "desc": "攻城單位對建築傷害 +50%。"
+    },
+    "BREACH": {
+      "name": "破口",
+      "desc": "敵軍尋找最脆弱的建築。"
+    },
+    "SMOKE": {
+      "name": "煙幕",
+      "desc": "煙幕使玩家遠程射程 -2。"
+    },
+    "CONVOY": {
+      "name": "補給車隊",
+      "desc": "敵軍緩慢恢復生命。"
+    },
+    "NET": {
+      "name": "絆網",
+      "desc": "絆網區域使玩家單位減速。"
+    },
+    "LURE": {
+      "name": "誘敵",
+      "desc": "敵軍前線假裝撤退。"
+    },
+    "DUEL": {
+      "name": "勇士對決",
+      "desc": "一名勇士率領襲擊；擊殺它可為英雄提供護盾。"
+    },
+    "RELAY": {
+      "name": "傳令手",
+      "desc": "敵軍移動速度 +15%。"
+    },
+    "FEINT": {
+      "name": "佯攻",
+      "desc": "一支牽制部隊稍後從另一道門抵達。"
+    },
+    "BLOCK": {
+      "name": "封鎖",
+      "desc": "敵軍以更重護甲堅守通道。"
+    },
+    "LAND": {
+      "name": "登陸",
+      "desc": "整支襲擊隊從一道出人意料的門登陸。"
+    },
+    "FIRE": {
+      "name": "火箭",
+      "desc": "遠程命中會點燃火焰區域。"
+    },
+    "RALLY": {
+      "name": "集結",
+      "desc": "敵軍攻擊速度 +15%。"
+    },
+    "SCOUT": {
+      "name": "斥候",
+      "desc": "敵軍移動速度 +25%。"
+    },
+    "DRAIN": {
+      "name": "汲取",
+      "desc": "汲取區域使玩家採集速度減半。"
+    },
+    "BELL": {
+      "name": "警鐘",
+      "desc": "襲擊後段會有增援抵達。"
+    },
+    "HUNT": {
+      "name": "獵殺",
+      "desc": "掠襲者獵殺騎兵與村民。"
+    },
+    "SAPPER": {
+      "name": "工兵",
+      "desc": "步兵對建築傷害加倍。"
+    },
+    "MORALE": {
+      "name": "士氣",
+      "desc": "受傷敵軍會撤退一次。"
+    },
+    "WARD": {
+      "name": "守護",
+      "desc": "敵軍護甲 +3 並抵抗轉化。"
+    },
   },
   camp: ['北境火堆', '赤紅營地', '斷裂堤道', '沉沒沼澤'],
   tactic: {

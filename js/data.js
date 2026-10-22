@@ -372,6 +372,7 @@ export const BOONS = [
     g => { g.effects.heroHpMul *= 1.3; g.effects.heroDamageMul *= 1.2; g.effects.heroCooldownMul *= 0.75; g.refreshPlayerStats(); }),
 ];
 
+export const MAX_BOONS = 12;
 export const RARITY_WEIGHT = { COMMON: 60, RARE: 28, LEGENDARY: 10, LEGACY: 2 };
 export const RARITY_ORDER = { COMMON: 0, RARE: 1, LEGENDARY: 2, LEGACY: 3 };
 

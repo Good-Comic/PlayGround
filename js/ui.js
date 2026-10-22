@@ -43,7 +43,7 @@ export class UI {
     this.el = {
       hud: this.$('hud'), menu: this.$('menu-screen'), howto: this.$('howto-overlay'),
       pause: this.$('pause-overlay'), boon: this.$('boon-overlay'), boonGrid: this.$('boon-grid'),
-      claim: this.$('btn-claim'), end: this.$('end-overlay'),
+      claim: this.$('btn-claim'), reroll: this.$('btn-reroll'), end: this.$('end-overlay'),
       food: this.$('res-food'), wood: this.$('res-wood'), gold: this.$('res-gold'),
       stone: this.$('res-stone'), pop: this.$('res-pop'), cap: this.$('res-cap'),
       waveKicker: this.$('wave-kicker'), waveTitle: this.$('wave-title'), waveClock: this.$('wave-clock'),
@@ -63,7 +63,7 @@ export class UI {
       bossBar: this.$('boss-bar'), bossName: this.$('boss-name'), bossFill: this.$('boss-fill'),
       bossHp: this.$('boss-hp'), ageLabel: this.$('objective-age'), minimapTitle: this.$('minimap-title'),
       intelCard: this.$('intel-card'), intelCountdown: this.$('intel-countdown'),
-      intelUnits: this.$('intel-units'), intelGates: this.$('intel-gates'),
+      intelUnits: this.$('intel-units'), intelEvent: this.$('intel-event'), intelGates: this.$('intel-gates'),
       intelHazard: this.$('intel-hazard'), intelAssist: this.$('intel-assist'),
       objectiveAssist: this.$('objective-assist'), objectiveAssistText: this.$('objective-assist-text'),
       civSelect: this.$('setup-civ'), biomeSelect: this.$('setup-biome'), seedInput: this.$('setup-seed'),
@@ -105,6 +105,7 @@ export class UI {
     });
     this.el.idleButton.addEventListener('click', () => { clickSound(); this.callbacks.idle?.(); });
     this.el.claim.addEventListener('click', () => this.claimBoon());
+    this.el.reroll.addEventListener('click', () => { this.sound?.click(); this.game.rerollBoons(); });
     this.el.minimap.addEventListener('pointerdown', e => {
       const rect = this.el.minimap.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width * 50;
@@ -227,6 +228,7 @@ export class UI {
     this.el.boon.hidden = false;
     if (this.el.boonHint) this.el.boonHint.textContent = t('boon.hint', { keys: '1 / 2 / 3' });
     this.el.boonGrid.innerHTML = '';
+    this.updateReroll();
     choices.forEach((boon, i) => {
       const card = document.createElement('button');
       card.className = `boon-card rarity-${String(boon.rarity || 'common').toLowerCase()}`;
@@ -242,6 +244,14 @@ export class UI {
       card.addEventListener('click', () => { this.sound?.click(); this.selectBoon(i); });
       this.el.boonGrid.appendChild(card);
     });
+  }
+
+  updateReroll() {
+    if (!this.el.reroll) return;
+    const cost = 25 + (this.game.boonRerolls || 0) * 15;
+    this.el.reroll.disabled = !this.game.canAfford({ gold: cost });
+    this.el.reroll.textContent = t('boon.reroll', { cost, gold: t('resourceShort.gold') });
+    this.el.reroll.title = t('boon.rerollTooltip', { cost });
   }
 
   selectBoon(index) {
@@ -378,6 +388,10 @@ export class UI {
     if (show) {
       this.el.intelCountdown.textContent = formatTime(Math.max(0, game.prepTimer));
       this.el.intelUnits.textContent = plan.units.map(type => UNIT_TYPES[type] ? t(`unit.${type}.name`) : type).join('\u00a0· ') || '—';
+      if (this.el.intelEvent) {
+        this.el.intelEvent.textContent = plan.event ? t(`event.${plan.event.id}.name`) : '—';
+        this.el.intelEvent.title = plan.event ? t(`event.${plan.event.id}.desc`) : '';
+      }
       this.el.intelGates.textContent = plan.entrances.map(entry => t(`camp.${entry.gate}`)).join('\u00a0/ ') || '—';
       if (this.el.intelHazard) {
         this.el.intelHazard.hidden = !plan.hazard;
