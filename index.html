@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0b0d0e" />
+    <title>BLACKSITE // ZERO HOUR</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0d0e'/%3E%3Cpath d='M12 44 32 12l20 32H12z' fill='%23ff7a1a'/%3E%3Cpath d='M22 44 32 27l10 17H22z' fill='%230b0d0e'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+      <div id="vignette"></div>
+      <div id="grain"></div>
+
+      <div id="hud" class="hidden">
+        <div id="damage-flash"></div>
+        <div id="damage-arcs"></div>
+
+        <div class="hud-top-left">
+          <div class="mission-tag"><span class="dot"></span>OPERATION BLACKSITE</div>
+          <div class="objective">
+            <div class="obj-icon">◆</div>
+            <div>
+              <div class="obj-title" id="objective-title">CLEAR THE COMPOUND</div>
+              <div class="obj-sub"><span id="objective-progress">0 / 6</span> HOSTILES NEUTRALIZED</div>
+            </div>
+          </div>
+          <div class="minimap-wrap">
+            <canvas id="minimap" width="220" height="220"></canvas>
+            <div class="minimap-ring"></div>
+            <div class="minimap-north">N</div>
+            <div class="minimap-coords" id="minimap-coords">GRID 34.21 / 09.67</div>
+          </div>
+        </div>
+
+        <div class="hud-top-center">
+          <div class="compass-shell">
+            <div class="compass-strip" id="compass-strip"></div>
+            <div class="compass-marker"></div>
+            <div class="compass-deg" id="compass-deg">000</div>
+          </div>
+          <div class="threat-row">
+            <span class="threat-pip active"></span><span class="threat-pip"></span><span class="threat-pip"></span>
+            <span id="threat-text">THREAT LEVEL: ELEVATED</span>
+          </div>
+        </div>
+
+        <div class="hud-top-right">
+          <div class="score-block">
+            <div class="score-label">SCORE</div>
+            <div class="score-value" id="score">000000</div>
+            <div class="score-meta"><span id="kills">00</span> KILLS &nbsp;·&nbsp; <span id="timer">00:00</span></div>
+          </div>
+          <div id="kill-feed"></div>
+        </div>
+
+        <div id="crosshair">
+          <span class="ch ch-t"></span><span class="ch ch-b"></span><span class="ch ch-l"></span><span class="ch ch-r"></span>
+          <span class="ch-dot"></span>
+          <div id="hitmarker"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div id="interact-hint" class="hidden"><span class="key">E</span> INTERACT</div>
+        <div id="reload-hint" class="hidden">RELOADING<span class="reload-bar"><i id="reload-fill"></i></span></div>
+
+        <div class="hud-bottom-left">
+          <div class="operator">
+            <div class="op-badge">01</div>
+            <div class="op-info">
+              <div class="op-name">CPT. R. VANCE</div>
+              <div class="op-role">1ST SFOD-D &nbsp;·&nbsp; ASSAULT</div>
+            </div>
+          </div>
+          <div class="vitals">
+            <div class="vital-row"><span>HEALTH</span><span id="health-value">100</span></div>
+            <div class="bar health-bar"><i id="health-fill"></i><b id="health-ghost"></b></div>
+            <div class="armor-segments" id="armor-segments"></div>
+          </div>
+        </div>
+
+        <div class="hud-bottom-right">
+          <div class="weapon-meta">
+            <span class="fire-mode" id="fire-mode">AUTO</span>
+            <span id="weapon-name">M4A1 CARBINE</span>
+          </div>
+          <div class="ammo-row">
+            <span class="ammo-mag" id="ammo-mag">30</span>
+            <span class="ammo-sep">/</span>
+            <span class="ammo-reserve" id="ammo-reserve">180</span>
+          </div>
+          <div class="ammo-detail"><span>5.56 NATO</span><span id="grenades">◆◆</span></div>
+          <div class="weapon-slots">
+            <div class="slot active"><span>1</span>M4A1</div>
+            <div class="slot"><span>2</span>P220</div>
+            <div class="slot"><span>G</span>FRAG</div>
+          </div>
+        </div>
+
+        <div id="spotted" class="hidden">ENEMY SPOTTED</div>
+        <div id="toast" class="hidden"></div>
+      </div>
+
+      <div id="menu">
+        <div class="menu-scan"></div>
+        <header class="menu-header">
+          <div class="brand">
+            <div class="brand-mark"><span></span></div>
+            <div class="brand-text">IRONVEIL<small>TACTICAL OPERATIONS</small></div>
+          </div>
+          <div class="header-right">
+            <span class="live-dot"></span> LIVE BUILD 1.0.4
+            <span class="sep">/</span> CLASSIFIED
+          </div>
+        </header>
+
+        <div class="menu-main">
+          <div class="menu-left">
+            <div class="eyebrow"><i></i> CAMPAIGN · MISSION 04</div>
+            <h1>BLACKSITE</h1>
+            <div class="subtitle"><span>ZERO</span> HOUR</div>
+            <p class="brief">
+              A rogue cell has seized a hardened communications outpost in the Kharzai
+              corridor. Insert alone, breach the perimeter, and shut down the relay
+              before they can broadcast.
+            </p>
+            <div class="mission-meta">
+              <div><b>LOCATION</b><span>KHARZAI BORDER · SECTOR 7</span></div>
+              <div><b>TERRAIN</b><span>DESERT COMPOUND · DUSK</span></div>
+              <div><b>THREAT</b><span class="threat">SEVERE</span></div>
+            </div>
+            <button id="start-button" aria-label="Start Game">Start Game</button>
+            <div class="menu-hint">CLICK TO DEPLOY &nbsp;·&nbsp; HEADPHONES RECOMMENDED</div>
+          </div>
+
+          <div class="menu-right">
+            <div class="panel">
+              <div class="panel-title"><span>01</span> OPERATOR</div>
+              <div class="operator-card">
+                <div class="op-silhouette"></div>
+                <div>
+                  <div class="op-card-name">VANCE</div>
+                  <div class="op-card-meta">ASSAULT / BREACHER</div>
+                  <div class="stat"><span>ACCURACY</span><i style="--w:88%"></i></div>
+                  <div class="stat"><span>MOBILITY</span><i style="--w:74%"></i></div>
+                  <div class="stat"><span>STEALTH</span><i style="--w:63%"></i></div>
+                </div>
+              </div>
+              <div class="loadout">
+                <div><b>PRIMARY</b> M4A1 · SUPPRESSED</div>
+                <div><b>SECONDARY</b> P220 · 9MM</div>
+                <div><b>EQUIPMENT</b> FRAG ×2 · SMOKE</div>
+              </div>
+            </div>
+            <div class="panel controls">
+              <div class="panel-title"><span>02</span> CONTROLS</div>
+              <div class="control-grid">
+                <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>MOVE</span></div>
+                <div><kbd>SHIFT</kbd><span>SPRINT</span></div>
+                <div><kbd>CTRL</kbd><span>CROUCH</span></div>
+                <div><kbd>MOUSE</kbd><span>AIM</span></div>
+                <div><kbd>LMB</kbd><span>FIRE</span></div>
+                <div><kbd>RMB</kbd><span>AIM DOWN SIGHT</span></div>
+                <div><kbd>R</kbd><span>RELOAD</span></div>
+                <div><kbd>SPACE</kbd><span>JUMP</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="menu-footer">
+          <span>© 2026 IRONVEIL INTERACTIVE</span>
+          <span class="footer-center">BUILT WITH THREE.JS · WEBGL2</span>
+          <span>PRESS START TO BEGIN</span>
+        </footer>
+      </div>
+
+      <div id="rotate-hint">ROTATE YOUR DEVICE FOR THE FULL EXPERIENCE</div>
+      <div id="lock-hint" class="hidden">CLICK TO CAPTURE MOUSE <span>ESC TO RELEASE</span></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
