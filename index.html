@@ -10,52 +10,56 @@
 </head>
 <body>
   <div id="app">
-    <canvas id="game" aria-label="Riftwatch battlefield"></canvas>
+    <canvas id="game" aria-label="Riftwatch battlefield" data-i18n-aria-label="a11y.battlefield"></canvas>
     <div class="canvas-vignette"></div>
 
     <div class="menu-screen" id="menu-screen">
       <div class="menu-shade"></div>
       <div class="menu-rail">
-        <div class="menu-kicker"><span></span> CONFLUENCE EMPIRES <span></span></div>
+        <div class="menu-kicker"><span></span><b data-i18n="menu.kicker">CONFLUENCE EMPIRES</b><span></span></div>
         <h1 class="menu-title single"><span>RIFT</span><span class="title-watch">WATCH</span></h1>
         <div class="title-flourish"><i></i><svg><use href="#i-crown"/></svg><i></i></div>
-        <p class="menu-lede">The Rift has opened. Ten raids stand between your people and the Confluence.</p>
+        <p class="menu-lede" data-i18n="menu.lede">The Rift has opened. Ten raids stand between your people and the Confluence.</p>
         <div class="menu-setup">
           <label class="setup-field">
-            <span>Civilization</span>
+            <span data-i18n="menu.civ">Civilization</span>
             <select id="setup-civ"></select>
             <small id="setup-civ-blurb"></small>
           </label>
           <label class="setup-field">
-            <span>Biome</span>
+            <span data-i18n="menu.biome">Biome</span>
             <select id="setup-biome"></select>
             <small id="setup-biome-blurb"></small>
           </label>
           <label class="setup-field seed">
-            <span>Seed</span>
-            <input id="setup-seed" type="text" maxlength="16" autocomplete="off" spellcheck="false" placeholder="random" />
-            <small>Same seed, same frontier.</small>
+            <span data-i18n="menu.seed">Seed</span>
+            <input id="setup-seed" type="text" maxlength="16" autocomplete="off" spellcheck="false" placeholder="random" data-i18n-placeholder="menu.seedPlaceholder" />
+            <small data-i18n="menu.seedHint">Same seed, same frontier.</small>
           </label>
+        </div>
+        <div class="locale-switch">
+          <span data-i18n="menu.language">Language</span>
+          <select id="setup-locale" aria-label="Language" data-i18n-aria-label="menu.language"></select>
         </div>
         <div class="menu-actions">
           <button class="primary-button" id="btn-start">
             <span class="btn-shine"></span>
             <svg><use href="#i-sword"/></svg>
-            <span>Start Game</span>
+            <span data-i18n="menu.start">Start Game</span>
           </button>
           <button class="secondary-button" id="btn-howto">
             <svg><use href="#i-scroll"/></svg>
-            <span>How to Play</span>
+            <span data-i18n="menu.howto">How to Play</span>
           </button>
         </div>
         <div class="menu-facts">
-          <div><b>16</b><span>CIVILIZATIONS</span></div>
+          <div><b>16</b><span data-i18n="menu.factCivs">CIVILIZATIONS</span></div>
           <i></i>
-          <div><b>10</b><span>RAIDS</span></div>
+          <div><b>10</b><span data-i18n="menu.factRaids">RAIDS</span></div>
           <i></i>
-          <div><b>32</b><span>BOONS</span></div>
+          <div><b>32</b><span data-i18n="menu.factBoons">BOONS</span></div>
         </div>
-        <div class="menu-tip"><span>WASD</span> to march <i></i> <span>RIGHT-CLICK</span> to command <i></i> <span>TAB</span> to lead the hero</div>
+        <div class="menu-tip"><span>WASD</span> <b data-i18n="menu.tipMove">to march</b> <i></i> <span>RIGHT-CLICK</span> <b data-i18n="menu.tipCommand">to command</b> <i></i> <span>TAB</span> <b data-i18n="menu.tipHero">to lead the hero</b></div>
       </div>
       <div class="menu-side">
         <div class="menu-seal">
@@ -66,14 +70,14 @@
             <path d="M60 36 L67 52 L84 52 L70 62 L76 79 L60 69 L44 79 L50 62 L36 52 L53 52 Z" fill="currentColor" opacity=".25"/>
             <path d="M60 89 v8 M56 93 h8" stroke="currentColor" stroke-width="1"/>
           </svg>
-          <span>EST. 1152</span>
+          <span data-i18n="menu.seal">EST. 1152</span>
         </div>
-        <div class="menu-quote">“Where the worlds touch, someone must stand watch.”<small>— The Confluence Chronicle</small></div>
+        <div class="menu-quote"><span data-i18n="menu.quote">“Where the worlds touch, someone must stand watch.”</span><small data-i18n="menu.quoteSource">— The Confluence Chronicle</small></div>
       </div>
       <div class="menu-footer">
-        <span>An original 2D real-time roguelite</span>
+        <span data-i18n="menu.footerLeft">An original 2D real-time roguelite</span>
         <span class="footer-mark">⚜</span>
-        <span>Stand watch at the Rift</span>
+        <span data-i18n="menu.footerRight">Stand watch at the Rift</span>
       </div>
     </div>
 
@@ -85,33 +89,33 @@
         </div>
 
         <div class="resource-strip" role="status" aria-live="polite">
-          <div class="resource" data-res="food" title="Food">
+          <div class="resource" data-res="food" title="Food" data-i18n-title="resource.food">
             <span class="res-icon food"><svg><use href="#i-food"/></svg></span>
             <span id="res-food">350</span>
           </div>
-          <div class="resource" data-res="wood" title="Wood">
+          <div class="resource" data-res="wood" title="Wood" data-i18n-title="resource.wood">
             <span class="res-icon wood"><svg><use href="#i-wood"/></svg></span>
             <span id="res-wood">350</span>
           </div>
-          <div class="resource" data-res="gold" title="Gold">
+          <div class="resource" data-res="gold" title="Gold" data-i18n-title="resource.gold">
             <span class="res-icon gold"><svg><use href="#i-gold"/></svg></span>
             <span id="res-gold">200</span>
           </div>
-          <div class="resource" data-res="stone" title="Stone">
+          <div class="resource" data-res="stone" title="Stone" data-i18n-title="resource.stone">
             <span class="res-icon stone"><svg><use href="#i-stone"/></svg></span>
             <span id="res-stone">150</span>
           </div>
-          <div class="resource population" title="Population">
+          <div class="resource population" title="Population" data-i18n-title="resource.population">
             <span class="res-icon pop"><svg><use href="#i-people"/></svg></span>
             <span><b id="res-pop">8</b><i>/</i><span id="res-cap">20</span></span>
           </div>
         </div>
 
         <div class="top-actions">
-          <button class="icon-button" id="btn-sound" aria-label="Toggle sound" title="Sound">
+          <button class="icon-button" id="btn-sound" aria-label="Toggle sound" title="Sound" data-i18n-aria-label="hud.toggleSound" data-i18n-title="hud.sound">
             <svg id="sound-icon"><use href="#i-sound"/></svg>
           </button>
-          <button class="icon-button" id="btn-pause" aria-label="Pause" title="Pause (Space)">
+          <button class="icon-button" id="btn-pause" aria-label="Pause" title="Pause (Space)" data-i18n-aria-label="hud.pause" data-i18n-title="hud.pauseTitle">
             <svg><use href="#i-pause"/></svg>
           </button>
         </div>
@@ -129,25 +133,36 @@
       </div>
 
       <aside class="objective-card" id="objective-card">
-        <div class="objective-head"><svg><use href="#i-banner"/></svg><span>THE LAST MARCH</span></div>
+        <div class="objective-head"><svg><use href="#i-banner"/></svg><span data-i18n="objective.title">THE LAST MARCH</span></div>
         <div class="objective-body">
-          <div class="objective-row"><span>Survive the raids</span><b id="objective-waves">0 / 10</b></div>
-          <div class="objective-row"><span>Defend the Town Center</span><b id="objective-hp">100%</b></div>
-          <div class="objective-row"><span>Current age</span><b id="objective-age">Dark Age</b></div>
-          <div class="objective-row subtle"><span>Boons claimed</span><b id="objective-boons">0</b></div>
+          <div class="objective-row"><span data-i18n="objective.survive">Survive the raids</span><b id="objective-waves">0 / 10</b></div>
+          <div class="objective-row"><span data-i18n="objective.defend">Defend the Town Center</span><b id="objective-hp">100%</b></div>
+          <div class="objective-row"><span data-i18n="objective.age">Current age</span><b id="objective-age">Dark Age</b></div>
+          <div class="objective-row subtle"><span data-i18n="objective.boons">Boons claimed</span><b id="objective-boons">0</b></div>
+          <div class="objective-row subtle assist-row" id="objective-assist" hidden><span data-i18n="objective.assist">Difficulty assist</span><b id="objective-assist-text">—</b></div>
         </div>
       </aside>
 
       <div class="boss-bar" id="boss-bar" hidden>
-        <div class="boss-head"><span class="boss-kicker">WARLORD OF THE RIFT</span><b id="boss-name">The Ashen Warlord</b><span id="boss-hp">0 / 0</span></div>
+        <div class="boss-head"><span class="boss-kicker" data-i18n="boss.kicker">WARLORD OF THE RIFT</span><b id="boss-name">The Ashen Warlord</b><span id="boss-hp">0 / 0</span></div>
         <div class="boss-track"><i id="boss-fill"></i></div>
       </div>
+
+      <aside class="intel-card" id="intel-card" hidden>
+        <div class="intel-head"><span data-i18n="intel.kicker">SCOUT REPORT · NEXT RAID</span><b id="intel-countdown">0:30</b></div>
+        <div class="intel-body">
+          <div class="intel-row"><span data-i18n="intel.mainForce">Main force</span><b id="intel-units">—</b></div>
+          <div class="intel-row"><span data-i18n="intel.gates">Likely gates</span><b id="intel-gates">—</b></div>
+          <div class="intel-hazard" id="intel-hazard" hidden></div>
+          <div class="intel-assist" id="intel-assist" hidden></div>
+        </div>
+      </aside>
 
       <div class="toast-stack" id="toast-stack"></div>
       <div class="hover-tooltip" id="hover-tooltip"></div>
       <div class="placement-hint" id="placement-hint">
-        <span class="keycap">LMB</span> Place <b id="placement-name">building</b>
-        <span class="keycap">RMB</span> Cancel
+        <span class="keycap">LMB</span> <span data-i18n="placement.place">Place</span> <b id="placement-name">building</b>
+        <span class="keycap">RMB</span> <span data-i18n="placement.cancel">Cancel</span>
       </div>
 
       <div class="bottom-hud">
@@ -160,21 +175,21 @@
             <span class="selection-count" id="selection-count" hidden>1</span>
           </div>
           <div class="selection-copy">
-            <div class="selection-name" id="selection-name">Lord's Retinue</div>
-            <div class="selection-sub" id="selection-sub">Select a unit or building</div>
+            <div class="selection-name" id="selection-name" data-i18n="selection.title">Lord's Retinue</div>
+            <div class="selection-sub" id="selection-sub" data-i18n="selection.emptySub">Select a unit or building</div>
             <div class="vital-bar"><i id="selection-hp"></i><span id="selection-hp-text">—</span></div>
             <div class="selection-stats" id="selection-stats"></div>
           </div>
           <div class="command-grid" id="command-grid"></div>
-          <div class="panel-hint" id="panel-hint">Right-click resources to gather · Right-click enemies to attack</div>
+          <div class="panel-hint" id="panel-hint" data-i18n="selection.emptyHint">Right-click resources to gather · Right-click enemies to attack</div>
         </section>
 
         <div class="center-controls">
-          <button class="idle-button" id="idle-button" title="Select idle villager (I)">
+          <button class="idle-button" id="idle-button" title="Select idle villager (I)" data-i18n-title="hud.idleTitle">
             <svg><use href="#i-villager"/></svg>
-            <span><b id="idle-count">0</b> idle</span>
+            <span><b id="idle-count">0</b> <span data-i18n="hud.idleWord">idle</span></span>
           </button>
-          <div class="camera-help"><span>WASD</span> march <i></i> <span>WHEEL</span> zoom</div>
+          <div class="camera-help"><span>WASD</span> <b data-i18n="camera.march">march</b> <i></i> <span>WHEEL</span> <b data-i18n="camera.zoom">zoom</b></div>
         </div>
 
         <section class="minimap-panel">
@@ -187,9 +202,9 @@
             <div class="minimap-scan"></div>
           </div>
           <div class="minimap-foot">
-            <span class="legend-dot ally"></span> Your realm
-            <span class="legend-dot foe"></span> Raiders
-            <span class="minimap-tip">Click to survey</span>
+            <span class="legend-dot ally"></span> <span data-i18n="minimap.ally">Your realm</span>
+            <span class="legend-dot foe"></span> <span data-i18n="minimap.foe">Raiders</span>
+            <span class="minimap-tip" data-i18n="minimap.tip">Click to survey</span>
           </div>
         </section>
       </div>
@@ -197,71 +212,71 @@
 
     <div class="modal-overlay howto-overlay" id="howto-overlay" hidden>
       <div class="parchment-modal">
-        <button class="modal-close" id="btn-howto-close" aria-label="Close">×</button>
-        <div class="modal-kicker">THE WAR COUNCIL</div>
-        <h2>How to Rule</h2>
+        <button class="modal-close" id="btn-howto-close" aria-label="Close" data-i18n-aria-label="howto.close">×</button>
+        <div class="modal-kicker" data-i18n="howto.kicker">THE WAR COUNCIL</div>
+        <h2 data-i18n="howto.title">How to Rule</h2>
         <div class="modal-rule"></div>
         <div class="howto-grid">
           <div class="howto-item">
             <span class="howto-icon"><svg><use href="#i-villager"/></svg></span>
-            <h3>Gather</h3>
-            <p>Select villagers and right-click trees, berries, gold, or stone. They haul every load back to the Town Center.</p>
+            <h3 data-i18n="howto.gatherTitle">Gather</h3>
+            <p data-i18n="howto.gatherDesc">Select villagers and right-click trees, berries, gold, or stone. They haul every load back to the Town Center.</p>
           </div>
           <div class="howto-item">
             <span class="howto-icon"><svg><use href="#i-house"/></svg></span>
-            <h3>Build</h3>
-            <p>With villagers selected, choose a structure from the command panel, then place it on open ground.</p>
+            <h3 data-i18n="howto.buildTitle">Build</h3>
+            <p data-i18n="howto.buildDesc">With villagers selected, choose a structure from the command panel, then place it on open ground.</p>
           </div>
           <div class="howto-item">
             <span class="howto-icon"><svg><use href="#i-sword"/></svg></span>
-            <h3>Fight</h3>
-            <p>Select your soldiers and right-click a raider to attack. Idle troops defend themselves; towers rain arrows.</p>
+            <h3 data-i18n="howto.fightTitle">Fight</h3>
+            <p data-i18n="howto.fightDesc">Select your soldiers and right-click a raider to attack. Idle troops defend themselves; towers rain arrows.</p>
           </div>
           <div class="howto-item">
             <span class="howto-icon"><svg><use href="#i-crown"/></svg></span>
-            <h3>Endure</h3>
-            <p>Survive ten raids. After each victory, claim one of three boons to shape your kingdom's fate.</p>
+            <h3 data-i18n="howto.endureTitle">Endure</h3>
+            <p data-i18n="howto.endureDesc">Survive ten raids. After each victory, claim one of three boons to shape your kingdom's fate.</p>
           </div>
         </div>
         <div class="howto-controls">
-          <span><b>W A S D</b> / arrows — pan</span>
-          <span><b>Left-drag</b> — select</span>
-          <span><b>Right-click</b> — command</span>
-          <span><b>Tab</b> — control hero</span>
-          <span><b>Q / E</b> — mark / aegis</span>
-          <span><b>1–6</b> — commands · <b>Space</b> pause</span>
+          <span><b>W A S D</b><span data-i18n="howto.panSuffix"> / arrows — pan</span></span>
+          <span><b>Left-drag</b><span data-i18n="howto.selectSuffix"> — select</span></span>
+          <span><b>Right-click</b><span data-i18n="howto.commandSuffix"> — command</span></span>
+          <span><b>Tab</b><span data-i18n="howto.heroSuffix"> — control hero</span></span>
+          <span><b>Q / E</b><span data-i18n="howto.marksSuffix"> — mark / aegis</span></span>
+          <span><b>1–6</b><span data-i18n="howto.commandKeysSuffix"> — commands · </span><b>Space</b><span data-i18n="howto.pauseSuffix"> pause</span></span>
         </div>
-        <button class="primary-button small" id="btn-howto-play"><span>To Arms</span></button>
+        <button class="primary-button small" id="btn-howto-play"><span data-i18n="howto.play">To Arms</span></button>
       </div>
     </div>
 
     <div class="modal-overlay pause-overlay" id="pause-overlay" hidden>
       <div class="pause-card">
-        <div class="modal-kicker">THE BATTLE WAITS</div>
-        <h2>Paused</h2>
+        <div class="modal-kicker" data-i18n="pause.kicker">THE BATTLE WAITS</div>
+        <h2 data-i18n="pause.title">Paused</h2>
         <div class="modal-rule"></div>
-        <p class="pause-flavor">“Hold the line. The Rift will settle.”</p>
+        <p class="pause-flavor" data-i18n="pause.flavor">“Hold the line. The Rift will settle.”</p>
         <div class="pause-toggles">
-          <label><input type="checkbox" id="auto-econ" checked /> <span><b>Village steward</b><small>Auto-assign idle villagers and maintain houses</small></span></label>
-          <label><input type="checkbox" id="auto-mil" checked /> <span><b>War steward</b><small>Auto-train soldiers and keep the barracks busy</small></span></label>
+          <label><input type="checkbox" id="auto-econ" checked /> <span><b data-i18n="pause.econTitle">Village steward</b><small data-i18n="pause.econDesc">Auto-assign idle villagers and maintain houses</small></span></label>
+          <label><input type="checkbox" id="auto-mil" checked /> <span><b data-i18n="pause.milTitle">War steward</b><small data-i18n="pause.milDesc">Auto-train soldiers and keep the barracks busy</small></span></label>
         </div>
         <div class="pause-actions">
-          <button class="primary-button small" id="btn-resume"><span>Resume</span></button>
-          <button class="secondary-button small" id="btn-restart">Restart Run</button>
-          <button class="text-button" id="btn-quit">Abandon to Menu</button>
+          <button class="primary-button small" id="btn-resume"><span data-i18n="pause.resume">Resume</span></button>
+          <button class="secondary-button small" id="btn-restart" data-i18n="pause.restart">Restart Run</button>
+          <button class="text-button" id="btn-quit" data-i18n="pause.quit">Abandon to Menu</button>
         </div>
       </div>
     </div>
 
     <div class="modal-overlay boon-overlay" id="boon-overlay" hidden>
       <div class="boon-head">
-        <div class="modal-kicker">THE RAID IS BROKEN</div>
-        <h2>Choose Your Boon</h2>
-        <p>One gift of the old kingdom. It will shape the raids to come.</p>
+        <div class="modal-kicker" data-i18n="boon.kicker">THE RAID IS BROKEN</div>
+        <h2 data-i18n="boon.title">Choose Your Boon</h2>
+        <p data-i18n="boon.desc">One gift of the old kingdom. It will shape the raids to come.</p>
       </div>
       <div class="boon-grid" id="boon-grid"></div>
-      <button class="primary-button boon-claim" id="btn-claim" disabled><span>Claim Boon</span></button>
-      <div class="boon-hint">Press <b>1</b>, <b>2</b>, or <b>3</b> to choose</div>
+      <button class="primary-button boon-claim" id="btn-claim" disabled><span data-i18n="boon.claim">Claim Boon</span></button>
+      <div class="boon-hint"><span id="boon-hint-text">Press 1, 2, or 3 to choose</span></div>
     </div>
 
     <div class="modal-overlay end-overlay" id="end-overlay" hidden>
@@ -271,14 +286,14 @@
         <h2 id="end-title">A Crown of Riftwatch</h2>
         <p id="end-desc">Ten raids broken. The chronicles will remember your name.</p>
         <div class="end-stats">
-          <div><b id="end-waves">10</b><span>Raids survived</span></div>
-          <div><b id="end-kills">0</b><span>Raiders slain</span></div>
-          <div><b id="end-gathered">0</b><span>Resources gathered</span></div>
-          <div><b id="end-time">0:00</b><span>Reign</span></div>
+          <div><b id="end-waves">10</b><span data-i18n="end.raids">Raids survived</span></div>
+          <div><b id="end-kills">0</b><span data-i18n="end.kills">Raiders slain</span></div>
+          <div><b id="end-gathered">0</b><span data-i18n="end.gathered">Resources gathered</span></div>
+          <div><b id="end-time">0:00</b><span data-i18n="end.reign">Reign</span></div>
         </div>
         <div class="end-actions">
-          <button class="primary-button small" id="btn-new-run"><span>New Run</span></button>
-          <button class="secondary-button small" id="btn-end-menu">Return to Menu</button>
+          <button class="primary-button small" id="btn-new-run"><span data-i18n="end.newRun">New Run</span></button>
+          <button class="secondary-button small" id="btn-end-menu" data-i18n="end.menu">Return to Menu</button>
         </div>
       </div>
     </div>

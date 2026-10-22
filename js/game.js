@@ -1,9 +1,11 @@
 import {
   UNIT_TYPES, BUILDING_TYPES, TRAINABLE, BUILD_OPTIONS, WAVES, BOONS,
-  START_RESOURCES, CIVILIZATIONS, BIOMES, AGE_NAMES, AGE_COSTS,
+  START_RESOURCES, CIVILIZATIONS, BIOMES, AGE_COSTS,
   RARITY_WEIGHT, PLAYER_COLORS,
 } from './data.js';
 import { createWorld } from './world.js';
+import { NemesisDirector } from './director.js';
+import { t } from './i18n.js';
 import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, rand, randInt, seedFromDate, formatNumber } from './utils.js';
 
 const DEFAULT_EFFECTS = () => ({
@@ -64,13 +66,20 @@ export class Game {
     this.hovered = null;
     this.hoveredResource = null;
     this.boons = [];
-    this.stats = { kills: 0, gathered: 0, trained: 0, waves: 0 };
+    this.stats = { kills: 0, gathered: 0, trained: 0, waves: 0, assists: 0 };
+    this.director = new NemesisDirector(seed);
+    this.lastWaveReport = null;
+    this.waveReports = [];
+    this.waveStats = this.director.emptyStats();
+    this.pendingWavePlan = null;
+    this.intel = null;
+    this.assistActive = false;
     this.waveIndex = 0;
     this.phase = 'prep';
     this.prepTotal = 35;
     this.prepTimer = 35;
     this.waveTotal = 0;
-    this.waveName = WAVES[0].name;
+    this.waveName = t(`wave.0.name`);
     this.waveClock = 0;
     this.waveSpawns = [];
     this.waveEndTimer = 0;
@@ -87,6 +96,7 @@ export class Game {
     this.lastWaveAnnounce = -1;
     this.enemyPressure = false;
     this.ageLevel = 1;
+    this.ageResearch = null;
     this.hero = null;
     this.heroControl = false;
     this.heroReviveTimer = 0;
@@ -97,6 +107,7 @@ export class Game {
     this.killFoodEarned = 0;
     this.killGoldEarned = 0;
     this.buildInitialBase();
+    this.prepareNextWavePlan();
     const center = iso(this.world.base.x, this.world.base.y);
     this.camera = { x: center.x, y: center.y, targetX: center.x, targetY: center.y, zoom: 1.0, targetZoom: 1.0 };
     this.inMenu = true;
@@ -110,7 +121,7 @@ export class Game {
     }
   }
 
-  get ageName() { return AGE_NAMES[this.ageLevel] || ''; }
+  get ageName() { return t(`age.${this.ageLevel}`); }
 
   hook(name, fn) { this.hooks[name] = fn; }
   toast(text, type = '', duration) { this.hooks.toast?.(text, type, duration); }
@@ -159,9 +170,9 @@ export class Game {
     this.inMenu = false;
     this.camera.targetZoom = 1.12;
     this.paused = false;
-    this.toast(`Ten raids stand between ${this.civ.name} and the rift. Hold the Town Center.`, '', 4800);
-    setTimeout(() => this.toast('Your Riftwarden is ready. Press Tab for direct control, Q to mark, E for aegis.', '', 5200), 1500);
-    setTimeout(() => this.toast('An auto-steward is active. Your pause menu can turn aid on or off.', '', 4600), 3300);
+    this.toast(t('toast.intro', { civ: t(`civ.${this.civ.id}.name`) }), '', 4800);
+    setTimeout(() => this.toast(t('toast.heroReady'), '', 5200), 1500);
+    setTimeout(() => this.toast(t('toast.stewardActive'), '', 4600), 3300);
   }
 
   focusAt(x, y) {
@@ -218,7 +229,7 @@ export class Game {
       attackAnim: 0, walkPhase: this.rng() * 6.28, facing: 1, selected: false,
       hitFlash: 0, alive: true, retargetTimer: this.rng() * 0.8, hold: false,
       idleTimer: this.rng(), buildingHint: options.buildingHint || null,
-      hero: !!(def.hero || options.hero), shield: 0, marked: 0, slowUntil: 0,
+      hero: !!(def.hero || options.hero), shield: 0, shieldTime: 0, marked: 0, slowUntil: 0,
       shots: 0, rescueUsed: false, expireIn: options.expireIn || 0,
       bossSkillTimer: def.boss ? 6 : 0, rageStage: 0, summoned: !!options.summoned,
       markCd: 0, aegisCd: 0,
@@ -284,7 +295,7 @@ export class Game {
     const x = tc ? tc.x + tc.w + 1.5 : this.world.base.x + 3;
     const y = tc ? tc.y + 1 : this.world.base.y + 3;
     const u = this.spawnUnit('prototype', x, y);
-    if (u) this.toast('A Rift Prototype wakes beneath the keep.', 'good', 3600);
+    if (u) this.toast(t('toast.prototype'), 'good', 3600);
     return u;
   }
 
@@ -391,6 +402,7 @@ export class Game {
     this.updateCamera(dt);
     if (this.inMenu || this.paused) { this.updateParticles(dt); return; }
     if (this.phase === 'victory' || this.phase === 'defeat') { this.updateParticles(dt); return; }
+    this.updateAgeResearch(dt);
 
     if (this.phase === 'prep') {
       this.prepTimer -= dt;
@@ -510,7 +522,10 @@ export class Game {
       u.cooldown = Math.max(0, u.cooldown - dt);
       u.attackAnim = Math.max(0, u.attackAnim - dt * 5.5);
       u.hitFlash = Math.max(0, u.hitFlash - dt * 5);
-      u.shield = Math.max(0, u.shield - dt * 8);
+      if (u.shieldTime > 0) {
+        u.shieldTime = Math.max(0, u.shieldTime - dt);
+        if (u.shieldTime === 0) u.shield = 0;
+      }
       u.marked = Math.max(0, u.marked - dt);
       if (u.markCd > 0) u.markCd = Math.max(0, u.markCd - dt);
       if (u.aegisCd > 0) u.aegisCd = Math.max(0, u.aegisCd - dt);
@@ -567,13 +582,13 @@ export class Game {
       const cost = { gold: 100 };
       if (!this.canAfford(cost)) {
         this.heroReviveTimer = 12;
-        this.toast('The Riftwarden waits for 100 gold to return.', 'bad', 2600);
+        this.toast(t('toast.heroGold'), 'bad', 2600);
         return;
       }
       this.pay(cost);
       this.hero = this.spawnUnit('commander', tc.x + tc.w / 2 + 1.2, tc.y + tc.h + 0.8);
       this.hero.hp = Math.round(this.hero.maxHp * 0.6);
-      this.toast('The Riftwarden returns to the field.', 'good', 3000);
+      this.toast(t('toast.heroReturn'), 'good', 3000);
       this.sound?.complete();
     }
   }
@@ -703,7 +718,7 @@ export class Game {
         delay: 2.4, elapsed: 0, damage: u.type === 'warlord2' ? 105 : 65,
         source: u, kind: 'boss', done: false,
       });
-      this.toast(`${u.typeDef.name} calls down a rift strike. Move!`, 'bad', 2400);
+      this.toast(t('toast.bossStrike', { name: t(`unit.${u.type}.name`) }), 'bad', 2400);
       this.sound?.horn();
     }
     const ratio = u.hp / u.maxHp;
@@ -712,7 +727,7 @@ export class Game {
       u.rageStage = stage;
       u.attack *= 1.12;
       u.bossSkillTimer = Math.min(u.bossSkillTimer, 2.5);
-      this.toast(`${u.typeDef.name} enters phase ${stage + 1}.`, 'bad', 2800);
+      this.toast(t('toast.bossPhase', { name: t(`unit.${u.type}.name`), stage: stage + 1 }), 'bad', 2800);
       const adds = u.type === 'warlord2' ? 4 : 3;
       for (let i = 0; i < adds; i++) {
         const a = this.rng() * Math.PI * 2;
@@ -914,8 +929,8 @@ export class Game {
     if (b.construction >= 1) {
       b.hp = b.maxHp;
       this.sound?.complete();
-      this.addFloating(cx, cy, `${b.typeDef.name} raised`, 'rgba(229,204,138,ALPHA)');
-      this.toast(`${b.typeDef.name} completed.`, 'good', 2200);
+      this.addFloating(cx, cy, t('float.raised', { name: t(`building.${b.type}.name`) }), 'rgba(229,204,138,ALPHA)');
+      this.toast(t('toast.buildingComplete', { name: t(`building.${b.type}.name`) }), 'good', 2200);
       u.state = 'idle';
       u.buildTarget = null;
       u.targetPos = null;
@@ -1032,7 +1047,7 @@ export class Game {
     u.state = 'attack';
     u.target = target;
     let damage = this.unitAttack(u) * this.counterMultiplier(u, target);
-    if (u.team === 'player' && target.marked > 0) damage *= 1.12;
+    if (u.team === 'player' && target.marked > 0) damage *= 1.1;
     if (def.projectile) {
       this.spawnProjectile(u.x, u.y - 0.4, target, damage, u.team, 1, u);
       u.shots++;
@@ -1138,6 +1153,7 @@ export class Game {
         return;
       }
     }
+    if (target.team === 'enemy' && source?.team === 'player') this.director.recordDamage(source, damage);
     target.hp -= damage;
     target.hitFlash = 1;
     this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'spark', 'rgba(178,64,49,ALPHA)', 1, 4, 0.5);
@@ -1153,7 +1169,8 @@ export class Game {
         target.rescueUsed = true;
         target.hp = 1;
         target.shield = 80;
-        this.toast('The Rescue Writ burns. An elite is pulled back from death.', 'good', 3200);
+        target.shieldTime = 6;
+        this.toast(t('toast.rescue'), 'good', 3200);
         this.addParticles(target.x, target.y, 'ring', 'rgba(232,201,126,ALPHA)', 2, 8, 0.8);
         return;
       }
@@ -1163,20 +1180,24 @@ export class Game {
 
   killEntity(target, source) {
     if (!target.alive) return;
+    if (target.team === 'player' && target.typeDef?.category === 'villager') this.director.recordWorkerLoss();
     target.alive = false;
     target.selected = false;
     if (target.w) {
       this.addParticles(target.x + target.w / 2, target.y + target.h / 2, 'smoke', 'rgba(67,58,45,ALPHA)', 6, 12, 1.4);
       this.addParticles(target.x + target.w / 2, target.y + target.h / 2, 'spark', 'rgba(212,128,75,ALPHA)', 2, 14, 1.0);
       if (target.type === 'towncenter') this.triggerDefeat();
-      if (target.team === 'player') this.toast(`${target.typeDef.name} destroyed!`, 'bad', 3200);
+      if (target.team === 'player') {
+        const key = target.w ? `building.${target.type}.name` : `unit.${target.type}.name`;
+        this.toast(t('toast.destroyed', { name: t(key) }), 'bad', 3200);
+      }
     } else {
       this.addParticles(target.x, target.y, 'spark', 'rgba(157,58,45,ALPHA)', 1.2, 8, 0.7);
       this.addParticles(target.x, target.y, 'smoke', 'rgba(61,48,36,ALPHA)', 3, 4, 1.1);
       if (target.hero && target.team === 'player') {
         this.heroReviveTimer = 30;
         this.heroControl = false;
-        this.toast('The Riftwarden has fallen. They will return in 30 seconds if you hold.', 'bad', 5000);
+        this.toast(t('toast.heroFallen'), 'bad', 5000);
       } else {
         this.addFloating(target.x, target.y, 'slain', 'rgba(216,190,150,ALPHA)');
       }
@@ -1200,12 +1221,12 @@ export class Game {
           if (convert) {
             convert.hp = convert.maxHp;
             this.addParticles(target.x, target.y, 'ring', 'rgba(129,181,199,ALPHA)', 1.5, 6, 0.7);
-            this.toast('A raider rises under your banner.', 'good', 2200);
+            this.toast(t('toast.converted'), 'good', 2200);
           }
         }
         if (target.typeDef.boss) {
           this.sound?.victory();
-          this.toast(`${target.typeDef.name} is broken.`, 'good', 4200);
+          this.toast(t('toast.bossBroken', { name: t(`unit.${target.type}.name`) }), 'good', 4200);
         } else {
           this.sound?.hit();
         }
@@ -1246,21 +1267,75 @@ export class Game {
       waves: victory ? WAVES.length : this.waveIndex,
       kills: this.stats.kills,
       gathered: this.stats.gathered,
+      assists: this.stats.assists || 0,
       time: this.runTime,
       civId: this.civ.id,
       biomeId: this.biome.id,
     });
   }
 
+  prepareNextWavePlan() {
+    const wave = WAVES[Math.min(this.waveIndex, WAVES.length - 1)];
+    const plan = this.director.planWave({
+      wave,
+      waveIndex: this.waveIndex,
+      civ: this.civ,
+      report: this.lastWaveReport,
+      camps: this.world.camps,
+      prepSeconds: this.prepTotal,
+    });
+    this.pendingWavePlan = plan;
+    this.intel = plan.intel;
+    this.waveName = t(`wave.${this.waveIndex}.name`);
+    return plan;
+  }
+
+  spawnRiftfallHazards(plan) {
+    if (!plan?.hazard || plan.hazard.suppressed) return;
+    const base = this.world.base;
+    for (const gate of plan.hazard.gates) {
+      const camp = this.world.camps[gate];
+      if (!camp) continue;
+      const t = .56;
+      const x = camp.x + (base.x - camp.x) * t;
+      const y = camp.y + (base.y - camp.y) * t;
+      this.zones.push({
+        x, y, r: plan.hazard.radius, delay: plan.hazard.delay,
+        damage: plan.hazard.damage, source: null, kind: 'hazard',
+        elapsed: 0, done: false,
+      });
+    }
+  }
+
   startWave() {
     const wave = WAVES[Math.min(this.waveIndex, WAVES.length - 1)];
+    const plan = this.pendingWavePlan?.waveIndex === this.waveIndex
+      ? this.pendingWavePlan
+      : this.prepareNextWavePlan();
+    this.pendingWavePlan = null;
+    this.intel = plan.intel;
+    this.director.beginWave();
+    this.assistActive = false;
     this.phase = 'wave';
-    this.waveName = wave.name;
+    this.waveName = t(`wave.${this.waveIndex}.name`);
     this.waveClock = 0;
     this.waveEnraged = false;
     this.waveEndTimer = 0;
-    this.waveSpawns = wave.spawns.map(group => ({ ...group, spawned: false }));
-    this.waveTotal = this.waveSpawns.reduce((sum, group) => sum + Object.values(group.units).reduce((s, n) => s + n, 0), 0);
+    this.waveSpawns = plan.spawns.map(group => ({ ...group, spawned: false }));
+    this.waveTotal = plan.totalUnits;
+    const tc = this.getTownCenter();
+    if (plan.hazard && tc && tc.hp / tc.maxHp < .3 && !this.director.terrainAssistUsed) {
+      plan.hazard.suppressed = true;
+      plan.intel.hazard = plan.hazard;
+      plan.intel.assist = t('intel.assistDisabled');
+      this.director.terrainAssistUsed = true;
+      this.assistActive = true;
+      this.stats.assists = (this.stats.assists || 0) + 1;
+      this.director.assistLog.push({ wave: this.waveIndex, type: 'terrain-hazard', message: plan.intel.assist });
+      this.toast(t('intel.assistToast'), 'good', 5200);
+    } else {
+      this.spawnRiftfallHazards(plan);
+    }
     for (const u of this.units) if (u.alive && u.team === 'player') u.rescueUsed = false;
 
     if (this.effects.decoyWave > 0) {
@@ -1272,15 +1347,15 @@ export class Game {
     }
 
     this.sound?.horn();
-    const gates = [...new Set(this.waveSpawns.map(g => this.world.camps[g.gate % this.world.camps.length]?.name).filter(Boolean))];
-    const dirs = gates.map(name => name.replace('The ', '')).join(' and ');
-    this.toast(`Raiders approach from ${dirs}.`, 'bad', 4200);
+    const gates = [...new Set(this.waveSpawns.map(g => g.gate % this.world.camps.length))];
+    const dirs = gates.map(gate => t(`camp.${gate}`)).join(' · ');
+    this.toast(t('toast.raidersApproach', { gates: dirs }), 'bad', 4200);
     if (wave.boss) {
       const bossGroup = this.waveSpawns.find(g => Object.keys(g.units).some(type => UNIT_TYPES[type]?.boss));
       const at = bossGroup ? bossGroup.at : 0;
       setTimeout(() => {
         const boss = this.bossAlive;
-        if (boss) this.toast(`${boss.typeDef.name} has entered the field.`, 'bad', 5000);
+        if (boss) this.toast(t('toast.bossEntered', { name: t(`unit.${boss.type}.name`) }), 'bad', 5000);
       }, (at + 0.8) * 1000);
     }
   }
@@ -1296,7 +1371,7 @@ export class Game {
     }
     if (!this.waveEnraged && this.waveClock >= wave.duration) {
       this.waveEnraged = true;
-      this.toast('The raid is enraged. They will not tire.', 'bad', 3600);
+      this.toast(t('toast.enraged'), 'bad', 3600);
       this.sound?.horn();
     }
     if (this.waveSpawns.every(g => g.spawned) && this.enemiesAlive === 0) {
@@ -1339,6 +1414,10 @@ export class Game {
 
   completeWave() {
     if (this.phase !== 'wave') return;
+    const report = this.director.finishWave(this);
+    this.lastWaveReport = report;
+    this.waveReports.push(report);
+    this.stats.lastReport = report;
     if (this.waveIndex >= WAVES.length - 1) {
       this.triggerVictory();
       return;
@@ -1358,7 +1437,7 @@ export class Game {
       if (b.alive && b.team === 'player') b.hp = Math.min(b.maxHp, b.hp + b.maxHp * 0.15);
     }
     this.phase = 'boon';
-    this.toast(`Raid broken. Spoils: +${reward.food} food, +${reward.wood} wood, +${reward.gold} gold.`, 'good', 3800);
+    this.toast(t('toast.spoils', reward), 'good', 3800);
     const choices = this.pickBoons();
     this.hooks.boons?.(choices, boon => this.chooseBoon(boon));
   }
@@ -1388,22 +1467,23 @@ export class Game {
     this.refreshBuildingStats();
     this.boons.push(boon);
     this.waveIndex++;
-    this.waveName = WAVES[Math.min(this.waveIndex, WAVES.length - 1)].name;
+    this.waveName = t(`wave.${Math.min(this.waveIndex, WAVES.length - 1)}.name`);
     this.phase = 'prep';
     this.prepTotal = 30;
     this.prepTimer = 30;
+    this.prepareNextWavePlan();
     this.camera.targetZoom = 1.12;
-    this.toast(`Boon claimed: ${boon.name}.`, 'good', 3800);
+    this.toast(t('toast.boonClaimed', { name: t(`boon.${boon.id}.name`) }), 'good', 3800);
     this.hooks.selectionChanged?.();
   }
 
   beginPlacement(type) {
     if (!BUILDING_TYPES[type]) return;
     const cost = BUILDING_TYPES[type].cost;
-    if (!this.canAfford(cost)) { this.sound?.error(); this.toast(`Not enough resources for ${BUILDING_TYPES[type].name}.`, 'bad', 2200); return; }
+    if (!this.canAfford(cost)) { this.sound?.error(); this.toast(t('toast.notEnoughBuild', { name: t(`building.${type}.name`) }), 'bad', 2200); return; }
     if (!this.selection.some(e => e.team === 'player' && e.type === 'villager')) {
       this.sound?.error();
-      this.toast('Select a villager to raise this structure.', 'bad', 2200);
+      this.toast(t('toast.selectVillager'), 'bad', 2200);
       return;
     }
     const worldPos = this.mouseWorld();
@@ -1453,7 +1533,7 @@ export class Game {
     this.updatePlacementValidity();
     if (!this.placement.valid) {
       this.sound?.error();
-      this.toast('Cannot raise that structure here.', 'bad', 1900);
+      this.toast(t('toast.cannotPlace'), 'bad', 1900);
       return false;
     }
     const type = this.placement.type;
@@ -1471,7 +1551,7 @@ export class Game {
     this.placement = null;
     this.hooks.placement?.(null);
     this.sound?.command();
-    this.toast(`${def.name} under construction.`, '', 2200);
+    this.toast(t('toast.underConstruction', { name: t(`building.${type}.name`) }), '', 2200);
     return true;
   }
 
@@ -1510,68 +1590,83 @@ export class Game {
   }
 
   advanceAge() {
-    if (this.ageLevel >= 3) { this.sound?.error(); this.toast('Your realm has reached the Imperial Age.', '', 2000); return; }
+    if (this.ageLevel >= 3) { this.sound?.error(); this.toast(t('toast.imperial'), '', 2000); return; }
+    if (this.ageResearch) { this.sound?.error(); this.toast(t('toast.ageResearching', { seconds: Math.ceil(this.ageResearch.remaining) }), '', 2000); return; }
     const tc = this.getTownCenter();
     if (!tc) return;
     const cost = AGE_COSTS[this.ageLevel];
     if (!this.canAfford(cost)) {
       this.sound?.error();
-      this.toast(`Advancing needs ${Object.entries(cost).map(([k, v]) => `${v} ${k}`).join(' and ')}.`, 'bad', 2600);
+      this.toast(t('toast.advanceNeeds', { costs: Object.entries(cost).map(([k, v]) => `${v} ${t(`resourceType.${k}`)}`).join(' · ') }), 'bad', 2600);
       return;
     }
     this.pay(cost);
-    this.ageLevel++;
+    const seconds = this.ageLevel === 1 ? 20 : 30;
+    this.ageResearch = { level: this.ageLevel + 1, remaining: seconds, total: seconds };
+    this.sound?.command();
+    this.toast(t('toast.ageResearch', { age: t(`age.${this.ageLevel + 1}`), seconds }), '', 3000);
+    this.hooks.selectionChanged?.();
+  }
+
+  updateAgeResearch(dt) {
+    if (!this.ageResearch) return;
+    this.ageResearch.remaining -= dt;
+    if (this.ageResearch.remaining > 0) return;
+    const tc = this.getTownCenter();
+    this.ageLevel = this.ageResearch.level;
+    this.ageResearch = null;
     this.refreshPlayerStats();
     this.sound?.complete();
-    this.addParticles(tc.x + tc.w / 2, tc.y + tc.h / 2, 'ring', 'rgba(232,201,126,ALPHA)', 2, 14, 1.0);
-    this.toast(`The realm enters the ${this.ageName}. Soldiers grow stronger.`, 'good', 4000);
+    if (tc) this.addParticles(tc.x + tc.w / 2, tc.y + tc.h / 2, 'ring', 'rgba(232,201,126,ALPHA)', 2, 14, 1.0);
+    this.toast(t('toast.ageEntered', { age: this.ageName }), 'good', 4000);
     this.hooks.selectionChanged?.();
   }
 
   heroMark() {
     const hero = this.hero;
-    if (!hero?.alive) { this.sound?.error(); this.toast('The Riftwarden is not on the field.', 'bad', 2200); return; }
-    if (hero.markCd > 0) { this.sound?.error(); this.toast(`Mark is ready in ${Math.ceil(hero.markCd)}s.`, '', 1600); return; }
+    if (!hero?.alive) { this.sound?.error(); this.toast(t('toast.heroMissing'), 'bad', 2200); return; }
+    if (hero.markCd > 0) { this.sound?.error(); this.toast(t('toast.markCooldown', { seconds: Math.ceil(hero.markCd) }), '', 1600); return; }
     const target = this.nearestEnemyAt(hero.x, hero.y, 9);
-    if (!target) { this.sound?.error(); this.toast('No raider within reach of the mark.', '', 2000); return; }
+    if (!target) { this.sound?.error(); this.toast(t('toast.noMarkTarget'), '', 2000); return; }
     target.marked = 6;
-    hero.markCd = 9;
+    hero.markCd = 30;
     this.addCommandMarker(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), true);
     this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'ring', 'rgba(229,160,74,ALPHA)', 1.4, 6, 0.6);
     this.sound?.command();
-    this.toast(`${target.typeDef?.name || 'Target'} marked. Your soldiers deal 12% more damage to it.`, 'good', 2600);
+    this.toast(t('toast.marked', { name: t(`unit.${target.type}.name`) }), 'good', 2600);
   }
 
   heroAegis() {
     const hero = this.hero;
-    if (!hero?.alive) { this.sound?.error(); this.toast('The Riftwarden is not on the field.', 'bad', 2200); return; }
-    if (hero.aegisCd > 0) { this.sound?.error(); this.toast(`Aegis is ready in ${Math.ceil(hero.aegisCd)}s.`, '', 1600); return; }
+    if (!hero?.alive) { this.sound?.error(); this.toast(t('toast.heroMissing'), 'bad', 2200); return; }
+    if (hero.aegisCd > 0) { this.sound?.error(); this.toast(t('toast.aegisCooldown', { seconds: Math.ceil(hero.aegisCd) }), '', 1600); return; }
     let count = 0;
     for (const u of this.units) {
       if (!u.alive || u.team !== 'player') continue;
       if (dist(u.x, u.y, hero.x, hero.y) > 5) continue;
-      u.shield = Math.max(u.shield, 70);
+      u.shield = Math.max(u.shield, 60);
+      u.shieldTime = Math.max(u.shieldTime, 5);
       count++;
     }
-    hero.aegisCd = 15;
+    hero.aegisCd = 60;
     this.addParticles(hero.x, hero.y, 'ring', 'rgba(147,197,220,ALPHA)', 2.5, 12, 0.8);
     this.sound?.boon();
-    this.toast(`Aegis shields ${count} soldiers for 70.`, 'good', 2600);
+    this.toast(t('toast.aegisShields', { count }), 'good', 2600);
   }
 
   toggleHeroControl() {
     if (!this.hero?.alive) {
       this.sound?.error();
-      this.toast('The Riftwarden is unavailable.', 'bad', 1800);
+      this.toast(t('toast.heroUnavailable'), 'bad', 1800);
       return false;
     }
     this.heroControl = !this.heroControl;
     if (this.heroControl) {
       this.setSelection([this.hero]);
       this.focusAt(this.hero.x, this.hero.y);
-      this.toast('Riftwarden under direct control: WASD move, Q mark, E aegis, Tab release.', 'good', 4200);
+      this.toast(t('toast.heroControl'), 'good', 4200);
     } else {
-      this.toast('Direct control released.', '', 1800);
+      this.toast(t('toast.controlReleased'), '', 1800);
     }
     return this.heroControl;
   }
@@ -1587,7 +1682,7 @@ export class Game {
     for (const b of this.buildings) {
       if (b.alive && b.team === 'player') b.hp = Math.min(b.maxHp, b.hp + b.maxHp * 0.1);
     }
-    this.toast('The Retreat Standard is raised. Your host is restored.', 'good', 3600);
+    this.toast(t('toast.retreat'), 'good', 3600);
   }
 
   trainUnit(building, type, silent = false) {
@@ -1595,22 +1690,22 @@ export class Game {
     if (!TRAINABLE[building.type]?.includes(type)) return;
     const def = UNIT_TYPES[type];
     if (type === 'elephant' && !this.effects.elephantUnlocked) {
-      if (!silent) { this.sound?.error(); this.toast('War elephants require a civilization or card that unlocks them.', 'bad', 2600); }
+      if (!silent) { this.sound?.error(); this.toast(t('toast.elephantLocked'), 'bad', 2600); }
       return;
     }
     const cost = this.unitCost(type);
     const pop = this.computeUnitPop(def);
     const queuedPop = building.queue.reduce((s, q) => s + this.computeUnitPop(UNIT_TYPES[q.type]), 0);
     if (!this.canAfford(cost)) {
-      if (!silent) { this.sound?.error(); this.toast(`Not enough resources for ${def.name}.`, 'bad', 2000); }
+      if (!silent) { this.sound?.error(); this.toast(t('toast.notEnough', { name: t(`unit.${type}.name`) }), 'bad', 2000); }
       return;
     }
     if (this.population + queuedPop + pop > this.popCap) {
-      if (!silent) { this.sound?.error(); this.toast('Population limit reached. Raise more houses.', 'bad', 2400); }
+      if (!silent) { this.sound?.error(); this.toast(t('toast.popLimit'), 'bad', 2400); }
       return;
     }
     if (building.queue.length >= 5) {
-      if (!silent) { this.sound?.error(); this.toast('Training queue is full.', 'bad', 2000); }
+      if (!silent) { this.sound?.error(); this.toast(t('toast.queueFull'), 'bad', 2000); }
       return;
     }
     this.pay(cost);
@@ -1628,7 +1723,7 @@ export class Game {
 
   selectIdleVillager() {
     const idle = this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager' && (u.state === 'idle' || u.state === 'hold'));
-    if (!idle.length) { this.sound?.error(); this.toast('No idle villagers.', '', 1800); return; }
+    if (!idle.length) { this.sound?.error(); this.toast(t('toast.noIdle'), '', 1800); return; }
     this.setSelection([idle[0]]);
     this.focusAt(idle[0].x, idle[0].y);
     this.sound?.select();

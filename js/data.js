@@ -119,7 +119,7 @@ export const BIOMES = [
 ];
 
 export const AGE_NAMES = ['', 'Feudal Age', 'Castle Age', 'Imperial Age'];
-export const AGE_COSTS = [null, { food: 220, gold: 100 }, { food: 480, gold: 280 }];
+export const AGE_COSTS = [null, { food: 200, gold: 100 }, { food: 450, gold: 250 }];
 
 export const UNIT_TYPES = {
   villager: {
@@ -205,12 +205,12 @@ export const UNIT_TYPES = {
   },
   warlord: {
     name: 'Vask the Unburnt', role: 'Warlord', icon: 'skull', category: 'hero', enemy: true,
-    hp: 1450, attack: 26, range: 1.05, speed: 1.65, cooldown: 1.25, armor: 10,
+    hp: 1800, attack: 24, range: 1.05, speed: 1.8, cooldown: 1.25, armor: 10,
     radius: 0.5, sight: 9, bounty: 150, scale: 1.55, boss: true,
   },
   warlord2: {
     name: 'The Rift-Marshal', role: 'Warlord', icon: 'skull', category: 'hero', enemy: true,
-    hp: 2600, attack: 40, range: 1.15, speed: 1.7, cooldown: 1.1, armor: 18,
+    hp: 3200, attack: 32, range: 1.15, speed: 1.8, cooldown: 1.1, armor: 20,
     radius: 0.56, sight: 10, bounty: 320, scale: 1.72, boss: true,
   },
 };
@@ -222,8 +222,8 @@ export const BUILDING_TYPES = {
     desc: 'Heart of the realm. Trains villagers and advances the ages.',
   },
   house: {
-    name: 'House', icon: 'house', w: 1, h: 1, hp: 380, armor: 6,
-    cost: { wood: 50 }, buildTime: 7, pop: 10,
+    name: 'House', icon: 'house', w: 2, h: 2, hp: 300, armor: 6,
+    cost: { wood: 60 }, buildTime: 8, pop: 10,
     desc: 'Raises population capacity by ten.',
   },
   barracks: {
@@ -319,13 +319,13 @@ export const BOONS = [
   CARD('resonant_strings', 'Resonant Strings', 'RARE', 'speed',
     'Every fifth ranged hit chains a shock to two nearby enemies.',
     g => { g.effects.chainEvery = 5; }),
-  CARD('veteran_honors', 'Veteran Honors', 'LEGENDARY', 'crown',
+  CARD('veteran_honors', 'Veteran Honors', 'LEGACY', 'crown',
     'Each slain raider grants your soldiers a permanent +1% attack, up to +40%.',
     g => { g.effects.veteran = true; }),
   CARD('decoy_cart', 'Decoy Cart', 'COMMON', 'cart',
     'Two decoy carts roll out before every raid.',
     g => { g.effects.decoyWave = 2; }),
-  CARD('shared_oath', 'Shared Oath', 'LEGENDARY', 'people',
+  CARD('shared_oath', 'Shared Oath', 'LEGACY', 'people',
     'Slain raiders have a 10% chance to rise under your banner for 20 seconds.',
     g => { g.effects.convertChance = 0.1; }),
   CARD('horse_armor', 'Horse Armor', 'COMMON', 'horse',
@@ -372,8 +372,8 @@ export const BOONS = [
     g => { g.effects.heroHpMul *= 1.3; g.effects.heroDamageMul *= 1.2; g.effects.heroCooldownMul *= 0.75; g.refreshPlayerStats(); }),
 ];
 
-export const RARITY_WEIGHT = { COMMON: 58, RARE: 30, LEGENDARY: 12 };
-export const RARITY_ORDER = { COMMON: 0, RARE: 1, LEGENDARY: 2 };
+export const RARITY_WEIGHT = { COMMON: 60, RARE: 28, LEGENDARY: 10, LEGACY: 2 };
+export const RARITY_ORDER = { COMMON: 0, RARE: 1, LEGENDARY: 2, LEGACY: 3 };
 
 export const WAVES = [
   {
@@ -456,7 +456,7 @@ export const WAVES = [
   },
 ];
 
-export const START_RESOURCES = { food: 320, wood: 340, gold: 160, stone: 120 };
+export const START_RESOURCES = { food: 300, wood: 300, gold: 120, stone: 100 };
 
 export const PLAYER_COLORS = {
   primary: '#557f83',
