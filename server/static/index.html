@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Forge AI</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
@@ -11,22 +12,37 @@
     <main>
       <aside class="projects">
         <h2>游戏项目</h2>
-        <form id="import-form"><input id="path" placeholder="workspace 内目录，例如 demo-game" required><button>导入</button></form>
-        <p id="empty">尚未导入项目。请先在 workspace 建立目录。</p>
+        <form id="import-form"><input id="path" placeholder="workspace 内目录，例如 riftwatch" required><button>导入</button></form>
+        <p id="empty">尚未导入项目。请先在 workspace 建立独立 worktree。</p>
         <ul id="project-list"></ul>
+        <h2>文件</h2>
+        <ul id="file-list" class="files"><li>选择项目后显示</li></ul>
       </aside>
       <section class="preview">
-        <h2>游戏预览</h2>
-        <div class="placeholder">Task 04 才会启用即时预览，目前不会显示虚假画面。</div>
+        <div class="toolbar">
+          <h2>游戏预览</h2>
+          <button id="reload-preview" disabled>重新载入</button>
+        </div>
+        <div id="preview-empty" class="placeholder">选择已导入项目以开启同源只读预览。</div>
+        <iframe id="game-preview" title="游戏预览" hidden></iframe>
+        <section class="viewer">
+          <strong id="file-title">文件内容</strong>
+          <pre id="file-content">尚未选择文件。</pre>
+        </section>
       </section>
       <aside class="agent">
+        <h2>Build / Test</h2>
+        <div class="actions"><button id="run-build" disabled>执行 Build</button><button id="run-test" disabled>执行 Test</button></div>
+        <p class="hint">仅执行平台预先允许的命令，不接受网页提交任意 shell。</p>
+        <h3>执行记录</h3>
+        <ul id="run-list"><li>选择项目后显示</li></ul>
         <h2>AI Agent</h2>
-        <p>OpenHands Agent Canvas 是独立服务。</p>
+        <p>OpenHands Agent Canvas 是选用服务。</p>
         <a href="http://127.0.0.1:8000/canvas" target="_blank" rel="noreferrer">开启 Agent Canvas</a>
         <h3>尚未启用</h3>
-        <ul><li>模型路由（Task 02）</li><li>GitHub App（Task 03）</li><li>自动测试队列（Task 05）</li></ul>
+        <ul><li>模型路由（Task 02）</li><li>GitHub App（Task 03）</li><li>自动修改与提交仍需明确授权</li></ul>
       </aside>
-      <section class="logs"><strong>状态</strong><pre id="log">等待操作。</pre></section>
+      <section class="logs"><strong>状态与输出</strong><pre id="log">等待操作。</pre></section>
     </main>
     <script src="/app.js" defer></script>
   </body>
