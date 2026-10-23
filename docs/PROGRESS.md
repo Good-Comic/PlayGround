@@ -16,8 +16,8 @@ Last verified: 2026-10-23 (Debian cloud development container)
 - Remote `opencode-resume/4fabd2594ea403f912e7` resolves to `15b8a9c8065652e295d3e42fd10bb48bce76ff70`, whose commit subject says issue #11.
 - Remote `codex/project-forge-task-01` resolves to `3c5a0b9888535b956f6c7ead0b81512e0f33bc81`.
 - GitHub Issue #15 is open and in progress. Its body points back to the issue #11 checkpoint and commit `15b8a9c…`; the automation comment says restored changes are not yet verified.
-- `opencode-resume/ffa6eb71b729d455babf` at `5f7359c0793147b9031b880970acefa24b9988c9` is a direct descendant of `15b8a9c…` and adds 702 lines/removes 23 lines across 12 game files.
-- `opencode-checkpoint/7f7abe447cd674f6c9f58071fc2f97e6` at `3674a33d95c5165dc9ee5813a051f894a8c72378` is a direct descendant of `5f7359c…`, adds 719 lines/removes 304 lines, and is the latest inspected, locally verified game result.
+- `opencode-resume/ffa6c7ab68e84d153534` at `5f7359c0793147b9031b880970acefa24b9988c9` is a direct descendant of `15b8a9c…` and adds 702 lines/removes 23 lines across 12 game files.
+- `opencode-checkpoints/14` at `3674a33d95c5165dc9ee5813a051f894a8c72378` is a direct descendant of `5f7359c…`, adds 719 lines/removes 304 lines, and is the latest inspected, locally verified game result.
 - The checkpoint was selected for the isolated integration because it contains the exact four requested Riftwatch titles and passed the checks below. This does not re-label Issue #15 as complete.
 
 ### Game execution evidence
