@@ -129,46 +129,82 @@ export const UNIT_TYPES = {
     desc: 'Gathers resources and raises the kingdom’s works.',
   },
   militia: {
-    name: 'Militiaman', role: 'Infantry', icon: 'sword', category: 'infantry',
-    hp: 78, attack: 9, range: 0.72, speed: 2.05, cooldown: 1.05, armor: 4,
-    radius: 0.26, sight: 6.5, cost: { food: 60, gold: 20 }, trainTime: 8, pop: 1,
-    desc: 'A shield of oak and iron. Sturdy, faithful, unforgiving.',
+    name: 'Man-at-Arms', role: 'Infantry', icon: 'sword', category: 'infantry', family: 'M',
+    hp: 60, attack: 8, range: 1, speed: 2.4, cooldown: 1.5, armor: 10,
+    radius: 0.26, sight: 6.5, cost: { food: 40, gold: 10 }, trainTime: 8, pop: 1, threat: 1,
+    desc: 'A shielded line-holder. The backbone of every levy.',
   },
   spearman: {
-    name: 'Spearman', role: 'Anti-Cavalry', icon: 'spear', category: 'infantry',
-    hp: 68, attack: 8, range: 0.95, speed: 2.15, cooldown: 1.2, armor: 3,
-    radius: 0.26, sight: 6.5, cost: { food: 35, wood: 25 }, trainTime: 7, pop: 1,
-    desc: 'A long shaft and a braced foot. Doubles damage against riders and elephants.',
+    name: 'Spearman', role: 'Anti-Cavalry', icon: 'spear', category: 'infantry', family: 'P',
+    hp: 50, attack: 6, range: 1.5, speed: 2.5, cooldown: 1.7, armor: 5,
+    radius: 0.26, sight: 6.5, cost: { food: 35, wood: 15 }, trainTime: 8, pop: 1, threat: 1,
+    desc: 'A braced shaft. Doubles damage against cavalry and elephants.',
   },
   archer: {
-    name: 'Longbowman', role: 'Archer', icon: 'bow', category: 'ranged',
-    hp: 48, attack: 8, range: 4.7, speed: 2.15, cooldown: 1.35, armor: 1,
-    radius: 0.24, sight: 7.5, projectile: 'arrow', cost: { wood: 40, gold: 30 }, trainTime: 9, pop: 1,
-    desc: 'Rain death from the treeline. Fragile if caught alone.',
+    name: 'Archer', role: 'Archer', icon: 'bow', category: 'ranged', family: 'R',
+    hp: 35, attack: 7, range: 5, speed: 2.5, cooldown: 1.8, armor: 0,
+    radius: 0.24, sight: 7.5, projectile: 'arrow', cost: { wood: 35, gold: 25 }, trainTime: 10, pop: 1, threat: 1.5,
+    desc: 'Massed arrows from the treeline. Fragile if caught alone.',
   },
   skirmisher: {
-    name: 'Skirmisher', role: 'Ranged', icon: 'javelin', category: 'ranged',
-    hp: 44, attack: 6, range: 4.25, speed: 2.4, cooldown: 1.45, armor: 2,
-    radius: 0.24, sight: 7, projectile: 'javelin', cost: { food: 30, wood: 25 }, trainTime: 8, pop: 1,
+    name: 'Skirmisher', role: 'Ranged', icon: 'javelin', category: 'ranged', family: 'K',
+    hp: 40, attack: 5, range: 4.5, speed: 2.6, cooldown: 1.8, armor: 10,
+    radius: 0.24, sight: 7, projectile: 'javelin', cost: { food: 25, wood: 25 }, trainTime: 8, pop: 1, threat: 1.2,
     desc: 'Cheap skirmishers who punish massed archers.',
   },
-  knight: {
-    name: 'Knight of Ash', role: 'Cavalry', icon: 'horse', category: 'cavalry',
-    hp: 135, attack: 14, range: 0.8, speed: 2.9, cooldown: 1.05, armor: 5,
-    radius: 0.34, sight: 8, cost: { food: 95, gold: 65 }, trainTime: 14, pop: 2,
-    desc: 'The last oathsworn riders of the old crown.',
+  light_cavalry: {
+    name: 'Light Cavalry', role: 'Cavalry', icon: 'horse', category: 'cavalry', family: 'C',
+    hp: 90, attack: 10, range: 1, speed: 3.8, cooldown: 1.6, armor: 10,
+    radius: 0.32, sight: 8, cost: { food: 65, gold: 20 }, trainTime: 12, pop: 2, threat: 2.5,
+    desc: 'Fast riders who run down siege, recruiters, and isolated archers.',
   },
-  elephant: {
-    name: 'War Elephant', role: 'Cavalry', icon: 'elephant', category: 'cavalry',
-    hp: 360, attack: 24, range: 0.95, speed: 1.75, cooldown: 1.45, armor: 8,
-    radius: 0.44, sight: 7, cost: { food: 180, gold: 120 }, trainTime: 22, pop: 4,
-    desc: 'A living rampart. Slow, immense, and terrifying to infantry.',
+  horse_archer: {
+    name: 'Horse Archer', role: 'Cavalry Archer', icon: 'bow', category: 'cavalry', family: 'A',
+    hp: 65, attack: 8, range: 4.5, speed: 3.5, cooldown: 2, armor: 5,
+    radius: 0.3, sight: 8, projectile: 'arrow', cost: { food: 35, wood: 25, gold: 40 }, trainTime: 14, pop: 2, threat: 3,
+    desc: 'Mounted skirmishers who shoot while riding.',
+  },
+  guard: {
+    name: 'Elite Guard', role: 'Heavy Infantry', icon: 'shield', category: 'infantry', family: 'E',
+    hp: 130, attack: 14, range: 1, speed: 2.1, cooldown: 1.8, armor: 25,
+    radius: 0.3, sight: 7, cost: { food: 70, gold: 50 }, trainTime: 18, pop: 2, threat: 4,
+    desc: 'Armoured veterans who anchor a wavering line.',
+  },
+  mangonel: {
+    name: 'Mangonel', role: 'Siege', icon: 'hammer', category: 'siege', family: 'S',
+    hp: 100, attack: 40, range: 7, speed: 1.7, cooldown: 4.5, armor: 15,
+    radius: 0.4, sight: 8, projectile: 'boulder', cost: { wood: 100, gold: 80 }, trainTime: 25, pop: 3, threat: 10,
+    desc: 'A stone thrower that splashes damage across a tight formation.',
   },
   ram: {
-    name: 'Battering Ram', role: 'Siege', icon: 'hammer', category: 'siege',
-    hp: 260, attack: 55, range: 1.05, speed: 1.4, cooldown: 2.2, armor: 16,
-    radius: 0.4, sight: 6, cost: { wood: 120, gold: 40 }, trainTime: 16, pop: 3,
-    desc: 'Splinters gates and walls, but is nearly helpless against soldiers.',
+    name: 'Battering Ram', role: 'Siege', icon: 'hammer', category: 'siege', family: 'B',
+    hp: 220, attack: 30, range: 1, speed: 1.5, cooldown: 2.8, armor: 50,
+    radius: 0.4, sight: 6, cost: { wood: 120, gold: 50 }, trainTime: 25, pop: 3, threat: 8,
+    desc: 'Quadruple damage against buildings, but nearly helpless against soldiers.',
+  },
+  recruiter: {
+    name: 'Recruiter', role: 'Support', icon: 'scroll', category: 'support', family: 'V', noAttack: true,
+    hp: 45, attack: 0, range: 5, speed: 2.4, cooldown: 15, armor: 0,
+    radius: 0.26, sight: 7, cost: { gold: 80 }, trainTime: 18, pop: 1, threat: 6,
+    desc: 'Carries offers of gold and safe passage to turn enemy soldiers.',
+  },
+  elephant: {
+    name: 'War Elephant', role: 'Cavalry', icon: 'elephant', category: 'cavalry', family: 'W',
+    hp: 350, attack: 22, range: 1, speed: 1.8, cooldown: 2.2, armor: 20,
+    radius: 0.44, sight: 7, cost: { food: 150, gold: 80 }, trainTime: 25, pop: 4, threat: 9,
+    desc: 'A living rampart. Slow, immense, and terrifying to infantry.',
+  },
+  patrol_cart: {
+    name: 'Patrol Cart', role: 'Ranged Support', icon: 'tower', category: 'ranged', family: 'N',
+    hp: 80, attack: 8, range: 4, speed: 2.8, cooldown: 2, armor: 15,
+    radius: 0.3, sight: 7, projectile: 'arrow', cost: { wood: 65, gold: 45 }, trainTime: 16, pop: 2, threat: 3,
+    desc: 'A mobile watch platform that adds a bow to any patrol.',
+  },
+  knight: {
+    name: 'Knight of Ash', role: 'Legacy Cavalry', icon: 'horse', category: 'cavalry',
+    hp: 135, attack: 14, range: 0.8, speed: 2.9, cooldown: 1.05, armor: 5,
+    radius: 0.34, sight: 8, cost: { food: 95, gold: 65 }, trainTime: 14, pop: 2, threat: 3.5,
+    desc: 'The last oathsworn riders of the old crown.',
   },
   commander: {
     name: 'Riftwarden', role: 'Hero', icon: 'crown', category: 'hero', hero: true,
@@ -216,58 +252,109 @@ export const UNIT_TYPES = {
 };
 
 export const BUILDING_TYPES = {
-  towncenter: {
-    name: 'Town Center', icon: 'crown', w: 3, h: 3, hp: 1900, armor: 8,
-    cost: {}, buildTime: 0, pop: 10, dropoff: true, attack: 6, range: 6.2, cooldown: 1.9,
+  core: {
+    name: 'Town Center', icon: 'crown', w: 4, h: 4, hp: 3000, armor: 8,
+    cost: {}, buildTime: 60, pop: 10, dropoff: true, attack: 6, range: 6, cooldown: 2,
     desc: 'Heart of the realm. Trains villagers and advances the ages.',
   },
   house: {
     name: 'House', icon: 'house', w: 2, h: 2, hp: 300, armor: 6,
     cost: { wood: 60 }, buildTime: 8, pop: 10,
-    desc: 'Raises population capacity by ten.',
-  },
-  barracks: {
-    name: 'Barracks', icon: 'sword', w: 2, h: 2, hp: 940, armor: 8,
-    cost: { wood: 130 }, buildTime: 13,
-    desc: 'Trains militiamen and spearmen.',
-  },
-  archery_range: {
-    name: 'Archery Range', shortName: 'Archery', icon: 'bow', w: 2, h: 2, hp: 680, armor: 6,
-    cost: { wood: 130 }, buildTime: 13,
-    desc: 'Trains longbowmen and skirmishers.',
-  },
-  stable: {
-    name: 'Stable', icon: 'horse', w: 2, h: 2, hp: 760, armor: 7,
-    cost: { wood: 140 }, buildTime: 15,
-    desc: 'Trains knights of Ash, and war elephants when unlocked.',
-  },
-  tower: {
-    name: 'Watchtower', icon: 'tower', w: 1, h: 1, hp: 720, armor: 10,
-    cost: { wood: 80, stone: 40 }, buildTime: 12, attack: 11, range: 7.0, cooldown: 1.3,
-    desc: 'Looses arrows at raiders within seven tiles.',
+    desc: 'Raises military population capacity by ten.',
   },
   farm: {
-    name: 'Wheat Farm', icon: 'farm', w: 2, h: 2, hp: 220, armor: 4,
-    cost: { wood: 60 }, buildTime: 8, foodRate: 0.62,
+    name: 'Wheat Farm', icon: 'farm', w: 2, h: 2, hp: 160, armor: 4,
+    cost: { food: 50, wood: 40 }, buildTime: 6, foodRate: 0.16,
     desc: 'A quiet field that yields food over time.',
+  },
+  camp: {
+    name: 'Supply Camp', shortName: 'Camp', icon: 'banner', w: 2, h: 2, hp: 250, armor: 6,
+    cost: { wood: 80 }, buildTime: 10, dropoff: true,
+    desc: 'A forward drop-off point within eight tiles of the resource line.',
+  },
+  barracks: {
+    name: 'Barracks', icon: 'sword', w: 3, h: 3, hp: 600, armor: 8,
+    cost: { wood: 120 }, buildTime: 15,
+    desc: 'Trains man-at-arms, spearmen, and elite guards.',
+  },
+  range: {
+    name: 'Archery Range', shortName: 'Archery', icon: 'bow', w: 3, h: 3, hp: 600, armor: 6,
+    cost: { wood: 120 }, buildTime: 15,
+    desc: 'Trains archers and skirmishers.',
+  },
+  stable: {
+    name: 'Stable', icon: 'horse', w: 3, h: 3, hp: 600, armor: 7,
+    cost: { wood: 120 }, buildTime: 15,
+    desc: 'Trains light cavalry and horse archers; war elephants when unlocked.',
+  },
+  tower: {
+    name: 'Watchtower', icon: 'tower', w: 2, h: 2, hp: 650, armor: 10,
+    cost: { wood: 80, stone: 60 }, buildTime: 20, attack: 12, range: 6, cooldown: 2,
+    desc: 'Looses arrows at visible raiders within six tiles.',
+  },
+  wall: {
+    name: 'Stone Wall', shortName: 'Wall', icon: 'shield', w: 1, h: 1, hp: 500, armor: 12,
+    cost: { stone: 15 }, buildTime: 3,
+    desc: 'A cheap barrier that channels raiders into your towers.',
+  },
+  gate: {
+    name: 'Gatehouse', shortName: 'Gate', icon: 'banner', w: 2, h: 1, hp: 650, armor: 12,
+    cost: { wood: 30, stone: 30 }, buildTime: 6, gate: true,
+    desc: 'A fortified gate that opens for your own soldiers.',
+  },
+  workshop: {
+    name: 'Siege Workshop', shortName: 'Workshop', icon: 'hammer', w: 3, h: 3, hp: 600, armor: 7,
+    cost: { wood: 160, gold: 100 }, buildTime: 20,
+    desc: 'Builds battering rams, mangonels, and patrol carts.',
+  },
+  market: {
+    name: 'Market', icon: 'coin', w: 3, h: 3, hp: 450, armor: 6,
+    cost: { wood: 120 }, buildTime: 15, goldRate: 0.08,
+    desc: 'Trades quietly with the frontier, producing a trickle of gold.',
+  },
+  shrine: {
+    name: 'Shrine', icon: 'heart', w: 3, h: 3, hp: 500, armor: 5,
+    cost: { wood: 120, gold: 80 }, buildTime: 20, healRate: 2.5, healRadius: 5,
+    desc: 'Heals nearby soldiers and trains recruiters.',
+  },
+  forge: {
+    name: 'Forge', icon: 'flame', w: 3, h: 3, hp: 450, armor: 7,
+    cost: { wood: 100, gold: 50 }, buildTime: 15, damageAura: 0.1, auraRadius: 6,
+    desc: 'Nearby soldiers deal 10% more damage.',
+  },
+  monument: {
+    name: 'Monument', icon: 'crown', w: 4, h: 4, hp: 1600, armor: 8,
+    cost: { wood: 240, gold: 200, stone: 150 }, buildTime: 40, pop: 15,
+    desc: 'An imperial symbol that raises population capacity by fifteen.',
+  },
+  fishing_hut: {
+    name: 'Fishing Hut', shortName: 'Fishery', icon: 'food', w: 2, h: 2, hp: 400, armor: 3,
+    cost: { wood: 80 }, buildTime: 10, foodRate: 0.12, dropoff: true, requiresWater: true,
+    desc: 'A shore-side hut that yields food and accepts coastal catches.',
   },
 };
 
 export const TRAINABLE = {
-  towncenter: ['villager'],
-  barracks: ['militia', 'spearman'],
-  archery_range: ['archer', 'skirmisher'],
-  stable: ['knight', 'elephant'],
+  core: ['villager'],
+  barracks: ['militia', 'spearman', 'guard'],
+  range: ['archer', 'skirmisher'],
+  workshop: ['ram', 'mangonel', 'patrol_cart'],
+  stable: ['light_cavalry', 'horse_archer', 'elephant'],
+  shrine: ['recruiter'],
 };
 
 export const BUILD_OPTIONS = [
-  'house', 'farm', 'barracks', 'archery_range', 'stable', 'tower',
+  'house', 'farm', 'camp', 'barracks', 'range', 'stable', 'tower',
+  'wall', 'gate', 'workshop', 'market', 'shrine', 'forge', 'monument', 'fishing_hut',
 ];
 
 export const COMMAND_ICONS = {
   villager: 'villager', militia: 'sword', spearman: 'spear', archer: 'bow', skirmisher: 'javelin',
+  light_cavalry: 'horse', horse_archer: 'bow', guard: 'shield', mangonel: 'hammer',
+  recruiter: 'scroll', patrol_cart: 'tower',
   knight: 'horse', elephant: 'elephant', ram: 'hammer', commander: 'crown', decoy: 'cart', prototype: 'cog',
-  house: 'house', farm: 'farm', barracks: 'sword', archery_range: 'bow', stable: 'horse', tower: 'tower',
+  house: 'house', farm: 'farm', camp: 'banner', barracks: 'sword', range: 'bow', stable: 'horse', tower: 'tower',
+  wall: 'shield', gate: 'banner', workshop: 'hammer', market: 'coin', shrine: 'heart', forge: 'flame', monument: 'crown', fishing_hut: 'food',
   stop: 'stop', hold: 'hold', age: 'crown', mark: 'arrow', aegis: 'shield',
 };
 
@@ -372,6 +459,8 @@ export const BOONS = [
     g => { g.effects.heroHpMul *= 1.3; g.effects.heroDamageMul *= 1.2; g.effects.heroCooldownMul *= 0.75; g.refreshPlayerStats(); }),
 ];
 
+BOONS.forEach((card, index) => { card.code = `C${String(index + 1).padStart(2, '0')}`; });
+
 export const MAX_BOONS = 12;
 export const RARITY_WEIGHT = { COMMON: 60, RARE: 28, LEGENDARY: 10, LEGACY: 2 };
 export const RARITY_ORDER = { COMMON: 0, RARE: 1, LEGENDARY: 2, LEGACY: 3 };
@@ -380,79 +469,82 @@ export const WAVES = [
   {
     name: 'The First Raid', sub: 'Smoke on the northern road', duration: 120,
     spawns: [
-      { at: 0, gate: 0, units: { raider: 6, marauder: 2 } },
-      { at: 26, gate: 0, units: { raider: 4 } },
+      { at: 10, gate: 0, units: { militia: 6, archer: 2 } },
+      { at: 35, gate: 0, units: { militia: 6, archer: 2 } },
     ],
   },
   {
-    name: 'Burning Fields', sub: 'They come for the harvest', duration: 125,
+    name: 'Burning Fields', sub: 'They come for the harvest', duration: 120,
     spawns: [
-      { at: 0, gate: 1, units: { raider: 7, marauder: 3 } },
-      { at: 20, gate: 0, units: { raider: 4, marauder: 2 } },
+      { at: 10, gate: 1, units: { militia: 7, archer: 3 } },
+      { at: 35, gate: 0, units: { militia: 7, archer: 3 } },
+      { at: 60, gate: 1, units: { spearman: 4 } },
     ],
   },
   {
-    name: 'The Iron Tide', sub: 'No banner, no mercy', duration: 135,
+    name: 'The Iron Tide', sub: 'No banner, no mercy', duration: 120,
     spawns: [
-      { at: 0, gate: 0, units: { spearman: 6, marauder: 4 } },
-      { at: 22, gate: 1, units: { raider: 6, marauder: 5 } },
+      { at: 10, gate: 0, units: { spearman: 6, archer: 6 } },
+      { at: 40, gate: 1, units: { light_cavalry: 4 } },
+      { at: 65, gate: 0, units: { spearman: 6, archer: 6 } },
     ],
   },
   {
-    name: 'Shattered Oaths', sub: 'Traitors among the raiders', duration: 140,
+    name: 'Shattered Oaths', sub: 'Traitors among the raiders', duration: 120,
     spawns: [
-      { at: 0, gate: 2, units: { raider: 8, marauder: 4 } },
-      { at: 16, gate: 0, units: { brute: 4, raider: 3 } },
-      { at: 36, gate: 1, units: { raider: 6 } },
+      { at: 10, gate: 0, units: { militia: 8, archer: 6 } },
+      { at: 35, gate: 3, units: { ram: 1 } },
+      { at: 60, gate: 0, units: { militia: 8, archer: 6 } },
     ],
   },
   {
-    name: 'Warlord’s Reckoning', sub: 'Vask the Unburnt rides', duration: 210, boss: true,
+    name: 'Warlord’s Reckoning', sub: 'Vask the Unburnt rides', duration: 120, boss: true,
     spawns: [
-      { at: 0, gate: 0, units: { brute: 4, marauder: 6 } },
-      { at: 12, gate: 1, units: { raider: 6 } },
-      { at: 30, gate: 0, units: { warlord: 1 } },
+      { at: 10, gate: 0, units: { guard: 3, archer: 6 } },
+      { at: 35, gate: 0, units: { warlord: 1 } },
+      { at: 55, gate: 0, units: { spearman: 8 } },
+      { at: 80, gate: 0, units: { guard: 3, archer: 6 } },
     ],
   },
   {
-    name: 'The Second Banner', sub: 'A new host gathers', duration: 145,
+    name: 'The Second Banner', sub: 'A new host gathers', duration: 120,
     spawns: [
-      { at: 0, gate: 1, units: { raider: 10, knight: 4 } },
-      { at: 20, gate: 2, units: { marauder: 6, brute: 2 } },
-      { at: 42, gate: 0, units: { raider: 8 } },
+      { at: 10, gate: 1, units: { militia: 11, light_cavalry: 3 } },
+      { at: 35, gate: 3, units: { horse_archer: 8 } },
+      { at: 65, gate: 1, units: { militia: 11, light_cavalry: 3 } },
     ],
   },
   {
-    name: 'Outer Fires', sub: 'The horizon burns', duration: 150,
+    name: 'Outer Fires', sub: 'The horizon burns', duration: 120,
     spawns: [
-      { at: 0, gate: 0, units: { spearman: 8, marauder: 6 } },
-      { at: 22, gate: 3, units: { raider: 8, marauder: 4 } },
-      { at: 46, gate: 1, units: { brute: 6 } },
+      { at: 10, gate: 0, units: { spearman: 10, archer: 8 } },
+      { at: 40, gate: 2, units: { mangonel: 1 } },
+      { at: 65, gate: 0, units: { spearman: 10, archer: 8 } },
     ],
   },
   {
-    name: 'Twin Breach', sub: 'Two gates, one grave', duration: 155,
+    name: 'Twin Breach', sub: 'Two gates, one grave', duration: 120,
     spawns: [
-      { at: 0, gate: 2, units: { raider: 10, knight: 4 } },
-      { at: 18, gate: 1, units: { ram: 2, elephant: 2 } },
-      { at: 38, gate: 0, units: { marauder: 8, skirmisher: 4 } },
+      { at: 10, gate: 0, units: { militia: 12, light_cavalry: 5 } },
+      { at: 40, gate: 3, units: { ram: 2 } },
+      { at: 70, gate: 0, units: { militia: 12, light_cavalry: 5 } },
     ],
   },
   {
-    name: 'The Long Arm', sub: 'The rift sends its hunters', duration: 165,
+    name: 'The Long Arm', sub: 'The rift sends its hunters', duration: 120,
     spawns: [
-      { at: 0, gate: 0, units: { brute: 8, marauder: 8 } },
-      { at: 24, gate: 1, units: { raider: 10, knight: 6 } },
-      { at: 50, gate: 2, units: { marauder: 8 } },
+      { at: 10, gate: 1, units: { guard: 7, archer: 10 } },
+      { at: 40, gate: 0, units: { mangonel: 2 } },
+      { at: 70, gate: 1, units: { guard: 7, archer: 10 } },
     ],
   },
   {
-    name: 'The Last Watch', sub: 'The Rift-Marshal comes', duration: 240, boss: true,
+    name: 'The Last Watch', sub: 'The Rift-Marshal comes', duration: 150, boss: true,
     spawns: [
-      { at: 0, gate: 0, units: { raider: 12, marauder: 6 } },
-      { at: 18, gate: 1, units: { brute: 8, elephant: 4 } },
-      { at: 36, gate: 0, units: { warlord2: 1 } },
-      { at: 54, gate: 2, units: { raider: 10, skirmisher: 6 } },
+      { at: 10, gate: 0, units: { militia: 15, horse_archer: 7 } },
+      { at: 30, gate: 0, units: { warlord2: 1 } },
+      { at: 55, gate: 3, units: { ram: 3 } },
+      { at: 80, gate: 0, units: { militia: 15, horse_archer: 7 } },
     ],
   },
 ];

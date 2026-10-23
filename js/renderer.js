@@ -566,13 +566,16 @@ export class Renderer {
     const p = this.screen(game, b.x + b.w / 2, b.y + b.h / 2);
     if (p.x < -250 || p.x > this.w + 250 || p.y < -250 || p.y > this.h + 250) return;
     if (b.construction < 1) { this.drawConstruction(b, game, time); return; }
-    if (b.type === 'towncenter') this.drawTownCenter(b, game, time);
+    if (b.type === 'core') this.drawTownCenter(b, game, time);
     else if (b.type === 'house') this.drawHouse(b, game, time);
     else if (b.type === 'barracks') this.drawBarracks(b, game, time);
     else if (b.type === 'tower') this.drawTower(b, game, time);
     else if (b.type === 'farm') this.drawFarm(b, game, time);
-    else if (b.type === 'archery_range') this.drawArcheryRange(b, game, time);
+    else if (b.type === 'range') this.drawArcheryRange(b, game, time);
     else if (b.type === 'stable') this.drawStable(b, game, time);
+    else if (b.type === 'wall') this.drawWall(b, game, time);
+    else if (b.type === 'gate') this.drawGate(b, game, time);
+    else if (b.type === 'fishing_hut') this.drawHouse(b, game, time);
     else this.drawBarracks(b, game, time);
     this.drawBuildingBar(b, game);
   }
@@ -925,13 +928,48 @@ export class Renderer {
     if (b.hp < b.maxHp) this.drawDamageSmoke(f, z, time, 1 - b.hp / b.maxHp);
   }
 
+
+  drawWall(b, game, time) {
+    const ctx = this.ctx, z = game.camera.zoom;
+    const f = this.footprint(game, b);
+    this.drawPlatform(f, z, '#6f6755');
+    this.prism(f, 34 * z, '#817a68', '#9b927c', '#8d8572');
+    ctx.strokeStyle = '#b4ab94'; ctx.lineWidth = 1.2 * z;
+    for (let i = 0; i < 4; i++) {
+      const x = lerp(f.A.x, f.B.x, (i + 0.5) / 4);
+      const y = lerp(f.A.y, f.B.y, (i + 0.5) / 4);
+      ctx.beginPath(); ctx.moveTo(x, y - 28 * z); ctx.lineTo(x, y - 38 * z); ctx.stroke();
+    }
+    ctx.fillStyle = 'rgba(20,24,16,0.45)';
+    ctx.beginPath(); ctx.moveTo(f.A.x + 4 * z, f.A.y - 4 * z); ctx.lineTo(f.B.x - 4 * z, f.B.y - 4 * z); ctx.lineTo(f.B.x - 4 * z, f.B.y - 24 * z); ctx.lineTo(f.A.x + 4 * z, f.A.y - 24 * z); ctx.closePath(); ctx.fill();
+    if (b.hp < b.maxHp) this.drawDamageSmoke(f, z, time, 1 - b.hp / b.maxHp);
+  }
+
+  drawGate(b, game, time) {
+    const ctx = this.ctx, z = game.camera.zoom;
+    const f = this.footprint(game, b);
+    this.drawPlatform(f, z, '#706855');
+    this.prism(f, 44 * z, '#7e7664', '#9b927c', '#8d8572');
+    ctx.fillStyle = '#2d2318';
+    ctx.beginPath();
+    ctx.moveTo(f.A.x + b.w * 9 * z, f.A.y - 2 * z);
+    ctx.lineTo(f.A.x + b.w * 9 * z, f.A.y - 28 * z);
+    ctx.quadraticCurveTo(f.cx, f.cy - 42 * z, f.A.x + b.w * 27 * z, f.A.y - 28 * z);
+    ctx.lineTo(f.A.x + b.w * 27 * z, f.A.y - 2 * z);
+    ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#b4ab94'; ctx.lineWidth = 1.4 * z;
+    ctx.beginPath(); ctx.moveTo(f.cx - 9 * z, f.cy - 42 * z); ctx.lineTo(f.cx - 9 * z, f.cy - 54 * z); ctx.lineTo(f.cx + 9 * z, f.cy - 54 * z); ctx.lineTo(f.cx + 9 * z, f.cy - 42 * z); ctx.stroke();
+    this.flag(f.cx + 8 * z, f.cy - 55 * z, 15 * z, z, time, 2.1);
+    if (b.hp < b.maxHp) this.drawDamageSmoke(f, z, time, 1 - b.hp / b.maxHp);
+  }
+
   drawConstruction(b, game, time) {
     const ctx = this.ctx, z = game.camera.zoom;
     const f = this.footprint(game, b);
     this.drawPlatform(f, z, 'rgba(105,93,71,0.6)');
     ctx.save();
     ctx.globalAlpha = 0.36 + b.construction * 0.5;
-    if (b.type === 'towncenter') this.prism(f, 46 * b.construction * z, '#877a63', '#9b8c6f', '#a49679');
+    if (b.type === 'core') this.prism(f, 46 * b.construction * z, '#877a63', '#9b8c6f', '#a49679');
     else if (b.type === 'tower') this.prism(f, 58 * b.construction * z, '#81765f', '#968a6e');
     else if (b.type === 'farm') {
       ctx.fillStyle = '#6c5732';
@@ -960,7 +998,7 @@ export class Renderer {
       const p = this.screen(game, b.x + b.w / 2, b.y + b.h / 2);
       const z = game.camera.zoom;
       const w = Math.min(90, (b.w + b.h) * 11) * z;
-      const y = p.y - (b.type === 'towncenter' ? 132 : b.type === 'tower' ? 108 : 58) * z;
+      const y = p.y - (b.type === 'core' ? 132 : b.type === 'tower' ? 108 : 58) * z;
       this.healthBar(p.x - w / 2, y, w, 4 * z, b.hp / b.maxHp, b.team === 'player' ? '#7aa95d' : '#b25046');
     }
   }
@@ -985,10 +1023,11 @@ export class Renderer {
     ctxSave(this.ctx, () => {
       const ctx = this.ctx;
       ctx.fillStyle = 'rgba(7,9,5,0.34)';
-      const big = ['knight', 'elephant', 'ram', 'prototype'].includes(u.type) ? 19 : 12;
+      const big = ['knight', 'light_cavalry', 'horse_archer', 'elephant', 'ram', 'mangonel', 'patrol_cart', 'prototype'].includes(u.type) ? 19 : 12;
       ctx.beginPath(); ctx.ellipse(p.x + 2 * scale, p.y + 1.5 * scale, big * scale, (big === 19 ? 7 : 4.5) * scale, 0, 0, 6.3); ctx.fill();
-      if (u.type === 'knight') this.drawKnightUnit(p, u, scale, team, walk, time, bob);
-      else if (u.type === 'archer' || u.type === 'marauder' || u.type === 'skirmisher') this.drawArcherUnit(p, u, scale, team, walk, time, bob);
+      if (['knight', 'light_cavalry', 'horse_archer'].includes(u.type)) this.drawKnightUnit(p, u, scale, team, walk, time, bob);
+      else if (u.type === 'archer' || u.type === 'marauder' || u.type === 'skirmisher' || u.type === 'patrol_cart') this.drawArcherUnit(p, u, scale, team, walk, time, bob);
+      else if (u.type === 'mangonel') this.drawMangonelUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'villager') this.drawVillagerUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'elephant') this.drawElephantUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'ram') this.drawRamUnit(p, u, scale, team, walk, time, bob);
@@ -999,9 +1038,9 @@ export class Renderer {
       else if (['brute', 'warlord', 'warlord2'].includes(u.type)) this.drawBruteUnit(p, u, scale, team, walk, time, bob);
       else this.drawInfantryUnit(p, u, scale, team, walk, time, bob);
       if (u.selected || u.hp < u.maxHp) {
-        const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram'].includes(u.type);
+        const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
         const w = (wide ? 40 : 24) * scale;
-        const high = u.type === 'knight' ? 48 : wide ? 62 : 38;
+        const high = ['knight', 'light_cavalry', 'horse_archer'].includes(u.type) ? 48 : wide ? 62 : 38;
         const y = p.y - high * scale;
         this.healthBar(p.x - w / 2, y, w, 3.6 * scale, Math.max(0, u.hp / u.maxHp), u.team === 'player' ? '#78a95b' : '#b25046');
       }
@@ -1176,6 +1215,24 @@ export class Renderer {
     ctx.fillStyle = '#8e8a7d'; ctx.beginPath(); ctx.arc(x + 25 * s, y - 13 * s, 4.2 * s, 0, 6.3); ctx.fill();
     ctx.fillStyle = team.primary; ctx.fillRect(x - 18 * s, y - 25 * s, 36 * s, 3 * s);
     this.flag(x + 12 * s, y - 32 * s, 18 * s, s, time, 2.1);
+  }
+
+  drawMangonelUnit(p, u, s, team, walk, time, bob) {
+    const ctx = this.ctx;
+    const x = p.x, y = p.y - bob * 0.5 * s;
+    ctx.fillStyle = '#4d3a27';
+    ctx.beginPath(); ctx.ellipse(x, y - 11 * s, 20 * s, 9 * s, 0, 0, 6.3); ctx.fill();
+    ctx.fillStyle = '#74512f';
+    ctx.beginPath(); ctx.moveTo(x - 20 * s, y - 11 * s); ctx.lineTo(x - 14 * s, y - 28 * s); ctx.lineTo(x + 14 * s, y - 28 * s); ctx.lineTo(x + 20 * s, y - 11 * s); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#3f2d1c'; ctx.lineWidth = 3 * s;
+    ctx.beginPath(); ctx.arc(x - 12 * s, y - 3 * s, 5 * s, 0, 6.3); ctx.stroke();
+    ctx.beginPath(); ctx.arc(x + 12 * s, y - 3 * s, 5 * s, 0, 6.3); ctx.stroke();
+    ctx.strokeStyle = '#7a5732'; ctx.lineWidth = 3 * s;
+    ctx.beginPath(); ctx.moveTo(x - 4 * s, y - 28 * s); ctx.lineTo(x - 18 * s, y - 44 * s); ctx.stroke();
+    ctx.fillStyle = '#777366';
+    ctx.beginPath(); ctx.arc(x - 20 * s, y - 45 * s, 5 * s, 0, 6.3); ctx.fill();
+    ctx.fillStyle = team.primary; ctx.fillRect(x - 15 * s, y - 22 * s, 30 * s, 3 * s);
+    this.flag(x + 12 * s, y - 30 * s, 16 * s, s, time, 2.1);
   }
 
   drawHeroUnit(p, u, s, team, walk, time, bob) {

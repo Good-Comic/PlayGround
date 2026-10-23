@@ -4,7 +4,7 @@ export const EVENT_MODULES = {
     tags: [], mods: {}, extra: 'flank',
   },
   RAID: {
-    id: 'RAID', name: 'Raiding Party', desc: 'Raiders prioritize villagers and farms.',
+    id: 'RAID', name: 'Raiding Party', desc: 'Cavalry prioritize visible supply camps within 8 tiles for 20 seconds.',
     tags: ['raid'], mods: {},
   },
   SHIELD: {
@@ -24,7 +24,7 @@ export const EVENT_MODULES = {
     tags: ['breach'], mods: { buildingDamageMul: 1.25 },
   },
   SMOKE: {
-    id: 'SMOKE', name: 'Smoke Screen', desc: 'Smoke reduces player ranged range by 2.',
+    id: 'SMOKE', name: 'Smoke Screen', desc: 'Smoke reduces both sides’ ranged range by 1, to a minimum of 2.',
     tags: [], mods: {}, zone: 'smoke',
   },
   CONVOY: {
@@ -44,8 +44,8 @@ export const EVENT_MODULES = {
     tags: ['duel'], mods: {},
   },
   RELAY: {
-    id: 'RELAY', name: 'Relay Runners', desc: 'Enemy movement speed increases by 15%.',
-    tags: [], mods: { speedMul: 1.15 },
+    id: 'RELAY', name: 'Relay Runners', desc: 'Enemy movement speed increases by 10%.',
+    tags: [], mods: { speedMul: 1.10 },
   },
   FEINT: {
     id: 'FEINT', name: 'Feint', desc: 'A diversion force arrives late from another gate.',
@@ -64,15 +64,15 @@ export const EVENT_MODULES = {
     tags: ['fire'], mods: {},
   },
   RALLY: {
-    id: 'RALLY', name: 'Rally', desc: 'Enemy attack speed increases by 15%.',
-    tags: [], mods: { attackSpeedMul: 1.15 },
+    id: 'RALLY', name: 'Rally', desc: 'Enemy attack speed increases by 10%.',
+    tags: [], mods: { attackSpeedMul: 1.10 },
   },
   SCOUT: {
     id: 'SCOUT', name: 'Scouts', desc: 'Enemy movement speed increases by 25%.',
     tags: [], mods: { speedMul: 1.25 },
   },
   DRAIN: {
-    id: 'DRAIN', name: 'Drain', desc: 'A drain field halves player gathering speed.',
+    id: 'DRAIN', name: 'Drain', desc: 'A drain field reduces gathering speed by 15%.',
     tags: [], mods: {}, zone: 'drain',
   },
   BELL: {
@@ -80,12 +80,12 @@ export const EVENT_MODULES = {
     tags: [], mods: {}, extra: 'bell',
   },
   HUNT: {
-    id: 'HUNT', name: 'Hunt', desc: 'Raiders hunt cavalry and villagers.',
+    id: 'HUNT', name: 'Hunt', desc: 'Enemy spearmen chase only visible cavalry within 6 tiles.',
     tags: ['hunt'], mods: {},
   },
   SAPPER: {
-    id: 'SAPPER', name: 'Sappers', desc: 'Infantry deals double damage to buildings.',
-    tags: ['sapper'], mods: { buildingDamageMul: 2 },
+    id: 'SAPPER', name: 'Sappers', desc: 'Infantry deals +50% damage to buildings.',
+    tags: ['sapper'], mods: { buildingDamageMul: 1.5 },
   },
   MORALE: {
     id: 'MORALE', name: 'Morale', desc: 'Wounded enemies retreat once.',
@@ -98,22 +98,22 @@ export const EVENT_MODULES = {
 };
 
 export const EVENT_MATRIX = {
-  MNG: ['FLANK', 'KITE', 'RAID', 'FEINT', 'LAND', 'HUNT', 'RELAY', 'SMOKE', 'FLANK', 'DUEL'],
-  TEU: ['SHIELD', 'BLOCK', 'SIEGE', 'WARD', 'BREACH', 'RALLY', 'SAPPER', 'SHIELD', 'CONVOY', 'DUEL'],
-  GOT: ['RAID', 'FEINT', 'RALLY', 'HUNT', 'MORALE', 'FLANK', 'SAPPER', 'RAID', 'FEINT', 'DUEL'],
-  FRK: ['SHIELD', 'RALLY', 'SIEGE', 'BREACH', 'DUEL', 'HUNT', 'BLOCK', 'SHIELD', 'FLANK', 'DUEL'],
-  SAR: ['KITE', 'SMOKE', 'DRAIN', 'FIRE', 'NET', 'RELAY', 'LURE', 'SCOUT', 'DRAIN', 'DUEL'],
-  AZT: ['RAID', 'MORALE', 'HUNT', 'RALLY', 'FEINT', 'SHIELD', 'RAID', 'DUEL', 'FLANK', 'DUEL'],
-  BRI: ['KITE', 'SMOKE', 'NET', 'SIEGE', 'FIRE', 'SCOUT', 'KITE', 'RALLY', 'FIRE', 'DUEL'],
-  CHN: ['KITE', 'FIRE', 'NET', 'RELAY', 'SIEGE', 'SMOKE', 'KITE', 'FIRE', 'SAPPER', 'DUEL'],
-  PER: ['SHIELD', 'SIEGE', 'BREACH', 'RALLY', 'BLOCK', 'WARD', 'SHIELD', 'SIEGE', 'CONVOY', 'DUEL'],
-  KOR: ['SHIELD', 'BLOCK', 'SIEGE', 'WARD', 'SMOKE', 'NET', 'BELL', 'SHIELD', 'FIRE', 'DUEL'],
-  SPA: ['RALLY', 'RAID', 'SIEGE', 'DUEL', 'SHIELD', 'HUNT', 'SAPPER', 'RALLY', 'BREACH', 'DUEL'],
-  TUR: ['KITE', 'FIRE', 'SIEGE', 'SMOKE', 'SAPPER', 'BREACH', 'FIRE', 'KITE', 'SIEGE', 'DUEL'],
-  BYZ: ['SHIELD', 'WARD', 'BLOCK', 'SIEGE', 'BREACH', 'RALLY', 'CONVOY', 'SHIELD', 'SAPPER', 'DUEL'],
-  VIK: ['RAID', 'FLANK', 'HUNT', 'MORALE', 'FEINT', 'LAND', 'RAID', 'FLANK', 'HUNT', 'DUEL'],
-  MAG: ['KITE', 'HUNT', 'FEINT', 'FLANK', 'SCOUT', 'RAID', 'LURE', 'HUNT', 'FLANK', 'DUEL'],
-  JPN: ['SHIELD', 'RALLY', 'BLOCK', 'DUEL', 'MORALE', 'KITE', 'SAPPER', 'SHIELD', 'FLANK', 'DUEL'],
+  MNG: ['SCOUT', 'NET', 'RAID', 'KITE', 'DUEL', 'FLANK', 'HUNT', 'CONVOY', 'BREACH', 'RELAY'],
+  TEU: ['SCOUT', 'KITE', 'SIEGE', 'SAPPER', 'DUEL', 'RAID', 'FIRE', 'BREACH', 'CONVOY', 'RALLY'],
+  GOT: ['BLOCK', 'FIRE', 'SHIELD', 'MORALE', 'DUEL', 'CONVOY', 'SIEGE', 'DRAIN', 'WARD', 'RALLY'],
+  FRK: ['HUNT', 'NET', 'BLOCK', 'DUEL', 'RALLY', 'RAID', 'WARD', 'DRAIN', 'SIEGE', 'SHIELD'],
+  SAR: ['CONVOY', 'RAID', 'DRAIN', 'FEINT', 'DUEL', 'SAPPER', 'LAND', 'SMOKE', 'WARD', 'RALLY'],
+  AZT: ['SCOUT', 'WARD', 'SMOKE', 'CONVOY', 'DUEL', 'FIRE', 'RAID', 'SIEGE', 'RELAY', 'SHIELD'],
+  BRI: ['RAID', 'FEINT', 'NET', 'SHIELD', 'DUEL', 'LAND', 'SMOKE', 'BREACH', 'RALLY', 'HUNT'],
+  CHN: ['SCOUT', 'SHIELD', 'KITE', 'RAID', 'DUEL', 'SAPPER', 'FIRE', 'FLANK', 'SIEGE', 'RELAY'],
+  PER: ['HUNT', 'NET', 'FEINT', 'DRAIN', 'DUEL', 'RAID', 'LAND', 'WARD', 'SIEGE', 'RALLY'],
+  KOR: ['RAID', 'SAPPER', 'SMOKE', 'SIEGE', 'DUEL', 'LAND', 'FEINT', 'BREACH', 'RELAY', 'SHIELD'],
+  SPA: ['SCOUT', 'LAND', 'RAID', 'BELL', 'DUEL', 'FEINT', 'CONVOY', 'WARD', 'FIRE', 'RALLY'],
+  TUR: ['SMOKE', 'RAID', 'FEINT', 'HUNT', 'DUEL', 'LAND', 'SHIELD', 'CONVOY', 'BREACH', 'RELAY'],
+  BYZ: ['SAPPER', 'DRAIN', 'SIEGE', 'BREACH', 'DUEL', 'FLANK', 'FIRE', 'CONVOY', 'WARD', 'RALLY'],
+  VIK: ['LAND', 'RAID', 'FEINT', 'MORALE', 'DUEL', 'FIRE', 'BLOCK', 'DRAIN', 'SIEGE', 'RELAY'],
+  MAG: ['HUNT', 'NET', 'SHIELD', 'BLOCK', 'DUEL', 'SAPPER', 'DRAIN', 'FEINT', 'SIEGE', 'RALLY'],
+  JPN: ['BELL', 'RAID', 'SMOKE', 'KITE', 'DUEL', 'LAND', 'FIRE', 'SAPPER', 'CONVOY', 'RELAY'],
 };
 
 export function eventFor(civId, waveIndex) {

@@ -4,20 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <meta name="theme-color" content="#17150f" />
-  <title>Riftwatch — Confluence Empires</title>
+  <title>Age of Empires II: Riftwatch</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2317150f'/%3E%3Cpath d='M6 12l5 4 5-8 5 8 5-4-2.5 12h-15z' fill='none' stroke='%23d5ad58' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M9 25h14' stroke='%23d5ad58' stroke-width='1.8'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div id="app">
-    <canvas id="game" aria-label="Riftwatch battlefield" data-i18n-aria-label="a11y.battlefield"></canvas>
+    <canvas id="game" aria-label="Age of Empires II: Riftwatch battlefield" data-i18n-aria-label="a11y.battlefield"></canvas>
     <div class="canvas-vignette"></div>
 
     <div class="menu-screen" id="menu-screen">
       <div class="menu-shade"></div>
       <div class="menu-rail">
-        <div class="menu-kicker"><span></span><b data-i18n="menu.kicker">CONFLUENCE EMPIRES</b><span></span></div>
-        <h1 class="menu-title single"><span>RIFT</span><span class="title-watch">WATCH</span></h1>
+        <div class="menu-kicker"><span></span><b data-i18n="game.kicker">AGE OF EMPIRES II</b><span></span></div>
+        <h1 class="menu-title stacked">
+          <span class="title-series" data-i18n="game.series">Age of Empires II:</span>
+          <span class="title-watch" data-i18n="game.subtitle">Riftwatch</span>
+        </h1>
         <div class="title-flourish"><i></i><svg><use href="#i-crown"/></svg><i></i></div>
         <p class="menu-lede" data-i18n="menu.lede">The Rift has opened. Ten raids stand between your people and the Confluence.</p>
         <div class="menu-setup">
@@ -85,7 +88,7 @@
       <header class="topbar">
         <div class="brand-lockup">
           <span class="brand-sigil"><svg><use href="#i-crown"/></svg></span>
-          <span class="brand-word">RIFTWATCH</span>
+          <span class="brand-word" data-i18n="brand.short">AOE II · RIFTWATCH</span>
         </div>
 
         <div class="resource-strip" role="status" aria-live="polite">
@@ -254,6 +257,7 @@
     <div class="modal-overlay pause-overlay" id="pause-overlay" hidden>
       <div class="pause-card">
         <div class="modal-kicker" data-i18n="pause.kicker">THE BATTLE WAITS</div>
+        <p class="pause-brand" data-i18n="game.title">Age of Empires II: Riftwatch</p>
         <h2 data-i18n="pause.title">Paused</h2>
         <div class="modal-rule"></div>
         <p class="pause-flavor" data-i18n="pause.flavor">“Hold the line. The Rift will settle.”</p>
@@ -285,7 +289,7 @@
       <div class="end-card">
         <div class="end-ribbons"><i></i><svg id="end-icon"><use href="#i-crown"/></svg><i></i></div>
         <div class="modal-kicker" id="end-kicker">THE FRONTIER IS YOURS</div>
-        <h2 id="end-title">A Crown of Riftwatch</h2>
+        <h2 id="end-title">Age of Empires II: Riftwatch</h2>
         <p id="end-desc">Ten raids broken. The chronicles will remember your name.</p>
         <div class="end-stats">
           <div><b id="end-waves">10</b><span data-i18n="end.raids">Raids survived</span></div>

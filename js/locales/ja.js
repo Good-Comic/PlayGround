@@ -1,7 +1,11 @@
 export const ui = {
-  'app.title': 'リフトウォッチ — 合流帝国',
-  'a11y.battlefield': 'リフトウォッチの戦場',
-  'menu.kicker': '合流帝国',
+  'app.title': 'エイジ オブ エンパイア II：裂境の守り',
+  'game.title': 'エイジ オブ エンパイア II：裂境の守り',
+  'game.series': 'エイジ オブ エンパイア II：',
+  'game.subtitle': '裂境の守り',
+  'game.kicker': 'エイジ オブ エンパイア II',
+  'brand.short': 'AOE II · 裂境の守り',
+  'a11y.battlefield': 'エイジ オブ エンパイア II：裂境の守り の戦場',
   'menu.lede': 'リフトが開いた。十度の襲撃が、あなたの人々と合流地の間に立ちはだかる。',
   'menu.civ': '文明',
   'menu.biome': '地形',
@@ -9,7 +13,7 @@ export const ui = {
   'menu.seed': 'シード',
   'menu.seedPlaceholder': 'ランダム',
   'menu.seedHint': '同じシード、同じ辺境。',
-  'menu.start': 'ゲーム開始',
+  'menu.start': 'Start Game',
   'menu.howto': '遊び方',
   'menu.factCivs': '文明',
   'menu.factRaids': '襲撃',
@@ -147,10 +151,10 @@ export const ui = {
   'rarity.LEGENDARY': 'レジェンド',
   'rarity.LEGACY': 'レガシー',
   'end.winKicker': '{biome}はあなたのもの',
-  'end.winTitle': '{civ}の王冠',
+  'end.winTitle': '{civ} — {game}',
   'end.winDesc': '{civ}の旗の下、{count}度の襲撃を砕いた。年代記はこの守りを記憶する。',
   'end.lossKicker': 'リフトは閉じる',
-  'end.lossTitle': '最後の炉が消える',
+  'end.lossTitle': '{game} — 最後の炉が消える',
   'end.lossDesc': '町の中心は陥落した。王国は灰へ戻る。',
   'end.raids': '耐えた襲撃',
   'end.kills': '討った略奪者',
@@ -194,6 +198,8 @@ export const ui = {
   'command.advancingTooltip': '{age}を研究中。あと{seconds}秒。',
   'command.trainTooltip': '{unit}を訓練 — {cost} · {time}秒',
   'command.buildTooltip': '{name}を建設 — {cost} · {time}秒',
+  'command.buildPage': '次へ',
+  'command.buildPageTooltip': '次の建築ページを表示（{page}/{total}）',
   'command.control': '操作',
   'command.release': '解除',
   'command.controlTooltip': 'リフトウォーデンを直接操作（Tab）。WASD 移動 · Q 標的 · E イージス。',
@@ -227,6 +233,7 @@ export const ui = {
   'toast.enraged': '襲撃は激怒した。彼らは疲れない。',
   'toast.spoils': '襲撃を破った。戦利品：食料 +{food}、木材 +{wood}、金 +{gold}。',
   'toast.rerollNeeds': 'リロールには{cost}ゴールドが必要。',
+  'toast.midBreak': '中盤の休息：次の襲撃まで75秒。再建せよ。',
   'toast.duelWon': '決闘に勝利。英雄に60の盾。',
   'toast.boonClaimed': '恩恵を得た：{name}。',
   'toast.notEnoughBuild': '{name}を建てる資源が足りない。',
@@ -292,13 +299,19 @@ export const content = {
   age: { 1: '封建時代', 2: '城郭時代', 3: '帝国時代' },
   unit: {
     villager: { name: '村人', role: '町の人々', desc: '資源を採集し、王国の建築を担う。' },
-    militia: { name: '民兵', role: '歩兵', desc: '樫と鉄の盾。堅牢で忠実、容赦なし。' },
-    spearman: { name: '槍兵', role: '対騎兵', desc: '長い槍と踏ん張る足。騎兵と戦象に2倍のダメージ。' },
-    archer: { name: '長弓兵', role: '弓兵', desc: '林の端から死を降らせる。単独では脆い。' },
-    skirmisher: { name: '散兵', role: '遠距離', desc: '安価な散兵。密集した弓兵を罰する。' },
+    militia: { name: '刀盾兵', role: '歩兵', desc: '盾を構える戦列の守り手。軍の背骨。' },
+    spearman: { name: '槍兵', role: '対騎兵', desc: '長槍を構える。騎兵と戦象に2倍のダメージ。' },
+    archer: { name: '歩弓兵', role: '弓兵', desc: '林の端から矢の雨を降らせる。単独では脆い。' },
+    skirmisher: { name: '散射手', role: '遠距離', desc: '安価な散兵。密集した弓兵を罰する。' },
+    light_cavalry: { name: '軽騎兵', role: '騎兵', desc: '攻城兵器、招募使、孤立した弓兵を狩る快速騎兵。' },
+    horse_archer: { name: '弓騎兵', role: '騎射', desc: '馬上から矢を放つ機動散兵。' },
+    guard: { name: '精鋭守衛', role: '重装歩兵', desc: '揺らぐ戦列を支える装甲の古参兵。' },
+    mangonel: { name: '投石車', role: '攻城', desc: '巨石を放ち、密集隊形に範囲ダメージを与える。' },
+    recruiter: { name: '招募使', role: '支援', desc: '金と安全な通行を餌に敵兵を寝返らせる。' },
+    patrol_cart: { name: '巡防車', role: '遠距離支援', desc: '機動する監視台。巡回隊に弓を加える。' },
     knight: { name: '灰燼の騎士', role: '騎兵', desc: '古き王冠最後の誓約騎手。' },
     elephant: { name: '戦象', role: '騎兵', desc: '生ける城壁。遅いが巨大で、歩兵を恐れさせる。' },
-    ram: { name: '破城槌', role: '攻城', desc: '門と壁を砕くが、兵士にはほぼ無力。' },
+    ram: { name: '破城槌', role: '攻城', desc: '建物に4倍のダメージ。兵士にはほぼ無力。' },
     commander: { name: 'リフトウォーデン', role: '英雄', desc: 'あなたの誓約の勇士。Qで標的、Eで盾。' },
     decoy: { name: '囮の荷車', role: '囮', desc: '藁の騎手。略奪者の目を本城から逸らす。' },
     prototype: { name: 'リフトの試作機', role: '遺物', desc: '旧世界の唸る機関。その矢は蒼い炎を帯びる。' },
@@ -309,13 +322,22 @@ export const content = {
     warlord2: { name: 'リフト元帥', role: '軍閥' },
   },
   building: {
-    towncenter: { name: '町の中心', desc: '王国の心臓。村人を訓練し、時代を進める。' },
-    house: { name: '家', desc: '人口上限を10増やす。' },
-    barracks: { name: '兵舎', desc: '民兵と槍兵を訓練する。' },
-    archery_range: { name: '射撃場', shortName: '射撃', desc: '長弓兵と散兵を訓練する。' },
-    stable: { name: '厩舎', desc: '灰燼の騎士を訓練し、解放後は戦象も訓練する。' },
-    tower: { name: '見張り塔', desc: '7タイル内の略奪者に矢を放つ。' },
+    core: { name: '町の中心', desc: '王国の心臓。村人を訓練し、時代を進める。' },
+    house: { name: '家', desc: '軍事人口上限を10増やす。' },
     farm: { name: '小麦農地', desc: '時間とともに食料を生む静かな畑。' },
+    camp: { name: '補給所', shortName: '補給', desc: '前線の搬入口。8タイル内の採集効率が落ちない。' },
+    barracks: { name: '兵舎', desc: '刀盾兵、槍兵、精鋭守衛を訓練する。' },
+    range: { name: '射撃場', shortName: '射撃', desc: '歩弓兵と散射手を訓練する。' },
+    stable: { name: '厩舎', desc: '軽騎兵と弓騎兵を訓練し、解放後は戦象も訓練する。' },
+    tower: { name: '見張り塔', desc: '6タイル内の見える略奪者に矢を放つ。' },
+    wall: { name: '石壁', shortName: '壁', desc: '安価な障壁。略奪者を塔の射程へ導く。' },
+    gate: { name: '城門', shortName: '門', desc: '味方の兵には開く堅牢な門。' },
+    workshop: { name: '攻城工房', shortName: '工房', desc: '破城槌、投石車、巡防車を建造する。' },
+    market: { name: '市場', desc: '辺境と交易し、少量の金を継続的に生む。' },
+    shrine: { name: '聖所', desc: '近くの味方を治療し、招募使を訓練する。' },
+    forge: { name: '鍛冶場', desc: '近くの兵士のダメージ +10%。' },
+    monument: { name: '記念殿', desc: '帝国の象徴。人口上限を15増やす。' },
+    fishing_hut: { name: '漁小屋', shortName: '漁', desc: '水辺に建て、食料を生み漁獲を保管する。' },
   },
   boon: {
     farwatch: { name: '遠見の教義', desc: '弓兵と塔の射程 +1。' },
@@ -370,7 +392,7 @@ export const content = {
     },
     "RAID": {
       "name": "掠奪隊",
-      "desc": "略奪者は村人と農場を優先。"
+      "desc": "騎兵はイベント開始後20秒間、8タイル内の見える補給所を優先。"
     },
     "SHIELD": {
       "name": "盾壁",
@@ -390,7 +412,7 @@ export const content = {
     },
     "SMOKE": {
       "name": "煙幕",
-      "desc": "煙幕でプレイヤーの射程 -2。"
+      "desc": "煙幕で双方の射程 -1、最低 2 は保持。"
     },
     "CONVOY": {
       "name": "補給隊",
@@ -410,7 +432,7 @@ export const content = {
     },
     "RELAY": {
       "name": "伝令",
-      "desc": "敵の移動速度 +15%。"
+      "desc": "敵の移動速度 +10%。"
     },
     "FEINT": {
       "name": "陽動",
@@ -430,7 +452,7 @@ export const content = {
     },
     "RALLY": {
       "name": "集結",
-      "desc": "敵の攻撃速度 +15%。"
+      "desc": "敵の攻撃速度 +10%。"
     },
     "SCOUT": {
       "name": "斥候",
@@ -438,7 +460,7 @@ export const content = {
     },
     "DRAIN": {
       "name": "吸収",
-      "desc": "吸収領域でプレイヤーの採集速度が半減。"
+      "desc": "吸収領域で採集速度 -15%。"
     },
     "BELL": {
       "name": "警鐘",
@@ -446,11 +468,11 @@ export const content = {
     },
     "HUNT": {
       "name": "狩り",
-      "desc": "略奪者は騎兵と村人を狩る。"
+      "desc": "敵の槍兵は6タイル内の見える騎兵だけを追う。"
     },
     "SAPPER": {
       "name": "工兵",
-      "desc": "歩兵の建物ダメージが2倍。"
+      "desc": "歩兵の建物ダメージ +50%。"
     },
     "MORALE": {
       "name": "士気",

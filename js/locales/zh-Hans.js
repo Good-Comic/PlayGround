@@ -1,7 +1,11 @@
 export const ui = {
-  "app.title": "裂界守望 — 汇流帝国",
-  "a11y.battlefield": "裂界守望战场",
-  "menu.kicker": "汇流帝国",
+  "app.title": "世纪帝国二：裂境守望",
+  "game.title": "世纪帝国二：裂境守望",
+  "game.series": "世纪帝国二：",
+  "game.subtitle": "裂境守望",
+  "game.kicker": "世纪帝国二",
+  "brand.short": "世纪帝国II · 裂境守望",
+  "a11y.battlefield": "世纪帝国二：裂境守望战场",
   "menu.lede": "裂界已然开启。十次袭击横亘在你的人民与汇流之地之间。",
   "menu.civ": "文明",
   "menu.biome": "地貌",
@@ -9,7 +13,7 @@ export const ui = {
   "menu.seed": "种子",
   "menu.seedPlaceholder": "随机",
   "menu.seedHint": "相同种子，相同边境。",
-  "menu.start": "开始游戏",
+  "menu.start": "Start Game",
   "menu.howto": "玩法说明",
   "menu.factCivs": "文明",
   "menu.factRaids": "袭击",
@@ -147,10 +151,10 @@ export const ui = {
   "rarity.LEGENDARY": "传奇",
   "rarity.LEGACY": "传承",
   "end.winKicker": "{biome}属于你",
-  "end.winTitle": "{civ}之冠",
+  "end.winTitle": "{civ} — {game}",
   "end.winDesc": "{count} 次袭击在{civ}的旗帜下粉碎。编年史将记住这场坚守。",
   "end.lossKicker": "裂界闭合",
-  "end.lossTitle": "最后炉火熄灭",
+  "end.lossTitle": "{game} — 最后炉火熄灭",
   "end.lossDesc": "城镇中心已然陷落。你的王国化为余烬。",
   "end.raids": "度过袭击",
   "end.kills": "击杀掠袭者",
@@ -194,6 +198,8 @@ export const ui = {
   "command.advancingTooltip": "正在研究{age}，还需 {seconds} 秒。",
   "command.trainTooltip": "训练{unit} — {cost} · {time} 秒",
   "command.buildTooltip": "建造{name} — {cost} · {time} 秒",
+  "command.buildPage": "更多",
+  "command.buildPageTooltip": "显示下一页建筑（{page}/{total}）",
   "command.control": "操控",
   "command.release": "解除",
   "command.controlTooltip": "直接操控裂界守望者（Tab）。WASD 移动 · Q 标记 · E 神盾。",
@@ -227,6 +233,7 @@ export const ui = {
   "toast.enraged": "袭击陷入狂怒。他们不会疲倦。",
   "toast.spoils": "袭击已破。战利品：食物 +{food}、木材 +{wood}、黄金 +{gold}。",
   "toast.rerollNeeds": "重抽需要 {cost} 金币。",
+  "toast.midBreak": "中场整备：下一波袭击前有 75 秒重建。",
   "toast.duelWon": "勇士对决胜利！英雄获得 60 护盾。",
   "toast.boonClaimed": "已领取恩赐：{name}。",
   "toast.notEnoughBuild": "资源不足，无法建造{name}。",
@@ -389,24 +396,54 @@ export const content = {
       "desc": "采集资源并兴建王国工程。"
     },
     "militia": {
-      "name": "民兵",
+      "name": "刀盾兵",
       "role": "步兵",
-      "desc": "橡木与铁的盾墙。坚毅、忠诚、绝不留情。"
+      "desc": "持盾的阵线守卫。每支军队的骨干。"
     },
     "spearman": {
       "name": "长枪兵",
       "role": "反骑兵",
-      "desc": "长杆与稳固步伐。对骑兵与战象造成双倍伤害。"
+      "desc": "稳固的长枪。对骑兵与战象造成双倍伤害。"
     },
     "archer": {
-      "name": "长弓手",
-      "role": "弓手",
-      "desc": "自林线降下死亡。落单时十分脆弱。"
+      "name": "步弓兵",
+      "role": "弓兵",
+      "desc": "自林线降下箭雨。落单时十分脆弱。"
     },
     "skirmisher": {
-      "name": "散兵",
+      "name": "散射手",
       "role": "远程",
       "desc": "廉价散兵，专门惩罚成群弓手。"
+    },
+    "light_cavalry": {
+      "name": "轻骑兵",
+      "role": "骑兵",
+      "desc": "快速骑兵，专门追击攻城器、招募使与落单弓手。"
+    },
+    "horse_archer": {
+      "name": "弓骑兵",
+      "role": "骑射",
+      "desc": "边驰边射的骑马散兵。"
+    },
+    "guard": {
+      "name": "精锐守卫",
+      "role": "重装步兵",
+      "desc": "披甲老兵，稳住动摇的阵线。"
+    },
+    "mangonel": {
+      "name": "投石车",
+      "role": "攻城",
+      "desc": "投掷巨石，对密集阵型造成范围伤害。"
+    },
+    "recruiter": {
+      "name": "招募使",
+      "role": "支援",
+      "desc": "以黄金与安全通行为条件，策反敌方士兵。"
+    },
+    "patrol_cart": {
+      "name": "巡防车",
+      "role": "远程支援",
+      "desc": "机动的守望平台，为巡逻队增添一支弓。"
     },
     "knight": {
       "name": "灰烬骑士",
@@ -419,9 +456,9 @@ export const content = {
       "desc": "活城墙。缓慢、庞大，令步兵胆寒。"
     },
     "ram": {
-      "name": "攻城槌",
+      "name": "冲车",
       "role": "攻城",
-      "desc": "撞碎城门与城墙，但面对士兵几乎无力。"
+      "desc": "对建筑造成四倍伤害，但面对士兵几乎无力。"
     },
     "commander": {
       "name": "裂界守望者",
@@ -460,35 +497,22 @@ export const content = {
     }
   },
   "building": {
-    "towncenter": {
-      "name": "城镇中心",
-      "desc": "王国之心。训练村民并推进时代。"
-    },
-    "house": {
-      "name": "房屋",
-      "desc": "提升人口上限十点。"
-    },
-    "barracks": {
-      "name": "兵营",
-      "desc": "训练民兵与长枪兵。"
-    },
-    "archery_range": {
-      "name": "射箭场",
-      "shortName": "射箭",
-      "desc": "训练长弓手与散兵。"
-    },
-    "stable": {
-      "name": "马厩",
-      "desc": "训练灰烬骑士，解锁后也可训练战象。"
-    },
-    "tower": {
-      "name": "瞭望塔",
-      "desc": "对七格内的掠袭者射箭。"
-    },
-    "farm": {
-      "name": "麦田",
-      "desc": "随时间产出食物的宁静田地。"
-    }
+    "core": { "name": "城镇中心", "desc": "王国之心。训练村民并推进时代。" },
+    "house": { "name": "房屋", "desc": "提升军事人口上限十点。" },
+    "farm": { "name": "麦田", "desc": "随时间产出食物的宁静田地。" },
+    "camp": { "name": "工棚", "shortName": "工棚", "desc": "前线交付点，八格内采集效率不降。" },
+    "barracks": { "name": "兵营", "desc": "训练刀盾兵、长枪兵与精锐守卫。" },
+    "range": { "name": "射箭场", "shortName": "射箭", "desc": "训练步弓兵与散射手。" },
+    "stable": { "name": "马厩", "desc": "训练轻骑兵与弓骑兵；解锁后可训练战象。" },
+    "tower": { "name": "瞭望塔", "desc": "对六格内可见的掠袭者射箭。" },
+    "wall": { "name": "石墙", "shortName": "墙", "desc": "便宜屏障，引导掠袭者进入箭塔射程。" },
+    "gate": { "name": "门楼", "shortName": "门", "desc": "坚固城门，会为我方士兵开启。" },
+    "workshop": { "name": "攻城工坊", "shortName": "工坊", "desc": "建造冲车、投石车与巡防车。" },
+    "market": { "name": "市集", "desc": "与边境交易，持续产出少量黄金。" },
+    "shrine": { "name": "圣所", "desc": "治疗附近友军，并训练招募使。" },
+    "forge": { "name": "锻造场", "desc": "附近士兵伤害 +10%。" },
+    "monument": { "name": "纪念殿", "desc": "帝国象征，提升人口上限十五点。" },
+    "fishing_hut": { "name": "渔屋", "shortName": "渔屋", "desc": "临水而建，产出食物并存放渔获。" }
   },
   "boon": {
     "farwatch": {
@@ -669,7 +693,7 @@ export const content = {
     },
     "RAID": {
       "name": "掠袭队",
-      "desc": "掠袭者优先攻击村民与农田。"
+      "desc": "骑兵在事件启动后 20 秒内优先攻击 8 格内可见的工棚。"
     },
     "SHIELD": {
       "name": "盾墙",
@@ -689,7 +713,7 @@ export const content = {
     },
     "SMOKE": {
       "name": "烟幕",
-      "desc": "烟幕使玩家远程射程 -2。"
+      "desc": "烟幕使双方远程射程 -1，最低保留 2。"
     },
     "CONVOY": {
       "name": "补给车队",
@@ -709,7 +733,7 @@ export const content = {
     },
     "RELAY": {
       "name": "传令手",
-      "desc": "敌军移动速度 +15%。"
+      "desc": "敌军移动速度 +10%。"
     },
     "FEINT": {
       "name": "佯攻",
@@ -729,7 +753,7 @@ export const content = {
     },
     "RALLY": {
       "name": "集结",
-      "desc": "敌军攻击速度 +15%"
+      "desc": "敌军攻击速度 +10%。"
     },
     "SCOUT": {
       "name": "斥候",
@@ -737,7 +761,7 @@ export const content = {
     },
     "DRAIN": {
       "name": "汲取",
-      "desc": "汲取区域使玩家采集速度减半。"
+      "desc": "汲取区域使采集速度 -15%。"
     },
     "BELL": {
       "name": "警钟",
@@ -745,11 +769,11 @@ export const content = {
     },
     "HUNT": {
       "name": "猎杀",
-      "desc": "掠袭者猎杀骑兵与村民。"
+      "desc": "敌方枪兵只追击 6 格内可见的骑兵。"
     },
     "SAPPER": {
       "name": "工兵",
-      "desc": "步兵对建筑伤害加倍。"
+      "desc": "步兵对建筑伤害 +50%。"
     },
     "MORALE": {
       "name": "士气",

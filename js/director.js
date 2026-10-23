@@ -4,11 +4,11 @@ import { clamp, hash2 } from './utils.js';
 import { t } from './i18n.js';
 
 const TACTICS = [
-  { id: 'ranged', label: 'Screen the Archers', counter: 'knight' },
+  { id: 'ranged', label: 'Screen the Archers', counter: 'militia' },
   { id: 'cavalry', label: 'Brace the Line', counter: 'spearman' },
   { id: 'tower', label: 'Sunder the Towers', counter: 'ram' },
-  { id: 'map', label: 'Contest the Frontier', counter: 'marauder' },
-  { id: 'worker', label: 'Harry the Villagers', counter: 'raider' },
+  { id: 'map', label: 'Contest the Frontier', counter: 'light_cavalry' },
+  { id: 'worker', label: 'Harry the Villagers', counter: 'horse_archer' },
 ];
 
 const CIV_PREFERENCE = {
@@ -36,6 +36,7 @@ const ACT_ONE_END = 5;
 function unitThreat(type) {
   const def = UNIT_TYPES[type];
   if (!def) return 1;
+  if (def.threat) return def.threat;
   const cost = def.cost || {};
   return Math.max(1,
     (cost.food || 0) + (cost.wood || 0) * .8 + (cost.gold || 0) * 1.15 + (cost.stone || 0) +

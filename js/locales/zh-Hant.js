@@ -1,7 +1,11 @@
 export const ui = {
-  'app.title': '裂界守望 — 匯流帝國',
-  'a11y.battlefield': '裂界守望戰場',
-  'menu.kicker': '匯流帝國',
+  'app.title': '世紀帝國二：裂境守望',
+  'game.title': '世紀帝國二：裂境守望',
+  'game.series': '世紀帝國二：',
+  'game.subtitle': '裂境守望',
+  'game.kicker': '世紀帝國二',
+  'brand.short': '世紀帝國II · 裂境守望',
+  'a11y.battlefield': '世紀帝國二：裂境守望戰場',
   'menu.lede': '裂界已然開啟。十次襲擊橫亙在你的人民與匯流之地之間。',
   'menu.civ': '文明',
   'menu.biome': '地貌',
@@ -9,7 +13,7 @@ export const ui = {
   'menu.seed': '種子',
   'menu.seedPlaceholder': '隨機',
   'menu.seedHint': '相同種子，相同邊境。',
-  'menu.start': '開始遊戲',
+  'menu.start': 'Start Game',
   'menu.howto': '玩法說明',
   'menu.factCivs': '文明',
   'menu.factRaids': '襲擊',
@@ -147,10 +151,10 @@ export const ui = {
   'rarity.LEGENDARY': '傳奇',
   'rarity.LEGACY': '傳承',
   'end.winKicker': '{biome}屬於你',
-  'end.winTitle': '{civ}之冠',
+  'end.winTitle': '{civ} — {game}',
   'end.winDesc': '{count} 次襲擊在{civ}的旗幟下粉碎。編年史將記住這場堅守。',
   'end.lossKicker': '裂界閉合',
-  'end.lossTitle': '最後爐火熄滅',
+  'end.lossTitle': '{game} — 最後爐火熄滅',
   'end.lossDesc': '城鎮中心已然陷落。你的王國化為餘燼。',
   'end.raids': '度過襲擊',
   'end.kills': '擊殺掠襲者',
@@ -194,6 +198,8 @@ export const ui = {
   'command.advancingTooltip': '正在研究{age}，尚需 {seconds} 秒。',
   'command.trainTooltip': '訓練{unit} — {cost} · {time} 秒',
   'command.buildTooltip': '建造{name} — {cost} · {time} 秒',
+  'command.buildPage': '更多',
+  'command.buildPageTooltip': '顯示下一頁建築（{page}／{total}）',
   'command.control': '操控',
   'command.release': '解除',
   'command.controlTooltip': '直接操控裂界守望者（Tab）。WASD 移動 · Q 標記 · E 神盾。',
@@ -227,6 +233,7 @@ export const ui = {
   'toast.enraged': '襲擊陷入狂怒。他們不會疲倦。',
   'toast.spoils': '襲擊已破。戰利品：食物 +{food}、木材 +{wood}、黃金 +{gold}。',
   'toast.rerollNeeds': '重抽需要 {cost} 金幣。',
+  'toast.midBreak': '中場整備：下一波襲擊前有 75 秒重建。',
   'toast.duelWon': '勇士對決勝利！英雄獲得 60 護盾。',
   'toast.boonClaimed': '已領取恩賜：{name}。',
   'toast.notEnoughBuild': '資源不足，無法建造{name}。',
@@ -292,13 +299,19 @@ export const content = {
   age: { 1: '封建時代', 2: '城堡時代', 3: '帝國時代' },
   unit: {
     villager: { name: '村民', role: '城鎮居民', desc: '採集資源並興建王國工程。' },
-    militia: { name: '民兵', role: '步兵', desc: '橡木與鐵的盾牆。堅毅、忠誠、絕不留情。' },
-    spearman: { name: '長槍兵', role: '反騎兵', desc: '長桿與穩固步伐。對騎兵與戰象造成雙倍傷害。' },
-    archer: { name: '長弓手', role: '弓手', desc: '自林線降下死亡。落單時十分脆弱。' },
-    skirmisher: { name: '散兵', role: '遠程', desc: '廉價散兵，專門懲罰成群弓手。' },
+    militia: { name: '刀盾兵', role: '步兵', desc: '持盾的陣線守衛。每支軍隊的骨幹。' },
+    spearman: { name: '長槍兵', role: '反騎兵', desc: '穩固的長槍。對騎兵與戰象造成雙倍傷害。' },
+    archer: { name: '步弓兵', role: '弓兵', desc: '自林線降下箭雨。落單時十分脆弱。' },
+    skirmisher: { name: '散射手', role: '遠程', desc: '廉價散兵，專門懲罰成群弓手。' },
+    light_cavalry: { name: '輕騎兵', role: '騎兵', desc: '快速騎兵，專門追擊攻城器、招募使與落單弓手。' },
+    horse_archer: { name: '弓騎兵', role: '騎射', desc: '邊馳邊射的騎馬散兵。' },
+    guard: { name: '精銳守衛', role: '重裝步兵', desc: '披甲老兵，穩住動搖的陣線。' },
+    mangonel: { name: '投石車', role: '攻城', desc: '投擲巨石，對密集陣型造成範圍傷害。' },
+    recruiter: { name: '招募使', role: '支援', desc: '以黃金與安全通行為條件，策反敵方士兵。' },
+    patrol_cart: { name: '巡防車', role: '遠程支援', desc: '機動的守望平台，為巡邏隊增添一支弓。' },
     knight: { name: '灰燼騎士', role: '騎兵', desc: '舊王冠最後的誓約騎手。' },
     elephant: { name: '戰象', role: '騎兵', desc: '活城牆。緩慢、龐大，令步兵膽寒。' },
-    ram: { name: '攻城槌', role: '攻城', desc: '撞碎城門與城牆，但面對士兵幾乎無力。' },
+    ram: { name: '衝車', role: '攻城', desc: '對建築造成四倍傷害，但面對士兵幾乎無力。' },
     commander: { name: '裂界守望者', role: '英雄', desc: '你的誓約勇士。按 Q 標記獵物；按 E 賜予護盾。' },
     decoy: { name: '誘餌車', role: '誘餌', desc: '草紮騎士，用來把掠襲者引離主堡。' },
     prototype: { name: '裂界原型', role: '遺物', desc: '舊世界嗡鳴的引擎。弩箭燃著蒼白火焰。' },
@@ -309,13 +322,22 @@ export const content = {
     warlord2: { name: '裂界元帥', role: '軍閥' },
   },
   building: {
-    towncenter: { name: '城鎮中心', desc: '王國之心。訓練村民並推進時代。' },
-    house: { name: '房屋', desc: '提升人口上限十點。' },
-    barracks: { name: '兵營', desc: '訓練民兵與長槍兵。' },
-    archery_range: { name: '射箭場', shortName: '射箭', desc: '訓練長弓手與散兵。' },
-    stable: { name: '馬廄', desc: '訓練灰燼騎士，解鎖後也可訓練戰象。' },
-    tower: { name: '瞭望塔', desc: '對七格內的掠襲者射箭。' },
+    core: { name: '城鎮中心', desc: '王國之心。訓練村民並推進時代。' },
+    house: { name: '房屋', desc: '提升軍事人口上限十點。' },
     farm: { name: '麥田', desc: '隨時間產出食物的寧靜田地。' },
+    camp: { name: '工棚', shortName: '工棚', desc: '前線交付點，八格內採集效率不降。' },
+    barracks: { name: '兵營', desc: '訓練刀盾兵、長槍兵與精銳守衛。' },
+    range: { name: '射箭場', shortName: '射箭', desc: '訓練步弓兵與散射手。' },
+    stable: { name: '馬廄', desc: '訓練輕騎兵與弓騎兵；解鎖後可訓練戰象。' },
+    tower: { name: '瞭望塔', desc: '對六格內可見的掠襲者射箭。' },
+    wall: { name: '石牆', shortName: '牆', desc: '便宜屏障，引導掠襲者進入箭塔射程。' },
+    gate: { name: '門樓', shortName: '門', desc: '堅固城門，會為我方士兵開啟。' },
+    workshop: { name: '攻城工坊', shortName: '工坊', desc: '建造衝車、投石車與巡防車。' },
+    market: { name: '市集', desc: '與邊境交易，持續產出少量黃金。' },
+    shrine: { name: '聖所', desc: '治療附近友軍，並訓練招募使。' },
+    forge: { name: '鍛造場', desc: '附近士兵傷害 +10%。' },
+    monument: { name: '紀念殿', desc: '帝國象徵，提升人口上限十五點。' },
+    fishing_hut: { name: '漁屋', shortName: '漁屋', desc: '臨水而建，產出食物並存放漁獲。' },
   },
   boon: {
     farwatch: { name: '遠望教條', desc: '弓手與箭塔射程 +1 格。' },
@@ -370,7 +392,7 @@ export const content = {
     },
     "RAID": {
       "name": "掠襲隊",
-      "desc": "掠襲者優先攻擊村民與農田。"
+      "desc": "騎兵在事件啟動後 20 秒內優先攻擊 8 格內可見的工棚。"
     },
     "SHIELD": {
       "name": "盾牆",
@@ -390,7 +412,7 @@ export const content = {
     },
     "SMOKE": {
       "name": "煙幕",
-      "desc": "煙幕使玩家遠程射程 -2。"
+      "desc": "煙幕使雙方遠程射程 -1，最低保留 2。"
     },
     "CONVOY": {
       "name": "補給車隊",
@@ -410,7 +432,7 @@ export const content = {
     },
     "RELAY": {
       "name": "傳令手",
-      "desc": "敵軍移動速度 +15%。"
+      "desc": "敵軍移動速度 +10%。"
     },
     "FEINT": {
       "name": "佯攻",
@@ -430,7 +452,7 @@ export const content = {
     },
     "RALLY": {
       "name": "集結",
-      "desc": "敵軍攻擊速度 +15%。"
+      "desc": "敵軍攻擊速度 +10%。"
     },
     "SCOUT": {
       "name": "斥候",
@@ -438,7 +460,7 @@ export const content = {
     },
     "DRAIN": {
       "name": "汲取",
-      "desc": "汲取區域使玩家採集速度減半。"
+      "desc": "汲取區域使採集速度 -15%。"
     },
     "BELL": {
       "name": "警鐘",
@@ -446,11 +468,11 @@ export const content = {
     },
     "HUNT": {
       "name": "獵殺",
-      "desc": "掠襲者獵殺騎兵與村民。"
+      "desc": "敵方槍兵只追擊 6 格內可見的騎兵。"
     },
     "SAPPER": {
       "name": "工兵",
-      "desc": "步兵對建築傷害加倍。"
+      "desc": "步兵對建築傷害 +50%。"
     },
     "MORALE": {
       "name": "士氣",

@@ -9,6 +9,7 @@ const ICON_FOR = {
   stop: 'stop', hold: 'hold', sword: 'sword', bow: 'bow', horse: 'horse',
   hammer: 'hammer', skull: 'skull', speed: 'speed', hourglass: 'hourglass',
   shield: 'shield', flame: 'flame', coin: 'coin', crown: 'crown', scroll: 'scroll',
+  banner: 'banner', heart: 'heart', food: 'food', people: 'people',
   spear: 'sword', javelin: 'bow', elephant: 'shield', ram: 'hammer', commander: 'crown',
   decoy: 'scroll', age: 'hourglass', aegis: 'shield', mark: 'flame', control: 'speed',
 };
@@ -199,12 +200,13 @@ export class UI {
     this.el.end.classList.toggle('defeat', !victory);
     const civ = CIVILIZATIONS.find(c => c.id === (stats.civId || stats.civ?.id || stats.civ));
     const biome = BIOMES.find(b => b.id === (stats.biomeId || stats.biome?.id || stats.biome));
+    const gameName = t('game.title');
     this.el.endKicker.textContent = victory
       ? t('end.winKicker', { biome: (biome ? t(`biome.${biome.id}.name`) : t('end.frontier')).toUpperCase() })
       : t('end.lossKicker');
     this.el.endTitle.textContent = victory
-      ? t('end.winTitle', { civ: civ ? t(`civ.${civ.id}.name`).replace(/^The /, '') : 'Riftwatch' })
-      : t('end.lossTitle');
+      ? t('end.winTitle', { civ: civ ? t(`civ.${civ.id}.name`).replace(/^The /, '') : gameName, game: gameName })
+      : t('end.lossTitle', { game: gameName });
     this.el.endDesc.textContent = victory
       ? t('end.winDesc', { count: WAVES.length, civ: civ ? t(`civ.${civ.id}.name`) : t('end.yourRealm') })
       : t('end.lossDesc');
@@ -508,7 +510,7 @@ export class UI {
       if (def.attack) stats += `<span><b>${Math.round(def.attack * (e.team === 'player' && e.type === 'tower' ? game.effects.towerDamageMul : 1))}</b> ${t('selection.atk')}</span>`;
       if (e.queue?.length) stats += `<span><b>${t('selection.training')}</b> ${t(`unit.${e.queue[0].type}.name`)} (${Math.ceil(e.queue[0].remaining)}s)</span>`;
       el.selectionStats.innerHTML = stats;
-      el.panelHint.textContent = def.dropoff ? t('selection.hintDropoff') : def.pop ? t('selection.hintPop') : e.type === 'towncenter' ? t('selection.hintTownCenter') : t('selection.hintBuilding');
+      el.panelHint.textContent = def.dropoff ? t('selection.hintDropoff') : def.pop ? t('selection.hintPop') : e.type === 'core' ? t('selection.hintTownCenter') : t('selection.hintBuilding');
       this.drawPortrait(e);
     } else {
       const def = UNIT_TYPES[e.type];
@@ -563,7 +565,7 @@ export class UI {
 
   commandSignature(game) {
     const hero = game.hero;
-    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
+    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
   }
 
   getCommands(game) {
@@ -574,7 +576,7 @@ export class UI {
       const b = sel[0];
       if (b.team !== 'player' || b.construction < 1) return [];
       const commands = [];
-      if (b.type === 'towncenter' && b.team === 'player' && game.ageLevel < 3) {
+      if (b.type === 'core' && b.team === 'player' && game.ageLevel < 3) {
         const cost = AGE_COSTS[game.ageLevel];
         if (game.ageResearch) {
           commands.push({
@@ -603,11 +605,21 @@ export class UI {
     const hasVillager = playerSel.some(u => u.type === 'villager');
     const commands = [];
     if (hasVillager && playerSel.every(u => u.type === 'villager')) {
-      for (const type of BUILD_OPTIONS) {
+      const pageSize = 4;
+      const pages = Math.max(1, Math.ceil(BUILD_OPTIONS.length / pageSize));
+      const page = Math.min(pages - 1, Math.max(0, game.buildPage || 0));
+      game.buildPage = page;
+      for (const type of BUILD_OPTIONS.slice(page * pageSize, (page + 1) * pageSize)) {
         const def = BUILDING_TYPES[type];
         commands.push({
           id: `build:${type}`, label: t(`building.${type}.${def.shortName ? 'shortName' : 'name'}`), icon: def.icon,
           cost: shortCost(def.cost), tooltip: t('command.buildTooltip', { name: t(`building.${type}.name`), cost: shortCost(def.cost), time: def.buildTime }),
+        });
+      }
+      if (pages > 1) {
+        commands.push({
+          id: 'build:page', label: t('command.buildPage'), icon: 'scroll', tag: `${page + 1}/${pages}`,
+          tooltip: t('command.buildPageTooltip', { page: page + 1, total: pages }),
         });
       }
     }
@@ -633,7 +645,7 @@ export class UI {
       if (!id) continue;
       let cost = null;
       if (id.startsWith('train:')) cost = game.unitCost(id.slice(6));
-      else if (id.startsWith('build:')) cost = BUILDING_TYPES[id.slice(6)].cost;
+      else if (id.startsWith('build:') && id !== 'build:page') cost = BUILDING_TYPES[id.slice(6)].cost;
       else if (id === 'age:advance') cost = AGE_COSTS[game.ageLevel];
       if (cost) b.classList.toggle('unaffordable', !game.canAfford(cost));
       if (id === 'train:elephant' && !game.effects.elephantUnlocked) b.classList.add('unaffordable');
@@ -767,7 +779,7 @@ export class UI {
       ctx.fillStyle = roof; ctx.beginPath(); ctx.moveTo(-25, -40); ctx.lineTo(0, -66); ctx.lineTo(25, -40); ctx.closePath(); ctx.fill();
       ctx.fillStyle = roofLight; ctx.beginPath(); ctx.moveTo(0, -66); ctx.lineTo(25, -40); ctx.lineTo(2, -40); ctx.closePath(); ctx.fill();
       ctx.fillStyle = '#332616'; ctx.fillRect(-3, -18, 6, 13);
-    } else if (b.type === 'towncenter') {
+    } else if (b.type === 'core') {
       ctx.fillStyle = wall; ctx.fillRect(-34, -28, 68, 50);
       ctx.fillStyle = '#b6a580'; ctx.fillRect(-34, -28, 38, 50);
       ctx.fillStyle = '#7a6f59'; ctx.fillRect(12, -28, 22, 50);
@@ -851,7 +863,7 @@ export class UI {
       if (!b.alive) continue;
       const p = toMap(b.x + b.w / 2, b.y + b.h / 2);
       ctx.fillStyle = b.team === 'player' ? '#7fb3c2' : '#a63f35';
-      const s = b.type === 'towncenter' ? 7 : 4.5;
+      const s = b.type === 'core' ? 7 : 4.5;
       ctx.fillRect(p.x - s / 2, p.y - s / 2, s, s);
       if (b.selected) { ctx.strokeStyle = '#f1d28c'; ctx.lineWidth = 1.5; ctx.strokeRect(p.x - s / 2 - 1, p.y - s / 2 - 1, s + 2, s + 2); }
     }

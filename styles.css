@@ -571,6 +571,27 @@ svg { display: block; width: 1em; height: 1em; }
 
 /* ============ RIFTWATCH V3 ============ */
 .brand-word { letter-spacing: 3.2px; }
+.menu-title.stacked {
+  flex-direction: column; align-items: flex-start; gap: 0;
+  line-height: .9; letter-spacing: .03em;
+}
+.menu-title.stacked .title-series {
+  font-size: clamp(17px, 2.25vw, 31px);
+  font-weight: 400; letter-spacing: .16em; line-height: 1.25;
+  text-transform: uppercase; color: #c8ad74;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .55);
+}
+.menu-title.stacked .title-watch {
+  font-size: clamp(56px, 7.2vw, 110px);
+  letter-spacing: .015em; line-height: .92;
+}
+html[lang="zh-Hant"] .menu-title.stacked .title-series,
+html[lang="zh-Hans"] .menu-title.stacked .title-series,
+html[lang="ja"] .menu-title.stacked .title-series { letter-spacing: .08em; }
+.pause-brand {
+  margin: 0 0 7px; font-family: var(--serif); font-size: 9.5px;
+  letter-spacing: 1.8px; color: #b09257; text-transform: uppercase;
+}
 .menu-title.single {
   flex-direction: row; align-items: baseline; gap: 0;
   line-height: .92; letter-spacing: .035em;
@@ -675,6 +696,8 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 
 @media (max-width: 760px) {
   .menu-title.single span { font-size: clamp(36px, 12.5vw, 76px); }
+  .menu-title.stacked .title-series { font-size: clamp(14px, 4.6vw, 20px); letter-spacing: .08em; }
+  .menu-title.stacked .title-watch { font-size: clamp(34px, 11vw, 58px); }
   .menu-setup { margin-top: 16px; }
   .setup-field select, .setup-field input { font-size: 9.5px; letter-spacing: .2px; }
   .setup-field { padding: 6px 8px; }
@@ -687,8 +710,8 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
   .boss-head { gap: 6px; margin-bottom: 5px; }
   .boss-head b { font-size: 11px; letter-spacing: .8px; white-space: nowrap; }
   .boss-head span:last-child { font-size: 7.5px; white-space: nowrap; }
-  .intel-card { top: 112px; left: 50%; transform: translateX(-50%); width: min(350px, calc(100vw - 20px)); }
-  .intel-card:not([hidden]) ~ .toast-stack { top: 206px; }
+  .intel-card { top: 120px; left: 50%; transform: translateX(-50%); width: min(350px, calc(100vw - 20px)); }
+  .intel-card:not([hidden]) ~ .toast-stack { top: 220px; }
   .intel-head { padding: 7px 10px; }
   .intel-body { padding: 7px 10px 8px; }
   .boss-kicker { display: none; }

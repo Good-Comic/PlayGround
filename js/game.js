@@ -68,6 +68,7 @@ export class Game {
     this.boons = [];
     this.boonChoices = [];
     this.boonRerolls = 0;
+    this.buildPage = 0;
     this.stats = { kills: 0, gathered: 0, trained: 0, waves: 0, assists: 0 };
     this.director = new NemesisDirector(seed);
     this.lastWaveReport = null;
@@ -76,13 +77,17 @@ export class Game {
     this.pendingWavePlan = null;
     this.waveEvent = null;
     this.waveEventMods = null;
+    this.waveEventZone = null;
+    this.waveEventActive = true;
+    this.waveEventAt = 20;
+    this.waveEventWarned = false;
     this.waveDuelAssigned = false;
     this.intel = null;
     this.assistActive = false;
     this.waveIndex = 0;
     this.phase = 'prep';
-    this.prepTotal = 35;
-    this.prepTimer = 35;
+    this.prepTotal = 45;
+    this.prepTimer = 45;
     this.waveTotal = 0;
     this.waveName = t(`wave.0.name`);
     this.waveClock = 0;
@@ -132,8 +137,8 @@ export class Game {
   toast(text, type = '', duration) { this.hooks.toast?.(text, type, duration); }
 
   buildInitialBase() {
-    this.addBuilding('towncenter', 23, 25, true);
-    this.addBuilding('barracks', 18, 28, true);
+    this.addBuilding('core', 23, 25, true);
+    this.addBuilding('barracks', 17, 28, true);
     this.addBuilding('house', 28, 21, true);
     this.addBuilding('house', 30, 23, true);
     this.addBuilding('tower', 20, 21, true);
@@ -143,7 +148,7 @@ export class Game {
       this.spawnUnit('villager', 22.2, 29.2),
       this.spawnUnit('villager', 23.3, 29.5),
       this.spawnUnit('villager', 25.1, 29.4),
-      this.spawnUnit('villager', 26.1, 28.7),
+      this.spawnUnit('villager', 28.5, 29.6),
       this.spawnUnit('villager', 21.1, 27.7),
       this.spawnUnit('villager', 20.2, 26.9),
       this.spawnUnit('villager', 27.4, 29.1),
@@ -152,7 +157,7 @@ export class Game {
     this.spawnUnit('militia', 21.2, 24.2);
     this.spawnUnit('militia', 22.1, 24.7);
     this.spawnUnit('archer', 27.1, 24.6);
-    this.spawnUnit('knight', 27.4, 25.8);
+    this.spawnUnit('light_cavalry', 28.3, 26.3);
     this.hero = this.spawnUnit('commander', 25.4, 23.3, 'player', { hero: true });
 
     const wood1 = this.findResource('wood', 18.5, 22);
@@ -186,7 +191,7 @@ export class Game {
     this.camera.targetY = p.y;
   }
 
-  getTownCenter() { return this.buildings.find(b => b.type === 'towncenter' && b.team === 'player' && b.alive); }
+  getTownCenter() { return this.buildings.find(b => b.type === 'core' && b.team === 'player' && b.alive); }
   get population() { return this.units.filter(u => u.alive && u.team === 'player').reduce((s, u) => s + (u.pop ?? u.typeDef.pop ?? 0), 0); }
   get popCap() { return this.buildings.filter(b => b.alive && b.team === 'player' && b.construction >= 1).reduce((s, b) => s + (b.typeDef.pop || 0), 0); }
   get idleVillagers() { return this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager' && (u.state === 'idle' || u.state === 'hold')).length; }
@@ -336,8 +341,9 @@ export class Game {
   unitRange(u) {
     let r = u.typeDef.range;
     if (u.team === 'player' && u.typeDef.category === 'ranged') r += this.effects.archerRange;
-    if (u.team === 'player' && this.insideZone(u.x, u.y, 'smoke')) r -= 2;
-    return Math.max(0.5, r);
+    const smoke = this.insideZone(u.x, u.y, 'smoke');
+    if (smoke) r -= 1;
+    return Math.max(smoke ? 2 : 0.5, r);
   }
 
   insideZone(x, y, kind) {
@@ -355,7 +361,14 @@ export class Game {
     attack *= 1 + (this.ageLevel - 1) * 0.1;
     if (this.effects.veteran) attack *= 1 + Math.min(0.4, this.stats.kills * 0.01);
     if (u.type === 'villager') attack += this.effects.villagerAttackBonus;
+    if (this.nearBuildingAura('forge', u.x, u.y)) attack *= 1 + BUILDING_TYPES.forge.damageAura;
     return attack;
+  }
+
+  nearBuildingAura(type, x, y) {
+    const def = BUILDING_TYPES[type];
+    if (!def) return false;
+    return this.buildings.some(b => b.alive && b.team === 'player' && b.type === type && b.construction >= 1 && dist(x, y, b.x + b.w / 2, b.y + b.h / 2) <= (def.auraRadius || 6));
   }
 
   damageMul(u) {
@@ -480,8 +493,8 @@ export class Game {
         b.hp = Math.min(b.maxHp, b.hp + b.maxHp * dt * 0.05);
         continue;
       }
-      if (b.type === 'farm' && b.team === 'player') {
-        b.foodStore = (b.foodStore || 0) + this.effects.farmMul * this.effects.foodMul * 0.16 * dt;
+      if ((b.type === 'farm' || b.type === 'fishing_hut') && b.team === 'player') {
+        b.foodStore = (b.foodStore || 0) + this.effects.farmMul * this.effects.foodMul * (b.typeDef.foodRate || 0.16) * dt;
         if (b.foodStore > 1) {
           const gain = b.foodStore;
           b.foodStore -= gain;
@@ -490,7 +503,26 @@ export class Game {
         }
         continue;
       }
-      const shoots = b.type === 'towncenter' || b.type === 'tower' || (b.type === 'house' && this.effects.houseArrows);
+      if (b.type === 'market' && b.team === 'player') {
+        b.goldStore = (b.goldStore || 0) + (b.typeDef.goldRate || 0.08) * dt;
+        if (b.goldStore > 1) {
+          const gain = b.goldStore;
+          b.goldStore -= gain;
+          this.resources.gold += gain;
+          this.stats.gathered += gain;
+        }
+        continue;
+      }
+      if (b.type === 'shrine' && b.team === 'player') {
+        const radius = b.typeDef.healRadius || 5;
+        const rate = (b.typeDef.healRate || 2) * dt;
+        for (const u of this.units) {
+          if (!u.alive || u.team !== 'player' || u.hp >= u.maxHp) continue;
+          if (dist(u.x, u.y, b.x + b.w / 2, b.y + b.h / 2) <= radius) u.hp = Math.min(u.maxHp, u.hp + rate);
+        }
+        continue;
+      }
+      const shoots = b.type === 'core' || b.type === 'tower' || (b.type === 'house' && this.effects.houseArrows);
       if (shoots) {
         b.cooldown -= dt;
         if (b.cooldown <= 0) {
@@ -667,8 +699,9 @@ export class Game {
 
   autoTrainSoldier() {
     const options = [
-      ['barracks', 'spearman'], ['archery_range', 'archer'], ['stable', 'knight'],
-      ['barracks', 'militia'], ['archery_range', 'skirmisher'],
+      ['barracks', 'spearman'], ['range', 'archer'], ['stable', 'light_cavalry'],
+      ['barracks', 'militia'], ['range', 'skirmisher'], ['stable', 'horse_archer'],
+      ['workshop', 'ram'], ['barracks', 'guard'],
     ];
     const enemies = this.units.filter(u => u.alive && u.team === 'enemy');
     const cavalry = enemies.filter(u => u.typeDef.category === 'cavalry').length;
@@ -687,16 +720,16 @@ export class Game {
 
   updateEnemy(u, dt) {
     if (u.typeDef.boss) this.updateBoss(u, dt);
-    const flags = u.eventFlags || [];
+    const flags = this.waveEventActive ? (u.eventFlags || []) : [];
     if (u.eventRetreat > 0) {
       const camp = this.world.camps[(u.spawnGate || 0) % this.world.camps.length];
       if (camp) this.stepToward(u, camp.x, camp.y, dt);
       u.state = 'move';
       return;
     }
-    if (flags.includes('kite') && u.typeDef.category === 'ranged' && u.eventRetreatCd <= 0) {
-      const threat = this.units.find(o => o.alive && o.team === 'player' && o.typeDef.category === 'infantry' && dist(o.x, o.y, u.x, u.y) < 2.6);
-      if (threat) { u.eventRetreat = 1.6; u.eventRetreatCd = 4.2; }
+    if (flags.includes('kite') && u.typeDef.category === 'ranged' && u.eventRetreatCd <= 0 && (u.kiteCount || 0) < 2) {
+      const threat = this.units.find(o => o.alive && o.team === 'player' && o.typeDef.category === 'infantry' && dist(o.x, o.y, u.x, u.y) < 2);
+      if (threat) { u.eventRetreat = 1.6; u.eventRetreatCd = 4.2; u.kiteCount = (u.kiteCount || 0) + 1; }
     }
     if (flags.includes('morale') && !u.moraleUsed && u.hp / u.maxHp < .3) {
       u.moraleUsed = true;
@@ -721,21 +754,17 @@ export class Game {
         priority = this.buildings
           .filter(b => b.alive && b.team === 'player')
           .sort((a, b) => a.hp - b.hp)[0] || null;
-      } else if (flags.includes('raid')) {
-        const villagers = playerUnits.filter(o => o.type === 'villager');
-        const farms = this.buildings.filter(b => b.alive && b.team === 'player' && b.type === 'farm');
-        priority = [...villagers, ...farms]
-          .map(o => ({ o, d: dist2(u.x, u.y, o.x + (o.w ? o.w / 2 : 0), o.y + (o.h ? o.h / 2 : 0)) }))
-          .filter(entry => entry.d < 196)
+      } else if (flags.includes('raid') && u.typeDef.category === 'cavalry' && this.waveClock - this.waveEventAt <= 20) {
+        priority = this.buildings
+          .filter(b => b.alive && b.team === 'player' && b.type === 'camp')
+          .map(o => ({ o, d: dist2(u.x, u.y, o.x + o.w / 2, o.y + o.h / 2) }))
+          .filter(entry => entry.d < 64)
           .sort((a, b) => a.d - b.d)[0]?.o || null;
-      } else if (flags.includes('hunt')) {
-        const prey = [
-          ...playerUnits.filter(o => o.typeDef.category === 'cavalry'),
-          ...playerUnits.filter(o => o.type === 'villager'),
-        ];
-        priority = prey
+      } else if (flags.includes('hunt') && u.typeDef.family === 'P') {
+        priority = playerUnits
+          .filter(o => o.typeDef.category === 'cavalry')
           .map(o => ({ o, d: dist2(u.x, u.y, o.x, o.y) }))
-          .filter(entry => entry.d < 196)
+          .filter(entry => entry.d < 36)
           .sort((a, b) => a.d - b.d)[0]?.o || null;
       }
       let best = priority, bestD = priority ? dist2(u.x, u.y, priority.x + (priority.w ? priority.w / 2 : 0), priority.y + (priority.h ? priority.h / 2 : 0)) : Infinity;
@@ -892,7 +921,7 @@ export class Game {
       return;
     }
     let rate = 1.25;
-    if (this.insideZone(u.x, u.y, 'drain')) rate *= .5;
+    if (this.insideZone(u.x, u.y, 'drain')) rate *= .85;
     if (node.resource === 'wood') rate *= this.effects.woodMul;
     else if (node.resource === 'food') rate *= this.effects.foodMul;
     else if (node.resource === 'gold') rate *= this.effects.goldMul;
@@ -984,7 +1013,7 @@ export class Game {
       return;
     }
     u.state = 'build';
-    const buildTime = b.typeDef.buildTime * (b.type === 'towncenter' ? 0.7 : 1);
+    const buildTime = b.typeDef.buildTime * (b.type === 'core' ? 0.7 : 1);
     b.construction = Math.min(1, b.construction + dt * this.effects.buildSpeedMul / Math.max(2, buildTime));
     b.hp = Math.min(b.maxHp, b.maxHp * (0.14 + b.construction * 0.86));
     u.walkPhase += dt * 7;
@@ -1058,6 +1087,7 @@ export class Game {
     if (!tile || tile.terrain === 'water') return false;
     for (const b of this.buildings) {
       if (!b.alive) continue;
+      if (u?.team === 'player' && b.type === 'gate' && b.construction >= 1 && b.team === 'player') continue;
       if (x > b.x - 0.12 && x < b.x + b.w + 0.12 && y > b.y - 0.12 && y < b.y + b.h + 0.12) return false;
     }
     return true;
@@ -1094,15 +1124,18 @@ export class Game {
 
   counterMultiplier(u, target) {
     if (!target) return 1;
-    if (target.w) return this.unitCategory(u) === 'siege' ? 2.6 : 1;
-    const a = u.type, t = target.type;
-    if (a === 'spearman' && (target.typeDef.category === 'cavalry')) return 2;
-    if (a === 'skirmisher' && target.typeDef.category === 'ranged') return 1.6;
-    if (a === 'knight' && ['villager', 'archer', 'skirmisher', 'marauder'].includes(t)) return 1.35;
-    if (a === 'elephant' && target.typeDef.category === 'infantry') return 1.2;
-    if (a === 'militia' && target.typeDef.category === 'siege') return 1.4;
-    if ((a === 'archer' || a === 'marauder') && target.typeDef.category === 'siege') return 0.5;
-    if (this.unitCategory(u) === 'siege') return 0.25;
+    const a = u.typeDef.family;
+    const t = target.typeDef?.family;
+    if (target.w) {
+      if (a === 'B') return 4;
+      if (a === 'S') return 1.5;
+      return this.unitCategory(u) === 'siege' ? 1.25 : 1;
+    }
+    if (a === 'P' && ['C', 'A', 'W'].includes(t)) return 2;
+    if (a === 'K' && ['R', 'A'].includes(t)) return 1.6;
+    if (a === 'C' && ['S', 'V'].includes(t)) return 1.5;
+    if (a === 'B') return 0.25;
+    if (['R', 'K', 'A'].includes(a) && t === 'B') return 0.25;
     return 1;
   }
 
@@ -1152,6 +1185,16 @@ export class Game {
         p.alive = false;
         const source = p.source;
         this.applyDamage(target, p.damage, source);
+        if (source?.typeDef?.family === 'S') {
+          let hits = 0;
+          for (const e of this.units) {
+            if (e === target || !e.alive || e.team === source.team) continue;
+            if (dist(e.x, e.y, target.x, target.y) > 1.5) continue;
+            this.applyDamage(e, p.damage * 0.5, source);
+            if (++hits >= 7) break;
+          }
+          this.addParticles(p.tx, p.ty, 'ring', 'rgba(227,166,85,ALPHA)', 1.8, 9, 0.55);
+        }
         if (source?.team === 'player' && !target.w) {
           if (this.effects.slowOnHit > 0 && this.unitCategory(source) === 'ranged') {
             target.slowUntil = this.time + 1.5;
@@ -1209,8 +1252,7 @@ export class Game {
   applyDamage(target, amount, source) {
     if (!target || !target.alive) return;
     let damage = amount;
-    if (source?.typeDef?.category === 'siege' && target.w) damage *= 1.6;
-    if (source?.team === 'enemy' && target.w && source.buildingDamageMul > 1) {
+    if (this.waveEventActive && source?.team === 'enemy' && target.w && source.buildingDamageMul > 1) {
       const flags = source.eventFlags || [];
       const category = source.typeDef.category;
       if (category === 'siege' || flags.includes('breach') || (flags.includes('sapper') && category === 'infantry')) {
@@ -1229,7 +1271,7 @@ export class Game {
       }
     }
     if (target.team === 'enemy' && source?.team === 'player') this.director.recordDamage(source, damage);
-    if (source?.team === 'enemy' && target.team === 'player' && target.alive && source.eventFlags?.includes('fire') && source.typeDef.category === 'ranged' && (source.eventFireCd || 0) <= 0) {
+    if (this.waveEventActive && source?.team === 'enemy' && target.team === 'player' && target.alive && source.eventFlags?.includes('fire') && source.typeDef.category === 'ranged' && (source.eventFireCd || 0) <= 0) {
       source.eventFireCd = 3;
       this.zones.push({ x: target.x, y: target.y, r: 1.7, delay: .45, damage: 8, source, kind: 'fire', elapsed: 0, done: false });
     }
@@ -1265,7 +1307,7 @@ export class Game {
     if (target.w) {
       this.addParticles(target.x + target.w / 2, target.y + target.h / 2, 'smoke', 'rgba(67,58,45,ALPHA)', 6, 12, 1.4);
       this.addParticles(target.x + target.w / 2, target.y + target.h / 2, 'spark', 'rgba(212,128,75,ALPHA)', 2, 14, 1.0);
-      if (target.type === 'towncenter') this.triggerDefeat();
+      if (target.type === 'core') this.triggerDefeat();
       if (target.team === 'player') {
         const key = target.w ? `building.${target.type}.name` : `unit.${target.type}.name`;
         this.toast(t('toast.destroyed', { name: t(key) }), 'bad', 3200);
@@ -1402,6 +1444,10 @@ export class Game {
     this.intel = plan.intel;
     this.waveEvent = plan.event || null;
     this.waveEventMods = plan.eventMods || {};
+    this.waveEventZone = plan.eventZone || null;
+    this.waveEventAt = [20, 20, 25, 25, 45, 20, 30, 25, 30, 45][this.waveIndex] ?? 20;
+    this.waveEventActive = !this.waveEvent;
+    this.waveEventWarned = false;
     this.waveDuelAssigned = false;
     this.director.beginWave();
     this.assistActive = false;
@@ -1425,7 +1471,6 @@ export class Game {
     } else {
       this.spawnRiftfallHazards(plan);
     }
-    this.spawnEventZone(plan);
     for (const u of this.units) if (u.alive && u.team === 'player') u.rescueUsed = false;
 
     if (this.effects.decoyWave > 0) {
@@ -1453,6 +1498,22 @@ export class Game {
   updateWave(dt) {
     this.waveClock += dt;
     const wave = WAVES[Math.min(this.waveIndex, WAVES.length - 1)];
+    if (this.waveEvent && !this.waveEventActive) {
+      if (!this.waveEventWarned && this.waveClock >= Math.max(0, this.waveEventAt - 8)) {
+        this.waveEventWarned = true;
+        this.toast(t(`event.${this.waveEvent.id}.name`), 'bad', 3000);
+      }
+      if (this.waveClock >= this.waveEventAt) {
+        this.waveEventActive = true;
+        for (const u of this.units) {
+          if (!u.alive || u.team !== 'enemy' || u.eventModsApplied) continue;
+          this.applyEventMods(u);
+          u.eventModsApplied = true;
+        }
+        this.spawnEventZone({ eventZone: this.waveEventZone });
+        this.toast(t(`event.${this.waveEvent.id}.name`), 'bad', 3200);
+      }
+    }
     for (const group of this.waveSpawns) {
       if (!group.spawned && this.waveClock >= group.at) {
         group.spawned = true;
@@ -1509,7 +1570,7 @@ export class Game {
       elapsed: 0,
       done: true,
       persist: true,
-      duration: WAVES[Math.min(this.waveIndex, WAVES.length - 1)].duration,
+      duration: plan.eventZone.kind === 'smoke' ? 10 : 20,
     });
   }
 
@@ -1531,7 +1592,10 @@ export class Game {
         if (!u) continue;
         u.eventFlags = [...(group.eventFlags || [])];
         u.spawnGate = group.gate;
-        this.applyEventMods(u);
+        if (this.waveEventActive) {
+          this.applyEventMods(u);
+          u.eventModsApplied = true;
+        }
         if (u.eventFlags.includes('duel') && !this.waveDuelAssigned) {
           this.waveDuelAssigned = true;
           u.duel = true;
@@ -1612,9 +1676,11 @@ export class Game {
     this.boonRerolls = 0;
     this.waveName = t(`wave.${Math.min(this.waveIndex, WAVES.length - 1)}.name`);
     this.phase = 'prep';
-    this.prepTotal = 30;
-    this.prepTimer = 30;
+    const midBreak = this.waveIndex === 5 ? 75 : 0;
+    this.prepTotal = 30 + midBreak;
+    this.prepTimer = 30 + midBreak;
     this.prepareNextWavePlan();
+    if (midBreak) this.toast(t('toast.midBreak'), 'good', 6200);
     this.camera.targetZoom = 1.12;
     this.toast(t('toast.boonClaimed', { name: t(`boon.${boon.id}.name`) }), 'good', 3800);
     this.hooks.selectionChanged?.();
@@ -1686,6 +1752,16 @@ export class Game {
         if (n.x > x - 0.35 && n.x < x + def.w + 0.35 && n.y > y - 0.35 && n.y < y + def.h + 0.35) valid = false;
       }
     }
+    if (valid && def.requiresWater) {
+      let coast = false;
+      for (let ty = y - 2; ty <= y + def.h + 1 && !coast; ty++) {
+        for (let tx = x - 2; tx <= x + def.w + 1; tx++) {
+          if (tx < 0 || ty < 0 || tx >= this.world.size || ty >= this.world.size) continue;
+          if (this.world.tile(tx + 0.5, ty + 0.5)?.terrain === 'water') { coast = true; break; }
+        }
+      }
+      if (!coast) valid = false;
+    }
     if (valid && !this.canAfford(def.cost)) valid = false;
     this.placement.valid = valid;
   }
@@ -1726,6 +1802,13 @@ export class Game {
   }
 
   command(id) {
+    if (id === 'build:page') {
+      const pages = Math.max(1, Math.ceil(BUILD_OPTIONS.length / 4));
+      this.buildPage = ((this.buildPage || 0) + 1) % pages;
+      this.hooks.selectionChanged?.();
+      this.sound?.select();
+      return;
+    }
     if (id.startsWith('build:')) { this.beginPlacement(id.slice(6)); return; }
     if (id.startsWith('train:')) {
       const b = this.selection[0];
@@ -1926,7 +2009,7 @@ export class Game {
       if (!b.alive) continue;
       const p = this.screenPos(b.x + b.w / 2, b.y + b.h / 2);
       const width = (b.w + b.h) * 16 * z + 8;
-      const height = (b.w + b.h) * 12 * z + (b.type === 'towncenter' ? 112 : b.type === 'tower' ? 92 : 54) * z;
+      const height = (b.w + b.h) * 12 * z + (b.type === 'core' ? 112 : b.type === 'tower' ? 92 : 54) * z;
       if (sx > p.x - width - 20 * z && sx < p.x + width + 20 * z && sy > p.y - height && sy < p.y + 22 * z) {
         const d = Math.abs(sx - p.x) + Math.abs(sy - p.y);
         if (d < bestScore) { best = b; bestScore = d; }
