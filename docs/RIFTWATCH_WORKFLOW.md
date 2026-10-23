@@ -41,7 +41,7 @@ In Studio, select `riftwatch`, confirm the preview loads, then run Build and Tes
 1. Edit only inside `workspace/riftwatch` while it is on `codex/riftwatch-forge-integration` (or a newly named game-only branch).
 2. Review `git -C workspace/riftwatch diff` and rerun all relevant tests.
 3. Commit from the game worktree only. Never commit game files from the platform checkout.
-4. Push only the named game development branch. Never force-push or update `main`, `opencode-resume/*`, or `opencode-checkpoint/*`.
+4. Push only the named game development branch. Never force-push or update `main`, `opencode-resume/*`, or `opencode-checkpoints/*`.
 5. Creating a PR requires explicit authorization. Merging that PR requires a separate explicit authorization after checks pass.
 
 The current Studio deliberately has no Git write endpoint. Adding one later must preserve branch allowlisting, clean-worktree checks, explicit review, non-force push, audit logging, and separate authorization for PR creation and merge.

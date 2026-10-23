@@ -6,7 +6,7 @@ Last verified: 2026-10-23 (Debian cloud development container)
 
 - Forge platform branch: `codex/project-forge-riftwatch-integration`, based on platform commit `3c5a0b9888535b956f6c7ead0b81512e0f33bc81`.
 - Riftwatch game branch: `codex/riftwatch-forge-integration`, in the ignored linked worktree `workspace/riftwatch`, based on checkpoint `3674a33d95c5165dc9ee5813a051f894a8c72378`.
-- No merge into `main` was performed. No `opencode-resume/*` or `opencode-checkpoint/*` reference was moved or deleted.
+- No merge into `main` was performed. No `opencode-resume/*` or `opencode-checkpoints/*` reference was moved or deleted.
 - The game mount is read-only inside Forge Studio. The Studio API does not expose Git writes or arbitrary shell commands.
 
 ## Source identification and comparison
