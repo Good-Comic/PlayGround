@@ -45,3 +45,7 @@ In Studio, select `riftwatch`, confirm the preview loads, then run Build and Tes
 5. Creating a PR requires explicit authorization. Merging that PR requires a separate explicit authorization after checks pass.
 
 The current Studio deliberately has no Git write endpoint. Adding one later must preserve branch allowlisting, clean-worktree checks, explicit review, non-force push, audit logging, and separate authorization for PR creation and merge.
+
+## AI proposal workflow
+
+Task 02 does not alter this Git process. Agent Edit/Test requests create a separate copy under the Forge data volume, show a unified diff, and wait for explicit approval before changing even that copy. Approval runs only Forge-owned validation commands in the copy. Completion does not write back to `workspace/riftwatch`; use the manual branch workflow above only after reviewing an approved proposal. See `docs/AI_PROVIDER_SECURITY.md` for the full boundary.

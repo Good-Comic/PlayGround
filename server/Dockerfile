@@ -5,6 +5,7 @@ FROM python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134
 WORKDIR /app
 COPY --from=node-runtime /usr/local/ /usr/local/
 COPY app.py /app/app.py
+COPY providers.py /app/providers.py
 COPY static /app/static
 
 RUN mkdir -p /data /workspace \

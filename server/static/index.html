@@ -36,13 +36,41 @@
         <p class="hint">仅执行平台预先允许的命令，不接受网页提交任意 shell。</p>
         <h3>执行记录</h3>
         <ul id="run-list"><li>选择项目后显示</li></ul>
-        <h2>AI Agent</h2>
-        <p>OpenHands Agent Canvas 是选用服务。</p>
-        <a href="http://127.0.0.1:8000/canvas" target="_blank" rel="noreferrer">开启 Agent Canvas</a>
-        <h3>尚未启用</h3>
-        <ul><li>模型路由（Task 02）</li><li>GitHub App（Task 03）</li><li>自动修改与提交仍需明确授权</li></ul>
+        <h2>AI Providers</h2>
+        <ul id="provider-list" class="compact-list"><li>载入中…</li></ul>
+        <form id="provider-form" class="compact-form">
+          <input id="provider-name" placeholder="Provider 名称" required>
+          <select id="provider-kind"><option value="ollama">Ollama（本地）</option><option value="openai-compatible">OpenAI-compatible（云端）</option></select>
+          <input id="provider-url" placeholder="http://host.docker.internal:11434/v1" required>
+          <input id="provider-model" placeholder="Model ID" required>
+          <select id="provider-fallback"><option value="">无 fallback</option></select>
+          <div class="row"><input id="provider-timeout" type="number" min="1" max="120" value="30" title="逾时秒数"><input id="provider-retries" type="number" min="0" max="3" value="1" title="重试次数"></div>
+          <div class="row"><input id="provider-input-cost" type="number" min="0" step="0.01" value="0" title="每百万输入 token 美元"><input id="provider-output-cost" type="number" min="0" step="0.01" value="0" title="每百万输出 token 美元"></div>
+          <input id="provider-cost-cap" type="number" min="0" step="0.01" value="0" title="单任务成本上限（美元）">
+          <label><input id="provider-tools" type="checkbox"> 已确认支援 tool calls</label>
+          <button>新增 Provider</button>
+        </form>
+        <p class="hint">API Key 只从服务器的 <code>FORGE_OPENAI_API_KEY</code> 读取，不由网页提交或显示。</p>
+        <h2>Agent 任务</h2>
+        <form id="agent-form" class="compact-form">
+          <select id="agent-provider" required></select>
+          <select id="agent-mode"><option value="plan">Plan</option><option value="edit">Edit（隔离提案）</option><option value="test">Edit + Test（隔离提案）</option></select>
+          <input id="agent-target" placeholder="目标文件，例如 README.md">
+          <textarea id="agent-instruction" maxlength="4000" placeholder="任务指令" required></textarea>
+          <button id="create-agent-task" disabled>建立任务</button>
+        </form>
+        <ul id="agent-task-list" class="compact-list"><li>选择项目后显示</li></ul>
+        <p class="hint">未知 tool-call 能力会自动降级为 Plan。AI 不会直接修改原游戏或执行任意 Shell。</p>
+        <details><summary>OpenHands Canvas（选用）</summary><p>此云端 Docker vfs 环境尚未启动 Canvas。</p></details>
       </aside>
-      <section class="logs"><strong>状态与输出</strong><pre id="log">等待操作。</pre></section>
+      <section class="logs">
+        <div><strong>状态与输出</strong><pre id="log">等待操作。</pre></div>
+        <div id="agent-details" hidden>
+          <strong>Agent 提案 / 审计</strong>
+          <div id="agent-actions" class="actions"></div>
+          <pre id="agent-task-output"></pre>
+        </div>
+      </section>
     </main>
     <script src="/app.js" defer></script>
   </body>

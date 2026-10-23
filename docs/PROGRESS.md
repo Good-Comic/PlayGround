@@ -1,10 +1,10 @@
 # Project Forge AI — Progress
 
-Last verified: 2026-10-23 (Debian cloud development container)
+Last verified: 2026-10-24 (Asia/Taipei; Debian cloud development container)
 
 ## Current isolation model
 
-- Forge platform branch: `codex/project-forge-riftwatch-integration`, based on platform commit `3c5a0b9888535b956f6c7ead0b81512e0f33bc81`.
+- Forge platform branch: `codex/project-forge-task-02`, based on integration commit `a1f9c0f5dcbd6dd0270cde7e6c5a02c7d1d8ac90`.
 - Riftwatch game branch: `codex/riftwatch-forge-integration`, in the ignored linked worktree `workspace/riftwatch`, based on checkpoint `3674a33d95c5165dc9ee5813a051f894a8c72378`.
 - No merge into `main` was performed. No `opencode-resume/*` or `opencode-checkpoints/*` reference was moved or deleted.
 - The game mount is read-only inside Forge Studio. The Studio API does not expose Git writes or arbitrary shell commands.
@@ -58,9 +58,49 @@ No console or page errors occurred in the final Forge-hosted browser run.
 - Real browser integration: HTTP 200, 29 files listed, embedded game title loaded, Start Game worked, test history increased, and browser console/page errors were empty.
 - Security probes: file traversal returned 400, preview of `.git/config` returned 404, arbitrary `shell` action returned 400, and file inventory exposed zero `.git` entries.
 
+## Task 02 — Model router and controlled Agent workflow
+
+### Implemented
+
+- Provider adapter interface with deterministic Mock, Ollama OpenAI-compatible, and cloud OpenAI-compatible adapters. OpenHands is advertised as an unavailable optional adapter while Canvas is stopped.
+- Provider records include model ID, local/cloud classification, capability values (`Yes`, `No`, or `Unknown`), context window, timeout, retry count, input/output token limits, pricing, and per-task cost cap.
+- Ollama URLs are restricted to localhost, `host.docker.internal`, or literal loopback/private IP addresses. Cloud endpoints require HTTPS and reject local/private literal targets, credentials in URLs, query strings, fragments, and redirects.
+- Cloud credentials are read only from the server-side `FORGE_OPENAI_API_KEY` process environment. Provider create requests containing key/token/authorization/secret fields are rejected. GET responses and browser state expose only a configured/not-configured boolean.
+- Cloud inference requires explicit input/output pricing. A projected worst-case cost check runs before the request, and reported usage is checked again against the cap.
+- Agent state machine with queued, running, awaiting approval, approved, validating, completed, failed, cancelled, retried, and rolled-back transitions. Every transition is stored in SQLite with timestamps and messages.
+- Provider failure messages, bounded retry, timeout, cooperative cancellation, token usage, cost, proposal, validation output, and task attempts are persisted.
+- A provider may name one fallback provider. The same task keeps its instruction, indexed context, attempt, and audit trail; fallback selection is recorded, and capability downgrade rules are reapplied.
+- If tool-call support is not positively confirmed, Edit/Test requests are downgraded to Plan and the reason is recorded rather than pretending an edit occurred.
+- Each task receives a bounded file index plus at most one explicitly selected text file. It never receives the entire project specification automatically.
+- Edit proposals are constrained to the selected existing file. A unified diff is shown before approval; no provider response is applied to the source project.
+- Explicit approval applies the proposal only to `/data/agent-tasks/<task>/attempt-<n>/project`. Fixed `node --check` and existing locale-validation commands run there without accepting provider-supplied shell.
+- Rollback restores the sandbox target from the read-only source. No commit, push, PR, merge, or write-back endpoint exists.
+
+### Mock and integration verification
+
+- Unit suite: 20 tests passed, including the OpenAI-compatible wire contract, provider URL/secret boundaries, capability downgrade, fallback state preservation, cancellation/retry, Mock plan, Mock edit proposal, explicit approval, fixed validation, unchanged source, audit events, and rollback.
+- Container Mock diagnosis returned OK with model `forge-mock-v1`.
+- A real Riftwatch Mock task proposed a `README.md` change in the isolated task workspace, waited for approval, then passed all 15 JavaScript syntax checks and `4 locales, 573 keys each`.
+- Original Riftwatch `README.md` SHA-256 remained `7148c7e3bcb62e354e0af02d29e49cf27a9cb521ffc005d1fb852a3e321b769f` before approval, after validation, and after rollback. The game worktree stayed clean.
+- Browser E2E returned HTTP 200, listed all three configured provider types, completed Plan and Edit/Test Mock tasks, displayed the diff and validation record, rolled back, and reported no console/page errors.
+- Browser regression rechecked all four exact localized titles, started Riftwatch with 13 units and 6 buildings, verified `prep`, `NemesisDirector`, and `0 / 10`, then completed the controlled ten-wave state traversal with victory, 10 completed waves, 10 reports, and no console/page errors.
+
+### Real model verification
+
+- Ollama configuration and diagnosis paths were exercised. The configured `host.docker.internal:11434` endpoint returned HTTP 403 in this container, so no Ollama model inference was performed.
+- Cloud OpenAI-compatible configuration was exercised without sending a credential. Diagnosis failed explicitly because `FORGE_OPENAI_API_KEY` is not configured; no paid request or real cloud inference was performed.
+- Therefore real-model inference, real token accounting, and provider-specific tool-call quality are **not verified**. Mock success must not be interpreted as model success.
+
+### Task 02 safety limitations
+
+- Cancellation is checked before retries and after responses; an in-flight blocking HTTP request may continue until its configured timeout.
+- Token estimates use a conservative character approximation before the call. Final accounting depends on usage values reported by the provider.
+- DNS names for cloud providers are not resolved and pinned by this application; production deployment still needs an outbound proxy/allowlist to prevent DNS rebinding and restrict secret destinations.
+- Task sandboxes share the Studio container and network namespace. They are writable copies with fixed validation commands, not hardened per-job containers.
+- Provider configuration editing/deletion, encrypted multi-key vault storage, multi-hop fallback chains, and OpenHands backend execution are not yet implemented.
+
 ## Not yet implemented
 
-- Local/cloud AI model routing (Task 02).
 - Authenticated GitHub App/API integration and PR creation (Task 03).
 - Automatic source editing, Git commit, push, or merge from the Studio UI.
 - Full real-time ten-wave combat playthrough, performance acceptance, visual regression baselines, or cross-browser testing.
