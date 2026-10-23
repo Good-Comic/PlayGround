@@ -4,7 +4,7 @@ Riftwatch and Project Forge AI share a GitHub repository but are intentionally k
 
 ## Current layout
 
-- Platform checkout: repository root, branch `codex/project-forge-riftwatch-integration`.
+- Platform checkout: repository root, branch `codex/project-forge-task-03`.
 - Game checkout: `workspace/riftwatch`, branch `codex/riftwatch-forge-integration`.
 - Studio mount: host `./workspace` to container `/workspace`, read-only.
 - Studio project path: `riftwatch`.
@@ -44,8 +44,8 @@ In Studio, select `riftwatch`, confirm the preview loads, then run Build and Tes
 4. Push only the named game development branch. Never force-push or update `main`, `opencode-resume/*`, or `opencode-checkpoints/*`.
 5. Creating a PR requires explicit authorization. Merging that PR requires a separate explicit authorization after checks pass.
 
-The current Studio deliberately has no Git write endpoint. Adding one later must preserve branch allowlisting, clean-worktree checks, explicit review, non-force push, audit logging, and separate authorization for PR creation and merge.
+Task 03 adds a guarded write-back path without writing to this imported game worktree. It clones the registered game ref at the exact base SHA into `/data/git-tasks`, applies only an already approved Agent proposal, and creates a unique `forge/task-*` branch. Review the displayed diff and validation record before separately approving local commit, push, and PR. Real external writes stay disabled unless a GitHub App is configured and the operator explicitly enables them. Force-push, protected-branch push, checkpoint edits, and merge are not supported.
 
 ## AI proposal workflow
 
-Task 02 does not alter this Git process. Agent Edit/Test requests create a separate copy under the Forge data volume, show a unified diff, and wait for explicit approval before changing even that copy. Approval runs only Forge-owned validation commands in the copy. Completion does not write back to `workspace/riftwatch`; use the manual branch workflow above only after reviewing an approved proposal. See `docs/AI_PROVIDER_SECURITY.md` for the full boundary.
+Agent Edit/Test requests first create a separate copy under the Forge data volume, show a unified diff, and wait for explicit approval before changing even that copy. Approval runs only Forge-owned validation commands. Task 03 may then import that exact reviewed proposal into a second isolated Git clone and re-run branch, diff, secret, Build, and Test gates. Neither stage writes to `workspace/riftwatch`. See `docs/AI_PROVIDER_SECURITY.md` and `docs/GITHUB_APP_SECURITY.md` for the boundaries.

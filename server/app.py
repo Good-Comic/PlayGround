@@ -18,8 +18,22 @@ from urllib.parse import parse_qs, unquote, urlparse
 
 try:
     from server.providers import AgentRequest, PROVIDER_CATALOG, ProviderCancelled, ProviderError, build_provider
+    from server.github_integration import (
+        GitHubIntegrationError, MockGitHubApp, RealGitHubApp, WebhookAuthenticationError,
+        WebhookReplayError, approve_commit, create_pull_request, get_change, get_repository,
+        github_config_status, ingest_webhook, init_github_db, list_changes, list_deliveries,
+        list_repositories, prepare_change, process_delivery, push_change, reconcile_repository,
+        register_repository,
+    )
 except ModuleNotFoundError:  # Container executes this file directly.
     from providers import AgentRequest, PROVIDER_CATALOG, ProviderCancelled, ProviderError, build_provider
+    from github_integration import (
+        GitHubIntegrationError, MockGitHubApp, RealGitHubApp, WebhookAuthenticationError,
+        WebhookReplayError, approve_commit, create_pull_request, get_change, get_repository,
+        github_config_status, ingest_webhook, init_github_db, list_changes, list_deliveries,
+        list_repositories, prepare_change, process_delivery, push_change, reconcile_repository,
+        register_repository,
+    )
 
 
 DB_PATH = Path(os.environ.get("FORGE_DB_PATH", "/data/forge.db"))
@@ -32,6 +46,9 @@ TASK_ROOT = Path(os.environ.get("FORGE_TASK_ROOT", "/data/agent-tasks"))
 MAX_AGENT_FILE = 512 * 1024
 TASK_THREADS: dict[int, threading.Thread] = {}
 TASK_THREADS_LOCK = threading.Lock()
+GIT_SOURCE_ROOT = Path(os.environ.get("FORGE_GIT_SOURCE_ROOT", "/source-repository"))
+GIT_TASK_ROOT = Path(os.environ.get("FORGE_GIT_TASK_ROOT", "/data/git-tasks"))
+REAL_GITHUB_APP = RealGitHubApp()
 
 
 def init_db(db_path: Path) -> None:
@@ -156,6 +173,7 @@ def init_db(db_path: Path) -> None:
                 """,
                 (task_id, old_status),
             )
+    init_github_db(db_path)
 
 
 def resolve_project_path(raw_path: str, workspace_root: Path = WORKSPACE_ROOT) -> tuple[Path, str]:
@@ -888,6 +906,15 @@ class ForgeHandler(SimpleHTTPRequestHandler):
             raise ValueError("JSON body must be an object")
         return payload
 
+    def read_body(self, maximum: int = 1024 * 1024) -> bytes:
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError as exc:
+            raise ValueError("invalid content length") from exc
+        if length < 1 or length > maximum:
+            raise ValueError(f"request body must be between 1 and {maximum} bytes")
+        return self.rfile.read(length)
+
     def serve_preview(self, project_id: int, raw_path: str) -> None:
         try:
             item = resolve_project_file(project_id, raw_path or "index.html")
@@ -920,6 +947,16 @@ class ForgeHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/providers":
             self.json_response(HTTPStatus.OK, {"providers": list_providers()})
             return
+        if parsed.path == "/api/github/status":
+            self.json_response(HTTPStatus.OK, {
+                "configuration": github_config_status(),
+                "webhook_reachable": False,
+                "message": "Studio is loopback-only; public GitHub webhooks require a separately authorized HTTPS relay.",
+            })
+            return
+        if parsed.path == "/api/github/repositories":
+            self.json_response(HTTPStatus.OK, {"repositories": list_repositories(DB_PATH)})
+            return
         if parsed.path == "/api/agent/tasks":
             try:
                 query = parse_qs(parsed.query)
@@ -942,6 +979,10 @@ class ForgeHandler(SimpleHTTPRequestHandler):
         runs_match = re.fullmatch(r"/api/projects/(\d+)/runs", parsed.path)
         preview_match = re.fullmatch(r"/preview/(\d+)(?:/(.*))?", parsed.path)
         task_match = re.fullmatch(r"/api/agent/tasks/(\d+)", parsed.path)
+        github_repo_match = re.fullmatch(r"/api/github/repositories/(\d+)", parsed.path)
+        github_deliveries_match = re.fullmatch(r"/api/github/repositories/(\d+)/deliveries", parsed.path)
+        github_changes_match = re.fullmatch(r"/api/github/repositories/(\d+)/changes", parsed.path)
+        github_change_match = re.fullmatch(r"/api/github/changes/(\d+)", parsed.path)
         try:
             if files_match:
                 project_id = int(files_match.group(1))
@@ -962,13 +1003,44 @@ class ForgeHandler(SimpleHTTPRequestHandler):
             if task_match:
                 self.json_response(HTTPStatus.OK, {"task": get_agent_task(int(task_match.group(1)))})
                 return
-        except (ValueError, LookupError, OSError) as exc:
+            if github_repo_match:
+                self.json_response(HTTPStatus.OK, {"repository": get_repository(int(github_repo_match.group(1)), DB_PATH)})
+                return
+            if github_deliveries_match:
+                self.json_response(HTTPStatus.OK, {"deliveries": list_deliveries(int(github_deliveries_match.group(1)), DB_PATH)})
+                return
+            if github_changes_match:
+                self.json_response(HTTPStatus.OK, {"changes": list_changes(int(github_changes_match.group(1)), DB_PATH)})
+                return
+            if github_change_match:
+                self.json_response(HTTPStatus.OK, {"change": get_change(int(github_change_match.group(1)), DB_PATH)})
+                return
+        except (ValueError, LookupError, OSError, GitHubIntegrationError) as exc:
             self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
             return
         super().do_GET()
 
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
+        if parsed.path == "/api/github/webhook":
+            try:
+                body = self.read_body()
+                received = ingest_webhook(
+                    body, self.headers.get("X-Hub-Signature-256", ""),
+                    self.headers.get("X-GitHub-Delivery", ""), self.headers.get("X-GitHub-Event", ""), DB_PATH,
+                )
+                result = received if received["duplicate"] else process_delivery(received["delivery_id"], DB_PATH)
+            except WebhookAuthenticationError as exc:
+                self.json_response(HTTPStatus.UNAUTHORIZED, {"error": str(exc)})
+                return
+            except WebhookReplayError as exc:
+                self.json_response(HTTPStatus.CONFLICT, {"error": str(exc)})
+                return
+            except (ValueError, GitHubIntegrationError, sqlite3.Error) as exc:
+                self.json_response(HTTPStatus.FORBIDDEN, {"error": str(exc)})
+                return
+            self.json_response(HTTPStatus.ACCEPTED, {"delivery": result})
+            return
         if parsed.path == "/api/projects/import-local":
             try:
                 payload = self.read_json()
@@ -986,6 +1058,79 @@ class ForgeHandler(SimpleHTTPRequestHandler):
                 self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
                 return
             self.json_response(HTTPStatus.CREATED, {"provider": provider})
+            return
+
+        if parsed.path == "/api/github/repositories":
+            try:
+                repository = register_repository(self.read_json(), DB_PATH)
+            except (ValueError, GitHubIntegrationError, sqlite3.Error) as exc:
+                self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
+                return
+            self.json_response(HTTPStatus.CREATED, {"repository": repository})
+            return
+
+        github_reconcile_match = re.fullmatch(r"/api/github/repositories/(\d+)/reconcile", parsed.path)
+        if github_reconcile_match:
+            try:
+                repo_id = int(github_reconcile_match.group(1))
+                repository = get_repository(repo_id, DB_PATH)
+                if repository["mode"] != "mock":
+                    raise GitHubIntegrationError("real reconciliation requires configured GitHub App credentials")
+                result = reconcile_repository(repo_id, DB_PATH, MockGitHubApp(DB_PATH))
+            except (ValueError, GitHubIntegrationError, sqlite3.Error) as exc:
+                self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
+                return
+            self.json_response(HTTPStatus.OK, {"reconciliation": result})
+            return
+
+        if parsed.path == "/api/github/changes/prepare":
+            try:
+                payload = self.read_json()
+                change = prepare_change(
+                    int(payload.get("task_id")), int(payload.get("repo_id")), DB_PATH,
+                    GIT_SOURCE_ROOT, GIT_TASK_ROOT,
+                )
+            except (TypeError, ValueError, GitHubIntegrationError, OSError, sqlite3.Error) as exc:
+                self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
+                return
+            self.json_response(HTTPStatus.CREATED, {"change": change})
+            return
+
+        github_change_action = re.fullmatch(r"/api/github/changes/(\d+)/(commit|push|pull-request)", parsed.path)
+        if github_change_action:
+            try:
+                change_id = int(github_change_action.group(1))
+                action = github_change_action.group(2)
+                payload = self.read_json()
+                if action == "commit":
+                    if payload.get("confirm") is not True:
+                        raise GitHubIntegrationError("explicit commit approval is required")
+                    change = approve_commit(change_id, payload.get("message", ""), DB_PATH)
+                elif action == "push":
+                    if payload.get("confirm") is not True:
+                        raise GitHubIntegrationError("explicit push approval is required")
+                    current = get_change(change_id, DB_PATH)
+                    repository = get_repository(current["repo_id"], DB_PATH)
+                    client = REAL_GITHUB_APP if repository["mode"] == "real" else MockGitHubApp(DB_PATH)
+                    change = push_change(
+                        change_id, DB_PATH, client,
+                        allow_external=github_config_status()["external_writes_enabled"],
+                    )
+                else:
+                    if payload.get("confirm") is not True:
+                        raise GitHubIntegrationError("explicit PR approval is required")
+                    current = get_change(change_id, DB_PATH)
+                    repository = get_repository(current["repo_id"], DB_PATH)
+                    client = REAL_GITHUB_APP if repository["mode"] == "real" else MockGitHubApp(DB_PATH)
+                    change = create_pull_request(
+                        change_id, str(payload.get("title", "")), str(payload.get("body", "")), DB_PATH, client,
+                        dry_run=payload.get("dry_run", True) is not False,
+                        allow_external=github_config_status()["external_writes_enabled"],
+                    )
+            except (ValueError, GitHubIntegrationError, OSError, sqlite3.Error) as exc:
+                self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
+                return
+            self.json_response(HTTPStatus.OK, {"change": change})
             return
 
         diagnose_match = re.fullmatch(r"/api/providers/(\d+)/diagnose", parsed.path)

@@ -62,6 +62,24 @@
         <ul id="agent-task-list" class="compact-list"><li>选择项目后显示</li></ul>
         <p class="hint">未知 tool-call 能力会自动降级为 Plan。AI 不会直接修改原游戏或执行任意 Shell。</p>
         <details><summary>OpenHands Canvas（选用）</summary><p>此云端 Docker vfs 环境尚未启动 Canvas。</p></details>
+        <h2>GitHub Sync</h2>
+        <p id="github-status" class="hint">检查 GitHub App 状态…</p>
+        <form id="github-repo-form" class="compact-form">
+          <div class="row"><input id="github-owner" value="Good-Comic" placeholder="Owner" required><input id="github-name" value="PlayGround" placeholder="Repository" required></div>
+          <input id="github-base-ref" value="codex/riftwatch-forge-integration" placeholder="Base ref" required>
+          <input id="github-base-sha" value="3674a33d95c5165dc9ee5813a051f894a8c72378" placeholder="完整 Base SHA" required>
+          <select id="github-mode"><option value="mock">Mock（本机验证）</option><option value="real">Real GitHub App（需服务端凭证）</option></select>
+          <input id="github-installation" type="number" min="1" placeholder="Installation ID（Real 必填）">
+          <button id="register-github-repo" disabled>登记指定 Repository</button>
+        </form>
+        <ul id="github-repo-list" class="compact-list"><li>尚未登记</li></ul>
+        <div class="actions"><button id="github-reconcile" disabled>补偿同步</button><button id="github-refresh" type="button">重新整理</button></div>
+        <form id="github-change-form" class="compact-form">
+          <input id="github-task-id" type="number" min="1" placeholder="已核准 Agent Task ID" required>
+          <button id="prepare-github-change" disabled>建立隔离 Git 变更</button>
+        </form>
+        <ul id="github-change-list" class="compact-list"><li>尚无 Git 变更</li></ul>
+        <p class="hint">Commit、Push 与 PR 各自需要明确核准；UI 不提供 Merge。公开 webhook 尚未启用。</p>
       </aside>
       <section class="logs">
         <div><strong>状态与输出</strong><pre id="log">等待操作。</pre></div>
@@ -69,6 +87,11 @@
           <strong>Agent 提案 / 审计</strong>
           <div id="agent-actions" class="actions"></div>
           <pre id="agent-task-output"></pre>
+        </div>
+        <div id="github-details" hidden>
+          <strong>GitHub 变更 / 审计</strong>
+          <div id="github-actions" class="actions"></div>
+          <pre id="github-output"></pre>
         </div>
       </section>
     </main>

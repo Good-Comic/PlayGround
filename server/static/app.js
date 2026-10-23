@@ -19,8 +19,18 @@ const agentDetails = document.querySelector('#agent-details');
 const agentTaskOutput = document.querySelector('#agent-task-output');
 const agentActions = document.querySelector('#agent-actions');
 const createAgentTaskButton = document.querySelector('#create-agent-task');
+const githubStatus = document.querySelector('#github-status');
+const githubRepoList = document.querySelector('#github-repo-list');
+const githubChangeList = document.querySelector('#github-change-list');
+const githubDetails = document.querySelector('#github-details');
+const githubOutput = document.querySelector('#github-output');
+const githubActions = document.querySelector('#github-actions');
+const registerGithubRepoButton = document.querySelector('#register-github-repo');
+const prepareGithubChangeButton = document.querySelector('#prepare-github-change');
+const githubReconcileButton = document.querySelector('#github-reconcile');
 let selectedProject = null;
 let providers = [];
+let selectedGithubRepo = null;
 
 async function jsonRequest(url, options) {
   const response = await fetch(url, options);
@@ -54,7 +64,104 @@ async function selectProject(project) {
   previewEmpty.hidden = true;
   log.textContent = `已选择 ${project.name}。项目以只读方式提供预览。`;
   createAgentTaskButton.disabled = false;
+  registerGithubRepoButton.disabled = false;
   await Promise.all([loadFiles(), loadRuns(), loadAgentTasks()]);
+}
+
+async function loadGithubStatus() {
+  const data = await jsonRequest('/api/github/status');
+  const config = data.configuration;
+  githubStatus.textContent = [
+    data.message,
+    `App ID ${config.app_id_configured ? '已配置' : '未配置'} · 私钥 ${config.private_key_configured ? '已配置' : '未配置'} · Webhook secret ${config.webhook_secret_configured ? '已配置' : '未配置'} · 外部写入 ${config.external_writes_enabled ? '启用' : '停用'}`,
+  ].join('\n');
+}
+
+async function loadGithubRepositories() {
+  const data = await jsonRequest('/api/github/repositories');
+  githubRepoList.replaceChildren(...(data.repositories.length ? data.repositories.map((repo) => {
+    const item = document.createElement('li');
+    const button = document.createElement('button');
+    button.className = `repo ${repo.conflict ? 'failed' : ''}`;
+    button.textContent = `${repo.owner}/${repo.name} · ${repo.mode} · ${repo.status}`;
+    button.addEventListener('click', () => selectGithubRepository(repo));
+    item.append(button);
+    return item;
+  }) : [Object.assign(document.createElement('li'), {textContent: '尚未登记'})]));
+  if (!selectedGithubRepo && data.repositories.length === 1) await selectGithubRepository(data.repositories[0]);
+}
+
+async function selectGithubRepository(repo) {
+  selectedGithubRepo = repo;
+  githubReconcileButton.disabled = false;
+  prepareGithubChangeButton.disabled = false;
+  await loadGithubChanges();
+  githubOutput.textContent = [
+    `${repo.owner}/${repo.name} · mode=${repo.mode} · base=${repo.base_ref}@${repo.base_sha}`,
+    `permissions=${JSON.stringify(repo.permissions)} · latest=${repo.latest_remote_sha || 'Unknown'}`,
+    `ahead=${repo.ahead} behind=${repo.behind} conflict=${repo.conflict} pendingPR=${repo.pending_prs}`,
+    `last webhook=${repo.last_webhook_at || 'Never'} · last sync=${repo.last_sync_at || 'Never'} · error=${repo.sync_error || 'None'}`,
+  ].join('\n');
+  githubDetails.hidden = false;
+}
+
+async function loadGithubChanges() {
+  if (!selectedGithubRepo) return;
+  const data = await jsonRequest(`/api/github/repositories/${selectedGithubRepo.id}/changes`);
+  githubChangeList.replaceChildren(...(data.changes.length ? data.changes.map((change) => {
+    const item = document.createElement('li');
+    const button = document.createElement('button');
+    button.className = `task ${change.status.includes('failed') ? 'failed' : ''}`;
+    button.textContent = `#${change.id} ${change.branch}: ${change.status}`;
+    button.addEventListener('click', () => showGithubChange(change.id));
+    item.append(button);
+    return item;
+  }) : [Object.assign(document.createElement('li'), {textContent: '尚无 Git 变更'})]));
+}
+
+async function showGithubChange(changeId) {
+  const data = await jsonRequest(`/api/github/changes/${changeId}`);
+  const change = data.change;
+  githubDetails.hidden = false;
+  githubActions.replaceChildren();
+  const actions = [];
+  if (change.status === 'ready_for_commit_approval') actions.push(['核准 Commit', 'commit']);
+  if (change.status === 'committed') actions.push(['核准 Push', 'push']);
+  if (['mock_pushed', 'pushed'].includes(change.status)) actions.push(['PR Dry-run', 'pr-dry']);
+  if (change.status === 'mock_pushed') actions.push(['建立 Mock PR', 'pr-mock']);
+  for (const [label, action] of actions) {
+    const button = document.createElement('button');
+    button.textContent = label;
+    button.addEventListener('click', () => githubChangeAction(change.id, action));
+    githubActions.append(button);
+  }
+  const audit = change.audit.map((event) => `${event.created_at} ${event.action} ${event.status}: ${event.message}`).join('\n');
+  githubOutput.textContent = [
+    `Change #${change.id} · ${change.branch} · status=${change.status}`,
+    `base=${change.base_sha} commit=${change.commit_sha || 'Not committed'} push=${change.push_status || 'Not pushed'}`,
+    change.pr_number ? `PR #${change.pr_number} ${change.pr_url}` : '',
+    change.scan_output, change.diff, change.validation_output, audit,
+  ].filter(Boolean).join('\n\n');
+  return change;
+}
+
+async function githubChangeAction(changeId, action) {
+  let endpoint = action;
+  let payload = {confirm: true};
+  if (action === 'commit') payload.message = `chore: apply reviewed Forge change ${changeId}`;
+  if (action === 'pr-dry' || action === 'pr-mock') {
+    endpoint = 'pull-request';
+    payload = {confirm: true, dry_run: action === 'pr-dry', title: `Forge reviewed change ${changeId}`, body: 'Generated by the controlled Project Forge workflow. Merge is intentionally not automated.'};
+  }
+  try {
+    const data = await jsonRequest(`/api/github/changes/${changeId}/${endpoint}`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload),
+    });
+    await showGithubChange(data.change.id);
+    await loadGithubChanges();
+  } catch (error) {
+    log.textContent = `GitHub 操作失败：${error.message}`;
+  }
 }
 
 async function loadFiles() {
@@ -232,7 +339,7 @@ async function boot() {
     await jsonRequest('/health');
     health.textContent = 'Studio API 已就绪';
     health.className = 'ok';
-    await Promise.all([loadProviders(), loadProjects()]);
+    await Promise.all([loadProviders(), loadProjects(), loadGithubStatus(), loadGithubRepositories()]);
   } catch (error) {
     health.textContent = 'Studio API 无法连接';
     health.className = 'error';
@@ -265,6 +372,62 @@ document.querySelector('#provider-form').addEventListener('submit', async (event
   } catch (error) {
     log.textContent = `新增 Provider 失败：${error.message}`;
   }
+});
+
+document.querySelector('#github-repo-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!selectedProject) return;
+  const installation = document.querySelector('#github-installation').value;
+  const payload = {
+    project_id: selectedProject.id,
+    owner: document.querySelector('#github-owner').value,
+    name: document.querySelector('#github-name').value,
+    base_ref: document.querySelector('#github-base-ref').value,
+    base_sha: document.querySelector('#github-base-sha').value,
+    default_branch: 'main',
+    mode: document.querySelector('#github-mode').value,
+    installation_id: installation || null,
+  };
+  try {
+    const data = await jsonRequest('/api/github/repositories', {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload),
+    });
+    await loadGithubRepositories();
+    await selectGithubRepository(data.repository);
+  } catch (error) {
+    log.textContent = `Repository 登记失败：${error.message}`;
+  }
+});
+
+document.querySelector('#github-change-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!selectedGithubRepo) return;
+  try {
+    const data = await jsonRequest('/api/github/changes/prepare', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({task_id: Number(document.querySelector('#github-task-id').value), repo_id: selectedGithubRepo.id}),
+    });
+    await loadGithubChanges();
+    await showGithubChange(data.change.id);
+  } catch (error) {
+    log.textContent = `Git 变更准备失败：${error.message}`;
+  }
+});
+
+githubReconcileButton.addEventListener('click', async () => {
+  if (!selectedGithubRepo) return;
+  try {
+    const data = await jsonRequest(`/api/github/repositories/${selectedGithubRepo.id}/reconcile`, {method: 'POST'});
+    log.textContent = `补偿同步：发现 ${data.reconciliation.events_found}，处理 ${data.reconciliation.processed}`;
+    const refreshed = await jsonRequest(`/api/github/repositories/${selectedGithubRepo.id}`);
+    await selectGithubRepository(refreshed.repository);
+  } catch (error) {
+    log.textContent = `补偿同步失败：${error.message}`;
+  }
+});
+
+document.querySelector('#github-refresh').addEventListener('click', async () => {
+  await Promise.all([loadGithubStatus(), loadGithubRepositories()]);
 });
 
 document.querySelector('#agent-form').addEventListener('submit', async (event) => {

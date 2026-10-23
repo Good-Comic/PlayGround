@@ -4,10 +4,10 @@ Last verified: 2026-10-24 (Asia/Taipei; Debian cloud development container)
 
 ## Current isolation model
 
-- Forge platform branch: `codex/project-forge-task-02`, based on integration commit `a1f9c0f5dcbd6dd0270cde7e6c5a02c7d1d8ac90`.
+- Forge platform branch: `codex/project-forge-task-03`, based on Task 02 commit `38242192b4fab8bdfcd5a786f3c11a8f84c3aa06`.
 - Riftwatch game branch: `codex/riftwatch-forge-integration`, in the ignored linked worktree `workspace/riftwatch`, based on checkpoint `3674a33d95c5165dc9ee5813a051f894a8c72378`.
 - No merge into `main` was performed. No `opencode-resume/*` or `opencode-checkpoints/*` reference was moved or deleted.
-- The game mount is read-only inside Forge Studio. The Studio API does not expose Git writes or arbitrary shell commands.
+- The game mount is read-only inside Forge Studio. Task 03 Git writes are confined to isolated data-volume clones and fixed commands; the API does not expose arbitrary shell or write to the imported worktree.
 
 ## Source identification and comparison
 
@@ -99,10 +99,44 @@ No console or page errors occurred in the final Forge-hosted browser run.
 - Task sandboxes share the Studio container and network namespace. They are writable copies with fixed validation commands, not hardened per-job containers.
 - Provider configuration editing/deletion, encrypted multi-key vault storage, multi-hop fallback chains, and OpenHands backend execution are not yet implemented.
 
+## Task 03 — GitHub App and guarded Git workflow
+
+### Implemented
+
+- Repository registration is scoped to one imported Studio project and the exact minimum GitHub App permissions: Metadata read, Contents read/write, and Pull requests read/write. Real mode also requires an installation ID.
+- GitHub App ID, private-key file path, and webhook secret are server-only environment configuration. API/UI responses expose booleans only. Installation tokens are requested with an App JWT, cached in process memory until shortly before expiry, and are not stored in SQLite or logs.
+- Webhooks accept only `push`, `pull_request`, and `ping`, require `X-Hub-Signature-256`, compare HMAC-SHA256 in constant time, cap bodies at 1 MiB, verify the authorized repository, and store only normalized fields plus a SHA-256 payload digest.
+- Delivery IDs are idempotent. Reusing an ID with a changed body is rejected as a replay. Failed processing records bounded retry metadata; dirty state and forced updates stop synchronization for review.
+- Mock reconciliation uses a durable cursor to recover events received while disconnected without double-processing them.
+- Every approved Agent proposal is cloned into `/data/git-tasks/<task>/...`, checked out from the registered exact base SHA, and placed on a unique `forge/task-*` feature branch. The read-only source and imported Riftwatch worktree are never edited.
+- Before local commit the service rechecks the feature branch, exact diff, high-confidence secret patterns, all 15 JavaScript syntax checks, and the existing locale validator. Only the reviewed target file is staged.
+- Commit, push, and PR are separate explicit-confirmation API/UI actions. Push is always non-force, rejects protected branches, and real external writes additionally require `FORGE_GITHUB_EXTERNAL_WRITES=1`. There is no merge endpoint.
+- The Studio displays GitHub configuration state, repository sync/conflict state, deliveries, changes, diffs, validation output, and an action audit.
+- Runtime images are digest-pinned. The final image uses official `buildpack-deps:bookworm` for Git/OpenSSL, with pinned Python 3.12.12 and Node 24.19.0 runtimes copied in; this avoided the cloud Docker daemon's Debian-mirror DNS failure without disabling package verification.
+
+### Verification evidence
+
+- Unit/integration suite: 27 tests passed. Task 03 cases cover invalid HMAC, duplicate delivery, changed-body replay, unauthorized repository, retry/recovery, dirty and force-update conflicts, conflict-safe and idempotent reconciliation, isolated clone/branch, source preservation, diff/secret scan, allowlisted Build/Test, explicit commit, Mock push, PR dry-run, Mock PR, base-SHA conflict, least permissions, real-installation requirement, and real-write authorization rejection.
+- Python compilation, browser JavaScript syntax, Compose validation, and `git diff --check` passed.
+- Container health returned `status=ok`, `database=ready`, and `workspace=mounted`. Runtime versions were Git 2.39.5, OpenSSL 3.0.22, Node 24.19.0, and Python 3.12.12.
+- HTTP Mock E2E completed Agent task 6, processed a signed webhook, identified its duplicate, rejected an altered replay with HTTP 409, prepared `forge/task-6-d1696ce8`, created a reviewed local commit, performed a Mock push, recovered one offline event, completed a PR dry-run, and created `mock://github/Good-Comic/PlayGround/pull/1`.
+- Tests confirmed that neither the webhook secret nor a private-key marker was present in SQLite. Mock success is not real GitHub App authorization.
+- Riftwatch regression passed Build, `4 locales, 573 keys each`, all four localized titles, Start Game with 13 units and 6 buildings, `NemesisDirector`, `0 / 10`, and controlled victory after 10 waves with 10 reports and no browser errors. Game commit remained `3674a33d…`, README SHA-256 remained `7148c7e3…`, and its worktree remained clean.
+
+### Real GitHub verification and limitations
+
+- `gh auth status` reports the current `GH_TOKEN` is invalid. No valid GitHub App ID, installation, private key, or production webhook secret was supplied.
+- No real installation token was requested; no real commit was pushed; no real PR or merge was created. `FORGE_GITHUB_EXTERNAL_WRITES` remained disabled.
+- Studio remains bound to `127.0.0.1:8080`; GitHub cannot deliver public webhooks to it. The future relay design in `docs/GITHUB_WEBHOOK_DEPLOYMENT.md` was not deployed.
+- Conflict handling stops and surfaces forced/dirty conditions; it does not automatically resolve them. Retry scheduling is recorded, while a production worker must invoke due retries.
+- The Studio has no user authentication or role model and must not be exposed directly. Production approval controls require authenticated users and authorization.
+- See `docs/GITHUB_APP_SECURITY.md` for threats, controls, and residual risks.
+
 ## Not yet implemented
 
-- Authenticated GitHub App/API integration and PR creation (Task 03).
-- Automatic source editing, Git commit, push, or merge from the Studio UI.
+- Real GitHub App installation and credential verification.
+- Authenticated multi-user approvals, production retry worker, and operator-driven conflict resolution.
+- Automatic merge (deliberately not implemented).
 - Full real-time ten-wave combat playthrough, performance acceptance, visual regression baselines, or cross-browser testing.
 - Authentication, multi-user authorization, TLS termination, public exposure, backups, and production operations.
 

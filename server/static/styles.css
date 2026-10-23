@@ -5,7 +5,7 @@ header { height: 56px; display: flex; align-items: center; justify-content: spac
 main { min-height: calc(100vh - 56px); display: grid; grid-template-columns: 280px minmax(520px, 1fr) 360px; grid-template-rows: minmax(720px, 1fr) minmax(220px, auto); }
 aside, section { padding: 16px; border-right: 1px solid #27324a; }
 .agent { max-height: calc(100vh - 56px); overflow: auto; }
-.logs { grid-column: 1 / 4; border-top: 1px solid #27324a; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.logs { grid-column: 1 / 4; border-top: 1px solid #27324a; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 h2 { margin: 0 0 12px; font-size: 1rem; }
 h3 { font-size: .9rem; }
 form { display: grid; gap: 8px; margin-bottom: 12px; }
@@ -20,7 +20,7 @@ ul { padding-left: 20px; }
 .file-button { font-family: ui-monospace, monospace; font-size: .75rem; }
 .run.passed { border-color: #2f8f5b; }
 .run.failed { border-color: #c95b5b; }
-.task, .provider-card { width: 100%; margin-bottom: 5px; text-align: left; background: #151d31; overflow-wrap: anywhere; }
+.task, .repo, .provider-card { width: 100%; margin-bottom: 5px; text-align: left; background: #151d31; overflow-wrap: anywhere; }
 .task.awaiting_approval { border-color: #d2a84d; }
 .task.completed { border-color: #2f8f5b; }
 .task.failed, .task.cancelled { border-color: #c95b5b; }
@@ -41,5 +41,5 @@ ul { padding-left: 20px; }
 #health.error { color: #ff8585; }
 pre { white-space: pre-wrap; color: #aab5c9; margin-bottom: 0; }
 code { color: #b9d1ff; }
-#agent-task-output { max-height: 420px; overflow: auto; }
+#agent-task-output, #github-output { max-height: 520px; overflow: auto; }
 @media (max-width: 1050px) { main { display: block; } .agent { max-height: none; } .logs { min-height: 140px; display: block; } }
