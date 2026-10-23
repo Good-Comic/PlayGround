@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Forge AI</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header><strong>Project Forge AI</strong><span id="health">检查服务中…</span></header>
+    <main>
+      <aside class="projects">
+        <h2>游戏项目</h2>
+        <form id="import-form"><input id="path" placeholder="workspace 内目录，例如 demo-game" required><button>导入</button></form>
+        <p id="empty">尚未导入项目。请先在 workspace 建立目录。</p>
+        <ul id="project-list"></ul>
+      </aside>
+      <section class="preview">
+        <h2>游戏预览</h2>
+        <div class="placeholder">Task 04 才会启用即时预览，目前不会显示虚假画面。</div>
+      </section>
+      <aside class="agent">
+        <h2>AI Agent</h2>
+        <p>OpenHands Agent Canvas 是独立服务。</p>
+        <a href="http://127.0.0.1:8000/canvas" target="_blank" rel="noreferrer">开启 Agent Canvas</a>
+        <h3>尚未启用</h3>
+        <ul><li>模型路由（Task 02）</li><li>GitHub App（Task 03）</li><li>自动测试队列（Task 05）</li></ul>
+      </aside>
+      <section class="logs"><strong>状态</strong><pre id="log">等待操作。</pre></section>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
