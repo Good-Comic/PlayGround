@@ -35,6 +35,9 @@ try:
         init_automation_db, list_automation_jobs, load_spec_manifest,
         provider_acceptance_status, run_automation_job,
     )
+    from server.security import AuthError, authenticate, authorize, init_security_db, login, reauthenticate, revoke
+    from server.operations import init_operations_db, metrics
+    from server.secrets_store import read_secret
 except ModuleNotFoundError:  # Container executes this file directly.
     from providers import AgentRequest, PROVIDER_CATALOG, ProviderCancelled, ProviderError, build_provider
     from github_integration import (
@@ -54,6 +57,9 @@ except ModuleNotFoundError:  # Container executes this file directly.
         init_automation_db, list_automation_jobs, load_spec_manifest,
         provider_acceptance_status, run_automation_job,
     )
+    from security import AuthError, authenticate, authorize, init_security_db, login, reauthenticate, revoke
+    from operations import init_operations_db, metrics
+    from secrets_store import read_secret
 
 
 DB_PATH = Path(os.environ.get("FORGE_DB_PATH", "/data/forge.db"))
@@ -203,6 +209,8 @@ def init_db(db_path: Path) -> None:
     init_github_db(db_path)
     init_preview_db(db_path)
     init_automation_db(db_path)
+    init_security_db(db_path)
+    init_operations_db(db_path)
 
 
 def resolve_project_path(raw_path: str, workspace_root: Path = WORKSPACE_ROOT) -> tuple[Path, str]:
@@ -427,7 +435,7 @@ def _provider_public(row: dict[str, Any]) -> dict[str, Any]:
     public["supports_tool_calls"] = None if row["supports_tool_calls"] is None else bool(row["supports_tool_calls"])
     public["supports_json"] = None if row["supports_json"] is None else bool(row["supports_json"])
     public["location"] = "internal" if row["kind"] == "mock" else ("local" if row["kind"] == "ollama" else "cloud")
-    public["api_key_configured"] = row["kind"] != "openai-compatible" or bool(os.environ.get("FORGE_OPENAI_API_KEY"))
+    public["api_key_configured"] = row["kind"] != "openai-compatible" or bool(read_secret("FORGE_OPENAI_API_KEY"))
     return public
 
 
@@ -904,6 +912,8 @@ class ForgeHandler(SimpleHTTPRequestHandler):
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("X-Frame-Options", "SAMEORIGIN")
         self.send_header("Referrer-Policy", "no-referrer")
+        self.send_header("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(), usb=()")
+        self.send_header("Cross-Origin-Opener-Policy", "same-origin")
         self.send_header(
             "Content-Security-Policy",
             "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; "
@@ -911,6 +921,15 @@ class ForgeHandler(SimpleHTTPRequestHandler):
             "frame-src 'self' http://127.0.0.1:*",
         )
         super().end_headers()
+
+    def _principal(self, permission: str, csrf: bool = False, high_risk: bool = False):
+        try:
+            principal = authenticate(self.headers.get("Cookie", ""), DB_PATH)
+            authorize(principal, permission, self.headers.get("X-CSRF-Token", "") if csrf else None, high_risk)
+            return principal
+        except AuthError as exc:
+            self.json_response(HTTPStatus.FORBIDDEN if self.headers.get("Cookie") else HTTPStatus.UNAUTHORIZED, {"error": str(exc)})
+            return None
 
     def json_response(self, status: HTTPStatus, payload: Any) -> None:
         body = json.dumps(payload, ensure_ascii=False).encode()
@@ -982,6 +1001,21 @@ class ForgeHandler(SimpleHTTPRequestHandler):
         parsed = urlparse(self.path)
         if parsed.path == "/health":
             self.json_response(HTTPStatus.OK, {"status": "ok", "database": "ready", "workspace": "mounted"})
+            return
+        if parsed.path == "/api/auth/status":
+            try:
+                principal = authenticate(self.headers.get("Cookie", ""), DB_PATH)
+                self.json_response(HTTPStatus.OK, {"authenticated": True, "username": principal.username, "permissions": sorted(principal.permissions)})
+            except AuthError:
+                with sqlite3.connect(DB_PATH) as connection:
+                    configured = connection.execute("SELECT COUNT(*) FROM auth_users").fetchone()[0] > 0
+                self.json_response(HTTPStatus.OK, {"authenticated": False, "configured": configured})
+            return
+        if parsed.path.startswith("/api/") or parsed.path.startswith("/preview/"):
+            if self._principal("read") is None:
+                return
+        if parsed.path == "/api/operations/metrics":
+            self.json_response(HTTPStatus.OK, metrics(DB_PATH))
             return
         if parsed.path == "/api/projects":
             self.json_response(HTTPStatus.OK, {"projects": list_projects()})
@@ -1100,8 +1134,70 @@ class ForgeHandler(SimpleHTTPRequestHandler):
             return
         super().do_GET()
 
+    def _handle_github_webhook(self) -> None:
+        try:
+            body = self.read_body()
+            received = ingest_webhook(
+                body, self.headers.get("X-Hub-Signature-256", ""),
+                self.headers.get("X-GitHub-Delivery", ""), self.headers.get("X-GitHub-Event", ""), DB_PATH,
+            )
+            result = received if received["duplicate"] else process_delivery(received["delivery_id"], DB_PATH)
+        except WebhookAuthenticationError as exc:
+            self.json_response(HTTPStatus.UNAUTHORIZED, {"error": str(exc)})
+            return
+        except WebhookReplayError as exc:
+            self.json_response(HTTPStatus.CONFLICT, {"error": str(exc)})
+            return
+        except (ValueError, GitHubIntegrationError, sqlite3.Error) as exc:
+            self.json_response(HTTPStatus.FORBIDDEN, {"error": str(exc)})
+            return
+        self.json_response(HTTPStatus.ACCEPTED, {"delivery": result})
+
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
+        if parsed.path == "/api/auth/login":
+            try:
+                payload = self.read_json()
+                result = login(str(payload.get("username", "")), str(payload.get("password", "")), self.client_address[0], DB_PATH)
+            except (ValueError, AuthError) as exc:
+                self.json_response(HTTPStatus.UNAUTHORIZED, {"error": str(exc)})
+                return
+            secure = "; Secure" if os.environ.get("FORGE_COOKIE_SECURE") == "1" else ""
+            body = json.dumps({"user": result["user"], "csrf_token": result["csrf_token"], "expires_at": result["expires_at"]}).encode()
+            self.send_response(HTTPStatus.OK)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Set-Cookie", f"forge_session={result['session_token']}; Path=/; HttpOnly; SameSite=Strict; Max-Age=28800{secure}")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        if parsed.path == "/api/github/webhook":
+            return self._handle_github_webhook()
+        modification_routes = {
+            "/api/projects/import-local", "/api/providers", "/api/github/repositories",
+            "/api/github/changes/prepare", "/api/agent/tasks",
+        }
+        permission = "read" if parsed.path.startswith("/api/auth/") else (
+            "modify" if parsed.path in modification_routes or re.fullmatch(r"/api/agent/tasks/\d+/(approve|rollback)", parsed.path) else "execute"
+        )
+        principal = self._principal(permission, csrf=True)
+        if principal is None:
+            return
+        if parsed.path == "/api/auth/logout":
+            revoke(principal, DB_PATH)
+            self.send_response(HTTPStatus.NO_CONTENT)
+            self.send_header("Set-Cookie", "forge_session=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0")
+            self.end_headers()
+            return
+        if parsed.path == "/api/auth/reauthenticate":
+            try:
+                reauthenticate(principal, str(self.read_json().get("password", "")), DB_PATH)
+            except (ValueError, AuthError) as exc:
+                self.json_response(HTTPStatus.FORBIDDEN, {"error": str(exc)})
+                return
+            self.json_response(HTTPStatus.OK, {"reauthenticated": True})
+            return
         if parsed.path == "/api/automation/jobs":
             try:
                 job = create_automation_job(self.read_json(), DB_PATH, SPEC_ROOT)
@@ -1150,34 +1246,16 @@ class ForgeHandler(SimpleHTTPRequestHandler):
                     )
                     self.json_response(HTTPStatus.CREATED, {"suite": suite})
                 else:
+                    authorize(principal, "modify", self.headers.get("X-CSRF-Token", ""), require_reauth=True)
                     preview = approve_golden(
                         preview_id, int(payload.get("run_id")), payload.get("confirm") is True,
                         DB_PATH, PREVIEW_ARTIFACT_ROOT,
                     )
                     self.json_response(HTTPStatus.OK, {"preview": preview})
-            except (TypeError, ValueError, OSError, sqlite3.Error, PreviewError, subprocess.TimeoutExpired) as exc:
+            except (TypeError, ValueError, OSError, sqlite3.Error, PreviewError, subprocess.TimeoutExpired, AuthError) as exc:
                 self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
             return
 
-        if parsed.path == "/api/github/webhook":
-            try:
-                body = self.read_body()
-                received = ingest_webhook(
-                    body, self.headers.get("X-Hub-Signature-256", ""),
-                    self.headers.get("X-GitHub-Delivery", ""), self.headers.get("X-GitHub-Event", ""), DB_PATH,
-                )
-                result = received if received["duplicate"] else process_delivery(received["delivery_id"], DB_PATH)
-            except WebhookAuthenticationError as exc:
-                self.json_response(HTTPStatus.UNAUTHORIZED, {"error": str(exc)})
-                return
-            except WebhookReplayError as exc:
-                self.json_response(HTTPStatus.CONFLICT, {"error": str(exc)})
-                return
-            except (ValueError, GitHubIntegrationError, sqlite3.Error) as exc:
-                self.json_response(HTTPStatus.FORBIDDEN, {"error": str(exc)})
-                return
-            self.json_response(HTTPStatus.ACCEPTED, {"delivery": result})
-            return
         if parsed.path == "/api/projects/import-local":
             try:
                 payload = self.read_json()
@@ -1240,10 +1318,12 @@ class ForgeHandler(SimpleHTTPRequestHandler):
                 action = github_change_action.group(2)
                 payload = self.read_json()
                 if action == "commit":
+                    authorize(principal, "modify", self.headers.get("X-CSRF-Token", ""), require_reauth=True)
                     if payload.get("confirm") is not True:
                         raise GitHubIntegrationError("explicit commit approval is required")
                     change = approve_commit(change_id, payload.get("message", ""), DB_PATH)
                 elif action == "push":
+                    authorize(principal, "push", self.headers.get("X-CSRF-Token", ""), require_reauth=True)
                     if payload.get("confirm") is not True:
                         raise GitHubIntegrationError("explicit push approval is required")
                     current = get_change(change_id, DB_PATH)
@@ -1254,6 +1334,7 @@ class ForgeHandler(SimpleHTTPRequestHandler):
                         allow_external=github_config_status()["external_writes_enabled"],
                     )
                 else:
+                    authorize(principal, "pr", self.headers.get("X-CSRF-Token", ""), require_reauth=True)
                     if payload.get("confirm") is not True:
                         raise GitHubIntegrationError("explicit PR approval is required")
                     current = get_change(change_id, DB_PATH)
@@ -1264,7 +1345,7 @@ class ForgeHandler(SimpleHTTPRequestHandler):
                         dry_run=payload.get("dry_run", True) is not False,
                         allow_external=github_config_status()["external_writes_enabled"],
                     )
-            except (ValueError, GitHubIntegrationError, OSError, sqlite3.Error) as exc:
+            except (ValueError, GitHubIntegrationError, OSError, sqlite3.Error, AuthError) as exc:
                 self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
                 return
             self.json_response(HTTPStatus.OK, {"change": change})

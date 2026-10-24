@@ -9,6 +9,11 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
+try:
+    from server.secrets_store import read_secret
+except ModuleNotFoundError:
+    from secrets_store import read_secret
+
 
 class ProviderError(RuntimeError):
     pass
@@ -132,7 +137,7 @@ class OpenAICompatibleProvider(BaseProvider):
     def _headers(self) -> dict[str, str]:
         headers = {"Accept": "application/json", "Content-Type": "application/json"}
         if self.config["kind"] == "openai-compatible":
-            api_key = os.environ.get("FORGE_OPENAI_API_KEY", "")
+            api_key = read_secret("FORGE_OPENAI_API_KEY")
             if not api_key:
                 raise ProviderError("FORGE_OPENAI_API_KEY is not configured on the server")
             headers["Authorization"] = f"Bearer {api_key}"

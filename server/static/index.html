@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
+    <dialog id="login-dialog">
+      <form id="login-form" method="dialog">
+        <h2>私人 Studio 登入</h2>
+        <input id="login-username" value="admin" autocomplete="username" required>
+        <input id="login-password" type="password" autocomplete="current-password" placeholder="管理員密碼" required>
+        <button>登入</button>
+        <p id="login-error" class="hint"></p>
+      </form>
+    </dialog>
     <header><strong>Project Forge AI</strong><span id="health">检查服务中…</span></header>
     <main>
       <aside class="projects">
@@ -104,6 +113,9 @@
         </form>
         <ul id="automation-list" class="compact-list"><li>尚无自动化任务</li></ul>
         <p class="hint">Planner → Engineer → QA → Reviewer 依序执行。Mock 角色并非独立 Agent；外部 Push/PR 永不自动执行。</p>
+        <h2>Operations</h2>
+        <button id="refresh-metrics">更新真实指标</button>
+        <pre id="operations-metrics">登入后载入。</pre>
       </aside>
       <section class="logs">
         <div><strong>状态与输出</strong><pre id="log">等待操作。</pre></div>

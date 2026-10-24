@@ -17,6 +17,11 @@ from typing import Any, Callable
 from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
+try:
+    from server.secrets_store import read_secret
+except ModuleNotFoundError:
+    from secrets_store import read_secret
+
 
 MAX_WEBHOOK_BODY = 1024 * 1024
 MAX_GIT_OUTPUT = 64 * 1024
@@ -154,7 +159,7 @@ def github_config_status() -> dict[str, bool]:
     return {
         "app_id_configured": bool(os.environ.get("FORGE_GITHUB_APP_ID")),
         "private_key_configured": bool(private_key_path and Path(private_key_path).is_file()),
-        "webhook_secret_configured": bool(os.environ.get("FORGE_GITHUB_WEBHOOK_SECRET")),
+        "webhook_secret_configured": bool(read_secret("FORGE_GITHUB_WEBHOOK_SECRET")),
         "external_writes_enabled": os.environ.get("FORGE_GITHUB_EXTERNAL_WRITES") == "1",
     }
 
@@ -301,7 +306,7 @@ def ingest_webhook(
         raise GitHubIntegrationError("webhook body exceeds 1 MiB")
     if not re.fullmatch(r"[A-Za-z0-9-]{8,100}", delivery_id or ""):
         raise GitHubIntegrationError("invalid delivery id")
-    verify_webhook_signature(body, signature, secret if secret is not None else os.environ.get("FORGE_GITHUB_WEBHOOK_SECRET", ""))
+    verify_webhook_signature(body, signature, secret if secret is not None else read_secret("FORGE_GITHUB_WEBHOOK_SECRET"))
     try:
         payload = json.loads(body)
     except json.JSONDecodeError as exc:

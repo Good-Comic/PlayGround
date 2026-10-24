@@ -27,6 +27,7 @@ MAX_REQUEST_CHARS = 6000
 MAX_TARGETS = 10
 MAX_FILE_BYTES = 512 * 1024
 MAX_OUTPUT = 64 * 1024
+MAX_WORKSPACE_BYTES = 256 * 1024 * 1024
 
 
 class AutomationError(RuntimeError):
@@ -420,6 +421,10 @@ def _validate_file(root: Path, relative: str) -> Path:
     return candidate
 
 
+def _workspace_size(root: Path) -> int:
+    return sum(item.stat().st_size for item in root.rglob("*") if item.is_file() and not item.is_symlink())
+
+
 def _mock_edit(relative: str, content: str, job_id: int) -> str:
     suffix = Path(relative).suffix.lower()
     marker = f"Project Forge automation mock job {job_id}; isolated workspace only."
@@ -467,6 +472,9 @@ def _prepare_workspace(job: dict[str, Any], repo: dict[str, Any], source_repo: P
     if branch in PROTECTED_BRANCHES or branch.startswith(("opencode-resume/", "opencode-checkpoints/")):
         raise AutomationPhaseError("protected branch rejected")
     _git(["switch", "-c", branch], workspace)
+    workspace.chmod(0o700)
+    if _workspace_size(workspace) > MAX_WORKSPACE_BYTES:
+        raise AutomationPhaseError("workspace exceeds the 256 MiB quota")
     before = {}
     for relative in job["target_paths"]:
         target = _validate_file(workspace, relative)
@@ -480,6 +488,8 @@ def _prepare_workspace(job: dict[str, Any], repo: dict[str, Any], source_repo: P
     if sorted(changed) != sorted(job["target_paths"]):
         raise AutomationPhaseError("changed files do not match the reviewed allowlist")
     scan_secrets(diff)
+    if _workspace_size(workspace) > MAX_WORKSPACE_BYTES:
+        raise AutomationPhaseError("workspace exceeds the 256 MiB quota")
     return workspace, branch, diff
 
 

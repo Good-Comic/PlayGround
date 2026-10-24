@@ -4,7 +4,7 @@ Last verified: 2026-10-24 (Asia/Taipei; Debian cloud development container)
 
 ## Current isolation model
 
-- Forge platform branch: `codex/project-forge-task-05`, based on Task 04 commit `69572e724286dcf4d335b6ed2902d7a2bc57689b`.
+- Forge platform branch: `codex/project-forge-task-06`, based exactly on Task 05 commit `e178ca5c1bc68f6e22f869c6f9a4380ac67f0afc`.
 - Riftwatch game branch: `codex/riftwatch-forge-integration`, in the ignored linked worktree `workspace/riftwatch`, based on checkpoint `3674a33d95c5165dc9ee5813a051f894a8c72378`.
 - No merge into `main` was performed. No `opencode-resume/*` or `opencode-checkpoints/*` reference was moved or deleted.
 - The game mount is read-only inside Forge Studio. Task 03 Git writes are confined to isolated data-volume clones and fixed commands; the API does not expose arbitrary shell or write to the imported worktree.
@@ -139,7 +139,7 @@ No console or page errors occurred in the final Forge-hosted browser run.
 - A replaceable `GameEngineAdapter` interface now selects `web-rts-esm` for the existing Riftwatch HTML/CSS/JavaScript ES-module project. No engine conversion or game-source migration was performed.
 - A preview starts from a copy of either the read-only imported project or a completed Agent task workspace under `/data/previews`. Vite 7.1.12 runs on a bounded loopback port with HMR; Studio restart marks orphaned sessions stopped.
 - The Studio iframe uses `sandbox="allow-scripts allow-pointer-lock"` without `allow-same-origin`, a no-referrer policy, and a separate port origin. Preview assets allow only opaque `Origin: null`; the Forge API does not enable CORS. Browser probing confirmed `document.cookie` raises `SecurityError` and a preview fetch to the 8080 API fails with `TypeError`.
-- Vite, Playwright Core, pixelmatch, and pngjs are exact-version locked. A digest-pinned `chromedp/headless-shell` sidecar exposes CDP only to the private Compose network; no browser port is published.
+- Vite, Playwright Core, pixelmatch, and pngjs are exact-version locked. Task 06 upgrades Vite to 8.3.5 after a high-severity audit finding on 7.1.12. A digest-pinned `chromedp/headless-shell` sidecar exposes CDP only to the private Compose network; no browser port is published.
 - Quality runs persist console errors, page errors, failed requests, changed files, metrics, success/failure screenshots, logs, and a full rollback copy in SQLite/data volume. Screenshots are served through a constrained PNG-only endpoint.
 - Golden baselines are scoped by project and adapter. Initial creation and every update require `confirm: true` from an explicit Studio action and a passing source run.
 - The fixed Playwright scenario verifies the four exact titles, Start Game, major UI selectors, 13 initial units, 6 buildings, `NemesisDirector`, `0 / 10`, all ten controlled wave transitions, victory, and ten reports. It labels this a controlled state-machine traversal, not a real-time combat playthrough.
@@ -191,13 +191,41 @@ No console or page errors occurred in the final Forge-hosted browser run.
 
 See `docs/AUTOMATION_SECURITY.md` for controls, threats, and residual risks.
 
+## Task 06 — Security, recovery, and private-host operations
+
+### Implemented and verified in Debian cloud
+
+- API-default authentication now uses a local admin with PBKDF2-SHA256 (600,000 rounds), opaque random session and CSRF tokens stored only as hashes, 8-hour expiry, explicit revocation, five-failure/15-minute lockout, recent reauthentication, and persistent security audit records. Static login and health remain public; anonymous Studio APIs return 401 and authenticated POST without CSRF returns 403.
+- Permissions are separated as read, modify, execute, push, PR, and merge. Commit/golden, Push, and PR routes enforce their scoped permission, recent reauthentication, CSRF, and existing explicit confirmation. Merge remains deliberately absent. OIDC is an extension point, not falsely claimed as connected.
+- Secret lookup prefers owner-only mounted files for OpenAI and webhook secrets; GitHub private keys remain file-mounted. Symlinks, broad file modes, duplicate sources, browser/API exposure, plaintext database persistence, and a frontend leak sentinel are tested. Host vault/KMS rotation is documented; no local encryption key is stored beside ciphertext.
+- Compose retains non-root/read-only execution, all-capability drop, no-new-privileges, loopback ports and bounded tmpfs, and adds PID/file-descriptor/log rotation limits. Source remains read-only, no Docker socket/SSH/cloud credentials are mounted, automation/preview workspaces are mode 0700 with a logical 256 MiB source quota, and existing timeouts remain enforced.
+- Durable queue primitives persist idempotency keys, atomic claims, attempts, heartbeat/leases, safe cancel, retry limit, crash recovery, and dead letters. Unit tests exercise duplicate requests, lease expiry, two-attempt dead-lettering, cancellation, and completion. A real container restart recovered running Queue Job 1 to `queued` with `worker lease expired; recovered after crash` without duplicate completion.
+- Operations metrics derive only from SQLite/cgroup records: automation success and token/cost totals, Quality Gate rate, queue state, GitHub sync/conflicts, recent errors, memory, and CPU. No fake live feed is generated.
+- Backup uses SQLite's online backup API, captures Git refs and workspace records, and creates a SHA-256 manifest. The real backup was 319,488-byte SQLite + 4,159-byte refs + 22,661,951-byte archive. Restore verified all hashes, `PRAGMA integrity_check=ok`, 28 tables, and 1,011 archive entries in a new volume directory.
+- The first real restore target under the intentionally limited 32 MiB `/tmp` failed with `ENOSPC`; this failure is retained as evidence. The corrected volume-backed restore passed and the deployment guide now forbids `/tmp` as the restore target.
+- Linux and Windows/Docker Desktop check/start/stop/health entry points, private HTTPS/VPN guidance, update/rollback, secrets rotation, backup/restore, monitoring, and real-model/GitHub acceptance procedures are documented. Windows execution itself was not available and is not claimed.
+- Red/blue threat analysis covers prompt injection, traversal, SSRF, shell/secret exfiltration, malicious dependencies, Git escalation, API bypass, webhook forgery/replay, queue duplication, and backup tampering. Existing Task 01–05 security tests remain part of the regression suite.
+- The initial production dependency audit found one high-severity Vite advisory group. After the exact-version upgrade, preview tests passed and `npm audit --omit=dev --audit-level=high` reports 0 vulnerabilities.
+- Vite 8 Quality Run 18 initially failed honestly with `403 Domain forbidden` because cloud Envoy intercepted the browser sidecar's Docker-hostname request. A proposed shared Studio/browser network namespace was rejected as an isolation regression. The final preview-only relay exposes only 5173–5182 inside the browser namespace and no API port. Quality Run 19 then passed with no console/page/load errors: four titles, Start Game, 13 units, 6 buildings, `NemesisDirector`, `0 / 10`, controlled victory, and ten reports. The approved golden was not updated.
+- Authenticated Mock Automation Job 2 completed Planner/Engineer/QA/Reviewer and Quality Run 20 on attempt 1, recorded 803 tokens and `$0`, and stopped at `awaiting_pr_approval` with `external_action=not_performed`.
+- Final Riftwatch remained clean at `3674a33d95c5165dc9ee5813a051f894a8c72378`; README SHA-256 remained `7148c7e3bcb62e354e0af02d29e49cf27a9cb521ffc005d1fb852a3e321b769f`.
+
+### Deliberate limits and not-yet-verified items
+
+- Per-job disposable containers, kernel-enforced per-job disk quota and egress policy are not implemented in the shared Studio container. Compose-level cgroup and filesystem hardening is real, but hostile public repositories still require an external hardened runner.
+- Durable queue storage/recovery is implemented; a separately supervised always-on worker service and production scheduler were not exercised. Existing synchronous Task 01–05 APIs remain unchanged to avoid an unsafe migration.
+- OAuth/OIDC, multi-user provisioning, off-host encrypted backup storage, external alerting, Windows private-host runtime, real Ollama/cloud inference, GitHub App installation, public HTTPS relay, and real Push/PR remain unverified.
+- No service was exposed publicly, no paid request was made, and no PR or merge was created.
+
+See `docs/HARDENING_THREAT_MODEL.md` and `docs/PRIVATE_HOST_DEPLOYMENT.md`.
+
 ## Not yet implemented
 
 - Real GitHub App installation and credential verification.
-- Authenticated multi-user approvals, production retry worker, and operator-driven conflict resolution.
+- Authenticated multi-user/OIDC administration, production worker supervision, and operator-driven conflict resolution.
 - Automatic merge (deliberately not implemented).
 - Full real-time ten-wave combat playthrough, performance acceptance thresholds, long-duration soak testing, or cross-browser/multi-resolution visual coverage.
-- Authentication, multi-user authorization, TLS termination, public exposure, backups, and production operations.
+- Per-job container/egress isolation, TLS termination, off-host encrypted backup scheduling, and production operations verification.
 
 ## Environment limitations
 

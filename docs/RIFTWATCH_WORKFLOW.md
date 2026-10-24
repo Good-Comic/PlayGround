@@ -4,7 +4,7 @@ Riftwatch and Project Forge AI share a GitHub repository but are intentionally k
 
 ## Current layout
 
-- Platform checkout: repository root, branch `codex/project-forge-task-05`.
+- Platform checkout: repository root, branch `codex/project-forge-task-06`.
 - Game checkout: `workspace/riftwatch`, branch `codex/riftwatch-forge-integration`.
 - Studio mount: host `./workspace` to container `/workspace`, read-only.
 - Studio project path: `riftwatch`.

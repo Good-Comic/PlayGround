@@ -51,6 +51,7 @@ class WebRtsAdapter(GameEngineAdapter):
 
 ADAPTERS = (WebRtsAdapter(),)
 PROCESSES: dict[int, subprocess.Popen[str]] = {}
+MAX_PREVIEW_WORKSPACE_BYTES = 256 * 1024 * 1024
 
 
 def init_preview_db(db_path: Path) -> None:
@@ -160,6 +161,10 @@ def _manifest(root: Path) -> dict[str, dict[str, Any]]:
     return result
 
 
+def _tree_size(root: Path) -> int:
+    return sum(item.stat().st_size for item in root.rglob("*") if item.is_file() and not item.is_symlink())
+
+
 def _row(row: sqlite3.Row | None, message: str) -> dict[str, Any]:
     if row is None:
         raise PreviewError(message)
@@ -236,6 +241,8 @@ def _launch_preview(
     adapter = next((item for item in ADAPTERS if item.supports(source)), None)
     if adapter is None:
         raise PreviewError("no game engine adapter supports this project")
+    if _tree_size(source) > MAX_PREVIEW_WORKSPACE_BYTES:
+        raise PreviewError("preview source exceeds the 256 MiB quota")
     if not vite_entry.is_file():
         raise PreviewError("Vite runtime is not installed")
     vite_config = vite_entry.parents[3] / "vite.config.mjs"
@@ -256,6 +263,7 @@ def _launch_preview(
     process = None
     try:
         shutil.copytree(source, destination, symlinks=False, ignore=shutil.ignore_patterns(".git", "node_modules"))
+        destination.chmod(0o700)
         manifest = _manifest(destination)
         command = [
             "node", str(vite_entry), str(destination), "--host", "0.0.0.0", "--port", str(port),
@@ -390,7 +398,7 @@ def run_quality_gate(
         ).fetchone()
     output_file = run_dir / "result.json"
     command = [
-        "node", str(quality_script), "--url", f"http://forge-studio:{preview['port']}/",
+        "node", str(quality_script), "--url", f"http://127.0.0.1:{preview['port']}/",
         "--browser", browser_endpoint, "--out", str(run_dir), "--result", str(output_file),
     ]
     if golden:

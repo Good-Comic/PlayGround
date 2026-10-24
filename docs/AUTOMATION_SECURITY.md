@@ -24,7 +24,7 @@ Real providers remain disabled for automation pending explicit acceptance. Crede
 
 ## Residual risks
 
-- No production authentication/authorization exists; Studio must remain loopback-only.
+- Task 06 adds a local-admin authenticated boundary; OIDC and multi-user administration remain unimplemented, so Studio must remain loopback-only or behind reviewed private HTTPS access.
 - Job clones share the Studio container and network namespace; they are not micro-VMs.
 - SQLite leases target one Studio process, not distributed workers.
 - Secret scanning cannot prove absence of every secret.

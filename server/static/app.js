@@ -46,6 +46,7 @@ let providers = [];
 let selectedGithubRepo = null;
 let selectedPreview = null;
 let selectedQualityRun = null;
+let csrfToken = sessionStorage.getItem('forge_csrf') || '';
 
 async function loadAutomation() {
   const [spec, jobs] = await Promise.all([
@@ -72,6 +73,9 @@ async function loadAutomation() {
 }
 
 async function jsonRequest(url, options) {
+  options = options || {};
+  options.headers = {...(options.headers || {})};
+  if (options.method && options.method !== 'GET' && csrfToken) options.headers['X-CSRF-Token'] = csrfToken;
   const response = await fetch(url, options);
   const data = await response.json();
   if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
@@ -480,6 +484,12 @@ async function runAction(action) {
 async function boot() {
   try {
     await jsonRequest('/health');
+    const auth = await jsonRequest('/api/auth/status');
+    if (!auth.authenticated) {
+      document.querySelector('#login-dialog').showModal();
+      health.textContent = '需要登入';
+      return;
+    }
     health.textContent = 'Studio API 已就绪';
     health.className = 'ok';
     await Promise.all([loadProviders(), loadProjects(), loadGithubStatus(), loadGithubRepositories(), loadAutomation()]);
@@ -489,6 +499,31 @@ async function boot() {
     log.textContent = error.message;
   }
 }
+
+document.querySelector('#login-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  try {
+    const data = await jsonRequest('/api/auth/login', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({username: document.querySelector('#login-username').value, password: document.querySelector('#login-password').value}),
+    });
+    csrfToken = data.csrf_token;
+    sessionStorage.setItem('forge_csrf', csrfToken);
+    document.querySelector('#login-password').value = '';
+    document.querySelector('#login-dialog').close();
+    await boot();
+  } catch (error) {
+    document.querySelector('#login-error').textContent = error.message;
+  }
+});
+
+document.querySelector('#refresh-metrics').addEventListener('click', async () => {
+  try {
+    document.querySelector('#operations-metrics').textContent = JSON.stringify(await jsonRequest('/api/operations/metrics'), null, 2);
+  } catch (error) {
+    document.querySelector('#operations-metrics').textContent = error.message;
+  }
+});
 
 document.querySelector('#automation-form').addEventListener('submit', async (event) => {
   event.preventDefault();

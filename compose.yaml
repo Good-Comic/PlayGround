@@ -28,13 +28,13 @@ services:
       FORGE_PREVIEW_ROOT: /data/previews
       FORGE_PREVIEW_ARTIFACT_ROOT: /data/preview-artifacts
       FORGE_BROWSER_ENDPOINT: http://preview-browser:9222
-      FORGE_OPENAI_API_KEY:
+      FORGE_ADMIN_PASSWORD_HASH: ${FORGE_ADMIN_PASSWORD_HASH:-}
+      FORGE_COOKIE_SECURE: ${FORGE_COOKIE_SECURE:-0}
+      FORGE_OPENAI_API_KEY_FILE: ${FORGE_OPENAI_API_KEY_FILE:-}
       FORGE_GITHUB_APP_ID:
       FORGE_GITHUB_APP_PRIVATE_KEY_FILE:
-      FORGE_GITHUB_WEBHOOK_SECRET:
+      FORGE_GITHUB_WEBHOOK_SECRET_FILE: ${FORGE_GITHUB_WEBHOOK_SECRET_FILE:-}
       FORGE_GITHUB_EXTERNAL_WRITES:
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     volumes:
       - ./workspace:/workspace:ro
       - .:/source-repository:ro
@@ -50,6 +50,16 @@ services:
       - ALL
     mem_limit: 512m
     cpus: 1.0
+    pids_limit: 256
+    ulimits:
+      nofile:
+        soft: 1024
+        hard: 2048
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=2)"]
       interval: 10s
@@ -60,10 +70,12 @@ services:
     depends_on:
       preview-browser:
         condition: service_healthy
+      preview-relay:
+        condition: service_started
 
   preview-browser:
     image: chromedp/headless-shell:stable@sha256:3da74b0945e4f80f00f0310bcda9f76cee283539ebd200a053a7bebf3de89423
-    command: ["--disable-dev-shm-usage", "--remote-allow-origins=*"]
+    command: ["--disable-dev-shm-usage", "--remote-allow-origins=*", "--no-proxy-server"]
     expose:
       - "9222"
     tmpfs:
@@ -76,12 +88,37 @@ services:
       - ALL
     mem_limit: 1g
     cpus: 2.0
+    pids_limit: 256
     healthcheck:
       test: ["CMD", "socat", "-u", "OPEN:/dev/null", "TCP:127.0.0.1:9222"]
       interval: 10s
       timeout: 3s
       retries: 5
     restart: unless-stopped
+
+  preview-relay:
+    image: chromedp/headless-shell:stable@sha256:3da74b0945e4f80f00f0310bcda9f76cee283539ebd200a053a7bebf3de89423
+    network_mode: "service:preview-browser"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        for port in 5173 5174 5175 5176 5177 5178 5179 5180 5181 5182;
+        do socat TCP-LISTEN:$${port},fork,reuseaddr TCP:forge-studio:$${port} & done;
+        wait
+    read_only: true
+    tmpfs:
+      - /tmp:size=8m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 32m
+    cpus: 0.25
+    pids_limit: 64
+    restart: unless-stopped
+    depends_on:
+      preview-browser:
+        condition: service_healthy
 
 volumes:
   forge-data:

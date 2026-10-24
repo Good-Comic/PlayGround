@@ -19,7 +19,7 @@ Required App permissions are exactly Metadata read, Contents read/write, and Pul
 | Secret committed in diff | High-confidence scan before prepare and again before commit | Pattern scanning cannot find every encoded or domain-specific secret |
 | Base drift | Exact registered base SHA at clone; diff and validations are recomputed at commit | Remote drift after validation can make a PR conflict; it is surfaced, not auto-resolved |
 | Dirty/forced sync | Dirty repository state and forced update stop processing and mark conflict | Manual operator recovery is required |
-| Unauthorized external action | Separate confirmation for commit, push, and PR; real writes need a server-side enable flag; no merge endpoint | Current prototype lacks authenticated users/RBAC, so it must remain loopback-only |
+| Unauthorized external action | Task 06 session authentication, CSRF, permission checks and recent reauthentication; separate confirmation for commit, push, and PR; real writes need a server-side enable flag; no merge endpoint | The implemented local-admin model is not a multi-user identity provider; remain loopback-only or behind reviewed private HTTPS access |
 
 ## Credential handling
 

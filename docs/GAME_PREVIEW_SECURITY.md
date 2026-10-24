@@ -4,9 +4,11 @@
 
 The imported game remains read-only at `/workspace`. A live preview copies either that source or a completed Agent task workspace into `/data/previews`; Vite watches only the copy. Preview processes use bounded ports 5173–5182, are published to host loopback only, and are never a route to write the game branch.
 
-Studio and preview do not share an origin. The iframe permits scripts and pointer lock but deliberately omits `allow-same-origin`, forms, popups, top navigation, downloads, storage access, camera, microphone, geolocation, payment, and USB. Vite permits opaque `Origin: null` only for its own ES-module assets. Forge API responses do not include CORS permission, so preview code cannot read internal APIs. The current Studio does not use session cookies; the sandbox also makes cookie access raise `SecurityError`.
+Studio and preview do not share an origin. The iframe permits scripts and pointer lock but deliberately omits `allow-same-origin`, forms, popups, top navigation, downloads, storage access, camera, microphone, geolocation, payment, and USB. Vite permits opaque `Origin: null` only for its own ES-module assets. Forge API responses do not include CORS permission, so preview code cannot read internal APIs. Task 06 Studio sessions use Strict HttpOnly cookies and CSRF tokens; the opaque preview sandbox cannot read them and cookie access raises `SecurityError`.
 
 The digest-pinned headless Chrome sidecar is reachable only on the Compose network. CDP is not published to the host. Each Quality run uses a new browser context, blocks service workers, uses deterministic `Math.random` for stable regression, and stores artifacts below `/data/preview-artifacts`.
+
+The cloud environment's outbound Envoy blocks browser navigation to Docker service names. Task 06 therefore adds a capability-dropped, read-only `preview-relay` sharing only the browser network namespace. It listens solely on loopback ports 5173–5182 and forwards solely to the corresponding Vite ports. It does not forward Studio API port 8080, CDP, or arbitrary destinations; sharing the Studio/browser network namespace was explicitly rejected because it would weaken API isolation.
 
 ## Quality gate
 
@@ -17,7 +19,7 @@ Goldens are keyed by project and adapter. Only a passing run with a screenshot m
 ## Residual risks
 
 - Preview JavaScript still executes in a real browser and Vite executes trusted project transforms inside the Studio container. Production should move each preview/validator into a disposable container with stricter egress and filesystem quotas.
-- Loopback port publication is suitable for a single-user private host, not a public or multi-user service. Authenticated authorization and per-user network isolation remain required.
+- Loopback port publication plus Task 06 authentication is suitable for a single-user private host behind reviewed HTTPS/VPN access, not a public multi-user service. Per-user preview network isolation remains required for multi-user deployment.
 - CSP allows loopback preview frames across ports. A different untrusted loopback service could be framed, but it does not receive Forge credentials and the sandbox remains opaque.
 - The secret scanner and browser gate cannot prove game code is benign. Do not mount host credentials, Docker socket, SSH material, or cloud metadata access into preview services.
 - FPS and latency are diagnostic samples, not acceptance guarantees. Hardware, throttling, browser version, and background load materially affect them.
