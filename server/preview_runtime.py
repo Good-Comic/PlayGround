@@ -8,6 +8,7 @@ import socket
 import sqlite3
 import subprocess
 import time
+import statistics
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -99,6 +100,16 @@ def init_preview_db(db_path: Path) -> None:
                 approved_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY(preview_id) REFERENCES preview_sessions(id),
                 FOREIGN KEY(source_run_id) REFERENCES preview_quality_runs(id)
+            );
+            CREATE TABLE IF NOT EXISTS preview_performance_suites (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                preview_id INTEGER NOT NULL,
+                sample_count INTEGER NOT NULL,
+                conditions_json TEXT NOT NULL,
+                samples_json TEXT NOT NULL,
+                summary_json TEXT NOT NULL,
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY(preview_id) REFERENCES preview_sessions(id)
             );
             """
         )
@@ -218,28 +229,10 @@ def _wait_ready(port: int, process: subprocess.Popen[str]) -> None:
     raise PreviewError("Vite preview readiness timed out")
 
 
-def start_preview(
-    project_id: int, task_id: int | None, db_path: Path, workspace_root: Path,
-    preview_root: Path, vite_entry: Path, port_start: int = 5173, port_end: int = 5182,
+def _launch_preview(
+    project_id: int, task_id: int | None, source: Path, db_path: Path,
+    preview_root: Path, vite_entry: Path, port_start: int, port_end: int,
 ) -> dict[str, Any]:
-    with sqlite3.connect(db_path) as connection:
-        connection.row_factory = sqlite3.Row
-        project = _row(connection.execute(
-            "SELECT * FROM projects WHERE id = ?", (project_id,)
-        ).fetchone(), "project not found")
-        task = None
-        if task_id is not None:
-            task = _row(connection.execute(
-                "SELECT * FROM agent_tasks WHERE id = ?", (task_id,)
-            ).fetchone(), "agent task not found")
-    source = (workspace_root / project["relative_path"]).resolve(strict=True)
-    workspace_resolved = workspace_root.resolve(strict=True)
-    if workspace_resolved not in source.parents:
-        raise PreviewError("project is outside the read-only workspace")
-    if task:
-        if task["project_id"] != project_id or task["status"] != "completed":
-            raise PreviewError("preview task must be a completed task for this project")
-        source = Path(task["workspace_path"]).resolve(strict=True)
     adapter = next((item for item in ADAPTERS if item.supports(source)), None)
     if adapter is None:
         raise PreviewError("no game engine adapter supports this project")
@@ -296,6 +289,46 @@ def start_preview(
             (str(destination), port, json.dumps(manifest, sort_keys=True), f"Vite ready on isolated port {port}.", preview_id),
         )
     return get_preview(preview_id, db_path)
+
+
+def start_preview(
+    project_id: int, task_id: int | None, db_path: Path, workspace_root: Path,
+    preview_root: Path, vite_entry: Path, port_start: int = 5173, port_end: int = 5182,
+) -> dict[str, Any]:
+    with sqlite3.connect(db_path) as connection:
+        connection.row_factory = sqlite3.Row
+        project = _row(connection.execute(
+            "SELECT * FROM projects WHERE id = ?", (project_id,)
+        ).fetchone(), "project not found")
+        task = None
+        if task_id is not None:
+            task = _row(connection.execute(
+                "SELECT * FROM agent_tasks WHERE id = ?", (task_id,)
+            ).fetchone(), "agent task not found")
+    source = (workspace_root / project["relative_path"]).resolve(strict=True)
+    workspace_resolved = workspace_root.resolve(strict=True)
+    if workspace_resolved not in source.parents:
+        raise PreviewError("project is outside the read-only workspace")
+    if task:
+        if task["project_id"] != project_id or task["status"] != "completed":
+            raise PreviewError("preview task must be a completed task for this project")
+        source = Path(task["workspace_path"]).resolve(strict=True)
+    return _launch_preview(
+        project_id, task_id, source, db_path, preview_root, vite_entry, port_start, port_end,
+    )
+
+
+def start_trusted_workspace_preview(
+    project_id: int, source: Path, allowed_root: Path, db_path: Path,
+    preview_root: Path, vite_entry: Path, port_start: int = 5173, port_end: int = 5182,
+) -> dict[str, Any]:
+    source = source.resolve(strict=True)
+    allowed = allowed_root.resolve(strict=True)
+    if allowed not in source.parents:
+        raise PreviewError("automation workspace is outside the trusted root")
+    return _launch_preview(
+        project_id, None, source, db_path, preview_root, vite_entry, port_start, port_end,
+    )
 
 
 def stop_preview(preview_id: int, db_path: Path) -> dict[str, Any]:
@@ -421,6 +454,48 @@ def list_quality_runs(preview_id: int, db_path: Path) -> list[dict[str, Any]]:
             "SELECT id FROM preview_quality_runs WHERE preview_id = ? ORDER BY id DESC", (preview_id,)
         )]
     return [get_quality_run(item, db_path) for item in ids]
+
+
+def _percentile(values: list[float], percentile: float) -> float:
+    ordered = sorted(values)
+    position = max(0, min(len(ordered) - 1, round((len(ordered) - 1) * percentile)))
+    return ordered[position]
+
+
+def run_performance_suite(
+    preview_id: int, sample_count: int, db_path: Path, artifact_root: Path,
+    quality_script: Path, browser_endpoint: str,
+) -> dict[str, Any]:
+    if sample_count < 3 or sample_count > 10:
+        raise PreviewError("performance suite requires 3 to 10 samples")
+    get_preview(preview_id, db_path)
+    runs = [
+        run_quality_gate(preview_id, db_path, artifact_root, quality_script, browser_endpoint)
+        for _ in range(sample_count)
+    ]
+    metric_names = ("measured_fps", "dom_content_loaded_ms", "load_ms", "interaction_latency_ms", "quality_duration_ms", "vite_rss_bytes")
+    summary = {}
+    for name in metric_names:
+        values = [float(run["metrics"][name]) for run in runs if isinstance(run["metrics"].get(name), (int, float))]
+        if values:
+            summary[name] = {
+                "min": min(values), "median": statistics.median(values),
+                "p95": _percentile(values, .95), "max": max(values), "samples": len(values),
+            }
+    conditions = {
+        "viewport": "1280x720", "browser_endpoint": browser_endpoint.split("://", 1)[0] + "://isolated-sidecar",
+        "sample_order": "sequential", "warmup": "quality runner navigation per sample",
+        "cpu_count": os.cpu_count(),
+        "note": "Container load is not controlled; results are diagnostic and not production benchmarks.",
+    }
+    with sqlite3.connect(db_path) as connection:
+        suite_id = connection.execute(
+            "INSERT INTO preview_performance_suites(preview_id,sample_count,conditions_json,samples_json,summary_json) VALUES (?,?,?,?,?)",
+            (preview_id, sample_count, json.dumps(conditions), json.dumps([{"run_id": r["id"], "passed": r["gate_passed"], "metrics": r["metrics"]} for r in runs]), json.dumps(summary)),
+        ).lastrowid
+    return {"id": suite_id, "preview_id": preview_id, "sample_count": sample_count,
+            "conditions": conditions, "samples": runs, "summary": summary,
+            "all_gates_passed": all(run["gate_passed"] for run in runs)}
 
 
 def approve_golden(preview_id: int, run_id: int, confirm: bool, db_path: Path, artifact_root: Path) -> dict[str, Any]:

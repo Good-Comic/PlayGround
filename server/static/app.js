@@ -36,11 +36,40 @@ const qualityDetails = document.querySelector('#quality-details');
 const qualityOutput = document.querySelector('#quality-output');
 const successShot = document.querySelector('#success-shot');
 const failureShot = document.querySelector('#failure-shot');
+const automationSpec = document.querySelector('#automation-spec');
+const automationRequirements = document.querySelector('#automation-requirements');
+const automationList = document.querySelector('#automation-list');
+const automationOutput = document.querySelector('#automation-output');
+const runAutomationButton = document.querySelector('#run-automation');
 let selectedProject = null;
 let providers = [];
 let selectedGithubRepo = null;
 let selectedPreview = null;
 let selectedQualityRun = null;
+
+async function loadAutomation() {
+  const [spec, jobs] = await Promise.all([
+    jsonRequest('/api/automation/spec'), jsonRequest('/api/automation/jobs'),
+  ]);
+  automationSpec.textContent = `v${spec.version} · ${spec.status} · ${spec.requirements.length} 项可追踪需求；缺少原始 v3.0 全文，不推测补写。`;
+  if (!automationRequirements.options.length) {
+    automationRequirements.replaceChildren(...spec.requirements.map((requirement) => {
+      const option = document.createElement('option');
+      option.value = requirement.id;
+      option.textContent = `${requirement.id} — ${requirement.text}`;
+      return option;
+    }));
+  }
+  automationList.replaceChildren(...(jobs.jobs.length ? jobs.jobs.map((job) => {
+    const item = document.createElement('li');
+    const button = document.createElement('button');
+    button.className = `task ${job.status}`;
+    button.textContent = `#${job.id} ${job.status} · attempt ${job.attempt}/${job.max_retries + 1} · $${job.used_cost_usd.toFixed(4)}`;
+    button.addEventListener('click', () => { automationOutput.textContent = JSON.stringify(job, null, 2); });
+    item.append(button);
+    return item;
+  }) : [Object.assign(document.createElement('li'), {textContent: '尚无自动化任务'})]));
+}
 
 async function jsonRequest(url, options) {
   const response = await fetch(url, options);
@@ -77,6 +106,7 @@ async function selectProject(project) {
   log.textContent = `已选择 ${project.name}。原始项目保持只读。`;
   createAgentTaskButton.disabled = false;
   registerGithubRepoButton.disabled = false;
+  runAutomationButton.disabled = !selectedGithubRepo;
   await Promise.all([loadFiles(), loadRuns(), loadAgentTasks()]);
 }
 
@@ -205,6 +235,7 @@ async function loadGithubRepositories() {
 
 async function selectGithubRepository(repo) {
   selectedGithubRepo = repo;
+  runAutomationButton.disabled = !selectedProject;
   githubReconcileButton.disabled = false;
   prepareGithubChangeButton.disabled = false;
   await loadGithubChanges();
@@ -451,13 +482,42 @@ async function boot() {
     await jsonRequest('/health');
     health.textContent = 'Studio API 已就绪';
     health.className = 'ok';
-    await Promise.all([loadProviders(), loadProjects(), loadGithubStatus(), loadGithubRepositories()]);
+    await Promise.all([loadProviders(), loadProjects(), loadGithubStatus(), loadGithubRepositories(), loadAutomation()]);
   } catch (error) {
     health.textContent = 'Studio API 无法连接';
     health.className = 'error';
     log.textContent = error.message;
   }
 }
+
+document.querySelector('#automation-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!selectedProject || !selectedGithubRepo) return;
+  const requirementIds = [...automationRequirements.selectedOptions].map((item) => item.value);
+  const targetPaths = document.querySelector('#automation-targets').value.split(',').map((item) => item.trim()).filter(Boolean);
+  const payload = {
+    project_id: selectedProject.id, repo_id: selectedGithubRepo.id,
+    title: document.querySelector('#automation-title').value,
+    request: document.querySelector('#automation-request').value,
+    requirement_ids: requirementIds, target_paths: targetPaths,
+    role_providers: {planner: 1, engineer: 1, qa: 1, reviewer: 1},
+    max_retries: 2, timeout_seconds: 300, token_limit: 20000,
+    cost_limit_usd: 0, execution_limit: 12,
+  };
+  runAutomationButton.disabled = true;
+  automationOutput.textContent = '受控闭环执行中；将运行真实 Task 04 Quality Gate…';
+  try {
+    const data = await jsonRequest('/api/automation/jobs', {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload),
+    });
+    automationOutput.textContent = JSON.stringify(data.job, null, 2);
+    await loadAutomation();
+  } catch (error) {
+    automationOutput.textContent = `安全停止：${error.message}`;
+  } finally {
+    runAutomationButton.disabled = false;
+  }
+});
 
 document.querySelector('#provider-form').addEventListener('submit', async (event) => {
   event.preventDefault();

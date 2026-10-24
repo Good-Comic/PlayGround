@@ -12,6 +12,7 @@ from server.preview_runtime import (
     approve_golden,
     get_preview,
     get_quality_run,
+    _percentile,
     start_preview,
     stop_preview,
 )
@@ -54,6 +55,7 @@ class PreviewRuntimeTests(unittest.TestCase):
         adapter = WebRtsAdapter()
         self.assertTrue(adapter.supports(self.game))
         self.assertEqual(adapter.adapter_id, "web-rts-esm")
+        self.assertEqual(_percentile([10, 20, 30, 40, 50], .95), 50)
 
     def test_vite_preview_is_isolated_and_live_reload_source_changes_are_visible(self):
         preview = start_preview(

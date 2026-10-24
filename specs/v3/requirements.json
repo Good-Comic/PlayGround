@@ -1,0 +1,16 @@
+{
+  "version": "3.0",
+  "status": "source_incomplete",
+  "requirements": [
+    {"id": "PR-US-001", "text": "可以選擇本機 Ollama 或 API 模型來和 AI Agent 對話", "source": "PRODUCT_REQUIREMENTS.md#使用者故事"},
+    {"id": "PR-US-002", "text": "可以連到自己選定的 GitHub Repo，匯入既有遊戲並開始修改", "source": "PRODUCT_REQUIREMENTS.md#使用者故事"},
+    {"id": "PR-US-003", "text": "Agent 能讀取適當規格章節、編修程式並顯示 diff", "source": "PRODUCT_REQUIREMENTS.md#使用者故事"},
+    {"id": "PR-US-004", "text": "可以立即遊玩修改後的 Web 遊戲並看到錯誤、性能與自動測試結果", "source": "PRODUCT_REQUIREMENTS.md#使用者故事"},
+    {"id": "PR-US-005", "text": "AI 主動拆解後續需求，但不能在無審核時破壞穩定分支", "source": "PRODUCT_REQUIREMENTS.md#使用者故事"},
+    {"id": "PR-US-006", "text": "可以在模型切換、失敗重試或中止後繼續未完成任務", "source": "PRODUCT_REQUIREMENTS.md#使用者故事"},
+    {"id": "T05-AUT-001", "text": "Planner → Engineer → QA → Reviewer → Quality Gate → 受控 GitHub PR", "source": "agent_tasks/05_AUTOMATION.md#Agent-工作流"},
+    {"id": "T05-SAFE-001", "text": "失敗最多自動重試 2 次，之後安全停止", "source": "agent_tasks/05_AUTOMATION.md#Agent-工作流"},
+    {"id": "T05-SAFE-002", "text": "對 Agent 設 time/token/API budget、最大重試、可讀可寫檔案清單", "source": "agent_tasks/05_AUTOMATION.md#預算與邊界"},
+    {"id": "T05-GIT-001", "text": "通過 Gate 後準備 PR；合併需要使用者核准", "source": "agent_tasks/05_AUTOMATION.md#Agent-工作流"}
+  ]
+}

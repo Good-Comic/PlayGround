@@ -4,7 +4,7 @@ Last verified: 2026-10-24 (Asia/Taipei; Debian cloud development container)
 
 ## Current isolation model
 
-- Forge platform branch: `codex/project-forge-task-04`, based on Task 03 commit `adc387d5e1d6025d4947b2dd4ec5b47d8c71a000`.
+- Forge platform branch: `codex/project-forge-task-05`, based on Task 04 commit `69572e724286dcf4d335b6ed2902d7a2bc57689b`.
 - Riftwatch game branch: `codex/riftwatch-forge-integration`, in the ignored linked worktree `workspace/riftwatch`, based on checkpoint `3674a33d95c5165dc9ee5813a051f894a8c72378`.
 - No merge into `main` was performed. No `opencode-resume/*` or `opencode-checkpoints/*` reference was moved or deleted.
 - The game mount is read-only inside Forge Studio. Task 03 Git writes are confined to isolated data-volume clones and fixed commands; the API does not expose arbitrary shell or write to the imported worktree.
@@ -161,6 +161,35 @@ No console or page errors occurred in the final Forge-hosted browser run.
 - These samples are headless, short-duration, and cloud-resource-sensitive. They do not establish good performance, long-session stability, a target FPS, or production capacity.
 - Visual comparison covers a deterministic 1440×900 setup/menu capture. It is not a replacement for cross-browser, multi-resolution, animation, or full combat visual testing.
 - See `docs/GAME_PREVIEW_SECURITY.md` for the preview boundary and remaining risks.
+
+## Task 05 — Traceable automation closed loop
+
+### Implemented and Mock-verified
+
+- A persisted state machine runs Planner → Engineer → QA → Reviewer → Task 04 Quality Gate and then stops at `awaiting_pr_approval`. Every transition, decision, attempt, usage value, failure, lock event, requirement status, diff, test result, and draft metadata is retained in SQLite.
+- Role provider IDs are independently selectable. The verified path uses one deterministic Mock provider sequentially and explicitly records `sequential_mock_role` plus `independent_agent=false`; it is not represented as four independently running agents.
+- `specs/v3/MANIFEST.json`, source chunks, and a source-linked requirements matrix were created. The manifest says `source_incomplete` because no full v3.0 planning document exists; no missing content was fabricated. Requests are limited to 6,000 characters and load selected requirement chunks only.
+- Engineer work uses a new clone at the registered exact Riftwatch SHA, a unique `forge/automation-*` branch, and a 1–10 file allowlist. Traversal, symlinks, Git metadata, checkpoints, unexpected files, arbitrary shell, base drift, and protected branches are rejected. Multi-file diffs receive fixed Build/locale validation and secret scanning.
+- Atomic SQLite leases prevent two jobs writing the same base workspace. Expired leases are recoverable and audited; restart recovery and failed attempts preserve isolated state. The initial attempt plus at most two retries is enforced alongside whole-task timeout, token, cost, and execution limits.
+- QA reuses Task 04 Vite/Playwright. Reviewer records red-team security and blue-team requirement/quality decisions. A passing gate creates only a PR draft record with `external_action=not_performed`; there is no automation merge path.
+- Studio now includes an Automation Board with requirement selection, role/job state, coverage, attempt and budget data, diff, test/quality evidence, PR draft, failures, retries, and safe-stop reasons.
+- A repeatable performance suite runs 3–10 sequential Quality Gate samples and persists raw samples, min/median/p95/max, sample count, viewport, ordering, CPU count, and the uncontrolled-container caveat. This is diagnostic, not a production benchmark.
+- Test suite currently passes 34 tests, including the pre-existing Task 01–04 cases plus Mock closed loop, source preservation, multi-file allowlist, audit semantics, input limits, three-attempt safe stop, lock conflict, and expired-lease recovery.
+
+### Not verified
+
+- No Ollama or cloud model inference was performed. The real-provider acceptance checklist exists, but real automation stays disabled by default. Mock results do not demonstrate autonomous AI development quality.
+- No valid GitHub App/CLI authorization exists in this container. No external commit, push, PR, merge, paid request, public webhook, or public deployment was performed.
+- Real Ollama/cloud inference, a valid GitHub App installation, and production deployment remain unverified. Task 04’s single-run FPS range must not be treated as an acceptance baseline.
+
+### Final container evidence
+
+- The final digest-pinned image built successfully; Compose reported both Forge Studio and the isolated browser sidecar running, and `/health` returned `status=ok`, `database=ready`, and `workspace=mounted`.
+- HTTP Mock Job 1 completed on its first attempt with four sequential role records, 807 recorded tokens, cost `$0`, two reviewed files, secret scan, all 15 JavaScript syntax checks, `4 locales, 573 keys each`, and Playwright Quality Run 14. It stopped at `awaiting_pr_approval` with `external_action=not_performed`.
+- Performance Suite 1 ran three sequential 1280×720 headless samples on a 5-CPU shared cloud container. All gates passed with no console/page/load errors. FPS min/median/p95/max was `30.68 / 60.72 / 61.02 / 61.02`; load time was `517.7 / 587.4 / 920.0 / 920.0 ms`; interaction latency was `276.8 / 535.0 / 540.2 / 540.2 ms`; Vite RSS was `119.0 / 124.0 / 131.4 / 131.4 MiB`. Each sample verified four languages, Start Game, 13 units, 6 buildings, `NemesisDirector`, `0 / 10`, and controlled victory with ten reports. The container load was uncontrolled and the sample count is small, so these are diagnostic observations, not a production FPS claim.
+- Riftwatch remained clean at `3674a33d95c5165dc9ee5813a051f894a8c72378`; its README SHA-256 remained `7148c7e3bcb62e354e0af02d29e49cf27a9cb521ffc005d1fb852a3e321b769f`.
+
+See `docs/AUTOMATION_SECURITY.md` for controls, threats, and residual risks.
 
 ## Not yet implemented
 

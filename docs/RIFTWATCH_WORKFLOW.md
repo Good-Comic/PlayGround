@@ -4,7 +4,7 @@ Riftwatch and Project Forge AI share a GitHub repository but are intentionally k
 
 ## Current layout
 
-- Platform checkout: repository root, branch `codex/project-forge-task-03`.
+- Platform checkout: repository root, branch `codex/project-forge-task-05`.
 - Game checkout: `workspace/riftwatch`, branch `codex/riftwatch-forge-integration`.
 - Studio mount: host `./workspace` to container `/workspace`, read-only.
 - Studio project path: `riftwatch`.
@@ -51,3 +51,5 @@ Task 03 adds a guarded write-back path without writing to this imported game wor
 ## AI proposal workflow
 
 Agent Edit/Test requests first create a separate copy under the Forge data volume, show a unified diff, and wait for explicit approval before changing even that copy. Approval runs only Forge-owned validation commands. Task 03 may then import that exact reviewed proposal into a second isolated Git clone and re-run branch, diff, secret, Build, and Test gates. Neither stage writes to `workspace/riftwatch`. See `docs/AI_PROVIDER_SECURITY.md` and `docs/GITHUB_APP_SECURITY.md` for the boundaries.
+
+Task 05 adds a closed loop in `/data/automation-jobs`. It clones the exact registered SHA, takes a single-writer lease, limits edits to a predeclared multi-file allowlist, and runs QA, red/blue review, and the Task 04 Quality Gate. A pass creates only PR draft metadata; external commit/push/PR still requires Task 03 approvals and valid authorization. See `docs/AUTOMATION_SECURITY.md`.

@@ -93,6 +93,17 @@
         </form>
         <ul id="github-change-list" class="compact-list"><li>尚无 Git 变更</li></ul>
         <p class="hint">Commit、Push 与 PR 各自需要明确核准；UI 不提供 Merge。公开 webhook 尚未启用。</p>
+        <h2>Automation Board</h2>
+        <p id="automation-spec" class="hint">载入 v3.0 需求追踪资料…</p>
+        <form id="automation-form" class="compact-form">
+          <input id="automation-title" maxlength="160" placeholder="单项任务标题" required>
+          <textarea id="automation-request" maxlength="6000" placeholder="自然语言需求（最多 6000 字元）" required></textarea>
+          <input id="automation-targets" placeholder="允许修改的文件，以逗号分隔" required>
+          <select id="automation-requirements" multiple size="5" required></select>
+          <button id="run-automation" disabled>执行 Mock 闭环</button>
+        </form>
+        <ul id="automation-list" class="compact-list"><li>尚无自动化任务</li></ul>
+        <p class="hint">Planner → Engineer → QA → Reviewer 依序执行。Mock 角色并非独立 Agent；外部 Push/PR 永不自动执行。</p>
       </aside>
       <section class="logs">
         <div><strong>状态与输出</strong><pre id="log">等待操作。</pre></div>
@@ -106,6 +117,7 @@
           <div id="github-actions" class="actions"></div>
           <pre id="github-output"></pre>
         </div>
+        <div><strong>Automation Audit</strong><pre id="automation-output">等待任务。</pre></div>
       </section>
     </main>
     <script src="/app.js" defer></script>

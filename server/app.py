@@ -27,8 +27,13 @@ try:
     )
     from server.preview_runtime import (
         PreviewError, approve_golden, get_preview, get_quality_run, init_preview_db,
-        list_adapters, list_previews, list_quality_runs, resolve_artifact, run_quality_gate,
+        list_adapters, list_previews, list_quality_runs, resolve_artifact, run_performance_suite, run_quality_gate,
         start_preview, stop_preview,
+    )
+    from server.automation import (
+        AutomationError, WorkspaceLocked, create_automation_job, get_automation_job,
+        init_automation_db, list_automation_jobs, load_spec_manifest,
+        provider_acceptance_status, run_automation_job,
     )
 except ModuleNotFoundError:  # Container executes this file directly.
     from providers import AgentRequest, PROVIDER_CATALOG, ProviderCancelled, ProviderError, build_provider
@@ -41,8 +46,13 @@ except ModuleNotFoundError:  # Container executes this file directly.
     )
     from preview_runtime import (
         PreviewError, approve_golden, get_preview, get_quality_run, init_preview_db,
-        list_adapters, list_previews, list_quality_runs, resolve_artifact, run_quality_gate,
+        list_adapters, list_previews, list_quality_runs, resolve_artifact, run_performance_suite, run_quality_gate,
         start_preview, stop_preview,
+    )
+    from automation import (
+        AutomationError, WorkspaceLocked, create_automation_job, get_automation_job,
+        init_automation_db, list_automation_jobs, load_spec_manifest,
+        provider_acceptance_status, run_automation_job,
     )
 
 
@@ -64,6 +74,8 @@ PREVIEW_ARTIFACT_ROOT = Path(os.environ.get("FORGE_PREVIEW_ARTIFACT_ROOT", "/dat
 BROWSER_ENDPOINT = os.environ.get("FORGE_BROWSER_ENDPOINT", "http://preview-browser:9222")
 VITE_ENTRY = Path(__file__).with_name("node_modules") / "vite" / "bin" / "vite.js"
 QUALITY_SCRIPT = Path(__file__).with_name("quality") / "riftwatch-e2e.mjs"
+AUTOMATION_ROOT = Path(os.environ.get("FORGE_AUTOMATION_ROOT", "/data/automation-jobs"))
+SPEC_ROOT = Path(os.environ.get("FORGE_SPEC_ROOT", "/source-repository/specs/v3"))
 
 
 def init_db(db_path: Path) -> None:
@@ -190,6 +202,7 @@ def init_db(db_path: Path) -> None:
             )
     init_github_db(db_path)
     init_preview_db(db_path)
+    init_automation_db(db_path)
 
 
 def resolve_project_path(raw_path: str, workspace_root: Path = WORKSPACE_ROOT) -> tuple[Path, str]:
@@ -995,6 +1008,15 @@ class ForgeHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/previews":
             self.json_response(HTTPStatus.OK, {"previews": list_previews(DB_PATH)})
             return
+        if parsed.path == "/api/automation/spec":
+            self.json_response(HTTPStatus.OK, load_spec_manifest(SPEC_ROOT))
+            return
+        if parsed.path == "/api/automation/jobs":
+            self.json_response(HTTPStatus.OK, {"jobs": list_automation_jobs(DB_PATH)})
+            return
+        if parsed.path == "/api/automation/providers/status":
+            self.json_response(HTTPStatus.OK, provider_acceptance_status(DB_PATH))
+            return
         if parsed.path == "/api/agent/tasks":
             try:
                 query = parse_qs(parsed.query)
@@ -1025,6 +1047,7 @@ class ForgeHandler(SimpleHTTPRequestHandler):
         quality_runs_match = re.fullmatch(r"/api/previews/(\d+)/quality", parsed.path)
         quality_run_match = re.fullmatch(r"/api/preview-quality/(\d+)", parsed.path)
         artifact_match = re.fullmatch(r"/api/preview-quality/(\d+)/(success|failure)\.png", parsed.path)
+        automation_job_match = re.fullmatch(r"/api/automation/jobs/(\d+)", parsed.path)
         try:
             if files_match:
                 project_id = int(files_match.group(1))
@@ -1069,13 +1092,29 @@ class ForgeHandler(SimpleHTTPRequestHandler):
             if artifact_match:
                 self.serve_preview_artifact(int(artifact_match.group(1)), artifact_match.group(2))
                 return
-        except (ValueError, LookupError, OSError, GitHubIntegrationError, PreviewError) as exc:
+            if automation_job_match:
+                self.json_response(HTTPStatus.OK, {"job": get_automation_job(int(automation_job_match.group(1)), DB_PATH)})
+                return
+        except (ValueError, LookupError, OSError, GitHubIntegrationError, PreviewError, AutomationError) as exc:
             self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
             return
         super().do_GET()
 
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
+        if parsed.path == "/api/automation/jobs":
+            try:
+                job = create_automation_job(self.read_json(), DB_PATH, SPEC_ROOT)
+                job = run_automation_job(
+                    job["id"], DB_PATH, SPEC_ROOT, GIT_SOURCE_ROOT, AUTOMATION_ROOT,
+                    PREVIEW_ROOT, PREVIEW_ARTIFACT_ROOT, VITE_ENTRY, QUALITY_SCRIPT,
+                    BROWSER_ENDPOINT,
+                )
+            except (TypeError, ValueError, OSError, sqlite3.Error, AutomationError, WorkspaceLocked) as exc:
+                self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
+                return
+            self.json_response(HTTPStatus.CREATED, {"job": job})
+            return
         if parsed.path == "/api/previews":
             try:
                 payload = self.read_json()
@@ -1090,7 +1129,7 @@ class ForgeHandler(SimpleHTTPRequestHandler):
             self.json_response(HTTPStatus.CREATED, {"preview": preview})
             return
 
-        preview_action = re.fullmatch(r"/api/previews/(\d+)/(stop|quality|golden)", parsed.path)
+        preview_action = re.fullmatch(r"/api/previews/(\d+)/(stop|quality|performance|golden)", parsed.path)
         if preview_action:
             try:
                 preview_id = int(preview_action.group(1))
@@ -1104,6 +1143,12 @@ class ForgeHandler(SimpleHTTPRequestHandler):
                         preview_id, DB_PATH, PREVIEW_ARTIFACT_ROOT, QUALITY_SCRIPT, BROWSER_ENDPOINT,
                     )
                     self.json_response(HTTPStatus.CREATED, {"run": run})
+                elif action == "performance":
+                    suite = run_performance_suite(
+                        preview_id, int(payload.get("sample_count", 3)), DB_PATH,
+                        PREVIEW_ARTIFACT_ROOT, QUALITY_SCRIPT, BROWSER_ENDPOINT,
+                    )
+                    self.json_response(HTTPStatus.CREATED, {"suite": suite})
                 else:
                     preview = approve_golden(
                         preview_id, int(payload.get("run_id")), payload.get("confirm") is True,
