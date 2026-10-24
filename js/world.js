@@ -44,7 +44,7 @@ const BERRY_PATCHES = [
   { x: 25.5, y: 37.5, count: 4 },
 ];
 
-export function createWorld(seed, biomeId = 'ashlands') {
+export function createWorld(seed, biomeId = 'ash') {
   const rng = mulberry32(seed);
   const tiles = new Array(WORLD_SIZE * WORLD_SIZE);
   const resources = [];
@@ -64,18 +64,18 @@ export function createWorld(seed, biomeId = 'ashlands') {
   }
 
   const base = { x: 24.5, y: 26.5 };
-  const lakeScale = biomeId === 'isles' ? 1.75 : biomeId === 'fjord' ? 1.45 : biomeId === 'dunes' ? 0.45 : 1;
+  const lakeScale = biomeId === 'island' ? 1.75 : biomeId === 'fjord' ? 1.45 : biomeId === 'dune' ? 0.45 : 1;
   const inLake = (x, y) => {
     const cx = 44.5, cy = 43.5;
     const wobble = Math.sin(x * 1.7 + y * 0.8) * 1.2 + Math.cos(y * 2.1) * 0.8;
     return dist(x, y, cx, cy) + wobble < 7.8 * lakeScale && x > 36 - lakeScale * 2 && y > 34 - lakeScale * 2;
   };
   const inRiver = (x, y) => {
-    if (biomeId !== 'riverlands') return false;
+    if (biomeId !== 'river') return false;
     const center = 11.5 + Math.sin(y * 0.33) * 1.6 + Math.cos(y * 0.11) * 0.9;
     return Math.abs(x + 0.5 - center) < 1.7;
   };
-  const onBridge = (x, y) => biomeId === 'riverlands' && ((y >= 19 && y <= 21) || (y >= 34 && y <= 39));
+  const onBridge = (x, y) => biomeId === 'river' && ((y >= 19 && y <= 21) || (y >= 34 && y <= 39));
 
   for (let y = 0; y < WORLD_SIZE; y++) {
     for (let x = 0; x < WORLD_SIZE; x++) {
@@ -85,9 +85,9 @@ export function createWorld(seed, biomeId = 'ashlands') {
         continue;
       }
       if (onBridge(x, y)) { tile.terrain = 'cobble'; continue; }
-      if (biomeId === 'dunes' && dist(x, y, base.x, base.y) > 8 && hash2(x, y, seed) > 0.64) tile.terrain = 'sand';
-      if (biomeId === 'ashlands' && dist(x, y, base.x, base.y) > 9 && hash2(x, y, seed + 9) > 0.84) tile.terrain = 'rock';
-      if (biomeId === 'highlands' && dist(x, y, base.x, base.y) > 11 && hash2(x, y, seed + 4) > 0.9) tile.terrain = 'rock';
+      if (biomeId === 'dune' && dist(x, y, base.x, base.y) > 8 && hash2(x, y, seed) > 0.64) tile.terrain = 'sand';
+      if (biomeId === 'ash' && dist(x, y, base.x, base.y) > 9 && hash2(x, y, seed + 9) > 0.84) tile.terrain = 'rock';
+      if (biomeId === 'highland' && dist(x, y, base.x, base.y) > 11 && hash2(x, y, seed + 4) > 0.9) tile.terrain = 'rock';
       if (x > 36 && y > 34 && dist(x, y, 43, 42) < 9.2 * Math.min(1.4, lakeScale)) tile.terrain = 'sand';
       const d = dist(x + 0.5, y + 0.5, base.x, base.y);
       if (d < 7.8) {
@@ -114,7 +114,7 @@ export function createWorld(seed, biomeId = 'ashlands') {
     }
   }
 
-  const forestScale = biomeId === 'blackforest' ? 1.45 : biomeId === 'steppe' ? 0.6 : biomeId === 'dunes' ? 0.38 : biomeId === 'ashlands' ? 0.72 : 1;
+  const forestScale = biomeId === 'forest' ? 1.45 : biomeId === 'steppe' ? 0.6 : biomeId === 'dune' ? 0.38 : biomeId === 'ash' ? 0.72 : 1;
   for (const cluster of FOREST_CLUSTERS) {
     const clusterCount = Math.round(cluster.count * forestScale);
     for (let i = 0; i < clusterCount; i++) {
@@ -211,13 +211,13 @@ export function createWorld(seed, biomeId = 'ashlands') {
     props.push({ kind: pick(rng, ['bush', 'bush', 'rocks', 'flowers']), x, y, angle: rng() * 6, size: rand(rng, .65, 1.05) });
   }
 
-  if (biomeId === 'dunes') {
+  if (biomeId === 'dune') {
     for (let i = 0; i < 16; i++) {
       const x = rand(rng, 3, WORLD_SIZE - 3), y = rand(rng, 3, WORLD_SIZE - 3);
       if (dist(x, y, base.x, base.y) < 7) continue;
       props.push({ kind: pick(rng, ['rocks', 'bush']), x, y, angle: rng() * 6, size: rand(rng, .55, .9) });
     }
-  } else if (biomeId === 'ashlands') {
+  } else if (biomeId === 'ash') {
     for (let i = 0; i < 14; i++) {
       const x = rand(rng, 3, WORLD_SIZE - 3), y = rand(rng, 3, WORLD_SIZE - 3);
       if (dist(x, y, base.x, base.y) < 7) continue;

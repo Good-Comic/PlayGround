@@ -1,6 +1,7 @@
-import { BUILDING_TYPES, UNIT_TYPES, TRAINABLE, BUILD_OPTIONS, BOONS, WAVES, AGE_COSTS, CIVILIZATIONS, BIOMES, PLAYER_COLORS, ENEMY_COLORS } from './data.js';
+import { BUILDING_TYPES, UNIT_TYPES, BUILD_OPTIONS, BOONS, WAVES, CIVILIZATIONS, BIOMES, PLAYER_COLORS, ENEMY_COLORS } from './data.js';
 import { formatNumber, formatTime, roman, clamp } from './utils.js';
 import { applyStaticTranslations, getLocale, localeOptions, setLocale as setAppLocale, t } from './i18n.js';
+import { applySettings, loadSettings, resetSettings, saveSettings } from './settings.js';
 
 const ICON_FOR = {
   food: 'food', wood: 'wood', gold: 'gold', stone: 'stone',
@@ -31,6 +32,11 @@ export class UI {
     this.hudUpdate = 0;
     this.minimapCache = null;
     this.menuVisible = true;
+    this.settingsOpen = false;
+    this.gmOpen = false;
+    this.settings = loadSettings();
+    this.startResourceBonus = { food: 0, wood: 0, gold: 0, stone: 0 };
+    applySettings(this.settings);
     this.$ = id => document.getElementById(id);
     applyStaticTranslations();
     this.cache();
@@ -46,7 +52,7 @@ export class UI {
       pause: this.$('pause-overlay'), boon: this.$('boon-overlay'), boonGrid: this.$('boon-grid'),
       claim: this.$('btn-claim'), reroll: this.$('btn-reroll'), end: this.$('end-overlay'),
       food: this.$('res-food'), wood: this.$('res-wood'), gold: this.$('res-gold'),
-      stone: this.$('res-stone'), pop: this.$('res-pop'), cap: this.$('res-cap'),
+      stone: this.$('res-stone'), milPop: this.$('res-mil-pop'), milCap: this.$('res-mil-cap'), ecoPop: this.$('res-eco-pop'), ecoCap: this.$('res-eco-cap'),
       waveKicker: this.$('wave-kicker'), waveTitle: this.$('wave-title'), waveClock: this.$('wave-clock'),
       waveProgress: this.$('wave-progress'), waveBanner: this.$('wave-banner'),
       objectiveWaves: this.$('objective-waves'), objectiveHp: this.$('objective-hp'), objectiveBoons: this.$('objective-boons'),
@@ -71,6 +77,12 @@ export class UI {
       localeSelect: this.$('setup-locale'),
       civBlurb: this.$('setup-civ-blurb'), biomeBlurb: this.$('setup-biome-blurb'),
       autoEcon: this.$('auto-econ'), autoMil: this.$('auto-mil'), boonHint: this.$('boon-hint-text'),
+      continueBtn: this.$('btn-continue'), saveBtn: this.$('btn-save'),
+      settingsOverlay: this.$('settings-overlay'), gmOverlay: this.$('gm-overlay'),
+      settingsSpeed: this.$('settings-speed'), settingsAutoEcon: this.$('settings-auto-econ'),
+      settingsAutoMil: this.$('settings-auto-mil'), settingsReducedMotion: this.$('settings-reduced-motion'),
+      gmFood: this.$('gm-food'), gmWood: this.$('gm-wood'), gmGold: this.$('gm-gold'), gmStone: this.$('gm-stone'),
+      gmNote: this.$('gm-note'),
     };
     this.portraitCtx = this.el.portrait.getContext('2d');
     this.miniCtx = this.el.minimap.getContext('2d');
@@ -98,6 +110,30 @@ export class UI {
     this.$('btn-resume').addEventListener('click', () => { clickSound(); this.callbacks.resume?.(); });
     this.$('btn-restart').addEventListener('click', () => { clickSound(); this.callbacks.restart?.(); });
     this.$('btn-quit').addEventListener('click', () => { clickSound(); this.callbacks.quit?.(); });
+    this.$('btn-continue')?.addEventListener('click', () => { clickSound(); this.callbacks.continue?.(); });
+    this.$('btn-save')?.addEventListener('click', () => { clickSound(); this.saveCurrentRun(); });
+    this.$('btn-settings')?.addEventListener('click', () => { clickSound(); this.openSettings(); });
+    this.$('btn-pause-settings')?.addEventListener('click', () => { clickSound(); this.openSettings(); });
+    this.$('btn-settings-close')?.addEventListener('click', () => { clickSound(); this.closeSettings(); });
+    this.$('btn-settings-reset')?.addEventListener('click', () => {
+      clickSound();
+      this.settings = resetSettings();
+      this.applySettingsToControls();
+      this.persistSettings();
+    });
+    this.$('settings-speed')?.addEventListener('change', e => this.persistSettings({ gameSpeed: Number(e.target.value) }));
+    this.$('settings-auto-econ')?.addEventListener('change', e => this.persistSettings({ autoEconomy: e.target.checked }));
+    this.$('settings-auto-mil')?.addEventListener('change', e => this.persistSettings({ autoMilitary: e.target.checked }));
+    this.$('settings-reduced-motion')?.addEventListener('change', e => this.persistSettings({ reducedMotion: e.target.checked }));
+    this.$('btn-gm-menu')?.addEventListener('click', () => { clickSound(); this.openGM(); });
+    this.$('btn-gm-pause')?.addEventListener('click', () => { clickSound(); this.openGM(); });
+    this.$('btn-gm-close')?.addEventListener('click', () => { clickSound(); this.closeGM(); });
+    this.$('btn-gm-grant')?.addEventListener('click', () => this.gmAction('grant'));
+    this.$('btn-gm-heal')?.addEventListener('click', () => this.gmAction('heal'));
+    this.$('btn-gm-kill')?.addEventListener('click', () => this.gmAction('kill'));
+    this.$('btn-gm-age')?.addEventListener('click', () => this.gmAction('age'));
+    this.$('btn-gm-wave')?.addEventListener('click', () => this.gmAction('wave'));
+    this.$('btn-gm-spawn')?.addEventListener('click', () => this.gmAction('spawn'));
     this.$('btn-new-run').addEventListener('click', () => { clickSound(); this.callbacks.restart?.(); });
     this.$('btn-end-menu').addEventListener('click', () => { clickSound(); this.callbacks.quit?.(); });
     this.$('btn-sound').addEventListener('click', () => {
@@ -125,7 +161,7 @@ export class UI {
   populateSetup() {
     if (!this.el.civSelect || !this.el.biomeSelect) return;
     const civ = this.el.civSelect.value || 'TEU';
-    const biome = this.el.biomeSelect.value || 'ashlands';
+    const biome = this.el.biomeSelect.value || 'ash';
     this.el.civSelect.innerHTML = CIVILIZATIONS.map(c => `<option value="${c.id}">${t(`civ.${c.id}.name`)} · ${t(`civ.${c.id}.epithet`)}</option>`).join('');
     this.el.biomeSelect.innerHTML = BIOMES.map(b => `<option value="${b.id}">${t(`biome.${b.id}.name`)}</option>`).join('');
     this.el.civSelect.value = civ;
@@ -159,7 +195,7 @@ export class UI {
     const seed = this.el.seedInput?.value.trim();
     const setup = {
       civ: this.el.civSelect?.value || 'TEU',
-      biome: this.el.biomeSelect?.value || 'ashlands',
+      biome: this.el.biomeSelect?.value || 'ash',
       seed: seed || null,
     };
     this.callbacks.start?.(setup);
@@ -174,6 +210,9 @@ export class UI {
     this.el.menu.classList.remove('is-leaving');
     this.el.hud.classList.add('is-hidden');
     this.el.hud.setAttribute('aria-hidden', 'true');
+    this.closeSettings();
+    this.closeGM();
+    if (this.el.continueBtn) this.el.continueBtn.hidden = !this.callbacks.hasSave?.();
   }
 
   hideMenu() {
@@ -185,6 +224,125 @@ export class UI {
 
   openHowTo() { this.el.howto.hidden = false; }
   closeHowTo() { this.el.howto.hidden = true; }
+
+  applySettingsToControls() {
+    if (this.el.settingsSpeed) this.el.settingsSpeed.value = String(this.settings.gameSpeed);
+    if (this.el.settingsAutoEcon) this.el.settingsAutoEcon.checked = this.settings.autoEconomy;
+    if (this.el.settingsAutoMil) this.el.settingsAutoMil.checked = this.settings.autoMilitary;
+    if (this.el.settingsReducedMotion) this.el.settingsReducedMotion.checked = this.settings.reducedMotion;
+    if (this.el.autoEcon) this.el.autoEcon.checked = this.settings.autoEconomy;
+    if (this.el.autoMil) this.el.autoMil.checked = this.settings.autoMilitary;
+  }
+
+  persistSettings(patch = {}) {
+    this.settings = saveSettings({ ...this.settings, ...patch });
+    applySettings(this.settings);
+    this.game.speed = this.settings.gameSpeed;
+    this.game.autoEconomy = this.settings.autoEconomy;
+    this.game.autoMilitary = this.settings.autoMilitary;
+    this.applySettingsToControls();
+    this.callbacks.settings?.(this.settings);
+  }
+
+  openSettings() {
+    this.settings = loadSettings();
+    this.applySettingsToControls();
+    this.settingsOpen = true;
+    this.el.settingsOverlay.hidden = false;
+    this.el.settingsSpeed?.focus();
+  }
+
+  closeSettings() {
+    this.settingsOpen = false;
+    this.el.settingsOverlay.hidden = true;
+    this.callbacks.settingsClosed?.();
+  }
+
+  saveCurrentRun() {
+    const saved = this.callbacks.save?.();
+    this.toast(t(saved ? 'toast.runSaved' : 'toast.runSaveFailed'), saved ? 'good' : 'bad', 2200);
+  }
+
+  openGM() {
+    if (!this.game) return;
+    this.gmOpen = true;
+    this.el.gmOverlay.hidden = false;
+    if (this.el.gmNote) this.el.gmNote.hidden = !this.game.inMenu;
+    if (this.el.gmFood) this.el.gmFood.value = Math.round(this.game.resources.food);
+    if (this.el.gmWood) this.el.gmWood.value = Math.round(this.game.resources.wood);
+    if (this.el.gmGold) this.el.gmGold.value = Math.round(this.game.resources.gold);
+    if (this.el.gmStone) this.el.gmStone.value = Math.round(this.game.resources.stone);
+  }
+
+  closeGM() {
+    this.gmOpen = false;
+    this.el.gmOverlay.hidden = true;
+  }
+
+  gmAction(action) {
+    if (!this.game) return;
+    const game = this.game;
+    if (game.inMenu && action !== 'grant') {
+      this.toast(t('toast.gmNeedsRun'), 'bad', 2200);
+      return;
+    }
+    if (!game.inMenu) game.stats.gmActions = (game.stats.gmActions || 0) + 1;
+    if (action === 'grant') {
+      const amounts = {
+        food: Math.max(0, Number(this.el.gmFood?.value) || 0),
+        wood: Math.max(0, Number(this.el.gmWood?.value) || 0),
+        gold: Math.max(0, Number(this.el.gmGold?.value) || 0),
+        stone: Math.max(0, Number(this.el.gmStone?.value) || 0),
+      };
+      for (const [resource, amount] of Object.entries(amounts)) {
+        if (game.inMenu) this.startResourceBonus[resource] += amount;
+        else game.resources[resource] += amount;
+      }
+      this.toast(t('toast.gmGranted'), 'good', 2000);
+    } else if (action === 'heal') {
+      for (const entity of [...game.units, ...game.buildings]) {
+        if (entity.team !== 'player' || !entity.alive) continue;
+        entity.hp = entity.maxHp;
+        if (entity.construction !== undefined) entity.construction = 1;
+      }
+      this.toast(t('toast.gmHealed'), 'good', 2000);
+    } else if (action === 'kill') {
+      for (const unit of game.units) if (unit.team === 'enemy') unit.alive = false;
+      for (const building of game.buildings) if (building.team === 'enemy') building.alive = false;
+      this.toast(t('toast.gmCleared'), 'good', 2000);
+    } else if (action === 'age') {
+      if (game.ageLevel >= 3) {
+        this.toast(t('toast.imperial'), 'bad', 2000);
+      } else {
+        game.ageLevel += 1;
+        game.ageResearch = null;
+        game.refreshPlayerStats?.();
+        game.refreshBuildingStats?.();
+        this.toast(t('toast.gmAge', { age: game.ageName }), 'good', 2200);
+      }
+    } else if (action === 'wave') {
+      if (game.phase !== 'wave') {
+        this.toast(t('toast.gmNoWave'), 'bad', 2200);
+        return;
+      }
+      game.completeWave?.();
+      this.closeGM();
+      this.toast(t('toast.gmWave'), 'good', 2200);
+    } else if (action === 'spawn') {
+      const core = game.buildings.find(building => building.team === 'player' && building.type === 'core' && building.alive);
+      const x = core ? core.x + core.w / 2 + 1.5 : game.world.width / 2;
+      const y = core ? core.y + core.h + 1.5 : game.world.height / 2;
+      for (let i = 0; i < 5; i++) game.spawnUnit('militia', x + (i % 3) * .7, y + Math.floor(i / 3) * .7, 'player');
+      this.toast(t('toast.gmSpawned'), 'good', 2000);
+    }
+    game.lastSignature = '';
+  }
+
+  consumeStartResources() {
+    const bonus = { ...this.startResourceBonus };
+    this.startResourceBonus = { food: 0, wood: 0, gold: 0, stone: 0 };
+    return bonus;
+  }
 
   showPause(show) {
     this.pauseOpen = show;
@@ -216,7 +374,12 @@ export class UI {
     this.el.endTime.textContent = formatTime(stats.time);
     this.el.endIcon.innerHTML = `<use href="#${victory ? 'i-crown' : 'i-flame'}"/>`;
     this.el.pause.hidden = true;
+    this.el.settingsOverlay.hidden = true;
+    this.el.gmOverlay.hidden = true;
+    this.settingsOpen = false;
+    this.gmOpen = false;
     this.pauseOpen = false;
+    if (this.el.continueBtn) this.el.continueBtn.hidden = true;
   }
 
   hideEnd() { this.el.end.hidden = true; }
@@ -279,6 +442,12 @@ export class UI {
     this.el.boon.hidden = true;
   }
 
+  clearToasts() {
+    for (const el of this.toastEls) el.remove();
+    this.toastEls = [];
+    if (this.el.toastStack) this.el.toastStack.innerHTML = '';
+  }
+
   toast(text, type = '', duration = 3000) {
     const el = document.createElement('div');
     el.className = `toast ${type}`;
@@ -324,8 +493,10 @@ export class UI {
     this.el.wood.textContent = formatNumber(r.wood);
     this.el.gold.textContent = formatNumber(r.gold);
     this.el.stone.textContent = formatNumber(r.stone);
-    this.el.pop.textContent = game.population;
-    this.el.cap.textContent = game.popCap;
+    this.el.milPop.textContent = game.militaryPopulation;
+    this.el.milCap.textContent = game.militaryPopCap;
+    this.el.ecoPop.textContent = game.economicPopulation;
+    this.el.ecoCap.textContent = game.economicPopCap;
     this.el.idleCount.textContent = game.idleVillagers;
     this.el.idleButton.classList.toggle('empty', game.idleVillagers === 0);
 
@@ -577,7 +748,7 @@ export class UI {
       if (b.team !== 'player' || b.construction < 1) return [];
       const commands = [];
       if (b.type === 'core' && b.team === 'player' && game.ageLevel < 3) {
-        const cost = AGE_COSTS[game.ageLevel];
+        const cost = game.ageCost();
         if (game.ageResearch) {
           commands.push({
             id: 'age:advance', label: t('command.advancing'), icon: 'age', tag: `${Math.ceil(game.ageResearch.remaining)}s`,
@@ -590,13 +761,13 @@ export class UI {
           });
         }
       }
-      const trainable = TRAINABLE[b.type] || [];
+      const trainable = game.trainableFor(b);
       commands.push(...trainable.map(type => {
         const def = UNIT_TYPES[type];
         return {
           id: `train:${type}`, label: t(`unit.${type}.name`), icon: def.icon,
-          cost: shortCost(game.unitCost(type)), hotkey: def.hotkey,
-          tooltip: t('command.trainTooltip', { unit: t(`unit.${type}.name`), cost: shortCost(game.unitCost(type)), time: def.trainTime }),
+          cost: shortCost(game.unitCost(type, b.type === 'market')), hotkey: def.hotkey,
+          tooltip: t('command.trainTooltip', { unit: t(`unit.${type}.name`), cost: shortCost(game.unitCost(type, b.type === 'market')), time: def.trainTime }),
         };
       }));
       return commands;
@@ -613,7 +784,7 @@ export class UI {
         const def = BUILDING_TYPES[type];
         commands.push({
           id: `build:${type}`, label: t(`building.${type}.${def.shortName ? 'shortName' : 'name'}`), icon: def.icon,
-          cost: shortCost(def.cost), tooltip: t('command.buildTooltip', { name: t(`building.${type}.name`), cost: shortCost(def.cost), time: def.buildTime }),
+          cost: shortCost(game.buildingCost(type)), tooltip: t('command.buildTooltip', { name: t(`building.${type}.name`), cost: shortCost(game.buildingCost(type)), time: def.buildTime }),
         });
       }
       if (pages > 1) {
@@ -644,9 +815,12 @@ export class UI {
       const id = b.dataset.command;
       if (!id) continue;
       let cost = null;
-      if (id.startsWith('train:')) cost = game.unitCost(id.slice(6));
-      else if (id.startsWith('build:') && id !== 'build:page') cost = BUILDING_TYPES[id.slice(6)].cost;
-      else if (id === 'age:advance') cost = AGE_COSTS[game.ageLevel];
+      if (id.startsWith('train:')) {
+        const building = game.selection.length === 1 ? game.selection[0] : null;
+        cost = game.unitCost(id.slice(6), building?.type === 'market');
+      }
+      else if (id.startsWith('build:') && id !== 'build:page') cost = game.buildingCost(id.slice(6));
+      else if (id === 'age:advance') cost = game.ageCost();
       if (cost) b.classList.toggle('unaffordable', !game.canAfford(cost));
       if (id === 'train:elephant' && !game.effects.elephantUnlocked) b.classList.add('unaffordable');
       if (id === 'hero:mark') b.classList.toggle('is-cooling', game.hero?.markCd > 0);
@@ -826,7 +1000,7 @@ export class UI {
     ctx.clearRect(0, 0, W, H);
     ctx.fillStyle = '#101711'; ctx.fillRect(0, 0, W, H);
     const cellW = W / game.world.size, cellH = H / game.world.size;
-    const cacheKey = `${game.world.seed}:${game.world.biome || 'ashlands'}`;
+    const cacheKey = `${game.world.seed}:${game.world.biome || 'ash'}`;
     if (!this.minimapCache || this.minimapCacheKey !== cacheKey) {
       const cache = document.createElement('canvas');
       cache.width = W; cache.height = H;

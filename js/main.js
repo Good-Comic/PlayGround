@@ -2,7 +2,9 @@ import { Sound } from './audio.js';
 import { Game } from './game.js';
 import { Renderer } from './renderer.js';
 import { UI } from './ui.js';
+import { t } from './i18n.js';
 import { clamp, seedFromDate, seedFromString } from './utils.js';
+import { clearSavedRun, hasSavedRun, loadRun, saveRun } from './save.js';
 
 const canvas = document.getElementById('game');
 const sound = new Sound();
@@ -10,15 +12,21 @@ const game = new Game({ sound });
 const renderer = new Renderer(canvas);
 
 let ui;
-let currentSetup = { civ: 'TEU', biome: 'ashlands' };
+let currentSetup = { civ: 'TEU', biome: 'ash' };
 
 function startGame(setup = {}) {
-  currentSetup = { civ: setup.civ || 'TEU', biome: setup.biome || 'ashlands' };
+  currentSetup = { civ: setup.civ || 'TEU', biome: setup.biome || 'ash' };
   const seed = setup.seed ? seedFromString(setup.seed) : seedFromDate();
   game.newRun(seed, currentSetup);
+  game.speed = ui.settings.gameSpeed;
+  game.autoEconomy = ui.settings.autoEconomy;
+  game.autoMilitary = ui.settings.autoMilitary;
+  const bonus = ui.consumeStartResources();
+  for (const [resource, amount] of Object.entries(bonus)) game.resources[resource] += amount;
   sound.init();
   ui.hideMenu();
   ui.hideEnd();
+  ui.clearToasts();
   ui.hideBoons();
   ui.showPause(false);
   ui.setPlacement(null);
@@ -34,8 +42,14 @@ function startGame(setup = {}) {
 function restartRun() {
   sound.init();
   game.newRun(seedFromDate(), currentSetup);
+  game.speed = ui.settings.gameSpeed;
+  game.autoEconomy = ui.settings.autoEconomy;
+  game.autoMilitary = ui.settings.autoMilitary;
+  const bonus = ui.consumeStartResources();
+  for (const [resource, amount] of Object.entries(bonus)) game.resources[resource] += amount;
   ui.hideEnd();
   ui.hideBoons();
+  ui.clearToasts();
   ui.showPause(false);
   ui.hideMenu();
   ui.setPlacement(null);
@@ -44,6 +58,42 @@ function restartRun() {
   ui.lastCommandSignature = '';
   ui.updateSelection(true);
   ui.renderCommands(game);
+}
+
+
+function continueRun() {
+  if (!hasSavedRun()) {
+    ui.toast(t('toast.noSave'), 'bad', 2200);
+    ui.showMenu();
+    return;
+  }
+  if (!loadRun(game)) {
+    ui.toast(t('toast.runLoadFailed'), 'bad', 2600);
+    ui.showMenu();
+    return;
+  }
+  currentSetup = { civ: game.civ.id, biome: game.biome.id };
+  sound.init();
+  ui.hideMenu();
+  ui.hideEnd();
+  ui.clearToasts();
+  ui.hideBoons();
+  ui.showPause(false);
+  ui.setPlacement(null);
+  game.inMenu = false;
+  game.paused = false;
+  game.speed = ui.settings.gameSpeed;
+  game.lastSignature = '';
+  ui.lastSignature = '';
+  ui.lastCommandSignature = '';
+  ui.updateSelection(true);
+  ui.renderCommands(game);
+  ui.toast(t('toast.runLoaded'), 'good', 2400);
+}
+
+function saveCurrentRun() {
+  if (!game || game.inMenu || ['boon', 'victory', 'defeat'].includes(game.phase)) return false;
+  return saveRun(game);
 }
 
 function quitToMenu() {
@@ -88,6 +138,15 @@ ui = new UI(game, {
     sound.setEnabled(!sound.enabled);
     return sound.enabled;
   },
+  hasSave: hasSavedRun,
+  save: saveCurrentRun,
+  continue: continueRun,
+  settings: settings => {
+    if (!game.inMenu) game.speed = settings.gameSpeed;
+  },
+  settingsClosed: () => {
+    if (ui.pauseOpen) game.paused = true;
+  },
 });
 
 game.hook('toast', (text, type, duration) => ui.toast(text, type, duration));
@@ -104,6 +163,14 @@ const movementKeys = new Set(['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrow
 window.addEventListener('keydown', e => {
   if (!ui.el.howto.hidden) {
     if (e.key === 'Escape') ui.closeHowTo();
+    return;
+  }
+  if (ui.settingsOpen) {
+    if (e.key === 'Escape') ui.closeSettings();
+    return;
+  }
+  if (ui.gmOpen) {
+    if (e.key === 'Escape') ui.closeGM();
     return;
   }
   if (ui.boonsOpen) return;
@@ -257,7 +324,7 @@ requestAnimationFrame(frame);
 
 window.addEventListener('resize', () => { menuNeedsFrame = true; });
 
-window.ageOfAsh = { game, renderer, ui, startGame, restartRun, seedFromString };
+window.ageOfAsh = { game, renderer, ui, startGame, restartRun, continueRun, saveCurrentRun, clearSavedRun, quitToMenu, togglePauseGame, resumeGame, seedFromString };
 
 window.addEventListener('error', e => {
   console.error(e.error || e.message);

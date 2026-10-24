@@ -19,13 +19,13 @@ const BIOME_COLORS = {
     sand: ['#b39963', '#baa26b', '#ac925d', '#c0a972'],
     water: ['#3b6769', '#406d6f', '#386265', '#447274'],
   },
-  blackforest: {
+  forest: {
     grass: ['#4a5c30', '#506237', '#44562c', '#566836'],
     forest: ['#354625', '#3a4c29', '#314121', '#40522e'],
     dirt: ['#6f5c3b', '#766341', '#685536', '#7d6a47'],
     water: ['#264c50', '#294f54', '#23474b', '#2d555a'],
   },
-  dunes: {
+  dune: {
     grass: ['#a2884f', '#aa9157', '#9a814a', '#b1985f'],
     forest: ['#7b6b3d', '#817144', '#746437', '#887649'],
     dirt: ['#9b7c4b', '#a38451', '#927445', '#aa8b58'],
@@ -33,14 +33,14 @@ const BIOME_COLORS = {
     water: ['#3d6867', '#426e6d', '#396261', '#487572'],
     rock: ['#8c7b5d', '#948265', '#847455', '#9b8869'],
   },
-  riverlands: {
+  river: {
     grass: ['#5c793d', '#647f42', '#567339', '#6b8648'],
     forest: ['#425e31', '#486536', '#3e582d', '#4f6b3b'],
     dirt: ['#837048', '#8a774f', '#7b6842', '#917d55'],
     sand: ['#a99261', '#b09867', '#a18a5b', '#b7a06e'],
     water: ['#2e6772', '#326d79', '#2a626c', '#397480'],
   },
-  highlands: {
+  highland: {
     grass: ['#6a6f40', '#717646', '#64693b', '#797e4c'],
     forest: ['#4c5834', '#515f38', '#48532f', '#58653e'],
     dirt: ['#8a7350', '#917a56', '#826b49', '#997f5c'],
@@ -55,14 +55,14 @@ const BIOME_COLORS = {
     water: ['#2b5867', '#2f5e6e', '#285262', '#34707e'],
     rock: ['#70756f', '#777c76', '#696e68', '#80847d'],
   },
-  isles: {
+  island: {
     grass: ['#587a47', '#60824e', '#527543', '#688a55'],
     forest: ['#3e6239', '#44693e', '#3a5b35', '#4b7044'],
     dirt: ['#85704d', '#8c7753', '#7d6847', '#94805b'],
     sand: ['#b2a171', '#baa879', '#aa996b', '#c1b081'],
     water: ['#2b6a78', '#307180', '#286471', '#377b8a'],
   },
-  ashlands: {
+  ash: {
     grass: ['#5a613f', '#616945', '#555c3a', '#687049'],
     forest: ['#414b34', '#465138', '#3d4730', '#4d583c'],
     dirt: ['#7d6949', '#846f4e', '#766244', '#8a7655'],
@@ -128,7 +128,7 @@ export class Renderer {
     }
   }
 
-  paintTile(ctx, terrain, variant, biome = 'ashlands') {
+  paintTile(ctx, terrain, variant, biome = 'ash') {
     const palette = terrainPalette(biome, terrain);
     const base = palette[variant % palette.length];
     ctx.save();
@@ -288,7 +288,7 @@ export class Renderer {
     const layer = this.terrainLayer;
     const lctx = this.terrainCtx;
     const z = game.camera.zoom;
-    const key = `${game.world.biome || 'ashlands'}|${game.camera.x}|${game.camera.y}|${z}|${this.w}|${this.h}|${this.dpr}`;
+    const key = `${game.world.biome || 'ash'}|${game.camera.x}|${game.camera.y}|${z}|${this.w}|${this.h}|${this.dpr}`;
     if (this.terrainKey !== key) {
       lctx.setTransform(1, 0, 0, 1, 0, 0);
       lctx.fillStyle = '#141a10';
@@ -300,7 +300,7 @@ export class Renderer {
         for (let x = b.x0; x <= b.x1; x++) {
           const tile = game.world.tiles[y * game.world.size + x];
           const p = this.screen(game, x + 0.5, y + 0.5);
-          const sprite = this.tileSprites.get(`${game.world.biome || 'ashlands'}:${tile.terrain}-${tile.variant}`);
+          const sprite = this.tileSprites.get(`${game.world.biome || 'ash'}:${tile.terrain}-${tile.variant}`);
           if (sprite) lctx.drawImage(sprite, p.x - tw / 2, p.y - th / 2, tw, th);
         }
       }

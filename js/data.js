@@ -3,118 +3,118 @@ export const RESOURCES = ['food', 'wood', 'gold', 'stone'];
 export const CIVILIZATIONS = [
   {
     id: 'MNG', name: 'Mongols', epithet: 'Steppe Riders', accent: '#8e6b3a',
-    trait: 'Cavalry march 10% faster; farms yield 20% more; raids yield food.',
-    bonuses: { cavalrySpeedMul: 1.1, farmMul: 1.2, killFoodRate: 0.12, killFoodCap: 180 },
+    trait: 'Mobile camp · slain foes yield food and gold each wave · farms −20%.',
+    bonuses: { farmMul: 0.8, killFoodRate: 0.15, killGoldRate: 0.05, killFoodCap: 100, killGoldCap: 40 },
   },
   {
     id: 'TEU', name: 'Teutons', epithet: 'Iron Covenant', accent: '#56616a',
-    trait: 'Buildings gain 12% health; villagers gain 15 health; towers reach farther.',
-    bonuses: { buildingHpMul: 1.12, villagerHpBonus: 15, towerRange: 1 },
+    trait: 'Houses shoot arrows · buildings reflect 10% melee damage · villagers move 10% slower.',
+    bonuses: { houseArrows: true, thorns: 0.1, villagerSpeedMul: 0.9 },
   },
   {
     id: 'GOT', name: 'Goths', epithet: 'Endless Levy', accent: '#4d5d3e',
-    trait: 'Infantry cost half a population and train faster, but are more fragile.',
-    bonuses: { infantryPopMul: 0.5, infantryHpMul: 0.88, trainSpeedMul: 1.12 },
+    trait: 'Infantry cost half population and have 15% less HP · fallen infantry refund 30% food, up to 120 per wave.',
+    bonuses: { infantryPopMul: 0.5, infantryHpMul: 0.85, infantryRefundRate: 0.3, infantryRefundCap: 120 },
   },
   {
     id: 'FRK', name: 'Franks', epithet: 'Knightly Blood', accent: '#3d5670',
-    trait: 'Cavalry gain 20% health and 10% damage.',
-    bonuses: { cavalryHpMul: 1.2, cavalryDamageMul: 1.1 },
+    trait: 'Military population cap 40 · cavalry HP +60% · infantry cost 10% less.',
+    bonuses: { cavalryHpMul: 1.6, infantryCostMul: 0.9, militaryPopCap: 40 },
   },
   {
     id: 'SAR', name: 'Saracens', epithet: 'Desert Ledger', accent: '#8d6a2c',
-    trait: 'Gold gathering is 12% faster and ranged soldiers strike 8% faster.',
-    bonuses: { goldMul: 1.12, rangedAttackSpeedMul: 1.08 },
+    trait: 'Market hires any generic unit at +15% cost · borrow 100 gold per wave, repay 115 next wave.',
+    bonuses: { marketHiresAny: true, marketHireCostMul: 1.15, waveLoan: 100 },
   },
   {
     id: 'AZT', name: 'Aztecs', epithet: 'Obsidian Oath', accent: '#6d5a35',
-    trait: 'Infantry deal 12% more damage and cost 10% less food.',
-    bonuses: { infantryDamageMul: 1.12, infantryCostMul: 0.9 },
+    trait: 'Recruiters cost 25% less and train 20% faster · each recruitment grants +1% army HP this wave, up to +10% · no cavalry.',
+    bonuses: { recruiterCostMul: 0.75, recruiterTrainMul: 0.8, convertHpBonus: 0.01, noCavalry: true },
   },
   {
     id: 'BRI', name: 'Britons', epithet: 'Longbow Doctrine', accent: '#4a6140',
-    trait: 'Archers gain one tile of range and 10% damage; cavalry is frailer.',
-    bonuses: { archerRange: 1, archerDamageMul: 1.1, cavalryHpMul: 0.9 },
+    trait: 'Foot archers gain +1 range and +1 sight · first shot after moving takes 0.4s longer · cavalry HP −10%.',
+    bonuses: { archerRange: 1, archerSight: 1, archerFirstShotDelay: 0.4, cavalryHpMul: 0.9 },
   },
   {
     id: 'CHN', name: 'Chinese', epithet: 'Repeating Crossbows', accent: '#7b4433',
-    trait: 'Every third ranged attack looses an extra bolt; ranged attack 10% faster.',
-    bonuses: { extraArrowEvery: 3, rangedAttackSpeedMul: 1.1 },
+    trait: 'Every third archer shot fires a 35% extra bolt · age research costs 15% less · start with 40 less food.',
+    bonuses: { extraArrowEvery: 3, extraArrowDamageMul: 0.35, ageCostMul: 0.85, startFoodBonus: -40 },
   },
   {
     id: 'PER', name: 'Persians', epithet: 'War Elephants', accent: '#765a2c',
-    trait: 'War elephants are unlocked and cost 15% less.',
-    bonuses: { elephantUnlocked: true, elephantCostMul: 0.85 },
+    trait: 'War elephants unlocked · melee attacks trample 25% damage to up to 4 foes · slower turns and costlier repairs.',
+    bonuses: { elephantUnlocked: true, elephantTrample: 0.25, elephantTrampleTargets: 4, elephantTurnRateMul: 0.8, elephantRepairCostMul: 1.15 },
   },
   {
     id: 'KOR', name: 'Koreans', epithet: 'Stone Watch', accent: '#4d5b58',
-    trait: 'Towers gain two tiles of range and 15% damage.',
-    bonuses: { towerRange: 2, towerDamageMul: 1.15 },
+    trait: 'Every 3 towers grants a patrol cart, max 4 · siege range +1 · towers cost 15% more.',
+    bonuses: { towerCartEvery: 3, towerCartCap: 4, siegeRange: 1, towerCostMul: 1.15 },
   },
   {
     id: 'SPA', name: 'Spanish', epithet: 'Tercio', accent: '#8b4b2b',
-    trait: 'Villagers gain 30 health and 3 attack, and can defend themselves.',
-    bonuses: { villagerHpBonus: 30, villagerAttackBonus: 3 },
+    trait: 'Villagers gain +40 HP and +4 melee attack · first hit stuns non-boss foes for 0.5s · market fee −50%.',
+    bonuses: { villagerHpBonus: 40, villagerAttackBonus: 4, villagerStun: 0.5, marketFeeMul: 0.5 },
   },
   {
     id: 'TUR', name: 'Turks', epithet: 'Powder Legacy', accent: '#596633',
-    trait: 'Ranged soldiers deal 20% more damage.',
-    bonuses: { archerDamageMul: 1.2 },
+    trait: 'Gunpowder damage +20% · ammunition supply costs 40 gold each wave, or reload 15% slower.',
+    bonuses: { gunpowderDamageMul: 1.2, ammoSupply: 40, ammoReloadPenalty: 0.15 },
   },
   {
     id: 'BYZ', name: 'Byzantines', epithet: 'Theodosian Walls', accent: '#5c4b74',
-    trait: 'Buildings gain 25% health and are raised 8% faster.',
-    bonuses: { buildingHpMul: 1.25, buildSpeedMul: 1.08 },
+    trait: 'Buildings gain 35% HP · counter-infantry cost 15% less · construction 10% slower.',
+    bonuses: { buildingHpMul: 1.35, counterCostMul: 0.85, buildSpeedMul: 0.9 },
   },
   {
     id: 'VIK', name: 'Vikings', epithet: 'Sea Wolves', accent: '#3e5f63',
-    trait: 'Infantry slowly regenerate; food gathering is 10% faster.',
-    bonuses: { unitRegen: 0.008, foodMul: 1.1 },
+    trait: 'Infantry regenerate 1% HP/s after 5s out of combat · fishing huts may be built at inland wells · cavalry damage −10%.',
+    bonuses: { infantryRegen: 0.01, fishingHutAnywhere: true, cavalryDamageMul: 0.9 },
   },
   {
     id: 'MAG', name: 'Magyars', epithet: 'Raider Archers', accent: '#6f4c34',
-    trait: 'Cavalry cost 15% less; ranged soldiers deal 5% more damage.',
-    bonuses: { cavalryCostMul: 0.85, archerDamageMul: 1.05 },
+    trait: 'Light cavalry cost 20% less and see 2 tiles farther · first melee hit deals +8 · military buildings have 15% less HP.',
+    bonuses: { cavalryCostMul: 0.8, cavalrySight: 2, cavalryChargeBonus: 8, militaryBuildingHpMul: 0.85 },
   },
   {
     id: 'JPN', name: 'Japanese', epithet: 'Blade Discipline', accent: '#793d3d',
-    trait: 'Infantry attack 15% faster; towers gain one tile of range.',
-    bonuses: { infantryAttackSpeedMul: 1.15, towerRange: 1 },
+    trait: 'Infantry attack 15% faster · block one normal melee hit every 10s · siege costs 15% more.',
+    bonuses: { infantryAttackSpeedMul: 1.15, blockEvery: 10, siegeCostMul: 1.15 },
   },
 ];
 
 export const BIOMES = [
   {
-    id: 'steppe', name: 'Golden Steppe', trait: 'Open ground · cavalry +8% speed · sparse woods',
-    palette: 'steppe', mods: { cavalrySpeedMul: 1.08, woodMul: 0.95 },
+    id: 'steppe', name: 'Grasssea Plain', trait: '60% open ground · one sidewind per act slows arrows 15% for 12s after an 8s warning',
+    palette: 'steppe', mods: { woodMul: 0.95 },
   },
   {
-    id: 'blackforest', name: 'Black Forest', trait: 'Dense woods · wood +15% · tight sightlines',
-    palette: 'blackforest', mods: { woodMul: 1.15, woodYield: 1.05 },
+    id: 'forest', name: 'Regrowth Forest', trait: '45% forest · felled woods regrow after 120s · no regrowth near buildings, units, or roads',
+    palette: 'forest', mods: { woodMul: 1.15, woodYield: 1.05 },
   },
   {
-    id: 'dunes', name: 'Amber Dunes', trait: 'Gold-rich sand · gold +15% · few trees',
-    palette: 'dunes', mods: { goldMul: 1.15, woodMul: 0.9 },
+    id: 'dune', name: 'Dunesea Trade Road', trait: 'Central gold veins hold +30% · sandstorm after an 8s warning cuts vision 20% for 20s',
+    palette: 'dune', mods: { goldMul: 1.15, woodMul: 0.9 },
   },
   {
-    id: 'riverlands', name: 'Riverlands', trait: 'Fertile banks · food +12% · farms +10%',
-    palette: 'riverlands', mods: { foodMul: 1.12, farmMul: 1.1 },
+    id: 'river', name: 'Fertile River Valley', trait: 'Two fixed bridges and a ford · floods warn after 10s and halt lowland farms for 15s',
+    palette: 'river', mods: { foodMul: 1.12, farmMul: 1.1 },
   },
   {
-    id: 'highlands', name: 'Highlands', trait: 'Thin air · archer range +0.6 · stone +8%',
-    palette: 'highlands', mods: { archerRange: 0.6, stoneMul: 1.08 },
+    id: 'highland', name: 'Stoneridge Hills', trait: 'High-ground ranged damage +10% against visible targets · at least two ramps',
+    palette: 'highland', mods: { archerDamageMul: 1.1, stoneMul: 1.08 },
   },
   {
-    id: 'fjord', name: 'Frostfjord', trait: 'Cold shores · stone +12% · buildings +5% health',
+    id: 'fjord', name: 'Icebay Rift', trait: 'Two permanent land bridges · brittle ice cracks after 4s overweight with a 3s warning',
     palette: 'fjord', mods: { stoneMul: 1.12, buildingHpMul: 1.05 },
   },
   {
-    id: 'isles', name: 'Shattered Isles', trait: 'Scattered isles · carry +3 · farms +10%',
-    palette: 'isles', mods: { carryBonus: 3, farmMul: 1.1 },
+    id: 'island', name: 'Tidal Isles', trait: 'Main island linked by two bridges · landings telegraphed 12s ahead · a pure land army can finish',
+    palette: 'island', mods: { carryBonus: 3, farmMul: 1.1 },
   },
   {
-    id: 'ashlands', name: 'Ashlands', trait: 'Scorched home · towers +1 range · wood +5%',
-    palette: 'ashlands', mods: { towerRange: 1, woodMul: 1.05 },
+    id: 'ash', name: 'Volcanic Plateau', trait: 'Ashfall once per act · 12s warning, excludes the core within 6 tiles · 150 fixed damage',
+    palette: 'ash', mods: { towerRange: 1, woodMul: 1.05 },
   },
 ];
 
@@ -333,6 +333,11 @@ export const BUILDING_TYPES = {
     desc: 'A shore-side hut that yields food and accepts coastal catches.',
   },
 };
+
+export const GENERIC_UNITS = [
+  'militia', 'spearman', 'archer', 'skirmisher', 'light_cavalry', 'horse_archer',
+  'guard', 'mangonel', 'ram', 'recruiter', 'elephant', 'patrol_cart',
+];
 
 export const TRAINABLE = {
   core: ['villager'],

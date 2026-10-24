@@ -122,6 +122,11 @@ svg { display: block; width: 1em; height: 1em; }
 .res-icon.stone { color: #b7b4a8; }
 .res-icon.pop { color: #8db4b2; }
 .resource.population { min-width: 122px; }
+.pop-dual { display: flex; flex-direction: column; gap: 1px; line-height: 1; }
+.pop-line { display: flex; align-items: center; gap: 2px; font-size: 10px; }
+.pop-line b { font-size: 11px; }
+.pop-line i { font-style: normal; color: #8d7850; padding: 0 2px; }
+.pop-line small { font-size: 8px; text-transform: uppercase; letter-spacing: .5px; color: #a89775; }
 .top-actions { display: flex; gap: 8px; margin-left: auto; }
 .icon-button {
   width: 36px; height: 36px; display: grid; place-items: center;
@@ -313,6 +318,9 @@ svg { display: block; width: 1em; height: 1em; }
 .title-flourish svg { width: 27px; height: 27px; opacity: .9; }
 .menu-lede { max-width: 420px; margin: 0; font-family: var(--fell); font-size: 19px; line-height: 1.45; color: #c8b691; letter-spacing: .2px; text-shadow: 0 2px 9px #000; animation: fadeUp 1s .42s both; }
 .menu-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 31px; animation: fadeIn 1s .5s both; }
+.menu-secondary-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: stretch; }
+.menu-secondary-actions .secondary-button { min-height: 38px; padding: 0 13px; font-size: 8.5px; }
+.menu-secondary-actions .secondary-button svg { width: 13px; height: 13px; }
 .primary-button {
   position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 11px;
   min-width: 250px; height: 52px; padding: 0 25px; overflow: hidden;
@@ -395,6 +403,8 @@ svg { display: block; width: 1em; height: 1em; }
 .parchment-modal .btn-shine { display: none; }
 
 .pause-overlay { z-index: 33; }
+.settings-overlay { z-index: 36; }
+.gm-overlay { z-index: 37; }
 .pause-card {
   width: min(440px, 90vw); padding: 34px 40px 32px; text-align: center; color: #e5d2a8;
   background: linear-gradient(160deg, rgba(52, 42, 27, .98), rgba(18, 16, 11, .99));
@@ -405,6 +415,21 @@ svg { display: block; width: 1em; height: 1em; }
 .pause-card .modal-kicker { color: #a98f5e; }
 .pause-card .modal-rule { margin-bottom: 18px; }
 .pause-flavor { margin: 0 0 25px; font-family: var(--fell); font-size: 16px; color: #a89775; }
+.settings-card, .gm-card { width: min(560px, 92vw); max-height: 90vh; overflow-y: auto; }
+.settings-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 0 0 14px; padding: 11px 13px; text-align: left; background: rgba(13, 12, 8, .32); border: 1px solid rgba(206, 170, 96, .18); }
+.settings-row > span { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.settings-row b { font-family: var(--serif); font-size: 9px; letter-spacing: 1.4px; color: #dcc493; }
+.settings-row small { font-size: 9px; color: #948468; }
+.settings-row select { flex: none; padding: 7px 9px; font: inherit; font-size: 10px; color: #e5d2a8; background: #1c1912; border: 1px solid rgba(206, 170, 96, .38); }
+.settings-toggles { margin-bottom: 20px; }
+.gm-note { margin: -10px 0 14px; padding: 8px 10px; font-size: 9px; line-height: 1.4; color: #c7ae7c; background: rgba(120, 91, 46, .18); border-left: 2px solid #a48045; text-align: left; }
+.gm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+.gm-grid label { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 10px; font-size: 9px; color: #a89775; background: rgba(13, 12, 8, .32); border: 1px solid rgba(206, 170, 96, .18); }
+.gm-grid input { width: 82px; padding: 5px 6px; font: inherit; font-size: 10px; text-align: right; color: #e5d2a8; background: #1c1912; border: 1px solid rgba(206, 170, 96, .38); }
+.gm-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 18px; }
+.gm-actions .secondary-button { min-height: 34px; font-size: 8.5px; }
+.gm-card .pause-actions { margin-top: 2px; }
+.gm-log { margin-top: 12px; font-size: 8px; color: #9f8d6b; }
 .pause-actions { display: flex; flex-direction: column; align-items: center; gap: 9px; }
 .pause-actions .primary-button { width: 190px; }
 .text-button { margin-top: 4px; font-size: 9px; letter-spacing: 1px; color: #8d7b5c; padding: 6px 10px; }
@@ -488,6 +513,9 @@ svg { display: block; width: 1em; height: 1em; }
   .brand-lockup { min-width: 42px; }
   .topbar { gap: 12px; padding: 0 13px; }
   .resource { min-width: 77px; padding-right: 8px; font-size: 13px; }
+  .pop-line { font-size: 9px; }
+  .pop-line b { font-size: 10px; }
+  .pop-line small { font-size: 7px; }
   .resource-strip { max-width: none; }
   .objective-card { width: 215px; }
   .selection-panel { width: 430px; }
@@ -695,6 +723,14 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 .boon-card.rarity-legacy { box-shadow: 0 0 0 1px rgba(109, 63, 143, .45), 0 18px 40px rgba(0, 0, 0, .32); }
 
 @media (max-width: 760px) {
+  .menu-secondary-actions { gap: 6px; }
+  .menu-title { animation-name: fadeIn; animation-duration: .5s; animation-delay: 0s; transform: none; }
+  .menu-title span { transform: none; filter: none; }
+
+  .menu-secondary-actions .secondary-button { padding: 0 9px; font-size: 7.5px; }
+  .settings-card, .gm-card { width: min(92vw, 430px); padding: 26px 22px 24px; }
+  .settings-row { align-items: flex-start; flex-direction: column; gap: 7px; }
+  .gm-grid, .gm-actions { grid-template-columns: 1fr; }
   .menu-title.single span { font-size: clamp(36px, 12.5vw, 76px); }
   .menu-title.stacked .title-series { font-size: clamp(14px, 4.6vw, 20px); letter-spacing: .08em; }
   .menu-title.stacked .title-watch { font-size: clamp(34px, 11vw, 58px); }
@@ -722,4 +758,10 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 @media (max-width: 420px) {
   .menu-kicker { font-size: 9px; letter-spacing: 3px; gap: 8px; }
   .menu-kicker span { width: 26px; }
+}
+
+.reduced-motion *, .reduced-motion *::before, .reduced-motion *::after {
+  animation-duration: .001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important;
 }

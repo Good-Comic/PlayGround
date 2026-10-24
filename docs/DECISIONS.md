@@ -66,3 +66,20 @@ The following files are intentionally unchanged:
 - `Agents.md`
 - `start.sh`
 - `capture.sh`
+
+## Civilizations and biomes
+
+- All 16 civilization IDs from GDD §3 are retained and now carry the §3 identities, costs, and bonuses.
+- Implemented civilization mechanics include: Teuton house arrows and building thorns; Goth infantry pop/HP/refund; Frank military cap, cavalry HP, and infantry cost; Saracen market hiring at +15%; Aztec recruiter discount and no cavalry; Briton archer range/sight and cavalry HP; Chinese extra bolt, age discount, and starting-food penalty; Persian elephant unlock and trample; Korean tower carts, siege range, and tower cost; Spanish villager HP/attack; Byzantine building HP, counter cost, and build speed; Viking infantry regeneration and inland fishing huts; Magyar cavalry cost/sight, charge bonus, and military-building HP; Japanese infantry speed and siege cost. Ottoman and other trigger-only details remain partial.
+- Not yet modeled: Mongol mobile camp, Saracen wave loans, Spanish stun, Ottoman ammunition supply, Persian turn/repair penalties, and Japanese melee block. Their data traits state these rules, but the runtime does not enforce them yet.
+- Biome IDs now match GDD §4.1: `steppe`, `forest`, `dune`, `river`, `highland`, `fjord`, `island`, and `ash`.
+- Biome names, traits, palettes, map generation branches, and default setup values use the new IDs. No save aliases are needed because save/replay is still absent.
+- Scheduled biome events such as sidewind, regrowth, sandstorm, flood, ice cracking, and ashfall are not yet simulated. Only terrain generation and passive resource/combat modifiers are active.
+
+## Acceptance evidence
+
+- Browser flow test: all four locales render the requested titles, `Start Game`, no horizontal overflow, and no console errors.
+- Data counts: 16 civilizations, 8 biomes, 32 cards `C01`–`C32`, 10 waves, 16 buildings, 22 unit definitions, 24 event modules, and 160 event instances.
+- Ten-wave simulation: 10 wave reports, 9 boons, victory overlay reached, and no browser errors.
+- Targeted civilization test: all 16 setup paths and all 8 terrain paths start cleanly; refund, tower-cart, market-hire, and cost modifiers execute as expected.
+- Screenshots: `screenshots/spec14-menu-en.png`, `screenshots/spec14-menu-zh-Hant.png`, `screenshots/spec14-menu-zh-Hans.png`, `screenshots/spec14-menu-ja.png`, `screenshots/spec14-victory-en.png`, and `screenshots/spec14-mobile-game.png`.

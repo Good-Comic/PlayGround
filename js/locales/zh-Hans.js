@@ -15,6 +15,9 @@ export const ui = {
   "menu.seedHint": "相同种子，相同边境。",
   "menu.start": "Start Game",
   "menu.howto": "玩法说明",
+  "menu.continue": "继续远征",
+  "menu.settings": "设置",
+  "menu.gm": "GM 工具",
   "menu.factCivs": "文明",
   "menu.factRaids": "袭击",
   "menu.factBoons": "恩赐",
@@ -28,6 +31,8 @@ export const ui = {
   "menu.footerRight": "在裂界守望",
   "hud.sound": "音效",
   "hud.toggleSound": "切换音效",
+  "hud.economic": "经",
+  "hud.military": "军",
   "hud.pause": "暂停",
   "hud.pauseTitle": "暂停（空白键）",
   "resource.food": "食物",
@@ -138,6 +143,33 @@ export const ui = {
   "pause.resume": "继续",
   "pause.restart": "重新开始",
   "pause.quit": "放弃并返回选单",
+  "pause.save": "保存远征",
+  "pause.settings": "设置",
+  "pause.gm": "GM 工具",
+  "settings.kicker": "战事议会",
+  "settings.title": "设置",
+  "settings.flavor": "调整战役节奏。更改会保留到下一场远征。",
+  "settings.speed": "游戏速度",
+  "settings.speedDesc": "调整模拟时间，不改变战斗数值。",
+  "settings.speedSlow": "0.75×",
+  "settings.speedNormal": "1×",
+  "settings.speedFast": "1.25×",
+  "settings.speedFastest": "1.5×",
+  "settings.reducedMotion": "减少动态",
+  "settings.reducedMotionDesc": "缩短界面过渡与装饰动画。",
+  "settings.close": "返回",
+  "settings.reset": "恢复默认",
+  "gm.kicker": "游戏主宰",
+  "gm.title": "GM 工具",
+  "gm.flavor": "仅供测试。GM 操作会记录在本局。",
+  "gm.startNote": "资源发放会在下一场远征开始时生效；战斗控制需先开始远征。",
+  "gm.grant": "发放资源",
+  "gm.heal": "全体治疗",
+  "gm.kill": "清除掠袭者",
+  "gm.age": "推进时代",
+  "gm.wave": "跳过袭击",
+  "gm.spawn": "生成民兵",
+  "gm.close": "返回",
   "boon.kicker": "袭击已破",
   "boon.title": "选择你的恩赐",
   "boon.desc": "旧王国的一份赠礼。它将塑造未来的袭击。",
@@ -262,128 +294,141 @@ export const ui = {
   "toast.noIdle": "没有待命村民。",
   "toast.stewardEnabled": "{name}已启用。",
   "toast.stewardPaused": "{name}已暂停。",
+  "toast.runSaved": "远征已保存。",
+  "toast.runSaveFailed": "无法保存远征。",
+  "toast.runLoaded": "远征已载入。",
+  "toast.noSave": "没有可继续的远征。",
+  "toast.runLoadFailed": "无法载入远征。",
+  "toast.gmNeedsRun": "请先开始或继续一场远征。",
+  "toast.gmGranted": "资源已发放。",
+  "toast.gmHealed": "所有友军已治疗。",
+  "toast.gmCleared": "掠袭者已清除。",
+  "toast.gmAge": "王国直接进入{age}。",
+  "toast.gmWave": "本波袭击已跳过。",
+  "toast.gmNoWave": "仅能在袭击进行时跳过本波。",
+  "toast.gmSpawned": "五名民兵已抵达。",
   "float.raised": "{name}已建成",
   "steward.economy": "村务总管",
   "steward.military": "军务总管"
 };
 
 export const content = {
-  "civ": {
-    "MNG": {
-      "name": "蒙古",
-      "epithet": "草原骑手",
-      "trait": "骑兵行军速度 +10%；农田产量 +20%；劫掠可获得食物。"
+    "civ": {
+      "MNG": {
+        "name": "蒙古",
+        "epithet": "草原骑手",
+        "trait": "移动城帐 · 击杀敌人可获得食物与黄金（每波上限） · 农田 −20%。"
+      },
+      "TEU": {
+        "name": "条顿",
+        "epithet": "铁之盟约",
+        "trait": "住房可射箭 · 建筑反弹 10% 近战伤害 · 村民移速 −10%。"
+      },
+      "GOT": {
+        "name": "哥特",
+        "epithet": "无尽征召",
+        "trait": "步兵占一半人口、生命 −15% · 阵亡步兵退还 30% 食物，每波上限 120。"
+      },
+      "FRK": {
+        "name": "法兰克",
+        "epithet": "骑士血脉",
+        "trait": "军事人口上限 40 · 骑兵生命 +60% · 步兵成本 −10%。"
+      },
+      "SAR": {
+        "name": "萨拉森",
+        "epithet": "沙漠账册",
+        "trait": "市集可雇用各系通用兵，价格 +15% · 每波可借 100 金，下波还 115。"
+      },
+      "AZT": {
+        "name": "阿兹特克",
+        "epithet": "黑曜誓约",
+        "trait": "招募使成本 −25%、训练 −20% · 每次招募本波全军生命 +1%，上限 +10% · 无骑兵。"
+      },
+      "BRI": {
+        "name": "不列颠",
+        "epithet": "长弓教条",
+        "trait": "步弓射程 +1、视野 +1 · 移动后首箭需额外 0.4 秒 · 骑兵生命 −10%。"
+      },
+      "CHN": {
+        "name": "中国",
+        "epithet": "连弩",
+        "trait": "每第三次弓兵攻击追加 35% 副箭 · 时代研发成本 −15% · 起始食物 −40。"
+      },
+      "PER": {
+        "name": "波斯",
+        "epithet": "战象",
+        "trait": "解锁战象 · 近战附带 25% 践踏伤害，最多 4 个目标 · 转向与修补较差。"
+      },
+      "KOR": {
+        "name": "韩国",
+        "epithet": "石墙守望",
+        "trait": "每三座塔提供一台巡防车，上限 4 · 攻城射程 +1 · 箭塔造价 +15%。"
+      },
+      "SPA": {
+        "name": "西班牙",
+        "epithet": "方阵",
+        "trait": "村民生命 +40、近战攻击 +4 · 首击眩晕非首领 0.5 秒 · 市集手续费 −50%。"
+      },
+      "TUR": {
+        "name": "土耳其",
+        "epithet": "火药遗产",
+        "trait": "火药伤害 +20% · 每波弹药补给 40 金，否则装填慢 15%。"
+      },
+      "BYZ": {
+        "name": "拜占庭",
+        "epithet": "狄奥多西城墙",
+        "trait": "建筑生命 +35% · 反制步兵成本 −15% · 建造速度 −10%。"
+      },
+      "VIK": {
+        "name": "维京",
+        "epithet": "海狼",
+        "trait": "步兵脱战 5 秒后每秒回复 1% 生命 · 渔屋可建于内陆水井 · 骑兵伤害 −10%。"
+      },
+      "MAG": {
+        "name": "马扎尔",
+        "epithet": "掠袭弓手",
+        "trait": "轻骑成本 −20%、视野 +2 · 近战首击 +8 伤害 · 军事建筑生命 −15%。"
+      },
+      "JPN": {
+        "name": "日本",
+        "epithet": "剑道",
+        "trait": "步兵攻速 +15% · 每 10 秒格挡一次普通近击 · 攻城器成本 +15%。"
+      }
     },
-    "TEU": {
-      "name": "条顿",
-      "epithet": "铁之盟约",
-      "trait": "建筑生命 +12%；村民生命 +15；箭塔射程更远。"
+    "biome": {
+      "steppe": {
+        "name": "草海平原",
+        "trait": "60% 开阔地 · 每幕一次侧风，预警 8 秒后箭速 −15%，持续 12 秒"
+      },
+      "forest": {
+        "name": "再生林境",
+        "trait": "45% 森林 · 砍伐后 120 秒再生 · 建筑、单位与道路周围 2 格不再生"
+      },
+      "dune": {
+        "name": "砂海商路",
+        "trait": "中央金矿 +30% · 沙暴预警 8 秒后视野 −20%，持续 20 秒"
+      },
+      "river": {
+        "name": "沃土河谷",
+        "trait": "固定两桥与一处渡口 · 洪水预警 10 秒后低地农田停产 15 秒，不毁建筑"
+      },
+      "highland": {
+        "name": "石脊丘陵",
+        "trait": "高地远程伤害 +10%，仅对已有视野目标 · 至少两条坡道"
+      },
+      "fjord": {
+        "name": "冰湾裂口",
+        "trait": "两条永久陆桥 · 脆冰超重 4 秒后裂，预警 3 秒 · 落水损 30% 最大生命，不秒杀"
+      },
+      "island": {
+        "name": "潮汐群岛",
+        "trait": "主岛以两桥连接 · 登陆提前 12 秒预告 · 纯陆军可全程通关"
+      },
+      "ash": {
+        "name": "火山台地",
+        "trait": "每幕一次灰烬 · 预警 12 秒，排除城心 6 格 · 固定 150 伤害"
+      }
     },
-    "GOT": {
-      "name": "哥德",
-      "epithet": "无尽征召",
-      "trait": "步兵人口减半且训练更快，但更脆弱。"
-    },
-    "FRK": {
-      "name": "法兰克",
-      "epithet": "骑士血脉",
-      "trait": "骑兵生命 +20%、伤害 +10%。"
-    },
-    "SAR": {
-      "name": "萨拉森",
-      "epithet": "沙漠账册",
-      "trait": "黄金采集 +12%，远程士兵攻击速度 +8%。"
-    },
-    "AZT": {
-      "name": "阿兹特克",
-      "epithet": "黑曜誓约",
-      "trait": "步兵伤害 +12%，食物成本 -10%。"
-    },
-    "BRI": {
-      "name": "不列颠",
-      "epithet": "长弓教条",
-      "trait": "弓手射程 +1、伤害 +10%；骑兵较脆弱。"
-    },
-    "CHN": {
-      "name": "中国",
-      "epithet": "连弩",
-      "trait": "每第三次远程攻击追加一箭；远程攻击速度 +10%。"
-    },
-    "PER": {
-      "name": "波斯",
-      "epithet": "战象",
-      "trait": "解锁战象，成本 -15%。"
-    },
-    "KOR": {
-      "name": "高丽",
-      "epithet": "石墙守望",
-      "trait": "箭塔射程 +2、伤害 +15%。"
-    },
-    "SPA": {
-      "name": "西班牙",
-      "epithet": "方阵",
-      "trait": "村民生命 +30、攻击 +3，可自卫。"
-    },
-    "TUR": {
-      "name": "土耳其",
-      "epithet": "火药遗产",
-      "trait": "远程士兵伤害 +20%。"
-    },
-    "BYZ": {
-      "name": "拜占庭",
-      "epithet": "狄奥多西城墙",
-      "trait": "建筑生命 +25%，建造速度 +8%。"
-    },
-    "VIK": {
-      "name": "维京",
-      "epithet": "海狼",
-      "trait": "步兵缓慢回复；食物采集 +10%。"
-    },
-    "MAG": {
-      "name": "马扎尔",
-      "epithet": "掠袭弓手",
-      "trait": "骑兵成本 -15%；远程士兵伤害 +5%。"
-    },
-    "JPN": {
-      "name": "日本",
-      "epithet": "剑道",
-      "trait": "步兵攻击速度 +15%；箭塔射程 +1。"
-    }
-  },
-  "biome": {
-    "steppe": {
-      "name": "金色草原",
-      "trait": "开阔地形 · 骑兵速度 +8% · 林木稀疏"
-    },
-    "blackforest": {
-      "name": "黑森林",
-      "trait": "密林 · 木材 +15% · 视野狭窄"
-    },
-    "dunes": {
-      "name": "琥珀沙丘",
-      "trait": "黄金富集 · 黄金 +15% · 树木稀少"
-    },
-    "riverlands": {
-      "name": "河畔",
-      "trait": "肥沃河岸 · 食物 +12% · 农田 +10%"
-    },
-    "highlands": {
-      "name": "高地",
-      "trait": "稀薄空气 · 弓手射程 +0.6 · 石材 +8%"
-    },
-    "fjord": {
-      "name": "霜湾",
-      "trait": "寒冷海岸 · 石材 +12% · 建筑生命 +5%"
-    },
-    "isles": {
-      "name": "破碎群岛",
-      "trait": "散布岛屿 · 负重 +3 · 农田 +10%"
-    },
-    "ashlands": {
-      "name": "灰烬之地",
-      "trait": "焦土家园 · 箭塔射程 +1 · 木材 +5%"
-    }
-  },
   "age": {
     "1": "封建时代",
     "2": "城堡时代",
