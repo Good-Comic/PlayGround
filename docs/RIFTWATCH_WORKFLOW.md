@@ -36,6 +36,8 @@ curl -fsS http://127.0.0.1:8080/health
 
 In Studio, select `riftwatch`, confirm the preview loads, then run Build and Test. Build checks every JavaScript source file; Test invokes the existing locale validator and stores the result.
 
+For Task 04 live preview, start the `web-rts-esm` adapter from the read-only project or a completed Agent task. Studio copies it to `/data/previews`, starts Vite with HMR, and embeds its separate loopback origin in a sandboxed iframe. Run the Playwright Quality Gate before Git preparation. A golden baseline is shared by project/adapter, but creating or replacing it requires a separate explicit approval. A passing ten-wave traversal verifies state transitions only; it is not a claim of complete combat play.
+
 ## Write changes back safely
 
 1. Edit only inside `workspace/riftwatch` while it is on `codex/riftwatch-forge-integration` (or a newly named game-only branch).

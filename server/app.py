@@ -25,6 +25,11 @@ try:
         list_repositories, prepare_change, process_delivery, push_change, reconcile_repository,
         register_repository,
     )
+    from server.preview_runtime import (
+        PreviewError, approve_golden, get_preview, get_quality_run, init_preview_db,
+        list_adapters, list_previews, list_quality_runs, resolve_artifact, run_quality_gate,
+        start_preview, stop_preview,
+    )
 except ModuleNotFoundError:  # Container executes this file directly.
     from providers import AgentRequest, PROVIDER_CATALOG, ProviderCancelled, ProviderError, build_provider
     from github_integration import (
@@ -33,6 +38,11 @@ except ModuleNotFoundError:  # Container executes this file directly.
         github_config_status, ingest_webhook, init_github_db, list_changes, list_deliveries,
         list_repositories, prepare_change, process_delivery, push_change, reconcile_repository,
         register_repository,
+    )
+    from preview_runtime import (
+        PreviewError, approve_golden, get_preview, get_quality_run, init_preview_db,
+        list_adapters, list_previews, list_quality_runs, resolve_artifact, run_quality_gate,
+        start_preview, stop_preview,
     )
 
 
@@ -49,6 +59,11 @@ TASK_THREADS_LOCK = threading.Lock()
 GIT_SOURCE_ROOT = Path(os.environ.get("FORGE_GIT_SOURCE_ROOT", "/source-repository"))
 GIT_TASK_ROOT = Path(os.environ.get("FORGE_GIT_TASK_ROOT", "/data/git-tasks"))
 REAL_GITHUB_APP = RealGitHubApp()
+PREVIEW_ROOT = Path(os.environ.get("FORGE_PREVIEW_ROOT", "/data/previews"))
+PREVIEW_ARTIFACT_ROOT = Path(os.environ.get("FORGE_PREVIEW_ARTIFACT_ROOT", "/data/preview-artifacts"))
+BROWSER_ENDPOINT = os.environ.get("FORGE_BROWSER_ENDPOINT", "http://preview-browser:9222")
+VITE_ENTRY = Path(__file__).with_name("node_modules") / "vite" / "bin" / "vite.js"
+QUALITY_SCRIPT = Path(__file__).with_name("quality") / "riftwatch-e2e.mjs"
 
 
 def init_db(db_path: Path) -> None:
@@ -174,6 +189,7 @@ def init_db(db_path: Path) -> None:
                 (task_id, old_status),
             )
     init_github_db(db_path)
+    init_preview_db(db_path)
 
 
 def resolve_project_path(raw_path: str, workspace_root: Path = WORKSPACE_ROOT) -> tuple[Path, str]:
@@ -878,7 +894,8 @@ class ForgeHandler(SimpleHTTPRequestHandler):
         self.send_header(
             "Content-Security-Policy",
             "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; "
-            "connect-src 'self'; img-src 'self' data:; font-src 'self'; frame-src 'self'",
+            "connect-src 'self'; img-src 'self' data:; font-src 'self'; "
+            "frame-src 'self' http://127.0.0.1:*",
         )
         super().end_headers()
 
@@ -933,6 +950,21 @@ class ForgeHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(content)
 
+    def serve_preview_artifact(self, run_id: int, kind: str) -> None:
+        try:
+            item = resolve_artifact(run_id, kind, DB_PATH, PREVIEW_ARTIFACT_ROOT)
+            content = item.read_bytes()
+        except (PreviewError, OSError) as exc:
+            self.json_response(HTTPStatus.NOT_FOUND, {"error": str(exc)})
+            return
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "image/png")
+        self.send_header("Content-Length", str(len(content)))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Security-Policy", "default-src 'none'; sandbox")
+        self.end_headers()
+        self.wfile.write(content)
+
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         if parsed.path == "/health":
@@ -956,6 +988,12 @@ class ForgeHandler(SimpleHTTPRequestHandler):
             return
         if parsed.path == "/api/github/repositories":
             self.json_response(HTTPStatus.OK, {"repositories": list_repositories(DB_PATH)})
+            return
+        if parsed.path == "/api/game-adapters":
+            self.json_response(HTTPStatus.OK, {"adapters": list_adapters()})
+            return
+        if parsed.path == "/api/previews":
+            self.json_response(HTTPStatus.OK, {"previews": list_previews(DB_PATH)})
             return
         if parsed.path == "/api/agent/tasks":
             try:
@@ -983,6 +1021,10 @@ class ForgeHandler(SimpleHTTPRequestHandler):
         github_deliveries_match = re.fullmatch(r"/api/github/repositories/(\d+)/deliveries", parsed.path)
         github_changes_match = re.fullmatch(r"/api/github/repositories/(\d+)/changes", parsed.path)
         github_change_match = re.fullmatch(r"/api/github/changes/(\d+)", parsed.path)
+        live_preview_match = re.fullmatch(r"/api/previews/(\d+)", parsed.path)
+        quality_runs_match = re.fullmatch(r"/api/previews/(\d+)/quality", parsed.path)
+        quality_run_match = re.fullmatch(r"/api/preview-quality/(\d+)", parsed.path)
+        artifact_match = re.fullmatch(r"/api/preview-quality/(\d+)/(success|failure)\.png", parsed.path)
         try:
             if files_match:
                 project_id = int(files_match.group(1))
@@ -1015,13 +1057,63 @@ class ForgeHandler(SimpleHTTPRequestHandler):
             if github_change_match:
                 self.json_response(HTTPStatus.OK, {"change": get_change(int(github_change_match.group(1)), DB_PATH)})
                 return
-        except (ValueError, LookupError, OSError, GitHubIntegrationError) as exc:
+            if live_preview_match:
+                self.json_response(HTTPStatus.OK, {"preview": get_preview(int(live_preview_match.group(1)), DB_PATH)})
+                return
+            if quality_runs_match:
+                self.json_response(HTTPStatus.OK, {"runs": list_quality_runs(int(quality_runs_match.group(1)), DB_PATH)})
+                return
+            if quality_run_match:
+                self.json_response(HTTPStatus.OK, {"run": get_quality_run(int(quality_run_match.group(1)), DB_PATH)})
+                return
+            if artifact_match:
+                self.serve_preview_artifact(int(artifact_match.group(1)), artifact_match.group(2))
+                return
+        except (ValueError, LookupError, OSError, GitHubIntegrationError, PreviewError) as exc:
             self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
             return
         super().do_GET()
 
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
+        if parsed.path == "/api/previews":
+            try:
+                payload = self.read_json()
+                raw_task_id = payload.get("task_id")
+                preview = start_preview(
+                    int(payload.get("project_id")), None if raw_task_id in {None, ""} else int(raw_task_id),
+                    DB_PATH, WORKSPACE_ROOT, PREVIEW_ROOT, VITE_ENTRY,
+                )
+            except (TypeError, ValueError, OSError, sqlite3.Error, PreviewError) as exc:
+                self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
+                return
+            self.json_response(HTTPStatus.CREATED, {"preview": preview})
+            return
+
+        preview_action = re.fullmatch(r"/api/previews/(\d+)/(stop|quality|golden)", parsed.path)
+        if preview_action:
+            try:
+                preview_id = int(preview_action.group(1))
+                action = preview_action.group(2)
+                payload = self.read_json()
+                if action == "stop":
+                    preview = stop_preview(preview_id, DB_PATH)
+                    self.json_response(HTTPStatus.OK, {"preview": preview})
+                elif action == "quality":
+                    run = run_quality_gate(
+                        preview_id, DB_PATH, PREVIEW_ARTIFACT_ROOT, QUALITY_SCRIPT, BROWSER_ENDPOINT,
+                    )
+                    self.json_response(HTTPStatus.CREATED, {"run": run})
+                else:
+                    preview = approve_golden(
+                        preview_id, int(payload.get("run_id")), payload.get("confirm") is True,
+                        DB_PATH, PREVIEW_ARTIFACT_ROOT,
+                    )
+                    self.json_response(HTTPStatus.OK, {"preview": preview})
+            except (TypeError, ValueError, OSError, sqlite3.Error, PreviewError, subprocess.TimeoutExpired) as exc:
+                self.json_response(HTTPStatus.BAD_REQUEST, {"error": str(exc)})
+            return
+
         if parsed.path == "/api/github/webhook":
             try:
                 body = self.read_body()

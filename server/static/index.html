@@ -20,11 +20,24 @@
       </aside>
       <section class="preview">
         <div class="toolbar">
-          <h2>游戏预览</h2>
+          <h2>隔离即时游戏预览</h2>
           <button id="reload-preview" disabled>重新载入</button>
         </div>
-        <div id="preview-empty" class="placeholder">选择已导入项目以开启同源只读预览。</div>
-        <iframe id="game-preview" title="游戏预览" hidden></iframe>
+        <form id="live-preview-form" class="preview-controls">
+          <input id="preview-task-id" type="number" min="1" placeholder="可选：已完成 Agent Task ID">
+          <button id="start-live-preview" disabled>启动隔离 Vite</button>
+          <button id="run-quality" type="button" disabled>执行 Quality Gate</button>
+          <button id="approve-golden" type="button" disabled>明确核准 Golden</button>
+          <button id="stop-live-preview" type="button" disabled>停止</button>
+        </form>
+        <p id="preview-security" class="hint">iframe 使用不含 allow-same-origin 的 sandbox；预览不能继承 Studio session、凭证或内部 API 权限。</p>
+        <div id="preview-empty" class="placeholder">选择项目后启动独立 Vite 工作区；原始游戏维持唯读。</div>
+        <iframe id="game-preview" title="隔离游戏预览" sandbox="allow-scripts allow-pointer-lock" referrerpolicy="no-referrer" hidden></iframe>
+        <section id="quality-details" class="quality" hidden>
+          <strong>Preview Quality Gate</strong>
+          <pre id="quality-output"></pre>
+          <div class="screenshots"><img id="success-shot" alt="成功测试截图" hidden><img id="failure-shot" alt="失败测试截图" hidden></div>
+        </section>
         <section class="viewer">
           <strong id="file-title">文件内容</strong>
           <pre id="file-content">尚未选择文件。</pre>

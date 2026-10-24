@@ -28,9 +28,19 @@ const githubActions = document.querySelector('#github-actions');
 const registerGithubRepoButton = document.querySelector('#register-github-repo');
 const prepareGithubChangeButton = document.querySelector('#prepare-github-change');
 const githubReconcileButton = document.querySelector('#github-reconcile');
+const startLivePreviewButton = document.querySelector('#start-live-preview');
+const runQualityButton = document.querySelector('#run-quality');
+const approveGoldenButton = document.querySelector('#approve-golden');
+const stopLivePreviewButton = document.querySelector('#stop-live-preview');
+const qualityDetails = document.querySelector('#quality-details');
+const qualityOutput = document.querySelector('#quality-output');
+const successShot = document.querySelector('#success-shot');
+const failureShot = document.querySelector('#failure-shot');
 let selectedProject = null;
 let providers = [];
 let selectedGithubRepo = null;
+let selectedPreview = null;
+let selectedQualityRun = null;
 
 async function jsonRequest(url, options) {
   const response = await fetch(url, options);
@@ -58,14 +68,116 @@ async function selectProject(project) {
   selectedProject = project;
   buildButton.disabled = false;
   testButton.disabled = false;
-  reloadButton.disabled = false;
-  preview.src = `/preview/${project.id}/index.html`;
-  preview.hidden = false;
-  previewEmpty.hidden = true;
-  log.textContent = `已选择 ${project.name}。项目以只读方式提供预览。`;
+  startLivePreviewButton.disabled = false;
+  reloadButton.disabled = true;
+  preview.removeAttribute('src');
+  preview.hidden = true;
+  previewEmpty.hidden = false;
+  previewEmpty.textContent = `已选择 ${project.name}；可从唯读基准或已完成 Agent Task 建立隔离 Vite 工作区。`;
+  log.textContent = `已选择 ${project.name}。原始项目保持只读。`;
   createAgentTaskButton.disabled = false;
   registerGithubRepoButton.disabled = false;
   await Promise.all([loadFiles(), loadRuns(), loadAgentTasks()]);
+}
+
+function showQualityRun(run) {
+  selectedQualityRun = run;
+  qualityDetails.hidden = false;
+  approveGoldenButton.disabled = !run.gate_passed;
+  const metrics = run.metrics || {};
+  qualityOutput.textContent = [
+    `Run #${run.id} · ${run.status} · gate=${run.gate_passed}`,
+    `Traversal=${metrics.traversal_kind || 'not completed'}`,
+    `Load=${Number(metrics.load_ms || 0).toFixed(1)} ms · DOM=${Number(metrics.dom_content_loaded_ms || 0).toFixed(1)} ms`,
+    `Measured FPS=${Number(metrics.measured_fps || 0).toFixed(2)} · interaction=${Number(metrics.interaction_latency_ms || 0).toFixed(2)} ms`,
+    `Vite RSS=${metrics.vite_rss_bytes == null ? 'unavailable' : `${(metrics.vite_rss_bytes / 1048576).toFixed(2)} MiB`}`,
+    `Visual=${JSON.stringify(run.visual)} · modified=${JSON.stringify(run.modified)}`,
+    `Console=${JSON.stringify(run.console)}\nPage errors=${JSON.stringify(run.page_errors)}\nLoad failures=${JSON.stringify(run.load_failures)}`,
+    run.log,
+    `Rollback point: ${run.rollback_path}`,
+  ].join('\n');
+  successShot.hidden = !run.success_screenshot;
+  failureShot.hidden = !run.failure_screenshot;
+  if (run.success_screenshot) successShot.src = `/api/preview-quality/${run.id}/success.png?now=${Date.now()}`;
+  if (run.failure_screenshot) failureShot.src = `/api/preview-quality/${run.id}/failure.png?now=${Date.now()}`;
+}
+
+async function startLivePreview(event) {
+  event.preventDefault();
+  if (!selectedProject) return;
+  startLivePreviewButton.disabled = true;
+  log.textContent = '正在复制隔离工作区并启动 Vite…';
+  const rawTask = document.querySelector('#preview-task-id').value;
+  try {
+    const data = await jsonRequest('/api/previews', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({project_id: selectedProject.id, task_id: rawTask || null}),
+    });
+    selectedPreview = data.preview;
+    preview.src = selectedPreview.preview_url;
+    preview.hidden = false;
+    previewEmpty.hidden = true;
+    reloadButton.disabled = false;
+    runQualityButton.disabled = false;
+    stopLivePreviewButton.disabled = false;
+    log.textContent = `${selectedPreview.adapter_id} 已在隔离工作区启动。Vite HMR 已启用，原始项目未写入。`;
+  } catch (error) {
+    startLivePreviewButton.disabled = false;
+    log.textContent = `启动预览失败：${error.message}`;
+  }
+}
+
+async function runPreviewQuality() {
+  if (!selectedPreview) return;
+  runQualityButton.disabled = true;
+  log.textContent = '正在执行 Playwright Quality Gate…';
+  try {
+    const data = await jsonRequest(`/api/previews/${selectedPreview.id}/quality`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}',
+    });
+    showQualityRun(data.run);
+    log.textContent = `Quality Gate ${data.run.gate_passed ? '通过' : '拒绝'}；日志与截图已保存。`;
+  } catch (error) {
+    log.textContent = `Quality Gate 无法执行：${error.message}`;
+  } finally {
+    runQualityButton.disabled = false;
+  }
+}
+
+async function approveGolden() {
+  if (!selectedPreview || !selectedQualityRun) return;
+  approveGoldenButton.disabled = true;
+  try {
+    const data = await jsonRequest(`/api/previews/${selectedPreview.id}/golden`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({run_id: selectedQualityRun.id, confirm: true}),
+    });
+    selectedPreview = data.preview;
+    log.textContent = `Golden 已由明确操作核准，来源 Quality Run #${selectedQualityRun.id}。`;
+  } catch (error) {
+    log.textContent = `Golden 核准失败：${error.message}`;
+    approveGoldenButton.disabled = false;
+  }
+}
+
+async function stopLivePreview() {
+  if (!selectedPreview) return;
+  try {
+    await jsonRequest(`/api/previews/${selectedPreview.id}/stop`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}',
+    });
+    preview.removeAttribute('src');
+    preview.hidden = true;
+    previewEmpty.hidden = false;
+    selectedPreview = null;
+    reloadButton.disabled = true;
+    runQualityButton.disabled = true;
+    stopLivePreviewButton.disabled = true;
+    startLivePreviewButton.disabled = false;
+    log.textContent = '隔离 Vite 预览已停止。';
+  } catch (error) {
+    log.textContent = `停止预览失败：${error.message}`;
+  }
 }
 
 async function loadGithubStatus() {
@@ -469,8 +581,12 @@ document.querySelector('#import-form').addEventListener('submit', async (event) 
 });
 
 reloadButton.addEventListener('click', () => {
-  if (selectedProject) preview.src = `/preview/${selectedProject.id}/index.html?reload=${Date.now()}`;
+  if (selectedPreview) preview.src = `${selectedPreview.preview_url}?reload=${Date.now()}`;
 });
+document.querySelector('#live-preview-form').addEventListener('submit', startLivePreview);
+runQualityButton.addEventListener('click', runPreviewQuality);
+approveGoldenButton.addEventListener('click', approveGolden);
+stopLivePreviewButton.addEventListener('click', stopLivePreview);
 buildButton.addEventListener('click', () => runAction('build'));
 testButton.addEventListener('click', () => runAction('test'));
 boot();

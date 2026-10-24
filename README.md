@@ -24,7 +24,7 @@
 
 ## 啟動（Linux / Debian 雲端開發容器）
 1. 確認 Docker Engine、Compose v2、Git、Node.js 與 Python 已安裝。
-2. 執行 `docker compose up -d --build` 啟動 Forge Studio。
+2. 執行 `npm --prefix server ci --ignore-scripts`，依 lockfile 安裝 Vite/Playwright preview runtime；再執行 `docker compose up -d --build` 啟動 Forge Studio 與私有 headless browser sidecar。
 3. 以 `curl http://127.0.0.1:8080/health` 驗證 API，Studio 僅綁定於 `http://127.0.0.1:8080`。
 4. 如主機有足夠 Docker 儲存空間，執行 `docker compose --profile agent up -d --build` 一併啟動 OpenHands Agent Canvas。
 5. Canvas 位於 `http://127.0.0.1:8000/canvas`。雲端容器內的 localhost 不等同可公開或永久使用的私人部署。

@@ -33,6 +33,12 @@ ul { padding-left: 20px; }
 .toolbar { padding: 0; border: 0; display: flex; justify-content: space-between; align-items: center; }
 .placeholder { min-height: 420px; display: grid; place-items: center; border: 1px dashed #52617e; border-radius: 10px; color: #aab5c9; text-align: center; padding: 24px; }
 #game-preview { width: 100%; height: min(62vh, 720px); border: 1px solid #52617e; border-radius: 8px; background: #111; }
+.preview-controls { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 8px; }
+.preview-controls input { grid-column: 1 / 5; }
+.quality { border: 1px solid #27324a; border-radius: 8px; margin-top: 10px; padding: 10px; }
+.quality pre { max-height: 260px; overflow: auto; }
+.screenshots { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.screenshots img { width: 100%; border: 1px solid #52617e; border-radius: 6px; }
 .viewer { border: 0; padding: 14px 0 0; }
 .viewer pre { max-height: 200px; overflow: auto; padding: 10px; background: #0a0f1b; border-radius: 6px; }
 .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -41,5 +47,5 @@ ul { padding-left: 20px; }
 #health.error { color: #ff8585; }
 pre { white-space: pre-wrap; color: #aab5c9; margin-bottom: 0; }
 code { color: #b9d1ff; }
-#agent-task-output, #github-output { max-height: 520px; overflow: auto; }
+#agent-task-output, #github-output, #quality-output { max-height: 520px; overflow: auto; }
 @media (max-width: 1050px) { main { display: block; } .agent { max-height: none; } .logs { min-height: 140px; display: block; } }

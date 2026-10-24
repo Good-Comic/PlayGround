@@ -4,7 +4,7 @@ Last verified: 2026-10-24 (Asia/Taipei; Debian cloud development container)
 
 ## Current isolation model
 
-- Forge platform branch: `codex/project-forge-task-03`, based on Task 02 commit `38242192b4fab8bdfcd5a786f3c11a8f84c3aa06`.
+- Forge platform branch: `codex/project-forge-task-04`, based on Task 03 commit `adc387d5e1d6025d4947b2dd4ec5b47d8c71a000`.
 - Riftwatch game branch: `codex/riftwatch-forge-integration`, in the ignored linked worktree `workspace/riftwatch`, based on checkpoint `3674a33d95c5165dc9ee5813a051f894a8c72378`.
 - No merge into `main` was performed. No `opencode-resume/*` or `opencode-checkpoints/*` reference was moved or deleted.
 - The game mount is read-only inside Forge Studio. Task 03 Git writes are confined to isolated data-volume clones and fixed commands; the API does not expose arbitrary shell or write to the imported worktree.
@@ -132,17 +132,48 @@ No console or page errors occurred in the final Forge-hosted browser run.
 - The Studio has no user authentication or role model and must not be exposed directly. Production approval controls require authenticated users and authorization.
 - See `docs/GITHUB_APP_SECURITY.md` for threats, controls, and residual risks.
 
+## Task 04 — Isolated live game preview and quality gate
+
+### Implemented
+
+- A replaceable `GameEngineAdapter` interface now selects `web-rts-esm` for the existing Riftwatch HTML/CSS/JavaScript ES-module project. No engine conversion or game-source migration was performed.
+- A preview starts from a copy of either the read-only imported project or a completed Agent task workspace under `/data/previews`. Vite 7.1.12 runs on a bounded loopback port with HMR; Studio restart marks orphaned sessions stopped.
+- The Studio iframe uses `sandbox="allow-scripts allow-pointer-lock"` without `allow-same-origin`, a no-referrer policy, and a separate port origin. Preview assets allow only opaque `Origin: null`; the Forge API does not enable CORS. Browser probing confirmed `document.cookie` raises `SecurityError` and a preview fetch to the 8080 API fails with `TypeError`.
+- Vite, Playwright Core, pixelmatch, and pngjs are exact-version locked. A digest-pinned `chromedp/headless-shell` sidecar exposes CDP only to the private Compose network; no browser port is published.
+- Quality runs persist console errors, page errors, failed requests, changed files, metrics, success/failure screenshots, logs, and a full rollback copy in SQLite/data volume. Screenshots are served through a constrained PNG-only endpoint.
+- Golden baselines are scoped by project and adapter. Initial creation and every update require `confirm: true` from an explicit Studio action and a passing source run.
+- The fixed Playwright scenario verifies the four exact titles, Start Game, major UI selectors, 13 initial units, 6 buildings, `NemesisDirector`, `0 / 10`, all ten controlled wave transitions, victory, and ten reports. It labels this a controlled state-machine traversal, not a real-time combat playthrough.
+- No model-supplied shell is accepted. Task 01–03 Build/Test, Provider, Agent, and GitHub flows remain available.
+
+### Verification evidence
+
+- Unit/integration suite: 30 tests passed, including real Vite startup, adapter detection, isolated file change visibility, source preservation, restart cleanup, and explicit golden approval rejection/acceptance.
+- HMR browser probe changed only the isolated preview CSS and observed the outline update from `3px` to `7px` without reload or browser errors. The preview file was restored from a passing rollback point and matched the source SHA-256.
+- Passing Quality Run 8 created the initial approved baseline. Run 10 compared against it with 418 changed pixels (`0.0323%`, threshold `1%`) and passed. Run 12 passed after rollback with 686 changed pixels (`0.0529%`).
+- Final-image Quality Run 13 inherited the project/adapter baseline in a new preview, passed with 1,018 changed pixels (`0.0785%`), and recorded no console, page, or load errors.
+- A deliberate syntax error was placed only in preview 8. Quality Run 11 rejected it, recorded `Unexpected token ';'`, identified `js/main.js` as modified, saved a failure screenshot and rollback path, and did not alter the Riftwatch worktree. Restoring Run 10's rollback returned `js/main.js` to SHA-256 `c03a0fab…`; Run 12 then passed.
+- Isolated iframe UI E2E confirmed the adapter, sandbox flags, blocked cookie/API access, and no unexpected browser errors.
+- Final static checks passed: Python compilation, browser/quality JavaScript syntax, npm dependency tree, Compose validation, and `git diff --check`.
+
+### Measured data and limits
+
+- Results varied materially in this shared cloud container. Run 10 measured load `4.589 s`, Start Game latency `866 ms`, and `23.85 FPS`; Run 12 measured load `7.199 s`, latency `790 ms`, and `4.93 FPS`; final Run 13 measured load `1.042 s`, latency `447 ms`, and `53.66 FPS`. Vite RSS ranged approximately `120–133 MiB`; Forge cgroup memory ranged approximately `133–149 MiB` during these samples.
+- These samples are headless, short-duration, and cloud-resource-sensitive. They do not establish good performance, long-session stability, a target FPS, or production capacity.
+- Visual comparison covers a deterministic 1440×900 setup/menu capture. It is not a replacement for cross-browser, multi-resolution, animation, or full combat visual testing.
+- See `docs/GAME_PREVIEW_SECURITY.md` for the preview boundary and remaining risks.
+
 ## Not yet implemented
 
 - Real GitHub App installation and credential verification.
 - Authenticated multi-user approvals, production retry worker, and operator-driven conflict resolution.
 - Automatic merge (deliberately not implemented).
-- Full real-time ten-wave combat playthrough, performance acceptance, visual regression baselines, or cross-browser testing.
+- Full real-time ten-wave combat playthrough, performance acceptance thresholds, long-duration soak testing, or cross-browser/multi-resolution visual coverage.
 - Authentication, multi-user authorization, TLS termination, public exposure, backups, and production operations.
 
 ## Environment limitations
 
 - OpenHands Agent Canvas 1.29.0 remains optional and was not started. Its image pull exhausted the cloud daemon's storage while using the `vfs` driver (`no space left on device`). No unrelated Docker data was deleted.
+- Docker-build DNS could not resolve `registry.npmjs.org`; dependencies were installed on the host with npm's lockfile/integrity checks and copied into the image. Unused Task 01–04 build cache and explicitly identified dangling Forge images were removed after approval; no volume, source, or unrelated container was deleted.
 - The checked-in `start.sh` requires the OpenCode runtime's `default-start.mjs`, which is unavailable in this container; the game was served with a local HTTP server for verification instead.
 - GitHub CLI authentication is invalid here. Read-only Git/HTTP inspection and branch pushes use the environment's proxied Git credentials.
 - This is successful verification in an ephemeral Debian cloud development container. It is not evidence of a permanent private-host deployment.

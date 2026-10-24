@@ -7,13 +7,10 @@ FROM buildpack-deps:bookworm@sha256:ccb050a415a94a3a78acbe35084ec8f06ae46fa158e3
 WORKDIR /app
 COPY --from=python-runtime /usr/local/ /usr/local/
 COPY --from=node-runtime /usr/local/ /usr/local/
-COPY app.py /app/app.py
-COPY providers.py /app/providers.py
-COPY github_integration.py /app/github_integration.py
-COPY static /app/static
-
-RUN mkdir -p /data /workspace \
-    && chown -R 1000:1000 /data /app /workspace
+COPY --chown=1000:1000 . /app/
+RUN npm ls --omit=dev --all \
+    && mkdir -p /data /workspace \
+    && chown -R 1000:1000 /data /workspace
 
 USER 1000:1000
 EXPOSE 8080
