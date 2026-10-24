@@ -238,3 +238,11 @@ See `docs/HARDENING_THREAT_MODEL.md` and `docs/PRIVATE_HOST_DEPLOYMENT.md`.
 ## Safe continuation
 
 See `docs/RIFTWATCH_WORKFLOW.md`. Any future game change must remain on the dedicated game branch, pass its existing tests and Forge checks, and be reviewed before a separately authorized PR or merge. Platform and game histories must not be merged directly.
+
+## Production Acceptance 01 — 2026-10-24
+
+- Acceptance ran on `codex/project-forge-acceptance-01` from exact platform commit `90f7b82bf03f455ae2d0f81a9d6ff9567678161c`; Riftwatch remained clean at `3674a33d95c5165dc9ee5813a051f894a8c72378`, with README SHA-256 `7148c7e3bcb62e354e0af02d29e49cf27a9cb521ffc005d1fb852a3e321b769f`.
+- Exact-source regression passed 40/40 tests. Riftwatch passed 15 JavaScript syntax checks and four locales with 573 keys each. A fresh-volume Playwright gate passed Start Game, 13 units, 6 buildings, Nemesis Director, and controlled ten-wave victory with ten reports and no browser errors. This is state-machine traversal, not complete combat play.
+- Production acceptance is **FAIL / RELEASE BLOCKED**. A pure `git archive` Docker build fails because the Dockerfile validates dependencies without installing the lockfile. The shared Studio runtime also lacks disposable per-job kernel-level egress/disk isolation. A clean deployment had no portable approved visual golden (`no_baseline`).
+- Real Ollama/OpenAI inference, a real-model Riftwatch change, GitHub App credentials, public HTTPS webhook, Push/PR, Windows/Linux private-host runtime, TLS/VPN, full combat, soak and performance thresholds remain BLOCKED or NOT TESTED. No paid call, external write, PR, merge, golden update or public exposure occurred.
+- Full command-level evidence and the PASS/FAIL/BLOCKED/NOT TESTED matrix are in `docs/PRODUCTION_ACCEPTANCE.md`.
