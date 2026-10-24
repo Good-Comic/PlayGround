@@ -246,3 +246,10 @@ See `docs/RIFTWATCH_WORKFLOW.md`. Any future game change must remain on the dedi
 - Production acceptance is **FAIL / RELEASE BLOCKED**. A pure `git archive` Docker build fails because the Dockerfile validates dependencies without installing the lockfile. The shared Studio runtime also lacks disposable per-job kernel-level egress/disk isolation. A clean deployment had no portable approved visual golden (`no_baseline`).
 - Real Ollama/OpenAI inference, a real-model Riftwatch change, GitHub App credentials, public HTTPS webhook, Push/PR, Windows/Linux private-host runtime, TLS/VPN, full combat, soak and performance thresholds remain BLOCKED or NOT TESTED. No paid call, external write, PR, merge, golden update or public exposure occurred.
 - Full command-level evidence and the PASS/FAIL/BLOCKED/NOT TESTED matrix are in `docs/PRODUCTION_ACCEPTANCE.md`.
+
+## Release Blocker Remediation 01 — 2026-10-25
+
+- The exact Acceptance 01 commit was preserved first on remote branch `codex/project-forge-acceptance-01` by a non-forced push and read-back verification.
+- RB-01 now installs lockfile-constrained dependencies inside a digest-pinned Docker build stage; host `node_modules` is excluded. The clean archive build, safe offline failure and delayed-but-successful empty-volume health check passed. A subsequent final archive rebuild was storage-BLOCKED while registering a base layer; this capacity failure remains recorded.
+- RB-03 adds integrity-checked Golden export/import with project, adapter, 1440×900 viewport, browser version, artifact/package SHA-256 and approval provenance. Import needs `--confirm`; tampering and identity mismatches fail closed.
+- RB-02 has a portable least-privilege runner contract and adversarial policy tests. Actual disposable-container/kernel enforcement is still **BLOCKED** because no independently managed private runner is available in the Codex cloud environment; Studio was not given Docker socket access.

@@ -37,6 +37,14 @@ Windows PowerShell:
 
 Pin deployment to a reviewed commit. Before update: stop new jobs, create and restore-test a backup, fetch the named platform branch, build, run tests, then recreate containers. Roll back by checking out the prior reviewed commit and recreating the image; restore data only when a schema/data problem requires it.
 
+The image installs production Node dependencies inside a digest-pinned build stage with `npm ci --omit=dev --ignore-scripts`. Never copy a host `node_modules` directory into the build context. A cache-cold build requires the configured npm registry; preserve TLS, lockfile integrity and package checks rather than bypassing them. A TLS-inspecting corporate proxy may provide its reviewed CA only as an ephemeral BuildKit secret: `docker build --secret id=npm_ca,src=/approved/combined-ca.pem server`. The CA is not copied into an image layer. For disconnected recovery, mirror the exact lockfile artifacts in an authenticated internal registry and validate that mirror before the outage.
+
+## Isolated runner requirement
+
+For untrusted Agent changes or game previews, use `compose.hardened.yaml` only after deploying an independently managed runner conforming to `deploy/runner-policy.json`. Studio receives only a private mTLS endpoint or owner-only runner socket, never `/var/run/docker.sock`. The runner must translate allowlisted action profiles into digest-pinned, disposable non-root containers with network disabled by default, read-only source/root, a quota-limited output volume, CPU/RAM/PID/disk/time limits, dropped capabilities, no-new-privileges, seccomp/AppArmor and removal after exit. It must not forward host environment variables, SSH material, provider secrets, GitHub credentials, unrelated workspaces, or its engine socket.
+
+The checked-in policy and validation tests do not prove kernel enforcement. Until the private runner, firewall/egress rules, storage quota and cleanup are exercised on the target host, untrusted execution remains release-blocking.
+
 ## Backup and restore
 
 Stop task admission or use a maintenance window, then execute inside a one-off container with the Forge volume and a host backup mount:
@@ -47,6 +55,8 @@ python /app/ops_cli.py restore-drill /backup/forge-YYYYMMDD-HHMMSS /data/restore
 ```
 
 The backup uses SQLite's online backup API, saves all Git refs, archives task/Git/automation/artifact workspaces, and hashes every artifact. The drill checks hashes, runs `PRAGMA integrity_check`, and safely extracts into a new target. Use a volume with capacity for the uncompressed archive: the hardened `/tmp` is intentionally only 32 MiB and is not a restore target. Back up external secret-manager configuration separately; never put plaintext credentials in the workspace archive. Encrypt backup media and test restore on a schedule.
+
+Approved visual baselines also support a focused portable package. `golden-export` writes the PNG plus project, adapter, viewport, browser version, original approval and SHA-256 manifest. Store that package on encrypted backup media. On a fresh volume, start the matching project preview and run `golden-import ... --confirm`; the import rejects mismatched identity, unexpected archive entries, digest changes and missing explicit approval. Run Playwright after import. Forge never treats `no_baseline` as a visual comparison and never auto-approves a Golden.
 
 ## Monitoring and diagnosis
 

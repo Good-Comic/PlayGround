@@ -95,3 +95,7 @@ Static Compose review confirms loopback-only published ports, read-only root fil
 ## Release decision
 
 **FAIL / RELEASE BLOCKED.** The first acceptance found two concrete release blockers: clean Docker builds are not self-contained, and untrusted work still lacks disposable per-job isolation with kernel-enforced egress/disk policy. Golden portability also failed. Real providers, GitHub App/webhook, real model change, external Push/PR, Windows/Linux private-host deployment, TLS/VPN, full combat and soak/performance acceptance remain BLOCKED or NOT TESTED. No public deployment, paid model request, Push, PR, golden update or merge was performed.
+
+## Remediation status
+
+Acceptance 01 remains immutable historical evidence. Remediation 01 resolves the clean-build defect and adds portable, explicitly approved Golden packages; see `docs/RELEASE_BLOCKER_REMEDIATION_01.md`. Actual per-job kernel/container isolation remains BLOCKED pending a private runner deployment, so the overall production release remains blocked.

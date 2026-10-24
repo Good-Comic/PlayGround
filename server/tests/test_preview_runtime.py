@@ -1,4 +1,5 @@
 import sqlite3
+import tarfile
 import tempfile
 import time
 import unittest
@@ -10,8 +11,10 @@ from server.preview_runtime import (
     PreviewError,
     WebRtsAdapter,
     approve_golden,
+    export_golden,
     get_preview,
     get_quality_run,
+    import_golden,
     _percentile,
     start_preview,
     stop_preview,
@@ -110,6 +113,39 @@ class PreviewRuntimeTests(unittest.TestCase):
         self.assertEqual(approved["golden"]["source_run_id"], run_id)
         self.assertTrue(Path(approved["golden"]["artifact_path"]).is_file())
         self.assertTrue(get_quality_run(run_id, self.db)["gate_passed"])
+
+        package = self.root / "portable-golden.tar.gz"
+        exported = export_golden(self.project_id, "web-rts-esm", package, self.db)
+        self.assertEqual(exported["artifact_sha256"], approved["golden"]["artifact_sha256"])
+
+        fresh_db = self.root / "fresh.db"
+        init_db(fresh_db)
+        with sqlite3.connect(fresh_db) as connection:
+            fresh_project = connection.execute(
+                "INSERT INTO projects(name, relative_path) VALUES ('game', 'game')"
+            ).lastrowid
+            fresh_preview = connection.execute(
+                """INSERT INTO preview_sessions(project_id,adapter_id,workspace_path,port,status,source_manifest_json)
+                VALUES (?, 'web-rts-esm', ?, 5174, 'running', '{}')""",
+                (fresh_project, str(self.game)),
+            ).lastrowid
+        with self.assertRaisesRegex(PreviewError, "explicit"):
+            import_golden(fresh_preview, package, False, fresh_db, self.root / "fresh-artifacts")
+        restored = import_golden(fresh_preview, package, True, fresh_db, self.root / "fresh-artifacts")
+        self.assertEqual(restored["golden"]["artifact_sha256"], exported["artifact_sha256"])
+        self.assertEqual(restored["golden"]["approval"]["kind"], "explicit_user_import")
+
+        tampered = self.root / "tampered.tar.gz"
+        tamper_root = self.root / "tamper"
+        tamper_root.mkdir()
+        with tarfile.open(package, "r:gz") as archive:
+            archive.extractall(tamper_root, filter="data")
+        (tamper_root / "golden.png").write_bytes(b"different")
+        with tarfile.open(tampered, "w:gz") as archive:
+            archive.add(tamper_root / "manifest.json", arcname="manifest.json")
+            archive.add(tamper_root / "golden.png", arcname="golden.png")
+        with self.assertRaises((PreviewError, OSError, tarfile.TarError)):
+            import_golden(fresh_preview, tampered, True, fresh_db, self.root / "fresh-artifacts")
 
 
 if __name__ == "__main__":

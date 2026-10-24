@@ -1,0 +1,13 @@
+# Production overlay. It deliberately fails closed until an independently
+# managed runner is bound; Studio never receives the container-engine socket.
+services:
+  forge-studio:
+    environment:
+      FORGE_ISOLATED_RUNNER_REQUIRED: "1"
+      FORGE_ISOLATED_RUNNER_ENDPOINT: ${FORGE_ISOLATED_RUNNER_ENDPOINT:-}
+    volumes:
+      - forge-runner-control:/run/forge-runner:ro
+
+volumes:
+  forge-runner-control:
+    external: true

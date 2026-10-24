@@ -9,6 +9,8 @@ import sqlite3
 import subprocess
 import time
 import statistics
+import tarfile
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -99,6 +101,10 @@ def init_preview_db(db_path: Path) -> None:
                 artifact_path TEXT NOT NULL,
                 source_run_id INTEGER NOT NULL,
                 approved_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                viewport TEXT NOT NULL DEFAULT '1440x900',
+                browser_version TEXT NOT NULL DEFAULT 'unknown',
+                artifact_sha256 TEXT NOT NULL DEFAULT '',
+                approval_json TEXT NOT NULL DEFAULT '{}',
                 FOREIGN KEY(preview_id) REFERENCES preview_sessions(id),
                 FOREIGN KEY(source_run_id) REFERENCES preview_quality_runs(id)
             );
@@ -119,6 +125,14 @@ def init_preview_db(db_path: Path) -> None:
             connection.execute("ALTER TABLE preview_goldens ADD COLUMN project_id INTEGER")
         if "adapter_id" not in golden_columns:
             connection.execute("ALTER TABLE preview_goldens ADD COLUMN adapter_id TEXT")
+        for name, definition in (
+            ("viewport", "TEXT NOT NULL DEFAULT '1440x900'"),
+            ("browser_version", "TEXT NOT NULL DEFAULT 'unknown'"),
+            ("artifact_sha256", "TEXT NOT NULL DEFAULT ''"),
+            ("approval_json", "TEXT NOT NULL DEFAULT '{}'"),
+        ):
+            if name not in golden_columns:
+                connection.execute(f"ALTER TABLE preview_goldens ADD COLUMN {name} {definition}")
         connection.execute(
             """
             UPDATE preview_goldens SET
@@ -179,7 +193,8 @@ def get_preview(preview_id: int, db_path: Path) -> dict[str, Any]:
         ).fetchone(), "preview not found")
         golden = connection.execute(
             """
-            SELECT artifact_path, source_run_id, approved_at FROM preview_goldens
+            SELECT artifact_path, source_run_id, approved_at, viewport, browser_version,
+                   artifact_sha256, approval_json FROM preview_goldens
             WHERE project_id = ? AND adapter_id = ?
             """,
             (preview["project_id"], preview["adapter_id"]),
@@ -187,6 +202,8 @@ def get_preview(preview_id: int, db_path: Path) -> dict[str, Any]:
     preview["source_manifest"] = json.loads(preview.pop("source_manifest_json"))
     preview["preview_url"] = f"http://127.0.0.1:{preview['port']}/" if preview["status"] == "running" else ""
     preview["golden"] = dict(golden) if golden else None
+    if preview["golden"]:
+        preview["golden"]["approval"] = json.loads(preview["golden"].pop("approval_json"))
     preview["recent_files"] = recent_files(preview)
     preview["source_file_count"] = len(preview.pop("source_manifest"))
     return preview
@@ -519,16 +536,105 @@ def approve_golden(preview_id: int, run_id: int, confirm: bool, db_path: Path, a
     destination = artifact_root / f"preview-{preview_id}" / "golden.png"
     destination.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, destination)
+    digest = hashlib.sha256(destination.read_bytes()).hexdigest()
+    approval = {"kind": "explicit_user_approval", "source_run_id": run_id}
     with sqlite3.connect(db_path) as connection:
         connection.execute(
             """
-            INSERT INTO preview_goldens(preview_id, project_id, adapter_id, artifact_path, source_run_id)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO preview_goldens(preview_id, project_id, adapter_id, artifact_path, source_run_id,
+                viewport, browser_version, artifact_sha256, approval_json)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(project_id, adapter_id) DO UPDATE SET preview_id = excluded.preview_id,
                 artifact_path = excluded.artifact_path, source_run_id = excluded.source_run_id,
+                viewport = excluded.viewport, browser_version = excluded.browser_version,
+                artifact_sha256 = excluded.artifact_sha256, approval_json = excluded.approval_json,
                 approved_at = CURRENT_TIMESTAMP
             """,
-            (preview_id, get_preview(preview_id, db_path)["project_id"], get_preview(preview_id, db_path)["adapter_id"], str(destination), run_id),
+            (preview_id, get_preview(preview_id, db_path)["project_id"], get_preview(preview_id, db_path)["adapter_id"],
+             str(destination), run_id, run["metrics"].get("viewport", "1440x900"),
+             run["metrics"].get("browser_version", "unknown"), digest, json.dumps(approval, sort_keys=True)),
+        )
+    return get_preview(preview_id, db_path)
+
+
+def export_golden(project_id: int, adapter_id: str, package_path: Path, db_path: Path) -> dict[str, Any]:
+    """Export an approved golden and its immutable approval metadata."""
+    with sqlite3.connect(db_path) as connection:
+        connection.row_factory = sqlite3.Row
+        project = _row(connection.execute("SELECT name FROM projects WHERE id=?", (project_id,)).fetchone(), "project not found")
+        golden = _row(connection.execute(
+            "SELECT * FROM preview_goldens WHERE project_id=? AND adapter_id=?", (project_id, adapter_id)
+        ).fetchone(), "approved golden not found")
+    image = Path(golden["artifact_path"]).resolve(strict=True)
+    digest = hashlib.sha256(image.read_bytes()).hexdigest()
+    keys = set(golden.keys())
+    recorded_digest = golden["artifact_sha256"] if "artifact_sha256" in keys else ""
+    if recorded_digest and recorded_digest != digest:
+        raise PreviewError("golden integrity check failed")
+    viewport = golden["viewport"] if "viewport" in keys else "1440x900"
+    browser_version = golden["browser_version"] if "browser_version" in keys else "legacy-unrecorded"
+    approval = json.loads(golden["approval_json"]) if "approval_json" in keys else {
+        "kind": "legacy_explicit_approval", "source_run_id": golden["source_run_id"]}
+    manifest = {
+        "schema": 1, "project": project["name"], "adapter_id": adapter_id,
+        "viewport": viewport, "browser_version": browser_version,
+        "artifact": "golden.png", "artifact_sha256": digest,
+        "approved_at": golden["approved_at"], "approval": approval,
+    }
+    package_path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        shutil.copy2(image, root / "golden.png")
+        (root / "manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        with tarfile.open(package_path, "w:gz", format=tarfile.PAX_FORMAT) as archive:
+            archive.add(root / "manifest.json", arcname="manifest.json")
+            archive.add(root / "golden.png", arcname="golden.png")
+    return {**manifest, "package": str(package_path), "package_sha256": hashlib.sha256(package_path.read_bytes()).hexdigest()}
+
+
+def import_golden(preview_id: int, package_path: Path, confirm: bool, db_path: Path, artifact_root: Path) -> dict[str, Any]:
+    """Restore a verified golden; importing is itself an explicit approval action."""
+    if confirm is not True:
+        raise PreviewError("explicit golden import approval is required")
+    preview = get_preview(preview_id, db_path)
+    with sqlite3.connect(db_path) as connection:
+        row = connection.execute("SELECT name FROM projects WHERE id=?", (preview["project_id"],)).fetchone()
+        if row is None:
+            raise PreviewError("project not found")
+        project_name = row[0]
+    with tempfile.TemporaryDirectory() as temporary, tarfile.open(package_path, "r:gz") as archive:
+        members = archive.getmembers()
+        if sorted(item.name for item in members) != ["golden.png", "manifest.json"] or any(not item.isfile() for item in members):
+            raise PreviewError("golden package contains unexpected entries")
+        root = Path(temporary)
+        archive.extractall(root, filter="data")
+        manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+        image = root / "golden.png"
+        digest = hashlib.sha256(image.read_bytes()).hexdigest()
+        required = {"schema", "project", "adapter_id", "viewport", "browser_version", "artifact_sha256", "approval"}
+        if not required.issubset(manifest) or manifest.get("schema") != 1 or manifest.get("artifact_sha256") != digest:
+            raise PreviewError("golden package integrity check failed")
+        if manifest.get("project") != project_name or manifest.get("adapter_id") != preview["adapter_id"]:
+            raise PreviewError("golden package identity does not match preview")
+        destination = artifact_root / "portable-goldens" / str(preview["project_id"]) / preview["adapter_id"] / f"{digest}.png"
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(image, destination)
+    approval = {"kind": "explicit_user_import", "package_sha256": hashlib.sha256(package_path.read_bytes()).hexdigest(), "original": manifest.get("approval", {})}
+    with sqlite3.connect(db_path) as connection:
+        run_id = connection.execute(
+            """INSERT INTO preview_quality_runs(preview_id,status,gate_passed,console_json,page_errors_json,
+            load_failures_json,modified_json,metrics_json,visual_json,success_screenshot,failure_screenshot,rollback_path,log)
+            VALUES (?, 'imported_golden', 0, '[]', '[]', '[]', '[]', '{}', ?, ?, '', '', 'Verified portable golden import')""",
+            (preview_id, json.dumps({"status": "imported_verified"}), str(destination)),
+        ).lastrowid
+        connection.execute(
+            """INSERT INTO preview_goldens(preview_id,project_id,adapter_id,artifact_path,source_run_id,viewport,browser_version,artifact_sha256,approval_json)
+            VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT(project_id,adapter_id) DO UPDATE SET preview_id=excluded.preview_id,
+            artifact_path=excluded.artifact_path,source_run_id=excluded.source_run_id,viewport=excluded.viewport,
+            browser_version=excluded.browser_version,artifact_sha256=excluded.artifact_sha256,approval_json=excluded.approval_json,
+            approved_at=CURRENT_TIMESTAMP""",
+            (preview_id, preview["project_id"], preview["adapter_id"], str(destination), run_id,
+             manifest["viewport"], manifest["browser_version"], digest, json.dumps(approval, sort_keys=True)),
         )
     return get_preview(preview_id, db_path)
 

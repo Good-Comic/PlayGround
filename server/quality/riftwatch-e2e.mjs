@@ -150,6 +150,7 @@ try {
   result.metrics = {
     ...navigation, measured_fps: fps.fps, fps_frames: fps.frames,
     interaction_latency_ms: interactionLatency, quality_duration_ms: performance.now() - started,
+    browser_version: browser.version(), viewport: '1440x900',
     traversal_kind: 'controlled_state_machine_not_full_combat', translations, traversal,
   };
   result.success_screenshot = successScreenshot;

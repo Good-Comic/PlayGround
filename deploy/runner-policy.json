@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "transport": "private mTLS or owner-only Unix socket",
+  "engine_socket_exposed_to_studio": false,
+  "engine_socket_exposed_to_job": false,
+  "network_default": "none",
+  "allowed_actions": [
+    "javascript-check",
+    "locale-check",
+    "vite-preview",
+    "playwright-quality"
+  ],
+  "required_controls": [
+    "digest-pinned image",
+    "non-root user",
+    "read-only root filesystem",
+    "drop all capabilities",
+    "no-new-privileges",
+    "default seccomp plus forge-job AppArmor",
+    "read-only source mount",
+    "dedicated quota-limited output volume",
+    "CPU memory PID disk and wall-clock limits",
+    "network none unless an audited action-specific policy exists",
+    "remove container and writable layer after exit"
+  ]
+}
