@@ -329,8 +329,8 @@ export const BUILDING_TYPES = {
   },
   fishing_hut: {
     name: 'Fishing Hut', shortName: 'Fishery', icon: 'food', w: 2, h: 2, hp: 400, armor: 3,
-    cost: { wood: 80 }, buildTime: 10, foodRate: 0.12, dropoff: true, requiresWater: true,
-    desc: 'A shore-side hut that yields food and accepts coastal catches.',
+    cost: { wood: 60 }, buildTime: 8, foodRate: 0.5, dropoff: true, requiresWater: true, maxPerPlayer: 4,
+    desc: 'A shore-side hut that yields food. Vikings can build on inland wells.',
   },
 };
 

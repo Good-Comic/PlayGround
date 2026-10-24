@@ -92,6 +92,17 @@ export class Game {
     this.waveEventAt = 20;
     this.waveEventWarned = false;
     this.waveDuelAssigned = false;
+    this.bossExtensionActive = false;
+    this.bossExtensionReinforcements = 0;
+    this.bossExtensionWarned = false;
+    this.waveRetreatStarted = false;
+    this.waveCleanupDone = false;
+    this.biomeEventTimer = 0;
+    this.biomeEventWarned = false;
+    this.biomeEventActive = false;
+    this.saracenDebt = 0;
+    this.saracenDebtDue = 0;
+    this.ottomanAmmoPaid = true;
     this.intel = null;
     this.assistActive = false;
     this.waveIndex = 0;
@@ -207,6 +218,17 @@ export class Game {
       waveEventAt: this.waveEventAt,
       waveEventWarned: this.waveEventWarned,
       waveDuelAssigned: this.waveDuelAssigned,
+      bossExtensionActive: this.bossExtensionActive,
+      bossExtensionReinforcements: this.bossExtensionReinforcements,
+      bossExtensionWarned: this.bossExtensionWarned,
+      waveRetreatStarted: this.waveRetreatStarted,
+      waveCleanupDone: this.waveCleanupDone,
+      biomeEventTimer: this.biomeEventTimer,
+      biomeEventWarned: this.biomeEventWarned,
+      biomeEventActive: this.biomeEventActive,
+      saracenDebt: this.saracenDebt,
+      saracenDebtDue: this.saracenDebtDue,
+      ottomanAmmoPaid: this.ottomanAmmoPaid,
       waveSpawns: this.waveSpawns.map(group => ({ ...group, units: { ...group.units } })),
       camera: { ...this.camera },
       rngState: this.rng.state,
@@ -306,6 +328,17 @@ export class Game {
     this.waveEventAt = snapshot.waveEventAt;
     this.waveEventWarned = !!snapshot.waveEventWarned;
     this.waveDuelAssigned = !!snapshot.waveDuelAssigned;
+    this.bossExtensionActive = !!snapshot.bossExtensionActive;
+    this.bossExtensionReinforcements = snapshot.bossExtensionReinforcements || 0;
+    this.bossExtensionWarned = !!snapshot.bossExtensionWarned;
+    this.waveRetreatStarted = !!snapshot.waveRetreatStarted;
+    this.waveCleanupDone = !!snapshot.waveCleanupDone;
+    this.biomeEventTimer = snapshot.biomeEventTimer || 0;
+    this.biomeEventWarned = !!snapshot.biomeEventWarned;
+    this.biomeEventActive = !!snapshot.biomeEventActive;
+    this.saracenDebt = snapshot.saracenDebt || 0;
+    this.saracenDebtDue = snapshot.saracenDebtDue || 0;
+    this.ottomanAmmoPaid = !!snapshot.ottomanAmmoPaid;
     this.waveSpawns = (snapshot.waveSpawns || []).map(group => ({ ...group, units: { ...group.units } }));
     this.camera = { ...snapshot.camera };
     this.director = new NemesisDirector(snapshot.director?.seed ?? this.seed);
@@ -641,6 +674,10 @@ export class Game {
       else if (category === 'hero') cd /= this.effects.heroCooldownMul;
       if (!cd || !Number.isFinite(cd)) cd = u.typeDef.cooldown;
       cd /= this.effects.attackSpeedMul;
+      // Ottoman ammo penalty: gunpowder reload 15% slower if unpaid
+      if (this.civ?.id === 'TUR' && u.typeDef.family === 'R' && !this.ottomanAmmoPaid) {
+        cd *= 1.15;
+      }
     } else {
       cd /= u.eventAttackSpeedMul || 1;
       if (this.waveEnraged) cd /= 1.15;
@@ -772,8 +809,35 @@ export class Game {
         b.hp = Math.min(b.maxHp, b.hp + b.maxHp * dt * 0.05);
         continue;
       }
-      if ((b.type === 'farm' || b.type === 'fishing_hut') && b.team === 'player') {
+      if (b.type === 'farm' && b.team === 'player') {
         b.foodStore = (b.foodStore || 0) + this.effects.farmMul * this.effects.foodMul * (b.typeDef.foodRate || 0.16) * dt;
+        if (b.foodStore > 1) {
+          const gain = b.foodStore;
+          b.foodStore -= gain;
+          this.resources.food += gain;
+          this.stats.gathered += gain;
+        }
+        continue;
+      }
+      if (b.type === 'fishing_hut' && b.team === 'player') {
+        // Viking: fishing huts work on inland wells
+        const isViking = this.civ?.id === 'VIK';
+        const requiresWater = b.typeDef.requiresWater && !isViking;
+        if (!requiresWater || this.isNearWater(b.x, b.y, 5)) {
+          // Cap at 4 per player for Vikings, standard for others
+          const maxHuts = this.civ?.id === 'VIK' ? 4 : Infinity;
+          const hutCount = this.buildings.filter(b => b.alive && b.team === 'player' && b.type === 'fishing_hut').length;
+          if (hutCount <= maxHuts) {
+            b.foodStore = (b.foodStore || 0) + this.effects.farmMul * this.effects.foodMul * (b.typeDef.foodRate || 0.5) * dt;
+            if (b.foodStore > 1) {
+              const gain = b.foodStore;
+              b.foodStore -= gain;
+              this.resources.food += gain;
+              this.stats.gathered += gain;
+            }
+          }
+        }
+        continue;
         if (b.foodStore > 1) {
           const gain = b.foodStore;
           b.foodStore -= gain;
@@ -1032,6 +1096,30 @@ export class Game {
       }
     }
     u.retargetTimer -= dt;
+
+    // Stuck handling: 8s no progress -> recalculate, 16s -> escape to gate
+    if (u.target && u.targetValid !== false) {
+      const prevDist = u._lastTargetDist || Infinity;
+      const currDist = dist2(u.x, u.y, u.target.x, u.target.y);
+      if (currDist >= prevDist - 0.01) {
+        u._stuckTimer = (u._stuckTimer || 0) + dt;
+        if (u._stuckTimer > 8 && !u._recalculated) {
+          u._recalculated = true;
+          u.retargetTimer = 0; // Force retarget
+        } else if (u._stuckTimer > 16) {
+          // Escape to original gate
+          u.eventRetreat = 1;
+          u.retreatGate = u.spawnGate || 0;
+          u._stuckTimer = 0;
+          u._recalculated = false;
+        }
+      } else {
+        u._stuckTimer = 0;
+        u._recalculated = false;
+      }
+      u._lastTargetDist = currDist;
+    }
+
     const targetValid = u.target && u.target.alive;
     if (!targetValid || u.retargetTimer <= 0) {
       u.retargetTimer = 0.9 + this.rng() * 0.5;
@@ -1239,7 +1327,12 @@ export class Game {
     if (!drop) { u.state = 'idle'; return; }
     u.state = 'return';
     u.dropTarget = drop;
-    u.targetPos = { x: drop.x + drop.w / 2, y: drop.y + drop.h / 2 };
+    const pos = this.findDropoffPosition(drop);
+    if (pos) {
+      u.targetPos = pos;
+    } else {
+      u.targetPos = { x: drop.x + drop.w / 2, y: drop.y + drop.h / 2 };
+    }
   }
 
   nearestDropoff(x, y) {
@@ -1252,16 +1345,67 @@ export class Game {
     return best;
   }
 
+  // Find a walkable position at the building edge for resource dropoff
+  findDropoffPosition(building) {
+    if (!building || !building.alive) return null;
+    const edgeDist = 1.2; // Distance from building edge
+    const halfW = building.w / 2;
+    const halfH = building.h / 2;
+    const cx = building.x + halfW;
+    const cy = building.y + halfH;
+    
+    // Try 8 directions around the building (N, NE, E, SE, S, SW, W, NW)
+    const directions = [
+      { dx: 0, dy: -1 },     // N
+      { dx: 0.7, dy: -0.7 }, // NE
+      { dx: 1, dy: 0 },      // E
+      { dx: 0.7, dy: 0.7 },  // SE
+      { dx: 0, dy: 1 },      // S
+      { dx: -0.7, dy: 0.7 }, // SW
+      { dx: -1, dy: 0 },     // W
+      { dx: -0.7, dy: -0.7 }, // NW
+    ];
+    
+    for (const dir of directions) {
+      const tx = cx + dir.dx * (halfW + edgeDist);
+      const ty = cy + dir.dy * (halfH + edgeDist);
+      // Check if position is walkable (not inside building, not water, not blocked)
+      if (this.isWalkable(tx, ty, null)) {
+        return { x: tx, y: ty };
+      }
+    }
+    
+    // Fallback: try 16 directions with smaller steps
+    for (let i = 0; i < 16; i++) {
+      const angle = (i / 16) * Math.PI * 2;
+      const tx = cx + Math.cos(angle) * (Math.max(halfW, halfH) + edgeDist);
+      const ty = cy + Math.sin(angle) * (Math.max(halfW, halfH) + edgeDist);
+      if (this.isWalkable(tx, ty, null)) {
+        return { x: tx, y: ty };
+      }
+    }
+    
+    // Last resort: return a position just outside the building bounds
+    return { x: cx, y: cy + halfH + edgeDist };
+  }
+
   updateReturn(u, dt) {
     const drop = u.dropTarget;
     if (!drop || !drop.alive) {
       const other = this.nearestDropoff(u.x, u.y);
       if (!other) { u.state = 'idle'; return; }
       u.dropTarget = other;
+      const pos = this.findDropoffPosition(other);
+      if (pos) u.targetPos = pos;
       return;
     }
-    const d = dist(u.x, u.y, drop.x + drop.w / 2, drop.y + drop.h / 2);
-    if (d > 1.5) {
+    // Use distance to targetPos (building edge) instead of building center
+    if (!u.targetPos) {
+      const pos = this.findDropoffPosition(drop);
+      if (pos) u.targetPos = pos;
+    }
+    const d = u.targetPos ? dist(u.x, u.y, u.targetPos.x, u.targetPos.y) : Infinity;
+    if (d > 0.8) {
       this.moveAlong(u, dt);
       return;
     }
@@ -1345,6 +1489,11 @@ export class Game {
 
   stepToward(u, tx, ty, dt) {
     const dx = tx - u.x, dy = ty - u.y;
+    // Persian elephant turn rate -20%
+    if (u.civ?.id === 'PER' && u.typeDef.family === 'W') {
+      // Limit turning rate by reducing effective dt for turning
+      const turnMul = 0.8;
+    }
     const d = Math.hypot(dx, dy);
     if (d < 0.001) return;
     const speed = this.unitSpeed(u);
@@ -1367,7 +1516,18 @@ export class Game {
       }
     }
     u.walkPhase += speed * dt * 5.3;
-    u.facing = dx >= 0 ? 1 : -1;
+    // Persian elephant turn rate -20%
+    if (u.civ?.id === 'PER' && u.typeDef.family === 'W') {
+      const targetFacing = dx >= 0 ? 1 : -1;
+      if (u.facing !== targetFacing) {
+        // Limit turn rate: only change facing 80% of the time
+        if (this.rng() < 0.8) u.facing = targetFacing;
+      } else {
+        u.facing = dx >= 0 ? 1 : -1;
+      }
+    } else {
+      u.facing = dx >= 0 ? 1 : -1;
+    }
   }
 
   isWalkable(x, y, u) {
@@ -1380,6 +1540,20 @@ export class Game {
       if (x > b.x - 0.12 && x < b.x + b.w + 0.12 && y > b.y - 0.12 && y < b.y + b.h + 0.12) return false;
     }
     return true;
+  }
+
+  isNearWater(x, y, radius = 5) {
+    // Check if there's water within radius
+    const r = Math.ceil(radius);
+    for (let dx = -r; dx <= r; dx++) {
+      for (let dy = -r; dy <= r; dy++) {
+        if (dx*dx + dy*dy <= radius*radius) {
+          const tile = this.world.tile(x + dx, y + dy);
+          if (tile && tile.terrain === 'water') return true;
+        }
+      }
+    }
+    return false;
   }
 
   nearestEnemyAt(x, y, range) {
@@ -1455,6 +1629,15 @@ export class Game {
       this.sound?.arrow();
     } else {
       this.applyDamage(target, damage, u);
+      // Spanish villager stun: first hit every 8s stuns non-boss for 0.5s
+      if (u.team === 'player' && u.civ?.id === 'SPA' && u.type === 'villager' && !target.typeDef?.boss) {
+        if (!target._stunCd || target._stunCd <= this.time) {
+          target._stunCd = this.time + 8;
+          target.slowUntil = this.time + 0.5;
+          target.slowAmount = 1; // Fully stunned (speed = 0)
+          this.addFloating(target.x, target.y, t('toast.spanishStun'), 'rgba(255,200,100,ALPHA)');
+        }
+      }
       if (u.team === 'player' && u.type === 'elephant' && this.effects.elephantTrample > 0) {
         let hit = 0;
         for (const e of this.units) {
@@ -1575,6 +1758,15 @@ export class Game {
       if (damage <= 0) {
         this.addFloating(target.x, target.y, 'shielded', 'rgba(147,197,220,ALPHA)');
         return;
+      }
+    }
+
+    // Japanese melee block: block one ordinary melee hit every 10s
+    if (target.team === 'player' && target.civ?.id === 'JPN' && source && !source.typeDef?.projectile && !source.typeDef?.boss) {
+      if (!target._blockCd || target._blockCd <= this.time) {
+        target._blockCd = this.time + 10;
+        this.addFloating(target.x, target.y, t('toast.japaneseBlock'), 'rgba(147,197,220,ALPHA)');
+        return; // Block the attack completely
       }
     }
     if (target.team === 'enemy' && source?.team === 'player') this.director.recordDamage(source, damage);
@@ -1843,6 +2035,114 @@ export class Game {
       this.toast(t('toast.enraged'), 'bad', 3600);
       this.sound?.horn();
     }
+
+    // Boss wave extension logic (waves 5 and 10 only)
+    const isBossWave = wave.boss && (this.waveIndex === 4 || this.waveIndex === 9);
+    if (isBossWave) {
+      const normalDuration = 120; // Both boss waves extend from 120s
+      const maxDuration = 240;    // Hard limit at 240s
+      const extensionStart = normalDuration;
+      const reinforcementInterval = 30;
+      const maxReinforcements = 3;
+
+      // 30s advance warning before extension
+      if (!this.bossExtensionActive && !this.bossExtensionWarned && this.waveClock >= extensionStart - 30) {
+        this.bossExtensionWarned = true;
+        this.toast(t('toast.bossExtensionWarning'), 'bad', 4000);
+      }
+
+      // Enter extension phase
+      if (!this.bossExtensionActive && this.waveClock >= extensionStart && this.bossAlive) {
+        this.bossExtensionActive = true;
+        this.toast(t('toast.bossExtension'), 'bad', 4200);
+      }
+
+      // In extension: spawn reinforcements every 30s, max 3 times
+      if (this.bossExtensionActive && this.bossAlive) {
+        const nextReinforcementTime = extensionStart + (this.bossExtensionReinforcements + 1) * reinforcementInterval;
+        if (this.waveClock >= nextReinforcementTime && this.bossExtensionReinforcements < maxReinforcements) {
+          this.bossExtensionReinforcements++;
+          this.spawnBossReinforcements();
+          this.toast(t('toast.bossReinforcement', { count: this.bossExtensionReinforcements }), 'bad', 3500);
+        }
+
+        // Hard limit at 240s - wave failed
+        if (this.waveClock >= maxDuration) {
+          this.toast(t('toast.bossTimeout'), 'bad', 4500);
+          this.triggerDefeat();
+          return;
+        }
+      }
+    }
+
+    // Non-boss wave retreat and cleanup (110s retreat, 120s cleanup, 30% carryover)
+    if (!isBossWave && this.phase === 'wave') {
+      const retreatStart = 110;
+      const cleanupTime = 120;
+      const maxCarryoverThreat = 0.30;
+
+      // 110s: orderly retreat begins
+      if (!this.waveRetreatStarted && this.waveClock >= retreatStart) {
+        this.waveRetreatStarted = true;
+        this.toast(t('toast.waveRetreat'), 'bad', 3000);
+        // Set retreat state for all enemy units
+        for (const u of this.units) {
+          if (u.alive && u.team === 'enemy') {
+            u.eventRetreat = 1;
+            u.retreatGate = u.spawnGate || 0;
+          }
+        }
+      }
+
+      // 120s: cleanup - carryover max 30% threat, excess retreat
+      if (!this.waveCleanupDone && this.waveClock >= cleanupTime) {
+        this.waveCleanupDone = true;
+        const enemyUnits = this.units.filter(u => u.alive && u.team === 'enemy');
+        // Calculate original threat for this wave
+        let totalThreat = 0;
+        for (const u of enemyUnits) {
+          totalThreat += u.typeDef.threat || 1;
+        }
+        const maxCarryThreat = totalThreat * maxCarryoverThreat;
+        let currentThreat = 0;
+        // Sort by threat descending, carry highest threat units
+        enemyUnits.sort((a, b) => (b.typeDef.threat || 1) - (a.typeDef.threat || 1));
+        for (const u of enemyUnits) {
+          const t = u.typeDef.threat || 1;
+          if (currentThreat + t <= maxCarryThreat) {
+            currentThreat += t;
+            // Keep this unit - it will carry over
+            u.eventRetreat = 0;
+            u.carryover = true;
+          } else {
+            // Excess units retreat
+            u.eventRetreat = 1;
+            u.retreatGate = u.spawnGate || 0;
+          }
+        }
+      }
+    }
+
+    // Biome scheduled events
+    if (this.phase === 'wave' && this.biome) {
+      this.biomeEventTimer += dt;
+      const biomeEventTimes = [20, 20, 25, 25, 45, 20, 30, 25, 30, 45];
+      const triggerTime = biomeEventTimes[this.waveIndex] ?? 20;
+      const executeTime = triggerTime + 8; // Execute 8s after warning
+
+      // Warning
+      if (!this.biomeEventWarned && this.biomeEventTimer >= triggerTime) {
+        this.biomeEventWarned = true;
+        this.triggerBiomeEventWarning();
+      }
+
+      // Execute
+      if (!this.biomeEventActive && this.biomeEventTimer >= executeTime) {
+        this.biomeEventActive = true;
+        this.executeBiomeEvent();
+      }
+    }
+
     if (this.waveSpawns.every(g => g.spawned) && this.enemiesAlive === 0) {
       if (this.waveEndTimer <= 0) this.waveEndTimer = 1.4;
     }
@@ -1852,6 +2152,127 @@ export class Game {
         this.waveEndTimer = 0;
         this.completeWave();
       }
+    }
+  }
+
+  triggerBiomeEventWarning() {
+    const biome = this.biome.id;
+    let msg = '';
+    switch (biome) {
+      case 'steppe': msg = t('biomeEvent.sidewindWarning'); break;
+      case 'forest': msg = t('biomeEvent.regrowthWarning'); break;
+      case 'dune': msg = t('biomeEvent.sandstormWarning'); break;
+      case 'river': msg = t('biomeEvent.floodWarning'); break;
+      case 'fjord': msg = t('biomeEvent.iceWarning'); break;
+      case 'ash': msg = t('biomeEvent.ashfallWarning'); break;
+    }
+    if (msg) this.toast(msg, 'bad', 4000);
+  }
+
+  executeBiomeEvent() {
+    const biome = this.biome.id;
+    switch (biome) {
+      case 'steppe': this.executeSidewind(); break;
+      case 'forest': this.executeRegrowth(); break;
+      case 'dune': this.executeSandstorm(); break;
+      case 'river': this.executeFlood(); break;
+      case 'fjord': this.executeIceCrack(); break;
+      case 'ash': this.executeAshfall(); break;
+    }
+  }
+
+  executeSidewind() {
+    // Crosswind: arrow speed -15% for 12s
+    this.effects.sidewind = 12;
+    this.toast(t('biomeEvent.sidewind'), 'bad', 4000);
+    setTimeout(() => { this.effects.sidewind = 0; }, 12000);
+  }
+
+  executeRegrowth() {
+    // Regrowth: trees regrow after 120s (handled in world generation)
+    this.toast(t('biomeEvent.regrowth'), 'good', 4000);
+  }
+
+  executeSandstorm() {
+    // Sandstorm: vision -20% for 20s
+    this.effects.sandstorm = 20;
+    this.toast(t('biomeEvent.sandstorm'), 'bad', 4000);
+    setTimeout(() => { this.effects.sandstorm = 0; }, 20000);
+  }
+
+  executeFlood() {
+    // Flood: lowland farms pause 15s
+    this.effects.flood = 15;
+    this.toast(t('biomeEvent.flood'), 'bad', 4000);
+    // Pause farms in lowland areas
+    for (const b of this.buildings) {
+      if (b.alive && b.team === 'player' && b.type === 'farm') {
+        const isLowland = b.y > this.world.base.y + 5; // Simple heuristic
+        if (isLowland) b.flooded = 15;
+      }
+    }
+    setTimeout(() => {
+      this.effects.flood = 0;
+      for (const b of this.buildings) b.flooded = 0;
+    }, 15000);
+  }
+
+  executeIceCrack() {
+    // Ice cracking: load >12 for 4s cracks, 3s warning already given
+    // Units on ice take 30% max HP damage and wash ashore
+    this.toast(t('biomeEvent.iceCrack'), 'bad', 4000);
+    // Find units on ice (FJORD biome has ice tiles)
+    for (const u of this.units) {
+      if (u.alive && u.team !== 'enemy') {
+        const tile = this.world.tile(u.x, u.y);
+        if (tile && tile.terrain === 'ice') {
+          u.hp = Math.max(1, u.hp - u.maxHp * 0.3);
+          // Wash ashore - move to nearest land
+          const land = this.findNearestLand(u.x, u.y);
+          if (land) { u.x = land.x; u.y = land.y; }
+        }
+      }
+    }
+  }
+
+  executeAshfall() {
+    // Ashfall: once per act max, 150 env damage, exclude core 6 tiles
+    if (this.effects.ashfallUsed) return;
+    this.effects.ashfallUsed = true;
+    this.toast(t('biomeEvent.ashfall'), 'bad', 4000);
+    const tc = this.getTownCenter();
+    for (const u of this.units) {
+      if (u.alive) {
+        const distToCore = tc ? dist(u.x, u.y, tc.x + tc.w/2, tc.y + tc.h/2) : Infinity;
+        if (distToCore > 6) {
+          u.hp = Math.max(1, u.hp - 150);
+        }
+      }
+    }
+    for (const b of this.buildings) {
+      if (b.alive && b.team !== 'enemy') {
+        const distToCore = tc ? dist(b.x + b.w/2, b.y + b.h/2, tc.x + tc.w/2, tc.y + tc.h/2) : Infinity;
+        if (distToCore > 6) {
+          b.hp = Math.max(1, b.hp - 150);
+        }
+      }
+    }
+  }
+
+  findNearestLand(x, y) {
+    // Simple: move toward map center
+    return { x: this.world.base.x, y: this.world.base.y };
+  }
+
+  spawnBossReinforcements() {
+    if (!this.bossAlive) return;
+    const boss = this.bossAlive;
+    // Spawn 4 shield infantry (M type) near boss
+    for (let i = 0; i < 4; i++) {
+      const angle = (i / 4) * Math.PI * 2;
+      const x = boss.x + Math.cos(angle) * 3;
+      const y = boss.y + Math.sin(angle) * 3;
+      this.spawnUnit('M', x, y, 'enemy');
     }
   }
 
@@ -1943,12 +2364,19 @@ export class Game {
       return;
     }
     this.stats.waves = this.waveIndex + 1;
-    const reward = {
-      food: 110 + this.waveIndex * 28,
-      wood: 90 + this.waveIndex * 24,
-      gold: 60 + this.waveIndex * 20,
-      stone: 24 + this.waveIndex * 8,
-    };
+    const WAVE_REWARDS = [
+      { food: 80,  wood: 60,  gold: 20, stone: 0  },  // Wave 1
+      { food: 90,  wood: 70,  gold: 25, stone: 10 },  // Wave 2
+      { food: 100, wood: 75,  gold: 30, stone: 15 },  // Wave 3
+      { food: 110, wood: 80,  gold: 35, stone: 20 },  // Wave 4
+      { food: 140, wood: 100, gold: 60, stone: 30 },  // Wave 5
+      { food: 130, wood: 90,  gold: 45, stone: 25 },  // Wave 6
+      { food: 140, wood: 95,  gold: 50, stone: 30 },  // Wave 7
+      { food: 150, wood: 100, gold: 55, stone: 35 },  // Wave 8
+      { food: 160, wood: 105, gold: 60, stone: 40 },  // Wave 9
+      { food: 0,   wood: 0,   gold: 0,  stone: 0  },  // Wave 10 (victory)
+    ];
+    const reward = WAVE_REWARDS[this.waveIndex] || { food: 0, wood: 0, gold: 0, stone: 0 };
     for (const [key, value] of Object.entries(reward)) this.resources[key] += value;
     for (const u of this.units) {
       if (u.alive && u.team === 'player') u.hp = Math.min(u.maxHp, u.hp + u.maxHp * 0.3);
@@ -1958,6 +2386,26 @@ export class Game {
     }
     this.phase = 'boon';
     this.toast(t('toast.spoils', reward), 'good', 3800);
+    // Saracen loan repayment
+    if (this.civ.id === 'SAR' && this.saracenDebt > 0) {
+      const repayment = 115;
+      if (this.resources.gold >= repayment) {
+        this.resources.gold -= repayment;
+        this.saracenDebt = 0;
+        this.toast(t('toast.saracenRepaid'), 'good', 3000);
+      } else {
+        this.toast(t('toast.saracenDefault'), 'bad', 3000);
+        this.effects.saracenDefaulted = true;
+      }
+    }
+
+    // Saracen new loan offer
+    if (this.civ.id === 'SAR' && !this.effects.saracenDefaulted) {
+      this.saracenDebt = 100;
+      this.resources.gold += 100;
+      this.toast(t('toast.saracenLoan'), 'good', 3000);
+    }
+
     this.boonRerolls = 0;
     const choices = this.pickBoons();
     this.boonChoices = choices;
@@ -2149,7 +2597,72 @@ export class Game {
         u.state = 'hold'; u.hold = true; u.targetPos = null; u.target = null;
       }
       this.sound?.command();
+    } else if (id === 'demolish') {
+      this.demolishSelected();
+      this.sound?.command();
+    } else if (id === 'repair') {
+      this.repairSelected();
+      this.sound?.command();
     }
+  }
+
+  repairSelected() {
+    const buildings = this.selection.filter(e => e.w && e.team === 'player' && e.alive && e.hp < e.maxHp);
+    for (const b of buildings) {
+      this.repairBuilding(b);
+    }
+  }
+
+  demolishSelected() {
+    const buildings = this.selection.filter(e => e.w && e.team === 'player' && e.alive);
+    for (const b of buildings) {
+      if (b.construction < 1) {
+        // Cancel construction: 80% refund
+        const cost = b.typeDef.cost || {};
+        for (const [resource, amount] of Object.entries(cost)) {
+          this.resources[resource] = (this.resources[resource] || 0) + Math.round(amount * 0.8);
+        }
+        this.toast(t('toast.cancelRefund', { name: t(`building.${b.type}.name`), pct: 80 }), 'good', 2500);
+      } else {
+        // Demolish completed: 35% refund
+        const cost = b.typeDef.cost || {};
+        for (const [resource, amount] of Object.entries(cost)) {
+          this.resources[resource] = (this.resources[resource] || 0) + Math.round(amount * 0.35);
+        }
+        this.toast(t('toast.demolishRefund', { name: t(`building.${b.type}.name`), pct: 35 }), 'good', 2500);
+      }
+      b.alive = false;
+      this.addParticles(b.x + b.w / 2, b.y + b.h / 2, 'smoke', 'rgba(67,58,45,ALPHA)', 6, 12, 1.4);
+    }
+    this.selection = [];
+    this.hooks.selectionChanged?.();
+  }
+
+    repairBuilding(b) {
+    if (!b.alive || b.hp >= b.maxHp) return;
+    const missingHp = b.maxHp - b.hp;
+    const woodCost = Math.ceil(missingHp / 10);
+    // Persian repair cost +15%
+    const costMul = this.civ?.id === 'PER' ? 1.15 : 1;
+    const totalWoodCost = Math.ceil(woodCost * (this.civ?.id === 'PER' ? 1.15 : 1));
+    if (this.resources.wood < totalWoodCost) {
+      this.toast(t('toast.notEnough', { name: t('resource.wood') }), 'bad', 2000);
+      return;
+    }
+    // Core repairs max 30 HP/s
+    const isCore = b.type === 'core';
+    const maxHpPerSec = isCore ? 30 : Infinity;
+    const hpToRepair = Math.min(missingHp, maxHpPerSec);
+    const woodPerSec = Math.ceil(hpToRepair / 10);
+    // Check 3s no auto-repair after damage
+    if (b._lastDamageTime && this.time - b._lastDamageTime < 3) {
+      this.toast(t('toast.repairDelayed'), 'bad', 2000);
+      return;
+    }
+    this.resources.wood -= totalWoodCost;
+    b.hp = Math.min(b.maxHp, b.hp + hpToRepair);
+    this.addFloating(b.x + b.w / 2, b.y + b.h / 2, `+${hpToRepair}HP`, 'rgba(100,200,100,ALPHA)');
+    this.sound?.repair?.();
   }
 
   advanceAge() {
@@ -2407,10 +2920,24 @@ export class Game {
         }
       }
       if (hit.w && hit.team === 'player') {
+        let handled = false;
         for (const u of units) {
           if (u.type === 'villager') {
-            u.state = 'return'; u.dropTarget = hit; u.targetPos = { x: hit.x + hit.w / 2, y: hit.y + hit.h / 2 }; u.carry = Math.max(u.carry, 0);
+            u.state = 'return'; u.dropTarget = hit;
+            const pos = this.findDropoffPosition(hit);
+            if (pos) {
+              u.targetPos = pos;
+            } else {
+              u.targetPos = { x: hit.x + hit.w / 2, y: hit.y + hit.h / 2 };
+            }
+            u.carry = Math.max(u.carry, 0);
+            handled = true;
           }
+        }
+        if (handled) {
+          this.sound?.command();
+          this.addCommandMarker(hit.x + hit.w / 2, hit.y + hit.h / 2, false);
+          return;
         }
       }
     }
