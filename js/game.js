@@ -1,3 +1,4 @@
+import { Crowd } from './crowd.js';
 import { findPath, segmentClear, crossesRect } from './navigation.js';
 import {
   UNIT_TYPES, BUILDING_TYPES, TRAINABLE, GENERIC_UNITS, BUILD_OPTIONS, WAVES, BOONS,
@@ -69,6 +70,8 @@ export class Game {
     this.towerCartsSpawned = 0;
     this.buildings = [];
     this.units = [];
+    this.crowd = null;
+    this.navigationQueue = []; this.navigationQueued = new Set();
     this.projectiles = [];
     this.particles = [];
     this.zones = [];
@@ -283,6 +286,8 @@ export class Game {
     this.stats = { ...snapshot.stats };
     this.buildings = [];
     this.units = [];
+    this.crowd = null;
+    this.navigationQueue = []; this.navigationQueued = new Set();
     this.projectiles = [];
     this.particles = [];
     this.zones = [];
@@ -537,16 +542,18 @@ export class Game {
       eventRegen: 0, buildingDamageMul: 1, convertResist: false, eventRetreat: 0,
       eventRetreatCd: 0, eventFireCd: 0, duel: false, chargeReady: true, chargeCd: 0,
     };
-    if (!this.isWalkable(u.x,u.y,u)) {
+    const freeSpawn = (px,py) => this.isWalkable(px,py,u) && this.units.every(v=>!v.alive || dist(px,py,v.x,v.y)>=(u.typeDef.radius||.24)+(v.typeDef.radius||.24));
+    if (!freeSpawn(u.x,u.y)) {
       let spawn = null;
       for (let r=.5;r<=5 && !spawn;r+=.5) for(let i=0;i<24;i++) {
         const a=i*Math.PI/12, px=x+Math.cos(a)*r, py=y+Math.sin(a)*r;
-        if(this.isWalkable(px,py,u)) {spawn={x:px,y:py};break;}
+        if(freeSpawn(px,py)) {spawn={x:px,y:py};break;}
       }
       if (!spawn) return null;
       u.x=spawn.x;u.y=spawn.y;u.guardOrigin={...spawn};
     }
     this.units.push(u);
+    this.crowd?.insert(u);
     if (u.hero && team === 'player') this.hero = u;
     return u;
   }
@@ -623,7 +630,7 @@ export class Game {
 
   orderGather(u, node) {
     if (!u || !node || !node.alive) return;
-    u._nav = null;
+    u._nav = null; u._progress = null; u._goalProgress=null; u._yieldTo = null;
     if (u.carry > 0 && u.carryType && u.carryType !== node.resource) {
       u.gatherTarget = node; this.beginReturn(u); return;
     }
@@ -928,6 +935,13 @@ export class Game {
   }
 
   updateUnits(dt) {
+    this.crowd = new Crowd(this.units);
+    const active = new Set(this.units.filter(u=>u.alive && ['move','attack','gather','return','build'].includes(u.state)).map(u=>u.id));
+    this.navigationQueue = (this.navigationQueue || []).filter(id=>active.has(id));
+    this.navigationQueued = new Set(this.navigationQueue);
+    this.navigationRequested = new Set();
+    const previous = this.navigationStats || {};
+    this.navigationStats = { searches: 0, expanded: 0, ms: 0, totalSearches: previous.totalSearches || 0 };
     this.navigationBudget = 2; // Avoid an A* stampede; waiting units retain their orders.
     for (const u of this.units) {
       if (!u.alive) continue;
@@ -966,6 +980,8 @@ export class Game {
       if (u.team === 'enemy') this.updateEnemy(u, dt);
       else this.updatePlayerUnit(u, dt);
     }
+    this.navigationQueue = this.navigationQueue.filter(id=>this.navigationRequested.has(id));
+    this.navigationQueued = new Set(this.navigationQueue);
   }
 
   updateHeroDirect(u, dt) {
@@ -979,9 +995,9 @@ export class Game {
       const speed = this.unitSpeed(u);
       const nx = u.x + dx / len * speed * dt;
       const ny = u.y + dy / len * speed * dt;
-      if (this.isWalkable(nx, ny, u)) { u.x = nx; u.y = ny; }
-      else if (this.isWalkable(nx, u.y, u)) u.x = nx;
-      else if (this.isWalkable(u.x, ny, u)) u.y = ny;
+      const next = this.crowd ? this.crowd.steer(u,{x:nx,y:ny},(a,b)=>this.segmentWalkable(a,b,u),this.time) : {x:nx,y:ny};
+      if(next && this.segmentWalkable(u,next,u)) {u.x=next.x;u.y=next.y;this.crowd?.moved(u);}
+      u.guardOrigin={x:u.x,y:u.y};
       u.walkPhase += speed * dt * 5.3;
       u.facing = dx >= 0 ? 1 : -1;
       u.state = 'move';
@@ -989,7 +1005,7 @@ export class Game {
     } else {
       u.state = 'hold';
       if (u.cooldown <= 0) {
-        const near = this.nearestEnemyAt(u.x, u.y, Math.max(1.5, this.unitRange(u) + 0.5));
+        const near = u.stance === 'passive' ? null : this.acquireTarget(u, Math.max(1.5, this.unitRange(u) + 0.5));
         if (near) this.attackUnit(u, near);
       }
     }
@@ -1243,6 +1259,19 @@ export class Game {
     }
   }
 
+  acquireTarget(u, radius = (u.typeDef.sight || 6)*.72) {
+    if (u.stance === 'passive' || u.type === 'villager') return null;
+    let best=null, bestD=radius*radius;
+    const candidates = this.crowd ? this.crowd.nearby(u, Math.ceil(radius/2)+1) : this.units;
+    for (const e of [...candidates, ...this.buildings]) {
+      if (!e.alive || e.team !== 'enemy' || (u.blockedTargets?.[e.id]||0)>this.time) continue;
+      if(u.stance==='defensive' && u.guardOrigin && this.distanceTo(u.guardOrigin,e)>8)continue;
+      const d=this.distanceTo(u,e)**2;
+      if(d<bestD){best=e;bestD=d;}
+    }
+    return best;
+  }
+
   updatePlayerUnit(u, dt) {
     if (u.state === 'gather') return this.updateGather(u, dt);
     if (u.state === 'return') return this.updateReturn(u, dt);
@@ -1264,7 +1293,7 @@ export class Game {
     }
     if (u.state === 'hold') {
       if (u.type !== 'villager') {
-        const near = u.stance === 'passive' ? null : this.nearestEnemyAt(u.x, u.y, this.unitRange(u));
+        const near = this.acquireTarget(u, this.unitRange(u));
         if (near) { u.target = near; u.state = 'attack'; }
       }
       return;
@@ -1272,7 +1301,7 @@ export class Game {
     if (u.state === 'idle') {
       if (u.type !== 'villager' && u.stance !== 'passive') {
         const sight = u.typeDef.sight + (u.typeDef.category === 'ranged' ? this.effects.archerSight : 0) + (u.typeDef.category === 'cavalry' ? this.effects.cavalrySight : 0);
-        const near = this.nearestEnemyAt(u.x, u.y, u.stance === 'hold' ? this.unitRange(u) : sight * 0.72);
+        const near = this.acquireTarget(u, u.stance === 'hold' ? this.unitRange(u) : sight * 0.72);
         if (near) {
           u.guardOrigin ||= { x: u.x, y: u.y };
           u.manualAttack = false;
@@ -1302,7 +1331,15 @@ export class Game {
     if (d <= range) {
       if (u.cooldown <= 0) this.attackUnit(u, target);
     } else if (!u.hold && (u.manualAttack || u.stance !== 'hold')) {
-      this.stepToward(u, target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), dt, Math.max(.35, range - .1), target.w ? target : null);
+      const status = this.stepToward(u, target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), dt, Math.max(.35, range - .1), target.w ? target : null);
+      if (status === 'unreachable' || status === 'congested') {
+        u.blockedTargets ||= {}; u.blockedTargets[target.id] = this.time+8;
+        u.orderFailure = status; u.target = null; u.manualAttack = false; u._nav = null;
+        u.state = u.hold ? 'hold' : 'idle';
+        const replacement=this.acquireTarget(u);
+        if(replacement) {u.target=replacement;u.state='attack';}
+        return;
+      }
     } else {
       u.target = null; u.state = 'hold';
     }
@@ -1310,7 +1347,7 @@ export class Game {
       u.retargetTimer -= dt;
       if (u.retargetTimer <= 0) {
         u.retargetTimer = 0.7;
-        const near = this.nearestEnemyAt(u.x, u.y, Math.max(4, this.unitRange(u) + 2));
+        const near = this.acquireTarget(u, Math.max(4, this.unitRange(u) + 2));
         if (near && dist2(near.x, near.y, target.x, target.y) < 16) u.target = near;
       }
     }
@@ -1330,7 +1367,7 @@ export class Game {
     const d = dist(u.x, u.y, node.x, node.y);
     if (d > range) {
       const status = this.stepToward(u, node.x, node.y, dt, range * .95);
-      if (status === 'unreachable') {
+      if (status === 'unreachable' || status === 'congested') {
         u.unreachableResources ||= {}; u.unreachableResources[node.id] = this.time + 15;
         const next = this.findReachableResource(u, node.resource);
         if (next) this.orderGather(u, next);
@@ -1527,9 +1564,25 @@ export class Game {
     if (!range && walkable(tx, ty) && dist(u.x,u.y,tx,ty)<.08) return 'arrived';
     if (!range && nav.status === 'ready' && nav.goal && dist(u.x,u.y,nav.goal.x,nav.goal.y)<.08) return 'arrived';
     if ((!nav.points.length || nav.status !== 'ready') && this.time >= nav.retryAt) {
-      if ((this.navigationBudget ?? 2) <= 0) return 'pending';
+      this.navigationRequested?.add(u.id);
+      this.navigationQueue ||= []; this.navigationQueued ||= new Set();
+      if(!this.navigationQueued.has(u.id)) {this.navigationQueue.push(u.id);this.navigationQueued.add(u.id);}
+      if ((this.navigationBudget ?? 2) <= 0 || this.navigationQueue[0] !== u.id) return 'pending';
+      this.navigationQueue.shift();this.navigationQueued.delete(u.id);
       this.navigationBudget = (this.navigationBudget ?? 2)-1;
-      const path = findPath(u, target, walkable, this.world.size, {range:entity?range+Math.hypot(entity.w,entity.h)/2:range, goalTest:entity?p=>this.distanceTo(p,entity)<=range:null});
+      const searchStart = performance.now();
+      const occupied = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2).filter(v=>['idle','hold','gather'].includes(v.state)) : [];
+      const planWalkable=(x,y)=>walkable(x,y) && occupied.every(v=>dist(x,y,v.x,v.y)>=(u.typeDef.radius||.24)+(v.typeDef.radius||.24));
+      planWalkable.segment=(a,b)=>walkable.segment(a,b) && occupied.every(v=>{
+        const dx=b.x-a.x,dy=b.y-a.y,len=dx*dx+dy*dy,t=len?clamp(((v.x-a.x)*dx+(v.y-a.y)*dy)/len,0,1):0;
+        return dist(v.x,v.y,a.x+t*dx,a.y+t*dy)>=(u.typeDef.radius||.24)+(v.typeDef.radius||.24)-.015;
+      });
+      const path = findPath(u, target, occupied.length?planWalkable:walkable, this.world.size, {range:entity?range+Math.hypot(entity.w,entity.h)/2:range, goalTest:entity?p=>this.distanceTo(p,entity)<=range:null});
+      if(this.navigationStats) {
+        this.navigationStats.searches++; this.navigationStats.totalSearches++;
+        this.navigationStats.expanded += path.expanded; this.navigationStats.ms += performance.now()-searchStart;
+      }
+      if(occupied.length && path.status==='unreachable') {nav.status='pending';nav.retryAt=this.time+1;return 'pending';}
       Object.assign(nav, path);nav.stalled=0;
       nav.retryAt=this.time+(path.status==='ready'?0:2);
     }
@@ -1542,12 +1595,27 @@ export class Game {
     // Skip only fully collision-checked segments, never snap a unit to a waypoint.
     while(nav.points.length>1 && segmentClear(walkable,u,nav.points[1])) nav.points.shift();
     const p=nav.points[0], d=dist(u.x,u.y,p.x,p.y), step=Math.min(d,this.unitSpeed(u)*dt);
-    const next={x:u.x+(p.x-u.x)/d*step,y:u.y+(p.y-u.y)/d*step};
-    if(segmentClear(walkable,u,next)) {
+    const desired={x:u.x+(p.x-u.x)/d*step,y:u.y+(p.y-u.y)/d*step};
+    u._heading={x:(p.x-u.x)/d,y:(p.y-u.y)/d};
+    const next=this.crowd ? this.crowd.steer(u,desired,(a,b)=>segmentClear(walkable,a,b),this.time) : desired;
+    if(next && segmentClear(walkable,u,next)) {
       u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=p.x>=u.x?1:-1;nav.stalled=0;
+      this.crowd?.moved(u);
     } else {
       nav.stalled+=dt;
       if(nav.stalled>.3) {nav.points=[];nav.status='pending';nav.retryAt=this.time;}
+    }
+    const goalDistance=dist(u.x,u.y,tx,ty);
+    if(!u._goalProgress || goalDistance<u._goalProgress.distance-.2) u._goalProgress={distance:goalDistance,at:this.time};
+    else if(this.time-u._goalProgress.at>2) {
+      u._avoidCrowdUntil=this.time+5;u._goalProgress={distance:goalDistance,at:this.time};
+      nav.points=[];nav.status='pending';nav.retryAt=this.time;
+    }
+    const progress = u._progress;
+    if(!progress || Math.hypot(u.x-progress.x,u.y-progress.y)>.4) u._progress={x:u.x,y:u.y,at:this.time};
+    else if(this.time-progress.at>6) {
+      u._progress={x:u.x,y:u.y,at:this.time}; nav.points=[];nav.status='pending';nav.retryAt=this.time;
+      return 'congested';
     }
     return 'moving';
   }
@@ -1865,6 +1933,15 @@ export class Game {
       }
     }
     target.alive = false;
+    for (const u of this.units) {
+      if (u.target !== target) continue;
+      u.target=null;u.manualAttack=false;u._nav=null;
+      if(u.state==='attack') {
+        u.state=u.hold?'hold':'idle';
+        const next=u.team==='player'?this.acquireTarget(u):null;
+        if(next){u.target=next;u.state='attack';}
+      }
+    }
     target.selected = false;
     if (target.w) {
       this.addParticles(target.x + target.w / 2, target.y + target.h / 2, 'smoke', 'rgba(67,58,45,ALPHA)', 6, 12, 1.4);
@@ -2964,7 +3041,7 @@ export class Game {
       if (hit.team === 'enemy') {
         for (const u of units) {
           if (u.type === 'villager') continue;
-          u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1; u.manualAttack = true;
+          u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1; u.manualAttack = true; u.blockedTargets = {}; u.orderFailure = null; u._progress=null; u._nav=null;
           u.hold = false;
         }
         this.sound?.command();
@@ -3016,11 +3093,13 @@ export class Game {
     const count = units.length;
     const cols = Math.ceil(Math.sqrt(count));
     const spacing = 0.8;
+    const center = units.reduce((p,u)=>({x:p.x+u.x/count,y:p.y+u.y/count}),{x:0,y:0});
+    const compact = count>1 && units.every(u=>Math.abs(u.x-center.x)<Math.sqrt(count)*.8 && Math.abs(u.y-center.y)<Math.sqrt(count)*.8);
     units.forEach((u, i) => {
       const col = i % cols, row = Math.floor(i / cols);
-      const ox = (col - (cols - 1) / 2) * spacing;
-      const oy = (row - (Math.ceil(count / cols) - 1) / 2) * spacing;
-      u._nav = null;
+      const ox = compact ? u.x-center.x : (col - (cols - 1) / 2) * spacing;
+      const oy = compact ? u.y-center.y : (row - (Math.ceil(count / cols) - 1) / 2) * spacing;
+      u._nav = null; u._progress = null; u._goalProgress=null; u._yieldTo = null;
       u.state = 'move';
       u.guardOrigin = { x: clamp(x + ox, 1, this.world.size - 1), y: clamp(y + oy, 1, this.world.size - 1) };
       u.manualAttack = false;
