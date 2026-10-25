@@ -7,7 +7,7 @@
       "status": "IN_PROGRESS",
       "branch": "codex/riftwatch-v22-target-state",
       "next_steps": [
-        "Run3 focused tests, checkpoint and real browser re-acquisition/perf"
+        "Complete separate3-repeat12-case performance at294fa287; preserve all results before integration decision"
       ],
       "name": "A1-TARGET",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
@@ -16,10 +16,18 @@
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
       "latest_pushed_commit": null,
-      "completed": [],
+      "completed": [
+        "51 Node tests and5 native browser checks pass",
+        "135s normal P0 passes with8 retargets,35/23/23/11 deposits"
+      ],
       "uncommitted": [],
       "unpushed": [],
-      "tests": [],
+      "tests": [
+        {
+          "source": "77c20609da28b38fa405531a0215a8261dc6b1ef",
+          "result": "LOCAL_VERIFIED; see target branch evidence"
+        }
+      ],
       "evidence": [],
       "failures": [],
       "blockers": [
@@ -35,7 +43,7 @@
       "status": "IN_PROGRESS",
       "branch": "codex/riftwatch-v22-civ-alignment",
       "next_steps": [
-        "Run focused civ/template tests, checkpoint, actual training/combat UI"
+        "Preserve final normal P0 evidence; retest performance before integration"
       ],
       "name": "B2-GDD",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
@@ -44,7 +52,11 @@
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
       "latest_pushed_commit": null,
-      "completed": [],
+      "completed": [
+        "47 Node tests and8 browser checks pass",
+        "Four stale descriptions fixed with retained failure",
+        "Normal P0 source2ad2fe4a passes with7 retargets"
+      ],
       "uncommitted": [],
       "unpushed": [],
       "tests": [],
@@ -63,7 +75,7 @@
       "status": "IN_PROGRESS",
       "branch": "codex/riftwatch-v22-population",
       "next_steps": [
-        "Test core20+two houses40/economy60/global queue, checkpoint, browser"
+        "Run affected performance gates; resolve later-wave caps/monument spec before full GDD claim"
       ],
       "name": "A4-POP",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
@@ -72,7 +84,10 @@
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
       "latest_pushed_commit": "46759494baa05ba3d1be7c59b2c7f78a1735e89d",
-      "completed": [],
+      "completed": [
+        "50 Node tests and7 browser checks pass",
+        "Normal P0 source8d090287 passes,8 retargets and40/22/24/10 deposits"
+      ],
       "uncommitted": [],
       "unpushed": [],
       "tests": [],
@@ -91,7 +106,7 @@
       "status": "CHECKPOINTED",
       "branch": "codex/riftwatch-v22-quality-tools",
       "next_steps": [
-        "Push11f8a6a exact and preserve12 completed samples"
+        "Use existing cohort; actual hardware still pending"
       ],
       "name": "QA-TOOLS",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
@@ -100,7 +115,9 @@
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
       "latest_pushed_commit": null,
-      "completed": [],
+      "completed": [
+        "Exact11f8a6a pushed,12 valid baseline cases remotely archived, no rerun"
+      ],
       "uncommitted": [],
       "unpushed": [],
       "tests": [],
@@ -144,10 +161,10 @@
     },
     {
       "task_id": "INTEGRATION",
-      "status": "BLOCKED",
+      "status": "IN_PROGRESS",
       "branch": "codex/riftwatch-gameplay-integration",
       "next_steps": [
-        "Each feature gates then pre-merge snapshot, merge, regression, post-merge snapshot"
+        "Do not mark gameplay features integrated; gate each separately with pre/post snapshots"
       ],
       "name": "INTEGRATION",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
@@ -156,7 +173,9 @@
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
       "latest_pushed_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-      "completed": [],
+      "completed": [
+        "Recovery/tooling only integrated and verified at72e978417afd3c95f897cc7cb35395f00008c313; zero production resource changes"
+      ],
       "uncommitted": [],
       "unpushed": [],
       "tests": [],
