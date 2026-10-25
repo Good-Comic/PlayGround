@@ -53,11 +53,15 @@ def package(repo,out,trigger,trigger_evidence=None):
  known={r['branch']:r for r in recovery['worktrees']};row=known.get(active.get('branch'))
  if row:
   active=dict(active,latest_pushed_commit=row['remote_head'],uncommitted=row['changed_files'],unpushed=row['unpushed_commits'],updated_at=utc())
+ queue=json.loads(json.dumps(queue))
+ for task in queue.get('tasks',[]):
+  w=known.get(task.get('branch'))
+  if w:task.update({'latest_pushed_commit':w['remote_head'],'uncommitted':w['changed_files'],'unpushed':w['unpushed_commits'],'updated_at':recovery['captured_at_utc']})
  try:
   owner_head,owners=remote_ownership(repo);ownership={'status':'REMOTE_QUERIED','commit':owner_head,'state':owners}
  except (subprocess.SubprocessError,OSError,ValueError):ownership={'status':'REMOTE_UNKNOWN'}
  # This report cannot assert other agents are stopped or account quota is exhausted.
- r={'schema_version':1,'generated_at':utc(),'framework_status':'HANDOFF_FRAMEWORK_READY' if not errors else 'INCOMPLETE','cross_agent_status':'NOT_TESTED','trigger':{'kind':trigger,'confidence':'CONFIRMED' if trigger_evidence else 'OPERATOR_REQUESTED_NOT_AUTODETECTED','evidence':trigger_evidence},'active_task':active,'next_tasks':queue,'recovery':recovery,'ownership':ownership,'validation_errors':errors,'pending_preservation':[{'branch':w['branch'],'dirty':w['dirty'],'remote_status':w['remote_status'],'unpushed':w['unpushed_commits']} for w in recovery['worktrees'] if w['dirty'] or w['remote_status']!='REMOTE_SAVED']}
+ r={'schema_version':1,'generated_at':utc(),'framework_status':'HANDOFF_FRAMEWORK_READY' if not errors else 'INCOMPLETE','cross_agent_status':'NOT_TESTED','write_eligibility':'REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING','trigger':{'kind':trigger,'confidence':'CONFIRMED' if trigger_evidence else 'OPERATOR_REQUESTED_NOT_AUTODETECTED','evidence':trigger_evidence},'active_task':active,'next_tasks':queue,'recovery':recovery,'ownership':ownership,'validation_errors':errors,'pending_preservation':[{'branch':w['branch'],'dirty':w['dirty'],'remote_status':w['remote_status'],'unpushed':w['unpushed_commits']} for w in recovery['worktrees'] if w['dirty'] or w['remote_status']!='REMOTE_SAVED']}
  atomic_json(out/'handoff-package.json',r);prompt='''Read AGENTS.md, docs/handoff/SHARED-RULES.md, Strategy v2.2.1/v2.2.2, the recovery manifest and handoff-package.json first. Verify actual GitHub refs and evidence hashes. Confirm ownership in the shared ownership branch before writing; an expired lease is not permission. If the previous owner cannot be confirmed stopped, use an independent continuation branch/task. Do not redo completed valid tests, overwrite dirty files, alter main/checkpoints, launch workflows or publish. Resume the smallest uncompleted slice from active_task.next_steps. Local, online, prototype and hardware evidence remain distinct. Save an ordinary commit/push and refresh recovery after each slice. No credentials are provided by this package.\n'''
  (out/'NEXT-AGENT-PROMPT.md').write_text(prompt);(out/'HANDOFF.md').write_text('# Agent Handoff\n\n'+r['framework_status']+' · CROSS_AGENT_HANDOFF_VERIFIED is not claimed.\n\n'+prompt+'\n## Pending preservation\n\n'+json.dumps(r['pending_preservation'],indent=2)+'\n')
  return r
