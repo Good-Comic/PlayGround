@@ -128,6 +128,26 @@
       "next_steps": [
         "Collect comparable actual measurements; do not translate cloud ratios to verified FPS"
       ]
+    },
+    "codex/riftwatch-playtest-candidate": {
+      "task_id": "PLAYTEST-P0",
+      "last_validation": [
+        {
+          "path": "docs/evidence/playtest-candidate/acceptance.json",
+          "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+          "result": "LOCAL_VERIFIED bounded experimental candidate; Pages approval pending"
+        }
+      ],
+      "blockers": [
+        "DEPLOYMENT_BLOCKED_AWAITING_USER_APPROVAL",
+        "HARDWARE_TEST_PENDING",
+        "SIMULATION_INTEGRITY_BLOCKED"
+      ],
+      "next_steps": [
+        "Obtain user approval for APPROVAL-PLAN.json",
+        "If approved recheck no existing Pages,deploy only approved artifact toisolated site branch,enablePages then actual remote acceptance",
+        "Keep full formal feature gates unchanged; independent performance and B\u2013E work can continue"
+      ]
     }
   }
 }

@@ -1,0 +1,96 @@
+{
+  "status": "PLAYTEST-EXPERIMENTAL_READY_FOR_AUTHORIZED_DEPLOY",
+  "verification_level": "LOCAL_VERIFIED; not QA-ACCEPTED,not DEPLOYED_VERIFIED",
+  "source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+  "artifact_sha256": "e595a76c7a25298874aa180f1fce973626e98a6711812c02c8842b8ba41d8b58",
+  "payload_hash_count": 28,
+  "basic_browser_checks": 12,
+  "subpath_checks": 12,
+  "cases": [
+    {
+      "name": "minimum",
+      "pass": true,
+      "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "docs/evidence/playtest-candidate/minimum.json"
+    },
+    {
+      "name": "subpath",
+      "pass": true,
+      "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "docs/evidence/playtest-candidate/subpath.json"
+    },
+    {
+      "name": "rally",
+      "pass": true,
+      "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "docs/evidence/playtest-candidate/rally.json"
+    },
+    {
+      "name": "civ",
+      "pass": true,
+      "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "docs/evidence/playtest-candidate/civ.json"
+    },
+    {
+      "name": "boss",
+      "pass": true,
+      "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "docs/evidence/playtest-candidate/boss.json"
+    },
+    {
+      "name": "phase-a",
+      "pass": true,
+      "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "docs/evidence/playtest-candidate/phase-a.json"
+    }
+  ],
+  "normal_p0": {
+    "pass": true,
+    "death_retargets": 4,
+    "deposits": {
+      "wood": 38,
+      "gold": 17,
+      "food": 19,
+      "stone": 9
+    },
+    "dead_target_samples": 0,
+    "zero_cargo_stalls_over20s": 0,
+    "cavalry_move_completes": true,
+    "console_page_request_errors": 0
+  },
+  "units": {
+    "combined": 75,
+    "source": "2c265ec411e0d81164e6f695db062b5e966a6f39",
+    "note": "Subsequent D6 game-resource difference is build ID only;4 strengthened export/integrity tests separately rerun. Browser tests all target D6 artifact."
+  },
+  "locales": {
+    "count": 4,
+    "keys_each": 667
+  },
+  "resources": {
+    "subpath_git_matches": 106,
+    "normal_p0_git_matches": 53,
+    "runtime_sha256_payloads": 28,
+    "markdown_note": "HAR text/markdown without charset decoded UTF8 em dash ascp1252; raw HTTP bytes independently match Git. Guarded reconstruction must match exact Git blob; initial failures retained. Modified JS still rejected."
+  },
+  "failures_retained": [
+    "historical100/250 rAF/time failures",
+    "initialNode harness document stub omission",
+    "initialpointer/drag canvas and stale-coordinate harness failures",
+    "pagination navigation incorrectly counted as trainable unit",
+    "initialMarkdown HAR decoding mismatch"
+  ],
+  "safety": "No startup-blocking JS errors/data-loss observed in these bounded tests; legacy key canary unchanged. No full campaign/determinism/hardware guarantee.",
+  "deployment": "DEPLOYMENT_BLOCKED until exact isolated Pages operation approved",
+  "source_branches_unchanged": [
+    "main",
+    "OpenCode checkpoints",
+    "codex/riftwatch-gameplay-integration",
+    "existing legacy preview"
+  ],
+  "next_steps": [
+    "Obtain user approval for APPROVAL-PLAN.json",
+    "If approved recheck no existing Pages,deploy only approved artifact toisolated site branch,enablePages then actual remote acceptance",
+    "Keep full formal feature gates unchanged; independent performance and B\u2013E work can continue"
+  ]
+}

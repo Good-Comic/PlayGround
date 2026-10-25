@@ -1,0 +1,40 @@
+{
+  "status": "DEPLOYMENT_BLOCKED_AWAITING_EXPLICIT_AUTHORIZATION",
+  "repository": "Good-Comic/PlayGround",
+  "source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+  "build_id": "riftwatch-playtest-v1",
+  "candidate_status": "PLAYTEST-EXPERIMENTAL",
+  "artifact_file": "docs/playtest/artifacts/Riftwatch-Playtest-d6ee34a.zip",
+  "artifact_sha256": "e595a76c7a25298874aa180f1fce973626e98a6711812c02c8842b8ba41d8b58",
+  "payload_files": 28,
+  "pages_source_branch": "codex/riftwatch-playtest-site",
+  "pages_source_path": "/",
+  "expected_url_not_created": "https://good-comic.github.io/PlayGround/",
+  "authorized_now": [
+    "candidate assembly",
+    "local tests",
+    "branch commit/push",
+    "hosting investigation/preparation"
+  ],
+  "authorization_needed": [
+    "publish artifact branch for hosting",
+    "enable new GitHub Pages branch/root",
+    "run actual public-site browser acceptance",
+    "disable only this new site or restore a previously verified candidate artifact on critical failure"
+  ],
+  "excluded": [
+    "main",
+    "OpenCode checkpoints",
+    "Issue17/other existing previews",
+    "OpenCode workflows/Issues",
+    "DNS/custom domain",
+    "paid service",
+    "remote bug collection"
+  ],
+  "preconditions": [
+    "recheck has_pages=false; stop if another site exists",
+    "source/artifact hashes must match acceptance",
+    "confirm Pages admin permission or user performs only UI setting"
+  ],
+  "agent_network_prerequisite": "For post-deploy Agent verification, allow only exact good-comic.github.io in Codex UI if restricted policy blocks it; no policy change performed. This host is expected, not an observed new dependency."
+}

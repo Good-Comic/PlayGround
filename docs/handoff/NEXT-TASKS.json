@@ -3,6 +3,46 @@
   "updated_at": "2026-10-25T18:24:01.472574+00:00",
   "tasks": [
     {
+      "task_id": "PLAYTEST-DEPLOY",
+      "status": "BLOCKED",
+      "branch": "codex/riftwatch-playtest-candidate",
+      "next_steps": [
+        "Obtain bounded authorization in docs/playtest/APPROVAL-PLAN.json",
+        "After authorization recheck source/artifact/site isolation,enable only newPages,then verifyactualremoteURL"
+      ],
+      "name": "Approve and deploy isolated Candidate",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "priority": "P0",
+      "agent": "UNASSIGNED; claim ownership before writing",
+      "environment": "managed cloud, except HARDWARE requires physical Windows",
+      "base_commit": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
+      "latest_pushed_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "completed": [
+        "Minimum local Candidate gates pass; exactartifact/approval-plan prepared"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "result": "LOCAL_VERIFIED",
+          "source": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/playtest-candidate/acceptance.json"
+      ],
+      "failures": [
+        "Historicalperformance failures unchanged"
+      ],
+      "blockers": [
+        "Exact public deployment operation requires user approval"
+      ],
+      "permissions": [
+        "Do not create site/Pages/workflow before approval"
+      ],
+      "updated_at": "2026-10-25T18:24:53.917746+00:00"
+    },
+    {
       "task_id": "A1-TARGET",
       "status": "IN_PROGRESS",
       "branch": "codex/riftwatch-v22-target-state",
