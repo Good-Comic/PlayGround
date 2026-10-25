@@ -736,7 +736,7 @@ export class UI {
 
   commandSignature(game) {
     const hero = game.hero;
-    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${e.stance}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
+    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${e.stance}:${e.trainingPage||0}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
   }
 
   getCommands(game) {
@@ -761,13 +761,15 @@ export class UI {
           });
         }
       }
-      const trainable = game.trainableFor(b);
+      const allTrainable=game.trainableFor(b),pages=Math.ceil(allTrainable.length/4);b.trainingPage=Math.min(b.trainingPage||0,Math.max(0,pages-1));
+      const trainable=pages>1?allTrainable.slice(b.trainingPage*4,b.trainingPage*4+4):allTrainable;
+      if(pages>1)commands.push({id:'train:page',label:t('training.page'),icon:'scroll',tag:`${b.trainingPage+1}/${pages}`,tooltip:t('training.page')});
       commands.push(...trainable.map(type => {
         const def = UNIT_TYPES[type];
         return {
           id: `train:${type}`, label: t(`unit.${type}.name`), icon: def.icon,
           cost: shortCost(game.unitCost(type, b.type === 'market')), hotkey: def.hotkey,
-          tooltip: t('command.trainTooltip', { unit: t(`unit.${type}.name`), cost: shortCost(game.unitCost(type, b.type === 'market')), time: def.trainTime }),
+          tooltip: t('command.trainTooltip', { unit: t(`unit.${type}.name`), cost: shortCost(game.unitCost(type, b.type === 'market')), time: def.trainTime })+(game.trainingRestriction(type)==='age'?' · '+t('training.ageRequired',{age:t(`age.${def.minAge}`)}):''),
         };
       }));
       return commands;
@@ -819,7 +821,9 @@ export class UI {
       let cost = null;
       if (id.startsWith('train:')) {
         const building = game.selection.length === 1 ? game.selection[0] : null;
+        if(id==='train:page')continue;
         cost = game.unitCost(id.slice(6), building?.type === 'market');
+        b.disabled=!!game.trainingRestriction(id.slice(6));
       }
       else if (id.startsWith('build:') && id !== 'build:page') cost = game.buildingCost(id.slice(6));
       else if (id === 'age:advance') cost = game.ageCost();

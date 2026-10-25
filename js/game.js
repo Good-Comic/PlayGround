@@ -747,8 +747,18 @@ export class Game {
   }
 
   trainableFor(building) {
-    if (building.type === 'market' && this.effects.marketHiresAny) return GENERIC_UNITS;
-    return TRAINABLE[building.type] || [];
+    const list=building.type==='market'&&this.effects.marketHiresAny?[...GENERIC_UNITS]:[...(TRAINABLE[building.type]||[])];
+    if(building.type==='range'&&this.civ?.id==='CHN')list.push('chu_ko_nu');
+    return list.filter(type=>!(this.effects.noCavalry&&UNIT_TYPES[type].category==='cavalry') && !(type==='elephant'&&!this.effects.elephantUnlocked));
+  }
+
+  trainingRestriction(type) {
+    const def=UNIT_TYPES[type];
+    if(!def || def.uniqueCiv&&def.uniqueCiv!==this.civ?.id)return 'civilization';
+    if(this.effects.noCavalry&&def.category==='cavalry')return 'civilization';
+    if(type==='elephant'&&!this.effects.elephantUnlocked)return 'civilization';
+    if(def.minAge&&this.ageLevel<def.minAge)return 'age';
+    return null;
   }
 
   buildingCost(type) {
@@ -2712,6 +2722,7 @@ export class Game {
   }
 
   command(id) {
+    if(id==='train:page'){const b=this.selection[0];if(b?.w&&b.alive&&b.team==='player')b.trainingPage=((b.trainingPage||0)+1)%Math.max(1,Math.ceil(this.trainableFor(b).length/4));this.hooks.selectionChanged?.();return;}
     if (id === 'build:page') {
       const pages = Math.max(1, Math.ceil(BUILD_OPTIONS.length / 4));
       this.buildPage = ((this.buildPage || 0) + 1) % pages;
@@ -2918,9 +2929,10 @@ export class Game {
   }
 
   trainUnit(building, type, silent = false) {
-    if (building.construction < 1) return;
+    if (!building?.alive || building.team!=='player' || building.construction < 1) return;
     if (!this.trainableFor(building).includes(type)) return;
     const def = UNIT_TYPES[type];
+    if(this.trainingRestriction(type)){if(!silent)this.toast(t('training.ageRequired',{age:t(`age.${def.minAge||2}`)}),'bad',2200);return;}
     if (this.effects.noCavalry && def.category === 'cavalry') return;
     if (type === 'elephant' && !this.effects.elephantUnlocked) {
       if (!silent) { this.sound?.error(); this.toast(t('toast.elephantLocked'), 'bad', 2600); }
@@ -2960,6 +2972,7 @@ export class Game {
   }
 
   canTrainNow(type) {
+    if(this.trainingRestriction(type))return false;
     const def = UNIT_TYPES[type];
     if (this.effects.noCavalry && def.category === 'cavalry') return false;
     if (type === 'elephant' && !this.effects.elephantUnlocked) return false;
