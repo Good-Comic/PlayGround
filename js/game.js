@@ -1193,7 +1193,11 @@ export class Game {
       else if (tc) u.target = tc;
       else u.target = null;
     }
-    if (!u.target) return;
+    if (!u.target) {
+      // No core or nearby player: stop advertising an obsolete movement order.
+      u.state='idle';u._nav=null;
+      return;
+    }
     const target = u.target;
     const d = this.distanceTo(u, target);
     const range = this.unitRange(u) + (target.w ? 0 : target.typeDef.radius || 0.2);

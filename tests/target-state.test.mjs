@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+globalThis.document={documentElement:{dataset:{}},dispatchEvent(){}};globalThis.window={innerWidth:1600,innerHeight:1100};const {Game}=await import('../js/game.js');
+function fixture(){const g=new Game();g.newRun(3215474622,{civ:'TEU',biome:'steppe'});g.units=[];g.buildings=[];g.hero=null;g.world.resources=[];g.world.tile=()=>({terrain:'grass'});g.addParticles=()=>{};g.toast=()=>{};g.crowd=null;const u=g.spawnUnit('guard',10,10,'enemy');u.state='move';u._nav={status:'ready',points:[{x:20,y:10}]};return {g,u};}
+test('A3-STATE-01 dead target with no core/player clears obsolete move and route',()=>{const {g,u}=fixture();const old=g.spawnUnit('militia',13,10);old.alive=false;u.target=old;g.updateEnemy(u,.05);assert.equal(u.target,null);assert.equal(u.state,'idle');assert.equal(u._nav,null);});
+test('idle enemy reacquires a new nearby player on the very next update',()=>{const {g,u}=fixture();g.updateEnemy(u,.05);assert.equal(u.state,'idle');const next=g.spawnUnit('militia',14,10);g.updateEnemy(u,.05);assert.equal(u.target,next);assert.equal(u.state,'move');});
+test('living town center keeps ordinary pursuit when no nearby player exists',()=>{const {g,u}=fixture();const core=g.addBuilding('core',25,25,true);g.updateEnemy(u,.05);assert.equal(u.target,core);assert.equal(u.state,'move');});

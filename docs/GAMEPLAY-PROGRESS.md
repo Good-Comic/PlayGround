@@ -1,3 +1,7 @@
+## Strategy v2.2.2 A1-TARGET checkpoint
+
+Recovered uncommitted target-state fix atop Boss ee0784a40db8134abbd1ae92bfa7ee61a1cedc93. Enemy without a valid target/core clears obsolete move state and route, becomes idle, then can reacquire on the next update. Three focused tests PASS: dead target cleanup, immediate fresh target reacquisition, ordinary core pursuit preserved. Browser/performance and integration gates PENDING. Baseline12-case cohort11f8a6a is complete and retained; seven targetless enemies were observed in one250-case failure. This is a state repair, not proof all physical congestion is resolved.
+
 # Current progress — strategy v2
 
 **Independent development enabled. No1000-unit blanket embargo.** Tooling/strategy only is now INTEGRATED_VERIFIED; production game bytes remain the7faa21a baseline. B1/B2 gameplay is explicitly unmerged; see INTEGRATION-STATUS.json. Original branch remains7faa21a274847ca649a7a96b88700d4cdda5fe2e. New QA/budget/clock/candidate work and independent B1/B2 feature branches are preserved. Details: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md), [roadmap](GAMEPLAY-ROADMAP.md), [acceptance](GAMEPLAY-ACCEPTANCE.md).
