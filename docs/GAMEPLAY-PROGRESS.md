@@ -1,3 +1,7 @@
+## B2-GDD normal P0 acceptance
+
+Normal135s TEU/steppe P0 play on source2ad2fe4a6466c6c38a033d1194f004924dbfda37:175samples,7 death→living transitions,wood/gold/food/stone unload39/11/18/9, no20s zero-cargo stall, cavalry destination reached, Console/Page/request errors0;25/25 captured resources match. This is core P0 regression on this build, separate from actual CHN unique-unit training/combat fixture. LOCAL_VERIFIED, performance/combined integration pending. Full trace local-only, bounded states/HAR/screenshots remotely preserved.
+
 ## B2-GDD updated actual local acceptance
 
 Source da0823c6341b1ee85e32d1b6c0f776ef3008255c:47 full Node tests and four locales658 keys PASS. Eight actual Chromium checks PASS: real pointer range selection; Feudal training availability; exact40W/29G payment; native queue spawn; three actual combat shots; real Pause/Save/Reload/Continue; four name translations and description-age consistency.50/50 captured resources match. Prior transport failure and manual four-language stale-description FAIL retained. LOCAL_VERIFIED bounded alignment, not all16 unique rosters nor full GDD/legacy-save certification. Core P0/performance/integration gates PENDING.
