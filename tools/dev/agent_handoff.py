@@ -17,17 +17,18 @@ def transition(state,task,agent,execution,branch,expected,action,prior_stopped=F
    if key!=task and row['branch']==branch and row['status']=='OWNED':raise ValueError('BRANCH_ALREADY_OWNED')
  elif not prior or (prior['agent'],prior['execution'])!=(agent,execution):raise ValueError('ONLY_CURRENT_OWNER_CAN_RELEASE')
  out=json.loads(json.dumps(state));out['version']+=1;out.setdefault('tasks',{})[task]={'agent':agent,'execution':execution,'branch':branch,'status':'OWNED' if action=='claim' else 'RELEASED','revision':out['version'],'updated_at':utc(),'previous_owner_stopped_asserted':prior_stopped};return out
-def remote_ownership(repo):
+def remote_ownership(repo,fetch=False):
  rows=git(repo,'ls-remote','origin',OWNERSHIP_REF).splitlines()
  if not rows:return None,{'schema_version':1,'version':0,'tasks':{}}
  sha=rows[0].split()[0]
  try:raw=git(repo,'show',sha+':ownership.json')
  except subprocess.SubprocessError:
+  if not fetch:raise ValueError('OWNERSHIP_OBJECT_MISSING: explicit fetch/revalidation required')
   # Explicit ownership command only. Fetch objects without rewriting any local branch.
   git(repo,'fetch','--no-tags','origin',OWNERSHIP_REF);raw=git(repo,'show',sha+':ownership.json')
  return sha,json.loads(raw)
 def publish_ownership(repo,args):
- parent,state=remote_ownership(repo);updated=transition(state,args.task,args.agent,args.execution,args.branch,args.expected_version,args.action,args.prior_stopped)
+ parent,state=remote_ownership(repo,fetch=True);updated=transition(state,args.task,args.agent,args.execution,args.branch,args.expected_version,args.action,args.prior_stopped)
  with tempfile.TemporaryDirectory(prefix='riftwatch-ownership-') as folder:
   env=dict(os.environ,GIT_INDEX_FILE=str(Path(folder)/'index'))
   def run(*cmd,input=None):return subprocess.check_output(['git','-C',str(repo),*cmd],input=input,env=env,stderr=subprocess.DEVNULL).decode().strip()
