@@ -1,6 +1,6 @@
 # Current progress — strategy v2
 
-**Independent development enabled. No1000-unit blanket embargo.** Original branch remains7faa21a274847ca649a7a96b88700d4cdda5fe2e. New QA/budget/clock/candidate work and independent B1/B2 feature branches are preserved. Details: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md), [roadmap](GAMEPLAY-ROADMAP.md), [acceptance](GAMEPLAY-ACCEPTANCE.md).
+**Independent development enabled. No1000-unit blanket embargo.** Tooling/strategy only is now INTEGRATED_VERIFIED; production game bytes remain the7faa21a baseline. B1/B2 gameplay is explicitly unmerged; see INTEGRATION-STATUS.json. Original branch remains7faa21a274847ca649a7a96b88700d4cdda5fe2e. New QA/budget/clock/candidate work and independent B1/B2 feature branches are preserved. Details: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md), [roadmap](GAMEPLAY-ROADMAP.md), [acceptance](GAMEPLAY-ACCEPTANCE.md).
 
 B1 Rally/flags/resource work/save/clear and B2 scoped Chinese training/16-civ entries have actual local browser and original P0 PASS evidence. Both are BLOCKED for integration by current-scale clock/stuck/final-source/full-GDD gates, not by500/1000. Features are not merged or deployed. Fixed-step prototype4 tests expose the runtime slowdown and strict Save/Load determinism failure; runtime unchanged. Local exact-SHA Candidate/rollback/resources25/25 verified; AFTER_DEPLOY_LIVE remains DEPLOYMENT_BLOCKED. Full natural-ten-wave peaks x3 remain NOT_TESTED, product250 is still a provisional stress target, no hard cap or Boss deletion.
 
