@@ -75,10 +75,10 @@ test('eight units in opposing queues pass the one-tile corridor',()=>{
  const arrived=units.filter(u=>u.state==='idle'&&Math.hypot(u.x-goals.get(u.id).x,u.y-goals.get(u.id).y)<.15).length;report('narrow-queues-8','8/8 within80s, penetration<=.025, static clips0',{arrived,maxPenetration,clipped,crossed:crossed.size});assert.equal(crossed.size,8);assert.equal(arrived,8);assert.ok(maxPenetration<=.025);assert.equal(clipped,0);
 });
 test('fair search queue starts all 100 units despite continuous low-ID demand',()=>{
- const g=arena(50),units=[];for(let i=0;i<100;i++){const u=g.spawnUnit('militia',3+(i%10)*3,3+Math.floor(i/10)*3);u.stance='passive';units.push(u);g.commandMove([u],u.x+.6,u.y+.6);}
+ const g=arena(50),units=[];g.world.tile=(x,y)=>x>=0&&y>=0&&x<50&&y<50?{terrain:x>=14&&x<16&&y<35?'water':'grass'}:null;for(let i=0;i<100;i++){const u=g.spawnUnit('militia',3+(i%10)*3,3+Math.floor(i/10)*3);u.stance='passive';units.push(u);g.commandMove([u],u.x<14?28:3,u.y);}
  const origins=new Map(units.map(u=>[u.id,{x:u.x,y:u.y}])),moved=new Set();let maximum=0;
- tick(g,300,.016,()=>{maximum=Math.max(maximum,g.navigationStats.searches);for(const u of units){const o=origins.get(u.id);if(Math.hypot(u.x-o.x,u.y-o.y)>.15)moved.add(u.id);if(u.state==='idle')g.commandMove([u],o.x+.6,o.y+.6);}});
- report('fair-queue-100','all100 move within4.8s; <=2 searches/update',{moved:moved.size,maxSearches:maximum});assert.equal(moved.size,100);assert.ok(maximum<=2);
+ tick(g,300,.016,()=>{maximum=Math.max(maximum,g.navigationStats.searches);for(const u of units){const o=origins.get(u.id);if(Math.hypot(u.x-o.x,u.y-o.y)>.15)moved.add(u.id);if(u.state==='idle')g.commandMove([u],u.x<14?28:3,u.y);}});
+ report('fair-queue-100','all100 move within4.8s; <=2 searches/update',{moved:moved.size,maxSearches:maximum,searches:g.navigationStats.totalSearches});assert.equal(moved.size,100);assert.ok(maximum<=2);assert.ok(g.navigationStats.totalSearches>=100,'fixture must actually exercise A*');
 });
 test('directly controlled passive hero does not auto-attack',()=>{
  const g=arena(),u=g.spawnUnit('commander',10,10),e=g.spawnUnit('militia',11,10,'enemy');g.heroControl=true;u.stance='passive';u.cooldown=0;const hp=e.hp;
@@ -90,4 +90,16 @@ test('an unreachable move is a reported failure, not arrival, and a new move cle
  g.commandMove([u],20,10);tick(g,100);assert.equal(u.orderFailure,'unreachable');assert.ok(u.x<14);
  g.commandMove([u],12,10);assert.equal(u.orderFailure,null);tick(g,100);assert.ok(Math.hypot(u.x-12,u.y-10)<.15);assert.equal(u.state,'idle');
  report('move-failure-vs-arrival','unreachable result reported; new valid order reaches actual destination',{failurePreserved:true,newX:u.x,newY:u.y});
+});
+
+test('legal direct routes start 1000 units without bypassing speed or collision',()=>{
+ const g=arena(50),units=[];for(let i=0;i<1000;i++){const u=g.spawnUnit('militia',2+(i%32)*1.4,2+Math.floor(i/32)*1.4);u.stance='passive';units.push(u);g.commandMove([u],u.x+.6,u.y+.6);}
+ const origins=units.map(u=>({x:u.x,y:u.y}));tick(g,1,.05);
+ for(let i=0;i<units.length;i++){const d=Math.hypot(units[i].x-origins[i].x,units[i].y-origins[i].y);assert.ok(d>0&&d<=g.unitSpeed(units[i])*.05+1e-9);assert.ok(g.isWalkable(units[i].x,units[i].y,units[i]));}
+ assert.equal(g.navigationStats.searches,0);assert.equal(g.navigationStats.directRoutes,1000);
+ report('direct-route-1000','1000/1000 move in first update; unchanged speed cap; A*0',{moved:units.length,searches:0,directRoutes:g.navigationStats.directRoutes});
+});
+test('negative startup delta cannot reverse game time or break smoke geometry',async()=>{
+ const g=arena();g.inMenu=true;g.updateCamera=()=>{};const before=g.time;g.update(-.01);assert.equal(g.time,before);
+ const {Renderer}=await import('../js/renderer.js');let arcs=0;const r=Object.create(Renderer.prototype);r.ctx={beginPath(){},fill(){},arc(x,y,radius){assert.ok(radius>=0&&Number.isFinite(radius));arcs++;}};r.smokePlume(0,0,1,-10);assert.equal(arcs,6);
 });

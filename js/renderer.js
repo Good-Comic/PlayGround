@@ -758,7 +758,7 @@ export class Renderer {
   smokePlume(x, y, z, time, scale = 1) {
     const ctx = this.ctx;
     for (let i = 0; i < 6; i++) {
-      const t = ((time * 0.14 + i / 6) % 1);
+      const t = ((time * 0.14 + i / 6) % 1 + 1) % 1;
       const yy = y - t * 56 * z;
       const xx = x + Math.sin(t * 5 + i) * 7 * z + t * 11 * z;
       const alpha = (1 - t) * 0.17;
@@ -1082,11 +1082,27 @@ export class Renderer {
     ctx.beginPath(); ctx.moveTo(x - 5 * s, y - 27 * s); ctx.lineTo(x - 8 * s, y - 17 * s); ctx.stroke();
   }
 
-  drawInfantryUnit(p, u, s, team, walk, time, bob) {
-    const ctx = this.ctx;
-    const x = p.x, y = p.y - bob * s;
-    ctx.strokeStyle = '#3c3022'; ctx.lineWidth = 2 * s;
-    ctx.beginPath(); ctx.moveTo(x - 3 * s, y - 10 * s); ctx.lineTo(x - 3 * s - walk * 1.6 * s, y); ctx.moveTo(x + 3 * s, y - 10 * s); ctx.lineTo(x + 3 * s + walk * 1.6 * s, y); ctx.stroke();
+  // Cache only invariant torso/helmet/shield geometry. Legs, sword swing,
+  // bobbing, health bars, hit flashes and selection remain live every frame.
+  drawInfantryBody(x,y,scale,team) {
+    if(this.infantryCacheEnabled===false){this.paintInfantryBody(x,y,scale,team);return;}
+    this.infantryBodyCache ||= new Map();
+    this.infantrySpriteStats ||= {hits:0,misses:0};
+    const resolution=Math.max(2,2*(this.dpr||1));
+    let entry=this.infantryBodyCache.get(team);
+    if(!entry || entry.resolution!==resolution || entry.primary!==team.primary || entry.cloth!==team.cloth) {
+      if(this.infantryBodyCache.size>=16)this.infantryBodyCache.clear();
+      const canvas=document.createElement('canvas');canvas.width=canvas.height=48*resolution;
+      const ctx=canvas.getContext('2d');ctx.setTransform(resolution,0,0,resolution,0,0);
+      const original=this.ctx;
+      try{this.ctx=ctx;this.paintInfantryBody(24,48,1,team);}finally{this.ctx=original;}
+      entry={canvas,resolution,primary:team.primary,cloth:team.cloth};this.infantryBodyCache.set(team,entry);this.infantrySpriteStats.misses++;
+    } else this.infantrySpriteStats.hits++;
+    this.ctx.drawImage(entry.canvas,x-24*scale,y-48*scale,48*scale,48*scale);
+  }
+
+  paintInfantryBody(x,y,s,team) {
+    const ctx=this.ctx;
     ctx.fillStyle = team.cloth;
     ctx.beginPath(); ctx.moveTo(x - 7 * s, y - 25 * s); ctx.lineTo(x + 7 * s, y - 25 * s); ctx.lineTo(x + 6 * s, y - 10 * s); ctx.lineTo(x - 6 * s, y - 10 * s); ctx.closePath(); ctx.fill();
     ctx.fillStyle = team.primary; ctx.fillRect(x - 7 * s, y - 18 * s, 14 * s, 2.2 * s);
@@ -1097,6 +1113,14 @@ export class Renderer {
     ctx.beginPath(); ctx.ellipse(x - 8 * s, y - 19 * s, 4.2 * s, 6 * s, 0.12, 0, 6.3); ctx.fill();
     ctx.strokeStyle = '#c9b884'; ctx.lineWidth = 0.9 * s;
     ctx.beginPath(); ctx.ellipse(x - 8 * s, y - 19 * s, 2.2 * s, 3.4 * s, 0.12, 0, 6.3); ctx.stroke();
+  }
+
+  drawInfantryUnit(p, u, s, team, walk, time, bob) {
+    const ctx = this.ctx;
+    const x = p.x, y = p.y - bob * s;
+    ctx.strokeStyle = '#3c3022'; ctx.lineWidth = 2 * s;
+    ctx.beginPath(); ctx.moveTo(x - 3 * s, y - 10 * s); ctx.lineTo(x - 3 * s - walk * 1.6 * s, y); ctx.moveTo(x + 3 * s, y - 10 * s); ctx.lineTo(x + 3 * s + walk * 1.6 * s, y); ctx.stroke();
+    this.drawInfantryBody(x,y,s,team);
     const swing = u.attackAnim > 0 ? Math.sin(u.attackAnim * Math.PI) : 0;
     ctx.strokeStyle = '#70654d'; ctx.lineWidth = 1.6 * s;
     ctx.beginPath(); ctx.moveTo(x + 6 * s, y - 21 * s); ctx.lineTo(x + 11 * s + swing * 5 * s, y - 31 * s - swing * 6 * s); ctx.stroke();
@@ -1452,6 +1476,22 @@ export class Renderer {
     }
   }
 
+  drawSpark(x,y,radius,color,life) {
+    if(this.sparkCacheEnabled===false){this.ctx.fillStyle=color.replace('ALPHA',life);this.ctx.beginPath();this.ctx.arc(x,y,radius,0,6.3);this.ctx.fill();return;}
+    this.sparkCache ||= new Map();this.sparkSpriteStats ||= {hits:0,misses:0};
+    let canvas=this.sparkCache.get(color);
+    if(!canvas) {
+      if(this.sparkCache.size>=64)this.sparkCache.clear();
+      canvas=document.createElement('canvas');canvas.width=canvas.height=64;
+      const ctx=canvas.getContext('2d');ctx.fillStyle=color.replace('ALPHA',1);ctx.beginPath();ctx.arc(32,32,24,0,6.3);ctx.fill();
+      this.sparkCache.set(color,canvas);this.sparkSpriteStats.misses++;
+    } else this.sparkSpriteStats.hits++;
+    const alpha=this.ctx.globalAlpha;
+    this.ctx.globalAlpha=alpha*(color.includes('ALPHA')?life:1);
+    this.ctx.drawImage(canvas,x-radius*4/3,y-radius*4/3,radius*8/3,radius*8/3);
+    this.ctx.globalAlpha=alpha;
+  }
+
   drawParticles(game, time) {
     const ctx = this.ctx, z = game.camera.zoom;
     for (const p of game.particles) {
@@ -1471,8 +1511,7 @@ export class Renderer {
         ctx.lineWidth = 1.5 * z;
         ctx.beginPath(); ctx.ellipse(pos.x, yy, (20 + (1 - life) * 30) * z, (10 + (1 - life) * 15) * z, 0, 0, 6.3); ctx.stroke();
       } else if (p.kind === 'spark') {
-        ctx.fillStyle = p.color.replace('ALPHA', life);
-        ctx.beginPath(); ctx.arc(pos.x, yy, (p.size || 1.3) * z * life, 0, 6.3); ctx.fill();
+        this.drawSpark(pos.x,yy,(p.size||1.3)*z*life,p.color,life);
       } else if (p.kind === 'slash') {
         ctx.strokeStyle = p.color.replace('ALPHA', life * 0.7);
         ctx.lineWidth = 2 * z;

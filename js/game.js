@@ -767,7 +767,7 @@ export class Game {
   pay(cost) { for (const [k, v] of Object.entries(cost)) this.resources[k] -= v; }
 
   update(dt) {
-    const baseDt = Math.min(dt, 0.05);
+    const baseDt = Math.max(0, Math.min(dt, 0.05));
     this.time += baseDt;
     this.updateCamera(baseDt);
     if (this.inMenu || this.paused) { this.updateParticles(baseDt); return; }
@@ -935,13 +935,13 @@ export class Game {
   }
 
   updateUnits(dt) {
-    this.crowd = new Crowd(this.units);
+    if(this.crowd)this.crowd.rebuild(this.units);else this.crowd=new Crowd(this.units);
     const active = new Set(this.units.filter(u=>u.alive && ['move','attack','gather','return','build'].includes(u.state)).map(u=>u.id));
     this.navigationQueue = (this.navigationQueue || []).filter(id=>active.has(id));
     this.navigationQueued = new Set(this.navigationQueue);
     this.navigationRequested = new Set();
     const previous = this.navigationStats || {};
-    this.navigationStats = { searches: 0, expanded: 0, ms: 0, totalSearches: previous.totalSearches || 0 };
+    this.navigationStats = { searches: 0, expanded: 0, ms: 0, directRoutes: 0, routeReuses: 0, totalDirectRoutes: previous.totalDirectRoutes || 0, totalSearches: previous.totalSearches || 0 };
     this.navigationBudget = 2; // Avoid an A* stampede; waiting units retain their orders.
     for (const u of this.units) {
       if (!u.alive) continue;
@@ -1564,6 +1564,19 @@ export class Game {
     if (entity ? this.distanceTo(u,entity)<=range : range && dist(u.x,u.y,tx,ty)<=range) return 'arrived';
     if (!range && walkable(tx, ty) && dist(u.x,u.y,tx,ty)<.08) return 'arrived';
     if (!range && nav.status === 'ready' && nav.goal && dist(u.x,u.y,nav.goal.x,nav.goal.y)<.08) return 'arrived';
+    if (nav.status==='ready' && nav.points.length && this.navigationStats) this.navigationStats.routeReuses++;
+    if ((!nav.points.length || nav.status !== 'ready') && this.time >= nav.retryAt) {
+      // Sweep the complete segment first. A legal straight route does not need A*.
+      // Dynamic collision avoidance still executes for every movement step below.
+      if(!entity && !(u._avoidCrowdUntil>this.time)) {
+        const distance=dist(u.x,u.y,tx,ty),stop=range?Math.max(0,distance-range*.98):distance;
+        const goal=distance?{x:u.x+(tx-u.x)/distance*stop,y:u.y+(ty-u.y)/distance*stop}:{x:tx,y:ty};
+        if(walkable(goal.x,goal.y) && segmentClear(walkable,u,goal)) {
+          nav.status='ready';nav.points=[goal];nav.goal=goal;nav.stalled=0;
+          if(this.navigationStats){this.navigationStats.directRoutes++;this.navigationStats.totalDirectRoutes++;}
+        }
+      }
+    }
     if ((!nav.points.length || nav.status !== 'ready') && this.time >= nav.retryAt) {
       this.navigationRequested?.add(u.id);
       this.navigationQueue ||= []; this.navigationQueued ||= new Set();
