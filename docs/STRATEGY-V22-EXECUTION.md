@@ -6,7 +6,7 @@ Branch `codex/riftwatch-v22-boss`, based on preserved integration d778cf2d8157ed
 
 Recovered Issue8 §§5.1/5.4 specifies M-family infantry, four per extension,30s interval,max3. Runtime called nonexistent unit ID `M`, so no reinforcements appeared. Use registered `militia` (family M), ordinary spawn/terrain/combat/event rules. Reset per-wave extension flags so wave5 cannot consume wave10's rounds. Tests require4/8/12 at150/180/210, no duplicate/4th round, legal hostile movement targets, fresh wave reset and consumed-round Save/Load.
 
-48 Node tests and existing statistics/locales validation pass; exact transcripts accompany this source checkpoint. Browser acceptance and performance impact are PENDING, not a release claim. Synthetic clock-jump fixtures must never be labelled natural campaign play.
+48 Node tests and existing statistics/locales validation pass; exact transcripts accompany this source checkpoint. Browser source8375b6211900eae75c78fad4a08b73e28ed46888 passes7 explicit checks: four registered M enemies, native approach/attack, real Pause/Save/Reload/Continue without duplication, second/third rounds and cap, zero Console/Page/HTTP/request failures. HAR resource comparison verifies actual source. Screenshots and raw HAR/trace retained in evidence/strategy-v22. This is LOCAL_VERIFIED for the bounded Boss regression only. Performance impact is PENDING, not a release claim. Synthetic clock-jump fixtures must never be labelled natural campaign play.
 
 ## Recovered specifications and unresolved rules
 
