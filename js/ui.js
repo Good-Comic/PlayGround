@@ -681,7 +681,7 @@ export class UI {
       if (def.attack) stats += `<span><b>${Math.round(def.attack * (e.team === 'player' && e.type === 'tower' ? game.effects.towerDamageMul : 1))}</b> ${t('selection.atk')}</span>`;
       if (e.queue?.length) stats += `<span><b>${t('selection.training')}</b> ${t(`unit.${e.queue[0].type}.name`)} (${Math.ceil(e.queue[0].remaining)}s)</span>`;
       el.selectionStats.innerHTML = stats;
-      el.panelHint.textContent = def.dropoff ? t('selection.hintDropoff') : def.pop ? t('selection.hintPop') : e.type === 'core' ? t('selection.hintTownCenter') : t('selection.hintBuilding');
+      el.panelHint.textContent = game.canSetRally(e) ? t('rally.hint') : def.dropoff ? t('selection.hintDropoff') : def.pop ? t('selection.hintPop') : e.type === 'core' ? t('selection.hintTownCenter') : t('selection.hintBuilding');
       this.drawPortrait(e);
     } else {
       const def = UNIT_TYPES[e.type];
@@ -736,7 +736,7 @@ export class UI {
 
   commandSignature(game) {
     const hero = game.hero;
-    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${e.stance}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
+    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${e.stance}:${e.rally?.x},${e.rally?.y}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
   }
 
   getCommands(game) {
@@ -747,6 +747,7 @@ export class UI {
       const b = sel[0];
       if (b.team !== 'player' || b.construction < 1) return [];
       const commands = [];
+      if(b.rally && game.canSetRally(b))commands.push({id:'rally:clear',label:t('rally.clear'),icon:'banner',tooltip:t('rally.hint')});
       if (b.type === 'core' && b.team === 'player' && game.ageLevel < 3) {
         const cost = game.ageCost();
         if (game.ageResearch) {
