@@ -1,3 +1,7 @@
+## Strategy v2.2.2 recovery status — current override
+
+Recovery/handoff framework implemented and normally pushed; actual source/test/evidence state is in [STRATEGY-V2.2-EXECUTION.md](STRATEGY-V2.2-EXECUTION.md), [Recovery Manifest](recovery/WORKTREE-RECOVERY.md) and handoff/ACTIVE-TASK.json. Historical records below remain unchanged. Recovered12/12 corrected-window baseline cases (source11f8a6a),9PASS/3FAIL; no missing sample rerun. Target/Population/Civ bounded local acceptance does not equal integration.500/1000 FAIL remains research, not a project-wide lock. Simulation integrity, physical hardware and online deployment remain independent blocked/pending gates.
+
 # Current v2 performance tiers
 
 500/1000 historical failures below are retained extension goals and no longer a blanket Phase B blocker. Current both-team total design bands are50–100 /101–200 /201–250, with no cap added and no final product-scale certification. Full details and raw metrics: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md), evidence/strategy-v2/performance-summary.json.

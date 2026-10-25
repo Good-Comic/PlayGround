@@ -1,3 +1,7 @@
+## Strategy v2.2.2 recovery status — current override
+
+Recovery/handoff framework implemented and normally pushed; actual source/test/evidence state is in [STRATEGY-V2.2-EXECUTION.md](STRATEGY-V2.2-EXECUTION.md), [Recovery Manifest](recovery/WORKTREE-RECOVERY.md) and handoff/ACTIVE-TASK.json. Historical records below remain unchanged. Recovered12/12 corrected-window baseline cases (source11f8a6a),9PASS/3FAIL; no missing sample rerun. Target/Population/Civ bounded local acceptance does not equal integration.500/1000 FAIL remains research, not a project-wide lock. Simulation integrity, physical hardware and online deployment remain independent blocked/pending gates.
+
 # Riftwatch strategy v2 — 2026-10-25
 
 User strategy v2 replaces the previous blanket Phase B embargo. Current product target is provisional:50–100 total active units regular,101–200 large,201–250 stress. Count both teams, villagers, heroes and summons.500/1000 remain extension targets; all historical FAILs remain unchanged. No hard spawn cap is introduced. Budget is not a one-side population setting.

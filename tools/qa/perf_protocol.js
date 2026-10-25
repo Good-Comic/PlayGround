@@ -68,11 +68,11 @@ export function install(detailed=false) {
 export async function run(warmup,seconds,mode,count) {
   const stats=auditStats;
   // The same observer and command policy runs during warmup and measurement.
-  let last=performance.now(),lastSample=0;const started=last;
+  let last=performance.now(),lastSample=0,measureStarted=null,measureEnded=null;const started=last;
   await new Promise(resolve=>{
     function frame(now){
       const observerStart=performance.now(),elapsed=(now-started)/1000,g=ageOfAsh.game;
-      if(!stats.enabled&&elapsed>=warmup){stats.enabled=true;stats.simStart=g.time;performance.mark('AUDIT_MEASURE_START');audit.attacks=0;audit.kills=0;last=now;}
+      if(!stats.enabled&&elapsed>=warmup){stats.enabled=true;measureStarted=now;stats.simStart=g.time;performance.mark('AUDIT_MEASURE_START');audit.attacks=0;audit.kills=0;last=now;}
       for(const u of g.units){
         const o=audit.origins.get(u.id);if(!o)continue;
         if(Math.hypot(u.x-o.x,u.y-o.y)>.15){audit.moved.add(u.id);if(!audit.firstMoves.has(u.id))audit.firstMoves.set(u.id,(now-audit.started)/1000);}
@@ -87,10 +87,10 @@ export async function run(warmup,seconds,mode,count) {
         stats.observer.push(performance.now()-observerStart);
       }
       last=now;
-      if(elapsed<warmup+seconds)requestAnimationFrame(frame);else{performance.mark('AUDIT_MEASURE_END');stats.enabled=false;resolve();}
+      if(measureStarted===null||now-measureStarted<seconds*1000)requestAnimationFrame(frame);else{measureEnded=now;performance.mark('AUDIT_MEASURE_END');stats.enabled=false;resolve();}
     }
     requestAnimationFrame(frame);
   });
-  return {raw:stats,units:gCount(),mode,seed:ageOfAsh.game.seed,composition:audit.composition,moved_fraction:audit.moved.size/count,moved_fraction_15s:[...audit.firstMoves.values()].filter(t=>t<=15).length/count,first_move_latency_seconds:[...audit.origins.keys()].map(id=>audit.firstMoves.get(id)??null),attacks:audit.attacks,kills:audit.kills,sim_time:ageOfAsh.game.time,measured_sim_seconds:ageOfAsh.game.time-stats.simStart,phase:ageOfAsh.game.phase,navigation:ageOfAsh.game.navigationStats,renderer_caches:{infantry:ageOfAsh.renderer.infantrySpriteStats,sparks:ageOfAsh.renderer.sparkSpriteStats,shadow:!!ageOfAsh.renderer.shadowSprite},elapsed_wall_seconds:(performance.now()-started)/1000};
+  return {raw:stats,units:gCount(),mode,seed:ageOfAsh.game.seed,composition:audit.composition,moved_fraction:audit.moved.size/count,moved_fraction_15s:[...audit.firstMoves.values()].filter(t=>t<=15).length/count,first_move_latency_seconds:[...audit.origins.keys()].map(id=>audit.firstMoves.get(id)??null),attacks:audit.attacks,kills:audit.kills,sim_time:ageOfAsh.game.time,measured_sim_seconds:ageOfAsh.game.time-stats.simStart,measured_wall_seconds:(measureEnded-measureStarted)/1000,actual_warmup_seconds:(measureStarted-started)/1000,phase:ageOfAsh.game.phase,navigation:ageOfAsh.game.navigationStats,renderer_caches:{infantry:ageOfAsh.renderer.infantrySpriteStats,sparks:ageOfAsh.renderer.sparkSpriteStats,shadow:!!ageOfAsh.renderer.shadowSprite},elapsed_wall_seconds:(performance.now()-started)/1000};
 }
 function gCount(){return ageOfAsh.game.units.length;}

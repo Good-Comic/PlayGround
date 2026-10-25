@@ -1,3 +1,7 @@
+## Strategy v2.2.2 recovery status — current override
+
+Recovery/handoff framework implemented and normally pushed; actual source/test/evidence state is in [STRATEGY-V2.2-EXECUTION.md](STRATEGY-V2.2-EXECUTION.md), [Recovery Manifest](recovery/WORKTREE-RECOVERY.md) and handoff/ACTIVE-TASK.json. Historical records below remain unchanged. Recovered12/12 corrected-window baseline cases (source11f8a6a),9PASS/3FAIL; no missing sample rerun. Target/Population/Civ bounded local acceptance does not equal integration.500/1000 FAIL remains research, not a project-wide lock. Simulation integrity, physical hardware and online deployment remain independent blocked/pending gates.
+
 # Continuous acceptance v2
 
 Statuses: IMPLEMENTED (code), LOCAL_VERIFIED (actual local browser/tests), INTEGRATED_VERIFIED (combined integration build passed), DEPLOYED_VERIFIED (authorized actual online build verified), BLOCKED, NOT_TESTED. Never promote a local result to deployed.
