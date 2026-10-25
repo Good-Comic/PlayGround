@@ -1,6 +1,6 @@
 # Strategy v2.2.2 execution and recovery
 
-Authoritative inputs: user Strategy v2.2.1/v2.2.2 and continuing v2.2 authorization; shared operational contract in handoff/SHARED-RULES.md. Existing v2.0 feature branches and all historical evidence retained. Seven worktrees now exist: six recovered plus a dedicated integration worktree; original PlayGround/work never changed.
+Authoritative inputs: user Strategy v2.2.1/v2.2.2 and continuing v2.2 authorization; shared operational contract in handoff/SHARED-RULES.md. Existing v2.0 feature branches and all historical evidence retained. Eight worktrees now exist: six recovered plus dedicated integration and prediction worktrees; original PlayGround/work never changed.
 
 | ID | Source/branch | Real completion | Remaining gate |
 |---|---|---|---|
@@ -8,8 +8,8 @@ Authoritative inputs: user Strategy v2.2.1/v2.2.2 and continuing v2.2 authorizat
 | QA-TOOLS |11f8a6a29c481da0613d2765bb06739e5ce6a8b8 normally pushed | full-window sampler,stuck evidence,Windows collector,clock evaluation | physical Windows HARDWARE_TEST_PENDING |
 | A3-BOSS |ee0784a40db8134abbd1ae92bfa7ee61a1cedc93 | prior48 tests and7 browser checks; registered M4,3 rounds,wave reset,SaveLoad | full feature integration gates; other Boss skill/stat discrepancies open |
 | A1-TARGET |game77c20609da28b38fa405531a0215a8261dc6b1ef |51 tests,5 actual browser checks, full135s normal P0 PASS | new three-repeat perf; no global congestion cure claim |
-| A4-POP |game86d7e81394eaab7a2aa579bd30dbbbc278224c3c |50 tests,7 browser checks, opening40/60/global queues/payment/SaveLoad | normal P0 ongoing; wave ceiling/monument SPEC_DECISION_REQUIRED |
-| B2-GDD |game da0823c6341b1ee85e32d1b6c0f776ef3008255c |47 tests,8 actual browser checks; R template+15%,four descriptions corrected | normal P0/perf; full16 unique roster not implemented |
+| A4-POP |game86d7e81394eaab7a2aa579bd30dbbbc278224c3c |50 tests,7 browser checks, opening40/60/global queues/payment/SaveLoad | normal P0 PASS; wave ceiling/monument SPEC_DECISION_REQUIRED |
+| B2-GDD |game da0823c6341b1ee85e32d1b6c0f776ef3008255c |47 tests,8 actual browser checks; R template+15%,four descriptions corrected | normal P0 PASS; perf pending; full16 unique roster not implemented |
 | B1-RALLY |latest preserved2a0da8a7320336ac342c1af0953a424d08ef1515 | prior scoped local acceptance retained | latest full3-repeat perf and quality gates |
 
 
@@ -34,3 +34,17 @@ Tooling-only integration can proceed with unchanged production resource hashes a
 ## Exact next slices
 
 Finish P0 play for Population then Civ; preserve raw states/HAR and bounded screenshots. Large full trace can remain LOCAL_ONLY with hash/size; do not imply remote recoverability. Then run a distinct three-repeat Target State combat/mixed performance cohort using fixed-window tooling, compare before/after without pooling historicalFAIL. Recheck latest Rally/civ combination, snapshot pre/post each actual gated merge. Continue independent Attack-Move/UI Scale and existing B–E task matrix after recovery; these new features are NOT_STARTED here. No blanket1000-unit lock.
+
+## Recovery continuation updates
+
+Tooling-only integration72e978417afd3c95f897cc7cb35395f00008c313 was actually verified and normally pushed:44 Node+8dev+fourlocales, real Start/Pause/Save/Reload/Continue and50/50captured resource hashes. Production resources are identical to prior d778cf2. This is INTEGRATED_VERIFIED for recovery infrastructure ONLY.
+
+Independent prediction branch0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc implements runnable conservative Level1/2 prototype with5 tests, refuses incompatible benchmark/backend transfer and never converts a benchmark ratio to certified FPS. Current real-device report remains INSUFFICIENT_DATA; no physical accuracy validation.
+
+All three resumed feature sources pass normal P0 local play: Target8retargets,Population8,Civ7. Their production-feature integration remains gated by performance and combined quality. Full traces504/456MiB local-only; bounded states/HAR/screenshots retained remotely. GDD Gothic flat infantry population−0.5 versus legacy multiplier is a known implementation/migration TODO, not a claim that GDD omitted the rule. Full natural ten-wave campaign and all16 complete unique rosters remain NOT_TESTED/incomplete.
+
+## Completed Target performance and current blockers
+
+New source294fa287:12cases complete,quality9/12PASS, persistent-stuck12/12PASS and movement100%12/12.100combat2/3,200combat3/3,250combat1/3,250mixed3/3.100r1 meanrAF97.57/P95333.3/max5016.6ms;No inferred GPU duration. Actual meanJS12.85ms is separate. Cgroup throttling increases10.665s over warmup+measurement, not proof of a code/environment root cause.250r1/r3 ratios0.823/0.854 fail oldprogress check; even a passing ratio is not clock correctness. Full sample bundle on target branch; summary copied here. All failures kept, no acceptance retry. Feature integration remains BLOCKED; unrelated tools/UI slices may continue.
+
+Recovery index publication uses a dedicated codex/riftwatch-recovery-index branch and immutable snapshot package. Default publisher is read-only/local; explicit owner-checked --publish uses a temporary Git index, ordinary commit-tree and normalFF push then exact remote verification. Fresh output folders only, preventing accidental unrelated-file publication. Snapshot describes application refs before its own index publication; no recursive commit loop. Nine dev tests now pass; real Gemini remains NOT_TESTED.

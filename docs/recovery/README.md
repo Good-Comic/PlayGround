@@ -1,0 +1,7 @@
+# Recovery snapshot policy
+
+Canonical checked-in WORKTREE-RECOVERY.md/worktree-recovery.json are bounded point-in-time snapshots. Their collector SHA precedes their publication commit; never create an infinite self-reference commit chain. Latest immutable final snapshots are published on the separate [recovery-index branch](https://github.com/Good-Comic/PlayGround/tree/codex/riftwatch-recovery-index/docs/recovery). Read its handoff package then verify current remote refs/ownership; actual Git prevails.
+
+Run worktree_recovery.py at all shared-rule lifecycle triggers. checkpoint.py handles commit/push snapshots with explicit confirmed owner. publish_recovery_index.py defaults local-only and requires a fresh outside-tree directory; --publish is explicit authorized normal branch publication, never force push. A final post-push working manifest may be copied to a diagnostics receipt and replaced with its committed bounded snapshot ONLY after preserving it and publishing a fresher immutable index; never reset source/user edits. Snapshot JSON is authoritative if a crash leaves Markdown with another ID. Check no writer remains before repairing stale local snapshot locks.
+
+GitHub index HEAD is publication receipt. It is not a game build, release, external-agent connection or proof a dirty file was pushed. Local-only large Playwright traces are explicitly listed with hash/size; bounded raw states/HAR/screenshots are remotely saved. No credentials belong in any package.
