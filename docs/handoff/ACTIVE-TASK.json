@@ -1,55 +1,55 @@
 {
-  "task_id": "DEV-RECOVERY-P0",
-  "name": "Worktree recovery and cross-agent manual handoff",
-  "requirement_source": "Strategy v2.2.1 P0 / v2.2.2 P9",
-  "priority": "P0",
+  "task_id": "MONITOR-V224",
+  "name": "GitHub progress feed and authorized observability research",
+  "requirement_source": "Strategyv2.2.4",
+  "priority": "P1",
   "agent": "Codex",
-  "environment": "managed Linux cloud; no external agent connected",
-  "branch": "codex/riftwatch-v222-recovery",
-  "base_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
-  "latest_pushed_commit": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
+  "environment": "Managed cloud; publicGitHub snapshot HTTPreader; no Cloud-task private API",
+  "branch": "codex/riftwatch-v224-monitor",
+  "base_commit": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
+  "latest_pushed_commit": "50aaac118b4175dd50e1d85c814e1f3cb3c68b28",
   "completed": [
-    "Recovery/handoff framework pushed and tooling-only integrated at72e978417afd3c95f897cc7cb35395f00008c313",
-    "All interrupted code restored, tested, committed and normally pushed",
-    "Three resumed gameplay sources pass native browser and normal P0 regression",
-    "Recovered complete12-case baseline cohort without rerun",
-    "Independent conservative Level1/2 research prototype pushed; no hardware FPS claim",
-    "Target new3x4 cohort complete:9PASS/3FAIL, allstate/movement gates pass; failures retained"
+    "Independent monitor source/data branches",
+    "7event/schema/privacy/idempotence/workstream tests pass",
+    "Four pinned GitHub snapshot files independently fetched and byte-compared",
+    "Repeated publication NO_CHANGE_NO_COMMIT verified",
+    "OfficialCLI/SDK sources researched; no authorized current Cloud task stream confirmed"
   ],
   "uncommitted": [
-    "Final recovery/handoff metadata and index publisher only; all resumed gameplay source is remotely saved"
+    "Final handoff metadata only"
   ],
   "unpushed": [],
   "tests": [
     {
-      "name": "recovery/CAS tests",
-      "result": "PASS6",
-      "path": "docs/evidence/strategy-v222/recovery-tests.log.txt"
+      "name": "Monitor tests",
+      "result": "PASS7",
+      "path": "docs/evidence/monitor-v224/unit.log.txt"
+    },
+    {
+      "name": "IndependentHTTP reader and dedup",
+      "result": "PASS",
+      "path": "docs/evidence/monitor-v224/external-reader.json"
     }
   ],
   "evidence": [
-    "docs/recovery/worktree-recovery.json"
+    "docs/evidence/monitor-v224/external-reader.json",
+    "docs/evidence/monitor-v224/deduplication.json",
+    "docs/evidence/monitor-v224/execution-events-research.json"
   ],
-  "failures": [
-    "Real Gemini relay NOT_TESTED"
-  ],
+  "failures": [],
   "blockers": [
-    "SIMULATION_INTEGRITY_BLOCKED",
-    "HARDWARE_TEST_PENDING",
-    "DEPLOYMENT_BLOCKED",
-    "Actual Gemini relay NOT_TESTED; Gemini/Claude CLIs unavailable",
-    "New100-case severe cloud rAF stall retained; performance integration gate not waived"
+    "LIVE_CODEX_STREAM_VERIFIED is NOT_TESTED",
+    "No actual external AI Supervisor connection; public snapshot consumption ready"
   ],
   "next_steps": [
-    "Re-read latest recovery-index and shared ownership; no active heavy test remains",
-    "Diagnose100 severe rAF stall and clock loss separately without retrying acceptance to green",
-    "Keep unmerged game features isolated; run latest Rally/B2 integration gates next",
-    "Continue independent UI Scale/Attack-Move slices; physical Windows and actual Gemini remain pending"
+    "Publish final source-pinned Candidate approval event/response once Candidatebranch checkpoint is saved",
+    "Keep GitHub snapshot and live Cloud stream claims separate",
+    "Actual supervisor integration needs its own authorized reader/scheduler; no private API/cookie use"
   ],
   "permissions": [
-    "Independent codex/riftwatch-* commits/normal pushes",
-    "Gated Gameplay Integration only; no main/checkpoint/Preview/workflow writes"
+    "Normal monitor branch/feed snapshots only",
+    "No public game hosting/Pages/Issue/workflow changes"
   ],
   "status": "HANDOFF_READY",
-  "updated_at": "2026-10-25T18:24:01.472574+00:00"
+  "updated_at": "2026-10-25T20:17:40.803592+00:00"
 }
