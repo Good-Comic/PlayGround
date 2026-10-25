@@ -4,7 +4,7 @@ from pathlib import Path
 from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 p=argparse.ArgumentParser();p.add_argument('--commit',required=True);p.add_argument('--port',type=int,required=True);p.add_argument('--directory',type=Path,required=True);a=p.parse_args();assert re.fullmatch('[a-f0-9]{40}',a.commit),'Full SHA required';assert not a.directory.exists(),'Use a fresh snapshot directory; existing data is never overwritten'
 repo=Path(__file__).resolve().parents[2];resolved=subprocess.check_output(['git','-C',str(repo),'rev-parse',a.commit+'^{commit}'],text=True).strip();assert resolved==a.commit
-archive=subprocess.check_output(['git','-C',str(repo),'archive',a.commit,'--','index.html','styles.css','js']);a.directory.mkdir(parents=True)
+archive=subprocess.check_output(['git','-C',str(repo),'archive',a.commit,'--','index.html','styles.css','js','assets']);a.directory.mkdir(parents=True)
 with tarfile.open(fileobj=io.BytesIO(archive)) as t:t.extractall(a.directory,filter='data')
 def hashes():return {str(f.relative_to(a.directory)):hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted(a.directory.rglob('*')) if f.is_file()}
 expected=hashes();manifest={'commit':a.commit,'branch':'isolated-local-candidate','verification_level':'LOCAL_ONLY_NOT_OMGITHUB','files':expected}
