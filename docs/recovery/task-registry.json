@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "branches": {
+    "codex/riftwatch-v22-target-state": {
+      "task_id": "A1-TARGET",
+      "last_validation": [
+        {
+          "path": "docs/evidence/strategy-v22/boss-browser.json",
+          "source_commit": "8375b6211900eae75c78fad4a08b73e28ed46888",
+          "result": "REFER_TO_EVIDENCE; no automatic PASS inferred"
+        }
+      ],
+      "blockers": [
+        "Feature-specific remaining gates; see handoff"
+      ],
+      "next_steps": [
+        "Run new target-state tests; source changed since Boss browser"
+      ]
+    },
+    "codex/riftwatch-v22-population": {
+      "task_id": "A4-POP",
+      "last_validation": [
+        {
+          "path": "docs/evidence/strategy-v22/population-browser.json",
+          "source_commit": "fe1919643945f62c251ff68f75cde241ea3221fa",
+          "result": "REFER_TO_EVIDENCE; no automatic PASS inferred"
+        }
+      ],
+      "blockers": [
+        "Feature-specific remaining gates; see handoff"
+      ],
+      "next_steps": [
+        "Run updated population tests and browser for core20"
+      ]
+    },
+    "codex/riftwatch-v22-civ-alignment": {
+      "task_id": "B2-GDD",
+      "last_validation": [
+        {
+          "path": "docs/evidence/strategy-v2/v2-civ-feature/results.json",
+          "source_commit": "dc4698a3f8801ea5ada37a908951900fca6a8ef6",
+          "result": "REFER_TO_EVIDENCE; no automatic PASS inferred"
+        }
+      ],
+      "blockers": [
+        "Feature-specific remaining gates; see handoff"
+      ],
+      "next_steps": [
+        "Run amended R-template/cost tests and native browser training"
+      ]
+    },
+    "codex/riftwatch-b1-rally": {
+      "task_id": "B1-RALLY",
+      "last_validation": [
+        {
+          "path": "docs/evidence/strategy-v2/acceptance.json",
+          "source_commit": "2f148c3e3877fc04b6566c0fc6c680b699c73895",
+          "result": "REFER_TO_EVIDENCE; no automatic PASS inferred"
+        }
+      ],
+      "blockers": [
+        "Feature-specific remaining gates; see handoff"
+      ],
+      "next_steps": [
+        "Latest source2f148c3 needs full three-repeat performance"
+      ]
+    },
+    "codex/riftwatch-v222-recovery": {
+      "task_id": "DEV-RECOVERY-P0",
+      "last_validation": [
+        {
+          "path": "/workspace/diagnostics/riftwatch/v22-quality-baseline/results.json",
+          "source_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
+          "result": "REFER_TO_EVIDENCE; no automatic PASS inferred"
+        }
+      ],
+      "blockers": [
+        "Feature-specific remaining gates; see handoff"
+      ],
+      "next_steps": [
+        "Publish framework; preserve other worktrees; do not rerun valid12 baseline cases"
+      ]
+    }
+  }
+}

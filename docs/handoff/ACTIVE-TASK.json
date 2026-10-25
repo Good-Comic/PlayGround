@@ -1,0 +1,52 @@
+{
+  "task_id": "DEV-RECOVERY-P0",
+  "name": "Worktree recovery and cross-agent manual handoff",
+  "requirement_source": "Strategy v2.2.1 P0 / v2.2.2 P9",
+  "priority": "P0",
+  "agent": "Codex",
+  "environment": "managed Linux cloud; no external agent connected",
+  "branch": "codex/riftwatch-v222-recovery",
+  "base_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
+  "latest_pushed_commit": null,
+  "completed": [
+    "Recovered all six worktrees",
+    "Recovered complete12-case baseline cohort at11f8a6a",
+    "Implemented read-only collector, snapshots and handoff/ownership tooling"
+  ],
+  "uncommitted": [
+    "tools/dev",
+    "docs/recovery",
+    "docs/handoff",
+    "Agent entry points"
+  ],
+  "unpushed": [],
+  "tests": [
+    {
+      "name": "recovery/CAS tests",
+      "result": "PASS6",
+      "path": "docs/evidence/strategy-v222/recovery-tests.log.txt"
+    }
+  ],
+  "evidence": [
+    "docs/recovery/worktree-recovery.json"
+  ],
+  "failures": [
+    "Real Gemini relay NOT_TESTED"
+  ],
+  "blockers": [
+    "HARDWARE_TEST_PENDING",
+    "SIMULATION_INTEGRITY_BLOCKED",
+    "DEPLOYMENT_BLOCKED"
+  ],
+  "next_steps": [
+    "Validate/publish recovery framework",
+    "Preserve interrupted feature edits with focused tests",
+    "Complete actual browser quality gates before any integration"
+  ],
+  "permissions": [
+    "Independent codex/riftwatch-* commits/normal pushes",
+    "Gated Gameplay Integration only; no main/checkpoint/Preview/workflow writes"
+  ],
+  "status": "IN_PROGRESS",
+  "updated_at": "2026-10-25T18:24:01.472574+00:00"
+}
