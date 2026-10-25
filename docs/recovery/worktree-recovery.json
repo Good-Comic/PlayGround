@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-25T19:05:05.190236+00:00",
+  "captured_at_utc": "2026-10-25T19:05:33.268708+00:00",
   "trigger": "FINAL_CHECKPOINT",
   "collector_commit": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
-  "collector_dirty": true,
+  "collector_dirty": false,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-25T19:05:05.190236+00:00"
+    "queried_at": "2026-10-25T19:05:33.268708+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -24,6 +24,7 @@
     "codex/riftwatch-forge-integration": "3674a33d95c5165dc9ee5813a051f894a8c72378",
     "codex/riftwatch-gameplay-improvement": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
     "codex/riftwatch-gameplay-integration": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
+    "codex/riftwatch-recovery-index": "7e62a9dcf2bfa6f43e30ae81e7ecf60b4bd6712e",
     "codex/riftwatch-task-ownership": "f502d0ddb7504709f571f19a6d7a5bf671917143",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
@@ -179,17 +180,8 @@
       "remote_status": "REMOTE_SAVED",
       "remote_head": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
       "unpushed_commits": [],
-      "changed_files": [
-        {
-          "status": " M",
-          "path": "docs/recovery/WORKTREE-RECOVERY.md"
-        },
-        {
-          "status": " M",
-          "path": "docs/recovery/worktree-recovery.json"
-        }
-      ],
-      "dirty": true,
+      "changed_files": [],
+      "dirty": false,
       "local_record_status": "LOCAL_INVENTORIED"
     },
     {
@@ -401,7 +393,19 @@
       "local_record_status": "LOCAL_INVENTORIED"
     }
   ],
-  "comparison": [],
+  "comparison": [
+    {
+      "path": "/workspace/riftwatch",
+      "changed_fields": [
+        "head",
+        "dirty",
+        "remote_head",
+        "changed_files"
+      ],
+      "previous_head": "5bc0b120c2954cd467c675c6b0c46e33f9210d2d",
+      "actual_head": "317ef162b4f4b69c43644cb0e7c031387dc898c1"
+    }
+  ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "8ffc3a786dd63f71a39cbc1c35eeabb97966c521b62031e44b159aee5e20247b"
+  "snapshot_id": "6b6b1c1e80080c2b16eb6536a3333e56790ddfcabf6c6dc38e9c24507b5a7061"
 }

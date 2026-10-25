@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-25T19:05:07.573912+00:00",
+  "generated_at": "2026-10-25T19:05:35.283782+00:00",
   "framework_status": "HANDOFF_FRAMEWORK_READY",
   "cross_agent_status": "NOT_TESTED",
   "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
@@ -27,16 +27,7 @@
       "Independent conservative Level1/2 research prototype pushed; no hardware FPS claim",
       "Target new3x4 cohort complete:9PASS/3FAIL, allstate/movement gates pass; failures retained"
     ],
-    "uncommitted": [
-      {
-        "status": " M",
-        "path": "docs/recovery/WORKTREE-RECOVERY.md"
-      },
-      {
-        "status": " M",
-        "path": "docs/recovery/worktree-recovery.json"
-      }
-    ],
+    "uncommitted": [],
     "unpushed": [],
     "tests": [
       {
@@ -69,7 +60,7 @@
       "Gated Gameplay Integration only; no main/checkpoint/Preview/workflow writes"
     ],
     "status": "HANDOFF_READY",
-    "updated_at": "2026-10-25T19:05:07.031300+00:00"
+    "updated_at": "2026-10-25T19:05:34.603241+00:00"
   },
   "next_tasks": {
     "schema_version": 1,
@@ -111,7 +102,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T19:05:06.180973+00:00"
+        "updated_at": "2026-10-25T19:05:33.893860+00:00"
       },
       {
         "task_id": "B2-GDD",
@@ -143,7 +134,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T19:05:06.180973+00:00"
+        "updated_at": "2026-10-25T19:05:33.893860+00:00"
       },
       {
         "task_id": "A4-POP",
@@ -174,7 +165,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T19:05:06.180973+00:00"
+        "updated_at": "2026-10-25T19:05:33.893860+00:00"
       },
       {
         "task_id": "QA-TOOLS",
@@ -232,7 +223,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T19:05:06.180973+00:00"
+        "updated_at": "2026-10-25T19:05:33.893860+00:00"
       },
       {
         "task_id": "INTEGRATION",
@@ -263,7 +254,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T19:05:06.180973+00:00"
+        "updated_at": "2026-10-25T19:05:33.893860+00:00"
       },
       {
         "task_id": "PHASE-B-E",
@@ -363,14 +354,14 @@
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-25T19:05:06.180973+00:00",
+    "captured_at_utc": "2026-10-25T19:05:33.893860+00:00",
     "trigger": "RECOVERY_RESUME",
     "collector_commit": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
-    "collector_dirty": true,
+    "collector_dirty": false,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-25T19:05:06.180973+00:00"
+      "queried_at": "2026-10-25T19:05:33.893860+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -387,6 +378,7 @@
       "codex/riftwatch-forge-integration": "3674a33d95c5165dc9ee5813a051f894a8c72378",
       "codex/riftwatch-gameplay-improvement": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
       "codex/riftwatch-gameplay-integration": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
+      "codex/riftwatch-recovery-index": "7e62a9dcf2bfa6f43e30ae81e7ecf60b4bd6712e",
       "codex/riftwatch-task-ownership": "f502d0ddb7504709f571f19a6d7a5bf671917143",
       "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
       "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
@@ -542,17 +534,8 @@
         "remote_status": "REMOTE_SAVED",
         "remote_head": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
         "unpushed_commits": [],
-        "changed_files": [
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          }
-        ],
-        "dirty": true,
+        "changed_files": [],
+        "dirty": false,
         "local_record_status": "LOCAL_INVENTORIED"
       },
       {
@@ -764,7 +747,19 @@
         "local_record_status": "LOCAL_INVENTORIED"
       }
     ],
-    "comparison": [],
+    "comparison": [
+      {
+        "path": "/workspace/riftwatch",
+        "changed_fields": [
+          "head",
+          "dirty",
+          "remote_head",
+          "changed_files"
+        ],
+        "previous_head": "5bc0b120c2954cd467c675c6b0c46e33f9210d2d",
+        "actual_head": "317ef162b4f4b69c43644cb0e7c031387dc898c1"
+      }
+    ],
     "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."
   },
   "ownership": {
@@ -855,12 +850,6 @@
       "branch": "work",
       "dirty": false,
       "remote_status": "REMOTE_BRANCH_ABSENT",
-      "unpushed": []
-    },
-    {
-      "branch": "codex/riftwatch-v222-recovery",
-      "dirty": true,
-      "remote_status": "REMOTE_SAVED",
       "unpushed": []
     }
   ]

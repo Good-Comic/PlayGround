@@ -12,11 +12,5 @@ Read AGENTS.md, docs/handoff/SHARED-RULES.md, Strategy v2.2.1/v2.2.2, the recove
     "dirty": false,
     "remote_status": "REMOTE_BRANCH_ABSENT",
     "unpushed": []
-  },
-  {
-    "branch": "codex/riftwatch-v222-recovery",
-    "dirty": true,
-    "remote_status": "REMOTE_SAVED",
-    "unpushed": []
   }
 ]

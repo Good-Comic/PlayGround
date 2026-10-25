@@ -1,7 +1,7 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: 8ffc3a786dd63f71a39cbc1c35eeabb97966c521b62031e44b159aee5e20247b
-Captured UTC: 2026-10-25T19:05:05.190236+00:00 · Trigger: FINAL_CHECKPOINT
+Snapshot ID: 6b6b1c1e80080c2b16eb6536a3333e56790ddfcabf6c6dc38e9c24507b5a7061
+Captured UTC: 2026-10-25T19:05:33.268708+00:00 · Trigger: FINAL_CHECKPOINT
 Collector source: `317ef162b4f4b69c43644cb0e7c031387dc898c1` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
@@ -9,7 +9,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | Worktree | Branch | HEAD | Remote HEAD | Status | Dirty |
 |---|---|---|---|---|---|
 | /workspace/PlayGround | work | 8ef7358d61980eada812ae16b8e12c2f1e28baa8 | None | REMOTE_BRANCH_ABSENT | False |
-| /workspace/riftwatch | codex/riftwatch-v222-recovery | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | REMOTE_SAVED | True |
+| /workspace/riftwatch | codex/riftwatch-v222-recovery | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | REMOTE_SAVED | False |
 | /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | c456cae581b3ec85a7dd222d017453d2e589e095 | c456cae581b3ec85a7dd222d017453d2e589e095 | REMOTE_SAVED | False |
 | /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | REMOTE_SAVED | False |
 | /workspace/riftwatch-pop | codex/riftwatch-v22-population | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | REMOTE_SAVED | False |
@@ -28,7 +28,7 @@ Next: Inspect task registry and relevant diff before writing
 ## codex/riftwatch-v222-recovery
 
 Unpushed commits: []
-Uncommitted paths: [{"status": " M", "path": "docs/recovery/WORKTREE-RECOVERY.md"}, {"status": " M", "path": "docs/recovery/worktree-recovery.json"}]
+Uncommitted paths: []
 Validation: [{"path": "/workspace/diagnostics/riftwatch/v22-quality-baseline/results.json", "source_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8", "result": "REFER_TO_EVIDENCE; no automatic PASS inferred", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "b3bf19051816248b1dccd9bbd38e7bfe2221c6eb1f8e70d4092c4f816974d41d", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Feature-specific remaining gates; see handoff
 Next: Publish immutable final recovery index; handoff readiness confirmed; Preserve protected branches and no online deploy
