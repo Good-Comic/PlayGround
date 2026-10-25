@@ -1,3 +1,4 @@
+import { BUILD_INFO } from './build-info.js';
 import { Sound } from './audio.js';
 import { Game } from './game.js';
 import { Renderer } from './renderer.js';
@@ -324,7 +325,12 @@ requestAnimationFrame(frame);
 
 window.addEventListener('resize', () => { menuNeedsFrame = true; });
 
-window.ageOfAsh = { game, renderer, ui, startGame, restartRun, continueRun, saveCurrentRun, clearSavedRun, quitToMenu, togglePauseGame, resumeGame, seedFromString };
+document.documentElement.dataset.buildId = BUILD_INFO.id;
+const buildLabel = document.createElement('small');
+buildLabel.id = 'build-version'; buildLabel.textContent = BUILD_INFO.id;
+document.querySelector('.menu-screen').append(buildLabel);
+
+window.ageOfAsh = { build: BUILD_INFO, game, renderer, ui, startGame, restartRun, continueRun, saveCurrentRun, clearSavedRun, quitToMenu, togglePauseGame, resumeGame, seedFromString };
 
 window.addEventListener('error', e => {
   console.error(e.error || e.message);

@@ -467,4 +467,18 @@ export const STRINGS = {
   ja: { ...JA_UI, ...JA_CONTENT },
 };
 
+
+
+const STANCES = {
+  en: ['Aggressive', 'Defensive', 'Hold Position', 'Passive'],
+  'zh-Hant': ['積極進攻', '防禦', '堅守位置', '被動'],
+  'zh-Hans': ['积极进攻', '防御', '坚守位置', '被动'],
+  ja: ['積極攻撃', '防御', '位置を維持', '非攻撃'],
+};
+for (const [locale, labels] of Object.entries(STANCES)) {
+  ['aggressive', 'defensive', 'hold', 'passive'].forEach((key, i) => { STRINGS[locale][`stance.${key}`] = labels[i]; });
+}
+
+for (const [locale, label] of Object.entries({en:'Cycle stance: Aggressive / Defensive / Hold Position / Passive', 'zh-Hant':'切換姿態：積極進攻／防禦／堅守位置／被動', 'zh-Hans':'切换姿态：积极进攻／防御／坚守位置／被动', ja:'姿勢を切替：積極攻撃／防御／位置を維持／非攻撃'})) STRINGS[locale]['stance.cycle'] = label;
+
 export const EN_KEYS = Object.keys(STRINGS.en);

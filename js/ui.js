@@ -736,7 +736,7 @@ export class UI {
 
   commandSignature(game) {
     const hero = game.hero;
-    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
+    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${e.stance}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
   }
 
   getCommands(game) {
@@ -803,6 +803,8 @@ export class UI {
     if (playerSel.some(u => u.type !== 'villager')) {
       commands.push({ id: 'stop', label: t('command.stop'), icon: 'stop', tooltip: t('command.stopTooltip') });
       commands.push({ id: 'hold', label: t('command.hold'), icon: 'hold', tooltip: t('command.holdTooltip') });
+      const stance = playerSel.find(u => u.type !== 'villager')?.stance || 'defensive';
+      commands.push({ id: 'stance:next', label: t(`stance.${stance}`), icon: 'hold', tooltip: t('stance.cycle') });
     } else if (hasVillager) {
       commands.push({ id: 'stop', label: t('command.stop'), icon: 'stop', tooltip: t('command.stopTooltip') });
     }

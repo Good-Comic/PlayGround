@@ -1,3 +1,4 @@
+import { findPath, segmentClear, crossesRect } from './navigation.js';
 import {
   UNIT_TYPES, BUILDING_TYPES, TRAINABLE, GENERIC_UNITS, BUILD_OPTIONS, WAVES, BOONS,
   START_RESOURCES, CIVILIZATIONS, BIOMES, AGE_COSTS,
@@ -161,6 +162,7 @@ export class Game {
       'eventRegen', 'buildingDamageMul', 'convertResist', 'eventRetreat', 'eventRetreatCd',
       'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'moraleUsed',
       'lureUsed', 'feintUsed', 'spawnGate', 'eventModsApplied', 'scale',
+      'stance', 'guardOrigin', 'manualAttack',
     ];
     const buildingKeys = [
       'id', 'team', 'type', 'x', 'y', 'w', 'h', 'hp', 'maxHp', 'baseMaxHp', 'armor',
@@ -526,6 +528,7 @@ export class Game {
       buildTarget: null, carry: 0, carryType: null, cooldown: this.rng() * 0.4,
       attackAnim: 0, walkPhase: this.rng() * 6.28, facing: 1, selected: false,
       hitFlash: 0, alive: true, retargetTimer: this.rng() * 0.8, hold: false,
+      stance: 'defensive', guardOrigin: { x, y }, manualAttack: false,
       idleTimer: this.rng(), buildingHint: options.buildingHint || null,
       hero: !!(def.hero || options.hero), shield: 0, shieldTime: 0, marked: 0, slowUntil: 0,
       shots: 0, rescueUsed: false, expireIn: options.expireIn || 0,
@@ -534,6 +537,15 @@ export class Game {
       eventRegen: 0, buildingDamageMul: 1, convertResist: false, eventRetreat: 0,
       eventRetreatCd: 0, eventFireCd: 0, duel: false, chargeReady: true, chargeCd: 0,
     };
+    if (!this.isWalkable(u.x,u.y,u)) {
+      let spawn = null;
+      for (let r=.5;r<=5 && !spawn;r+=.5) for(let i=0;i<24;i++) {
+        const a=i*Math.PI/12, px=x+Math.cos(a)*r, py=y+Math.sin(a)*r;
+        if(this.isWalkable(px,py,u)) {spawn={x:px,y:py};break;}
+      }
+      if (!spawn) return null;
+      u.x=spawn.x;u.y=spawn.y;u.guardOrigin={...spawn};
+    }
     this.units.push(u);
     if (u.hero && team === 'player') this.hero = u;
     return u;
@@ -611,10 +623,19 @@ export class Game {
 
   orderGather(u, node) {
     if (!u || !node || !node.alive) return;
+    u._nav = null;
+    if (u.carry > 0 && u.carryType && u.carryType !== node.resource) {
+      u.gatherTarget = node; this.beginReturn(u); return;
+    }
     u.state = 'gather';
     u.gatherTarget = node;
     u.target = null;
     u.targetPos = { x: node.x, y: node.y };
+  }
+
+  findReachableResource(u, type) {
+    return this.world.resources.filter(n => n.alive && n.amount > 0 && n.resource === type && (u.unreachableResources?.[n.id] || 0) <= this.time)
+      .sort((a,b) => dist2(u.x,u.y,a.x,a.y)-dist2(u.x,u.y,b.x,b.y))[0] || null;
   }
 
   distanceTo(u, target) {
@@ -907,6 +928,7 @@ export class Game {
   }
 
   updateUnits(dt) {
+    this.navigationBudget = 2; // Avoid an A* stampede; waiting units retain their orders.
     for (const u of this.units) {
       if (!u.alive) continue;
       u.cooldown = Math.max(0, u.cooldown - dt);
@@ -1042,7 +1064,8 @@ export class Game {
     }
     if (!pickType) pickType = 'wood';
     for (const u of idle) {
-      const node = this.findResource(pickType, u.x, u.y) || this.findResource('wood', u.x, u.y) || this.findResource('food', u.x, u.y);
+      if(u.carry>0) {this.beginReturn(u);continue;}
+      const node = this.findReachableResource(u, pickType) || this.findReachableResource(u, 'wood') || this.findReachableResource(u, 'food');
       if (node) this.orderGather(u, node);
     }
   }
@@ -1163,7 +1186,7 @@ export class Game {
       if (u.cooldown <= 0) this.attackUnit(u, target);
     } else {
       u.state = 'move';
-      this.stepToward(u, target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), dt);
+      this.stepToward(u, target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), dt, Math.max(.35, range - .1), target.w ? target : null);
       this.tryAutoAttack(u, target);
     }
   }
@@ -1215,7 +1238,7 @@ export class Game {
     if (d <= range + 0.3) {
       this.attackUnit(u, preferred);
     } else if (u.typeDef.range < 2) {
-      const near = this.nearestEnemyAt(u.x, u.y, 1.2);
+      const near = u.team === 'enemy' ? this.nearestPlayerTarget(u.x, u.y, 1.2) : this.nearestEnemyAt(u.x, u.y, 1.2);
       if (near) this.attackUnit(u, near);
     }
   }
@@ -1224,7 +1247,12 @@ export class Game {
     if (u.state === 'gather') return this.updateGather(u, dt);
     if (u.state === 'return') return this.updateReturn(u, dt);
     if (u.state === 'build') return this.updateBuild(u, dt);
-    if (u.state === 'attack' && u.target?.alive) return this.updateAttack(u, dt);
+    if (u.state === 'attack') {
+      if (!u.target?.alive || u.target.team === u.team) {
+        u.target = null; u.manualAttack = false;
+        u.state = u.hold ? 'hold' : 'idle';
+      } else return this.updateAttack(u, dt);
+    }
     if (u.state === 'move') {
       const arrived = this.moveAlong(u, dt);
       if (arrived) {
@@ -1236,16 +1264,18 @@ export class Game {
     }
     if (u.state === 'hold') {
       if (u.type !== 'villager') {
-        const near = this.nearestEnemyAt(u.x, u.y, Math.max(1.4, this.unitRange(u)));
+        const near = u.stance === 'passive' ? null : this.nearestEnemyAt(u.x, u.y, this.unitRange(u));
         if (near) { u.target = near; u.state = 'attack'; }
       }
       return;
     }
     if (u.state === 'idle') {
-      if (u.type !== 'villager') {
+      if (u.type !== 'villager' && u.stance !== 'passive') {
         const sight = u.typeDef.sight + (u.typeDef.category === 'ranged' ? this.effects.archerSight : 0) + (u.typeDef.category === 'cavalry' ? this.effects.cavalrySight : 0);
-        const near = this.nearestEnemyAt(u.x, u.y, sight * 0.72);
+        const near = this.nearestEnemyAt(u.x, u.y, u.stance === 'hold' ? this.unitRange(u) : sight * 0.72);
         if (near) {
+          u.guardOrigin ||= { x: u.x, y: u.y };
+          u.manualAttack = false;
           u.target = near;
           u.state = 'attack';
           u.retargetTimer = 0.8;
@@ -1260,14 +1290,23 @@ export class Game {
     if (u.typeDef.noAttack) { u.state = u.hold ? 'hold' : 'idle'; return; }
     const target = u.target;
     if (!target || !target.alive) { u.state = u.hold ? 'hold' : 'idle'; u.target = null; return; }
+    if (!u.manualAttack && (u.stance === 'passive' || (u.stance === 'defensive' && u.guardOrigin && this.distanceTo({ x: u.guardOrigin.x, y: u.guardOrigin.y }, target) > 8))) {
+      u.target = null; u.state = u.hold ? 'hold' : 'idle';
+      if (u.stance === 'defensive' && u.guardOrigin) {
+        u.targetPos = { ...u.guardOrigin }; u.state = 'move';
+      }
+      return;
+    }
     const d = this.distanceTo(u, target);
     const range = this.unitRange(u) + (target.w ? -0.1 : (target.typeDef.radius || 0.2));
     if (d <= range) {
       if (u.cooldown <= 0) this.attackUnit(u, target);
+    } else if (!u.hold && (u.manualAttack || u.stance !== 'hold')) {
+      this.stepToward(u, target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), dt, Math.max(.35, range - .1), target.w ? target : null);
     } else {
-      this.stepToward(u, target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), dt);
+      u.target = null; u.state = 'hold';
     }
-    if (u.retargetTimer !== undefined) {
+    if (!u.manualAttack && u.retargetTimer !== undefined) {
       u.retargetTimer -= dt;
       if (u.retargetTimer <= 0) {
         u.retargetTimer = 0.7;
@@ -1279,7 +1318,9 @@ export class Game {
 
   updateGather(u, dt) {
     const node = u.gatherTarget;
-    if (!node || !node.alive) {
+    if (u.carry > 0 && u.carryType && node && u.carryType !== node.resource) {this.beginReturn(u);return;}
+    if (!node || !node.alive || node.amount <= 0) {
+      if (u.carry > 0) { this.beginReturn(u); return; }
       u.state = 'idle';
       u.gatherTarget = null;
       u.targetPos = null;
@@ -1288,7 +1329,13 @@ export class Game {
     const range = this.unitRange(u) + node.radius + 0.2;
     const d = dist(u.x, u.y, node.x, node.y);
     if (d > range) {
-      this.stepToward(u, node.x, node.y, dt);
+      const status = this.stepToward(u, node.x, node.y, dt, range * .95);
+      if (status === 'unreachable') {
+        u.unreachableResources ||= {}; u.unreachableResources[node.id] = this.time + 15;
+        const next = this.findReachableResource(u, node.resource);
+        if (next) this.orderGather(u, next);
+        else { u.gatherTarget = null; u.targetPos = null; if (u.carry > 0) this.beginReturn(u); else u.state = 'idle'; }
+      }
       return;
     }
     u.state = 'gather';
@@ -1323,16 +1370,12 @@ export class Game {
   }
 
   beginReturn(u) {
-    const drop = this.nearestDropoff(u.x, u.y);
-    if (!drop) { u.state = 'idle'; return; }
-    u.state = 'return';
-    u.dropTarget = drop;
-    const pos = this.findDropoffPosition(drop);
-    if (pos) {
-      u.targetPos = pos;
-    } else {
-      u.targetPos = { x: drop.x + drop.w / 2, y: drop.y + drop.h / 2 };
-    }
+    u._nav = null;
+    const candidates=this.buildings.filter(b=>b.alive && b.team==='player' && b.construction>=1 && b.typeDef.dropoff && (u.unreachableDropoffs?.[b.id]||0)<=this.time);
+    candidates.sort((a,b)=>this.distanceTo(u,a)-this.distanceTo(u,b));
+    u.dropTarget=candidates[0]||null;
+    u.state=u.dropTarget?'return':'idle';
+    u.targetPos=null;
   }
 
   nearestDropoff(x, y) {
@@ -1391,22 +1434,12 @@ export class Game {
 
   updateReturn(u, dt) {
     const drop = u.dropTarget;
-    if (!drop || !drop.alive) {
-      const other = this.nearestDropoff(u.x, u.y);
-      if (!other) { u.state = 'idle'; return; }
-      u.dropTarget = other;
-      const pos = this.findDropoffPosition(other);
-      if (pos) u.targetPos = pos;
-      return;
-    }
-    // Use distance to targetPos (building edge) instead of building center
-    if (!u.targetPos) {
-      const pos = this.findDropoffPosition(drop);
-      if (pos) u.targetPos = pos;
-    }
-    const d = u.targetPos ? dist(u.x, u.y, u.targetPos.x, u.targetPos.y) : Infinity;
-    if (d > 0.8) {
-      this.moveAlong(u, dt);
+    if (!drop?.alive || !drop.typeDef.dropoff || drop.construction<1) {this.beginReturn(u);return;}
+    if (this.distanceTo(u,drop) > .8) {
+      const status=this.stepToward(u,drop.x+drop.w/2,drop.y+drop.h/2,dt,.75,drop);
+      if(status==='unreachable') {
+        u.unreachableDropoffs ||= {};u.unreachableDropoffs[drop.id]=this.time+15;this.beginReturn(u);
+      }
       return;
     }
     if (u.carry > 0) {
@@ -1440,9 +1473,9 @@ export class Game {
       return;
     }
     const cx = b.x + b.w / 2, cy = b.y + b.h / 2;
-    const d = dist(u.x, u.y, cx, cy);
-    if (d > 1.6) {
-      this.stepToward(u, cx, cy, dt);
+    const d = this.distanceTo(u, b);
+    if (d > 1.2) {
+      this.stepToward(u, cx, cy, dt, 1.15, b);
       return;
     }
     u.state = 'build';
@@ -1478,66 +1511,81 @@ export class Game {
 
   moveAlong(u, dt) {
     if (!u.targetPos) return true;
-    const dx = u.targetPos.x - u.x, dy = u.targetPos.y - u.y;
-    const d = Math.hypot(dx, dy);
-    const speed = this.unitSpeed(u);
-    if (d < 0.08) return true;
-    const step = Math.min(d, speed * dt);
-    this.stepToward(u, u.targetPos.x, u.targetPos.y, dt);
-    return step >= d - 0.04;
+    const result = this.stepToward(u, u.targetPos.x, u.targetPos.y, dt);
+    return result === 'arrived' || result === 'unreachable';
   }
 
-  stepToward(u, tx, ty, dt) {
-    const dx = tx - u.x, dy = ty - u.y;
-    // Persian elephant turn rate -20%
-    if (u.civ?.id === 'PER' && u.typeDef.family === 'W') {
-      // Limit turning rate by reducing effective dt for turning
-      const turnMul = 0.8;
+  stepToward(u, tx, ty, dt, range = 0, entity = null) {
+    const walkable = (x, y) => this.isWalkable(x, y, u);
+    walkable.segment = (a,b) => this.segmentWalkable(a,b,u);
+    const target = { x: tx, y: ty };
+    let nav = u._nav;
+    if (!nav || Math.hypot(tx-nav.tx, ty-nav.ty) > .6 || nav.range !== range) {
+      nav = u._nav = { tx, ty, range, points: [], status: 'pending', retryAt: 0, stalled: 0 };
     }
-    const d = Math.hypot(dx, dy);
-    if (d < 0.001) return;
-    const speed = this.unitSpeed(u);
-    const nx = u.x + dx / d * speed * dt;
-    const ny = u.y + dy / d * speed * dt;
-    if (this.isWalkable(nx, ny, u)) {
-      u.x = nx; u.y = ny;
-    } else if (this.isWalkable(nx, u.y, u)) {
-      u.x = nx;
-    } else if (this.isWalkable(u.x, ny, u)) {
-      u.y = ny;
+    if (entity ? this.distanceTo(u,entity)<=range : range && dist(u.x,u.y,tx,ty)<=range) return 'arrived';
+    if (!range && walkable(tx, ty) && dist(u.x,u.y,tx,ty)<.08) return 'arrived';
+    if (!range && nav.status === 'ready' && nav.goal && dist(u.x,u.y,nav.goal.x,nav.goal.y)<.08) return 'arrived';
+    if ((!nav.points.length || nav.status !== 'ready') && this.time >= nav.retryAt) {
+      if ((this.navigationBudget ?? 2) <= 0) return 'pending';
+      this.navigationBudget = (this.navigationBudget ?? 2)-1;
+      const path = findPath(u, target, walkable, this.world.size, {range:entity?range+Math.hypot(entity.w,entity.h)/2:range, goalTest:entity?p=>this.distanceTo(p,entity)<=range:null});
+      Object.assign(nav, path);nav.stalled=0;
+      nav.retryAt=this.time+(path.status==='ready'?0:2);
+    }
+    if (nav.status !== 'ready') return nav.status;
+    while(nav.points.length && dist(u.x,u.y,nav.points[0].x,nav.points[0].y)<.07) nav.points.shift();
+    if (!nav.points.length) {
+      if (entity && this.distanceTo(u,entity)>range || !entity && range && dist(u.x,u.y,tx,ty)>range+.01) {nav.status='pending';nav.retryAt=this.time;return 'pending';}
+      return 'arrived';
+    }
+    // Skip only fully collision-checked segments, never snap a unit to a waypoint.
+    while(nav.points.length>1 && segmentClear(walkable,u,nav.points[1])) nav.points.shift();
+    const p=nav.points[0], d=dist(u.x,u.y,p.x,p.y), step=Math.min(d,this.unitSpeed(u)*dt);
+    const next={x:u.x+(p.x-u.x)/d*step,y:u.y+(p.y-u.y)/d*step};
+    if(segmentClear(walkable,u,next)) {
+      u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=p.x>=u.x?1:-1;nav.stalled=0;
     } else {
-      u.stuck = (u.stuck || 0) + dt;
-      if (u.stuck > 0.5) {
-        const side = Math.sin(u.id * 2.3 + this.time) > 0 ? 1 : -1;
-        const px = -dy / d * side, py = dx / d * side;
-        const sx = u.x + px * speed * dt, sy = u.y + py * speed * dt;
-        if (this.isWalkable(sx, sy, u)) { u.x = sx; u.y = sy; }
-        u.stuck = 0;
-      }
+      nav.stalled+=dt;
+      if(nav.stalled>.3) {nav.points=[];nav.status='pending';nav.retryAt=this.time;}
     }
-    u.walkPhase += speed * dt * 5.3;
-    // Persian elephant turn rate -20%
-    if (u.civ?.id === 'PER' && u.typeDef.family === 'W') {
-      const targetFacing = dx >= 0 ? 1 : -1;
-      if (u.facing !== targetFacing) {
-        // Limit turn rate: only change facing 80% of the time
-        if (this.rng() < 0.8) u.facing = targetFacing;
-      } else {
-        u.facing = dx >= 0 ? 1 : -1;
-      }
-    } else {
-      u.facing = dx >= 0 ? 1 : -1;
+    return 'moving';
+  }
+
+  segmentWalkable(a,b,u) {
+    if(!this.isWalkable(b.x,b.y,u))return false;
+    const r=u?.typeDef?.radius ?? .24;
+    for(const building of this.buildings) {
+      if(!building.alive || u?.team==='player' && building.team==='player' && building.type==='gate' && building.construction>=1)continue;
+      if(crossesRect(a,b,building.x-r-.02,building.y-r-.02,building.x+building.w+r+.02,building.y+building.h+r+.02))return false;
     }
+    for(let x=Math.max(0,Math.floor(Math.min(a.x,b.x)-r));x<=Math.min(this.world.size-1,Math.floor(Math.max(a.x,b.x)+r));x++)
+      for(let y=Math.max(0,Math.floor(Math.min(a.y,b.y)-r));y<=Math.min(this.world.size-1,Math.floor(Math.max(a.y,b.y)+r));y++) {
+        if(this.world.tile(x+.5,y+.5)?.terrain==='water' && crossesRect(a,b,x-r,y-r,x+1+r,y+1+r))return false;
+      }
+    const dx=b.x-a.x,dy=b.y-a.y,len=dx*dx+dy*dy;
+    for(const n of this.world.resources) {
+      if(!n.alive || !['oak','pine'].includes(n.kind))continue;
+      const t=len?clamp(((n.x-a.x)*dx+(n.y-a.y)*dy)/len,0,1):0;
+      if(dist2(n.x,n.y,a.x+dx*t,a.y+dy*t)<(r+.22)**2)return false;
+    }
+    return true;
   }
 
   isWalkable(x, y, u) {
-    if (x < 0.5 || y < 0.5 || x > this.world.size - 0.5 || y > this.world.size - 0.5) return false;
-    const tile = this.world.tile(x, y);
-    if (!tile || tile.terrain === 'water') return false;
+    const radius=u?.typeDef?.radius ?? .24;
+    if (x < radius || y < radius || x > this.world.size-radius || y > this.world.size-radius) return false;
+    for (const [dx,dy] of [[0,0],[radius,0],[-radius,0],[0,radius],[0,-radius],[radius,radius],[-radius,radius],[radius,-radius],[-radius,-radius]]) {
+      const tile=this.world.tile(x+dx,y+dy);
+      if(!tile || tile.terrain==='water')return false;
+    }
     for (const b of this.buildings) {
       if (!b.alive) continue;
-      if (u?.team === 'player' && b.type === 'gate' && b.construction >= 1 && b.team === 'player') continue;
-      if (x > b.x - 0.12 && x < b.x + b.w + 0.12 && y > b.y - 0.12 && y < b.y + b.h + 0.12) return false;
+      if (u?.team==='player' && b.type==='gate' && b.construction>=1 && b.team==='player') continue;
+      if (x>b.x-radius-.02 && x<b.x+b.w+radius+.02 && y>b.y-radius-.02 && y<b.y+b.h+radius+.02) return false;
+    }
+    for(const n of this.world.resources) {
+      if(n.alive && ['oak','pine'].includes(n.kind) && dist2(x,y,n.x,n.y)<(radius+.22)**2)return false;
     }
     return true;
   }
@@ -1773,6 +1821,11 @@ export class Game {
     if (this.waveEventActive && source?.team === 'enemy' && target.team === 'player' && target.alive && source.eventFlags?.includes('fire') && source.typeDef.category === 'ranged' && (source.eventFireCd || 0) <= 0) {
       source.eventFireCd = 3;
       this.zones.push({ x: target.x, y: target.y, r: 1.7, delay: .45, damage: 8, source, kind: 'fire', elapsed: 0, done: false });
+    }
+    if (target.team === 'player' && !target.w && target.type !== 'villager' && source?.team === 'enemy' && source.alive && !target.manualAttack && ['idle', 'hold'].includes(target.state) && target.stance !== 'passive') {
+      const canReach = !target.hold && target.stance !== 'hold' || this.distanceTo(target, source) <= this.unitRange(target);
+      const insideGuard = target.stance !== 'defensive' || !target.guardOrigin || this.distanceTo(target.guardOrigin, source) <= 8;
+      if (canReach && insideGuard) { target.target = source; target.state = 'attack'; }
     }
     target.combatAt = this.time;
     target.hp -= damage;
@@ -2586,15 +2639,27 @@ export class Game {
     if (id === 'hero:control') { this.toggleHeroControl(); this.hooks.selectionChanged?.(); return; }
     if (id === 'hero:aegis') { this.heroAegis(); return; }
     const units = this.selection.filter(e => e.team === 'player' && !e.w);
-    if (id === 'stop') {
+    if (id.startsWith('stance:')) {
+      const stances = ['aggressive', 'defensive', 'hold', 'passive'];
+      const current = units.find(u => u.type !== 'villager')?.stance || 'defensive';
+      const stance = id === 'stance:next' ? stances[(stances.indexOf(current)+1)%stances.length] : id.slice(7);
+      if (!['aggressive', 'defensive', 'hold', 'passive'].includes(stance)) return;
       for (const u of units) {
-        u.state = 'idle'; u.target = null; u.targetPos = null; u.gatherTarget = null; u.buildTarget = null; u.hold = false;
+        if (u.type === 'villager') continue;
+        u.stance = stance; u.hold = stance === 'hold';
+        u.guardOrigin = { x: u.x, y: u.y }; u.manualAttack = false;
+        u.target = null; u.targetPos = null; u.state = u.hold ? 'hold' : 'idle';
+      }
+      this.hooks.selectionChanged?.();
+    } else if (id === 'stop') {
+      for (const u of units) {
+        u.state = 'idle'; u.target = null; u.targetPos = null; u.gatherTarget = null; u.buildTarget = null; u.hold = false; u.manualAttack = false; u.guardOrigin = {x:u.x,y:u.y}; u._nav = null;
       }
       this.sound?.command();
     } else if (id === 'hold') {
       for (const u of units) {
         if (u.type === 'villager') continue;
-        u.state = 'hold'; u.hold = true; u.targetPos = null; u.target = null;
+        u.state = 'hold'; u.hold = true; u.stance = 'hold'; u.manualAttack = false; u.targetPos = null; u.target = null; u._nav = null;
       }
       this.sound?.command();
     } else if (id === 'demolish') {
@@ -2899,7 +2964,7 @@ export class Game {
       if (hit.team === 'enemy') {
         for (const u of units) {
           if (u.type === 'villager') continue;
-          u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1;
+          u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1; u.manualAttack = true;
           u.hold = false;
         }
         this.sound?.command();
@@ -2919,7 +2984,7 @@ export class Game {
           return;
         }
       }
-      if (hit.w && hit.team === 'player') {
+      if (hit.w && hit.team === 'player' && hit.typeDef.dropoff && hit.construction >= 1) {
         let handled = false;
         for (const u of units) {
           if (u.type === 'villager') {
@@ -2955,7 +3020,10 @@ export class Game {
       const col = i % cols, row = Math.floor(i / cols);
       const ox = (col - (cols - 1) / 2) * spacing;
       const oy = (row - (Math.ceil(count / cols) - 1) / 2) * spacing;
+      u._nav = null;
       u.state = 'move';
+      u.guardOrigin = { x: clamp(x + ox, 1, this.world.size - 1), y: clamp(y + oy, 1, this.world.size - 1) };
+      u.manualAttack = false;
       u.target = null;
       u.gatherTarget = null;
       u.buildTarget = null;
