@@ -1,3 +1,7 @@
+## Strategy v2.2 population slice
+
+A3-POP-01: finite derived HUD values, economy cap60 independent of housing, global per-category queued reservations, Franks military40, atomic zero-spend rejection, unchanged Save/Load schema. IMPLEMENTED with49 passing tests; bounded browser validation PENDING. Initial military40/core contribution and wave150/240 ceiling reconciliation: SPEC_DECISION_REQUIRED, not falsely complete. Original other requirements below remain tracked.
+
 > Strategy v2 supersedes the historical blanket Phase B block below.500/1000 FAILs remain unchanged; they are extension goals, not current development blockers. Current gate and statuses: GAMEPLAY-ROADMAP.md and GAMEPLAY-ACCEPTANCE.md.250 is a provisional stress target, not a supported-scale claim.
 
 > PERF_IN_PROGRESS: current p0.4 gameplay source59c8529; all final runs at8549065. Functional browser P0/stances/save/crowd regressions PASS; three-repeat performance PASS25/100/250, FAIL500/1000 movement and1000 combat. Original failures retained. AFTER_DEPLOY_LIVE=DEPLOYMENT_BLOCKED; Phase B NOT_STARTED. See PERFORMANCE-RECOVERY.md.

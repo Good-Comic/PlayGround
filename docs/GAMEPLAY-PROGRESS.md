@@ -1,3 +1,9 @@
+## Strategy v2.2 — A3-POP-01 candidate
+
+Independent branch `codex/riftwatch-v22-population`, integration base d778cf2. IMPLEMENTED: finite military/economic HUD getters; explicit economic60 from Issue8 §2.3; category-isolated global training reservations; Franks40 includes pending military slots; automatic training uses the same admission policy.49 tests pass (43 existing+6 population), four locales653 keys. Browser/performance/P0 gates pending; no integration or online/hardware certification.
+
+Deliberately preserve legacy core10/house10/monument15 capacity. Initial military30 conflicts with GDD40; wave5/10 ceiling150/240 transition and monument rules remain SPEC_DECISION_REQUIRED. No250 active-unit hard limit, roster reduction or boss deletion. Legacy saves derive reservations from existing queues; no save-schema migration. Existing over-cap saves are retained and new admissions stop until room is available. Already paid queues finish even after housing destruction, preserving current behavior.
+
 # Current progress — strategy v2
 
 **Independent development enabled. No1000-unit blanket embargo.** Tooling/strategy only is now INTEGRATED_VERIFIED; production game bytes remain the7faa21a baseline. B1/B2 gameplay is explicitly unmerged; see INTEGRATION-STATUS.json. Original branch remains7faa21a274847ca649a7a96b88700d4cdda5fe2e. New QA/budget/clock/candidate work and independent B1/B2 feature branches are preserved. Details: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md), [roadmap](GAMEPLAY-ROADMAP.md), [acceptance](GAMEPLAY-ACCEPTANCE.md).
