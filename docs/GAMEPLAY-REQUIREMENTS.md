@@ -1,3 +1,5 @@
+> PERF_IN_PROGRESS: p0.4 source `59c852911bef17ce1376efa4970937bb8da96308` recovered and checkpointed. Final repeated performance and P0 browser regressions pending; original thresholds and failures retained. No release/deployment approval. See GAMEPLAY-PROGRESS.md and evidence/performance-recovery/checkpoint.json.
+
 # Gameplay requirement matrix — Master Directive v1.0
 
 Current implementation commit: `c305aec96afd6c499f5b82046d991c5a0da02a3d`. Phase A is NOT COMPLETE: 100/1000-unit performance gates FAIL; Phase B remains BLOCKED. Current measured results are preserved in docs/evidence/phase-a-v3/acceptance.json.

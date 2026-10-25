@@ -1,5 +1,12 @@
 # Phase A preservation and current acceptance
 
+## Performance recovery checkpoint — PERF_IN_PROGRESS
+
+Workspace recovered intact on the same feature branch. Current gameplay source: `59c852911bef17ce1376efa4970937bb8da96308` (p0.4); six new commits preserve the profiler, direct-route/crowd/render caches and negative-delta fix. Working tree was clean at resume; prior test/profile processes finished, local server remains running. No untracked source was found. Raw baseline failures and candidate diagnostics are preserved in `docs/evidence/performance-recovery/` archives with hashes.
+
+39 Node tests and four locales (653 keys each) passed. The attempted unittest discovery selected zero tests and is not counted; the statistics suite must be invoked directly. Final three-repeat perf and browser P0 regression remain pending. Single candidate1952997 run: move1000 mean32.10/P9550.00ms, movement100%; combat1000 mean41.07/P9566.60ms FAIL. The later lighting/shadow source has pixel-identical terrain tests at DPR1/2 but no final load acceptance yet. **Phase A remains incomplete, Phase B blocked, AFTER_DEPLOY_LIVE=DEPLOYMENT_BLOCKED.** Earlier p0.3 results below are historical and unchanged.
+
+
 **Gameplay commit: c305aec96afd6c499f5b82046d991c5a0da02a3d · Build ID: riftwatch-gameplay-p0.3.**
 Branch: `codex/riftwatch-gameplay-improvement`, repository `Good-Comic/PlayGround`.
 Latest evidence: `docs/evidence/phase-a-v3/acceptance.json`. Subsequent evidence/tool/documentation commits do not change the game resources.
