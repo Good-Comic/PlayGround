@@ -34,7 +34,8 @@
   "preconditions": [
     "recheck has_pages=false; stop if another site exists",
     "source/artifact hashes must match acceptance",
-    "confirm Pages admin permission or user performs only UI setting"
+    "confirm Pages admin permission or user performs only UI setting",
+    "Check planned project URL is not already serving unrelated content; if conflict stop, do not overwrite another preview."
   ],
   "agent_network_prerequisite": "For post-deploy Agent verification, allow only exact good-comic.github.io in Codex UI if restricted policy blocks it; no policy change performed. This host is expected, not an observed new dependency.",
   "pages_package_file": "docs/playtest/artifacts/Riftwatch-Pages-Package-d6ee34a.zip",
