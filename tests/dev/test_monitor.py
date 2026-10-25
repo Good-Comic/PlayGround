@@ -20,4 +20,6 @@ class MonitorTests(unittest.TestCase):
    with self.assertRaises(ValueError):normalize(d)
  def test_history_is_bounded_and_failure_is_retained(self):
   prior=[{'event_id':str(i)} for i in range(220)];d=self.fixture();d['severity']='BLOCKED';d['blockers']=[{'id':'PERF','summary':'retained failure','severity':'BLOCKED'}];files=render(normalize(d),prior);self.assertEqual(len(files['docs/monitor/RECENT-EVENTS.jsonl'].splitlines()),200);self.assertIn('retained failure',files['docs/monitor/BLOCKERS.json'])
+ def test_separate_workstreams_keep_other_tasks_blockers(self):
+  first=self.fixture();first['blockers']=[{'id':'PERF','summary':'retained failure','severity':'BLOCKED'}];f=render(normalize(first));previous=[json.loads(x) for x in f['docs/monitor/RECENT-EVENTS.jsonl'].splitlines()];second=self.fixture();second['task_id']='MONITOR';f=render(normalize(second),previous);self.assertEqual(len(json.loads(f['docs/monitor/PROJECT-STATUS.json'])['workstreams']),2);self.assertIn('retained failure',f['docs/monitor/BLOCKERS.json'])
 if __name__=='__main__':unittest.main(verbosity=2)
