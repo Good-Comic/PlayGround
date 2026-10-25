@@ -1,3 +1,13 @@
+# Current progress — strategy v2
+
+**Independent development enabled. No1000-unit blanket embargo.** Original branch remains7faa21a274847ca649a7a96b88700d4cdda5fe2e. New QA/budget/clock/candidate work and independent B1/B2 feature branches are preserved. Details: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md), [roadmap](GAMEPLAY-ROADMAP.md), [acceptance](GAMEPLAY-ACCEPTANCE.md).
+
+B1 Rally/flags/resource work/save/clear and B2 scoped Chinese training/16-civ entries have actual local browser and original P0 PASS evidence. Both are BLOCKED for integration by current-scale clock/stuck/final-source/full-GDD gates, not by500/1000. Features are not merged or deployed. Fixed-step prototype4 tests expose the runtime slowdown and strict Save/Load determinism failure; runtime unchanged. Local exact-SHA Candidate/rollback/resources25/25 verified; AFTER_DEPLOY_LIVE remains DEPLOYMENT_BLOCKED. Full natural-ten-wave peaks x3 remain NOT_TESTED, product250 is still a provisional stress target, no hard cap or Boss deletion.
+
+Current43-test QA log and feature-specific47+focused7 /46 test logs,4 language checks, raw3x100/200/250 combat+250mixed, before/after and DOM latency, reviews and failures are retained under evidence/strategy-v2. Precise source/status/next steps are in acceptance.json. Remaining B3/D/C/E design matrix is established, implementation not falsely claimed.
+
+## Historical v1 record — superseded gate; all failures retained
+
 > Strategy v2 supersedes the historical blanket Phase B block below.500/1000 FAILs remain unchanged; they are extension goals, not current development blockers. Current gate and statuses: GAMEPLAY-ROADMAP.md and GAMEPLAY-ACCEPTANCE.md.250 is a provisional stress target, not a supported-scale claim.
 
 # Phase A preservation and current acceptance

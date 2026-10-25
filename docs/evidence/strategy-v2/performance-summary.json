@@ -1,0 +1,4483 @@
+[
+  {
+    "suite": "v2-tier-smoke",
+    "case": "r1-combat-100",
+    "source_commit": "e685ae03669fdb9e34d76f24a463d6bddb080078",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 100,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 50,
+        "enemy:guard": 50
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 1056,
+      "mean": 18.938636363636363,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 66.70000000000073,
+      "max": 433.39999999999964
+    },
+    "JS_ms": {
+      "n": 1056,
+      "mean": 2.367140151447419,
+      "p50": 1.699999999254942,
+      "p95": 5.400000002235174,
+      "p99": 11.699999999254942,
+      "max": 49.79999999701977
+    },
+    "update_ms": {
+      "n": 1056,
+      "mean": 0.6237689393579565,
+      "p50": 0.30000000074505806,
+      "p95": 1.5999999977648258,
+      "p99": 5.0,
+      "max": 27.899999998509884
+    },
+    "draw_ms": {
+      "n": 1056,
+      "mean": 1.457670454627298,
+      "p50": 1.1000000014901161,
+      "p95": 3.2000000029802322,
+      "p99": 5.900000002235174,
+      "max": 47.0
+    },
+    "UI_ms": {
+      "n": 1056,
+      "mean": 0.27784090899777686,
+      "p50": 0.10000000149011612,
+      "p95": 1.0,
+      "p99": 2.600000001490116,
+      "max": 9.199999999254942
+    },
+    "observer_ms": {
+      "n": 1056,
+      "mean": 0.04128787883515046,
+      "p50": 0.0,
+      "p95": 0.10000000149011612,
+      "p99": 0.5,
+      "max": 4.0
+    },
+    "observed_rAF_span_seconds": 19.9992,
+    "measured_sim_seconds": 18.748899999999708,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 988,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1617.5999999977648,
+        "responseMs": 10,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1312.300000000745,
+          "duration": 113.5,
+          "blocking": 62.1
+        },
+        {
+          "start": 1455.800000000745,
+          "duration": 122.09999999776483,
+          "blocking": 34.1
+        },
+        {
+          "start": 11027.89999999851,
+          "duration": 50.5,
+          "blocking": 0
+        },
+        {
+          "start": 11955.300000000745,
+          "duration": 53.099999997764826,
+          "blocking": 0
+        },
+        {
+          "start": 12260.5,
+          "duration": 219.59999999776483,
+          "blocking": 111.6
+        },
+        {
+          "start": 13119.099999997765,
+          "duration": 57.600000001490116,
+          "blocking": 3.1
+        },
+        {
+          "start": 14689.099999997765,
+          "duration": 205.10000000149012,
+          "blocking": 0
+        },
+        {
+          "start": 15066,
+          "duration": 52.30000000074506,
+          "blocking": 2.3
+        },
+        {
+          "start": 15594.5,
+          "duration": 128,
+          "blocking": 0
+        },
+        {
+          "start": 16593.800000000745,
+          "duration": 94.79999999701977,
+          "blocking": 0
+        },
+        {
+          "start": 17877.599999997765,
+          "duration": 68,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.9374449999999854,
+      "orderFailures": [
+        {
+          "id": 98,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 5927832,
+    "heap_after_bytes": 7828628,
+    "frames_over50": 19,
+    "frames_over100": 5,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "no_order_failures": false,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": false
+  },
+  {
+    "suite": "v2-tier-smoke",
+    "case": "r1-mixed-250",
+    "source_commit": "e685ae03669fdb9e34d76f24a463d6bddb080078",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 1079,
+      "mean": 18.534939759036146,
+      "p50": 16.700000000000728,
+      "p95": 33.30000000000291,
+      "p99": 50.0,
+      "max": 116.70000000000073
+    },
+    "JS_ms": {
+      "n": 1079,
+      "mean": 6.2431881371695646,
+      "p50": 5.400000002235174,
+      "p95": 10.699999999254942,
+      "p99": 17.899999998509884,
+      "max": 102.20000000298023
+    },
+    "update_ms": {
+      "n": 1079,
+      "mean": 1.8101019463238615,
+      "p50": 1.3999999985098839,
+      "p95": 4.199999999254942,
+      "p99": 7.199999999254942,
+      "max": 96.60000000149012
+    },
+    "draw_ms": {
+      "n": 1079,
+      "mean": 4.172196478131499,
+      "p50": 3.699999999254942,
+      "p95": 7.399999998509884,
+      "p99": 10.5,
+      "max": 30.599999997764826
+    },
+    "UI_ms": {
+      "n": 1079,
+      "mean": 0.25078776647596585,
+      "p50": 0.10000000149011612,
+      "p95": 1.0,
+      "p99": 1.800000000745058,
+      "max": 5.600000001490116
+    },
+    "observer_ms": {
+      "n": 1079,
+      "mean": 0.07405004636198972,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.5,
+      "max": 5.900000002235174
+    },
+    "observed_rAF_span_seconds": 19.999200000000002,
+    "measured_sim_seconds": 19.81569999999972,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2233,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 3592.300000000745,
+        "responseMs": 29.199999999254942,
+        "complete": true
+      },
+      "deposits": 64,
+      "gatheredDelta": 648.02624,
+      "longAnimationFrames": [
+        {
+          "start": 2859.5,
+          "duration": 269.80000000074506,
+          "blocking": 217.5
+        },
+        {
+          "start": 3152.300000000745,
+          "duration": 220.39999999850988,
+          "blocking": 139.4
+        },
+        {
+          "start": 3397.900000002235,
+          "duration": 237.29999999701977,
+          "blocking": 159.2
+        },
+        {
+          "start": 3668.300000000745,
+          "duration": 1385.3999999985099,
+          "blocking": 628.4
+        },
+        {
+          "start": 5264.5,
+          "duration": 201.90000000223517,
+          "blocking": 151.2
+        },
+        {
+          "start": 6197.300000000745,
+          "duration": 52.30000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 9089.5,
+          "duration": 158.10000000149012,
+          "blocking": 0
+        },
+        {
+          "start": 9578.900000002235,
+          "duration": 86.79999999701977,
+          "blocking": 35.6
+        },
+        {
+          "start": 24282.800000000745,
+          "duration": 104.30000000074506,
+          "blocking": 54.2
+        }
+      ],
+      "simulationWallRatio": 0.9907849999999859,
+      "orderFailures": [
+        {
+          "id": 64,
+          "error": "congested"
+        },
+        {
+          "id": 92,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 8546968,
+    "heap_after_bytes": 20280260,
+    "frames_over50": 5,
+    "frames_over100": 2,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "no_order_failures": false,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": false
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r1-combat-100",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 100,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 50,
+        "enemy:guard": 50
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 1177,
+      "mean": 16.991673746813934,
+      "p50": 16.69999999999891,
+      "p95": 16.799999999999272,
+      "p99": 16.80000000000291,
+      "max": 116.70000000000073
+    },
+    "JS_ms": {
+      "n": 1177,
+      "mean": 2.111894647395373,
+      "p50": 1.8999999985098839,
+      "p95": 4.0,
+      "p99": 6.400000002235174,
+      "max": 12.5
+    },
+    "update_ms": {
+      "n": 1177,
+      "mean": 0.4120645708892694,
+      "p50": 0.30000000074505806,
+      "p95": 1.0,
+      "p99": 2.0,
+      "max": 4.200000002980232
+    },
+    "draw_ms": {
+      "n": 1177,
+      "mean": 1.4173322005407882,
+      "p50": 1.199999999254942,
+      "p95": 2.699999999254942,
+      "p99": 4.5,
+      "max": 10.699999999254942
+    },
+    "UI_ms": {
+      "n": 1177,
+      "mean": 0.22854715373332254,
+      "p50": 0.10000000149011612,
+      "p95": 0.8999999985098839,
+      "p99": 1.699999999254942,
+      "max": 4.800000000745058
+    },
+    "observer_ms": {
+      "n": 1177,
+      "mean": 0.038657604087660044,
+      "p50": 0.0,
+      "p95": 0.10000000149011612,
+      "p99": 0.4000000022351742,
+      "max": 3.100000001490116
+    },
+    "observed_rAF_span_seconds": 19.999200000000002,
+    "measured_sim_seconds": 19.882499999999663,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 1054,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 2413.800000000745,
+        "responseMs": 7.599999997764826,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 2006.8999999985099,
+          "duration": 51.100000001490116,
+          "blocking": 0.4
+        },
+        {
+          "start": 2074.89999999851,
+          "duration": 209.70000000298023,
+          "blocking": 152.7
+        },
+        {
+          "start": 2304.5,
+          "duration": 83.80000000074506,
+          "blocking": 31.9
+        },
+        {
+          "start": 5307.60000000149,
+          "duration": 95.39999999850988,
+          "blocking": 37.9
+        },
+        {
+          "start": 18120.800000000745,
+          "duration": 99,
+          "blocking": 0
+        },
+        {
+          "start": 26606.39999999851,
+          "duration": 78.90000000223517,
+          "blocking": 19.4
+        }
+      ],
+      "simulationWallRatio": 0.9941249999999832,
+      "peakStuckFraction": 0.01,
+      "everStuck": [
+        57
+      ],
+      "orderFailures": [
+        {
+          "id": 32,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 9984004,
+    "heap_after_bytes": 7081540,
+    "frames_over50": 4,
+    "frames_over100": 1,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r1-combat-200",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 200,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 100,
+        "enemy:guard": 100
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 330,
+      "mean": 56.866363636363644,
+      "p50": 16.700000000000728,
+      "p95": 100.0,
+      "p99": 983.2999999999993,
+      "max": 3449.9000000000015
+    },
+    "JS_ms": {
+      "n": 330,
+      "mean": 10.449090909043496,
+      "p50": 3.400000002235174,
+      "p95": 17.399999998509884,
+      "p99": 251.19999999925494,
+      "max": 651.8000000007451
+    },
+    "update_ms": {
+      "n": 330,
+      "mean": 3.0515151513796863,
+      "p50": 0.6999999992549419,
+      "p95": 7.099999997764826,
+      "p99": 25.199999999254942,
+      "max": 345.69999999925494
+    },
+    "draw_ms": {
+      "n": 330,
+      "mean": 5.315151515049917,
+      "p50": 2.0,
+      "p95": 7.700000002980232,
+      "p99": 49.80000000074506,
+      "max": 585.6999999992549
+    },
+    "UI_ms": {
+      "n": 330,
+      "mean": 1.497272727356264,
+      "p50": 0.10000000149011612,
+      "p95": 2.800000000745058,
+      "p99": 31.900000002235174,
+      "max": 221.19999999925494
+    },
+    "observer_ms": {
+      "n": 330,
+      "mean": 0.1657575757891843,
+      "p50": 0.0,
+      "p95": 0.30000000074505806,
+      "p99": 3.300000000745058,
+      "max": 15.199999999254942
+    },
+    "observed_rAF_span_seconds": 18.765900000000002,
+    "measured_sim_seconds": 6.7164000000000055,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 673,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1652.300000000745,
+        "responseMs": 24.099999997764826,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1450,
+          "duration": 58.30000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 1522.0999999977648,
+          "duration": 87.90000000223517,
+          "blocking": 28.6
+        },
+        {
+          "start": 1623.8999999985099,
+          "duration": 60.69999999925494,
+          "blocking": 0
+        },
+        {
+          "start": 4591.89999999851,
+          "duration": 106.40000000223517,
+          "blocking": 47.9
+        },
+        {
+          "start": 5403.599999997765,
+          "duration": 4151.70000000298,
+          "blocking": 4098.6
+        },
+        {
+          "start": 11004.39999999851,
+          "duration": 468.30000000074506,
+          "blocking": 412.4
+        },
+        {
+          "start": 11943.800000000745,
+          "duration": 70.5,
+          "blocking": 0
+        },
+        {
+          "start": 12230.5,
+          "duration": 121.5,
+          "blocking": 65.7
+        },
+        {
+          "start": 12867.5,
+          "duration": 557.3000000007451,
+          "blocking": 339.8
+        },
+        {
+          "start": 14815.39999999851,
+          "duration": 761.1000000014901,
+          "blocking": 710.2
+        },
+        {
+          "start": 18588.89999999851,
+          "duration": 56,
+          "blocking": 0
+        },
+        {
+          "start": 19353.599999997765,
+          "duration": 584.2000000029802,
+          "blocking": 0
+        },
+        {
+          "start": 20711.39999999851,
+          "duration": 404.5,
+          "blocking": 0
+        },
+        {
+          "start": 21215.39999999851,
+          "duration": 221.90000000223517,
+          "blocking": 164.9
+        },
+        {
+          "start": 21538.39999999851,
+          "duration": 278.6000000014901,
+          "blocking": 228.1
+        },
+        {
+          "start": 22353.39999999851,
+          "duration": 390.30000000074506,
+          "blocking": 316.6
+        },
+        {
+          "start": 23366.89999999851,
+          "duration": 365.80000000074506,
+          "blocking": 314.7
+        },
+        {
+          "start": 25718,
+          "duration": 140.59999999776483,
+          "blocking": 90.3
+        },
+        {
+          "start": 27024.599999997765,
+          "duration": 74.40000000223517,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.3358200000000003,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 9434964,
+    "heap_after_bytes": 7367568,
+    "frames_over50": 23,
+    "frames_over100": 16,
+    "checks": {
+      "raf_mean_le_33_3": false,
+      "raf_p95_le_50": false,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": false
+    },
+    "pass": false
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r1-combat-250",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 125,
+        "enemy:guard": 125
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 1155,
+      "mean": 17.315324675324675,
+      "p50": 16.69999999999891,
+      "p95": 16.799999999999272,
+      "p99": 33.39999999999782,
+      "max": 133.29999999999927
+    },
+    "JS_ms": {
+      "n": 1155,
+      "mean": 4.264242424364343,
+      "p50": 4.099999997764826,
+      "p95": 7.300000000745058,
+      "p99": 10.100000001490116,
+      "max": 16.800000000745058
+    },
+    "update_ms": {
+      "n": 1155,
+      "mean": 0.5870129870549167,
+      "p50": 0.4000000022351742,
+      "p95": 1.300000000745058,
+      "p99": 2.600000001490116,
+      "max": 6.100000001490116
+    },
+    "draw_ms": {
+      "n": 1155,
+      "mean": 3.3022510822620483,
+      "p50": 3.2000000029802322,
+      "p95": 5.599999997764826,
+      "p99": 8.199999999254942,
+      "max": 13.699999999254942
+    },
+    "UI_ms": {
+      "n": 1155,
+      "mean": 0.26909090917863887,
+      "p50": 0.10000000149011612,
+      "p95": 1.1000000014901161,
+      "p99": 1.800000000745058,
+      "max": 7.100000001490116
+    },
+    "observer_ms": {
+      "n": 1155,
+      "mean": 0.06484848481494111,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.5,
+      "max": 2.100000001490116
+    },
+    "observed_rAF_span_seconds": 19.999200000000002,
+    "measured_sim_seconds": 19.865899999999634,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2684,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1352.5,
+        "responseMs": 24.799999997019768,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1243.8999999985099,
+          "duration": 71.19999999925494,
+          "blocking": 11.6
+        },
+        {
+          "start": 1322.0999999977648,
+          "duration": 63.69999999925494,
+          "blocking": 0
+        },
+        {
+          "start": 1533.8999999985099,
+          "duration": 82.30000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 5917.89999999851,
+          "duration": 62.5,
+          "blocking": 0
+        },
+        {
+          "start": 22535.599999997765,
+          "duration": 106.30000000074506,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.9932949999999817,
+      "peakStuckFraction": 0.004,
+      "everStuck": [
+        163
+      ],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 7648052,
+    "heap_after_bytes": 17346140,
+    "frames_over50": 2,
+    "frames_over100": 1,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r1-mixed-250",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 450,
+      "mean": 44.44266666666666,
+      "p50": 16.700000000000728,
+      "p95": 66.59999999999854,
+      "p99": 600.0,
+      "max": 3866.5
+    },
+    "JS_ms": {
+      "n": 450,
+      "mean": 14.609555555681387,
+      "p50": 6.0,
+      "p95": 19.199999999254942,
+      "p99": 198.39999999850988,
+      "max": 1072.300000000745
+    },
+    "update_ms": {
+      "n": 450,
+      "mean": 5.226888889041212,
+      "p50": 1.800000000745058,
+      "p95": 6.800000000745058,
+      "p99": 16.400000002235174,
+      "max": 1064.300000000745
+    },
+    "draw_ms": {
+      "n": 450,
+      "mean": 6.525111111203829,
+      "p50": 3.800000000745058,
+      "p95": 9.699999999254942,
+      "p99": 112.60000000149012,
+      "max": 353.5
+    },
+    "UI_ms": {
+      "n": 450,
+      "mean": 2.690666666676601,
+      "p50": 0.10000000149011612,
+      "p95": 1.6000000014901161,
+      "p99": 28.300000000745058,
+      "max": 523.7000000029802
+    },
+    "observer_ms": {
+      "n": 450,
+      "mean": 1.3091111110895872,
+      "p50": 0.0,
+      "p95": 0.20000000298023224,
+      "p99": 1.1000000014901161,
+      "max": 555.1999999992549
+    },
+    "observed_rAF_span_seconds": 19.9992,
+    "measured_sim_seconds": 9.332699999999901,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 1038,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1451.5999999977648,
+        "responseMs": 32.600000001490116,
+        "complete": true
+      },
+      "deposits": 41,
+      "gatheredDelta": 414.01584,
+      "longAnimationFrames": [
+        {
+          "start": 1255.199999999255,
+          "duration": 59.899999998509884,
+          "blocking": 4.9
+        },
+        {
+          "start": 1328.3999999985099,
+          "duration": 92.60000000149012,
+          "blocking": 41.6
+        },
+        {
+          "start": 1431.8999999985099,
+          "duration": 64,
+          "blocking": 6.9
+        },
+        {
+          "start": 16024.099999997765,
+          "duration": 446.5,
+          "blocking": 396.1
+        },
+        {
+          "start": 16715.699999999255,
+          "duration": 60.5,
+          "blocking": 0
+        },
+        {
+          "start": 20627.39999999851,
+          "duration": 1671.1000000014901,
+          "blocking": 1619.1
+        },
+        {
+          "start": 22702.099999997765,
+          "duration": 129.60000000149012,
+          "blocking": 79.1
+        },
+        {
+          "start": 22871.699999999255,
+          "duration": 248,
+          "blocking": 194.8
+        },
+        {
+          "start": 23896,
+          "duration": 182.59999999776483,
+          "blocking": 131.8
+        },
+        {
+          "start": 24153.5,
+          "duration": 414.5,
+          "blocking": 348.3
+        },
+        {
+          "start": 24705.199999999255,
+          "duration": 153.69999999925494,
+          "blocking": 103
+        },
+        {
+          "start": 25265.800000000745,
+          "duration": 559.8999999985099,
+          "blocking": 506.5
+        },
+        {
+          "start": 26040.699999999255,
+          "duration": 1079.6000000014901,
+          "blocking": 1027.3
+        },
+        {
+          "start": 27258.099999997765,
+          "duration": 754.3000000007451,
+          "blocking": 688.2
+        },
+        {
+          "start": 28194.199999999255,
+          "duration": 59.80000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 29115.89999999851,
+          "duration": 183.69999999925494,
+          "blocking": 111.9
+        }
+      ],
+      "simulationWallRatio": 0.4666349999999951,
+      "peakStuckFraction": 0.004,
+      "everStuck": [
+        215
+      ],
+      "orderFailures": [
+        {
+          "id": 120,
+          "error": "congested"
+        },
+        {
+          "id": 180,
+          "error": "congested"
+        },
+        {
+          "id": 182,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 8222620,
+    "heap_after_bytes": 16209800,
+    "frames_over50": 24,
+    "frames_over100": 15,
+    "checks": {
+      "raf_mean_le_33_3": false,
+      "raf_p95_le_50": false,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": false
+    },
+    "pass": false
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r2-combat-100",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 100,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 50,
+        "enemy:guard": 50
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 2,
+    "rAF_ms": {
+      "n": 1140,
+      "mean": 17.54324561403509,
+      "p50": 16.69999999999891,
+      "p95": 16.799999999999272,
+      "p99": 33.29999999999927,
+      "max": 499.8999999999978
+    },
+    "JS_ms": {
+      "n": 1140,
+      "mean": 2.206052631567837,
+      "p50": 1.699999999254942,
+      "p95": 4.099999997764826,
+      "p99": 10.599999997764826,
+      "max": 131.69999999925494
+    },
+    "update_ms": {
+      "n": 1140,
+      "mean": 0.42508771930608835,
+      "p50": 0.30000000074505806,
+      "p95": 1.199999999254942,
+      "p99": 2.699999999254942,
+      "max": 9.199999999254942
+    },
+    "draw_ms": {
+      "n": 1140,
+      "mean": 1.3831578947374956,
+      "p50": 1.1000000014901161,
+      "p95": 2.600000001490116,
+      "p99": 6.099999997764826,
+      "max": 22.699999999254942
+    },
+    "UI_ms": {
+      "n": 1140,
+      "mean": 0.22912280696460552,
+      "p50": 0.10000000149011612,
+      "p95": 0.8000000007450581,
+      "p99": 1.8999999985098839,
+      "max": 5.900000002235174
+    },
+    "observer_ms": {
+      "n": 1140,
+      "mean": 0.036578947328553914,
+      "p50": 0.0,
+      "p95": 0.10000000149011612,
+      "p99": 0.5,
+      "max": 1.699999999254942
+    },
+    "observed_rAF_span_seconds": 19.9993,
+    "measured_sim_seconds": 19.43249999999966,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 957,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1282.3999999985099,
+        "responseMs": 8.600000001490116,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1169.199999999255,
+          "duration": 59.19999999925494,
+          "blocking": 4.6
+        },
+        {
+          "start": 1245.7999999970198,
+          "duration": 92.80000000074506,
+          "blocking": 17
+        },
+        {
+          "start": 7893.5,
+          "duration": 80.5,
+          "blocking": 25.9
+        },
+        {
+          "start": 22087.099999997765,
+          "duration": 146.40000000223517,
+          "blocking": 86.6
+        },
+        {
+          "start": 22456.39999999851,
+          "duration": 65.5,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.971624999999983,
+      "peakStuckFraction": 0.04,
+      "everStuck": [
+        47,
+        59,
+        39,
+        49
+      ],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 5622744,
+    "heap_after_bytes": 9845328,
+    "frames_over50": 4,
+    "frames_over100": 2,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": false,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": false
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r2-combat-200",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 200,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 100,
+        "enemy:guard": 100
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 2,
+    "rAF_ms": {
+      "n": 215,
+      "mean": 94.25953488372093,
+      "p50": 16.700000000000728,
+      "p95": 500.0,
+      "p99": 683.2000000000007,
+      "max": 966.7000000000007
+    },
+    "JS_ms": {
+      "n": 215,
+      "mean": 28.802790697767986,
+      "p50": 6.199999999254942,
+      "p95": 172.30000000074506,
+      "p99": 447.6000000014901,
+      "max": 509.0
+    },
+    "update_ms": {
+      "n": 215,
+      "mean": 12.211162790864012,
+      "p50": 2.100000001490116,
+      "p95": 42.80000000074506,
+      "p99": 216.0,
+      "max": 466.0
+    },
+    "draw_ms": {
+      "n": 215,
+      "mean": 14.195348836897418,
+      "p50": 3.099999997764826,
+      "p95": 85.0,
+      "p99": 205.19999999925494,
+      "max": 485.0999999977648
+    },
+    "UI_ms": {
+      "n": 215,
+      "mean": 2.1962790701105153,
+      "p50": 0.20000000298023224,
+      "p95": 5.600000001490116,
+      "p99": 10.400000002235174,
+      "max": 164.0
+    },
+    "observer_ms": {
+      "n": 215,
+      "mean": 0.6116279069594173,
+      "p50": 0.09999999776482582,
+      "p95": 0.8999999985098839,
+      "p99": 6.5,
+      "max": 86.09999999776483
+    },
+    "observed_rAF_span_seconds": 20.2658,
+    "measured_sim_seconds": 6.433000000000005,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 654,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1552.199999999255,
+        "responseMs": 15.800000000745058,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1137.0999999977648,
+          "duration": 58.80000000074506,
+          "blocking": 1.7
+        },
+        {
+          "start": 1210.5999999977648,
+          "duration": 296.5,
+          "blocking": 222.9
+        },
+        {
+          "start": 1522.5,
+          "duration": 57.69999999925494,
+          "blocking": 0
+        },
+        {
+          "start": 1782.0999999977648,
+          "duration": 355.30000000074506,
+          "blocking": 305.3
+        },
+        {
+          "start": 2764.099999997765,
+          "duration": 162.19999999925494,
+          "blocking": 4.4
+        },
+        {
+          "start": 3808.39999999851,
+          "duration": 575.5,
+          "blocking": 523.7
+        },
+        {
+          "start": 4469.89999999851,
+          "duration": 119.69999999925494,
+          "blocking": 68.8
+        },
+        {
+          "start": 4770.39999999851,
+          "duration": 157.30000000074506,
+          "blocking": 72.5
+        },
+        {
+          "start": 4947.29999999702,
+          "duration": 221.10000000149012,
+          "blocking": 167.2
+        },
+        {
+          "start": 5437.699999999255,
+          "duration": 391.19999999925494,
+          "blocking": 0
+        },
+        {
+          "start": 5872.29999999702,
+          "duration": 142.20000000298023,
+          "blocking": 88.3
+        },
+        {
+          "start": 6358.29999999702,
+          "duration": 130.30000000074506,
+          "blocking": 79.1
+        },
+        {
+          "start": 6533.699999999255,
+          "duration": 175.89999999850988,
+          "blocking": 0
+        },
+        {
+          "start": 6933.39999999851,
+          "duration": 384.30000000074506,
+          "blocking": 302.1
+        },
+        {
+          "start": 7376,
+          "duration": 235.69999999925494,
+          "blocking": 185.6
+        },
+        {
+          "start": 8222.699999999255,
+          "duration": 547.8000000007451,
+          "blocking": 274.7
+        },
+        {
+          "start": 8876.599999997765,
+          "duration": 514.1000000014901,
+          "blocking": 440.6
+        },
+        {
+          "start": 9494.599999997765,
+          "duration": 115.40000000223517,
+          "blocking": 61.5
+        },
+        {
+          "start": 10084.099999997765,
+          "duration": 640.1000000014901,
+          "blocking": 408.1
+        },
+        {
+          "start": 11066,
+          "duration": 180.19999999925494,
+          "blocking": 128.8
+        },
+        {
+          "start": 11377.39999999851,
+          "duration": 190.80000000074506,
+          "blocking": 77.7
+        },
+        {
+          "start": 11625.699999999255,
+          "duration": 221.19999999925494,
+          "blocking": 170.9
+        },
+        {
+          "start": 11877.199999999255,
+          "duration": 200.19999999925494,
+          "blocking": 146.3
+        },
+        {
+          "start": 12372.099999997765,
+          "duration": 97.5,
+          "blocking": 47.4
+        },
+        {
+          "start": 12511.599999997765,
+          "duration": 202.40000000223517,
+          "blocking": 152.2
+        },
+        {
+          "start": 12947.699999999255,
+          "duration": 63.80000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 13396.699999999255,
+          "duration": 215.59999999776483,
+          "blocking": 6.7
+        },
+        {
+          "start": 13636.199999999255,
+          "duration": 113.69999999925494,
+          "blocking": 63.7
+        },
+        {
+          "start": 13825.39999999851,
+          "duration": 404.80000000074506,
+          "blocking": 354.7
+        },
+        {
+          "start": 14304.29999999702,
+          "duration": 184.80000000074506,
+          "blocking": 129.9
+        },
+        {
+          "start": 14987.199999999255,
+          "duration": 446.30000000074506,
+          "blocking": 201.5
+        },
+        {
+          "start": 15463,
+          "duration": 313.19999999925494,
+          "blocking": 80.1
+        },
+        {
+          "start": 15813.29999999702,
+          "duration": 181.10000000149012,
+          "blocking": 130.4
+        },
+        {
+          "start": 16074.29999999702,
+          "duration": 233.10000000149012,
+          "blocking": 181.3
+        },
+        {
+          "start": 16703.5,
+          "duration": 169,
+          "blocking": 118.7
+        },
+        {
+          "start": 17854.099999997765,
+          "duration": 196.40000000223517,
+          "blocking": 145.1
+        },
+        {
+          "start": 18246.099999997765,
+          "duration": 93.69999999925494,
+          "blocking": 32.8
+        },
+        {
+          "start": 18477,
+          "duration": 186.29999999701977,
+          "blocking": 114.8
+        },
+        {
+          "start": 18878.5,
+          "duration": 114.89999999850988,
+          "blocking": 0
+        },
+        {
+          "start": 19377.099999997765,
+          "duration": 76.80000000074506,
+          "blocking": 26.8
+        },
+        {
+          "start": 19654.099999997765,
+          "duration": 180.5,
+          "blocking": 124.5
+        },
+        {
+          "start": 20369,
+          "duration": 102.19999999925494,
+          "blocking": 45.2
+        },
+        {
+          "start": 20573,
+          "duration": 87.79999999701977,
+          "blocking": 33.7
+        },
+        {
+          "start": 21333.29999999702,
+          "duration": 78.20000000298023,
+          "blocking": 0
+        },
+        {
+          "start": 21725.699999999255,
+          "duration": 273.80000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 24797.79999999702,
+          "duration": 215,
+          "blocking": 162.1
+        },
+        {
+          "start": 25037.599999997765,
+          "duration": 487.19999999925494,
+          "blocking": 436.9
+        },
+        {
+          "start": 25632.79999999702,
+          "duration": 65.80000000074506,
+          "blocking": 6.4
+        },
+        {
+          "start": 26273.5,
+          "duration": 374.0999999977648,
+          "blocking": 0
+        },
+        {
+          "start": 26666.29999999702,
+          "duration": 195.90000000223517,
+          "blocking": 145.9
+        },
+        {
+          "start": 27772.599999997765,
+          "duration": 414.4000000022352,
+          "blocking": 0
+        },
+        {
+          "start": 28300.89999999851,
+          "duration": 252.10000000149012,
+          "blocking": 200.4
+        },
+        {
+          "start": 28842.699999999255,
+          "duration": 152.09999999776483,
+          "blocking": 100.2
+        },
+        {
+          "start": 29090.5,
+          "duration": 414.5,
+          "blocking": 364.5
+        }
+      ],
+      "simulationWallRatio": 0.32165000000000027,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 6282076,
+    "heap_after_bytes": 7945832,
+    "frames_over50": 57,
+    "frames_over100": 45,
+    "checks": {
+      "raf_mean_le_33_3": false,
+      "raf_p95_le_50": false,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": false
+    },
+    "pass": false
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r2-combat-250",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 125,
+        "enemy:guard": 125
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 2,
+    "rAF_ms": {
+      "n": 938,
+      "mean": 21.32110874200427,
+      "p50": 16.700000000000728,
+      "p95": 33.400000000001455,
+      "p99": 66.70000000000073,
+      "max": 216.59999999999854
+    },
+    "JS_ms": {
+      "n": 938,
+      "mean": 5.781982942529992,
+      "p50": 4.5,
+      "p95": 12.700000002980232,
+      "p99": 22.400000002235174,
+      "max": 52.400000002235174
+    },
+    "update_ms": {
+      "n": 938,
+      "mean": 1.1433901919254552,
+      "p50": 0.6999999992549419,
+      "p95": 3.199999999254942,
+      "p99": 7.900000002235174,
+      "max": 16.5
+    },
+    "draw_ms": {
+      "n": 938,
+      "mean": 4.028251599103434,
+      "p50": 3.100000001490116,
+      "p95": 8.599999997764826,
+      "p99": 16.5,
+      "max": 43.600000001490116
+    },
+    "UI_ms": {
+      "n": 938,
+      "mean": 0.4147121535816681,
+      "p50": 0.10000000149011612,
+      "p95": 1.8999999985098839,
+      "p99": 4.0,
+      "max": 11.0
+    },
+    "observer_ms": {
+      "n": 938,
+      "mean": 0.09605543710577336,
+      "p50": 0.0,
+      "p95": 0.3999999985098839,
+      "p99": 1.300000000745058,
+      "max": 2.800000000745058
+    },
+    "observed_rAF_span_seconds": 19.999200000000005,
+    "measured_sim_seconds": 19.349199999999726,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2631,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 5131.800000000745,
+        "responseMs": 15.099999997764826,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 4865.699999999255,
+          "duration": 100.90000000223517,
+          "blocking": 50
+        },
+        {
+          "start": 4986.199999999255,
+          "duration": 68.80000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 5076.199999999255,
+          "duration": 118.80000000074506,
+          "blocking": 39.4
+        },
+        {
+          "start": 5418.60000000149,
+          "duration": 209.29999999701977,
+          "blocking": 106.1
+        },
+        {
+          "start": 6679.300000000745,
+          "duration": 50.099999997764826,
+          "blocking": 0
+        },
+        {
+          "start": 6862.699999999255,
+          "duration": 116.69999999925494,
+          "blocking": 66.3
+        },
+        {
+          "start": 7137.199999999255,
+          "duration": 180.69999999925494,
+          "blocking": 130.6
+        },
+        {
+          "start": 26118.39999999851,
+          "duration": 55.400000002235174,
+          "blocking": 5.3
+        },
+        {
+          "start": 26266.60000000149,
+          "duration": 53.5,
+          "blocking": 3.3
+        },
+        {
+          "start": 26396.10000000149,
+          "duration": 52.599999997764826,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.9674599999999863,
+      "peakStuckFraction": 0.004,
+      "everStuck": [
+        179
+      ],
+      "orderFailures": [
+        {
+          "id": 160,
+          "error": "congested"
+        },
+        {
+          "id": 238,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 8303344,
+    "heap_after_bytes": 8883580,
+    "frames_over50": 22,
+    "frames_over100": 2,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r2-mixed-250",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 2,
+    "rAF_ms": {
+      "n": 1069,
+      "mean": 18.708231992516367,
+      "p50": 16.700000000000728,
+      "p95": 33.30000000000291,
+      "p99": 49.900000000001455,
+      "max": 83.29999999999927
+    },
+    "JS_ms": {
+      "n": 1069,
+      "mean": 7.600000000047394,
+      "p50": 7.199999999254942,
+      "p95": 11.300000000745058,
+      "p99": 18.800000000745058,
+      "max": 49.0
+    },
+    "update_ms": {
+      "n": 1069,
+      "mean": 1.813657623920433,
+      "p50": 1.4000000022351742,
+      "p95": 4.199999999254942,
+      "p99": 8.300000000745058,
+      "max": 16.800000000745058
+    },
+    "draw_ms": {
+      "n": 1069,
+      "mean": 5.391300280685593,
+      "p50": 5.300000000745058,
+      "p95": 8.100000001490116,
+      "p99": 13.800000000745058,
+      "max": 46.400000002235174
+    },
+    "UI_ms": {
+      "n": 1069,
+      "mean": 0.23760523857205576,
+      "p50": 0.10000000149011612,
+      "p95": 0.8000000007450581,
+      "p99": 1.3999999985098839,
+      "max": 3.300000000745058
+    },
+    "observer_ms": {
+      "n": 1069,
+      "mean": 0.08811973806529874,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.5,
+      "max": 9.599999997764826
+    },
+    "observed_rAF_span_seconds": 19.9991,
+    "measured_sim_seconds": 19.9322999999997,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2248,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 6572.10000000149,
+        "responseMs": 25.599999997764826,
+        "complete": true
+      },
+      "deposits": 73,
+      "gatheredDelta": 738.0262720000001,
+      "longAnimationFrames": [
+        {
+          "start": 6460.300000000745,
+          "duration": 83.19999999925494,
+          "blocking": 30.4
+        },
+        {
+          "start": 6552.900000002235,
+          "duration": 62.599999997764826,
+          "blocking": 0
+        },
+        {
+          "start": 6632.199999999255,
+          "duration": 111.90000000223517,
+          "blocking": 4
+        },
+        {
+          "start": 8270.900000002235,
+          "duration": 135.5,
+          "blocking": 0
+        },
+        {
+          "start": 8955.300000000745,
+          "duration": 59.600000001490116,
+          "blocking": 9.6
+        },
+        {
+          "start": 30337.300000000745,
+          "duration": 50.5,
+          "blocking": 0.6
+        }
+      ],
+      "simulationWallRatio": 0.9966149999999849,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [
+        {
+          "id": 188,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 8996320,
+    "heap_after_bytes": 27539044,
+    "frames_over50": 4,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r3-combat-100",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 100,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 50,
+        "enemy:guard": 50
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 3,
+    "rAF_ms": {
+      "n": 1200,
+      "mean": 16.666083333333333,
+      "p50": 16.69999999999891,
+      "p95": 16.700000000000728,
+      "p99": 16.80000000000109,
+      "max": 16.80000000000291
+    },
+    "JS_ms": {
+      "n": 1200,
+      "mean": 1.9034166667206833,
+      "p50": 1.6000000014901161,
+      "p95": 3.599999997764826,
+      "p99": 5.0,
+      "max": 8.199999999254942
+    },
+    "update_ms": {
+      "n": 1200,
+      "mean": 0.449250000026077,
+      "p50": 0.30000000074505806,
+      "p95": 1.0999999977648258,
+      "p99": 1.800000000745058,
+      "max": 4.400000002235174
+    },
+    "draw_ms": {
+      "n": 1200,
+      "mean": 1.2181666666548698,
+      "p50": 1.0,
+      "p95": 2.300000000745058,
+      "p99": 3.5,
+      "max": 6.0
+    },
+    "UI_ms": {
+      "n": 1200,
+      "mean": 0.1885833334053556,
+      "p50": 0.10000000149011612,
+      "p95": 0.8000000007450581,
+      "p99": 1.199999999254942,
+      "max": 3.7999999970197678
+    },
+    "observer_ms": {
+      "n": 1200,
+      "mean": 0.026916666633139054,
+      "p50": 0.0,
+      "p95": 0.10000000149011612,
+      "p99": 0.29999999701976776,
+      "max": 1.199999999254942
+    },
+    "observed_rAF_span_seconds": 19.999299999999998,
+    "measured_sim_seconds": 19.999299999999554,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 1027,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1215.1000000014901,
+        "responseMs": 7.399999998509884,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 977.6999999992549,
+          "duration": 75.80000000074506,
+          "blocking": 25.1
+        },
+        {
+          "start": 1067.6000000014901,
+          "duration": 51.099999997764826,
+          "blocking": 0
+        },
+        {
+          "start": 1133.1000000014901,
+          "duration": 60.099999997764826,
+          "blocking": 0
+        },
+        {
+          "start": 2695.5,
+          "duration": 52.69999999925494,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.9999649999999777,
+      "peakStuckFraction": 0.03,
+      "everStuck": [
+        99,
+        49,
+        109
+      ],
+      "orderFailures": [
+        {
+          "id": 50,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 8367124,
+    "heap_after_bytes": 7751220,
+    "frames_over50": 0,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": false,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": false
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r3-combat-200",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 200,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 100,
+        "enemy:guard": 100
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 3,
+    "rAF_ms": {
+      "n": 1075,
+      "mean": 18.6193488372093,
+      "p50": 16.69999999999891,
+      "p95": 33.29999999999927,
+      "p99": 50.099999999998545,
+      "max": 283.1999999999971
+    },
+    "JS_ms": {
+      "n": 1075,
+      "mean": 3.878046511595332,
+      "p50": 2.7999999970197678,
+      "p95": 8.300000000745058,
+      "p99": 21.099999997764826,
+      "max": 85.39999999850988
+    },
+    "update_ms": {
+      "n": 1075,
+      "mean": 0.6595348837590495,
+      "p50": 0.3999999985098839,
+      "p95": 1.699999999254942,
+      "p99": 4.300000000745058,
+      "max": 36.599999997764826
+    },
+    "draw_ms": {
+      "n": 1075,
+      "mean": 2.8392558139285375,
+      "p50": 2.0,
+      "p95": 6.199999999254942,
+      "p99": 14.699999999254942,
+      "max": 78.60000000149012
+    },
+    "UI_ms": {
+      "n": 1075,
+      "mean": 0.27711627909956976,
+      "p50": 0.10000000149011612,
+      "p95": 1.0,
+      "p99": 2.899999998509884,
+      "max": 15.799999997019768
+    },
+    "observer_ms": {
+      "n": 1075,
+      "mean": 0.06641860468096511,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.5999999977648258,
+      "max": 6.699999999254942
+    },
+    "observed_rAF_span_seconds": 20.0158,
+    "measured_sim_seconds": 19.315499999999673,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2036,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1396.5,
+        "responseMs": 13.400000002235174,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1073,
+          "duration": 95.40000000223517,
+          "blocking": 44.6
+        },
+        {
+          "start": 1184.4000000022352,
+          "duration": 84.69999999925494,
+          "blocking": 13.9
+        },
+        {
+          "start": 1285.7000000029802,
+          "duration": 66.59999999776483,
+          "blocking": 15.9
+        },
+        {
+          "start": 1361,
+          "duration": 63.100000001490116,
+          "blocking": 4.9
+        },
+        {
+          "start": 24204.900000002235,
+          "duration": 94.59999999776483,
+          "blocking": 44.7
+        },
+        {
+          "start": 24420.900000002235,
+          "duration": 139.59999999776483,
+          "blocking": 77
+        },
+        {
+          "start": 24696.800000000745,
+          "duration": 79.90000000223517,
+          "blocking": 29
+        },
+        {
+          "start": 25619.20000000298,
+          "duration": 69.29999999701977,
+          "blocking": 9.3
+        },
+        {
+          "start": 26048.5,
+          "duration": 84.70000000298023,
+          "blocking": 34.6
+        },
+        {
+          "start": 26807.900000002235,
+          "duration": 50.599999997764826,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.9657749999999836,
+      "peakStuckFraction": 0.015,
+      "everStuck": [
+        215,
+        217,
+        219
+      ],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 5905644,
+    "heap_after_bytes": 7660032,
+    "frames_over50": 11,
+    "frames_over100": 4,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r3-combat-250",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 125,
+        "enemy:guard": 125
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 3,
+    "rAF_ms": {
+      "n": 1191,
+      "mean": 16.791939546599497,
+      "p50": 16.69999999999891,
+      "p95": 16.799999999999272,
+      "p99": 16.80000000000291,
+      "max": 33.400000000001455
+    },
+    "JS_ms": {
+      "n": 1191,
+      "mean": 3.8432409740346354,
+      "p50": 3.400000002235174,
+      "p95": 6.5,
+      "p99": 9.700000002980232,
+      "max": 14.099999997764826
+    },
+    "update_ms": {
+      "n": 1191,
+      "mean": 0.4580184719255499,
+      "p50": 0.30000000074505806,
+      "p95": 1.0999999977648258,
+      "p99": 2.2000000029802322,
+      "max": 6.599999997764826
+    },
+    "draw_ms": {
+      "n": 1191,
+      "mean": 3.056926952197985,
+      "p50": 2.599999997764826,
+      "p95": 5.399999998509884,
+      "p99": 7.100000001490116,
+      "max": 13.200000002980232
+    },
+    "UI_ms": {
+      "n": 1191,
+      "mean": 0.22905121751185928,
+      "p50": 0.10000000149011612,
+      "p95": 0.9000000022351742,
+      "p99": 1.4000000022351742,
+      "max": 5.0
+    },
+    "observer_ms": {
+      "n": 1191,
+      "mean": 0.053484466837095075,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.3999999985098839,
+      "max": 0.7000000029802322
+    },
+    "observed_rAF_span_seconds": 19.999200000000002,
+    "measured_sim_seconds": 19.999199999999604,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2700,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1334.5999999977648,
+        "responseMs": 11.100000001490116,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1220.8999999985099,
+          "duration": 86.89999999850988,
+          "blocking": 24.6
+        }
+      ],
+      "simulationWallRatio": 0.9999599999999802,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 6606800,
+    "heap_after_bytes": 14221200,
+    "frames_over50": 0,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-baseline",
+    "case": "r3-mixed-250",
+    "source_commit": "12659c1c8964af8ad33ce584602ebad2390302da",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 3,
+    "rAF_ms": {
+      "n": 1077,
+      "mean": 18.569452181987,
+      "p50": 16.700000000000728,
+      "p95": 33.39999999999782,
+      "p99": 33.400000000001455,
+      "max": 50.0
+    },
+    "JS_ms": {
+      "n": 1077,
+      "mean": 7.9371402042164725,
+      "p50": 7.599999997764826,
+      "p95": 11.199999999254942,
+      "p99": 19.100000001490116,
+      "max": 28.800000000745058
+    },
+    "update_ms": {
+      "n": 1077,
+      "mean": 1.7913649025214913,
+      "p50": 1.300000000745058,
+      "p95": 4.399999998509884,
+      "p99": 6.199999999254942,
+      "max": 15.199999999254942
+    },
+    "draw_ms": {
+      "n": 1077,
+      "mean": 5.732683379811856,
+      "p50": 5.5,
+      "p95": 8.299999997019768,
+      "p99": 14.100000001490116,
+      "max": 23.0
+    },
+    "UI_ms": {
+      "n": 1077,
+      "mean": 0.24911792003510722,
+      "p50": 0.10000000149011612,
+      "p95": 0.8999999985098839,
+      "p99": 1.6000000014901161,
+      "max": 6.800000000745058
+    },
+    "observer_ms": {
+      "n": 1077,
+      "mean": 0.06833797582912024,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.4000000022351742,
+      "max": 6.400000002235174
+    },
+    "observed_rAF_span_seconds": 19.999299999999998,
+    "measured_sim_seconds": 19.999299999999696,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2246,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1270.699999999255,
+        "responseMs": 24.399999998509884,
+        "complete": true
+      },
+      "deposits": 76,
+      "gatheredDelta": 768.0209600000001,
+      "longAnimationFrames": [
+        {
+          "start": 1143.5,
+          "duration": 59,
+          "blocking": 7.2
+        },
+        {
+          "start": 1217.8999999985099,
+          "duration": 117.89999999850988,
+          "blocking": 36.7
+        }
+      ],
+      "simulationWallRatio": 0.9999649999999848,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 7215084,
+    "heap_after_bytes": 10954692,
+    "frames_over50": 0,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-rally-perf",
+    "case": "r1-combat-250",
+    "source_commit": "91569e206d08c8b0e8af2f071d838aa1b66eb0e8",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 125,
+        "enemy:guard": 125
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 1191,
+      "mean": 16.791939546599497,
+      "p50": 16.69999999999891,
+      "p95": 16.799999999999272,
+      "p99": 16.80000000000291,
+      "max": 100.0
+    },
+    "JS_ms": {
+      "n": 1191,
+      "mean": 3.320486985681865,
+      "p50": 2.800000000745058,
+      "p95": 6.0,
+      "p99": 9.400000002235174,
+      "max": 34.5
+    },
+    "update_ms": {
+      "n": 1191,
+      "mean": 0.4066330814791967,
+      "p50": 0.30000000074505806,
+      "p95": 1.0,
+      "p99": 1.699999999254942,
+      "max": 7.5
+    },
+    "draw_ms": {
+      "n": 1191,
+      "mean": 2.6241813602002604,
+      "p50": 2.100000001490116,
+      "p95": 4.799999997019768,
+      "p99": 7.300000000745058,
+      "max": 27.5
+    },
+    "UI_ms": {
+      "n": 1191,
+      "mean": 0.2069689336660577,
+      "p50": 0.10000000149011612,
+      "p95": 0.8000000007450581,
+      "p99": 1.300000000745058,
+      "max": 6.199999999254942
+    },
+    "observer_ms": {
+      "n": 1191,
+      "mean": 0.04693534844856018,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.3999999985098839,
+      "max": 0.9000000022351742
+    },
+    "observed_rAF_span_seconds": 19.999200000000002,
+    "measured_sim_seconds": 19.949199999999628,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2713,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1259.1000000014901,
+        "responseMs": 15.300000000745058,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1179.199999999255,
+          "duration": 53.70000000298023,
+          "blocking": 3.1
+        },
+        {
+          "start": 1239.199999999255,
+          "duration": 57.5,
+          "blocking": 3.8
+        },
+        {
+          "start": 1342.699999999255,
+          "duration": 53.100000001490116,
+          "blocking": 0
+        },
+        {
+          "start": 2202.800000000745,
+          "duration": 89,
+          "blocking": 39
+        },
+        {
+          "start": 2322.900000002235,
+          "duration": 75,
+          "blocking": 24.9
+        },
+        {
+          "start": 15989.699999999255,
+          "duration": 99.30000000074506,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.9974599999999814,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 6232884,
+    "heap_after_bytes": 13313924,
+    "frames_over50": 1,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-rally-perf",
+    "case": "r1-mixed-250",
+    "source_commit": "91569e206d08c8b0e8af2f071d838aa1b66eb0e8",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 1027,
+      "mean": 19.473417721518985,
+      "p50": 16.700000000000728,
+      "p95": 33.39999999999782,
+      "p99": 33.400000000001455,
+      "max": 133.3000000000011
+    },
+    "JS_ms": {
+      "n": 1027,
+      "mean": 8.27740993185337,
+      "p50": 7.700000002980232,
+      "p95": 12.5,
+      "p99": 19.299999997019768,
+      "max": 27.100000001490116
+    },
+    "update_ms": {
+      "n": 1027,
+      "mean": 1.9596884128507934,
+      "p50": 1.3999999985098839,
+      "p95": 5.099999997764826,
+      "p99": 8.699999999254942,
+      "max": 14.400000002235174
+    },
+    "draw_ms": {
+      "n": 1027,
+      "mean": 5.880817916207995,
+      "p50": 5.599999997764826,
+      "p95": 8.799999997019768,
+      "p99": 14.300000000745058,
+      "max": 23.699999999254942
+    },
+    "UI_ms": {
+      "n": 1027,
+      "mean": 0.28159688413505896,
+      "p50": 0.10000000149011612,
+      "p95": 1.0,
+      "p99": 1.699999999254942,
+      "max": 12.599999997764826
+    },
+    "observer_ms": {
+      "n": 1027,
+      "mean": 0.06738072055543409,
+      "p50": 0.0,
+      "p95": 0.20000000298023224,
+      "p99": 0.5,
+      "max": 1.5
+    },
+    "observed_rAF_span_seconds": 19.9992,
+    "measured_sim_seconds": 19.849099999999716,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2219,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1274.5,
+        "responseMs": 25.899999998509884,
+        "complete": true
+      },
+      "deposits": 78,
+      "gatheredDelta": 788.0263040000002,
+      "longAnimationFrames": [
+        {
+          "start": 1063,
+          "duration": 77.30000000074506,
+          "blocking": 26
+        },
+        {
+          "start": 1156.699999999255,
+          "duration": 52.80000000074506,
+          "blocking": 0.8
+        },
+        {
+          "start": 1224.300000000745,
+          "duration": 125.29999999701977,
+          "blocking": 36.3
+        },
+        {
+          "start": 1407.699999999255,
+          "duration": 51.399999998509884,
+          "blocking": 0
+        },
+        {
+          "start": 12791.599999997765,
+          "duration": 68.10000000149012,
+          "blocking": 18.1
+        }
+      ],
+      "simulationWallRatio": 0.9924549999999858,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [
+        {
+          "id": 152,
+          "error": "congested"
+        },
+        {
+          "id": 196,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 7571304,
+    "heap_after_bytes": 15742936,
+    "frames_over50": 4,
+    "frames_over100": 2,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-rally-perf",
+    "case": "r2-combat-250",
+    "source_commit": "91569e206d08c8b0e8af2f071d838aa1b66eb0e8",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 125,
+        "enemy:guard": 125
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 2,
+    "rAF_ms": {
+      "n": 1183,
+      "mean": 16.905494505494506,
+      "p50": 16.69999999999891,
+      "p95": 16.799999999999272,
+      "p99": 16.80000000000291,
+      "max": 116.70000000000073
+    },
+    "JS_ms": {
+      "n": 1183,
+      "mean": 4.199154691488835,
+      "p50": 4.0,
+      "p95": 6.599999997764826,
+      "p99": 9.299999997019768,
+      "max": 16.099999997764826
+    },
+    "update_ms": {
+      "n": 1183,
+      "mean": 0.602197802265821,
+      "p50": 0.5,
+      "p95": 1.5,
+      "p99": 2.5,
+      "max": 5.899999998509884
+    },
+    "draw_ms": {
+      "n": 1183,
+      "mean": 3.256804733684354,
+      "p50": 3.0,
+      "p95": 5.300000000745058,
+      "p99": 7.199999999254942,
+      "max": 11.599999997764826
+    },
+    "UI_ms": {
+      "n": 1183,
+      "mean": 0.23423499582825025,
+      "p50": 0.10000000149011612,
+      "p95": 0.9000000022351742,
+      "p99": 1.5,
+      "max": 7.199999999254942
+    },
+    "observer_ms": {
+      "n": 1183,
+      "mean": 0.0653423499142781,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.4000000022351742,
+      "max": 2.0
+    },
+    "observed_rAF_span_seconds": 19.999200000000002,
+    "measured_sim_seconds": 19.915799999999578,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2699,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1331.800000000745,
+        "responseMs": 22.699999999254942,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 977.8999999985099,
+          "duration": 75.80000000074506,
+          "blocking": 25
+        },
+        {
+          "start": 1074.199999999255,
+          "duration": 99.69999999925494,
+          "blocking": 29.1
+        },
+        {
+          "start": 1195,
+          "duration": 97.59999999776483,
+          "blocking": 46.3
+        },
+        {
+          "start": 1307.8999999985099,
+          "duration": 54.19999999925494,
+          "blocking": 0
+        },
+        {
+          "start": 1470.5,
+          "duration": 96.30000000074506,
+          "blocking": 28.6
+        }
+      ],
+      "simulationWallRatio": 0.9957899999999789,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [
+        {
+          "id": 124,
+          "error": "congested"
+        },
+        {
+          "id": 158,
+          "error": "congested"
+        },
+        {
+          "id": 190,
+          "error": "congested"
+        },
+        {
+          "id": 254,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 8532324,
+    "heap_after_bytes": 7855020,
+    "frames_over50": 2,
+    "frames_over100": 1,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-rally-perf",
+    "case": "r2-mixed-250",
+    "source_commit": "91569e206d08c8b0e8af2f071d838aa1b66eb0e8",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 2,
+    "rAF_ms": {
+      "n": 1085,
+      "mean": 18.432350230414745,
+      "p50": 16.700000000000728,
+      "p95": 33.29999999999927,
+      "p99": 33.400000000001455,
+      "max": 233.29999999999927
+    },
+    "JS_ms": {
+      "n": 1085,
+      "mean": 7.283594470117499,
+      "p50": 6.800000000745058,
+      "p95": 10.599999997764826,
+      "p99": 18.699999999254942,
+      "max": 140.30000000074506
+    },
+    "update_ms": {
+      "n": 1085,
+      "mean": 1.5620276497771388,
+      "p50": 1.199999999254942,
+      "p95": 3.900000002235174,
+      "p99": 5.799999997019768,
+      "max": 18.399999998509884
+    },
+    "draw_ms": {
+      "n": 1085,
+      "mean": 5.217695852485807,
+      "p50": 5.099999997764826,
+      "p95": 7.600000001490116,
+      "p99": 12.699999999254942,
+      "max": 22.900000002235174
+    },
+    "UI_ms": {
+      "n": 1085,
+      "mean": 0.3564976959150233,
+      "p50": 0.10000000149011612,
+      "p95": 0.8999999985098839,
+      "p99": 1.800000000745058,
+      "max": 119.60000000149012
+    },
+    "observer_ms": {
+      "n": 1085,
+      "mean": 0.06847926268379809,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.4000000022351742,
+      "max": 5.200000002980232
+    },
+    "observed_rAF_span_seconds": 19.9991,
+    "measured_sim_seconds": 19.598999999999663,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2191,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1446.300000000745,
+        "responseMs": 90.39999999850988,
+        "complete": true
+      },
+      "deposits": 76,
+      "gatheredDelta": 768.020992,
+      "longAnimationFrames": [
+        {
+          "start": 1188.199999999255,
+          "duration": 85.90000000223517,
+          "blocking": 32.3
+        },
+        {
+          "start": 1292.3999999985099,
+          "duration": 115.70000000298023,
+          "blocking": 51.8
+        },
+        {
+          "start": 1423.300000000745,
+          "duration": 126.89999999850988,
+          "blocking": 0
+        },
+        {
+          "start": 1696.300000000745,
+          "duration": 62.899999998509884,
+          "blocking": 1.2
+        },
+        {
+          "start": 24246.60000000149,
+          "duration": 58,
+          "blocking": 7.5
+        },
+        {
+          "start": 24504.89999999851,
+          "duration": 153.80000000074506,
+          "blocking": 101.5
+        }
+      ],
+      "simulationWallRatio": 0.9799499999999831,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [
+        {
+          "id": 172,
+          "error": "congested"
+        },
+        {
+          "id": 174,
+          "error": "congested"
+        },
+        {
+          "id": 182,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 6066268,
+    "heap_after_bytes": 8005264,
+    "frames_over50": 7,
+    "frames_over100": 2,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-rally-perf",
+    "case": "r3-combat-250",
+    "source_commit": "91569e206d08c8b0e8af2f071d838aa1b66eb0e8",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 125,
+        "enemy:guard": 125
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 3,
+    "rAF_ms": {
+      "n": 1086,
+      "mean": 18.415469613259667,
+      "p50": 16.69999999999891,
+      "p95": 33.29999999999927,
+      "p99": 50.0,
+      "max": 150.0
+    },
+    "JS_ms": {
+      "n": 1086,
+      "mean": 4.984622467813488,
+      "p50": 4.699999999254942,
+      "p95": 8.600000001490116,
+      "p99": 13.900000002235174,
+      "max": 25.100000001490116
+    },
+    "update_ms": {
+      "n": 1086,
+      "mean": 0.7827808471743024,
+      "p50": 0.5999999977648258,
+      "p95": 2.100000001490116,
+      "p99": 3.7000000029802322,
+      "max": 12.5
+    },
+    "draw_ms": {
+      "n": 1086,
+      "mean": 3.7538674032421953,
+      "p50": 3.600000001490116,
+      "p95": 6.399999998509884,
+      "p99": 9.5,
+      "max": 16.099999997764826
+    },
+    "UI_ms": {
+      "n": 1086,
+      "mean": 0.31850828734633013,
+      "p50": 0.10000000149011612,
+      "p95": 1.3999999985098839,
+      "p99": 2.5,
+      "max": 4.600000001490116
+    },
+    "observer_ms": {
+      "n": 1086,
+      "mean": 0.07891344385389684,
+      "p50": 0.0,
+      "p95": 0.20000000298023224,
+      "p99": 1.1000000014901161,
+      "max": 2.100000001490116
+    },
+    "observed_rAF_span_seconds": 19.9992,
+    "measured_sim_seconds": 19.81569999999973,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2679,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1469.199999999255,
+        "responseMs": 18.100000001490116,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1159.8999999985099,
+          "duration": 89.10000000149012,
+          "blocking": 36.5
+        },
+        {
+          "start": 1269,
+          "duration": 72.60000000149012,
+          "blocking": 17.1
+        },
+        {
+          "start": 1363.1000000014901,
+          "duration": 80.69999999925494,
+          "blocking": 24.5
+        },
+        {
+          "start": 1571.199999999255,
+          "duration": 54.600000001490116,
+          "blocking": 0
+        },
+        {
+          "start": 15453.39999999851,
+          "duration": 96.40000000223517,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.9907849999999865,
+      "peakStuckFraction": 0.004,
+      "everStuck": [
+        211
+      ],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 6804824,
+    "heap_after_bytes": 20264340,
+    "frames_over50": 4,
+    "frames_over100": 1,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-rally-perf",
+    "case": "r3-mixed-250",
+    "source_commit": "91569e206d08c8b0e8af2f071d838aa1b66eb0e8",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 3,
+    "rAF_ms": {
+      "n": 784,
+      "mean": 25.5093112244898,
+      "p50": 16.700000000000728,
+      "p95": 50.0,
+      "p99": 150.0,
+      "max": 516.7000000000007
+    },
+    "JS_ms": {
+      "n": 784,
+      "mean": 9.424362244878003,
+      "p50": 7.0,
+      "p95": 21.199999999254942,
+      "p99": 38.29999999701977,
+      "max": 201.40000000223517
+    },
+    "update_ms": {
+      "n": 784,
+      "mean": 3.216454081626951,
+      "p50": 2.100000001490116,
+      "p95": 8.899999998509884,
+      "p99": 16.899999998509884,
+      "max": 142.0
+    },
+    "draw_ms": {
+      "n": 784,
+      "mean": 5.415306122403364,
+      "p50": 4.100000001490116,
+      "p95": 11.600000001490116,
+      "p99": 24.100000001490116,
+      "max": 100.69999999925494
+    },
+    "UI_ms": {
+      "n": 784,
+      "mean": 0.63150510210924,
+      "p50": 0.10000000149011612,
+      "p95": 1.5,
+      "p99": 5.199999999254942,
+      "max": 158.30000000074506
+    },
+    "observer_ms": {
+      "n": 784,
+      "mean": 0.09438775510204081,
+      "p50": 0.0,
+      "p95": 0.30000000074505806,
+      "p99": 1.199999999254942,
+      "max": 4.699999999254942
+    },
+    "observed_rAF_span_seconds": 19.9993,
+    "measured_sim_seconds": 17.93179999999991,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2011,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 2164.10000000149,
+        "responseMs": 23.599999997764826,
+        "complete": true
+      },
+      "deposits": 41,
+      "gatheredDelta": 416.01552000000004,
+      "longAnimationFrames": [
+        {
+          "start": 1932.8999999985099,
+          "duration": 64.40000000223517,
+          "blocking": 13.8
+        },
+        {
+          "start": 2012.800000000745,
+          "duration": 77.19999999925494,
+          "blocking": 11.5
+        },
+        {
+          "start": 2108.800000000745,
+          "duration": 149.09999999776483,
+          "blocking": 69
+        },
+        {
+          "start": 2268.199999999255,
+          "duration": 71,
+          "blocking": 0
+        },
+        {
+          "start": 2374.39999999851,
+          "duration": 111.70000000298023,
+          "blocking": 34.2
+        },
+        {
+          "start": 2930.800000000745,
+          "duration": 56,
+          "blocking": 5.9
+        },
+        {
+          "start": 3428.800000000745,
+          "duration": 77.19999999925494,
+          "blocking": 10.6
+        },
+        {
+          "start": 4087.699999999255,
+          "duration": 65.80000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 4216.699999999255,
+          "duration": 50.69999999925494,
+          "blocking": 0.7
+        },
+        {
+          "start": 4316.300000000745,
+          "duration": 220.80000000074506,
+          "blocking": 170.5
+        },
+        {
+          "start": 4743.60000000149,
+          "duration": 65.09999999776483,
+          "blocking": 14.3
+        },
+        {
+          "start": 5428.199999999255,
+          "duration": 212,
+          "blocking": 148.9
+        },
+        {
+          "start": 6338,
+          "duration": 74.39999999850988,
+          "blocking": 0
+        },
+        {
+          "start": 6507.699999999255,
+          "duration": 123,
+          "blocking": 69.2
+        },
+        {
+          "start": 6750.5,
+          "duration": 204.69999999925494,
+          "blocking": 154.4
+        },
+        {
+          "start": 7656.10000000149,
+          "duration": 52,
+          "blocking": 1.7
+        },
+        {
+          "start": 7827.199999999255,
+          "duration": 56.600000001490116,
+          "blocking": 2.9
+        },
+        {
+          "start": 7926.699999999255,
+          "duration": 53.100000001490116,
+          "blocking": 0
+        },
+        {
+          "start": 8043.699999999255,
+          "duration": 83.40000000223517,
+          "blocking": 33.3
+        },
+        {
+          "start": 8835.199999999255,
+          "duration": 202.80000000074506,
+          "blocking": 152.5
+        },
+        {
+          "start": 9540.10000000149,
+          "duration": 168.29999999701977,
+          "blocking": 118.1
+        },
+        {
+          "start": 14177.89999999851,
+          "duration": 96.70000000298023,
+          "blocking": 0
+        },
+        {
+          "start": 18024.10000000149,
+          "duration": 70.19999999925494,
+          "blocking": 19.7
+        },
+        {
+          "start": 18689.699999999255,
+          "duration": 102.80000000074506,
+          "blocking": 51.2
+        },
+        {
+          "start": 19217.699999999255,
+          "duration": 429.9000000022352,
+          "blocking": 379.9
+        },
+        {
+          "start": 20215.89999999851,
+          "duration": 59.20000000298023,
+          "blocking": 8.7
+        },
+        {
+          "start": 20949,
+          "duration": 266.69999999925494,
+          "blocking": 130.5
+        },
+        {
+          "start": 24544.89999999851,
+          "duration": 112.80000000074506,
+          "blocking": 62.8
+        }
+      ],
+      "simulationWallRatio": 0.8965899999999956,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [
+        {
+          "id": 172,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 7908116,
+    "heap_after_bytes": 20240200,
+    "frames_over50": 29,
+    "frames_over100": 10,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": false
+    },
+    "pass": false
+  },
+  {
+    "suite": "v2-civ-perf",
+    "case": "r1-combat-250",
+    "source_commit": "dc4698a3f8801ea5ada37a908951900fca6a8ef6",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 125,
+        "enemy:guard": 125
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 965,
+      "mean": 21.138963730569948,
+      "p50": 16.700000000000728,
+      "p95": 33.400000000001455,
+      "p99": 100.0,
+      "max": 900.0
+    },
+    "JS_ms": {
+      "n": 965,
+      "mean": 6.865492227986223,
+      "p50": 4.599999997764826,
+      "p95": 13.300000000745058,
+      "p99": 34.69999999925494,
+      "max": 790.8999999985099
+    },
+    "update_ms": {
+      "n": 965,
+      "mean": 1.0918134714462289,
+      "p50": 0.6999999992549419,
+      "p95": 2.599999997764826,
+      "p99": 6.699999999254942,
+      "max": 100.90000000223517
+    },
+    "draw_ms": {
+      "n": 965,
+      "mean": 4.255647668412312,
+      "p50": 3.400000002235174,
+      "p95": 8.699999999254942,
+      "p99": 15.400000002235174,
+      "max": 177.09999999776483
+    },
+    "UI_ms": {
+      "n": 965,
+      "mean": 1.3783419688671363,
+      "p50": 0.10000000149011612,
+      "p95": 1.5,
+      "p99": 5.099999997764826,
+      "max": 774.7999999970198
+    },
+    "observer_ms": {
+      "n": 965,
+      "mean": 0.1064248704964324,
+      "p50": 0.0,
+      "p95": 0.30000000074505806,
+      "p99": 1.699999999254942,
+      "max": 6.199999999254942
+    },
+    "observed_rAF_span_seconds": 20.399099999999997,
+    "measured_sim_seconds": 18.49879999999973,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2408,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1767.5,
+        "responseMs": 55.69999999925494,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1540.6000000014901,
+          "duration": 50.30000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 1661.699999999255,
+          "duration": 75.70000000298023,
+          "blocking": 24.8
+        },
+        {
+          "start": 1745.800000000745,
+          "duration": 96.60000000149012,
+          "blocking": 42.3
+        },
+        {
+          "start": 7940.400000002235,
+          "duration": 222.59999999776483,
+          "blocking": 172
+        },
+        {
+          "start": 8494.699999999255,
+          "duration": 51.80000000074506,
+          "blocking": 1.7
+        },
+        {
+          "start": 10302.800000000745,
+          "duration": 70.19999999925494,
+          "blocking": 0
+        },
+        {
+          "start": 10402.10000000149,
+          "duration": 195.09999999776483,
+          "blocking": 144.9
+        },
+        {
+          "start": 11376,
+          "duration": 50.19999999925494,
+          "blocking": 0
+        },
+        {
+          "start": 12193.10000000149,
+          "duration": 51.19999999925494,
+          "blocking": 0
+        },
+        {
+          "start": 12829,
+          "duration": 82.19999999925494,
+          "blocking": 32.1
+        },
+        {
+          "start": 21329,
+          "duration": 51.30000000074506,
+          "blocking": 0
+        },
+        {
+          "start": 21826.199999999255,
+          "duration": 60.400000002235174,
+          "blocking": 10.4
+        },
+        {
+          "start": 21899.60000000149,
+          "duration": 117,
+          "blocking": 0
+        },
+        {
+          "start": 28258.5,
+          "duration": 51.5,
+          "blocking": 0
+        },
+        {
+          "start": 28543.5,
+          "duration": 117.19999999925494,
+          "blocking": 67.2
+        }
+      ],
+      "simulationWallRatio": 0.9249399999999864,
+      "peakStuckFraction": 0.036,
+      "everStuck": [
+        227,
+        211,
+        243,
+        195,
+        259,
+        163,
+        147,
+        179,
+        131
+      ],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 8021976,
+    "heap_after_bytes": 18264756,
+    "frames_over50": 23,
+    "frames_over100": 9,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": false,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": false
+  },
+  {
+    "suite": "v2-civ-perf",
+    "case": "r1-mixed-250",
+    "source_commit": "dc4698a3f8801ea5ada37a908951900fca6a8ef6",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 1,
+    "rAF_ms": {
+      "n": 1087,
+      "mean": 18.41379944802208,
+      "p50": 16.700000000000728,
+      "p95": 33.30000000000291,
+      "p99": 33.400000000001455,
+      "max": 50.100000000000364
+    },
+    "JS_ms": {
+      "n": 1087,
+      "mean": 6.758969641166372,
+      "p50": 6.5,
+      "p95": 11.800000000745058,
+      "p99": 17.800000000745058,
+      "max": 27.899999998509884
+    },
+    "update_ms": {
+      "n": 1087,
+      "mean": 1.6715731370573814,
+      "p50": 1.199999999254942,
+      "p95": 4.600000001490116,
+      "p99": 7.699999999254942,
+      "max": 11.300000000745058
+    },
+    "draw_ms": {
+      "n": 1087,
+      "mean": 4.71444342226448,
+      "p50": 4.599999997764826,
+      "p95": 7.800000000745058,
+      "p99": 10.200000002980232,
+      "max": 21.099999997764826
+    },
+    "UI_ms": {
+      "n": 1087,
+      "mean": 0.24489420423799957,
+      "p50": 0.10000000149011612,
+      "p95": 0.8999999985098839,
+      "p99": 2.0,
+      "max": 4.800000000745058
+    },
+    "observer_ms": {
+      "n": 1087,
+      "mean": 0.06991720337355586,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.5,
+      "max": 7.699999999254942
+    },
+    "observed_rAF_span_seconds": 20.0158,
+    "measured_sim_seconds": 20.01549999999969,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2257,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 4635.800000000745,
+        "responseMs": 27.199999999254942,
+        "complete": true
+      },
+      "deposits": 70,
+      "gatheredDelta": 708.020832,
+      "longAnimationFrames": [
+        {
+          "start": 4366.800000000745,
+          "duration": 86.59999999776483,
+          "blocking": 36
+        },
+        {
+          "start": 4469,
+          "duration": 115.09999999776483,
+          "blocking": 35.3
+        },
+        {
+          "start": 4602,
+          "duration": 71,
+          "blocking": 1.9
+        },
+        {
+          "start": 5784.099999997765,
+          "duration": 74.5,
+          "blocking": 23.8
+        },
+        {
+          "start": 6705.199999999255,
+          "duration": 141.30000000074506,
+          "blocking": 91.4
+        }
+      ],
+      "simulationWallRatio": 1.0007749999999844,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [
+        {
+          "id": 136,
+          "error": "congested"
+        },
+        {
+          "id": 166,
+          "error": "congested"
+        },
+        {
+          "id": 184,
+          "error": "congested"
+        },
+        {
+          "id": 196,
+          "error": "congested"
+        },
+        {
+          "id": 198,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 8259024,
+    "heap_after_bytes": 10146704,
+    "frames_over50": 3,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-civ-perf",
+    "case": "r2-combat-250",
+    "source_commit": "dc4698a3f8801ea5ada37a908951900fca6a8ef6",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 125,
+        "enemy:guard": 125
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 2,
+    "rAF_ms": {
+      "n": 1192,
+      "mean": 16.77785234899329,
+      "p50": 16.69999999999891,
+      "p95": 16.799999999999272,
+      "p99": 16.80000000000291,
+      "max": 50.0
+    },
+    "JS_ms": {
+      "n": 1192,
+      "mean": 3.524161073804252,
+      "p50": 3.099999997764826,
+      "p95": 6.0,
+      "p99": 7.399999998509884,
+      "max": 16.5
+    },
+    "update_ms": {
+      "n": 1192,
+      "mean": 0.4355704697355278,
+      "p50": 0.30000000074505806,
+      "p95": 1.0,
+      "p99": 1.699999999254942,
+      "max": 3.599999997764826
+    },
+    "draw_ms": {
+      "n": 1192,
+      "mean": 2.7916107382406574,
+      "p50": 2.2000000029802322,
+      "p95": 4.799999997019768,
+      "p99": 5.800000000745058,
+      "max": 13.5
+    },
+    "UI_ms": {
+      "n": 1192,
+      "mean": 0.20352348993726124,
+      "p50": 0.10000000149011612,
+      "p95": 0.8000000007450581,
+      "p99": 1.199999999254942,
+      "max": 2.099999997764826
+    },
+    "observer_ms": {
+      "n": 1192,
+      "mean": 0.05192953017196499,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.3999999985098839,
+      "max": 0.7999999970197678
+    },
+    "observed_rAF_span_seconds": 19.999200000000002,
+    "measured_sim_seconds": 19.999199999999597,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2715,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1278.1000000014901,
+        "responseMs": 14.099999997764826,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1001.6999999992549,
+          "duration": 72.80000000074506,
+          "blocking": 21.4
+        },
+        {
+          "start": 1090.1000000014901,
+          "duration": 50.899999998509884,
+          "blocking": 0
+        },
+        {
+          "start": 1155.9000000022352,
+          "duration": 83.59999999776483,
+          "blocking": 15.1
+        },
+        {
+          "start": 24293,
+          "duration": 90.60000000149012,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.9999599999999799,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 6499568,
+    "heap_after_bytes": 17147816,
+    "frames_over50": 0,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-civ-perf",
+    "case": "r2-mixed-250",
+    "source_commit": "dc4698a3f8801ea5ada37a908951900fca6a8ef6",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 2,
+    "rAF_ms": {
+      "n": 1114,
+      "mean": 17.952692998204668,
+      "p50": 16.700000000000728,
+      "p95": 33.29999999999927,
+      "p99": 33.400000000001455,
+      "max": 50.100000000000364
+    },
+    "JS_ms": {
+      "n": 1114,
+      "mean": 7.334290843704444,
+      "p50": 6.900000002235174,
+      "p95": 10.899999998509884,
+      "p99": 17.0,
+      "max": 31.399999998509884
+    },
+    "update_ms": {
+      "n": 1114,
+      "mean": 1.6522441651384534,
+      "p50": 1.199999999254942,
+      "p95": 4.099999997764826,
+      "p99": 7.100000001490116,
+      "max": 12.200000002980232
+    },
+    "draw_ms": {
+      "n": 1114,
+      "mean": 5.305924596137884,
+      "p50": 5.100000001490116,
+      "p95": 7.600000001490116,
+      "p99": 11.600000001490116,
+      "max": 26.400000002235174
+    },
+    "UI_ms": {
+      "n": 1114,
+      "mean": 0.2295332136037266,
+      "p50": 0.10000000149011612,
+      "p95": 0.8000000007450581,
+      "p99": 1.5,
+      "max": 3.7999999970197678
+    },
+    "observer_ms": {
+      "n": 1114,
+      "mean": 0.06597845607455585,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.30000000074505806,
+      "max": 6.100000001490116
+    },
+    "observed_rAF_span_seconds": 19.999299999999998,
+    "measured_sim_seconds": 19.999099999999643,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2245,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1424.6000000014901,
+        "responseMs": 28.5,
+        "complete": true
+      },
+      "deposits": 77,
+      "gatheredDelta": 778.026272,
+      "longAnimationFrames": [
+        {
+          "start": 1163.800000000745,
+          "duration": 52.400000002235174,
+          "blocking": 0.6
+        },
+        {
+          "start": 1297.5,
+          "duration": 95,
+          "blocking": 37.2
+        },
+        {
+          "start": 1403.800000000745,
+          "duration": 58.600000001490116,
+          "blocking": 2.6
+        }
+      ],
+      "simulationWallRatio": 0.9999549999999822,
+      "peakStuckFraction": 0,
+      "everStuck": [],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 9071468,
+    "heap_after_bytes": 8713188,
+    "frames_over50": 2,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-civ-perf",
+    "case": "r3-combat-250",
+    "source_commit": "dc4698a3f8801ea5ada37a908951900fca6a8ef6",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "combat",
+      "composition": {
+        "player:guard": 125,
+        "enemy:guard": 125
+      },
+      "spacing": 1.9,
+      "obstacles": 0,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 3,
+    "rAF_ms": {
+      "n": 1157,
+      "mean": 17.285393258426968,
+      "p50": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "p99": 33.39999999999782,
+      "max": 66.70000000000073
+    },
+    "JS_ms": {
+      "n": 1157,
+      "mean": 4.5800345722157685,
+      "p50": 4.200000002980232,
+      "p95": 8.099999997764826,
+      "p99": 12.699999999254942,
+      "max": 29.899999998509884
+    },
+    "update_ms": {
+      "n": 1157,
+      "mean": 0.5903197925927418,
+      "p50": 0.4000000022351742,
+      "p95": 1.5,
+      "p99": 3.399999998509884,
+      "max": 8.299999997019768
+    },
+    "draw_ms": {
+      "n": 1157,
+      "mean": 3.586257562662701,
+      "p50": 3.399999998509884,
+      "p95": 6.599999997764826,
+      "p99": 9.399999998509884,
+      "max": 20.5
+    },
+    "UI_ms": {
+      "n": 1157,
+      "mean": 0.2930855661431004,
+      "p50": 0.10000000149011612,
+      "p95": 1.199999999254942,
+      "p99": 2.100000001490116,
+      "max": 7.5
+    },
+    "observer_ms": {
+      "n": 1157,
+      "mean": 0.08530682798671434,
+      "p50": 0.0,
+      "p95": 0.19999999925494194,
+      "p99": 0.5,
+      "max": 28.700000002980232
+    },
+    "observed_rAF_span_seconds": 19.999200000000002,
+    "measured_sim_seconds": 19.982499999999614,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2682,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1585.8999999985099,
+        "responseMs": 22.100000001490116,
+        "complete": true
+      },
+      "deposits": 0,
+      "gatheredDelta": 0,
+      "longAnimationFrames": [
+        {
+          "start": 1336.5,
+          "duration": 85.89999999850988,
+          "blocking": 35
+        },
+        {
+          "start": 1446.199999999255,
+          "duration": 77.19999999925494,
+          "blocking": 15.9
+        },
+        {
+          "start": 1541.0999999977648,
+          "duration": 114.40000000223517,
+          "blocking": 33
+        }
+      ],
+      "simulationWallRatio": 0.9991249999999807,
+      "peakStuckFraction": 0.008,
+      "everStuck": [
+        53,
+        237
+      ],
+      "orderFailures": [],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 7206968,
+    "heap_after_bytes": 10962180,
+    "frames_over50": 1,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "actual_attacks_ge_100": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  },
+  {
+    "suite": "v2-civ-perf",
+    "case": "r3-mixed-250",
+    "source_commit": "dc4698a3f8801ea5ada37a908951900fca6a8ef6",
+    "browser": "154.0.8037.57",
+    "fixture": {
+      "seed": 1087968311,
+      "count": 250,
+      "mode": "mixed",
+      "composition": {
+        "player:guard": 105,
+        "enemy:guard": 104,
+        "player:villager": 40,
+        "player:commander": 1
+      },
+      "spacing": 1.9,
+      "obstacles": 20,
+      "commands": "Standard guards naturally engage; ordinary stats/AI/audio/collision; mixed40 villagers+1hero included in total",
+      "speed": 1,
+      "dpr": 1
+    },
+    "repetition": 3,
+    "rAF_ms": {
+      "n": 1011,
+      "mean": 19.7486646884273,
+      "p50": 16.700000000000728,
+      "p95": 33.399999999999636,
+      "p99": 50.0,
+      "max": 83.29999999999927
+    },
+    "JS_ms": {
+      "n": 1011,
+      "mean": 8.43610286841613,
+      "p50": 7.5,
+      "p95": 15.5,
+      "p99": 29.600000001490116,
+      "max": 39.0
+    },
+    "update_ms": {
+      "n": 1011,
+      "mean": 2.1743818001727675,
+      "p50": 1.4000000022351742,
+      "p95": 5.699999999254942,
+      "p99": 10.399999998509884,
+      "max": 23.199999999254942
+    },
+    "draw_ms": {
+      "n": 1011,
+      "mean": 5.8187932739832045,
+      "p50": 5.299999997019768,
+      "p95": 10.700000002980232,
+      "p99": 19.099999997764826,
+      "max": 30.5
+    },
+    "UI_ms": {
+      "n": 1011,
+      "mean": 0.2706231453910131,
+      "p50": 0.10000000149011612,
+      "p95": 0.8999999985098839,
+      "p99": 1.9000000022351742,
+      "max": 7.599999997764826
+    },
+    "observer_ms": {
+      "n": 1011,
+      "mean": 0.06824925813812883,
+      "p50": 0.0,
+      "p95": 0.20000000298023224,
+      "p99": 0.4000000022351742,
+      "max": 4.599999997764826
+    },
+    "observed_rAF_span_seconds": 19.9659,
+    "measured_sim_seconds": 19.799099999999772,
+    "nominal_measure_seconds": 20,
+    "moved15": 1,
+    "attacks": 2232,
+    "tier": {
+      "input": {
+        "id": 20,
+        "origin": {
+          "x": 2,
+          "y": 40
+        },
+        "destination": {
+          "x": 2,
+          "y": 43
+        },
+        "commandTime": 1374.4000000022352,
+        "responseMs": 31.800000000745058,
+        "complete": true
+      },
+      "deposits": 75,
+      "gatheredDelta": 758.03696,
+      "longAnimationFrames": [
+        {
+          "start": 1341.1000000014901,
+          "duration": 110.60000000149012,
+          "blocking": 35.9
+        },
+        {
+          "start": 1464.7000000029802,
+          "duration": 63.899999998509884,
+          "blocking": 0
+        },
+        {
+          "start": 7108.400000002235,
+          "duration": 136.09999999776483,
+          "blocking": 85.3
+        },
+        {
+          "start": 7308.20000000298,
+          "duration": 166.29999999701977,
+          "blocking": 115.9
+        },
+        {
+          "start": 9447.300000000745,
+          "duration": 102.69999999925494,
+          "blocking": 0
+        }
+      ],
+      "simulationWallRatio": 0.9899549999999886,
+      "peakStuckFraction": 0.004,
+      "everStuck": [
+        121
+      ],
+      "orderFailures": [
+        {
+          "id": 122,
+          "error": "congested"
+        },
+        {
+          "id": 148,
+          "error": "congested"
+        }
+      ],
+      "waveLogicScope": "normal combat/economy fixture only; full campaign acceptance separate"
+    },
+    "heap_before_bytes": 7966004,
+    "heap_after_bytes": 15861264,
+    "frames_over50": 10,
+    "frames_over100": 0,
+    "checks": {
+      "raf_mean_le_33_3": true,
+      "raf_p95_le_50": true,
+      "movement_ge_90_percent_at_15s": true,
+      "searches_per_update_le_2": true,
+      "mean_alive_ge_90_percent": true,
+      "input_response_le_250ms": true,
+      "input_command_completes": true,
+      "persistent_stuck_fraction_le_2_percent": true,
+      "economic_deposits": true,
+      "economic_credit": true,
+      "real_combat": true,
+      "native_loop_heartbeat": true,
+      "simulation_progress_ge_90_percent": true
+    },
+    "pass": true
+  }
+]
