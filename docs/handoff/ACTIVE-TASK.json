@@ -1,0 +1,62 @@
+{
+  "task_id": "DEV-RECOVERY-P0",
+  "name": "Worktree recovery and cross-agent manual handoff",
+  "requirement_source": "Strategy v2.2.1 P0 / v2.2.2 P9",
+  "priority": "P0",
+  "agent": "Codex",
+  "environment": "managed Linux cloud; no external agent connected",
+  "branch": "codex/riftwatch-v222-recovery",
+  "base_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
+  "latest_pushed_commit": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
+  "completed": [
+    "Recovery/handoff framework pushed and tooling-only integrated at72e978417afd3c95f897cc7cb35395f00008c313",
+    "All interrupted code restored, tested, committed and normally pushed",
+    "Three resumed gameplay sources pass native browser and normal P0 regression",
+    "Recovered complete12-case baseline cohort without rerun",
+    "Independent conservative Level1/2 research prototype pushed; no hardware FPS claim",
+    "Target new3x4 cohort complete:9PASS/3FAIL, allstate/movement gates pass; failures retained"
+  ],
+  "uncommitted": [
+    {
+      "status": " M",
+      "path": "docs/recovery/WORKTREE-RECOVERY.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/recovery/worktree-recovery.json"
+    }
+  ],
+  "unpushed": [],
+  "tests": [
+    {
+      "name": "recovery/CAS tests",
+      "result": "PASS6",
+      "path": "docs/evidence/strategy-v222/recovery-tests.log.txt"
+    }
+  ],
+  "evidence": [
+    "docs/recovery/worktree-recovery.json"
+  ],
+  "failures": [
+    "Real Gemini relay NOT_TESTED"
+  ],
+  "blockers": [
+    "SIMULATION_INTEGRITY_BLOCKED",
+    "HARDWARE_TEST_PENDING",
+    "DEPLOYMENT_BLOCKED",
+    "Actual Gemini relay NOT_TESTED; Gemini/Claude CLIs unavailable",
+    "New100-case severe cloud rAF stall retained; performance integration gate not waived"
+  ],
+  "next_steps": [
+    "Re-read latest recovery-index and shared ownership; no active heavy test remains",
+    "Diagnose100 severe rAF stall and clock loss separately without retrying acceptance to green",
+    "Keep unmerged game features isolated; run latest Rally/B2 integration gates next",
+    "Continue independent UI Scale/Attack-Move slices; physical Windows and actual Gemini remain pending"
+  ],
+  "permissions": [
+    "Independent codex/riftwatch-* commits/normal pushes",
+    "Gated Gameplay Integration only; no main/checkpoint/Preview/workflow writes"
+  ],
+  "status": "HANDOFF_READY",
+  "updated_at": "2026-10-25T19:05:07.031300+00:00"
+}
