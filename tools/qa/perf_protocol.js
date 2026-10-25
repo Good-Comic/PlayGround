@@ -20,7 +20,7 @@ export function setup(count, mode) {
     origins.set(u.id,{x:u.x,y:u.y});composition[`${team}:${type}`]=(composition[`${team}:${type}`]||0)+1;
     if(mode==='move')g.commandMove([u],x+.6,y+.6);
   }
-  window.audit={count,mode,origins,composition,moved:new Set(),attacks:0,kills:0,started:performance.now()};
+  window.audit={count,mode,origins,composition,moved:new Set(),firstMoves:new Map(),attacks:0,kills:0,started:performance.now()};
   return {seed:g.seed,count,mode,composition,spacing,obstacles:0,commands:mode==='move'?'Each unit alternates origin and (+0.6,+0.6), immediate reissue on idle':'Natural interleaved 500v500 standard guard combat; no HP/damage/AI changes',speed:g.speed,dpr:devicePixelRatio};
 }
 export function install(detailed=false) {
@@ -70,10 +70,10 @@ export async function run(warmup,seconds,mode,count) {
   await new Promise(resolve=>{
     function frame(now){
       const observerStart=performance.now(),elapsed=(now-started)/1000,g=ageOfAsh.game;
-      if(!stats.enabled&&elapsed>=warmup){stats.enabled=true;audit.moved.clear();audit.attacks=0;audit.kills=0;last=now;}
+      if(!stats.enabled&&elapsed>=warmup){stats.enabled=true;performance.mark('AUDIT_MEASURE_START');audit.attacks=0;audit.kills=0;last=now;}
       for(const u of g.units){
         const o=audit.origins.get(u.id);if(!o)continue;
-        if(Math.hypot(u.x-o.x,u.y-o.y)>.15)audit.moved.add(u.id);
+        if(Math.hypot(u.x-o.x,u.y-o.y)>.15){audit.moved.add(u.id);if(!audit.firstMoves.has(u.id))audit.firstMoves.set(u.id,(now-audit.started)/1000);}
         if(mode==='move'&&u.alive&&u.state==='idle') {
           const away=Math.hypot(u.x-o.x,u.y-o.y)>.4;g.commandMove([u],o.x+(away?0:.6),o.y+(away?0:.6));
         }
@@ -85,10 +85,10 @@ export async function run(warmup,seconds,mode,count) {
         stats.observer.push(performance.now()-observerStart);
       }
       last=now;
-      if(elapsed<warmup+seconds)requestAnimationFrame(frame);else{stats.enabled=false;resolve();}
+      if(elapsed<warmup+seconds)requestAnimationFrame(frame);else{performance.mark('AUDIT_MEASURE_END');stats.enabled=false;resolve();}
     }
     requestAnimationFrame(frame);
   });
-  return {raw:stats,units:gCount(),mode,seed:ageOfAsh.game.seed,composition:audit.composition,moved_fraction:audit.moved.size/count,attacks:audit.attacks,kills:audit.kills,sim_time:ageOfAsh.game.time,phase:ageOfAsh.game.phase,navigation:ageOfAsh.game.navigationStats,elapsed_wall_seconds:(performance.now()-started)/1000};
+  return {raw:stats,units:gCount(),mode,seed:ageOfAsh.game.seed,composition:audit.composition,moved_fraction:audit.moved.size/count,moved_fraction_15s:[...audit.firstMoves.values()].filter(t=>t<=15).length/count,first_move_latency_seconds:[...audit.origins.keys()].map(id=>audit.firstMoves.get(id)??null),attacks:audit.attacks,kills:audit.kills,sim_time:ageOfAsh.game.time,phase:ageOfAsh.game.phase,navigation:ageOfAsh.game.navigationStats,elapsed_wall_seconds:(performance.now()-started)/1000};
 }
 function gCount(){return ageOfAsh.game.units.length;}
