@@ -1,3 +1,9 @@
+## Strategy v2.2 — B2 specification alignment candidate
+
+Branch `codex/riftwatch-v22-civ-alignment` preserves original B2 remote0b072b7 and builds on it. Read-only recovered Issue8 §3 explicitly requires unique units to use §5 family stats with+15% training price/threat and no extra undefined ability. Chu Ko Nu now matches R-family archer:35HP,7attack,5range,1.8cooldown,10s training,35W/25G multiplied1.15 then existing cost rounding(40W/29G). Keeps only existing CHN third-shot bonus; removes unsupported Castle-Age-only restriction (range/Feudal template). This corrects provisional B2 data; it does not claim all16 civilizations' unique roster is implemented.
+
+Five focused tests PASS (sixteen-civilization legal entry matrix, training/payment/SaveLoad, Chinese projectile rule, unlock/pagination, exact R-family template+15%cost/threat). Browser/performance gates PENDING. No integration or online deployment. Original historical B2 evidence/FAIL stays unchanged. Existing save unit stats are restored according to legacy behavior; exhaustive legacy-save migration is NOT_TESTED.
+
 # Current progress — strategy v2
 
 **Independent development enabled. No1000-unit blanket embargo.** Original branch remains7faa21a274847ca649a7a96b88700d4cdda5fe2e. New QA/budget/clock/candidate work and independent B1/B2 feature branches are preserved. Details: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md), [roadmap](GAMEPLAY-ROADMAP.md), [acceptance](GAMEPLAY-ACCEPTANCE.md).
