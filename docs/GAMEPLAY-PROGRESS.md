@@ -1,3 +1,7 @@
+## B2-GDD updated actual local acceptance
+
+Source da0823c6341b1ee85e32d1b6c0f776ef3008255c:47 full Node tests and four locales658 keys PASS. Eight actual Chromium checks PASS: real pointer range selection; Feudal training availability; exact40W/29G payment; native queue spawn; three actual combat shots; real Pause/Save/Reload/Continue; four name translations and description-age consistency.50/50 captured resources match. Prior transport failure and manual four-language stale-description FAIL retained. LOCAL_VERIFIED bounded alignment, not all16 unique rosters nor full GDD/legacy-save certification. Core P0/performance/integration gates PENDING.
+
 ## Strategy v2.2 — B2 specification alignment candidate
 
 Branch `codex/riftwatch-v22-civ-alignment` preserves original B2 remote0b072b7 and builds on it. Read-only recovered Issue8 §3 explicitly requires unique units to use §5 family stats with+15% training price/threat and no extra undefined ability. Chu Ko Nu now matches R-family archer:35HP,7attack,5range,1.8cooldown,10s training,35W/25G multiplied1.15 then existing cost rounding(40W/29G). Keeps only existing CHN third-shot bonus; removes unsupported Castle-Age-only restriction (range/Feudal template). This corrects provisional B2 data; it does not claim all16 civilizations' unique roster is implemented.
