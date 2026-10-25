@@ -2089,6 +2089,9 @@ export class Game {
   }
 
   startWave() {
+    this.bossExtensionActive=false;
+    this.bossExtensionReinforcements=0;
+    this.bossExtensionWarned=false;
     const wave = WAVES[Math.min(this.waveIndex, WAVES.length - 1)];
     const plan = this.pendingWavePlan?.waveIndex === this.waveIndex
       ? this.pendingWavePlan
@@ -2409,15 +2412,20 @@ export class Game {
   }
 
   spawnBossReinforcements() {
-    if (!this.bossAlive) return;
-    const boss = this.bossAlive;
-    // Spawn 4 shield infantry (M type) near boss
+    if (!this.bossAlive) return [];
+    const boss = this.bossAlive, spawned=[];
+    // GDD issue8 §§5.1/5.4: family M4 uses the registered militia ID.
     for (let i = 0; i < 4; i++) {
       const angle = (i / 4) * Math.PI * 2;
       const x = boss.x + Math.cos(angle) * 3;
       const y = boss.y + Math.sin(angle) * 3;
-      this.spawnUnit('M', x, y, 'enemy');
+      const unit=this.spawnUnit('militia',x,y,'enemy');
+      if(!unit)continue;
+      unit.spawnGate=boss.spawnGate||0;unit.eventFlags=[...(boss.eventFlags||[])];
+      if(this.waveEventActive){this.applyEventMods(unit);unit.eventModsApplied=true;}
+      unit.target=this.getTownCenter();unit.state='move';spawned.push(unit);
     }
+    return spawned;
   }
 
   applyEventMods(u) {
