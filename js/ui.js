@@ -846,7 +846,7 @@ export class UI {
       return;
     }
     this.trainingShownFor = one;
-    this.el.selectionSub.textContent = t('selection.trainingProgress', { unit: t(`unit.${first.type}.name`), seconds: Math.ceil(first.remaining) });
+    this.el.selectionSub.textContent = first.remaining<=0 ? t('rally.spawnBlocked') : t('selection.trainingProgress', { unit: t(`unit.${first.type}.name`), seconds: Math.ceil(first.remaining) });
   }
 
   drawPortrait(entity, selection) {

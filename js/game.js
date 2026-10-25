@@ -941,7 +941,7 @@ export class Game {
           const sy = b.y + b.h / 2 + Math.sin(angle) * (b.h / 2 + 0.8);
           const unit = this.spawnUnit(item.type, sx, sy, 'player');
           // Retain the paid queue item if every spawn position is occupied.
-          if(!unit)continue;
+          if(!unit){item.remaining=0;continue;}
           this.stats.trained++;
           if (!this.applyRally(b,unit) && item.type === 'villager') {
             const node = this.findResource('wood', sx, sy) || this.findResource('food', sx, sy);

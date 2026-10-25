@@ -484,4 +484,6 @@ for (const [locale, label] of Object.entries({en:'Cycle stance: Aggressive / Def
 const RALLY_TEXT={"en": ["Right-click passable ground or a resource to set rally point. New villagers gather at resource rallies.", "Clear Rally", "Choose passable ground or an available resource."], "zh-Hant": ["右鍵點擊可通行地面或資源以設定集結點；新村民會採集指定資源。", "清除集結點", "請選擇可通行地面或可用資源。"], "zh-Hans": ["右键点击可通行地面或资源设置集结点；新村民会采集指定资源。", "清除集结点", "请选择可通行地面或可用资源。"], "ja": ["通行可能な地面か資源を右クリックして集合地点を設定。新しい村人は指定資源を採集します。", "集合地点を解除", "通行可能な地面か利用可能な資源を選んでください。"]};
 for(const [locale,labels] of Object.entries(RALLY_TEXT))['hint','clear','invalid'].forEach((key,i)=>STRINGS[locale]['rally.'+key]=labels[i]);
 
+for(const [locale,label] of Object.entries({en:'Waiting for clear ground to deploy', 'zh-Hant':'等待可用空間部署', 'zh-Hans':'等待可用空间部署', ja:'配置できる空間を待っています'}))STRINGS[locale]['rally.spawnBlocked']=label;
+
 export const EN_KEYS = Object.keys(STRINGS.en);
