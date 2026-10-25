@@ -1,6 +1,6 @@
 ## Strategy v2.2 population slice
 
-A3-POP-01: finite derived HUD values, economy cap60 independent of housing, global per-category queued reservations, Franks military40, atomic zero-spend rejection, unchanged Save/Load schema. IMPLEMENTED with49 passing tests; bounded browser validation PENDING. Initial military40/core contribution and wave150/240 ceiling reconciliation: SPEC_DECISION_REQUIRED, not falsely complete. Original other requirements below remain tracked.
+A3-POP-01: finite derived HUD values, economy cap60 independent of housing, global per-category queued reservations, Franks military40, atomic zero-spend rejection, unchanged Save/Load schema. IMPLEMENTED with49 passing tests; bounded browser validation PENDING. Starting military40 now follows core20+two houses10. Wave150/240 ceiling reconciliation: SPEC_DECISION_REQUIRED, not falsely complete. Original other requirements below remain tracked.
 
 > Strategy v2 supersedes the historical blanket Phase B block below.500/1000 FAILs remain unchanged; they are extension goals, not current development blockers. Current gate and statuses: GAMEPLAY-ROADMAP.md and GAMEPLAY-ACCEPTANCE.md.250 is a provisional stress target, not a supported-scale claim.
 

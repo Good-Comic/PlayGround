@@ -1,8 +1,12 @@
+## Strategy v2.2.2 A4-POP recovered checkpoint
+
+Preserves previous46759494baa05ba3d1be7c59b2c7f78a1735e89d and uncommitted core20 correction. Seven focused tests PASS, including actual initial military40 (core20+two houses10), independent economy60, global category queues, Franks40, atomic payment rejection, Save/Load derived fields. Earlier browser evidence fe19196 remains valid ONLY for old source; new core20 browser retest PENDING. Wave ceiling transition and legacy monument contribution SPEC_DECISION_REQUIRED; no250 hard cap. Full integration/online/hardware acceptance not claimed.
+
 ## Strategy v2.2 — A3-POP-01 candidate
 
 Independent branch `codex/riftwatch-v22-population`, integration base d778cf2. IMPLEMENTED: finite military/economic HUD getters; explicit economic60 from Issue8 §2.3; category-isolated global training reservations; Franks40 includes pending military slots; automatic training uses the same admission policy.49 tests pass (43 existing+6 population), four locales653 keys. LOCAL_VERIFIED: six real-browser checks pass at fe1919643945f62c251ff68f75cde241ea3221fa, including native training clicks, finite HUD, cross-building rejection without extra cost, independent economy, Pause/Save/Reload/Continue;50/50 captured resources match, zero Console/Page/request errors. Performance/P0 gates pending; no integration or online/hardware certification.
 
-Deliberately preserve legacy core10/house10/monument15 capacity. Initial military30 conflicts with GDD40; wave5/10 ceiling150/240 transition and monument rules remain SPEC_DECISION_REQUIRED. No250 active-unit hard limit, roster reduction or boss deletion. Legacy saves derive reservations from existing queues; no save-schema migration. Existing over-cap saves are retained and new admissions stop until room is available. Already paid queues finish even after housing destruction, preserving current behavior.
+GDD opening military40 with two+10houses requires core contribution20, corrected from10 (direct derivation of specified initial capacity). House10 and legacy monument15 retained. Wave5/10 ceiling150/240 transition and monument rules remain SPEC_DECISION_REQUIRED. No250 active-unit hard limit, roster reduction or boss deletion. Legacy saves derive reservations from existing queues; no save-schema migration. Existing over-cap saves are retained and new admissions stop until room is available. Already paid queues finish even after housing destruction, preserving current behavior.
 
 # Current progress — strategy v2
 

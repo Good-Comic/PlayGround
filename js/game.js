@@ -481,7 +481,7 @@ export class Game {
   get population() { return this.units.filter(u => u.alive && u.team === 'player').reduce((s, u) => s + (u.pop ?? u.typeDef.pop ?? 0), 0); }
   get militaryPopulation() { return this.units.filter(u => u.alive && u.team === 'player' && u.typeDef.category !== 'villager').reduce((s, u) => s + (u.pop ?? u.typeDef.pop ?? 0), 0); }
   get popCap() { return this.buildings.filter(b => b.alive && b.team === 'player' && b.construction >= 1).reduce((s, b) => s + (b.typeDef.pop || 0), 0); }
-  // Issue8 §2.3: economy has its own budget; retain legacy housing values pending cap-spec reconciliation.
+  // Issue8 §2.3: economy has its own budget; core20 + two houses10 = starting military40; later wave ceilings remain a separate reconciliation.
   get economicPopulation() { return this.units.filter(u=>u.alive&&u.team==='player'&&u.typeDef.category==='villager').reduce((n,u)=>n+(u.pop??u.typeDef.pop??0),0); }
   get economicPopCap() { return 60; }
   get militaryPopCap() { return Math.min(this.popCap,this.effects.militaryPopCap>0?this.effects.militaryPopCap:Infinity); }
