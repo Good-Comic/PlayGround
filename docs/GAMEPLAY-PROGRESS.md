@@ -1,81 +1,76 @@
-> **Audit correction:** the p0.2 narrow-corridor PASS below is withdrawn: units could bypass the outer ends. See evidence/phase-a/narrow-audit-correction.json. Build p0.3 fixes lattice alignment and convoy yielding, with forced-channel/actual-destination checks. Fresh browser/performance acceptance is pending for that new build.
+# Phase A preservation and current acceptance
 
-# Phase A completion attempt and GitHub preservation
+**Gameplay commit: c305aec96afd6c499f5b82046d991c5a0da02a3d · Build ID: riftwatch-gameplay-p0.3.**
+Branch: `codex/riftwatch-gameplay-improvement`, repository `Good-Comic/PlayGround`.
+Latest evidence: `docs/evidence/phase-a-v3/acceptance.json`. Subsequent evidence/tool/documentation commits do not change the game resources.
 
-Current gameplay implementation: **8ba384889d3eb3d782ce9a5eb98f569afbd14d6d**, Build ID **riftwatch-gameplay-p0.2**.
-Branch: `codex/riftwatch-gameplay-improvement` at `Good-Comic/PlayGround`.
-The following acceptance/documentation commit changes only tests, QA tools and evidence; all served game resources remain identical to the implementation commit.
+**Phase A NOT COMPLETE. Phase B BLOCKED.** Functional scenarios pass their bounded criteria; performance FAILS at100 and1000 units in the latest measured run. Full Guard/Attack-Move semantics, exhaustive maps/legacy saves and complete campaign acceptance are not claimed.
 
-## Preservation
+## Preservation and version lineage
 
-Initial worktree was clean at `b7e968be2eb6e67ff1892d3dcfec10389f3d81f7`, with the prior fix `6b17befb18b8707dbd2fb2a767cb079c37d807a4` and base `6476a4bc6d18f688b9c44db9a95c45901d76b741`. The remote feature branch did not yet exist. A normal, explicitly scoped push created it; `ls-remote` confirmed the exact initial HEAD. No force push, merge, default-branch edit, checkpoint edit, Git credential change, OmGitHub workspace write or deployment was performed. The final push/remote verification is recorded in the task output; no self-referential commit hash is fabricated in this file.
+Started clean at `b7e968be2eb6e67ff1892d3dcfec10389f3d81f7`, preserving prior fix `6b17befb18b8707dbd2fb2a767cb079c37d807a4` and base `6476a4bc6d18f688b9c44db9a95c45901d76b741`. The feature branch did not exist remotely. Normal explicit-ref push created it and `ls-remote` confirmed the exact initial HEAD. An intermediate push preserved add77ec150693dfcbc5cd39b33d1e6ef7c1fd3cc. The final fast-forward push preserves the correction and latest evidence too; its exact remote HEAD is verified in the task output.
 
-Remote main and checkpoint #17 were still `e35a73329ee7942627496e55b844d02b2501e685` and `6476a4bc6d18f688b9c44db9a95c45901d76b741` respectively at the pre-final-push read.
+No force push, merge, default-branch/checkpoint rewrite, Git credential change, OmGitHub workspace write or deployment was performed. Main/checkpoint17 remained e35a73329ee7942627496e55b844d02b2501e685 /6476a4bc6d18f688b9c44db9a95c45901d76b741 at the pre-push read. The original checkout remains unchanged.
 
-## Phase A gate: NOT COMPLETE; Phase B BLOCKED
+## Current Phase A results
 
-Functional scenarios below pass their declared, bounded acceptance criteria. The **1000-unit performance/progress test FAILS**. This is not a full Phase A sign-off, an all-map guarantee, a complete Guard/Attack-Move system, full campaign verification, or deployed acceptance. Do not start large Phase B–E work.
+37 Node unit/integration tests pass; syntax checks pass; four-language validation passes with653 keys per locale. Those checks are corroborated by measurements and real-input browser evidence below, rather than treated as sufficient on their own.
 
-| Requirement in this round | Status | Threshold and actual observation |
+| Requirement | Result | Declared threshold and observed evidence |
 |---|---|---|
-| Multi-unit congestion / blocking | PASS, bounded scenarios | 24/24 reach formation within 70 simulation seconds; no static clips; max overlap tolerance <=0.025. Integration result: 24/24, penetration 0. Browser real drag/right-click: 24/24 in 9.10 wall seconds. |
-| Narrow passage between buildings | PASS, bounded scenarios | One-tile corridor, 8 opposing queued units, all arrive <=80 simulation seconds, static clips 0, penetration <=0.025. Integration: 8/8, max0.01333. Browser: 8/8 in14.27s, max0.01441, no clipped samples. |
-| Unreachable combat target recovery | PASS, integration | Manual target across a full water barrier abandoned <=5s; reachable replacement acquired; no crossing. Actual0.05s, failure reason `unreachable`, replacement acquired. |
-| Death cleanup / continuous retarget | PASS | Zero dangling references immediately after each of3 synthetic kills. Normal browser play records7 death-to-living target transitions and0 stale-dead-target samples. |
-| Four stances | PASS, tested contracts | Aggressive/Defensive acquire and retaliate; Hold only fires in range and never pursues; Passive never auto-acquires/retaliates, including directly controlled hero. Explicit movement/attack priority and defensive leash tested. Real UI cycle reaches all4 states, and save migration preserves/defaults stance. Full Guard/Attack-Move remains a distinct unfinished requirement. |
-| Long economy / contention | PASS, bounded scenarios | Each resource separately:12 workers,2 contested nodes,300 simulation seconds, every worker>=3 unloads, conservation error<1e-6. Food/Gold/Stone: minimum9 cycles each; Wood: minimum8. Worst error1.33e-9; collision tolerance<=0.025. |
-| FPS / frame time / path load | FAIL at1000; PASS at25–500 for this workload | See benchmark below. Admission <=2 searches/update at all scales; fairness fixed, but1000 units miss both frame-time and movement-progress thresholds. |
-| Save/Load state recovery | PASS, tested contracts | Integration restores movement, gathering/return cargo, valid combat refs and stances; move finishes, gold delta47 (includes subsequent gathering), dead refs0. Real local UI Pause→Save Run→reload→Continue restores same seed/unit count and time within1s. Uses a fresh disposable browser context only. |
+| Multi-unit congestion | PASS, tested scenario |24/24 reach actual separate formation destinations within70 simulation seconds; collision penetration<=0.025, static clips0. Integration24/24, penetration0. Browser24/24 in8.26 wall seconds. |
+| Narrow passage / buildings | PASS, tested scenario |The outer routes are sealed by a full-height water barrier; only a one-tile channel remains. All8 opposing queued militia must be observed inside the channel and arrive within0.15 tiles of their own opposite-side goals. Integration8/8 crossing/arrival <=80s; browser8/8 crossing/arrival in14.40s. Browser max penetration0.01484; static clipped samples0. |
+| Unreachable combat target | PASS, integration |Across a full water barrier: abandon failed manual target <=5 simulation seconds, acquire reachable enemy, never cross water. Actual0.05s, explicit `unreachable` reason and replacement target. |
+| Death cleanup / continuous combat | PASS |Zero dead references immediately after3 synthetic kill events. Normal browser play records11 death-to-living target transitions and0 stale-dead-target samples. |
+| Four stances | PASS, tested contracts |Aggressive/Defensive acquire and retaliate; Hold attacks in range without pursuit; Passive never auto-attacks, including directly controlled hero. Manual order precedence, defensive leash and old-save defaults tested. Actual UI cycle reaches all4 states. Full Guard/Attack-Move remains unfinished. |
+| Long economy / competition | PASS, tested scenarios |For each of Food/Wood/Gold/Stone:12 workers compete for2 nodes for300 simulation seconds. Every worker must complete>=3 unload cycles, conservation error<1e-6, penetration<=0.025. Observed minimum23 cycles (Wood24); worst conservation error2.01e-9. |
+| Frame time / search load | **FAIL** |See measured table:100 and1000 miss thresholds. Per-update search count stays<=2; fairness regression starts100/100 units within4.8 simulation seconds, but this is not proof of1000-unit latency or frame-time compliance. |
+| Save/Load recovery | PASS, tested contracts |Integration restores move, gather/return cargo, valid combat refs and stances: actual move finishes, gold delta57 including later gathering, dead refs0. Real local UI Pause→Save Run→reload→Continue restores same seed/unit count and time within1s. Only a fresh disposable local context is used. |
 
-36 Node unit/integration tests pass. Four-language validation passes:653 keys per locale. JS syntax checks pass. These are corroborating checks, not the only evidence.
+## Original three LIVE_VERIFIED regressions
 
-## Three original LIVE_VERIFIED regressions
+Scenario: `riftwatch-p0-v1` / seed3215474622, TEU, steppe, speed1. Real menu selections, Start Game, left-select and right-command; no synthetic map or GM injection in this normal-play run.
 
-Same scenario: seed text `riftwatch-p0-v1` (numeric3215474622), TEU, steppe, speed1. Real Playwright menu selections, Start Game, left-select and right-command; no GM/state injection for this normal run.
+AFTER_LOCAL captured145 samples through127.91 simulation seconds during135 wall seconds:
 
-AFTER_LOCAL captured144 samples through128.32 simulation seconds during135 wall seconds:
+- Cavalry reaches a legal point near the farm command, instead of remaining in move at its edge. The analyzer now requires actual position near the destination, not idle alone.
+- No zero-cargo stationary gathering interval over20s. Deposits: Wood34, Gold20, Stone10, Food18. These counts are observations, not balance benchmarks.
+-11 confirmed switches from dead to living targets. Example: hero19 switches30→28 at71.58–72.36s; soldiers15/16 switch29→34 at82.58–83.38s.
+- Console errors0, Page Errors0, failed requests0.
+- All25 captured normal-play resources match the exact game commit. The browser fixture suite matched50 resources; the performance suite matched125.
 
-- Cavalry completes the command into the farm footprint by stopping at a legal reachable point.
-- No zero-cargo stationary gathering interval exceeding20s.
-- Deposits observed: Wood30, Gold12, Stone11, Food20. These counts are observations, not a balance comparison.
-- Seven confirmed transitions from a dead target to a living target; e.g. soldiers15/16 switch27→34 at72.53–73.33s, hero19 switches43→33→42→39 later.
-- Console errors0; Page Errors0; failed requests0.
-- All25 captured game resources match the implementation commit. The browser fixture suite matched50 resources; the five performance cases matched125. No local run is labelled LIVE_VERIFIED.
+## Performance: actual latest measurements
 
-## Performance — actual cloud measurements
+Intel Xeon Platinum8573C;5 logical CPUs visible, cgroup quota4 CPU cores,32GiB memory cap; Linux6.18.55; Chromium154.0.8037.57; Playwright1.62.0. Headless Canvas2D,1600×1100; ANGLE reports SwiftShader Vulkan software rendering. No hardware GPU claim.
 
-Hardware: Intel Xeon Platinum8573C,5 logical CPUs visible, cgroup quota4 CPU cores,32GiB cgroup memory. Linux6.18.55; Chromium154.0.8037.57; Playwright1.62.0. Headless Canvas2D,1600×1100; ANGLE reports SwiftShader Vulkan software rendering. No hardware GPU claim.
+Production update/draw/UI loop on an explicitly synthetic open field, passive militia with continuous per-unit moves and full-map camera. No other game-browser workload was run during the final benchmark. Each case:3s warmup +12s measurement. Thresholds set before running: mean frame<=33.3ms, P95<=50ms, >=90% start moving >0.15 tiles during the total15s window, <=2 path searches/update. Raw frame/nav distributions, rendering identification and manifests are committed.
 
-Synthetic open-field fixture using the production game update/draw/UI loop, passive militia, continuous per-unit movement, full-map camera. No concurrent browser workload was started during the final benchmark. Each case:3s warmup +12s measured. Thresholds: mean frame<=33.3ms, P95<=50ms, >=90% of units move>0.15 tiles during the total15s window, <=2 searches/update. These thresholds and measurements do not certify equivalent combat performance. Timing breakdown in raw data includes warmup; frame/nav distributions exclude warmup.
-
-| Units | Mean frame ms | P95 ms | FPS | Units starting movement | Mean navigation ms/frame | Result |
+| Units | Mean ms | P95 ms | FPS | Started movement | Mean navigation ms/frame | Result |
 |---:|---:|---:|---:|---:|---:|---|
-|25|19.01|33.40|52.60|100%|0.467|PASS|
-|100|17.96|16.80|55.68|100%|0.420|PASS|
-|250|22.01|33.40|45.42|100%|0.507|PASS|
-|500|22.71|33.40|44.02|100%|0.418|PASS|
-|1000|40.60|66.70|24.63|74%|0.353|**FAIL**|
+|25|17.59|16.80|56.84|100%|0.293|PASS|
+|100|35.03|50.00|28.54|100%|1.200|**FAIL**|
+|250|18.15|33.30|55.09|100%|0.381|PASS|
+|500|25.82|33.40|38.73|100%|0.441|PASS|
+|1000|36.29|50.00|27.55|82%|0.292|**FAIL**|
 
-1000-unit mean update/draw costs were2.93/9.34ms, but complete frame cadence is40.60ms; those costs alone do not explain all compositor/scheduling delay. Max queued/pending count984. Do not reinterpret a two-search budget or a passing process exit as gameplay scalability success. Next work must profile both software-rendered frame cadence and high-count path admission latency. No claim of1000-unit pass is made.
+The non-monotonic100-unit failure is retained, not replaced by the older version's passing measurement or rerun until green. Its peak observed search wall time was167.6ms. That alone does not establish the cause of the frame-cadence variation.1000-unit max pending count982, mean update/draw costs2.52/8.93ms. Complete frame cadence includes compositor/scheduling effects; these costs do not explain all delay. No stable supported-unit ceiling or combat-performance certification is claimed from these short cloud runs. Further frame-time and high-count admission-latency work is required before Phase B.
 
-## Failures retained and corrected
+## Audit corrections and retained failures
 
-- First crowd candidate:18/24 arrived; retained as `failed-crowd-first.json`. Compact groups now preserve relative formation, and stalled units can replan around parked neighbours.
-- First performance candidate:100-unit movement fraction42% despite~60FPS. Stable unit iteration starved high IDs. FIFO admission fixed it; a continuous-demand regression now starts100/100 within4.8 simulation seconds with<=2 searches/update. Initial performance results are retained.
-- First synthetic browser drag selected23/24 because the test rectangle omitted the top unit's20px selection anchor. The test rectangle was corrected; production selection logic was not changed. Failed screenshot/log remain locally under `browser-failed-drag`.
+The old p0.2 narrow PASS in add77ec is **withdrawn**. Its open ends allowed a bypass. See `evidence/phase-a/narrow-audit-correction.json`; original samples and history remain preserved.
 
-## Evidence and reproducibility
+The forced-channel pre-fix test then showed0 channel crossings despite8 units becoming idle: half-tile nodes missed the legal channel center, and idle was incorrectly treated as arrival. The new lattice includes the center; unreachable moves retain an explicit failure; acceptance requires real destination proximity and crossing. Convoy priorities are propagated within a same-direction queue to prevent alternating-ID yielding deadlocks.
 
-Committed under `docs/evidence/phase-a/`: normal game, crowd/narrow/stance and1000-unit FAIL screenshots; acceptance/hardware/threshold records; full compressed normal-state evidence; compressed HAR for normal play, browser fixtures and performance; raw performance frame distributions; served-resource Git blob comparisons; retained failed candidate summaries. This preserves reviewable evidence in GitHub, not just ephemeral paths.
+The first p0.3 browser run arrived8/8 but coarse500ms samples observed7 crossings. It is retained as a FAIL in `failed-coarse-sampling.json`. The final test uses an additional read-only animation-frame crossing observer:8/8 actual crossings, plus destination/collision checks. The crossing observer itself does not write game state. Synthetic fixture setup separately invalidates the renderer terrain cache after replacing tiles, so the supplemental narrow-rendered-game.png shows the actual sealed water barrier. That supplemental real-input run also passes8/8 crossings/actual arrivals; source resources match c305. Its manifest truthfully records QA/docs-only uncommitted files, while normal play, the full browser suite and performance started from clean c305.
 
-Full Playwright traces are354MiB and87MiB, so they are **not committed**. Their local paths, sizes and SHA-256 hashes are in `large-artifacts.json`. Full traces remain under `/workspace/diagnostics/riftwatch/phase-a/`; they must be exported separately if needed after this environment is discarded. No GitHub Release or other upload was created.
+Earlier crowd18/24 and stable-iteration starvation failures are retained in the prior evidence directory. No failed run is silently relabelled PASS.
 
-Reproduce with tools/qa/serve.py, gameplay.py, phase-a-browser.py, performance.py and analyze.py as documented in GAMEPLAY-QA.md. Browser map fixtures are explicitly synthetic; normal seeded play is separate. All are AFTER_LOCAL.
+## Evidence preservation and deployment
 
-## Three-stage status and deployment
+Committed current evidence under `docs/evidence/phase-a-v3/`: game/crowd/narrow/stance/1000-unit-FAIL screenshots, acceptance and hardware, full compressed normal-state evidence, compressed HAR for all3 suites, raw performance distributions, source Git-blob comparisons and failed-run evidence. Large Playwright traces remain local; `large-artifacts.json` records their exact paths/sizes/SHA-256. They were not pushed to GitHub due to size; compressed HAR/state evidence is preserved remotely. No Release/upload service was used.
 
-- BEFORE_LIVE: **LIVE_VERIFIED**, already captured against original source914016d; retained screenshot and previous evidence remain valid for this fix lineage.
-- AFTER_LOCAL: **functional scenario PASS**, performance **FAIL at1000**. Tested game commit8ba384889d3eb3d782ce9a5eb98f569afbd14d6d.
-- AFTER_DEPLOY_LIVE: **DEPLOYMENT_BLOCKED / NOT_TESTED**. Original issue17 still references914016d; no Preview update performed.
+- BEFORE_LIVE: **LIVE_VERIFIED**, existing original Preview evidence, source914016dae8a7eb131b7e06c49a36c6a3276247d0.
+- AFTER_LOCAL: bounded functional scenarios **PASS**, performance **FAIL**; exact game commitc305aec96afd6c499f5b82046d991c5a0da02a3d.
+- AFTER_DEPLOY_LIVE: **DEPLOYMENT_BLOCKED / NOT_TESTED**. Final read-only issue17 metadata still points to914016d. No deployment action was taken.
 
-See OMGITHUB-DEPLOYMENT.md for supported branch-selection findings and what remains unconfirmed. Phase B remains blocked by the failed1000-unit gate and the outstanding full-contract requirements in GAMEPLAY-REQUIREMENTS.md.
+See OMGITHUB-DEPLOYMENT.md. A documented Issue `branch:` directive can select a starting branch for a new OpenCode workflow, not prove direct mirroring into issue17's existing Preview. Starting that run or using Continue/Publish requires separate user authorization and can create/change a commit. No deploy-only direct update mechanism was verified. Phase B remains BLOCKED.
