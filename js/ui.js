@@ -635,6 +635,7 @@ export class UI {
   }
 
   renderSelection(game) {
+    this.el.panelHint.classList.remove('has-rally');
     const sel = game.selection;
     const el = this.el;
     if (!sel.length) {
@@ -682,7 +683,7 @@ export class UI {
       if (e.queue?.length) stats += `<span><b>${t('selection.training')}</b> ${t(`unit.${e.queue[0].type}.name`)} (${Math.ceil(e.queue[0].remaining)}s)</span>`;
       el.selectionStats.innerHTML = stats;
       el.panelHint.textContent = game.canSetRally(e) ? t('rally.hint') : def.dropoff ? t('selection.hintDropoff') : def.pop ? t('selection.hintPop') : e.type === 'core' ? t('selection.hintTownCenter') : t('selection.hintBuilding');
-      if(game.canSetRally(e)&&e.rally){const clear=document.createElement('button');clear.type='button';clear.className='rally-clear';clear.dataset.command='rally:clear';clear.textContent=t('rally.clear');clear.addEventListener('click',()=>this.callbacks.command?.('rally:clear'));el.panelHint.append(document.createTextNode(' '),clear);}
+      if(game.canSetRally(e)&&e.rally){const clear=document.createElement('button');clear.type='button';clear.className='rally-clear';clear.dataset.command='rally:clear';clear.textContent=t('rally.clear');clear.addEventListener('click',()=>this.callbacks.command?.('rally:clear'));const hint=document.createElement('span');hint.className='rally-hint-text';hint.textContent=t('rally.hint');el.panelHint.classList.add('has-rally');el.panelHint.replaceChildren(hint,clear);}
       this.drawPortrait(e);
     } else {
       const def = UNIT_TYPES[e.type];
