@@ -1036,7 +1036,7 @@ export class Renderer {
       const big = ['knight', 'light_cavalry', 'horse_archer', 'elephant', 'ram', 'mangonel', 'patrol_cart', 'prototype'].includes(u.type) ? 19 : 12;
       this.drawUnitShadow(p.x+2*scale,p.y+1.5*scale,big*scale,(big===19?7:4.5)*scale);
       if (['knight', 'light_cavalry', 'horse_archer'].includes(u.type)) this.drawKnightUnit(p, u, scale, team, walk, time, bob);
-      else if (u.type === 'archer' || u.type === 'marauder' || u.type === 'skirmisher' || u.type === 'patrol_cart') this.drawArcherUnit(p, u, scale, team, walk, time, bob);
+      else if (u.typeDef.visual==='archer' || u.type === 'archer' || u.type === 'marauder' || u.type === 'skirmisher' || u.type === 'patrol_cart') this.drawArcherUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'mangonel') this.drawMangonelUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'villager') this.drawVillagerUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'elephant') this.drawElephantUnit(p, u, scale, team, walk, time, bob);

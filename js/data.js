@@ -146,6 +146,12 @@ export const UNIT_TYPES = {
     radius: 0.24, sight: 7.5, projectile: 'arrow', cost: { wood: 35, gold: 25 }, trainTime: 10, pop: 1, threat: 1.5,
     desc: 'Massed arrows from the treeline. Fragile if caught alone.',
   },
+  chu_ko_nu: {
+    name:'Chu Ko Nu',role:'Repeating Crossbow',icon:'bow',category:'ranged',family:'R',visual:'archer',uniqueCiv:'CHN',minAge:1,
+    hp:35,attack:7,range:5,speed:2.5,cooldown:1.8,armor:0,radius:.24,sight:7.5,projectile:'arrow',
+    cost:{wood:35*1.15,gold:25*1.15},trainTime:10,pop:1,threat:1.5*1.15,
+    desc:'Chinese repeating crossbow infantry. Uses the Chinese third-shot extra bolt; trained with the R-family template at the Archery Range.',
+  },
   skirmisher: {
     name: 'Skirmisher', role: 'Ranged', icon: 'javelin', category: 'ranged', family: 'K',
     hp: 40, attack: 5, range: 4.5, speed: 2.6, cooldown: 1.8, armor: 10,
