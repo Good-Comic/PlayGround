@@ -304,14 +304,15 @@ export class Renderer {
           if (sprite) lctx.drawImage(sprite, p.x - tw / 2, p.y - th / 2, tw, th);
         }
       }
+      // Lighting is invariant until the terrain/camera/viewport key changes.
+      // Bake it into the terrain layer instead of blending the whole screen every frame.
+      lctx.fillStyle=this.lighting;lctx.fillRect(0,0,this.w,this.h);
       this.terrainKey = key;
     }
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.drawImage(layer, 0, 0);
     ctx.restore();
-    ctx.fillStyle = this.lighting;
-    ctx.fillRect(0, 0, this.w, this.h);
   }
 
   drawGroundMarks(game, time) {
@@ -1011,6 +1012,15 @@ export class Renderer {
     ctx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
   }
 
+  drawUnitShadow(x,y,rx,ry) {
+    if(this.shadowCacheEnabled===false){const ctx=this.ctx;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,6.3);ctx.fill();return;}
+    if(!this.shadowSprite){
+      const canvas=document.createElement('canvas');canvas.width=128;canvas.height=64;
+      const ctx=canvas.getContext('2d');ctx.fillStyle='rgba(7,9,5,0.34)';ctx.beginPath();ctx.ellipse(64,32,48,24,0,0,6.3);ctx.fill();this.shadowSprite=canvas;
+    }
+    this.ctx.drawImage(this.shadowSprite,x-rx*4/3,y-ry*4/3,rx*8/3,ry*8/3);
+  }
+
   drawUnit(u, game, time) {
     const p = this.screen(game, u.x, u.y);
     if (p.x < -80 || p.x > this.w + 80 || p.y < -80 || p.y > this.h + 100) return;
@@ -1024,7 +1034,7 @@ export class Renderer {
       const ctx = this.ctx;
       ctx.fillStyle = 'rgba(7,9,5,0.34)';
       const big = ['knight', 'light_cavalry', 'horse_archer', 'elephant', 'ram', 'mangonel', 'patrol_cart', 'prototype'].includes(u.type) ? 19 : 12;
-      ctx.beginPath(); ctx.ellipse(p.x + 2 * scale, p.y + 1.5 * scale, big * scale, (big === 19 ? 7 : 4.5) * scale, 0, 0, 6.3); ctx.fill();
+      this.drawUnitShadow(p.x+2*scale,p.y+1.5*scale,big*scale,(big===19?7:4.5)*scale);
       if (['knight', 'light_cavalry', 'horse_archer'].includes(u.type)) this.drawKnightUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'archer' || u.type === 'marauder' || u.type === 'skirmisher' || u.type === 'patrol_cart') this.drawArcherUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'mangonel') this.drawMangonelUnit(p, u, scale, team, walk, time, bob);

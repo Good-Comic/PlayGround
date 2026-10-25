@@ -91,6 +91,6 @@ export async function run(warmup,seconds,mode,count) {
     }
     requestAnimationFrame(frame);
   });
-  return {raw:stats,units:gCount(),mode,seed:ageOfAsh.game.seed,composition:audit.composition,moved_fraction:audit.moved.size/count,moved_fraction_15s:[...audit.firstMoves.values()].filter(t=>t<=15).length/count,first_move_latency_seconds:[...audit.origins.keys()].map(id=>audit.firstMoves.get(id)??null),attacks:audit.attacks,kills:audit.kills,sim_time:ageOfAsh.game.time,measured_sim_seconds:ageOfAsh.game.time-stats.simStart,phase:ageOfAsh.game.phase,navigation:ageOfAsh.game.navigationStats,elapsed_wall_seconds:(performance.now()-started)/1000};
+  return {raw:stats,units:gCount(),mode,seed:ageOfAsh.game.seed,composition:audit.composition,moved_fraction:audit.moved.size/count,moved_fraction_15s:[...audit.firstMoves.values()].filter(t=>t<=15).length/count,first_move_latency_seconds:[...audit.origins.keys()].map(id=>audit.firstMoves.get(id)??null),attacks:audit.attacks,kills:audit.kills,sim_time:ageOfAsh.game.time,measured_sim_seconds:ageOfAsh.game.time-stats.simStart,phase:ageOfAsh.game.phase,navigation:ageOfAsh.game.navigationStats,renderer_caches:{infantry:ageOfAsh.renderer.infantrySpriteStats,sparks:ageOfAsh.renderer.sparkSpriteStats,shadow:!!ageOfAsh.renderer.shadowSprite},elapsed_wall_seconds:(performance.now()-started)/1000};
 }
 function gCount(){return ageOfAsh.game.units.length;}
