@@ -1,0 +1,1 @@
+Candidate assembly is saved. Real browser acceptance is in progress; no public URL has been created. Legacy and Integration are unchanged.

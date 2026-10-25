@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "capability": "GITHUB_PROGRESS_SYNC_READY",
+  "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
+  "updated_at": "2026-10-25T19:47:24.510287+00:00",
+  "latest_event": {
+    "task_id": "PLAYTEST-P0",
+    "agent": "Codex",
+    "severity": "PROGRESS",
+    "branch": "codex/riftwatch-playtest-candidate",
+    "commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+    "build_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+    "summary": "Isolated six-feature candidate assembled; minimum browser acceptance running; no public deployment.",
+    "code_changes": [
+      "Boss,Population,Target,Civ/B2,Rally combined only on Candidate",
+      "Versioned static artifact with28 SHA256-checked payloads and private download-only Bug JSON",
+      "Legacy save/settings namespace isolated"
+    ],
+    "next_steps": [
+      "Finish minimum real-browser acceptance",
+      "Prepare exact isolated Pages operation for user approval",
+      "Do not touch main,checkpoints or Issue17"
+    ],
+    "requires_user_decision": false,
+    "tests": [
+      {
+        "name": "Combined71 gameplay plus4 export/integrity tests",
+        "status": "PASS",
+        "source_commit": "2c265ec411e0d81164e6f695db062b5e966a6f39",
+        "evidence": "docs/evidence/playtest-candidate/combined-unit.log.txt",
+        "evidence_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+        "evidence_blob": "3aa6340ebe0662336063eaf302588a09454643f4",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      }
+    ],
+    "blockers": [
+      {
+        "id": "DEPLOYMENT_BLOCKED",
+        "severity": "BLOCKED",
+        "summary": "No authorization for public hosting/configuration; isolated deployment preparation only.",
+        "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+        "requires_user_decision": false
+      },
+      {
+        "id": "PERF_KNOWN_FAIL",
+        "severity": "WARNING",
+        "summary": "Historical cloud rAF/time failures retained; experimental candidate is not formal acceptance.",
+        "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+        "requires_user_decision": false
+      }
+    ],
+    "response": "Candidate assembly is saved. Real browser acceptance is in progress; no public URL has been created. Legacy and Integration are unchanged.",
+    "event_id": "bb95bf3e63bf56204ce87695f69da8848a7055ac1b2a4e963354ec1f2f63137b",
+    "remote_head": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+    "pushed": true,
+    "remote_query": "VERIFIED",
+    "recorded_at": "2026-10-25T19:47:24.510287+00:00",
+    "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
+  },
+  "notification_policy": "Only material WARNING/BLOCKED/ACTION_REQUIRED; no external messages are automatically sent",
+  "supervisor_topics": [
+    "commits",
+    "QA",
+    "gameplay",
+    "performance",
+    "simulation_time",
+    "GDD",
+    "merge_conflicts",
+    "interruptions",
+    "ownership",
+    "candidate_deployment"
+  ]
+}
