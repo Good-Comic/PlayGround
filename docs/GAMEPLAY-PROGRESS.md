@@ -1,3 +1,7 @@
+## A1-TARGET final three-repeat cohort — integration BLOCKED
+
+Source294fa287aed37af7820e682d175577a89867380f; actual engine resources unchanged from target77c2060, new fixed-window QA/deep-nav snapshot only.3x100/200/250 combat +3x250mixed completed independently. All12 move100%by15s and stuck<=2%; quality9PASS/3FAIL.100 combat2/3,200combat3/3,250combat1/3,250mixed3/3.100r1 mean97.57ms/P95333.3ms/rAFmax5016.6ms; cgroup throttle+10.665s coincident, root cause unresolved.250r1/r3 lose17.7%/14.6% simulation progress despite passing mean/P95rAF. All FAILs retained, no retry. New cohort separate from11f8a6a original9/12; no mixed-source acceptance. Enemy-state correctness LOCAL_VERIFIED; total performance gate BLOCKED, not INTEGRATED_VERIFIED. No renderer/AI/function deletion, teleport, collision removal or threshold reduction.
+
 ## A1-TARGET updated actual local acceptance
 
 Source77c20609da28b38fa405531a0215a8261dc6b1ef:51 full Node tests/four locales PASS; five real Chromium target-state/attack/SaveLoad checks PASS,50/50 feature resources match. Normal135-wall-second P0 play completes175 samples:8 death→living retargets, wood/gold/food/stone unload35/23/23/11, no20s zero-cargo stall, cavalry command reaches legal destination.25/25 normal-play resources match; Console/Page/request errors0. LOCAL_VERIFIED for these contracts. New three-repeat100/200/250 performance cohort not yet run; integration remains gated. Full trace504MiB is LOCAL_ONLY; raw states/HAR/screenshots are remotely preserved in bounded bundle, not falsely claimed trace-backed recovery.
