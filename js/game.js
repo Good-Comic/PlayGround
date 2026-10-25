@@ -366,7 +366,7 @@ export class Game {
         hp: saved.hp, maxHp: saved.maxHp, baseMaxHp: saved.baseMaxHp ?? def.hp,
         armor: saved.armor ?? def.armor ?? 6, construction: saved.construction ?? 1,
         alive: saved.alive !== false, selected: false, queue: (saved.queue || []).map(item => ({ ...item })),
-        cooldown: saved.cooldown || 0, rally: saved.rally || null, hitFlash: saved.hitFlash || 0,
+        cooldown: saved.cooldown || 0, rally: saved.rally && Number.isFinite(saved.rally.x) && Number.isFinite(saved.rally.y) && saved.rally.x>=0 && saved.rally.y>=0 && saved.rally.x<this.world.size && saved.rally.y<this.world.size ? {...saved.rally} : null, hitFlash: saved.hitFlash || 0,
         foodStore: saved.foodStore || 0, goldStore: saved.goldStore || 0,
       };
     }).filter(Boolean);
@@ -780,6 +780,26 @@ export class Game {
     return null;
   }
 
+  canSetRally(b) {
+    return !!(b?.alive && b.team==='player' && b.construction>=1 && this.trainableFor(b).length);
+  }
+
+  setRally(b, x, y, resource=null) {
+    if(!this.canSetRally(b) || !Number.isFinite(x) || !Number.isFinite(y) || x<0 || y<0 || x>=this.world.size || y>=this.world.size)return false;
+    if(!resource && !this.isWalkable(x,y,{team:'player',typeDef:{radius:.3}}))return false;
+    b.rally={x,y,...(resource?.alive && resource.amount>0?{resourceId:resource.id}:{})};
+    this.hooks.selectionChanged?.();return true;
+  }
+
+  applyRally(b,unit) {
+    const r=b.rally;if(!r || !Number.isFinite(r.x) || !Number.isFinite(r.y))return false;
+    if(unit.type==='villager' && r.resourceId!==undefined){
+      const node=this.world.resources.find(n=>n.id===r.resourceId&&n.alive&&n.amount>0);
+      if(node){this.orderGather(unit,node);return true;}
+    }
+    this.commandMove([unit],r.x,r.y);return true;
+  }
+
   buildingCost(type) {
     const cost = { ...(BUILDING_TYPES[type]?.cost || {}) };
     if (type === 'tower') for (const k of Object.keys(cost)) cost[k] = Math.round(cost[k] * this.effects.towerCostMul);
@@ -949,8 +969,10 @@ export class Game {
           const sx = b.x + b.w / 2 + Math.cos(angle) * (b.w / 2 + 0.8);
           const sy = b.y + b.h / 2 + Math.sin(angle) * (b.h / 2 + 0.8);
           const unit = this.spawnUnit(item.type, sx, sy, 'player');
+          // Retain the paid queue item if every spawn position is occupied.
+          if(!unit){item.remaining=0;continue;}
           this.stats.trained++;
-          if (item.type === 'villager') {
+          if (!this.applyRally(b,unit) && item.type === 'villager') {
             const node = this.findResource('wood', sx, sy) || this.findResource('food', sx, sy);
             if (node) this.orderGather(unit, node);
           }
@@ -2767,6 +2789,7 @@ export class Game {
       if (b?.w && b.team === 'player') this.trainUnit(b, id.slice(6));
       return;
     }
+    if(id==='rally:clear'){for(const b of this.selection)if(this.canSetRally(b))b.rally=null;this.hooks.selectionChanged?.();return;}
     if (id === 'age:advance') { this.advanceAge(); return; }
     if (id === 'hero:mark') { this.heroMark(); return; }
     if (id === 'hero:control') { this.toggleHeroControl(); this.hooks.selectionChanged?.(); return; }
@@ -3076,7 +3099,14 @@ export class Game {
   issueCommand(sx, sy) {
     if (this.placement) { this.cancelPlacement(); return; }
     const units = this.selection.filter(e => e.team === 'player' && !e.w).filter(e => e.alive);
-    if (!units.length) return;
+    if(!units.length){
+      const producers=this.selection.filter(b=>this.canSetRally(b));if(!producers.length)return;
+      const hit=this.pickAt(sx,sy),wp=this.worldAt(sx,sy),resource=hit?.resource?hit:null;
+      const x=resource?resource.x:wp.x,y=resource?resource.y:wp.y;
+      let changed=false;for(const b of producers)changed=this.setRally(b,x,y,resource)||changed;
+      if(changed){this.sound?.command();this.addCommandMarker(x,y,false);}else this.toast(t('rally.invalid'),'bad',2200);
+      return;
+    }
     const hit = this.pickAt(sx, sy);
     if (hit) {
       if (hit.team === 'enemy') {

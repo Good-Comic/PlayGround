@@ -231,6 +231,7 @@ export class Renderer {
     ctx.fillStyle = '#141a10';
     ctx.fillRect(0, 0, this.w, this.h);
     this.drawTerrain(game, time);
+    this.drawRallyPoints(game);
     this.drawGroundMarks(game, time);
     this.drawZones(game, time);
     this.drawCommandMarkers(game);
@@ -313,6 +314,15 @@ export class Renderer {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.drawImage(layer, 0, 0);
     ctx.restore();
+  }
+
+  drawRallyPoints(game) {
+    const ctx=this.ctx,z=game.camera.zoom;
+    for(const b of game.selection){if(!game.canSetRally(b)||!b.rally)continue;
+      const from=this.screen(game,b.x+b.w/2,b.y+b.h/2),p=this.screen(game,b.rally.x,b.rally.y);
+      ctx.save();ctx.strokeStyle='#e6ca7d';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(from.x,from.y);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.setLineDash([]);
+      ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x,p.y-32*z);ctx.stroke();ctx.fillStyle='#77a8ad';ctx.beginPath();ctx.moveTo(p.x,p.y-32*z);ctx.lineTo(p.x+16*z,p.y-27*z);ctx.lineTo(p.x,p.y-22*z);ctx.closePath();ctx.fill();ctx.restore();
+    }
   }
 
   drawGroundMarks(game, time) {

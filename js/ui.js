@@ -635,6 +635,7 @@ export class UI {
   }
 
   renderSelection(game) {
+    this.el.panelHint.classList.remove('has-rally');
     const sel = game.selection;
     const el = this.el;
     if (!sel.length) {
@@ -681,7 +682,8 @@ export class UI {
       if (def.attack) stats += `<span><b>${Math.round(def.attack * (e.team === 'player' && e.type === 'tower' ? game.effects.towerDamageMul : 1))}</b> ${t('selection.atk')}</span>`;
       if (e.queue?.length) stats += `<span><b>${t('selection.training')}</b> ${t(`unit.${e.queue[0].type}.name`)} (${Math.ceil(e.queue[0].remaining)}s)</span>`;
       el.selectionStats.innerHTML = stats;
-      el.panelHint.textContent = def.dropoff ? t('selection.hintDropoff') : def.pop ? t('selection.hintPop') : e.type === 'core' ? t('selection.hintTownCenter') : t('selection.hintBuilding');
+      el.panelHint.textContent = game.canSetRally(e) ? t('rally.hint') : def.dropoff ? t('selection.hintDropoff') : def.pop ? t('selection.hintPop') : e.type === 'core' ? t('selection.hintTownCenter') : t('selection.hintBuilding');
+      if(game.canSetRally(e)&&e.rally){const clear=document.createElement('button');clear.type='button';clear.className='rally-clear';clear.dataset.command='rally:clear';clear.textContent=t('rally.clear');clear.addEventListener('click',()=>this.callbacks.command?.('rally:clear'));const hint=document.createElement('span');hint.className='rally-hint-text';hint.textContent=t('rally.hint');el.panelHint.classList.add('has-rally');el.panelHint.replaceChildren(hint,clear);}
       this.drawPortrait(e);
     } else {
       const def = UNIT_TYPES[e.type];
@@ -736,7 +738,7 @@ export class UI {
 
   commandSignature(game) {
     const hero = game.hero;
-    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${e.stance}:${e.trainingPage||0}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
+    return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${e.stance}:${e.trainingPage||0}:${e.rally?.x},${e.rally?.y}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
   }
 
   getCommands(game) {
@@ -849,7 +851,7 @@ export class UI {
       return;
     }
     this.trainingShownFor = one;
-    this.el.selectionSub.textContent = t('selection.trainingProgress', { unit: t(`unit.${first.type}.name`), seconds: Math.ceil(first.remaining) });
+    this.el.selectionSub.textContent = first.remaining<=0 ? t('rally.spawnBlocked') : t('selection.trainingProgress', { unit: t(`unit.${first.type}.name`), seconds: Math.ceil(first.remaining) });
   }
 
   drawPortrait(entity, selection) {
