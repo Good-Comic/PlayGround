@@ -3,24 +3,62 @@
   "updated_at": "2026-10-25T18:24:01.472574+00:00",
   "tasks": [
     {
+      "task_id": "PLAYTEST-DEPLOY",
+      "status": "BLOCKED",
+      "branch": "codex/riftwatch-playtest-candidate",
+      "next_steps": [
+        "Obtain bounded authorization in docs/playtest/APPROVAL-PLAN.json",
+        "After authorization recheck source/artifact/site isolation,enable only newPages,then verifyactualremoteURL"
+      ],
+      "name": "Approve and deploy isolated Candidate",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "priority": "P0",
+      "agent": "UNASSIGNED; claim ownership before writing",
+      "environment": "managed cloud, except HARDWARE requires physical Windows",
+      "base_commit": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
+      "latest_pushed_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+      "completed": [
+        "Minimum local Candidate gates pass; exactartifact/approval-plan prepared"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "result": "LOCAL_VERIFIED",
+          "source": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/playtest-candidate/acceptance.json"
+      ],
+      "failures": [
+        "Historicalperformance failures unchanged"
+      ],
+      "blockers": [
+        "Exact public deployment operation requires user approval"
+      ],
+      "permissions": [
+        "Do not create site/Pages/workflow before approval"
+      ],
+      "updated_at": "2026-10-25T20:37:17.253607+00:00"
+    },
+    {
       "task_id": "A1-TARGET",
-      "status": "CHECKPOINTED",
+      "status": "IN_PROGRESS",
       "branch": "codex/riftwatch-v22-target-state",
       "next_steps": [
-        "Diagnose retained100r1 severe rAF stall and250r1/r3 time loss with separate diagnostic profiles; no acceptance rerun-to-green",
-        "Do not integrate this game feature until its full gate is satisfied"
+        "Complete separate3-repeat12-case performance at294fa287; preserve all results before integration decision"
       ],
       "name": "A1-TARGET",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
-      "agent": "Codex (last completed slice); next agent must verify/claim ownership",
+      "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
       "latest_pushed_commit": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
       "completed": [
         "51 Node tests and5 native browser checks pass",
-        "135s normal P0 passes with8 retargets,35/23/23/11 deposits",
-        "New12-case cohort:9qualityPASS/3FAIL, allstate/movement gatesPASS"
+        "135s normal P0 passes with8 retargets,35/23/23/11 deposits"
       ],
       "uncommitted": [],
       "unpushed": [],
@@ -38,11 +76,11 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T19:05:33.893860+00:00"
+      "updated_at": "2026-10-25T20:37:17.253607+00:00"
     },
     {
       "task_id": "B2-GDD",
-      "status": "CHECKPOINTED",
+      "status": "IN_PROGRESS",
       "branch": "codex/riftwatch-v22-civ-alignment",
       "next_steps": [
         "Preserve final normal P0 evidence; retest performance before integration"
@@ -50,7 +88,7 @@
       "name": "B2-GDD",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
-      "agent": "Codex (last completed slice); next agent must verify/claim ownership",
+      "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
       "latest_pushed_commit": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -70,11 +108,11 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T19:05:33.893860+00:00"
+      "updated_at": "2026-10-25T20:37:17.253607+00:00"
     },
     {
       "task_id": "A4-POP",
-      "status": "CHECKPOINTED",
+      "status": "IN_PROGRESS",
       "branch": "codex/riftwatch-v22-population",
       "next_steps": [
         "Run affected performance gates; resolve later-wave caps/monument spec before full GDD claim"
@@ -82,7 +120,7 @@
       "name": "A4-POP",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
-      "agent": "Codex (last completed slice); next agent must verify/claim ownership",
+      "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
       "latest_pushed_commit": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
@@ -101,7 +139,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T19:05:33.893860+00:00"
+      "updated_at": "2026-10-25T20:37:17.253607+00:00"
     },
     {
       "task_id": "QA-TOOLS",
@@ -116,7 +154,7 @@
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-      "latest_pushed_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
+      "latest_pushed_commit": null,
       "completed": [
         "Exact11f8a6a pushed,12 valid baseline cases remotely archived, no rerun"
       ],
@@ -131,7 +169,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T19:03:25.160320+00:00"
+      "updated_at": "2026-10-25T18:24:53.917767+00:00"
     },
     {
       "task_id": "B1-RALLY",
@@ -159,7 +197,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T19:05:33.893860+00:00"
+      "updated_at": "2026-10-25T20:37:17.253607+00:00"
     },
     {
       "task_id": "INTEGRATION",
@@ -176,8 +214,7 @@
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
       "latest_pushed_commit": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
       "completed": [
-        "Recovery/tooling only integrated and verified at72e978417afd3c95f897cc7cb35395f00008c313; zero production resource changes",
-        "Updated recovery-index tooling integrated at2cd6f099d72a980bfa24dd7ae0f79676918884e8;9dev tests and fresh browser smoke50/50resources; unchanged production resources"
+        "Recovery/tooling only integrated and verified at72e978417afd3c95f897cc7cb35395f00008c313; zero production resource changes"
       ],
       "uncommitted": [],
       "unpushed": [],
@@ -190,15 +227,14 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T19:05:33.893860+00:00"
+      "updated_at": "2026-10-25T20:37:17.253607+00:00"
     },
     {
       "task_id": "PHASE-B-E",
       "status": "READY",
       "branch": null,
       "next_steps": [
-        "Start an independent UI Scale or Attack-Move feature slice using established matrix; no global500/1000 lock",
-        "Keep full feature-specific tests and safe code/schema behavior"
+        "Independent Attack-Move/UI Scale slices after recovery; existing matrix remains scope"
       ],
       "name": "PHASE-B-E",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
@@ -219,7 +255,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T19:03:25.160320+00:00"
+      "updated_at": "2026-10-25T18:24:53.917809+00:00"
     },
     {
       "task_id": "HARDWARE",
@@ -247,44 +283,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T19:03:25.160320+00:00"
-    },
-    {
-      "task_id": "A3-BOSS",
-      "status": "CHECKPOINTED",
-      "branch": "codex/riftwatch-v22-boss",
-      "next_steps": [
-        "First gameplay merge candidate after its affected gates; do not claim all Boss GDD compliance"
-      ],
-      "name": "Boss reinforcements",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
-      "priority": "P1",
-      "agent": "Codex (last completed slice); next agent must verify/claim ownership",
-      "environment": "managed cloud, except HARDWARE requires physical Windows",
-      "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-      "latest_pushed_commit": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
-      "completed": [
-        "Registered M4 reinforcement fix, per-wave reset,48tests and7real-browser checks preserved"
-      ],
-      "uncommitted": [],
-      "unpushed": [],
-      "tests": [
-        {
-          "source": "8375b6211900eae75c78fad4a08b73e28ed46888",
-          "result": "bounded Boss browser PASS; see branch evidence"
-        }
-      ],
-      "evidence": [
-        "docs/evidence/strategy-v22/boss-browser.json"
-      ],
-      "failures": [],
-      "blockers": [
-        "Full game integration gates pending; legacy Boss stat/phase discrepancies remain"
-      ],
-      "permissions": [
-        "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
-      ],
-      "updated_at": "2026-10-25T19:03:25.160320+00:00"
+      "updated_at": "2026-10-25T18:24:53.917813+00:00"
     }
   ]
 }

@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: 6b6b1c1e80080c2b16eb6536a3333e56790ddfcabf6c6dc38e9c24507b5a7061
-Captured UTC: 2026-10-25T19:05:33.268708+00:00 · Trigger: FINAL_CHECKPOINT
-Collector source: `317ef162b4f4b69c43644cb0e7c031387dc898c1` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: a396cf89db0d57f831a0d4271ba588f5fdf9f263e0741c02f8dec06f29f4aa2e
+Captured UTC: 2026-10-25T20:37:16.275063+00:00 · Trigger: FINAL_CHECKPOINT
+Collector source: `3779c5d50876cb2e28590b9d250fb355fc0f8e38` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -12,6 +12,8 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch | codex/riftwatch-v222-recovery | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | REMOTE_SAVED | False |
 | /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | c456cae581b3ec85a7dd222d017453d2e589e095 | c456cae581b3ec85a7dd222d017453d2e589e095 | REMOTE_SAVED | False |
 | /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | REMOTE_SAVED | False |
+| /workspace/riftwatch-monitor | codex/riftwatch-v224-monitor | 821f956d6fe1266964b111d2e2c6a19fc836e44e | 821f956d6fe1266964b111d2e2c6a19fc836e44e | REMOTE_SAVED | False |
+| /workspace/riftwatch-playtest | codex/riftwatch-playtest-candidate | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | REMOTE_SAVED | False |
 | /workspace/riftwatch-pop | codex/riftwatch-v22-population | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | REMOTE_SAVED | False |
 | /workspace/riftwatch-prediction | codex/riftwatch-v222-prediction | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | REMOTE_SAVED | False |
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
@@ -31,7 +33,7 @@ Unpushed commits: []
 Uncommitted paths: []
 Validation: [{"path": "/workspace/diagnostics/riftwatch/v22-quality-baseline/results.json", "source_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8", "result": "REFER_TO_EVIDENCE; no automatic PASS inferred", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "b3bf19051816248b1dccd9bbd38e7bfe2221c6eb1f8e70d4092c4f816974d41d", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Feature-specific remaining gates; see handoff
-Next: Publish immutable final recovery index; handoff readiness confirmed; Preserve protected branches and no online deploy
+Next: Publish framework; preserve other worktrees; do not rerun valid12 baseline cases
 
 ## codex/riftwatch-v22-civ-alignment
 
@@ -45,9 +47,25 @@ Next: Persist normal P0 evidence; performance/combined B1/B2 gates pending
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"path": "/workspace/diagnostics/riftwatch/v222-tooling-index-smoke/result.json", "source_commit": "2cd6f099d72a980bfa24dd7ae0f79676918884e8", "result": "INTEGRATED_VERIFIED tooling only;9dev+fresh browser/50resource matches,44Node reused with unchanged source", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "667b9d2d4de8b61f6ce984cea494ef5f48e520c873bc4f197a77869587a6b4d5", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Validation: [{"path": "/workspace/diagnostics/riftwatch/v222-tooling-smoke/result.json", "source_commit": "72e978417afd3c95f897cc7cb35395f00008c313", "result": "INTEGRATED_VERIFIED tooling only;44Node+8dev+4locales and actual Start/Save/Continue pass; no game resource changes", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "62f412196a38f35f655c092d31e06ef6cb9dee08d2613ff03a5d37f182848fb4", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Gameplay feature gates not yet complete
 Next: Keep Boss/Population/Target/Civ/Rally game changes isolated until gates
+
+## codex/riftwatch-v224-monitor
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
+
+## codex/riftwatch-playtest-candidate
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"path": "docs/evidence/playtest-candidate/acceptance.json", "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c", "result": "LOCAL_VERIFIED bounded experimental candidate; Pages approval pending", "exists": true, "storage": "REMOTE_SAVED", "sha256": "f7aa32e6797823b1d48a98ed1ef8803526435c67261a360c04284351c6e9dd67", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: DEPLOYMENT_BLOCKED_AWAITING_USER_APPROVAL; HARDWARE_TEST_PENDING; SIMULATION_INTEGRITY_BLOCKED
+Next: Obtain user approval for APPROVAL-PLAN.json; If approved recheck no existing Pages,deploy only approved artifact toisolated site branch,enablePages then actual remote acceptance; Keep full formal feature gates unchanged; independent performance and B–E work can continue
 
 ## codex/riftwatch-v22-population
 
