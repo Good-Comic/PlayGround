@@ -1,1 +1,1 @@
-Candidate assembly is saved. Real browser acceptance is in progress; no public URL has been created. Legacy and Integration are unchanged.
+GITHUB_PROGRESS_SYNC_READY: four public GitHub snapshot files are independently readable and idempotent. LIVE_CODEX_STREAM_VERIFIED is not claimed. This monitoring is not a prerequisite for gameplay work.
