@@ -4,21 +4,23 @@
   "tasks": [
     {
       "task_id": "A1-TARGET",
-      "status": "IN_PROGRESS",
+      "status": "CHECKPOINTED",
       "branch": "codex/riftwatch-v22-target-state",
       "next_steps": [
-        "Complete separate3-repeat12-case performance at294fa287; preserve all results before integration decision"
+        "Diagnose retained100r1 severe rAF stall and250r1/r3 time loss with separate diagnostic profiles; no acceptance rerun-to-green",
+        "Do not integrate this game feature until its full gate is satisfied"
       ],
       "name": "A1-TARGET",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
-      "agent": "UNASSIGNED; claim ownership before writing",
+      "agent": "Codex (last completed slice); next agent must verify/claim ownership",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-      "latest_pushed_commit": null,
+      "latest_pushed_commit": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
       "completed": [
         "51 Node tests and5 native browser checks pass",
-        "135s normal P0 passes with8 retargets,35/23/23/11 deposits"
+        "135s normal P0 passes with8 retargets,35/23/23/11 deposits",
+        "New12-case cohort:9qualityPASS/3FAIL, allstate/movement gatesPASS"
       ],
       "uncommitted": [],
       "unpushed": [],
@@ -36,11 +38,11 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T18:24:53.917746+00:00"
+      "updated_at": "2026-10-25T19:03:25.160320+00:00"
     },
     {
       "task_id": "B2-GDD",
-      "status": "IN_PROGRESS",
+      "status": "CHECKPOINTED",
       "branch": "codex/riftwatch-v22-civ-alignment",
       "next_steps": [
         "Preserve final normal P0 evidence; retest performance before integration"
@@ -48,10 +50,10 @@
       "name": "B2-GDD",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
-      "agent": "UNASSIGNED; claim ownership before writing",
+      "agent": "Codex (last completed slice); next agent must verify/claim ownership",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-      "latest_pushed_commit": null,
+      "latest_pushed_commit": "c456cae581b3ec85a7dd222d017453d2e589e095",
       "completed": [
         "47 Node tests and8 browser checks pass",
         "Four stale descriptions fixed with retained failure",
@@ -68,11 +70,11 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T18:24:53.917760+00:00"
+      "updated_at": "2026-10-25T19:03:25.160320+00:00"
     },
     {
       "task_id": "A4-POP",
-      "status": "IN_PROGRESS",
+      "status": "CHECKPOINTED",
       "branch": "codex/riftwatch-v22-population",
       "next_steps": [
         "Run affected performance gates; resolve later-wave caps/monument spec before full GDD claim"
@@ -80,10 +82,10 @@
       "name": "A4-POP",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
-      "agent": "UNASSIGNED; claim ownership before writing",
+      "agent": "Codex (last completed slice); next agent must verify/claim ownership",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-      "latest_pushed_commit": "46759494baa05ba3d1be7c59b2c7f78a1735e89d",
+      "latest_pushed_commit": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
       "completed": [
         "50 Node tests and7 browser checks pass",
         "Normal P0 source8d090287 passes,8 retargets and40/22/24/10 deposits"
@@ -99,7 +101,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T18:24:53.917764+00:00"
+      "updated_at": "2026-10-25T19:03:25.160320+00:00"
     },
     {
       "task_id": "QA-TOOLS",
@@ -114,7 +116,7 @@
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-      "latest_pushed_commit": null,
+      "latest_pushed_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
       "completed": [
         "Exact11f8a6a pushed,12 valid baseline cases remotely archived, no rerun"
       ],
@@ -129,7 +131,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T18:24:53.917767+00:00"
+      "updated_at": "2026-10-25T19:03:25.160320+00:00"
     },
     {
       "task_id": "B1-RALLY",
@@ -157,7 +159,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T18:24:53.917771+00:00"
+      "updated_at": "2026-10-25T19:03:25.160320+00:00"
     },
     {
       "task_id": "INTEGRATION",
@@ -172,9 +174,10 @@
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
       "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-      "latest_pushed_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
+      "latest_pushed_commit": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
       "completed": [
-        "Recovery/tooling only integrated and verified at72e978417afd3c95f897cc7cb35395f00008c313; zero production resource changes"
+        "Recovery/tooling only integrated and verified at72e978417afd3c95f897cc7cb35395f00008c313; zero production resource changes",
+        "Updated recovery-index tooling integrated at2cd6f099d72a980bfa24dd7ae0f79676918884e8;9dev tests and fresh browser smoke50/50resources; unchanged production resources"
       ],
       "uncommitted": [],
       "unpushed": [],
@@ -187,14 +190,15 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T18:24:53.917774+00:00"
+      "updated_at": "2026-10-25T19:03:25.160320+00:00"
     },
     {
       "task_id": "PHASE-B-E",
       "status": "READY",
       "branch": null,
       "next_steps": [
-        "Independent Attack-Move/UI Scale slices after recovery; existing matrix remains scope"
+        "Start an independent UI Scale or Attack-Move feature slice using established matrix; no global500/1000 lock",
+        "Keep full feature-specific tests and safe code/schema behavior"
       ],
       "name": "PHASE-B-E",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
@@ -215,7 +219,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T18:24:53.917809+00:00"
+      "updated_at": "2026-10-25T19:03:25.160320+00:00"
     },
     {
       "task_id": "HARDWARE",
@@ -243,7 +247,44 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-25T18:24:53.917813+00:00"
+      "updated_at": "2026-10-25T19:03:25.160320+00:00"
+    },
+    {
+      "task_id": "A3-BOSS",
+      "status": "CHECKPOINTED",
+      "branch": "codex/riftwatch-v22-boss",
+      "next_steps": [
+        "First gameplay merge candidate after its affected gates; do not claim all Boss GDD compliance"
+      ],
+      "name": "Boss reinforcements",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "priority": "P1",
+      "agent": "Codex (last completed slice); next agent must verify/claim ownership",
+      "environment": "managed cloud, except HARDWARE requires physical Windows",
+      "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
+      "latest_pushed_commit": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
+      "completed": [
+        "Registered M4 reinforcement fix, per-wave reset,48tests and7real-browser checks preserved"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "source": "8375b6211900eae75c78fad4a08b73e28ed46888",
+          "result": "bounded Boss browser PASS; see branch evidence"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/strategy-v22/boss-browser.json"
+      ],
+      "failures": [],
+      "blockers": [
+        "Full game integration gates pending; legacy Boss stat/phase discrepancies remain"
+      ],
+      "permissions": [
+        "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
+      ],
+      "updated_at": "2026-10-25T19:03:25.160320+00:00"
     }
   ]
 }
