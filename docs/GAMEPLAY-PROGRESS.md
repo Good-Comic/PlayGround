@@ -1,6 +1,23 @@
 ## Strategy v2.2.2 recovery status — current override
 
 Recovery/handoff framework implemented and normally pushed; actual source/test/evidence state is in [STRATEGY-V2.2-EXECUTION.md](STRATEGY-V2.2-EXECUTION.md), [Recovery Manifest](recovery/WORKTREE-RECOVERY.md) and handoff/ACTIVE-TASK.json. Historical records below remain unchanged. Recovered12/12 corrected-window baseline cases (source11f8a6a),9PASS/3FAIL; no missing sample rerun. Target/Population/Civ bounded local acceptance does not equal integration.500/1000 FAIL remains research, not a project-wide lock. Simulation integrity, physical hardware and online deployment remain independent blocked/pending gates.
+## A4-POP normal P0 acceptance
+
+Normal135s play on source8d0902877564872ee5382155ebf38474c125c950:168samples,8 death→living target transitions,wood/gold/food/stone unload40/22/24/10, no20s zero-cargo stall, cavalry destination reached, Console/Page/request errors0.25/25 HTTP resources match. LOCAL_VERIFIED P0; performance/integration remain pending; newer economic/military split does not waive those gates. Full trace remains LOCAL_ONLY; bounded raw states/HAR/screenshots recoverable remotely.
+
+## A4-POP updated actual local acceptance
+
+Source86d7e81394eaab7a2aa579bd30dbbbc278224c3c:50 full Node tests and four locales PASS. Seven actual Chromium checks PASS: normal opening40/60, finite HUD, global last-slot reservation, zero extra spending on rejected second-building training, independent economy, real Pause/Save/Reload/Continue, zero Console/Page/request errors.50/50 captured resources match; screenshots, HAR/trace and navigation failure are retained. LOCAL_VERIFIED bounded population contract; P0/performance/integration/legacy-save exhaustive gates still pending. No online/hardware PASS.
+
+## Strategy v2.2.2 A4-POP recovered checkpoint
+
+Preserves previous46759494baa05ba3d1be7c59b2c7f78a1735e89d and uncommitted core20 correction. Seven focused tests PASS, including actual initial military40 (core20+two houses10), independent economy60, global category queues, Franks40, atomic payment rejection, Save/Load derived fields. Earlier browser evidence fe19196 remains valid ONLY for old source; new core20 browser retest PENDING. Wave ceiling transition and legacy monument contribution SPEC_DECISION_REQUIRED; no250 hard cap. Full integration/online/hardware acceptance not claimed.
+
+## Strategy v2.2 — A3-POP-01 candidate
+
+Independent branch `codex/riftwatch-v22-population`, integration base d778cf2. IMPLEMENTED: finite military/economic HUD getters; explicit economic60 from Issue8 §2.3; category-isolated global training reservations; Franks40 includes pending military slots; automatic training uses the same admission policy.49 tests pass (43 existing+6 population), four locales653 keys. LOCAL_VERIFIED: six real-browser checks pass at fe1919643945f62c251ff68f75cde241ea3221fa, including native training clicks, finite HUD, cross-building rejection without extra cost, independent economy, Pause/Save/Reload/Continue;50/50 captured resources match, zero Console/Page/request errors. Performance/P0 gates pending; no integration or online/hardware certification.
+
+GDD opening military40 with two+10houses requires core contribution20, corrected from10 (direct derivation of specified initial capacity). House10 and legacy monument15 retained. Wave5/10 ceiling150/240 transition and monument rules remain SPEC_DECISION_REQUIRED. No250 active-unit hard limit, roster reduction or boss deletion. Legacy saves derive reservations from existing queues; no save-schema migration. Existing over-cap saves are retained and new admissions stop until room is available. Already paid queues finish even after housing destruction, preserving current behavior.
 
 # Current progress — strategy v2
 

@@ -1,0 +1,325 @@
+{
+  "stage": "AFTER_LOCAL",
+  "fixture": "synthetic seeded population-boundary scene; real Start/Train/Pause/Save/Continue clicks; disposable local save",
+  "console": [],
+  "errors": [],
+  "failed": [],
+  "tests": [
+    {
+      "name": "normal-start four HUD fields finite",
+      "observed": {
+        "mil": 5,
+        "milCap": 40,
+        "eco": 8,
+        "ecoCap": 60,
+        "queuedMil": 0,
+        "queuedEco": 0,
+        "resources": {
+          "food": 300,
+          "wood": 300,
+          "gold": 120,
+          "stone": 100
+        },
+        "queues": [
+          {
+            "id": 1,
+            "type": "core",
+            "queue": []
+          },
+          {
+            "id": 2,
+            "type": "barracks",
+            "queue": []
+          },
+          {
+            "id": 3,
+            "type": "house",
+            "queue": []
+          },
+          {
+            "id": 4,
+            "type": "house",
+            "queue": []
+          },
+          {
+            "id": 5,
+            "type": "tower",
+            "queue": []
+          },
+          {
+            "id": 6,
+            "type": "farm",
+            "queue": []
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "GDD initial military40 and economy60",
+      "observed": {
+        "mil": 5,
+        "milCap": 40,
+        "eco": 8,
+        "ecoCap": 60,
+        "queuedMil": 0,
+        "queuedEco": 0,
+        "resources": {
+          "food": 300,
+          "wood": 300,
+          "gold": 120,
+          "stone": 100
+        },
+        "queues": [
+          {
+            "id": 1,
+            "type": "core",
+            "queue": []
+          },
+          {
+            "id": 2,
+            "type": "barracks",
+            "queue": []
+          },
+          {
+            "id": 3,
+            "type": "house",
+            "queue": []
+          },
+          {
+            "id": 4,
+            "type": "house",
+            "queue": []
+          },
+          {
+            "id": 5,
+            "type": "tower",
+            "queue": []
+          },
+          {
+            "id": 6,
+            "type": "farm",
+            "queue": []
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "first training click reserves final military slot",
+      "observed": {
+        "mil": 19,
+        "milCap": 20,
+        "eco": 0,
+        "ecoCap": 60,
+        "queuedMil": 1,
+        "queuedEco": 0,
+        "resources": {
+          "food": 9960,
+          "wood": 10000,
+          "gold": 9990,
+          "stone": 10000
+        },
+        "queues": [
+          {
+            "id": 20,
+            "type": "core",
+            "queue": []
+          },
+          {
+            "id": 21,
+            "type": "barracks",
+            "queue": [
+              {
+                "type": "militia",
+                "total": 8,
+                "remaining": 7.9666999999999994
+              }
+            ]
+          },
+          {
+            "id": 22,
+            "type": "barracks",
+            "queue": []
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "second building rejected with zero additional spending",
+      "observed": {
+        "mil": 19,
+        "milCap": 20,
+        "eco": 0,
+        "ecoCap": 60,
+        "queuedMil": 1,
+        "queuedEco": 0,
+        "resources": {
+          "food": 9960,
+          "wood": 10000,
+          "gold": 9990,
+          "stone": 10000
+        },
+        "queues": [
+          {
+            "id": 20,
+            "type": "core",
+            "queue": []
+          },
+          {
+            "id": 21,
+            "type": "barracks",
+            "queue": [
+              {
+                "type": "militia",
+                "total": 8,
+                "remaining": 7.4666999999999994
+              }
+            ]
+          },
+          {
+            "id": 22,
+            "type": "barracks",
+            "queue": []
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "economy trains independently of full military reservation",
+      "observed": {
+        "mil": 19,
+        "milCap": 20,
+        "eco": 0,
+        "ecoCap": 60,
+        "queuedMil": 1,
+        "queuedEco": 1,
+        "resources": {
+          "food": 9910,
+          "wood": 10000,
+          "gold": 9990,
+          "stone": 10000
+        },
+        "queues": [
+          {
+            "id": 20,
+            "type": "core",
+            "queue": [
+              {
+                "type": "villager",
+                "total": 9,
+                "remaining": 8.9833
+              }
+            ]
+          },
+          {
+            "id": 21,
+            "type": "barracks",
+            "queue": [
+              {
+                "type": "militia",
+                "total": 8,
+                "remaining": 7.333399999999999
+              }
+            ]
+          },
+          {
+            "id": 22,
+            "type": "barracks",
+            "queue": []
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "real Save/Load preserves both queue reservations",
+      "observed": {
+        "mil": 19,
+        "milCap": 20,
+        "eco": 0,
+        "ecoCap": 60,
+        "queuedMil": 1,
+        "queuedEco": 1,
+        "resources": {
+          "food": 9910,
+          "wood": 10000,
+          "gold": 9990,
+          "stone": 10000
+        },
+        "queues": [
+          {
+            "id": 20,
+            "type": "core",
+            "queue": [
+              {
+                "type": "villager",
+                "total": 9,
+                "remaining": 7.749899999999989
+              }
+            ]
+          },
+          {
+            "id": 21,
+            "type": "barracks",
+            "queue": [
+              {
+                "type": "militia",
+                "total": 8,
+                "remaining": 6.100000000000006
+              }
+            ]
+          },
+          {
+            "id": 22,
+            "type": "barracks",
+            "queue": []
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "no console/page/request errors",
+      "observed": {
+        "console": [],
+        "page": [],
+        "failed": []
+      },
+      "pass": true
+    }
+  ],
+  "manifest": {
+    "commit": "86d7e81394eaab7a2aa579bd30dbbbc278224c3c",
+    "branch": "codex/riftwatch-v22-population",
+    "dirty": false,
+    "files": {
+      "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+      "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+      "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+      "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+      "js/data.js": "661b8b0113ea7ed119e058e3d7a2047fe2e6b624a462bd78c612c242c27c56cb",
+      "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+      "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+      "js/game.js": "384cddfad99b5a74da4322af8bc25638707ae7b8f72e75897af474d5148ca2ef",
+      "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+      "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+      "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+      "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+      "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+      "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+      "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+      "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+      "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+      "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+      "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+      "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+      "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+      "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+    }
+  },
+  "browser": "154.0.8037.57",
+  "pass": true
+}

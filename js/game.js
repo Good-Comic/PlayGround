@@ -481,6 +481,25 @@ export class Game {
   get population() { return this.units.filter(u => u.alive && u.team === 'player').reduce((s, u) => s + (u.pop ?? u.typeDef.pop ?? 0), 0); }
   get militaryPopulation() { return this.units.filter(u => u.alive && u.team === 'player' && u.typeDef.category !== 'villager').reduce((s, u) => s + (u.pop ?? u.typeDef.pop ?? 0), 0); }
   get popCap() { return this.buildings.filter(b => b.alive && b.team === 'player' && b.construction >= 1).reduce((s, b) => s + (b.typeDef.pop || 0), 0); }
+  // Issue8 §2.3: economy has its own budget; core20 + two houses10 = starting military40; later wave ceilings remain a separate reconciliation.
+  get economicPopulation() { return this.units.filter(u=>u.alive&&u.team==='player'&&u.typeDef.category==='villager').reduce((n,u)=>n+(u.pop??u.typeDef.pop??0),0); }
+  get economicPopCap() { return 60; }
+  get militaryPopCap() { return Math.min(this.popCap,this.effects.militaryPopCap>0?this.effects.militaryPopCap:Infinity); }
+  queuedPopulation(economic) {
+    let total=0;
+    for(const b of this.buildings)if(b.alive&&b.team==='player')for(const q of b.queue||[]){
+      const def=UNIT_TYPES[q.type];
+      if(def&&(def.category==='villager')===economic)total+=this.computeUnitPop(def);
+    }
+    return total;
+  }
+  hasPopulationRoom(type) {
+    const def=UNIT_TYPES[type];if(!def)return false;
+    const economic=def.category==='villager';
+    const used=economic?this.economicPopulation:this.militaryPopulation;
+    const cap=economic?this.economicPopCap:this.militaryPopCap;
+    return used+this.queuedPopulation(economic)+this.computeUnitPop(def)<=cap;
+  }
   get idleVillagers() { return this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager' && (u.state === 'idle' || u.state === 'hold')).length; }
   get enemiesAlive() { return this.units.filter(u => u.alive && u.team === 'enemy').length; }
   get ownedUnitCount() { return this.units.filter(u => u.alive && u.team === 'player').length; }
@@ -1045,7 +1064,7 @@ export class Game {
         timers.villager = 0;
         const tc = this.getTownCenter();
         const villagers = this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager').length;
-        if (tc && !tc.queue.length && villagers < 22 && this.population + 1 <= this.popCap && this.resources.food >= 70) {
+        if (tc && !tc.queue.length && villagers < 22 && this.hasPopulationRoom('villager') && this.resources.food >= 70) {
           this.trainUnit(tc, 'villager', true);
         }
       }
@@ -1102,7 +1121,7 @@ export class Game {
       const def = UNIT_TYPES[unitType];
       if (this.effects.noCavalry && def.category === 'cavalry') continue;
       if (def.category !== 'villager' && this.effects.militaryPopCap > 0 && this.militaryPopulation + this.computeUnitPop(def) > this.effects.militaryPopCap) continue;
-      if (this.population + this.computeUnitPop(def) > this.popCap) continue;
+      if (!this.hasPopulationRoom(unitType)) continue;
       if (!this.canAfford(this.unitCost(unitType))) continue;
       this.trainUnit(b, unitType, true);
       return;
@@ -2935,25 +2954,12 @@ export class Game {
       return;
     }
     const cost = this.unitCost(type, building.type === 'market');
-    const pop = this.computeUnitPop(def);
-    const queuedPop = building.queue.reduce((s, q) => s + this.computeUnitPop(UNIT_TYPES[q.type]), 0);
-    if (def.category !== 'villager') {
-      if (this.militaryPopulation + pop > this.militaryPopCap) {
-        if (!silent) { this.sound?.error(); this.toast(t('toast.popLimit'), 'bad', 2400); }
-        return;
-      }
-    } else {
-      if (this.economicPopulation + pop > this.economicPopCap) {
-        if (!silent) { this.sound?.error(); this.toast(t('toast.popLimit'), 'bad', 2400); }
-        return;
-      }
+    if (!this.hasPopulationRoom(type)) {
+      if (!silent) { this.sound?.error(); this.toast(t('toast.popLimit'), 'bad', 2400); }
+      return;
     }
     if (!this.canAfford(cost)) {
       if (!silent) { this.sound?.error(); this.toast(t('toast.notEnough', { name: t(`unit.${type}.name`) }), 'bad', 2000); }
-      return;
-    }
-    if (this.population + queuedPop + pop > this.popCap) {
-      if (!silent) { this.sound?.error(); this.toast(t('toast.popLimit'), 'bad', 2400); }
       return;
     }
     if (building.queue.length >= 5) {
@@ -2969,14 +2975,10 @@ export class Game {
 
   canTrainNow(type) {
     const def = UNIT_TYPES[type];
+    if (!def) return false;
     if (this.effects.noCavalry && def.category === 'cavalry') return false;
     if (type === 'elephant' && !this.effects.elephantUnlocked) return false;
-    if (def.category !== 'villager') {
-      if (this.militaryPopulation + this.computeUnitPop(def) > this.militaryPopCap) return false;
-    } else {
-      if (this.economicPopulation + this.computeUnitPop(def) > this.economicPopCap) return false;
-    }
-    return this.population + this.computeUnitPop(def) <= this.popCap;
+    return this.hasPopulationRoom(type);
   }
 
   selectIdleVillager() {

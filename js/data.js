@@ -254,7 +254,7 @@ export const UNIT_TYPES = {
 export const BUILDING_TYPES = {
   core: {
     name: 'Town Center', icon: 'crown', w: 4, h: 4, hp: 3000, armor: 8,
-    cost: {}, buildTime: 60, pop: 10, dropoff: true, attack: 6, range: 6, cooldown: 2,
+    cost: {}, buildTime: 60, pop: 20, dropoff: true, attack: 6, range: 6, cooldown: 2,
     desc: 'Heart of the realm. Trains villagers and advances the ages.',
   },
   house: {

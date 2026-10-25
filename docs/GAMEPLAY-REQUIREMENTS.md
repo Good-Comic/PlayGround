@@ -1,6 +1,9 @@
 ## Strategy v2.2.2 recovery status — current override
 
 Recovery/handoff framework implemented and normally pushed; actual source/test/evidence state is in [STRATEGY-V2.2-EXECUTION.md](STRATEGY-V2.2-EXECUTION.md), [Recovery Manifest](recovery/WORKTREE-RECOVERY.md) and handoff/ACTIVE-TASK.json. Historical records below remain unchanged. Recovered12/12 corrected-window baseline cases (source11f8a6a),9PASS/3FAIL; no missing sample rerun. Target/Population/Civ bounded local acceptance does not equal integration.500/1000 FAIL remains research, not a project-wide lock. Simulation integrity, physical hardware and online deployment remain independent blocked/pending gates.
+## Strategy v2.2 population slice
+
+A3-POP-01: finite derived HUD values, economy cap60 independent of housing, global per-category queued reservations, Franks military40, atomic zero-spend rejection, unchanged Save/Load schema. IMPLEMENTED with49 passing tests; bounded browser validation PENDING. Starting military40 now follows core20+two houses10. Wave150/240 ceiling reconciliation: SPEC_DECISION_REQUIRED, not falsely complete. Original other requirements below remain tracked.
 
 > Strategy v2 supersedes the historical blanket Phase B block below.500/1000 FAILs remain unchanged; they are extension goals, not current development blockers. Current gate and statuses: GAMEPLAY-ROADMAP.md and GAMEPLAY-ACCEPTANCE.md.250 is a provisional stress target, not a supported-scale claim.
 
