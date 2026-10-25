@@ -1,3 +1,4 @@
+import { installPlaytest } from './playtest.js';
 import { BUILD_INFO } from './build-info.js';
 import { Sound } from './audio.js';
 import { Game } from './game.js';
@@ -335,3 +336,5 @@ window.ageOfAsh = { build: BUILD_INFO, game, renderer, ui, startGame, restartRun
 window.addEventListener('error', e => {
   console.error(e.error || e.message);
 });
+
+installPlaytest({game,ui});

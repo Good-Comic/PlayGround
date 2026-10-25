@@ -488,4 +488,7 @@ for(const [locale,labels] of Object.entries(RALLY_TEXT))['hint','clear','invalid
 
 for(const [locale,label] of Object.entries({en:'Waiting for clear ground to deploy', 'zh-Hant':'等待可用空間部署', 'zh-Hans':'等待可用空间部署', ja:'配置できる空間を待っています'}))STRINGS[locale]['rally.spawnBlocked']=label;
 
+const PLAYTEST_TEXT={en:['Playtest build','Known issues','Download Bug JSON','Close','Review exported diagnostics before sharing. No automatic upload.'],'zh-Hant':['測試版本','已知問題','下載 Bug JSON','關閉','分享前請檢查匯出資料；不會自動上傳。'],'zh-Hans':['测试版本','已知问题','下载 Bug JSON','关闭','分享前请检查导出数据；不会自动上传。'],ja:['テスト版','既知の問題','Bug JSONを保存','閉じる','共有前に診断情報を確認してください。自動送信しません。']};
+for(const [locale,labels] of Object.entries(PLAYTEST_TEXT))['title','known','export','close','privacy'].forEach((key,i)=>STRINGS[locale]['playtest.'+key]=labels[i]);
+
 export const EN_KEYS = Object.keys(STRINGS.en);

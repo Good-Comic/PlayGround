@@ -1,7 +1,7 @@
 import { LOCALE_META, STRINGS } from './locales.js';
 
 export const LOCALES = Object.keys(LOCALE_META);
-const STORAGE_KEY = 'riftwatch.locale';
+const STORAGE_KEY = 'riftwatch.playtest.locale';
 
 function normalizeLocale(value) {
   if (!value) return null;

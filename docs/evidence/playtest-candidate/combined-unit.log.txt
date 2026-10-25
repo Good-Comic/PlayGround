@@ -1,0 +1,24 @@
+BOSS_SPAWN [{"id":22,"x":27,"y":20,"type":"militia","target":20,"hp":73},{"id":23,"x":24,"y":23,"type":"militia","target":20,"hp":73},{"id":24,"x":21,"y":20,"type":"militia","target":20,"hp":73},{"id":25,"x":24,"y":17,"type":"militia","target":20,"hp":73}]
+✔ A3-BOSS-ID-01 creates4 registered M infantry with valid hostile orders and ordinary stats (25.640795ms)
+✔ extension generates4 at150/180/210 only, caps at3 rounds and does not double spawn per tick (32.83514ms)
+✔ starting wave10 clears wave5 extension counters; warning and each round can occur again (24.399849ms)
+✔ Save/Load preserves an already consumed round and seeded later reinforcement spawns (104.306496ms)
+✔ no living Boss cannot create reinforcement units (14.333773ms)
+CIV_MATRIX [{"civ":"MNG","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"TEU","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"GOT","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"FRK","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"SAR","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":["militia","spearman","archer","skirmisher","light_cavalry","horse_archer","guard","mangonel","ram","recruiter","patrol_cart"]},{"civ":"AZT","range":["archer","skirmisher"],"stable":[],"market":[]},{"civ":"BRI","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"CHN","range":["archer","skirmisher","chu_ko_nu"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"PER","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer","elephant"],"market":[]},{"civ":"KOR","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"SPA","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"TUR","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"BYZ","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"VIK","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"MAG","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"JPN","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]}]
+✔ B2-CIV-ENTRY-01 sixteen-civ matrix exposes only legal training entries (148.485262ms)
+✔ Chu Ko Nu age/owner/building gates, payment, training and Save/Load (48.180387ms)
+✔ Chinese repeating-crossbow uses actual third-shot bonus projectile without a duplicate extra-bolt rule (9.485472ms)
+✔ non-Persian legitimate elephant boon unlock preserved, SAR paginates without population-rule changes (16.407353ms)
+✔ Issue8 §3 unique uses exact §5 R stats, +15% price/threat, no second bespoke combat bonus (6.037071ms)
+✔ dead attack target is replaced on the next player update (35.310175ms)
+✔ dead target with no replacement returns to idle (17.104704ms)
+✔ manual move and attack take precedence over automatic acquisition (11.840586ms)
+✔ passive never acquires or retaliates automatically (7.943962ms)
+✔ hold position can attack in range without pursuing (48.365948ms)
+✔ defensive units return to guard origin after leash is exceeded (16.477545ms)
+✔ idle defensive unit retaliates; moving unit keeps manual order (12.042976ms)
+✔ enemy opportunistic attack cannot target itself or friendly units (8.24554ms)
+✔ stances persist in snapshots and old saves default to defensive (62.495465ms)
+✔ single stance command cycles through all four stances, including for heroes (6.880357ms)
+CLOCK {"fixed10fps":10.000000000000076,"fixed60fps":10.000000000000076,"legacy10fps":4.99999999999999,"seed":3215474622}
+CLOCK_SAVE_LOAD {"determinism_equal":false,"note":"transient paths/spawn reconstruction change resumed RNG/motion; not a deterministic Save/Load certification","time":11.000000000000126}

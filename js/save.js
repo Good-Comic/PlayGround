@@ -1,4 +1,4 @@
-const SAVE_KEY = 'riftwatch.run.v1';
+const SAVE_KEY = 'riftwatch.playtest.run.v1';
 
 export function hasSavedRun() {
   try {

@@ -1,4 +1,4 @@
-const SETTINGS_KEY = 'riftwatch.settings.v1';
+const SETTINGS_KEY = 'riftwatch.playtest.settings.v1';
 
 export const DEFAULT_SETTINGS = {
   gameSpeed: 1,
