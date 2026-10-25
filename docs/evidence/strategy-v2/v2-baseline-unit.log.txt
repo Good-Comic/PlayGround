@@ -1,0 +1,69 @@
+✔ dead attack target is replaced on the next player update (22.024256ms)
+✔ dead target with no replacement returns to idle (9.52815ms)
+✔ manual move and attack take precedence over automatic acquisition (12.67914ms)
+✔ passive never acquires or retaliates automatically (8.876332ms)
+✔ hold position can attack in range without pursuing (19.950829ms)
+✔ defensive units return to guard origin after leash is exceeded (9.866118ms)
+✔ idle defensive unit retaliates; moving unit keeps manual order (11.605017ms)
+✔ enemy opportunistic attack cannot target itself or friendly units (3.77998ms)
+✔ stances persist in snapshots and old saves default to defensive (19.149436ms)
+✔ single stance command cycles through all four stances, including for heroes (6.79287ms)
+CLOCK {"fixed10fps":10.000000000000076,"fixed60fps":10.000000000000076,"legacy10fps":4.99999999999999,"seed":3215474622}
+CLOCK_SAVE_LOAD {"determinism_equal":false,"note":"transient paths/spawn reconstruction change resumed RNG/motion; not a deterministic Save/Load certification","time":11.000000000000126}
+CLOCK_GAMEPLAY {"fixed10fps":{"attacks":53,"wave":20.000000000000146,"gathered":53.00000000000002,"bossHp":1789},"legacy10fps":{"attacks":29,"wave":10.000000000000007,"gathered":1.0000000000000007,"bossHp":1958},"scope":"real headless Game update with Boss, native AI/economy/status; not rendered FPS or full-campaign/wall-timeout certification"}
+✔ prototype preserves simulation time and seeded Game state at10/20/60 render FPS (780.914605ms)
+✔ long stall debt retained and drained with bounded update work; clock Save/Load (0.871947ms)
+✔ game Save/Load resumes clock; strict state determinism is separately reported (270.302826ms)
+✔ fixed-step combat, economy, cooldown, status and boss-wave clocks match at10/60FPS (811.02301ms)
+✔ A* routes around a wall through its only gap without cutting corners (7.654157ms)
+✔ blocked endpoint projects onto a legal destination (3.640721ms)
+✔ water-separated destination is unreachable, never teleported to (6.975112ms)
+✔ all unit classes navigate around a building and finish a blocked-endpoint move (147.98966ms)
+✔ moving around trees and water preserves collision clearance (43.604649ms)
+✔ four resources complete at least three capacity/deposit/restart cycles each (133.754716ms)
+✔ depleted resource delivers remainder, switching resource cannot change carried type (10.954346ms)
+✔ unreachable gathering target is replaced without losing carried cargo (55.046612ms)
+✔ destroyed dropoff reassigns to a surviving camp without duplicate credit (5.460674ms)
+✔ save/load restores an in-flight return and continues economic work (64.450783ms)
+✔ old saves without stances migrate safely (9.260213ms)
+✔ LIVE seed regression: food workers reach the sub-grid building edge and deposit (349.361691ms)
+✔ a newly placed building invalidates an old route without clipping through it (5.234143ms)
+OBSERVATION {"name":"crowd-24","threshold":"24/24 arrive within 70s; penetration <= .025; static clips 0","observed":{"arrived":24,"penetration":0,"clipped":0}}
+OBSERVATION {"name":"narrow-opposing","threshold":"both arrive <=60s, penetration <=.025, no static clipping","observed":{"a":{"x":18,"y":9.5,"state":"idle"},"b":{"x":6.0199942307239045,"y":9.499481071667935,"state":"idle"},"penetration":0,"clipped":0}}
+OBSERVATION {"name":"unreachable-combat","threshold":"failure recorded <=5s, target replaced, no water crossing","observed":{"time":0.05,"failure":"unreachable","target":22,"x":10}}
+OBSERVATION {"name":"continuous-retarget","threshold":"zero dead references immediately after each of 3 kills","observed":[{"dead":21,"target":22,"state":"attack"},{"dead":22,"target":23,"state":"attack"},{"dead":23,"state":"idle"}]}
+OBSERVATION {"name":"stances","threshold":"all four stance contracts match; explicit move never stolen","observed":[{"stance":"aggressive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"defensive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"hold","acquired":false,"retaliates":false,"manualMove":true},{"stance":"passive","acquired":false,"retaliates":false,"manualMove":true}]}
+OBSERVATION {"name":"economy-competition-food","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[24,26,25,25,25,26,24,27,24,27,25,26],"credited":3040,"carried":51.1875,"error":0,"penetration":0.014995943127133149}}
+OBSERVATION {"name":"economy-competition-wood","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[25,27,25,26,26,27,25,27,25,27,25,28],"credited":3130,"carried":65.67499999999998,"error":2.004327370741521e-9,"penetration":0.014996480623484354}}
+OBSERVATION {"name":"economy-competition-gold","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[24,26,25,25,25,26,24,27,24,27,25,26],"credited":3040,"carried":51.1875,"error":0,"penetration":0.014995943127133149}}
+OBSERVATION {"name":"economy-competition-stone","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[24,26,25,25,25,26,24,27,24,27,25,26],"credited":3040,"carried":51.1875,"error":0,"penetration":0.014995943127133149}}
+OBSERVATION {"name":"save-load","threshold":"move completes, cargo credited once, no dead attack references","observed":{"moveState":"idle","goldDelta":57,"deadRefs":0}}
+OBSERVATION {"name":"narrow-queues-8","threshold":"8/8 within80s, penetration<=.025, static clips0","observed":{"arrived":8,"maxPenetration":0.014853785277115894,"clipped":0,"crossed":8}}
+OBSERVATION {"name":"fair-queue-100","threshold":"all100 move within4.8s; <=2 searches/update","observed":{"moved":100,"maxSearches":2,"searches":182}}
+OBSERVATION {"name":"passive-direct-hero","threshold":"no damage or autonomous target while passive","observed":{"enemyHp":60,"initialHp":60}}
+OBSERVATION {"name":"move-failure-vs-arrival","threshold":"unreachable result reported; new valid order reaches actual destination","observed":{"failurePreserved":true,"newX":12,"newY":10}}
+OBSERVATION {"name":"direct-route-1000","threshold":"1000/1000 move in first update; unchanged speed cap; A*0","observed":{"moved":1000,"searches":0,"directRoutes":1000}}
+✔ 24-unit crowd reaches separate formation slots without overlap or static clipping (418.609092ms)
+✔ opposing units pass a narrow building corridor by yielding, without overlap (60.368742ms)
+✔ unreachable manual combat target is abandoned and reachable enemy acquired (35.750039ms)
+✔ continuous combat clears death references in the same kill event and acquires next (4.484869ms)
+✔ all stances obey acquire, chase, retaliation and manual priority contracts (16.983776ms)
+✔ 12 villagers competing for food complete long-run cycles with conservation (1084.644146ms)
+✔ 12 villagers competing for wood complete long-run cycles with conservation (817.35268ms)
+✔ 12 villagers competing for gold complete long-run cycles with conservation (620.563188ms)
+✔ 12 villagers competing for stone complete long-run cycles with conservation (605.041629ms)
+✔ save/load resumes move, gather, return and valid attack orders without path-cache dependence (658.877314ms)
+✔ eight units in opposing queues pass the one-tile corridor (103.137197ms)
+✔ fair search queue starts all 100 units despite continuous low-ID demand (1694.875446ms)
+✔ directly controlled passive hero does not auto-attack (2.840494ms)
+✔ an unreachable move is a reported failure, not arrival, and a new move clears it (8.924479ms)
+✔ legal direct routes start 1000 units without bypassing speed or collision (37.798494ms)
+✔ negative startup delta cannot reverse game time or break smoke geometry (5.024087ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 43
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6868.889944

@@ -1,0 +1,9 @@
+import json
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+out=Path('/workspace/diagnostics/riftwatch/v2-candidate');out.mkdir(exist_ok=True)
+with sync_playwright() as p:
+ b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox']);results=[]
+ for port,sha in [(8012,'91569e206d08c8b0e8af2f071d838aa1b66eb0e8'),(8013,'7faa21a274847ca649a7a96b88700d4cdda5fe2e')]:
+  c=b.new_context(viewport={'width':1600,'height':1100},record_har_path=str(out/f'{port}.har'));page=c.new_page();logs={'console':[],'errors':[],'failed':[]};page.on('console',lambda e:logs['console'].append({'type':e.type,'text':e.text}));page.on('pageerror',lambda e:logs['errors'].append(str(e)));page.on('requestfailed',lambda e:logs['failed'].append({'url':e.url,'error':e.failure}));response=page.goto(f'http://127.0.0.1:{port}');page.wait_for_function('!!window.ageOfAsh');m=c.request.get(f'http://127.0.0.1:{port}/__candidate_build.json').json();assert m['commit']==sha and not m['dirty'];page.locator('#setup-civ').select_option('TEU');page.locator('#setup-seed').fill('riftwatch-p0-v1');page.locator('#btn-start').click();page.wait_for_timeout(2000);page.screenshot(path=str(out/f'{port}-game.png'));results.append({'url':page.url,'http':response.status,'header_sha':response.headers['x-riftwatch-build-sha'],'manifest':m,'local_rally_available':page.evaluate("()=>typeof ageOfAsh.game.setRally==='function'"),'game_time':page.evaluate('()=>ageOfAsh.game.time'),'logs':logs,'scope':'LOCAL_ONLY_NOT_OMGITHUB','actions':['Start Game,TEU,fixed seed','second URL is previous immutable snapshot rollback; no Git history/live changes']});c.close()
+ b.close();(out/'results.json').write_text(json.dumps(results,indent=2));print([{k:v for k,v in r.items() if k not in ['manifest','logs']} for r in results]);assert all(not r['logs']['errors'] and not r['logs']['failed'] and not any(x['type']=='error' for x in r['logs']['console']) for r in results)

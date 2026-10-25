@@ -1,0 +1,5 @@
+# B1-RALLY-01 review — HOLD FOR INTEGRATION
+
+Agent self-review of game.js/UI/renderer/locales and focused tests. Independent branch, existing rally snapshot field reused. Validation/owner/terrain checks, normal swept path orders, exactly-once paid spawn retry, legacy defaults and untranslated-key checks reviewed. Added unreachable and six-market-shortcut regression cases. Real UI failures (occluded resource, clipped clear control) were preserved and corrected with native pointer verification, no force-click. Follow-up zero countdown/wait label proven by actual blocked-spawn and resume. Source/test SHAs are separately listed in STRATEGY-V2-EXECUTION.md and acceptance.json.
+
+Bounded functional LOCAL_VERIFIED. Current final source2f148c3 has not received a complete performance repeat; prior91569e2 mixed clock89.659% FAIL remains open. No integration approval. Not held by1000-unit testing. Full natural campaign, broader mixed-radius maps and native LQA remain open. Review is not an independent human/art/balance review.

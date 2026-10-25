@@ -1,3 +1,40 @@
+# Current v2 performance tiers
+
+500/1000 historical failures below are retained extension goals and no longer a blanket Phase B blocker. Current both-team total design bands are50–100 /101–200 /201–250, with no cap added and no final product-scale certification. Full details and raw metrics: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md), evidence/strategy-v2/performance-summary.json.
+
+Mean/P95 are rAF milliseconds; result includes current input/clock/stuck/economy checks. All original rAF/movement gates unchanged. Current release/integration cannot ignore actual current-scale failures.
+
+| Suite/case | Mean | P95 | Quality |
+|---|---:|---:|---|
+| v2-baseline r1-combat-100 | 16.99 | 16.8 | PASS |
+| v2-baseline r1-combat-200 | 56.87 | 100.0 | FAIL |
+| v2-baseline r1-combat-250 | 17.32 | 16.8 | PASS |
+| v2-baseline r1-mixed-250 | 44.44 | 66.6 | FAIL |
+| v2-baseline r2-combat-100 | 17.54 | 16.8 | FAIL |
+| v2-baseline r2-combat-200 | 94.26 | 500.0 | FAIL |
+| v2-baseline r2-combat-250 | 21.32 | 33.4 | PASS |
+| v2-baseline r2-mixed-250 | 18.71 | 33.3 | PASS |
+| v2-baseline r3-combat-100 | 16.67 | 16.7 | FAIL |
+| v2-baseline r3-combat-200 | 18.62 | 33.3 | PASS |
+| v2-baseline r3-combat-250 | 16.79 | 16.8 | PASS |
+| v2-baseline r3-mixed-250 | 18.57 | 33.4 | PASS |
+| v2-rally-perf r1-combat-250 | 16.79 | 16.8 | PASS |
+| v2-rally-perf r1-mixed-250 | 19.47 | 33.4 | PASS |
+| v2-rally-perf r2-combat-250 | 16.91 | 16.8 | PASS |
+| v2-rally-perf r2-mixed-250 | 18.43 | 33.3 | PASS |
+| v2-rally-perf r3-combat-250 | 18.42 | 33.3 | PASS |
+| v2-rally-perf r3-mixed-250 | 25.51 | 50.0 | FAIL |
+| v2-civ-perf r1-combat-250 | 21.14 | 33.4 | FAIL |
+| v2-civ-perf r1-mixed-250 | 18.41 | 33.3 | PASS |
+| v2-civ-perf r2-combat-250 | 16.78 | 16.8 | PASS |
+| v2-civ-perf r2-mixed-250 | 17.95 | 33.3 | PASS |
+| v2-civ-perf r3-combat-250 | 17.29 | 16.8 | PASS |
+| v2-civ-perf r3-mixed-250 | 19.75 | 33.4 | PASS |
+
+## Historical v1 extension recovery — unchanged failures
+
+> Strategy v2 supersedes the historical blanket Phase B block below.500/1000 FAILs remain unchanged; they are extension goals, not current development blockers. Current gate and statuses: GAMEPLAY-ROADMAP.md and GAMEPLAY-ACCEPTANCE.md.250 is a provisional stress target, not a supported-scale claim.
+
 # Phase A performance recovery — PERF_IN_PROGRESS
 
 **Phase A is not released.** Functional regression PASS in bounded local scenarios; performance FAIL. No Phase B work or remote Preview update. All final repeated benchmarks, CPU profiles and browser operations used clean commit `8549065da8b727737f14a596fc104658d408ffd3`, containing gameplay source `59c852911bef17ce1376efa4970937bb8da96308`, Build ID `riftwatch-gameplay-p0.4`. Later evidence/documentation commits keep those game bytes unchanged. Remote preservation first advanced `ef5019bcb1560698f28aca25cca4fbd82da3ad7a` to checkpoint8549065 via a normal feature-branch-only push.
