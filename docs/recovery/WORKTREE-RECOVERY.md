@@ -1,7 +1,7 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: a396cf89db0d57f831a0d4271ba588f5fdf9f263e0741c02f8dec06f29f4aa2e
-Captured UTC: 2026-10-25T20:37:16.275063+00:00 · Trigger: FINAL_CHECKPOINT
+Snapshot ID: 906a5ab15f7ae5e8f8211b1fc9af5749eb2137b179755396e1c952031cecc407
+Captured UTC: 2026-10-25T20:41:58.362893+00:00 · Trigger: FINAL_CHECKPOINT
 Collector source: `3779c5d50876cb2e28590b9d250fb355fc0f8e38` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
@@ -55,9 +55,9 @@ Next: Keep Boss/Population/Target/Civ/Rally game changes isolated until gates
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: []
-Blockers: NOT_ASSESSED
-Next: Inspect task registry and relevant diff before writing
+Validation: [{"path": "docs/evidence/monitor-v224/unit.log.txt", "source_commit": "50aaac118b4175dd50e1d85c814e1f3cb3c68b28", "result": "PASS7 monitor tests; source821f956 docs-only checkpoint; public feed4/4 HTTP reads and dedup verified", "exists": true, "storage": "REMOTE_SAVED", "sha256": "2640b8d3654e930cc274f6bde3c5137e047f837fa1d5d0b443cc6674f83c5924", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: No authorized managed Cloud task event stream confirmed; not a gameplay prerequisite
+Next: Consume pinned public snapshots; use curated event publisher after future slices; Keep LIVE_CODEX_STREAM_VERIFIED and external AI connection claims NOT_TESTED
 
 ## codex/riftwatch-playtest-candidate
 
