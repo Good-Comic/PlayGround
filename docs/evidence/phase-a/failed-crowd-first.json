@@ -1,0 +1,122 @@
+[
+  {
+    "name": "crowd-24",
+    "threshold": "24/24 arrive within 70s; penetration <= .025; static clips 0",
+    "observed": {
+      "arrived": 18,
+      "penetration": 0.014971394909050417,
+      "clipped": 0
+    }
+  },
+  {
+    "name": "narrow-opposing",
+    "threshold": "both arrive <=60s, penetration <=.025, no static clipping",
+    "observed": {
+      "a": {
+        "x": 17.99961554869189,
+        "y": 9.50050522629836,
+        "state": "idle"
+      },
+      "b": {
+        "x": 6.035161514336012,
+        "y": 9.545231069857401,
+        "state": "idle"
+      },
+      "penetration": 0,
+      "clipped": 0
+    }
+  },
+  {
+    "name": "unreachable-combat",
+    "threshold": "failure recorded <=5s, target replaced, no water crossing",
+    "observed": {
+      "time": 0.05,
+      "failure": "unreachable",
+      "target": 22,
+      "x": 10
+    }
+  },
+  {
+    "name": "continuous-retarget",
+    "threshold": "zero dead references immediately after each of 3 kills",
+    "observed": [
+      {
+        "dead": 21,
+        "target": 22,
+        "state": "attack"
+      },
+      {
+        "dead": 22,
+        "target": 23,
+        "state": "attack"
+      },
+      {
+        "dead": 23,
+        "state": "idle"
+      }
+    ]
+  },
+  {
+    "name": "stances",
+    "threshold": "all four stance contracts match; explicit move never stolen",
+    "observed": [
+      {
+        "stance": "aggressive",
+        "acquired": true,
+        "retaliates": true,
+        "manualMove": true
+      },
+      {
+        "stance": "defensive",
+        "acquired": true,
+        "retaliates": true,
+        "manualMove": true
+      },
+      {
+        "stance": "hold",
+        "acquired": false,
+        "retaliates": false,
+        "manualMove": true
+      },
+      {
+        "stance": "passive",
+        "acquired": false,
+        "retaliates": false,
+        "manualMove": true
+      }
+    ]
+  },
+  {
+    "name": "economy-competition",
+    "threshold": "300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025",
+    "observed": {
+      "cycles": [
+        26,
+        29,
+        13,
+        14,
+        12,
+        13,
+        12,
+        13,
+        10,
+        11,
+        10,
+        7
+      ],
+      "credited": 1700,
+      "carried": 27.456249999999972,
+      "error": 1.1784955233906658e-9,
+      "penetration": 0.014991241266845978
+    }
+  },
+  {
+    "name": "save-load",
+    "threshold": "move completes, cargo credited once, no dead attack references",
+    "observed": {
+      "moveState": "idle",
+      "goldDelta": 47,
+      "deadRefs": 0
+    }
+  }
+]

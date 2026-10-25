@@ -48,13 +48,13 @@ test('all stances obey acquire, chase, retaliation and manual priority contracts
  }
  report('stances','all four stance contracts match; explicit move never stolen',results);
 });
-test('12 villagers competing for wood complete long-run cycles with conservation',()=>{
- const g=arena();g.addBuilding('core',12,12,true);g.world.resources=[{id:100,x:8,y:9,kind:'oak',resource:'wood',amount:2000,maxAmount:2000,radius:.32,alive:true},{id:101,x:8,y:16,kind:'oak',resource:'wood',amount:2000,maxAmount:2000,radius:.32,alive:true}];
+for (const resource of ['food','wood','gold','stone']) test(`12 villagers competing for ${resource} complete long-run cycles with conservation`,()=>{
+ const g=arena();g.addBuilding('core',12,12,true);g.world.resources=[{id:100,x:8,y:9,kind:resource==='wood'?'oak':resource==='food'?'berry':'ore',resource,amount:2000,maxAmount:2000,radius:.32,alive:true},{id:101,x:8,y:16,kind:resource==='wood'?'oak':resource==='food'?'berry':'ore',resource,amount:2000,maxAmount:2000,radius:.32,alive:true}];
  const workers=[];for(let i=0;i<12;i++){const u=g.spawnUnit('villager',5+(i%4)*.8,6+Math.floor(i/4)*.8);workers.push(u);g.orderGather(u,g.world.resources[i%2]);}
- const before=g.resources.wood,cycles=new Map(workers.map(u=>[u.id,0])),prev=new Map();let penetration=0;
+ const before=g.resources[resource],cycles=new Map(workers.map(u=>[u.id,0])),prev=new Map();let penetration=0;
  tick(g,6000,.05,()=>{penetration=Math.max(penetration,pairPenetration(workers));for(const u of workers){if((prev.get(u.id)||0)>0&&u.carry===0)cycles.set(u.id,cycles.get(u.id)+1);prev.set(u.id,u.carry);}});
- const extracted=4000-g.world.resources.reduce((n,r)=>n+r.amount,0),credited=g.resources.wood-before,carried=workers.reduce((n,u)=>n+u.carry,0),error=Math.abs(extracted-credited-carried);
- report('economy-competition','300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025',{cycles:[...cycles.values()],credited,carried,error,penetration});
+ const extracted=4000-g.world.resources.reduce((n,r)=>n+r.amount,0),credited=g.resources[resource]-before,carried=workers.reduce((n,u)=>n+u.carry,0),error=Math.abs(extracted-credited-carried);
+ report(`economy-competition-${resource}`,'300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025',{cycles:[...cycles.values()],credited,carried,error,penetration});
  assert.ok(error<1e-6);assert.ok(penetration<=.025);assert.ok([...cycles.values()].every(x=>x>=3));
 });
 test('save/load resumes move, gather, return and valid attack orders without path-cache dependence',()=>{

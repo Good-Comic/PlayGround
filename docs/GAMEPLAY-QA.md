@@ -16,7 +16,7 @@ Prerequisites: Node 24, Python Playwright, system Chromium, `certutil`. Run a pe
 python tools/qa/serve.py --port 8008
 ```
 
-The read-only `/__qa_build.json` endpoint exposes the current Git SHA, branch, dirty state and SHA-256 of every game JS file, HTML and CSS. It is a local diagnostic endpoint, not a production release service. The UI exposes Build ID `riftwatch-gameplay-p0.1`. A release must also record its exact Git SHA and manifest; a Build ID alone is insufficient.
+The read-only `/__qa_build.json` endpoint exposes the current Git SHA, branch, dirty state and SHA-256 of every game JS file, HTML and CSS. It is a local diagnostic endpoint, not a production release service. The current UI exposes Build ID `riftwatch-gameplay-p0.2` (the first milestone used p0.1). A release must also record its exact Git SHA and manifest; a Build ID alone is insufficient.
 
 ```sh
 node --test tests/*.test.mjs
@@ -38,4 +38,18 @@ Current state: **DEPLOYMENT_BLOCKED**. There is no authorized mechanism here to 
 
 ## Remaining acceptance
 
-The current milestone addresses the three observed P0 failures, not completion of every Phase A requirement. Full crowd separation, narrow-passage opposing traffic, persistent unreachable attack targets, all-biome endurance, 1000-unit performance, full guard/attack-move semantics and long-run replay determinism remain open. Synthetic unit tests prove specific contracts; screenshots prove actual rendering; neither substitutes for deployed gameplay verification.
+The current functional scenarios cover the three observed P0 failures and the extended crowd, economy, stance and save/load contracts. This is not completion of every Phase A requirement: the measured1000-unit performance/progress gate FAILS, and broader Guard/Attack-Move/all-map endurance remain open. Synthetic contract tests, screenshots and deployed gameplay verification are distinct evidence types.
+
+## Phase A extended acceptance (current)
+
+The latest implementation is8ba384889d3eb3d782ce9a5eb98f569afbd14d6d / Build IDriftwatch-gameplay-p0.2. See GAMEPLAY-PROGRESS.md; it supersedes the initial milestone's remaining-work list. 1000-unit performance FAILS, so no overall Phase A sign-off is granted.
+
+```sh
+QA_OUT=/workspace/diagnostics/riftwatch/phase-a/unit-observations.json node --test tests/*.test.mjs
+python tools/qa/phase-a-browser.py --expected-commit COMMIT_SHA --out /workspace/diagnostics/riftwatch/phase-a/browser
+python tools/qa/performance.py --expected-commit COMMIT_SHA --out /workspace/diagnostics/riftwatch/phase-a/performance-final
+```
+
+Use a clean checkout and matching local server. The browser fixture tool performs real local Save/Continue in a fresh disposable context; it never reads or changes an existing user save. It also uses explicitly synthetic maps with actual drag/right-click input to stress crowd/one-tile corridors. These are not online gameplay tests. The performance tool performs actual production update/render/UI work; exit0 only means measurements were saved—inspect each case's `pass` and raw distributions.
+
+Performance must be run without other benchmark/game browser workloads concurrently. Record hardware, cgroup quotas, rendering backend, viewport, warmup/measurement duration and served-file provenance. Do not generalize an open-field passive-unit result to combat or different hardware. The normal seeded gameplay tool remains independent and records real menu and world interaction without synthetic map setup.

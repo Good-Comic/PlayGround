@@ -1,0 +1,853 @@
+{
+  "implementation_commit": "8ba384889d3eb3d782ce9a5eb98f569afbd14d6d",
+  "build_id": "riftwatch-gameplay-p0.2",
+  "before_live_commit": "914016dae8a7eb131b7e06c49a36c6a3276247d0",
+  "phase_a_complete": false,
+  "phase_b_gate": "BLOCKED",
+  "hardware": {
+    "model": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "logical_cpus_visible": 5,
+    "os": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "memory_total_kb": "MemTotal:       34906016 kB",
+    "/sys/fs/cgroup/cpu.max": "400000 100000",
+    "/sys/fs/cgroup/memory.max": "34359738368"
+  },
+  "unit_observations": [
+    {
+      "name": "crowd-24",
+      "threshold": "24/24 arrive within 70s; penetration <= .025; static clips 0",
+      "observed": {
+        "arrived": 24,
+        "penetration": 0,
+        "clipped": 0
+      }
+    },
+    {
+      "name": "narrow-opposing",
+      "threshold": "both arrive <=60s, penetration <=.025, no static clipping",
+      "observed": {
+        "a": {
+          "x": 17.99961554869189,
+          "y": 9.50050522629836,
+          "state": "idle"
+        },
+        "b": {
+          "x": 6,
+          "y": 9.5,
+          "state": "idle"
+        },
+        "penetration": 0,
+        "clipped": 0
+      }
+    },
+    {
+      "name": "unreachable-combat",
+      "threshold": "failure recorded <=5s, target replaced, no water crossing",
+      "observed": {
+        "time": 0.05,
+        "failure": "unreachable",
+        "target": 22,
+        "x": 10
+      }
+    },
+    {
+      "name": "continuous-retarget",
+      "threshold": "zero dead references immediately after each of 3 kills",
+      "observed": [
+        {
+          "dead": 21,
+          "target": 22,
+          "state": "attack"
+        },
+        {
+          "dead": 22,
+          "target": 23,
+          "state": "attack"
+        },
+        {
+          "dead": 23,
+          "state": "idle"
+        }
+      ]
+    },
+    {
+      "name": "stances",
+      "threshold": "all four stance contracts match; explicit move never stolen",
+      "observed": [
+        {
+          "stance": "aggressive",
+          "acquired": true,
+          "retaliates": true,
+          "manualMove": true
+        },
+        {
+          "stance": "defensive",
+          "acquired": true,
+          "retaliates": true,
+          "manualMove": true
+        },
+        {
+          "stance": "hold",
+          "acquired": false,
+          "retaliates": false,
+          "manualMove": true
+        },
+        {
+          "stance": "passive",
+          "acquired": false,
+          "retaliates": false,
+          "manualMove": true
+        }
+      ]
+    },
+    {
+      "name": "economy-competition-food",
+      "threshold": "300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025",
+      "observed": {
+        "cycles": [
+          25,
+          28,
+          16,
+          16,
+          12,
+          16,
+          12,
+          15,
+          11,
+          13,
+          9,
+          15
+        ],
+        "credited": 1880,
+        "carried": 72.375,
+        "error": 0,
+        "penetration": 0.014992531329062253
+      }
+    },
+    {
+      "name": "economy-competition-wood",
+      "threshold": "300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025",
+      "observed": {
+        "cycles": [
+          26,
+          29,
+          14,
+          19,
+          15,
+          15,
+          10,
+          14,
+          13,
+          13,
+          8,
+          13
+        ],
+        "credited": 1890,
+        "carried": 52.04999999999996,
+        "error": 1.3258230069368437e-09,
+        "penetration": 0.014935352897283205
+      }
+    },
+    {
+      "name": "economy-competition-gold",
+      "threshold": "300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025",
+      "observed": {
+        "cycles": [
+          25,
+          28,
+          16,
+          16,
+          12,
+          16,
+          12,
+          15,
+          11,
+          13,
+          9,
+          15
+        ],
+        "credited": 1880,
+        "carried": 72.375,
+        "error": 0,
+        "penetration": 0.014992531329062253
+      }
+    },
+    {
+      "name": "economy-competition-stone",
+      "threshold": "300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025",
+      "observed": {
+        "cycles": [
+          25,
+          28,
+          16,
+          16,
+          12,
+          16,
+          12,
+          15,
+          11,
+          13,
+          9,
+          15
+        ],
+        "credited": 1880,
+        "carried": 72.375,
+        "error": 0,
+        "penetration": 0.014992531329062253
+      }
+    },
+    {
+      "name": "save-load",
+      "threshold": "move completes, cargo credited once, no dead attack references",
+      "observed": {
+        "moveState": "idle",
+        "goldDelta": 47,
+        "deadRefs": 0
+      }
+    },
+    {
+      "name": "narrow-queues-8",
+      "threshold": "8/8 within80s, penetration<=.025, static clips0",
+      "observed": {
+        "arrived": 8,
+        "maxPenetration": 0.013332151172266493,
+        "clipped": 0
+      }
+    },
+    {
+      "name": "fair-queue-100",
+      "threshold": "all100 move within4.8s; <=2 searches/update",
+      "observed": {
+        "moved": 100,
+        "maxSearches": 2
+      }
+    },
+    {
+      "name": "passive-direct-hero",
+      "threshold": "no damage or autonomous target while passive",
+      "observed": {
+        "enemyHp": 60,
+        "initialHp": 60
+      }
+    }
+  ],
+  "normal_gameplay": {
+    "stage": "AFTER_LOCAL",
+    "result": "COMPLETED",
+    "samples": 144,
+    "seed": 3215474622,
+    "simulation_seconds": 128.3200999999988,
+    "stale_dead_target_samples": 0,
+    "first_stale": [],
+    "deposit_cycles": {
+      "gold": 12,
+      "wood": 30,
+      "stone": 11,
+      "food": 20
+    },
+    "gather_stalls_over_20s": {},
+    "cavalry_completed_move": true,
+    "page_errors": [],
+    "failed_resources": [],
+    "build": {
+      "id": "riftwatch-gameplay-p0.2",
+      "baseCommit": "6476a4bc6d18f688b9c44db9a95c45901d76b741"
+    },
+    "confirmed_retargets": [
+      {
+        "before_time": 72.52900000000074,
+        "after_time": 73.32900000000069,
+        "unit_id": 15,
+        "dead_target": 27,
+        "new_target": 34
+      },
+      {
+        "before_time": 72.52900000000074,
+        "after_time": 73.32900000000069,
+        "unit_id": 16,
+        "dead_target": 27,
+        "new_target": 34
+      },
+      {
+        "before_time": 104.3230999999993,
+        "after_time": 105.27299999999926,
+        "unit_id": 19,
+        "dead_target": 43,
+        "new_target": 33
+      },
+      {
+        "before_time": 106.32289999999922,
+        "after_time": 107.17289999999925,
+        "unit_id": 19,
+        "dead_target": 33,
+        "new_target": 42
+      },
+      {
+        "before_time": 108.03949999999921,
+        "after_time": 108.88949999999922,
+        "unit_id": 19,
+        "dead_target": 42,
+        "new_target": 39
+      },
+      {
+        "before_time": 112.43869999999924,
+        "after_time": 113.30539999999925,
+        "unit_id": 16,
+        "dead_target": 39,
+        "new_target": 34
+      },
+      {
+        "before_time": 112.43869999999924,
+        "after_time": 113.30539999999925,
+        "unit_id": 19,
+        "dead_target": 39,
+        "new_target": 28
+      }
+    ],
+    "checks": {
+      "no_dead_target_samples": true,
+      "no_zero_cargo_stall_over_20s": true,
+      "cavalry_move_completes": true,
+      "four_resource_deposits_at_least_three": true,
+      "observed_death_to_living_retarget": true,
+      "no_page_errors": true,
+      "no_failed_requests": true,
+      "no_console_errors": true
+    },
+    "scenario_pass": true
+  },
+  "browser_tests": [
+    {
+      "name": "real-ui-save-load",
+      "threshold": "same seed/unit count; restored time within1s",
+      "before": {
+        "time": 3.233099999999998,
+        "seed": 3215474622,
+        "resources": {
+          "food": 300,
+          "wood": 300,
+          "gold": 120,
+          "stone": 100
+        },
+        "units": [
+          {
+            "id": 7,
+            "type": "villager",
+            "x": 19.710246936039706,
+            "y": 23.17600023730818,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 8,
+            "type": "villager",
+            "x": 29.36862102085687,
+            "y": 29.94349017766131,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0.23750000000000002,
+            "stance": "defensive"
+          },
+          {
+            "id": 9,
+            "type": "villager",
+            "x": 30.716017299911357,
+            "y": 26.75672964028293,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 10,
+            "type": "villager",
+            "x": 28.83034538133824,
+            "y": 25.873984067474545,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 11,
+            "type": "villager",
+            "x": 19.208143279110743,
+            "y": 24.154690366466397,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 1.3748750000000007,
+            "stance": "defensive"
+          },
+          {
+            "id": 12,
+            "type": "villager",
+            "x": 20.707231093471503,
+            "y": 30.279484895587448,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 13,
+            "type": "villager",
+            "x": 27.695241755456415,
+            "y": 28.372813123529642,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 14,
+            "type": "villager",
+            "x": 29.70414133016502,
+            "y": 27.479691751249824,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 15,
+            "type": "militia",
+            "x": 21.2,
+            "y": 24.2,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 16,
+            "type": "militia",
+            "x": 22.1,
+            "y": 24.7,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 17,
+            "type": "archer",
+            "x": 27.1,
+            "y": 24.6,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 18,
+            "type": "light_cavalry",
+            "x": 28.3,
+            "y": 26.3,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 19,
+            "type": "commander",
+            "x": 25.4,
+            "y": 23.3,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          }
+        ],
+        "navigation": {
+          "searches": 0,
+          "expanded": 0,
+          "ms": 0,
+          "totalSearches": 10
+        }
+      },
+      "after": {
+        "time": 3.549899999999997,
+        "seed": 3215474622,
+        "resources": {
+          "food": 300,
+          "wood": 300,
+          "gold": 120,
+          "stone": 100
+        },
+        "units": [
+          {
+            "id": 7,
+            "type": "villager",
+            "x": 19.573089988979273,
+            "y": 22.73846216251118,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 8,
+            "type": "villager",
+            "x": 29.36862102085687,
+            "y": 29.94349017766131,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0.49495,
+            "stance": "defensive"
+          },
+          {
+            "id": 9,
+            "type": "villager",
+            "x": 31.084467420285616,
+            "y": 26.48378989634631,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 10,
+            "type": "villager",
+            "x": 28.846234030250674,
+            "y": 26.279160263708587,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 11,
+            "type": "villager",
+            "x": 19.208143279110743,
+            "y": 24.154690366466397,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 1.6458750000000006,
+            "stance": "defensive"
+          },
+          {
+            "id": 12,
+            "type": "villager",
+            "x": 20.705277625172638,
+            "y": 30.70248038487971,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 13,
+            "type": "villager",
+            "x": 27.970086809758218,
+            "y": 28.5312674028213,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 14,
+            "type": "villager",
+            "x": 30.00288338430739,
+            "y": 27.58510432268783,
+            "state": "gather",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 15,
+            "type": "militia",
+            "x": 21.2,
+            "y": 24.2,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 16,
+            "type": "militia",
+            "x": 22.1,
+            "y": 24.7,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 17,
+            "type": "archer",
+            "x": 27.1,
+            "y": 24.6,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 18,
+            "type": "light_cavalry",
+            "x": 28.3,
+            "y": 26.3,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          },
+          {
+            "id": 19,
+            "type": "commander",
+            "x": 25.4,
+            "y": 23.3,
+            "state": "idle",
+            "alive": true,
+            "target": null,
+            "carry": 0,
+            "stance": "defensive"
+          }
+        ],
+        "navigation": {
+          "searches": 0,
+          "expanded": 0,
+          "ms": 0,
+          "totalSearches": 6
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "four-stance-ui",
+      "observed": [
+        "hold",
+        "passive",
+        "aggressive",
+        "defensive"
+      ],
+      "threshold": "all four states reachable",
+      "pass": true
+    },
+    {
+      "name": "crowd-24",
+      "fixture": "synthetic local map, actual game engine, real drag selection/right-click",
+      "threshold": "24/24 idle within 75s; penetration<=.025; clipping=0",
+      "arrived": 24,
+      "units": 24,
+      "wall_seconds": 9.096047723999618,
+      "max_penetration": 0,
+      "clipped_samples": 0,
+      "pass": true
+    },
+    {
+      "name": "narrow-queues-8",
+      "fixture": "synthetic local map, actual game engine, real drag selection/right-click",
+      "threshold": "8/8 idle within 85s; penetration<=.025; clipping=0",
+      "arrived": 8,
+      "units": 8,
+      "wall_seconds": 14.273214984999868,
+      "max_penetration": 0.014411153075943317,
+      "clipped_samples": 0,
+      "pass": true
+    }
+  ],
+  "performance": {
+    "profile": "synthetic open-field, all militia/player/passive, continuous per-unit movement; actual production update/draw/UI loop",
+    "viewport": [
+      1600,
+      1100
+    ],
+    "warmup_seconds": 3,
+    "measurement_seconds": 12,
+    "thresholds": {
+      "mean_frame_ms": 33.3,
+      "p95_frame_ms": 50,
+      "moved_fraction": 0.9,
+      "searches_per_frame_max": 2
+    },
+    "console": [],
+    "page_errors": [],
+    "failed": [],
+    "chromium": "154.0.8037.57",
+    "cases": [
+      {
+        "costs": {
+          "update": {
+            "mean_ms": 0.8765217391507966,
+            "p95_ms": 2.2999999998137355
+          },
+          "draw": {
+            "mean_ms": 0.711428571410292,
+            "p95_ms": 1.599999999627471
+          },
+          "ui": {
+            "mean_ms": 0.18956521741050927,
+            "p95_ms": 0.8999999994412065
+          }
+        },
+        "units": 25,
+        "frames": 632,
+        "mean_frame_ms": 19.012816455696203,
+        "p95_frame_ms": 33.399999999999636,
+        "fps": 52.596100232188476,
+        "nav_mean_ms": 0.4672468354265335,
+        "nav_max_ms": 63.09999999962747,
+        "expanded_mean": 2.0158227848101267,
+        "searches_per_frame_max": 2,
+        "moved_fraction": 1,
+        "max_pending": 10,
+        "renderer": "Canvas2D",
+        "webgl_renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "pass": true
+      },
+      {
+        "costs": {
+          "update": {
+            "mean_ms": 0.9922062350052903,
+            "p95_ms": 1.900000000372529
+          },
+          "draw": {
+            "mean_ms": 1.4026378896813259,
+            "p95_ms": 2.8999999994412065
+          },
+          "ui": {
+            "mean_ms": 0.16942446044148157,
+            "p95_ms": 0.7999999998137355
+          }
+        },
+        "units": 100,
+        "frames": 669,
+        "mean_frame_ms": 17.961285500747383,
+        "p95_frame_ms": 16.80000000000109,
+        "fps": 55.67530230274382,
+        "nav_mean_ms": 0.41973094169540476,
+        "nav_max_ms": 19.899999999441206,
+        "expanded_mean": 2.977578475336323,
+        "searches_per_frame_max": 2,
+        "moved_fraction": 1,
+        "max_pending": 80,
+        "renderer": "Canvas2D",
+        "webgl_renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "pass": true
+      },
+      {
+        "costs": {
+          "update": {
+            "mean_ms": 1.8100143061372558,
+            "p95_ms": 3.900000000372529
+          },
+          "draw": {
+            "mean_ms": 3.188125894126484,
+            "p95_ms": 5.6000000005587935
+          },
+          "ui": {
+            "mean_ms": 0.2208869813985387,
+            "p95_ms": 1
+          }
+        },
+        "units": 250,
+        "frames": 564,
+        "mean_frame_ms": 22.0145390070922,
+        "p95_frame_ms": 33.399999999999636,
+        "fps": 45.424526022454536,
+        "nav_mean_ms": 0.5065602836750632,
+        "nav_max_ms": 6.900000000372529,
+        "expanded_mean": 2.9574468085106385,
+        "searches_per_frame_max": 2,
+        "moved_fraction": 1,
+        "max_pending": 232,
+        "renderer": "Canvas2D",
+        "webgl_renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "pass": true
+      },
+      {
+        "costs": {
+          "update": {
+            "mean_ms": 1.7989197530910188,
+            "p95_ms": 4.2999999998137355
+          },
+          "draw": {
+            "mean_ms": 4.621604938281378,
+            "p95_ms": 6.5
+          },
+          "ui": {
+            "mean_ms": 0.1996913580223918,
+            "p95_ms": 0.8000000007450581
+          }
+        },
+        "units": 500,
+        "frames": 529,
+        "mean_frame_ms": 22.71493383742911,
+        "p95_frame_ms": 33.400000000000546,
+        "fps": 44.023901066893025,
+        "nav_mean_ms": 0.41833648393687656,
+        "nav_max_ms": 6.199999999254942,
+        "expanded_mean": 3.219281663516068,
+        "searches_per_frame_max": 2,
+        "moved_fraction": 1,
+        "max_pending": 480,
+        "renderer": "Canvas2D",
+        "webgl_renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "pass": true
+      },
+      {
+        "costs": {
+          "update": {
+            "mean_ms": 2.9318059299221497,
+            "p95_ms": 7.7000000001862645
+          },
+          "draw": {
+            "mean_ms": 9.336657681934174,
+            "p95_ms": 15
+          },
+          "ui": {
+            "mean_ms": 0.4361185983847576,
+            "p95_ms": 1.400000000372529
+          }
+        },
+        "units": 1000,
+        "frames": 296,
+        "mean_frame_ms": 40.59560810810811,
+        "p95_frame_ms": 66.70000000000073,
+        "fps": 24.633206561087857,
+        "nav_mean_ms": 0.353378378361388,
+        "nav_max_ms": 11.300000000745058,
+        "expanded_mean": 3.456081081081081,
+        "searches_per_frame_max": 2,
+        "moved_fraction": 0.74,
+        "max_pending": 984,
+        "renderer": "Canvas2D",
+        "webgl_renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "pass": false
+      }
+    ]
+  },
+  "deployment": "DEPLOYMENT_BLOCKED"
+}
