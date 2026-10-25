@@ -1,3 +1,7 @@
+## Strategy v2.2.2 recovery status — current override
+
+Recovery/handoff framework implemented and normally pushed; actual source/test/evidence state is in [STRATEGY-V2.2-EXECUTION.md](STRATEGY-V2.2-EXECUTION.md), [Recovery Manifest](recovery/WORKTREE-RECOVERY.md) and handoff/ACTIVE-TASK.json. Historical records below remain unchanged. Recovered12/12 corrected-window baseline cases (source11f8a6a),9PASS/3FAIL; no missing sample rerun. Target/Population/Civ bounded local acceptance does not equal integration.500/1000 FAIL remains research, not a project-wide lock. Simulation integrity, physical hardware and online deployment remain independent blocked/pending gates.
+
 > Strategy v2 supersedes the historical blanket Phase B block below.500/1000 FAILs remain unchanged; they are extension goals, not current development blockers. Current gate and statuses: GAMEPLAY-ROADMAP.md and GAMEPLAY-ACCEPTANCE.md.250 is a provisional stress target, not a supported-scale claim.
 
 > PERF_IN_PROGRESS: current p0.4 gameplay source59c8529; all final runs at8549065. Functional browser P0/stances/save/crowd regressions PASS; three-repeat performance PASS25/100/250, FAIL500/1000 movement and1000 combat. Original failures retained. AFTER_DEPLOY_LIVE=DEPLOYMENT_BLOCKED; Phase B NOT_STARTED. See PERFORMANCE-RECOVERY.md.

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-25T18:33:52.309939+00:00",
-  "trigger": "POST_COMMIT",
-  "collector_commit": "a7db6245e12cd57849176d7ab6028d07253537a5",
+  "captured_at_utc": "2026-10-25T18:36:42.005492+00:00",
+  "trigger": "POST_PUSH",
+  "collector_commit": "1c112ccbac6f53e12cb819ee9962ebfbedff2fbd",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-25T18:33:52.309939+00:00"
+    "queried_at": "2026-10-25T18:36:42.005492+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -27,11 +27,11 @@
     "codex/riftwatch-task-ownership": "ef5e3ee1d5c80770d7108095631ad0f5c1e66d93",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
-    "codex/riftwatch-v22-civ-alignment": "da0823c6341b1ee85e32d1b6c0f776ef3008255c",
+    "codex/riftwatch-v22-civ-alignment": "2ad2fe4a6466c6c38a033d1194f004924dbfda37",
     "codex/riftwatch-v22-population": "8d0902877564872ee5382155ebf38474c125c950",
     "codex/riftwatch-v22-quality-tools": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
-    "codex/riftwatch-v22-target-state": "77c20609da28b38fa405531a0215a8261dc6b1ef",
-    "codex/riftwatch-v222-recovery": "a7db6245e12cd57849176d7ab6028d07253537a5",
+    "codex/riftwatch-v22-target-state": "982bedc5d46207e5251bf592c335f85e3f4140f6",
+    "codex/riftwatch-v222-recovery": "1c112ccbac6f53e12cb819ee9962ebfbedff2fbd",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -96,8 +96,8 @@
     {
       "branch": "codex/riftwatch-v22-civ-alignment",
       "head": "2ad2fe4a6466c6c38a033d1194f004924dbfda37",
-      "remote_head": "da0823c6341b1ee85e32d1b6c0f776ef3008255c",
-      "status": "HEAD_DIFFERS_REVIEW_REQUIRED"
+      "remote_head": "2ad2fe4a6466c6c38a033d1194f004924dbfda37",
+      "status": "REMOTE_SAVED"
     },
     {
       "branch": "codex/riftwatch-v22-population",
@@ -113,14 +113,14 @@
     },
     {
       "branch": "codex/riftwatch-v22-target-state",
-      "head": "77c20609da28b38fa405531a0215a8261dc6b1ef",
-      "remote_head": "77c20609da28b38fa405531a0215a8261dc6b1ef",
+      "head": "982bedc5d46207e5251bf592c335f85e3f4140f6",
+      "remote_head": "982bedc5d46207e5251bf592c335f85e3f4140f6",
       "status": "REMOTE_SAVED"
     },
     {
       "branch": "codex/riftwatch-v222-recovery",
-      "head": "a7db6245e12cd57849176d7ab6028d07253537a5",
-      "remote_head": "a7db6245e12cd57849176d7ab6028d07253537a5",
+      "head": "1c112ccbac6f53e12cb819ee9962ebfbedff2fbd",
+      "remote_head": "1c112ccbac6f53e12cb819ee9962ebfbedff2fbd",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -148,7 +148,7 @@
     {
       "path": "/workspace/riftwatch",
       "branch": "codex/riftwatch-v222-recovery",
-      "head": "a7db6245e12cd57849176d7ab6028d07253537a5",
+      "head": "1c112ccbac6f53e12cb819ee9962ebfbedff2fbd",
       "locked": false,
       "task_id": "DEV-RECOVERY-P0",
       "last_validation": [
@@ -169,7 +169,7 @@
         "Publish framework; preserve other worktrees; do not rerun valid12 baseline cases"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "a7db6245e12cd57849176d7ab6028d07253537a5",
+      "remote_head": "1c112ccbac6f53e12cb819ee9962ebfbedff2fbd",
       "unpushed_commits": [],
       "changed_files": [
         {
@@ -182,47 +182,19 @@
         },
         {
           "status": " M",
-          "path": "docs/recovery/task-registry.json"
-        },
-        {
-          "status": " M",
           "path": "docs/recovery/worktree-recovery.json"
         },
         {
           "status": " M",
-          "path": "tools/dev/agent_handoff.py"
+          "path": "tests/dev/test_recovery.py"
         },
         {
-          "status": "??",
-          "path": "docs/evidence/strategy-v222/tooling-all-unit.log.txt"
+          "status": " M",
+          "path": "tools/dev/checkpoint.py"
         },
         {
-          "status": "??",
-          "path": "docs/gdd/SOURCES.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/gdd/issue-11-snapshot.md"
-        },
-        {
-          "status": "??",
-          "path": "docs/gdd/issue-14-snapshot.md"
-        },
-        {
-          "status": "??",
-          "path": "docs/gdd/issue-17-snapshot.md"
-        },
-        {
-          "status": "??",
-          "path": "docs/gdd/issue-8-snapshot.md"
-        },
-        {
-          "status": "??",
-          "path": "docs/recovery/pre-merge-tooling.json"
-        },
-        {
-          "status": "??",
-          "path": "tools/qa/target_state_browser.py"
+          "status": " M",
+          "path": "tools/dev/worktree_recovery.py"
         }
       ],
       "dirty": true,
@@ -240,7 +212,7 @@
           "source_commit": "da0823c6341b1ee85e32d1b6c0f776ef3008255c",
           "result": "PASS8 browser,47 full Node,4locales; prior description FAIL fixed",
           "exists": true,
-          "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
+          "storage": "REMOTE_SAVED",
           "sha256": "ed43181fc96ec3f6463dfff37203727a307e9c5eba443a51dd92e361e99f3908",
           "resource_freshness": "MATCHES_WORKING_RESOURCES"
         }
@@ -251,16 +223,12 @@
       "next_steps": [
         "Run amended R-template/cost tests and native browser training"
       ],
-      "remote_status": "LOCAL_AHEAD",
-      "remote_head": "da0823c6341b1ee85e32d1b6c0f776ef3008255c",
-      "unpushed_commits": [
-        "2ad2fe4a6466c6c38a033d1194f004924dbfda37"
-      ],
+      "remote_status": "REMOTE_SAVED",
+      "remote_head": "2ad2fe4a6466c6c38a033d1194f004924dbfda37",
+      "unpushed_commits": [],
       "changed_files": [],
       "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED",
-      "ahead": 1,
-      "behind": 0
+      "local_record_status": "LOCAL_INVENTORIED"
     },
     {
       "path": "/workspace/riftwatch-integration",
@@ -345,7 +313,7 @@
     {
       "path": "/workspace/riftwatch-v22",
       "branch": "codex/riftwatch-v22-target-state",
-      "head": "77c20609da28b38fa405531a0215a8261dc6b1ef",
+      "head": "982bedc5d46207e5251bf592c335f85e3f4140f6",
       "locked": false,
       "task_id": "A1-TARGET",
       "last_validation": [
@@ -366,7 +334,7 @@
         "Run new target-state tests; source changed since Boss browser"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "77c20609da28b38fa405531a0215a8261dc6b1ef",
+      "remote_head": "982bedc5d46207e5251bf592c335f85e3f4140f6",
       "unpushed_commits": [],
       "changed_files": [],
       "dirty": false,
@@ -375,21 +343,14 @@
   ],
   "comparison": [
     {
-      "path": "/workspace/riftwatch",
+      "path": "/workspace/riftwatch-v22",
       "changed_fields": [
-        "changed_files"
+        "remote_head"
       ],
-      "previous_head": "a7db6245e12cd57849176d7ab6028d07253537a5",
-      "actual_head": "a7db6245e12cd57849176d7ab6028d07253537a5"
-    },
-    {
-      "path": "/workspace/riftwatch-civ",
-      "changed_fields": [
-        "head"
-      ],
-      "previous_head": "da0823c6341b1ee85e32d1b6c0f776ef3008255c",
-      "actual_head": "2ad2fe4a6466c6c38a033d1194f004924dbfda37"
+      "previous_head": "982bedc5d46207e5251bf592c335f85e3f4140f6",
+      "actual_head": "982bedc5d46207e5251bf592c335f85e3f4140f6"
     }
   ],
-  "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."
+  "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
+  "snapshot_id": "a7592b62047ab980c1648e7e54442a7ae8872355041346cc33a7d19203b10295"
 }

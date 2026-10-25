@@ -1,19 +1,20 @@
 # Worktree Recovery Manifest
 
-Captured UTC: 2026-10-25T18:33:52.309939+00:00 · Trigger: POST_COMMIT
-Collector source: `a7db6245e12cd57849176d7ab6028d07253537a5` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: a7592b62047ab980c1648e7e54442a7ae8872355041346cc33a7d19203b10295
+Captured UTC: 2026-10-25T18:36:42.005492+00:00 · Trigger: POST_PUSH
+Collector source: `1c112ccbac6f53e12cb819ee9962ebfbedff2fbd` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
 | Worktree | Branch | HEAD | Remote HEAD | Status | Dirty |
 |---|---|---|---|---|---|
 | /workspace/PlayGround | work | 8ef7358d61980eada812ae16b8e12c2f1e28baa8 | None | REMOTE_BRANCH_ABSENT | False |
-| /workspace/riftwatch | codex/riftwatch-v222-recovery | a7db6245e12cd57849176d7ab6028d07253537a5 | a7db6245e12cd57849176d7ab6028d07253537a5 | REMOTE_SAVED | True |
-| /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | 2ad2fe4a6466c6c38a033d1194f004924dbfda37 | da0823c6341b1ee85e32d1b6c0f776ef3008255c | LOCAL_AHEAD | False |
+| /workspace/riftwatch | codex/riftwatch-v222-recovery | 1c112ccbac6f53e12cb819ee9962ebfbedff2fbd | 1c112ccbac6f53e12cb819ee9962ebfbedff2fbd | REMOTE_SAVED | True |
+| /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | 2ad2fe4a6466c6c38a033d1194f004924dbfda37 | 2ad2fe4a6466c6c38a033d1194f004924dbfda37 | REMOTE_SAVED | False |
 | /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | d778cf2d8157edd9716b4790bcd29e00e967579f | d778cf2d8157edd9716b4790bcd29e00e967579f | REMOTE_SAVED | False |
 | /workspace/riftwatch-pop | codex/riftwatch-v22-population | 8d0902877564872ee5382155ebf38474c125c950 | 8d0902877564872ee5382155ebf38474c125c950 | REMOTE_SAVED | False |
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
-| /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 77c20609da28b38fa405531a0215a8261dc6b1ef | 77c20609da28b38fa405531a0215a8261dc6b1ef | REMOTE_SAVED | False |
+| /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 982bedc5d46207e5251bf592c335f85e3f4140f6 | 982bedc5d46207e5251bf592c335f85e3f4140f6 | REMOTE_SAVED | False |
 
 ## work
 
@@ -26,16 +27,16 @@ Next: Inspect task registry and relevant diff before writing
 ## codex/riftwatch-v222-recovery
 
 Unpushed commits: []
-Uncommitted paths: [{"status": " M", "path": "docs/evidence/strategy-v222/recovery-tests.log.txt"}, {"status": " M", "path": "docs/recovery/WORKTREE-RECOVERY.md"}, {"status": " M", "path": "docs/recovery/task-registry.json"}, {"status": " M", "path": "docs/recovery/worktree-recovery.json"}, {"status": " M", "path": "tools/dev/agent_handoff.py"}, {"status": "??", "path": "docs/evidence/strategy-v222/tooling-all-unit.log.txt"}, {"status": "??", "path": "docs/gdd/SOURCES.json"}, {"status": "??", "path": "docs/gdd/issue-11-snapshot.md"}, {"status": "??", "path": "docs/gdd/issue-14-snapshot.md"}, {"status": "??", "path": "docs/gdd/issue-17-snapshot.md"}, {"status": "??", "path": "docs/gdd/issue-8-snapshot.md"}, {"status": "??", "path": "docs/recovery/pre-merge-tooling.json"}, {"status": "??", "path": "tools/qa/target_state_browser.py"}]
+Uncommitted paths: [{"status": " M", "path": "docs/evidence/strategy-v222/recovery-tests.log.txt"}, {"status": " M", "path": "docs/recovery/WORKTREE-RECOVERY.md"}, {"status": " M", "path": "docs/recovery/worktree-recovery.json"}, {"status": " M", "path": "tests/dev/test_recovery.py"}, {"status": " M", "path": "tools/dev/checkpoint.py"}, {"status": " M", "path": "tools/dev/worktree_recovery.py"}]
 Validation: [{"path": "/workspace/diagnostics/riftwatch/v22-quality-baseline/results.json", "source_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8", "result": "REFER_TO_EVIDENCE; no automatic PASS inferred", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "b3bf19051816248b1dccd9bbd38e7bfe2221c6eb1f8e70d4092c4f816974d41d", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Feature-specific remaining gates; see handoff
 Next: Publish framework; preserve other worktrees; do not rerun valid12 baseline cases
 
 ## codex/riftwatch-v22-civ-alignment
 
-Unpushed commits: ["2ad2fe4a6466c6c38a033d1194f004924dbfda37"]
+Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"path": "docs/evidence/strategy-v222/civ-results.json", "source_commit": "da0823c6341b1ee85e32d1b6c0f776ef3008255c", "result": "PASS8 browser,47 full Node,4locales; prior description FAIL fixed", "exists": true, "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED", "sha256": "ed43181fc96ec3f6463dfff37203727a307e9c5eba443a51dd92e361e99f3908", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Validation: [{"path": "docs/evidence/strategy-v222/civ-results.json", "source_commit": "da0823c6341b1ee85e32d1b6c0f776ef3008255c", "result": "PASS8 browser,47 full Node,4locales; prior description FAIL fixed", "exists": true, "storage": "REMOTE_SAVED", "sha256": "ed43181fc96ec3f6463dfff37203727a307e9c5eba443a51dd92e361e99f3908", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Feature-specific remaining gates; see handoff
 Next: Run amended R-template/cost tests and native browser training
 

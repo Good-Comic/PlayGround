@@ -1,7 +1,7 @@
 import importlib.util,json,subprocess,sys,tempfile,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools/dev'))
-from worktree_recovery import inventory,atomic_json
+from worktree_recovery import inventory,atomic_json,write_snapshot
 from agent_handoff import transition,validate_task
 def run(cwd,*args):return subprocess.check_output(['git','-C',str(cwd),*args],stderr=subprocess.DEVNULL,text=True).strip()
 class RecoveryTests(unittest.TestCase):
@@ -32,4 +32,8 @@ class RecoveryTests(unittest.TestCase):
   state=transition(state,'relay','Codex','A',branch,0,'claim');state=transition(state,'relay','Codex','A',branch,1,'release');state=transition(state,'relay','Gemini-SIMULATED','B',branch,2,'claim')
   clone=self.root/'simulated-agent-environment';run(self.repo,'clone','--branch','codex/riftwatch-test',str(self.remote),str(clone));run(clone,'switch','-c',branch);run(clone,'config','user.name','SIMULATED Gemini');run(clone,'config','user.email','fixture@example.invalid');(clone/'relay-test.txt').write_text('low-risk test fixture only; no real Gemini');run(clone,'add','relay-test.txt');run(clone,'commit','-m','SIMULATED relay test');head=run(clone,'rev-parse','HEAD');run(clone,'push','origin',head+':refs/heads/'+branch)
   state=transition(state,'relay','Gemini-SIMULATED','B',branch,3,'release');state=transition(state,'relay','Codex','C',branch,4,'claim');run(self.repo,'fetch','origin','refs/heads/'+branch);self.assertEqual(run(self.repo,'show',head+':relay-test.txt'),'low-risk test fixture only; no real Gemini');self.assertEqual(state['tasks']['relay']['agent'],'Codex');self.assertEqual(run(self.repo,'branch','--show-current'),'codex/riftwatch-test')
+ def test_snapshot_pair_id_and_non_owner_lock_are_preserved(self):
+  out=self.root/'out';d=inventory(self.repo);write_snapshot(out,d);saved=json.loads((out/'worktree-recovery.json').read_text());self.assertIn(saved['snapshot_id'],(out/'WORKTREE-RECOVERY.md').read_text());lock=out/'.snapshot-write.lock';lock.write_text('another writer')
+  with self.assertRaises(FileExistsError):write_snapshot(out,d)
+  self.assertTrue(lock.exists())
 if __name__=='__main__':unittest.main(verbosity=2)

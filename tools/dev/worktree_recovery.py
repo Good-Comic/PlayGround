@@ -100,11 +100,18 @@ def inventory(repo,registry=None,trigger='TASK_START',prior=None):
   rh=heads.get(name);branches.append({'branch':name,'head':head,'remote_head':rh,'status':'REMOTE_UNKNOWN' if remote['status']=='REMOTE_UNKNOWN' else 'REMOTE_SAVED' if head==rh else 'REMOTE_BRANCH_ABSENT' if not rh else 'HEAD_DIFFERS_REVIEW_REQUIRED'})
  return {'schema_version':SCHEMA,'captured_at_utc':captured,'trigger':trigger,'collector_commit':git(repo,'rev-parse','HEAD'),'collector_dirty':bool(status_files(repo)),'local_record_status':'LOCAL_INVENTORIED_NOT_A_PUSH','remote_query':remote,'remote_heads':heads,'local_branches':branches,'worktrees':rows,'comparison':deltas,'snapshot_semantics':'Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.'}
 def markdown(data):
- lines=['# Worktree Recovery Manifest','',f"Captured UTC: {data['captured_at_utc']} · Trigger: {data['trigger']}",f"Collector source: `{data['collector_commit']}` · {data['local_record_status']}",'',data['snapshot_semantics'],'','| Worktree | Branch | HEAD | Remote HEAD | Status | Dirty |','|---|---|---|---|---|---|']
+ lines=['# Worktree Recovery Manifest','',f"Snapshot ID: {data.get('snapshot_id','legacy')}",f"Captured UTC: {data['captured_at_utc']} · Trigger: {data['trigger']}",f"Collector source: `{data['collector_commit']}` · {data['local_record_status']}",'',data['snapshot_semantics'],'','| Worktree | Branch | HEAD | Remote HEAD | Status | Dirty |','|---|---|---|---|---|---|']
  for r in data['worktrees']:lines.append('| '+' | '.join(str(v).replace('|','\\|') for v in [r['path'],r['branch'],r['head'],r['remote_head'],r['remote_status'],r['dirty']])+' |')
  for r in data['worktrees']:
   lines.extend(['',f"## {r['branch'] or r['path']}",'',f"Unpushed commits: {json.dumps(r['unpushed_commits'])}",f"Uncommitted paths: {json.dumps(r['changed_files'])}",f"Validation: {json.dumps(r['last_validation'],ensure_ascii=False)}",f"Blockers: {'; '.join(r['blockers'])}",f"Next: {'; '.join(r['next_steps'])}"])
  return '\n'.join(lines)+'\n'
+def write_snapshot(out,data):
+ out=Path(out);out.mkdir(parents=True,exist_ok=True);lock=out/'.snapshot-write.lock'
+ # Never remove another process's lock or assume a timed-out writer is dead.
+ fd=os.open(lock,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+ try:
+  os.close(fd);data['snapshot_id']=hashlib.sha256(json.dumps({k:v for k,v in data.items() if k!='snapshot_id'},sort_keys=True).encode()).hexdigest();atomic_json(out/'worktree-recovery.json',data);tmp=out/'.WORKTREE-RECOVERY.md.tmp';tmp.write_text(markdown(data));os.replace(tmp,out/'WORKTREE-RECOVERY.md')
+ finally:lock.unlink()
 def main():
- p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[2]);p.add_argument('--out',type=Path);p.add_argument('--registry',type=Path);p.add_argument('--trigger',choices=TRIGGERS,default='TASK_START');a=p.parse_args();out=a.out or a.repo/'docs/recovery';prior=load(out/'worktree-recovery.json',None);data=inventory(a.repo,load(a.registry or a.repo/'docs/recovery/task-registry.json',{}),a.trigger,prior);atomic_json(out/'worktree-recovery.json',data);(out/'WORKTREE-RECOVERY.md').write_text(markdown(data));print(json.dumps({'worktrees':len(data['worktrees']),'remote_query':data['remote_query']['status'],'snapshot':str(out/'worktree-recovery.json')}))
+ p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[2]);p.add_argument('--out',type=Path);p.add_argument('--registry',type=Path);p.add_argument('--trigger',choices=TRIGGERS,default='TASK_START');a=p.parse_args();out=a.out or a.repo/'docs/recovery';prior=load(out/'worktree-recovery.json',None);data=inventory(a.repo,load(a.registry or a.repo/'docs/recovery/task-registry.json',{}),a.trigger,prior);write_snapshot(out,data);print(json.dumps({'worktrees':len(data['worktrees']),'remote_query':data['remote_query']['status'],'snapshot':str(out/'worktree-recovery.json')}))
 if __name__=='__main__':main()

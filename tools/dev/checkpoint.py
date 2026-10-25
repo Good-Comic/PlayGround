@@ -2,9 +2,9 @@
 """Explicit authorized commit/push wrapper; manifests are snapshots, never recursively committed."""
 import argparse,subprocess
 from pathlib import Path
-from worktree_recovery import git,inventory,load,atomic_json,markdown
+from worktree_recovery import git,inventory,load,write_snapshot
 def snapshot(repo,trigger):
- out=repo/'docs/recovery';data=inventory(repo,load(out/'task-registry.json',{}),trigger,load(out/'worktree-recovery.json',None));atomic_json(out/'worktree-recovery.json',data);(out/'WORKTREE-RECOVERY.md').write_text(markdown(data))
+ out=repo/'docs/recovery';data=inventory(repo,load(out/'task-registry.json',{}),trigger,load(out/'worktree-recovery.json',None));write_snapshot(out,data)
 def main():
  p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,default=Path.cwd());p.add_argument('--manifest-repo',type=Path);p.add_argument('--agent');p.add_argument('--execution');p.add_argument('--message');p.add_argument('--stage',nargs='+',default=[]);p.add_argument('--push',action='store_true');a=p.parse_args();repo=a.repo.resolve();manifest_repo=(a.manifest_repo or repo).resolve();branch=git(repo,'branch','--show-current')
  if not branch.startswith('codex/riftwatch-') or 'checkpoint' in branch.lower():raise SystemExit('Protected/out-of-scope branch')

@@ -18,13 +18,5 @@ Read AGENTS.md, docs/handoff/SHARED-RULES.md, Strategy v2.2.1/v2.2.2, the recove
     "dirty": true,
     "remote_status": "REMOTE_SAVED",
     "unpushed": []
-  },
-  {
-    "branch": "codex/riftwatch-v22-civ-alignment",
-    "dirty": false,
-    "remote_status": "LOCAL_AHEAD",
-    "unpushed": [
-      "2ad2fe4a6466c6c38a033d1194f004924dbfda37"
-    ]
   }
 ]
