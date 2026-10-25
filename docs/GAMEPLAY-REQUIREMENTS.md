@@ -1,3 +1,5 @@
+> Strategy v2 supersedes the historical blanket Phase B block below.500/1000 FAILs remain unchanged; they are extension goals, not current development blockers. Current gate and statuses: GAMEPLAY-ROADMAP.md and GAMEPLAY-ACCEPTANCE.md.250 is a provisional stress target, not a supported-scale claim.
+
 > PERF_IN_PROGRESS: current p0.4 gameplay source59c8529; all final runs at8549065. Functional browser P0/stances/save/crowd regressions PASS; three-repeat performance PASS25/100/250, FAIL500/1000 movement and1000 combat. Original failures retained. AFTER_DEPLOY_LIVE=DEPLOYMENT_BLOCKED; Phase B NOT_STARTED. See PERFORMANCE-RECOVERY.md.
 
 # Gameplay requirement matrix — Master Directive v1.0

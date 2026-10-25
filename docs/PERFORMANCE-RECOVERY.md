@@ -1,3 +1,5 @@
+> Strategy v2 supersedes the historical blanket Phase B block below.500/1000 FAILs remain unchanged; they are extension goals, not current development blockers. Current gate and statuses: GAMEPLAY-ROADMAP.md and GAMEPLAY-ACCEPTANCE.md.250 is a provisional stress target, not a supported-scale claim.
+
 # Phase A performance recovery — PERF_IN_PROGRESS
 
 **Phase A is not released.** Functional regression PASS in bounded local scenarios; performance FAIL. No Phase B work or remote Preview update. All final repeated benchmarks, CPU profiles and browser operations used clean commit `8549065da8b727737f14a596fc104658d408ffd3`, containing gameplay source `59c852911bef17ce1376efa4970937bb8da96308`, Build ID `riftwatch-gameplay-p0.4`. Later evidence/documentation commits keep those game bytes unchanged. Remote preservation first advanced `ef5019bcb1560698f28aca25cca4fbd82da3ad7a` to checkpoint8549065 via a normal feature-branch-only push.

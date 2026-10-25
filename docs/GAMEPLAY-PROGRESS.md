@@ -1,3 +1,5 @@
+> Strategy v2 supersedes the historical blanket Phase B block below.500/1000 FAILs remain unchanged; they are extension goals, not current development blockers. Current gate and statuses: GAMEPLAY-ROADMAP.md and GAMEPLAY-ACCEPTANCE.md.250 is a provisional stress target, not a supported-scale claim.
+
 # Phase A preservation and current acceptance
 
 **PERF_IN_PROGRESS — Phase A not released; Phase B NOT_STARTED.** All final browser/performance runs used clean commit `8549065da8b727737f14a596fc104658d408ffd3`, gameplay source `59c852911bef17ce1376efa4970937bb8da96308`, Build ID `riftwatch-gameplay-p0.4`. Subsequent evidence commits do not change served game resources.
