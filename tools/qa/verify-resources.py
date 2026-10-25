@@ -11,3 +11,4 @@ for entry in json.loads(a.har.read_text())['log']['entries']:
  actual=hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
  records.append({'url':entry['request']['url'],'path':path,'match':actual==tree[path],'captured_blob':actual,'git_blob':tree[path]})
 a.out.write_text(json.dumps({'commit':a.commit,'records':records},indent=2));print('Compared',len(records),'resources;',sum(r['match'] for r in records),'match')
+if not records or not all(r['match'] for r in records):raise SystemExit('Resource verification failed: zero comparisons or mismatched bytes')
