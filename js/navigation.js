@@ -12,7 +12,7 @@ class Heap {
   pop() { const a=this.a, top=a[0], v=a.pop(); if(a.length) { let i=0; while(i*2+1<a.length) { let j=i*2+1; if(j+1<a.length&&a[j+1].f<a[j].f) j++; if(a[j].f>=v.f) break; a[i]=a[j];i=j; } a[i]=v; } return top; }
 }
 export function findPath(start, target, walkable, size, { range = 0, maxNodes = 10000, goalTest = null } = {}) {
-  const cell=.5, n=size*2, total=n*n, point=i=>({x:(i%n)*cell+.25,y:Math.floor(i/n)*cell+.25});
+  const cell=.5, n=size*2, total=n*n, point=i=>({x:(i%n)*cell,y:Math.floor(i/n)*cell});
   const mask=new Int8Array(total), costs=new Float64Array(total).fill(Infinity), parents=new Int32Array(total).fill(-1);
   const open=new Heap(), closed=new Uint8Array(total);
   const legal=i=>{if(!mask[i]) { const p=point(i);mask[i]=walkable(p.x,p.y)?1:-1; }return mask[i]>0;};

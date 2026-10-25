@@ -31,16 +31,21 @@ export class Crowd {
     if (!step) return next;
     let dx = (next.x-u.x)/step, dy = (next.y-u.y)/step;
     const radius = u.typeDef.radius || .24;
+    const convoy = neighbours.filter(v=>v._heading && v._heading.x*dx+v._heading.y*dy>.5);
+    u._trafficPriority=Math.min(u._trafficPriority||u.id,...convoy.map(v=>v._trafficPriority||v.id));
+    const relayed=convoy.find(v=>v._yieldTo?.until>time && v._yieldTo.priority<u._trafficPriority);
+    if(relayed)u._yieldTo={...relayed._yieldTo};
     const leader = neighbours.find(v => {
-      if (v.id >= u.id || !['move','gather','return','attack','build'].includes(v.state)) return false;
+      if ((v._trafficPriority||v.id) >= u._trafficPriority || !['move','gather','return','attack','build'].includes(v.state)) return false;
       const distance = Math.hypot(v.x-u.x, v.y-u.y);
       const heading = v._heading;
       return heading && distance < 1.8 && heading.x*dx + heading.y*dy < -.5;
     });
-    if (leader) u._yieldTo = { id: leader.id, until: time+4 };
-    const yielding = u._yieldTo && u._yieldTo.until > time && neighbours.find(v=>v.id===u._yieldTo.id);
+    if (leader) u._yieldTo = { id: leader.id, priority:leader._trafficPriority||leader.id, until: time+4, dx:u.x-leader.x, dy:u.y-leader.y };
+    const yielding = u._yieldTo && u._yieldTo.until > time ? u._yieldTo : null;
     if (yielding) {
-      const awayX = u.x-yielding.x, awayY = u.y-yielding.y;
+      const anchor=neighbours.find(v=>v.id===yielding.id);
+      const awayX = anchor?u.x-anchor.x:yielding.dx, awayY = anchor?u.y-anchor.y:yielding.dy;
       const len = Math.hypot(awayX, awayY) || 1;
       // A lateral component lets the yielding unit clear the mouth of a passage.
       dx = awayX/len + .7*awayY/len; dy = awayY/len - .7*awayX/len;

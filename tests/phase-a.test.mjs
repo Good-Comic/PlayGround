@@ -11,18 +11,18 @@ function tick(g,n,dt=.05,check=()=>{}){for(let i=0;i<n;i++){g.time+=dt;g.updateU
 function pairPenetration(units){let max=0;for(let i=0;i<units.length;i++)for(let j=i+1;j<units.length;j++)max=Math.max(max,(units[i].typeDef.radius||.24)+(units[j].typeDef.radius||.24)-Math.hypot(units[i].x-units[j].x,units[i].y-units[j].y));return max;}
 test('24-unit crowd reaches separate formation slots without overlap or static clipping',()=>{
  const g=arena();const units=[];for(let y=0;y<4;y++)for(let x=0;x<6;x++)units.push(g.spawnUnit('militia',4+x*.8,5+y*.8));
- g.commandMove(units,21,20);let penetration=0,clipped=0;
+ g.commandMove(units,21,20);const goals=new Map(units.map(u=>[u.id,{...u.targetPos}]));let penetration=0,clipped=0;
  tick(g,1400,.05,()=>{penetration=Math.max(penetration,pairPenetration(units));clipped+=units.filter(u=>!g.isWalkable(u.x,u.y,u)).length;});
- const arrived=units.filter(u=>u.state==='idle').length;report('crowd-24','24/24 arrive within 70s; penetration <= .025; static clips 0',{arrived,penetration,clipped});
+ const arrived=units.filter(u=>u.state==='idle'&&Math.hypot(u.x-goals.get(u.id).x,u.y-goals.get(u.id).y)<.15).length;report('crowd-24','24/24 arrive within 70s; penetration <= .025; static clips 0',{arrived,penetration,clipped});
  assert.equal(clipped,0);assert.ok(penetration<=.025);assert.equal(arrived,24);
 });
 test('opposing units pass a narrow building corridor by yielding, without overlap',()=>{
- const g=arena();g.addBuilding('core',10,5,true);g.addBuilding('core',10,10,true); // 1-tile corridor y9..10
+ const g=arena();g.world.tile=(x,y)=>x>=0&&y>=0&&x<30&&y<30?{terrain:x>=10&&x<14&&(y<9||y>=10)?'water':'grass'}:null;g.addBuilding('core',10,5,true);g.addBuilding('core',10,10,true); // 1-tile corridor y9..10
  const a=g.spawnUnit('militia',7,9.5),b=g.spawnUnit('militia',17,9.5);
  g.commandMove([a],18,9.5);g.commandMove([b],6,9.5);let penetration=0,clipped=0;
  tick(g,1200,.05,()=>{penetration=Math.max(penetration,pairPenetration([a,b]));clipped+=![a,b].every(u=>g.isWalkable(u.x,u.y,u));});
  report('narrow-opposing','both arrive <=60s, penetration <=.025, no static clipping',{a:{x:a.x,y:a.y,state:a.state},b:{x:b.x,y:b.y,state:b.state},penetration,clipped});
- assert.equal(clipped,0);assert.ok(penetration<=.025);assert.equal(a.state,'idle');assert.equal(b.state,'idle');
+ assert.equal(clipped,0);assert.ok(penetration<=.025);assert.equal(a.state,'idle');assert.equal(b.state,'idle');assert.ok(a.x>17.8&&b.x<6.2,'must reach opposite exits, not just idle');
 });
 test('unreachable manual combat target is abandoned and reachable enemy acquired',()=>{
  const g=arena();g.world.tile=(x,y)=>({terrain:x>=14&&x<16?'water':'grass'});
@@ -68,11 +68,11 @@ test('save/load resumes move, gather, return and valid attack orders without pat
  assert.equal(restoredMove.state,'idle');assert.ok(loaded.resources.gold>=before+7);assert.equal(deadRefs,0);
 });
 test('eight units in opposing queues pass the one-tile corridor',()=>{
- const g=arena();g.addBuilding('core',10,5,true);g.addBuilding('core',10,10,true);
+ const g=arena();g.world.tile=(x,y)=>x>=0&&y>=0&&x<30&&y<30?{terrain:x>=10&&x<14&&(y<9||y>=10)?'water':'grass'}:null;g.addBuilding('core',10,5,true);g.addBuilding('core',10,10,true);
  const left=[],right=[];for(let i=0;i<4;i++){left.push(g.spawnUnit('militia',5+i*.8,9.5));right.push(g.spawnUnit('militia',17+i*.8,9.5));}
- g.commandMove(left,19,9.5);g.commandMove(right,5,9.5);const units=[...left,...right];let maxPenetration=0,clipped=0;
- tick(g,1600,.05,()=>{maxPenetration=Math.max(maxPenetration,pairPenetration(units));clipped+=units.filter(u=>!g.isWalkable(u.x,u.y,u)).length;});
- const arrived=units.filter(u=>u.state==='idle').length;report('narrow-queues-8','8/8 within80s, penetration<=.025, static clips0',{arrived,maxPenetration,clipped});assert.equal(arrived,8);assert.ok(maxPenetration<=.025);assert.equal(clipped,0);
+ g.commandMove(left,19,9.5);g.commandMove(right,5,9.5);const units=[...left,...right];const goals=new Map(units.map(u=>[u.id,{...u.targetPos}]));let maxPenetration=0,clipped=0;const crossed=new Set();
+ tick(g,1600,.05,()=>{maxPenetration=Math.max(maxPenetration,pairPenetration(units));clipped+=units.filter(u=>!g.isWalkable(u.x,u.y,u)).length;for(const u of units)if(u.x>11&&u.x<13&&u.y>9&&u.y<10)crossed.add(u.id);});
+ const arrived=units.filter(u=>u.state==='idle'&&Math.hypot(u.x-goals.get(u.id).x,u.y-goals.get(u.id).y)<.15).length;report('narrow-queues-8','8/8 within80s, penetration<=.025, static clips0',{arrived,maxPenetration,clipped,crossed:crossed.size});assert.equal(crossed.size,8);assert.equal(arrived,8);assert.ok(maxPenetration<=.025);assert.equal(clipped,0);
 });
 test('fair search queue starts all 100 units despite continuous low-ID demand',()=>{
  const g=arena(50),units=[];for(let i=0;i<100;i++){const u=g.spawnUnit('militia',3+(i%10)*3,3+Math.floor(i/10)*3);u.stance='passive';units.push(u);g.commandMove([u],u.x+.6,u.y+.6);}
@@ -84,4 +84,10 @@ test('directly controlled passive hero does not auto-attack',()=>{
  const g=arena(),u=g.spawnUnit('commander',10,10),e=g.spawnUnit('militia',11,10,'enemy');g.heroControl=true;u.stance='passive';u.cooldown=0;const hp=e.hp;
  g.updateHeroDirect(u,.05);assert.equal(e.hp,hp);assert.equal(u.target,null);
  report('passive-direct-hero','no damage or autonomous target while passive',{enemyHp:e.hp,initialHp:hp});
+});
+test('an unreachable move is a reported failure, not arrival, and a new move clears it',()=>{
+ const g=arena();g.world.tile=(x,y)=>({terrain:x>=14&&x<16?'water':'grass'});const u=g.spawnUnit('militia',10,10);
+ g.commandMove([u],20,10);tick(g,100);assert.equal(u.orderFailure,'unreachable');assert.ok(u.x<14);
+ g.commandMove([u],12,10);assert.equal(u.orderFailure,null);tick(g,100);assert.ok(Math.hypot(u.x-12,u.y-10)<.15);assert.equal(u.state,'idle');
+ report('move-failure-vs-arrival','unreachable result reported; new valid order reaches actual destination',{failurePreserved:true,newX:u.x,newY:u.y});
 });

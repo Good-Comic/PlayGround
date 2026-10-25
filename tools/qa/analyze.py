@@ -14,7 +14,7 @@ for sample in s:
   else:stalls.pop(u['id'],None)
   previous[u['id']]=u
 cavalry=[(x['time'],u) for x in s for u in x['units'] if u['type']=='light_cavalry' and u['team']=='player']
-r={'stage':d['stage'],'result':d.get('result'),'samples':len(s),'seed':s[0]['seed'] if s else None,'simulation_seconds':s[-1]['time'] if s else 0,'stale_dead_target_samples':len(stale),'first_stale':stale[:3],'deposit_cycles':cycles,'gather_stalls_over_20s':{k:v for k,v in maxstalls.items() if v>=20},'cavalry_completed_move':any(1<t<35 and u['state']=='idle' for t,u in cavalry),'page_errors':d['page_errors'],'failed_resources':d['failed'],'build':d.get('build'),'build_manifest':d.get('build_manifest')}
+r={'stage':d['stage'],'result':d.get('result'),'samples':len(s),'seed':s[0]['seed'] if s else None,'simulation_seconds':s[-1]['time'] if s else 0,'stale_dead_target_samples':len(stale),'first_stale':stale[:3],'deposit_cycles':cycles,'gather_stalls_over_20s':{k:v for k,v in maxstalls.items() if v>=20},'cavalry_completed_move':any(1<t<35 and u['state']=='idle' and ((u['x']-32)**2+(u['y']-29)**2)**.5<2.5 and not u.get('orderFailure') for t,u in cavalry),'page_errors':d['page_errors'],'failed_resources':d['failed'],'build':d.get('build'),'build_manifest':d.get('build_manifest')}
 events=[]
 for before,after in zip(s,s[1:]):
  current={u['id']:u for u in after['units']}

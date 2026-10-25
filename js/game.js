@@ -630,7 +630,7 @@ export class Game {
 
   orderGather(u, node) {
     if (!u || !node || !node.alive) return;
-    u._nav = null; u._progress = null; u._goalProgress=null; u._yieldTo = null;
+    u._nav = null; u._progress = null; u._goalProgress=null; u._yieldTo = null; u._trafficPriority=u.id; u.orderFailure=null;
     if (u.carry > 0 && u.carryType && u.carryType !== node.resource) {
       u.gatherTarget = node; this.beginReturn(u); return;
     }
@@ -1549,6 +1549,7 @@ export class Game {
   moveAlong(u, dt) {
     if (!u.targetPos) return true;
     const result = this.stepToward(u, u.targetPos.x, u.targetPos.y, dt);
+    if(result==='unreachable')u.orderFailure='unreachable';
     return result === 'arrived' || result === 'unreachable';
   }
 
@@ -3099,7 +3100,7 @@ export class Game {
       const col = i % cols, row = Math.floor(i / cols);
       const ox = compact ? u.x-center.x : (col - (cols - 1) / 2) * spacing;
       const oy = compact ? u.y-center.y : (row - (Math.ceil(count / cols) - 1) / 2) * spacing;
-      u._nav = null; u._progress = null; u._goalProgress=null; u._yieldTo = null;
+      u._nav = null; u._progress = null; u._goalProgress=null; u._yieldTo = null; u._trafficPriority=u.id; u.orderFailure=null;
       u.state = 'move';
       u.guardOrigin = { x: clamp(x + ox, 1, this.world.size - 1), y: clamp(y + oy, 1, this.world.size - 1) };
       u.manualAttack = false;

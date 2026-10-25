@@ -1,3 +1,5 @@
+> **Audit correction:** the p0.2 narrow-corridor PASS below is withdrawn: units could bypass the outer ends. See evidence/phase-a/narrow-audit-correction.json. Build p0.3 fixes lattice alignment and convoy yielding, with forced-channel/actual-destination checks. Fresh browser/performance acceptance is pending for that new build.
+
 # Phase A completion attempt and GitHub preservation
 
 Current gameplay implementation: **8ba384889d3eb3d782ce9a5eb98f569afbd14d6d**, Build ID **riftwatch-gameplay-p0.2**.
