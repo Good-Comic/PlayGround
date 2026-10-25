@@ -14,6 +14,8 @@ class Handler(SimpleHTTPRequestHandler):
  def do_GET(self):
   if self.path in ['/__candidate_build.json','/__qa_build.json']:
    data=json.dumps({**manifest,'dirty':hashes()!=expected}).encode();self.send_response(200);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data);return
+  if hashes()!=expected:
+   self.send_error(409,"Candidate snapshot changed; create a fresh exact-commit snapshot");return
   super().do_GET()
 print(json.dumps({'url':f'http://127.0.0.1:{a.port}','commit':a.commit,'scope':'LOCAL_ONLY_NOT_OMGITHUB','snapshot':str(a.directory)}),flush=True)
 ThreadingHTTPServer(('127.0.0.1',a.port),Handler).serve_forever()
