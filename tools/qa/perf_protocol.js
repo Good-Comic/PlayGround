@@ -9,10 +9,10 @@ export function setup(count, mode) {
   for(const t of g.world.tiles)t.terrain='grass';
   renderer.terrainKey='';
   g.camera={x:0,y:800,targetX:0,targetY:800,zoom:.45,targetZoom:.45};
-  const cols=Math.ceil(Math.sqrt(count)),spacing=38/Math.max(cols,2),origins=new Map();
+  const cols=Math.ceil(Math.sqrt(count)),spacing=(mode==='combat'?48:38)/Math.max(cols,2),offset=mode==='combat'?1:5,origins=new Map();
   const composition={};
   for(let i=0;i<count;i++) {
-    const x=5+(i%cols)*spacing,y=5+Math.floor(i/cols)*spacing;
+    const x=offset+(i%cols)*spacing,y=offset+Math.floor(i/cols)*spacing;
     const type=mode==='combat'?'guard':'militia';
     const team=mode==='combat'&&i%2?'enemy':'player';
     const u=g.spawnUnit(type,x,y,team);if(!u)throw Error(`Spawn failed ${i}/${count}`);

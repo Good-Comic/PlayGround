@@ -32,7 +32,7 @@ with sync_playwright() as pw:
    page.locator('#setup-civ').select_option('TEU');page.locator('#setup-biome').select_option('steppe');page.locator('#setup-seed').fill('phase-a-perf');page.locator('#btn-start').click()
    fixture=page.evaluate('''async ([n,mode,detailed])=>{window.protocol=await import('/tools/qa/perf_protocol.js');const fixture=protocol.setup(n,mode);protocol.install(detailed);return fixture;}''',[count,mode,a.diagnostic])
    cdp=context.new_cdp_session(page);cdp.send('Performance.enable');before=perf_metrics(cdp);cpu_before=read('/sys/fs/cgroup/cpu.stat');pressure_before=read('/sys/fs/cgroup/cpu.pressure')
-   if a.diagnostic:cdp.send('Profiler.enable');cdp.send('Profiler.setSamplingInterval',{'interval':1000});cdp.send('Profiler.start');cdp.send('Tracing.start',{'categories':'devtools.timeline,v8,disabled-by-default-v8.gc','transferMode':'ReturnAsStream'})
+   if a.diagnostic:cdp.send('Profiler.enable');cdp.send('Profiler.setSamplingInterval',{'interval':1000});cdp.send('Profiler.start');cdp.send('Tracing.start',{'categories':'devtools.timeline,v8,cc,disabled-by-default-devtools.timeline,disabled-by-default-devtools.timeline.frame,disabled-by-default-v8.gc','transferMode':'ReturnAsStream'})
    result=page.evaluate('([warmup,seconds,mode,n])=>protocol.run(warmup,seconds,mode,n)',[a.warmup,a.seconds,mode,count]);after=perf_metrics(cdp)
    if a.diagnostic:
     profile=cdp.send('Profiler.stop')['profile'];dump(folder/'cpu-profile.json',profile);dump(folder/'cpu-summary.json',profile_summary(profile));completed=[];cdp.on('Tracing.tracingComplete',lambda e:completed.append(e));cdp.send('Tracing.end')
