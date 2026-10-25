@@ -1,0 +1,82 @@
+{
+  "status": "CONTINUOUS_DEVELOPMENT_ENABLED",
+  "protected_remote_baseline": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
+  "product_budget": {
+    "count": "all alive entities on both sides, including workers/heroes/summons",
+    "design_tiers": [
+      100,
+      200,
+      250
+    ],
+    "release_budget": null,
+    "status": "PROVISIONAL_NOT_RELEASED",
+    "hard_cap_added": false,
+    "full_ten_wave_peak": "NOT_TESTED"
+  },
+  "rally": {
+    "branch": "codex/riftwatch-b1-rally",
+    "implementation_sha": "2f148c3e3877fc04b6566c0fc6c680b699c73895",
+    "status": [
+      "IMPLEMENTED",
+      "LOCAL_VERIFIED bounded functionality",
+      "BLOCKED integration"
+    ],
+    "feature_browser_sha": "2f148c3e3877fc04b6566c0fc6c680b699c73895",
+    "p0_browser_sha": "ee49fb919e0aacc108332aade5573d50e1e9c8df",
+    "perf_sha": "91569e206d08c8b0e8af2f071d838aa1b66eb0e8",
+    "latest_sha_full_perf": "NOT_TESTED; incremental UI/blocked-spawn fixes only; previous simulation ratio FAIL retained",
+    "integration_merged": false
+  },
+  "civilization": {
+    "branch": "codex/riftwatch-b2-civ-training",
+    "implementation_and_test_sha": "dc4698a3f8801ea5ada37a908951900fca6a8ef6",
+    "status": [
+      "IMPLEMENTED scoped training rules",
+      "LOCAL_VERIFIED bounded functionality",
+      "BLOCKED integration"
+    ],
+    "full_gdd16_unique_roster": "NOT_TESTED; absent referenced spec package",
+    "integration_merged": false
+  },
+  "clock": {
+    "status": [
+      "IMPLEMENTED evaluation only",
+      "LOCAL_VERIFIED headless prototype",
+      "BLOCKED production adoption"
+    ],
+    "prototype_tests_pass": 4,
+    "strict_save_load_determinism": "FAIL observed; not counted as deterministic PASS",
+    "runtime_main_changed": false
+  },
+  "candidate": {
+    "status": [
+      "IMPLEMENTED",
+      "LOCAL_VERIFIED"
+    ],
+    "deployment": "BLOCKED",
+    "scope": "LOCAL_ONLY_NOT_OMGITHUB",
+    "tested_candidates": [
+      "91569e206d08c8b0e8af2f071d838aa1b66eb0e8",
+      "7faa21a274847ca649a7a96b88700d4cdda5fe2e"
+    ],
+    "resource_matches": [
+      25,
+      25
+    ],
+    "integrity_test": "200 -> tamper409/dirty -> restored200"
+  },
+  "three_stages": {
+    "BEFORE_LIVE": "historical evidence preserved",
+    "AFTER_LOCAL": "scoped feature/P0 PASS; new performance/time/stuck quality FAILs retained",
+    "AFTER_DEPLOY_LIVE": "DEPLOYMENT_BLOCKED"
+  },
+  "extension5001000": "historical FAILs unchanged; no blanket Phase B embargo",
+  "next_exact_steps": [
+    "A-PATH-02 instrument and repair live8s movement stalls; do not mistake residual failure flags for live stalls",
+    "A-CLOCK-02 fix wall/simulation loss with deterministic Save/Load/timer model before runtime switch",
+    "E1-BOSS-02 restore registered Boss reinforcement type and per-wave reset, then complete3 natural ten-wave runs",
+    "B1 final2f148c3 requires full performance acceptance; core/browser fixes already observed at exact listed SHAs",
+    "B2 dc4698a requires persistent-stuck gate and authoritative remaining GDD age/tech/unique roster",
+    "Keep feature branches unmerged until individual gates pass; merge integration advances into feature normally, never rewrite pushed history"
+  ]
+}

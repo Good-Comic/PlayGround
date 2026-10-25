@@ -1,0 +1,167 @@
+{
+  "feature": "civ",
+  "stage": "AFTER_LOCAL",
+  "actions": [
+    {
+      "action": "Start Game",
+      "civ": "CHN"
+    },
+    {
+      "action": "pointer",
+      "world": [
+        26.5,
+        21.5
+      ],
+      "button": "left",
+      "canvas": [
+        928,
+        509.4
+      ]
+    },
+    {
+      "action": "click train Chu Ko Nu",
+      "fixture_age": 2
+    },
+    {
+      "action": "pointer",
+      "world": [
+        30.96541135684616,
+        20.043931526193493
+      ],
+      "button": "right",
+      "canvas": [
+        1079.5898836647084,
+        552.9195889029075
+      ]
+    },
+    {
+      "action": "Pause Save Reload Continue"
+    }
+  ],
+  "checks": [
+    {
+      "name": "select range by pointer",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "age locked button",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "age2 unlock",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "actual resource payment",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "native queue creates unique unit",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "actual combat fires three shots",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "unique unit survives UI Save Reload Continue",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "four unique-unit translations",
+      "pass": true,
+      "observed": [
+        {
+          "locale": "en",
+          "name": "Chu Ko Nu",
+          "role": "Repeating Crossbow",
+          "hint": "Requires Castle Age"
+        },
+        {
+          "locale": "zh-Hant",
+          "name": "諸葛弩兵",
+          "role": "連弩步兵",
+          "hint": "需要城堡時代"
+        },
+        {
+          "locale": "zh-Hans",
+          "name": "诸葛弩兵",
+          "role": "连弩步兵",
+          "hint": "需要城堡时代"
+        },
+        {
+          "locale": "ja",
+          "name": "連弩兵",
+          "role": "連弩歩兵",
+          "hint": "城郭時代が必要"
+        }
+      ]
+    }
+  ],
+  "console": [],
+  "page_errors": [],
+  "failed": [],
+  "pass": true,
+  "manifest": {
+    "commit": "dc4698a3f8801ea5ada37a908951900fca6a8ef6",
+    "branch": "codex/riftwatch-b2-civ-training",
+    "dirty": false,
+    "files": {
+      "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+      "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+      "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+      "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+      "js/data.js": "8eabec234a64b710eea9729f7fd5e951ce2748c6f530bf38d318df8528753063",
+      "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+      "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+      "js/game.js": "4a8ec29e1f029b22ec892fbf1475f07440565f2e6ae28ec8399706a97b50e860",
+      "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+      "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+      "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+      "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+      "js/locales.js": "2247fb86102acee371b7ac982d601142e37c881b018157da27ed9096547fab45",
+      "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+      "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+      "js/renderer.js": "2487dda5b446749af7e43814f5e0376cf40edd01ced6247734fa2b2ae579ee06",
+      "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+      "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+      "js/ui.js": "5e1b3122a56ae3b2b3ff3195dfe0762b396d405ee86f8167a3c26e9744a9a40b",
+      "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+      "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+      "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+    }
+  },
+  "translations": [
+    {
+      "locale": "en",
+      "name": "Chu Ko Nu",
+      "role": "Repeating Crossbow",
+      "hint": "Requires Castle Age"
+    },
+    {
+      "locale": "zh-Hant",
+      "name": "諸葛弩兵",
+      "role": "連弩步兵",
+      "hint": "需要城堡時代"
+    },
+    {
+      "locale": "zh-Hans",
+      "name": "诸葛弩兵",
+      "role": "连弩步兵",
+      "hint": "需要城堡时代"
+    },
+    {
+      "locale": "ja",
+      "name": "連弩兵",
+      "role": "連弩歩兵",
+      "hint": "城郭時代が必要"
+    }
+  ]
+}
