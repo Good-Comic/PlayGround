@@ -1,3 +1,7 @@
+## A1-TARGET updated actual local acceptance
+
+Source77c20609da28b38fa405531a0215a8261dc6b1ef:51 full Node tests/four locales PASS; five real Chromium target-state/attack/SaveLoad checks PASS,50/50 feature resources match. Normal135-wall-second P0 play completes175 samples:8 death→living retargets, wood/gold/food/stone unload35/23/23/11, no20s zero-cargo stall, cavalry command reaches legal destination.25/25 normal-play resources match; Console/Page/request errors0. LOCAL_VERIFIED for these contracts. New three-repeat100/200/250 performance cohort not yet run; integration remains gated. Full trace504MiB is LOCAL_ONLY; raw states/HAR/screenshots are remotely preserved in bounded bundle, not falsely claimed trace-backed recovery.
+
 ## Strategy v2.2.2 A1-TARGET checkpoint
 
 Recovered uncommitted target-state fix atop Boss ee0784a40db8134abbd1ae92bfa7ee61a1cedc93. Enemy without a valid target/core clears obsolete move state and route, becomes idle, then can reacquire on the next update. Three focused tests PASS: dead target cleanup, immediate fresh target reacquisition, ordinary core pursuit preserved. Browser/performance and integration gates PENDING. Baseline12-case cohort11f8a6a is complete and retained; seven targetless enemies were observed in one250-case failure. This is a state repair, not proof all physical congestion is resolved.
