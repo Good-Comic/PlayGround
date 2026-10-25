@@ -1,5 +1,16 @@
 # Phase A preservation and current acceptance
 
+**PERF_IN_PROGRESS — Phase A not released; Phase B NOT_STARTED.** All final browser/performance runs used clean commit `8549065da8b727737f14a596fc104658d408ffd3`, gameplay source `59c852911bef17ce1376efa4970937bb8da96308`, Build ID `riftwatch-gameplay-p0.4`. Subsequent evidence commits do not change served game resources.
+
+Recovered workspace and normal feature-branch checkpoint push completed; remote checkpoint8549065 verified. Three independent repeats at all five scales and1000 actual combat complete. Original gates unchanged:25/100/250 PASS3/3;500 FAIL2/3;1000 move FAIL1/3;1000 combat FAIL0/3. Every final1000 case starts100% by15s. Negative-delta smoke-loop bug fixed and tested. All39 existing/new unit tests, three statistics tests and four locales pass; completed checks were reused when source was identical.
+
+AFTER_LOCAL P0 regression PASS:12 real death→living target transitions, four-resource unload counts24/33/18/8, no20s zero-cargo stall, cavalry move completes. Real input stance/Save/Reload/Continue/crowd24/narrow8 PASS; no console/page/resource failures, HAR bytes match actual commit. BEFORE_LIVE historical evidence retained; AFTER_DEPLOY_LIVE=DEPLOYMENT_BLOCKED. No issue, workflow, Preview, main or checkpoints changed.
+
+Full per-run results, profiling root causes/remaining limits, hardware, negative-delta failure, long-pause failure, vector-cache ablation failure, and deployment investigation: [PERFORMANCE-RECOVERY.md](PERFORMANCE-RECOVERY.md). Machine-readable acceptance and raw compressed evidence: [evidence/performance-recovery/acceptance.json](evidence/performance-recovery/acceptance.json). Remaining work: reliable500/1000 frame gates and1000 combat cost, then authorized live deployment acceptance. No candidate deployment launch or Phase B work.
+
+## Retained checkpoint and p0.3 historical record
+
+
 ## Performance recovery checkpoint — PERF_IN_PROGRESS
 
 Workspace recovered intact on the same feature branch. Current gameplay source: `59c852911bef17ce1376efa4970937bb8da96308` (p0.4); six new commits preserve the profiler, direct-route/crowd/render caches and negative-delta fix. Working tree was clean at resume; prior test/profile processes finished, local server remains running. No untracked source was found. Raw baseline failures and candidate diagnostics are preserved in `docs/evidence/performance-recovery/` archives with hashes.

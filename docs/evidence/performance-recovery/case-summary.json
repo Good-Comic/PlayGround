@@ -1,0 +1,4773 @@
+{
+  "status": "PERF_IN_PROGRESS",
+  "metric_note": "rAF interval is original gate; JS work spans update+draw+UI; their difference is NOT GPU time. No pooling or rounding for gates.",
+  "cases": [
+    {
+      "suite": "baseline-repeat",
+      "case": "r1-move-100",
+      "mode": "move",
+      "units": 100,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1109,
+        "mean": 18.033453561767356,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 66.59999999999854,
+        "max": 116.70000000000073
+      },
+      "JS_work_ms": {
+        "n": 1109,
+        "mean": 2.791794409409394,
+        "p50": 2.400000000372529,
+        "p95": 5.199999999254942,
+        "p99": 8.400000000372529,
+        "max": 84.09999999962747
+      },
+      "update_ms": {
+        "n": 1109,
+        "mean": 0.9637511271388817,
+        "p50": 0.7999999988824129,
+        "p95": 1.800000000745058,
+        "p99": 4.200000001117587,
+        "max": 20.59999999962747
+      },
+      "draw_ms": {
+        "n": 1109,
+        "mean": 1.6117222723731648,
+        "p50": 1.400000000372529,
+        "p95": 2.900000000372529,
+        "p99": 4.800000000745058,
+        "max": 27.90000000037253
+      },
+      "UI_ms": {
+        "n": 1109,
+        "mean": 0.2100991884362359,
+        "p50": 0.0,
+        "p95": 0.900000000372529,
+        "p99": 2.0,
+        "max": 35.59999999962747
+      },
+      "observer_ms": {
+        "n": 1110,
+        "mean": 0.03630630630362141,
+        "p50": 0.0,
+        "p95": 0.19999999925494194,
+        "p99": 0.40000000037252903,
+        "max": 2.099999999627471
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 100,
+        "mean": 0.5436940000014902,
+        "p50": 0.5440000000014902,
+        "p95": 0.9273000000014899,
+        "p99": 0.9606000000014902,
+        "max": 0.9606000000014902
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 75,
+        "mean": 100.0,
+        "p50": 100.0,
+        "p95": 100.0,
+        "p99": 100.0,
+        "max": 100.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.3999999985098839,
+        "totalSearches": 3170
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6005964,
+      "heap_after": 15131384
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r1-move-1000",
+      "mode": "move",
+      "units": 1000,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": false,
+        "searches_per_update_le_2": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 539,
+        "mean": 37.073283858998145,
+        "p50": 33.30000000000291,
+        "p95": 50.099999999998545,
+        "p99": 66.70000000000073,
+        "max": 133.40000000000146
+      },
+      "JS_work_ms": {
+        "n": 539,
+        "mean": 11.366790352458331,
+        "p50": 10.700000001117587,
+        "p95": 16.200000001117587,
+        "p99": 22.200000001117587,
+        "max": 32.69999999925494
+      },
+      "update_ms": {
+        "n": 539,
+        "mean": 2.2111317253738973,
+        "p50": 1.800000000745058,
+        "p95": 4.099999999627471,
+        "p99": 9.5,
+        "max": 14.299999998882413
+      },
+      "draw_ms": {
+        "n": 539,
+        "mean": 8.813914656801519,
+        "p50": 8.5,
+        "p95": 12.400000000372529,
+        "p99": 16.5,
+        "max": 21.299999998882413
+      },
+      "UI_ms": {
+        "n": 539,
+        "mean": 0.33358070498992426,
+        "p50": 0.09999999962747097,
+        "p95": 1.199999999254942,
+        "p99": 1.5,
+        "max": 2.599999999627471
+      },
+      "observer_ms": {
+        "n": 540,
+        "mean": 0.1281481482088566,
+        "p50": 0.09999999962747097,
+        "p95": 0.30000000074505806,
+        "p99": 0.8000000007450581,
+        "max": 2.200000001117587
+      },
+      "moved_15s": 0.742,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 10.446905600000372,
+        "p50": 10.475700000000371,
+        "p95": 18.858600000000372,
+        "p99": 19.625300000000372,
+        "max": 19.808600000000375
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 72,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 4,
+        "ms": 0.09999999962747097,
+        "totalSearches": 1454
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 8395728,
+      "heap_after": 8843292
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r1-move-25",
+      "mode": "move",
+      "units": 25,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1184,
+        "mean": 16.891216216216215,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000291,
+        "max": 116.70000000000073
+      },
+      "JS_work_ms": {
+        "n": 1184,
+        "mean": 1.1004222973337952,
+        "p50": 0.900000000372529,
+        "p95": 2.099999999627471,
+        "p99": 3.699999999254942,
+        "max": 16.59999999962747
+      },
+      "update_ms": {
+        "n": 1184,
+        "mean": 0.5019425676169654,
+        "p50": 0.40000000037252903,
+        "p95": 1.0,
+        "p99": 1.900000000372529,
+        "max": 14.099999999627471
+      },
+      "draw_ms": {
+        "n": 1184,
+        "mean": 0.46554054051788674,
+        "p50": 0.40000000037252903,
+        "p95": 0.8999999985098839,
+        "p99": 1.400000000372529,
+        "max": 3.300000000745058
+      },
+      "UI_ms": {
+        "n": 1184,
+        "mean": 0.1292229729792657,
+        "p50": 0.0,
+        "p95": 0.6000000014901161,
+        "p99": 1.299999998882413,
+        "max": 3.799999998882413
+      },
+      "observer_ms": {
+        "n": 1185,
+        "mean": 0.021434599148573253,
+        "p50": 0.0,
+        "p95": 0.10000000149011612,
+        "p99": 0.30000000074505806,
+        "max": 0.900000000372529
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 25,
+        "mean": 0.3277320000011176,
+        "p50": 0.3298000000011175,
+        "p95": 0.4964000000011176,
+        "p99": 0.5131000000011177,
+        "max": 0.5131000000011177
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 25.0,
+        "p50": 25.0,
+        "p95": 25.0,
+        "p99": 25.0,
+        "max": 25.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 2,
+        "ms": 0.30000000074505806,
+        "totalSearches": 2093
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6627284,
+      "heap_after": 10394040
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r1-move-250",
+      "mode": "move",
+      "units": 250,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1090,
+        "mean": 18.34788990825688,
+        "p50": 16.700000000000728,
+        "p95": 33.30000000000109,
+        "p99": 33.400000000001455,
+        "max": 50.0
+      },
+      "JS_work_ms": {
+        "n": 1090,
+        "mean": 4.766605504568017,
+        "p50": 4.5,
+        "p95": 7.800000000745058,
+        "p99": 11.400000000372529,
+        "max": 23.300000000745058
+      },
+      "update_ms": {
+        "n": 1090,
+        "mean": 1.2186238532031484,
+        "p50": 1.0,
+        "p95": 2.400000000372529,
+        "p99": 5.199999999254942,
+        "max": 10.299999998882413
+      },
+      "draw_ms": {
+        "n": 1090,
+        "mean": 3.361467889908257,
+        "p50": 3.0,
+        "p95": 5.600000001490116,
+        "p99": 7.200000001117587,
+        "max": 20.200000001117587
+      },
+      "UI_ms": {
+        "n": 1090,
+        "mean": 0.18018348623203848,
+        "p50": 0.0,
+        "p95": 0.900000000372529,
+        "p99": 1.300000000745058,
+        "max": 7.400000000372529
+      },
+      "observer_ms": {
+        "n": 1091,
+        "mean": 0.04876260313450416,
+        "p50": 0.0,
+        "p95": 0.2000000011175871,
+        "p99": 0.40000000037252903,
+        "max": 1.0
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 250,
+        "mean": 1.4019799999996274,
+        "p50": 1.4079999999996275,
+        "p95": 2.4412999999996274,
+        "p99": 2.5245999999996274,
+        "max": 2.541299999999627
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 250.0,
+        "p50": 250.0,
+        "p95": 250.0,
+        "p99": 250.0,
+        "max": 250.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.40000000037252903,
+        "totalSearches": 3056
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 8363884,
+      "heap_after": 6714472
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r1-move-500",
+      "mode": "move",
+      "units": 500,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 653,
+        "mean": 30.932924961715162,
+        "p50": 16.80000000000109,
+        "p95": 50.0,
+        "p99": 233.29999999999927,
+        "max": 649.9000000000015
+      },
+      "JS_work_ms": {
+        "n": 653,
+        "mean": 8.168759571188692,
+        "p50": 6.5,
+        "p95": 13.299999998882413,
+        "p99": 31.59999999962747,
+        "max": 208.5
+      },
+      "update_ms": {
+        "n": 653,
+        "mean": 2.2353751914316122,
+        "p50": 1.5,
+        "p95": 4.899999998509884,
+        "p99": 9.799999998882413,
+        "max": 136.0
+      },
+      "draw_ms": {
+        "n": 653,
+        "mean": 5.356508422645799,
+        "p50": 4.599999999627471,
+        "p95": 8.400000000372529,
+        "p99": 19.09999999962747,
+        "max": 64.09999999962747
+      },
+      "UI_ms": {
+        "n": 653,
+        "mean": 0.5660030627694511,
+        "p50": 0.0,
+        "p95": 1.200000001117587,
+        "p99": 3.0,
+        "max": 143.09999999962747
+      },
+      "observer_ms": {
+        "n": 654,
+        "mean": 0.17232415900887518,
+        "p50": 0.09999999962747097,
+        "p95": 0.30000000074505806,
+        "p99": 1.299999998882413,
+        "max": 45.80000000074506
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 500,
+        "mean": 3.27330640000149,
+        "p50": 3.26840000000149,
+        "p95": 6.051500000001489,
+        "p99": 6.301500000001489,
+        "max": 6.36820000000149
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 71,
+        "mean": 500.0,
+        "p50": 500.0,
+        "p95": 500.0,
+        "p99": 500.0,
+        "max": 500.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.5,
+        "totalSearches": 1948
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 5832192,
+      "heap_after": 6385060
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r2-move-100",
+      "mode": "move",
+      "units": 100,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1176,
+        "mean": 17.006122448979593,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 33.30000000000109,
+        "max": 66.59999999999854
+      },
+      "JS_work_ms": {
+        "n": 1176,
+        "mean": 2.51054421768264,
+        "p50": 2.100000001490116,
+        "p95": 4.599999999627471,
+        "p99": 6.799999998882413,
+        "max": 23.0
+      },
+      "update_ms": {
+        "n": 1176,
+        "mean": 1.079421768665035,
+        "p50": 0.900000000372529,
+        "p95": 2.299999998882413,
+        "p99": 4.199999999254942,
+        "max": 21.90000000037253
+      },
+      "draw_ms": {
+        "n": 1176,
+        "mean": 1.2863095238342324,
+        "p50": 1.099999999627471,
+        "p95": 2.300000000745058,
+        "p99": 3.699999999254942,
+        "max": 7.900000000372529
+      },
+      "UI_ms": {
+        "n": 1176,
+        "mean": 0.139455782328764,
+        "p50": 0.0,
+        "p95": 0.7000000011175871,
+        "p99": 1.300000000745058,
+        "max": 3.300000000745058
+      },
+      "observer_ms": {
+        "n": 1177,
+        "mean": 0.031265930324071226,
+        "p50": 0.0,
+        "p95": 0.10000000149011612,
+        "p99": 0.30000000074505806,
+        "max": 1.400000000372529
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 100,
+        "mean": 0.634947999999255,
+        "p50": 0.6352999999992549,
+        "p95": 1.035299999999255,
+        "p99": 1.085199999999255,
+        "max": 1.085199999999255
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 100.0,
+        "p50": 100.0,
+        "p95": 100.0,
+        "p99": 100.0,
+        "max": 100.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.40000000037252903,
+        "totalSearches": 3150
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6585416,
+      "heap_after": 5728524
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r2-move-1000",
+      "mode": "move",
+      "units": 1000,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": false,
+        "searches_per_update_le_2": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 515,
+        "mean": 38.86563106796116,
+        "p50": 33.399999999999636,
+        "p95": 50.099999999998545,
+        "p99": 66.59999999999854,
+        "max": 83.39999999999964
+      },
+      "JS_work_ms": {
+        "n": 515,
+        "mean": 13.603106796075997,
+        "p50": 13.200000001117587,
+        "p95": 19.59999999962747,
+        "p99": 28.09999999962747,
+        "max": 37.09999999962747
+      },
+      "update_ms": {
+        "n": 515,
+        "mean": 2.8728155339516483,
+        "p50": 2.5,
+        "p95": 4.799999998882413,
+        "p99": 9.900000000372529,
+        "max": 18.5
+      },
+      "draw_ms": {
+        "n": 515,
+        "mean": 10.339805825257185,
+        "p50": 10.0,
+        "p95": 14.200000001117587,
+        "p99": 19.399999998509884,
+        "max": 27.5
+      },
+      "UI_ms": {
+        "n": 515,
+        "mean": 0.3811650485053514,
+        "p50": 0.09999999962747097,
+        "p95": 1.1000000014901161,
+        "p99": 1.900000000372529,
+        "max": 16.299999998882413
+      },
+      "observer_ms": {
+        "n": 516,
+        "mean": 0.15271317829240777,
+        "p50": 0.09999999962747097,
+        "p95": 0.3999999985098839,
+        "p99": 0.7999999988824129,
+        "max": 6.199999999254942
+      },
+      "moved_15s": 0.76,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 9.900981600000373,
+        "p50": 9.941400000000373,
+        "p95": 18.67440000000037,
+        "p99": 19.474300000000373,
+        "max": 19.65770000000037
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 73,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.2999999988824129,
+        "totalSearches": 1448
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 7694536,
+      "heap_after": 33260488
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r2-move-25",
+      "mode": "move",
+      "units": 25,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1152,
+        "mean": 17.360416666666666,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 33.39999999999782,
+        "max": 216.70000000000073
+      },
+      "JS_work_ms": {
+        "n": 1152,
+        "mean": 1.5094618055914504,
+        "p50": 1.099999999627471,
+        "p95": 2.899999998509884,
+        "p99": 4.699999999254942,
+        "max": 184.5
+      },
+      "update_ms": {
+        "n": 1152,
+        "mean": 0.7946180555688139,
+        "p50": 0.5,
+        "p95": 1.599999999627471,
+        "p99": 3.0,
+        "max": 175.59999999962747
+      },
+      "draw_ms": {
+        "n": 1152,
+        "mean": 0.56267361110238,
+        "p50": 0.40000000037252903,
+        "p95": 1.199999999254942,
+        "p99": 2.299999998882413,
+        "max": 16.399999998509884
+      },
+      "UI_ms": {
+        "n": 1152,
+        "mean": 0.1459201389112018,
+        "p50": 0.0,
+        "p95": 0.7000000011175871,
+        "p99": 1.6000000014901161,
+        "max": 4.800000000745058
+      },
+      "observer_ms": {
+        "n": 1153,
+        "mean": 0.026452732009931118,
+        "p50": 0.0,
+        "p95": 0.10000000149011612,
+        "p99": 0.40000000037252903,
+        "max": 0.900000000372529
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 25,
+        "mean": 0.1996359999996275,
+        "p50": 0.21299999999962757,
+        "p95": 0.32959999999962747,
+        "p99": 0.3462999999996275,
+        "max": 0.3462999999996275
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 75,
+        "mean": 25.0,
+        "p50": 25.0,
+        "p95": 25.0,
+        "p99": 25.0,
+        "max": 25.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "totalSearches": 2083
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 5821760,
+      "heap_after": 10896668
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r2-move-250",
+      "mode": "move",
+      "units": 250,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1145,
+        "mean": 17.466462882096067,
+        "p50": 16.700000000000728,
+        "p95": 16.80000000000109,
+        "p99": 33.399999999999636,
+        "max": 66.60000000000036
+      },
+      "JS_work_ms": {
+        "n": 1145,
+        "mean": 3.7400000000413196,
+        "p50": 3.300000000745058,
+        "p95": 6.100000001490116,
+        "p99": 10.699999999254942,
+        "max": 24.0
+      },
+      "update_ms": {
+        "n": 1145,
+        "mean": 1.1027074235934748,
+        "p50": 0.900000000372529,
+        "p95": 2.0,
+        "p99": 4.800000000745058,
+        "max": 18.0
+      },
+      "draw_ms": {
+        "n": 1145,
+        "mean": 2.498165938887729,
+        "p50": 2.200000001117587,
+        "p95": 3.900000000372529,
+        "p99": 6.900000000372529,
+        "max": 22.0
+      },
+      "UI_ms": {
+        "n": 1145,
+        "mean": 0.13475982533141515,
+        "p50": 0.0,
+        "p95": 0.6999999992549419,
+        "p99": 1.099999999627471,
+        "max": 3.700000001117587
+      },
+      "observer_ms": {
+        "n": 1146,
+        "mean": 0.03970331586669825,
+        "p50": 0.0,
+        "p95": 0.19999999925494194,
+        "p99": 0.30000000074505806,
+        "max": 1.199999999254942
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 250,
+        "mean": 1.5713359999996275,
+        "p50": 1.5648999999996276,
+        "p95": 2.6314999999996274,
+        "p99": 2.731499999999627,
+        "max": 2.748199999999628
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 250.0,
+        "p50": 250.0,
+        "p95": 250.0,
+        "p99": 250.0,
+        "max": 250.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.40000000037252903,
+        "totalSearches": 3126
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 7555148,
+      "heap_after": 9479132
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r2-move-500",
+      "mode": "move",
+      "units": 500,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 847,
+        "mean": 23.631523022432116,
+        "p50": 16.700000000000728,
+        "p95": 33.400000000001455,
+        "p99": 50.0,
+        "max": 50.100000000000364
+      },
+      "JS_work_ms": {
+        "n": 847,
+        "mean": 6.55064935060141,
+        "p50": 6.0,
+        "p95": 10.100000001490116,
+        "p99": 17.699999999254942,
+        "max": 26.09999999962747
+      },
+      "update_ms": {
+        "n": 847,
+        "mean": 1.619244391936479,
+        "p50": 1.300000000745058,
+        "p95": 3.399999998509884,
+        "p99": 6.900000000372529,
+        "max": 12.799999998882413
+      },
+      "draw_ms": {
+        "n": 847,
+        "mean": 4.700944510041137,
+        "p50": 4.400000000372529,
+        "p95": 6.900000000372529,
+        "p99": 9.900000000372529,
+        "max": 20.0
+      },
+      "UI_ms": {
+        "n": 847,
+        "mean": 0.22573789844669867,
+        "p50": 0.0,
+        "p95": 0.900000000372529,
+        "p99": 1.800000000745058,
+        "max": 6.5
+      },
+      "observer_ms": {
+        "n": 848,
+        "mean": 0.06992924530366611,
+        "p50": 0.0,
+        "p95": 0.2000000011175871,
+        "p99": 0.5,
+        "max": 4.200000001117587
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 500,
+        "mean": 3.3789955999996275,
+        "p50": 3.3955999999996274,
+        "p95": 6.178799999999628,
+        "p99": 6.4288999999996275,
+        "max": 6.4787999999996275
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 75,
+        "mean": 500.0,
+        "p50": 500.0,
+        "p95": 500.0,
+        "p99": 500.0,
+        "max": 500.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 2,
+        "ms": 0.09999999962747097,
+        "totalSearches": 2318
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 5793200,
+      "heap_after": 11288888
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r3-move-100",
+      "mode": "move",
+      "units": 100,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1056,
+        "mean": 18.954356060606063,
+        "p50": 16.700000000000728,
+        "p95": 33.30000000000291,
+        "p99": 50.0,
+        "max": 150.0
+      },
+      "JS_work_ms": {
+        "n": 1056,
+        "mean": 3.1386363636490633,
+        "p50": 2.799999998882413,
+        "p95": 6.0,
+        "p99": 9.299999998882413,
+        "max": 19.299999998882413
+      },
+      "update_ms": {
+        "n": 1056,
+        "mean": 1.0840909090969062,
+        "p50": 0.7999999988824129,
+        "p95": 2.799999998882413,
+        "p99": 6.0,
+        "max": 17.799999998882413
+      },
+      "draw_ms": {
+        "n": 1056,
+        "mean": 1.835416666665961,
+        "p50": 1.700000001117587,
+        "p95": 3.5,
+        "p99": 5.399999998509884,
+        "max": 8.799999998882413
+      },
+      "UI_ms": {
+        "n": 1056,
+        "mean": 0.20606060607436424,
+        "p50": 0.0,
+        "p95": 1.0,
+        "p99": 2.5,
+        "max": 4.0
+      },
+      "observer_ms": {
+        "n": 1057,
+        "mean": 0.04333017977234769,
+        "p50": 0.0,
+        "p95": 0.2000000011175871,
+        "p99": 0.599999999627471,
+        "max": 2.199999999254942
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 100,
+        "mean": 1.4342,
+        "p50": 1.6596,
+        "p95": 2.0428999999999995,
+        "p99": 2.0928,
+        "max": 2.0928
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 75,
+        "mean": 100.0,
+        "p50": 100.0,
+        "p95": 100.0,
+        "p99": 100.0,
+        "max": 100.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.2000000011175871,
+        "totalSearches": 2876
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 7368676,
+      "heap_after": 8540888
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r3-move-1000",
+      "mode": "move",
+      "units": 1000,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": false,
+        "searches_per_update_le_2": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 478,
+        "mean": 41.874267782426784,
+        "p50": 33.399999999999636,
+        "p95": 66.70000000000073,
+        "p99": 133.29999999999927,
+        "max": 183.40000000000146
+      },
+      "JS_work_ms": {
+        "n": 478,
+        "mean": 12.99581589954652,
+        "p50": 10.900000000372529,
+        "p95": 24.0,
+        "p99": 41.80000000074506,
+        "max": 95.09999999962747
+      },
+      "update_ms": {
+        "n": 478,
+        "mean": 2.8497907949775207,
+        "p50": 2.099999999627471,
+        "p95": 6.700000001117587,
+        "p99": 14.300000000745058,
+        "max": 47.69999999925494
+      },
+      "draw_ms": {
+        "n": 478,
+        "mean": 9.653138075242108,
+        "p50": 8.400000000372529,
+        "p95": 17.299999998882413,
+        "p99": 26.399999998509884,
+        "max": 92.19999999925494
+      },
+      "UI_ms": {
+        "n": 478,
+        "mean": 0.4866108787031727,
+        "p50": 0.09999999962747097,
+        "p95": 1.700000001117587,
+        "p99": 4.100000001490116,
+        "max": 13.400000000372529
+      },
+      "observer_ms": {
+        "n": 479,
+        "mean": 0.14258872648012788,
+        "p50": 0.09999999962747097,
+        "p95": 0.40000000037252903,
+        "p99": 1.099999999627471,
+        "max": 1.700000001117587
+      },
+      "moved_15s": 0.798,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 9.732755599998882,
+        "p50": 9.659999999998883,
+        "p95": 18.54289999999888,
+        "p99": 19.509599999998883,
+        "max": 19.726299999998883
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 72,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 4,
+        "ms": 0.19999999925494194,
+        "totalSearches": 1368
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 8111668,
+      "heap_after": 33648792
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r3-move-25",
+      "mode": "move",
+      "units": 25,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1092,
+        "mean": 18.650091575091572,
+        "p50": 16.69999999999891,
+        "p95": 16.80000000000109,
+        "p99": 66.70000000000073,
+        "max": 550.0
+      },
+      "JS_work_ms": {
+        "n": 1092,
+        "mean": 1.5574175824271344,
+        "p50": 1.200000001117587,
+        "p95": 3.200000001117587,
+        "p99": 7.699999999254942,
+        "max": 31.5
+      },
+      "update_ms": {
+        "n": 1092,
+        "mean": 0.6500915750595075,
+        "p50": 0.5,
+        "p95": 1.400000000372529,
+        "p99": 3.699999999254942,
+        "max": 13.699999999254942
+      },
+      "draw_ms": {
+        "n": 1092,
+        "mean": 0.6847985348213914,
+        "p50": 0.599999999627471,
+        "p95": 1.299999998882413,
+        "p99": 2.5,
+        "max": 29.200000001117587
+      },
+      "UI_ms": {
+        "n": 1092,
+        "mean": 0.2155677655936925,
+        "p50": 0.0,
+        "p95": 1.0,
+        "p99": 2.700000001117587,
+        "max": 10.900000000372529
+      },
+      "observer_ms": {
+        "n": 1093,
+        "mean": 0.03806038425292919,
+        "p50": 0.0,
+        "p95": 0.19999999925494194,
+        "p99": 0.599999999627471,
+        "max": 2.899999998509884
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 25,
+        "mean": 0.21985599999999994,
+        "p50": 0.1965,
+        "p95": 0.3631999999999998,
+        "p99": 0.41319999999999985,
+        "max": 0.41319999999999985
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 25.0,
+        "p50": 25.0,
+        "p95": 25.0,
+        "p99": 25.0,
+        "max": 25.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 4,
+        "ms": 0.6999999992549419,
+        "totalSearches": 2030
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6392564,
+      "heap_after": 6612128
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r3-move-250",
+      "mode": "move",
+      "units": 250,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1029,
+        "mean": 19.435568513119534,
+        "p50": 16.700000000000728,
+        "p95": 33.39999999999782,
+        "p99": 33.400000000001455,
+        "max": 66.60000000000036
+      },
+      "JS_work_ms": {
+        "n": 1029,
+        "mean": 5.031875607361194,
+        "p50": 4.800000000745058,
+        "p95": 8.700000001117587,
+        "p99": 12.5,
+        "max": 18.200000001117587
+      },
+      "update_ms": {
+        "n": 1029,
+        "mean": 1.2072886297003202,
+        "p50": 1.0,
+        "p95": 2.400000000372529,
+        "p99": 5.100000001490116,
+        "max": 10.5
+      },
+      "draw_ms": {
+        "n": 1029,
+        "mean": 3.6373177842753854,
+        "p50": 3.5,
+        "p95": 6.599999999627471,
+        "p99": 9.200000001117587,
+        "max": 13.900000000372529
+      },
+      "UI_ms": {
+        "n": 1029,
+        "mean": 0.1815354713194427,
+        "p50": 0.0,
+        "p95": 0.900000000372529,
+        "p99": 1.300000000745058,
+        "max": 5.900000000372529
+      },
+      "observer_ms": {
+        "n": 1030,
+        "mean": 0.053203883472359874,
+        "p50": 0.0,
+        "p95": 0.2000000011175871,
+        "p99": 0.5,
+        "max": 1.800000000745058
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 250,
+        "mean": 1.3153288,
+        "p50": 1.2748000000000002,
+        "p95": 2.4915,
+        "p99": 2.6248,
+        "max": 2.6248
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 75,
+        "mean": 250.0,
+        "p50": 250.0,
+        "p95": 250.0,
+        "p99": 250.0,
+        "max": 250.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.2000000011175871,
+        "totalSearches": 2798
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6518492,
+      "heap_after": 19356380
+    },
+    {
+      "suite": "baseline-repeat",
+      "case": "r3-move-500",
+      "mode": "move",
+      "units": 500,
+      "source_commit": "855ec69bb07bdcbc0a61252f10919dec0d7f73fc",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": false,
+        "searches_per_update_le_2": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 1198,
+        "mean": 16.69382303839733,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000291,
+        "max": 33.400000000001455
+      },
+      "JS_work_ms": {
+        "n": 0,
+        "mean": null,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "max": null
+      },
+      "update_ms": {
+        "n": 0,
+        "mean": null,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "max": null
+      },
+      "draw_ms": {
+        "n": 0,
+        "mean": null,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "max": null
+      },
+      "UI_ms": {
+        "n": 0,
+        "mean": null,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "max": null
+      },
+      "observer_ms": {
+        "n": 1199,
+        "mean": 0.04420350292220625,
+        "p50": 0.0,
+        "p95": 0.19999999925494194,
+        "p99": 0.40000000037252903,
+        "max": 3.699999999254942
+      },
+      "moved_15s": 0,
+      "first_move_s": {
+        "n": 0,
+        "mean": null,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "max": null
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 500.0,
+        "p50": 500.0,
+        "p95": 500.0,
+        "p99": 500.0,
+        "max": 500.0
+      },
+      "sim_seconds": null,
+      "navigation": {
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [
+          {
+            "type": "error",
+            "text": "IndexSizeError: Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.437003) is negative.\n    at Renderer.smokePlume (http://127.0.0.1:8008/js/renderer.js:766:28)\n    at Renderer.drawHouse (http://127.0.0.1:8008/js/renderer.js:783:10)\n    at Renderer.drawBuilding (http://127.0.0.1:8008/js/renderer.js:570:39)\n    at Renderer.draw (http://127.0.0.1:8008/js/renderer.js:260:39)\n    at frame (http://127.0.0.1:8008/js/main.js:313:16)"
+          }
+        ],
+        "errors": [
+          "Failed to execute 'arc' on 'CanvasRenderingContext2D': The radius provided (-0.437003) is negative."
+        ],
+        "failed": []
+      },
+      "heap_before": 6890628,
+      "heap_after": 4505072
+    },
+    {
+      "suite": "baseline-extra-500",
+      "case": "r1-move-500",
+      "mode": "move",
+      "units": 500,
+      "source_commit": "e4789e396130141837bcf241a3880401329de06d",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": false
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 617,
+        "mean": 32.41361426256078,
+        "p50": 33.29999999999927,
+        "p95": 50.100000000000364,
+        "p99": 199.90000000000146,
+        "max": 350.10000000000036
+      },
+      "JS_work_ms": {
+        "n": 617,
+        "mean": 9.803403565654081,
+        "p50": 7.099999999627471,
+        "p95": 19.800000000745058,
+        "p99": 45.70000000111759,
+        "max": 262.0
+      },
+      "update_ms": {
+        "n": 617,
+        "mean": 3.180226904438202,
+        "p50": 1.799999998882413,
+        "p95": 6.700000001117587,
+        "p99": 11.199999999254942,
+        "max": 234.59999999962747
+      },
+      "draw_ms": {
+        "n": 617,
+        "mean": 6.197893030748278,
+        "p50": 4.900000000372529,
+        "p95": 13.0,
+        "p99": 25.700000001117587,
+        "max": 45.59999999962747
+      },
+      "UI_ms": {
+        "n": 617,
+        "mean": 0.3991896272357704,
+        "p50": 0.09999999962747097,
+        "p95": 1.299999998882413,
+        "p99": 2.799999998882413,
+        "max": 33.90000000037253
+      },
+      "observer_ms": {
+        "n": 617,
+        "mean": 0.15461912480404832,
+        "p50": 0.09999999962747097,
+        "p95": 0.40000000037252903,
+        "p99": 1.699999999254942,
+        "max": 15.900000000372529
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 500,
+        "mean": 5.523512800000373,
+        "p50": 4.262900000000372,
+        "p95": 12.929200000000371,
+        "p99": 13.295900000000373,
+        "max": 13.362500000000374
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 71,
+        "mean": 500.0,
+        "p50": 500.0,
+        "p95": 500.0,
+        "p99": 500.0,
+        "max": 500.0
+      },
+      "sim_seconds": 17.698900000000002,
+      "navigation": {
+        "searches": 2,
+        "expanded": 5,
+        "ms": 0.09999999962747097,
+        "totalSearches": 1602
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 8671948,
+      "heap_after": 11384920
+    },
+    {
+      "suite": "baseline-combat-advance",
+      "case": "r1-combat-1000",
+      "mode": "combat",
+      "units": 1000,
+      "source_commit": "e4789e396130141837bcf241a3880401329de06d",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": false,
+        "searches_per_update_le_2": true,
+        "actual_attacks_ge_100": true,
+        "mean_alive_ge_900": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 392,
+        "mean": 50.97576530612245,
+        "p50": 50.0,
+        "p95": 66.70000000000073,
+        "p99": 83.30000000000109,
+        "max": 83.39999999999964
+      },
+      "JS_work_ms": {
+        "n": 392,
+        "mean": 19.731377550989997,
+        "p50": 18.0,
+        "p95": 32.20000000111759,
+        "p99": 42.70000000111759,
+        "max": 45.09999999962747
+      },
+      "update_ms": {
+        "n": 392,
+        "mean": 4.049999999965788,
+        "p50": 3.099999999627471,
+        "p95": 10.900000000372529,
+        "p99": 17.200000001117587,
+        "max": 24.199999999254942
+      },
+      "draw_ms": {
+        "n": 392,
+        "mean": 15.020153061230191,
+        "p50": 13.900000000372529,
+        "p95": 22.300000000745058,
+        "p99": 30.399999998509884,
+        "max": 38.80000000074506
+      },
+      "UI_ms": {
+        "n": 392,
+        "mean": 0.6548469387831128,
+        "p50": 0.10000000149011612,
+        "p95": 1.700000001117587,
+        "p99": 4.300000000745058,
+        "max": 15.099999999627471
+      },
+      "observer_ms": {
+        "n": 392,
+        "mean": 0.21071428576085185,
+        "p50": 0.10000000149011612,
+        "p95": 0.5,
+        "p99": 2.099999999627471,
+        "max": 10.5
+      },
+      "moved_15s": 0.592,
+      "first_move_s": {
+        "n": 609,
+        "mean": 7.7077714285718,
+        "p50": 7.698700000000372,
+        "p95": 14.665000000000372,
+        "p99": 15.281700000000372,
+        "max": 17.34820000000037
+      },
+      "attacks": 9583,
+      "kills": 0,
+      "alive": {
+        "n": 71,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 18.727900000000204,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "totalSearches": 670
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 7316264,
+      "heap_after": 10617280
+    },
+    {
+      "suite": "baseline-combat-advance",
+      "case": "r2-combat-1000",
+      "mode": "combat",
+      "units": 1000,
+      "source_commit": "e4789e396130141837bcf241a3880401329de06d",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": false,
+        "searches_per_update_le_2": true,
+        "actual_attacks_ge_100": true,
+        "mean_alive_ge_900": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": false
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 389,
+        "mean": 51.411825192802056,
+        "p50": 50.0,
+        "p95": 83.29999999999927,
+        "p99": 133.40000000000146,
+        "max": 216.59999999999854
+      },
+      "JS_work_ms": {
+        "n": 389,
+        "mean": 19.93804627249453,
+        "p50": 17.5,
+        "p95": 31.90000000037253,
+        "p99": 62.0,
+        "max": 80.5
+      },
+      "update_ms": {
+        "n": 389,
+        "mean": 3.0832904884376227,
+        "p50": 2.099999999627471,
+        "p95": 8.900000000372529,
+        "p99": 14.299999998882413,
+        "max": 24.40000000037253
+      },
+      "draw_ms": {
+        "n": 389,
+        "mean": 16.20616966581743,
+        "p50": 14.399999998509884,
+        "p95": 26.800000000745058,
+        "p99": 38.30000000074506,
+        "max": 67.79999999888241
+      },
+      "UI_ms": {
+        "n": 389,
+        "mean": 0.6398457583557134,
+        "p50": 0.09999999962747097,
+        "p95": 2.099999999627471,
+        "p99": 6.099999999627471,
+        "max": 11.699999999254942
+      },
+      "observer_ms": {
+        "n": 389,
+        "mean": 0.2660668380414842,
+        "p50": 0.09999999962747097,
+        "p95": 0.40000000037252903,
+        "p99": 9.5,
+        "max": 16.300000000745058
+      },
+      "moved_15s": 0.608,
+      "first_move_s": {
+        "n": 608,
+        "mean": 6.628270065789846,
+        "p50": 6.515400000000373,
+        "p95": 12.665200000000372,
+        "p99": 13.215200000000372,
+        "max": 13.331900000000372
+      },
+      "attacks": 9193,
+      "kills": 0,
+      "alive": {
+        "n": 70,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 17.54650000000015,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "totalSearches": 608
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 10454576,
+      "heap_after": 21652288
+    },
+    {
+      "suite": "baseline-combat-advance",
+      "case": "r3-combat-1000",
+      "mode": "combat",
+      "units": 1000,
+      "source_commit": "e4789e396130141837bcf241a3880401329de06d",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "6505621246ebb501fbf2b779a51287a58bfe0f5db314b2e71438ec1864120ae1",
+        "js/crowd.js": "522cd3477d7920f74d88c6e5bd6eff6dd58a051d45fcf23c20c3ed69e1ba093d",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "3c55ebf17a9c8c56df76574cf5a359ba3b9c090230515d4bea9e383e163bf829",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "9c8b9232120f5213efcc16bd6fd95000140fd6250b28ee467c1b1fdbd9f4f712",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "6553f6068d4853f010e2d3c5c926128d88e109c33893f588bc730c88a3551572",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": false,
+        "searches_per_update_le_2": true,
+        "actual_attacks_ge_100": true,
+        "mean_alive_ge_900": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": false
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 343,
+        "mean": 58.25830903790088,
+        "p50": 50.0,
+        "p95": 83.40000000000146,
+        "p99": 133.1999999999971,
+        "max": 150.0
+      },
+      "JS_work_ms": {
+        "n": 343,
+        "mean": 23.37230320707094,
+        "p50": 20.200000001117587,
+        "p95": 44.0,
+        "p99": 60.80000000074506,
+        "max": 76.69999999925494
+      },
+      "update_ms": {
+        "n": 343,
+        "mean": 4.728279883481845,
+        "p50": 3.200000001117587,
+        "p95": 11.699999999254942,
+        "p99": 28.90000000037253,
+        "max": 37.40000000037253
+      },
+      "draw_ms": {
+        "n": 343,
+        "mean": 17.880174927114787,
+        "p50": 16.0,
+        "p95": 34.19999999925494,
+        "p99": 45.09999999962747,
+        "max": 52.40000000037253
+      },
+      "UI_ms": {
+        "n": 343,
+        "mean": 0.7542274052076281,
+        "p50": 0.6999999992549419,
+        "p95": 2.5,
+        "p99": 6.299999998882413,
+        "max": 11.099999999627471
+      },
+      "observer_ms": {
+        "n": 343,
+        "mean": 0.25597667635985955,
+        "p50": 0.10000000149011612,
+        "p95": 0.6000000014901161,
+        "p99": 2.399999998509884,
+        "max": 12.299999998882413
+      },
+      "moved_15s": 0.536,
+      "first_move_s": {
+        "n": 609,
+        "mean": 8.613966174056948,
+        "p50": 8.415400000001119,
+        "p95": 16.381800000001117,
+        "p99": 17.331700000001117,
+        "max": 20.28160000000112
+      },
+      "attacks": 8252,
+      "kills": 0,
+      "alive": {
+        "n": 70,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 16.54600000000017,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "totalSearches": 651
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 7498304,
+      "heap_after": 10781892
+    },
+    {
+      "suite": "candidate-smoke",
+      "case": "r1-combat-1000",
+      "mode": "combat",
+      "units": 1000,
+      "source_commit": "19529974404208f34bb4633cf43b2498971c51c8",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "eba13a36c96cd04c0a4bf11ceb61511e7b48491eb568899282f55cf1890d2adc",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "actual_attacks_ge_100": true,
+        "mean_alive_ge_900": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 487,
+        "mean": 41.06611909650924,
+        "p50": 33.400000000001455,
+        "p95": 66.59999999999854,
+        "p99": 83.39999999999964,
+        "max": 183.39999999999964
+      },
+      "JS_work_ms": {
+        "n": 487,
+        "mean": 13.341478439445705,
+        "p50": 12.0,
+        "p95": 24.299999998882413,
+        "p99": 38.69999999925494,
+        "max": 45.20000000111759
+      },
+      "update_ms": {
+        "n": 487,
+        "mean": 4.220739219689578,
+        "p50": 3.5,
+        "p95": 8.900000000372529,
+        "p99": 17.59999999962747,
+        "max": 27.0
+      },
+      "draw_ms": {
+        "n": 487,
+        "mean": 8.628952772132823,
+        "p50": 7.699999999254942,
+        "p95": 14.800000000745058,
+        "p99": 21.899999998509884,
+        "max": 36.5
+      },
+      "UI_ms": {
+        "n": 487,
+        "mean": 0.48521560572806816,
+        "p50": 0.09999999962747097,
+        "p95": 1.5,
+        "p99": 5.5,
+        "max": 8.599999999627471
+      },
+      "observer_ms": {
+        "n": 487,
+        "mean": 0.20472279259479878,
+        "p50": 0.10000000149011612,
+        "p95": 0.5,
+        "p99": 1.099999999627471,
+        "max": 9.5
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 0.21750000000149006,
+        "p50": 0.18190000000149006,
+        "p95": 0.28190000000149007,
+        "p99": 0.28190000000149007,
+        "max": 0.28190000000149007
+      },
+      "attacks": 8199,
+      "kills": 0,
+      "alive": {
+        "n": 72,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 19.213700000000138,
+      "navigation": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.40000000037252903,
+        "directRoutes": 0,
+        "routeReuses": 0,
+        "totalDirectRoutes": 7398,
+        "totalSearches": 1145
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 7846560,
+      "heap_after": 12845760
+    },
+    {
+      "suite": "candidate-smoke",
+      "case": "r1-move-1000",
+      "mode": "move",
+      "units": 1000,
+      "source_commit": "19529974404208f34bb4633cf43b2498971c51c8",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "eba13a36c96cd04c0a4bf11ceb61511e7b48491eb568899282f55cf1890d2adc",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 623,
+        "mean": 32.10144462279293,
+        "p50": 33.29999999999927,
+        "p95": 50.0,
+        "p99": 50.099999999998545,
+        "max": 66.60000000000036
+      },
+      "JS_work_ms": {
+        "n": 623,
+        "mean": 10.345585874815503,
+        "p50": 9.900000000372529,
+        "p95": 14.599999999627471,
+        "p99": 22.800000000745058,
+        "max": 28.59999999962747
+      },
+      "update_ms": {
+        "n": 623,
+        "mean": 4.929052969530511,
+        "p50": 4.799999998882413,
+        "p95": 7.400000000372529,
+        "p99": 13.599999999627471,
+        "max": 20.800000000745058
+      },
+      "draw_ms": {
+        "n": 623,
+        "mean": 5.075120385227961,
+        "p50": 4.800000000745058,
+        "p95": 7.300000000745058,
+        "p99": 10.599999999627471,
+        "max": 14.400000000372529
+      },
+      "UI_ms": {
+        "n": 623,
+        "mean": 0.33418940609533276,
+        "p50": 0.0,
+        "p95": 1.300000000745058,
+        "p99": 1.900000000372529,
+        "max": 4.800000000745058
+      },
+      "observer_ms": {
+        "n": 623,
+        "mean": 0.13788121990727958,
+        "p50": 0.09999999962747097,
+        "p95": 0.30000000074505806,
+        "p99": 0.900000000372529,
+        "max": 4.300000000745058
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 0.13489999999962743,
+        "p50": 0.13489999999962743,
+        "p95": 0.13489999999962743,
+        "p99": 0.13489999999962743,
+        "max": 0.13489999999962743
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 74,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 19.98190000000006,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 1000,
+        "totalDirectRoutes": 79000,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 10478096,
+      "heap_after": 21802524
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r1-combat-1000",
+      "mode": "combat",
+      "units": 1000,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "actual_attacks_ge_100": true,
+        "mean_alive_ge_900": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": false
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 418,
+        "mean": 47.84497607655503,
+        "p50": 33.400000000001455,
+        "p95": 100.0,
+        "p99": 133.29999999999927,
+        "max": 150.0
+      },
+      "JS_work_ms": {
+        "n": 418,
+        "mean": 31.409808612450885,
+        "p50": 31.100000001490116,
+        "p95": 72.60000000149012,
+        "p99": 101.89999999850988,
+        "max": 126.70000000298023
+      },
+      "update_ms": {
+        "n": 418,
+        "mean": 6.710287081309412,
+        "p50": 5.200000002980232,
+        "p95": 15.799999997019768,
+        "p99": 33.600000001490116,
+        "max": 48.900000002235174
+      },
+      "draw_ms": {
+        "n": 418,
+        "mean": 24.070574162634866,
+        "p50": 24.600000001490116,
+        "p95": 60.69999999925494,
+        "p99": 72.79999999701977,
+        "max": 89.60000000149012
+      },
+      "UI_ms": {
+        "n": 418,
+        "mean": 0.613157894809922,
+        "p50": 0.10000000149011612,
+        "p95": 2.399999998509884,
+        "p99": 4.600000001490116,
+        "max": 7.200000002980232
+      },
+      "observer_ms": {
+        "n": 418,
+        "mean": 0.2088516745894577,
+        "p50": 0.10000000149011612,
+        "p95": 0.5999999977648258,
+        "p99": 1.7999999970197678,
+        "max": 2.400000002235174
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 0.2756644000007451,
+        "p50": 0.24010000000074525,
+        "p95": 0.3400000000007449,
+        "p99": 0.3400000000007449,
+        "max": 0.3400000000007449
+      },
+      "attacks": 6828,
+      "kills": 0,
+      "alive": {
+        "n": 70,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 17.246500000000147,
+      "navigation": {
+        "searches": 2,
+        "expanded": 2,
+        "ms": 0.5,
+        "directRoutes": 0,
+        "routeReuses": 1,
+        "totalDirectRoutes": 7103,
+        "totalSearches": 1054
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6651828,
+      "heap_after": 13461784
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r1-move-100",
+      "mode": "move",
+      "units": 100,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1197,
+        "mean": 16.707769423558897,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000109,
+        "max": 50.0
+      },
+      "JS_work_ms": {
+        "n": 1197,
+        "mean": 1.6522138679560363,
+        "p50": 1.5,
+        "p95": 2.899999998509884,
+        "p99": 4.199999999254942,
+        "max": 12.899999998509884
+      },
+      "update_ms": {
+        "n": 1197,
+        "mean": 0.5721804511234625,
+        "p50": 0.5,
+        "p95": 1.1000000014901161,
+        "p99": 1.800000000745058,
+        "max": 3.899999998509884
+      },
+      "draw_ms": {
+        "n": 1197,
+        "mean": 0.9249791144552885,
+        "p50": 0.8000000007450581,
+        "p95": 1.699999999254942,
+        "p99": 2.899999998509884,
+        "max": 7.699999999254942
+      },
+      "UI_ms": {
+        "n": 1197,
+        "mean": 0.14895572259387277,
+        "p50": 0.0,
+        "p95": 0.8000000007450581,
+        "p99": 1.3999999985098839,
+        "max": 3.199999999254942
+      },
+      "observer_ms": {
+        "n": 1197,
+        "mean": 0.03308270677127436,
+        "p50": 0.0,
+        "p95": 0.19999999925494194,
+        "p99": 0.30000000074505806,
+        "max": 2.899999998509884
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 100,
+        "mean": 0.08090000000000011,
+        "p50": 0.0809000000000001,
+        "p95": 0.0809000000000001,
+        "p99": 0.0809000000000001,
+        "max": 0.0809000000000001
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 100.0,
+        "p50": 100.0,
+        "p95": 100.0,
+        "p99": 100.0,
+        "max": 100.0
+      },
+      "sim_seconds": 19.99919999999961,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 100,
+        "totalDirectRoutes": 8800,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 7134096,
+      "heap_after": 11564360
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r1-move-1000",
+      "mode": "move",
+      "units": 1000,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 595,
+        "mean": 33.61210084033613,
+        "p50": 33.30000000000109,
+        "p95": 50.0,
+        "p99": 66.70000000000073,
+        "max": 116.70000000000073
+      },
+      "JS_work_ms": {
+        "n": 595,
+        "mean": 15.359831932819441,
+        "p50": 14.599999997764826,
+        "p95": 22.099999997764826,
+        "p99": 30.600000001490116,
+        "max": 65.19999999925494
+      },
+      "update_ms": {
+        "n": 595,
+        "mean": 7.827226890861487,
+        "p50": 7.699999999254942,
+        "p95": 13.0,
+        "p99": 17.300000000745058,
+        "max": 41.80000000074506
+      },
+      "draw_ms": {
+        "n": 595,
+        "mean": 7.117142857072734,
+        "p50": 6.5,
+        "p95": 11.099999997764826,
+        "p99": 18.0,
+        "max": 32.099999997764826
+      },
+      "UI_ms": {
+        "n": 595,
+        "mean": 0.4090756302809014,
+        "p50": 0.09999999776482582,
+        "p95": 1.5,
+        "p99": 2.599999997764826,
+        "max": 9.899999998509884
+      },
+      "observer_ms": {
+        "n": 595,
+        "mean": 0.16907563026086622,
+        "p50": 0.10000000149011612,
+        "p95": 0.4000000022351742,
+        "p99": 1.199999999254942,
+        "max": 7.0
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 0.2575000000014902,
+        "p50": 0.2575000000014902,
+        "p95": 0.2575000000014902,
+        "p99": 0.2575000000014902,
+        "max": 0.2575000000014902
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 73,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 19.698000000000086,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 1000,
+        "totalDirectRoutes": 78000,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 9307948,
+      "heap_after": 30457296
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r1-move-25",
+      "mode": "move",
+      "units": 25,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1200,
+        "mean": 16.666,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "JS_work_ms": {
+        "n": 1200,
+        "mean": 0.6347500000366321,
+        "p50": 0.5,
+        "p95": 1.300000000745058,
+        "p99": 2.100000001490116,
+        "max": 8.100000001490116
+      },
+      "update_ms": {
+        "n": 1200,
+        "mean": 0.14925000007574757,
+        "p50": 0.10000000149011612,
+        "p95": 0.30000000074505806,
+        "p99": 0.5999999977648258,
+        "max": 3.399999998509884
+      },
+      "draw_ms": {
+        "n": 1200,
+        "mean": 0.3620833333209157,
+        "p50": 0.30000000074505806,
+        "p95": 0.6000000014901161,
+        "p99": 1.1000000014901161,
+        "max": 6.0
+      },
+      "UI_ms": {
+        "n": 1200,
+        "mean": 0.11866666661885877,
+        "p50": 0.0,
+        "p95": 0.6000000014901161,
+        "p99": 1.0,
+        "max": 2.199999999254942
+      },
+      "observer_ms": {
+        "n": 1200,
+        "mean": 0.012166666652386388,
+        "p50": 0.0,
+        "p95": 0.10000000149011612,
+        "p99": 0.19999999925494194,
+        "max": 0.6999999992549419
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 25,
+        "mean": 0.09909999999701972,
+        "p50": 0.09909999999701972,
+        "p95": 0.09909999999701972,
+        "p99": 0.09909999999701972,
+        "max": 0.09909999999701972
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 25.0,
+        "p50": 25.0,
+        "p95": 25.0,
+        "p99": 25.0,
+        "max": 25.0
+      },
+      "sim_seconds": 19.999199999999604,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 25,
+        "totalDirectRoutes": 2225,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 5961288,
+      "heap_after": 5869116
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r1-move-250",
+      "mode": "move",
+      "units": 250,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1066,
+        "mean": 18.77664165103189,
+        "p50": 16.700000000000728,
+        "p95": 33.30000000000291,
+        "p99": 66.69999999999709,
+        "max": 150.0
+      },
+      "JS_work_ms": {
+        "n": 1066,
+        "mean": 4.345215759849906,
+        "p50": 3.199999999254942,
+        "p95": 10.399999998509884,
+        "p99": 19.5,
+        "max": 77.90000000223517
+      },
+      "update_ms": {
+        "n": 1066,
+        "mean": 1.5886491557223263,
+        "p50": 1.199999999254942,
+        "p95": 4.100000001490116,
+        "p99": 6.899999998509884,
+        "max": 14.299999997019768
+      },
+      "draw_ms": {
+        "n": 1066,
+        "mean": 2.513602251344226,
+        "p50": 1.699999999254942,
+        "p95": 6.399999998509884,
+        "p99": 12.299999997019768,
+        "max": 75.0
+      },
+      "UI_ms": {
+        "n": 1066,
+        "mean": 0.23499061919636954,
+        "p50": 0.0,
+        "p95": 1.0,
+        "p99": 3.300000000745058,
+        "max": 11.100000001490116
+      },
+      "observer_ms": {
+        "n": 1066,
+        "mean": 0.07429643526086217,
+        "p50": 0.0,
+        "p95": 0.20000000298023224,
+        "p99": 0.6000000014901161,
+        "max": 15.0
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 250,
+        "mean": 0.10350000000074511,
+        "p50": 0.10350000000074511,
+        "p95": 0.10350000000074511,
+        "p99": 0.10350000000074511,
+        "max": 0.10350000000074511
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 75,
+        "mean": 250.0,
+        "p50": 250.0,
+        "p95": 250.0,
+        "p99": 250.0,
+        "max": 250.0
+      },
+      "sim_seconds": 19.58209999999968,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 250,
+        "totalDirectRoutes": 21000,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 5454440,
+      "heap_after": 8268896
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r1-move-500",
+      "mode": "move",
+      "units": 500,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": false
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 272,
+        "mean": 73.5264705882353,
+        "p50": 16.700000000000728,
+        "p95": 149.89999999999782,
+        "p99": 2033.199999999997,
+        "max": 3999.7999999999993
+      },
+      "JS_work_ms": {
+        "n": 272,
+        "mean": 30.053676470456754,
+        "p50": 9.199999999254942,
+        "p95": 23.900000002235174,
+        "p99": 244.19999999925494,
+        "max": 3704.699999999255
+      },
+      "update_ms": {
+        "n": 272,
+        "mean": 6.19338235286448,
+        "p50": 3.699999999254942,
+        "p95": 12.899999998509884,
+        "p99": 59.70000000298023,
+        "max": 195.19999999925494
+      },
+      "draw_ms": {
+        "n": 272,
+        "mean": 12.03933823518181,
+        "p50": 4.900000002235174,
+        "p95": 13.800000000745058,
+        "p99": 71.69999999925494,
+        "max": 1304.5999999977648
+      },
+      "UI_ms": {
+        "n": 272,
+        "mean": 11.207720588303774,
+        "p50": 0.09999999776482582,
+        "p95": 2.699999999254942,
+        "p99": 7.300000000745058,
+        "max": 2222.199999999255
+      },
+      "observer_ms": {
+        "n": 272,
+        "mean": 0.16360294123125427,
+        "p50": 0.09999999776482582,
+        "p95": 0.5,
+        "p99": 1.800000000745058,
+        "max": 7.800000000745058
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 500,
+        "mean": 0.31720000000074516,
+        "p50": 0.31720000000074516,
+        "p95": 0.31720000000074516,
+        "p99": 0.31720000000074516,
+        "max": 0.31720000000074516
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 35,
+        "mean": 500.0,
+        "p50": 500.0,
+        "p95": 500.0,
+        "p99": 500.0,
+        "max": 500.0
+      },
+      "sim_seconds": 6.6996999999999804,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 500,
+        "totalDirectRoutes": 22000,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 8472524,
+      "heap_after": 33233156
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r2-combat-1000",
+      "mode": "combat",
+      "units": 1000,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "actual_attacks_ge_100": true,
+        "mean_alive_ge_900": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 562,
+        "mean": 35.615480427046265,
+        "p50": 33.30000000000291,
+        "p95": 50.099999999998545,
+        "p99": 66.69999999999891,
+        "max": 216.60000000000036
+      },
+      "JS_work_ms": {
+        "n": 562,
+        "mean": 23.190213523075993,
+        "p50": 25.599999997764826,
+        "p95": 40.0,
+        "p99": 48.80000000074506,
+        "max": 78.39999999850988
+      },
+      "update_ms": {
+        "n": 562,
+        "mean": 3.6316725977984823,
+        "p50": 3.0,
+        "p95": 8.299999997019768,
+        "p99": 13.699999999254942,
+        "max": 18.100000001490116
+      },
+      "draw_ms": {
+        "n": 562,
+        "mean": 19.13629893240025,
+        "p50": 22.899999998509884,
+        "p95": 33.100000001490116,
+        "p99": 43.70000000298023,
+        "max": 60.70000000298023
+      },
+      "UI_ms": {
+        "n": 562,
+        "mean": 0.41387900355474166,
+        "p50": 0.09999999776482582,
+        "p95": 1.5,
+        "p99": 2.199999999254942,
+        "max": 6.699999999254942
+      },
+      "observer_ms": {
+        "n": 562,
+        "mean": 0.181494662014509,
+        "p50": 0.10000000149011612,
+        "p95": 0.4000000022351742,
+        "p99": 1.0,
+        "max": 5.300000000745058
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 0.24755479999925484,
+        "p50": 0.21789999999925477,
+        "p95": 0.30119999999925495,
+        "p99": 0.30119999999925495,
+        "max": 0.30119999999925495
+      },
+      "attacks": 9030,
+      "kills": 0,
+      "alive": {
+        "n": 73,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 19.581100000000117,
+      "navigation": {
+        "searches": 1,
+        "expanded": 1,
+        "ms": 0.19999999925494194,
+        "directRoutes": 0,
+        "routeReuses": 1,
+        "totalDirectRoutes": 7191,
+        "totalSearches": 1329
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 10489452,
+      "heap_after": 25064188
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r2-move-100",
+      "mode": "move",
+      "units": 100,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1198,
+        "mean": 16.69382303839733,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 33.39999999999782
+      },
+      "JS_work_ms": {
+        "n": 1198,
+        "mean": 1.7834724540416407,
+        "p50": 1.5,
+        "p95": 3.599999997764826,
+        "p99": 5.199999999254942,
+        "max": 10.399999998509884
+      },
+      "update_ms": {
+        "n": 1198,
+        "mean": 0.648747913125834,
+        "p50": 0.5999999977648258,
+        "p95": 1.3999999985098839,
+        "p99": 2.2000000029802322,
+        "max": 6.699999999254942
+      },
+      "draw_ms": {
+        "n": 1198,
+        "mean": 0.955008347252872,
+        "p50": 0.8000000007450581,
+        "p95": 2.0,
+        "p99": 3.5,
+        "max": 5.300000000745058
+      },
+      "UI_ms": {
+        "n": 1198,
+        "mean": 0.17520868114020072,
+        "p50": 0.0,
+        "p95": 0.9000000022351742,
+        "p99": 2.099999997764826,
+        "max": 8.800000000745058
+      },
+      "observer_ms": {
+        "n": 1198,
+        "mean": 0.03414023370607966,
+        "p50": 0.0,
+        "p95": 0.10000000149011612,
+        "p99": 0.6999999992549419,
+        "max": 1.8999999985098839
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 100,
+        "mean": 0.11949999999850981,
+        "p50": 0.1194999999985098,
+        "p95": 0.1194999999985098,
+        "p99": 0.1194999999985098,
+        "max": 0.1194999999985098
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 100.0,
+        "p50": 100.0,
+        "p95": 100.0,
+        "p99": 100.0,
+        "max": 100.0
+      },
+      "sim_seconds": 19.999199999999583,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 100,
+        "totalDirectRoutes": 8700,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6454232,
+      "heap_after": 9848832
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r2-move-1000",
+      "mode": "move",
+      "units": 1000,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 653,
+        "mean": 30.652067381316996,
+        "p50": 33.29999999999927,
+        "p95": 50.0,
+        "p99": 66.79999999999927,
+        "max": 200.0
+      },
+      "JS_work_ms": {
+        "n": 653,
+        "mean": 12.839663093478903,
+        "p50": 11.699999999254942,
+        "p95": 20.199999999254942,
+        "p99": 35.0,
+        "max": 117.40000000223517
+      },
+      "update_ms": {
+        "n": 653,
+        "mean": 5.887136294074345,
+        "p50": 5.199999999254942,
+        "p95": 10.699999999254942,
+        "p99": 18.5,
+        "max": 49.5
+      },
+      "draw_ms": {
+        "n": 653,
+        "mean": 6.5745788668588965,
+        "p50": 6.0,
+        "p95": 9.800000000745058,
+        "p99": 12.900000002235174,
+        "max": 79.19999999925494
+      },
+      "UI_ms": {
+        "n": 653,
+        "mean": 0.3689127105015799,
+        "p50": 0.0,
+        "p95": 1.5,
+        "p99": 3.0,
+        "max": 8.700000002980232
+      },
+      "observer_ms": {
+        "n": 653,
+        "mean": 0.14058192963690525,
+        "p50": 0.10000000149011612,
+        "p95": 0.5,
+        "p99": 1.0999999977648258,
+        "max": 4.199999999254942
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 0.12290000000074497,
+        "p50": 0.12290000000074497,
+        "p95": 0.12290000000074497,
+        "p99": 0.12290000000074497,
+        "max": 0.12290000000074497
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 74,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 19.531800000000047,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 1000,
+        "routeReuses": 0,
+        "totalDirectRoutes": 78000,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6708348,
+      "heap_after": 16572016
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r2-move-25",
+      "mode": "move",
+      "units": 25,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1142,
+        "mean": 17.512434325744305,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 33.400000000001455,
+        "max": 433.39999999999964
+      },
+      "JS_work_ms": {
+        "n": 1142,
+        "mean": 1.1455341506775487,
+        "p50": 0.6000000014901161,
+        "p95": 2.199999999254942,
+        "p99": 4.5,
+        "max": 312.80000000074506
+      },
+      "update_ms": {
+        "n": 1142,
+        "mean": 0.21795096326351895,
+        "p50": 0.19999999925494194,
+        "p95": 0.5,
+        "p99": 1.5,
+        "max": 4.700000002980232
+      },
+      "draw_ms": {
+        "n": 1142,
+        "mean": 0.501663747884581,
+        "p50": 0.30000000074505806,
+        "p95": 1.4000000022351742,
+        "p99": 3.300000000745058,
+        "max": 7.0
+      },
+      "UI_ms": {
+        "n": 1142,
+        "mean": 0.4196147110000018,
+        "p50": 0.0,
+        "p95": 0.6999999992549419,
+        "p99": 1.9000000022351742,
+        "max": 308.4000000022352
+      },
+      "observer_ms": {
+        "n": 1142,
+        "mean": 0.023817863403419896,
+        "p50": 0.0,
+        "p95": 0.10000000149011612,
+        "p99": 0.4000000022351742,
+        "max": 2.5
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 25,
+        "mean": 0.048,
+        "p50": 0.048,
+        "p95": 0.048,
+        "p99": 0.048,
+        "max": 0.048
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 75,
+        "mean": 25.0,
+        "p50": 25.0,
+        "p95": 25.0,
+        "p99": 25.0,
+        "max": 25.0
+      },
+      "sim_seconds": 19.515899999999604,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 25,
+        "totalDirectRoutes": 2150,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6655920,
+      "heap_after": 10514948
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r2-move-250",
+      "mode": "move",
+      "units": 250,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1191,
+        "mean": 16.79185558354324,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 50.10000000000218
+      },
+      "JS_work_ms": {
+        "n": 1191,
+        "mean": 3.0895885810768973,
+        "p50": 2.5,
+        "p95": 5.600000001490116,
+        "p99": 7.300000000745058,
+        "max": 44.69999999925494
+      },
+      "update_ms": {
+        "n": 1191,
+        "mean": 1.0598656592044533,
+        "p50": 0.9000000022351742,
+        "p95": 2.0,
+        "p99": 2.800000000745058,
+        "max": 4.199999999254942
+      },
+      "draw_ms": {
+        "n": 1191,
+        "mean": 1.8515533165088178,
+        "p50": 1.3999999985098839,
+        "p95": 3.5,
+        "p99": 4.599999997764826,
+        "max": 27.600000001490116
+      },
+      "UI_ms": {
+        "n": 1191,
+        "mean": 0.17346767419644207,
+        "p50": 0.0,
+        "p95": 0.7000000029802322,
+        "p99": 1.5,
+        "max": 42.69999999925494
+      },
+      "observer_ms": {
+        "n": 1191,
+        "mean": 0.04433249372216356,
+        "p50": 0.0,
+        "p95": 0.19999999925494194,
+        "p99": 0.30000000074505806,
+        "max": 3.800000000745058
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 250,
+        "mean": 0.22469999999925494,
+        "p50": 0.22469999999925494,
+        "p95": 0.22469999999925494,
+        "p99": 0.22469999999925494,
+        "max": 0.22469999999925494
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 250.0,
+        "p50": 250.0,
+        "p95": 250.0,
+        "p99": 250.0,
+        "max": 250.0
+      },
+      "sim_seconds": 19.998999999999572,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 250,
+        "totalDirectRoutes": 22250,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 9651768,
+      "heap_after": 15492428
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r2-move-500",
+      "mode": "move",
+      "units": 500,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1171,
+        "mean": 17.07882152006832,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 33.30000000000109,
+        "max": 66.69999999999891
+      },
+      "JS_work_ms": {
+        "n": 1171,
+        "mean": 6.248334756618911,
+        "p50": 5.699999999254942,
+        "p95": 10.0,
+        "p99": 13.199999999254942,
+        "max": 31.600000001490116
+      },
+      "update_ms": {
+        "n": 1171,
+        "mean": 2.6425277540773586,
+        "p50": 2.399999998509884,
+        "p95": 4.699999999254942,
+        "p99": 7.0,
+        "max": 25.700000002980232
+      },
+      "draw_ms": {
+        "n": 1171,
+        "mean": 3.4192997437959853,
+        "p50": 3.099999997764826,
+        "p95": 5.400000002235174,
+        "p99": 7.800000000745058,
+        "max": 16.0
+      },
+      "UI_ms": {
+        "n": 1171,
+        "mean": 0.17677198975234842,
+        "p50": 0.0,
+        "p95": 0.9000000022351742,
+        "p99": 1.699999999254942,
+        "max": 5.899999998509884
+      },
+      "observer_ms": {
+        "n": 1171,
+        "mean": 0.06524338173965528,
+        "p50": 0.0,
+        "p95": 0.20000000298023224,
+        "p99": 0.5,
+        "max": 0.6999999992549419
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 500,
+        "mean": 0.11239999999925498,
+        "p50": 0.11239999999925498,
+        "p95": 0.11239999999925498,
+        "p99": 0.11239999999925498,
+        "max": 0.11239999999925498
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 500.0,
+        "p50": 500.0,
+        "p95": 500.0,
+        "p99": 500.0,
+        "max": 500.0
+      },
+      "sim_seconds": 19.982599999999657,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 500,
+        "totalDirectRoutes": 43500,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 6850164,
+      "heap_after": 30695916
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r3-combat-1000",
+      "mode": "combat",
+      "units": 1000,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "actual_attacks_ge_100": true,
+        "mean_alive_ge_900": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 541,
+        "mean": 37.02883548983364,
+        "p50": 33.39999999999782,
+        "p95": 50.099999999998545,
+        "p99": 83.29999999999927,
+        "max": 166.6999999999971
+      },
+      "JS_work_ms": {
+        "n": 541,
+        "mean": 23.767097966810912,
+        "p50": 25.0,
+        "p95": 41.900000002235174,
+        "p99": 52.80000000074506,
+        "max": 150.30000000074506
+      },
+      "update_ms": {
+        "n": 541,
+        "mean": 4.882255083242648,
+        "p50": 3.900000002235174,
+        "p95": 9.800000000745058,
+        "p99": 18.900000002235174,
+        "max": 25.400000002235174
+      },
+      "draw_ms": {
+        "n": 541,
+        "mean": 18.432532347463304,
+        "p50": 20.199999999254942,
+        "p95": 34.30000000074506,
+        "p99": 42.600000001490116,
+        "max": 141.0
+      },
+      "UI_ms": {
+        "n": 541,
+        "mean": 0.4447319778904677,
+        "p50": 0.09999999776482582,
+        "p95": 1.5999999977648258,
+        "p99": 3.300000000745058,
+        "max": 8.800000000745058
+      },
+      "observer_ms": {
+        "n": 541,
+        "mean": 0.20110905729578515,
+        "p50": 0.19999999925494194,
+        "p95": 0.5,
+        "p99": 1.300000000745058,
+        "max": 2.5
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 0.2456192000007451,
+        "p50": 0.2160000000007451,
+        "p95": 0.29920000000074515,
+        "p99": 0.29920000000074515,
+        "max": 0.29920000000074515
+      },
+      "attacks": 7955,
+      "kills": 0,
+      "alive": {
+        "n": 72,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 19.580900000000085,
+      "navigation": {
+        "searches": 1,
+        "expanded": 1,
+        "ms": 0.6000000014901161,
+        "directRoutes": 0,
+        "routeReuses": 5,
+        "totalDirectRoutes": 7706,
+        "totalSearches": 1305
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 8319244,
+      "heap_after": 21461964
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r3-move-100",
+      "mode": "move",
+      "units": 100,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 989,
+        "mean": 20.204853387259856,
+        "p50": 16.700000000000728,
+        "p95": 33.39999999999782,
+        "p99": 100.0,
+        "max": 483.2999999999993
+      },
+      "JS_work_ms": {
+        "n": 989,
+        "mean": 3.5515672396698963,
+        "p50": 2.199999999254942,
+        "p95": 8.400000002235174,
+        "p99": 28.300000000745058,
+        "max": 164.30000000074506
+      },
+      "update_ms": {
+        "n": 989,
+        "mean": 1.203336703746426,
+        "p50": 0.6999999992549419,
+        "p95": 3.599999997764826,
+        "p99": 9.300000000745058,
+        "max": 49.0
+      },
+      "draw_ms": {
+        "n": 989,
+        "mean": 1.9233569261835486,
+        "p50": 1.0,
+        "p95": 5.099999997764826,
+        "p99": 9.0,
+        "max": 157.5
+      },
+      "UI_ms": {
+        "n": 989,
+        "mean": 0.41233569263839387,
+        "p50": 0.0,
+        "p95": 2.199999999254942,
+        "p99": 6.399999998509884,
+        "max": 18.899999998509884
+      },
+      "observer_ms": {
+        "n": 989,
+        "mean": 0.06814964613203935,
+        "p50": 0.0,
+        "p95": 0.19999999925494194,
+        "p99": 1.800000000745058,
+        "max": 5.100000001490116
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 100,
+        "mean": 0.0900999999999999,
+        "p50": 0.0900999999999999,
+        "p95": 0.0900999999999999,
+        "p99": 0.0900999999999999,
+        "max": 0.0900999999999999
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 74,
+        "mean": 100.0,
+        "p50": 100.0,
+        "p95": 100.0,
+        "p99": 100.0,
+        "max": 100.0
+      },
+      "sim_seconds": 18.349499999999704,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 100,
+        "totalDirectRoutes": 8100,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 9064492,
+      "heap_after": 9448824
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r3-move-1000",
+      "mode": "move",
+      "units": 1000,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": false,
+        "raf_p95_le_50": false,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": false,
+      "rAF_ms": {
+        "n": 591,
+        "mean": 33.83976311336718,
+        "p50": 33.29999999999927,
+        "p95": 50.10000000000218,
+        "p99": 150.0,
+        "max": 283.2000000000007
+      },
+      "JS_work_ms": {
+        "n": 591,
+        "mean": 13.025719120096284,
+        "p50": 11.5,
+        "p95": 21.0,
+        "p99": 35.29999999701977,
+        "max": 141.40000000223517
+      },
+      "update_ms": {
+        "n": 591,
+        "mean": 6.0478849408111195,
+        "p50": 5.0,
+        "p95": 12.399999998509884,
+        "p99": 20.300000000745058,
+        "max": 119.60000000149012
+      },
+      "draw_ms": {
+        "n": 591,
+        "mean": 6.535532994848217,
+        "p50": 5.800000000745058,
+        "p95": 10.100000001490116,
+        "p99": 16.800000000745058,
+        "max": 70.69999999925494
+      },
+      "UI_ms": {
+        "n": 591,
+        "mean": 0.43451776647350915,
+        "p50": 0.09999999776482582,
+        "p95": 1.699999999254942,
+        "p99": 4.100000001490116,
+        "max": 12.800000000745058
+      },
+      "observer_ms": {
+        "n": 591,
+        "mean": 0.16988155668736915,
+        "p50": 0.10000000149011612,
+        "p95": 0.5,
+        "p99": 2.099999997764826,
+        "max": 3.399999998509884
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 1000,
+        "mean": 0.17430000000074505,
+        "p50": 0.17430000000074505,
+        "p95": 0.17430000000074505,
+        "p99": 0.17430000000074505,
+        "max": 0.17430000000074505
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 72,
+        "mean": 1000.0,
+        "p50": 1000.0,
+        "p95": 1000.0,
+        "p99": 1000.0,
+        "max": 1000.0
+      },
+      "sim_seconds": 18.29880000000002,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 1000,
+        "totalDirectRoutes": 75000,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 10777420,
+      "heap_after": 27649672
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r3-move-25",
+      "mode": "move",
+      "units": 25,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1160,
+        "mean": 17.24068965517241,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 33.399999999999636,
+        "max": 133.40000000000146
+      },
+      "JS_work_ms": {
+        "n": 1160,
+        "mean": 0.9041379310640282,
+        "p50": 0.6000000014901161,
+        "p95": 1.8999999985098839,
+        "p99": 4.0,
+        "max": 30.5
+      },
+      "update_ms": {
+        "n": 1160,
+        "mean": 0.20879310348938251,
+        "p50": 0.10000000149011612,
+        "p95": 0.4000000022351742,
+        "p99": 1.300000000745058,
+        "max": 24.099999997764826
+      },
+      "draw_ms": {
+        "n": 1160,
+        "mean": 0.511724137903416,
+        "p50": 0.3999999985098839,
+        "p95": 1.199999999254942,
+        "p99": 2.699999999254942,
+        "max": 9.5
+      },
+      "UI_ms": {
+        "n": 1160,
+        "mean": 0.17594827587298792,
+        "p50": 0.0,
+        "p95": 0.7999999970197678,
+        "p99": 1.6000000014901161,
+        "max": 17.800000000745058
+      },
+      "observer_ms": {
+        "n": 1160,
+        "mean": 0.02189655173248772,
+        "p50": 0.0,
+        "p95": 0.10000000149011612,
+        "p99": 0.30000000074505806,
+        "max": 1.8999999985098839
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 25,
+        "mean": 0.041700000002980235,
+        "p50": 0.041700000002980235,
+        "p95": 0.041700000002980235,
+        "p99": 0.041700000002980235,
+        "max": 0.041700000002980235
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 25.0,
+        "p50": 25.0,
+        "p95": 25.0,
+        "p99": 25.0,
+        "max": 25.0
+      },
+      "sim_seconds": 19.765799999999558,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 25,
+        "totalDirectRoutes": 2175,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 5651684,
+      "heap_after": 5564324
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r3-move-250",
+      "mode": "move",
+      "units": 250,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 1127,
+        "mean": 17.745519077196093,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 49.900000000001455,
+        "max": 183.29999999999927
+      },
+      "JS_work_ms": {
+        "n": 1127,
+        "mean": 4.119787045193385,
+        "p50": 3.399999998509884,
+        "p95": 8.0,
+        "p99": 12.700000002980232,
+        "max": 68.40000000223517
+      },
+      "update_ms": {
+        "n": 1127,
+        "mean": 1.5942324755024149,
+        "p50": 1.300000000745058,
+        "p95": 3.300000000745058,
+        "p99": 6.300000000745058,
+        "max": 39.30000000074506
+      },
+      "draw_ms": {
+        "n": 1127,
+        "mean": 2.331588287517997,
+        "p50": 1.800000000745058,
+        "p95": 4.900000002235174,
+        "p99": 8.0,
+        "max": 54.30000000074506
+      },
+      "UI_ms": {
+        "n": 1127,
+        "mean": 0.18482697428185113,
+        "p50": 0.0,
+        "p95": 0.9000000022351742,
+        "p99": 2.0,
+        "max": 9.400000002235174
+      },
+      "observer_ms": {
+        "n": 1127,
+        "mean": 0.05368234255510616,
+        "p50": 0.0,
+        "p95": 0.20000000298023224,
+        "p99": 0.6000000014901161,
+        "max": 1.6000000014901161
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 250,
+        "mean": 0.11459999999776482,
+        "p50": 0.11459999999776482,
+        "p95": 0.11459999999776482,
+        "p99": 0.11459999999776482,
+        "max": 0.11459999999776482
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 76,
+        "mean": 250.0,
+        "p50": 250.0,
+        "p95": 250.0,
+        "p99": 250.0,
+        "max": 250.0
+      },
+      "sim_seconds": 19.61569999999964,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 250,
+        "totalDirectRoutes": 21500,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 5410944,
+      "heap_after": 12203860
+    },
+    {
+      "suite": "final-verified-repeat",
+      "case": "r3-move-500",
+      "mode": "move",
+      "units": 500,
+      "source_commit": "8549065da8b727737f14a596fc104658d408ffd3",
+      "game_files": {
+        "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+        "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+        "js/build-info.js": "cba61d89c641c6da8cd5965fa2002f2584e5cbba64094f0d7871c6b782851f94",
+        "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+        "js/data.js": "92374141b7494d091a56dfb4b66cca861bb7d2e9618f519adc986089fd4e65c5",
+        "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+        "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+        "js/game.js": "d6606693061d2bbd7989e5e25797023a3de2e7b1953c4316739a548d704b3e73",
+        "js/i18n.js": "8f042a4218a9e9434fdcbb8e84f71867be53325c02f2e2c39360ea9a12c6d675",
+        "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+        "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+        "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+        "js/locales.js": "67fae7351aaeb7460778b209504d9da5940019dd7f391dd0daf5561ed4096b5b",
+        "js/main.js": "701a48852a4a716c749a66222718d286c6a5680309aea7b06490a42e25a52050",
+        "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+        "js/renderer.js": "b5cc5170481fee6e140737bf3590e2cb01e6e7d6fbc6a738dc16b9f056fd79b4",
+        "js/save.js": "27c8c28692636158ec0084bcd8d08d6508c8b469acf3a78903f17dd285a0d880",
+        "js/settings.js": "cd144cee0ad1dcf1170572346d8bcbb9156b9b789ebb63f542df853193b476c0",
+        "js/ui.js": "97176b583cbea127c9dc655632e3d5e98cae7dbd7e914c4db2a4bc1ae41b2d32",
+        "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+        "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+        "styles.css": "7e98634ee233d4eac3a1bc3bb3fe20ba9e4f263eef627ed6ee132dc71f0d3779"
+      },
+      "thresholds": {
+        "raf_mean_le_33_3": true,
+        "raf_p95_le_50": true,
+        "movement_ge_90_percent_at_15s": true,
+        "searches_per_update_le_2": true,
+        "native_loop_heartbeat": true,
+        "simulation_progress_ge_90_percent": true
+      },
+      "pass": true,
+      "rAF_ms": {
+        "n": 997,
+        "mean": 20.05937813440321,
+        "p50": 16.700000000000728,
+        "p95": 33.399999999999636,
+        "p99": 50.0,
+        "max": 133.29999999999927
+      },
+      "JS_work_ms": {
+        "n": 997,
+        "mean": 9.389267803426671,
+        "p50": 8.699999999254942,
+        "p95": 13.5,
+        "p99": 21.800000000745058,
+        "max": 103.19999999925494
+      },
+      "update_ms": {
+        "n": 997,
+        "mean": 4.190270812421619,
+        "p50": 3.899999998509884,
+        "p95": 6.899999998509884,
+        "p99": 13.600000001490116,
+        "max": 80.29999999701977
+      },
+      "draw_ms": {
+        "n": 997,
+        "mean": 4.886860581781853,
+        "p50": 4.5,
+        "p95": 7.699999999254942,
+        "p99": 11.199999999254942,
+        "max": 15.700000002980232
+      },
+      "UI_ms": {
+        "n": 997,
+        "mean": 0.30471414242055617,
+        "p50": 0.0,
+        "p95": 1.0,
+        "p99": 2.0,
+        "max": 93.19999999925494
+      },
+      "observer_ms": {
+        "n": 997,
+        "mean": 0.10090270812960422,
+        "p50": 0.09999999776482582,
+        "p95": 0.30000000074505806,
+        "p99": 0.6999999992549419,
+        "max": 13.800000000745058
+      },
+      "moved_15s": 1,
+      "first_move_s": {
+        "n": 500,
+        "mean": 0.07739999999776478,
+        "p50": 0.07739999999776478,
+        "p95": 0.07739999999776478,
+        "p99": 0.07739999999776478,
+        "max": 0.07739999999776478
+      },
+      "attacks": 0,
+      "kills": 0,
+      "alive": {
+        "n": 75,
+        "mean": 500.0,
+        "p50": 500.0,
+        "p95": 500.0,
+        "p99": 500.0,
+        "max": 500.0
+      },
+      "sim_seconds": 19.832599999999708,
+      "navigation": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 500,
+        "totalDirectRoutes": 41500,
+        "totalSearches": 0
+      },
+      "console": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "heap_before": 5618828,
+      "heap_after": 26759364
+    }
+  ]
+}
