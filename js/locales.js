@@ -481,7 +481,7 @@ for (const [locale, labels] of Object.entries(STANCES)) {
 
 for (const [locale, label] of Object.entries({en:'Cycle stance: Aggressive / Defensive / Hold Position / Passive', 'zh-Hant':'切換姿態：積極進攻／防禦／堅守位置／被動', 'zh-Hans':'切换姿态：积极进攻／防御／坚守位置／被动', ja:'姿勢を切替：積極攻撃／防御／位置を維持／非攻撃'})) STRINGS[locale]['stance.cycle'] = label;
 
-const CIV_TRAINING_TEXT={"en": ["Chu Ko Nu", "Repeating Crossbow", "Chinese repeating crossbow infantry. Third-shot bonus bolt; Archery Range, Castle Age.", "Requires {age}", "More Troops"], "zh-Hant": ["諸葛弩兵", "連弩步兵", "中國連弩步兵，每第三次射擊追加弩箭；城堡時代於射箭場訓練。", "需要{age}", "更多兵種"], "zh-Hans": ["诸葛弩兵", "连弩步兵", "中国连弩步兵，每第三次射击追加弩箭；城堡时代于射箭场训练。", "需要{age}", "更多兵种"], "ja": ["連弩兵", "連弩歩兵", "中国の連弩歩兵。3射ごとに追加矢。城主の時代から射手育成所で訓練。", "{age}が必要", "他の兵種"]};
+const CIV_TRAINING_TEXT={"en": ["Chu Ko Nu", "Repeating Crossbow", "Chinese repeating crossbow infantry. Third-shot bonus bolt; Archery Range, Feudal Age.", "Requires {age}", "More Troops"], "zh-Hant": ["諸葛弩兵", "連弩步兵", "中國連弩步兵，每第三次射擊追加弩箭；封建時代於射箭場訓練。", "需要{age}", "更多兵種"], "zh-Hans": ["诸葛弩兵", "连弩步兵", "中国连弩步兵，每第三次射击追加弩箭；封建时代于射箭场训练。", "需要{age}", "更多兵种"], "ja": ["連弩兵", "連弩歩兵", "中国の連弩歩兵。3射ごとに追加矢。封建時代から射手育成所で訓練。", "{age}が必要", "他の兵種"]};
 for(const [locale,labels] of Object.entries(CIV_TRAINING_TEXT))['unit.chu_ko_nu.name','unit.chu_ko_nu.role','unit.chu_ko_nu.desc','training.ageRequired','training.page'].forEach((key,i)=>STRINGS[locale][key]=labels[i]);
 
 export const EN_KEYS = Object.keys(STRINGS.en);
