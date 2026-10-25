@@ -9,19 +9,21 @@ export function setup(count, mode) {
   for(const t of g.world.tiles)t.terrain='grass';
   renderer.terrainKey='';
   g.camera={x:0,y:800,targetX:0,targetY:800,zoom:.45,targetZoom:.45};
-  const cols=Math.ceil(Math.sqrt(count)),spacing=(mode==='combat'?48:38)/Math.max(cols,2),offset=mode==='combat'?1:5,origins=new Map();
+  const cols=mode==='combat'?28:Math.ceil(Math.sqrt(count)),spacing=(mode==='combat'?48:38)/Math.max(cols,2),spacingY=mode==='combat'?48/Math.ceil(count/cols):spacing,offset=mode==='combat'?1:5,origins=new Map();
   const composition={};
+  if(mode==='economy'){g.autoEconomy=true;g.addBuilding('core',23,23,true);for(let i=0;i<80;i++){const resource=['food','wood','gold','stone'][i%4];g.world.resources.push({id:10000+i,x:3+(i%10)*4.5,y:3+Math.floor(i/10)*5.5,resource,kind:resource==='wood'?'oak':resource==='food'?'berry':'ore',amount:30,maxAmount:30,radius:.32,alive:true});}}
   for(let i=0;i<count;i++) {
-    const x=offset+(i%cols)*spacing,y=offset+Math.floor(i/cols)*spacing;
-    const type=mode==='combat'?'guard':'militia';
+    const x=offset+(i%cols)*spacing,y=offset+Math.floor(i/cols)*spacingY;
+    const type=mode==='combat'?'guard':mode==='economy'?'villager':'militia';
     const team=mode==='combat'&&i%2?'enemy':'player';
     const u=g.spawnUnit(type,x,y,team);if(!u)throw Error(`Spawn failed ${i}/${count}`);
     u.stance=mode==='combat'?'aggressive':'passive';
     origins.set(u.id,{x:u.x,y:u.y});composition[`${team}:${type}`]=(composition[`${team}:${type}`]||0)+1;
     if(mode==='move')g.commandMove([u],x+.6,y+.6);
+    else if(mode==='economy')g.orderGather(u,g.findResource(['food','wood','gold','stone'][i%4],u.x,u.y));
   }
   window.audit={count,mode,origins,composition,moved:new Set(),firstMoves:new Map(),attacks:0,kills:0,started:performance.now()};
-  return {seed:g.seed,count,mode,composition,spacing,obstacles:0,commands:mode==='move'?'Each unit alternates origin and (+0.6,+0.6), immediate reissue on idle':'Natural interleaved 500v500 standard guard combat; no HP/damage/AI changes',speed:g.speed,dpr:devicePixelRatio};
+  return {seed:g.seed,count,mode,composition,spacing,spacingY,obstacles:mode==='economy'?21:0,commands:mode==='move'?'Each unit alternates origin and (+0.6,+0.6), immediate reissue on idle':'Natural interleaved 500v500 standard guard combat; no HP/damage/AI changes',speed:g.speed,dpr:devicePixelRatio};
 }
 export function install(detailed=false) {
   const {game:g,renderer,ui}=ageOfAsh;
@@ -45,7 +47,7 @@ export function install(detailed=false) {
       g[key]=(...args)=>{
         const start=performance.now(),u=args[0],cached=key==='stepToward'&&u?._nav?.status==='ready'&&u._nav.points?.length;
         const searches=g.navigationStats?.totalSearches||0;const value=fn(...args);
-        if(stats.enabled){const ms=performance.now()-start,s=stats.sub[key];s.calls++;s.ms+=ms;s.max=Math.max(s.max,ms);if(key==='stepToward'){stats.steps++;if(cached&&(g.navigationStats?.totalSearches||0)===searches)stats.routeReuse++;else stats.routeMiss++;}}
+        if(stats.enabled){const ms=performance.now()-start,s=stats.sub[key];s.calls++;s.ms+=ms;s.max=Math.max(s.max,ms);if(key==='stepToward'){stats.steps++;if(cached&&u?._nav?.status==='ready'&&(g.navigationStats?.totalSearches||0)===searches)stats.routeReuse++;else stats.routeMiss++;if(value==='pending'&&(g.navigationStats?.totalSearches||0)===searches)stats.queueWait=(stats.queueWait||0)+1;}}
         return value;
       };
     }
@@ -70,7 +72,7 @@ export async function run(warmup,seconds,mode,count) {
   await new Promise(resolve=>{
     function frame(now){
       const observerStart=performance.now(),elapsed=(now-started)/1000,g=ageOfAsh.game;
-      if(!stats.enabled&&elapsed>=warmup){stats.enabled=true;performance.mark('AUDIT_MEASURE_START');audit.attacks=0;audit.kills=0;last=now;}
+      if(!stats.enabled&&elapsed>=warmup){stats.enabled=true;stats.simStart=g.time;performance.mark('AUDIT_MEASURE_START');audit.attacks=0;audit.kills=0;last=now;}
       for(const u of g.units){
         const o=audit.origins.get(u.id);if(!o)continue;
         if(Math.hypot(u.x-o.x,u.y-o.y)>.15){audit.moved.add(u.id);if(!audit.firstMoves.has(u.id))audit.firstMoves.set(u.id,(now-audit.started)/1000);}
@@ -89,6 +91,6 @@ export async function run(warmup,seconds,mode,count) {
     }
     requestAnimationFrame(frame);
   });
-  return {raw:stats,units:gCount(),mode,seed:ageOfAsh.game.seed,composition:audit.composition,moved_fraction:audit.moved.size/count,moved_fraction_15s:[...audit.firstMoves.values()].filter(t=>t<=15).length/count,first_move_latency_seconds:[...audit.origins.keys()].map(id=>audit.firstMoves.get(id)??null),attacks:audit.attacks,kills:audit.kills,sim_time:ageOfAsh.game.time,phase:ageOfAsh.game.phase,navigation:ageOfAsh.game.navigationStats,elapsed_wall_seconds:(performance.now()-started)/1000};
+  return {raw:stats,units:gCount(),mode,seed:ageOfAsh.game.seed,composition:audit.composition,moved_fraction:audit.moved.size/count,moved_fraction_15s:[...audit.firstMoves.values()].filter(t=>t<=15).length/count,first_move_latency_seconds:[...audit.origins.keys()].map(id=>audit.firstMoves.get(id)??null),attacks:audit.attacks,kills:audit.kills,sim_time:ageOfAsh.game.time,measured_sim_seconds:ageOfAsh.game.time-stats.simStart,phase:ageOfAsh.game.phase,navigation:ageOfAsh.game.navigationStats,elapsed_wall_seconds:(performance.now()-started)/1000};
 }
 function gCount(){return ageOfAsh.game.units.length;}
