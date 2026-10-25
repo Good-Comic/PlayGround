@@ -16,11 +16,11 @@ Current release rule: **Phase A core correctness + measured current-product-scal
 
 | ID | Original group | Module / acceptance | State |
 |---|---|---|---|
-| A-PERF-250 | A1 |100/200/250 actual combat +250 mixed,3 independent runs, unchanged rAF/movement gates, input latency<=250ms, clock ratio>=.90, order completion and failures | IMPLEMENTED tooling; NOT_TESTED until evidence |
+| A-PERF-250 | A1 |100/200/250 actual combat +250 mixed,3 independent runs, unchanged rAF/movement gates, input latency<=250ms, clock ratio>=.90, order completion and failures | LOCAL_VERIFIED tooling; measured FAILs preserved; see execution report |
 | A-BUDGET-01 | A1/A3 |all16 civ/3seed/10wave director envelope + real campaign peak, queue/summon audit; no hidden cap | CODE audit; real full campaign NOT_TESTED |
 | A-CLOCK-01 | A1/A2/A3 |offline fixed-step prototype; slowFPS combat/economy/cooldowns/status/waves/RNG/load; no production replacement until evidence | prototype only; evaluation |
-| B1-RALLY-01 | B1 |selected production buildings right-click ground/resource, visible flag, training uses orders, clear, persists; invalid inputs safe | NOT_TESTED |
-| B2-CIV-01 | B2 |16-civ production matrix; Persian elephant / Aztec no-cavalry / Saracen market; Chinese repeating-crossbow training entry | NOT_TESTED |
+| B1-RALLY-01 | B1 |selected production buildings right-click ground/resource, visible flag, training uses orders, clear, persists; invalid inputs safe | IMPLEMENTED/LOCAL_VERIFIED scoped function; integration BLOCKED |
+| B2-CIV-ENTRY-01 | B2 |16-civ production matrix; Persian elephant / Aztec no-cavalry / Saracen market; Chinese repeating-crossbow training entry | IMPLEMENTED/LOCAL_VERIFIED scoped function; integration BLOCKED |
 | B3-ATTACKMOVE-01 | B3 |order module, destination + hostile engagement + resume, save migration, manual priority | DESIGN; NOT_TESTED |
 | B3-GUARD-01 | B3 |protect allied unit/building, leash, target death recovery, Hold remains nonpursuing | DESIGN; NOT_TESTED |
 | B3-FORMATION-01 | B3 |selection/groups, relative slots, mixed-radius clearance, key hints | DESIGN; NOT_TESTED |
@@ -39,3 +39,5 @@ Current release rule: **Phase A core correctness + measured current-product-scal
 | E1-CURVE-01 | E1 |3 complete natural campaigns + peak/stability/replay evidence | NOT_TESTED |
 
 Do not equate count of features with playability. Rendering/backend limitations, synthetic scenes and accelerated simulation are always labelled. Candidate deployment plan remains separate authorization; no Issue/workflow/Preview write this round. Local exact-commit candidates may be served read-only, with source hashes and fresh disposable saves; never labelled DEPLOYED_VERIFIED.
+
+Current evidence and actual source mapping: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md). Full ten-wave peak/stability remains NOT_TESTED, product budget provisional,500/1000 historical FAIL unchanged. Both gameplay branches are unmerged; QA integration is not a gameplay release. Known A-BUDGET-02 undefined cap getters/global queue reservations and E1-BOSS-02 missing M reinforcement ID are open.
