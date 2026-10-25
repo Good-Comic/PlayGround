@@ -1,3 +1,7 @@
+## A4-POP normal P0 acceptance
+
+Normal135s play on source8d0902877564872ee5382155ebf38474c125c950:168samples,8 death→living target transitions,wood/gold/food/stone unload40/22/24/10, no20s zero-cargo stall, cavalry destination reached, Console/Page/request errors0.25/25 HTTP resources match. LOCAL_VERIFIED P0; performance/integration remain pending; newer economic/military split does not waive those gates. Full trace remains LOCAL_ONLY; bounded raw states/HAR/screenshots recoverable remotely.
+
 ## A4-POP updated actual local acceptance
 
 Source86d7e81394eaab7a2aa579bd30dbbbc278224c3c:50 full Node tests and four locales PASS. Seven actual Chromium checks PASS: normal opening40/60, finite HUD, global last-slot reservation, zero extra spending on rejected second-building training, independent economy, real Pause/Save/Reload/Continue, zero Console/Page/request errors.50/50 captured resources match; screenshots, HAR/trace and navigation failure are retained. LOCAL_VERIFIED bounded population contract; P0/performance/integration/legacy-save exhaustive gates still pending. No online/hardware PASS.
