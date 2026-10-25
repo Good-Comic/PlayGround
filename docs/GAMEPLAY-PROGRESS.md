@@ -1,3 +1,7 @@
+## A4-POP updated actual local acceptance
+
+Source86d7e81394eaab7a2aa579bd30dbbbc278224c3c:50 full Node tests and four locales PASS. Seven actual Chromium checks PASS: normal opening40/60, finite HUD, global last-slot reservation, zero extra spending on rejected second-building training, independent economy, real Pause/Save/Reload/Continue, zero Console/Page/request errors.50/50 captured resources match; screenshots, HAR/trace and navigation failure are retained. LOCAL_VERIFIED bounded population contract; P0/performance/integration/legacy-save exhaustive gates still pending. No online/hardware PASS.
+
 ## Strategy v2.2.2 A4-POP recovered checkpoint
 
 Preserves previous46759494baa05ba3d1be7c59b2c7f78a1735e89d and uncommitted core20 correction. Seven focused tests PASS, including actual initial military40 (core20+two houses10), independent economy60, global category queues, Franks40, atomic payment rejection, Save/Load derived fields. Earlier browser evidence fe19196 remains valid ONLY for old source; new core20 browser retest PENDING. Wave ceiling transition and legacy monument contribution SPEC_DECISION_REQUIRED; no250 hard cap. Full integration/online/hardware acceptance not claimed.
