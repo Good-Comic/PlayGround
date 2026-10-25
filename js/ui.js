@@ -682,6 +682,7 @@ export class UI {
       if (e.queue?.length) stats += `<span><b>${t('selection.training')}</b> ${t(`unit.${e.queue[0].type}.name`)} (${Math.ceil(e.queue[0].remaining)}s)</span>`;
       el.selectionStats.innerHTML = stats;
       el.panelHint.textContent = game.canSetRally(e) ? t('rally.hint') : def.dropoff ? t('selection.hintDropoff') : def.pop ? t('selection.hintPop') : e.type === 'core' ? t('selection.hintTownCenter') : t('selection.hintBuilding');
+      if(game.canSetRally(e)&&e.rally){const clear=document.createElement('button');clear.type='button';clear.className='rally-clear';clear.dataset.command='rally:clear';clear.textContent=t('rally.clear');clear.addEventListener('click',()=>this.callbacks.command?.('rally:clear'));el.panelHint.append(document.createTextNode(' '),clear);}
       this.drawPortrait(e);
     } else {
       const def = UNIT_TYPES[e.type];
@@ -747,7 +748,6 @@ export class UI {
       const b = sel[0];
       if (b.team !== 'player' || b.construction < 1) return [];
       const commands = [];
-      if(b.rally && game.canSetRally(b))commands.push({id:'rally:clear',label:t('rally.clear'),icon:'banner',tooltip:t('rally.hint')});
       if (b.type === 'core' && b.team === 'player' && game.ageLevel < 3) {
         const cost = game.ageCost();
         if (game.ageResearch) {
