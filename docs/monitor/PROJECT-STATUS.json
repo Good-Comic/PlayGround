@@ -2,15 +2,15 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T08:26:51.911597+00:00",
+  "updated_at": "2026-10-26T09:15:09.076349+00:00",
   "latest_event": {
     "task_id": "V227-ORDERS",
     "agent": "Codex",
-    "severity": "PROGRESS",
+    "severity": "WARNING",
     "branch": "codex/riftwatch-v227-orders",
-    "commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
+    "commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
     "build_sha": null,
-    "summary": "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending",
+    "summary": "Native browser exposed real hostile yielding chase stall and Patrol endpoint deadband after coarse Node tests passed; failures retained; subsequent fixes separately validated",
     "code_changes": [],
     "next_steps": [
       "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
@@ -19,12 +19,21 @@
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Source-pinned focused evidence",
-        "status": "PASS",
+        "name": "Initial native AttackMove cannot finish fight",
+        "status": "FAIL",
         "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
-        "evidence": "docs/evidence/v227-orders/regression.log.txt",
-        "evidence_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
-        "evidence_blob": "c0779a9d73c190c87dfe6bcf702ba3744a125a5c",
+        "evidence": "docs/evidence/v227-orders/browser-failure/initial-results.json",
+        "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+        "evidence_blob": "8c2802be7950cd3542cdeb34581caee28e417550",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "Patrol finalpoint deadband",
+        "status": "FAIL",
+        "source_commit": "a88716a4f3a726c7bc6946b9b07a06d9d5f65426",
+        "evidence": "docs/evidence/v227-orders/browser-failure/patrol-endpoint-results.json",
+        "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+        "evidence_blob": "514c68f6dfaa6492dff6ec3cb8150d90e70b2aa6",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -33,22 +42,22 @@
         "id": "NEW_CANDIDATE_UNDEPLOYED",
         "severity": "INFO",
         "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance",
-        "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
+        "source_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
         "requires_user_decision": false
       }
     ],
-    "response": "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending",
-    "event_type": "QA_READY",
-    "occurred_at": "2026-10-26T08:26:51.911597+00:00",
+    "response": "These historical FAILs remain recorded. Do not treat coarse simulation tests as equivalent to native60Hz interaction. Repairs and finalnativePASS are separate events.",
+    "event_type": "QA_FAILED",
+    "occurred_at": "2026-10-26T09:15:09.076349+00:00",
     "completed": [
-      "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending"
+      "Preserved failed native actions, state and screenshots; native60Hz failing reproductions added"
     ],
-    "event_id": "a8b8bc18dd21dffc7fc70f6b07e57eee601399e67e9c45d5a3c240c1b08bbf17",
-    "remote_head": "d460928707ea527a7cd58c45622fa1e9caff923a",
+    "event_id": "1001e67e689a1230689f744664ac5ad5ad8de6d72803765dd1e5c65aa60d0e32",
+    "remote_head": "0239a308838dab06ec9f5e2dda4e413cda48d046",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "d460928707ea527a7cd58c45622fa1e9caff923a",
-    "recorded_at": "2026-10-26T08:26:51.911597+00:00",
+    "latest_pushed_sha": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+    "recorded_at": "2026-10-26T09:15:09.076349+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
     "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
   },
@@ -693,11 +702,11 @@
     "V227-ORDERS": {
       "task_id": "V227-ORDERS",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "severity": "WARNING",
       "branch": "codex/riftwatch-v227-orders",
-      "commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
+      "commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
       "build_sha": null,
-      "summary": "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending",
+      "summary": "Native browser exposed real hostile yielding chase stall and Patrol endpoint deadband after coarse Node tests passed; failures retained; subsequent fixes separately validated",
       "code_changes": [],
       "next_steps": [
         "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
@@ -706,12 +715,21 @@
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Source-pinned focused evidence",
-          "status": "PASS",
+          "name": "Initial native AttackMove cannot finish fight",
+          "status": "FAIL",
           "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
-          "evidence": "docs/evidence/v227-orders/regression.log.txt",
-          "evidence_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
-          "evidence_blob": "c0779a9d73c190c87dfe6bcf702ba3744a125a5c",
+          "evidence": "docs/evidence/v227-orders/browser-failure/initial-results.json",
+          "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+          "evidence_blob": "8c2802be7950cd3542cdeb34581caee28e417550",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Patrol finalpoint deadband",
+          "status": "FAIL",
+          "source_commit": "a88716a4f3a726c7bc6946b9b07a06d9d5f65426",
+          "evidence": "docs/evidence/v227-orders/browser-failure/patrol-endpoint-results.json",
+          "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+          "evidence_blob": "514c68f6dfaa6492dff6ec3cb8150d90e70b2aa6",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -720,22 +738,22 @@
           "id": "NEW_CANDIDATE_UNDEPLOYED",
           "severity": "INFO",
           "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance",
-          "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
+          "source_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
           "requires_user_decision": false
         }
       ],
-      "response": "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending",
-      "event_type": "QA_READY",
-      "occurred_at": "2026-10-26T08:26:51.911597+00:00",
+      "response": "These historical FAILs remain recorded. Do not treat coarse simulation tests as equivalent to native60Hz interaction. Repairs and finalnativePASS are separate events.",
+      "event_type": "QA_FAILED",
+      "occurred_at": "2026-10-26T09:15:09.076349+00:00",
       "completed": [
-        "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending"
+        "Preserved failed native actions, state and screenshots; native60Hz failing reproductions added"
       ],
-      "event_id": "a8b8bc18dd21dffc7fc70f6b07e57eee601399e67e9c45d5a3c240c1b08bbf17",
-      "remote_head": "d460928707ea527a7cd58c45622fa1e9caff923a",
+      "event_id": "1001e67e689a1230689f744664ac5ad5ad8de6d72803765dd1e5c65aa60d0e32",
+      "remote_head": "0239a308838dab06ec9f5e2dda4e413cda48d046",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "latest_pushed_sha": "d460928707ea527a7cd58c45622fa1e9caff923a",
-      "recorded_at": "2026-10-26T08:26:51.911597+00:00",
+      "latest_pushed_sha": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+      "recorded_at": "2026-10-26T09:15:09.076349+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
       "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
     }

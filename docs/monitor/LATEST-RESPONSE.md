@@ -1,1 +1,1 @@
-AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending
+These historical FAILs remain recorded. Do not treat coarse simulation tests as equivalent to native60Hz interaction. Repairs and finalnativePASS are separate events.
