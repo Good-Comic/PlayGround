@@ -4,7 +4,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 from live228_runtime import connect_browser,require_url
 p=argparse.ArgumentParser();p.add_argument('--case',default='groups');p.add_argument('--url',required=True);p.add_argument('--sha',required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();require_url(a.url);a.out.mkdir(parents=True,exist_ok=True)
-r={'stage':'AFTER_DEPLOY_LIVE','case':a.case,'source_sha':a.sha,'tests':[],'actions':[],'console':[],'errors':[],'failed':[],'http_errors':[],'fixture':'Native UI for scale; explicit clear-field initial state for tactical/wave cases; no skip/forced kill to settle waves'}
+r={'stage':'AFTER_DEPLOY_LIVE','url':a.url,'case':a.case,'source_sha':a.sha,'tests':[],'actions':[],'console':[],'errors':[],'failed':[],'http_errors':[],'fixture':'Native UI for scale; explicit clear-field initial state for tactical/wave cases; no skip/forced kill to settle waves'}
 with sync_playwright() as pw:
  b=connect_browser(pw);c=b.new_context(viewport={'width':1600,'height':1100},accept_downloads=True,record_har_path=str(a.out/'network.har'));c.tracing.start(screenshots=False,snapshots=True);page=c.new_page();r['browser']=b.version
  page.on('console',lambda m:r['console'].append({'type':m.type,'text':m.text}));page.on('pageerror',lambda e:r['errors'].append(str(e)));page.on('requestfailed',lambda q:r['failed'].append({'url':q.url,'error':q.failure}));page.on('response',lambda q:r['http_errors'].append({'url':q.url,'status':q.status}) if q.status>=400 else None)

@@ -6,7 +6,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 from live228_runtime import connect_browser,require_url
 parser=argparse.ArgumentParser();parser.add_argument('--out',type=Path,required=True);parser.add_argument('--url',default='http://127.0.0.1:8008');parser.add_argument('--expected-commit',required=True);a=parser.parse_args();require_url(a.url);a.out.mkdir(parents=True,exist_ok=True)
-r={'stage':'AFTER_DEPLOY_LIVE','tests':[],'actions':[],'console':[],'page_errors':[],'failed':[],'samples':[]}
+r={'stage':'AFTER_DEPLOY_LIVE','url':a.url,'tests':[],'actions':[],'console':[],'page_errors':[],'failed':[],'samples':[]}
 with sync_playwright() as pw:
  b=connect_browser(pw);c=b.new_context(viewport={'width':1600,'height':1100},record_har_path=str(a.out/'network.har'));c.tracing.start(screenshots=False,snapshots=True);p=c.new_page();p.on('console',lambda m:r['console'].append({'type':m.type,'text':m.text}));p.on('pageerror',lambda e:r['page_errors'].append(str(e)));p.on('requestfailed',lambda e:r['failed'].append({'url':e.url,'error':e.failure}))
  def save(): (a.out/'results.json').write_text(json.dumps(r,ensure_ascii=False,indent=2))
@@ -30,7 +30,7 @@ with sync_playwright() as pw:
    if obs['arrived']==len(ids):break
   result={'name':name,'fixture':'controlled public-runtime map fixture, actual game engine, real drag selection/right-click','threshold':f'{len(ids)}/{len(ids)} idle within {timeout}s; penetration<=.025; clipping=0','arrived':obs['arrived'],'units':len(ids),'wall_seconds':time.monotonic()-start,'max_penetration':max_pen,'clipped_samples':clipped,'crossed_channel':len(crossed) if name.startswith('narrow') else None,'pass':obs['arrived']==len(ids) and max_pen<=.025 and clipped==0 and (not name.startswith('narrow') or len(crossed)==len(ids))};r['tests'].append(result);screenshot(name+'.png');save();assert result['pass'],result
  try:
-  p.goto(a.url);p.wait_for_function('!!window.ageOfAsh');r['manifest']=c.request.get(a.url+'/__qa_build.json').json();assert r['manifest']['commit']==a.expected_commit and not r['manifest']['dirty']
+  p.goto(a.url);p.wait_for_function('!!window.ageOfAsh');r['manifest']=p.evaluate("async()=>await(await fetch('__qa_build.json',{cache:'no-store'})).json()");assert r['manifest']['commit']==a.expected_commit and not r['manifest']['dirty']
   p.locator('#setup-seed').fill('riftwatch-p0-v1');p.locator('#setup-civ').select_option('TEU');p.locator('#setup-biome').select_option('steppe');p.locator('#btn-start').click();r['actions'].append({'action':'Start Game','seed':'riftwatch-p0-v1','civ':'TEU','biome':'steppe'});p.wait_for_timeout(4000)
   p.locator('#btn-pause').click();before=sample();p.locator('#btn-save').click();r['actions'].append({'action':'Pause + Save Run','scope':'fresh local context only'});screenshot('save-run.png');p.reload();p.locator('#btn-continue').click();after=sample();same=before['seed']==after['seed'] and len(before['units'])==len(after['units']) and abs(before['time']-after['time'])<1;r['tests'].append({'name':'real-ui-save-load','threshold':'same seed/unit count; restored time within1s','before':before,'after':after,'pass':same});assert same
   p.keyboard.press('Tab');p.keyboard.press('Tab');stances=[]
