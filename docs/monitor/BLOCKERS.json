@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T03:54:13.610889+00:00",
+  "updated_at": "2026-10-26T04:04:32.090148+00:00",
   "blockers": [
     {
       "id": "DEPLOYMENT_BLOCKED_AWAITING_USER_APPROVAL",
@@ -34,43 +34,35 @@
       "task_id": "PLAYTEST-P0"
     },
     {
-      "id": "SUPERVISOR_REFERENCE_UNREAD",
+      "id": "EXTERNAL_REVIEW_PENDING",
+      "severity": "INFO",
+      "summary": "No independent Supervisor or external Agent executed; REVIEW_PENDING and DISPATCH_NOT_CONNECTED only",
+      "source_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
       "requires_user_decision": false,
-      "severity": "BLOCKED",
-      "source_commit": "fa520ae3006329bd2b1c54ac90938519465bf320",
-      "summary": "Attached conversation and Strategy v2.2.6 unread: no read_thread/conversation reader tool; continue independent already-authorized work",
       "task_id": "MONITOR-V224"
     },
     {
       "id": "LIVE_STREAM_NOT_CONFIRMED",
-      "requires_user_decision": false,
       "severity": "INFO",
-      "source_commit": "fa520ae3006329bd2b1c54ac90938519465bf320",
-      "summary": "GitHub snapshots verified; no authorized Cloud execution stream confirmed",
-      "task_id": "MONITOR-V224"
-    },
-    {
-      "id": "FINAL_HTTP_READBACK_503",
+      "summary": "Snapshot-based feed only; no Cloud private log/quota access",
+      "source_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
       "requires_user_decision": false,
-      "severity": "BLOCKED",
-      "source_commit": "fa520ae3006329bd2b1c54ac90938519465bf320",
-      "summary": "Pinned raw GitHub HTTP read returned503; no policy denial established; no repeated retry",
       "task_id": "MONITOR-V224"
     },
     {
       "id": "PAGES_PERMISSION",
-      "severity": "ACTION_REQUIRED",
-      "summary": "GitHub Settings>Pages>Deploy from branch codex/riftwatch-playtest-site /(root)>Save; API403 Resource not accessible by integration",
-      "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
       "requires_user_decision": true,
+      "severity": "ACTION_REQUIRED",
+      "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+      "summary": "GitHub Settings>Pages>Deploy from branch codex/riftwatch-playtest-site /(root)>Save; API403 Resource not accessible by integration",
       "task_id": "V226-DELIVERY"
     },
     {
       "id": "PAGES_NETWORK",
-      "severity": "ACTION_REQUIRED",
-      "summary": "Allow exact good-comic.github.io in Codex UI before Agent browser; no retry/bypass",
-      "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
       "requires_user_decision": true,
+      "severity": "ACTION_REQUIRED",
+      "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+      "summary": "Allow exact good-comic.github.io in Codex UI before Agent browser; no retry/bypass",
       "task_id": "V226-DELIVERY"
     }
   ]

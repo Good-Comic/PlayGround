@@ -1,1 +1,1 @@
-已保存指定版本到獨立Pages發布分支；啟用站點遇到整合權限403，公開URL尚未發布。GitHub UI需選擇該分支/root並Save，Codex UI需允許精確Pages網域。其他授權工作繼續。
+30項工具測試通過，Feed rawHTTP與ContentsAPI各四檔實讀成功；歷史503保留。v2.2.6已明確讀取，監控舊阻塞已更新。獨立Supervisor審查與真實跨Agent接力仍待完成。
