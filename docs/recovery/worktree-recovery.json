@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-26T03:46:55.401657+00:00",
+  "captured_at_utc": "2026-10-26T04:10:52.634164+00:00",
   "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "fa520ae3006329bd2b1c54ac90938519465bf320",
+  "collector_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
   "collector_dirty": false,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-26T03:46:55.401657+00:00"
+    "queried_at": "2026-10-26T04:10:52.634164+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -25,9 +25,10 @@
     "codex/riftwatch-gameplay-improvement": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
     "codex/riftwatch-gameplay-integration": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
     "codex/riftwatch-playtest-candidate": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-    "codex/riftwatch-progress-feed": "b1aa461e19e101f0c4bde77a694ac8955b82fdf9",
-    "codex/riftwatch-recovery-index": "948a12921e8ed93af2f43ea695d238325a9da496",
-    "codex/riftwatch-task-ownership": "6a8b8b81a8cbd61cfc99209ade1a439106ad0a39",
+    "codex/riftwatch-playtest-site": "6c98a8e6b7f7759ca57a9c9f94f675e2b6070381",
+    "codex/riftwatch-progress-feed": "d103cb83279dabb54b6944fd420b8aab58feef97",
+    "codex/riftwatch-recovery-index": "fd071230958d9312846335127026628410661868",
+    "codex/riftwatch-task-ownership": "6c2fb02c384e1d5781c2627356dc79ed377e3ccb",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -37,6 +38,7 @@
     "codex/riftwatch-v222-prediction": "b72f9603bf2d8fd865da5cf9dccc32be1dd90830",
     "codex/riftwatch-v222-recovery": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
     "codex/riftwatch-v224-monitor": "fa520ae3006329bd2b1c54ac90938519465bf320",
+    "codex/riftwatch-v226-delivery": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -144,6 +146,12 @@
       "branch": "codex/riftwatch-v224-monitor",
       "head": "fa520ae3006329bd2b1c54ac90938519465bf320",
       "remote_head": "fa520ae3006329bd2b1c54ac90938519465bf320",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-v226-delivery",
+      "head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "remote_head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -445,6 +453,59 @@
       "changed_files": [],
       "dirty": false,
       "local_record_status": "LOCAL_INVENTORIED"
+    },
+    {
+      "path": "/workspace/riftwatch-v226",
+      "branch": "codex/riftwatch-v226-delivery",
+      "head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "locked": false,
+      "task_id": "V226-DELIVERY",
+      "last_validation": [
+        {
+          "path": "docs/evidence/v226-monitor/all-tool-tests-provenance.json",
+          "source_commit": "c24a808b5e8ddfcc4fcf28554b020fb77ecaf1ad",
+          "result": "PASS39focused tool/recovery tests; no application resource change; schema FAIL retained and repaired",
+          "exists": true,
+          "storage": "REMOTE_SAVED",
+          "sha256": "754ae24040bc5fb17e6f319bf4ab8f8c9cbd31b8d8e2f0c4e1374fc717bbd5d8",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+        },
+        {
+          "path": "docs/evidence/v226-monitor/test-provenance.json",
+          "source_commit": "fd616d0d4c1ea62263a42fc0065b1b16752c427a",
+          "result": "PASS30local tool tests; real rawHTTP4/ContentsAPI4 pinned reads; no game/live/hardware claim",
+          "exists": true,
+          "storage": "REMOTE_SAVED",
+          "sha256": "f1797035545f78a3f55912291b714666de51e55493b4a5fb3594f9daf6018a53",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+        },
+        {
+          "path": "docs/evidence/v226-deployment/artifact-audit.json",
+          "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+          "result": "PASS exact2ZIPs and28payloads; Pages branch6c98a8e saved, enablement403 BLOCKED",
+          "exists": true,
+          "storage": "REMOTE_SAVED",
+          "sha256": "8634ac0cbede72a89ba8f003235aefab024aea3e85c5767fc2ea2733dcc77e5d",
+          "resource_freshness": "SOURCE_CHANGED"
+        }
+      ],
+      "blockers": [
+        "GitHub UI must enable Pages source branch/root; integration403",
+        "Codex UI must allow exactgood-comic.github.io; Envoy403",
+        "REVIEW_PENDING; Gemini not installed/no externalAgent called",
+        "OmGitHub pinnedcheckpoint force-with-lease conflicts current safety"
+      ],
+      "next_steps": [
+        "After UI settings, query Pages status and actual public browser28resource/gameplay acceptance",
+        "Actual independent Supervisor reviews3d5b49b source/evidence; revalidate any newer docs-only ref",
+        "Continue target-state/time-loss diagnosis and AttackMove/UIScale independent feature queue; do not rerun valid tests"
+      ],
+      "remote_status": "REMOTE_SAVED",
+      "remote_head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "unpushed_commits": [],
+      "changed_files": [],
+      "dirty": false,
+      "local_record_status": "LOCAL_INVENTORIED"
     }
   ],
   "comparison": [
@@ -484,8 +545,12 @@
       ],
       "previous_head": "0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc",
       "actual_head": "b72f9603bf2d8fd865da5cf9dccc32be1dd90830"
+    },
+    {
+      "path": "/workspace/riftwatch-v226",
+      "change": "NEW_OR_MANIFEST_MISSING"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "e2cb5b4e876abfad5928ff0529f48da5425e3c1ba41c56d429ac0b70e45b316d"
+  "snapshot_id": "c97a0d8724168b666ff32f479a107fc57de49b1b504f5d74b291e5c0b731a1aa"
 }

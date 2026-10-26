@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: e2cb5b4e876abfad5928ff0529f48da5425e3c1ba41c56d429ac0b70e45b316d
-Captured UTC: 2026-10-26T03:46:55.401657+00:00 · Trigger: FINAL_CHECKPOINT
-Collector source: `fa520ae3006329bd2b1c54ac90938519465bf320` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: c97a0d8724168b666ff32f479a107fc57de49b1b504f5d74b291e5c0b731a1aa
+Captured UTC: 2026-10-26T04:10:52.634164+00:00 · Trigger: FINAL_CHECKPOINT
+Collector source: `ee0d219a916d8388fab5d66ff86e3bd650aa66af` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -18,6 +18,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-prediction | codex/riftwatch-v222-prediction | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | REMOTE_SAVED | False |
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
+| /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
 
 ## work
 
@@ -98,3 +99,11 @@ Uncommitted paths: []
 Validation: [{"path": "docs/evidence/strategy-v222/target-p0-summary.json", "source_commit": "77c20609da28b38fa405531a0215a8261dc6b1ef", "result": "PASS full normal P0 and51Node/fourlocales/5native browser checks", "exists": true, "storage": "REMOTE_SAVED", "sha256": "a74ca0c7c7c6c650b110ae41dfc2dce5bea5e8c4843e94ec689172d36fe9f851", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"path": "docs/evidence/strategy-v222/target-performance-summary.json", "source_commit": "294fa287aed37af7820e682d175577a89867380f", "result": "9/12qualityPASS;12/12stuck+movementPASS;3FAIL retained; integration BLOCKED", "exists": true, "storage": "REMOTE_SAVED", "sha256": "b07b652f31cbea97ef32217b7b166b4e4c60b51e766ef0e22f1a737c47253ae3", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: New100r1 severe rAF stall;250r1/r3 clock-progress loss; no retry/waiver
 Next: Diagnose stalls/time loss in separate diagnostic cohort, no repeated acceptance retry; Then gate feature merge; do not label all collisions fixed
+
+## codex/riftwatch-v226-delivery
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"path": "docs/evidence/v226-monitor/all-tool-tests-provenance.json", "source_commit": "c24a808b5e8ddfcc4fcf28554b020fb77ecaf1ad", "result": "PASS39focused tool/recovery tests; no application resource change; schema FAIL retained and repaired", "exists": true, "storage": "REMOTE_SAVED", "sha256": "754ae24040bc5fb17e6f319bf4ab8f8c9cbd31b8d8e2f0c4e1374fc717bbd5d8", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"path": "docs/evidence/v226-monitor/test-provenance.json", "source_commit": "fd616d0d4c1ea62263a42fc0065b1b16752c427a", "result": "PASS30local tool tests; real rawHTTP4/ContentsAPI4 pinned reads; no game/live/hardware claim", "exists": true, "storage": "REMOTE_SAVED", "sha256": "f1797035545f78a3f55912291b714666de51e55493b4a5fb3594f9daf6018a53", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"path": "docs/evidence/v226-deployment/artifact-audit.json", "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c", "result": "PASS exact2ZIPs and28payloads; Pages branch6c98a8e saved, enablement403 BLOCKED", "exists": true, "storage": "REMOTE_SAVED", "sha256": "8634ac0cbede72a89ba8f003235aefab024aea3e85c5767fc2ea2733dcc77e5d", "resource_freshness": "SOURCE_CHANGED"}]
+Blockers: GitHub UI must enable Pages source branch/root; integration403; Codex UI must allow exactgood-comic.github.io; Envoy403; REVIEW_PENDING; Gemini not installed/no externalAgent called; OmGitHub pinnedcheckpoint force-with-lease conflicts current safety
+Next: After UI settings, query Pages status and actual public browser28resource/gameplay acceptance; Actual independent Supervisor reviews3d5b49b source/evidence; revalidate any newer docs-only ref; Continue target-state/time-loss diagnosis and AttackMove/UIScale independent feature queue; do not rerun valid tests
