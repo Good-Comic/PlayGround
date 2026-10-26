@@ -1,10 +1,10 @@
-This is an immutable PRE-DOC-COMMIT snapshot. Final post-push clean refs are in the dedicated codex/riftwatch-recovery-index; never interpret pending snapshot files as an unsaved application patch after publication.
+Immutable snapshot BEFORE its own bounded publication commit. Final post-push canonical Recovery/Handoff is on codex/riftwatch-recovery-index; query actualGit/ownership before continuing. No recursive snapshot commits.
 
 # Worktree Recovery Manifest
 
-Snapshot ID: 7ef55109327f4397ede8bb2b3727d368e726ba9a294648d07504182c8109ce1f
-Captured UTC: 2026-10-26T09:32:07.923376+00:00 · Trigger: SLICE_COMPLETE
-Collector source: `27b279410db1bb9c14b3c1b921b146059a6c6341` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: 0d17595acf3fcb6ea6aba3ddd4bbeca73cdefe7c4055e2bd5ac893367dd9bcb9
+Captured UTC: 2026-10-26T13:31:57.986013+00:00 · Trigger: SLICE_COMPLETE
+Collector source: `16883dcce674fca4700293306198f2c717e47f50` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -12,10 +12,15 @@ Point-in-time observation before writing output; snapshot publication commit is 
 |---|---|---|---|---|---|
 | /workspace/PlayGround | work | 8ef7358d61980eada812ae16b8e12c2f1e28baa8 | None | REMOTE_BRANCH_ABSENT | False |
 | /workspace/riftwatch | codex/riftwatch-v222-recovery | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | REMOTE_SAVED | False |
+| /workspace/riftwatch-budget | codex/riftwatch-v228-budget | 094324e1b61e6fddf60763848d36eca107b6282f | 094324e1b61e6fddf60763848d36eca107b6282f | REMOTE_SAVED | False |
+| /workspace/riftwatch-candidate228 | codex/riftwatch-playtest-v228 | 16883dcce674fca4700293306198f2c717e47f50 | 16883dcce674fca4700293306198f2c717e47f50 | REMOTE_SAVED | False |
 | /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | c456cae581b3ec85a7dd222d017453d2e589e095 | c456cae581b3ec85a7dd222d017453d2e589e095 | REMOTE_SAVED | False |
+| /workspace/riftwatch-clock | codex/riftwatch-v228-clock | 6d11aa2fc7bb3c749a9f714c16081b4f6e98c580 | 6d11aa2fc7bb3c749a9f714c16081b4f6e98c580 | REMOTE_SAVED | False |
+| /workspace/riftwatch-groups | codex/riftwatch-v228-groups | 56fedb49483e5843f4584eb641382c7e93b5d072 | 56fedb49483e5843f4584eb641382c7e93b5d072 | REMOTE_SAVED | False |
 | /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | REMOTE_SAVED | False |
 | /workspace/riftwatch-live | codex/riftwatch-v226-live-acceptance | 1a5a67c5373bdd5ede925484776339f95ded78a0 | 1a5a67c5373bdd5ede925484776339f95ded78a0 | REMOTE_SAVED | False |
 | /workspace/riftwatch-monitor | codex/riftwatch-v224-monitor | fa520ae3006329bd2b1c54ac90938519465bf320 | fa520ae3006329bd2b1c54ac90938519465bf320 | REMOTE_SAVED | False |
+| /workspace/riftwatch-nav | codex/riftwatch-v228-nav | 5fab2cedc770b238b37559eb81c42495e5eeb27a | 5fab2cedc770b238b37559eb81c42495e5eeb27a | REMOTE_SAVED | False |
 | /workspace/riftwatch-orders | codex/riftwatch-v227-orders | 0f2d3f6213559380156ae2af8c84ed44d0c9cca2 | 0f2d3f6213559380156ae2af8c84ed44d0c9cca2 | REMOTE_SAVED | False |
 | /workspace/riftwatch-playtest | codex/riftwatch-playtest-candidate | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | REMOTE_SAVED | False |
 | /workspace/riftwatch-pop | codex/riftwatch-v22-population | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | REMOTE_SAVED | False |
@@ -24,7 +29,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-ui | codex/riftwatch-v227-ui | 6ad09704c184ee772bf88d92949e8889fca086ce | 6ad09704c184ee772bf88d92949e8889fca086ce | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v227 | codex/riftwatch-playtest-v227 | 27b279410db1bb9c14b3c1b921b146059a6c6341 | 27b279410db1bb9c14b3c1b921b146059a6c6341 | REMOTE_SAVED | True |
+| /workspace/riftwatch-v227 | codex/riftwatch-playtest-v227 | c25ccc76178b044b061c88954ed2cf7f5a9b59fb | c25ccc76178b044b061c88954ed2cf7f5a9b59fb | REMOTE_SAVED | False |
 | /workspace/riftwatch-wave | codex/riftwatch-v227-wave | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | REMOTE_SAVED | False |
 
 ## work
@@ -43,6 +48,22 @@ Validation: [{"path": "/workspace/diagnostics/riftwatch/v22-quality-baseline/res
 Blockers: Feature-specific remaining gates; see handoff
 Next: Publish framework; preserve other worktrees; do not rerun valid12 baseline cases
 
+## codex/riftwatch-v228-budget
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"source_commit": "094324e1b61e6fddf60763848d36eca107b6282f", "path": "docs/evidence/v228-budget/tests-after.log.txt", "result": "8fixturePASS; actualQUOTA_PERCENT_UNKNOWN", "exists": true, "storage": "REMOTE_SAVED", "sha256": "6c3229e97c3902dd51bcb194c42e3ab909c28dba36bbf860845525b30f0b53c9", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: NewSHApublicationrequiresuserapproval; nothingdeployed; ClockprototypeadoptionBLOCKEDbydeterministiccontinuity andremainingpause/backlog/browsergates; HARDWARE_TEST_PENDING; current-scalecombat/fullcampaignformalacceptance pending; QUOTA_PERCENT_UNKNOWN; no connectedautomaticAgentdispatch/realGeminihandoff
+Next: Do not rerun valid98/18/fourlocale/nativeproofunlessaffectedsourcechanges. VerifyactualremoteCandidateHEAD/appBuildab56 andlatestRecovery/ownership first; P0 isolate strictSaveLoad transientcontinuity: snapshot10s nativeclockfixture, record nav/yield/progress/searchqueue/relevantcombat effects before/afterrestore; replay identicalfixedticks; do not blame RNGrestore when initialstateequals; Produce minimaldeterministicSaveLoadfailure beforefix; no productionloopinstalluntil exactstate andaffectedbrowser/overload/pause gatespass; Ifuser explicitlyapprovesdocs/playtest/v228/APPROVAL-PLAN.json, claimsitebranch, recheckHEAD,addexactbuildsab56/rootpointerordinarycommit; preserveD6; onlythenactualpublicQA
+
+## codex/riftwatch-playtest-v228
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911", "path": "docs/evidence/v228-candidate/REPORT.md", "result": "LocalexperimentalCandidate8smokePASS; undeployed", "exists": true, "storage": "REMOTE_SAVED", "sha256": "e7ad3c64011eb92b1ab5fbfeb087b9ea59bd3973cc3b63a3f3a0d8f1f8a74b0e", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: NewSHApublicationrequiresuserapproval; nothingdeployed; ClockprototypeadoptionBLOCKEDbydeterministiccontinuity andremainingpause/backlog/browsergates; HARDWARE_TEST_PENDING; current-scalecombat/fullcampaignformalacceptance pending; QUOTA_PERCENT_UNKNOWN; no connectedautomaticAgentdispatch/realGeminihandoff
+Next: Do not rerun valid98/18/fourlocale/nativeproofunlessaffectedsourcechanges. VerifyactualremoteCandidateHEAD/appBuildab56 andlatestRecovery/ownership first; P0 isolate strictSaveLoad transientcontinuity: snapshot10s nativeclockfixture, record nav/yield/progress/searchqueue/relevantcombat effects before/afterrestore; replay identicalfixedticks; do not blame RNGrestore when initialstateequals; Produce minimaldeterministicSaveLoadfailure beforefix; no productionloopinstalluntil exactstate andaffectedbrowser/overload/pause gatespass; Ifuser explicitlyapprovesdocs/playtest/v228/APPROVAL-PLAN.json, claimsitebranch, recheckHEAD,addexactbuildsab56/rootpointerordinarycommit; preserveD6; onlythenactualpublicQA
+
 ## codex/riftwatch-v22-civ-alignment
 
 Unpushed commits: []
@@ -50,6 +71,22 @@ Uncommitted paths: []
 Validation: [{"path": "docs/evidence/strategy-v222/civ-results.json", "source_commit": "da0823c6341b1ee85e32d1b6c0f776ef3008255c", "result": "PASS8 browser,47 full Node,4locales; prior description FAIL fixed", "exists": true, "storage": "REMOTE_SAVED", "sha256": "ed43181fc96ec3f6463dfff37203727a307e9c5eba443a51dd92e361e99f3908", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"path": "docs/evidence/strategy-v222/civ-p0-summary.json", "source_commit": "2ad2fe4a6466c6c38a033d1194f004924dbfda37", "result": "PASS normal P0; performance/combined B1/B2 still pending", "exists": true, "storage": "REMOTE_SAVED", "sha256": "d5d392bea72713c02c184baca4f00558da547abe0ed016e6b74caa9c50a0f5e2", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Feature-specific remaining gates; see handoff
 Next: Persist normal P0 evidence; performance/combined B1/B2 gates pending
+
+## codex/riftwatch-v228-clock
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"source_commit": "144c1f3f8769f94e15e94a190279dc04f445b8a5", "path": "docs/evidence/v228-clock/REPORT.md", "result": "FAILclock/strictSaveLoad; proposalonly", "exists": true, "storage": "REMOTE_SAVED", "sha256": "32e84096f526d4e8279b0840a044e1edda8cfbea85c3ba4c6ac7cc908734aceb", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: NewSHApublicationrequiresuserapproval; nothingdeployed; ClockprototypeadoptionBLOCKEDbydeterministiccontinuity andremainingpause/backlog/browsergates; HARDWARE_TEST_PENDING; current-scalecombat/fullcampaignformalacceptance pending; QUOTA_PERCENT_UNKNOWN; no connectedautomaticAgentdispatch/realGeminihandoff
+Next: Do not rerun valid98/18/fourlocale/nativeproofunlessaffectedsourcechanges. VerifyactualremoteCandidateHEAD/appBuildab56 andlatestRecovery/ownership first; P0 isolate strictSaveLoad transientcontinuity: snapshot10s nativeclockfixture, record nav/yield/progress/searchqueue/relevantcombat effects before/afterrestore; replay identicalfixedticks; do not blame RNGrestore when initialstateequals; Produce minimaldeterministicSaveLoadfailure beforefix; no productionloopinstalluntil exactstate andaffectedbrowser/overload/pause gatespass; Ifuser explicitlyapprovesdocs/playtest/v228/APPROVAL-PLAN.json, claimsitebranch, recheckHEAD,addexactbuildsab56/rootpointerordinarycommit; preserveD6; onlythenactualpublicQA
+
+## codex/riftwatch-v228-groups
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"source_commit": "042f3a75868e80268f799a54b1b9d4121c4c60e5", "path": "docs/evidence/v228-groups/REPORT.md", "result": "18Node/19native/4locales andboundedimpactPASS", "exists": true, "storage": "REMOTE_SAVED", "sha256": "959f3adf367fc30ea70b3cffcc8a864bda938c00ed8d586cdaa30bea423d6e5f", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: NewSHApublicationrequiresuserapproval; nothingdeployed; ClockprototypeadoptionBLOCKEDbydeterministiccontinuity andremainingpause/backlog/browsergates; HARDWARE_TEST_PENDING; current-scalecombat/fullcampaignformalacceptance pending; QUOTA_PERCENT_UNKNOWN; no connectedautomaticAgentdispatch/realGeminihandoff
+Next: Do not rerun valid98/18/fourlocale/nativeproofunlessaffectedsourcechanges. VerifyactualremoteCandidateHEAD/appBuildab56 andlatestRecovery/ownership first; P0 isolate strictSaveLoad transientcontinuity: snapshot10s nativeclockfixture, record nav/yield/progress/searchqueue/relevantcombat effects before/afterrestore; replay identicalfixedticks; do not blame RNGrestore when initialstateequals; Produce minimaldeterministicSaveLoadfailure beforefix; no productionloopinstalluntil exactstate andaffectedbrowser/overload/pause gatespass; Ifuser explicitlyapprovesdocs/playtest/v228/APPROVAL-PLAN.json, claimsitebranch, recheckHEAD,addexactbuildsab56/rootpointerordinarycommit; preserveD6; onlythenactualpublicQA
 
 ## codex/riftwatch-gameplay-integration
 
@@ -74,6 +111,14 @@ Uncommitted paths: []
 Validation: []
 Blockers: NOT_ASSESSED
 Next: Inspect task registry and relevant diff before writing
+
+## codex/riftwatch-v228-nav
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"source_commit": "144c1f3f8769f94e15e94a190279dc04f445b8a5", "path": "docs/evidence/v228-nav/ROOT-CAUSE.md", "result": "98Node,recordednativefail/pass,8/24/orders/normalPASS", "exists": true, "storage": "REMOTE_SAVED", "sha256": "7e349d49c30a40514512745907e38003a23b69bbd78acaf67f0f50309328f514", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: NewSHApublicationrequiresuserapproval; nothingdeployed; ClockprototypeadoptionBLOCKEDbydeterministiccontinuity andremainingpause/backlog/browsergates; HARDWARE_TEST_PENDING; current-scalecombat/fullcampaignformalacceptance pending; QUOTA_PERCENT_UNKNOWN; no connectedautomaticAgentdispatch/realGeminihandoff
+Next: Do not rerun valid98/18/fourlocale/nativeproofunlessaffectedsourcechanges. VerifyactualremoteCandidateHEAD/appBuildab56 andlatestRecovery/ownership first; P0 isolate strictSaveLoad transientcontinuity: snapshot10s nativeclockfixture, record nav/yield/progress/searchqueue/relevantcombat effects before/afterrestore; replay identicalfixedticks; do not blame RNGrestore when initialstateequals; Produce minimaldeterministicSaveLoadfailure beforefix; no productionloopinstalluntil exactstate andaffectedbrowser/overload/pause gatespass; Ifuser explicitlyapprovesdocs/playtest/v228/APPROVAL-PLAN.json, claimsitebranch, recheckHEAD,addexactbuildsab56/rootpointerordinarycommit; preserveD6; onlythenactualpublicQA
 
 ## codex/riftwatch-v227-orders
 
@@ -142,8 +187,8 @@ Next: Inspect task registry and relevant diff before writing
 ## codex/riftwatch-playtest-v227
 
 Unpushed commits: []
-Uncommitted paths: [{"status": " M", "path": "docs/GAMEPLAY-ACCEPTANCE.md"}, {"status": " M", "path": "docs/GAMEPLAY-PROGRESS.md"}, {"status": " M", "path": "docs/GAMEPLAY-REQUIREMENTS.md"}, {"status": " M", "path": "docs/GAMEPLAY-ROADMAP.md"}, {"status": " M", "path": "docs/PERFORMANCE-RECOVERY.md"}, {"status": " M", "path": "docs/evidence/v227-candidate/REPORT.md"}, {"status": " M", "path": "docs/handoff/ACTIVE-TASK.json"}, {"status": " M", "path": "docs/handoff/HANDOFF.md"}, {"status": " M", "path": "docs/handoff/NEXT-TASKS.json"}, {"status": " M", "path": "docs/recovery/task-registry.json"}, {"status": "??", "path": "docs/evidence/v227-candidate/final-build-1280-zh-Hant-130.png"}, {"status": "??", "path": "docs/evidence/v227-candidate/final-build-scaled-game.png"}, {"status": "??", "path": "docs/evidence/v227-candidate/orders-fixed-network.har.gz"}, {"status": "??", "path": "docs/evidence/v227-candidate/orders-fixed-resource-audit.json"}, {"status": "??", "path": "docs/evidence/v227-candidate/ui-final-sha-network.har.gz"}, {"status": "??", "path": "docs/evidence/v227-candidate/ui-final-sha-resource-audit.json"}, {"status": "??", "path": "docs/evidence/v227-candidate/ui-final-sha-results.json"}, {"status": "??", "path": "docs/evidence/v227-candidate/wave-fixed-network.har.gz"}, {"status": "??", "path": "docs/evidence/v227-candidate/wave-fixed-resource-audit.json"}, {"status": "??", "path": "docs/playtest/v227/APPROVAL-PLAN.json"}, {"status": "??", "path": "docs/playtest/v227/Riftwatch-v227.zip"}, {"status": "??", "path": "docs/playtest/v227/build-metadata.json"}, {"status": "??", "path": "docs/playtest/v227/pages-readonly.json"}]
-Validation: [{"source_commit": "27b279410db1bb9c14b3c1b921b146059a6c6341", "path": "docs/evidence/v227-candidate/REPORT.md", "result": "LOCAL partialPASS; narrowFAIL; not deployed", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "4461787c6664e040df5d00fc67cd4049b4df3f3312ccf5d994ebf5e2f8988e7c", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Uncommitted paths: []
+Validation: [{"source_commit": "27b279410db1bb9c14b3c1b921b146059a6c6341", "path": "docs/evidence/v227-candidate/REPORT.md", "result": "LOCAL partialPASS; narrowFAIL; not deployed", "exists": true, "storage": "REMOTE_SAVED", "sha256": "4461787c6664e040df5d00fc67cd4049b4df3f3312ccf5d994ebf5e2f8988e7c", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: NewfullSHA deployment not authorized; D6only priorrelease scope; Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay; HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending
 Next: Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets; Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch; Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result
 
