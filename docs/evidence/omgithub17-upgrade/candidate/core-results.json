@@ -1,0 +1,224 @@
+{
+  "stage": "AFTER_LOCAL",
+  "source": "45435a323c729a28da1de454a3e53740fc9159f2",
+  "tests": [
+    {
+      "name": "verified build SHA and all28 payload hashes",
+      "observed": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-26T18:14:42.425135+00:00",
+        "resourceVerification": "SHA256_MATCH_28_FILES"
+      },
+      "pass": true
+    },
+    {
+      "name": "fullSHA visible",
+      "observed": "riftwatch-playtest-v1\nPLAYTEST-EXPERIMENTAL\n45435a323c729a28da1de454a3e53740fc9159f2\n2026-10-26T18:14:42.425135+00:00\nSHA256_MATCH_28_FILES",
+      "pass": true
+    },
+    {
+      "name": "game starts",
+      "observed": {
+        "inMenu": false,
+        "units": 13
+      },
+      "pass": true
+    },
+    {
+      "name": "real pointer selects moving villager within3 attempts",
+      "observed": [
+        [
+          "villager"
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "name": "native house placement and construction complete",
+      "observed": {
+        "x": 19,
+        "y": 23,
+        "d": 0.7779247798973946
+      },
+      "pass": true
+    },
+    {
+      "name": "real pointer selects core",
+      "observed": [
+        "core"
+      ],
+      "pass": true
+    },
+    {
+      "name": "native UI villager training completes",
+      "observed": 8,
+      "pass": true
+    },
+    {
+      "name": "legacy save untouched after candidate save",
+      "observed": "LEGACY_CANARY_DO_NOT_TOUCH",
+      "pass": true
+    },
+    {
+      "name": "real Save/Reload/Continue",
+      "observed": {
+        "before": {
+          "seed": 3215474622,
+          "n": 14
+        },
+        "after": {
+          "seed": 3215474622,
+          "n": 14
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "four-language actual export UI",
+      "observed": [
+        {
+          "locale": "en",
+          "text": "Download Bug JSON",
+          "expected": "Download Bug JSON"
+        },
+        {
+          "locale": "zh-Hant",
+          "text": "下載 Bug JSON",
+          "expected": "下載 Bug JSON"
+        },
+        {
+          "locale": "zh-Hans",
+          "text": "下载 Bug JSON",
+          "expected": "下载 Bug JSON"
+        },
+        {
+          "locale": "ja",
+          "text": "Bug JSONを保存",
+          "expected": "Bug JSONを保存"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "downloaded JSON has exactSHA/seed and excludes canaries",
+      "observed": {
+        "build": {
+          "id": "riftwatch-playtest-v1",
+          "commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "status": "PLAYTEST-EXPERIMENTAL",
+          "builtAt": "2026-10-26T18:14:42.425135+00:00",
+          "resourceVerification": "SHA256_MATCH_28_FILES"
+        },
+        "run": {
+          "seed": 3215474622,
+          "civilization": "TEU",
+          "map": "steppe",
+          "wave": 1,
+          "phase": "prep",
+          "simulationSeconds": 20.814099999999858
+        },
+        "population": {
+          "military": 5,
+          "militaryCap": 50,
+          "economic": 9,
+          "economicCap": 60,
+          "activeUnits": 14
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "no runtime/console/request failures",
+      "observed": {
+        "console": [],
+        "errors": [],
+        "failed": []
+      },
+      "pass": true
+    }
+  ],
+  "actions": [
+    "real TEU/steppe/seed Start",
+    {
+      "select_moving_villager": {
+        "x": 692.7167610098888,
+        "y": 451.66244266707486
+      },
+      "offset": -10
+    },
+    {
+      "pointer": [
+        20,
+        24
+      ],
+      "button": "left",
+      "offset": 0,
+      "canvas_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1600,
+        "height": 1100
+      }
+    },
+    {
+      "pointer": [
+        25,
+        27
+      ],
+      "button": "left",
+      "offset": -35,
+      "canvas_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1600,
+        "height": 1100
+      }
+    }
+  ],
+  "console": [],
+  "errors": [],
+  "failed": [],
+  "manifest": {
+    "id": "riftwatch-omgithub17-upgrade-candidate",
+    "commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+    "status": "PLAYTEST-EXPERIMENTAL",
+    "builtAt": "2026-10-26T18:14:42.425135+00:00",
+    "branch": "codex/riftwatch-omgithub17-upgrade-candidate",
+    "dirty": false,
+    "files": {
+      "KNOWN-ISSUES.html": "bd9f0dbc36093ddd313df84546abd7cdd9fff5280675db5e711c7d39a8761b27",
+      "KNOWN-ISSUES.md": "d580a5ff5864b78dc14bcd9b75aefa3929db47b6021b0808c9c66596dcdccaff",
+      "assets/fonts/cinzel-400.ttf": "a0242f6698ae0d3220a29986a09274f9d1eddb4a24da4e50faf387fd1804eb7b",
+      "assets/fonts/cinzel-700.ttf": "5150b3609eeaaa9c6d7e093cb9b16ab8ec2f7110ddf0cbe751887e6f158398af",
+      "assets/fonts/imfell-400.ttf": "725a44824e534dfb26af2bf135dd6fab577ec7f0781c5be17bd89e7ce22f035a",
+      "index.html": "ec6b589d639f8707ec9880ebbbe2c50d783c435c1132b754477a8e9283df4b27",
+      "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+      "js/build-info.js": "8f9b95b01d114595fa9fc09468067e0d1c8d690632eda66647a7ad037d36db54",
+      "js/crowd.js": "459c70033bafe13260627ba585610bee10a9bafe9a8e4888034736eac0045ad7",
+      "js/data.js": "cb50b0c9ef81bf0130402332bf1525424d21aa24b3a3a45fe96946a2ab081932",
+      "js/director.js": "a75ac93d51dbb5fbc2d2727188237d36d626cdf1fa8c94a1681755ba78916c29",
+      "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+      "js/game.js": "d6d403224607ff23d9c9bfe8b0e0342a04b2fb40227c1e86ee93062077ba548a",
+      "js/i18n.js": "80d4b247d162f0acfe314b4aaecbd155e85ab42d29f2bd5aeb07e26c788dfb1a",
+      "js/locales/ja.js": "4d65c6c6405b4b49020a2de84d05cb718132f235baeab26de0e957e2b7881771",
+      "js/locales/zh-Hans.js": "0507e119165c2ed0cfaddb9ce73820dd67ede1817106de6b321366e878891a6d",
+      "js/locales/zh-Hant.js": "31c7c6ced8b6db59b60a8db311a806ba671f6f3c75c93f58134f3a8bff0dbf6f",
+      "js/locales.js": "33cdafd457d7cf9dd6fdd283ea77840c4a742f0bcbc72127933f88d3b220d32a",
+      "js/main.js": "c056787d593183de4cc068d202c9baba191ac5c4dae371ab42d284c0622cc768",
+      "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+      "js/playtest.js": "e7322bd69d69226a15eb38becb39ef79773cd0ff034d598f75100ab80eafe676",
+      "js/renderer.js": "73ac8aeaf371f8d848e1c3ec1227e5239f79cd76dc7d2ce531f03528195841ce",
+      "js/save.js": "51785af91e60e8a4db7693f79023685ae3696b606243af063604953eddd7b25c",
+      "js/settings.js": "7a132a135303ac6f962de6f69f83e41b78142f724fb01d7cc3c2bca0f32c6805",
+      "js/ui.js": "9fec125bee637cc9acfcc1883d4e419810be518164019ea6c5fc90ae4d155231",
+      "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+      "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+      "styles.css": "864408efc53e91d8d96d4e8702478bf03dcedcc9c55bd26da3ae092e226468e7"
+    },
+    "manifest_scope": "All served payload files; hosting control .nojekyll and metadata aliases excluded to avoid recursive hashes",
+    "verification_level": "AFTER_LOCAL_ONLY_UNTIL_AUTHORIZED_DEPLOY"
+  },
+  "pass": true
+}

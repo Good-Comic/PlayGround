@@ -1,0 +1,88 @@
+{
+  "url": "http://127.0.0.1:8062",
+  "actions": [
+    "Start Game",
+    "Double-click militia on Canvas",
+    "Hold A to pan, then press Shift+A",
+    "Select barracks, set Rally Point, train militia",
+    "Select and claim Rift Prototype through boon UI"
+  ],
+  "checks": [
+    {
+      "name": "native double-click selects all visible same-type units",
+      "pass": true,
+      "detail": {
+        "selected": [
+          "militia",
+          "militia"
+        ],
+        "visible": 2
+      }
+    },
+    {
+      "name": "A pans camera while military is selected",
+      "pass": true,
+      "detail": {
+        "before": -64,
+        "after": -247.8487151521982
+      }
+    },
+    {
+      "name": "Shift+A arms Attack-Move",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "native click selects barracks",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "native right-click sets Rally Point",
+      "pass": true,
+      "detail": {
+        "x": 11.434607546754812,
+        "y": 29.95879211301971
+      }
+    },
+    {
+      "name": "newborn exits on Rally-facing side",
+      "pass": true,
+      "detail": {
+        "id": 20,
+        "x": 16.164838008083354,
+        "y": 29.651634026220677,
+        "dot": 16.56840441008834,
+        "target": {
+          "x": 11.434607546754812,
+          "y": 29.95879211301971
+        }
+      }
+    },
+    {
+      "name": "Rift Prototype boon stays playable",
+      "pass": true,
+      "detail": {
+        "id": 21,
+        "alive": true,
+        "x": 29,
+        "y": 26,
+        "hp": 300,
+        "state": "idle"
+      }
+    }
+  ],
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": [],
+  "prototype": {
+    "id": 21,
+    "alive": true,
+    "x": 29,
+    "y": 26,
+    "hp": 300,
+    "state": "idle"
+  },
+  "phase": "prep",
+  "pass": true
+}

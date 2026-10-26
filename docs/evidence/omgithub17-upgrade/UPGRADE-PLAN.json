@@ -1,0 +1,32 @@
+{
+  "status": "READY_FOR_OFFICIAL_NEW_ISSUE_PATH",
+  "legacy_issue": 17,
+  "legacy_action": "PRESERVE_UNCHANGED",
+  "candidate_branch": "codex/riftwatch-omgithub17-upgrade-candidate",
+  "candidate_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
+  "candidate_tree": "ae52c52c9ecd36e25f0a15ab3aaf95f25c81203f",
+  "candidate_game_js_sha256": "d6d403224607ff23d9c9bfe8b0e0342a04b2fb40227c1e86ee93062077ba548a",
+  "candidate_main_js_sha256": "c056787d593183de4cc068d202c9baba191ac5c4dae371ab42d284c0622cc768",
+  "request_marker": "<!-- omgithub-request:v1 {\"branch\":\"codex/riftwatch-omgithub17-upgrade-candidate\"} -->",
+  "trigger": {
+    "method": "Create a new GitHub issue with the OpenCode label and the request marker in the body",
+    "effect": "The official opencode.yml resolves the selected branch through the GitHub branches API and passes the resolved full target SHA to the pinned reusable workflow",
+    "expected_resolved_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
+    "starts_opencode": true,
+    "preview_only": false
+  },
+  "unsupported_actions": [
+    "Resume Issue #17 while expecting a different source SHA",
+    "Replace Issue #17 preview through an undocumented API",
+    "Rewrite opencode-checkpoints/17",
+    "Force-update the legacy resume branch"
+  ],
+  "verification_after_trigger": [
+    "Read the new issue API response and workflow run",
+    "Confirm resolved target_ref equals the candidate branch",
+    "Confirm resolved target_sha equals the candidate SHA",
+    "Confirm new preview is separate from Issue #17",
+    "Verify loaded game resource hashes before continuing development"
+  ],
+  "rollback": "Close or stop the new issue/session and retain Issue #17, its preview, checkpoint and resume branch unchanged. The candidate branch remains an immutable recovery source."
+}
