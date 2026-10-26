@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: cfe39ca92d4ca7151cae2015044090f9ff8e32f3007e1f97fe74bd566d77700c
-Captured UTC: 2026-10-26T06:53:44.020008+00:00 · Trigger: FINAL_CHECKPOINT
-Collector source: `1a5a67c5373bdd5ede925484776339f95ded78a0` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: fd3b0bb880a993180ff92b698f5fb405ccde4c1646e0abb0f9d9a1b0661ee183
+Captured UTC: 2026-10-26T09:05:11.240474+00:00 · Trigger: FINAL_CHECKPOINT
+Collector source: `35bb4dcf8d0e48843b68831a89a1d07c41d33c36` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -14,12 +14,15 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | REMOTE_SAVED | False |
 | /workspace/riftwatch-live | codex/riftwatch-v226-live-acceptance | 1a5a67c5373bdd5ede925484776339f95ded78a0 | 1a5a67c5373bdd5ede925484776339f95ded78a0 | REMOTE_SAVED | False |
 | /workspace/riftwatch-monitor | codex/riftwatch-v224-monitor | fa520ae3006329bd2b1c54ac90938519465bf320 | fa520ae3006329bd2b1c54ac90938519465bf320 | REMOTE_SAVED | False |
+| /workspace/riftwatch-orders | codex/riftwatch-v227-orders | 0239a308838dab06ec9f5e2dda4e413cda48d046 | 0239a308838dab06ec9f5e2dda4e413cda48d046 | REMOTE_SAVED | False |
 | /workspace/riftwatch-playtest | codex/riftwatch-playtest-candidate | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | REMOTE_SAVED | False |
 | /workspace/riftwatch-pop | codex/riftwatch-v22-population | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | REMOTE_SAVED | False |
 | /workspace/riftwatch-prediction | codex/riftwatch-v222-prediction | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | REMOTE_SAVED | False |
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
+| /workspace/riftwatch-ui | codex/riftwatch-v227-ui | 6ad09704c184ee772bf88d92949e8889fca086ce | 6ad09704c184ee772bf88d92949e8889fca086ce | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
+| /workspace/riftwatch-wave | codex/riftwatch-v227-wave | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | REMOTE_SAVED | False |
 
 ## work
 
@@ -57,11 +60,19 @@ Next: Keep Boss/Population/Target/Civ/Rally game changes isolated until gates
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"path": "docs/evidence/live-d6/manifest.json", "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c", "result": "AFTER_DEPLOY_LIVE_VERIFIED_SCOPED;54native/controlled browserassertions and8normalP0samplechecks", "source_kind": "HOSTED_BUILD_NOT_THIS_TOOL_WORKTREE", "freshness_note": "Collector local resource SOURCE_CHANGED reflects QA worktree versus hosted game; hosted bytes proved by28SHA256 and583HAR/Git matches atD6", "exists": true, "storage": "REMOTE_SAVED", "sha256": "e8476ee7eb210fde540cfcd23aa51fe8b4ec45f30210ae48349060c0580b307a", "resource_freshness": "SOURCE_CHANGED"}]
-Blockers: Natural ten-wave campaign and first-wave residualram behavior not fully verified; HARDWARE_TEST_PENDING; no Mid-End Windows data; FullLQA and allcivilizations not completed; Existing OmGitHub continuity policy conflict unresolved; no new workflow allowed
-Next: Reverify source/ownership; inspect LIVE-D6-WAVE-01 raw enemy/target timeline and GDD before a minimal diagnostic slice; Continue lowFPS time-integrity and B1/B2 formal gates; do not treat controlled onlinePASS as fullgame integration; User playtests sameD6URL and exports BugJSON for new issues; no new publication needed; Independent AttackMove/UIScale slices remain roadmap; preserve currentPages and17
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-v224-monitor
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
+
+## codex/riftwatch-v227-orders
 
 Unpushed commits: []
 Uncommitted paths: []
@@ -73,9 +84,9 @@ Next: Inspect task registry and relevant diff before writing
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: []
-Blockers: NOT_ASSESSED
-Next: Inspect task registry and relevant diff before writing
+Validation: [{"path": "docs/evidence/playtest-candidate/acceptance.json", "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c", "result": "LOCAL_VERIFIED bounded experimental candidate; Pages approval pending", "exists": true, "storage": "REMOTE_SAVED", "sha256": "f7aa32e6797823b1d48a98ed1ef8803526435c67261a360c04284351c6e9dd67", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: DEPLOYMENT_BLOCKED_AWAITING_USER_APPROVAL; HARDWARE_TEST_PENDING; SIMULATION_INTEGRITY_BLOCKED
+Next: Obtain user approval for APPROVAL-PLAN.json; If approved recheck no existing Pages,deploy only approved artifact toisolated site branch,enablePages then actual remote acceptance; Keep full formal feature gates unchanged; independent performance and B–E work can continue
 
 ## codex/riftwatch-v22-population
 
@@ -101,6 +112,14 @@ Validation: [{"path": "docs/evidence/strategy-v2/acceptance.json", "source_commi
 Blockers: Feature-specific remaining gates; see handoff
 Next: Latest source2f148c3 needs full three-repeat performance
 
+## codex/riftwatch-v227-ui
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
+
 ## codex/riftwatch-v22-target-state
 
 Unpushed commits: []
@@ -113,6 +132,14 @@ Next: Diagnose stalls/time loss in separate diagnostic cohort, no repeated accep
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"path": "docs/evidence/v226-monitor/all-tool-tests-provenance.json", "source_commit": "c24a808b5e8ddfcc4fcf28554b020fb77ecaf1ad", "result": "PASS39focused tool/recovery tests; no application resource change; schema FAIL retained and repaired", "exists": true, "storage": "REMOTE_SAVED", "sha256": "754ae24040bc5fb17e6f319bf4ab8f8c9cbd31b8d8e2f0c4e1374fc717bbd5d8", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"path": "docs/evidence/v226-monitor/test-provenance.json", "source_commit": "fd616d0d4c1ea62263a42fc0065b1b16752c427a", "result": "PASS30local tool tests; real rawHTTP4/ContentsAPI4 pinned reads; no game/live/hardware claim", "exists": true, "storage": "REMOTE_SAVED", "sha256": "f1797035545f78a3f55912291b714666de51e55493b4a5fb3594f9daf6018a53", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"path": "docs/evidence/v226-deployment/artifact-audit.json", "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c", "result": "PASS exact2ZIPs and28payloads; Pages branch6c98a8e saved, enablement403 BLOCKED", "exists": true, "storage": "REMOTE_SAVED", "sha256": "8634ac0cbede72a89ba8f003235aefab024aea3e85c5767fc2ea2733dcc77e5d", "resource_freshness": "SOURCE_CHANGED"}]
-Blockers: GitHub UI must enable Pages source branch/root; integration403; Codex UI must allow exactgood-comic.github.io; Envoy403; REVIEW_PENDING; Gemini not installed/no externalAgent called; OmGitHub pinnedcheckpoint force-with-lease conflicts current safety
-Next: After UI settings, query Pages status and actual public browser28resource/gameplay acceptance; Actual independent Supervisor reviews3d5b49b source/evidence; revalidate any newer docs-only ref; Continue target-state/time-loss diagnosis and AttackMove/UIScale independent feature queue; do not rerun valid tests
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
+
+## codex/riftwatch-v227-wave
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
