@@ -1,1 +1,1 @@
-Unpublishedrightclickgroupbindingclear verified12Node/5LOCALbrowser/fourlocales; selection/orders/units andothergroup preserved. Notin publicab56.
+指定ab56已依授權發布並完成59項限定線上驗收；D6保留。這不是正式Integration/fullQA，新SHA仍需另外批准。
