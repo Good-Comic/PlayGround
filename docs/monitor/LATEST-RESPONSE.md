@@ -1,1 +1,1 @@
-Actualproduction20virtualseconds:10Hz only10sim/25attacks/construction.6867. Fixedprototype same seededstate across10–60Hz, but strictSaveLoadFAIL; no productionloop adoption.
+Quota guard8fixture testsPASS including oldHEADparity-but-unsaved ownerrefusal; actualquotaUNKNOWN/manualresume only.
