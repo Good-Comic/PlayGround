@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#17150f" />
+  <title>Age of Empires II: Riftwatch</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2317150f'/%3E%3Cpath d='M6 12l5 4 5-8 5 8 5-4-2.5 12h-15z' fill='none' stroke='%23d5ad58' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M9 25h14' stroke='%23d5ad58' stroke-width='1.8'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="game" aria-label="Age of Empires II: Riftwatch battlefield" data-i18n-aria-label="a11y.battlefield"></canvas>
+    <div class="canvas-vignette"></div>
+
+    <div class="menu-screen" id="menu-screen">
+      <div class="menu-shade"></div>
+      <div class="menu-rail">
+        <div class="menu-kicker"><span></span><b data-i18n="game.kicker">AGE OF EMPIRES II</b><span></span></div>
+        <h1 class="menu-title stacked">
+          <span class="title-series" data-i18n="game.series">Age of Empires II:</span>
+          <span class="title-watch" data-i18n="game.subtitle">Riftwatch</span>
+        </h1>
+        <div class="title-flourish"><i></i><svg><use href="#i-crown"/></svg><i></i></div>
+        <p class="menu-lede" data-i18n="menu.lede">The Rift has opened. Ten raids stand between your people and the Confluence.</p>
+        <div class="menu-setup">
+          <label class="setup-field">
+            <span data-i18n="menu.civ">Civilization</span>
+            <select id="setup-civ"></select>
+            <small id="setup-civ-blurb"></small>
+          </label>
+          <label class="setup-field">
+            <span data-i18n="menu.biome">Biome</span>
+            <select id="setup-biome"></select>
+            <small id="setup-biome-blurb"></small>
+          </label>
+          <label class="setup-field seed">
+            <span data-i18n="menu.seed">Seed</span>
+            <input id="setup-seed" type="text" maxlength="16" autocomplete="off" spellcheck="false" placeholder="random" data-i18n-placeholder="menu.seedPlaceholder" />
+            <small data-i18n="menu.seedHint">Same seed, same frontier.</small>
+          </label>
+        </div>
+        <div class="locale-switch">
+          <span data-i18n="menu.language">Language</span>
+          <select id="setup-locale" aria-label="Language" data-i18n-aria-label="menu.language"></select>
+        </div>
+        <div class="menu-actions">
+          <button class="primary-button" id="btn-start">
+            <span class="btn-shine"></span>
+            <svg><use href="#i-sword"/></svg>
+            <span data-i18n="menu.start">Start Game</span>
+          </button>
+          <div class="menu-secondary-actions">
+            <button class="secondary-button" id="btn-continue" hidden>
+              <svg><use href="#i-hourglass"/></svg>
+              <span data-i18n="menu.continue">Continue</span>
+            </button>
+            <button class="secondary-button" id="btn-howto">
+              <svg><use href="#i-scroll"/></svg>
+              <span data-i18n="menu.howto">How to Play</span>
+            </button>
+            <button class="secondary-button" id="btn-settings">
+              <svg><use href="#i-compass"/></svg>
+              <span data-i18n="menu.settings">Settings</span>
+            </button>
+            <button class="secondary-button" id="btn-gm-menu">
+              <svg><use href="#i-hammer"/></svg>
+              <span data-i18n="menu.gm">GM</span>
+            </button>
+          </div>
+        </div>
+        <div class="menu-facts">
+          <div><b>16</b><span data-i18n="menu.factCivs">CIVILIZATIONS</span></div>
+          <i></i>
+          <div><b>10</b><span data-i18n="menu.factRaids">RAIDS</span></div>
+          <i></i>
+          <div><b>32</b><span data-i18n="menu.factBoons">BOONS</span></div>
+        </div>
+        <div class="menu-tip"><span>WASD</span> <b data-i18n="menu.tipMove">to march</b> <i></i> <span>RIGHT-CLICK</span> <b data-i18n="menu.tipCommand">to command</b> <i></i> <span>TAB</span> <b data-i18n="menu.tipHero">to lead the hero</b></div>
+      </div>
+      <div class="menu-side">
+        <div class="menu-seal">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="1"/>
+            <circle cx="60" cy="60" r="47" fill="none" stroke="currentColor" stroke-width=".6" stroke-dasharray="2 4"/>
+            <path d="M60 24 L70 47 L95 47 L75 61 L83 86 L60 72 L37 86 L45 61 L25 47 L50 47 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M60 36 L67 52 L84 52 L70 62 L76 79 L60 69 L44 79 L50 62 L36 52 L53 52 Z" fill="currentColor" opacity=".25"/>
+            <path d="M60 89 v8 M56 93 h8" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <span data-i18n="menu.seal">EST. 1152</span>
+        </div>
+        <div class="menu-quote"><span data-i18n="menu.quote">“Where the worlds touch, someone must stand watch.”</span><small data-i18n="menu.quoteSource">— The Confluence Chronicle</small></div>
+      </div>
+      <div class="menu-footer">
+        <span data-i18n="menu.footerLeft">An original 2D real-time roguelite</span>
+        <span class="footer-mark">⚜</span>
+        <span data-i18n="menu.footerRight">Stand watch at the Rift</span>
+      </div>
+    </div>
+
+    <div id="hud" class="hud is-hidden" aria-hidden="true">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="brand-sigil"><svg><use href="#i-crown"/></svg></span>
+          <span class="brand-word" data-i18n="brand.short">AOE II · RIFTWATCH</span>
+        </div>
+
+        <div class="resource-strip" role="status" aria-live="polite">
+          <div class="resource" data-res="food" title="Food" data-i18n-title="resource.food">
+            <span class="res-icon food"><svg><use href="#i-food"/></svg></span>
+            <span id="res-food">350</span>
+          </div>
+          <div class="resource" data-res="wood" title="Wood" data-i18n-title="resource.wood">
+            <span class="res-icon wood"><svg><use href="#i-wood"/></svg></span>
+            <span id="res-wood">350</span>
+          </div>
+          <div class="resource" data-res="gold" title="Gold" data-i18n-title="resource.gold">
+            <span class="res-icon gold"><svg><use href="#i-gold"/></svg></span>
+            <span id="res-gold">200</span>
+          </div>
+          <div class="resource" data-res="stone" title="Stone" data-i18n-title="resource.stone">
+            <span class="res-icon stone"><svg><use href="#i-stone"/></svg></span>
+            <span id="res-stone">150</span>
+          </div>
+          <div class="resource population" title="Population" data-i18n-title="resource.population">
+            <span class="res-icon pop"><svg><use href="#i-people"/></svg></span>
+            <div class="pop-dual">
+              <span class="pop-line"><b id="res-mil-pop">0</b><i>/</i><span id="res-mil-cap">40</span> <small data-i18n="hud.military">Mil</small></span>
+              <span class="pop-line"><b id="res-eco-pop">0</b><i>/</i><span id="res-eco-cap">60</span> <small data-i18n="hud.economic">Eco</small></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <button class="icon-button" id="btn-sound" aria-label="Toggle sound" title="Sound" data-i18n-aria-label="hud.toggleSound" data-i18n-title="hud.sound">
+            <svg id="sound-icon"><use href="#i-sound"/></svg>
+          </button>
+          <button class="icon-button" id="btn-pause" aria-label="Pause" title="Pause (Space)" data-i18n-aria-label="hud.pause" data-i18n-title="hud.pauseTitle">
+            <svg><use href="#i-pause"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="wave-banner" id="wave-banner">
+        <span class="wave-rule"></span>
+        <div class="wave-copy">
+          <span class="wave-kicker" id="wave-kicker">WAVE I OF X</span>
+          <span class="wave-title" id="wave-title">The First Raid</span>
+        </div>
+        <span class="wave-rule"></span>
+        <div class="wave-clock" id="wave-clock">00:35</div>
+        <div class="wave-progress"><i id="wave-progress"></i></div>
+      </div>
+
+      <aside class="objective-card" id="objective-card">
+        <div class="objective-head"><svg><use href="#i-banner"/></svg><span data-i18n="objective.title">THE LAST MARCH</span></div>
+        <div class="objective-body">
+          <div class="objective-row"><span data-i18n="objective.survive">Survive the raids</span><b id="objective-waves">0 / 10</b></div>
+          <div class="objective-row"><span data-i18n="objective.defend">Defend the Town Center</span><b id="objective-hp">100%</b></div>
+          <div class="objective-row"><span data-i18n="objective.age">Current age</span><b id="objective-age">Dark Age</b></div>
+          <div class="objective-row subtle"><span data-i18n="objective.boons">Boons claimed</span><b id="objective-boons">0</b></div>
+          <div class="objective-row subtle assist-row" id="objective-assist" hidden><span data-i18n="objective.assist">Difficulty assist</span><b id="objective-assist-text">—</b></div>
+        </div>
+      </aside>
+
+      <div class="boss-bar" id="boss-bar" hidden>
+        <div class="boss-head"><span class="boss-kicker" data-i18n="boss.kicker">WARLORD OF THE RIFT</span><b id="boss-name">The Ashen Warlord</b><span id="boss-hp">0 / 0</span></div>
+        <div class="boss-track"><i id="boss-fill"></i></div>
+      </div>
+
+      <aside class="intel-card" id="intel-card" hidden>
+        <div class="intel-head"><span data-i18n="intel.kicker">SCOUT REPORT · NEXT RAID</span><b id="intel-countdown">0:30</b></div>
+        <div class="intel-body">
+          <div class="intel-row"><span data-i18n="intel.mainForce">Main force</span><b id="intel-units">—</b></div>
+          <div class="intel-row"><span data-i18n="intel.event">Raid event</span><b id="intel-event">—</b></div>
+          <div class="intel-row"><span data-i18n="intel.gates">Likely gates</span><b id="intel-gates">—</b></div>
+          <div class="intel-hazard" id="intel-hazard" hidden></div>
+          <div class="intel-assist" id="intel-assist" hidden></div>
+        </div>
+      </aside>
+
+      <div class="toast-stack" id="toast-stack"></div>
+      <div class="hover-tooltip" id="hover-tooltip"></div>
+      <div class="placement-hint" id="placement-hint">
+        <span class="keycap">LMB</span> <span data-i18n="placement.place">Place</span> <b id="placement-name">building</b>
+        <span class="keycap">RMB</span> <span data-i18n="placement.cancel">Cancel</span>
+      </div>
+
+      <div class="bottom-hud">
+        <section class="selection-panel" id="selection-panel">
+          <div class="panel-corner tl"></div><div class="panel-corner tr"></div>
+          <div class="panel-corner bl"></div><div class="panel-corner br"></div>
+          <div class="portrait-frame">
+            <canvas id="portrait" width="180" height="180"></canvas>
+            <span class="portrait-crest"><svg><use href="#i-sword"/></svg></span>
+            <span class="selection-count" id="selection-count" hidden>1</span>
+          </div>
+          <div class="selection-copy">
+            <div class="selection-name" id="selection-name" data-i18n="selection.title">Lord's Retinue</div>
+            <div class="selection-sub" id="selection-sub" data-i18n="selection.emptySub">Select a unit or building</div>
+            <div class="vital-bar"><i id="selection-hp"></i><span id="selection-hp-text">—</span></div>
+            <div class="selection-stats" id="selection-stats"></div>
+          </div>
+          <div class="command-grid" id="command-grid"></div>
+          <div class="panel-hint" id="panel-hint" data-i18n="selection.emptyHint">Right-click resources to gather · Right-click enemies to attack</div>
+        </section>
+
+        <div class="center-controls">
+          <button class="idle-button" id="idle-button" title="Select idle villager (I)" data-i18n-title="hud.idleTitle">
+            <svg><use href="#i-villager"/></svg>
+            <span><b id="idle-count">0</b> <span data-i18n="hud.idleWord">idle</span></span>
+          </button>
+          <div class="camera-help"><span>WASD</span> <b data-i18n="camera.march">march</b> <i></i> <span>WHEEL</span> <b data-i18n="camera.zoom">zoom</b></div>
+        </div>
+
+        <section class="minimap-panel">
+          <div class="minimap-head">
+            <span><svg><use href="#i-compass"/></svg> <b id="minimap-title">The Ashlands</b></span>
+            <span id="minimap-day">DAY I</span>
+          </div>
+          <div class="minimap-wrap">
+            <canvas id="minimap" width="456" height="318"></canvas>
+            <div class="minimap-scan"></div>
+          </div>
+          <div class="minimap-foot">
+            <span class="legend-dot ally"></span> <span data-i18n="minimap.ally">Your realm</span>
+            <span class="legend-dot foe"></span> <span data-i18n="minimap.foe">Raiders</span>
+            <span class="minimap-tip" data-i18n="minimap.tip">Click to survey</span>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="modal-overlay howto-overlay" id="howto-overlay" hidden>
+      <div class="parchment-modal">
+        <button class="modal-close" id="btn-howto-close" aria-label="Close" data-i18n-aria-label="howto.close">×</button>
+        <div class="modal-kicker" data-i18n="howto.kicker">THE WAR COUNCIL</div>
+        <h2 data-i18n="howto.title">How to Rule</h2>
+        <div class="modal-rule"></div>
+        <div class="howto-grid">
+          <div class="howto-item">
+            <span class="howto-icon"><svg><use href="#i-villager"/></svg></span>
+            <h3 data-i18n="howto.gatherTitle">Gather</h3>
+            <p data-i18n="howto.gatherDesc">Select villagers and right-click trees, berries, gold, or stone. They haul every load back to the Town Center.</p>
+          </div>
+          <div class="howto-item">
+            <span class="howto-icon"><svg><use href="#i-house"/></svg></span>
+            <h3 data-i18n="howto.buildTitle">Build</h3>
+            <p data-i18n="howto.buildDesc">With villagers selected, choose a structure from the command panel, then place it on open ground.</p>
+          </div>
+          <div class="howto-item">
+            <span class="howto-icon"><svg><use href="#i-sword"/></svg></span>
+            <h3 data-i18n="howto.fightTitle">Fight</h3>
+            <p data-i18n="howto.fightDesc">Select your soldiers and right-click a raider to attack. Idle troops defend themselves; towers rain arrows.</p>
+          </div>
+          <div class="howto-item">
+            <span class="howto-icon"><svg><use href="#i-crown"/></svg></span>
+            <h3 data-i18n="howto.endureTitle">Endure</h3>
+            <p data-i18n="howto.endureDesc">Survive ten raids. After each victory, claim one of three boons to shape your kingdom's fate.</p>
+          </div>
+        </div>
+        <div class="howto-controls">
+          <span><b>W A S D</b><span data-i18n="howto.panSuffix"> / arrows — pan</span></span>
+          <span><b>Left-drag</b><span data-i18n="howto.selectSuffix"> — select</span></span>
+          <span><b>Right-click</b><span data-i18n="howto.commandSuffix"> — command</span></span>
+          <span><b>Tab</b><span data-i18n="howto.heroSuffix"> — control hero</span></span>
+          <span><b>Q / E</b><span data-i18n="howto.marksSuffix"> — mark / aegis</span></span>
+          <span><b>1–6</b><span data-i18n="howto.commandKeysSuffix"> — commands · </span><b>Space</b><span data-i18n="howto.pauseSuffix"> pause</span></span>
+        </div>
+        <button class="primary-button small" id="btn-howto-play"><span data-i18n="howto.play">To Arms</span></button>
+      </div>
+    </div>
+
+    <div class="modal-overlay pause-overlay" id="pause-overlay" hidden>
+      <div class="pause-card">
+        <div class="modal-kicker" data-i18n="pause.kicker">THE BATTLE WAITS</div>
+        <p class="pause-brand" data-i18n="game.title">Age of Empires II: Riftwatch</p>
+        <h2 data-i18n="pause.title">Paused</h2>
+        <div class="modal-rule"></div>
+        <p class="pause-flavor" data-i18n="pause.flavor">“Hold the line. The Rift will settle.”</p>
+        <div class="pause-toggles">
+          <label><input type="checkbox" id="auto-econ" checked /> <span><b data-i18n="pause.econTitle">Village steward</b><small data-i18n="pause.econDesc">Auto-assign idle villagers and maintain houses</small></span></label>
+          <label><input type="checkbox" id="auto-mil" checked /> <span><b data-i18n="pause.milTitle">War steward</b><small data-i18n="pause.milDesc">Auto-train soldiers and keep the barracks busy</small></span></label>
+        </div>
+        <div class="pause-actions">
+          <button class="primary-button small" id="btn-resume"><span data-i18n="pause.resume">Resume</span></button>
+          <button class="secondary-button small" id="btn-save" data-i18n="pause.save">Save Run</button>
+          <button class="secondary-button small" id="btn-pause-settings" data-i18n="pause.settings">Settings</button>
+          <button class="secondary-button small" id="btn-gm-pause" data-i18n="pause.gm">GM Tools</button>
+          <button class="secondary-button small" id="btn-restart" data-i18n="pause.restart">Restart Run</button>
+          <button class="text-button" id="btn-quit" data-i18n="pause.quit">Abandon to Menu</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal-overlay settings-overlay" id="settings-overlay" hidden>
+      <div class="pause-card settings-card">
+        <div class="modal-kicker" data-i18n="settings.kicker">THE WAR COUNCIL</div>
+        <h2 data-i18n="settings.title">Settings</h2>
+        <div class="modal-rule"></div>
+        <p class="pause-flavor" data-i18n="settings.flavor">Shape the pace of the campaign. Changes are saved for your next run.</p>
+        <label class="settings-row">
+          <span><b data-i18n="settings.speed">Game speed</b><small data-i18n="settings.speedDesc">Scales simulation time without changing combat math.</small></span>
+          <select id="settings-speed">
+            <option value="0.75" data-i18n="settings.speedSlow">0.75×</option>
+            <option value="1" data-i18n="settings.speedNormal">1×</option>
+            <option value="1.25" data-i18n="settings.speedFast">1.25×</option>
+            <option value="1.5" data-i18n="settings.speedFastest">1.5×</option>
+          </select>
+        </label>
+        <div class="pause-toggles settings-toggles">
+          <label><input type="checkbox" id="settings-auto-econ" /> <span><b data-i18n="pause.econTitle">Village steward</b><small data-i18n="pause.econDesc">Auto-assign idle villagers and maintain houses</small></span></label>
+          <label><input type="checkbox" id="settings-auto-mil" /> <span><b data-i18n="pause.milTitle">War steward</b><small data-i18n="pause.milDesc">Auto-train soldiers and keep the barracks busy</small></span></label>
+          <label><input type="checkbox" id="settings-reduced-motion" /> <span><b data-i18n="settings.reducedMotion">Reduce motion</b><small data-i18n="settings.reducedMotionDesc">Shorten interface transitions and decorative animation.</small></span></label>
+        </div>
+        <div class="pause-actions">
+          <button class="primary-button small" id="btn-settings-close"><span data-i18n="settings.close">Return</span></button>
+          <button class="text-button" id="btn-settings-reset" data-i18n="settings.reset">Reset to defaults</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay gm-overlay" id="gm-overlay" hidden>
+      <div class="pause-card gm-card">
+        <div class="modal-kicker" data-i18n="gm.kicker">GAME MASTER</div>
+        <h2 data-i18n="gm.title">GM Tools</h2>
+        <div class="modal-rule"></div>
+        <p class="pause-flavor" data-i18n="gm.flavor">Testing controls only. GM actions are recorded for this run.</p>
+        <p class="gm-note" id="gm-note" data-i18n="gm.startNote" hidden>Resource grants apply when the next run starts. Combat controls require an active run.</p>
+        <div class="gm-grid">
+          <label><span data-i18n="resource.food">Food</span><input id="gm-food" type="number" min="0" step="10" value="0" /></label>
+          <label><span data-i18n="resource.wood">Wood</span><input id="gm-wood" type="number" min="0" step="10" value="0" /></label>
+          <label><span data-i18n="resource.gold">Gold</span><input id="gm-gold" type="number" min="0" step="10" value="0" /></label>
+          <label><span data-i18n="resource.stone">Stone</span><input id="gm-stone" type="number" min="0" step="10" value="0" /></label>
+        </div>
+        <div class="gm-actions">
+          <button class="secondary-button small" id="btn-gm-grant" data-i18n="gm.grant">Grant resources</button>
+          <button class="secondary-button small" id="btn-gm-heal" data-i18n="gm.heal">Heal all</button>
+          <button class="secondary-button small" id="btn-gm-kill" data-i18n="gm.kill">Clear raiders</button>
+          <button class="secondary-button small" id="btn-gm-age" data-i18n="gm.age">Advance age</button>
+          <button class="secondary-button small" id="btn-gm-wave" data-i18n="gm.wave">Skip wave</button>
+          <button class="secondary-button small" id="btn-gm-spawn" data-i18n="gm.spawn">Spawn militia</button>
+        </div>
+        <div class="pause-actions">
+          <button class="primary-button small" id="btn-gm-close"><span data-i18n="gm.close">Return</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay boon-overlay" id="boon-overlay" hidden>
+      <div class="boon-head">
+        <div class="modal-kicker" data-i18n="boon.kicker">THE RAID IS BROKEN</div>
+        <h2 data-i18n="boon.title">Choose Your Boon</h2>
+        <p data-i18n="boon.desc">One gift of the old kingdom. It will shape the raids to come.</p>
+      </div>
+      <div class="boon-grid" id="boon-grid"></div>
+      <button class="primary-button boon-claim" id="btn-claim" disabled><span data-i18n="boon.claim">Claim Boon</span></button>
+      <button class="secondary-button boon-reroll" id="btn-reroll">Reroll · 25 gold</button>
+      <div class="boon-hint"><span id="boon-hint-text">Press 1, 2, or 3 to choose</span></div>
+    </div>
+
+    <div class="modal-overlay end-overlay" id="end-overlay" hidden>
+      <div class="end-card">
+        <div class="end-ribbons"><i></i><svg id="end-icon"><use href="#i-crown"/></svg><i></i></div>
+        <div class="modal-kicker" id="end-kicker">THE FRONTIER IS YOURS</div>
+        <h2 id="end-title">Age of Empires II: Riftwatch</h2>
+        <p id="end-desc">Ten raids broken. The chronicles will remember your name.</p>
+        <div class="end-stats">
+          <div><b id="end-waves">10</b><span data-i18n="end.raids">Raids survived</span></div>
+          <div><b id="end-kills">0</b><span data-i18n="end.kills">Raiders slain</span></div>
+          <div><b id="end-gathered">0</b><span data-i18n="end.gathered">Resources gathered</span></div>
+          <div><b id="end-time">0:00</b><span data-i18n="end.reign">Reign</span></div>
+        </div>
+        <div class="end-actions">
+          <button class="primary-button small" id="btn-new-run"><span data-i18n="end.newRun">New Run</span></button>
+          <button class="secondary-button small" id="btn-end-menu" data-i18n="end.menu">Return to Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <svg width="0" height="0" class="svg-defs" aria-hidden="true">
+    <defs>
+      <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4 3 5-7 5 7 4-3-2 11H5L3 8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 19h12" stroke="currentColor" stroke-width="1.5"/></symbol>
+      <symbol id="i-food" viewBox="0 0 24 24"><path d="M12 21V9M12 13c-4 0-6-2-6-5 3 0 6 1 6 5zM12 10c4 0 6-2 6-5-3 0-6 1-6 5zM7 21h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-wood" viewBox="0 0 24 24"><path d="M5 8l7-4 7 4v8l-7 4-7-4V8z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l7 4 7-4M12 12v8" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+      <symbol id="i-gold" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="2 2"/><path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="1.2"/></symbol>
+      <symbol id="i-stone" viewBox="0 0 24 24"><path d="M4 16l3-7 6-3 7 5-2 7-8 2-6-4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 9l5 4 8-2M12 13l-2 7" fill="none" stroke="currentColor" stroke-width="1.1"/></symbol>
+      <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 20c0-4 2.4-7 6-7s6 3 6 7M16 6.5a3 3 0 010 5.5M17 14c2.4.6 4 2.8 4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+      <symbol id="i-sword" viewBox="0 0 24 24"><path d="M20 3l-3 1-9 9 3 3 9-9 1-3zM8 13l3 3M4 20l4-4M6 16l2 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-bow" viewBox="0 0 24 24"><path d="M5 4c8 2 14 8 15 16M5 4l3 1M20 20l-1-3M8 9l7 7M9 10l-4 4 5 1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+      <symbol id="i-horse" viewBox="0 0 24 24"><path d="M4 21l2-7 3-4 2-5 3 2 2-2 4 5-2 3-2 1 1 7M8 14l7 1M11 9l2 2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-villager" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 21c0-5 2-8 6-8s6 3 6 8M3 16l3-3M21 16l-3-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+      <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v10H3V11z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 21v-6h6v6M3 11h18" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+      <symbol id="i-farm" viewBox="0 0 24 24"><path d="M3 20h18M5 20V9l7-5 7 5v11M8 20v-5h8v5M8 11h8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+      <symbol id="i-tower" viewBox="0 0 24 24"><path d="M7 21V6h3V3h4v3h3v15M7 9h10M7 13h10M7 17h10M5 21h14" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+      <symbol id="i-hammer" viewBox="0 0 24 24"><path d="M14 4l6 6-3 3-6-6 3-3zM11 7L4 14l3 3 7-7M6 19l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+      <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="i-hold" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12l3 3 5-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v10M9 10h6" stroke="currentColor" stroke-width="1.2"/></symbol>
+      <symbol id="i-skull" viewBox="0 0 24 24"><path d="M5 11a7 7 0 1114 0v4l-2 2v3H7v-3l-2-2v-4z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="11" r="1.4" fill="currentColor"/><circle cx="15" cy="11" r="1.4" fill="currentColor"/><path d="M10 17v3M14 17v3" stroke="currentColor" stroke-width="1.3"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+      <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4V9z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 8c2 2 2 6 0 8M19 5c4 4 4 10 0 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+      <symbol id="i-muted" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4V9z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+      <symbol id="i-banner" viewBox="0 0 24 24"><path d="M5 21V3M5 4h13l-3 4 3 4H5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M15 9l-2 4-4 2 2-4 4-2z" fill="currentColor"/></symbol>
+      <symbol id="i-scroll" viewBox="0 0 24 24"><path d="M6 3h12v16H6zM6 3C4.5 3 4 4 4 5.5S4.5 8 6 8M18 19c1.5 0 2-1 2-2.5S19.5 14 18 14M9 8h7M9 12h7M9 16h4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 22c4 0 7-2.6 7-6.5 0-3-2-5.5-4-7.5-.5 2-1.5 3-2.5 3.5C13 8 11 5 11 2c-2 3-6 6-6 12 0 4.5 3 8 7 8z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20S4 14 4 8.5C4 6 6 4 8.5 4c1.7 0 3 1 3.5 2 .5-1 1.8-2 3.5-2C18 4 20 6 20 8.5 20 14 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+      <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 12h6M12 8v8" stroke="currentColor" stroke-width="1.2"/></symbol>
+      <symbol id="i-speed" viewBox="0 0 24 24"><path d="M4 16a8 8 0 1116 0M12 13l4-4M6 19h12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 20L20 4M11 4h9v9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
