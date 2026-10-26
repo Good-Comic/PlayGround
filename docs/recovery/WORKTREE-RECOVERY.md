@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: c97a0d8724168b666ff32f479a107fc57de49b1b504f5d74b291e5c0b731a1aa
-Captured UTC: 2026-10-26T04:10:52.634164+00:00 · Trigger: FINAL_CHECKPOINT
-Collector source: `ee0d219a916d8388fab5d66ff86e3bd650aa66af` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: cfe39ca92d4ca7151cae2015044090f9ff8e32f3007e1f97fe74bd566d77700c
+Captured UTC: 2026-10-26T06:53:44.020008+00:00 · Trigger: FINAL_CHECKPOINT
+Collector source: `1a5a67c5373bdd5ede925484776339f95ded78a0` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -12,6 +12,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch | codex/riftwatch-v222-recovery | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | REMOTE_SAVED | False |
 | /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | c456cae581b3ec85a7dd222d017453d2e589e095 | c456cae581b3ec85a7dd222d017453d2e589e095 | REMOTE_SAVED | False |
 | /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | REMOTE_SAVED | False |
+| /workspace/riftwatch-live | codex/riftwatch-v226-live-acceptance | 1a5a67c5373bdd5ede925484776339f95ded78a0 | 1a5a67c5373bdd5ede925484776339f95ded78a0 | REMOTE_SAVED | False |
 | /workspace/riftwatch-monitor | codex/riftwatch-v224-monitor | fa520ae3006329bd2b1c54ac90938519465bf320 | fa520ae3006329bd2b1c54ac90938519465bf320 | REMOTE_SAVED | False |
 | /workspace/riftwatch-playtest | codex/riftwatch-playtest-candidate | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | REMOTE_SAVED | False |
 | /workspace/riftwatch-pop | codex/riftwatch-v22-population | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | REMOTE_SAVED | False |
@@ -51,6 +52,14 @@ Uncommitted paths: []
 Validation: [{"path": "/workspace/diagnostics/riftwatch/v222-tooling-smoke/result.json", "source_commit": "72e978417afd3c95f897cc7cb35395f00008c313", "result": "INTEGRATED_VERIFIED tooling only;44Node+8dev+4locales and actual Start/Save/Continue pass; no game resource changes", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "62f412196a38f35f655c092d31e06ef6cb9dee08d2613ff03a5d37f182848fb4", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Gameplay feature gates not yet complete
 Next: Keep Boss/Population/Target/Civ/Rally game changes isolated until gates
+
+## codex/riftwatch-v226-live-acceptance
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"path": "docs/evidence/live-d6/manifest.json", "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c", "result": "AFTER_DEPLOY_LIVE_VERIFIED_SCOPED;54native/controlled browserassertions and8normalP0samplechecks", "source_kind": "HOSTED_BUILD_NOT_THIS_TOOL_WORKTREE", "freshness_note": "Collector local resource SOURCE_CHANGED reflects QA worktree versus hosted game; hosted bytes proved by28SHA256 and583HAR/Git matches atD6", "exists": true, "storage": "REMOTE_SAVED", "sha256": "e8476ee7eb210fde540cfcd23aa51fe8b4ec45f30210ae48349060c0580b307a", "resource_freshness": "SOURCE_CHANGED"}]
+Blockers: Natural ten-wave campaign and first-wave residualram behavior not fully verified; HARDWARE_TEST_PENDING; no Mid-End Windows data; FullLQA and allcivilizations not completed; Existing OmGitHub continuity policy conflict unresolved; no new workflow allowed
+Next: Reverify source/ownership; inspect LIVE-D6-WAVE-01 raw enemy/target timeline and GDD before a minimal diagnostic slice; Continue lowFPS time-integrity and B1/B2 formal gates; do not treat controlled onlinePASS as fullgame integration; User playtests sameD6URL and exports BugJSON for new issues; no new publication needed; Independent AttackMove/UIScale slices remain roadmap; preserve currentPages and17
 
 ## codex/riftwatch-v224-monitor
 

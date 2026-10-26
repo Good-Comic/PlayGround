@@ -1,22 +1,66 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T04:05:59.560859+00:00",
+  "updated_at": "2026-10-26T06:50:31.772464+00:00",
   "tasks": [
+    {
+      "task_id": "LIVE-D6-WAVE-01",
+      "name": "Diagnose natural residual ram / wave progression against GDD",
+      "requirement_source": "Explicit latest user request / Strategy v2.2.6 AFTER_DEPLOY_LIVE",
+      "priority": "P1",
+      "agent": "Codex",
+      "environment": "Managed environment revision4; Linux headless Chromium; actual public HTTPS Pages; anonymous disposable contexts",
+      "branch": null,
+      "base_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+      "latest_pushed_commit": null,
+      "completed": [
+        "One300s online observation saved; rootcause notconfirmed"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [],
+      "evidence": [
+        "docs/evidence/live-d6/REPORT.md",
+        "docs/evidence/live-d6/browser-raw-sanitized.tar.gz",
+        "docs/evidence/live-d6/large-artifacts.json",
+        "docs/evidence/live-d6/normal-300-wave-observation.json"
+      ],
+      "failures": [
+        "One old resource-auditor CLI rejected --path-prefix before inspecting HAR; exactsaved tool used successfully; retained harness note",
+        "Historical cloudperformance/time FAIL unchanged; no performance waiver"
+      ],
+      "blockers": [
+        "SPEC_DECISION_REQUIRED if wavecarryover rule lacks authoritative resolution"
+      ],
+      "next_steps": [
+        "Diagnostic game branch must start from Candidate3779c5, not the QA/tool branch older Integration assets",
+        "Claim new independentdiagnostic branch; do not overwrite live QA or site",
+        "Read normal300wave-observation and originalGDD retreat/carryover rule",
+        "Reproduce pursuit/obstacle/phase condition without deleting enemies or lowering thresholds"
+      ],
+      "permissions": [
+        "Read evidence/source; independent existing-authorized diagnostic slice only; no rule changes without authoritative spec"
+      ],
+      "status": "READY",
+      "updated_at": "2026-10-26T06:50:31.772464+00:00",
+      "source_branch": "codex/riftwatch-playtest-candidate",
+      "tested_game_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c"
+    },
     {
       "task_id": "PAGES-LIVE-QA",
       "name": "Approved D6public candidate acceptance",
-      "status": "BLOCKED",
+      "status": "VERIFIED",
       "priority": "P0",
       "branch": "codex/riftwatch-playtest-site",
       "latest_pushed_commit": "6c98a8e6b7f7759ca57a9c9f94f675e2b6070381",
       "next_steps": [
-        "User enables GitHub Pages branch/root and exact Codex host allowlist",
-        "Then real Chromium gameP0/features/export/fourlocales/28hashes; no repeated old local tests"
+        "User playtestsD6; inspect exactonlineevidence; no need to re-enable existingPages"
       ],
       "requirement_source": "Explicit Strategy v2.2.6",
       "agent": "UNASSIGNED; confirm ownership before writing",
       "environment": "Managed cloud; public game QA requires exact allowed Pages host",
-      "completed": [],
+      "completed": [
+        "PublicbuiltD6and boundedonlinecases verified; see live-d6REPORT"
+      ],
       "uncommitted": [],
       "unpushed": [],
       "tests": [],
@@ -25,7 +69,7 @@
       ],
       "failures": [],
       "blockers": [
-        "UI prerequisites or actual external review pending; no automatic dispatch"
+        "Natural fullcampaign/performance/hardware NOT covered"
       ],
       "permissions": [
         "Only existing explicit bounded authorization; no main/checkpoint/OmGitHub write"
@@ -39,12 +83,12 @@
       "status": "READY",
       "priority": "P1",
       "branch": "codex/riftwatch-supervisor-qa-next",
-      "base_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "base_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
       "latest_pushed_commit": null,
       "next_steps": [
-        "Read current index docs/supervisor exchange pinned toee0d219",
-        "Independent review/source check and new ownership required; branch/worktree NOT_CREATED",
-        "Dispatcher disconnected; no Agent invoked"
+        "Branch/worktree not created; no external CLI installed/called",
+        "Read pending review exchange, independently validate actual source/evidence, claim fresh ownership",
+        "Do not treat local planner as real handoff"
       ],
       "requirement_source": "Explicit Strategy v2.2.6",
       "agent": "UNASSIGNED; confirm ownership before writing",
@@ -99,7 +143,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T04:10:53.496471+00:00"
+      "updated_at": "2026-10-26T06:53:44.532556+00:00"
     },
     {
       "task_id": "B2-GDD",
@@ -131,7 +175,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T04:10:53.496471+00:00"
+      "updated_at": "2026-10-26T06:53:44.532556+00:00"
     },
     {
       "task_id": "A4-POP",
@@ -162,7 +206,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T04:10:53.496471+00:00"
+      "updated_at": "2026-10-26T06:53:44.532556+00:00"
     },
     {
       "task_id": "QA-TOOLS",
@@ -220,7 +264,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T04:10:53.496471+00:00"
+      "updated_at": "2026-10-26T06:53:44.532556+00:00"
     },
     {
       "task_id": "INTEGRATION",
@@ -250,7 +294,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T04:10:53.496471+00:00"
+      "updated_at": "2026-10-26T06:53:44.532556+00:00"
     },
     {
       "task_id": "PHASE-B-E",

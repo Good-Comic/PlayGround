@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-26T04:10:52.634164+00:00",
+  "captured_at_utc": "2026-10-26T06:53:44.020008+00:00",
   "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+  "collector_commit": "1a5a67c5373bdd5ede925484776339f95ded78a0",
   "collector_dirty": false,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-26T04:10:52.634164+00:00"
+    "queried_at": "2026-10-26T06:53:44.020008+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -26,9 +26,9 @@
     "codex/riftwatch-gameplay-integration": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
     "codex/riftwatch-playtest-candidate": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
     "codex/riftwatch-playtest-site": "6c98a8e6b7f7759ca57a9c9f94f675e2b6070381",
-    "codex/riftwatch-progress-feed": "d103cb83279dabb54b6944fd420b8aab58feef97",
-    "codex/riftwatch-recovery-index": "fd071230958d9312846335127026628410661868",
-    "codex/riftwatch-task-ownership": "6c2fb02c384e1d5781c2627356dc79ed377e3ccb",
+    "codex/riftwatch-progress-feed": "437124dd303bdf4a54dc461aa3b89e3d99eacc83",
+    "codex/riftwatch-recovery-index": "5eaccd381f5d87fb68d548c846a22bf0745171f0",
+    "codex/riftwatch-task-ownership": "0a5858e841a1fb67b4eae5207a959b813391caca",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -39,6 +39,7 @@
     "codex/riftwatch-v222-recovery": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
     "codex/riftwatch-v224-monitor": "fa520ae3006329bd2b1c54ac90938519465bf320",
     "codex/riftwatch-v226-delivery": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+    "codex/riftwatch-v226-live-acceptance": "1a5a67c5373bdd5ede925484776339f95ded78a0",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -152,6 +153,12 @@
       "branch": "codex/riftwatch-v226-delivery",
       "head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
       "remote_head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-v226-live-acceptance",
+      "head": "1a5a67c5373bdd5ede925484776339f95ded78a0",
+      "remote_head": "1a5a67c5373bdd5ede925484776339f95ded78a0",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -270,6 +277,44 @@
       ],
       "remote_status": "REMOTE_SAVED",
       "remote_head": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
+      "unpushed_commits": [],
+      "changed_files": [],
+      "dirty": false,
+      "local_record_status": "LOCAL_INVENTORIED"
+    },
+    {
+      "path": "/workspace/riftwatch-live",
+      "branch": "codex/riftwatch-v226-live-acceptance",
+      "head": "1a5a67c5373bdd5ede925484776339f95ded78a0",
+      "locked": false,
+      "task_id": "LIVE-D6",
+      "last_validation": [
+        {
+          "path": "docs/evidence/live-d6/manifest.json",
+          "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+          "result": "AFTER_DEPLOY_LIVE_VERIFIED_SCOPED;54native/controlled browserassertions and8normalP0samplechecks",
+          "source_kind": "HOSTED_BUILD_NOT_THIS_TOOL_WORKTREE",
+          "freshness_note": "Collector local resource SOURCE_CHANGED reflects QA worktree versus hosted game; hosted bytes proved by28SHA256 and583HAR/Git matches atD6",
+          "exists": true,
+          "storage": "REMOTE_SAVED",
+          "sha256": "e8476ee7eb210fde540cfcd23aa51fe8b4ec45f30210ae48349060c0580b307a",
+          "resource_freshness": "SOURCE_CHANGED"
+        }
+      ],
+      "blockers": [
+        "Natural ten-wave campaign and first-wave residualram behavior not fully verified",
+        "HARDWARE_TEST_PENDING; no Mid-End Windows data",
+        "FullLQA and allcivilizations not completed",
+        "Existing OmGitHub continuity policy conflict unresolved; no new workflow allowed"
+      ],
+      "next_steps": [
+        "Reverify source/ownership; inspect LIVE-D6-WAVE-01 raw enemy/target timeline and GDD before a minimal diagnostic slice",
+        "Continue lowFPS time-integrity and B1/B2 formal gates; do not treat controlled onlinePASS as fullgame integration",
+        "User playtests sameD6URL and exports BugJSON for new issues; no new publication needed",
+        "Independent AttackMove/UIScale slices remain roadmap; preserve currentPages and17"
+      ],
+      "remote_status": "REMOTE_SAVED",
+      "remote_head": "1a5a67c5373bdd5ede925484776339f95ded78a0",
       "unpushed_commits": [],
       "changed_files": [],
       "dirty": false,
@@ -530,6 +575,10 @@
       "actual_head": "2cd6f099d72a980bfa24dd7ae0f79676918884e8"
     },
     {
+      "path": "/workspace/riftwatch-live",
+      "change": "NEW_OR_MANIFEST_MISSING"
+    },
+    {
       "path": "/workspace/riftwatch-monitor",
       "change": "NEW_OR_MANIFEST_MISSING"
     },
@@ -552,5 +601,5 @@
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "c97a0d8724168b666ff32f479a107fc57de49b1b504f5d74b291e5c0b731a1aa"
+  "snapshot_id": "cfe39ca92d4ca7151cae2015044090f9ff8e32f3007e1f97fe74bd566d77700c"
 }
