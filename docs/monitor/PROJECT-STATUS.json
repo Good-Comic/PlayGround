@@ -2,15 +2,15 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T08:26:46.925280+00:00",
+  "updated_at": "2026-10-26T08:26:49.734300+00:00",
   "latest_event": {
-    "task_id": "V227-WAVE",
+    "task_id": "V227-UI",
     "agent": "Codex",
     "severity": "PROGRESS",
-    "branch": "codex/riftwatch-v227-wave",
-    "commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+    "branch": "codex/riftwatch-v227-ui",
+    "commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
     "build_sha": null,
-    "summary": "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained",
+    "summary": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
     "code_changes": [],
     "next_steps": [
       "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
@@ -21,10 +21,10 @@
       {
         "name": "Source-pinned focused evidence",
         "status": "PASS",
-        "source_commit": "3db640ce017804480be6f6d781176638547b5372",
-        "evidence": "docs/evidence/v227-wave/sealed-after.json",
-        "evidence_commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
-        "evidence_blob": "1f236f7906a6f146e368b8905250d13cda347899",
+        "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+        "evidence": "docs/evidence/v227-ui/unit-final.log.txt",
+        "evidence_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+        "evidence_blob": "d5cd434cc095f505059dcc18aa7a9c6967d7f595",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -33,22 +33,22 @@
         "id": "NEW_CANDIDATE_UNDEPLOYED",
         "severity": "INFO",
         "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance",
-        "source_commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+        "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
         "requires_user_decision": false
       }
     ],
-    "response": "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained",
+    "response": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
     "event_type": "QA_READY",
-    "occurred_at": "2026-10-26T08:26:46.925280+00:00",
+    "occurred_at": "2026-10-26T08:26:49.734300+00:00",
     "completed": [
-      "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained"
+      "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD"
     ],
-    "event_id": "fc6720b8cbbf7c8ac5d20177df46f2742ee4d77f70afc28eac5cecbac76d6a4e",
-    "remote_head": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+    "event_id": "b0501f35e0db2e26c054f03eeb74c3c6f29f7ad308a2dd0bd11dc7f9147acc07",
+    "remote_head": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
-    "recorded_at": "2026-10-26T08:26:46.925280+00:00",
+    "latest_pushed_sha": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+    "recorded_at": "2026-10-26T08:26:49.734300+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
     "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
   },
@@ -593,13 +593,62 @@
       ]
     },
     "V227-WAVE": {
+      "agent": "Codex",
+      "blockers": [
+        {
+          "id": "NEW_CANDIDATE_UNDEPLOYED",
+          "requires_user_decision": false,
+          "severity": "INFO",
+          "source_commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+          "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance"
+        }
+      ],
+      "branch": "codex/riftwatch-v227-wave",
+      "build_sha": null,
+      "code_changes": [],
+      "commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+      "completed": [
+        "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained"
+      ],
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "fc6720b8cbbf7c8ac5d20177df46f2742ee4d77f70afc28eac5cecbac76d6a4e",
+      "event_type": "QA_READY",
+      "latest_pushed_sha": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+      "next_steps": [
+        "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
+        "Prepare isolatedexperimental Candidate onlyafterbasicfeature gates; no D6publication change"
+      ],
+      "occurred_at": "2026-10-26T08:26:46.925280+00:00",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION",
+      "pushed": true,
+      "recorded_at": "2026-10-26T08:26:46.925280+00:00",
+      "remote_head": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained",
+      "severity": "PROGRESS",
+      "summary": "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained",
       "task_id": "V227-WAVE",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v227-wave/sealed-after.json",
+          "evidence_blob": "1f236f7906a6f146e368b8905250d13cda347899",
+          "evidence_commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Source-pinned focused evidence",
+          "source_commit": "3db640ce017804480be6f6d781176638547b5372",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V227-UI": {
+      "task_id": "V227-UI",
       "agent": "Codex",
       "severity": "PROGRESS",
-      "branch": "codex/riftwatch-v227-wave",
-      "commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+      "branch": "codex/riftwatch-v227-ui",
+      "commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
       "build_sha": null,
-      "summary": "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained",
+      "summary": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
       "code_changes": [],
       "next_steps": [
         "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
@@ -610,10 +659,10 @@
         {
           "name": "Source-pinned focused evidence",
           "status": "PASS",
-          "source_commit": "3db640ce017804480be6f6d781176638547b5372",
-          "evidence": "docs/evidence/v227-wave/sealed-after.json",
-          "evidence_commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
-          "evidence_blob": "1f236f7906a6f146e368b8905250d13cda347899",
+          "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+          "evidence": "docs/evidence/v227-ui/unit-final.log.txt",
+          "evidence_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+          "evidence_blob": "d5cd434cc095f505059dcc18aa7a9c6967d7f595",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -622,22 +671,22 @@
           "id": "NEW_CANDIDATE_UNDEPLOYED",
           "severity": "INFO",
           "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance",
-          "source_commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+          "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
           "requires_user_decision": false
         }
       ],
-      "response": "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained",
+      "response": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
       "event_type": "QA_READY",
-      "occurred_at": "2026-10-26T08:26:46.925280+00:00",
+      "occurred_at": "2026-10-26T08:26:49.734300+00:00",
       "completed": [
-        "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained"
+        "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD"
       ],
-      "event_id": "fc6720b8cbbf7c8ac5d20177df46f2742ee4d77f70afc28eac5cecbac76d6a4e",
-      "remote_head": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
+      "event_id": "b0501f35e0db2e26c054f03eeb74c3c6f29f7ad308a2dd0bd11dc7f9147acc07",
+      "remote_head": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "latest_pushed_sha": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
-      "recorded_at": "2026-10-26T08:26:46.925280+00:00",
+      "latest_pushed_sha": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+      "recorded_at": "2026-10-26T08:26:49.734300+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
       "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
     }

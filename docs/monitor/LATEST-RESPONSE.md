@@ -1,1 +1,1 @@
-P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained
+UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD
