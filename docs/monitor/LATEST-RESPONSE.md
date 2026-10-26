@@ -1,1 +1,1 @@
-Wave original260s unreachable residual reproduced, fixed120s with living ram0kills;83Node andaffectednormal180/browserSaveLoadPASS. D6observedram itself was valid ongoingcombat. Clock15/10virtualHz FAIL remains.
+UIscale100/115/130percent nativefourlocale tworesolution, SaveLoad/BugJSON/resetPASS; GDDfixedEnglishStart resolved BY_DESIGN. Full native linguisticreview pending.
