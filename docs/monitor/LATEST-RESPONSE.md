@@ -1,1 +1,1 @@
-已保存 v227 隔離 Candidate：Build27b279410db1bb9c14b3c1b921b146059a6c6341；分支保存c25ccc76178b044b061c88954ed2cf7f5a9b59fb。D6攻城槌當時仍在合法戰鬥，但原波次結算存在不可達殘敵Softlock風險，已最小重現並本地修復，未刪敵或強制跳波。Attack-Move、單位Guard、Patrol、編隊快捷鍵、UI文字縮放有定向本地操作證據；97Node與四語673鍵通過。正常180秒8P0通過，10次重新索敵、四資源卸貨56/24/26/14。窄道仍FAIL：8人穿過但7人完成目的地；低FPS模擬時鐘FAIL與硬體待驗保留。新版未發布，舊D6與Integration不變。下一步先精確重播窄道失敗；新SHA公開部署仍須具體授權。Recovery索引與Handoff保留實際遠端狀態；此為GitHub快照，非Cloud私有即時串流。
+已保存額度保護工具，7項本地／模擬驗收通過。未連接正式額度或派送接口，狀態QUOTA_PERCENT_UNKNOWN與RESUME_READY_MANUAL_DISPATCH。接續窄道逐幀診斷，不重做有效97項回歸。
