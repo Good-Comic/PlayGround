@@ -1,0 +1,81 @@
+{
+  "stage": "AFTER_LOCAL",
+  "case": "groups",
+  "source_sha": "f9a0eb8a6ecfc0322973bd0156ff0cd3874c5d6c",
+  "tests": [
+    {
+      "name": "exact local unpublished featureSHA",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "native rightclick clears only group1, preserves marching selection/order/units",
+      "pass": true,
+      "observed": {
+        "before": {
+          "selected": [
+            15
+          ],
+          "goal": {
+            "x": 31.999998793473743,
+            "y": 28.999999597824583
+          },
+          "count": 13
+        },
+        "after": {
+          "selected": [
+            15
+          ],
+          "goal": {
+            "x": 31.999998793473743,
+            "y": 28.999999597824583
+          },
+          "count": 13
+        }
+      }
+    },
+    {
+      "name": "cleared badge updates andothergroup staysavailable",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "nativeSaveLoad retains clearedbindingandothergroup recall",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "noConsole/Page/Networkerrors",
+      "pass": true,
+      "observed": null
+    }
+  ],
+  "actions": [
+    {
+      "unit": "actor",
+      "button": "left",
+      "pointer": {
+        "x": 765.1587675517604,
+        "y": 432.8463558927945
+      }
+    },
+    {
+      "world": [
+        32,
+        29
+      ],
+      "button": "right",
+      "pointer": {
+        "x": 979.1999491981281,
+        "y": 729.1999491981281
+      }
+    }
+  ],
+  "console": [],
+  "errors": [],
+  "failed": [],
+  "http_errors": [],
+  "fixture": "Native UI for scale; explicit clear-field initial state for tactical/wave cases; no skip/forced kill to settle waves",
+  "browser": "154.0.8037.57",
+  "pass": true
+}

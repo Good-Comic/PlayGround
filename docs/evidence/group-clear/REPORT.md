@@ -1,0 +1,5 @@
+# Independent follow-on group clear slice
+
+LOCAL_VERIFIED only, NOT included in publishedv228ab56. Sourcef9a0eb8a6ecfc0322973bd0156ff0cd3874c5d6c oncodex/riftwatch-v229-group-clear. Native rightclickgroupbutton clears binding only; existingselection, units, movementdestination andothergroup unaffected. Save/Load retainsremovedbindingandothergroup recall. Guards ignoremodal/paused/menu input. Invalidgroup identifiers rejected. ExistingCanvasrightclickmove unchanged; clearingdoesnotdeleteunits/cancelorders. Tooltipupdatedthroughfourlocale resources,678keys.
+
+12focusedNodechecksPASS (2new plus existinggroup/tacticalcontracts),5actualLOCALChromium assertionsPASS includingrealCtrlstore/rightclickclear/marchingorderpreservation/SaveReloadContinue; noConsole/Page/requesterrors. No newperframework introduced, but freshperformance/independentreview and Candidateintegration remainpending. No publicnewSHA orGameplayIntegrationchange. Continueindependentformation/Fog/Roguelite slices afterfeaturegates; this is a completedboundedfeaturecheckpoint, not broadPhaseBcompletion.
