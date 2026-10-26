@@ -1,4 +1,5 @@
 import { getLocale, t } from './i18n.js';
+import { hasSavedRun } from './save.js';
 
 const numeric=n=>Number.isFinite(n)?n:null;
 const id=s=>typeof s==='string'&&/^[a-zA-Z0-9_-]{1,40}$/.test(s)?s:'unknown';
@@ -40,7 +41,7 @@ export async function verifyBuild(meta,fetcher=fetch) {
 }
 export async function installPlaytest({game,ui}) {
   const start=document.getElementById('btn-start'),cont=document.getElementById('btn-continue');
-  const setDisabled=value=>{start.disabled=value;cont.disabled=value||!localStorage.getItem('riftwatch.playtest.run.v1');};setDisabled(true);
+  const setDisabled=value=>{start.disabled=value;cont.disabled=value||!hasSavedRun();};setDisabled(true);
   const errors=[];addEventListener('error',e=>errors.push(safeError(e.error||{})));addEventListener('unhandledrejection',e=>errors.push(safeError(e.reason||{})));
   const root=document.createElement('aside');root.id='playtest-tools';
   const toggle=document.createElement('button');toggle.id='playtest-info-toggle';toggle.textContent='PLAYTEST · Loading…';root.append(toggle);
