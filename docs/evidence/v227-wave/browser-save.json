@@ -1,0 +1,70 @@
+{
+  "stage": "AFTER_LOCAL",
+  "case": "wave",
+  "source_sha": "3db640ce017804480be6f6d781176638547b5372",
+  "tests": [
+    {
+      "name": "exact committed local payload verified",
+      "pass": true,
+      "observed": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "3db640ce017804480be6f6d781176638547b5372",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-26T08:09:00.393700+00:00",
+        "resourceVerification": "SHA256_MATCH_28_FILES"
+      }
+    },
+    {
+      "name": "scheduled120s settlement retains living enemy, no kill/skip",
+      "pass": true,
+      "observed": {
+        "clock": 120,
+        "alive": true,
+        "hp": 220,
+        "carry": true,
+        "kills": 0,
+        "rt": 0.3
+      }
+    },
+    {
+      "name": "boon reading freezes active simulation/economy",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "native SaveReloadContinue retains living carryover flags",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "native nextwave countdown resets cleanup flags",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "no runtime/request/HTTPerrors",
+      "pass": true,
+      "observed": {
+        "console": [],
+        "page": [],
+        "failed": [],
+        "http": []
+      }
+    }
+  ],
+  "actions": [],
+  "console": [],
+  "errors": [],
+  "failed": [],
+  "http_errors": [],
+  "fixture": "Native UI for scale; explicit clear-field initial state for tactical/wave cases; no skip/forced kill to settle waves",
+  "browser": "154.0.8037.57",
+  "build": {
+    "id": "riftwatch-playtest-v1",
+    "commit": "3db640ce017804480be6f6d781176638547b5372",
+    "status": "PLAYTEST-EXPERIMENTAL",
+    "builtAt": "2026-10-26T08:09:00.393700+00:00",
+    "resourceVerification": "SHA256_MATCH_28_FILES"
+  },
+  "pass": true
+}
