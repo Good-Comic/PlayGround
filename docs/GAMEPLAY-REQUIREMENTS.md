@@ -1,3 +1,7 @@
+## Strategy v2.2.7 — current scoped update
+
+Independent candidate `codex/riftwatch-playtest-v227`, game SHA `af5944ae9480c6458a899b6f4e335fa842219df9`. Wave softlock-risk reproduction/fix, Attack-Move/unit Guard/two-point Patrol/control groups and UI text scale implemented with scoped local evidence. See [v227 report](evidence/v227-candidate/REPORT.md) and [exact new-SHA deployment proposal](playtest/v227/APPROVAL-PLAN.json). Public D6 and Gameplay Integration remain unchanged; no new online QA claim. Historical FAIL, low-FPS clock error and HARDWARE_TEST_PENDING remain. New formation editor, complete campaign and full current-scale combat acceptance pending. Start Game fixed English is GDD BY_DESIGN.
+
 ## Strategy v2.2.2 recovery status — current override
 
 Recovery/handoff framework implemented and normally pushed; actual source/test/evidence state is in [STRATEGY-V2.2-EXECUTION.md](STRATEGY-V2.2-EXECUTION.md), [Recovery Manifest](recovery/WORKTREE-RECOVERY.md) and handoff/ACTIVE-TASK.json. Historical records below remain unchanged. Recovered12/12 corrected-window baseline cases (source11f8a6a),9PASS/3FAIL; no missing sample rerun. Target/Population/Civ bounded local acceptance does not equal integration.500/1000 FAIL remains research, not a project-wide lock. Simulation integrity, physical hardware and online deployment remain independent blocked/pending gates.

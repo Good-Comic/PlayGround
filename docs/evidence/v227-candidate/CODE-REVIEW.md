@@ -1,0 +1,3 @@
+# Author self-review, external review pending
+
+Reviewed combined collision/range/resumption changes against retained native60Hz failures; preserved hard swept collision, AI/stats, original threat source and Boss/core precedence. Merge conflicts combined both Save fields, six locale additions and both scaling/tactical styles. No wholesale ours/theirs replacement.97Node and full locale-key validation pass. Candidate-only Save key change required playtest bootstrap fix, now shared validated API. Not GameplayIntegration or independent Supervisor approval. Natural campaign, activecombat performance, hostile overcrowding terrains, Guardbuildings and selectable formations remain open.

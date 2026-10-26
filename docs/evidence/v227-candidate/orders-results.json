@@ -1,0 +1,164 @@
+{
+  "stage": "AFTER_LOCAL",
+  "case": "orders",
+  "source_sha": "e845d2cd68b423bb2c16266a2c2f434edfa3f93a",
+  "tests": [
+    {
+      "name": "exact committed local payload verified",
+      "pass": true,
+      "observed": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "e845d2cd68b423bb2c16266a2c2f434edfa3f93a",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-26T09:12:10.940882+00:00",
+        "resourceVerification": "SHA256_MATCH_28_FILES"
+      }
+    },
+    {
+      "name": "native select shows tactical controls",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "button+ground creates AttackMove route",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "native AttackMove acquires and fights encountered enemy",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "native kill then resumes and reaches original goal",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "native Ctrl-store Alt-recall group",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "Patrol hotkey completes outward and return legs",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "native SaveLoad retains patrol and controlgroup",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "Guard hotkey selects real friendly target",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "Guard actually follows moving ally",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "Hold cancels tactical order and preserves stance",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "v227 leaves existing D6 Save and Settings keys untouched",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "no runtime/request/HTTPerrors",
+      "pass": true,
+      "observed": {
+        "console": [],
+        "page": [],
+        "failed": [],
+        "http": []
+      }
+    }
+  ],
+  "actions": [
+    {
+      "unit": "actor",
+      "button": "left",
+      "pointer": {
+        "x": 807.84224,
+        "y": 427.92112
+      }
+    },
+    {
+      "world": [
+        29,
+        16
+      ],
+      "button": "left",
+      "pointer": {
+        "x": 1216,
+        "y": 650
+      }
+    },
+    {
+      "unit": "ally",
+      "button": "left",
+      "pointer": {
+        "x": 736,
+        "y": 584
+      }
+    },
+    {
+      "world": [
+        22,
+        16
+      ],
+      "button": "left",
+      "pointer": {
+        "x": 992,
+        "y": 538
+      }
+    },
+    {
+      "unit": "ally",
+      "button": "left",
+      "pointer": {
+        "x": 736,
+        "y": 584
+      }
+    },
+    {
+      "unit": "ally",
+      "button": "left",
+      "pointer": {
+        "x": 736,
+        "y": 584
+      }
+    },
+    {
+      "world": [
+        25,
+        22
+      ],
+      "button": "right",
+      "pointer": {
+        "x": 896,
+        "y": 682
+      }
+    }
+  ],
+  "console": [],
+  "errors": [],
+  "failed": [],
+  "http_errors": [],
+  "fixture": "Native UI for scale; explicit clear-field initial state for tactical/wave cases; no skip/forced kill to settle waves",
+  "browser": "154.0.8037.57",
+  "build": {
+    "id": "riftwatch-playtest-v1",
+    "commit": "e845d2cd68b423bb2c16266a2c2f434edfa3f93a",
+    "status": "PLAYTEST-EXPERIMENTAL",
+    "builtAt": "2026-10-26T09:12:10.940882+00:00",
+    "resourceVerification": "SHA256_MATCH_28_FILES"
+  },
+  "pass": true
+}
