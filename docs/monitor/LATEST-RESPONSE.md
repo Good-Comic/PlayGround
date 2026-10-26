@@ -1,1 +1,1 @@
-Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS.
+Actualproduction20virtualseconds:10Hz only10sim/25attacks/construction.6867. Fixedprototype same seededstate across10–60Hz, but strictSaveLoadFAIL; no productionloop adoption.

@@ -2,15 +2,15 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T13:11:12.728630+00:00",
+  "updated_at": "2026-10-26T13:11:15.934184+00:00",
   "latest_event": {
-    "task_id": "V228-NAV",
+    "task_id": "V228-CLOCK",
     "agent": "Codex",
-    "severity": "PROGRESS",
-    "branch": "codex/riftwatch-v228-nav",
-    "commit": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
+    "severity": "WARNING",
+    "branch": "codex/riftwatch-v228-clock",
+    "commit": "c975d4801574e1d1959953bdb699c882ce10ec00",
     "build_sha": null,
-    "summary": "Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS.",
+    "summary": "Actualproduction20virtualseconds:10Hz only10sim/25attacks/construction.6867. Fixedprototype same seededstate across10\u201360Hz, but strictSaveLoadFAIL; no productionloop adoption.",
     "code_changes": [],
     "next_steps": [
       "Prepare independentexperimental Candidate; preserveD6; no newpublicSHA without exactapproval",
@@ -20,27 +20,35 @@
     "tests": [
       {
         "name": "Scopedsource-pinned acceptance",
-        "status": "PASS",
+        "status": "FAIL",
         "source_commit": "144c1f3f8769f94e15e94a190279dc04f445b8a5",
-        "evidence": "docs/evidence/v228-nav/ROOT-CAUSE.md",
-        "evidence_commit": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
-        "evidence_blob": "ee5f2d07522efae541bff4cd4dcc32bbf91e1316",
+        "evidence": "docs/evidence/v228-clock/acceptance.json",
+        "evidence_commit": "c975d4801574e1d1959953bdb699c882ce10ec00",
+        "evidence_blob": "b3c694b1630ee51621920236bbc850b19330a571",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
-    "blockers": [],
-    "response": "Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS.",
-    "event_type": "QA_READY",
-    "occurred_at": "2026-10-26T13:11:12.728630+00:00",
-    "completed": [
-      "Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS."
+    "blockers": [
+      {
+        "id": "SIMULATION_INTEGRITY_BLOCKED",
+        "severity": "WARNING",
+        "summary": "StrictGame SaveLoad state diverges after.1resumedseconds despite initially matching RNG; transientnav history missing. PrototypeONLY.",
+        "source_commit": "c975d4801574e1d1959953bdb699c882ce10ec00",
+        "requires_user_decision": false
+      }
     ],
-    "event_id": "62892eb43a10bc2f8a01488f793b88e834b5c57421286d2295cd778519a2c5ce",
-    "remote_head": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
+    "response": "Actualproduction20virtualseconds:10Hz only10sim/25attacks/construction.6867. Fixedprototype same seededstate across10\u201360Hz, but strictSaveLoadFAIL; no productionloop adoption.",
+    "event_type": "QA_FAILED",
+    "occurred_at": "2026-10-26T13:11:15.934184+00:00",
+    "completed": [
+      "Actualproduction20virtualseconds:10Hz only10sim/25attacks/construction.6867. Fixedprototype same seededstate across10\u201360Hz, but strictSaveLoadFAIL; no productionloop adoption."
+    ],
+    "event_id": "d3ded3d0c174bc1e5d561a92fe6197131639625da4c7b48eb7bf7812d25bad02",
+    "remote_head": "c975d4801574e1d1959953bdb699c882ce10ec00",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
-    "recorded_at": "2026-10-26T13:11:12.728630+00:00",
+    "latest_pushed_sha": "c975d4801574e1d1959953bdb699c882ce10ec00",
+    "recorded_at": "2026-10-26T13:11:15.934184+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
     "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
   },
@@ -868,13 +876,54 @@
       ]
     },
     "V228-NAV": {
-      "task_id": "V228-NAV",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [],
       "branch": "codex/riftwatch-v228-nav",
-      "commit": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
       "build_sha": null,
+      "code_changes": [],
+      "commit": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
+      "completed": [
+        "Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS."
+      ],
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "62892eb43a10bc2f8a01488f793b88e834b5c57421286d2295cd778519a2c5ce",
+      "event_type": "QA_READY",
+      "latest_pushed_sha": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
+      "next_steps": [
+        "Prepare independentexperimental Candidate; preserveD6; no newpublicSHA without exactapproval",
+        "Continue relevantmissinggates only; no repeatwholeD6/unchangedlocales"
+      ],
+      "occurred_at": "2026-10-26T13:11:12.728630+00:00",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION",
+      "pushed": true,
+      "recorded_at": "2026-10-26T13:11:12.728630+00:00",
+      "remote_head": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS.",
+      "severity": "PROGRESS",
       "summary": "Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS.",
+      "task_id": "V228-NAV",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v228-nav/ROOT-CAUSE.md",
+          "evidence_blob": "ee5f2d07522efae541bff4cd4dcc32bbf91e1316",
+          "evidence_commit": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Scopedsource-pinned acceptance",
+          "source_commit": "144c1f3f8769f94e15e94a190279dc04f445b8a5",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V228-CLOCK": {
+      "task_id": "V228-CLOCK",
+      "agent": "Codex",
+      "severity": "WARNING",
+      "branch": "codex/riftwatch-v228-clock",
+      "commit": "c975d4801574e1d1959953bdb699c882ce10ec00",
+      "build_sha": null,
+      "summary": "Actualproduction20virtualseconds:10Hz only10sim/25attacks/construction.6867. Fixedprototype same seededstate across10\u201360Hz, but strictSaveLoadFAIL; no productionloop adoption.",
       "code_changes": [],
       "next_steps": [
         "Prepare independentexperimental Candidate; preserveD6; no newpublicSHA without exactapproval",
@@ -884,27 +933,35 @@
       "tests": [
         {
           "name": "Scopedsource-pinned acceptance",
-          "status": "PASS",
+          "status": "FAIL",
           "source_commit": "144c1f3f8769f94e15e94a190279dc04f445b8a5",
-          "evidence": "docs/evidence/v228-nav/ROOT-CAUSE.md",
-          "evidence_commit": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
-          "evidence_blob": "ee5f2d07522efae541bff4cd4dcc32bbf91e1316",
+          "evidence": "docs/evidence/v228-clock/acceptance.json",
+          "evidence_commit": "c975d4801574e1d1959953bdb699c882ce10ec00",
+          "evidence_blob": "b3c694b1630ee51621920236bbc850b19330a571",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
-      "blockers": [],
-      "response": "Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS.",
-      "event_type": "QA_READY",
-      "occurred_at": "2026-10-26T13:11:12.728630+00:00",
-      "completed": [
-        "Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS."
+      "blockers": [
+        {
+          "id": "SIMULATION_INTEGRITY_BLOCKED",
+          "severity": "WARNING",
+          "summary": "StrictGame SaveLoad state diverges after.1resumedseconds despite initially matching RNG; transientnav history missing. PrototypeONLY.",
+          "source_commit": "c975d4801574e1d1959953bdb699c882ce10ec00",
+          "requires_user_decision": false
+        }
       ],
-      "event_id": "62892eb43a10bc2f8a01488f793b88e834b5c57421286d2295cd778519a2c5ce",
-      "remote_head": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
+      "response": "Actualproduction20virtualseconds:10Hz only10sim/25attacks/construction.6867. Fixedprototype same seededstate across10\u201360Hz, but strictSaveLoadFAIL; no productionloop adoption.",
+      "event_type": "QA_FAILED",
+      "occurred_at": "2026-10-26T13:11:15.934184+00:00",
+      "completed": [
+        "Actualproduction20virtualseconds:10Hz only10sim/25attacks/construction.6867. Fixedprototype same seededstate across10\u201360Hz, but strictSaveLoadFAIL; no productionloop adoption."
+      ],
+      "event_id": "d3ded3d0c174bc1e5d561a92fe6197131639625da4c7b48eb7bf7812d25bad02",
+      "remote_head": "c975d4801574e1d1959953bdb699c882ce10ec00",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "latest_pushed_sha": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
-      "recorded_at": "2026-10-26T13:11:12.728630+00:00",
+      "latest_pushed_sha": "c975d4801574e1d1959953bdb699c882ce10ec00",
+      "recorded_at": "2026-10-26T13:11:15.934184+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
       "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
     }
