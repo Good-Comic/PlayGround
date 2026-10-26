@@ -2,15 +2,15 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T08:26:49.734300+00:00",
+  "updated_at": "2026-10-26T08:26:51.911597+00:00",
   "latest_event": {
-    "task_id": "V227-UI",
+    "task_id": "V227-ORDERS",
     "agent": "Codex",
     "severity": "PROGRESS",
-    "branch": "codex/riftwatch-v227-ui",
-    "commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+    "branch": "codex/riftwatch-v227-orders",
+    "commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
     "build_sha": null,
-    "summary": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
+    "summary": "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending",
     "code_changes": [],
     "next_steps": [
       "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
@@ -21,10 +21,10 @@
       {
         "name": "Source-pinned focused evidence",
         "status": "PASS",
-        "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
-        "evidence": "docs/evidence/v227-ui/unit-final.log.txt",
-        "evidence_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
-        "evidence_blob": "d5cd434cc095f505059dcc18aa7a9c6967d7f595",
+        "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
+        "evidence": "docs/evidence/v227-orders/regression.log.txt",
+        "evidence_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
+        "evidence_blob": "c0779a9d73c190c87dfe6bcf702ba3744a125a5c",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -33,22 +33,22 @@
         "id": "NEW_CANDIDATE_UNDEPLOYED",
         "severity": "INFO",
         "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance",
-        "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+        "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
         "requires_user_decision": false
       }
     ],
-    "response": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
+    "response": "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending",
     "event_type": "QA_READY",
-    "occurred_at": "2026-10-26T08:26:49.734300+00:00",
+    "occurred_at": "2026-10-26T08:26:51.911597+00:00",
     "completed": [
-      "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD"
+      "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending"
     ],
-    "event_id": "b0501f35e0db2e26c054f03eeb74c3c6f29f7ad308a2dd0bd11dc7f9147acc07",
-    "remote_head": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+    "event_id": "a8b8bc18dd21dffc7fc70f6b07e57eee601399e67e9c45d5a3c240c1b08bbf17",
+    "remote_head": "d460928707ea527a7cd58c45622fa1e9caff923a",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
-    "recorded_at": "2026-10-26T08:26:49.734300+00:00",
+    "latest_pushed_sha": "d460928707ea527a7cd58c45622fa1e9caff923a",
+    "recorded_at": "2026-10-26T08:26:51.911597+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
     "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
   },
@@ -642,13 +642,62 @@
       ]
     },
     "V227-UI": {
+      "agent": "Codex",
+      "blockers": [
+        {
+          "id": "NEW_CANDIDATE_UNDEPLOYED",
+          "requires_user_decision": false,
+          "severity": "INFO",
+          "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+          "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance"
+        }
+      ],
+      "branch": "codex/riftwatch-v227-ui",
+      "build_sha": null,
+      "code_changes": [],
+      "commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+      "completed": [
+        "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD"
+      ],
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "b0501f35e0db2e26c054f03eeb74c3c6f29f7ad308a2dd0bd11dc7f9147acc07",
+      "event_type": "QA_READY",
+      "latest_pushed_sha": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+      "next_steps": [
+        "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
+        "Prepare isolatedexperimental Candidate onlyafterbasicfeature gates; no D6publication change"
+      ],
+      "occurred_at": "2026-10-26T08:26:49.734300+00:00",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION",
+      "pushed": true,
+      "recorded_at": "2026-10-26T08:26:49.734300+00:00",
+      "remote_head": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
+      "severity": "PROGRESS",
+      "summary": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
       "task_id": "V227-UI",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v227-ui/unit-final.log.txt",
+          "evidence_blob": "d5cd434cc095f505059dcc18aa7a9c6967d7f595",
+          "evidence_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Source-pinned focused evidence",
+          "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V227-ORDERS": {
+      "task_id": "V227-ORDERS",
       "agent": "Codex",
       "severity": "PROGRESS",
-      "branch": "codex/riftwatch-v227-ui",
-      "commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+      "branch": "codex/riftwatch-v227-orders",
+      "commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
       "build_sha": null,
-      "summary": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
+      "summary": "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending",
       "code_changes": [],
       "next_steps": [
         "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
@@ -659,10 +708,10 @@
         {
           "name": "Source-pinned focused evidence",
           "status": "PASS",
-          "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
-          "evidence": "docs/evidence/v227-ui/unit-final.log.txt",
-          "evidence_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
-          "evidence_blob": "d5cd434cc095f505059dcc18aa7a9c6967d7f595",
+          "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
+          "evidence": "docs/evidence/v227-orders/regression.log.txt",
+          "evidence_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
+          "evidence_blob": "c0779a9d73c190c87dfe6bcf702ba3744a125a5c",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -671,22 +720,22 @@
           "id": "NEW_CANDIDATE_UNDEPLOYED",
           "severity": "INFO",
           "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance",
-          "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+          "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
           "requires_user_decision": false
         }
       ],
-      "response": "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD",
+      "response": "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending",
       "event_type": "QA_READY",
-      "occurred_at": "2026-10-26T08:26:49.734300+00:00",
+      "occurred_at": "2026-10-26T08:26:51.911597+00:00",
       "completed": [
-        "UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD"
+        "AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending"
       ],
-      "event_id": "b0501f35e0db2e26c054f03eeb74c3c6f29f7ad308a2dd0bd11dc7f9147acc07",
-      "remote_head": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+      "event_id": "a8b8bc18dd21dffc7fc70f6b07e57eee601399e67e9c45d5a3c240c1b08bbf17",
+      "remote_head": "d460928707ea527a7cd58c45622fa1e9caff923a",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "latest_pushed_sha": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
-      "recorded_at": "2026-10-26T08:26:49.734300+00:00",
+      "latest_pushed_sha": "d460928707ea527a7cd58c45622fa1e9caff923a",
+      "recorded_at": "2026-10-26T08:26:51.911597+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
       "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
     }

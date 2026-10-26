@@ -1,1 +1,1 @@
-UItext100/115/130percent withsettingspersistence and4locales implemented; nativebrowser layout gate pending; StartGame fixedEnglish requiredbyGDD
+AttackMove/Guard/Patrol/Ctrl-store Alt-recall groups implemented;81Node andfourlocale keysPASS; nativebrowser gate pending
