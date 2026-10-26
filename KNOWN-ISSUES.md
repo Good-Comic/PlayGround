@@ -1,4 +1,4 @@
-# Riftwatch Playtest Candidate — known issues
+# Riftwatch v228 Playtest Candidate — known issues
 
 PLAYTEST-EXPERIMENTAL, not QA-ACCEPTED or a formal release. Legacy OmGitHub Issue #17 is unchanged. All six candidate feature sources are experimental until complete combined quality acceptance.
 
@@ -8,8 +8,10 @@ PLAYTEST-EXPERIMENTAL, not QA-ACCEPTED or a formal release. Legacy OmGitHub Issu
 - Later-wave military ceilings/legacy monument capacity need specification reconciliation; Gothic flat population reduction and old-save migration remain open. Complete16 unique rosters and natural ten-wave stability are not certified.
 - Candidate saves/settings use a separate playtest namespace. D6 saves/settings are also isolated: v227 uses riftwatch.playtest.v227.* keys. Existing D6 saves are not automatically imported or overwritten. Candidate rollback may require starting a fresh test save if future schema changes are incompatible.
 - No analytics or remote Bug collection. Export JSON excludes raw error text/stacks, cookies, storage dumps, URL/referrer and free text. It includes seed, civ/map, wave, settings, resources/population, bounded unit state and coarse browser/OS. Review before manually sharing.
-- This is the v227 LOCAL candidate, not the publicly deployed D6. New SHA deployment needs precise approval; D6 directory remains untouched. Local tests are not online verification.
-- OPEN-NAV-NARROW-01: one controlled native two-way eight-unit corridor test FAILS destination completion: all8cross,7/8arrive within85s,0wallclips. Fixed60Hz simplified cases do not reproduce it; no speculative repair or threshold change. Normal seeded180s and24-unit open movement pass separately.
+- This v228 candidate is LOCAL only; no new publicSHA has been authorized or deployed. D6 full-SHA directory stays unchanged. Local tests are not online verification.
+- OPEN-NAV-NARROW-01 is LOCAL_FIXED in v228: exact recorded Chromium dt replay changes7/8 to8/8 by preserving crowd-aware A* detours. Native8/8 in16.73s,24crowd/orders/SaveLoad/normal135s regressions pass. OriginalFAIL is preserved; other terrain/congestion cases and onlineacceptance remain pending. Evidence: https://github.com/Good-Comic/PlayGround/blob/5fab2cedc770b238b37559eb81c42495e5eeb27a/docs/evidence/v228-nav/ROOT-CAUSE.md
+- Save/Load can resume, but strict deterministic continuation FAILS: transient navigation history is rebuilt and subsequent movement/economy/RNG diverge. Fixed-step evaluation is not installed. Do not treat a playable Continue as deterministic replay certification.
+- Clickable1–9 control groups, Ctrl-store/Shift-add and a Settings visibility switch are included. Keyboard groups continue when buttons are hidden; textscale100/115/130% and fourlanguages have scoped native checks. A new line/wedge formation editor, Fog expansion and newcard/Boss slices remain queued.
 - Wave settlement/withdrawal, hostile crowd yielding and tactical route resumption are fixed in this candidate only. Natural full ten-wave stability and all terrain/civilization combinations remain NOT_TESTED.
 - Attack-Move, unit Guard, two-point Patrol, Ctrl-store/Alt-recall groups and 100/115/130% text scale have scoped local evidence. New selectable formation layouts and complete shortcut remapping are NOT_IMPLEMENTED.
 - Start Game deliberately remains English in all locales per Issue14 §3.2; other labels use four-language resources.
