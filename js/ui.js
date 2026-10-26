@@ -750,6 +750,7 @@ export class UI {
     const sig = this.commandSignature(game);
     this.lastCommandSignature = sig;
     const commands = this.getCommands(game);
+    if (!game.selection.some(u => u.alive && u.team === 'player' && u.hero)) game.clearHeroSkillPreview();
     const grid = this.el.commandGrid;
     grid.innerHTML = '';
     commands.slice(0, 6).forEach((cmd, i) => {
@@ -758,7 +759,14 @@ export class UI {
       b.dataset.command = cmd.id;
       b.title = cmd.tooltip || cmd.label;
       b.innerHTML = `<span class="hotkey">${i + 1}</span>${cmd.tag ? `<span class="cmd-tag">${cmd.tag}</span>` : ''}<svg><use href="#i-${ICON_FOR[cmd.icon] || 'sword'}"/></svg><span class="cmd-label">${cmd.label}</span>${cmd.cost ? `<span class="cmd-cost">${cmd.cost}</span>` : ''}`;
-      b.addEventListener('click', () => { this.sound?.click(); this.callbacks.command?.(cmd.id); });
+      b.addEventListener('click', () => { this.sound?.click(); if (cmd.id.startsWith('hero:')) game.clearHeroSkillPreview(); this.callbacks.command?.(cmd.id); });
+      if (cmd.id === 'hero:mark' || cmd.id === 'hero:aegis') {
+        const skill = cmd.id.slice(5);
+        b.addEventListener('pointerenter', () => game.previewHeroSkill(skill));
+        b.addEventListener('pointerleave', () => game.clearHeroSkillPreview());
+        b.addEventListener('focus', () => game.previewHeroSkill(skill));
+        b.addEventListener('blur', () => game.clearHeroSkillPreview());
+      }
       grid.appendChild(b);
     });
     this.updateCommandAffordability(game);

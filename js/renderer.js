@@ -327,6 +327,34 @@ export class Renderer {
 
   drawGroundMarks(game, time) {
     const ctx = this.ctx, z = game.camera.zoom;
+    const hero = game.hero;
+    if (hero?.alive) {
+      const p = this.screen(game, hero.x, hero.y);
+      const pulse = 0.5 + 0.5 * Math.sin(time * 2.4);
+      ctx.save();
+      ctx.strokeStyle = `rgba(232,201,126,${0.24 + 0.14 * pulse})`;
+      ctx.lineWidth = Math.max(1, 1.2 * z);
+      ctx.beginPath();
+      ctx.ellipse(p.x, p.y, 20 * z, 10 * z, 0, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.strokeStyle = `rgba(244,226,184,${0.4 + 0.2 * pulse})`;
+      ctx.lineWidth = Math.max(1, 1.4 * z);
+      for (const [x1, y1, x2, y2] of [[-22, 0, -26, 0], [22, 0, 26, 0], [0, -13, 0, -16], [0, 13, 0, 16]]) {
+        ctx.beginPath();
+        ctx.moveTo(p.x + x1 * z, p.y + y1 * z);
+        ctx.lineTo(p.x + x2 * z, p.y + y2 * z);
+        ctx.stroke();
+      }
+      ctx.fillStyle = `rgba(232,201,126,${0.5 + 0.25 * pulse})`;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y - 58 * z);
+      ctx.lineTo(p.x + 4.5 * z, p.y - 50 * z);
+      ctx.lineTo(p.x, p.y - 53 * z);
+      ctx.lineTo(p.x - 4.5 * z, p.y - 50 * z);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
     for (const u of game.units) {
       if (!u.alive) continue;
       if (u.selected) {
@@ -424,7 +452,31 @@ export class Renderer {
     }
   }
 
-  drawSelectionMarks(game) {}
+  drawSelectionMarks(game) {
+    const preview = game.heroSkillPreview;
+    const hero = game.hero;
+    if (!preview || !hero?.alive) return;
+    const ctx = this.ctx, z = game.camera.zoom;
+    const p = this.screen(game, hero.x, hero.y);
+    const rx = preview.radius * 32 * z;
+    const ry = preview.radius * 16 * z;
+    ctx.save();
+    ctx.fillStyle = `rgba(${preview.rangeColor},0.08)`;
+    ctx.strokeStyle = `rgba(${preview.rangeColor},0.82)`;
+    ctx.lineWidth = Math.max(1, 1.6 * z);
+    ctx.setLineDash([8 * z, 5 * z]);
+    ctx.beginPath();
+    ctx.ellipse(p.x, p.y, rx, ry, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.strokeStyle = `rgba(${preview.rangeColor},0.28)`;
+    ctx.lineWidth = Math.max(1, 1 * z);
+    ctx.beginPath();
+    ctx.ellipse(p.x, p.y, rx * 0.55, ry * 0.55, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+  }
 
   drawResource(n, game, time) {
     const p = this.screen(game, n.x, n.y);

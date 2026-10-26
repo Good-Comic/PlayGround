@@ -10,6 +10,11 @@ import { NemesisDirector, unitThreat } from './director.js';
 import { t } from './i18n.js';
 import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, rand, randInt, seedFromDate, formatNumber } from './utils.js';
 
+export const HERO_SKILLS = Object.freeze({
+  mark: Object.freeze({ radius: 9, duration: 6, cooldown: 30, rangeColor: '229,160,74' }),
+  aegis: Object.freeze({ radius: 5, duration: 5, cooldown: 60, rangeColor: '147,197,220' }),
+});
+
 const DEFAULT_EFFECTS = () => ({
   woodMul: 1, foodMul: 1, goldMul: 1, stoneMul: 1, woodYield: 1,
   farmMul: 1, attackSpeedMul: 1, archerDamageMul: 1, archerRange: 0,
@@ -139,6 +144,7 @@ export class Game {
     this.hero = null;
     this.heroControl = false;
     this.heroReviveTimer = 0;
+    this.heroSkillPreview = null;
     this.autoEconomy = true;
     this.autoMilitary = true;
     this.autoTimers = { gather: 0, villager: 0, military: 0 };
@@ -325,6 +331,7 @@ export class Game {
     this.autoTimers = { ...snapshot.autoTimers };
     this.heroControl = !!snapshot.heroControl;
     this.heroReviveTimer = snapshot.heroReviveTimer || 0;
+    this.heroSkillPreview = null;
     this.retreatUsed = !!snapshot.retreatUsed;
     this.killFoodEarned = snapshot.killFoodEarned || 0;
     this.killGoldEarned = snapshot.killGoldEarned || 0;
@@ -2050,6 +2057,7 @@ export class Game {
       if (target.hero && target.team === 'player') {
         this.heroReviveTimer = 30;
         this.heroControl = false;
+        this.heroSkillPreview = null;
         this.toast(t('toast.heroFallen'), 'bad', 5000);
       } else {
         this.addFloating(target.x, target.y, 'slain', 'rgba(216,190,150,ALPHA)');
@@ -2940,34 +2948,47 @@ export class Game {
     this.hooks.selectionChanged?.();
   }
 
+  previewHeroSkill(id) {
+    const skill = HERO_SKILLS[id];
+    if (!skill || !this.hero?.alive) { this.heroSkillPreview = null; return false; }
+    this.heroSkillPreview = { id, radius: skill.radius, rangeColor: skill.rangeColor };
+    return true;
+  }
+
+  clearHeroSkillPreview() {
+    this.heroSkillPreview = null;
+  }
+
   heroMark() {
     const hero = this.hero;
+    const skill = HERO_SKILLS.mark;
     if (!hero?.alive) { this.sound?.error(); this.toast(t('toast.heroMissing'), 'bad', 2200); return; }
     if (hero.markCd > 0) { this.sound?.error(); this.toast(t('toast.markCooldown', { seconds: Math.ceil(hero.markCd) }), '', 1600); return; }
-    const target = this.nearestEnemyAt(hero.x, hero.y, 9);
+    const target = this.nearestEnemyAt(hero.x, hero.y, skill.radius);
     if (!target) { this.sound?.error(); this.toast(t('toast.noMarkTarget'), '', 2000); return; }
-    target.marked = 6;
-    hero.markCd = 30;
+    target.marked = skill.duration;
+    hero.markCd = skill.cooldown;
     this.addCommandMarker(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), true);
-    this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'ring', 'rgba(229,160,74,ALPHA)', 1.4, 6, 0.6);
+    this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'ring', `rgba(${skill.rangeColor},ALPHA)`, 1.4, 6, 0.6);
     this.sound?.command();
     this.toast(t('toast.marked', { name: t(`unit.${target.type}.name`) }), 'good', 2600);
   }
 
   heroAegis() {
     const hero = this.hero;
+    const skill = HERO_SKILLS.aegis;
     if (!hero?.alive) { this.sound?.error(); this.toast(t('toast.heroMissing'), 'bad', 2200); return; }
     if (hero.aegisCd > 0) { this.sound?.error(); this.toast(t('toast.aegisCooldown', { seconds: Math.ceil(hero.aegisCd) }), '', 1600); return; }
     let count = 0;
     for (const u of this.units) {
       if (!u.alive || u.team !== 'player') continue;
-      if (dist(u.x, u.y, hero.x, hero.y) > 5) continue;
+      if (dist(u.x, u.y, hero.x, hero.y) > skill.radius) continue;
       u.shield = Math.max(u.shield, 60);
       u.shieldTime = Math.max(u.shieldTime, 5);
       count++;
     }
-    hero.aegisCd = 60;
-    this.addParticles(hero.x, hero.y, 'ring', 'rgba(147,197,220,ALPHA)', 2.5, 12, 0.8);
+    hero.aegisCd = skill.cooldown;
+    this.addParticles(hero.x, hero.y, 'ring', `rgba(${skill.rangeColor},ALPHA)`, 2.5, 12, 0.8);
     this.sound?.boon();
     this.toast(t('toast.aegisShields', { count }), 'good', 2600);
   }
