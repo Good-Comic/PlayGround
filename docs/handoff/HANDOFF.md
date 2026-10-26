@@ -1,9 +1,11 @@
-# Strategy v2.3.0 handoff
+# OmGitHub latest-candidate handoff
 
-`SCHEDULED_RESUME_EXECUTED`. Branch `codex/riftwatch-v230-p0-input` has a verified remote checkpoint at `0c422d9ae04af2435626a7f2be3b6f354c6f5a90`; game source is `d92641dc73e1ea85c4ab585dcecab72cc6f43a82`.
+The supported migration path has been executed without changing Legacy Issue #17. The immutable source branch is `codex/riftwatch-omgithub17-upgrade-candidate` at `45435a323c729a28da1de454a3e53740fc9159f2`. Backup, mechanism inspection, local Chromium acceptance and launch evidence are in `docs/evidence/omgithub17-upgrade/` on `codex/riftwatch-omgithub17-upgrade-evidence`.
 
-The playable slice resolves the A/WASD conflict with Shift+A Attack-Move, makes trained units exit toward Rally Points, and implements on-screen same-type double-click selection. Focused Node tests are 20/20, all four locales retain 678 keys, and seven real local Chromium checks pass without Console, Page, or request errors. Evidence is in `docs/evidence/v230-p0-input/`.
+New Issue [#18](https://github.com/Good-Comic/PlayGround/issues/18) was opened with the official branch request marker. Initial run `40377172932` succeeded. Dispatched run `40377196806` has `headBranch=codex/riftwatch-omgithub17-upgrade-candidate` and `headSha=45435a323c729a28da1de454a3e53740fc9159f2`; its prepare and selected-snapshot steps passed. This verifies the new OpenCode task began from the latest candidate.
 
-The reported Rift Prototype crash remains open. The exact pre-change and post-change controlled boon UI paths both spawn and render a healthy prototype, so do not claim a root cause. Resume with a natural wave-end offer while recording seed, state, browser errors, and the precise input sequence. Then proceed to the hero visual/skill-range vertical slice. Preserve public v228, main, Issue #17, OpenCode Checkpoints, historical FAIL, strict Save/Load failure, low-FPS clock loss, and `HARDWARE_TEST_PENDING`.
+The worker then stopped reporting at `Configure Linux Playwright CLI with WebGPU`. OmGitHub reports `Connection lost` and `Worker heartbeat expired`; publication remains draft with no Preview URL. Treat source migration as verified and interactive Preview as `BLOCKED_NO_PREVIEW_URL`. Do not claim `AFTER_DEPLOY_LIVE`, and do not re-run the valid local candidate suite unless game source changes.
 
-Actual quota percentage is unavailable and no authorized dispatcher is connected: `QUOTA_PERCENT_UNKNOWN`, `RESUME_READY_MANUAL_DISPATCH`.
+Resume by checking the existing Actions run and Issue #18 API once. If the worker recovers and exposes a distinct Preview, hash the loaded assets and run scoped online acceptance. If it fails terminally, preserve logs before considering an official retry/resume action. Keep #17, `opencode-checkpoints/17`, its resume branch and old Preview unchanged. Do not let another agent write the new OpenCode branch concurrently.
+
+Production low-FPS time loss, strict Save/Load nondeterminism, historical performance FAIL and `HARDWARE_TEST_PENDING` remain open.
