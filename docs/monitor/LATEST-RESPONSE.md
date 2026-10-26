@@ -1,1 +1,1 @@
-已保存額度保護工具，7項本地／模擬驗收通過。未連接正式額度或派送接口，狀態QUOTA_PERCENT_UNKNOWN與RESUME_READY_MANUAL_DISPATCH。接續窄道逐幀診斷，不重做有效97項回歸。
+Native variable-dt7/8 failure exactlyreplayed MAXERROR0; staticshortcut erased dynamicAstar detour. Minimalfix98Node, native8/8in16.73s,24crowd,orders13,SaveLoad,fourstances,normal135s8P0PASS.
