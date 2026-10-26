@@ -2,76 +2,86 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T18:29:56.766169+00:00",
+  "updated_at": "2026-10-26T18:59:51.849060+00:00",
   "latest_event": {
-    "task_id": "OMGITHUB17-UPGRADE",
-    "agent": "Codex",
-    "severity": "BLOCKED",
-    "branch": "codex/riftwatch-omgithub17-upgrade-evidence",
-    "commit": "dcbf99db4776172d9384749da80135903046dd5e",
-    "build_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
-    "summary": "Legacy Issue #17 was preserved and official Issue #18 started from exact latest candidate SHA. Source migration is verified, but the new worker lost heartbeat before assigning a Preview URL.",
-    "code_changes": [],
-    "next_steps": [
-      "Recheck existing run 40377196806 once for recovery or terminal failure without duplicate dispatch",
-      "If a distinct Preview appears, hash loaded resources and run AFTER_DEPLOY_LIVE",
-      "If terminal failure occurs, preserve logs before using only a confirmed official retry or resume action"
+    "task_id": "V231-HERO-SKILL-PREVIEW",
+    "agent": "OpenCode",
+    "severity": "PROGRESS",
+    "branch": "codex/riftwatch-v231-hero-skill-preview",
+    "commit": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+    "build_sha": "5df177bee911b8f9251248115e6128aa92b7b563",
+    "summary": "Hero distinction and skill-range preview slice pushed. Mark radius 9 and Aegis radius 5 are shared by gameplay and hover/focus preview; commander gained a persistent gold ground marker. 109/109 Node tests, four locales at 678 keys, and 8/8 local Chromium checks pass with zero browser errors. No balance or public deployment changed.",
+    "code_changes": [
+      "Exported HERO_SKILLS and routed heroMark/heroAegis through shared radius, duration, cooldown, and range-color constants",
+      "Added heroSkillPreview state with hover/focus preview and cleanup on leave, blur, death, restore, and selection change",
+      "Rendered Mark/Aegis range ellipses plus a persistent commander ground ring, direction ticks, and sigil",
+      "Added four focused hero preview/range tests and reproducible local Chromium evidence tooling"
     ],
-    "requires_user_decision": false,
+    "next_steps": [
+      "Record a natural wave-end Rift Prototype offer with seed, state, browser errors, and exact input sequence",
+      "Obtain an explicit GDD decision before changing production hero stats or Aegis radius to the recovered snapshot value 4",
+      "Continue representative hero art and audio distinction beyond the procedural ground marker",
+      "Research low-FPS simulation-time loss and strict Save/Load determinism without lowering historical gates"
+    ],
+    "requires_user_decision": true,
     "tests": [
       {
-        "name": "Exact candidate local minimum acceptance",
+        "name": "Full Node regression and new hero preview tests",
         "status": "PASS",
-        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-        "evidence": "docs/evidence/omgithub17-upgrade/REPORT.md",
-        "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
-        "evidence_blob": "d07e8d34ac3379ff316219b1ec3d40bd45f9d80f",
+        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+        "evidence": "docs/evidence/v231-hero-skill-preview/REPORT.md",
+        "evidence_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
+        "evidence_blob": "09935411609862c7a05adf542efed1ad4a5fd642",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Official OpenCode target resolution",
+        "name": "Real local Chromium artifact checks",
         "status": "PASS",
-        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-        "evidence": "docs/evidence/omgithub17-upgrade/opencode-run-40377196806.json",
-        "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
-        "evidence_blob": "24a4ec328a8153a32fe9db45117188613f9945bd",
+        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+        "evidence": "docs/evidence/v231-hero-skill-preview/browser-checks.json",
+        "evidence_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
+        "evidence_blob": "bfebfbb7e839ba12cce336ac7715b884ed7d16b5",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "New OmGitHub Preview online acceptance",
-        "status": "BLOCKED",
-        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-        "evidence": "docs/evidence/omgithub17-upgrade/POST-UPGRADE.json",
-        "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
-        "evidence_blob": "5323b90ad3ee7bd23bbb6f162174780e1df19691",
+        "name": "Four-locale key parity",
+        "status": "PASS",
+        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+        "evidence": "docs/evidence/v231-hero-skill-preview/REPORT.md",
+        "evidence_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
+        "evidence_blob": "09935411609862c7a05adf542efed1ad4a5fd642",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "OMGITHUB18_WORKER_HEARTBEAT_EXPIRED",
+        "id": "RIFT-PROTOTYPE-NATURAL-REPRO",
         "severity": "BLOCKED",
-        "summary": "OmGitHub reports Connection lost / Worker heartbeat expired while Actions remains at Configure Linux Playwright CLI with WebGPU; publication is draft with no Preview URL.",
-        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "summary": "Controlled real-UI Rift Prototype path passes; the reported natural wave-end crash remains NOT_REPRODUCED and needs the original or equivalent state.",
+        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+        "requires_user_decision": false
+      },
+      {
+        "id": "GDD-HERO-STATS-DECISION",
+        "severity": "ACTION_REQUIRED",
+        "summary": "Production hero stats and Aegis radius 5 differ from the recovered GDD snapshot (Aegis radius 4). This slice deliberately made no balance change; an explicit decision is required.",
+        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+        "requires_user_decision": true
+      },
+      {
+        "id": "SIM-228-01",
+        "severity": "BLOCKED",
+        "summary": "Production low-FPS simulation-time loss and strict Save/Load determinism failure remain open; historical performance FAIL and HARDWARE_TEST_PENDING are preserved.",
+        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
         "requires_user_decision": false
       }
     ],
-    "response": "Issue #17 and its old Preview remain intact. Supported Issue #18 started OpenCode from exact candidate SHA 45435a323c729a28da1de454a3e53740fc9159f2, proving future work uses the new source. The new worker then lost heartbeat before creating a Preview URL, so interactive OmGitHub validation remains blocked and AFTER_DEPLOY_LIVE is not claimed.",
-    "event_type": "PROGRESS",
-    "occurred_at": "2026-10-26T18:27:00Z",
-    "completed": [
-      "Backed up Issue #17 body, comments, session, preview, resume branch and checkpoint identity",
-      "Published immutable candidate branch at exact SHA 45435a323c729a28da1de454a3e53740fc9159f2",
-      "Passed scoped exact-candidate local Chromium acceptance",
-      "Created isolated official Issue #18",
-      "Verified workflow 40377196806 target branch and full SHA"
-    ],
-    "event_id": "3654f1cc3e19033b3abca45e62bcbe4b41e72344ebc31b1d7c61959c7ae40571",
-    "remote_head": "dcbf99db4776172d9384749da80135903046dd5e",
+    "response": "# V231 hero skill preview\n\nBranch `codex/riftwatch-v231-hero-skill-preview` is pushed at `149f063e37fb68bf02e97535a389f4ef01210ad4`; application source and immutable artifact are `5df177bee911b8f9251248115e6128aa92b7b563` on required preflight base `45435a323c729a28da1de454a3e53740fc9159f2`.\n\n## Result\n\n`LOCAL_VERIFIED`: Mark radius 9 and Aegis radius 5 now come from one `HERO_SKILLS` source used by both gameplay and the hover/focus range preview. The commander also has a persistent gold ground ring, four ticks, and a small sigil. Range preview clears on pointer leave, blur, hero death, save-restore, and selection change.\n\n## Evidence\n\n- 109/109 full Node tests, including four new preview/range tests.\n- Four locales retain 678 keys each with no missing or extra keys.\n- 8/8 real local Chromium checks against the clean 28-file artifact: exact commit, Mark radius 9, Aegis radius 5, focus/leave/blur behavior, Aegis execution still shields five allies, and zero Console/Page/request errors.\n- Report: `docs/evidence/v231-hero-skill-preview/REPORT.md`; raw result: `browser-checks.json`; screenshots `mark-preview.png` and `aegis-preview.png`.\n- Recovery snapshot: `docs/recovery/v231/WORKTREE-RECOVERY.md`.\n\n## Not claimed\n\nThis is not OmGitHub online acceptance, public deployment, physical-GPU validation, or a balance change. The natural wave-end Rift Prototype crash is still `NOT_REPRODUCED`. Production low-FPS simulation-time loss, strict Save/Load determinism failure, historical performance FAIL, and `HARDWARE_TEST_PENDING` remain.\n\n## Decision needed\n\nThe recovered GDD lists hero base stats and Aegis radius 4 that differ from production. Production was intentionally left unchanged; please decide whether to align balance in a later slice.\n\n## Next\n\nRecord a natural wave-end Rift Prototype offer with seed, state, browser errors, and input sequence. Then continue hero art/audio and the inherited simulation-integrity research.",
+    "event_id": "fd62003b097ec9480fb12e1ff27317481415dd41b4318cad42cf0b4473e94b7a",
+    "remote_head": "149f063e37fb68bf02e97535a389f4ef01210ad4",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "dcbf99db4776172d9384749da80135903046dd5e",
-    "recorded_at": "2026-10-26T18:29:56.766169+00:00",
+    "recorded_at": "2026-10-26T18:59:51.849060+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -1329,61 +1339,20 @@
       ]
     },
     "OMGITHUB17-UPGRADE": {
-      "task_id": "OMGITHUB17-UPGRADE",
       "agent": "Codex",
-      "severity": "BLOCKED",
-      "branch": "codex/riftwatch-omgithub17-upgrade-evidence",
-      "commit": "dcbf99db4776172d9384749da80135903046dd5e",
-      "build_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
-      "summary": "Legacy Issue #17 was preserved and official Issue #18 started from exact latest candidate SHA. Source migration is verified, but the new worker lost heartbeat before assigning a Preview URL.",
-      "code_changes": [],
-      "next_steps": [
-        "Recheck existing run 40377196806 once for recovery or terminal failure without duplicate dispatch",
-        "If a distinct Preview appears, hash loaded resources and run AFTER_DEPLOY_LIVE",
-        "If terminal failure occurs, preserve logs before using only a confirmed official retry or resume action"
-      ],
-      "requires_user_decision": false,
-      "tests": [
-        {
-          "name": "Exact candidate local minimum acceptance",
-          "status": "PASS",
-          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-          "evidence": "docs/evidence/omgithub17-upgrade/REPORT.md",
-          "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
-          "evidence_blob": "d07e8d34ac3379ff316219b1ec3d40bd45f9d80f",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Official OpenCode target resolution",
-          "status": "PASS",
-          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-          "evidence": "docs/evidence/omgithub17-upgrade/opencode-run-40377196806.json",
-          "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
-          "evidence_blob": "24a4ec328a8153a32fe9db45117188613f9945bd",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "New OmGitHub Preview online acceptance",
-          "status": "BLOCKED",
-          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-          "evidence": "docs/evidence/omgithub17-upgrade/POST-UPGRADE.json",
-          "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
-          "evidence_blob": "5323b90ad3ee7bd23bbb6f162174780e1df19691",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        }
-      ],
       "blockers": [
         {
           "id": "OMGITHUB18_WORKER_HEARTBEAT_EXPIRED",
+          "requires_user_decision": false,
           "severity": "BLOCKED",
-          "summary": "OmGitHub reports Connection lost / Worker heartbeat expired while Actions remains at Configure Linux Playwright CLI with WebGPU; publication is draft with no Preview URL.",
           "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-          "requires_user_decision": false
+          "summary": "OmGitHub reports Connection lost / Worker heartbeat expired while Actions remains at Configure Linux Playwright CLI with WebGPU; publication is draft with no Preview URL."
         }
       ],
-      "response": "Issue #17 and its old Preview remain intact. Supported Issue #18 started OpenCode from exact candidate SHA 45435a323c729a28da1de454a3e53740fc9159f2, proving future work uses the new source. The new worker then lost heartbeat before creating a Preview URL, so interactive OmGitHub validation remains blocked and AFTER_DEPLOY_LIVE is not claimed.",
-      "event_type": "PROGRESS",
-      "occurred_at": "2026-10-26T18:27:00Z",
+      "branch": "codex/riftwatch-omgithub17-upgrade-evidence",
+      "build_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "code_changes": [],
+      "commit": "dcbf99db4776172d9384749da80135903046dd5e",
       "completed": [
         "Backed up Issue #17 body, comments, session, preview, resume branch and checkpoint identity",
         "Published immutable candidate branch at exact SHA 45435a323c729a28da1de454a3e53740fc9159f2",
@@ -1391,12 +1360,134 @@
         "Created isolated official Issue #18",
         "Verified workflow 40377196806 target branch and full SHA"
       ],
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
       "event_id": "3654f1cc3e19033b3abca45e62bcbe4b41e72344ebc31b1d7c61959c7ae40571",
+      "event_type": "PROGRESS",
+      "latest_pushed_sha": "dcbf99db4776172d9384749da80135903046dd5e",
+      "next_steps": [
+        "Recheck existing run 40377196806 once for recovery or terminal failure without duplicate dispatch",
+        "If a distinct Preview appears, hash loaded resources and run AFTER_DEPLOY_LIVE",
+        "If terminal failure occurs, preserve logs before using only a confirmed official retry or resume action"
+      ],
+      "occurred_at": "2026-10-26T18:27:00Z",
+      "pushed": true,
+      "recorded_at": "2026-10-26T18:29:56.766169+00:00",
       "remote_head": "dcbf99db4776172d9384749da80135903046dd5e",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Issue #17 and its old Preview remain intact. Supported Issue #18 started OpenCode from exact candidate SHA 45435a323c729a28da1de454a3e53740fc9159f2, proving future work uses the new source. The new worker then lost heartbeat before creating a Preview URL, so interactive OmGitHub validation remains blocked and AFTER_DEPLOY_LIVE is not claimed.",
+      "severity": "BLOCKED",
+      "summary": "Legacy Issue #17 was preserved and official Issue #18 started from exact latest candidate SHA. Source migration is verified, but the new worker lost heartbeat before assigning a Preview URL.",
+      "task_id": "OMGITHUB17-UPGRADE",
+      "tests": [
+        {
+          "evidence": "docs/evidence/omgithub17-upgrade/REPORT.md",
+          "evidence_blob": "d07e8d34ac3379ff316219b1ec3d40bd45f9d80f",
+          "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Exact candidate local minimum acceptance",
+          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/omgithub17-upgrade/opencode-run-40377196806.json",
+          "evidence_blob": "24a4ec328a8153a32fe9db45117188613f9945bd",
+          "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Official OpenCode target resolution",
+          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/omgithub17-upgrade/POST-UPGRADE.json",
+          "evidence_blob": "5323b90ad3ee7bd23bbb6f162174780e1df19691",
+          "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "New OmGitHub Preview online acceptance",
+          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "status": "BLOCKED"
+        }
+      ]
+    },
+    "V231-HERO-SKILL-PREVIEW": {
+      "task_id": "V231-HERO-SKILL-PREVIEW",
+      "agent": "OpenCode",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v231-hero-skill-preview",
+      "commit": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+      "build_sha": "5df177bee911b8f9251248115e6128aa92b7b563",
+      "summary": "Hero distinction and skill-range preview slice pushed. Mark radius 9 and Aegis radius 5 are shared by gameplay and hover/focus preview; commander gained a persistent gold ground marker. 109/109 Node tests, four locales at 678 keys, and 8/8 local Chromium checks pass with zero browser errors. No balance or public deployment changed.",
+      "code_changes": [
+        "Exported HERO_SKILLS and routed heroMark/heroAegis through shared radius, duration, cooldown, and range-color constants",
+        "Added heroSkillPreview state with hover/focus preview and cleanup on leave, blur, death, restore, and selection change",
+        "Rendered Mark/Aegis range ellipses plus a persistent commander ground ring, direction ticks, and sigil",
+        "Added four focused hero preview/range tests and reproducible local Chromium evidence tooling"
+      ],
+      "next_steps": [
+        "Record a natural wave-end Rift Prototype offer with seed, state, browser errors, and exact input sequence",
+        "Obtain an explicit GDD decision before changing production hero stats or Aegis radius to the recovered snapshot value 4",
+        "Continue representative hero art and audio distinction beyond the procedural ground marker",
+        "Research low-FPS simulation-time loss and strict Save/Load determinism without lowering historical gates"
+      ],
+      "requires_user_decision": true,
+      "tests": [
+        {
+          "name": "Full Node regression and new hero preview tests",
+          "status": "PASS",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "evidence": "docs/evidence/v231-hero-skill-preview/REPORT.md",
+          "evidence_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
+          "evidence_blob": "09935411609862c7a05adf542efed1ad4a5fd642",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Real local Chromium artifact checks",
+          "status": "PASS",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "evidence": "docs/evidence/v231-hero-skill-preview/browser-checks.json",
+          "evidence_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
+          "evidence_blob": "bfebfbb7e839ba12cce336ac7715b884ed7d16b5",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Four-locale key parity",
+          "status": "PASS",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "evidence": "docs/evidence/v231-hero-skill-preview/REPORT.md",
+          "evidence_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
+          "evidence_blob": "09935411609862c7a05adf542efed1ad4a5fd642",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        }
+      ],
+      "blockers": [
+        {
+          "id": "RIFT-PROTOTYPE-NATURAL-REPRO",
+          "severity": "BLOCKED",
+          "summary": "Controlled real-UI Rift Prototype path passes; the reported natural wave-end crash remains NOT_REPRODUCED and needs the original or equivalent state.",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "requires_user_decision": false
+        },
+        {
+          "id": "GDD-HERO-STATS-DECISION",
+          "severity": "ACTION_REQUIRED",
+          "summary": "Production hero stats and Aegis radius 5 differ from the recovered GDD snapshot (Aegis radius 4). This slice deliberately made no balance change; an explicit decision is required.",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "requires_user_decision": true
+        },
+        {
+          "id": "SIM-228-01",
+          "severity": "BLOCKED",
+          "summary": "Production low-FPS simulation-time loss and strict Save/Load determinism failure remain open; historical performance FAIL and HARDWARE_TEST_PENDING are preserved.",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "requires_user_decision": false
+        }
+      ],
+      "response": "# V231 hero skill preview\n\nBranch `codex/riftwatch-v231-hero-skill-preview` is pushed at `149f063e37fb68bf02e97535a389f4ef01210ad4`; application source and immutable artifact are `5df177bee911b8f9251248115e6128aa92b7b563` on required preflight base `45435a323c729a28da1de454a3e53740fc9159f2`.\n\n## Result\n\n`LOCAL_VERIFIED`: Mark radius 9 and Aegis radius 5 now come from one `HERO_SKILLS` source used by both gameplay and the hover/focus range preview. The commander also has a persistent gold ground ring, four ticks, and a small sigil. Range preview clears on pointer leave, blur, hero death, save-restore, and selection change.\n\n## Evidence\n\n- 109/109 full Node tests, including four new preview/range tests.\n- Four locales retain 678 keys each with no missing or extra keys.\n- 8/8 real local Chromium checks against the clean 28-file artifact: exact commit, Mark radius 9, Aegis radius 5, focus/leave/blur behavior, Aegis execution still shields five allies, and zero Console/Page/request errors.\n- Report: `docs/evidence/v231-hero-skill-preview/REPORT.md`; raw result: `browser-checks.json`; screenshots `mark-preview.png` and `aegis-preview.png`.\n- Recovery snapshot: `docs/recovery/v231/WORKTREE-RECOVERY.md`.\n\n## Not claimed\n\nThis is not OmGitHub online acceptance, public deployment, physical-GPU validation, or a balance change. The natural wave-end Rift Prototype crash is still `NOT_REPRODUCED`. Production low-FPS simulation-time loss, strict Save/Load determinism failure, historical performance FAIL, and `HARDWARE_TEST_PENDING` remain.\n\n## Decision needed\n\nThe recovered GDD lists hero base stats and Aegis radius 4 that differ from production. Production was intentionally left unchanged; please decide whether to align balance in a later slice.\n\n## Next\n\nRecord a natural wave-end Rift Prototype offer with seed, state, browser errors, and input sequence. Then continue hero art/audio and the inherited simulation-integrity research.",
+      "event_id": "fd62003b097ec9480fb12e1ff27317481415dd41b4318cad42cf0b4473e94b7a",
+      "remote_head": "149f063e37fb68bf02e97535a389f4ef01210ad4",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "latest_pushed_sha": "dcbf99db4776172d9384749da80135903046dd5e",
-      "recorded_at": "2026-10-26T18:29:56.766169+00:00",
+      "recorded_at": "2026-10-26T18:59:51.849060+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
