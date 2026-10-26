@@ -96,6 +96,11 @@ def main():
     rows = subprocess.check_output(['git', '-C', str(repo), 'ls-remote', 'origin', 'refs/heads/' + branch], timeout=35).decode().split()
     _, ownership = remote_ownership(repo)
     status = validate(directive, review, rows[0] if rows else None, ownership['tasks'], a.agent, a.execution)
+    continuation = directive['continuation_branch']
+    existing = subprocess.check_output(['git', '-C', str(repo), 'ls-remote', 'origin', 'refs/heads/' + continuation], timeout=35).decode().strip()
+    local = subprocess.run(['git', '-C', str(repo), 'show-ref', '--verify', '--quiet', 'refs/heads/' + continuation]).returncode == 0
+    if existing or local:
+        raise SystemExit('CONTINUATION_BRANCH_EXISTS; inspect existing work, never reset or overwrite')
     checkpoint = inventory(repo, load(repo/'docs/recovery/task-registry.json', {}), 'TASK_START', None)
     write_snapshot(state/'recovery', checkpoint)
     source, branch = directive['source_sha'], directive['continuation_branch']
@@ -105,6 +110,7 @@ def main():
               'No Git push, remote writes, site changes, paid API or Agent invocation authorized by this plan. '
               'If review pending, obtain actual review before further execution. Save checkpoint on interruption.')
     plan = {'status': status, 'source_sha': source, 'event_id': directive['event_id'],
+            'dispatch_connection': 'DISPATCH_NOT_CONNECTED', 'review_status': review.get('status'),
             'ownership_version': ownership['version'], 'continuation_branch': branch,
             'adapter': a.adapter, 'cli_installed': bool(shutil.which(a.adapter)),
             'argv_plan_only': ADAPTERS[a.adapter] + [prompt], 'external_agent_invoked': False,
