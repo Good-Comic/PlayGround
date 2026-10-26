@@ -17,6 +17,13 @@ with sync_playwright() as pw:
    world(32,32,'right');flag=page.evaluate('()=>producer.rally');check('right click stores exact rally',abs(flag['x']-32)<.1 and abs(flag['y']-32)<.1,flag);page.screenshot(path=str(a.out/'rally-flag.png'))
    page.locator('[data-command="train:militia"]').click();r['actions'].append({'action':'click train militia'});page.wait_for_function("ageOfAsh.game.units.some(u=>u.type==='militia')",timeout=16000)
    page.wait_for_function("ageOfAsh.game.units.some(u=>u.type==='militia'&&u.state==='idle'&&Math.hypot(u.x-32,u.y-32)<.2)",timeout=25000);check('new soldier actually reaches rally',True,page.evaluate("()=>ageOfAsh.game.units.filter(u=>u.type==='militia').map(u=>({x:u.x,y:u.y,state:u.state}))"));page.screenshot(path=str(a.out/'rally-arrival.png'))
+   # Real mixed-type FIFO clicks; all three must complete without time acceleration.
+   beforeQueue=page.evaluate('()=>ageOfAsh.game.units.length')
+   for kind in ['militia','spearman','militia']:
+    page.locator(f'[data-command="train:{kind}"]').click();r['actions'].append({'action':'native queue click','type':kind})
+   queued=page.evaluate('()=>producer.queue.map(q=>q.type)');check('three-item mixed FIFO queued in click order',queued==['militia','spearman','militia'],queued)
+   page.wait_for_function('n=>producer.queue.length===0&&ageOfAsh.game.units.length===n+3',arg=beforeQueue,timeout=45000)
+   born=page.evaluate('n=>ageOfAsh.game.units.slice(n).map(u=>u.type)',beforeQueue);check('FIFO native completion creates correct units in order',born==['militia','spearman','militia'],born);page.screenshot(path=str(a.out/'training-fifo-complete.png'))
    page.locator('#btn-pause').click();page.locator('#btn-save').click();r['actions'].append({'action':'Pause + Save Run fresh local context'});page.reload();page.locator('#btn-continue').click();restored=page.evaluate("()=>ageOfAsh.game.buildings.find(b=>b.type==='barracks').rally");check('rally survives UI Save Reload Continue',abs(restored['x']-32)<.1,restored)
    page.evaluate("()=>ageOfAsh.game.setSelection([ageOfAsh.game.buildings.find(b=>b.type==='barracks')])");page.locator('[data-command="rally:clear"]').click();check('clear rally UI',page.evaluate("()=>ageOfAsh.game.selection[0].rally===null"));r['actions'].append({'action':'click clear rally'})
    # Controlled resource fixture, same live engine; normal training queue and gather/deposit.
