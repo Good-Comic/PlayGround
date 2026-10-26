@@ -1,1 +1,1 @@
-Quota guard8fixture testsPASS including oldHEADparity-but-unsaved ownerrefusal; actualquotaUNKNOWN/manualresume only.
+Clickablegroups/Settings/scaling19native,18targetedNode,4locales678keysPASS;100selectedMOVE3+3PASS,smallUIcostdisclosed,notcombat/hardwareQA.
