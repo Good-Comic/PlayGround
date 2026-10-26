@@ -1,14 +1,82 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T18:24:01.472574+00:00",
+  "updated_at": "2026-10-26T09:30:24.505338+00:00",
   "tasks": [
     {
+      "task_id": "V227-CANDIDATE",
+      "name": "v227 scoped local candidate and remaining narrow-queue diagnosis",
+      "requirement_source": "Explicit Strategy v2.2.7; v226 new-SHA deployment scope boundary",
+      "priority": "P0",
+      "agent": "Codex; release ownership before next writer",
+      "environment": "Managed Linux environment revision5, Chromium154 headless/SwiftShader; LOCAL browser; no new online test",
+      "branch": "codex/riftwatch-playtest-v227",
+      "base_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+      "latest_pushed_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+      "completed": [
+        "Wave settlement/withdrawal/carry SaveLoad fixes; confirmed original softlock risk by native navigation islands without killing residual",
+        "AttackMove/unitGuard/Patrol/groups, text scale;97Node/four673-keylocales",
+        "Native tactical/scale/SaveLoad gates and normal180sP0 PASS; historicalnativefailures retained",
+        "Freshcontext Continue gate fixed; candidate/D6 keys isolated",
+        "Serial3before+3after100militia movement trends; no combat/hardware claims"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "FinalJS Node regression",
+          "path": "docs/evidence/v227-candidate/unit-af594.log.txt",
+          "result": "97PASS; candidate appJS identical toaf594",
+          "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9"
+        },
+        {
+          "name": "Actual180s normal8P0",
+          "path": "docs/evidence/v227-candidate/normal-summary.json",
+          "result": "PASS8;10retarget;fourresourceunloads56/24/26/14",
+          "source_commit": "e845d2cd68b423bb2c16266a2c2f434edfa3f93a"
+        },
+        {
+          "name": "Affectednativecorridor",
+          "path": "docs/evidence/v227-candidate/crowd-fixed-results.json",
+          "result": "FAIL7/8destination despite8cross;24unitPASS separately",
+          "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v227-candidate/REPORT.md",
+        "docs/playtest/v227/APPROVAL-PLAN.json"
+      ],
+      "failures": [
+        "OPEN-NAV-NARROW-01 native7/8destination85s; no confirmedrootcause",
+        "15virtualHz22.5simseconds/30real,10Hz15seconds; productionclockunchanged",
+        "Historical current-scale/500/1000 performance FAIL retained"
+      ],
+      "blockers": [
+        "NewfullSHA deployment not authorized; D6only priorrelease scope",
+        "Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay",
+        "HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending"
+      ],
+      "next_steps": [
+        "Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets",
+        "Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch",
+        "Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result",
+        "If user approves exact scopedexperimental release: normalFF existing site branch add builds/27b279410db1bb9c14b3c1b921b146059a6c6341, preserveD6; focusedonlineverification beforeLIVEPASS",
+        "Continue independent clockintegrity/absoluteboontime diagnosis; no unvalidatedfixedstep mainloop replacement",
+        "New selectableformationeditor/extendedPhaseC\u2013E remain queued, not claimedimplemented"
+      ],
+      "permissions": [
+        "Independentdevelopment/tests/normalcommitpush; scopedintegrationonlyaftergates",
+        "No main/checkpoint/force/#17/OpenCode/paidAPI/networkpolicy changes",
+        "NewSHA publicPages requires preciseapproval under v227"
+      ],
+      "status": "CHECKPOINTED",
+      "updated_at": "2026-10-26T12:44:09.601277+00:00"
+    },
+    {
       "task_id": "PLAYTEST-DEPLOY",
-      "status": "BLOCKED",
+      "status": "CHECKPOINTED",
       "branch": "codex/riftwatch-playtest-candidate",
       "next_steps": [
-        "Obtain bounded authorization in docs/playtest/APPROVAL-PLAN.json",
-        "After authorization recheck source/artifact/site isolation,enable only newPages,then verifyactualremoteURL"
+        "Read currentV227-CANDIDATE and exactapprovalplan; do not redeployoldD6 or redo wholelive suite"
       ],
       "name": "Approve and deploy isolated Candidate",
       "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
@@ -18,7 +86,7 @@
       "base_commit": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
       "latest_pushed_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
       "completed": [
-        "Minimum local Candidate gates pass; exactartifact/approval-plan prepared"
+        "D6 deployment and limitedlive evidence completed; preserved at1a5a67c5373bdd5ede925484776339f95ded78a0"
       ],
       "uncommitted": [],
       "unpushed": [],
@@ -35,12 +103,12 @@
         "Historicalperformance failures unchanged"
       ],
       "blockers": [
-        "Exact public deployment operation requires user approval"
+        "Do not confuse originalD6 authorization with newSHApermission"
       ],
       "permissions": [
         "Do not create site/Pages/workflow before approval"
       ],
-      "updated_at": "2026-10-26T09:05:11.671749+00:00"
+      "updated_at": "2026-10-26T12:44:09.601277+00:00"
     },
     {
       "task_id": "A1-TARGET",
@@ -76,7 +144,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T09:05:11.671749+00:00"
+      "updated_at": "2026-10-26T12:44:09.601277+00:00"
     },
     {
       "task_id": "B2-GDD",
@@ -108,7 +176,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T09:05:11.671749+00:00"
+      "updated_at": "2026-10-26T12:44:09.601277+00:00"
     },
     {
       "task_id": "A4-POP",
@@ -139,7 +207,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T09:05:11.671749+00:00"
+      "updated_at": "2026-10-26T12:44:09.601277+00:00"
     },
     {
       "task_id": "QA-TOOLS",
@@ -197,7 +265,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T09:05:11.671749+00:00"
+      "updated_at": "2026-10-26T12:44:09.601277+00:00"
     },
     {
       "task_id": "INTEGRATION",
@@ -227,7 +295,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T09:05:11.671749+00:00"
+      "updated_at": "2026-10-26T12:44:09.601277+00:00"
     },
     {
       "task_id": "PHASE-B-E",

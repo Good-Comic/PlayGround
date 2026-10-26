@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-26T09:05:11.240474+00:00",
+  "captured_at_utc": "2026-10-26T12:44:09.030988+00:00",
   "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+  "collector_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
   "collector_dirty": false,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-26T09:05:11.240474+00:00"
+    "queried_at": "2026-10-26T12:44:09.030988+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -26,9 +26,10 @@
     "codex/riftwatch-gameplay-integration": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
     "codex/riftwatch-playtest-candidate": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
     "codex/riftwatch-playtest-site": "6c98a8e6b7f7759ca57a9c9f94f675e2b6070381",
-    "codex/riftwatch-progress-feed": "3df5b9c21a39b1ab0f129205061423060bebfe8d",
-    "codex/riftwatch-recovery-index": "819b3e2fecd7a900c0f66005541db69d72c28bd4",
-    "codex/riftwatch-task-ownership": "42c611bec004e727138414ff820d34e43443290e",
+    "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+    "codex/riftwatch-progress-feed": "9efe2a2d7ff7959cf314453029f1714274107b19",
+    "codex/riftwatch-recovery-index": "3431150f3c29ebfe00d35dfcd2fb84d243a4713c",
+    "codex/riftwatch-task-ownership": "e8f7fc49d6b82c719a11e3b74f005c86ab5f8882",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -40,7 +41,7 @@
     "codex/riftwatch-v224-monitor": "fa520ae3006329bd2b1c54ac90938519465bf320",
     "codex/riftwatch-v226-delivery": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
     "codex/riftwatch-v226-live-acceptance": "1a5a67c5373bdd5ede925484776339f95ded78a0",
-    "codex/riftwatch-v227-orders": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+    "codex/riftwatch-v227-orders": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
     "codex/riftwatch-v227-ui": "6ad09704c184ee772bf88d92949e8889fca086ce",
     "codex/riftwatch-v227-wave": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
@@ -96,6 +97,12 @@
       "branch": "codex/riftwatch-playtest-candidate",
       "head": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
       "remote_head": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-playtest-v227",
+      "head": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+      "remote_head": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
       "status": "REMOTE_SAVED"
     },
     {
@@ -166,8 +173,8 @@
     },
     {
       "branch": "codex/riftwatch-v227-orders",
-      "head": "0239a308838dab06ec9f5e2dda4e413cda48d046",
-      "remote_head": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+      "head": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+      "remote_head": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
       "status": "REMOTE_SAVED"
     },
     {
@@ -346,18 +353,32 @@
     {
       "path": "/workspace/riftwatch-orders",
       "branch": "codex/riftwatch-v227-orders",
-      "head": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+      "head": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
       "locked": false,
-      "task_id": null,
-      "last_validation": [],
+      "task_id": "V227-ORDERS",
+      "last_validation": [
+        {
+          "source_commit": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
+          "path": "docs/evidence/v227-orders/REVIEW.md",
+          "result": "85Node/12nativePASS; combinednarrowFAIL separately",
+          "exists": true,
+          "storage": "REMOTE_SAVED",
+          "sha256": "a3d95a93853f510aca4ea213aba9b4d37f62627d7b6841850ec420e16ab10627",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+        }
+      ],
       "blockers": [
-        "NOT_ASSESSED"
+        "NewfullSHA deployment not authorized; D6only priorrelease scope",
+        "Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay",
+        "HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending"
       ],
       "next_steps": [
-        "Inspect task registry and relevant diff before writing"
+        "Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets",
+        "Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch",
+        "Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+      "remote_head": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
       "unpushed_commits": [],
       "changed_files": [],
       "dirty": false,
@@ -501,13 +522,27 @@
       "branch": "codex/riftwatch-v227-ui",
       "head": "6ad09704c184ee772bf88d92949e8889fca086ce",
       "locked": false,
-      "task_id": null,
-      "last_validation": [],
+      "task_id": "V227-UI",
+      "last_validation": [
+        {
+          "source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310",
+          "path": "docs/evidence/v227-ui/browser-results.json",
+          "result": "Scoped14nativePASS; StartEnglish BY_DESIGN",
+          "exists": true,
+          "storage": "REMOTE_SAVED",
+          "sha256": "b1b22f0afb7bc0582ae5a1d4dc0a33bfbb4f87c22635d8f7279bb63c770992e5",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+        }
+      ],
       "blockers": [
-        "NOT_ASSESSED"
+        "NewfullSHA deployment not authorized; D6only priorrelease scope",
+        "Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay",
+        "HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending"
       ],
       "next_steps": [
-        "Inspect task registry and relevant diff before writing"
+        "Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets",
+        "Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch",
+        "Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result"
       ],
       "remote_status": "REMOTE_SAVED",
       "remote_head": "6ad09704c184ee772bf88d92949e8889fca086ce",
@@ -577,17 +612,65 @@
       "local_record_status": "LOCAL_INVENTORIED"
     },
     {
+      "path": "/workspace/riftwatch-v227",
+      "branch": "codex/riftwatch-playtest-v227",
+      "head": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+      "locked": false,
+      "task_id": "V227-CANDIDATE",
+      "last_validation": [
+        {
+          "source_commit": "27b279410db1bb9c14b3c1b921b146059a6c6341",
+          "path": "docs/evidence/v227-candidate/REPORT.md",
+          "result": "LOCAL partialPASS; narrowFAIL; not deployed",
+          "exists": true,
+          "storage": "REMOTE_SAVED",
+          "sha256": "4461787c6664e040df5d00fc67cd4049b4df3f3312ccf5d994ebf5e2f8988e7c",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+        }
+      ],
+      "blockers": [
+        "NewfullSHA deployment not authorized; D6only priorrelease scope",
+        "Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay",
+        "HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending"
+      ],
+      "next_steps": [
+        "Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets",
+        "Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch",
+        "Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result"
+      ],
+      "remote_status": "REMOTE_SAVED",
+      "remote_head": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+      "unpushed_commits": [],
+      "changed_files": [],
+      "dirty": false,
+      "local_record_status": "LOCAL_INVENTORIED"
+    },
+    {
       "path": "/workspace/riftwatch-wave",
       "branch": "codex/riftwatch-v227-wave",
       "head": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
       "locked": false,
-      "task_id": null,
-      "last_validation": [],
+      "task_id": "V227-WAVE",
+      "last_validation": [
+        {
+          "source_commit": "3db640ce017804480be6f6d781176638547b5372",
+          "path": "docs/evidence/v227-wave/ROOT-CAUSE.md",
+          "result": "83Node/nativeSaveLoad/normalP0 PASS; clockFAIL",
+          "exists": true,
+          "storage": "REMOTE_SAVED",
+          "sha256": "eb1d30af71c0359331cd3eda7da33f2d36580941c86a9ad899d6053695f20932",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+        }
+      ],
       "blockers": [
-        "NOT_ASSESSED"
+        "NewfullSHA deployment not authorized; D6only priorrelease scope",
+        "Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay",
+        "HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending"
       ],
       "next_steps": [
-        "Inspect task registry and relevant diff before writing"
+        "Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets",
+        "Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch",
+        "Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result"
       ],
       "remote_status": "REMOTE_SAVED",
       "remote_head": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
@@ -599,63 +682,17 @@
   ],
   "comparison": [
     {
-      "path": "/workspace/riftwatch",
+      "path": "/workspace/riftwatch-v227",
       "changed_fields": [
         "head",
         "dirty",
         "remote_head",
         "changed_files"
       ],
-      "previous_head": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
-      "actual_head": "317ef162b4f4b69c43644cb0e7c031387dc898c1"
-    },
-    {
-      "path": "/workspace/riftwatch-integration",
-      "changed_fields": [
-        "head",
-        "remote_head"
-      ],
-      "previous_head": "72e978417afd3c95f897cc7cb35395f00008c313",
-      "actual_head": "2cd6f099d72a980bfa24dd7ae0f79676918884e8"
-    },
-    {
-      "path": "/workspace/riftwatch-live",
-      "change": "NEW_OR_MANIFEST_MISSING"
-    },
-    {
-      "path": "/workspace/riftwatch-monitor",
-      "change": "NEW_OR_MANIFEST_MISSING"
-    },
-    {
-      "path": "/workspace/riftwatch-orders",
-      "change": "NEW_OR_MANIFEST_MISSING"
-    },
-    {
-      "path": "/workspace/riftwatch-playtest",
-      "change": "NEW_OR_MANIFEST_MISSING"
-    },
-    {
-      "path": "/workspace/riftwatch-prediction",
-      "changed_fields": [
-        "head",
-        "remote_head"
-      ],
-      "previous_head": "0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc",
-      "actual_head": "b72f9603bf2d8fd865da5cf9dccc32be1dd90830"
-    },
-    {
-      "path": "/workspace/riftwatch-ui",
-      "change": "NEW_OR_MANIFEST_MISSING"
-    },
-    {
-      "path": "/workspace/riftwatch-v226",
-      "change": "NEW_OR_MANIFEST_MISSING"
-    },
-    {
-      "path": "/workspace/riftwatch-wave",
-      "change": "NEW_OR_MANIFEST_MISSING"
+      "previous_head": "27b279410db1bb9c14b3c1b921b146059a6c6341",
+      "actual_head": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "fd3b0bb880a993180ff92b698f5fb405ccde4c1646e0abb0f9d9a1b0661ee183"
+  "snapshot_id": "37ef876cb7c176b6f1a86521866817989b79c7549fa57e890921bb2208aae57e"
 }
