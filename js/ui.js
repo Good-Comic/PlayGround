@@ -89,6 +89,7 @@ export class UI {
   }
 
   bind() {
+    document.querySelectorAll('[data-order-mode]').forEach(b=>b.addEventListener('click',()=>this.callbacks.command?.('order:'+b.dataset.orderMode)));
     const clickSound = () => this.sound?.click();
     this.populateSetup();
     this.$('btn-start').addEventListener('click', () => { clickSound(); this.startWithSetup(); });
@@ -719,6 +720,8 @@ export class UI {
   }
 
   renderCommands(game) {
+    const bar=this.$('tactical-bar');if(bar){bar.hidden=!game.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager');bar.querySelectorAll('[data-order-mode]').forEach(b=>b.classList.toggle('is-active',b.dataset.orderMode===game.orderMode));}
+    document.body.classList.toggle('order-armed',!!game.orderMode);
     const sig = this.commandSignature(game);
     this.lastCommandSignature = sig;
     const commands = this.getCommands(game);
