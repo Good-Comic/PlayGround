@@ -36,19 +36,23 @@ export class Crowd {
     if (!step) return next;
     let dx = (next.x-u.x)/step, dy = (next.y-u.y)/step;
     const radius = u.typeDef.radius || .24;
+    // Active opponents must close to weapon range, not grant traffic right-of-way.
+    // They remain in the hard swept-disc collision checks below.
+    const fighting=v=>u.team!==v.team&&(u.target===v||v.target===u);
     let priority=u._trafficPriority||u.id;
-    for(const v of neighbours)if(v._heading && v._heading.x*dx+v._heading.y*dy>.5)priority=Math.min(priority,v._trafficPriority||v.id);
+    for(const v of neighbours)if(!fighting(v) && v._heading && v._heading.x*dx+v._heading.y*dy>.5)priority=Math.min(priority,v._trafficPriority||v.id);
     u._trafficPriority=priority;
     for(const v of neighbours) {
-      if(v._heading && v._heading.x*dx+v._heading.y*dy>.5 && v._yieldTo?.until>time && v._yieldTo.priority<priority){u._yieldTo={...v._yieldTo};break;}
+      if(!fighting(v) && v._heading && v._heading.x*dx+v._heading.y*dy>.5 && v._yieldTo?.until>time && v._yieldTo.priority<priority){u._yieldTo={...v._yieldTo};break;}
     }
     let leader=null;
     for(const v of neighbours) {
-      if((v._trafficPriority||v.id)>=priority || !['move','gather','return','attack','build'].includes(v.state))continue;
+      if(fighting(v)||(v._trafficPriority||v.id)>=priority || !['move','gather','return','attack','build'].includes(v.state))continue;
       const heading=v._heading;
       if(heading && (v.x-u.x)**2+(v.y-u.y)**2<3.24 && heading.x*dx+heading.y*dy<-.5){leader=v;break;}
     }
     if (leader) u._yieldTo = { id: leader.id, priority:leader._trafficPriority||leader.id, until: time+4, dx:u.x-leader.x, dy:u.y-leader.y };
+    if(u._yieldTo){const anchor=neighbours.find(v=>v.id===u._yieldTo.id);if(anchor&&fighting(anchor))u._yieldTo=null;}
     const yielding = u._yieldTo && u._yieldTo.until > time ? u._yieldTo : null;
     if (yielding) {
       const anchor=neighbours.find(v=>v.id===yielding.id);

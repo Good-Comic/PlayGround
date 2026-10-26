@@ -1,0 +1,31 @@
+HOSTILE_PURSUIT {"foeHp":8,"actorX":12.238134318121208,"yielding":{"id":21,"priority":21,"until":28.399999999999896,"dx":-1.668469126379799,"dy":0.6701859522556255},"penetration":0}
+✖ hostile melee pursuit at60Hz reaches native damage instead of yielding away as traffic (104.266822ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 255.537639
+
+✖ failing tests:
+
+test at tests/hostile-crowd.test.mjs:4:1
+✖ hostile melee pursuit at60Hz reaches native damage instead of yielding away as traffic (104.266822ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-orders/tests/hostile-crowd.test.mjs:4:609)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
