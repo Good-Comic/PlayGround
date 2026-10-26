@@ -1,1 +1,1 @@
-Strategy v2.3.0 resumed successfully. The input/Rally/double-click slice is locally verified and remotely checkpointed; Rift Prototype natural-state crash diagnosis remains open. No public deployment or protected branch was changed.
+Issue #17 and its old Preview remain intact. Supported Issue #18 started OpenCode from exact candidate SHA 45435a323c729a28da1de454a3e53740fc9159f2, proving future work uses the new source. The new worker then lost heartbeat before creating a Preview URL, so interactive OmGitHub validation remains blocked and AFTER_DEPLOY_LIVE is not claimed.

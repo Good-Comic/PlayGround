@@ -2,78 +2,76 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T18:05:28.424763+00:00",
+  "updated_at": "2026-10-26T18:29:56.766169+00:00",
   "latest_event": {
-    "task_id": "V230-P0-INPUT",
+    "task_id": "OMGITHUB17-UPGRADE",
     "agent": "Codex",
-    "severity": "PROGRESS",
-    "branch": "codex/riftwatch-v230-p0-input",
-    "commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-    "build_sha": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-    "summary": "Strategy v2.3 Game First input slice locally verifies A/WASD coexistence, Shift+A Attack-Move, Rally-facing production exits, and same-type Canvas double-click selection. Rift Prototype controlled boon path passes but the reported natural-state crash remains open.",
-    "code_changes": [
-      "Plain A pans the camera; Shift+A arms Attack-Move while G/P remain unchanged",
-      "Trained units use the Rally-facing production exit",
-      "Native Canvas double-click selects visible allied units of the clicked type"
-    ],
+    "severity": "BLOCKED",
+    "branch": "codex/riftwatch-omgithub17-upgrade-evidence",
+    "commit": "dcbf99db4776172d9384749da80135903046dd5e",
+    "build_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
+    "summary": "Legacy Issue #17 was preserved and official Issue #18 started from exact latest candidate SHA. Source migration is verified, but the new worker lost heartbeat before assigning a Preview URL.",
+    "code_changes": [],
     "next_steps": [
-      "Reproduce Rift Prototype during a natural wave-end boon state with full browser evidence",
-      "Implement hero visual distinction and skill range preview as the next independent Game First slice"
+      "Recheck existing run 40377196806 once for recovery or terminal failure without duplicate dispatch",
+      "If a distinct Preview appears, hash loaded resources and run AFTER_DEPLOY_LIVE",
+      "If terminal failure occurs, preserve logs before using only a confirmed official retry or resume action"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Focused input/rally/tactical regression",
+        "name": "Exact candidate local minimum acceptance",
         "status": "PASS",
-        "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-        "evidence": "docs/evidence/v230-p0-input/REPORT.md",
-        "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-        "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
+        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "evidence": "docs/evidence/omgithub17-upgrade/REPORT.md",
+        "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+        "evidence_blob": "d07e8d34ac3379ff316219b1ec3d40bd45f9d80f",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Real local Chromium player inputs",
+        "name": "Official OpenCode target resolution",
         "status": "PASS",
-        "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-        "evidence": "docs/evidence/v230-p0-input/browser.json",
-        "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-        "evidence_blob": "e3d4b8781fe6e81f22a7572c8b5ee8197e204976",
+        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "evidence": "docs/evidence/omgithub17-upgrade/opencode-run-40377196806.json",
+        "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+        "evidence_blob": "24a4ec328a8153a32fe9db45117188613f9945bd",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Natural-state Rift Prototype crash reproduction",
-        "status": "NOT_TESTED",
-        "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-        "evidence": "docs/evidence/v230-p0-input/REPORT.md",
-        "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-        "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
+        "name": "New OmGitHub Preview online acceptance",
+        "status": "BLOCKED",
+        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "evidence": "docs/evidence/omgithub17-upgrade/POST-UPGRADE.json",
+        "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+        "evidence_blob": "5323b90ad3ee7bd23bbb6f162174780e1df19691",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "V230-RIFT-PROTOTYPE-NATURAL",
-        "severity": "WARNING",
-        "summary": "The player-reported crash is not reproduced by controlled real-UI claim/spawn/render paths; natural wave state and exact original conditions are still required.",
-        "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+        "id": "OMGITHUB18_WORKER_HEARTBEAT_EXPIRED",
+        "severity": "BLOCKED",
+        "summary": "OmGitHub reports Connection lost / Worker heartbeat expired while Actions remains at Configure Linux Playwright CLI with WebGPU; publication is draft with no Preview URL.",
+        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
         "requires_user_decision": false
       }
     ],
-    "response": "Strategy v2.3.0 resumed successfully. The input/Rally/double-click slice is locally verified and remotely checkpointed; Rift Prototype natural-state crash diagnosis remains open. No public deployment or protected branch was changed.",
-    "event_type": "TASK_COMPLETED",
-    "occurred_at": "2026-10-26T18:02:56Z",
+    "response": "Issue #17 and its old Preview remain intact. Supported Issue #18 started OpenCode from exact candidate SHA 45435a323c729a28da1de454a3e53740fc9159f2, proving future work uses the new source. The new worker then lost heartbeat before creating a Preview URL, so interactive OmGitHub validation remains blocked and AFTER_DEPLOY_LIVE is not claimed.",
+    "event_type": "PROGRESS",
+    "occurred_at": "2026-10-26T18:27:00Z",
     "completed": [
-      "20 focused Node tests pass",
-      "Four locales retain 678 keys",
-      "Seven real local Chromium checks pass with no Console, Page, or request errors",
-      "Branch push and remote HEAD verification completed"
+      "Backed up Issue #17 body, comments, session, preview, resume branch and checkpoint identity",
+      "Published immutable candidate branch at exact SHA 45435a323c729a28da1de454a3e53740fc9159f2",
+      "Passed scoped exact-candidate local Chromium acceptance",
+      "Created isolated official Issue #18",
+      "Verified workflow 40377196806 target branch and full SHA"
     ],
-    "event_id": "72f8079e10a68f36f786d5030ed23d35ca0b552bbc5c227d9982d0fb6b44ffdc",
-    "remote_head": "45435a323c729a28da1de454a3e53740fc9159f2",
+    "event_id": "3654f1cc3e19033b3abca45e62bcbe4b41e72344ebc31b1d7c61959c7ae40571",
+    "remote_head": "dcbf99db4776172d9384749da80135903046dd5e",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
-    "recorded_at": "2026-10-26T18:05:28.424763+00:00",
+    "latest_pushed_sha": "dcbf99db4776172d9384749da80135903046dd5e",
+    "recorded_at": "2026-10-26T18:29:56.766169+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -1258,76 +1256,147 @@
       ]
     },
     "V230-P0-INPUT": {
-      "task_id": "V230-P0-INPUT",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [
+        {
+          "id": "V230-RIFT-PROTOTYPE-NATURAL",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+          "summary": "The player-reported crash is not reproduced by controlled real-UI claim/spawn/render paths; natural wave state and exact original conditions are still required."
+        }
+      ],
       "branch": "codex/riftwatch-v230-p0-input",
-      "commit": "45435a323c729a28da1de454a3e53740fc9159f2",
       "build_sha": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-      "summary": "Strategy v2.3 Game First input slice locally verifies A/WASD coexistence, Shift+A Attack-Move, Rally-facing production exits, and same-type Canvas double-click selection. Rift Prototype controlled boon path passes but the reported natural-state crash remains open.",
       "code_changes": [
         "Plain A pans the camera; Shift+A arms Attack-Move while G/P remain unchanged",
         "Trained units use the Rally-facing production exit",
         "Native Canvas double-click selects visible allied units of the clicked type"
       ],
-      "next_steps": [
-        "Reproduce Rift Prototype during a natural wave-end boon state with full browser evidence",
-        "Implement hero visual distinction and skill range preview as the next independent Game First slice"
-      ],
-      "requires_user_decision": false,
-      "tests": [
-        {
-          "name": "Focused input/rally/tactical regression",
-          "status": "PASS",
-          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-          "evidence": "docs/evidence/v230-p0-input/REPORT.md",
-          "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-          "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Real local Chromium player inputs",
-          "status": "PASS",
-          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-          "evidence": "docs/evidence/v230-p0-input/browser.json",
-          "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-          "evidence_blob": "e3d4b8781fe6e81f22a7572c8b5ee8197e204976",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Natural-state Rift Prototype crash reproduction",
-          "status": "NOT_TESTED",
-          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-          "evidence": "docs/evidence/v230-p0-input/REPORT.md",
-          "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-          "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        }
-      ],
-      "blockers": [
-        {
-          "id": "V230-RIFT-PROTOTYPE-NATURAL",
-          "severity": "WARNING",
-          "summary": "The player-reported crash is not reproduced by controlled real-UI claim/spawn/render paths; natural wave state and exact original conditions are still required.",
-          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-          "requires_user_decision": false
-        }
-      ],
-      "response": "Strategy v2.3.0 resumed successfully. The input/Rally/double-click slice is locally verified and remotely checkpointed; Rift Prototype natural-state crash diagnosis remains open. No public deployment or protected branch was changed.",
-      "event_type": "TASK_COMPLETED",
-      "occurred_at": "2026-10-26T18:02:56Z",
+      "commit": "45435a323c729a28da1de454a3e53740fc9159f2",
       "completed": [
         "20 focused Node tests pass",
         "Four locales retain 678 keys",
         "Seven real local Chromium checks pass with no Console, Page, or request errors",
         "Branch push and remote HEAD verification completed"
       ],
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
       "event_id": "72f8079e10a68f36f786d5030ed23d35ca0b552bbc5c227d9982d0fb6b44ffdc",
+      "event_type": "TASK_COMPLETED",
+      "latest_pushed_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "next_steps": [
+        "Reproduce Rift Prototype during a natural wave-end boon state with full browser evidence",
+        "Implement hero visual distinction and skill range preview as the next independent Game First slice"
+      ],
+      "occurred_at": "2026-10-26T18:02:56Z",
+      "pushed": true,
+      "recorded_at": "2026-10-26T18:05:28.424763+00:00",
       "remote_head": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Strategy v2.3.0 resumed successfully. The input/Rally/double-click slice is locally verified and remotely checkpointed; Rift Prototype natural-state crash diagnosis remains open. No public deployment or protected branch was changed.",
+      "severity": "PROGRESS",
+      "summary": "Strategy v2.3 Game First input slice locally verifies A/WASD coexistence, Shift+A Attack-Move, Rally-facing production exits, and same-type Canvas double-click selection. Rift Prototype controlled boon path passes but the reported natural-state crash remains open.",
+      "task_id": "V230-P0-INPUT",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v230-p0-input/REPORT.md",
+          "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
+          "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Focused input/rally/tactical regression",
+          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v230-p0-input/browser.json",
+          "evidence_blob": "e3d4b8781fe6e81f22a7572c8b5ee8197e204976",
+          "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Real local Chromium player inputs",
+          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v230-p0-input/REPORT.md",
+          "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
+          "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Natural-state Rift Prototype crash reproduction",
+          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+          "status": "NOT_TESTED"
+        }
+      ]
+    },
+    "OMGITHUB17-UPGRADE": {
+      "task_id": "OMGITHUB17-UPGRADE",
+      "agent": "Codex",
+      "severity": "BLOCKED",
+      "branch": "codex/riftwatch-omgithub17-upgrade-evidence",
+      "commit": "dcbf99db4776172d9384749da80135903046dd5e",
+      "build_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "summary": "Legacy Issue #17 was preserved and official Issue #18 started from exact latest candidate SHA. Source migration is verified, but the new worker lost heartbeat before assigning a Preview URL.",
+      "code_changes": [],
+      "next_steps": [
+        "Recheck existing run 40377196806 once for recovery or terminal failure without duplicate dispatch",
+        "If a distinct Preview appears, hash loaded resources and run AFTER_DEPLOY_LIVE",
+        "If terminal failure occurs, preserve logs before using only a confirmed official retry or resume action"
+      ],
+      "requires_user_decision": false,
+      "tests": [
+        {
+          "name": "Exact candidate local minimum acceptance",
+          "status": "PASS",
+          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence": "docs/evidence/omgithub17-upgrade/REPORT.md",
+          "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+          "evidence_blob": "d07e8d34ac3379ff316219b1ec3d40bd45f9d80f",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Official OpenCode target resolution",
+          "status": "PASS",
+          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence": "docs/evidence/omgithub17-upgrade/opencode-run-40377196806.json",
+          "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+          "evidence_blob": "24a4ec328a8153a32fe9db45117188613f9945bd",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "New OmGitHub Preview online acceptance",
+          "status": "BLOCKED",
+          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence": "docs/evidence/omgithub17-upgrade/POST-UPGRADE.json",
+          "evidence_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+          "evidence_blob": "5323b90ad3ee7bd23bbb6f162174780e1df19691",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        }
+      ],
+      "blockers": [
+        {
+          "id": "OMGITHUB18_WORKER_HEARTBEAT_EXPIRED",
+          "severity": "BLOCKED",
+          "summary": "OmGitHub reports Connection lost / Worker heartbeat expired while Actions remains at Configure Linux Playwright CLI with WebGPU; publication is draft with no Preview URL.",
+          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "requires_user_decision": false
+        }
+      ],
+      "response": "Issue #17 and its old Preview remain intact. Supported Issue #18 started OpenCode from exact candidate SHA 45435a323c729a28da1de454a3e53740fc9159f2, proving future work uses the new source. The new worker then lost heartbeat before creating a Preview URL, so interactive OmGitHub validation remains blocked and AFTER_DEPLOY_LIVE is not claimed.",
+      "event_type": "PROGRESS",
+      "occurred_at": "2026-10-26T18:27:00Z",
+      "completed": [
+        "Backed up Issue #17 body, comments, session, preview, resume branch and checkpoint identity",
+        "Published immutable candidate branch at exact SHA 45435a323c729a28da1de454a3e53740fc9159f2",
+        "Passed scoped exact-candidate local Chromium acceptance",
+        "Created isolated official Issue #18",
+        "Verified workflow 40377196806 target branch and full SHA"
+      ],
+      "event_id": "3654f1cc3e19033b3abca45e62bcbe4b41e72344ebc31b1d7c61959c7ae40571",
+      "remote_head": "dcbf99db4776172d9384749da80135903046dd5e",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "latest_pushed_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
-      "recorded_at": "2026-10-26T18:05:28.424763+00:00",
+      "latest_pushed_sha": "dcbf99db4776172d9384749da80135903046dd5e",
+      "recorded_at": "2026-10-26T18:29:56.766169+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
