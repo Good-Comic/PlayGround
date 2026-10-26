@@ -43,10 +43,12 @@ def save_slice(repo,paths,*,agent,execution,message):
     cp=subprocess.run(['python',str(tool),'--repo',str(repo),'--agent',agent,'--execution',execution,'--stage',*paths,'--message',message,'--push'],capture_output=True,text=True)
     local=git(repo,'rev-parse','HEAD')
     try:
-        rows=git(repo,'ls-remote','origin','refs/heads/'+branch).splitlines();remote=rows[0].split()[0] if rows else None;status='REMOTE_SAVED' if remote==local else 'PUSH_BLOCKED'
-    except (subprocess.SubprocessError,OSError):remote=None;status='REMOTE_UNKNOWN'
+        rows=git(repo,'ls-remote','origin','refs/heads/'+branch).splitlines();remote=rows[0].split()[0] if rows else None
+        paths_clean=not git(repo,'status','--porcelain','--',*paths)
+        status='REMOTE_SAVED' if cp.returncode==0 and remote==local and paths_clean else 'PUSH_BLOCKED' if remote!=local else 'CHECKPOINT_BLOCKED'
+    except (subprocess.SubprocessError,OSError):remote=None;paths_clean=False;status='REMOTE_UNKNOWN'
     # A clean exit, manifest or a local commit is never enough to assert remote saving.
-    return {'branch':branch,'local_sha':local,'remote_sha':remote,'status':status,'checkpoint_command_success':cp.returncode==0,'dirty':bool(git(repo,'status','--porcelain')),'transport_details':'OMITTED_NO_CREDENTIALS','ownership_released':False}
+    return {'branch':branch,'local_sha':local,'remote_sha':remote,'status':status,'checkpoint_command_success':cp.returncode==0,'requested_paths_clean':paths_clean,'dirty':bool(git(repo,'status','--porcelain')),'transport_details':'OMITTED_NO_CREDENTIALS','ownership_released':False}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--simulate-percent',type=float);p.add_argument('--simulate-checkpoint-saved',action='store_true');a=p.parse_args()
