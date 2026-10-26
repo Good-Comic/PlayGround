@@ -19,7 +19,8 @@
     "resolved_target_ref": "codex/riftwatch-omgithub17-upgrade-candidate",
     "resolved_target_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
     "prepare_job": "success",
-    "session_state_at_capture": "starting",
+    "session_state_at_capture": "disconnected",
+    "session_reason_at_capture": "Worker heartbeat expired.",
     "preview_state_at_capture": "draft",
     "preview_url_at_capture": null
   },
@@ -29,6 +30,6 @@
     "workflow_head_branch_matches_candidate": true,
     "future_opencode_started_from_latest_candidate": true
   },
-  "online_acceptance": "PENDING_NEW_PREVIEW",
-  "notes": "The separate official session is running. No claim is made yet that its draft Preview is available or that AFTER_DEPLOY_LIVE passed."
+  "online_acceptance": "BLOCKED_NO_PREVIEW_URL",
+  "notes": "The official run resolved and checked out the exact candidate, then stalled during Configure Linux Playwright CLI with WebGPU. OmGitHub reported Connection lost / Worker heartbeat expired. No Preview URL was assigned, so AFTER_DEPLOY_LIVE is not claimed. No retry, cancellation or unsupported recovery was attempted."
 }

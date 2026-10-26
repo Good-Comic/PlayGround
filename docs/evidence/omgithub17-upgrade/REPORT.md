@@ -40,3 +40,9 @@ These results are `AFTER_LOCAL`; they are not a new OmGitHub online acceptance. 
 Keep Issue #17 and its current preview as the legacy comparison. Create a separate issue with the `OpenCode` label and the exact request marker above. Immediately verify that the workflow resolved `target_ref` to the candidate branch and `target_sha` to `45435a323c729a28da1de454a3e53740fc9159f2`. The new preview must use a different OmGitHub URL. If the resolved SHA differs, stop the new task before accepting any changes and investigate the branch movement.
 
 Rollback consists of stopping or closing only the new issue/session. No legacy branch, checkpoint or preview needs to be changed.
+
+## Launch result
+
+Issue #18 was created through the supported path. The initial issue event run `40377172932` completed successfully and dispatched run `40377196806` on `codex/riftwatch-omgithub17-upgrade-candidate` at exact head `45435a323c729a28da1de454a3e53740fc9159f2`. Its preparation job and selected snapshot checkout succeeded, proving that future OpenCode work was launched from the new version.
+
+The worker then stopped reporting during `Configure Linux Playwright CLI with WebGPU`. OmGitHub changed the session to `disconnected` with reason `Worker heartbeat expired.` and supplied no Preview URL. The run still appeared in progress at the last bounded poll. Consequently, source migration is verified, while the new interactive Preview and `AFTER_DEPLOY_LIVE` remain blocked by platform initialization. The run was not restarted, cancelled or bypassed.
