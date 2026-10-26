@@ -1,1 +1,1 @@
-UIscale100/115/130percent nativefourlocale tworesolution, SaveLoad/BugJSON/resetPASS; GDDfixedEnglishStart resolved BY_DESIGN. Full native linguisticreview pending.
+AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair.
