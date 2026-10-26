@@ -2,14 +2,14 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T13:35:56.347493+00:00",
+  "updated_at": "2026-10-26T13:35:58.623566+00:00",
   "latest_event": {
-    "task_id": "V227-ORDERS",
+    "task_id": "V227-CANDIDATE",
     "agent": "Codex",
     "severity": "INFO",
     "branch": "codex/riftwatch-playtest-v228",
     "commit": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
-    "build_sha": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
+    "build_sha": "27b279410db1bb9c14b3c1b921b146059a6c6341",
     "summary": "Historicalv2277/8FAIL is preserved at its originalsource. Newv228crowd-detourfix verified byexactvariable-dt replay andnative8/8; no claimoldv227/D6 codewasupdated.",
     "code_changes": [],
     "next_steps": [
@@ -18,21 +18,48 @@
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Native tactical feature contracts",
+        "name": "Normal180wallsecond8P0",
         "status": "PASS",
-        "source_commit": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
-        "evidence": "docs/evidence/v227-orders/browser-results.json",
-        "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
-        "evidence_blob": "6bf91a658a97dafa22afaa6a3824be4c24e822d3",
+        "source_commit": "e845d2cd68b423bb2c16266a2c2f434edfa3f93a",
+        "evidence": "docs/evidence/v227-candidate/normal-summary.json",
+        "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+        "evidence_blob": "8f804ed90a3c49cb98b053d1a3f89fa18777630f",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Combined8unit narrow native destinationcompletion",
+        "name": "FinalexactSHA UI15 and159resourcehashes",
+        "status": "PASS",
+        "source_commit": "27b279410db1bb9c14b3c1b921b146059a6c6341",
+        "evidence": "docs/evidence/v227-candidate/ui-final-sha-resource-audit.json",
+        "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+        "evidence_blob": "f4f199fd0650792452989729fc4e66d8e6e487dc",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "97Node regression",
+        "status": "PASS",
+        "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
+        "evidence": "docs/evidence/v227-candidate/unit-af594.log.txt",
+        "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+        "evidence_blob": "4f2e6c3acd20122bb0090935c57b35da9b6d765a",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "Remaining8unitnative narrow failure",
         "status": "FAIL",
         "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
-        "evidence": "docs/evidence/v227-orders/remaining-narrow/browser-fail.json",
-        "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+        "evidence": "docs/evidence/v227-candidate/crowd-fixed-results.json",
+        "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
         "evidence_blob": "564fc2655069eca4a8b73f55ffd5cc7e46108dca",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "Actualframe controlledtimestamp clock",
+        "status": "FAIL",
+        "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
+        "evidence": "docs/evidence/v227-candidate/production-clock.json",
+        "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+        "evidence_blob": "cf13b839568c5422ac9530f52c0e7cb9d53e475e",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -41,22 +68,47 @@
         "id": "OPEN-NAV-NARROW-01",
         "severity": "INFO",
         "summary": "Version-specificv227failure. LOCAL_FIXEDonlyinv228Game144/newCandidateab56; originalsource andoldonlineD6 unchanged.",
-        "source_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+        "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+        "requires_user_decision": false
+      },
+      {
+        "id": "SIMULATION_INTEGRITY_BLOCKED",
+        "severity": "WARNING",
+        "summary": "Atvirtual15Hz/10Hz actualframe yields22.5s/15s per30s; no unvalidated mainloop replacement.",
+        "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+        "requires_user_decision": false
+      },
+      {
+        "id": "NEW_SHA_DEPLOYMENT_NOT_AUTHORIZED",
+        "severity": "INFO",
+        "summary": "Only D6 had prior Pages authorization. Exact27b deploymentdiff prepared, knownnarrowFAIL mustremainvisible; no publicwrite performed.",
+        "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+        "requires_user_decision": false
+      },
+      {
+        "id": "HARDWARE_TEST_PENDING",
+        "severity": "INFO",
+        "summary": "Cloud SwiftShader movement trend is not Mid-End physical-PC or current-scalecombat acceptance.",
+        "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
         "requires_user_decision": false
       }
     ],
     "response": "\u820a\u7248\u7a84\u9053FAIL\u4fdd\u7559\uff1b\u65b0\u7248v228\u5df2\u672c\u5730\u4fee\u5fa9\u3002D6\u53ca\u820a\u5206\u652f\u672a\u66f4\u65b0\uff0c\u672a\u65b0\u589e\u7dda\u4e0aPASS\u3002",
     "event_type": "PROGRESS",
-    "occurred_at": "2026-10-26T13:35:56.347493+00:00",
+    "occurred_at": "2026-10-26T13:35:58.623566+00:00",
     "completed": [
-      "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair."
+      "D6water-island softlockrisk reproduced/fixed without killing residual; normal180s8P0PASS",
+      "Finalbuild27b has28hashed payloads; nativefinal UI15PASS,159resourcesmatch; exactZIP saved",
+      "NativeAttackMove/Guard/Patrol/SaveLoad13PASS; wave7PASS;24crowdPASS; narrow7/8FAIL",
+      "Threebefore+threeafter100militiaMOVE cloud casesPASS, notcombat/250/hardwareacceptance",
+      "Prepared immutable newSHA releaseproposal preservingD6; no publication"
     ],
-    "event_id": "5bafd24a3bb649d677c7f57c8bd4bf0641e7c64b84e23552c76c47183f244756",
+    "event_id": "0e447430cfebea93b77d65457cfd27ce4334a61fe4d29eef4c0e9c0154c2b82f",
     "remote_head": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "pushed": true,
     "remote_query": "VERIFIED",
     "latest_pushed_sha": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
-    "recorded_at": "2026-10-26T13:35:56.347493+00:00",
+    "recorded_at": "2026-10-26T13:35:58.623566+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
     "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
   },
@@ -665,12 +717,69 @@
       ]
     },
     "V227-ORDERS": {
+      "agent": "Codex",
+      "blockers": [
+        {
+          "id": "OPEN-NAV-NARROW-01",
+          "requires_user_decision": false,
+          "severity": "INFO",
+          "source_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+          "summary": "Version-specificv227failure. LOCAL_FIXEDonlyinv228Game144/newCandidateab56; originalsource andoldonlineD6 unchanged."
+        }
+      ],
+      "branch": "codex/riftwatch-playtest-v228",
+      "build_sha": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
+      "code_changes": [],
+      "commit": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
+      "completed": [
+        "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair."
+      ],
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "5bafd24a3bb649d677c7f57c8bd4bf0641e7c64b84e23552c76c47183f244756",
+      "event_type": "PROGRESS",
+      "latest_pushed_sha": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
+      "next_steps": [
+        "Read currentV228-CANDIDATE; preserveversionedoldFAIL"
+      ],
+      "occurred_at": "2026-10-26T13:35:56.347493+00:00",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION",
+      "pushed": true,
+      "recorded_at": "2026-10-26T13:35:56.347493+00:00",
+      "remote_head": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "\u820a\u7248\u7a84\u9053FAIL\u4fdd\u7559\uff1b\u65b0\u7248v228\u5df2\u672c\u5730\u4fee\u5fa9\u3002D6\u53ca\u820a\u5206\u652f\u672a\u66f4\u65b0\uff0c\u672a\u65b0\u589e\u7dda\u4e0aPASS\u3002",
+      "severity": "INFO",
+      "summary": "Historicalv2277/8FAIL is preserved at its originalsource. Newv228crowd-detourfix verified byexactvariable-dt replay andnative8/8; no claimoldv227/D6 codewasupdated.",
       "task_id": "V227-ORDERS",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v227-orders/browser-results.json",
+          "evidence_blob": "6bf91a658a97dafa22afaa6a3824be4c24e822d3",
+          "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Native tactical feature contracts",
+          "source_commit": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v227-orders/remaining-narrow/browser-fail.json",
+          "evidence_blob": "564fc2655069eca4a8b73f55ffd5cc7e46108dca",
+          "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Combined8unit narrow native destinationcompletion",
+          "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
+          "status": "FAIL"
+        }
+      ]
+    },
+    "V227-CANDIDATE": {
+      "task_id": "V227-CANDIDATE",
       "agent": "Codex",
       "severity": "INFO",
       "branch": "codex/riftwatch-playtest-v228",
       "commit": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
-      "build_sha": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
+      "build_sha": "27b279410db1bb9c14b3c1b921b146059a6c6341",
       "summary": "Historicalv2277/8FAIL is preserved at its originalsource. Newv228crowd-detourfix verified byexactvariable-dt replay andnative8/8; no claimoldv227/D6 codewasupdated.",
       "code_changes": [],
       "next_steps": [
@@ -679,21 +788,48 @@
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Native tactical feature contracts",
+          "name": "Normal180wallsecond8P0",
           "status": "PASS",
-          "source_commit": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
-          "evidence": "docs/evidence/v227-orders/browser-results.json",
-          "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
-          "evidence_blob": "6bf91a658a97dafa22afaa6a3824be4c24e822d3",
+          "source_commit": "e845d2cd68b423bb2c16266a2c2f434edfa3f93a",
+          "evidence": "docs/evidence/v227-candidate/normal-summary.json",
+          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+          "evidence_blob": "8f804ed90a3c49cb98b053d1a3f89fa18777630f",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "Combined8unit narrow native destinationcompletion",
+          "name": "FinalexactSHA UI15 and159resourcehashes",
+          "status": "PASS",
+          "source_commit": "27b279410db1bb9c14b3c1b921b146059a6c6341",
+          "evidence": "docs/evidence/v227-candidate/ui-final-sha-resource-audit.json",
+          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+          "evidence_blob": "f4f199fd0650792452989729fc4e66d8e6e487dc",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "97Node regression",
+          "status": "PASS",
+          "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
+          "evidence": "docs/evidence/v227-candidate/unit-af594.log.txt",
+          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+          "evidence_blob": "4f2e6c3acd20122bb0090935c57b35da9b6d765a",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Remaining8unitnative narrow failure",
           "status": "FAIL",
           "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
-          "evidence": "docs/evidence/v227-orders/remaining-narrow/browser-fail.json",
-          "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+          "evidence": "docs/evidence/v227-candidate/crowd-fixed-results.json",
+          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
           "evidence_blob": "564fc2655069eca4a8b73f55ffd5cc7e46108dca",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Actualframe controlledtimestamp clock",
+          "status": "FAIL",
+          "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
+          "evidence": "docs/evidence/v227-candidate/production-clock.json",
+          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+          "evidence_blob": "cf13b839568c5422ac9530f52c0e7cb9d53e475e",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -702,61 +838,34 @@
           "id": "OPEN-NAV-NARROW-01",
           "severity": "INFO",
           "summary": "Version-specificv227failure. LOCAL_FIXEDonlyinv228Game144/newCandidateab56; originalsource andoldonlineD6 unchanged.",
-          "source_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+          "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+          "requires_user_decision": false
+        },
+        {
+          "id": "SIMULATION_INTEGRITY_BLOCKED",
+          "severity": "WARNING",
+          "summary": "Atvirtual15Hz/10Hz actualframe yields22.5s/15s per30s; no unvalidated mainloop replacement.",
+          "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+          "requires_user_decision": false
+        },
+        {
+          "id": "NEW_SHA_DEPLOYMENT_NOT_AUTHORIZED",
+          "severity": "INFO",
+          "summary": "Only D6 had prior Pages authorization. Exact27b deploymentdiff prepared, knownnarrowFAIL mustremainvisible; no publicwrite performed.",
+          "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+          "requires_user_decision": false
+        },
+        {
+          "id": "HARDWARE_TEST_PENDING",
+          "severity": "INFO",
+          "summary": "Cloud SwiftShader movement trend is not Mid-End physical-PC or current-scalecombat acceptance.",
+          "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
           "requires_user_decision": false
         }
       ],
       "response": "\u820a\u7248\u7a84\u9053FAIL\u4fdd\u7559\uff1b\u65b0\u7248v228\u5df2\u672c\u5730\u4fee\u5fa9\u3002D6\u53ca\u820a\u5206\u652f\u672a\u66f4\u65b0\uff0c\u672a\u65b0\u589e\u7dda\u4e0aPASS\u3002",
       "event_type": "PROGRESS",
-      "occurred_at": "2026-10-26T13:35:56.347493+00:00",
-      "completed": [
-        "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair."
-      ],
-      "event_id": "5bafd24a3bb649d677c7f57c8bd4bf0641e7c64b84e23552c76c47183f244756",
-      "remote_head": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
-      "pushed": true,
-      "remote_query": "VERIFIED",
-      "latest_pushed_sha": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
-      "recorded_at": "2026-10-26T13:35:56.347493+00:00",
-      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
-      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
-    },
-    "V227-CANDIDATE": {
-      "agent": "Codex",
-      "blockers": [
-        {
-          "id": "OPEN-NAV-NARROW-01",
-          "requires_user_decision": false,
-          "severity": "WARNING",
-          "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-          "summary": "All8cross but7/8arrival85s,0clips,maxpenetration.014669. Simplified60Hz doesnotreproduce. Rootcause unconfirmed."
-        },
-        {
-          "id": "SIMULATION_INTEGRITY_BLOCKED",
-          "requires_user_decision": false,
-          "severity": "WARNING",
-          "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-          "summary": "Atvirtual15Hz/10Hz actualframe yields22.5s/15s per30s; no unvalidated mainloop replacement."
-        },
-        {
-          "id": "NEW_SHA_DEPLOYMENT_NOT_AUTHORIZED",
-          "requires_user_decision": false,
-          "severity": "INFO",
-          "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-          "summary": "Only D6 had prior Pages authorization. Exact27b deploymentdiff prepared, knownnarrowFAIL mustremainvisible; no publicwrite performed."
-        },
-        {
-          "id": "HARDWARE_TEST_PENDING",
-          "requires_user_decision": false,
-          "severity": "INFO",
-          "source_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-          "summary": "Cloud SwiftShader movement trend is not Mid-End physical-PC or current-scalecombat acceptance."
-        }
-      ],
-      "branch": "codex/riftwatch-playtest-v227",
-      "build_sha": "27b279410db1bb9c14b3c1b921b146059a6c6341",
-      "code_changes": [],
-      "commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+      "occurred_at": "2026-10-26T13:35:58.623566+00:00",
       "completed": [
         "D6water-island softlockrisk reproduced/fixed without killing residual; normal180s8P0PASS",
         "Finalbuild27b has28hashed payloads; nativefinal UI15PASS,159resourcesmatch; exactZIP saved",
@@ -764,73 +873,14 @@
         "Threebefore+threeafter100militiaMOVE cloud casesPASS, notcombat/250/hardwareacceptance",
         "Prepared immutable newSHA releaseproposal preservingD6; no publication"
       ],
-      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
-      "event_id": "8a5fd926ca9fcc158a565acfe736280383023732fa087b8ece03fa2e776b25a7",
-      "event_type": "HANDOFF_READY",
-      "latest_pushed_sha": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-      "next_steps": [
-        "Capture exact perupdate dt plus nav/target/yield/progress in focusednative8unit fixture; replay beforeenginepatch",
-        "Review exact docs/playtest/v227/APPROVAL-PLAN.json only after addressing known QA failure or explicit experimental-risk decision",
-        "Continue independent simulated-time integrity without replacingproductionloop by unvalidatedprototype"
-      ],
-      "occurred_at": "2026-10-26T09:34:57.431811+00:00",
-      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION",
+      "event_id": "0e447430cfebea93b77d65457cfd27ce4334a61fe4d29eef4c0e9c0154c2b82f",
+      "remote_head": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
       "pushed": true,
-      "recorded_at": "2026-10-26T09:34:57.431811+00:00",
-      "remote_head": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
       "remote_query": "VERIFIED",
-      "requires_user_decision": false,
-      "response": "\u5df2\u4fdd\u5b58 v227 \u9694\u96e2 Candidate\uff1aBuild27b279410db1bb9c14b3c1b921b146059a6c6341\uff1b\u5206\u652f\u4fdd\u5b58c25ccc76178b044b061c88954ed2cf7f5a9b59fb\u3002D6\u653b\u57ce\u69cc\u7576\u6642\u4ecd\u5728\u5408\u6cd5\u6230\u9b25\uff0c\u4f46\u539f\u6ce2\u6b21\u7d50\u7b97\u5b58\u5728\u4e0d\u53ef\u9054\u6b98\u6575Softlock\u98a8\u96aa\uff0c\u5df2\u6700\u5c0f\u91cd\u73fe\u4e26\u672c\u5730\u4fee\u5fa9\uff0c\u672a\u522a\u6575\u6216\u5f37\u5236\u8df3\u6ce2\u3002Attack-Move\u3001\u55ae\u4f4dGuard\u3001Patrol\u3001\u7de8\u968a\u5feb\u6377\u9375\u3001UI\u6587\u5b57\u7e2e\u653e\u6709\u5b9a\u5411\u672c\u5730\u64cd\u4f5c\u8b49\u64da\uff1b97Node\u8207\u56db\u8a9e673\u9375\u901a\u904e\u3002\u6b63\u5e38180\u79d28P0\u901a\u904e\uff0c10\u6b21\u91cd\u65b0\u7d22\u6575\u3001\u56db\u8cc7\u6e90\u5378\u8ca856/24/26/14\u3002\u7a84\u9053\u4ecdFAIL\uff1a8\u4eba\u7a7f\u904e\u4f467\u4eba\u5b8c\u6210\u76ee\u7684\u5730\uff1b\u4f4eFPS\u6a21\u64ec\u6642\u9418FAIL\u8207\u786c\u9ad4\u5f85\u9a57\u4fdd\u7559\u3002\u65b0\u7248\u672a\u767c\u5e03\uff0c\u820aD6\u8207Integration\u4e0d\u8b8a\u3002\u4e0b\u4e00\u6b65\u5148\u7cbe\u78ba\u91cd\u64ad\u7a84\u9053\u5931\u6557\uff1b\u65b0SHA\u516c\u958b\u90e8\u7f72\u4ecd\u9808\u5177\u9ad4\u6388\u6b0a\u3002Recovery\u7d22\u5f15\u8207Handoff\u4fdd\u7559\u5be6\u969b\u9060\u7aef\u72c0\u614b\uff1b\u6b64\u70baGitHub\u5feb\u7167\uff0c\u975eCloud\u79c1\u6709\u5373\u6642\u4e32\u6d41\u3002",
-      "severity": "WARNING",
-      "summary": "v227 scopedlocal Candidate saved: wave/AttackMove/unitGuard/Patrol/groups/UIscale,97Node/673keys/localnativePASS contracts; remainingnarrow/clockFAIL retained. No newpublicbuild or GameplayIntegration merge.",
-      "task_id": "V227-CANDIDATE",
-      "tests": [
-        {
-          "evidence": "docs/evidence/v227-candidate/normal-summary.json",
-          "evidence_blob": "8f804ed90a3c49cb98b053d1a3f89fa18777630f",
-          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "Normal180wallsecond8P0",
-          "source_commit": "e845d2cd68b423bb2c16266a2c2f434edfa3f93a",
-          "status": "PASS"
-        },
-        {
-          "evidence": "docs/evidence/v227-candidate/ui-final-sha-resource-audit.json",
-          "evidence_blob": "f4f199fd0650792452989729fc4e66d8e6e487dc",
-          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "FinalexactSHA UI15 and159resourcehashes",
-          "source_commit": "27b279410db1bb9c14b3c1b921b146059a6c6341",
-          "status": "PASS"
-        },
-        {
-          "evidence": "docs/evidence/v227-candidate/unit-af594.log.txt",
-          "evidence_blob": "4f2e6c3acd20122bb0090935c57b35da9b6d765a",
-          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "97Node regression",
-          "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
-          "status": "PASS"
-        },
-        {
-          "evidence": "docs/evidence/v227-candidate/crowd-fixed-results.json",
-          "evidence_blob": "564fc2655069eca4a8b73f55ffd5cc7e46108dca",
-          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "Remaining8unitnative narrow failure",
-          "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
-          "status": "FAIL"
-        },
-        {
-          "evidence": "docs/evidence/v227-candidate/production-clock.json",
-          "evidence_blob": "cf13b839568c5422ac9530f52c0e7cb9d53e475e",
-          "evidence_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "Actualframe controlledtimestamp clock",
-          "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
-          "status": "FAIL"
-        }
-      ]
+      "latest_pushed_sha": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
+      "recorded_at": "2026-10-26T13:35:58.623566+00:00",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
     },
     "V228-BUDGET": {
       "agent": "Codex",
