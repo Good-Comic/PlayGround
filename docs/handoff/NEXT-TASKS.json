@@ -1,7 +1,52 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-26T13:30:09.105137+00:00",
+  "updated_at": "2026-10-26T18:02:56Z",
   "tasks": [
+    {
+      "task_id": "V230-P0-INPUT",
+      "name": "Natural Rift Prototype crash reproduction and Game First continuation",
+      "requirement_source": "Strategy v2.3.0 P0/P9",
+      "priority": "P0",
+      "agent": "Codex; no additional agent connected",
+      "environment": "Managed revision 40; local Chromium 154/SwiftShader",
+      "branch": "codex/riftwatch-v230-p0-input",
+      "base_commit": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
+      "latest_pushed_commit": "0c422d9ae04af2435626a7f2be3b6f354c6f5a90",
+      "completed": [
+        "A/WASD conflict, Rally-facing exit, and Canvas same-type double-click implemented and locally verified"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Focused Node and Chromium verification",
+          "path": "docs/evidence/v230-p0-input/REPORT.md",
+          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+          "result": "20/20 Node, 7/7 local Chromium, four locales PASS"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v230-p0-input/REPORT.md",
+        "docs/evidence/v230-p0-input/browser.json"
+      ],
+      "failures": [
+        "Rift Prototype crash not reproduced in controlled real-UI path"
+      ],
+      "status": "CHECKPOINTED",
+      "next_steps": [
+        "Natural wave-end Rift Prototype offer with complete browser evidence",
+        "Hero visual distinction and skill range preview vertical slice",
+        "Representative art and audio vertical slices"
+      ],
+      "blockers": [
+        "Exact player crash conditions remain unknown; controlled real-UI reproduction passes",
+        "New public game SHA requires separate concrete authorization"
+      ],
+      "permissions": [
+        "Independent development/test/normal push; no main/force/#17/Checkpoints/workflow/new public SHA"
+      ],
+      "updated_at": "2026-10-26T18:02:56Z"
+    },
     {
       "task_id": "V228-CANDIDATE",
       "name": "v228 playable experimental candidate and deterministic-clock continuation",
