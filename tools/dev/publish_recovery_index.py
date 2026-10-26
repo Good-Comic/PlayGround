@@ -15,7 +15,7 @@ def main():
  data=inventory(repo,load(repo/'docs/recovery/task-registry.json',{}),'FINAL_CHECKPOINT',load(repo/'docs/recovery/worktree-recovery.json',None));write_snapshot(out/'docs/recovery',data)
  handoff=package(repo,out/'docs/handoff','MANUAL_HANDOFF')
  if handoff['validation_errors']:raise SystemExit('Incomplete handoff; index not published')
- for name in ['ACTIVE-TASK.json','NEXT-TASKS.json','SHARED-RULES.md','STRATEGY-V2.2.1-V2.2.2.md']:
+ for name in ['ACTIVE-TASK.json','NEXT-TASKS.json','SHARED-RULES.md',*[p.name for p in sorted((repo/'docs/handoff').glob('STRATEGY*.md'))]]:
   if (repo/'docs/handoff'/name).exists():(out/'docs/handoff'/name).write_bytes((repo/'docs/handoff'/name).read_bytes())
  # Package's freshly resolved task refs are more current than the checked-in templates.
  atomic_json(out/'docs/handoff/ACTIVE-TASK.json',handoff['active_task']);atomic_json(out/'docs/handoff/NEXT-TASKS.json',handoff['next_tasks'])
