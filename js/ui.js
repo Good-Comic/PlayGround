@@ -79,7 +79,7 @@ export class UI {
       autoEcon: this.$('auto-econ'), autoMil: this.$('auto-mil'), boonHint: this.$('boon-hint-text'),
       continueBtn: this.$('btn-continue'), saveBtn: this.$('btn-save'),
       settingsOverlay: this.$('settings-overlay'), gmOverlay: this.$('gm-overlay'),
-      settingsSpeed: this.$('settings-speed'), settingsAutoEcon: this.$('settings-auto-econ'),
+      settingsUiScale: this.$('settings-ui-scale'), settingsSpeed: this.$('settings-speed'), settingsAutoEcon: this.$('settings-auto-econ'),
       settingsAutoMil: this.$('settings-auto-mil'), settingsReducedMotion: this.$('settings-reduced-motion'),
       gmFood: this.$('gm-food'), gmWood: this.$('gm-wood'), gmGold: this.$('gm-gold'), gmStone: this.$('gm-stone'),
       gmNote: this.$('gm-note'),
@@ -121,6 +121,7 @@ export class UI {
       this.applySettingsToControls();
       this.persistSettings();
     });
+    this.$('settings-ui-scale')?.addEventListener('change', e => this.persistSettings({ uiScale: Number(e.target.value) }));
     this.$('settings-speed')?.addEventListener('change', e => this.persistSettings({ gameSpeed: Number(e.target.value) }));
     this.$('settings-auto-econ')?.addEventListener('change', e => this.persistSettings({ autoEconomy: e.target.checked }));
     this.$('settings-auto-mil')?.addEventListener('change', e => this.persistSettings({ autoMilitary: e.target.checked }));
@@ -226,6 +227,7 @@ export class UI {
   closeHowTo() { this.el.howto.hidden = true; }
 
   applySettingsToControls() {
+    if (this.el.settingsUiScale) this.el.settingsUiScale.value = String(this.settings.uiScale || 1);
     if (this.el.settingsSpeed) this.el.settingsSpeed.value = String(this.settings.gameSpeed);
     if (this.el.settingsAutoEcon) this.el.settingsAutoEcon.checked = this.settings.autoEconomy;
     if (this.el.settingsAutoMil) this.el.settingsAutoMil.checked = this.settings.autoMilitary;

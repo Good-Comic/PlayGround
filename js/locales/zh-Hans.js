@@ -1,4 +1,6 @@
 export const ui = {
+  'settings.uiScale': '界面文字大小',
+  'settings.uiScaleDesc': '放大界面文字，不改变游戏速度或地图缩放。',
   "app.title": "世纪帝国二：裂境守望",
   "game.title": "世纪帝国二：裂境守望",
   "game.series": "世纪帝国二：",

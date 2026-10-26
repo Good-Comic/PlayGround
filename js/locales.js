@@ -211,6 +211,8 @@ const EN_UI = {
   'pause.gm': 'GM Tools',
   'settings.kicker': 'THE WAR COUNCIL',
   'settings.title': 'Settings',
+  'settings.uiScale': 'UI text size',
+  'settings.uiScaleDesc': 'Enlarges interface text; game speed and map zoom stay unchanged.',
   'settings.flavor': 'Shape the pace of the campaign. Changes are saved for your next run.',
   'settings.speed': 'Game speed',
   'settings.speedDesc': 'Scales simulation time without changing combat math.',
