@@ -2,249 +2,290 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T04:04:32.090148+00:00",
+  "updated_at": "2026-10-26T04:07:52.590544+00:00",
   "latest_event": {
-    "task_id": "MONITOR-V224",
+    "task_id": "PLAYTEST-P0",
     "agent": "Codex",
-    "severity": "PROGRESS",
+    "severity": "ACTION_REQUIRED",
     "branch": "codex/riftwatch-v226-delivery",
-    "commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-    "build_sha": null,
-    "summary": "30focused tests pass; rawHTTP4 and supported ContentsAPI4 independently read; prior503 preserved; explicit Strategy v2.2.6 now read",
-    "code_changes": [],
-    "next_steps": [
-      "Actual Supervisor reviews source-pinned exchange",
-      "Perform nonexecuting dispatcher plan and duplicate rejection",
-      "User enables Pages and exact network host before live game QA"
+    "commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+    "build_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+    "summary": "User explicitly authorized exactD6 Pages deployment; old approval blocker resolved, current permission/network blockers retained",
+    "code_changes": [
+      "No gameplay source change; approved package entries match28 payloads"
     ],
-    "requires_user_decision": false,
+    "next_steps": [
+      "User UI: GitHub Pages Deploy from branch codex/riftwatch-playtest-site root and Save",
+      "User UI: allow exactgood-comic.github.io in Codex",
+      "Then actual public Chromium Start/move/attack/economy/Rally/civ/Boss/SaveLoad/4locale/export/28hashes",
+      "Continue independent gameplay queue without calling historical failures PASS"
+    ],
+    "requires_user_decision": true,
     "tests": [
       {
-        "name": "30focused tool tests",
+        "name": "Exact approved ZIP hashes and28source payloads",
         "status": "PASS",
-        "source_commit": "fd616d0d4c1ea62263a42fc0065b1b16752c427a",
-        "evidence": "docs/evidence/v226-monitor/tool-tests.log.txt",
-        "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-        "evidence_blob": "9991d4d9fc860a6f52f689784f3dd095965f31b2",
+        "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+        "evidence": "docs/evidence/v226-deployment/artifact-audit.json",
+        "evidence_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+        "evidence_blob": "4b3e8a87632c6967958f47b9dcb681347191bff3",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Real raw HTTP pinned4file read",
-        "status": "PASS",
+        "name": "Pages enablement current integration",
+        "status": "BLOCKED",
         "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
-        "evidence": "docs/evidence/v226-monitor/raw-reader.json",
-        "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-        "evidence_blob": "69b1ecfb9f7202c78c37673b5b9aa1aba0adf775",
+        "evidence": "docs/evidence/v226-deployment/pages-create.json",
+        "evidence_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+        "evidence_blob": "8a8cbed2ed727193be9652f3065e23bab02f57e2",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Real Contents API4file blob verification",
-        "status": "PASS",
+        "name": "Public-site connectivity",
+        "status": "BLOCKED",
         "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
-        "evidence": "docs/evidence/v226-monitor/api-reader.json",
-        "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-        "evidence_blob": "0318d794bbdf0cf805ba8af62a5c99482a544460",
+        "evidence": "docs/evidence/v226-deployment/site-preflight-headers.txt",
+        "evidence_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+        "evidence_blob": "042d282d9492e4ec31565dafcb5e06e2863f052a",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "EXTERNAL_REVIEW_PENDING",
-        "severity": "INFO",
-        "summary": "No independent Supervisor or external Agent executed; REVIEW_PENDING and DISPATCH_NOT_CONNECTED only",
-        "source_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+        "id": "PAGES_PERMISSION",
+        "severity": "ACTION_REQUIRED",
+        "summary": "GitHub Settings>Pages>Deploy from branch codex/riftwatch-playtest-site /(root)>Save; API403 Resource not accessible by integration",
+        "source_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+        "requires_user_decision": true
+      },
+      {
+        "id": "PAGES_NETWORK",
+        "severity": "ACTION_REQUIRED",
+        "summary": "Allow exact good-comic.github.io in Codex UI before Agent browser; no retry/bypass",
+        "source_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+        "requires_user_decision": true
+      },
+      {
+        "id": "PERFORMANCE_HISTORICAL_FAIL",
+        "severity": "WARNING",
+        "summary": "Historical100/250 cloud rAF/time failures remain; no formal scale claim or threshold reduction.",
+        "source_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
         "requires_user_decision": false
       },
       {
-        "id": "LIVE_STREAM_NOT_CONFIRMED",
+        "id": "SIMULATION_INTEGRITY_BLOCKED",
+        "severity": "WARNING",
+        "summary": "Legacy low-FPS time loss unresolved; fixed-step prototype not installed.",
+        "source_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+        "requires_user_decision": false
+      },
+      {
+        "id": "HARDWARE_TEST_PENDING",
         "severity": "INFO",
-        "summary": "Snapshot-based feed only; no Cloud private log/quota access",
-        "source_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+        "summary": "No physical Mid-End Windows/GPU acceptance or calibrated FPS estimate.",
+        "source_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
         "requires_user_decision": false
       }
     ],
-    "response": "30\u9805\u5de5\u5177\u6e2c\u8a66\u901a\u904e\uff0cFeed rawHTTP\u8207ContentsAPI\u5404\u56db\u6a94\u5be6\u8b80\u6210\u529f\uff1b\u6b77\u53f2503\u4fdd\u7559\u3002v2.2.6\u5df2\u660e\u78ba\u8b80\u53d6\uff0c\u76e3\u63a7\u820a\u963b\u585e\u5df2\u66f4\u65b0\u3002\u7368\u7acbSupervisor\u5be9\u67e5\u8207\u771f\u5be6\u8de8Agent\u63a5\u529b\u4ecd\u5f85\u5b8c\u6210\u3002",
-    "event_type": "QA_READY",
-    "occurred_at": "2026-10-26T04:04:32.090148+00:00",
+    "response": "v2.2.6\u6307\u5b9aPages\u767c\u5e03\u5df2\u6388\u6b0a\uff0c\u767c\u5e03\u5206\u652f\u5df2\u4fdd\u5b58\uff1b\u5e73\u53f0Pages\u6b0a\u9650\u8207Agent\u7db2\u57df\u4ecd\u963b\u64cb\u7dda\u4e0a\u9a57\u6536\u3002\u4fdd\u7559\u6b77\u53f2\u6027\u80fd\u3001\u6a21\u64ec\u6642\u9593\u8207\u786c\u9ad4\u963b\u585e\u3002",
+    "event_type": "ACTION_REQUIRED",
+    "occurred_at": "2026-10-26T04:07:52.590544+00:00",
     "completed": [
-      "Preserved fa520ae monitor repair unchanged in ancestry",
-      "Added typed events, pinned reader/API fallback, pending review exchange, disconnected dispatcher",
-      "Saved exact Pages branch and403 blockers; no game source changed"
+      "Exact2ZIPs and28source payloads reverified",
+      "Site branch6c98a8e6b7f7759ca57a9c9f94f675e2b6070381 pushed; all entries match",
+      "30focused tool tests atfd616d0; real rawHTTP4/API4 reads",
+      "OmGitHub source/parser/checkpoint investigation saved",
+      "Pending review exchange and disconnected planner/duplicate audit saved; no Agent executed"
     ],
-    "event_id": "a7ad17fd24f4ec16f44cf4edd658fdab4ab1e823241984361a0cded17ad1c586",
-    "remote_head": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+    "event_id": "c095567ab2680e714b91b39500de9d55c7dc6c992160ed6c443368f5dede062a",
+    "remote_head": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-    "recorded_at": "2026-10-26T04:04:32.090148+00:00",
+    "latest_pushed_sha": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+    "recorded_at": "2026-10-26T04:07:52.590544+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
     "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
   },
   "workstreams": {
     "PLAYTEST-P0": {
+      "task_id": "PLAYTEST-P0",
       "agent": "Codex",
+      "severity": "ACTION_REQUIRED",
+      "branch": "codex/riftwatch-v226-delivery",
+      "commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+      "build_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "summary": "User explicitly authorized exactD6 Pages deployment; old approval blocker resolved, current permission/network blockers retained",
+      "code_changes": [
+        "No gameplay source change; approved package entries match28 payloads"
+      ],
+      "next_steps": [
+        "User UI: GitHub Pages Deploy from branch codex/riftwatch-playtest-site root and Save",
+        "User UI: allow exactgood-comic.github.io in Codex",
+        "Then actual public Chromium Start/move/attack/economy/Rally/civ/Boss/SaveLoad/4locale/export/28hashes",
+        "Continue independent gameplay queue without calling historical failures PASS"
+      ],
+      "requires_user_decision": true,
+      "tests": [
+        {
+          "name": "Exact approved ZIP hashes and28source payloads",
+          "status": "PASS",
+          "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+          "evidence": "docs/evidence/v226-deployment/artifact-audit.json",
+          "evidence_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+          "evidence_blob": "4b3e8a87632c6967958f47b9dcb681347191bff3",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Pages enablement current integration",
+          "status": "BLOCKED",
+          "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+          "evidence": "docs/evidence/v226-deployment/pages-create.json",
+          "evidence_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+          "evidence_blob": "8a8cbed2ed727193be9652f3065e23bab02f57e2",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Public-site connectivity",
+          "status": "BLOCKED",
+          "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+          "evidence": "docs/evidence/v226-deployment/site-preflight-headers.txt",
+          "evidence_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+          "evidence_blob": "042d282d9492e4ec31565dafcb5e06e2863f052a",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        }
+      ],
       "blockers": [
         {
-          "id": "DEPLOYMENT_BLOCKED_AWAITING_USER_APPROVAL",
-          "requires_user_decision": true,
+          "id": "PAGES_PERMISSION",
           "severity": "ACTION_REQUIRED",
-          "source_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-          "summary": "Approve only exactSHA/package,new site branch,Pages setting and remote verification/isolated rollback. No existing preview/main changes."
+          "summary": "GitHub Settings>Pages>Deploy from branch codex/riftwatch-playtest-site /(root)>Save; API403 Resource not accessible by integration",
+          "source_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+          "requires_user_decision": true
+        },
+        {
+          "id": "PAGES_NETWORK",
+          "severity": "ACTION_REQUIRED",
+          "summary": "Allow exact good-comic.github.io in Codex UI before Agent browser; no retry/bypass",
+          "source_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+          "requires_user_decision": true
         },
         {
           "id": "PERFORMANCE_HISTORICAL_FAIL",
-          "requires_user_decision": false,
           "severity": "WARNING",
+          "summary": "Historical100/250 cloud rAF/time failures remain; no formal scale claim or threshold reduction.",
           "source_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-          "summary": "Historical100/250 cloud rAF/time failures remain; no formal scale claim or threshold reduction."
+          "requires_user_decision": false
         },
         {
           "id": "SIMULATION_INTEGRITY_BLOCKED",
-          "requires_user_decision": false,
           "severity": "WARNING",
+          "summary": "Legacy low-FPS time loss unresolved; fixed-step prototype not installed.",
           "source_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-          "summary": "Legacy low-FPS time loss unresolved; fixed-step prototype not installed."
+          "requires_user_decision": false
         },
         {
           "id": "HARDWARE_TEST_PENDING",
-          "requires_user_decision": false,
           "severity": "INFO",
+          "summary": "No physical Mid-End Windows/GPU acceptance or calibrated FPS estimate.",
           "source_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-          "summary": "No physical Mid-End Windows/GPU acceptance or calibrated FPS estimate."
+          "requires_user_decision": false
         }
       ],
-      "branch": "codex/riftwatch-playtest-candidate",
-      "build_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
-      "code_changes": [
-        "Boss/Population/Target/Civ-B2/Rally assembled on independent Candidate; Integration unchanged",
-        "75combined tests; all actual local browser acceptance recorded with preserved harness/encoding failures",
-        "Versioned SHA directories,private Bug JSON,28payload integrity checks and separate legacy namespace",
-        "Completed source-push checkpoints2c265ec,d6ee34a,a444e65,04a8cc1,39779cb are aggregated here at current observation time, not replayed as live webhook timestamps"
+      "response": "v2.2.6\u6307\u5b9aPages\u767c\u5e03\u5df2\u6388\u6b0a\uff0c\u767c\u5e03\u5206\u652f\u5df2\u4fdd\u5b58\uff1b\u5e73\u53f0Pages\u6b0a\u9650\u8207Agent\u7db2\u57df\u4ecd\u963b\u64cb\u7dda\u4e0a\u9a57\u6536\u3002\u4fdd\u7559\u6b77\u53f2\u6027\u80fd\u3001\u6a21\u64ec\u6642\u9593\u8207\u786c\u9ad4\u963b\u585e\u3002",
+      "event_type": "ACTION_REQUIRED",
+      "occurred_at": "2026-10-26T04:07:52.590544+00:00",
+      "completed": [
+        "Exact2ZIPs and28source payloads reverified",
+        "Site branch6c98a8e6b7f7759ca57a9c9f94f675e2b6070381 pushed; all entries match",
+        "30focused tool tests atfd616d0; real rawHTTP4/API4 reads",
+        "OmGitHub source/parser/checkpoint investigation saved",
+        "Pending review exchange and disconnected planner/duplicate audit saved; no Agent executed"
       ],
-      "commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
-      "event_id": "508f86855237e8a5dfbe03afa80c1bfbdbe30e5ca4a19e19e3b9c1b6537fc627",
-      "next_steps": [
-        "Obtain bounded approval in APPROVAL-PLAN.json before public hosting",
-        "Recheck no existing Pages or conflicting public path before writes",
-        "Use approved source/package only; preserve old version directories and normal-commit rollback",
-        "Verify actual online resources/gameplay after allowed-host access; do not label local as deployed"
-      ],
+      "event_id": "c095567ab2680e714b91b39500de9d55c7dc6c992160ed6c443368f5dede062a",
+      "remote_head": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
       "pushed": true,
-      "recorded_at": "2026-10-25T20:30:49.546057+00:00",
-      "remote_head": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
       "remote_query": "VERIFIED",
-      "requires_user_decision": true,
-      "response": "\u65b0\u7248 Playtest Candidate \u5df2\u5b8c\u6210\u7d44\u88dd\u8207\u672c\u5730\u5be6\u73a9\uff0c**\u5c1a\u672a\u516c\u958b\u90e8\u7f72**\u3002\n\n- \u904a\u6232 Build SHA\uff1a`d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c`\u3002\n- Candidate \u4fdd\u5b58 Commit\uff1a`3779c5d50876cb2e28590b9d250fb355fc0f8e38`\uff1b\u8f03\u65b0\u7684 Commit \u50c5\u542b\u9a57\u6536\u8207\u767c\u5e03\u6e96\u5099\u3002\n- [\u4e0b\u8f09\u6e2c\u8a66\u5305](https://github.com/Good-Comic/PlayGround/blob/3779c5d50876cb2e28590b9d250fb355fc0f8e38/docs/playtest/artifacts/Riftwatch-Playtest-d6ee34a.zip?raw=true) \u00b7 [\u672c\u5730\u958b\u555f\u8aaa\u660e](https://github.com/Good-Comic/PlayGround/blob/3779c5d50876cb2e28590b9d250fb355fc0f8e38/docs/playtest/LOCAL-PLAY.md) \u00b7 [\u904a\u6232\u622a\u5716\u8207\u9a57\u6536](https://github.com/Good-Comic/PlayGround/tree/3779c5d50876cb2e28590b9d250fb355fc0f8e38/docs/evidence/playtest-candidate)\u3002\n\n\u5df2\u901a\u904e75\u9805\u7d44\u5408\u6e2c\u8a66\u3001\u56db\u8a9e667keys\u3001\u6700\u4f4e12\u9805\u700f\u89bd\u5668\u64cd\u4f5c\u8207Pages\u5b50\u8def\u5f91\u8907\u9a57\uff1bRally\u3001\u6587\u660e\u8a13\u7df4\u3001Boss\u3001Save/Load\u300124\u4eba\u64c1\u64e0\u82078\u4eba\u7a84\u9053\u5747\u6709\u672c\u5730\u8b49\u64da\u3002\u6b63\u5e38\u904a\u6232P0\u8a18\u93044\u6b21\u91cd\u65b0\u7d22\u6575\u3001\u56db\u7a2e\u8cc7\u6e90\u5378\u8ca838\uff0f17\uff0f19\uff0f9\u6b21\u300228\u500b\u8cc7\u6e90\u96dc\u6e4a\u8207\u5be6\u969b\u4e0b\u8f09Bug JSON\u5df2\u6838\u5c0d\uff0c\u820a\u5b58\u6a94\u6e2c\u8a66\u6a19\u8a18\u4fdd\u6301\u4e0d\u8b8a\u3002\n\n\u7248\u672c\u4ecd\u70ba `PLAYTEST-EXPERIMENTAL`\u3002\u6b77\u53f2\u6548\u80fdFAIL\u3001\u4f4eFPS\u6a21\u64ec\u6642\u9593\u554f\u984c\u8207 `HARDWARE_TEST_PENDING` \u4fdd\u7559\uff1b\u6c92\u6709\u5ba3\u7a31\u6b63\u5f0fQA\u6216\u7dda\u4e0a\u9a57\u6536\u901a\u904e\u3002Legacy #17\u3001Integration\u3001main\u8207Checkpoints\u672a\u6539\u52d5\u3002\n\n[GitHub\u9032\u5ea6\u5165\u53e3](https://github.com/Good-Comic/PlayGround/tree/codex/riftwatch-progress-feed/docs/monitor) \u5df2\u53ef\u4f9b\u5916\u90e8\u8b80\u53d6\uff0c\u72c0\u614b\u70ba `GITHUB_PROGRESS_SYNC_READY`\uff1b7\u9805\u76e3\u63a7\u6e2c\u8a66\u3001\u56fa\u5b9aCommit\u76844\u6a94\u6848HTTP\u8b80\u53d6\u53ca\u91cd\u8907\u4e8b\u4ef6\u4e0d\u65b0\u589eCommit\u5df2\u9a57\u8b49\u3002\u5b83\u4e0d\u662fCodex\u5373\u6642\u4e32\u6d41\uff1b\u76ee\u524d\u672a\u78ba\u8a8d\u53ef\u6388\u6b0a\u8b80\u53d6\u6b64Cloud\u4efb\u52d9\u4e8b\u4ef6\u7684\u4ecb\u9762\uff0c\u4e5f\u6c92\u6709\u4f7f\u7528\u79c1\u6709API\u6216\u767b\u5165Cookie\u3002\n\nOmGitHub\u7d14\u90e8\u7f72\u6a5f\u5236\u5c1a\u672a\u8b49\u5be6\u3002\u5efa\u8b70\u4f7f\u7528\u7368\u7acbPages\u5206\u652f\u8207SHA\u7248\u672c\u76ee\u9304\uff0c\u9810\u8a08\u7db2\u5740\u70ba `https://good-comic.github.io/PlayGround/`\uff08\u5c1a\u672a\u5efa\u7acb\uff09\u3002\n\n\u4f9d\u4f60\u7b2c\u4e03\u7bc0\u7684\u6388\u6b0a\u908a\u754c\uff0c**\u662f\u5426\u6388\u6b0a\u6309[\u5177\u9ad4\u767c\u5e03\u7bc4\u570d](https://github.com/Good-Comic/PlayGround/blob/3779c5d50876cb2e28590b9d250fb355fc0f8e38/docs/playtest/APPROVAL-PLAN.json)\uff0c\u53ea\u5c07\u4e0a\u8ff0SHA\u7684\u5df2\u9a57\u8b49\u5957\u4ef6\u767c\u5e03\u5230\u65b0\u7684 `codex/riftwatch-playtest-site`\uff0c\u555f\u7528\u672cRepo\u7684Pages\u4e26\u505a\u7dda\u4e0a\u9a57\u6536\uff1f** \u4e0d\u5efa\u7acbIssue\u3001\u4e0d\u555f\u52d5OpenCode\u3001\u4e0d\u4fee\u6539#17\u6216main\u3002\u82e5Codex\u7db2\u8def\u9650\u5236\u963b\u64cb\u9a57\u6536\uff0c\u9700\u7531\u4f60\u5728UI\u5141\u8a31\u7cbe\u78ba\u7db2\u57df `good-comic.github.io`\uff1b\u6211\u4e0d\u6703\u81ea\u884c\u653e\u5bec\u767d\u540d\u55ae\u3002\n",
-      "severity": "ACTION_REQUIRED",
-      "summary": "Source-pinned six-feature experimental Candidate passes bounded local acceptance. Deployable static package is ready; public Pages operation awaits explicit user approval.",
-      "task_id": "PLAYTEST-P0",
-      "tests": [
-        {
-          "evidence": "docs/evidence/playtest-candidate/acceptance.json",
-          "evidence_blob": "f42b484ce25af21b821a58d30e72b796b2b9813c",
-          "evidence_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "Minimum12/browser+subpath12 and all features",
-          "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
-          "status": "PASS"
-        },
-        {
-          "evidence": "docs/evidence/playtest-candidate/normal-p0.json",
-          "evidence_blob": "d2f181cf83e4ee856f64c3841c32f9f4d47ad1f2",
-          "evidence_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "Normal P0 actual retarget/economy/movement",
-          "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
-          "status": "PASS"
-        },
-        {
-          "evidence": "docs/evidence/playtest-candidate/versioned-site-smoke.json",
-          "evidence_blob": "b6c994dc3d12dba524948cc24e2b9fc307890918",
-          "evidence_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "Versioned Pages wrapper redirects and starts with28hashes",
-          "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
-          "status": "PASS"
-        }
-      ]
+      "latest_pushed_sha": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+      "recorded_at": "2026-10-26T04:07:52.590544+00:00",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
     },
     "MONITOR-V224": {
-      "task_id": "MONITOR-V224",
       "agent": "Codex",
-      "severity": "PROGRESS",
-      "branch": "codex/riftwatch-v226-delivery",
-      "commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-      "build_sha": null,
-      "summary": "30focused tests pass; rawHTTP4 and supported ContentsAPI4 independently read; prior503 preserved; explicit Strategy v2.2.6 now read",
-      "code_changes": [],
-      "next_steps": [
-        "Actual Supervisor reviews source-pinned exchange",
-        "Perform nonexecuting dispatcher plan and duplicate rejection",
-        "User enables Pages and exact network host before live game QA"
-      ],
-      "requires_user_decision": false,
-      "tests": [
-        {
-          "name": "30focused tool tests",
-          "status": "PASS",
-          "source_commit": "fd616d0d4c1ea62263a42fc0065b1b16752c427a",
-          "evidence": "docs/evidence/v226-monitor/tool-tests.log.txt",
-          "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-          "evidence_blob": "9991d4d9fc860a6f52f689784f3dd095965f31b2",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Real raw HTTP pinned4file read",
-          "status": "PASS",
-          "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
-          "evidence": "docs/evidence/v226-monitor/raw-reader.json",
-          "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-          "evidence_blob": "69b1ecfb9f7202c78c37673b5b9aa1aba0adf775",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Real Contents API4file blob verification",
-          "status": "PASS",
-          "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
-          "evidence": "docs/evidence/v226-monitor/api-reader.json",
-          "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-          "evidence_blob": "0318d794bbdf0cf805ba8af62a5c99482a544460",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        }
-      ],
       "blockers": [
         {
           "id": "EXTERNAL_REVIEW_PENDING",
+          "requires_user_decision": false,
           "severity": "INFO",
-          "summary": "No independent Supervisor or external Agent executed; REVIEW_PENDING and DISPATCH_NOT_CONNECTED only",
           "source_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-          "requires_user_decision": false
+          "summary": "No independent Supervisor or external Agent executed; REVIEW_PENDING and DISPATCH_NOT_CONNECTED only"
         },
         {
           "id": "LIVE_STREAM_NOT_CONFIRMED",
+          "requires_user_decision": false,
           "severity": "INFO",
-          "summary": "Snapshot-based feed only; no Cloud private log/quota access",
           "source_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-          "requires_user_decision": false
+          "summary": "Snapshot-based feed only; no Cloud private log/quota access"
         }
       ],
-      "response": "30\u9805\u5de5\u5177\u6e2c\u8a66\u901a\u904e\uff0cFeed rawHTTP\u8207ContentsAPI\u5404\u56db\u6a94\u5be6\u8b80\u6210\u529f\uff1b\u6b77\u53f2503\u4fdd\u7559\u3002v2.2.6\u5df2\u660e\u78ba\u8b80\u53d6\uff0c\u76e3\u63a7\u820a\u963b\u585e\u5df2\u66f4\u65b0\u3002\u7368\u7acbSupervisor\u5be9\u67e5\u8207\u771f\u5be6\u8de8Agent\u63a5\u529b\u4ecd\u5f85\u5b8c\u6210\u3002",
-      "event_type": "QA_READY",
-      "occurred_at": "2026-10-26T04:04:32.090148+00:00",
+      "branch": "codex/riftwatch-v226-delivery",
+      "build_sha": null,
+      "code_changes": [],
+      "commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
       "completed": [
         "Preserved fa520ae monitor repair unchanged in ancestry",
         "Added typed events, pinned reader/API fallback, pending review exchange, disconnected dispatcher",
         "Saved exact Pages branch and403 blockers; no game source changed"
       ],
-      "event_id": "a7ad17fd24f4ec16f44cf4edd658fdab4ab1e823241984361a0cded17ad1c586",
-      "remote_head": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-      "pushed": true,
-      "remote_query": "VERIFIED",
-      "latest_pushed_sha": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
-      "recorded_at": "2026-10-26T04:04:32.090148+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
-      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
+      "event_id": "a7ad17fd24f4ec16f44cf4edd658fdab4ab1e823241984361a0cded17ad1c586",
+      "event_type": "QA_READY",
+      "latest_pushed_sha": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+      "next_steps": [
+        "Actual Supervisor reviews source-pinned exchange",
+        "Perform nonexecuting dispatcher plan and duplicate rejection",
+        "User enables Pages and exact network host before live game QA"
+      ],
+      "occurred_at": "2026-10-26T04:04:32.090148+00:00",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION",
+      "pushed": true,
+      "recorded_at": "2026-10-26T04:04:32.090148+00:00",
+      "remote_head": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "30\u9805\u5de5\u5177\u6e2c\u8a66\u901a\u904e\uff0cFeed rawHTTP\u8207ContentsAPI\u5404\u56db\u6a94\u5be6\u8b80\u6210\u529f\uff1b\u6b77\u53f2503\u4fdd\u7559\u3002v2.2.6\u5df2\u660e\u78ba\u8b80\u53d6\uff0c\u76e3\u63a7\u820a\u963b\u585e\u5df2\u66f4\u65b0\u3002\u7368\u7acbSupervisor\u5be9\u67e5\u8207\u771f\u5be6\u8de8Agent\u63a5\u529b\u4ecd\u5f85\u5b8c\u6210\u3002",
+      "severity": "PROGRESS",
+      "summary": "30focused tests pass; rawHTTP4 and supported ContentsAPI4 independently read; prior503 preserved; explicit Strategy v2.2.6 now read",
+      "task_id": "MONITOR-V224",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v226-monitor/tool-tests.log.txt",
+          "evidence_blob": "9991d4d9fc860a6f52f689784f3dd095965f31b2",
+          "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "30focused tool tests",
+          "source_commit": "fd616d0d4c1ea62263a42fc0065b1b16752c427a",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v226-monitor/raw-reader.json",
+          "evidence_blob": "69b1ecfb9f7202c78c37673b5b9aa1aba0adf775",
+          "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Real raw HTTP pinned4file read",
+          "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v226-monitor/api-reader.json",
+          "evidence_blob": "0318d794bbdf0cf805ba8af62a5c99482a544460",
+          "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Real Contents API4file blob verification",
+          "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+          "status": "PASS"
+        }
+      ]
     },
     "V226-DELIVERY": {
       "agent": "Codex",
