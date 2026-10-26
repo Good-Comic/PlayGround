@@ -1,0 +1,83 @@
+{
+  "url": "http://127.0.0.1:8020/",
+  "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+  "checks": [
+    {
+      "name": "served artifact is the expected clean commit",
+      "pass": true,
+      "detail": {
+        "commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+        "dirty": false,
+        "files": 28
+      }
+    },
+    {
+      "name": "living commander is selected with both skill commands",
+      "pass": true,
+      "detail": {
+        "heroAlive": true,
+        "heroType": "commander",
+        "selected": true,
+        "markButton": true,
+        "aegisButton": true
+      }
+    },
+    {
+      "name": "Mark hover previews radius 9",
+      "pass": true,
+      "detail": {
+        "id": "mark",
+        "radius": 9,
+        "rangeColor": "229,160,74"
+      }
+    },
+    {
+      "name": "leaving Mark clears the preview",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Aegis hover previews radius 5",
+      "pass": true,
+      "detail": {
+        "id": "aegis",
+        "radius": 5,
+        "rangeColor": "147,197,220"
+      }
+    },
+    {
+      "name": "keyboard focus previews Aegis radius 5",
+      "pass": true,
+      "detail": {
+        "id": "aegis",
+        "radius": 5,
+        "rangeColor": "147,197,220"
+      }
+    },
+    {
+      "name": "blur clears the preview",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Aegis command still shields allies inside the previewed range",
+      "pass": true,
+      "detail": {
+        "aegisCd": 60,
+        "shielded": 5,
+        "preview": {
+          "id": "aegis",
+          "radius": 5,
+          "rangeColor": "147,197,220"
+        }
+      }
+    },
+    {
+      "name": "real local Chromium produced no Console, Page, or request errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "ok": true
+}

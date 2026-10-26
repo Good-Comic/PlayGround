@@ -1,55 +1,61 @@
 {
-  "task_id": "V230-P0-INPUT",
-  "name": "Strategy v2.3.0 player feedback controls and Rift Prototype diagnosis",
-  "requirement_source": "Strategy v2.3.0 P0 and scheduled resume directive",
-  "priority": "P0",
-  "agent": "Codex; no additional agent connected",
-  "environment": "Managed revision 40; local Chromium 154/SwiftShader; not physical GPU or public deployment",
-  "branch": "codex/riftwatch-v230-p0-input",
-  "base_commit": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
-  "latest_pushed_commit": "0c422d9ae04af2435626a7f2be3b6f354c6f5a90",
+  "task_id": "V231-HERO-SKILL-PREVIEW",
+  "name": "Hero visual distinction and skill-range preview",
+  "requirement_source": "Strategy v2.3.0 handoff next slice",
+  "priority": "P1",
+  "agent": "OpenCode; execution opencode-omgithub17-20261027-a",
+  "environment": "Managed Linux; local Chromium/SwiftShader; not physical GPU or public deployment",
+  "branch": "codex/riftwatch-v231-hero-skill-preview",
+  "base_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+  "latest_pushed_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+  "predecessor_task": "V230-P0-INPUT",
   "completed": [
-    "Plain A preserves WASD camera pan; Shift+A arms Attack-Move",
-    "Production exits face active Rally Point instead of a random side",
-    "Canvas double-click selects visible allied units of the clicked type; Shift adds",
-    "20 focused Node tests and four-locale 678-key validation pass",
-    "Seven real local Chromium checks pass with no Console, Page, or request errors",
-    "Controlled Rift Prototype boon path passes before and after changes"
+    "Exported shared Mark radius 9 and Aegis radius 5 constants consumed by gameplay",
+    "Added commander gold ground ring, direction ticks, and sigil for crowd distinction",
+    "Added Mark/Aegis hover and keyboard-focus range preview with cleanup on leave, blur, death, restore, and selection change",
+    "109/109 Node tests and four-locale 678-key validation pass",
+    "8/8 real local Chromium artifact checks pass with no Console, Page, or request errors"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Focused input/rally/tactical regression",
-      "path": "docs/evidence/v230-p0-input/REPORT.md",
-      "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-      "result": "20/20 Node PASS; four locales 678 keys PASS"
+      "name": "Full Node regression including hero preview",
+      "path": "docs/evidence/v231-hero-skill-preview/REPORT.md",
+      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+      "result": "109/109 Node PASS; four locales 678 keys PASS"
     },
     {
-      "name": "Real local Chromium player inputs",
-      "path": "docs/evidence/v230-p0-input/browser.json",
-      "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-      "result": "7/7 LOCAL PASS; no browser errors"
+      "name": "Real local Chromium skill preview",
+      "path": "docs/evidence/v231-hero-skill-preview/browser-checks.json",
+      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+      "result": "8/8 LOCAL PASS; Console/Page/request errors 0"
     }
   ],
   "evidence": [
-    "docs/evidence/v230-p0-input/REPORT.md",
-    "docs/evidence/v230-p0-input/browser.json",
-    "docs/evidence/v230-p0-input/rift-prototype.png"
+    "docs/evidence/v231-hero-skill-preview/REPORT.md",
+    "docs/evidence/v231-hero-skill-preview/browser-checks.json",
+    "docs/evidence/v231-hero-skill-preview/mark-preview.png",
+    "docs/evidence/v231-hero-skill-preview/aegis-preview.png",
+    "tools/qa/v231_hero_skill_browser.mjs"
   ],
   "failures": [
-    "Player-reported Rift Prototype crash was not reproduced by the controlled real-UI boon path",
-    "Production low-FPS time loss, strict Save/Load nondeterminism, and historical performance FAIL remain"
+    "Natural wave-end Rift Prototype crash remains NOT_REPRODUCED",
+    "Production low-FPS simulation-time loss and strict Save/Load determinism failure remain",
+    "Historical performance FAIL and HARDWARE_TEST_PENDING remain",
+    "Recovered GDD hero stats and Aegis radius 4 differ from production; no balance change made in this slice"
   ],
   "blockers": [
     "Natural wave-end Rift Prototype reproduction still needs the original state or an equivalent natural campaign occurrence",
-    "HARDWARE_TEST_PENDING and no new public Candidate authorization",
-    "QUOTA_PERCENT_UNKNOWN; dispatcher remains disconnected"
+    "GDD hero/Aegis balance values require an explicit specification decision before changing production",
+    "HARDWARE_TEST_PENDING and no OmGitHub online/public acceptance authorization",
+    "QUOTA_PERCENT_UNKNOWN; dispatcher remains manual"
   ],
   "next_steps": [
     "Run a natural multi-wave campaign until Rift Prototype is offered, preserving seed, state, Console, Page, and network evidence",
-    "Add the hero visual distinction and skill range preview vertical slice on an independent branch",
-    "Continue representative 2D art and audio vertical slices after the remaining P0 crash investigation"
+    "Decide whether production hero stats and Aegis radius should follow the recovered GDD snapshot",
+    "Add representative hero art/audio distinction beyond the procedural ground marker",
+    "Continue low-FPS simulation-time and strict Save/Load determinism research without lowering historical gates"
   ],
   "permissions": [
     "Independent development, tests, normal commits, and normal pushes remain authorized",
@@ -57,10 +63,10 @@
   ],
   "status": "CHECKPOINTED",
   "resume_event": {
-    "status": "SCHEDULED_RESUME_EXECUTED",
-    "basis": "Scheduled delegation was followed by actual Git checks, owned branch work, tests, commits, and verified push"
+    "status": "MANUAL_CONTINUATION_EXECUTED",
+    "basis": "User requested continuation from verified candidate SHA; work used explicit ownership claim, tests, ordinary commit, and verified branch push"
   },
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
   "resume_status": "RESUME_READY_MANUAL_DISPATCH",
-  "updated_at": "2026-10-26T18:02:56Z"
+  "updated_at": "2026-10-26T18:55:00Z"
 }
