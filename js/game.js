@@ -980,9 +980,12 @@ export class Game {
         const item = b.queue[0];
         item.remaining -= dt;
         if (item.remaining <= 0) {
-          const angle = this.rng() * Math.PI * 2;
-          const sx = b.x + b.w / 2 + Math.cos(angle) * (b.w / 2 + 0.8);
-          const sy = b.y + b.h / 2 + Math.sin(angle) * (b.h / 2 + 0.8);
+          const centerX = b.x + b.w / 2, centerY = b.y + b.h / 2;
+          const angle = b.rally
+            ? Math.atan2(b.rally.y - centerY, b.rally.x - centerX)
+            : this.rng() * Math.PI * 2;
+          const sx = centerX + Math.cos(angle) * (b.w / 2 + 0.8);
+          const sy = centerY + Math.sin(angle) * (b.h / 2 + 0.8);
           const unit = this.spawnUnit(item.type, sx, sy, 'player');
           // Retain the paid queue item if every spawn position is occupied.
           if(!unit){item.remaining=0;continue;}
@@ -3065,6 +3068,21 @@ export class Game {
       else this.setSelection([...this.selection, hit]);
     } else this.setSelection([hit]);
     this.sound?.select();
+  }
+
+  selectSameTypeOnScreen(sx, sy, width, height, additive = false) {
+    const hit = this.pickAt(sx, sy);
+    if (!hit || hit.w || hit.team !== 'player' || !hit.alive) return false;
+    const picked = this.units.filter(unit => {
+      if (!unit.alive || unit.team !== 'player' || unit.type !== hit.type) return false;
+      const point = this.screenPos(unit.x, unit.y);
+      return point.x >= 0 && point.x <= width && point.y >= 0 && point.y <= height;
+    });
+    const selection = additive ? [...this.selection] : [];
+    for (const unit of picked) if (!selection.includes(unit)) selection.push(unit);
+    this.setSelection(selection);
+    if (picked.length) this.sound?.select();
+    return picked.length > 0;
   }
 
   pickAt(sx, sy) {

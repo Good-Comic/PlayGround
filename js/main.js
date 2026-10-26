@@ -195,7 +195,8 @@ window.addEventListener('keydown', e => {
   if (game.paused) return;
   const key = e.key.toLowerCase();
   if(/^[1-9]$/.test(key)&&(e.ctrlKey||e.altKey)){e.preventDefault();game.controlGroup(key,e.ctrlKey,e.shiftKey);return;}
-  if(!game.heroControl&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&game.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager')&&['a','g','p'].includes(key)){e.preventDefault();game.command('order:'+({a:'attackMove',g:'guard',p:'patrol'}[key]));return;}
+  const tacticalKey = key === 'a' && e.shiftKey ? 'attackMove' : ({ g: 'guard', p: 'patrol' })[key];
+  if(!game.heroControl&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&game.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager')&&tacticalKey){e.preventDefault();game.command('order:'+tacticalKey);return;}
   if (movementKeys.has(key)) {
     game.keys.add(key);
     if (key.startsWith('arrow')) e.preventDefault();
@@ -285,6 +286,13 @@ canvas.addEventListener('pointerleave', () => {
     game.hovered = null;
     game.hoveredResource = null;
   }
+});
+
+canvas.addEventListener('dblclick', e => {
+  if (e.button !== 0 || game.inMenu || game.paused || ui.boonsOpen || game.placement || game.orderMode) return;
+  e.preventDefault();
+  const pos = localPos(e);
+  game.selectSameTypeOnScreen(pos.x, pos.y, canvas.clientWidth, canvas.clientHeight, e.shiftKey);
 });
 
 window.addEventListener('pointerup', e => {

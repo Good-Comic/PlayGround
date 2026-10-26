@@ -221,7 +221,7 @@ const EN_UI = {
   'order.attackMove': 'Attack-Move',
   'order.guard': 'Guard',
   'order.patrol': 'Patrol',
-  'order.hint': 'A/G/P then click; Ctrl+1–9 store, Alt+1–9 recall.',
+  'order.hint': 'Shift+A/G/P then click; Ctrl+1–9 store, Alt+1–9 recall.',
   'settings.flavor': 'Shape the pace of the campaign. Changes are saved for your next run.',
   'settings.speed': 'Game speed',
   'settings.speedDesc': 'Scales simulation time without changing combat math.',

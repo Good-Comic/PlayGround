@@ -9,7 +9,7 @@ export const ui = {
   'order.attackMove': '攻擊移動',
   'order.guard': '守衛',
   'order.patrol': '巡邏',
-  'order.hint': 'A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。',
+  'order.hint': 'Shift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。',
   'app.title': '世紀帝國二：裂境守望',
   'game.title': '世紀帝國二：裂境守望',
   'game.series': '世紀帝國二：',
