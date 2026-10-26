@@ -1,1 +1,1 @@
-Clickablegroups/Settings/scaling19native,18targetedNode,4locales678keysPASS;100selectedMOVE3+3PASS,smallUIcostdisclosed,notcombat/hardwareQA.
+舊版窄道FAIL保留；新版v228已本地修復。D6及舊分支未更新，未新增線上PASS。
