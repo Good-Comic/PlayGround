@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "request_id": "REVIEW-1cf1193ecb02ec4a0862f2e9",
+  "event_id": "4df70bbbc10b5fc3bc22279b9efa133d49f8715ee1aeedc893263bb4caa30a2d",
+  "source_sha": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+  "source_branch": "codex/riftwatch-v226-delivery",
+  "latest_pushed_sha": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+  "status": "REVIEW_PENDING",
+  "tests": [
+    {
+      "name": "Exact approved ZIP hashes and28source payloads",
+      "status": "PASS",
+      "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "docs/evidence/v226-deployment/artifact-audit.json",
+      "evidence_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "evidence_blob": "4b3e8a87632c6967958f47b9dcb681347191bff3",
+      "evidence_status": "GIT_BLOB_VERIFIED"
+    },
+    {
+      "name": "Pages enablement current integration",
+      "status": "BLOCKED",
+      "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+      "evidence": "docs/evidence/v226-deployment/pages-create.json",
+      "evidence_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "evidence_blob": "8a8cbed2ed727193be9652f3065e23bab02f57e2",
+      "evidence_status": "GIT_BLOB_VERIFIED"
+    },
+    {
+      "name": "Public-site connectivity",
+      "status": "BLOCKED",
+      "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+      "evidence": "docs/evidence/v226-deployment/site-preflight-headers.txt",
+      "evidence_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "evidence_blob": "042d282d9492e4ec31565dafcb5e06e2863f052a",
+      "evidence_status": "GIT_BLOB_VERIFIED"
+    },
+    {
+      "name": "39tool/recovery regression tests",
+      "status": "PASS",
+      "source_commit": "c24a808b5e8ddfcc4fcf28554b020fb77ecaf1ad",
+      "evidence": "docs/evidence/v226-monitor/all-tool-tests-provenance.json",
+      "evidence_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "evidence_blob": "827b750d17c525d31f423923ebbf692798a4e567",
+      "evidence_status": "GIT_BLOB_VERIFIED"
+    },
+    {
+      "name": "Historical incomplete handoff rejected before index publication",
+      "status": "FAIL",
+      "source_commit": "8d56c6c61721a25d7adb4917cb7e43c1720e94b7",
+      "evidence": "docs/evidence/v226-monitor/handoff-validation-failure.json",
+      "evidence_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "evidence_blob": "0579d3976aa96d3dbe514cfa8b695caa721729a4",
+      "evidence_status": "GIT_BLOB_VERIFIED"
+    },
+    {
+      "name": "Complete queue schema repaired",
+      "status": "PASS",
+      "source_commit": "764aaadd7072935a51027e567bd0b5f09b5334a9",
+      "evidence": "docs/evidence/v226-monitor/handoff-validation-repair.json",
+      "evidence_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "evidence_blob": "cc4ae0fea23f8a4ee6a90377986b8967a975a14e",
+      "evidence_status": "GIT_BLOB_VERIFIED"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "PAGES_PERMISSION",
+      "severity": "ACTION_REQUIRED",
+      "summary": "GitHub Settings>Pages>Deploy from branch codex/riftwatch-playtest-site /(root)>Save; API403 Resource not accessible by integration",
+      "source_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "requires_user_decision": true
+    },
+    {
+      "id": "PAGES_NETWORK",
+      "severity": "ACTION_REQUIRED",
+      "summary": "Allow exact good-comic.github.io in Codex UI before Agent browser; no retry/bypass",
+      "source_commit": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "requires_user_decision": true
+    }
+  ],
+  "requirements": [
+    "docs/handoff/STRATEGY-V2.2.6.md",
+    "docs/GAMEPLAY-REQUIREMENTS.md"
+  ],
+  "handoff": "docs/handoff/ACTIVE-TASK.json",
+  "review_steps": [
+    "Read pinned feed and handoff",
+    "Independently query remote source commit",
+    "Review relevant code diff and GDD",
+    "Read original test and failure evidence",
+    "Separate local/integrated/online/hardware verification",
+    "Return sourced decision and bounded next task"
+  ],
+  "allowed_decisions": [
+    "ACCEPTED",
+    "REWORK_REQUIRED",
+    "BLOCKED",
+    "NEEDS_APPROVAL"
+  ]
+}
