@@ -5,6 +5,7 @@ const SETTINGS_KEY = 'riftwatch.playtest.v227.settings.v1';
 export const DEFAULT_SETTINGS = {
   gameSpeed: 1,
   uiScale: 1,
+  showControlGroups: true,
   autoEconomy: true,
   autoMilitary: true,
   reducedMotion: false,
@@ -16,6 +17,7 @@ export function loadSettings() {
     const speed = Number(raw.gameSpeed);
     return {
       uiScale: normalizeUiScale(raw.uiScale),
+      showControlGroups: raw.showControlGroups !== false,
       gameSpeed: [0.75, 1, 1.25, 1.5].includes(speed) ? speed : DEFAULT_SETTINGS.gameSpeed,
       autoEconomy: raw.autoEconomy !== false,
       autoMilitary: raw.autoMilitary !== false,
@@ -29,6 +31,7 @@ export function loadSettings() {
 export function saveSettings(settings) {
   const normalized = {
     uiScale: normalizeUiScale(settings.uiScale),
+    showControlGroups: settings.showControlGroups !== false,
     gameSpeed: [0.75, 1, 1.25, 1.5].includes(Number(settings.gameSpeed)) ? Number(settings.gameSpeed) : 1,
     autoEconomy: settings.autoEconomy !== false,
     autoMilitary: settings.autoMilitary !== false,

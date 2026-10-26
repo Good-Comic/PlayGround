@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+globalThis.document={documentElement:{dataset:{}},dispatchEvent(){}};
+const {controlGroupView}=await import('../js/ui.js');
+test('group badges count unique living friendly members and selection, never dead/enemy/stale IDs',()=>{const g={units:[{id:1,alive:true,team:'player'},{id:2,alive:false,team:'player'},{id:3,alive:true,team:'enemy'}],selection:[{id:1}],controlGroups:{1:[1,1,2,3,99]}};const v=controlGroupView(g);assert.equal(v.length,9);assert.deepEqual(v[0],{slot:'1',count:1,active:true});assert.deepEqual(v[8],{slot:'9',count:0,active:false});assert.deepEqual(g.controlGroups[1],[1,1,2,3,99]);});
+test('empty or mixed groups retain stable view without altering save state',()=>{assert.equal(controlGroupView({units:[],selection:[]})[0].count,0);const g={units:[{id:1,alive:true,team:'player'},{id:2,alive:true,team:'player'}],selection:[{id:1}],controlGroups:{2:[1,2]}};assert.equal(controlGroupView(g)[1].active,false);g.selection.push({id:2});assert.equal(controlGroupView(g)[1].active,true);});

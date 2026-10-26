@@ -17,6 +17,12 @@ const ICON_FOR = {
 
 const shortCost = cost => Object.entries(cost).map(([k, v]) => `${v}${t(`resourceShort.${k}`)}`).join(' · ');
 
+export function controlGroupView(game) {
+  const alive=new Set(game.units.filter(u=>u.alive&&u.team==='player').map(u=>u.id));
+  const selected=new Set(game.selection.map(u=>u.id));
+  return Array.from({length:9},(_,i)=>{const slot=String(i+1),members=[...new Set(game.controlGroups?.[slot]||[])].filter(id=>alive.has(id));return{slot,count:members.length,active:members.length>0&&members.every(id=>selected.has(id))};});
+}
+
 export class UI {
   constructor(game, callbacks = {}) {
     this.game = game;
@@ -80,7 +86,7 @@ export class UI {
       continueBtn: this.$('btn-continue'), saveBtn: this.$('btn-save'),
       settingsOverlay: this.$('settings-overlay'), gmOverlay: this.$('gm-overlay'),
       settingsUiScale: this.$('settings-ui-scale'), settingsSpeed: this.$('settings-speed'), settingsAutoEcon: this.$('settings-auto-econ'),
-      settingsAutoMil: this.$('settings-auto-mil'), settingsReducedMotion: this.$('settings-reduced-motion'),
+      settingsAutoMil: this.$('settings-auto-mil'), settingsReducedMotion: this.$('settings-reduced-motion'), settingsGroups: this.$('settings-groups'),
       gmFood: this.$('gm-food'), gmWood: this.$('gm-wood'), gmGold: this.$('gm-gold'), gmStone: this.$('gm-stone'),
       gmNote: this.$('gm-note'),
     };
@@ -122,6 +128,12 @@ export class UI {
       this.applySettingsToControls();
       this.persistSettings();
     });
+    this.$('control-groups')?.addEventListener('click', e => {
+      const button=e.target.closest('[data-control-group]');if(!button||this.game.inMenu||this.game.paused||this.settingsOpen||this.gmOpen||this.boonsOpen)return;
+      const slot=button.dataset.controlGroup;if(!e.ctrlKey&&!controlGroupView(this.game).find(v=>v.slot===slot)?.count)return;
+      clickSound();this.game.controlGroup(slot,e.ctrlKey,e.shiftKey);this.updateSelection(true);this.renderCommands(this.game);
+    });
+    this.$('settings-groups')?.addEventListener('change', e => this.persistSettings({showControlGroups:e.target.checked}));
     this.$('settings-ui-scale')?.addEventListener('change', e => this.persistSettings({ uiScale: Number(e.target.value) }));
     this.$('settings-speed')?.addEventListener('change', e => this.persistSettings({ gameSpeed: Number(e.target.value) }));
     this.$('settings-auto-econ')?.addEventListener('change', e => this.persistSettings({ autoEconomy: e.target.checked }));
@@ -232,6 +244,7 @@ export class UI {
     if (this.el.settingsSpeed) this.el.settingsSpeed.value = String(this.settings.gameSpeed);
     if (this.el.settingsAutoEcon) this.el.settingsAutoEcon.checked = this.settings.autoEconomy;
     if (this.el.settingsAutoMil) this.el.settingsAutoMil.checked = this.settings.autoMilitary;
+    if (this.el.settingsGroups) this.el.settingsGroups.checked = this.settings.showControlGroups !== false;
     if (this.el.settingsReducedMotion) this.el.settingsReducedMotion.checked = this.settings.reducedMotion;
     if (this.el.autoEcon) this.el.autoEcon.checked = this.settings.autoEconomy;
     if (this.el.autoMil) this.el.autoMil.checked = this.settings.autoMilitary;
@@ -244,6 +257,7 @@ export class UI {
     this.game.autoEconomy = this.settings.autoEconomy;
     this.game.autoMilitary = this.settings.autoMilitary;
     this.applySettingsToControls();
+    this.lastCommandSignature='';this.renderCommands(this.game);
     this.callbacks.settings?.(this.settings);
   }
 
@@ -613,7 +627,7 @@ export class UI {
   }
 
   selectionSignature(game) {
-    return game.selection.map(e => `${e.id}:${e.type}:${e.team}`).join('|');
+    return ':groups'+controlGroupView(game).map(v=>v.slot+':'+v.count+':'+v.active).join(',')+':showGroups'+(this.settings.showControlGroups!==false)+game.selection.map(e => `${e.id}:${e.type}:${e.team}`).join('|');
   }
 
   updateSelection(force = false) {
@@ -722,7 +736,12 @@ export class UI {
   }
 
   renderCommands(game) {
-    const bar=this.$('tactical-bar');if(bar){bar.hidden=!game.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager');bar.querySelectorAll('[data-order-mode]').forEach(b=>b.classList.toggle('is-active',b.dataset.orderMode===game.orderMode));}
+    const groupView=controlGroupView(game),groups=this.$('control-groups');
+    const canStore=game.selection.some(u=>u.alive&&u.team==='player'&&!u.w);
+    if(groups){groups.hidden=this.settings.showControlGroups===false;for(const button of groups.querySelectorAll('[data-control-group]')){const v=groupView.find(v=>v.slot===button.dataset.controlGroup);button.textContent=v.slot+(v.count?' · '+v.count:'');button.title=t('group.slot',{slot:v.slot,count:v.count})+' — '+t('group.hint');button.setAttribute('aria-label',button.title);button.setAttribute('aria-pressed',String(v.active));button.disabled=!canStore&&!v.count;}}
+    const combat=game.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager');
+    const bar=this.$('tactical-bar');if(bar){bar.hidden=!combat&&!(groups&&!groups.hidden&&(canStore||groupView.some(v=>v.count)));bar.querySelectorAll('[data-order-mode]').forEach(b=>{b.hidden=!combat;b.classList.toggle('is-active',b.dataset.orderMode===game.orderMode);});const hint=bar.querySelector('[data-i18n="order.hint"]');if(hint)hint.hidden=!combat;}
+
     document.body.classList.toggle('order-armed',!!game.orderMode);
     const sig = this.commandSignature(game);
     this.lastCommandSignature = sig;

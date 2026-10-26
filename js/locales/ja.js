@@ -1,4 +1,9 @@
 export const ui = {
+  'group.label': "グループ",
+  'group.slot': "グループ {slot}：{count}体",
+  'group.hint': "クリックで選択、Ctrl+クリックで登録、Shiftで追加。",
+  'settings.groups': "グループ操作ボタン",
+  'settings.groupsDesc': "操作ボタンを表示します。非表示でもショートカットは使えます。",
   'settings.uiScale': 'UI文字サイズ',
   'settings.uiScaleDesc': '画面の文字を拡大します。ゲーム速度とマップ倍率は変わりません。',
   'order.attackMove': '攻撃移動',

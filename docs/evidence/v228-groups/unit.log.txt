@@ -1,0 +1,26 @@
+✔ v227 writes and clears its own save/settings without reading or changing D6 keys (1.414079ms)
+✔ playtest integrity guard uses the shared validated save API, never a duplicate hardcoded storage key (1.878331ms)
+✔ group badges count unique living friendly members and selection, never dead/enemy/stale IDs (1.895117ms)
+✔ empty or mixed groups retain stable view without altering save state (0.290159ms)
+✔ report uses allowlisted state and never copies storage/credentials/URL/raw error (2.299658ms)
+✔ errors are categorised and arbitrary details never exported (0.287425ms)
+✔ state export is bounded and invalid IDs/nonfinite numbers are discarded (0.516931ms)
+✔ integrity verifier blocks payload mismatch and external/path traversal manifests (9.685823ms)
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (29.564303ms)
+✔ Patrol completes both legs using native navigation (17.919207ms)
+✔ Guard follows a living ally then recovers when ally dies (8.787613ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (8.002956ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (2.065103ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (6.976162ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (5.446259ms)
+✔ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (18.827581ms)
+✔ old saves and invalid UI scale migrate safely without changing game speed (0.989537ms)
+✔ UI text scale persists independently, applies CSS variable and resets (0.31078ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 322.238256
