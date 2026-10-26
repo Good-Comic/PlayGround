@@ -1,0 +1,11 @@
+# Save/Load transient continuation — new isolated evidence
+
+HEADLESS_NATIVE_GAME_RESEARCH, not a live test or production fix. Sourcegamea56e55f8554810ffdf1d08b6ccd75289c4a1e267 has identicalGame code to releasedab56. Samefixed1/60, savedafter10s,20additional seconds; no simulationmainloop change. Initialcanonical snapshots match after normalizing only absentbuildingfood/goldstore0 and savedAt; actualpositions/RNGdifferences are not masked.
+
+Baseline JSONroundtrip diverges on the FIRST resumedtick. Restoring onlynavigationcaches removes immediatepositiondifference but RNGstilldiverges. Navigationplusqueue, or allunderscoreunittransients, alsoFAIL. RuntimeRNGcallstackpinpoints FIRST extra restored draw: updateBuild→rand at10.0167s, while uninterruptedfirstdraw occurslater inupdateGather at10.1s. `buildSoundAt`/`gatherSoundAt` are omitted fromsave; their sound/effect throttle emitsrandomparticles using the SAME RNGasgameplay. Thus simply fixing RNG.restore is wrong: initialRNGwasalreadyexact.
+
+Evaluation-only copying of nav/queue/underscoretransients PLUS buildSoundAt/gatherSoundAt/orderFailure makes this20sfixture EXACTLYequal. This is a successfulablationexperiment for thisfixture, NOT a generalSaveLoadsolution or releasedenginepatch. Safeproposal: persist/rebuild validatednavigationhistory and throttlefields or independentlyauditvisualRNGseparation. Do not wholesale trustarbitrarycachedpathdatafromsaves; validate coordinates/status/timers/references and oldsavefallback. Strictfullcombat/overload/pause/replaygatesremainneeded beforefixedclockadoption.
+
+Additional ACTUAL evidence: nativearcherfiresoneprojectile beforeSave; productionrestore contains0projectiles. This is now observedin-flightcombatstate loss, not only codeinference. A playableContinue is still not exactcombatcontinuation. Publishedv228 staysunchanged and retainsstrictSaveLoaddeterminismFAIL. Investigate projectile/zone target-owner serialization andresolvableentityrefs with minimalfailuretests next; no automaticnewrelease orunvalidatedmainloopreplacement.
+
+probe.json/log andexpanded5variantresults retained. No historicalFAILdeleted; measuredstate canbe independentlyreproduced by save_transient_probe.mjs. Thiscommit is a researchcheckpoint only.

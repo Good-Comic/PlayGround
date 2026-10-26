@@ -1,0 +1,1704 @@
+{
+  "source": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
+  "classification": "HEADLESS_NATIVE_GAME_RESEARCH_NOT_PRODUCTION_FIX_OR_LIVE_TEST",
+  "productionCodeChanged": false,
+  "normalization": "OnlysavedAtremoved and absentbuildingfood/gold stores normalizedto0; no unitposition/RNG/motion differences masked",
+  "results": [
+    {
+      "mode": "normal-save-load",
+      "evaluationOnly": true,
+      "initialSnapshotEqual": true,
+      "rngBefore": {
+        "a": 1974530477,
+        "b": 1974530477
+      },
+      "omittedUnitFields": [
+        "kind",
+        "typeDef",
+        "selected",
+        "_nav",
+        "_progress",
+        "_goalProgress",
+        "_yieldTo",
+        "_trafficPriority",
+        "orderFailure",
+        "_crowdKey",
+        "buildSoundAt",
+        "_heading",
+        "_crowdNeighbours",
+        "gatherSoundAt",
+        "_avoidCrowdUntil",
+        "_stuckTimer",
+        "_recalculated",
+        "_lastTargetDist"
+      ],
+      "firstDivergence": {
+        "tick": 1,
+        "seconds": 0.016666666666666666,
+        "differences": [
+          {
+            "path": ".rngState",
+            "a": 1974530477,
+            "b": -2023459734
+          },
+          {
+            "path": ".units.3.x",
+            "a": 21.50184428274076,
+            "b": 21.493813789461377
+          },
+          {
+            "path": ".units.3.y",
+            "a": 25.25914089655294,
+            "b": 25.25815073735557
+          },
+          {
+            "path": ".units.4.x",
+            "a": 19.194420976756653,
+            "b": 19.19757938349581
+          },
+          {
+            "path": ".units.4.y",
+            "a": 24.813846615835963,
+            "b": 24.807177223104762
+          },
+          {
+            "path": ".units.6.x",
+            "a": 28.029762012407936,
+            "b": 28.058844333686125
+          },
+          {
+            "path": ".units.6.y",
+            "a": 28.520384905763095,
+            "b": 28.540304270438508
+          },
+          {
+            "path": ".units.6.walkPhase",
+            "a": 40.4849962353322,
+            "b": 40.2981712353322
+          }
+        ]
+      },
+      "equalAfter20s": false,
+      "rngCallsFirst": [
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:34)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:123)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)",
+            "    at Game.update (file://<repo>/js/game.js:855:10)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        }
+      ],
+      "restoredRngCallsFirst": [
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:30)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "copy-nav-cache-only",
+      "evaluationOnly": true,
+      "initialSnapshotEqual": true,
+      "rngBefore": {
+        "a": 1974530477,
+        "b": 1974530477
+      },
+      "omittedUnitFields": [
+        "kind",
+        "typeDef",
+        "selected",
+        "_nav",
+        "_progress",
+        "_goalProgress",
+        "_yieldTo",
+        "_trafficPriority",
+        "orderFailure",
+        "_crowdKey",
+        "buildSoundAt",
+        "_heading",
+        "_crowdNeighbours",
+        "gatherSoundAt",
+        "_avoidCrowdUntil",
+        "_stuckTimer",
+        "_recalculated",
+        "_lastTargetDist"
+      ],
+      "firstDivergence": {
+        "tick": 1,
+        "seconds": 0.016666666666666666,
+        "differences": [
+          {
+            "path": ".rngState",
+            "a": 1974530477,
+            "b": -2023459734
+          }
+        ]
+      },
+      "equalAfter20s": false,
+      "rngCallsFirst": [
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:34)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:123)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)",
+            "    at Game.update (file://<repo>/js/game.js:855:10)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        }
+      ],
+      "restoredRngCallsFirst": [
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:30)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "copy-nav-and-queue",
+      "evaluationOnly": true,
+      "initialSnapshotEqual": true,
+      "rngBefore": {
+        "a": 1974530477,
+        "b": 1974530477
+      },
+      "omittedUnitFields": [
+        "kind",
+        "typeDef",
+        "selected",
+        "_nav",
+        "_progress",
+        "_goalProgress",
+        "_yieldTo",
+        "_trafficPriority",
+        "orderFailure",
+        "_crowdKey",
+        "buildSoundAt",
+        "_heading",
+        "_crowdNeighbours",
+        "gatherSoundAt",
+        "_avoidCrowdUntil",
+        "_stuckTimer",
+        "_recalculated",
+        "_lastTargetDist"
+      ],
+      "firstDivergence": {
+        "tick": 1,
+        "seconds": 0.016666666666666666,
+        "differences": [
+          {
+            "path": ".rngState",
+            "a": 1974530477,
+            "b": -2023459734
+          }
+        ]
+      },
+      "equalAfter20s": false,
+      "rngCallsFirst": [
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:34)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:123)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)",
+            "    at Game.update (file://<repo>/js/game.js:855:10)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        }
+      ],
+      "restoredRngCallsFirst": [
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:30)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "copy-all-unit-transients",
+      "evaluationOnly": true,
+      "initialSnapshotEqual": true,
+      "rngBefore": {
+        "a": 1974530477,
+        "b": 1974530477
+      },
+      "omittedUnitFields": [
+        "kind",
+        "typeDef",
+        "selected",
+        "_nav",
+        "_progress",
+        "_goalProgress",
+        "_yieldTo",
+        "_trafficPriority",
+        "orderFailure",
+        "_crowdKey",
+        "buildSoundAt",
+        "_heading",
+        "_crowdNeighbours",
+        "gatherSoundAt",
+        "_avoidCrowdUntil",
+        "_stuckTimer",
+        "_recalculated",
+        "_lastTargetDist"
+      ],
+      "firstDivergence": {
+        "tick": 1,
+        "seconds": 0.016666666666666666,
+        "differences": [
+          {
+            "path": ".rngState",
+            "a": 1974530477,
+            "b": -2023459734
+          }
+        ]
+      },
+      "equalAfter20s": false,
+      "rngCallsFirst": [
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:34)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:123)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)",
+            "    at Game.update (file://<repo>/js/game.js:855:10)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        }
+      ],
+      "restoredRngCallsFirst": [
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:30)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        },
+        {
+          "time": 10.016666666666744,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateBuild (file://<repo>/js/game.js:1598:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1350:42)"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "copy-nav-and-cosmetic-timers",
+      "evaluationOnly": true,
+      "initialSnapshotEqual": true,
+      "rngBefore": {
+        "a": 1974530477,
+        "b": 1974530477
+      },
+      "omittedUnitFields": [
+        "kind",
+        "typeDef",
+        "selected",
+        "_nav",
+        "_progress",
+        "_goalProgress",
+        "_yieldTo",
+        "_trafficPriority",
+        "orderFailure",
+        "_crowdKey",
+        "buildSoundAt",
+        "_heading",
+        "_crowdNeighbours",
+        "gatherSoundAt",
+        "_avoidCrowdUntil",
+        "_stuckTimer",
+        "_recalculated",
+        "_lastTargetDist"
+      ],
+      "firstDivergence": null,
+      "equalAfter20s": true,
+      "rngCallsFirst": [
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:34)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:123)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)",
+            "    at Game.update (file://<repo>/js/game.js:855:10)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        }
+      ],
+      "restoredRngCallsFirst": [
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:34)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:123)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)",
+            "    at Game.update (file://<repo>/js/game.js:855:10)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3319:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3320:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3311:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3312:67)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:22)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3314:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at Game.addParticles (file://<repo>/js/game.js:3317:63)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)",
+            "    at Game.updateUnits (file://<repo>/js/game.js:1047:17)"
+          ]
+        },
+        {
+          "time": 10.100000000000081,
+          "stack": [
+            "    at rand (file://<repo>/js/utils.js:35:46)",
+            "    at Game.addParticles (file://<repo>/js/game.js:3318:56)",
+            "    at Game.updateGather (file://<repo>/js/game.js:1470:12)",
+            "    at Game.updatePlayerUnit (file://<repo>/js/game.js:1348:43)"
+          ]
+        }
+      ]
+    }
+  ],
+  "projectile": {
+    "before": 1,
+    "after": 0,
+    "observedLoss": true,
+    "scope": "Actualnativearcher spawnedprojectile; unmodifiedproductionSave/Load, not inferredonly"
+  }
+}
