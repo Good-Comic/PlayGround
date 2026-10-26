@@ -1,66 +1,63 @@
 {
-  "task_id": "V230-P0-INPUT",
-  "name": "Strategy v2.3.0 player feedback controls and Rift Prototype diagnosis",
-  "requirement_source": "Strategy v2.3.0 P0 and scheduled resume directive",
+  "task_id": "OMGITHUB17-UPGRADE",
+  "name": "Preserve Issue #17 and start latest verified Riftwatch candidate through the supported OmGitHub path",
+  "requirement_source": "Explicit user authorization: OmGitHub Issue #17 latest-version upgrade",
   "priority": "P0",
-  "agent": "Codex; no additional agent connected",
-  "environment": "Managed revision 40; local Chromium 154/SwiftShader; not physical GPU or public deployment",
-  "branch": "codex/riftwatch-v230-p0-input",
-  "base_commit": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
-  "latest_pushed_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+  "agent": "Codex; official OmGitHub/OpenCode run started separately",
+  "environment": "Managed environment revision 42; GitHub Actions and OmGitHub public API observed",
+  "branch": "codex/riftwatch-omgithub17-upgrade-evidence",
+  "base_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+  "latest_pushed_commit": "dcbf99db4776172d9384749da80135903046dd5e",
   "completed": [
-    "Plain A preserves WASD camera pan; Shift+A arms Attack-Move",
-    "Production exits face active Rally Point instead of a random side",
-    "Canvas double-click selects visible allied units of the clicked type; Shift adds",
-    "20 focused Node tests and four-locale 678-key validation pass",
-    "Seven real local Chromium checks pass with no Console, Page, or request errors",
-    "Controlled Rift Prototype boon path passes before and after changes"
+    "Preserved Issue #17 body, comments, session state, preview URL, resume branch and checkpoint hashes",
+    "Proved legacy preview game and main assets are byte-identical to opencode-checkpoints/17",
+    "Published immutable candidate branch at exact SHA 45435a323c729a28da1de454a3e53740fc9159f2",
+    "Passed exact-candidate local Chromium core 12/12, input/Rally 7/7, hero 6/6 and natural-wave observation",
+    "Created supported isolated Issue #18 with OpenCode label and branch request marker",
+    "Verified workflow 40377196806 resolved and started from the candidate branch and exact SHA"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Focused input/rally/tactical regression",
-      "path": "docs/evidence/v230-p0-input/REPORT.md",
-      "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-      "result": "20/20 Node PASS; four locales 678 keys PASS"
+      "name": "Candidate minimum acceptance",
+      "path": "docs/evidence/omgithub17-upgrade/REPORT.md",
+      "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "result": "AFTER_LOCAL PASS for scoped startup/build/train/Rally/hero/input/SaveLoad/four-locale checks"
     },
     {
-      "name": "Real local Chromium player inputs",
-      "path": "docs/evidence/v230-p0-input/browser.json",
-      "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
-      "result": "7/7 LOCAL PASS; no browser errors"
+      "name": "Official target resolution",
+      "path": "docs/evidence/omgithub17-upgrade/opencode-run-40377196806.json",
+      "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "result": "Prepare PASS; workflow head branch and full SHA exact match"
     }
   ],
   "evidence": [
-    "docs/evidence/v230-p0-input/REPORT.md",
-    "docs/evidence/v230-p0-input/browser.json",
-    "docs/evidence/v230-p0-input/rift-prototype.png"
+    "docs/evidence/omgithub17-upgrade/PRE-UPGRADE.json",
+    "docs/evidence/omgithub17-upgrade/POST-UPGRADE.json",
+    "docs/evidence/omgithub17-upgrade/REPORT.md",
+    "docs/evidence/omgithub17-upgrade/UPGRADE-PLAN.json"
   ],
   "failures": [
-    "Player-reported Rift Prototype crash was not reproduced by the controlled real-UI boon path",
-    "Production low-FPS time loss, strict Save/Load nondeterminism, and historical performance FAIL remain"
+    "New OmGitHub worker lost its heartbeat during Configure Linux Playwright CLI with WebGPU",
+    "No new Preview URL was assigned; AFTER_DEPLOY_LIVE is not verified",
+    "Historical low-FPS simulation loss, strict Save/Load nondeterminism, performance FAIL and HARDWARE_TEST_PENDING remain"
   ],
   "blockers": [
-    "Natural wave-end Rift Prototype reproduction still needs the original state or an equivalent natural campaign occurrence",
-    "HARDWARE_TEST_PENDING and no new public Candidate authorization",
-    "QUOTA_PERCENT_UNKNOWN; dispatcher remains disconnected"
+    "Issue #18 platform session is disconnected with Worker heartbeat expired while Actions still reports in progress",
+    "Do not retry or replace the workflow without checking the existing run and confirming the supported operation"
   ],
   "next_steps": [
-    "Run a natural multi-wave campaign until Rift Prototype is offered, preserving seed, state, Console, Page, and network evidence",
-    "Add the hero visual distinction and skill range preview vertical slice on an independent branch",
-    "Continue representative 2D art and audio vertical slices after the remaining P0 crash investigation"
+    "Check run 40377196806 once after the platform has had time to settle; distinguish recovery, terminal failure and stale in-progress state",
+    "If a separate Preview URL appears, verify actual resource hashes and perform AFTER_DEPLOY_LIVE without modifying Issue #17",
+    "If the run terminates failed, preserve logs and use only an official supported retry/resume control after confirming its exact effect",
+    "Continue Strategy v2.3 gameplay work on independent branches; do not write concurrently to the OmGitHub worker branch"
   ],
   "permissions": [
-    "Independent development, tests, normal commits, and normal pushes remain authorized",
-    "No main, force push, Issue 17, OpenCode Checkpoints/workflows, Pages configuration, or new public game SHA"
+    "The isolated official upgrade path was explicitly authorized",
+    "No main, Force Push, checkpoint rewrite, Issue #17 overwrite or old Preview deletion"
   ],
-  "status": "CHECKPOINTED",
-  "resume_event": {
-    "status": "SCHEDULED_RESUME_EXECUTED",
-    "basis": "Scheduled delegation was followed by actual Git checks, owned branch work, tests, commits, and verified push"
-  },
+  "status": "BLOCKED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "resume_status": "RESUME_READY_MANUAL_DISPATCH",
-  "updated_at": "2026-10-26T18:04:50.236950+00:00"
+  "updated_at": "2026-10-26T18:29:02.008517+00:00"
 }

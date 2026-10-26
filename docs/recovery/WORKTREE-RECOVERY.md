@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: db40dff994753b8e82da9db011f1547670262d3ff3f8df466f485b0703162a91
-Captured UTC: 2026-10-26T18:04:48.916651+00:00 · Trigger: FINAL_CHECKPOINT
-Collector source: `45435a323c729a28da1de454a3e53740fc9159f2` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: 2a8b5ecc18432fa158d99114201f5d4078cafc72914a1dbcd2459ec4421c60e9
+Captured UTC: 2026-10-26T18:29:00.752109+00:00 · Trigger: FINAL_CHECKPOINT
+Collector source: `dcbf99db4776172d9384749da80135903046dd5e` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -21,6 +21,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-live228 | codex/riftwatch-v228-live | 8f3da5a56ee323c9fa57ac462a0223e27b9988e3 | 8f3da5a56ee323c9fa57ac462a0223e27b9988e3 | REMOTE_SAVED | False |
 | /workspace/riftwatch-monitor | codex/riftwatch-v224-monitor | fa520ae3006329bd2b1c54ac90938519465bf320 | fa520ae3006329bd2b1c54ac90938519465bf320 | REMOTE_SAVED | False |
 | /workspace/riftwatch-nav | codex/riftwatch-v228-nav | 5fab2cedc770b238b37559eb81c42495e5eeb27a | 5fab2cedc770b238b37559eb81c42495e5eeb27a | REMOTE_SAVED | False |
+| /workspace/riftwatch-omgithub17 | codex/riftwatch-omgithub17-upgrade-evidence | dcbf99db4776172d9384749da80135903046dd5e | dcbf99db4776172d9384749da80135903046dd5e | REMOTE_SAVED | False |
 | /workspace/riftwatch-orders | codex/riftwatch-v227-orders | 0f2d3f6213559380156ae2af8c84ed44d0c9cca2 | 0f2d3f6213559380156ae2af8c84ed44d0c9cca2 | REMOTE_SAVED | False |
 | /workspace/riftwatch-playtest | codex/riftwatch-playtest-candidate | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | REMOTE_SAVED | False |
 | /workspace/riftwatch-pop | codex/riftwatch-v22-population | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | REMOTE_SAVED | False |
@@ -138,6 +139,14 @@ Uncommitted paths: []
 Validation: [{"source_commit": "144c1f3f8769f94e15e94a190279dc04f445b8a5", "path": "docs/evidence/v228-nav/ROOT-CAUSE.md", "result": "98Node,recordednativefail/pass,8/24/orders/normalPASS", "exists": true, "storage": "REMOTE_SAVED", "sha256": "7e349d49c30a40514512745907e38003a23b69bbd78acaf67f0f50309328f514", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: NewSHApublicationrequiresuserapproval; nothingdeployed; ClockprototypeadoptionBLOCKEDbydeterministiccontinuity andremainingpause/backlog/browsergates; HARDWARE_TEST_PENDING; current-scalecombat/fullcampaignformalacceptance pending; QUOTA_PERCENT_UNKNOWN; no connectedautomaticAgentdispatch/realGeminihandoff
 Next: Do not rerun valid98/18/fourlocale/nativeproofunlessaffectedsourcechanges. VerifyactualremoteCandidateHEAD/appBuildab56 andlatestRecovery/ownership first; P0 isolate strictSaveLoad transientcontinuity: snapshot10s nativeclockfixture, record nav/yield/progress/searchqueue/relevantcombat effects before/afterrestore; replay identicalfixedticks; do not blame RNGrestore when initialstateequals; Produce minimaldeterministicSaveLoadfailure beforefix; no productionloopinstalluntil exactstate andaffectedbrowser/overload/pause gatespass; Ifuser explicitlyapprovesdocs/playtest/v228/APPROVAL-PLAN.json, claimsitebranch, recheckHEAD,addexactbuildsab56/rootpointerordinarycommit; preserveD6; onlythenactualpublicQA
+
+## codex/riftwatch-omgithub17-upgrade-evidence
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-v227-orders
 
