@@ -1,0 +1,25 @@
+{
+  "validation_level": "LOCAL_SIMULATED_API_ONLY; no actual issue/workflow/agent",
+  "title_suffix_selects": "main",
+  "body_metadata_selects": "codex/riftwatch-playtest-candidate",
+  "prepare_resolved_sha": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+  "fixture_requests": [
+    {
+      "path": "/repos/Good-Comic/PlayGround",
+      "method": "GET"
+    },
+    {
+      "path": "/repos/Good-Comic/PlayGround/issues/999999",
+      "method": "GET"
+    },
+    {
+      "path": "/repos/Good-Comic/PlayGround/collaborators/fixture-writer/permission",
+      "method": "GET"
+    },
+    {
+      "path": "/repos/Good-Comic/PlayGround/branches/codex%2Friftwatch-playtest-candidate",
+      "method": "GET"
+    }
+  ],
+  "result": "PASS; documented-title discrepancy confirmed"
+}

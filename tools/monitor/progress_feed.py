@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """GitHub snapshots, not a live Cloud stream. Default is local; explicit publish uses a dedicated owned ref."""
-import argparse,hashlib,json,os,re,subprocess,sys,tempfile
+import argparse,datetime,hashlib,json,os,re,subprocess,sys,tempfile
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'dev'))
 from worktree_recovery import git,utc,atomic_json
 from agent_handoff import remote_ownership
 REF='refs/heads/codex/riftwatch-progress-feed'
 LEVELS={'INFO','PROGRESS','WARNING','BLOCKED','ACTION_REQUIRED'}
+EVENT_TYPES={'PROGRESS','TASK_COMPLETED','QA_READY','QA_FAILED','AGENT_INTERRUPTED','TOKEN_LIMIT','RATE_LIMIT','CONTEXT_LIMIT','HANDOFF_READY','DEPLOYMENT_READY','DEPLOYED','ACTION_REQUIRED'}
 SECRET=re.compile(r'(?i)(bearer\s+\S+|(?:api[_ -]?key|password|cookie|authorization|access[_ -]?token)\s*[:=]\s*\S+|github_pat_[a-z0-9_]+|gh[pousr]_[a-z0-9]{20,}|sk-[a-z0-9_-]{16,}|-----BEGIN .*PRIVATE KEY-----|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,})')
 def text(value,limit=6000):
  if not isinstance(value,str) or len(value)>limit or SECRET.search(value):raise ValueError('Sensitive/invalid text rejected; do not put raw logs or credentials in progress')
@@ -19,9 +20,18 @@ def evidence(path):
  return path
 def normalize(data):
  if data.get('severity') not in LEVELS:raise ValueError('Invalid severity')
+ kind=data.get('event_type','PROGRESS')
+ if kind not in EVENT_TYPES:raise ValueError('Invalid event type')
+ occurred=data.get('occurred_at')
+ if occurred is not None:
+  text(occurred,80)
+  try:timestamp=datetime.datetime.fromisoformat(occurred.replace('Z','+00:00'))
+  except ValueError:raise ValueError('Invalid occurrence timestamp') from None
+  if timestamp.tzinfo is None:raise ValueError('Occurrence timestamp must include timezone')
  branch=text(data.get('branch',''),140)
  if not re.fullmatch('codex/riftwatch-[a-zA-Z0-9_./-]+',branch) or '..' in branch:raise ValueError('Out-of-scope branch')
  out={'task_id':text(data.get('task_id',''),100),'agent':text(data.get('agent',''),80),'severity':data['severity'],'branch':branch,'commit':sha(data.get('commit')),'build_sha':sha(data['build_sha']) if data.get('build_sha') else None,'summary':text(data.get('summary','')),'code_changes':[text(x,1000) for x in data.get('code_changes',[])[:40]],'next_steps':[text(x,1000) for x in data.get('next_steps',[])[:20]],'requires_user_decision':bool(data.get('requires_user_decision')),'tests':[],'blockers':[],'response':text(data.get('response',''),16000)}
+ out.update(event_type=kind,occurred_at=occurred,completed=[text(x,1000) for x in data.get('completed',[])[:40]])
  for row in data.get('tests',[])[:80]:
   if row.get('status') not in ['PASS','FAIL','BLOCKED','NOT_TESTED']:raise ValueError('Invalid test status')
   out['tests'].append({'name':text(row['name'],200),'status':row['status'],'source_commit':sha(row['source_commit']),'evidence':evidence(row['evidence']),'evidence_commit':sha(row.get('evidence_commit',out['commit']))})
@@ -29,6 +39,7 @@ def normalize(data):
  out['event_id']=hashlib.sha256(json.dumps(out,sort_keys=True,ensure_ascii=True).encode()).hexdigest();return out
 def resolve_source(repo,event):
  rows=git(repo,'ls-remote','origin','refs/heads/'+event['branch']).splitlines();head=rows[0].split()[0] if rows else None;event['remote_head']=head;event['pushed']=head==event['commit'];event['remote_query']='VERIFIED'
+ event['latest_pushed_sha']=head
  if head and not event['pushed']:
   try:event['pushed']=subprocess.run(['git','-C',str(repo),'merge-base','--is-ancestor',event['commit'],head],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0
   except OSError:pass
@@ -40,6 +51,7 @@ def render(event,previous=None,previous_workstreams=None):
  previous=previous or [];events=list(previous)
  if any(r['event_id']==event['event_id'] for r in events) or any(r.get('event_id')==event['event_id'] for r in (previous_workstreams or {}).values()):return None
  event=dict(event,recorded_at=utc(),confidence='AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE');events.append(event)
+ if event.get('occurred_at') is None:event['occurred_at']=event['recorded_at'];event['occurrence_basis']='AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION'
  tasks=dict(previous_workstreams or {})
  tasks.update({r['task_id']:r for r in events if r.get('task_id')});blockers=[dict(b,task_id=r['task_id']) for r in tasks.values() for b in r.get('blockers',[])]
  status={'schema_version':1,'capability':'GITHUB_PROGRESS_SYNC_READY','channel':'GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed','updated_at':event['recorded_at'],'latest_event':event,'workstreams':tasks,'notification_policy':'Only material WARNING/BLOCKED/ACTION_REQUIRED; no external messages are automatically sent','supervisor_topics':['commits','QA','gameplay','performance','simulation_time','GDD','merge_conflicts','interruptions','ownership','candidate_deployment']}
