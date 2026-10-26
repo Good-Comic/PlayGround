@@ -1,1 +1,1 @@
-v228已依新授權發布至獨立SHA目錄；D6完整保留。44項限定線上瀏覽器驗收通過，所有程式由真正公開HTTPS載入，未使用本地副本。保持PLAYTEST-EXPERIMENTAL與歷史FAIL，並持續獨立開發。
+Save/Loadresearch isolated missingvisualthrottles consuming sharedRNG;nav+cosmetictimers yieldsoneexact20sfixture;actualprojectile1→0onload. ProductionstillFAIL,no enginepatch.
