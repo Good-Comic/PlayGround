@@ -1,0 +1,9 @@
+// Controlled timestamps through the ACTUAL production frame function. No rendering benchmark, no new loop.
+import fs from 'node:fs';import vm from 'node:vm';import {execFileSync} from 'node:child_process';
+globalThis.document={documentElement:{dataset:{}},dispatchEvent(){}};globalThis.window={innerWidth:1600,innerHeight:1100};
+const {Game}=await import('../../js/game.js');
+const source=fs.readFileSync(new URL('../../js/main.js',import.meta.url),'utf8');const frame=source.slice(source.indexOf('function frame(now)'),source.indexOf('\nrequestAnimationFrame(frame);',source.indexOf('function frame(now)')));
+const rows=[];for(const fps of [60,30,20,15,10]){const g=new Game();g.newRun(3215474622,{civ:'TEU',biome:'steppe'});g.inMenu=false;g.phase='prep';g.prepTimer=1000;g.autoMilitary=false;g.toast=()=>{};g.updateCamera=()=>{};g.refreshHover=()=>{};
+const ctx=vm.createContext({game:g,renderer:{draw(){}},ui:{update(){}},requestAnimationFrame(){}});vm.runInContext('let last=0,menuNeedsFrame=true;'+frame,ctx);for(let i=1;i<=fps*30;i++)vm.runInContext(`frame(${i*1000/fps})`,ctx);
+rows.push({virtual_fps:fps,timestamp_span_seconds:30,active_simulation_seconds:g.runTime,error_seconds:g.runTime-30,clock_pass_proposed_0_05s:Math.abs(g.runTime-30)<=.05,gathered:g.stats.gathered,units:g.units.length});}
+const result={source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),scope:'SIMULATED_TIMESTAMPS_ACTUAL_PRODUCTION_FRAME_AND_GAME; renderer/UI stubbed; NOT measured FPS/hardware or determinism acceptance',proposed_clock_gate:'<=0.05s error per30active seconds atspeed1; separate from rendering performance; pending formal timing contract',production_main_loop_modified:false,existing_fixed_step_prototype:'NOT_REPLACED; prior SaveLoad/determinism FAIL retained',rows};fs.writeFileSync(process.argv[2],JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

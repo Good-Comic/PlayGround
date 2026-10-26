@@ -6,7 +6,7 @@ import {
   RARITY_WEIGHT, MAX_BOONS, PLAYER_COLORS,
 } from './data.js';
 import { createWorld } from './world.js';
-import { NemesisDirector } from './director.js';
+import { NemesisDirector, unitThreat } from './director.js';
 import { t } from './i18n.js';
 import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, rand, randInt, seedFromDate, formatNumber } from './utils.js';
 
@@ -101,6 +101,8 @@ export class Game {
     this.bossExtensionWarned = false;
     this.waveRetreatStarted = false;
     this.waveCleanupDone = false;
+    this.waveInitialThreat = 0;
+    this.waveClearSeconds = 0;
     this.biomeEventTimer = 0;
     this.biomeEventWarned = false;
     this.biomeEventActive = false;
@@ -165,7 +167,7 @@ export class Game {
       'eventRegen', 'buildingDamageMul', 'convertResist', 'eventRetreat', 'eventRetreatCd',
       'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'moraleUsed',
       'lureUsed', 'feintUsed', 'spawnGate', 'eventModsApplied', 'scale',
-      'stance', 'guardOrigin', 'manualAttack',
+      'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover',
     ];
     const buildingKeys = [
       'id', 'team', 'type', 'x', 'y', 'w', 'h', 'hp', 'maxHp', 'baseMaxHp', 'armor',
@@ -228,6 +230,8 @@ export class Game {
       bossExtensionWarned: this.bossExtensionWarned,
       waveRetreatStarted: this.waveRetreatStarted,
       waveCleanupDone: this.waveCleanupDone,
+      waveInitialThreat: this.waveInitialThreat,
+      waveClearSeconds: this.waveClearSeconds,
       biomeEventTimer: this.biomeEventTimer,
       biomeEventWarned: this.biomeEventWarned,
       biomeEventActive: this.biomeEventActive,
@@ -338,8 +342,11 @@ export class Game {
     this.bossExtensionActive = !!snapshot.bossExtensionActive;
     this.bossExtensionReinforcements = snapshot.bossExtensionReinforcements || 0;
     this.bossExtensionWarned = !!snapshot.bossExtensionWarned;
-    this.waveRetreatStarted = !!snapshot.waveRetreatStarted;
-    this.waveCleanupDone = !!snapshot.waveCleanupDone;
+    // Older saves used a one-second tactical timer for wave retreat; re-evaluate the policy.
+    this.waveRetreatStarted = snapshot.waveInitialThreat !== undefined && !!snapshot.waveRetreatStarted;
+    this.waveCleanupDone = snapshot.waveInitialThreat !== undefined && !!snapshot.waveCleanupDone;
+    this.waveInitialThreat = snapshot.waveInitialThreat || 0;
+    this.waveClearSeconds = snapshot.waveClearSeconds || 0;
     this.biomeEventTimer = snapshot.biomeEventTimer || 0;
     this.biomeEventWarned = !!snapshot.biomeEventWarned;
     this.biomeEventActive = !!snapshot.biomeEventActive;
@@ -819,7 +826,7 @@ export class Game {
     const baseDt = Math.max(0, Math.min(dt, 0.05));
     this.time += baseDt;
     this.updateCamera(baseDt);
-    if (this.inMenu || this.paused) { this.updateParticles(baseDt); return; }
+    if (this.inMenu || this.paused || this.phase === 'boon') { this.updateParticles(baseDt); return; }
     if (this.phase === 'victory' || this.phase === 'defeat') { this.updateParticles(baseDt); return; }
     dt = baseDt * (this.speed || 1);
     this.time += baseDt * ((this.speed || 1) - 1);
@@ -1161,6 +1168,7 @@ export class Game {
   }
 
   updateEnemy(u, dt) {
+    if (u.waveWithdrawal) return this.updateWaveWithdrawal(u, dt);
     if (u.typeDef.boss) this.updateBoss(u, dt);
     const flags = this.waveEventActive ? (u.eventFlags || []) : [];
     if (u.eventRetreat > 0) {
@@ -2147,6 +2155,7 @@ export class Game {
     this.bossExtensionActive=false;
     this.bossExtensionReinforcements=0;
     this.bossExtensionWarned=false;
+    this.waveRetreatStarted=false; this.waveCleanupDone=false; this.waveClearSeconds=0;
     const wave = WAVES[Math.min(this.waveIndex, WAVES.length - 1)];
     const plan = this.pendingWavePlan?.waveIndex === this.waveIndex
       ? this.pendingWavePlan
@@ -2170,6 +2179,7 @@ export class Game {
     this.waveEndTimer = 0;
     this.waveSpawns = plan.spawns.map(group => ({ ...group, spawned: false }));
     this.waveTotal = plan.totalUnits;
+    this.waveInitialThreat = this.waveSpawns.reduce((sum,group)=>sum+Object.entries(group.units).reduce((n,[type,count])=>n+unitThreat(type)*count,0),0);
     const tc = this.getTownCenter();
     if (plan.hazard && tc && tc.hp / tc.maxHp < .3 && !this.director.terrainAssistUsed) {
       plan.hazard.suppressed = true;
@@ -2208,6 +2218,11 @@ export class Game {
   }
 
   updateWave(dt) {
+    if (this.phase !== 'wave') return;
+    const core=this.getTownCenter();
+    if (!core || core.hp<=0) { this.triggerDefeat(); return; }
+    // Recover original scheduled budget for older saves, never derive the cap from survivors alone.
+    this.waveInitialThreat ||= this.waveSpawns.reduce((sum,group)=>sum+Object.entries(group.units).reduce((n,[type,count])=>n+unitThreat(type)*count,0),0) || this.units.filter(u=>u.alive&&u.team==='enemy').reduce((n,u)=>n+unitThreat(u.type),0);
     this.waveClock += dt;
     const wave = WAVES[Math.min(this.waveIndex, WAVES.length - 1)];
     if (this.waveEvent && !this.waveEventActive) {
@@ -2277,51 +2292,27 @@ export class Game {
       }
     }
 
-    // Non-boss wave retreat and cleanup (110s retreat, 120s cleanup, 30% carryover)
-    if (!isBossWave && this.phase === 'wave') {
-      const retreatStart = 110;
-      const cleanupTime = 120;
-      const maxCarryoverThreat = 0.30;
-
-      // 110s: orderly retreat begins
-      if (!this.waveRetreatStarted && this.waveClock >= retreatStart) {
-        this.waveRetreatStarted = true;
-        this.toast(t('toast.waveRetreat'), 'bad', 3000);
-        // Set retreat state for all enemy units
-        for (const u of this.units) {
-          if (u.alive && u.team === 'enemy') {
-            u.eventRetreat = 1;
-            u.retreatGate = u.spawnGate || 0;
-          }
-        }
+    // GDD issue8: persistent withdrawal at110s, original-threat cap and settlement at120s.
+    if (!isBossWave) {
+      if (!this.waveRetreatStarted && this.waveClock >= 110) {
+        this.waveRetreatStarted=true;
+        this.toast(t('toast.waveRetreat'),'bad',3000);
+        for (const u of this.units) if(u.alive&&u.team==='enemy') this.beginWaveWithdrawal(u);
       }
-
-      // 120s: cleanup - carryover max 30% threat, excess retreat
-      if (!this.waveCleanupDone && this.waveClock >= cleanupTime) {
-        this.waveCleanupDone = true;
-        const enemyUnits = this.units.filter(u => u.alive && u.team === 'enemy');
-        // Calculate original threat for this wave
-        let totalThreat = 0;
-        for (const u of enemyUnits) {
-          totalThreat += u.typeDef.threat || 1;
+      if (!this.waveCleanupDone && this.waveClock >= 120 && this.waveSpawns.every(g=>g.spawned)) {
+        this.waveCleanupDone=true;
+        let carried=0;
+        const cap=this.waveInitialThreat*.30;
+        const survivors=this.units.filter(u=>u.alive&&u.team==='enemy').sort((a,b)=>unitThreat(b.type)-unitThreat(a.type)||a.id-b.id);
+        for (const u of survivors) {
+          const threat=unitThreat(u.type);
+          if(carried+threat<=cap) {
+            carried+=threat;u.carryover=true;u.waveWithdrawal=false;u.withdrawalBlocked=null;u.eventRetreat=0;
+            u.target=null;u.retargetTimer=0;u._nav=null;u.state='idle';
+          } else this.beginWaveWithdrawal(u);
         }
-        const maxCarryThreat = totalThreat * maxCarryoverThreat;
-        let currentThreat = 0;
-        // Sort by threat descending, carry highest threat units
-        enemyUnits.sort((a, b) => (b.typeDef.threat || 1) - (a.typeDef.threat || 1));
-        for (const u of enemyUnits) {
-          const t = u.typeDef.threat || 1;
-          if (currentThreat + t <= maxCarryThreat) {
-            currentThreat += t;
-            // Keep this unit - it will carry over
-            u.eventRetreat = 0;
-            u.carryover = true;
-          } else {
-            // Excess units retreat
-            u.eventRetreat = 1;
-            u.retreatGate = u.spawnGate || 0;
-          }
-        }
+        // Keep all survivors, HP and native routes; this is scheduled settlement, not a kill/skip.
+        this.completeWave();return;
       }
     }
 
@@ -2345,16 +2336,28 @@ export class Game {
       }
     }
 
-    if (this.waveSpawns.every(g => g.spawned) && this.enemiesAlive === 0) {
-      if (this.waveEndTimer <= 0) this.waveEndTimer = 1.4;
+    const remainingThreat=this.units.filter(u=>u.alive&&u.team==='enemy').reduce((n,u)=>n+unitThreat(u.type),0);
+    const eligible=this.waveSpawns.every(g=>g.spawned)&&(!isBossWave||!this.bossAlive)&&remainingThreat<=this.waveInitialThreat*.05;
+    this.waveClearSeconds=eligible?(this.waveClearSeconds||0)+dt:0;
+    if(this.waveClearSeconds>=3) this.completeWave();
+  }
+
+  beginWaveWithdrawal(u) {
+    if(!u.waveWithdrawal){u._nav=null;u.targetPos=null;}
+    u.waveWithdrawal=true;u.carryover=false;u.target=null;u.state='move';u.retreatGate=u.spawnGate||0;
+  }
+
+  updateWaveWithdrawal(u,dt) {
+    u.target=null;u.state='move';
+    const camps=this.world.camps||[],camp=camps[u.retreatGate%camps.length];
+    if(!camp){u.withdrawalBlocked='no_exit';return;}
+    if(dist(u.x,u.y,camp.x,camp.y)<=1) {
+      // Exit reached physically. Preserve the entity record; no killEntity, loot or resurrection.
+      u.withdrawn=true;u.alive=false;u.state='withdrawn';u._nav=null;
+      this.stats.withdrawals=(this.stats.withdrawals||0)+1;return;
     }
-    if (this.waveEndTimer > 0) {
-      this.waveEndTimer -= dt;
-      if (this.waveEndTimer <= 0) {
-        this.waveEndTimer = 0;
-        this.completeWave();
-      }
-    }
+    const status=this.stepToward(u,camp.x,camp.y,dt,.7);
+    u.withdrawalBlocked=['unreachable','congested'].includes(status)?status:null;
   }
 
   triggerBiomeEventWarning() {

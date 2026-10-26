@@ -1,0 +1,170 @@
+✖ 120s cleanup completes with a living legal carryover instead of waiting forever (20.942009ms)
+✖ 110s wave withdrawal remains active beyond temporary tactical-retreat timeout (16.114671ms)
+✖ carryover cap uses ORIGINAL wave threat, not only surviving units (11.170641ms)
+✖ actual arrival at exit withdraws without kill credit or loot (35.470886ms)
+✖ 5percent original-threat hold requires continuous3seconds and pending spawns prevent early settlement (14.366435ms)
+✖ new wave resets cleanup flags; SaveLoad preserves withdrawal and original threat (6.205679ms)
+✖ Boss still blocks120s cleanup; destroyed core wins over cleanup (7.889817ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 302.819871
+
+✖ failing tests:
+
+test at tests/wave-cleanup.test.mjs:6:1
+✖ 120s cleanup completes with a living legal carryover instead of waiting forever (20.942009ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'wave' !== 'boon'
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-wave/tests/wave-cleanup.test.mjs:6:208)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'wave',
+    expected: 'boon',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave-cleanup.test.mjs:7:1
+✖ 110s wave withdrawal remains active beyond temporary tactical-retreat timeout (16.114671ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - true
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-wave/tests/wave-cleanup.test.mjs:7:190)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave-cleanup.test.mjs:8:1
+✖ carryover cap uses ORIGINAL wave threat, not only surviving units (11.170641ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - true
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-wave/tests/wave-cleanup.test.mjs:8:178)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave-cleanup.test.mjs:9:1
+✖ actual arrival at exit withdraws without kill credit or loot (35.470886ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - true
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-wave/tests/wave-cleanup.test.mjs:9:288)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave-cleanup.test.mjs:10:1
+✖ 5percent original-threat hold requires continuous3seconds and pending spawns prevent early settlement (14.366435ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'wave' !== 'boon'
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-wave/tests/wave-cleanup.test.mjs:10:288)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'wave',
+    expected: 'boon',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave-cleanup.test.mjs:11:1
+✖ new wave resets cleanup flags; SaveLoad preserves withdrawal and original threat (6.205679ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 2000
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-wave/tests/wave-cleanup.test.mjs:11:316)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 2000,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wave-cleanup.test.mjs:12:1
+✖ Boss still blocks120s cleanup; destroyed core wins over cleanup (7.889817ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'wave' !== 'defeat'
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-wave/tests/wave-cleanup.test.mjs:12:297)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'wave',
+    expected: 'defeat',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
