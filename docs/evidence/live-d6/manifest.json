@@ -1,20 +1,95 @@
 {
+  "captured_at_utc": "2026-10-26T06:47:59.902786+00:00",
   "stage": "AFTER_DEPLOY_LIVE",
+  "status": "AFTER_DEPLOY_LIVE_VERIFIED",
+  "scope": "Bounded scenarios in cases only; controlled setups are not natural campaign clearance",
   "game_source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
   "url": "https://good-comic.github.io/PlayGround/builds/d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c/",
-  "status": "PARTIAL_ACCEPTANCE_IN_PROGRESS",
-  "minimum_browser_checks_passed": 12,
-  "captured_git_resources_matched": 106,
-  "fixtures_in_minimum": "No simulation-state injection; Start/house/train/save actual UI; isolated browser canaries only",
-  "historical_performance_failures": "UNCHANGED",
-  "hardware": "HARDWARE_TEST_PENDING",
-  "normal_300s": "PASS sampled P0, no runtime/network errors; natural wave advance NOT_VERIFIED",
-  "feature_boss_wave_tests": "Rally11PASS,civilization8PASS; Boss and controlled wave pending",
-  "normal_retargets": 8,
-  "normal_unload_counts": {
+  "pages_commit": "6c98a8e6b7f7759ca57a9c9f94f675e2b6070381",
+  "candidate_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+  "release_status": "PLAYTEST-EXPERIMENTAL",
+  "cases": {
+    "minimum": {
+      "status": "PASS",
+      "checks": 12,
+      "mode": "ONLINE_NATIVE_UI",
+      "source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "minimum-results.json"
+    },
+    "rally": {
+      "status": "PASS",
+      "checks": 11,
+      "mode": "ONLINE_CONTROLLED_FIXTURE",
+      "source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "rally-results.json"
+    },
+    "civ": {
+      "status": "PASS",
+      "checks": 8,
+      "mode": "ONLINE_CONTROLLED_FIXTURE",
+      "source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "civ-results.json"
+    },
+    "boss": {
+      "status": "PASS",
+      "checks": 8,
+      "mode": "ONLINE_CONTROLLED_FIXTURE",
+      "source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "boss-results.json"
+    },
+    "combat-wave": {
+      "status": "PASS",
+      "checks": 8,
+      "mode": "ONLINE_CONTROLLED_FIXTURE",
+      "source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "combat-wave-results.json"
+    },
+    "locales": {
+      "status": "PASS",
+      "checks": 7,
+      "mode": "ONLINE_NATIVE_UI",
+      "source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "locales-results.json"
+    },
+    "normal-300": {
+      "status": "PASS",
+      "checks": 8,
+      "mode": "ONLINE_NORMAL_SEED_NO_STATE_INJECTION",
+      "wall_seconds": 300.908815555,
+      "samples": 446,
+      "source_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+      "evidence": "normal-300-summary.json"
+    }
+  },
+  "browser_assertions": 54,
+  "sampled_normal_p0_checks": 8,
+  "resource_hashes": 28,
+  "captured_git_resource_matches": 583,
+  "retarget_events": 8,
+  "unload_cycles": {
     "wood": 85,
     "gold": 73,
     "food": 51,
     "stone": 32
+  },
+  "historical_performance": "FAIL_RETAINED_NOT_RETESTED",
+  "hardware": "HARDWARE_TEST_PENDING",
+  "full_ten_wave_natural_campaign": "NOT_TESTED",
+  "all_civilizations": "NOT_TESTED; nativeTEU andCHN, controlledCHN unique unit only",
+  "observations": [
+    "Natural fixed-seed300s remained wave1 with one live ram; not proof simulation stopped or a confirmed rule defect",
+    "Start Game remains English on three non-English menus; fullLQA not certified"
+  ],
+  "large_trace_storage": "LOCAL_ONLY; hashes/bytes inlarge-artifacts.json",
+  "tools": {
+    "live_analyze.py": "430035aee82e8566e9cc4a78eafed603036e915c86c7bd2127cd849a08a4ec30",
+    "live_boss.py": "a8d4c449f67a5b9f5ef021356bd5c59039f29a44ffbf2c38bbaf60ee1c161a6a",
+    "live_combat_wave.py": "13f25e53c805943f029a7ae30e62374a4485edb550de3d4156abd187bd2af9cb",
+    "live_features.py": "7bc8635da965ce19135f5c38045083a9365fd7d217c0bd051718f9b0c4fb8020",
+    "live_locales.py": "7e0c920214bf4036b11a5a36bf34ccfef50a215ec327dac8bd9bf029155782e5",
+    "live_minimum.py": "ec2770776f05f9d76b5151aa6727aaba28fa79c8de23cc06351981b7ccd867d7",
+    "live_normal.py": "e66ddb6eb6d7856db37b89431ddcded5fd1fd11609df82c2537470aa29b69d84",
+    "live_runtime.py": "7a0ea7d831eb2868cdccd0e42f2eccedce370c7f02acb1529bf3d798cfea120d",
+    "live_verify_resources.py": "3350889dd03b90740cd41eef900f02cfa2aa670f4dd74182ee2625ce8379e635"
   }
 }

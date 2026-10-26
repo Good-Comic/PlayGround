@@ -1,3 +1,15 @@
+# 最新 D6 Pages 線上驗收（2026-10-26 Asia/Taipei）
+
+AFTER_DEPLOY_LIVE_VERIFIED **僅限已記錄場景**，維持PLAYTEST-EXPERIMENTAL。公開站點Build `d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c`，Pages發布Commit `6c98a8e6b7f7759ca57a9c9f94f675e2b6070381`。這是GitHub Pages，非OmGitHub新版Preview。
+
+本輪實際線上驗收：28payload雜湊、583/583HAR/Git資源、原生Start/選取/移動/建築/訓練/SaveLoad/四語/匯出；300.9秒正常場景8次重新索敵、木85/金73/食51/石32次卸貨、無≥20模擬秒零載貨採集停滯；受控線上Rally/FIFO/諸葛弩/Boss4→8→12/Pause/戰鬥→選卡→第二波倒數均通過。614次請求、Console/Page/request/HTTP400+皆0。全部使用實際公開瀏覽器；沒有本地遊戲替代。
+
+界限：Boss時計／建築／兩敵戰鬥採顯式fixture，不是自然十波。五分鐘自然場景仍第一波有活攻城槌，根因未確認；非英文Start Game保留英文。歷史效能FAIL、低FPS模擬時間問題、HARDWARE_TEST_PENDING、完整十波/全文明/高負載/任意舊存檔待驗均保留。B1/B2不因此自動正式整合。
+
+詳見 [線上驗收報告](evidence/live-d6/REPORT.md)、[範圍與版本](evidence/live-d6/manifest.json)、[網路統計](evidence/live-d6/network-summary.json)。本分支是驗收工具／證據，非遊戲候選來源；實際遊戲Source仍D6、Candidate3779c5。以下是歷史紀錄，當時的Pages403/白名單阻塞已由本次實際built/HTTP200/瀏覽器驗證解除；原始失敗紀錄不刪除。
+
+---
+
 ## Strategy v2.2.2 recovery status — current override
 
 Recovery/handoff framework implemented and normally pushed; actual source/test/evidence state is in [STRATEGY-V2.2-EXECUTION.md](STRATEGY-V2.2-EXECUTION.md), [Recovery Manifest](recovery/WORKTREE-RECOVERY.md) and handoff/ACTIVE-TASK.json. Historical records below remain unchanged. Recovered12/12 corrected-window baseline cases (source11f8a6a),9PASS/3FAIL; no missing sample rerun. Target/Population/Civ bounded local acceptance does not equal integration.500/1000 FAIL remains research, not a project-wide lock. Simulation integrity, physical hardware and online deployment remain independent blocked/pending gates.
