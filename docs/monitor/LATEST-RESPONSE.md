@@ -1,1 +1,1 @@
-Save/Loadresearch isolated missingvisualthrottles consuming sharedRNG;nav+cosmetictimers yieldsoneexact20sfixture;actualprojectile1→0onload. ProductionstillFAIL,no enginepatch.
+Unpublishedrightclickgroupbindingclear verified12Node/5LOCALbrowser/fourlocales; selection/orders/units andothergroup preserved. Notin publicab56.
