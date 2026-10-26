@@ -18,7 +18,7 @@ export function makeBugReport(game,settings,build,errors=[],browser={}) {
     schemaVersion:1,exportedAt:new Date().toISOString(),
     build:{id:build.id,commit:build.commit,status:build.status,builtAt:build.builtAt,resourceVerification:build.resourceVerification},
     run:{seed:numeric(game.seed),civilization:id(game.civ?.id),map:id(game.biome?.id),wave:numeric(game.waveIndex+1),phase:id(game.phase),simulationSeconds:numeric(game.runTime)},
-    settings:{uiScale:numeric(settings.uiScale||1),gameSpeed:numeric(settings.gameSpeed),autoEconomy:!!settings.autoEconomy,autoMilitary:!!settings.autoMilitary,reducedMotion:!!settings.reducedMotion,locale:id(settings.locale)},
+    settings:{showControlGroups:settings.showControlGroups!==false,uiScale:numeric(settings.uiScale||1),gameSpeed:numeric(settings.gameSpeed),autoEconomy:!!settings.autoEconomy,autoMilitary:!!settings.autoMilitary,reducedMotion:!!settings.reducedMotion,locale:id(settings.locale)},
     population:{military:numeric(game.militaryPopulation),militaryCap:numeric(game.militaryPopCap),economic:numeric(game.economicPopulation),economicCap:numeric(game.economicPopCap),activeUnits:units.length},
     resources:Object.fromEntries(['food','wood','gold','stone'].map(k=>[k,numeric(game.resources?.[k])])),
     browser:{name:browserMatch?.[1]||'unknown',version:browserMatch?.[2]||'unknown',os,width:numeric(browser.width),height:numeric(browser.height),dpr:numeric(browser.dpr)},

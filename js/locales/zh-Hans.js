@@ -1,4 +1,9 @@
 export const ui = {
+  'group.label': "群组",
+  'group.slot': "群组 {slot}：{count} 个单位",
+  'group.hint': "点击选择；Ctrl+点击保存；Shift 追加。",
+  'settings.groups': "群组操作按钮",
+  'settings.groupsDesc': "显示可点击群组；隐藏后仍可使用群组快捷键。",
   'settings.uiScale': '界面文字大小',
   'settings.uiScaleDesc': '放大界面文字，不改变游戏速度或地图缩放。',
   'order.attackMove': '攻击移动',
