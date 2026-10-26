@@ -35,6 +35,9 @@ class QuotaTests(unittest.TestCase):
    for wt in [p,other]:
     r=save_slice(wt,['source'],agent='SIMULATED',execution='fixture',message='WIP simulated safe checkpoint');self.assertEqual(r['status'],'REMOTE_SAVED');self.assertEqual(r['local_sha'],r['remote_sha']);self.assertFalse(r['ownership_released']);self.assertEqual(git(wt,'show',r['remote_sha']+':source'),'WIP independently saved')
    clone=Path(t)/'resumed';git(p,'clone','--branch','codex/riftwatch-fixture',str(remote),str(clone));self.assertEqual(git(clone,'rev-parse','HEAD'),git(p,'rev-parse','HEAD'));self.assertEqual((clone/'source').read_text(),'WIP independently saved')
+ def test_denied_checkpoint_does_not_mislabel_already_remote_old_head_as_saved_dirty_work(self):
+  with tempfile.TemporaryDirectory() as t:
+   p,other,remote=self.fixture(Path(t));(p/'source').write_text('not committed');old=git(p,'rev-parse','HEAD');r=save_slice(p,['source'],agent='UNOWNED',execution='wrong',message='WIP refused');self.assertEqual(r['status'],'CHECKPOINT_BLOCKED');self.assertEqual(r['local_sha'],r['remote_sha']);self.assertEqual(r['local_sha'],old);self.assertFalse(r['requested_paths_clean']);self.assertFalse(r['checkpoint_command_success'])
  def test_rejected_push_never_claims_remote_saved(self):
   with tempfile.TemporaryDirectory() as t:
    p,other,remote=self.fixture(Path(t));hook=remote/'hooks/pre-receive';hook.write_text('#!/bin/sh\nexit 1\n');hook.chmod(0o755);(p/'source').write_text('pending checkpoint');r=save_slice(p,['source'],agent='SIMULATED',execution='fixture',message='WIP retain rejected push');self.assertEqual(r['status'],'PUSH_BLOCKED');self.assertNotEqual(r['local_sha'],r['remote_sha']);self.assertFalse(r['checkpoint_command_success'])
