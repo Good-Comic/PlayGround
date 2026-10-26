@@ -1,1 +1,1 @@
-Native narrowFAIL remains open and is public in proposed Candidate knownissues. Candidate is not all-gates QA accepted and has not been deployed.
+Historical D6PASS scope unchanged. Start Game is GDD BY_DESIGN. D6 online settlement bug remains until a separately approved new-SHA deployment; local fixes do not certify online state.
