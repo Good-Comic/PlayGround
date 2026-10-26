@@ -1,0 +1,5 @@
+# OPEN-NAV-NARROW-01 — not fixed
+
+Combined af594 native browser: all8 cross one-tile passage,7/8 reach assigned formation slots within85s; max penetration.014669<=.025,0staticclips. Remaining27 at(6.7558678794,9.4969142889),moving, while29 idle at(6.2486791872,9.4998428418); desired destination5.4,9.5 inferred from actual group command, not recorded in old sample. Capture exact targetPos/nav/yield/progress fields and every production update dt on next targeted reproduction before editing engine. Do not guess root cause from positions alone.
+
+Two simplified Node checks (nearby idle blocker and8opposing queues at fixed60Hz) PASS; this is NON-REPRODUCTION evidence, not a repair or browserPASS. Initial hypothesis that static smoothing skips a dynamic detour remains unproven. Original coarse.05 tests alsoPASS; variable native timing/history needs investigation. Full normal180sP0 and native tactical routes pass separately. Do not rerun full D6; use targeted capture, replay exactdt, then minimal failure before any fix. No engine patch made for this unresolved case.
