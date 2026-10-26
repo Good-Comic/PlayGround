@@ -2,7 +2,7 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T09:29:27.461348+00:00",
+  "updated_at": "2026-10-26T09:31:08.118714+00:00",
   "latest_event": {
     "task_id": "V227-ORDERS",
     "agent": "Codex",
@@ -10,7 +10,7 @@
     "branch": "codex/riftwatch-v227-orders",
     "commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
     "build_sha": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
-    "summary": "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair.",
+    "summary": "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair. Evidence provenance clarification: the combined failure source is af594; independent tactical source is000f. Neither source has a claimed narrowfix.",
     "code_changes": [],
     "next_steps": [
       "Continue only missing targeted native/clock checks; preserve D6 and all historicalFAIL; no newpublicrelease without exactSHA approval"
@@ -18,12 +18,21 @@
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Scoped local result and retained evidence",
-        "status": "FAIL",
+        "name": "Native tactical feature contracts",
+        "status": "PASS",
         "source_commit": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
-        "evidence": "docs/evidence/v227-orders/remaining-narrow/STATUS.md",
+        "evidence": "docs/evidence/v227-orders/browser-results.json",
         "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
-        "evidence_blob": "b20034b682c3499d5ee4c62231a86bebd1fea83c",
+        "evidence_blob": "6bf91a658a97dafa22afaa6a3824be4c24e822d3",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "Combined8unit narrow native destinationcompletion",
+        "status": "FAIL",
+        "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
+        "evidence": "docs/evidence/v227-orders/remaining-narrow/browser-fail.json",
+        "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+        "evidence_blob": "564fc2655069eca4a8b73f55ffd5cc7e46108dca",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -36,18 +45,18 @@
         "requires_user_decision": false
       }
     ],
-    "response": "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair.",
+    "response": "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair. Evidence provenance clarification: the combined failure source is af594; independent tactical source is000f. Neither source has a claimed narrowfix.",
     "event_type": "QA_READY",
-    "occurred_at": "2026-10-26T09:29:27.461348+00:00",
+    "occurred_at": "2026-10-26T09:31:08.118714+00:00",
     "completed": [
       "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair."
     ],
-    "event_id": "c7cb24bc84d1eb0ca674a074a8f12485309d3e0f9256b89ba4fdbadd9050eb25",
+    "event_id": "9d6eab29200610d286e4f4ad5cd1db2831baa50fdc4f7328ceecbf41350df748",
     "remote_head": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
     "pushed": true,
     "remote_query": "VERIFIED",
     "latest_pushed_sha": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
-    "recorded_at": "2026-10-26T09:29:27.461348+00:00",
+    "recorded_at": "2026-10-26T09:31:08.118714+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
     "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
   },
@@ -678,7 +687,7 @@
       "branch": "codex/riftwatch-v227-orders",
       "commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
       "build_sha": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
-      "summary": "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair.",
+      "summary": "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair. Evidence provenance clarification: the combined failure source is af594; independent tactical source is000f. Neither source has a claimed narrowfix.",
       "code_changes": [],
       "next_steps": [
         "Continue only missing targeted native/clock checks; preserve D6 and all historicalFAIL; no newpublicrelease without exactSHA approval"
@@ -686,12 +695,21 @@
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Scoped local result and retained evidence",
-          "status": "FAIL",
+          "name": "Native tactical feature contracts",
+          "status": "PASS",
           "source_commit": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c",
-          "evidence": "docs/evidence/v227-orders/remaining-narrow/STATUS.md",
+          "evidence": "docs/evidence/v227-orders/browser-results.json",
           "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
-          "evidence_blob": "b20034b682c3499d5ee4c62231a86bebd1fea83c",
+          "evidence_blob": "6bf91a658a97dafa22afaa6a3824be4c24e822d3",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Combined8unit narrow native destinationcompletion",
+          "status": "FAIL",
+          "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9",
+          "evidence": "docs/evidence/v227-orders/remaining-narrow/browser-fail.json",
+          "evidence_commit": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+          "evidence_blob": "564fc2655069eca4a8b73f55ffd5cc7e46108dca",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -704,18 +722,18 @@
           "requires_user_decision": false
         }
       ],
-      "response": "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair.",
+      "response": "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair. Evidence provenance clarification: the combined failure source is af594; independent tactical source is000f. Neither source has a claimed narrowfix.",
       "event_type": "QA_READY",
-      "occurred_at": "2026-10-26T09:29:27.461348+00:00",
+      "occurred_at": "2026-10-26T09:31:08.118714+00:00",
       "completed": [
         "AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair."
       ],
-      "event_id": "c7cb24bc84d1eb0ca674a074a8f12485309d3e0f9256b89ba4fdbadd9050eb25",
+      "event_id": "9d6eab29200610d286e4f4ad5cd1db2831baa50fdc4f7328ceecbf41350df748",
       "remote_head": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
       "pushed": true,
       "remote_query": "VERIFIED",
       "latest_pushed_sha": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
-      "recorded_at": "2026-10-26T09:29:27.461348+00:00",
+      "recorded_at": "2026-10-26T09:31:08.118714+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
       "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
     }
