@@ -1,3 +1,15 @@
+# Current handoff — Strategy v2.2.6
+
+This is a TOOLING/DELIVERY branch, not a new gameplay build. Actual playable Candidate remains3779c5d50876cb2e28590b9d250fb355fc0f8e38 with approved game payloadD6. Pages site branch6c98a8e6b7f7759ca57a9c9f94f675e2b6070381 is saved, but Pages enablement is blocked by integration403 and browser host by Envoy403. User has explicitly authorized exactD6 Pages publication; do not ask again for that authorization. Required UI prerequisites are in deployment STATUS.md. Never touch17 or launch OpenCode.
+
+30focused tool tests pass atfd616d0d4c1ea62263a42fc0065b1b16752c427a. New files after that are evidence/docs only. Read test-provenance.json, raw/API receipts, old503, dispatcher audit and pending review exchange. Real externalAgent/independentreview/onlinegame/hardware are NOT verified. Review source3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f is a stable checkpoint; inspect newer docs-only changes rather than blindly resetting. Actual Git and recovery-index prevail over metadata's pre-publication SHA.
+
+Next smallest slice: after user UI prerequisites, query actual Pages configuration/build; verify expected source branch and deploycommit, then hosted Chromium acceptance using exactD6 resources. No negative proxy retry until policy changes. If prerequisites remain blocked, proceed independent gameplay queue (target-state/time correctness before feature integration, AttackMove/UIScale slices), preserving all historical failures. Read OmGitHub continuity document before proposing any new Issue; runtime resume override/title-parser discrepancy/force-with-lease are unresolved safety constraints.
+
+No active external worker was launched. Ownership must be re-read/claimed before writing. Final publication receipts live on recovery-index and progress-feed; snapshots describe commits before their own publication.
+
+## Preserved historical handoff (superseded by actual current Git)
+
 # Agent Handoff
 
 HANDOFF_FRAMEWORK_READY · CROSS_AGENT_HANDOFF_VERIFIED is not claimed.

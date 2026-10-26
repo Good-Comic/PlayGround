@@ -1,0 +1,26 @@
+{
+  "status": "PREPARED_NOT_EXECUTABLE_UNTIL_CHECKPOINT_SAFETY_RESOLVED",
+  "source_branch": "codex/riftwatch-playtest-candidate",
+  "source_sha": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+  "approved_game_payload_sha": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+  "proposed_issue_title": "Riftwatch Candidate baseline continuity verification",
+  "proposed_issue_body_prefix": "<!-- omgithub-request:v1 {\"branch\":\"codex/riftwatch-playtest-candidate\"} -->",
+  "requires_new_explicit_authorization": [
+    "Create one new isolated OmGitHub/OpenCode development Issue",
+    "Trigger corresponding OpenCode execution with bounded resource/model policy",
+    "Allow only new issue scoped branch/preview/checkpoint after supported no-force safety established"
+  ],
+  "preconditions": [
+    "Do not use existing17 or resume metadata",
+    "Source branch HEAD must equal full expectedSHA at prepare and after resume handling",
+    "Resolve pinned runtime force-with-lease conflict; no action under current no-force rule",
+    "Runtime must serve generated integrity metadata/build output, not raw root",
+    "Record effective source and final output SHA; output is not byte-identical by assumption"
+  ],
+  "expected_output_branch": "opencode/<new-run-id>",
+  "expected_output_checkpoint": "opencode-checkpoints/<new-issue>; NOT existing17",
+  "expected_preview": "Unknown until actual platform run; must be independently verified",
+  "issue17_effect": "NONE; no source,Preview,Continue,Publish or checkpoint mutation",
+  "rollback": "Cancel only separately authorized new run; reject generated output from integration; preserve evidence; never force old refs",
+  "executed": false
+}

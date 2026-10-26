@@ -1,3 +1,13 @@
+# Current v2.2.6 delivery status (2026-10-26 Asia/Taipei)
+
+This branch contains delivery/monitoring tools and historical Integration game source, NOT the new playable Candidate. Gameplay authority: Candidate3779c5d50876cb2e28590b9d250fb355fc0f8e38, approved Buildd6ee34a5c5d3f2082ee635adb27d6405a41e5f3c. Experimental Boss/Population/Target/Civ/B1/B2 local evidence is on that Candidate; no formal Integration promotion. No existing gameplay modified here.
+
+Exact approved Pages package pushed to codex/riftwatch-playtest-site6c98a8e6b7f7759ca57a9c9f94f675e2b6070381; Pages POST403integration permission and host CONNECTEnvoy403 leave AFTER_DEPLOY_LIVE BLOCKED/NOT_TESTED. Current user authorization permits this exact site but cannot replace missing platform permission. No additional publication approval needed for D6; required UI operations in docs/evidence/v226-deployment/STATUS.md.
+
+Monitor30tests PASS, rawHTTP4/API4 real pinned reads; old503 and historical game/performance FAIL preserved. REVIEW_PENDING / DISPATCH_NOT_CONNECTED / HARDWARE_TEST_PENDING. Independent game work remains allowed;500/1000 not a blanket gate. The historical sections below retain original dated results and are not current development embargoes. New authoritative instruction: docs/handoff/STRATEGY-V2.2.6.md; continuity restrictions: docs/omgithub/CONTINUITY-V226.md.
+
+---
+
 ## Strategy v2.2.2 recovery status — current override
 
 Recovery/handoff framework implemented and normally pushed; actual source/test/evidence state is in [STRATEGY-V2.2-EXECUTION.md](STRATEGY-V2.2-EXECUTION.md), [Recovery Manifest](recovery/WORKTREE-RECOVERY.md) and handoff/ACTIVE-TASK.json. Historical records below remain unchanged. Recovered12/12 corrected-window baseline cases (source11f8a6a),9PASS/3FAIL; no missing sample rerun. Target/Population/Civ bounded local acceptance does not equal integration.500/1000 FAIL remains research, not a project-wide lock. Simulation integrity, physical hardware and online deployment remain independent blocked/pending gates.

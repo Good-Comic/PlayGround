@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "request_id": "REVIEW-ef5f6a9e7229ca174bb7c992",
+  "event_id": "a7ad17fd24f4ec16f44cf4edd658fdab4ab1e823241984361a0cded17ad1c586",
+  "source_sha": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+  "source_branch": "codex/riftwatch-v226-delivery",
+  "latest_pushed_sha": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+  "status": "REVIEW_PENDING",
+  "tests": [
+    {
+      "name": "30focused tool tests",
+      "status": "PASS",
+      "source_commit": "fd616d0d4c1ea62263a42fc0065b1b16752c427a",
+      "evidence": "docs/evidence/v226-monitor/tool-tests.log.txt",
+      "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+      "evidence_blob": "9991d4d9fc860a6f52f689784f3dd095965f31b2",
+      "evidence_status": "GIT_BLOB_VERIFIED"
+    },
+    {
+      "name": "Real raw HTTP pinned4file read",
+      "status": "PASS",
+      "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+      "evidence": "docs/evidence/v226-monitor/raw-reader.json",
+      "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+      "evidence_blob": "69b1ecfb9f7202c78c37673b5b9aa1aba0adf775",
+      "evidence_status": "GIT_BLOB_VERIFIED"
+    },
+    {
+      "name": "Real Contents API4file blob verification",
+      "status": "PASS",
+      "source_commit": "2bac99025900b041686b8fe0d59672c8a90879cb",
+      "evidence": "docs/evidence/v226-monitor/api-reader.json",
+      "evidence_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+      "evidence_blob": "0318d794bbdf0cf805ba8af62a5c99482a544460",
+      "evidence_status": "GIT_BLOB_VERIFIED"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "EXTERNAL_REVIEW_PENDING",
+      "severity": "INFO",
+      "summary": "No independent Supervisor or external Agent executed; REVIEW_PENDING and DISPATCH_NOT_CONNECTED only",
+      "source_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+      "requires_user_decision": false
+    },
+    {
+      "id": "LIVE_STREAM_NOT_CONFIRMED",
+      "severity": "INFO",
+      "summary": "Snapshot-based feed only; no Cloud private log/quota access",
+      "source_commit": "3d5b49b509c7ca4b9bc6b2280eb61b750a74dc4f",
+      "requires_user_decision": false
+    }
+  ],
+  "requirements": [
+    "docs/handoff/STRATEGY-V2.2.6.md",
+    "docs/GAMEPLAY-REQUIREMENTS.md"
+  ],
+  "handoff": "docs/handoff/ACTIVE-TASK.json",
+  "review_steps": [
+    "Read pinned feed and handoff",
+    "Independently query remote source commit",
+    "Review relevant code diff and GDD",
+    "Read original test and failure evidence",
+    "Separate local/integrated/online/hardware verification",
+    "Return sourced decision and bounded next task"
+  ],
+  "allowed_decisions": [
+    "ACCEPTED",
+    "REWORK_REQUIRED",
+    "BLOCKED",
+    "NEEDS_APPROVAL"
+  ]
+}
