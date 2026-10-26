@@ -3225,19 +3225,20 @@ export class Game {
       u.guardOrigin={...goal};
       if(u.target&&this.distanceTo(goal,u.target)>8){u.target=null;u.state='idle';u._nav=null;}
     }
-    if(u.state==='attack'&&u.target?.alive)return false;
+    if(u.state==='attack'&&u.target?.alive){order.engaged=true;return false;}
+    if(order.engaged){order.engaged=false;u._nav=null;u._progress=null;u._goalProgress=null;u._yieldTo=null;}
     if(u.state==='attack'){u.target=null;u.manualAttack=false;u.state='idle';}
     if(this.time>=(u._orderScanAt||0)) {
       u._orderScanAt=this.time+.25;
       if(order.type!=='guard')u.guardOrigin={x:u.x,y:u.y};
       const near=!u.typeDef.noAttack?this.acquireTarget(u,u.stance==='hold'?this.unitRange(u):(u.typeDef.sight||6)*.72):null;
-      if(near){u.target=near;u.manualAttack=false;u.state='attack';u._nav=null;return false;}
+      if(near){order.engaged=true;u.target=near;u.manualAttack=false;u.state='attack';u._nav=null;return false;}
     }
     if(u.orderFailure){u.tacticalOrder=null;return true;}
     const tolerance=order.type==='guard'?guardRange:.25;
     if(dist(u.x,u.y,goal.x,goal.y)<=tolerance) {
       if(order.type==='attackMove'){u.tacticalOrder=null;u.targetPos=null;u.state='idle';return true;}
-      if(order.type==='patrol'){order.leg=1-order.leg;u.targetPos=null;u._nav=null;}
+      if(order.type==='patrol'){order.leg=1-order.leg;u.targetPos=null;u._nav=null;u._progress=null;u._goalProgress=null;}
       else{u.state='idle';u.targetPos=null;}
       return true;
     }
