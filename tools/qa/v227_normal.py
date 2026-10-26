@@ -17,7 +17,7 @@ with sync_playwright() as pw:
  opts=launch_options()
  browser=pw.chromium.launch(**opts);meta['chromium']=browser.version
  context=browser.new_context(viewport={'width':1600,'height':1100},record_har_path=str(out/'network.har'))
- context.tracing.start(screenshots=True,snapshots=True,sources=True)
+ context.tracing.start(screenshots=False,snapshots=True,sources=True)
  page=context.new_page()
  page.on('response',lambda r:meta['responses'].append({'url':r.url,'status':r.status}))
  page.on('requestfailed',lambda r:meta['failed'].append({'url':r.url,'error':r.failure}))

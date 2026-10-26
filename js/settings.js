@@ -1,6 +1,6 @@
 export const UI_SCALES = [1, 1.15, 1.3];
 export const normalizeUiScale = value => UI_SCALES.includes(Number(value)) ? Number(value) : 1;
-const SETTINGS_KEY = 'riftwatch.playtest.settings.v1';
+const SETTINGS_KEY = 'riftwatch.playtest.v227.settings.v1';
 
 export const DEFAULT_SETTINGS = {
   gameSpeed: 1,
