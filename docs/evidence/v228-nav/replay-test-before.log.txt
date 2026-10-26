@@ -1,0 +1,31 @@
+REPLAY_NATIVE {"arrived":7,"maxPositionError":0,"units":[{"id":22,"state":"idle","distance":0.0406399999999536},{"id":23,"state":"idle","distance":0.06929063945675584},{"id":24,"state":"idle","distance":0.040639999999942944},{"id":25,"state":"idle","distance":0.07135553700764077},{"id":26,"state":"idle","distance":0.04063999999993584},{"id":27,"state":"move","distance":1.348812663814082},{"id":28,"state":"idle","distance":0.040639999999932286},{"id":29,"state":"idle","distance":0.04339100955325575}]}
+✖ recorded Chromium per-update input converges all eight exact formation destinations (921.255316ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 981.789853
+
+✖ failing tests:
+
+test at tests/narrow-native-replay.test.mjs:2:1
+✖ recorded Chromium per-update input converges all eight exact formation destinations (921.255316ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  7 !== 8
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-nav/tests/narrow-native-replay.test.mjs:2:625)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 7,
+    expected: 8,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1644,7 +1644,7 @@ export class Game {
         const distance=dist(u.x,u.y,tx,ty),stop=range?Math.max(0,distance-range*.98):distance;
         const goal=distance?{x:u.x+(tx-u.x)/distance*stop,y:u.y+(ty-u.y)/distance*stop}:{x:tx,y:ty};
         if(walkable(goal.x,goal.y) && segmentClear(walkable,u,goal)) {
-          nav.status='ready';nav.points=[goal];nav.goal=goal;nav.stalled=0;
+          nav.status='ready';nav.points=[goal];nav.goal=goal;nav.stalled=0;nav.crowdDetour=false;
           if(this.navigationStats){this.navigationStats.directRoutes++;this.navigationStats.totalDirectRoutes++;}
         }
       }
@@ -1669,7 +1669,7 @@ export class Game {
         this.navigationStats.expanded += path.expanded; this.navigationStats.ms += performance.now()-searchStart;
       }
       if(occupied.length && path.status==='unreachable') {nav.status='pending';nav.retryAt=this.time+1;return 'pending';}
-      Object.assign(nav, path);nav.stalled=0;
+      Object.assign(nav, path);nav.stalled=0;nav.crowdDetour=occupied.length>0;
       nav.retryAt=this.time+(path.status==='ready'?0:2);
     }
     if (nav.status !== 'ready') return nav.status;
@@ -1681,7 +1681,8 @@ export class Game {
       return 'arrived';
     }
     // Skip only fully collision-checked segments, never snap a unit to a waypoint.
-    while(nav.points.length>1 && segmentClear(walkable,u,nav.points[1])) nav.points.shift();
+    // A crowd-aware A* detour cannot be shortened using a static-only segment test.
+    while(!nav.crowdDetour && nav.points.length>1 && segmentClear(walkable,u,nav.points[1])) nav.points.shift();
     const p=nav.points[0], d=dist(u.x,u.y,p.x,p.y), step=Math.min(d,this.unitSpeed(u)*dt);
     if(d<1e-9){nav.points=[];nav.status='pending';nav.retryAt=this.time;return 'pending';}
     const desired={x:u.x+(p.x-u.x)/d*step,y:u.y+(p.y-u.y)/d*step};
