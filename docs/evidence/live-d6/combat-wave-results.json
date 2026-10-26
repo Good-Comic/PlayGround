@@ -1,0 +1,457 @@
+{
+  "stage": "AFTER_DEPLOY_LIVE",
+  "source": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+  "fixture": "CONTROLLED_ONLINE_ENGINE: clear terrain, one guard/two passive militia, initial phase wave1; NO kill/completeWave/boon/next-wave injection, normal speed1 and native UI",
+  "checks": [
+    {
+      "name": "online runtime28hashes and exactSHA",
+      "pass_": true,
+      "observed": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-25T19:44:57.446641+00:00",
+        "resourceVerification": "SHA256_MATCH_28_FILES"
+      }
+    },
+    {
+      "name": "real pointer selects guard",
+      "pass_": true,
+      "observed": {
+        "time": 0.35,
+        "phase": "wave",
+        "wave": 0,
+        "clock": 0.2334000000000001,
+        "prep": 44.88340000000001,
+        "guard": {
+          "id": 21,
+          "target": 22,
+          "state": "attack"
+        },
+        "foes": [
+          {
+            "id": 22,
+            "hp": 60,
+            "alive": true
+          },
+          {
+            "id": 23,
+            "hp": 60,
+            "alive": true
+          }
+        ],
+        "transitions": [
+          {
+            "time": 0.16659999999999991,
+            "target": 22,
+            "state": "attack",
+            "firstAlive": true,
+            "lastAlive": true,
+            "phase": "wave"
+          }
+        ]
+      }
+    },
+    {
+      "name": "manual right-click attack assigns firstenemy",
+      "pass_": true,
+      "observed": {
+        "time": 0.4165999999999999,
+        "phase": "wave",
+        "wave": 0,
+        "clock": 0.30000000000000004,
+        "prep": 44.88340000000001,
+        "guard": {
+          "id": 21,
+          "target": 22,
+          "state": "attack"
+        },
+        "foes": [
+          {
+            "id": 22,
+            "hp": 60,
+            "alive": true
+          },
+          {
+            "id": 23,
+            "hp": 60,
+            "alive": true
+          }
+        ],
+        "transitions": [
+          {
+            "time": 0.16659999999999991,
+            "target": 22,
+            "state": "attack",
+            "firstAlive": true,
+            "lastAlive": true,
+            "phase": "wave"
+          }
+        ]
+      }
+    },
+    {
+      "name": "native death immediately retargets secondenemy within1.5seconds",
+      "pass_": true,
+      "observed": {
+        "time": 13.249399999999968,
+        "phase": "wave",
+        "wave": 0,
+        "clock": 13.13279999999997,
+        "prep": 44.88340000000001,
+        "guard": {
+          "id": 21,
+          "target": 23,
+          "state": "attack"
+        },
+        "foes": [
+          {
+            "id": 22,
+            "hp": -4,
+            "alive": false
+          },
+          {
+            "id": 23,
+            "hp": 53,
+            "alive": true
+          }
+        ],
+        "transitions": [
+          {
+            "time": 0.16659999999999991,
+            "target": 22,
+            "state": "attack",
+            "firstAlive": true,
+            "lastAlive": true,
+            "phase": "wave"
+          },
+          {
+            "time": 13.23269999999997,
+            "target": 23,
+            "state": "attack",
+            "firstAlive": false,
+            "lastAlive": true,
+            "phase": "wave"
+          }
+        ]
+      }
+    },
+    {
+      "name": "native kills complete wave and open boon UI",
+      "pass_": true,
+      "observed": {
+        "time": 25.83229999999975,
+        "phase": "boon",
+        "wave": 0,
+        "clock": 25.365699999999745,
+        "prep": 44.88340000000001,
+        "guard": {
+          "id": 21,
+          "target": null,
+          "state": "idle"
+        },
+        "foes": [
+          {
+            "id": 22,
+            "hp": -4,
+            "alive": false
+          },
+          {
+            "id": 23,
+            "hp": 0,
+            "alive": false
+          }
+        ],
+        "transitions": [
+          {
+            "time": 0.16659999999999991,
+            "target": 22,
+            "state": "attack",
+            "firstAlive": true,
+            "lastAlive": true,
+            "phase": "wave"
+          },
+          {
+            "time": 13.23269999999997,
+            "target": 23,
+            "state": "attack",
+            "firstAlive": false,
+            "lastAlive": true,
+            "phase": "wave"
+          },
+          {
+            "time": 24.065699999999776,
+            "target": null,
+            "state": "idle",
+            "firstAlive": false,
+            "lastAlive": false,
+            "phase": "wave"
+          },
+          {
+            "time": 25.482299999999746,
+            "target": null,
+            "state": "idle",
+            "firstAlive": false,
+            "lastAlive": false,
+            "phase": "boon"
+          }
+        ]
+      }
+    },
+    {
+      "name": "real boon claim starts wave2 prep",
+      "pass_": true,
+      "observed": {
+        "time": 26.532099999999755,
+        "phase": "prep",
+        "wave": 1,
+        "clock": 25.365699999999745,
+        "prep": 30,
+        "guard": {
+          "id": 21,
+          "target": null,
+          "state": "idle"
+        },
+        "foes": [
+          {
+            "id": 22,
+            "hp": -4,
+            "alive": false
+          },
+          {
+            "id": 23,
+            "hp": 0,
+            "alive": false
+          }
+        ],
+        "transitions": [
+          {
+            "time": 0.16659999999999991,
+            "target": 22,
+            "state": "attack",
+            "firstAlive": true,
+            "lastAlive": true,
+            "phase": "wave"
+          },
+          {
+            "time": 13.23269999999997,
+            "target": 23,
+            "state": "attack",
+            "firstAlive": false,
+            "lastAlive": true,
+            "phase": "wave"
+          },
+          {
+            "time": 24.065699999999776,
+            "target": null,
+            "state": "idle",
+            "firstAlive": false,
+            "lastAlive": false,
+            "phase": "wave"
+          },
+          {
+            "time": 25.482299999999746,
+            "target": null,
+            "state": "idle",
+            "firstAlive": false,
+            "lastAlive": false,
+            "phase": "boon"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wave2 countdown starts native wave with scheduled enemies",
+      "pass_": true,
+      "observed": {
+        "time": 56.59730000000132,
+        "phase": "wave",
+        "wave": 1,
+        "clock": 0.05,
+        "prep": -0.015199999999614671,
+        "guard": {
+          "id": 21,
+          "target": null,
+          "state": "idle"
+        },
+        "foes": [
+          {
+            "id": 22,
+            "hp": -4,
+            "alive": false
+          },
+          {
+            "id": 23,
+            "hp": 0,
+            "alive": false
+          }
+        ],
+        "transitions": [
+          {
+            "time": 0.16659999999999991,
+            "target": 22,
+            "state": "attack",
+            "firstAlive": true,
+            "lastAlive": true,
+            "phase": "wave"
+          },
+          {
+            "time": 13.23269999999997,
+            "target": 23,
+            "state": "attack",
+            "firstAlive": false,
+            "lastAlive": true,
+            "phase": "wave"
+          },
+          {
+            "time": 24.065699999999776,
+            "target": null,
+            "state": "idle",
+            "firstAlive": false,
+            "lastAlive": false,
+            "phase": "wave"
+          },
+          {
+            "time": 25.482299999999746,
+            "target": null,
+            "state": "idle",
+            "firstAlive": false,
+            "lastAlive": false,
+            "phase": "boon"
+          },
+          {
+            "time": 26.582099999999755,
+            "target": null,
+            "state": "idle",
+            "firstAlive": false,
+            "lastAlive": false,
+            "phase": "prep"
+          },
+          {
+            "time": 56.547300000001314,
+            "target": null,
+            "state": "idle",
+            "firstAlive": false,
+            "lastAlive": false,
+            "phase": "wave"
+          }
+        ]
+      }
+    },
+    {
+      "name": "no Console/Page/HTTP/request errors",
+      "pass_": true,
+      "observed": {
+        "console": [],
+        "page": [],
+        "failed": [],
+        "http": []
+      }
+    }
+  ],
+  "actions": [
+    {
+      "pointer": {
+        "x": 864,
+        "y": 626
+      },
+      "unit": "actor",
+      "button": "left"
+    },
+    {
+      "pointer": {
+        "x": 902.4,
+        "y": 645.2
+      },
+      "unit": "first",
+      "button": "right"
+    }
+  ],
+  "console": [],
+  "page_errors": [],
+  "failed": [],
+  "http_errors": [],
+  "browser": "154.0.8037.57",
+  "build": {
+    "id": "riftwatch-playtest-v1",
+    "commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+    "status": "PLAYTEST-EXPERIMENTAL",
+    "builtAt": "2026-10-25T19:44:57.446641+00:00",
+    "resourceVerification": "SHA256_MATCH_28_FILES"
+  },
+  "final": {
+    "time": 57.24730000000137,
+    "phase": "wave",
+    "wave": 1,
+    "clock": 0.7,
+    "prep": -0.015199999999614671,
+    "guard": {
+      "id": 21,
+      "target": null,
+      "state": "idle"
+    },
+    "foes": [
+      {
+        "id": 22,
+        "hp": -4,
+        "alive": false
+      },
+      {
+        "id": 23,
+        "hp": 0,
+        "alive": false
+      }
+    ],
+    "transitions": [
+      {
+        "time": 0.16659999999999991,
+        "target": 22,
+        "state": "attack",
+        "firstAlive": true,
+        "lastAlive": true,
+        "phase": "wave"
+      },
+      {
+        "time": 13.23269999999997,
+        "target": 23,
+        "state": "attack",
+        "firstAlive": false,
+        "lastAlive": true,
+        "phase": "wave"
+      },
+      {
+        "time": 24.065699999999776,
+        "target": null,
+        "state": "idle",
+        "firstAlive": false,
+        "lastAlive": false,
+        "phase": "wave"
+      },
+      {
+        "time": 25.482299999999746,
+        "target": null,
+        "state": "idle",
+        "firstAlive": false,
+        "lastAlive": false,
+        "phase": "boon"
+      },
+      {
+        "time": 26.582099999999755,
+        "target": null,
+        "state": "idle",
+        "firstAlive": false,
+        "lastAlive": false,
+        "phase": "prep"
+      },
+      {
+        "time": 56.547300000001314,
+        "target": null,
+        "state": "idle",
+        "firstAlive": false,
+        "lastAlive": false,
+        "phase": "wave"
+      }
+    ]
+  },
+  "pass": true
+}

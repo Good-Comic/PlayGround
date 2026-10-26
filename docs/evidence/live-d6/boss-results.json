@@ -1,0 +1,779 @@
+{
+  "stage": "AFTER_DEPLOY_LIVE",
+  "fixture": "ONLINE_ENGINE_CONTROLLED_FIXTURE: synthetic clear field; explicit wave-clock jumps; ordinary update/render/combat; disposable browser context; NOT natural ten waves",
+  "actions": [
+    "real Start Game menu click",
+    "fixture: seed3215474622, clear field, wave5 Boss, clock149.95 (not natural elapsed time)",
+    "real Pause → Save Run → Reload → Continue (fresh local browser context only)",
+    "fixture wave-clock jump 179.95",
+    "fixture wave-clock jump 209.95"
+  ],
+  "tests": [
+    {
+      "name": "round1: exactly4 registered M-family enemies",
+      "observed": {
+        "clock": 150,
+        "rounds": 1,
+        "coreHp": 3000,
+        "units": [
+          {
+            "id": 22,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 26.956550333569346,
+            "y": 20.127182885983395,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 23,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24,
+            "y": 23,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 24,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 21,
+            "y": 20,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 25,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24,
+            "y": 17,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "native movement reaches combat within20wallseconds",
+      "observed": {
+        "clock": 150.85000000000002,
+        "rounds": 1,
+        "coreHp": 2995.68,
+        "units": [
+          {
+            "id": 22,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 26.21790600424828,
+            "y": 22.289291947701113,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 23,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 24.38072879459363,
+            "y": 24.053397501893482,
+            "target": 20,
+            "combatAt": 0.7000000000000002,
+            "hp": 71
+          },
+          {
+            "id": 24,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 22.05937041314459,
+            "y": 22.024362953561916,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 25,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24.134396556473288,
+            "y": 19.14619610604625,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "Pause freezes simulation clock and full controlled units for1.2wallseconds",
+      "observed": {
+        "before": {
+          "clock": 151.48320000000004,
+          "rounds": 1,
+          "coreHp": 2991.3599999999997,
+          "units": [
+            {
+              "id": 22,
+              "type": "militia",
+              "family": "M",
+              "team": "enemy",
+              "state": "move",
+              "x": 25.667659428570495,
+              "y": 23.899936015794832,
+              "target": 20,
+              "combatAt": 1.4666000000000003,
+              "hp": 72
+            },
+            {
+              "id": 23,
+              "type": "militia",
+              "family": "M",
+              "team": "enemy",
+              "state": "attack",
+              "x": 24.38072879459363,
+              "y": 24.053397501893482,
+              "target": 20,
+              "combatAt": 0.7000000000000002,
+              "hp": 71
+            },
+            {
+              "id": 24,
+              "type": "militia",
+              "family": "M",
+              "team": "enemy",
+              "state": "move",
+              "x": 22.848539055030653,
+              "y": 23.532394273791805,
+              "target": 20,
+              "combatAt": -99,
+              "hp": 73
+            },
+            {
+              "id": 25,
+              "type": "militia",
+              "family": "M",
+              "team": "enemy",
+              "state": "move",
+              "x": 24.24077143092188,
+              "y": 20.84491032398185,
+              "target": 20,
+              "combatAt": -99,
+              "hp": 73
+            }
+          ]
+        },
+        "after": {
+          "clock": 151.48320000000004,
+          "rounds": 1,
+          "coreHp": 2991.3599999999997,
+          "units": [
+            {
+              "id": 22,
+              "type": "militia",
+              "family": "M",
+              "team": "enemy",
+              "state": "move",
+              "x": 25.667659428570495,
+              "y": 23.899936015794832,
+              "target": 20,
+              "combatAt": 1.4666000000000003,
+              "hp": 72
+            },
+            {
+              "id": 23,
+              "type": "militia",
+              "family": "M",
+              "team": "enemy",
+              "state": "attack",
+              "x": 24.38072879459363,
+              "y": 24.053397501893482,
+              "target": 20,
+              "combatAt": 0.7000000000000002,
+              "hp": 71
+            },
+            {
+              "id": 24,
+              "type": "militia",
+              "family": "M",
+              "team": "enemy",
+              "state": "move",
+              "x": 22.848539055030653,
+              "y": 23.532394273791805,
+              "target": 20,
+              "combatAt": -99,
+              "hp": 73
+            },
+            {
+              "id": 25,
+              "type": "militia",
+              "family": "M",
+              "team": "enemy",
+              "state": "move",
+              "x": 24.24077143092188,
+              "y": 20.84491032398185,
+              "target": 20,
+              "combatAt": -99,
+              "hp": 73
+            }
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "Save/Load consumed round unchanged/no duplicate",
+      "observed": {
+        "clock": 151.64990000000006,
+        "rounds": 1,
+        "coreHp": 2982.7199999999993,
+        "units": [
+          {
+            "id": 22,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 25.422989112798888,
+            "y": 24.011245838273453,
+            "target": 20,
+            "combatAt": 1.4666000000000003,
+            "hp": 72
+          },
+          {
+            "id": 23,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 24.38072879459363,
+            "y": 24.053397501893482,
+            "target": 20,
+            "combatAt": 2.8663999999999974,
+            "hp": 70
+          },
+          {
+            "id": 24,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 23.035611406810666,
+            "y": 23.889872955356083,
+            "target": 20,
+            "combatAt": 2.8329999999999975,
+            "hp": 72
+          },
+          {
+            "id": 25,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24.26598758483017,
+            "y": 21.24759036837878,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "round2: total8",
+      "observed": {
+        "clock": 180.06669999999997,
+        "rounds": 2,
+        "coreHp": 2982.7199999999993,
+        "units": [
+          {
+            "id": 22,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 25.422989112798888,
+            "y": 24.011245838273453,
+            "target": 20,
+            "combatAt": 1.4666000000000003,
+            "hp": 72
+          },
+          {
+            "id": 23,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 24.38072879459363,
+            "y": 24.053397501893482,
+            "target": 20,
+            "combatAt": 2.8663999999999974,
+            "hp": 70
+          },
+          {
+            "id": 24,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 23.118616194475884,
+            "y": 24.04848774677634,
+            "target": 20,
+            "combatAt": 2.8329999999999975,
+            "hp": 72
+          },
+          {
+            "id": 25,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24.285592682505705,
+            "y": 21.560666725348277,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 26,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 27.533868888591446,
+            "y": 23.54083955811933,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 27,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 22.609928291249197,
+            "y": 26.83443807834243,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 28,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 21.682867917829064,
+            "y": 23.491013929326737,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 29,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24.538796721029644,
+            "y": 20.45143574146903,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "round3: total12",
+      "observed": {
+        "clock": 210.03319999999997,
+        "rounds": 3,
+        "coreHp": 2982.7199999999993,
+        "units": [
+          {
+            "id": 22,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 25.422989112798888,
+            "y": 24.011245838273453,
+            "target": 20,
+            "combatAt": 1.4666000000000003,
+            "hp": 72
+          },
+          {
+            "id": 23,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 24.38072879459363,
+            "y": 24.053397501893482,
+            "target": 20,
+            "combatAt": 2.8663999999999974,
+            "hp": 70
+          },
+          {
+            "id": 24,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 23.118616194475884,
+            "y": 24.04848774677634,
+            "target": 20,
+            "combatAt": 2.8329999999999975,
+            "hp": 72
+          },
+          {
+            "id": 25,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24.299569924378922,
+            "y": 21.78387112037709,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 26,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 27.525976804711043,
+            "y": 23.764341862945443,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 27,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 22.609928291249197,
+            "y": 26.83443807834243,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 28,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 21.82361755136556,
+            "y": 23.66481009128062,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 29,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24.533842546643065,
+            "y": 20.67502246157268,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 30,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 28.1232435252946,
+            "y": 23.440844841154625,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 31,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 23.668638521164084,
+            "y": 24.631648676900014,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 32,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 21.308921848202008,
+            "y": 23.665078505977977,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 33,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 25.168638521164084,
+            "y": 20.36369948446889,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "no fourth round at225",
+      "observed": {
+        "clock": 225.39990000000003,
+        "rounds": 3,
+        "coreHp": 2956.7999999999984,
+        "units": [
+          {
+            "id": 22,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 25.422989112798888,
+            "y": 24.011245838273453,
+            "target": 20,
+            "combatAt": 1.4666000000000003,
+            "hp": 72
+          },
+          {
+            "id": 23,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 24.38072879459363,
+            "y": 24.053397501893482,
+            "target": 20,
+            "combatAt": 2.8663999999999974,
+            "hp": 70
+          },
+          {
+            "id": 24,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 23.118616194475884,
+            "y": 24.04848774677634,
+            "target": 20,
+            "combatAt": 2.8329999999999975,
+            "hp": 72
+          },
+          {
+            "id": 25,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24.369556931162368,
+            "y": 22.90150274260068,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 26,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 27.511738802422,
+            "y": 24.16755936239736,
+            "target": 20,
+            "combatAt": 3.149599999999998,
+            "hp": 72
+          },
+          {
+            "id": 27,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 22.609928291249197,
+            "y": 26.83443807834243,
+            "target": 20,
+            "combatAt": 3.299699999999998,
+            "hp": 72
+          },
+          {
+            "id": 28,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 22.33112824921352,
+            "y": 24.291478944479728,
+            "target": 20,
+            "combatAt": 3.299699999999998,
+            "hp": 72
+          },
+          {
+            "id": 29,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 24.509035947491032,
+            "y": 21.794568466322442,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          },
+          {
+            "id": 30,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 27.95422344047113,
+            "y": 24.415487811270502,
+            "target": 20,
+            "combatAt": 3.4327999999999976,
+            "hp": 72
+          },
+          {
+            "id": 31,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "attack",
+            "x": 23.668638521164084,
+            "y": 24.631648676900014,
+            "target": 20,
+            "combatAt": 3.116299999999998,
+            "hp": 72
+          },
+          {
+            "id": 32,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 21.882804875596136,
+            "y": 24.558881815334505,
+            "target": 20,
+            "combatAt": 3.466199999999998,
+            "hp": 72
+          },
+          {
+            "id": 33,
+            "type": "militia",
+            "family": "M",
+            "team": "enemy",
+            "state": "move",
+            "x": 25.119507257607708,
+            "y": 21.482441967372786,
+            "target": 20,
+            "combatAt": -99,
+            "hp": 73
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "no page/console/network errors",
+      "observed": {
+        "page": [],
+        "failed": [],
+        "http": [],
+        "console": []
+      },
+      "pass": true
+    }
+  ],
+  "console": [],
+  "page_errors": [],
+  "failed": [],
+  "http_errors": [],
+  "manifest": {
+    "id": "riftwatch-playtest-v1",
+    "commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
+    "status": "PLAYTEST-EXPERIMENTAL",
+    "builtAt": "2026-10-25T19:44:57.446641+00:00",
+    "branch": "codex/riftwatch-playtest-candidate",
+    "dirty": false,
+    "files": {
+      "KNOWN-ISSUES.html": "73694522b259ea71b34c207019c260a291653648577433bd2ebfaa7a09640637",
+      "KNOWN-ISSUES.md": "cd5089c49a1cbe25fa8cc53e6d8a6e85629b7c68f92adf4531630ec8a5b15f77",
+      "assets/fonts/cinzel-400.ttf": "a0242f6698ae0d3220a29986a09274f9d1eddb4a24da4e50faf387fd1804eb7b",
+      "assets/fonts/cinzel-700.ttf": "5150b3609eeaaa9c6d7e093cb9b16ab8ec2f7110ddf0cbe751887e6f158398af",
+      "assets/fonts/imfell-400.ttf": "725a44824e534dfb26af2bf135dd6fab577ec7f0781c5be17bd89e7ce22f035a",
+      "index.html": "c1234f9025edb8757f6cd81508914414fc181296e1f9771bd05f064bade50a19",
+      "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+      "js/build-info.js": "67a6611e6c26fdb164e5c35e882e8a6d254c3e000f62965c76159bd0f6460304",
+      "js/crowd.js": "f63866670b17d122a235c04f300fd8b51d110a11f2a45f04fdecc58acb8b4ca1",
+      "js/data.js": "cb50b0c9ef81bf0130402332bf1525424d21aa24b3a3a45fe96946a2ab081932",
+      "js/director.js": "98f5859d45a88189496f36ccbc7f7df5568135f81ed3ad1f6e682a129c5574fa",
+      "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+      "js/game.js": "f707f634466f76783eab76a3b35557a326a64e2a3be406e72dcacd8eb2e9ee4a",
+      "js/i18n.js": "80d4b247d162f0acfe314b4aaecbd155e85ab42d29f2bd5aeb07e26c788dfb1a",
+      "js/locales/ja.js": "321ea5cafc84d8d9fb1ada0e489841b7baa63fe5bdd820c3c9a7ca039c7afff1",
+      "js/locales/zh-Hans.js": "c98dabd9543d4bf6b5d3008d4f13c77d3579beb5e89dffca139625c77d878f7a",
+      "js/locales/zh-Hant.js": "d5b5adcb06162e49a4eebbb9d4e916ad82f1972ec5d59ba82a6d44895a0608e2",
+      "js/locales.js": "0a128cdc1e8a9bc42517130a532f88a37df791d685a4b1554ef3674d3247c372",
+      "js/main.js": "a3a44b0d54e01dbd9c46602da5d14e693cd2edff47c0860cdb62c3173c7ef073",
+      "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+      "js/playtest.js": "6d59303b746f7ad59fbfc46370813622a76d31da5bb3108f74f1aab58768f883",
+      "js/renderer.js": "73ac8aeaf371f8d848e1c3ec1227e5239f79cd76dc7d2ce531f03528195841ce",
+      "js/save.js": "b2a940073902203234234fc2143504ea5d5c661555ed58e1c72d084184bd57a4",
+      "js/settings.js": "eedc4ffcf54a2626b00deb42fd8ee6e18df71dd0b7b39565555ad870fe0b6ea4",
+      "js/ui.js": "79f5ae2bf6cac2cd174069b274b63506aa09d539de32c9bb8599352040676d10",
+      "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+      "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+      "styles.css": "060b98fd68c4040815101d711533750af8cf9fb44a22d8d9f4ff34aa55a8d519"
+    },
+    "manifest_scope": "All served payload files; hosting control .nojekyll and metadata aliases excluded to avoid recursive hashes",
+    "verification_level": "AFTER_LOCAL_ONLY_UNTIL_AUTHORIZED_DEPLOY"
+  },
+  "browser": "154.0.8037.57",
+  "pass": true
+}
