@@ -2,84 +2,79 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T15:21:05.851278+00:00",
+  "updated_at": "2026-10-26T18:05:28.424763+00:00",
   "latest_event": {
-    "task_id": "V228-LIVE",
+    "task_id": "V230-P0-INPUT",
     "agent": "Codex",
     "severity": "PROGRESS",
-    "branch": "codex/riftwatch-v228-live",
-    "commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-    "build_sha": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-    "summary": "Authorizedv228published and59actualpublicHTTPSscopedassertionsPASS;31hostingfiles/1007Gitresourcecomparisons,D6immutable. Continuedunpublishedresearch/groupclear saved.",
-    "code_changes": [],
+    "branch": "codex/riftwatch-v230-p0-input",
+    "commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+    "build_sha": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+    "summary": "Strategy v2.3 Game First input slice locally verifies A/WASD coexistence, Shift+A Attack-Move, Rally-facing production exits, and same-type Canvas double-click selection. Rift Prototype controlled boon path passes but the reported natural-state crash remains open.",
+    "code_changes": [
+      "Plain A pans the camera; Shift+A arms Attack-Move while G/P remain unchanged",
+      "Trained units use the Rally-facing production exit",
+      "Native Canvas double-click selects visible allied units of the clicked type"
+    ],
     "next_steps": [
-      "ContinuevalidatedSaveLoadnav/throttle/projectile/zoneref serializationtests onindependentbranch beforeclockadoption",
-      "Review/testunpublishedgroupclear,thenfutureCandidateonlyaftergates; noautomaticnewSHA",
-      "Preserveexactpublicab56+D6; no main/#17/OpenCode/Pagesconfigchanges"
+      "Reproduce Rift Prototype during a natural wave-end boon state with full browser evidence",
+      "Implement hero visual distinction and skill range preview as the next independent Game First slice"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "ActualpublicHTTPS59scopedassertions",
+        "name": "Focused input/rally/tactical regression",
         "status": "PASS",
-        "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-        "evidence": "docs/evidence/live-v228/acceptance.json",
-        "evidence_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-        "evidence_blob": "9375ac84e54cd8402b305e22fd8124090c7bb960",
+        "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+        "evidence": "docs/evidence/v230-p0-input/REPORT.md",
+        "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Exactartifact/site/D6integrity",
+        "name": "Real local Chromium player inputs",
         "status": "PASS",
-        "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-        "evidence": "docs/evidence/live-v228/PUBLISH-RECEIPT.json",
-        "evidence_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-        "evidence_blob": "8cf8897da4f516b133de5c9b0a340f364ff2d30c",
+        "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+        "evidence": "docs/evidence/v230-p0-input/browser.json",
+        "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "evidence_blob": "e3d4b8781fe6e81f22a7572c8b5ee8197e204976",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "Natural-state Rift Prototype crash reproduction",
+        "status": "NOT_TESTED",
+        "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+        "evidence": "docs/evidence/v230-p0-input/REPORT.md",
+        "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "SIMULATION_INTEGRITY_BLOCKED",
+        "id": "V230-RIFT-PROTOTYPE-NATURAL",
         "severity": "WARNING",
-        "summary": "Publicbuild stilllowFPSelapsedloss/strictSaveLoadFAIL;researchnotinstalled.",
-        "source_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-        "requires_user_decision": false
-      },
-      {
-        "id": "HARDWARE_TEST_PENDING",
-        "severity": "INFO",
-        "summary": "No physicalMid-EndGPU/fullcampaign/current250combatformalacceptance.",
-        "source_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-        "requires_user_decision": false
-      },
-      {
-        "id": "QUOTA_PERCENT_UNKNOWN",
-        "severity": "INFO",
-        "summary": "Manualcontinuation only;no automaticAgentdispatch/privateCloudstream/Geminiverification.",
-        "source_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+        "summary": "The player-reported crash is not reproduced by controlled real-UI claim/spawn/render paths; natural wave state and exact original conditions are still required.",
+        "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
         "requires_user_decision": false
       }
     ],
-    "response": "Riftwatch v228 \u5df2\u6b63\u5f0f\u767c\u5e03\u70ba PLAYTEST-EXPERIMENTAL\uff1ahttps://good-comic.github.io/PlayGround/builds/ab56a5b824fabc5e123cf33e912d11bd3c625911/ \u3002\u521d\u59cb\u90e8\u7f7292e426327cfcfa6e27b2d400880681edd5256688\uff1b\u7db2\u7ad9HEAD5b30bda085197cfa820a594224e2f6df929bf60d\u3002\u771f\u6b63\u516c\u958bHTTPS Chromium\u517159\u9805\u9650\u5b9a\u5224\u5b9a\u901a\u904e\uff0c31\u500bHosting\u6a94\u6848\uff0f28\u8cc7\u6e90\uff0f1007\u6b21Git\u8cc7\u6e90\u6bd4\u5c0d\uff0cD6\u76ee\u9304\u5b8c\u5168\u4fdd\u7559\u3002\u6b63\u5e38135\u79d2\u89c0\u5bdf3\u6b21\u91cd\u65b0\u7d22\u6575\u53ca\u56db\u8cc7\u6e90\u5378\u8ca840/22/26/11\uff0c\u7121\u61c9\u7528Console/Page/\u8acb\u6c42\u932f\u8aa4\u3002\u4fdd\u6301\u6b77\u53f2\u6027\u80fdFAIL\u3001\u4f4eFPS\u6642\u9593\u6d41\u5931\u3001\u56b4\u683cSaveLoad\u975e\u78ba\u5b9a\u6027\u53caHARDWARE_TEST_PENDING\uff1b\u4e0d\u7b49\u65bc\u6b63\u5f0fIntegration\u6216\u5b8c\u6574QA\u3002\u767c\u5e03\u5f8c\u5df2\u7e7c\u7e8c\u7814\u7a76\u5171\u4eabRNG\u97f3\u6548\u7bc0\u6d41\u53ca\u98db\u884c\u7bad\u77e2\u5b58\u6a94\u7f3a\u5931\uff0c\u53e6\u6709\u53f3\u9375\u6e05\u9664\u7fa4\u7d44\u7684\u672c\u5730\u5df2\u9a57\u8b49\u5207\u7247\uff0c\u5169\u8005\u672a\u6539\u52d5\u516c\u958bBuild\u3002\u6240\u6709\u6210\u679c\u6b63\u5e38Push\u4e26\u66f4\u65b0Recovery/Handoff/Feed\uff0c\u5f8c\u7e8c\u4ecd\u512a\u5148\u8655\u7406SaveLoad\u78ba\u5b9a\u6027\u8207\u6642\u9418\u3002",
+    "response": "Strategy v2.3.0 resumed successfully. The input/Rally/double-click slice is locally verified and remotely checkpointed; Rift Prototype natural-state crash diagnosis remains open. No public deployment or protected branch was changed.",
     "event_type": "TASK_COMPLETED",
-    "occurred_at": "2026-10-26T15:21:05.851278+00:00",
+    "occurred_at": "2026-10-26T18:02:56Z",
     "completed": [
-      "Initialdeploy92e426327cfcfa6e27b2d400880681edd5256688;finalsite5b30bda085197cfa820a594224e2f6df929bf60d",
-      "59nativebrowserassertionsincludingcontrolled8narrow/24crowd/orders/UI/fourlocale/SaveLoad/BugJSON/wavecarry plusnormal135s8P0",
-      "Normalrealplay3retargets,wood40/gold22/food26/stone11unloads,0appConsole/Page/requesterrors",
-      "Exact31artifactHTTPfilesmatch,all28payloadsverified,1007resourcebodiesmatchGit;D6treeidentical/metadata200",
-      "StrictTLSenvironmentresolvedwithisolatedplatformCAstore;startup/harnessfailurespreserved;browser/localserverstopped",
-      "Research03e3a84 andlocalgroupclear80bec7a preservedwithoutchangingpublicab56"
+      "20 focused Node tests pass",
+      "Four locales retain 678 keys",
+      "Seven real local Chromium checks pass with no Console, Page, or request errors",
+      "Branch push and remote HEAD verification completed"
     ],
-    "event_id": "d32e302aba019ebe8986d9c746be3163b8bdc61796a5943f30fe02062b6d12c6",
-    "remote_head": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+    "event_id": "72f8079e10a68f36f786d5030ed23d35ca0b552bbc5c227d9982d0fb6b44ffdc",
+    "remote_head": "45435a323c729a28da1de454a3e53740fc9159f2",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-    "recorded_at": "2026-10-26T15:21:05.851278+00:00",
-    "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
-    "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
+    "latest_pushed_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
+    "recorded_at": "2026-10-26T18:05:28.424763+00:00",
+    "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
     "PLAYTEST-P0": {
@@ -1089,66 +1084,34 @@
       ]
     },
     "V228-LIVE": {
-      "task_id": "V228-LIVE",
       "agent": "Codex",
-      "severity": "PROGRESS",
-      "branch": "codex/riftwatch-v228-live",
-      "commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-      "build_sha": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-      "summary": "Authorizedv228published and59actualpublicHTTPSscopedassertionsPASS;31hostingfiles/1007Gitresourcecomparisons,D6immutable. Continuedunpublishedresearch/groupclear saved.",
-      "code_changes": [],
-      "next_steps": [
-        "ContinuevalidatedSaveLoadnav/throttle/projectile/zoneref serializationtests onindependentbranch beforeclockadoption",
-        "Review/testunpublishedgroupclear,thenfutureCandidateonlyaftergates; noautomaticnewSHA",
-        "Preserveexactpublicab56+D6; no main/#17/OpenCode/Pagesconfigchanges"
-      ],
-      "requires_user_decision": false,
-      "tests": [
-        {
-          "name": "ActualpublicHTTPS59scopedassertions",
-          "status": "PASS",
-          "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-          "evidence": "docs/evidence/live-v228/acceptance.json",
-          "evidence_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-          "evidence_blob": "9375ac84e54cd8402b305e22fd8124090c7bb960",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Exactartifact/site/D6integrity",
-          "status": "PASS",
-          "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-          "evidence": "docs/evidence/live-v228/PUBLISH-RECEIPT.json",
-          "evidence_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-          "evidence_blob": "8cf8897da4f516b133de5c9b0a340f364ff2d30c",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        }
-      ],
       "blockers": [
         {
           "id": "SIMULATION_INTEGRITY_BLOCKED",
+          "requires_user_decision": false,
           "severity": "WARNING",
-          "summary": "Publicbuild stilllowFPSelapsedloss/strictSaveLoadFAIL;researchnotinstalled.",
           "source_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-          "requires_user_decision": false
+          "summary": "Publicbuild stilllowFPSelapsedloss/strictSaveLoadFAIL;researchnotinstalled."
         },
         {
           "id": "HARDWARE_TEST_PENDING",
+          "requires_user_decision": false,
           "severity": "INFO",
-          "summary": "No physicalMid-EndGPU/fullcampaign/current250combatformalacceptance.",
           "source_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-          "requires_user_decision": false
+          "summary": "No physicalMid-EndGPU/fullcampaign/current250combatformalacceptance."
         },
         {
           "id": "QUOTA_PERCENT_UNKNOWN",
+          "requires_user_decision": false,
           "severity": "INFO",
-          "summary": "Manualcontinuation only;no automaticAgentdispatch/privateCloudstream/Geminiverification.",
           "source_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-          "requires_user_decision": false
+          "summary": "Manualcontinuation only;no automaticAgentdispatch/privateCloudstream/Geminiverification."
         }
       ],
-      "response": "Riftwatch v228 \u5df2\u6b63\u5f0f\u767c\u5e03\u70ba PLAYTEST-EXPERIMENTAL\uff1ahttps://good-comic.github.io/PlayGround/builds/ab56a5b824fabc5e123cf33e912d11bd3c625911/ \u3002\u521d\u59cb\u90e8\u7f7292e426327cfcfa6e27b2d400880681edd5256688\uff1b\u7db2\u7ad9HEAD5b30bda085197cfa820a594224e2f6df929bf60d\u3002\u771f\u6b63\u516c\u958bHTTPS Chromium\u517159\u9805\u9650\u5b9a\u5224\u5b9a\u901a\u904e\uff0c31\u500bHosting\u6a94\u6848\uff0f28\u8cc7\u6e90\uff0f1007\u6b21Git\u8cc7\u6e90\u6bd4\u5c0d\uff0cD6\u76ee\u9304\u5b8c\u5168\u4fdd\u7559\u3002\u6b63\u5e38135\u79d2\u89c0\u5bdf3\u6b21\u91cd\u65b0\u7d22\u6575\u53ca\u56db\u8cc7\u6e90\u5378\u8ca840/22/26/11\uff0c\u7121\u61c9\u7528Console/Page/\u8acb\u6c42\u932f\u8aa4\u3002\u4fdd\u6301\u6b77\u53f2\u6027\u80fdFAIL\u3001\u4f4eFPS\u6642\u9593\u6d41\u5931\u3001\u56b4\u683cSaveLoad\u975e\u78ba\u5b9a\u6027\u53caHARDWARE_TEST_PENDING\uff1b\u4e0d\u7b49\u65bc\u6b63\u5f0fIntegration\u6216\u5b8c\u6574QA\u3002\u767c\u5e03\u5f8c\u5df2\u7e7c\u7e8c\u7814\u7a76\u5171\u4eabRNG\u97f3\u6548\u7bc0\u6d41\u53ca\u98db\u884c\u7bad\u77e2\u5b58\u6a94\u7f3a\u5931\uff0c\u53e6\u6709\u53f3\u9375\u6e05\u9664\u7fa4\u7d44\u7684\u672c\u5730\u5df2\u9a57\u8b49\u5207\u7247\uff0c\u5169\u8005\u672a\u6539\u52d5\u516c\u958bBuild\u3002\u6240\u6709\u6210\u679c\u6b63\u5e38Push\u4e26\u66f4\u65b0Recovery/Handoff/Feed\uff0c\u5f8c\u7e8c\u4ecd\u512a\u5148\u8655\u7406SaveLoad\u78ba\u5b9a\u6027\u8207\u6642\u9418\u3002",
-      "event_type": "TASK_COMPLETED",
-      "occurred_at": "2026-10-26T15:21:05.851278+00:00",
+      "branch": "codex/riftwatch-v228-live",
+      "build_sha": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
+      "code_changes": [],
+      "commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
       "completed": [
         "Initialdeploy92e426327cfcfa6e27b2d400880681edd5256688;finalsite5b30bda085197cfa820a594224e2f6df929bf60d",
         "59nativebrowserassertionsincludingcontrolled8narrow/24crowd/orders/UI/fourlocale/SaveLoad/BugJSON/wavecarry plusnormal135s8P0",
@@ -1157,14 +1120,46 @@
         "StrictTLSenvironmentresolvedwithisolatedplatformCAstore;startup/harnessfailurespreserved;browser/localserverstopped",
         "Research03e3a84 andlocalgroupclear80bec7a preservedwithoutchangingpublicab56"
       ],
-      "event_id": "d32e302aba019ebe8986d9c746be3163b8bdc61796a5943f30fe02062b6d12c6",
-      "remote_head": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-      "pushed": true,
-      "remote_query": "VERIFIED",
-      "latest_pushed_sha": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
-      "recorded_at": "2026-10-26T15:21:05.851278+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
-      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
+      "event_id": "d32e302aba019ebe8986d9c746be3163b8bdc61796a5943f30fe02062b6d12c6",
+      "event_type": "TASK_COMPLETED",
+      "latest_pushed_sha": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+      "next_steps": [
+        "ContinuevalidatedSaveLoadnav/throttle/projectile/zoneref serializationtests onindependentbranch beforeclockadoption",
+        "Review/testunpublishedgroupclear,thenfutureCandidateonlyaftergates; noautomaticnewSHA",
+        "Preserveexactpublicab56+D6; no main/#17/OpenCode/Pagesconfigchanges"
+      ],
+      "occurred_at": "2026-10-26T15:21:05.851278+00:00",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION",
+      "pushed": true,
+      "recorded_at": "2026-10-26T15:21:05.851278+00:00",
+      "remote_head": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Riftwatch v228 \u5df2\u6b63\u5f0f\u767c\u5e03\u70ba PLAYTEST-EXPERIMENTAL\uff1ahttps://good-comic.github.io/PlayGround/builds/ab56a5b824fabc5e123cf33e912d11bd3c625911/ \u3002\u521d\u59cb\u90e8\u7f7292e426327cfcfa6e27b2d400880681edd5256688\uff1b\u7db2\u7ad9HEAD5b30bda085197cfa820a594224e2f6df929bf60d\u3002\u771f\u6b63\u516c\u958bHTTPS Chromium\u517159\u9805\u9650\u5b9a\u5224\u5b9a\u901a\u904e\uff0c31\u500bHosting\u6a94\u6848\uff0f28\u8cc7\u6e90\uff0f1007\u6b21Git\u8cc7\u6e90\u6bd4\u5c0d\uff0cD6\u76ee\u9304\u5b8c\u5168\u4fdd\u7559\u3002\u6b63\u5e38135\u79d2\u89c0\u5bdf3\u6b21\u91cd\u65b0\u7d22\u6575\u53ca\u56db\u8cc7\u6e90\u5378\u8ca840/22/26/11\uff0c\u7121\u61c9\u7528Console/Page/\u8acb\u6c42\u932f\u8aa4\u3002\u4fdd\u6301\u6b77\u53f2\u6027\u80fdFAIL\u3001\u4f4eFPS\u6642\u9593\u6d41\u5931\u3001\u56b4\u683cSaveLoad\u975e\u78ba\u5b9a\u6027\u53caHARDWARE_TEST_PENDING\uff1b\u4e0d\u7b49\u65bc\u6b63\u5f0fIntegration\u6216\u5b8c\u6574QA\u3002\u767c\u5e03\u5f8c\u5df2\u7e7c\u7e8c\u7814\u7a76\u5171\u4eabRNG\u97f3\u6548\u7bc0\u6d41\u53ca\u98db\u884c\u7bad\u77e2\u5b58\u6a94\u7f3a\u5931\uff0c\u53e6\u6709\u53f3\u9375\u6e05\u9664\u7fa4\u7d44\u7684\u672c\u5730\u5df2\u9a57\u8b49\u5207\u7247\uff0c\u5169\u8005\u672a\u6539\u52d5\u516c\u958bBuild\u3002\u6240\u6709\u6210\u679c\u6b63\u5e38Push\u4e26\u66f4\u65b0Recovery/Handoff/Feed\uff0c\u5f8c\u7e8c\u4ecd\u512a\u5148\u8655\u7406SaveLoad\u78ba\u5b9a\u6027\u8207\u6642\u9418\u3002",
+      "severity": "PROGRESS",
+      "summary": "Authorizedv228published and59actualpublicHTTPSscopedassertionsPASS;31hostingfiles/1007Gitresourcecomparisons,D6immutable. Continuedunpublishedresearch/groupclear saved.",
+      "task_id": "V228-LIVE",
+      "tests": [
+        {
+          "evidence": "docs/evidence/live-v228/acceptance.json",
+          "evidence_blob": "9375ac84e54cd8402b305e22fd8124090c7bb960",
+          "evidence_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "ActualpublicHTTPS59scopedassertions",
+          "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/live-v228/PUBLISH-RECEIPT.json",
+          "evidence_blob": "8cf8897da4f516b133de5c9b0a340f364ff2d30c",
+          "evidence_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Exactartifact/site/D6integrity",
+          "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
+          "status": "PASS"
+        }
+      ]
     },
     "V228-SAVE-RESEARCH": {
       "agent": "Codex",
@@ -1261,6 +1256,79 @@
           "status": "PASS"
         }
       ]
+    },
+    "V230-P0-INPUT": {
+      "task_id": "V230-P0-INPUT",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v230-p0-input",
+      "commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "build_sha": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+      "summary": "Strategy v2.3 Game First input slice locally verifies A/WASD coexistence, Shift+A Attack-Move, Rally-facing production exits, and same-type Canvas double-click selection. Rift Prototype controlled boon path passes but the reported natural-state crash remains open.",
+      "code_changes": [
+        "Plain A pans the camera; Shift+A arms Attack-Move while G/P remain unchanged",
+        "Trained units use the Rally-facing production exit",
+        "Native Canvas double-click selects visible allied units of the clicked type"
+      ],
+      "next_steps": [
+        "Reproduce Rift Prototype during a natural wave-end boon state with full browser evidence",
+        "Implement hero visual distinction and skill range preview as the next independent Game First slice"
+      ],
+      "requires_user_decision": false,
+      "tests": [
+        {
+          "name": "Focused input/rally/tactical regression",
+          "status": "PASS",
+          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+          "evidence": "docs/evidence/v230-p0-input/REPORT.md",
+          "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Real local Chromium player inputs",
+          "status": "PASS",
+          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+          "evidence": "docs/evidence/v230-p0-input/browser.json",
+          "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence_blob": "e3d4b8781fe6e81f22a7572c8b5ee8197e204976",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Natural-state Rift Prototype crash reproduction",
+          "status": "NOT_TESTED",
+          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+          "evidence": "docs/evidence/v230-p0-input/REPORT.md",
+          "evidence_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence_blob": "e5470269f495e9e5d8c90ad6306961a9956cd719",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        }
+      ],
+      "blockers": [
+        {
+          "id": "V230-RIFT-PROTOTYPE-NATURAL",
+          "severity": "WARNING",
+          "summary": "The player-reported crash is not reproduced by controlled real-UI claim/spawn/render paths; natural wave state and exact original conditions are still required.",
+          "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+          "requires_user_decision": false
+        }
+      ],
+      "response": "Strategy v2.3.0 resumed successfully. The input/Rally/double-click slice is locally verified and remotely checkpointed; Rift Prototype natural-state crash diagnosis remains open. No public deployment or protected branch was changed.",
+      "event_type": "TASK_COMPLETED",
+      "occurred_at": "2026-10-26T18:02:56Z",
+      "completed": [
+        "20 focused Node tests pass",
+        "Four locales retain 678 keys",
+        "Seven real local Chromium checks pass with no Console, Page, or request errors",
+        "Branch push and remote HEAD verification completed"
+      ],
+      "event_id": "72f8079e10a68f36f786d5030ed23d35ca0b552bbc5c227d9982d0fb6b44ffdc",
+      "remote_head": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "pushed": true,
+      "remote_query": "VERIFIED",
+      "latest_pushed_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "recorded_at": "2026-10-26T18:05:28.424763+00:00",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
   "notification_policy": "Only material WARNING/BLOCKED/ACTION_REQUIRED; no external messages are automatically sent",
