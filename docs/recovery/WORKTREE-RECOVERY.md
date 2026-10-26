@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: 906a5ab15f7ae5e8f8211b1fc9af5749eb2137b179755396e1c952031cecc407
-Captured UTC: 2026-10-25T20:41:58.362893+00:00 · Trigger: FINAL_CHECKPOINT
-Collector source: `3779c5d50876cb2e28590b9d250fb355fc0f8e38` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: e2cb5b4e876abfad5928ff0529f48da5425e3c1ba41c56d429ac0b70e45b316d
+Captured UTC: 2026-10-26T03:46:55.401657+00:00 · Trigger: FINAL_CHECKPOINT
+Collector source: `fa520ae3006329bd2b1c54ac90938519465bf320` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -12,7 +12,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch | codex/riftwatch-v222-recovery | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | REMOTE_SAVED | False |
 | /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | c456cae581b3ec85a7dd222d017453d2e589e095 | c456cae581b3ec85a7dd222d017453d2e589e095 | REMOTE_SAVED | False |
 | /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | REMOTE_SAVED | False |
-| /workspace/riftwatch-monitor | codex/riftwatch-v224-monitor | 821f956d6fe1266964b111d2e2c6a19fc836e44e | 821f956d6fe1266964b111d2e2c6a19fc836e44e | REMOTE_SAVED | False |
+| /workspace/riftwatch-monitor | codex/riftwatch-v224-monitor | fa520ae3006329bd2b1c54ac90938519465bf320 | fa520ae3006329bd2b1c54ac90938519465bf320 | REMOTE_SAVED | False |
 | /workspace/riftwatch-playtest | codex/riftwatch-playtest-candidate | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | REMOTE_SAVED | False |
 | /workspace/riftwatch-pop | codex/riftwatch-v22-population | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | REMOTE_SAVED | False |
 | /workspace/riftwatch-prediction | codex/riftwatch-v222-prediction | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | REMOTE_SAVED | False |
@@ -55,17 +55,17 @@ Next: Keep Boss/Population/Target/Civ/Rally game changes isolated until gates
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"path": "docs/evidence/monitor-v224/unit.log.txt", "source_commit": "50aaac118b4175dd50e1d85c814e1f3cb3c68b28", "result": "PASS7 monitor tests; source821f956 docs-only checkpoint; public feed4/4 HTTP reads and dedup verified", "exists": true, "storage": "REMOTE_SAVED", "sha256": "2640b8d3654e930cc274f6bde3c5137e047f837fa1d5d0b443cc6674f83c5924", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
-Blockers: No authorized managed Cloud task event stream confirmed; not a gameplay prerequisite
-Next: Consume pinned public snapshots; use curated event publisher after future slices; Keep LIVE_CODEX_STREAM_VERIFIED and external AI connection claims NOT_TESTED
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-playtest-candidate
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"path": "docs/evidence/playtest-candidate/acceptance.json", "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c", "result": "LOCAL_VERIFIED bounded experimental candidate; Pages approval pending", "exists": true, "storage": "REMOTE_SAVED", "sha256": "f7aa32e6797823b1d48a98ed1ef8803526435c67261a360c04284351c6e9dd67", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
-Blockers: DEPLOYMENT_BLOCKED_AWAITING_USER_APPROVAL; HARDWARE_TEST_PENDING; SIMULATION_INTEGRITY_BLOCKED
-Next: Obtain user approval for APPROVAL-PLAN.json; If approved recheck no existing Pages,deploy only approved artifact toisolated site branch,enablePages then actual remote acceptance; Keep full formal feature gates unchanged; independent performance and B–E work can continue
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-v22-population
 
