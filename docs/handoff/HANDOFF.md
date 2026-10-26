@@ -1,5 +1,5 @@
-# v227 continuation
+# v228 handoff
 
-HANDOFF_FRAMEWORK_READY; actual Gemini handoff NOT_TESTED.
+HANDOFF_FRAMEWORK_READY; actualcrossAgenthandoff/AUTO_RESUME_VERIFIED NOTclaimed.
 
-Read ACTIVE-TASK, current Recovery index and actualrefs first. Candidate game27b279410db1bb9c14b3c1b921b146059a6c6341; later docs-only HEAD carries exact artifact/failed evidence. Independent feature branches retained; noGameplayIntegration/publicupdate. OPEN-NAV-NARROW-01 exactnextcapture inACTIVE-TASK. Old fixed60Hz tests passing does not disprove actualnative7/8FAIL. Owner registry must be revalidated; no blind takeover.
+Read fullStrategyV2.2.8, ACTIVE-TASK, Recoveryindex, actualGitrefs andsource-pinnedreport. Basec25 recoveredwithoutredo; newgameBuildab56a5b824fabc5e123cf33e912d11bd3c625911. Laterdocs/toolsonlyHEADpreservesartifact/evidence; servedpayloadunchanged. Narrowfixedlocally; clockstrictSaveLoadstillFAIL. Candidatepublicationrequiresnewexplicitapproval. QUOTA_PERCENT_UNKNOWN; reset17:39UTC isonechecknotpromise. Claimfreshownershipafterconfirmingpreviouswriterstopped. ExactnextsliceinACTIVE-TASK.
