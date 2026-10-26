@@ -2,62 +2,44 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-26T09:15:09.076349+00:00",
+  "updated_at": "2026-10-26T09:29:21.990681+00:00",
   "latest_event": {
-    "task_id": "V227-ORDERS",
+    "task_id": "V227-WAVE",
     "agent": "Codex",
-    "severity": "WARNING",
-    "branch": "codex/riftwatch-v227-orders",
-    "commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
-    "build_sha": null,
-    "summary": "Native browser exposed real hostile yielding chase stall and Patrol endpoint deadband after coarse Node tests passed; failures retained; subsequent fixes separately validated",
+    "severity": "PROGRESS",
+    "branch": "codex/riftwatch-v227-wave",
+    "commit": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+    "build_sha": "3db640ce017804480be6f6d781176638547b5372",
+    "summary": "Wave original260s unreachable residual reproduced, fixed120s with living ram0kills;83Node andaffectednormal180/browserSaveLoadPASS. D6observedram itself was valid ongoingcombat. Clock15/10virtualHz FAIL remains.",
     "code_changes": [],
     "next_steps": [
-      "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
-      "Prepare isolatedexperimental Candidate onlyafterbasicfeature gates; no D6publication change"
+      "Continue only missing targeted native/clock checks; preserve D6 and all historicalFAIL; no newpublicrelease without exactSHA approval"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Initial native AttackMove cannot finish fight",
-        "status": "FAIL",
-        "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
-        "evidence": "docs/evidence/v227-orders/browser-failure/initial-results.json",
-        "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
-        "evidence_blob": "8c2802be7950cd3542cdeb34581caee28e417550",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "Patrol finalpoint deadband",
-        "status": "FAIL",
-        "source_commit": "a88716a4f3a726c7bc6946b9b07a06d9d5f65426",
-        "evidence": "docs/evidence/v227-orders/browser-failure/patrol-endpoint-results.json",
-        "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
-        "evidence_blob": "514c68f6dfaa6492dff6ec3cb8150d90e70b2aa6",
+        "name": "Scoped local result and retained evidence",
+        "status": "PASS",
+        "source_commit": "3db640ce017804480be6f6d781176638547b5372",
+        "evidence": "docs/evidence/v227-wave/ROOT-CAUSE.md",
+        "evidence_commit": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+        "evidence_blob": "b3f1712785a8a463bbe899bbd171ac126d1f4429",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
-    "blockers": [
-      {
-        "id": "NEW_CANDIDATE_UNDEPLOYED",
-        "severity": "INFO",
-        "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance",
-        "source_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
-        "requires_user_decision": false
-      }
-    ],
-    "response": "These historical FAILs remain recorded. Do not treat coarse simulation tests as equivalent to native60Hz interaction. Repairs and finalnativePASS are separate events.",
-    "event_type": "QA_FAILED",
-    "occurred_at": "2026-10-26T09:15:09.076349+00:00",
+    "blockers": [],
+    "response": "Wave original260s unreachable residual reproduced, fixed120s with living ram0kills;83Node andaffectednormal180/browserSaveLoadPASS. D6observedram itself was valid ongoingcombat. Clock15/10virtualHz FAIL remains.",
+    "event_type": "QA_READY",
+    "occurred_at": "2026-10-26T09:29:21.990681+00:00",
     "completed": [
-      "Preserved failed native actions, state and screenshots; native60Hz failing reproductions added"
+      "Wave original260s unreachable residual reproduced, fixed120s with living ram0kills;83Node andaffectednormal180/browserSaveLoadPASS. D6observedram itself was valid ongoingcombat. Clock15/10virtualHz FAIL remains."
     ],
-    "event_id": "1001e67e689a1230689f744664ac5ad5ad8de6d72803765dd1e5c65aa60d0e32",
-    "remote_head": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+    "event_id": "adcb4699e4d340f8d5e980c6616ee5beeb17cc344ec14e227dfa61f32c4e60bb",
+    "remote_head": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "0239a308838dab06ec9f5e2dda4e413cda48d046",
-    "recorded_at": "2026-10-26T09:15:09.076349+00:00",
+    "latest_pushed_sha": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+    "recorded_at": "2026-10-26T09:29:21.990681+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
     "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
   },
@@ -602,53 +584,44 @@
       ]
     },
     "V227-WAVE": {
-      "agent": "Codex",
-      "blockers": [
-        {
-          "id": "NEW_CANDIDATE_UNDEPLOYED",
-          "requires_user_decision": false,
-          "severity": "INFO",
-          "source_commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
-          "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance"
-        }
-      ],
-      "branch": "codex/riftwatch-v227-wave",
-      "build_sha": null,
-      "code_changes": [],
-      "commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
-      "completed": [
-        "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained"
-      ],
-      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
-      "event_id": "fc6720b8cbbf7c8ac5d20177df46f2742ee4d77f70afc28eac5cecbac76d6a4e",
-      "event_type": "QA_READY",
-      "latest_pushed_sha": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
-      "next_steps": [
-        "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
-        "Prepare isolatedexperimental Candidate onlyafterbasicfeature gates; no D6publication change"
-      ],
-      "occurred_at": "2026-10-26T08:26:46.925280+00:00",
-      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION",
-      "pushed": true,
-      "recorded_at": "2026-10-26T08:26:46.925280+00:00",
-      "remote_head": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
-      "remote_query": "VERIFIED",
-      "requires_user_decision": false,
-      "response": "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained",
-      "severity": "PROGRESS",
-      "summary": "P0:83tests and affected180s normal browser PASS; actualwater-island residual repro failsbaseline260s and fixed settles120s alive/0kills;15/10virtualFPS clockFAIL retained",
       "task_id": "V227-WAVE",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v227-wave",
+      "commit": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+      "build_sha": "3db640ce017804480be6f6d781176638547b5372",
+      "summary": "Wave original260s unreachable residual reproduced, fixed120s with living ram0kills;83Node andaffectednormal180/browserSaveLoadPASS. D6observedram itself was valid ongoingcombat. Clock15/10virtualHz FAIL remains.",
+      "code_changes": [],
+      "next_steps": [
+        "Continue only missing targeted native/clock checks; preserve D6 and all historicalFAIL; no newpublicrelease without exactSHA approval"
+      ],
+      "requires_user_decision": false,
       "tests": [
         {
-          "evidence": "docs/evidence/v227-wave/sealed-after.json",
-          "evidence_blob": "1f236f7906a6f146e368b8905250d13cda347899",
-          "evidence_commit": "4e4552a387897f61cc1920d3995ad2721a7fc20e",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "Source-pinned focused evidence",
+          "name": "Scoped local result and retained evidence",
+          "status": "PASS",
           "source_commit": "3db640ce017804480be6f6d781176638547b5372",
-          "status": "PASS"
+          "evidence": "docs/evidence/v227-wave/ROOT-CAUSE.md",
+          "evidence_commit": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+          "evidence_blob": "b3f1712785a8a463bbe899bbd171ac126d1f4429",
+          "evidence_status": "GIT_BLOB_VERIFIED"
         }
-      ]
+      ],
+      "blockers": [],
+      "response": "Wave original260s unreachable residual reproduced, fixed120s with living ram0kills;83Node andaffectednormal180/browserSaveLoadPASS. D6observedram itself was valid ongoingcombat. Clock15/10virtualHz FAIL remains.",
+      "event_type": "QA_READY",
+      "occurred_at": "2026-10-26T09:29:21.990681+00:00",
+      "completed": [
+        "Wave original260s unreachable residual reproduced, fixed120s with living ram0kills;83Node andaffectednormal180/browserSaveLoadPASS. D6observedram itself was valid ongoingcombat. Clock15/10virtualHz FAIL remains."
+      ],
+      "event_id": "adcb4699e4d340f8d5e980c6616ee5beeb17cc344ec14e227dfa61f32c4e60bb",
+      "remote_head": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+      "pushed": true,
+      "remote_query": "VERIFIED",
+      "latest_pushed_sha": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+      "recorded_at": "2026-10-26T09:29:21.990681+00:00",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
     },
     "V227-UI": {
       "agent": "Codex",
@@ -700,62 +673,62 @@
       ]
     },
     "V227-ORDERS": {
-      "task_id": "V227-ORDERS",
       "agent": "Codex",
-      "severity": "WARNING",
+      "blockers": [
+        {
+          "id": "NEW_CANDIDATE_UNDEPLOYED",
+          "requires_user_decision": false,
+          "severity": "INFO",
+          "source_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+          "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance"
+        }
+      ],
       "branch": "codex/riftwatch-v227-orders",
-      "commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
       "build_sha": null,
-      "summary": "Native browser exposed real hostile yielding chase stall and Patrol endpoint deadband after coarse Node tests passed; failures retained; subsequent fixes separately validated",
       "code_changes": [],
+      "commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+      "completed": [
+        "Preserved failed native actions, state and screenshots; native60Hz failing reproductions added"
+      ],
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "1001e67e689a1230689f744664ac5ad5ad8de6d72803765dd1e5c65aa60d0e32",
+      "event_type": "QA_FAILED",
+      "latest_pushed_sha": "0239a308838dab06ec9f5e2dda4e413cda48d046",
       "next_steps": [
         "Complete affected nativebrowser/SaveLoad/layout andboundedperformance evidence",
         "Prepare isolatedexperimental Candidate onlyafterbasicfeature gates; no D6publication change"
       ],
+      "occurred_at": "2026-10-26T09:15:09.076349+00:00",
+      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION",
+      "pushed": true,
+      "recorded_at": "2026-10-26T09:15:09.076349+00:00",
+      "remote_head": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+      "remote_query": "VERIFIED",
       "requires_user_decision": false,
+      "response": "These historical FAILs remain recorded. Do not treat coarse simulation tests as equivalent to native60Hz interaction. Repairs and finalnativePASS are separate events.",
+      "severity": "WARNING",
+      "summary": "Native browser exposed real hostile yielding chase stall and Patrol endpoint deadband after coarse Node tests passed; failures retained; subsequent fixes separately validated",
+      "task_id": "V227-ORDERS",
       "tests": [
         {
-          "name": "Initial native AttackMove cannot finish fight",
-          "status": "FAIL",
-          "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
           "evidence": "docs/evidence/v227-orders/browser-failure/initial-results.json",
-          "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
           "evidence_blob": "8c2802be7950cd3542cdeb34581caee28e417550",
-          "evidence_status": "GIT_BLOB_VERIFIED"
+          "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Initial native AttackMove cannot finish fight",
+          "source_commit": "d460928707ea527a7cd58c45622fa1e9caff923a",
+          "status": "FAIL"
         },
         {
-          "name": "Patrol finalpoint deadband",
-          "status": "FAIL",
-          "source_commit": "a88716a4f3a726c7bc6946b9b07a06d9d5f65426",
           "evidence": "docs/evidence/v227-orders/browser-failure/patrol-endpoint-results.json",
-          "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
           "evidence_blob": "514c68f6dfaa6492dff6ec3cb8150d90e70b2aa6",
-          "evidence_status": "GIT_BLOB_VERIFIED"
+          "evidence_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Patrol finalpoint deadband",
+          "source_commit": "a88716a4f3a726c7bc6946b9b07a06d9d5f65426",
+          "status": "FAIL"
         }
-      ],
-      "blockers": [
-        {
-          "id": "NEW_CANDIDATE_UNDEPLOYED",
-          "severity": "INFO",
-          "summary": "No newfullSHA hosting authorization used; D6unchanged; localtests not onlineacceptance",
-          "source_commit": "0239a308838dab06ec9f5e2dda4e413cda48d046",
-          "requires_user_decision": false
-        }
-      ],
-      "response": "These historical FAILs remain recorded. Do not treat coarse simulation tests as equivalent to native60Hz interaction. Repairs and finalnativePASS are separate events.",
-      "event_type": "QA_FAILED",
-      "occurred_at": "2026-10-26T09:15:09.076349+00:00",
-      "completed": [
-        "Preserved failed native actions, state and screenshots; native60Hz failing reproductions added"
-      ],
-      "event_id": "1001e67e689a1230689f744664ac5ad5ad8de6d72803765dd1e5c65aa60d0e32",
-      "remote_head": "0239a308838dab06ec9f5e2dda4e413cda48d046",
-      "pushed": true,
-      "remote_query": "VERIFIED",
-      "latest_pushed_sha": "0239a308838dab06ec9f5e2dda4e413cda48d046",
-      "recorded_at": "2026-10-26T09:15:09.076349+00:00",
-      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
-      "occurrence_basis": "AGENT_RECORDING_TIME_NOT_EXTERNAL_EXECUTION_DETECTION"
+      ]
     }
   },
   "notification_policy": "Only material WARNING/BLOCKED/ACTION_REQUIRED; no external messages are automatically sent",

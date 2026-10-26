@@ -1,1 +1,1 @@
-These historical FAILs remain recorded. Do not treat coarse simulation tests as equivalent to native60Hz interaction. Repairs and finalnativePASS are separate events.
+Wave original260s unreachable residual reproduced, fixed120s with living ram0kills;83Node andaffectednormal180/browserSaveLoadPASS. D6observedram itself was valid ongoingcombat. Clock15/10virtualHz FAIL remains.
