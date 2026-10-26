@@ -1665,7 +1665,9 @@ export class Game {
       nav.retryAt=this.time+(path.status==='ready'?0:2);
     }
     if (nav.status !== 'ready') return nav.status;
-    while(nav.points.length && dist(u.x,u.y,nav.points[0].x,nav.points[0].y)<.07) nav.points.shift();
+    // Do not discard a ranged final endpoint while still outside the true interaction radius.
+    // At60Hz a small step may stop within.07 of that endpoint but still outside range forever.
+    while(nav.points.length && dist(u.x,u.y,nav.points[0].x,nav.points[0].y)<.07 && (nav.points.length>1 || !range)) nav.points.shift();
     if (!nav.points.length) {
       if (entity && this.distanceTo(u,entity)>range || !entity && range && dist(u.x,u.y,tx,ty)>range+.01) {nav.status='pending';nav.retryAt=this.time;return 'pending';}
       return 'arrived';
@@ -1673,6 +1675,7 @@ export class Game {
     // Skip only fully collision-checked segments, never snap a unit to a waypoint.
     while(nav.points.length>1 && segmentClear(walkable,u,nav.points[1])) nav.points.shift();
     const p=nav.points[0], d=dist(u.x,u.y,p.x,p.y), step=Math.min(d,this.unitSpeed(u)*dt);
+    if(d<1e-9){nav.points=[];nav.status='pending';nav.retryAt=this.time;return 'pending';}
     const desired={x:u.x+(p.x-u.x)/d*step,y:u.y+(p.y-u.y)/d*step};
     u._heading={x:(p.x-u.x)/d,y:(p.y-u.y)/d};
     const next=this.crowd ? this.crowd.steer(u,desired,(a,b)=>segmentClear(walkable,a,b),this.time) : desired;
