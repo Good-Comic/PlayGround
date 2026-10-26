@@ -39,3 +39,9 @@ Serial100-militia MOVE-only trend, threefresh independent Chromium154.0.8037.57 
 Final sourceaf5944ae9480c6458a899b6f4e335fa842219df9,28payload files, exact ZIP and SHA256 in ../../playtest/v227/APPROVAL-PLAN.json. New source is not deployed. Preserve /builds/d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c/ and old root until precise new-SHA approval. Proposed new path /builds/af5944ae9480c6458a899b6f4e335fa842219df9/, change root pointer only, normal FF site push, no Pages settings/main/#17/OpenCode changes; rollback by normal root-pointer commit. Public scoped validation must happen after authorized deployment. Previous D6 limitedLIVEPASS is not CandidateLIVEPASS.
 
 Next: inspect final native gates; obtain exact new-SHA publication approval; execute focused public resource/native regression after deploy; continue clock-integrity/boon absolute-time investigation on independent branch, then formation/hotkey usability and PhaseC–E slices. Gameplay Integration not changed, no external Supervisor ACCEPTED or real Gemini handoff claimed.
+
+## Final immutable delivery identity
+
+**Build27b279410db1bb9c14b3c1b921b146059a6c6341** includes the explicit OPEN-NAV-NARROW-01 warning in served KNOWN-ISSUES. All served JS/CSS/index/assets are byte-identical to validatedaf594; only KNOWN-ISSUES text and generatedHTML differ. Final27b native UI15PASS plus159/159resources; freshfinal BugJSON download and SaveLoad recorded. af594 nativeorders13PASS/HAR106matches,wave7PASS/HAR106matches, normalSaveLoad/fourstance/24crowdPASS,8narrowFAIL. No gameplay code changed after these checks.
+
+FinalZIP/hash and28payload hashes: docs/playtest/v227/. This remains a partial-QA experimental candidate. Recommend resolving native narrowqueue before broader rollout; any proposal to publish with this known defect requires explicit precise new-SHA approval. No authorized remotehosting operation was performed this round.

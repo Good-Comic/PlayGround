@@ -1,22 +1,5 @@
-# Agent Handoff
+# v227 continuation
 
-HANDOFF_FRAMEWORK_READY · CROSS_AGENT_HANDOFF_VERIFIED is not claimed.
+HANDOFF_FRAMEWORK_READY; actual Gemini handoff NOT_TESTED.
 
-Read AGENTS.md, docs/handoff/SHARED-RULES.md, Strategy v2.2.1/v2.2.2, the recovery manifest and handoff-package.json first. Verify actual GitHub refs and evidence hashes. Confirm ownership in the shared ownership branch before writing; an expired lease is not permission. If the previous owner cannot be confirmed stopped, use an independent continuation branch/task. Do not redo completed valid tests, overwrite dirty files, alter main/checkpoints, launch workflows or publish. Resume the smallest uncompleted slice from active_task.next_steps. Local, online, prototype and hardware evidence remain distinct. Save an ordinary commit/push and refresh recovery after each slice. No credentials are provided by this package.
-
-## Pending preservation
-
-[
-  {
-    "branch": "work",
-    "dirty": false,
-    "remote_status": "REMOTE_BRANCH_ABSENT",
-    "unpushed": []
-  },
-  {
-    "branch": "codex/riftwatch-v222-recovery",
-    "dirty": true,
-    "remote_status": "REMOTE_SAVED",
-    "unpushed": []
-  }
-]
+Read ACTIVE-TASK, current Recovery index and actualrefs first. Candidate game27b279410db1bb9c14b3c1b921b146059a6c6341; later docs-only HEAD carries exact artifact/failed evidence. Independent feature branches retained; noGameplayIntegration/publicupdate. OPEN-NAV-NARROW-01 exactnextcapture inACTIVE-TASK. Old fixed60Hz tests passing does not disprove actualnative7/8FAIL. Owner registry must be revalidated; no blind takeover.

@@ -1,6 +1,6 @@
 ## Strategy v2.2.7 — current scoped update
 
-Independent candidate `codex/riftwatch-playtest-v227`, game SHA `af5944ae9480c6458a899b6f4e335fa842219df9`. Wave softlock-risk reproduction/fix, Attack-Move/unit Guard/two-point Patrol/control groups and UI text scale implemented with scoped local evidence. See [v227 report](evidence/v227-candidate/REPORT.md) and [exact new-SHA deployment proposal](playtest/v227/APPROVAL-PLAN.json). Public D6 and Gameplay Integration remain unchanged; no new online QA claim. Historical FAIL, low-FPS clock error and HARDWARE_TEST_PENDING remain. New formation editor, complete campaign and full current-scale combat acceptance pending. Start Game fixed English is GDD BY_DESIGN.
+Independent candidate `codex/riftwatch-playtest-v227`, game SHA `27b279410db1bb9c14b3c1b921b146059a6c6341`. Wave softlock-risk reproduction/fix, Attack-Move/unit Guard/two-point Patrol/control groups and UI text scale implemented with scoped local evidence. See [v227 report](evidence/v227-candidate/REPORT.md) and [exact new-SHA deployment proposal](playtest/v227/APPROVAL-PLAN.json). OPEN-NAV-NARROW-01 remains FAIL (7/8destination despite8cross); public D6 and Gameplay Integration remain unchanged; no new online QA claim. Historical FAIL, low-FPS clock error and HARDWARE_TEST_PENDING remain. New formation editor, complete campaign and full current-scale combat acceptance pending. Start Game fixed English is GDD BY_DESIGN.
 
 ## Strategy v2.2.2 recovery status — current override
 

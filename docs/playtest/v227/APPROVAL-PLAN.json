@@ -1,0 +1,38 @@
+{
+  "status": "DEPLOYMENT_BLOCKED_NEW_SHA_APPROVAL_REQUIRED",
+  "build_id": "riftwatch-playtest-v227",
+  "build_sha": "27b279410db1bb9c14b3c1b921b146059a6c6341",
+  "source_branch": "codex/riftwatch-playtest-v227",
+  "payload_files": 28,
+  "artifact": "docs/playtest/v227/Riftwatch-v227.zip",
+  "artifact_sha256": "caee149212189570c5ef1dc138fd721f1790047152c8bf80458db8037005006f",
+  "pages_ref_before": "6c98a8e6b7f7759ca57a9c9f94f675e2b6070381",
+  "site_branch": "codex/riftwatch-playtest-site",
+  "new_path": "/builds/27b279410db1bb9c14b3c1b921b146059a6c6341/",
+  "preserve_path": "/builds/d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c/",
+  "proposed_changes": [
+    "Add new full-SHA directory using exact saved artifact",
+    "Change root index.html link and CURRENT.json only to new SHA; no Pages configuration change",
+    "Normal fast-forward push of existing site branch after explicit new-SHA approval; recheck HEAD and ownership first",
+    "Run focused public HTTPS payload/native SaveLoad/tactical/wave verification; never carry LOCAL PASS into online result"
+  ],
+  "excluded": [
+    "main",
+    "Issue17",
+    "OpenCode work",
+    "existing D6 files",
+    "force push",
+    "DNS/paid hosting"
+  ],
+  "rollback": "Normal new commit restoring root index.html and CURRENT.json to D6; retain both full-SHA folders",
+  "save_compatibility": "v227 namespaced run/settings keys; D6 untouched, no automatic save import. Older snapshot optional fields remain engine-compatible; no user storage modified in testing",
+  "user_approval_reason": "Strategy v226 P0-A authorized only d6ee34a; v227 says obtain approval if new build exceeds that range",
+  "published": false,
+  "known_issues": "KNOWN-ISSUES.md",
+  "checked_at": "2026-10-26T09:21:29.507385+00:00",
+  "known_failures": [
+    "OPEN-NAV-NARROW-01:8cross but7/8destination85s; no confirmedrootcause",
+    "Simulationtime loss atlowFPS; historicalperformanceFAIL",
+    "HARDWARE_TEST_PENDING"
+  ]
+}

@@ -1,21 +1,31 @@
+This is an immutable PRE-DOC-COMMIT snapshot. Final post-push clean refs are in the dedicated codex/riftwatch-recovery-index; never interpret pending snapshot files as an unsaved application patch after publication.
+
 # Worktree Recovery Manifest
 
-Snapshot ID: 88f963cb2105df6e84a1b54c424028c3c53bc83836dd902fe833f390a07c0afa
-Captured UTC: 2026-10-25T18:52:52.923888+00:00 · Trigger: POST_PUSH
-Collector source: `763ba6c1c4b285f9523a7ef342b57024be6e7326` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: 7ef55109327f4397ede8bb2b3727d368e726ba9a294648d07504182c8109ce1f
+Captured UTC: 2026-10-26T09:32:07.923376+00:00 · Trigger: SLICE_COMPLETE
+Collector source: `27b279410db1bb9c14b3c1b921b146059a6c6341` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
 | Worktree | Branch | HEAD | Remote HEAD | Status | Dirty |
 |---|---|---|---|---|---|
 | /workspace/PlayGround | work | 8ef7358d61980eada812ae16b8e12c2f1e28baa8 | None | REMOTE_BRANCH_ABSENT | False |
-| /workspace/riftwatch | codex/riftwatch-v222-recovery | 763ba6c1c4b285f9523a7ef342b57024be6e7326 | 763ba6c1c4b285f9523a7ef342b57024be6e7326 | REMOTE_SAVED | True |
+| /workspace/riftwatch | codex/riftwatch-v222-recovery | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | REMOTE_SAVED | False |
 | /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | c456cae581b3ec85a7dd222d017453d2e589e095 | c456cae581b3ec85a7dd222d017453d2e589e095 | REMOTE_SAVED | False |
-| /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 72e978417afd3c95f897cc7cb35395f00008c313 | 72e978417afd3c95f897cc7cb35395f00008c313 | REMOTE_SAVED | False |
+| /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | REMOTE_SAVED | False |
+| /workspace/riftwatch-live | codex/riftwatch-v226-live-acceptance | 1a5a67c5373bdd5ede925484776339f95ded78a0 | 1a5a67c5373bdd5ede925484776339f95ded78a0 | REMOTE_SAVED | False |
+| /workspace/riftwatch-monitor | codex/riftwatch-v224-monitor | fa520ae3006329bd2b1c54ac90938519465bf320 | fa520ae3006329bd2b1c54ac90938519465bf320 | REMOTE_SAVED | False |
+| /workspace/riftwatch-orders | codex/riftwatch-v227-orders | 0f2d3f6213559380156ae2af8c84ed44d0c9cca2 | 0f2d3f6213559380156ae2af8c84ed44d0c9cca2 | REMOTE_SAVED | False |
+| /workspace/riftwatch-playtest | codex/riftwatch-playtest-candidate | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | 3779c5d50876cb2e28590b9d250fb355fc0f8e38 | REMOTE_SAVED | False |
 | /workspace/riftwatch-pop | codex/riftwatch-v22-population | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | 0094fabc6507b41253b8869e2dacf8b0e56e3263 | REMOTE_SAVED | False |
-| /workspace/riftwatch-prediction | codex/riftwatch-v222-prediction | 0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc | 0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc | REMOTE_SAVED | False |
+| /workspace/riftwatch-prediction | codex/riftwatch-v222-prediction | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | b72f9603bf2d8fd865da5cf9dccc32be1dd90830 | REMOTE_SAVED | False |
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
+| /workspace/riftwatch-ui | codex/riftwatch-v227-ui | 6ad09704c184ee772bf88d92949e8889fca086ce | 6ad09704c184ee772bf88d92949e8889fca086ce | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
+| /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
+| /workspace/riftwatch-v227 | codex/riftwatch-playtest-v227 | 27b279410db1bb9c14b3c1b921b146059a6c6341 | 27b279410db1bb9c14b3c1b921b146059a6c6341 | REMOTE_SAVED | True |
+| /workspace/riftwatch-wave | codex/riftwatch-v227-wave | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | REMOTE_SAVED | False |
 
 ## work
 
@@ -28,7 +38,7 @@ Next: Inspect task registry and relevant diff before writing
 ## codex/riftwatch-v222-recovery
 
 Unpushed commits: []
-Uncommitted paths: [{"status": " M", "path": "docs/STRATEGY-V2.2-EXECUTION.md"}, {"status": " M", "path": "docs/handoff/ACTIVE-TASK.json"}, {"status": " M", "path": "docs/handoff/NEXT-TASKS.json"}, {"status": " M", "path": "docs/recovery/WORKTREE-RECOVERY.md"}, {"status": " M", "path": "docs/recovery/task-registry.json"}, {"status": " M", "path": "docs/recovery/worktree-recovery.json"}, {"status": "??", "path": "docs/evidence/strategy-v222/integration-smoke-resources.json"}, {"status": "??", "path": "docs/recovery/post-merge-72e9784.json"}, {"status": "??", "path": "docs/recovery/pre-merge-763ba6c.json"}]
+Uncommitted paths: []
 Validation: [{"path": "/workspace/diagnostics/riftwatch/v22-quality-baseline/results.json", "source_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8", "result": "REFER_TO_EVIDENCE; no automatic PASS inferred", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "b3bf19051816248b1dccd9bbd38e7bfe2221c6eb1f8e70d4092c4f816974d41d", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Feature-specific remaining gates; see handoff
 Next: Publish framework; preserve other worktrees; do not rerun valid12 baseline cases
@@ -37,7 +47,7 @@ Next: Publish framework; preserve other worktrees; do not rerun valid12 baseline
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"path": "docs/evidence/strategy-v222/civ-results.json", "source_commit": "da0823c6341b1ee85e32d1b6c0f776ef3008255c", "result": "PASS8 browser,47 full Node,4locales; prior description FAIL fixed", "exists": true, "storage": "REMOTE_SAVED", "sha256": "ed43181fc96ec3f6463dfff37203727a307e9c5eba443a51dd92e361e99f3908", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Validation: [{"path": "docs/evidence/strategy-v222/civ-results.json", "source_commit": "da0823c6341b1ee85e32d1b6c0f776ef3008255c", "result": "PASS8 browser,47 full Node,4locales; prior description FAIL fixed", "exists": true, "storage": "REMOTE_SAVED", "sha256": "ed43181fc96ec3f6463dfff37203727a307e9c5eba443a51dd92e361e99f3908", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"path": "docs/evidence/strategy-v222/civ-p0-summary.json", "source_commit": "2ad2fe4a6466c6c38a033d1194f004924dbfda37", "result": "PASS normal P0; performance/combined B1/B2 still pending", "exists": true, "storage": "REMOTE_SAVED", "sha256": "d5d392bea72713c02c184baca4f00558da547abe0ed016e6b74caa9c50a0f5e2", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Feature-specific remaining gates; see handoff
 Next: Persist normal P0 evidence; performance/combined B1/B2 gates pending
 
@@ -49,11 +59,43 @@ Validation: [{"path": "/workspace/diagnostics/riftwatch/v222-tooling-smoke/resul
 Blockers: Gameplay feature gates not yet complete
 Next: Keep Boss/Population/Target/Civ/Rally game changes isolated until gates
 
+## codex/riftwatch-v226-live-acceptance
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
+
+## codex/riftwatch-v224-monitor
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
+
+## codex/riftwatch-v227-orders
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"source_commit": "000f4fa308a7c7cbbe3e4d49e13f3215aa86522c", "path": "docs/evidence/v227-orders/REVIEW.md", "result": "85Node/12nativePASS; combinednarrowFAIL separately", "exists": true, "storage": "REMOTE_SAVED", "sha256": "a3d95a93853f510aca4ea213aba9b4d37f62627d7b6841850ec420e16ab10627", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: NewfullSHA deployment not authorized; D6only priorrelease scope; Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay; HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending
+Next: Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets; Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch; Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result
+
+## codex/riftwatch-playtest-candidate
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"path": "docs/evidence/playtest-candidate/acceptance.json", "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c", "result": "LOCAL_VERIFIED bounded experimental candidate; Pages approval pending", "exists": true, "storage": "REMOTE_SAVED", "sha256": "f7aa32e6797823b1d48a98ed1ef8803526435c67261a360c04284351c6e9dd67", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: DEPLOYMENT_BLOCKED_AWAITING_USER_APPROVAL; HARDWARE_TEST_PENDING; SIMULATION_INTEGRITY_BLOCKED
+Next: Obtain user approval for APPROVAL-PLAN.json; If approved recheck no existing Pages,deploy only approved artifact toisolated site branch,enablePages then actual remote acceptance; Keep full formal feature gates unchanged; independent performance and B–E work can continue
+
 ## codex/riftwatch-v22-population
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"path": "docs/evidence/strategy-v222/pop-results.json", "source_commit": "86d7e81394eaab7a2aa579bd30dbbbc278224c3c", "result": "PASS7 browser,50 full Node,4locales", "exists": true, "storage": "REMOTE_SAVED", "sha256": "10ff353b42f23f07713bcfcdae147e0d44b0a04ccfd14ffb42e7d6b7998f6161", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Validation: [{"path": "docs/evidence/strategy-v222/pop-results.json", "source_commit": "86d7e81394eaab7a2aa579bd30dbbbc278224c3c", "result": "PASS7 browser,50 full Node,4locales", "exists": true, "storage": "REMOTE_SAVED", "sha256": "10ff353b42f23f07713bcfcdae147e0d44b0a04ccfd14ffb42e7d6b7998f6161", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"path": "docs/evidence/strategy-v222/pop-p0-summary.json", "source_commit": "8d0902877564872ee5382155ebf38474c125c950", "result": "PASS normal P0; performance/spec ceilings still pending", "exists": true, "storage": "REMOTE_SAVED", "sha256": "674edd4b6b044f1d425c213947d73424ae9db612c467fdcec334a5389b7a7403", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: Feature-specific remaining gates; see handoff
 Next: P0/bounded browser pass; performance and spec ceilings still need gating
 
@@ -73,10 +115,42 @@ Validation: [{"path": "docs/evidence/strategy-v2/acceptance.json", "source_commi
 Blockers: Feature-specific remaining gates; see handoff
 Next: Latest source2f148c3 needs full three-repeat performance
 
+## codex/riftwatch-v227-ui
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"source_commit": "e2db117906a1377a7808f1ef2d7ca88c9908b310", "path": "docs/evidence/v227-ui/browser-results.json", "result": "Scoped14nativePASS; StartEnglish BY_DESIGN", "exists": true, "storage": "REMOTE_SAVED", "sha256": "b1b22f0afb7bc0582ae5a1d4dc0a33bfbb4f87c22635d8f7279bb63c770992e5", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: NewfullSHA deployment not authorized; D6only priorrelease scope; Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay; HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending
+Next: Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets; Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch; Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result
+
 ## codex/riftwatch-v22-target-state
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"path": "/workspace/diagnostics/riftwatch/v222-target-browser-r1/results.json", "source_commit": "77c20609da28b38fa405531a0215a8261dc6b1ef", "result": "PASS5 bounded real browser; full51 Node tests also pass; P0 run in progress", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "4012770c17e3bf0b5b4a2769b726f2e45dd12683d0066fca1e68fc6c68d14e05", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
-Blockers: Feature-specific remaining gates; see handoff
-Next: Finish performance batch source294fa287; never overwrite initial FAILs
+Validation: [{"path": "docs/evidence/strategy-v222/target-p0-summary.json", "source_commit": "77c20609da28b38fa405531a0215a8261dc6b1ef", "result": "PASS full normal P0 and51Node/fourlocales/5native browser checks", "exists": true, "storage": "REMOTE_SAVED", "sha256": "a74ca0c7c7c6c650b110ae41dfc2dce5bea5e8c4843e94ec689172d36fe9f851", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"path": "docs/evidence/strategy-v222/target-performance-summary.json", "source_commit": "294fa287aed37af7820e682d175577a89867380f", "result": "9/12qualityPASS;12/12stuck+movementPASS;3FAIL retained; integration BLOCKED", "exists": true, "storage": "REMOTE_SAVED", "sha256": "b07b652f31cbea97ef32217b7b166b4e4c60b51e766ef0e22f1a737c47253ae3", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: New100r1 severe rAF stall;250r1/r3 clock-progress loss; no retry/waiver
+Next: Diagnose stalls/time loss in separate diagnostic cohort, no repeated acceptance retry; Then gate feature merge; do not label all collisions fixed
+
+## codex/riftwatch-v226-delivery
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
+
+## codex/riftwatch-playtest-v227
+
+Unpushed commits: []
+Uncommitted paths: [{"status": " M", "path": "docs/GAMEPLAY-ACCEPTANCE.md"}, {"status": " M", "path": "docs/GAMEPLAY-PROGRESS.md"}, {"status": " M", "path": "docs/GAMEPLAY-REQUIREMENTS.md"}, {"status": " M", "path": "docs/GAMEPLAY-ROADMAP.md"}, {"status": " M", "path": "docs/PERFORMANCE-RECOVERY.md"}, {"status": " M", "path": "docs/evidence/v227-candidate/REPORT.md"}, {"status": " M", "path": "docs/handoff/ACTIVE-TASK.json"}, {"status": " M", "path": "docs/handoff/HANDOFF.md"}, {"status": " M", "path": "docs/handoff/NEXT-TASKS.json"}, {"status": " M", "path": "docs/recovery/task-registry.json"}, {"status": "??", "path": "docs/evidence/v227-candidate/final-build-1280-zh-Hant-130.png"}, {"status": "??", "path": "docs/evidence/v227-candidate/final-build-scaled-game.png"}, {"status": "??", "path": "docs/evidence/v227-candidate/orders-fixed-network.har.gz"}, {"status": "??", "path": "docs/evidence/v227-candidate/orders-fixed-resource-audit.json"}, {"status": "??", "path": "docs/evidence/v227-candidate/ui-final-sha-network.har.gz"}, {"status": "??", "path": "docs/evidence/v227-candidate/ui-final-sha-resource-audit.json"}, {"status": "??", "path": "docs/evidence/v227-candidate/ui-final-sha-results.json"}, {"status": "??", "path": "docs/evidence/v227-candidate/wave-fixed-network.har.gz"}, {"status": "??", "path": "docs/evidence/v227-candidate/wave-fixed-resource-audit.json"}, {"status": "??", "path": "docs/playtest/v227/APPROVAL-PLAN.json"}, {"status": "??", "path": "docs/playtest/v227/Riftwatch-v227.zip"}, {"status": "??", "path": "docs/playtest/v227/build-metadata.json"}, {"status": "??", "path": "docs/playtest/v227/pages-readonly.json"}]
+Validation: [{"source_commit": "27b279410db1bb9c14b3c1b921b146059a6c6341", "path": "docs/evidence/v227-candidate/REPORT.md", "result": "LOCAL partialPASS; narrowFAIL; not deployed", "exists": true, "storage": "LOCAL_ONLY_OR_MISSING", "sha256": "4461787c6664e040df5d00fc67cd4049b4df3f3312ccf5d994ebf5e2f8988e7c", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: NewfullSHA deployment not authorized; D6only priorrelease scope; Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay; HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending
+Next: Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets; Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch; Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result
+
+## codex/riftwatch-v227-wave
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: [{"source_commit": "3db640ce017804480be6f6d781176638547b5372", "path": "docs/evidence/v227-wave/ROOT-CAUSE.md", "result": "83Node/nativeSaveLoad/normalP0 PASS; clockFAIL", "exists": true, "storage": "REMOTE_SAVED", "sha256": "eb1d30af71c0359331cd3eda7da33f2d36580941c86a9ad899d6053695f20932", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: NewfullSHA deployment not authorized; D6only priorrelease scope; Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay; HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending
+Next: Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets; Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch; Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result
