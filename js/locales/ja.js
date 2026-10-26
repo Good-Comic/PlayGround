@@ -1,7 +1,7 @@
 export const ui = {
   'group.label': "グループ",
   'group.slot': "グループ {slot}：{count}体",
-  'group.hint': "クリックで選択、Ctrl+クリックで登録、Shiftで追加。",
+  'group.hint': "クリックで選択、Ctrl+クリックで登録、Shiftで追加、右クリックで登録解除。",
   'settings.groups': "グループ操作ボタン",
   'settings.groupsDesc': "操作ボタンを表示します。非表示でもショートカットは使えます。",
   'settings.uiScale': 'UI文字サイズ',

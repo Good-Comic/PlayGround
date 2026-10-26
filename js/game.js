@@ -3252,6 +3252,13 @@ export class Game {
     return true;
   }
 
+  clearControlGroup(slot) {
+    if(!/^[1-9]$/.test(String(slot)))return false;
+    this.controlGroups ||= {};
+    delete this.controlGroups[String(slot)];
+    return true;
+  }
+
   controlGroup(slot,store=false,add=false) {
     if(!/^[1-9]$/.test(String(slot)))return;
     this.controlGroups ||= {};

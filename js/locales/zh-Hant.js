@@ -1,7 +1,7 @@
 export const ui = {
   'group.label': "群組",
   'group.slot': "群組 {slot}：{count} 個單位",
-  'group.hint': "點擊選取；Ctrl+點擊儲存；Shift 追加。",
+  'group.hint': "點擊選取；Ctrl+點擊儲存；Shift 追加；右鍵清除群組。",
   'settings.groups': "群組操作按鈕",
   'settings.groupsDesc': "顯示可點擊群組；隱藏後仍可使用群組快捷鍵。",
   'settings.uiScale': '介面文字大小',

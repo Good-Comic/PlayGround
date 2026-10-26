@@ -213,7 +213,7 @@ const EN_UI = {
   'settings.title': 'Settings',
   'group.label': "Groups",
   'group.slot': "Group {slot}: {count} units",
-  'group.hint': "Click selects; Ctrl+click stores; Shift adds.",
+  'group.hint': "Click selects; Ctrl+click stores; Shift adds; right-click clears group.",
   'settings.groups': "Control group buttons",
   'settings.groupsDesc': "Show clickable slots; keyboard group shortcuts remain available.",
   'settings.uiScale': 'UI text size',

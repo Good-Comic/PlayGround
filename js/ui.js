@@ -128,6 +128,10 @@ export class UI {
       this.applySettingsToControls();
       this.persistSettings();
     });
+    this.$('control-groups')?.addEventListener('contextmenu', e => {
+      const button=e.target.closest('[data-control-group]');if(!button||this.game.inMenu||this.game.paused||this.settingsOpen||this.gmOpen||this.boonsOpen)return;
+      e.preventDefault();this.game.clearControlGroup(button.dataset.controlGroup);this.updateSelection(true);this.renderCommands(this.game);
+    });
     this.$('control-groups')?.addEventListener('click', e => {
       const button=e.target.closest('[data-control-group]');if(!button||this.game.inMenu||this.game.paused||this.settingsOpen||this.gmOpen||this.boonsOpen)return;
       const slot=button.dataset.controlGroup;if(!e.ctrlKey&&!controlGroupView(this.game).find(v=>v.slot===slot)?.count)return;
