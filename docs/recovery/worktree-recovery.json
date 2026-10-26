@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-26T15:30:51.807915+00:00",
+  "captured_at_utc": "2026-10-26T18:04:48.916651+00:00",
   "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+  "collector_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
   "collector_dirty": false,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-26T15:30:51.807915+00:00"
+    "queried_at": "2026-10-26T18:04:48.916651+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -29,8 +29,8 @@
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "codex/riftwatch-progress-feed": "a0ed16ade3a3225b7c19ab0384a4e2e757211670",
-    "codex/riftwatch-recovery-index": "c3b7fd2b7ca89d653c8774799f76601d96670d90",
-    "codex/riftwatch-task-ownership": "290f91a71fe0d486c1f2ed29f566e09b32a10fdf",
+    "codex/riftwatch-recovery-index": "cac8974bdb9b24c556b6b1a32d2493400c15bf28",
+    "codex/riftwatch-task-ownership": "86b083de89301e27af84fc4075d92fdd870779b9",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -52,6 +52,7 @@
     "codex/riftwatch-v228-nav": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
     "codex/riftwatch-v228-save-research": "03e3a8423e4956be7face8009d7bfff48aa6a11e",
     "codex/riftwatch-v229-group-clear": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
+    "codex/riftwatch-v230-p0-input": "45435a323c729a28da1de454a3e53740fc9159f2",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -250,6 +251,12 @@
       "head": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
       "remote_head": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
       "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-v230-p0-input",
+      "head": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "remote_head": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "status": "REMOTE_SAVED"
     }
   ],
   "worktrees": [
@@ -419,28 +426,13 @@
       "branch": "codex/riftwatch-v229-group-clear",
       "head": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
       "locked": false,
-      "task_id": "V229-GROUP-CLEAR",
-      "last_validation": [
-        {
-          "source_commit": "f9a0eb8a6ecfc0322973bd0156ff0cd3874c5d6c",
-          "path": "docs/evidence/group-clear/REPORT.md",
-          "result": "12Node/5LOCALPASS,unpublished",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "86191773982516e23d49c17285cbd819b8a08952acf45e6c807da56d8b2fb963",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
+      "task_id": null,
+      "last_validation": [],
       "blockers": [
-        "StrictSaveLoad andclockadoption BLOCKED; no validatedwholeenginefix",
-        "HARDWARE_TEST_PENDING/current250combat/fullcampaignformalQA pending",
-        "Newgroupclear notpublished/Integrated; feature-specific remaininggates",
-        "QUOTA_PERCENT_UNKNOWN;noactualautoresume/Geminihandoff"
+        "NOT_ASSESSED"
       ],
       "next_steps": [
-        "Read actualLivebranch/site refs andRecovery/Handoff; do not rerunallvalid59onlinecaseswithoutaffectedchanges",
-        "P0continue03e3a84research: minimalrestore tests for soundthrottle+validatednav/queue,projectileandzoneentityrefs; retain20sstrictcomparison, no unverifiedproductionclockreplacement",
-        "Review localgroupclear80bec7a andremainingfeaturegatesbeforefutureCandidate; noautomaticnewSHApublication"
+        "Inspect task registry and relevant diff before writing"
       ],
       "remote_status": "REMOTE_SAVED",
       "remote_head": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
@@ -576,28 +568,13 @@
       "branch": "codex/riftwatch-v228-live",
       "head": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
       "locked": false,
-      "task_id": "V228-LIVE",
-      "last_validation": [
-        {
-          "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-          "path": "docs/evidence/live-v228/REPORT.md",
-          "result": "59scopedLIVEPASS,notfullQA",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "14427c24fb98c02209a78dfd93ab061d25bf5dd0acd0bba77c2f4d8d759c6098",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
+      "task_id": null,
+      "last_validation": [],
       "blockers": [
-        "StrictSaveLoad andclockadoption BLOCKED; no validatedwholeenginefix",
-        "HARDWARE_TEST_PENDING/current250combat/fullcampaignformalQA pending",
-        "Newgroupclear notpublished/Integrated; feature-specific remaininggates",
-        "QUOTA_PERCENT_UNKNOWN;noactualautoresume/Geminihandoff"
+        "NOT_ASSESSED"
       ],
       "next_steps": [
-        "Read actualLivebranch/site refs andRecovery/Handoff; do not rerunallvalid59onlinecaseswithoutaffectedchanges",
-        "P0continue03e3a84research: minimalrestore tests for soundthrottle+validatednav/queue,projectileandzoneentityrefs; retain20sstrictcomparison, no unverifiedproductionclockreplacement",
-        "Review localgroupclear80bec7a andremainingfeaturegatesbeforefutureCandidate; noautomaticnewSHApublication"
+        "Inspect task registry and relevant diff before writing"
       ],
       "remote_status": "REMOTE_SAVED",
       "remote_head": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
@@ -834,28 +811,13 @@
       "branch": "codex/riftwatch-v228-save-research",
       "head": "03e3a8423e4956be7face8009d7bfff48aa6a11e",
       "locked": false,
-      "task_id": "V228-SAVE-RESEARCH",
-      "last_validation": [
-        {
-          "source_commit": "03e3a8423e4956be7face8009d7bfff48aa6a11e",
-          "path": "docs/evidence/save-transients/REPORT.md",
-          "result": "ResearchFAILsourcesisolated,notproductionpatch",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "9cc5f30d3f9c66174f204e3388f72b71a9caccc522bfd0d5ed146cfa448a8a5c",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
+      "task_id": null,
+      "last_validation": [],
       "blockers": [
-        "StrictSaveLoad andclockadoption BLOCKED; no validatedwholeenginefix",
-        "HARDWARE_TEST_PENDING/current250combat/fullcampaignformalQA pending",
-        "Newgroupclear notpublished/Integrated; feature-specific remaininggates",
-        "QUOTA_PERCENT_UNKNOWN;noactualautoresume/Geminihandoff"
+        "NOT_ASSESSED"
       ],
       "next_steps": [
-        "Read actualLivebranch/site refs andRecovery/Handoff; do not rerunallvalid59onlinecaseswithoutaffectedchanges",
-        "P0continue03e3a84research: minimalrestore tests for soundthrottle+validatednav/queue,projectileandzoneentityrefs; retain20sstrictcomparison, no unverifiedproductionclockreplacement",
-        "Review localgroupclear80bec7a andremainingfeaturegatesbeforefutureCandidate; noautomaticnewSHApublication"
+        "Inspect task registry and relevant diff before writing"
       ],
       "remote_status": "REMOTE_SAVED",
       "remote_head": "03e3a8423e4956be7face8009d7bfff48aa6a11e",
@@ -869,27 +831,13 @@
       "branch": "codex/riftwatch-playtest-site",
       "head": "5b30bda085197cfa820a594224e2f6df929bf60d",
       "locked": false,
-      "task_id": "V228-PAGES",
-      "last_validation": [
-        {
-          "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-          "path": "docs/evidence/live-v228/PUBLISH-RECEIPT.json",
-          "result": "Publishedexactbuild,D6immutable",
-          "exists": false,
-          "storage": "LOCAL_ONLY_OR_MISSING",
-          "resource_freshness": "SOURCE_CHANGED"
-        }
-      ],
+      "task_id": null,
+      "last_validation": [],
       "blockers": [
-        "StrictSaveLoad andclockadoption BLOCKED; no validatedwholeenginefix",
-        "HARDWARE_TEST_PENDING/current250combat/fullcampaignformalQA pending",
-        "Newgroupclear notpublished/Integrated; feature-specific remaininggates",
-        "QUOTA_PERCENT_UNKNOWN;noactualautoresume/Geminihandoff"
+        "NOT_ASSESSED"
       ],
       "next_steps": [
-        "Read actualLivebranch/site refs andRecovery/Handoff; do not rerunallvalid59onlinecaseswithoutaffectedchanges",
-        "P0continue03e3a84research: minimalrestore tests for soundthrottle+validatednav/queue,projectileandzoneentityrefs; retain20sstrictcomparison, no unverifiedproductionclockreplacement",
-        "Review localgroupclear80bec7a andremainingfeaturegatesbeforefutureCandidate; noautomaticnewSHApublication"
+        "Inspect task registry and relevant diff before writing"
       ],
       "remote_status": "REMOTE_SAVED",
       "remote_head": "5b30bda085197cfa820a594224e2f6df929bf60d",
@@ -1027,6 +975,26 @@
       "local_record_status": "LOCAL_INVENTORIED"
     },
     {
+      "path": "/workspace/riftwatch-v230-p0",
+      "branch": "codex/riftwatch-v230-p0-input",
+      "head": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "locked": false,
+      "task_id": null,
+      "last_validation": [],
+      "blockers": [
+        "NOT_ASSESSED"
+      ],
+      "next_steps": [
+        "Inspect task registry and relevant diff before writing"
+      ],
+      "remote_status": "REMOTE_SAVED",
+      "remote_head": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "unpushed_commits": [],
+      "changed_files": [],
+      "dirty": false,
+      "local_record_status": "LOCAL_INVENTORIED"
+    },
+    {
       "path": "/workspace/riftwatch-wave",
       "branch": "codex/riftwatch-v227-wave",
       "head": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
@@ -1063,15 +1031,35 @@
   ],
   "comparison": [
     {
-      "path": "/workspace/riftwatch-live228",
+      "path": "/workspace/riftwatch-candidate228",
       "changed_fields": [
         "head",
         "remote_head"
       ],
-      "previous_head": "8637627aeb8f50480c28c720336988828138f7ef",
-      "actual_head": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3"
+      "previous_head": "16883dcce674fca4700293306198f2c717e47f50",
+      "actual_head": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267"
+    },
+    {
+      "path": "/workspace/riftwatch-clear229",
+      "change": "NEW_OR_MANIFEST_MISSING"
+    },
+    {
+      "path": "/workspace/riftwatch-live228",
+      "change": "NEW_OR_MANIFEST_MISSING"
+    },
+    {
+      "path": "/workspace/riftwatch-save228",
+      "change": "NEW_OR_MANIFEST_MISSING"
+    },
+    {
+      "path": "/workspace/riftwatch-site228",
+      "change": "NEW_OR_MANIFEST_MISSING"
+    },
+    {
+      "path": "/workspace/riftwatch-v230-p0",
+      "change": "NEW_OR_MANIFEST_MISSING"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "54277c6e907f9d3b98e030e140c2d3979ee2133b85667cd03131adf15d3f6a63"
+  "snapshot_id": "db40dff994753b8e82da9db011f1547670262d3ff3f8df466f485b0703162a91"
 }

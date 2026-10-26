@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: 54277c6e907f9d3b98e030e140c2d3979ee2133b85667cd03131adf15d3f6a63
-Captured UTC: 2026-10-26T15:30:51.807915+00:00 · Trigger: FINAL_CHECKPOINT
-Collector source: `8f3da5a56ee323c9fa57ac462a0223e27b9988e3` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: db40dff994753b8e82da9db011f1547670262d3ff3f8df466f485b0703162a91
+Captured UTC: 2026-10-26T18:04:48.916651+00:00 · Trigger: FINAL_CHECKPOINT
+Collector source: `45435a323c729a28da1de454a3e53740fc9159f2` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -32,6 +32,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
 | /workspace/riftwatch-v227 | codex/riftwatch-playtest-v227 | c25ccc76178b044b061c88954ed2cf7f5a9b59fb | c25ccc76178b044b061c88954ed2cf7f5a9b59fb | REMOTE_SAVED | False |
+| /workspace/riftwatch-v230-p0 | codex/riftwatch-v230-p0-input | 45435a323c729a28da1de454a3e53740fc9159f2 | 45435a323c729a28da1de454a3e53740fc9159f2 | REMOTE_SAVED | False |
 | /workspace/riftwatch-wave | codex/riftwatch-v227-wave | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | REMOTE_SAVED | False |
 
 ## work
@@ -78,9 +79,9 @@ Next: Persist normal P0 evidence; performance/combined B1/B2 gates pending
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"source_commit": "f9a0eb8a6ecfc0322973bd0156ff0cd3874c5d6c", "path": "docs/evidence/group-clear/REPORT.md", "result": "12Node/5LOCALPASS,unpublished", "exists": true, "storage": "REMOTE_SAVED", "sha256": "86191773982516e23d49c17285cbd819b8a08952acf45e6c807da56d8b2fb963", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
-Blockers: StrictSaveLoad andclockadoption BLOCKED; no validatedwholeenginefix; HARDWARE_TEST_PENDING/current250combat/fullcampaignformalQA pending; Newgroupclear notpublished/Integrated; feature-specific remaininggates; QUOTA_PERCENT_UNKNOWN;noactualautoresume/Geminihandoff
-Next: Read actualLivebranch/site refs andRecovery/Handoff; do not rerunallvalid59onlinecaseswithoutaffectedchanges; P0continue03e3a84research: minimalrestore tests for soundthrottle+validatednav/queue,projectileandzoneentityrefs; retain20sstrictcomparison, no unverifiedproductionclockreplacement; Review localgroupclear80bec7a andremainingfeaturegatesbeforefutureCandidate; noautomaticnewSHApublication
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-v228-clock
 
@@ -118,9 +119,9 @@ Next: Inspect task registry and relevant diff before writing
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911", "path": "docs/evidence/live-v228/REPORT.md", "result": "59scopedLIVEPASS,notfullQA", "exists": true, "storage": "REMOTE_SAVED", "sha256": "14427c24fb98c02209a78dfd93ab061d25bf5dd0acd0bba77c2f4d8d759c6098", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
-Blockers: StrictSaveLoad andclockadoption BLOCKED; no validatedwholeenginefix; HARDWARE_TEST_PENDING/current250combat/fullcampaignformalQA pending; Newgroupclear notpublished/Integrated; feature-specific remaininggates; QUOTA_PERCENT_UNKNOWN;noactualautoresume/Geminihandoff
-Next: Read actualLivebranch/site refs andRecovery/Handoff; do not rerunallvalid59onlinecaseswithoutaffectedchanges; P0continue03e3a84research: minimalrestore tests for soundthrottle+validatednav/queue,projectileandzoneentityrefs; retain20sstrictcomparison, no unverifiedproductionclockreplacement; Review localgroupclear80bec7a andremainingfeaturegatesbeforefutureCandidate; noautomaticnewSHApublication
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-v224-monitor
 
@@ -182,17 +183,17 @@ Next: Latest source2f148c3 needs full three-repeat performance
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"source_commit": "03e3a8423e4956be7face8009d7bfff48aa6a11e", "path": "docs/evidence/save-transients/REPORT.md", "result": "ResearchFAILsourcesisolated,notproductionpatch", "exists": true, "storage": "REMOTE_SAVED", "sha256": "9cc5f30d3f9c66174f204e3388f72b71a9caccc522bfd0d5ed146cfa448a8a5c", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
-Blockers: StrictSaveLoad andclockadoption BLOCKED; no validatedwholeenginefix; HARDWARE_TEST_PENDING/current250combat/fullcampaignformalQA pending; Newgroupclear notpublished/Integrated; feature-specific remaininggates; QUOTA_PERCENT_UNKNOWN;noactualautoresume/Geminihandoff
-Next: Read actualLivebranch/site refs andRecovery/Handoff; do not rerunallvalid59onlinecaseswithoutaffectedchanges; P0continue03e3a84research: minimalrestore tests for soundthrottle+validatednav/queue,projectileandzoneentityrefs; retain20sstrictcomparison, no unverifiedproductionclockreplacement; Review localgroupclear80bec7a andremainingfeaturegatesbeforefutureCandidate; noautomaticnewSHApublication
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-playtest-site
 
 Unpushed commits: []
 Uncommitted paths: []
-Validation: [{"source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911", "path": "docs/evidence/live-v228/PUBLISH-RECEIPT.json", "result": "Publishedexactbuild,D6immutable", "exists": false, "storage": "LOCAL_ONLY_OR_MISSING", "resource_freshness": "SOURCE_CHANGED"}]
-Blockers: StrictSaveLoad andclockadoption BLOCKED; no validatedwholeenginefix; HARDWARE_TEST_PENDING/current250combat/fullcampaignformalQA pending; Newgroupclear notpublished/Integrated; feature-specific remaininggates; QUOTA_PERCENT_UNKNOWN;noactualautoresume/Geminihandoff
-Next: Read actualLivebranch/site refs andRecovery/Handoff; do not rerunallvalid59onlinecaseswithoutaffectedchanges; P0continue03e3a84research: minimalrestore tests for soundthrottle+validatednav/queue,projectileandzoneentityrefs; retain20sstrictcomparison, no unverifiedproductionclockreplacement; Review localgroupclear80bec7a andremainingfeaturegatesbeforefutureCandidate; noautomaticnewSHApublication
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-v227-ui
 
@@ -225,6 +226,14 @@ Uncommitted paths: []
 Validation: [{"source_commit": "27b279410db1bb9c14b3c1b921b146059a6c6341", "path": "docs/evidence/v227-candidate/REPORT.md", "result": "LOCAL partialPASS; narrowFAIL; not deployed", "exists": true, "storage": "REMOTE_SAVED", "sha256": "4461787c6664e040df5d00fc67cd4049b4df3f3312ccf5d994ebf5e2f8988e7c", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
 Blockers: NewfullSHA deployment not authorized; D6only priorrelease scope; Narrowqueue unresolved; not allgates PASS; exact failure needs perupdate replay; HARDWARE_TEST_PENDING; fullcampaign/current-scalecombatformalQA pending
 Next: Read source27b279 plus later evidence-only HEAD; never restart from QA-only Integration assets; Claim independent navigation diagnostic branch or revalidate ordersbranch owner; capture targetPos/nav/yield/progress and each actualupdate dt in targeted8unitfixture; simplified60Hz cases do NOT reproduce; no speculativepatch; Build minimal failing replay, fix and rerun affectedcases; preservefailed85s result
+
+## codex/riftwatch-v230-p0-input
+
+Unpushed commits: []
+Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-v227-wave
 

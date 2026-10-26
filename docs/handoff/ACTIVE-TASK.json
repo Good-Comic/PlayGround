@@ -1,69 +1,66 @@
 {
-  "task_id": "V228-LIVE",
-  "name": "Authorized v228 publication, scopedLIVE59 and continuous development checkpoint",
-  "requirement_source": "Explicit Strategy v2.2.8 andP0quotaaddendum",
+  "task_id": "V230-P0-INPUT",
+  "name": "Strategy v2.3.0 player feedback controls and Rift Prototype diagnosis",
+  "requirement_source": "Strategy v2.3.0 P0 and scheduled resume directive",
   "priority": "P0",
-  "agent": "Codex; no additionalAgent connected",
-  "environment": "Managedrevision21;actualpublicHTTPS Chromium154 via isolatedplatformNSS trust/CDP;notphysicalGPU",
-  "branch": "codex/riftwatch-v228-live",
-  "base_commit": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
-  "latest_pushed_commit": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+  "agent": "Codex; no additional agent connected",
+  "environment": "Managed revision 40; local Chromium 154/SwiftShader; not physical GPU or public deployment",
+  "branch": "codex/riftwatch-v230-p0-input",
+  "base_commit": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
+  "latest_pushed_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
   "completed": [
-    "Authorizedexactartifact/rebuild/28payload/31hostingpreflight",
-    "Rootsitepublished,initial92e4263/final5b30bda;D6treeunchanged/Pagesconfigunchanged",
-    "59scopedactualPUBLICbrowserassertionsPASS;1007Gitresourcecomparisons,31HTTPbytesmatch",
-    "Normal135s8P0PASS:3retargets,wood40/gold22/food26/stone11unloads",
-    "Research03e3a84:omittedsoundthrottles consume sharedRNG;1inflightprojectile\u21920onload; experimentonly",
-    "Unpublishedgroupclear80bec7a:12Node/5localbrowser/fourlocalesPASS"
+    "Plain A preserves WASD camera pan; Shift+A arms Attack-Move",
+    "Production exits face active Rally Point instead of a random side",
+    "Canvas double-click selects visible allied units of the clicked type; Shift adds",
+    "20 focused Node tests and four-locale 678-key validation pass",
+    "Seven real local Chromium checks pass with no Console, Page, or request errors",
+    "Controlled Rift Prototype boon path passes before and after changes"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Public59assertions",
-      "path": "docs/evidence/live-v228/acceptance.json",
-      "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-      "result": "SCOPED_PASS,notformalQA"
+      "name": "Focused input/rally/tactical regression",
+      "path": "docs/evidence/v230-p0-input/REPORT.md",
+      "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+      "result": "20/20 Node PASS; four locales 678 keys PASS"
     },
     {
-      "name": "Hosting/sourceintegrity",
-      "path": "docs/evidence/live-v228/PUBLISH-RECEIPT.json",
-      "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
-      "result": "31HTTP/28payload/1007resources,D6immutable"
+      "name": "Real local Chromium player inputs",
+      "path": "docs/evidence/v230-p0-input/browser.json",
+      "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+      "result": "7/7 LOCAL PASS; no browser errors"
     }
   ],
   "evidence": [
-    "docs/evidence/live-v228/REPORT.md",
-    "docs/evidence/live-v228/PUBLISH-RECEIPT.json"
+    "docs/evidence/v230-p0-input/REPORT.md",
+    "docs/evidence/v230-p0-input/browser.json",
+    "docs/evidence/v230-p0-input/rift-prototype.png"
   ],
   "failures": [
-    "InitialChromiumNSS environmenttrust failures andCDPdirectmetadataDNS harnessfailure retained/resolved",
-    "ProductionlowFPSelapsedloss/strictSaveLoaddeterminism/historicalperformanceFAIL remain"
+    "Player-reported Rift Prototype crash was not reproduced by the controlled real-UI boon path",
+    "Production low-FPS time loss, strict Save/Load nondeterminism, and historical performance FAIL remain"
   ],
   "blockers": [
-    "StrictSaveLoad andclockadoption BLOCKED; no validatedwholeenginefix",
-    "HARDWARE_TEST_PENDING/current250combat/fullcampaignformalQA pending",
-    "Newgroupclear notpublished/Integrated; feature-specific remaininggates",
-    "QUOTA_PERCENT_UNKNOWN;noactualautoresume/Geminihandoff"
+    "Natural wave-end Rift Prototype reproduction still needs the original state or an equivalent natural campaign occurrence",
+    "HARDWARE_TEST_PENDING and no new public Candidate authorization",
+    "QUOTA_PERCENT_UNKNOWN; dispatcher remains disconnected"
   ],
   "next_steps": [
-    "Read actualLivebranch/site refs andRecovery/Handoff; do not rerunallvalid59onlinecaseswithoutaffectedchanges",
-    "P0continue03e3a84research: minimalrestore tests for soundthrottle+validatednav/queue,projectileandzoneentityrefs; retain20sstrictcomparison, no unverifiedproductionclockreplacement",
-    "Review localgroupclear80bec7a andremainingfeaturegatesbeforefutureCandidate; noautomaticnewSHApublication",
-    "Continueindependentformation/Fog/Roguelite slices using existingGDD andboundedchecks",
-    "Useronceprovidedresetcheck17:39UTC isnotascheduledguarantee;actualquotaUNKNOWN/manualdispatchonly"
+    "Run a natural multi-wave campaign until Rift Prototype is offered, preserving seed, state, Console, Page, and network evidence",
+    "Add the hero visual distinction and skill range preview vertical slice on an independent branch",
+    "Continue representative 2D art and audio vertical slices after the remaining P0 crash investigation"
   ],
   "permissions": [
-    "Existingindependentdevelopment/normalcommitpush continues",
-    "Exactab56publicationandscopedQA completed; no permissionforpublishingnewgameSHA",
-    "No main/force/#17/Checkpoints/OpenCode/newIssues/Pagesconfiguration/credentials/networkpolicychanges"
+    "Independent development, tests, normal commits, and normal pushes remain authorized",
+    "No main, force push, Issue 17, OpenCode Checkpoints/workflows, Pages configuration, or new public game SHA"
   ],
   "status": "CHECKPOINTED",
   "resume_event": {
-    "status": "RESUMED",
-    "basis": "Actualmanualuserprompt recovery andGitverified continuation, notautomaticdispatch"
+    "status": "SCHEDULED_RESUME_EXECUTED",
+    "basis": "Scheduled delegation was followed by actual Git checks, owned branch work, tests, commits, and verified push"
   },
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
   "resume_status": "RESUME_READY_MANUAL_DISPATCH",
-  "updated_at": "2026-10-26T15:30:53.205621+00:00"
+  "updated_at": "2026-10-26T18:04:50.236950+00:00"
 }
