@@ -1,1 +1,1 @@
-AttackMove/unitGuard/Patrol/groups native12PASS after realfailedcrowd/endpoint/resume repairs. New combined8unitcorridor7/8destination FAIL; simplified60Hz tests do not reproduce, no claimedrepair. Evidence provenance clarification: the combined failure source is af594; independent tactical source is000f. Neither source has a claimed narrowfix.
+Native narrowFAIL remains open and is public in proposed Candidate knownissues. Candidate is not all-gates QA accepted and has not been deployed.
