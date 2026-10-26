@@ -22,4 +22,23 @@ class MonitorTests(unittest.TestCase):
   prior=[{'event_id':str(i)} for i in range(220)];d=self.fixture();d['severity']='BLOCKED';d['blockers']=[{'id':'PERF','summary':'retained failure','severity':'BLOCKED'}];files=render(normalize(d),prior);self.assertEqual(len(files['docs/monitor/RECENT-EVENTS.jsonl'].splitlines()),200);self.assertIn('retained failure',files['docs/monitor/BLOCKERS.json'])
  def test_separate_workstreams_keep_other_tasks_blockers(self):
   first=self.fixture();first['blockers']=[{'id':'PERF','summary':'retained failure','severity':'BLOCKED'}];f=render(normalize(first));previous=[json.loads(x) for x in f['docs/monitor/RECENT-EVENTS.jsonl'].splitlines()];second=self.fixture();second['task_id']='MONITOR';f=render(normalize(second),previous);self.assertEqual(len(json.loads(f['docs/monitor/PROJECT-STATUS.json'])['workstreams']),2);self.assertIn('retained failure',f['docs/monitor/BLOCKERS.json'])
+ def test_quiet_workstream_survives_event_window(self):
+  first=self.fixture();first['task_id']='QUIET';first['blockers']=[{'id':'PERF','summary':'historical failure still unresolved','severity':'BLOCKED'}]
+  files=render(normalize(first))
+  for i in range(205):
+   previous=[json.loads(x) for x in files['docs/monitor/RECENT-EVENTS.jsonl'].splitlines()]
+   status=json.loads(files['docs/monitor/PROJECT-STATUS.json'])
+   active=self.fixture();active['task_id']='ACTIVE';active['summary']=f'progress {i}'
+   files=render(normalize(active),previous,status['workstreams'])
+  status=json.loads(files['docs/monitor/PROJECT-STATUS.json'])
+  self.assertIn('QUIET',status['workstreams'])
+  self.assertIn('historical failure still unresolved',files['docs/monitor/BLOCKERS.json'])
+  self.assertEqual(len(files['docs/monitor/RECENT-EVENTS.jsonl'].splitlines()),200)
+  # Repeated quiet-task event is still a no-op after its JSONL row aged out.
+  self.assertIsNone(render(normalize(first),[json.loads(x) for x in files['docs/monitor/RECENT-EVENTS.jsonl'].splitlines()],status['workstreams']))
+  # Explicit replacement of that task clears only its own current blocker.
+  first['summary']='explicitly resolved';first['blockers']=[]
+  files=render(normalize(first),[],status['workstreams'])
+  self.assertEqual(json.loads(files['docs/monitor/BLOCKERS.json'])['blockers'],[])
+  self.assertIn('ACTIVE',json.loads(files['docs/monitor/PROJECT-STATUS.json'])['workstreams'])
 if __name__=='__main__':unittest.main(verbosity=2)

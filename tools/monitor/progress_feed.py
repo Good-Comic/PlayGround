@@ -36,24 +36,26 @@ def resolve_source(repo,event):
   try:row['evidence_blob']=git(repo,'rev-parse',row['evidence_commit']+':'+row['evidence']);row['evidence_status']='GIT_BLOB_VERIFIED'
   except subprocess.SubprocessError:row['evidence_status']='NOT_FOUND_NOT_VERIFIED'
  return event
-def render(event,previous=None):
+def render(event,previous=None,previous_workstreams=None):
  previous=previous or [];events=list(previous)
- if any(r['event_id']==event['event_id'] for r in events):return None
+ if any(r['event_id']==event['event_id'] for r in events) or any(r.get('event_id')==event['event_id'] for r in (previous_workstreams or {}).values()):return None
  event=dict(event,recorded_at=utc(),confidence='AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE');events.append(event)
- tasks={r['task_id']:r for r in events[-200:] if r.get('task_id')};blockers=[dict(b,task_id=r['task_id']) for r in tasks.values() for b in r.get('blockers',[])]
+ tasks=dict(previous_workstreams or {})
+ tasks.update({r['task_id']:r for r in events if r.get('task_id')});blockers=[dict(b,task_id=r['task_id']) for r in tasks.values() for b in r.get('blockers',[])]
  status={'schema_version':1,'capability':'GITHUB_PROGRESS_SYNC_READY','channel':'GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed','updated_at':event['recorded_at'],'latest_event':event,'workstreams':tasks,'notification_policy':'Only material WARNING/BLOCKED/ACTION_REQUIRED; no external messages are automatically sent','supervisor_topics':['commits','QA','gameplay','performance','simulation_time','GDD','merge_conflicts','interruptions','ownership','candidate_deployment']}
  return {'docs/monitor/PROJECT-STATUS.json':json.dumps(status,indent=2)+'\n','docs/monitor/RECENT-EVENTS.jsonl':''.join(json.dumps(r,sort_keys=True)+'\n' for r in events[-200:]),'docs/monitor/BLOCKERS.json':json.dumps({'updated_at':event['recorded_at'],'blockers':blockers},indent=2)+'\n','docs/monitor/LATEST-RESPONSE.md':event['response'] or event['summary']+'\n'}
 def main():
  p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[2]);p.add_argument('--input',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--publish',action='store_true');p.add_argument('--agent');p.add_argument('--execution');a=p.parse_args();repo=a.repo.resolve();out=a.out.resolve()
  if out.is_relative_to(repo):raise SystemExit('Generate outside source tree to avoid recursive commits')
- event=resolve_source(repo,normalize(json.loads(a.input.read_text())));rows=git(repo,'ls-remote','origin',REF).splitlines();parent=rows[0].split()[0] if rows else None;previous=[]
+ event=resolve_source(repo,normalize(json.loads(a.input.read_text())));rows=git(repo,'ls-remote','origin',REF).splitlines();parent=rows[0].split()[0] if rows else None;previous=[];previous_workstreams={}
  if parent:
   try:raw=git(repo,'show',parent+':docs/monitor/RECENT-EVENTS.jsonl')
   except subprocess.SubprocessError:
    if not a.publish:raise SystemExit('Remote feed object unavailable; fetch explicitly or use --publish')
    git(repo,'fetch','--no-tags','origin',REF);raw=git(repo,'show',parent+':docs/monitor/RECENT-EVENTS.jsonl')
   previous=[json.loads(x) for x in raw.splitlines() if x]
- files=render(event,previous)
+  previous_workstreams=json.loads(git(repo,'show',parent+':docs/monitor/PROJECT-STATUS.json'))['workstreams']
+ files=render(event,previous,previous_workstreams)
  if files is None:print(json.dumps({'status':'NO_CHANGE_NO_COMMIT','commit':parent,'event_id':event['event_id']}));return
  out.mkdir(parents=True,exist_ok=True)
  for name,value in files.items():f=out/name;f.parent.mkdir(parents=True,exist_ok=True);f.write_text(value)
