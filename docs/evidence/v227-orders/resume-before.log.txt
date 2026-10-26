@@ -1,0 +1,36 @@
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (35.905907ms)
+✔ Patrol completes both legs using native navigation (19.288344ms)
+✔ Guard follows a living ally then recovers when ally dies (10.298089ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (8.364734ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (4.088996ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (8.411855ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (4.295778ms)
+✖ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (16.060596ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 258.112653
+
+✖ failing tests:
+
+test at tests/tactical-orders.test.mjs:14:1
+✖ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (16.060596ms)
+  AssertionError [ERR_ASSERTION]: {"x":10.420000000000002,"state":"idle","failure":"congested"}
+      at TestContext.<anonymous> (file:///workspace/riftwatch-orders/tests/tactical-orders.test.mjs:14:300)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

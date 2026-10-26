@@ -1,6 +1,10 @@
 export const ui = {
   'settings.uiScale': 'UI文字サイズ',
   'settings.uiScaleDesc': '画面の文字を拡大します。ゲーム速度とマップ倍率は変わりません。',
+  'order.attackMove': '攻撃移動',
+  'order.guard': '護衛',
+  'order.patrol': '巡回',
+  'order.hint': 'A/G/P後に目標選択；Ctrl+1–9登録、Alt+1–9選択。',
   'app.title': 'エイジ オブ エンパイア II：裂境の守り',
   'game.title': 'エイジ オブ エンパイア II：裂境の守り',
   'game.series': 'エイジ オブ エンパイア II：',

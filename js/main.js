@@ -181,6 +181,7 @@ window.addEventListener('keydown', e => {
     return;
   }
   if (e.key === 'Escape') {
+    if(game.orderMode){game.orderMode=null;ui.updateSelection(true);return;}
     if (game.placement) { game.cancelPlacement(); return; }
     if (ui.pauseOpen) { resumeGame(); return; }
     togglePauseGame();
@@ -193,6 +194,8 @@ window.addEventListener('keydown', e => {
   }
   if (game.paused) return;
   const key = e.key.toLowerCase();
+  if(/^[1-9]$/.test(key)&&(e.ctrlKey||e.altKey)){e.preventDefault();game.controlGroup(key,e.ctrlKey,e.shiftKey);return;}
+  if(!game.heroControl&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&game.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager')&&['a','g','p'].includes(key)){e.preventDefault();game.command('order:'+({a:'attackMove',g:'guard',p:'patrol'}[key]));return;}
   if (movementKeys.has(key)) {
     game.keys.add(key);
     if (key.startsWith('arrow')) e.preventDefault();
@@ -238,6 +241,7 @@ canvas.addEventListener('pointerdown', e => {
   const pos = localPos(e);
   game.mouse.x = pos.x; game.mouse.y = pos.y; game.mouse.dirty = true;
   if (e.button === 0) {
+    if(game.orderMode){e.preventDefault();game.issueTacticalCommand(pos.x,pos.y);return;}
     if (game.placement) {
       game.placeCurrent();
       return;
@@ -246,6 +250,7 @@ canvas.addEventListener('pointerdown', e => {
     canvas.setPointerCapture?.(e.pointerId);
     game.grabbing = true;
   } else if (e.button === 2) {
+    game.orderMode=null;ui.updateSelection(true);
     e.preventDefault();
     game.issueCommand(pos.x, pos.y);
   } else if (e.button === 1) {

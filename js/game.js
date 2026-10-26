@@ -76,6 +76,7 @@ export class Game {
     this.particles = [];
     this.zones = [];
     this.selection = [];
+    this.orderMode = null; this.controlGroups = {};
     this.selected = null;
     this.hovered = null;
     this.hoveredResource = null;
@@ -128,6 +129,7 @@ export class Game {
     this.rng = mulberry32(seed ^ 0x5f3759df);
     this.time = 0;
     this.runTime = 0;
+    this.orderMode=null; this.controlGroups={};
     this.paused = false;
     this.nextId = 1;
     this.lastWaveAnnounce = -1;
@@ -167,7 +169,7 @@ export class Game {
       'eventRegen', 'buildingDamageMul', 'convertResist', 'eventRetreat', 'eventRetreatCd',
       'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'moraleUsed',
       'lureUsed', 'feintUsed', 'spawnGate', 'eventModsApplied', 'scale',
-      'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover',
+      'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover', '_orderScanAt',
     ];
     const buildingKeys = [
       'id', 'team', 'type', 'x', 'y', 'w', 'h', 'hp', 'maxHp', 'baseMaxHp', 'armor',
@@ -180,6 +182,7 @@ export class Game {
     };
     return {
       version: 1,
+      controlGroups: Object.fromEntries(Object.entries(this.controlGroups||{}).map(([k,v])=>[k,[...v]])),
       savedAt: Date.now(),
       seed: this.seed,
       civId: this.civ.id,
@@ -255,6 +258,7 @@ export class Game {
       })),
       units: this.units.map(unit => ({
         ...pick(unit, unitKeys),
+        tacticalOrder: unit.tacticalOrder ? JSON.parse(JSON.stringify(unit.tacticalOrder)) : null,
         target: ref(unit.target),
         gatherTarget: ref(unit.gatherTarget),
         buildTarget: ref(unit.buildTarget),
@@ -302,6 +306,7 @@ export class Game {
     this.hoveredResource = null;
     this.placement = null;
     this.dragBox = null;
+    this.orderMode=null;this.controlGroups=Object.fromEntries(Object.entries(snapshot.controlGroups||{}).map(([k,v])=>[k,Array.isArray(v)?[...v]:[]]));
     this.waveIndex = snapshot.waveIndex;
     this.phase = snapshot.phase;
     this.prepTotal = snapshot.prepTotal;
@@ -386,6 +391,9 @@ export class Game {
         if (['target', 'gatherTarget', 'buildTarget', 'dropTarget', 'typeDef', 'selected'].includes(key)) continue;
         unit[key] = value;
       }
+      const order=saved.tacticalOrder;
+      const point=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.y>=0&&p.x<this.world.size&&p.y<this.world.size;
+      unit.tacticalOrder = order&&['attackMove','guard','patrol'].includes(order.type)&&point(order.destination)&&point(order.origin)&&[0,1].includes(order.leg)&&(order.type!=='guard'||Number.isSafeInteger(order.protectedId)) ? JSON.parse(JSON.stringify(order)) : null;
       unit.typeDef = UNIT_TYPES[saved.type];
       unit.selected = false;
     }
@@ -1336,6 +1344,7 @@ export class Game {
   }
 
   updatePlayerUnit(u, dt) {
+    if (u.tacticalOrder && this.updateTacticalOrder(u,dt)) return;
     if (u.state === 'gather') return this.updateGather(u, dt);
     if (u.state === 'return') return this.updateReturn(u, dt);
     if (u.state === 'build') return this.updateBuild(u, dt);
@@ -1664,7 +1673,9 @@ export class Game {
       nav.retryAt=this.time+(path.status==='ready'?0:2);
     }
     if (nav.status !== 'ready') return nav.status;
-    while(nav.points.length && dist(u.x,u.y,nav.points[0].x,nav.points[0].y)<.07) nav.points.shift();
+    // Do not discard a ranged final endpoint while still outside the true interaction radius.
+    // At60Hz a small step may stop within.07 of that endpoint but still outside range forever.
+    while(nav.points.length && dist(u.x,u.y,nav.points[0].x,nav.points[0].y)<.07 && (nav.points.length>1 || !range)) nav.points.shift();
     if (!nav.points.length) {
       if (entity && this.distanceTo(u,entity)>range || !entity && range && dist(u.x,u.y,tx,ty)>range+.01) {nav.status='pending';nav.retryAt=this.time;return 'pending';}
       return 'arrived';
@@ -1672,6 +1683,7 @@ export class Game {
     // Skip only fully collision-checked segments, never snap a unit to a waypoint.
     while(nav.points.length>1 && segmentClear(walkable,u,nav.points[1])) nav.points.shift();
     const p=nav.points[0], d=dist(u.x,u.y,p.x,p.y), step=Math.min(d,this.unitSpeed(u)*dt);
+    if(d<1e-9){nav.points=[];nav.status='pending';nav.retryAt=this.time;return 'pending';}
     const desired={x:u.x+(p.x-u.x)/d*step,y:u.y+(p.y-u.y)/d*step};
     u._heading={x:(p.x-u.x)/d,y:(p.y-u.y)/d};
     const next=this.crowd ? this.crowd.steer(u,desired,(a,b)=>segmentClear(walkable,a,b),this.time) : desired;
@@ -2778,6 +2790,8 @@ export class Game {
   }
 
   command(id) {
+    if(id.startsWith('order:')) {const mode=id.slice(6);if(['attackMove','guard','patrol'].includes(mode)&&this.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager')) {this.orderMode=mode;this.hooks.selectionChanged?.();}return;}
+    if(id==='stop'||id==='hold'||id.startsWith('stance:')){this.orderMode=null;for(const u of this.selection)u.tacticalOrder=null;this.hooks.selectionChanged?.();}
     if(id==='train:page'){const b=this.selection[0];if(b?.w&&b.alive&&b.team==='player')b.trainingPage=((b.trainingPage||0)+1)%Math.max(1,Math.ceil(this.trainableFor(b).length/4));this.hooks.selectionChanged?.();return;}
     if (id === 'build:page') {
       const pages = Math.max(1, Math.ceil(BUILD_OPTIONS.length / 4));
@@ -3110,6 +3124,7 @@ export class Game {
       if(changed){this.sound?.command();this.addCommandMarker(x,y,false);}else this.toast(t('rally.invalid'),'bad',2200);
       return;
     }
+    for(const u of units)u.tacticalOrder=null;
     const hit = this.pickAt(sx, sy);
     if (hit) {
       if (hit.team === 'enemy') {
@@ -3164,6 +3179,7 @@ export class Game {
   }
 
   commandMove(units, x, y) {
+    for(const u of units)u.tacticalOrder=null;
     const count = units.length;
     const cols = Math.ceil(Math.sqrt(count));
     const spacing = 0.8;
@@ -3186,6 +3202,60 @@ export class Game {
         y: clamp(y + oy, 1, this.world.size - 1),
       };
     });
+  }
+
+  issueTacticalCommand(sx,sy) {
+    const mode=this.orderMode,units=this.selection.filter(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager');
+    if(!mode||!units.length)return false;
+    const hit=this.pickAt(sx,sy),point=this.worldAt(sx,sy);
+    if(mode==='guard'&&(!hit||hit.team!=='player'||units.includes(hit)))return false;
+    const starts=units.map(u=>({x:u.x,y:u.y}));
+    this.commandMove(units,point.x,point.y);
+    units.forEach((u,i)=>{u.tacticalOrder={type:mode,destination:{...u.targetPos},origin:starts[i],leg:1,protectedId:mode==='guard'?hit.id:null};u._orderScanAt=0;});
+    if(units.some(u=>u.hero))this.heroControl=false;
+    this.orderMode=null;this.addCommandMarker(point.x,point.y,true);this.sound?.command();this.hooks.selectionChanged?.();return true;
+  }
+
+  updateTacticalOrder(u,dt) {
+    const order=u.tacticalOrder;
+    let guardRange=2;
+    let goal=order.type==='patrol'&&order.leg===0?order.origin:order.destination;
+    if(order.type==='guard') {
+      const ally=[...this.units,...this.buildings].find(e=>e.id===order.protectedId&&e.alive&&e.team==='player');
+      if(!ally){u.tacticalOrder=null;u.target=null;u.targetPos=null;u._nav=null;u.state='idle';return true;}
+      goal={x:ally.x+(ally.w?ally.w/2:0),y:ally.y+(ally.h?ally.h/2:0)};
+      guardRange=ally.w?Math.hypot(ally.w,ally.h)/2+1:2;
+      u.guardOrigin={...goal};
+      if(u.target&&this.distanceTo(goal,u.target)>8){u.target=null;u.state='idle';u._nav=null;}
+    }
+    if(u.state==='attack'&&u.target?.alive){order.engaged=true;return false;}
+    if(order.engaged){order.engaged=false;u._nav=null;u._progress=null;u._goalProgress=null;u._yieldTo=null;}
+    if(u.state==='attack'){u.target=null;u.manualAttack=false;u.state='idle';}
+    if(this.time>=(u._orderScanAt||0)) {
+      u._orderScanAt=this.time+.25;
+      if(order.type!=='guard')u.guardOrigin={x:u.x,y:u.y};
+      const near=!u.typeDef.noAttack?this.acquireTarget(u,u.stance==='hold'?this.unitRange(u):(u.typeDef.sight||6)*.72):null;
+      if(near){order.engaged=true;u.target=near;u.manualAttack=false;u.state='attack';u._nav=null;return false;}
+    }
+    if(u.orderFailure){u.tacticalOrder=null;return true;}
+    const tolerance=order.type==='guard'?guardRange:.25;
+    if(dist(u.x,u.y,goal.x,goal.y)<=tolerance) {
+      if(order.type==='attackMove'){u.tacticalOrder=null;u.targetPos=null;u.state='idle';return true;}
+      if(order.type==='patrol'){order.leg=1-order.leg;u.targetPos=null;u._nav=null;u._progress=null;u._goalProgress=null;}
+      else{u.state='idle';u.targetPos=null;}
+      return true;
+    }
+    if(!u.targetPos||dist(u.targetPos.x,u.targetPos.y,goal.x,goal.y)>.5){u.targetPos={...goal};u._nav=null;u._progress=null;u._goalProgress=null;}
+    u.state='move';const arrived=this.stepToward(u,goal.x,goal.y,dt,tolerance);
+    if(arrived==='unreachable'||arrived==='congested'){u.orderFailure=arrived;u.tacticalOrder=null;u.state='idle';u._nav=null;}
+    return true;
+  }
+
+  controlGroup(slot,store=false,add=false) {
+    if(!/^[1-9]$/.test(String(slot)))return;
+    this.controlGroups ||= {};
+    if(store){const selected=this.selection.filter(u=>u.alive&&u.team==='player'&&!u.w).map(u=>u.id);this.controlGroups[slot]=[...new Set([...(add?(this.controlGroups[slot]||[]):[]),...selected])];}
+    else{const ids=this.controlGroups[slot]||[],units=this.units.filter(u=>u.alive&&u.team==='player'&&ids.includes(u.id));this.setSelection(add?[...new Set([...this.selection,...units])]:units);}
   }
 
   cycleIdleVillager() { this.selectIdleVillager(); }

@@ -1,6 +1,10 @@
 export const ui = {
   'settings.uiScale': '界面文字大小',
   'settings.uiScaleDesc': '放大界面文字，不改变游戏速度或地图缩放。',
+  'order.attackMove': '攻击移动',
+  'order.guard': '守卫',
+  'order.patrol': '巡逻',
+  'order.hint': 'A/G/P后点目标；Ctrl+1–9编队，Alt+1–9选择。',
   "app.title": "世纪帝国二：裂境守望",
   "game.title": "世纪帝国二：裂境守望",
   "game.series": "世纪帝国二：",
