@@ -384,7 +384,9 @@ export class Game {
         if (['target', 'gatherTarget', 'buildTarget', 'dropTarget', 'typeDef', 'selected'].includes(key)) continue;
         unit[key] = value;
       }
-      unit.tacticalOrder = saved.tacticalOrder ? JSON.parse(JSON.stringify(saved.tacticalOrder)) : null;
+      const order=saved.tacticalOrder;
+      const point=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.y>=0&&p.x<this.world.size&&p.y<this.world.size;
+      unit.tacticalOrder = order&&['attackMove','guard','patrol'].includes(order.type)&&point(order.destination)&&point(order.origin)&&[0,1].includes(order.leg)&&(order.type!=='guard'||Number.isSafeInteger(order.protectedId)) ? JSON.parse(JSON.stringify(order)) : null;
       unit.typeDef = UNIT_TYPES[saved.type];
       unit.selected = false;
     }
@@ -2783,7 +2785,7 @@ export class Game {
 
   command(id) {
     if(id.startsWith('order:')) {const mode=id.slice(6);if(['attackMove','guard','patrol'].includes(mode)&&this.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager')) {this.orderMode=mode;this.hooks.selectionChanged?.();}return;}
-    if(id==='stop'||id==='hold'||id.startsWith('stance:'))for(const u of this.selection)u.tacticalOrder=null;
+    if(id==='stop'||id==='hold'||id.startsWith('stance:')){this.orderMode=null;for(const u of this.selection)u.tacticalOrder=null;this.hooks.selectionChanged?.();}
     if(id==='train:page'){const b=this.selection[0];if(b?.w&&b.alive&&b.team==='player')b.trainingPage=((b.trainingPage||0)+1)%Math.max(1,Math.ceil(this.trainableFor(b).length/4));this.hooks.selectionChanged?.();return;}
     if (id === 'build:page') {
       const pages = Math.max(1, Math.ceil(BUILD_OPTIONS.length / 4));
@@ -3214,7 +3216,7 @@ export class Game {
     let goal=order.type==='patrol'&&order.leg===0?order.origin:order.destination;
     if(order.type==='guard') {
       const ally=[...this.units,...this.buildings].find(e=>e.id===order.protectedId&&e.alive&&e.team==='player');
-      if(!ally){u.tacticalOrder=null;u.target=null;u._nav=null;u.state='idle';return true;}
+      if(!ally){u.tacticalOrder=null;u.target=null;u.targetPos=null;u._nav=null;u.state='idle';return true;}
       goal={x:ally.x+(ally.w?ally.w/2:0),y:ally.y+(ally.h?ally.h/2:0)};
       guardRange=ally.w?Math.hypot(ally.w,ally.h)/2+1:2;
       u.guardOrigin={...goal};
