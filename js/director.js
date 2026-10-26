@@ -33,7 +33,7 @@ const CIV_PREFERENCE = {
 const BASE_PREFERENCE = { ranged: .35, cavalry: .35, tower: .35, map: .35, worker: .35 };
 const ACT_ONE_END = 5;
 
-function unitThreat(type) {
+export function unitThreat(type) {
   const def = UNIT_TYPES[type];
   if (!def) return 1;
   if (def.threat) return def.threat;
