@@ -322,7 +322,7 @@ export class Renderer {
     const layer = this.terrainLayer;
     const lctx = this.terrainCtx;
     const z = game.camera.zoom;
-    const key = `${game.world.biome || 'ash'}|${game.camera.x}|${game.camera.y}|${z}|${this.w}|${this.h}|${this.dpr}`;
+    const key = `${game.world.seed}|${game.world.generationVersion || 1}|${game.world.biome || 'ash'}|${game.camera.x}|${game.camera.y}|${z}|${this.w}|${this.h}|${this.dpr}`;
     if (this.terrainKey !== key) {
       lctx.setTransform(1, 0, 0, 1, 0, 0);
       lctx.fillStyle = '#141a10';

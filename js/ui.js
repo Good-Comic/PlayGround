@@ -1081,7 +1081,7 @@ export class UI {
     ctx.clearRect(0, 0, W, H);
     ctx.fillStyle = '#101711'; ctx.fillRect(0, 0, W, H);
     const cellW = W / game.world.size, cellH = H / game.world.size;
-    const cacheKey = `${game.world.seed}:${game.world.biome || 'ash'}`;
+    const cacheKey = `${game.world.seed}:${game.world.generationVersion || 1}:${game.world.biome || 'ash'}`;
     if (!this.minimapCache || this.minimapCacheKey !== cacheKey) {
       const cache = document.createElement('canvas');
       cache.width = W; cache.height = H;
