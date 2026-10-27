@@ -1,0 +1,13 @@
+# Gameplay Milestone Phase1 — versioned seeded terrain
+
+Source `da97f86f0e3677419f1d58b705b0952dc1beeeae` (map-generation change `0bfbecfcdaec98a9f3bd9fe216a53fd7b38670a8`). AFTER_LOCAL / LOCAL_VERIFIED.
+
+Generation2 varies actual river/lake topology, bridges, camp positions and forest/mineral/berry patch centers using an independent layout RNG. It preserves a safe base area and continuous cobbled invasion crossings, without changing unit speed/collision/balance or skipping movement. The opening resource-overlap failure found in the precommit candidate is retained: nearest food sometimes appeared inside a starter house. Generation2 now relocates only invalid overlaps locally, preserving node identity and amount. Initial base building positions are shared immutable data used by both generation and actual placement. Version1 stays byte-identical for old saves; restore chooses the saved generator version (missing means1). Terrain/minimap cache keys now include Seed and generator version.
+
+132/132 Node regressions PASS. Sixteen historical full-world generation1 SHA256 fixtures match exactly across all eight biomes. Same Seed/biome/version repeats exactly; different Seeds alter camps, resource coordinates and real terrain. Both generations preserve terrain and resource identity/amount after snapshot restoration. Unknown future versions are rejected.
+
+Production-collision/A* audit: 40 maps (8 biomes x5 fixed seeds), 480 paths PASS: four camps with ram and large Boss radii plus nearest wood/food/gold/stone from a real starting villager. Each enemy path is swept against the actual collision predicate. This is simulation evidence, not a claim about infinite Seeds or real enemy combat.
+
+Exact33-file artifact Chromium:8/8 checks PASS. Actual UI Start, manual Seeds MAP-ONE and MAP-TWO in river biome, native Pause/Save/Reload/Continue, repeated MAP-ONE and natural militia selection/minimap camera/right-click move. The militia really crossed the river and reached the western camp within0.5 world units at19.41 simulation seconds; no position/resource/enemy injection. No browser or failed-resource errors. Actual video and three screenshots are retained. The map signature intentionally excludes changing harvested amounts for native live restore comparisons; the Node snapshot test separately compares exact saved resource amounts.
+
+This completes the bounded Phase1 map slice, not height/tactical elevation, exhaustive generation certification or full-campaign QA. Continue Phase2 natural campaigns without skipping waves; keep historical low-FPS clock, strict simulation SaveLoad, performance and hardware gaps.

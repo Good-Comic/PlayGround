@@ -127,3 +127,9 @@ Roguelite：有意义的卡牌/稀有度/文明差异、敌军种族与路线、
 日常回报仅：实际新增/修复、玩家可观察改善、真实测试 PASS/FAIL/BLOCKED、分支及完整 SHA、已知问题、下一个切片；详细日志留仓库。首次整合本规范，应在同一独立分支的 `docs/handoff/HANDOFF.md` 首段标记 **ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md**，标注此文件的 Git 提交与后续派工方式；保存远端后让下次排程优先读取。其他旧 Strategy 文件保留历史但不应作为 v2.4 工作的并列权威。不得复制拆散本文件成为多个互相冲突的现行版本。
 
 **执行要求：完成一次去重、排序和必要的重大决策选择；其他既有授权的 Game First 任务马上接续。实时浏览器观看可用则优先，不可用则录影＋状态记录并继续开发。**
+
+## User-approved continuous milestone override (2026-10-28)
+
+Commit/Push/Handoff are process checkpoints, not a reason to stop after one feature. Continue the v2.4 gameplay milestone in dependency order: versioned Seed terrain/accessibility → natural ten-wave campaigns → difficulty/enemy/Boss presets → New Game+ and end-to-end milestone acceptance. Continue independent authorized work around isolated blockers. Stop only for actual platform quota refusal, execution/context exhaustion, environment/tool/auth failures, unresolved ownership/Git conflict or a material decision requiring approval. Weekly percentage thresholds remain revoked. Preserve all FAIL and distinguish local/simulation/natural/live/hardware evidence.
+
+The user approved the conservative follow-up design in this session: Normal preserves the current baseline; Easy/Hard mainly change ordinary enemy counts and preparation windows without altering base-unit or Boss attributes. After normal ten-wave victory, an optional New Game+ retains at most three player-selected cards, resets resources/buildings/technology, and adds a visible enemy modifier. These mechanics still require implementation and actual validation; the approval itself is not a PASS.
