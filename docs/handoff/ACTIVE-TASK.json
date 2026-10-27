@@ -1,56 +1,56 @@
 {
-  "task_id": "V240-CIV-VISUAL-FAMILIES",
-  "name": "Civilization architecture and military silhouette families",
-  "requirement_source": "Strategy v2.4.0 GAME FIRST Phase B and user continuation priority",
+  "task_id": "V240-DIRECTIONAL-ANIMATION",
+  "name": "Direction-aware representative unit animation",
+  "requirement_source": "Strategy v2.4.0 GAME FIRST Phase A/B and latest Handoff",
   "priority": "P1",
   "agent": "Codex",
-  "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
+  "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
-  "latest_pushed_commit": "0fb83fb0666b63aa678cc412e4f49c548f55be89",
-  "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
+  "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+  "latest_pushed_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
+  "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
   "completed": [
-    "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
-    "Added family-specific roof ornaments and military kit silhouettes beyond color tinting",
-    "Connected player render colors to the selected civilization accent",
-    "Preserved collision radii building footprints navigation and balance values",
-    "Verified five representative families in a real exact-artifact Chromium gallery with video and zero browser errors"
+    "Added eight-direction isometric facing derived from real movement and live attack targets",
+    "Added walk attack hit and short death-fall visual states for representative procedural units",
+    "Persisted visual direction and death transition while ensuring dead units never revive",
+    "Preserved unit radii pathfinding attack cadence damage and balance values",
+    "Verified militia archer and light cavalry through real Chromium after the real Start flow"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Focused civilization and visual signature tests",
-      "path": "docs/evidence/v240-civ-visuals/focused-node.log.txt",
-      "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
-      "result": "5/5 PASS"
+      "name": "Focused animation combat and visual regression",
+      "path": "docs/evidence/v240-directional-animation/focused-node.log.txt",
+      "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+      "result": "18/18 PASS"
     },
     {
-      "name": "Exact-artifact Chromium civilization gallery",
-      "path": "docs/evidence/v240-civ-visuals/browser.json",
-      "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
-      "result": "4/4 PASS; exact 29 files; five distinct frames; collision invariant; zero errors"
+      "name": "Exact-artifact Chromium directional combat",
+      "path": "docs/evidence/v240-directional-animation/browser.json",
+      "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+      "result": "5/5 PASS; exact 29 files; eight directions; live attacks; three death frames; zero errors"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-civ-visuals/REPORT.md",
-    "docs/evidence/v240-civ-visuals/browser.json",
-    "docs/evidence/v240-civ-visuals/civ-visual-families.webm",
-    "docs/evidence/v240-civ-visuals/family-MNG.png",
-    "docs/evidence/v240-civ-visuals/family-TEU.png",
-    "docs/evidence/v240-civ-visuals/family-SAR.png",
-    "docs/evidence/v240-civ-visuals/family-CHN.png",
-    "docs/evidence/v240-civ-visuals/family-AZT.png"
+    "docs/evidence/v240-directional-animation/REPORT.md",
+    "docs/evidence/v240-directional-animation/browser.json",
+    "docs/evidence/v240-directional-animation/directional-animation.webm",
+    "docs/evidence/v240-directional-animation/directional-movement.png",
+    "docs/evidence/v240-directional-animation/attack-hit.png",
+    "docs/evidence/v240-directional-animation/death-1_1.png",
+    "docs/evidence/v240-directional-animation/death-0_6.png",
+    "docs/evidence/v240-directional-animation/death-0_15.png"
   ],
   "failures": [
-    "This is a representative family pipeline not sixteen complete unique asset sets or multidirectional animation",
+    "This is a representative procedural renderer state rather than an authored sprite atlas or complete animation set for every unit",
     "Low-FPS simulation time loss strict deterministic SaveLoad historical performance natural Rift Prototype reproduction ten-wave and hardware gaps remain"
   ],
   "blockers": [
     "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
   ],
   "next_steps": [
-    "Extend the visual pipeline with direction-aware walk attack hit and death frames for one representative unit set",
+    "Extend the direction-aware pipeline to authored interchangeable frame or atlas descriptors without changing gameplay geometry",
     "Add family-specific materials to additional landmark buildings without changing footprints",
     "Continue Seed-driven terrain and natural campaign slices after ownership revalidation"
   ],
@@ -61,5 +61,5 @@
   "status": "VERIFIED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
   "resume_status": "SCHEDULED_RESUME_EXECUTED",
-  "updated_at": "2026-10-27T10:56:31.051845+00:00"
+  "updated_at": "2026-10-27T11:11:13.373124+00:00"
 }

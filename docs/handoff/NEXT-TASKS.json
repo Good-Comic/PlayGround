@@ -1,7 +1,72 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T10:56:31.051845+00:00",
+  "updated_at": "2026-10-27T11:11:13.373124+00:00",
   "tasks": [
+    {
+      "task_id": "V240-DIRECTIONAL-ANIMATION",
+      "name": "Direction-aware representative unit animation",
+      "requirement_source": "Strategy v2.4.0 GAME FIRST Phase A/B and latest Handoff",
+      "priority": "P1",
+      "agent": "Codex",
+      "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
+      "branch": "codex/riftwatch-v240-game-first",
+      "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+      "latest_pushed_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
+      "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+      "completed": [
+        "Added eight-direction isometric facing derived from real movement and live attack targets",
+        "Added walk attack hit and short death-fall visual states for representative procedural units",
+        "Persisted visual direction and death transition while ensuring dead units never revive",
+        "Preserved unit radii pathfinding attack cadence damage and balance values",
+        "Verified militia archer and light cavalry through real Chromium after the real Start flow"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Focused animation combat and visual regression",
+          "path": "docs/evidence/v240-directional-animation/focused-node.log.txt",
+          "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+          "result": "18/18 PASS"
+        },
+        {
+          "name": "Exact-artifact Chromium directional combat",
+          "path": "docs/evidence/v240-directional-animation/browser.json",
+          "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+          "result": "5/5 PASS; exact 29 files; eight directions; live attacks; three death frames; zero errors"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v240-directional-animation/REPORT.md",
+        "docs/evidence/v240-directional-animation/browser.json",
+        "docs/evidence/v240-directional-animation/directional-animation.webm",
+        "docs/evidence/v240-directional-animation/directional-movement.png",
+        "docs/evidence/v240-directional-animation/attack-hit.png",
+        "docs/evidence/v240-directional-animation/death-1_1.png",
+        "docs/evidence/v240-directional-animation/death-0_6.png",
+        "docs/evidence/v240-directional-animation/death-0_15.png"
+      ],
+      "failures": [
+        "This is a representative procedural renderer state rather than an authored sprite atlas or complete animation set for every unit",
+        "Low-FPS simulation time loss strict deterministic SaveLoad historical performance natural Rift Prototype reproduction ten-wave and hardware gaps remain"
+      ],
+      "blockers": [
+        "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
+      ],
+      "next_steps": [
+        "Extend the direction-aware pipeline to authored interchangeable frame or atlas descriptors without changing gameplay geometry",
+        "Add family-specific materials to additional landmark buildings without changing footprints",
+        "Continue Seed-driven terrain and natural campaign slices after ownership revalidation"
+      ],
+      "permissions": [
+        "Independent gameplay development tests and normal push authorized",
+        "No public deployment protected branch change or OmGitHub execution"
+      ],
+      "status": "VERIFIED",
+      "quota_status": "QUOTA_PERCENT_UNKNOWN",
+      "resume_status": "SCHEDULED_RESUME_EXECUTED",
+      "updated_at": "2026-10-27T11:11:13.373124+00:00"
+    },
     {
       "task_id": "V240-CIV-VISUAL-FAMILIES",
       "name": "Civilization architecture and military silhouette families",
