@@ -759,7 +759,31 @@ export class Renderer {
   }
 
   drawCivilizationWallMaterial(b, profile, z) {
-    const ctx = this.ctx;
+    // Only the static wall pattern is cached. Flags, damage, construction,
+    // unit occlusion and ruin rendering remain in their existing live passes.
+    if (typeof document === 'undefined' || !document.createElement) {
+      this.paintCivilizationWallMaterial(b, profile, z, this.ctx);
+      return;
+    }
+    const dpr = this.dpr || 1;
+    const width = (b.type === 'house' ? 46 : 56) * z;
+    const height = (b.type === 'house' ? 25 : 33) * z;
+    const key = `${profile.id}:${b.type}:${z}:${dpr}`;
+    this.landmarkMaterialCache ??= new Map();
+    let layer = this.landmarkMaterialCache.get(key);
+    if (!layer) {
+      layer = document.createElement('canvas');
+      layer.width = Math.ceil(width * dpr); layer.height = Math.ceil(height * dpr);
+      const ctx = layer.getContext('2d');
+      ctx.scale(layer.width / width, layer.height / height); ctx.translate(0, height);
+      this.paintCivilizationWallMaterial(b, profile, z, ctx);
+      if (this.landmarkMaterialCache.size >= 24) this.landmarkMaterialCache.clear();
+      this.landmarkMaterialCache.set(key, layer);
+    }
+    this.ctx.drawImage(layer, 0, -height, width, height);
+  }
+
+  paintCivilizationWallMaterial(b, profile, z, ctx) {
     const military = ['barracks', 'range', 'stable', 'tower'].includes(b.type);
     const span = (military ? 28 : 23) * z, x = span, base = -7 * z;
     ctx.lineWidth = Math.max(1, z);
