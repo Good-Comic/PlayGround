@@ -104,6 +104,11 @@ export class Sound {
     });
   }
   boon() { [392, 494, 587, 784].forEach((f, i) => this.tone(f, 0.6, 'sine', 0.04, f, i * 0.1)); }
+  prototype() {
+    if (!this.ctx || !this.enabled) return;
+    this.noise(0.42, 0.045, 520, 0, 'bandpass');
+    [82.5, 123.5, 185, 370].forEach((f, i) => this.tone(f, 0.55, i < 2 ? 'sawtooth' : 'triangle', 0.035, f * 1.06, i * 0.09));
+  }
   victory() {
     [261.6, 329.6, 392, 523, 659].forEach((f, i) => this.tone(f, 1.2, 'triangle', 0.045, f, i * 0.16));
   }

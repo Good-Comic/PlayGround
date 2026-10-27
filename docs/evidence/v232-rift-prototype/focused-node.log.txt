@@ -1,0 +1,48 @@
+OBSERVATION {"name":"crowd-24","threshold":"24/24 arrive within 70s; penetration <= .025; static clips 0","observed":{"arrived":24,"penetration":0,"clipped":0}}
+OBSERVATION {"name":"narrow-opposing","threshold":"both arrive <=60s, penetration <=.025, no static clipping","observed":{"a":{"x":18,"y":9.5,"state":"idle"},"b":{"x":6.0199942307239045,"y":9.499481071667935,"state":"idle"},"penetration":0,"clipped":0}}
+OBSERVATION {"name":"unreachable-combat","threshold":"failure recorded <=5s, target replaced, no water crossing","observed":{"time":0.05,"failure":"unreachable","target":22,"x":10}}
+OBSERVATION {"name":"continuous-retarget","threshold":"zero dead references immediately after each of 3 kills","observed":[{"dead":21,"target":22,"state":"attack"},{"dead":22,"target":23,"state":"attack"},{"dead":23,"state":"idle"}]}
+OBSERVATION {"name":"stances","threshold":"all four stance contracts match; explicit move never stolen","observed":[{"stance":"aggressive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"defensive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"hold","acquired":false,"retaliates":false,"manualMove":true},{"stance":"passive","acquired":false,"retaliates":false,"manualMove":true}]}
+OBSERVATION {"name":"economy-competition-food","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"economy-competition-wood","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[24,26,24,25,24,26,23,25,23,26,25,27],"credited":2980,"carried":46.48749999999997,"error":2.003403665185033e-9,"penetration":0.014977406250572867}}
+OBSERVATION {"name":"economy-competition-gold","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"economy-competition-stone","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"save-load","threshold":"move completes, cargo credited once, no dead attack references","observed":{"moveState":"idle","goldDelta":57,"deadRefs":0}}
+OBSERVATION {"name":"narrow-queues-8","threshold":"8/8 within80s, penetration<=.025, static clips0","observed":{"arrived":8,"maxPenetration":0.014853785277115894,"clipped":0,"crossed":8}}
+OBSERVATION {"name":"fair-queue-100","threshold":"all100 move within4.8s; <=2 searches/update","observed":{"moved":100,"maxSearches":2,"searches":182}}
+OBSERVATION {"name":"passive-direct-hero","threshold":"no damage or autonomous target while passive","observed":{"enemyHp":60,"initialHp":60}}
+OBSERVATION {"name":"move-failure-vs-arrival","threshold":"unreachable result reported; new valid order reaches actual destination","observed":{"failurePreserved":true,"newX":12,"newY":10}}
+OBSERVATION {"name":"direct-route-1000","threshold":"1000/1000 move in first update; unchanged speed cap; A*0","observed":{"moved":1000,"searches":0,"directRoutes":1000}}
+✔ 24-unit crowd reaches separate formation slots without overlap or static clipping (198.574363ms)
+✔ opposing units pass a narrow building corridor by yielding, without overlap (32.78426ms)
+✔ unreachable manual combat target is abandoned and reachable enemy acquired (21.706426ms)
+✔ continuous combat clears death references in the same kill event and acquires next (3.889262ms)
+✔ all stances obey acquire, chase, retaliation and manual priority contracts (9.783426ms)
+✔ 12 villagers competing for food complete long-run cycles with conservation (586.086074ms)
+✔ 12 villagers competing for wood complete long-run cycles with conservation (495.569232ms)
+✔ 12 villagers competing for gold complete long-run cycles with conservation (479.956547ms)
+✔ 12 villagers competing for stone complete long-run cycles with conservation (430.939325ms)
+✔ save/load resumes move, gather, return and valid attack orders without path-cache dependence (252.818062ms)
+✔ eight units in opposing queues pass the one-tile corridor (77.787421ms)
+✔ fair search queue starts all 100 units despite continuous low-ID demand (1343.337254ms)
+✔ directly controlled passive hero does not auto-attack (1.560501ms)
+✔ an unreachable move is a reported failure, not arrival, and a new move clears it (4.875695ms)
+✔ legal direct routes start 1000 units without bypassing speed or collision (39.965352ms)
+✔ negative startup delta cannot reverse game time or break smoke geometry (3.919618ms)
+✔ Rift Prototype spawns alive on a walkable free tile and plays its awakening cue once (15.266048ms)
+✔ 120s cleanup completes with a living legal carryover instead of waiting forever (17.29182ms)
+✔ 110s wave withdrawal remains active beyond temporary tactical-retreat timeout (10.46097ms)
+✔ carryover cap uses ORIGINAL wave threat, not only surviving units (7.456247ms)
+✔ actual arrival at exit withdraws without kill credit or loot (5.432966ms)
+✔ 5percent original-threat hold requires continuous3seconds and pending spawns prevent early settlement (14.910349ms)
+✔ new wave resets cleanup flags; SaveLoad preserves withdrawal and original threat (7.192557ms)
+✔ Boss still blocks120s cleanup; destroyed core wins over cleanup (5.881795ms)
+✔ boon reading freezes remaining-enemy combat and economy without erasing carryover (3.461354ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4122.334742

@@ -655,7 +655,10 @@ export class Game {
     const x = tc ? tc.x + tc.w + 1.5 : this.world.base.x + 3;
     const y = tc ? tc.y + 1 : this.world.base.y + 3;
     const u = this.spawnUnit('prototype', x, y);
-    if (u) this.toast(t('toast.prototype'), 'good', 3600);
+    if (u) {
+      this.sound?.prototype?.();
+      this.toast(t('toast.prototype'), 'good', 3600);
+    }
     return u;
   }
 

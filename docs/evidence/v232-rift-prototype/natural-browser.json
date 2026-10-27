@@ -1,0 +1,241 @@
+{
+  "scope": "REAL_LOCAL_CHROMIUM_NATURAL_WAVE; production UI and rAF; SwiftShader; not online/hardware/formal QA",
+  "url": "http://127.0.0.1:8022/",
+  "seed": "rift-browser-120",
+  "actions": [
+    "Open exact local immutable 28-file artifact",
+    "Set supported Game speed to 1.5x through Settings UI",
+    "Start Game through setup UI with deterministic seed"
+  ],
+  "samples": [
+    {
+      "wall": 1502,
+      "phase": "prep",
+      "runTime": 0.3250500000000001,
+      "waveClock": 0,
+      "wave": 0,
+      "core": 3000,
+      "player": 13,
+      "enemies": 0,
+      "choices": [],
+      "rng": 234148238
+    },
+    {
+      "wall": 11616.09999999404,
+      "phase": "prep",
+      "runTime": 15.524399999999897,
+      "waveClock": 0,
+      "wave": 0,
+      "core": 3000,
+      "player": 13,
+      "enemies": 0,
+      "choices": [],
+      "rng": 1501737054
+    },
+    {
+      "wall": 21687.79999999702,
+      "phase": "prep",
+      "runTime": 30.623849999999514,
+      "waveClock": 0,
+      "wave": 0,
+      "core": 3000,
+      "player": 15,
+      "enemies": 0,
+      "choices": [],
+      "rng": 2128999194
+    },
+    {
+      "wall": 31771.09999999404,
+      "phase": "wave",
+      "runTime": 45.748199999998725,
+      "waveClock": 0.724949999999999,
+      "wave": 0,
+      "core": 3000,
+      "player": 18,
+      "enemies": 0,
+      "choices": [],
+      "rng": -1174456883
+    },
+    {
+      "wall": 41866.5,
+      "phase": "wave",
+      "runTime": 60.89759999999786,
+      "waveClock": 15.874349999999936,
+      "wave": 0,
+      "core": 3000,
+      "player": 21,
+      "enemies": 8,
+      "choices": [],
+      "rng": -1895120089
+    },
+    {
+      "wall": 51947.29999999702,
+      "phase": "wave",
+      "runTime": 76.02209999999775,
+      "waveClock": 30.998850000000502,
+      "wave": 0,
+      "core": 3000,
+      "player": 20,
+      "enemies": 3,
+      "choices": [],
+      "rng": -1840325952
+    },
+    {
+      "wall": 62019,
+      "phase": "wave",
+      "runTime": 91.12139999999803,
+      "waveClock": 46.09814999999974,
+      "wave": 0,
+      "core": 3000,
+      "player": 20,
+      "enemies": 11,
+      "choices": [],
+      "rng": 626664980
+    },
+    {
+      "wall": 72101.5,
+      "phase": "wave",
+      "runTime": 106.24574999999709,
+      "waveClock": 61.22249999999898,
+      "wave": 0,
+      "core": 3000,
+      "player": 20,
+      "enemies": 11,
+      "choices": [],
+      "rng": 1979681160
+    },
+    {
+      "wall": 82172.40000000596,
+      "phase": "wave",
+      "runTime": 121.34519999999591,
+      "waveClock": 76.32194999999791,
+      "wave": 0,
+      "core": 3000,
+      "player": 19,
+      "enemies": 10,
+      "choices": [],
+      "rng": -868023559
+    },
+    {
+      "wall": 92273.70000000298,
+      "phase": "wave",
+      "runTime": 136.49444999999415,
+      "waveClock": 91.47119999999667,
+      "wave": 0,
+      "core": 3000,
+      "player": 18,
+      "enemies": 7,
+      "choices": [],
+      "rng": -1387785489
+    },
+    {
+      "wall": 102384.29999999702,
+      "phase": "wave",
+      "runTime": 151.66874999999192,
+      "waveClock": 106.64549999999524,
+      "wave": 0,
+      "core": 2993.4000000000005,
+      "player": 14,
+      "enemies": 3,
+      "choices": [],
+      "rng": 718287161
+    }
+  ],
+  "checks": [
+    {
+      "name": "Natural preparation and wave reaches boon phase",
+      "pass": true,
+      "detail": {
+        "wall": 111461.40000000596,
+        "phase": "boon",
+        "runTime": 165.04334999999006,
+        "waveClock": 120.02009999999433,
+        "wave": 0,
+        "core": 3000,
+        "player": 13,
+        "enemies": 2,
+        "choices": [
+          "citizen_arms",
+          "war_banner",
+          "pack_mules"
+        ],
+        "rng": -1766341837
+      }
+    },
+    {
+      "name": "Rift Prototype is naturally offered",
+      "pass": false,
+      "detail": [
+        "citizen_arms",
+        "war_banner",
+        "pack_mules"
+      ]
+    }
+  ],
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": [],
+  "build": {
+    "id": "riftwatch-v232-natural-diagnostic",
+    "commit": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+    "status": "PLAYTEST-EXPERIMENTAL",
+    "builtAt": "2026-10-27T03:06:35.159185+00:00",
+    "branch": "codex/riftwatch-v232-rift-prototype",
+    "dirty": false,
+    "files": {
+      "KNOWN-ISSUES.html": "bd9f0dbc36093ddd313df84546abd7cdd9fff5280675db5e711c7d39a8761b27",
+      "KNOWN-ISSUES.md": "d580a5ff5864b78dc14bcd9b75aefa3929db47b6021b0808c9c66596dcdccaff",
+      "assets/fonts/cinzel-400.ttf": "a0242f6698ae0d3220a29986a09274f9d1eddb4a24da4e50faf387fd1804eb7b",
+      "assets/fonts/cinzel-700.ttf": "5150b3609eeaaa9c6d7e093cb9b16ab8ec2f7110ddf0cbe751887e6f158398af",
+      "assets/fonts/imfell-400.ttf": "725a44824e534dfb26af2bf135dd6fab577ec7f0781c5be17bd89e7ce22f035a",
+      "index.html": "ec6b589d639f8707ec9880ebbbe2c50d783c435c1132b754477a8e9283df4b27",
+      "js/audio.js": "b2bc9537b96cd7f57502500af691de0ede048ce6c3a04dee72c60a26a03331b3",
+      "js/build-info.js": "8f9b95b01d114595fa9fc09468067e0d1c8d690632eda66647a7ad037d36db54",
+      "js/crowd.js": "459c70033bafe13260627ba585610bee10a9bafe9a8e4888034736eac0045ad7",
+      "js/data.js": "cb50b0c9ef81bf0130402332bf1525424d21aa24b3a3a45fe96946a2ab081932",
+      "js/director.js": "a75ac93d51dbb5fbc2d2727188237d36d626cdf1fa8c94a1681755ba78916c29",
+      "js/events.js": "e6dfe06cbd56e34859909ca37fc6fc0556fa8b6da72be6cc17bc4a015c9400ac",
+      "js/game.js": "6ee7893615d30fd04b8cb56dfa0760136774713db4700ec4d3899c3ecec0dbdb",
+      "js/i18n.js": "80d4b247d162f0acfe314b4aaecbd155e85ab42d29f2bd5aeb07e26c788dfb1a",
+      "js/locales/ja.js": "4d65c6c6405b4b49020a2de84d05cb718132f235baeab26de0e957e2b7881771",
+      "js/locales/zh-Hans.js": "0507e119165c2ed0cfaddb9ce73820dd67ede1817106de6b321366e878891a6d",
+      "js/locales/zh-Hant.js": "31c7c6ced8b6db59b60a8db311a806ba671f6f3c75c93f58134f3a8bff0dbf6f",
+      "js/locales.js": "33cdafd457d7cf9dd6fdd283ea77840c4a742f0bcbc72127933f88d3b220d32a",
+      "js/main.js": "c056787d593183de4cc068d202c9baba191ac5c4dae371ab42d284c0622cc768",
+      "js/navigation.js": "10c294bc3596f630e4c9af42051f1dcde60797a6357a81faedc7482141a523ab",
+      "js/playtest.js": "e7322bd69d69226a15eb38becb39ef79773cd0ff034d598f75100ab80eafe676",
+      "js/renderer.js": "e726e791816999768c33cfa142ab47643140cd02ab4db639662004c7b18569d9",
+      "js/save.js": "51785af91e60e8a4db7693f79023685ae3696b606243af063604953eddd7b25c",
+      "js/settings.js": "7a132a135303ac6f962de6f69f83e41b78142f724fb01d7cc3c2bca0f32c6805",
+      "js/ui.js": "e53959d20c182f0e1b5c8eae6193992bc972e28652575568abaf150fa89a8b61",
+      "js/utils.js": "f56698b14b22911d0b2dadd1b6b8e8046cec71326b3e57cac94dbd764e78088a",
+      "js/world.js": "16ad820aa0a5547ac75325cf05193386f20ed88971e37513410aab91c91487e6",
+      "styles.css": "864408efc53e91d8d96d4e8702478bf03dcedcc9c55bd26da3ae092e226468e7"
+    },
+    "manifest_scope": "All served payload files; hosting control .nojekyll and metadata aliases excluded to avoid recursive hashes",
+    "verification_level": "AFTER_LOCAL_ONLY_UNTIL_AUTHORIZED_DEPLOY"
+  },
+  "wave_end": {
+    "wall": 111461.40000000596,
+    "phase": "boon",
+    "runTime": 165.04334999999006,
+    "waveClock": 120.02009999999433,
+    "wave": 0,
+    "core": 3000,
+    "player": 13,
+    "enemies": 2,
+    "choices": [
+      "citizen_arms",
+      "war_banner",
+      "pack_mules"
+    ],
+    "rng": -1766341837
+  },
+  "final": {
+    "phase": "boon",
+    "wave": 0,
+    "runTime": 165.04334999999006,
+    "prototype": 0
+  },
+  "pass": false
+}
