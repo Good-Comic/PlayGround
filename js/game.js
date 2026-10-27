@@ -9,6 +9,7 @@ import { createWorld } from './world.js';
 import { NemesisDirector, unitThreat } from './director.js';
 import { t } from './i18n.js';
 import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, rand, randInt, seedFromDate, formatNumber } from './utils.js';
+import { visualDirectionFromVector } from './visuals.js';
 
 export const HERO_SKILLS = Object.freeze({
   mark: Object.freeze({ radius: 9, duration: 6, cooldown: 30, rangeColor: '229,160,74' }),
@@ -168,7 +169,7 @@ export class Game {
     };
     const unitKeys = [
       'id', 'team', 'type', 'x', 'y', 'hp', 'maxHp', 'baseMaxHp', 'pop', 'armor', 'attack',
-      'state', 'carry', 'carryType', 'cooldown', 'attackAnim', 'walkPhase', 'facing', 'hitFlash',
+      'state', 'carry', 'carryType', 'cooldown', 'attackAnim', 'walkPhase', 'facing', 'visualDirection', 'deathAnim', 'hitFlash',
       'alive', 'retargetTimer', 'hold', 'idleTimer', 'buildingHint', 'hero', 'shield', 'shieldTime',
       'marked', 'slowUntil', 'shots', 'rescueUsed', 'expireIn', 'bossSkillTimer', 'rageStage',
       'summoned', 'markCd', 'aegisCd', 'eventFlags', 'eventSpeedMul', 'eventAttackSpeedMul',
@@ -574,7 +575,7 @@ export class Game {
       attack: def.attack * (team === 'enemy' ? 1 + this.waveIndex * 0.035 : 1),
       state: 'idle', target: null, targetPos: null, gatherTarget: null,
       buildTarget: null, carry: 0, carryType: null, cooldown: this.rng() * 0.4,
-      attackAnim: 0, walkPhase: this.rng() * 6.28, facing: 1, selected: false,
+      attackAnim: 0, walkPhase: this.rng() * 6.28, facing: 1, visualDirection: 'SE', deathAnim: 0, selected: false,
       hitFlash: 0, alive: true, retargetTimer: this.rng() * 0.8, hold: false,
       stance: 'defensive', guardOrigin: { x, y }, manualAttack: false,
       idleTimer: this.rng(), buildingHint: options.buildingHint || null,
@@ -1025,7 +1026,7 @@ export class Game {
     this.navigationStats = { searches: 0, expanded: 0, ms: 0, directRoutes: 0, routeReuses: 0, totalDirectRoutes: previous.totalDirectRoutes || 0, totalSearches: previous.totalSearches || 0 };
     this.navigationBudget = 2; // Avoid an A* stampede; waiting units retain their orders.
     for (const u of this.units) {
-      if (!u.alive) continue;
+      if (!u.alive) { u.deathAnim = Math.max(0, (u.deathAnim || 0) - dt); continue; }
       u.cooldown = Math.max(0, u.cooldown - dt);
       u.attackAnim = Math.max(0, u.attackAnim - dt * 5.5);
       u.hitFlash = Math.max(0, u.hitFlash - dt * 5);
@@ -1081,6 +1082,7 @@ export class Game {
       u.guardOrigin={x:u.x,y:u.y};
       u.walkPhase += speed * dt * 5.3;
       u.facing = dx >= 0 ? 1 : -1;
+      u.visualDirection = visualDirectionFromVector(dx, dy, u.visualDirection);
       u.state = 'move';
       u.targetPos = null;
     } else {
@@ -1704,7 +1706,7 @@ export class Game {
     u._heading={x:(p.x-u.x)/d,y:(p.y-u.y)/d};
     const next=this.crowd ? this.crowd.steer(u,desired,(a,b)=>segmentClear(walkable,a,b),this.time) : desired;
     if(next && segmentClear(walkable,u,next)) {
-      u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=p.x>=u.x?1:-1;nav.stalled=0;
+      const faceDx=next.x-u.x,faceDy=next.y-u.y;u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=faceDx>=0?1:-1;u.visualDirection=visualDirectionFromVector(faceDx,faceDy,u.visualDirection);nav.stalled=0;
       this.crowd?.moved(u);
     } else {
       nav.stalled+=dt;
@@ -1828,6 +1830,7 @@ export class Game {
     const def = u.typeDef;
     const newTarget = u.target !== target;
     u.combatAt = this.time;
+    u.visualDirection = visualDirectionFromVector((target.x + (target.w || 0) / 2) - u.x, (target.y + (target.h || 0) / 2) - u.y, u.visualDirection);
     u.attackAnim = 1;
     u.cooldown = this.attackCooldown(u) + (u.team === 'player' && def.projectile && newTarget ? this.effects.archerFirstShotDelay : 0);
     u.state = 'attack';
@@ -2038,6 +2041,7 @@ export class Game {
       }
     }
     target.alive = false;
+    target.deathAnim = 1.2;
     for (const u of this.units) {
       if (u.target !== target) continue;
       u.target=null;u.manualAttack=false;u._nav=null;
