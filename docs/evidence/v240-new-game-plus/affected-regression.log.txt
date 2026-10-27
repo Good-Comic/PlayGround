@@ -1,0 +1,121 @@
+BOSS_SPAWN [{"id":22,"x":27,"y":20,"type":"militia","target":20,"hp":73},{"id":23,"x":24,"y":23,"type":"militia","target":20,"hp":73},{"id":24,"x":21,"y":20,"type":"militia","target":20,"hp":73},{"id":25,"x":24,"y":17,"type":"militia","target":20,"hp":73}]
+✔ A3-BOSS-ID-01 creates4 registered M infantry with valid hostile orders and ordinary stats (57.291997ms)
+✔ extension generates4 at150/180/210 only, caps at3 rounds and does not double spawn per tick (34.456324ms)
+✔ starting wave10 clears wave5 extension counters; warning and each round can occur again (48.49742ms)
+✔ Save/Load preserves an already consumed round and seeded later reinforcement spawns (103.183636ms)
+✔ no living Boss cannot create reinforcement units (18.097025ms)
+✔ Normal is exactly the existing director plan across all ten waves and three Seeds (526.350012ms)
+✔ Easy and Hard round aggregate ordinary counts, preserve Boss and actual total/intel (452.081242ms)
+✔ difficulty SaveLoad preserves queued plan without scaling it twice; legacy defaults Normal (55.35245ms)
+CIV_MATRIX [{"civ":"MNG","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"TEU","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"GOT","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"FRK","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"SAR","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":["militia","spearman","archer","skirmisher","light_cavalry","horse_archer","guard","mangonel","ram","recruiter","patrol_cart"]},{"civ":"AZT","range":["archer","skirmisher"],"stable":[],"market":[]},{"civ":"BRI","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"CHN","range":["archer","skirmisher","chu_ko_nu"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"PER","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer","elephant"],"market":[]},{"civ":"KOR","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"SPA","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"TUR","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"BYZ","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"VIK","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"MAG","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"JPN","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]}]
+✔ B2-CIV-ENTRY-01 sixteen-civ matrix exposes only legal training entries (499.409004ms)
+✔ Chu Ko Nu age/owner/building gates, payment, training and Save/Load (155.488259ms)
+✔ Chinese repeating-crossbow uses actual third-shot bonus projectile without a duplicate extra-bolt rule (30.600989ms)
+✔ non-Persian legitimate elephant boon unlock preserved, SAR paginates without population-rule changes (67.231699ms)
+✔ Issue8 §3 unique uses exact §5 R stats, +15% price/threat, no second bespoke combat bonus (18.957391ms)
+✔ dead attack target is replaced on the next player update (39.149893ms)
+✔ dead target with no replacement returns to idle (46.398719ms)
+✔ manual move and attack take precedence over automatic acquisition (33.161421ms)
+✔ passive never acquires or retaliates automatically (11.755078ms)
+✔ hold position can attack in range without pursuing (19.560173ms)
+✔ defensive units return to guard origin after leash is exceeded (4.657097ms)
+✔ idle defensive unit retaliates; moving unit keeps manual order (30.344402ms)
+✔ enemy opportunistic attack cannot target itself or friendly units (8.654517ms)
+✔ stances persist in snapshots and old saves default to defensive (45.348513ms)
+✔ single stance command cycles through all four stances, including for heroes (14.623093ms)
+✔ A* routes around a wall through its only gap without cutting corners (7.658271ms)
+✔ blocked endpoint projects onto a legal destination (2.366716ms)
+✔ water-separated destination is unreachable, never teleported to (22.84374ms)
+✔ all unit classes navigate around a building and finish a blocked-endpoint move (141.018295ms)
+✔ moving around trees and water preserves collision clearance (54.093175ms)
+✔ four resources complete at least three capacity/deposit/restart cycles each (210.528689ms)
+✔ depleted resource delivers remainder, switching resource cannot change carried type (16.36958ms)
+✔ unreachable gathering target is replaced without losing carried cargo (48.944318ms)
+✔ destroyed dropoff reassigns to a surviving camp without duplicate credit (27.476437ms)
+✔ save/load restores an in-flight return and continues economic work (52.871086ms)
+✔ old saves without stances migrate safely (54.605808ms)
+✔ LIVE seed regression: food workers reach the sub-grid building edge and deposit (1083.299778ms)
+✔ a newly placed building invalidates an old route without clipping through it (7.501813ms)
+✔ NG+ is gated behind completed victory and validates owned unique maximum-three cards before mutation (68.336051ms)
+✔ NG+ resets economy entities technology and stats, applies only selected cards once and announces flank (34.758724ms)
+✔ NG+ frontier and RNG are repeatable; SaveLoad does not reapply inherited effects or alter plan (79.63931ms)
+✔ inherited immediate Prototype card uses its real effect; no prior entities are carried (17.107093ms)
+✔ legacy SaveLoad defaults cycle one and no inherited cards, leaving Boss stats unchanged (56.38579ms)
+OBSERVATION {"name":"crowd-24","threshold":"24/24 arrive within 70s; penetration <= .025; static clips 0","observed":{"arrived":24,"penetration":0,"clipped":0}}
+OBSERVATION {"name":"narrow-opposing","threshold":"both arrive <=60s, penetration <=.025, no static clipping","observed":{"a":{"x":18,"y":9.5,"state":"idle"},"b":{"x":6.0199942307239045,"y":9.499481071667935,"state":"idle"},"penetration":0,"clipped":0}}
+OBSERVATION {"name":"unreachable-combat","threshold":"failure recorded <=5s, target replaced, no water crossing","observed":{"time":0.05,"failure":"unreachable","target":22,"x":10}}
+OBSERVATION {"name":"continuous-retarget","threshold":"zero dead references immediately after each of 3 kills","observed":[{"dead":21,"target":22,"state":"attack"},{"dead":22,"target":23,"state":"attack"},{"dead":23,"state":"idle"}]}
+OBSERVATION {"name":"stances","threshold":"all four stance contracts match; explicit move never stolen","observed":[{"stance":"aggressive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"defensive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"hold","acquired":false,"retaliates":false,"manualMove":true},{"stance":"passive","acquired":false,"retaliates":false,"manualMove":true}]}
+OBSERVATION {"name":"economy-competition-food","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"economy-competition-wood","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[24,26,24,25,24,26,23,25,23,26,25,27],"credited":2980,"carried":46.48749999999997,"error":2.003403665185033e-9,"penetration":0.014977406250572867}}
+OBSERVATION {"name":"economy-competition-gold","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"economy-competition-stone","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"save-load","threshold":"move completes, cargo credited once, no dead attack references","observed":{"moveState":"idle","goldDelta":47,"deadRefs":0}}
+OBSERVATION {"name":"narrow-queues-8","threshold":"8/8 within80s, penetration<=.025, static clips0","observed":{"arrived":8,"maxPenetration":0.014853785277115894,"clipped":0,"crossed":8}}
+OBSERVATION {"name":"fair-queue-100","threshold":"all100 move within4.8s; <=2 searches/update","observed":{"moved":100,"maxSearches":2,"searches":182}}
+OBSERVATION {"name":"passive-direct-hero","threshold":"no damage or autonomous target while passive","observed":{"enemyHp":60,"initialHp":60}}
+OBSERVATION {"name":"move-failure-vs-arrival","threshold":"unreachable result reported; new valid order reaches actual destination","observed":{"failurePreserved":true,"newX":12,"newY":10}}
+OBSERVATION {"name":"direct-route-1000","threshold":"1000/1000 move in first update; unchanged speed cap; A*0","observed":{"moved":1000,"searches":0,"directRoutes":1000}}
+✔ 24-unit crowd reaches separate formation slots without overlap or static clipping (537.68444ms)
+✔ opposing units pass a narrow building corridor by yielding, without overlap (99.823854ms)
+✔ unreachable manual combat target is abandoned and reachable enemy acquired (38.125794ms)
+✔ continuous combat clears death references in the same kill event and acquires next (6.897162ms)
+✔ all stances obey acquire, chase, retaliation and manual priority contracts (51.906481ms)
+✔ 12 villagers competing for food complete long-run cycles with conservation (2214.713475ms)
+✔ 12 villagers competing for wood complete long-run cycles with conservation (929.782188ms)
+✔ 12 villagers competing for gold complete long-run cycles with conservation (974.639921ms)
+✔ 12 villagers competing for stone complete long-run cycles with conservation (915.779295ms)
+✔ save/load resumes move, gather, return and valid attack orders without path-cache dependence (510.45991ms)
+✔ eight units in opposing queues pass the one-tile corridor (131.571984ms)
+✔ fair search queue starts all 100 units despite continuous low-ID demand (2404.815254ms)
+✔ directly controlled passive hero does not auto-attack (3.921577ms)
+✔ an unreachable move is a reported failure, not arrival, and a new move clears it (12.118408ms)
+✔ legal direct routes start 1000 units without bypassing speed or collision (74.580908ms)
+✔ negative startup delta cannot reverse game time or break smoke geometry (9.898227ms)
+✔ report uses allowlisted state and never copies storage/credentials/URL/raw error (2.571001ms)
+✔ errors are categorised and arbitrary details never exported (0.279143ms)
+✔ state export is bounded and invalid IDs/nonfinite numbers are discarded (1.427782ms)
+✔ integrity verifier blocks payload mismatch and external/path traversal manifests (13.659177ms)
+POP {"military":19,"militaryCap":20,"economy":60,"economicCap":60,"total":79}
+✔ A3-POP-01 all HUD population fields are finite and economy is independent (43.587212ms)
+✔ two barracks reserve the final military slot globally without spending twice (22.803135ms)
+✔ two town centers reserve economy slot60 globally and military queue does not consume it (62.198742ms)
+✔ Franks cap40 includes reservations across buildings but excludes villagers (12.318101ms)
+✔ incomplete/dead/enemy housing and enemy queues cannot add or reserve player capacity (12.071556ms)
+✔ Save/Load recomputes category reservations and finite derived caps without schema changes (23.84647ms)
+✔ GDD opening military40 derives from core20 and two houses10; economy remains60 (12.834364ms)
+✔ B1-RALLY-01 only complete allied production buildings accept finite legal rally (36.315299ms)
+✔ trained soldier uses rally; old villagers retain automatic wood order without rally (20.36317ms)
+✔ trained unit exits on the rally-facing side instead of first walking away (6.140778ms)
+✔ villager resource rally gathers; depleted resource falls back to move; clear preserves legacy behavior (8.448401ms)
+✔ full spawn region keeps paid queue item and training statistics until spawn succeeds (29.862147ms)
+✔ rally survives real Game snapshot/restore and older saves without a rally remain valid (77.899381ms)
+✔ unreachable rally is reported without crossing water or dropping orders silently (124.189435ms)
+✔ rally clear does not consume a training shortcut or hide an existing market entry (77.919306ms)
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (182.881503ms)
+✔ Patrol completes both legs using native navigation (35.979805ms)
+✔ Guard follows a living ally then recovers when ally dies (20.037814ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (51.556919ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (12.482771ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (25.5445ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (19.936335ms)
+✔ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (58.644094ms)
+✔ A3-STATE-01 dead target with no core/player clears obsolete move and route (43.472136ms)
+✔ idle enemy reacquires a new nearby player on the very next update (23.7883ms)
+✔ living town center keeps ordinary pursuit when no nearby player exists (64.111899ms)
+✔ 120s cleanup completes with a living legal carryover instead of waiting forever (56.861617ms)
+✔ 110s wave withdrawal remains active beyond temporary tactical-retreat timeout (16.784872ms)
+✔ carryover cap uses ORIGINAL wave threat, not only surviving units (15.219104ms)
+✔ actual arrival at exit withdraws without kill credit or loot (10.314228ms)
+✔ 5percent original-threat hold requires continuous3seconds and pending spawns prevent early settlement (28.80834ms)
+✔ new wave resets cleanup flags; SaveLoad preserves withdrawal and original threat (15.93579ms)
+✔ Boss still blocks120s cleanup; destroyed core wins over cleanup (18.552716ms)
+✔ boon reading freezes remaining-enemy combat and economy without erasing carryover (7.452529ms)
+ℹ tests 95
+ℹ suites 0
+ℹ pass 95
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10612.069891

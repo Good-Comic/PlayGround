@@ -1,64 +1,70 @@
 {
-  "task_id": "V240-SETUP-RULES",
-  "name": "Read-only pre-game standard rules query",
-  "requirement_source": "Active Strategy section6 and latest user gameplay priority",
-  "priority": "P1",
+  "task_id": "V240-GAMEPLAY-MILESTONE",
+  "name": "Seed terrain, natural campaign and approved conservative difficulty/NG+",
+  "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
+  "priority": "P0",
   "agent": "Codex",
-  "environment": "Managed Linux Chromium154 1280x720 130percent UI scale; actual UI no state injection",
+  "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
-  "latest_pushed_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
-  "application_source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+  "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
+  "latest_pushed_commit": "c40e42f57bc1c23258cba59c8f463530b44dfd74",
+  "application_source_commit": "5f63a939f64f3d3d40c66abfd4af655732dae7b0",
   "completed": [
-    "Added localized accessible standard-run rules dialog driven by existing civilization terrain wave and settings data",
-    "Isolated Enter key while dialog is open",
-    "Verified rule queries preserve snapshot/RNG and actual Start/move/SaveReloadContinue/BugJSON",
-    "Preserved all landmark performance FAIL and other known issues"
+    "Map generator2 preserves v1 saves;40 maps/480 actual routes pass after resource overlap fix",
+    "132 baseline/map tests;8 native map checks and actual river scout crossing",
+    "Conservative difficulty: Normal exact director identity over3Seeds/all10waves; native three-level SaveReload",
+    "Optional max3-card NG+ reset and visible25s cavalry flank;9 Chromium checks from controlled victory fixture",
+    "95 affected regression tests pass; all four locales703 keys",
+    "Natural policyV1 lost wave5 with zero browser errors; full evidence saved"
   ],
-  "uncommitted": [],
+  "uncommitted": [
+    "Incremental handoff/recovery/evidence update pending bounded snapshot commit"
+  ],
   "unpushed": [],
   "tests": [
     {
-      "name": "Affected gameplay regression",
-      "path": "docs/evidence/v240-setup-rules/focused-node.log.txt",
-      "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
-      "result": "46/46 PASS"
+      "name": "Map and legacy regression",
+      "path": "docs/evidence/v240-map-generation/REPORT.md",
+      "source_commit": "da97f86f0e3677419f1d58b705b0952dc1beeeae",
+      "result": "132Node/480routes/8native PASS"
     },
     {
-      "name": "Four languages",
-      "path": "docs/evidence/v240-setup-rules/locales.log.txt",
-      "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
-      "result": "692 keys each PASS"
+      "name": "Approved campaign feature regression",
+      "path": "docs/evidence/v240-new-game-plus/affected-regression.log.txt",
+      "source_commit": "5f63a939f64f3d3d40c66abfd4af655732dae7b0",
+      "result": "95/95 PASS; NG+ natural transition NOT_TESTED"
     },
     {
-      "name": "Real natural UI Chromium",
-      "path": "docs/evidence/v240-setup-rules/browser.json",
-      "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
-      "result": "17/17 PASS; exact33 files; four locales at130percent; native Start selection movement SaveReloadContinue; zero errors"
+      "name": "Natural campaignV1",
+      "path": "docs/evidence/v240-campaign-natural/REPORT.md",
+      "source_commit": "da97f86f0e3677419f1d58b705b0952dc1beeeae",
+      "result": "FAIL defeated wave5; policyV2 running, no ten-wave claim"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-setup-rules/REPORT.md",
-    "docs/evidence/v240-setup-rules/setup-rules.webm",
-    "docs/evidence/v240-setup-rules/rules-zh-Hant.png"
+    "docs/evidence/v240-map-generation/REPORT.md",
+    "docs/evidence/v240-new-game-plus/REPORT.md",
+    "docs/evidence/v240-campaign-natural/REPORT.md",
+    "docs/evidence/v240-standard-render/REPORT.md"
   ],
   "failures": [
-    "No new game failure; first harness had English literal-key false-positive and Node compared wall-clock timestamp; corrected with original browser failure retained",
-    "Landmark absolute frame gate and incremental draw overhead remain; simulation SaveLoad Rift ten-wave and hardware gaps persist"
+    "Natural V1 defeated wave5; no full natural ten-wave victory",
+    "Original landmark mixed-scene +21.4percent regression remains FAIL; narrow opening sample not a waiver",
+    "Simulation clock, strict SaveLoad determinism, Rift natural crash and hardware gaps remain"
   ],
   "blockers": [
-    "No public release authorized; no real shared-live or cross-thread send interface"
+    "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "Seed/terrain accessibility audit and smallest actual reproducible fix",
-    "Natural ten-wave UI campaigns with raw state/inputs, then spec-backed difficulty/Boss changes",
-    "New Game+ only with limited-inheritance rules confirmed"
+    "Continue existing natural policyV2 process; preserve outcome before end",
+    "Review resulting army/economy/Boss failure evidence and choose minimum grounded fix",
+    "Natural ten-wave to NG+ transition remains required; do not substitute controlled fixture"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "VERIFIED",
+  "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-  "updated_at": "2026-10-27T20:26:09.009924+00:00"
+  "updated_at": "2026-10-27T21:02:20.692806+00:00"
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-27T20:26:09.057166+00:00",
-  "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+  "captured_at_utc": "2026-10-27T21:02:20.784216+00:00",
+  "trigger": "SLICE_COMPLETE",
+  "collector_commit": "c40e42f57bc1c23258cba59c8f463530b44dfd74",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-27T20:26:09.057166+00:00"
+    "queried_at": "2026-10-27T21:02:20.784216+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -31,9 +31,9 @@
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-    "codex/riftwatch-progress-feed": "c6da6de5eb0bfef04f0df275511728826f41e592",
+    "codex/riftwatch-progress-feed": "48354ffbce4719d00f460cb16818bd76ddd579f1",
     "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
-    "codex/riftwatch-task-ownership": "1256727f5302b6aa557c1d9aa6f747c51eac4fee",
+    "codex/riftwatch-task-ownership": "8c0ca6d4683abd8d70fb6560befae80c5203eafc",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -63,7 +63,7 @@
     "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
     "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
     "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-    "codex/riftwatch-v240-game-first": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+    "codex/riftwatch-v240-game-first": "c40e42f57bc1c23258cba59c8f463530b44dfd74",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -183,8 +183,8 @@
     },
     {
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
-      "remote_head": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+      "head": "c40e42f57bc1c23258cba59c8f463530b44dfd74",
+      "remote_head": "c40e42f57bc1c23258cba59c8f463530b44dfd74",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -524,52 +524,54 @@
     {
       "path": "/workspace/riftwatch-v240",
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+      "head": "c40e42f57bc1c23258cba59c8f463530b44dfd74",
       "locked": false,
-      "task_id": "V240-SETUP-RULES",
+      "task_id": "V240-GAMEPLAY-MILESTONE",
       "last_validation": [
         {
-          "name": "Affected gameplay regression",
-          "path": "docs/evidence/v240-setup-rules/focused-node.log.txt",
-          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
-          "result": "46/46 PASS",
+          "name": "Map and legacy regression",
+          "path": "docs/evidence/v240-map-generation/REPORT.md",
+          "source_commit": "da97f86f0e3677419f1d58b705b0952dc1beeeae",
+          "result": "132Node/480routes/8native PASS",
           "exists": true,
           "storage": "REMOTE_SAVED",
-          "sha256": "48bc467a771e5f253cb113fa36590f1719a0e25c83fc2d957f69366313796a67",
+          "sha256": "0256be620b4b684d8438497e3cc1fc40b649d5390659743dab62a44e32ba12ce",
+          "resource_freshness": "SOURCE_CHANGED"
+        },
+        {
+          "name": "Approved campaign feature regression",
+          "path": "docs/evidence/v240-new-game-plus/affected-regression.log.txt",
+          "source_commit": "5f63a939f64f3d3d40c66abfd4af655732dae7b0",
+          "result": "95/95 PASS; NG+ natural transition NOT_TESTED",
+          "exists": true,
+          "storage": "LOCAL_ONLY_OR_MISSING",
+          "sha256": "8b12b5f3e2eb74ba85110a6400b92facc809064dbfdc2ad8f8ddd795c879f60c",
           "resource_freshness": "MATCHES_WORKING_RESOURCES"
         },
         {
-          "name": "Four languages",
-          "path": "docs/evidence/v240-setup-rules/locales.log.txt",
-          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
-          "result": "692 keys each PASS",
+          "name": "Natural campaignV1",
+          "path": "docs/evidence/v240-campaign-natural/REPORT.md",
+          "source_commit": "da97f86f0e3677419f1d58b705b0952dc1beeeae",
+          "result": "FAIL defeated wave5; policyV2 running, no ten-wave claim",
           "exists": true,
           "storage": "REMOTE_SAVED",
-          "sha256": "08157f088ece22f921250e504dcd2f835a16dd764653334677d71209e902914c",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        },
-        {
-          "name": "Real natural UI Chromium",
-          "path": "docs/evidence/v240-setup-rules/browser.json",
-          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
-          "result": "17/17 PASS; exact33 files; four locales at130percent; native Start selection movement SaveReloadContinue; zero errors",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "9cea937d77c7e5c056070009dee9f00b2e56bb1af9019495f97a8559276efe37",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+          "sha256": "822f8d93954c8b974fb1b5c02c238bf0a54e1c3c9de5fe791696cee2afc85a4f",
+          "resource_freshness": "SOURCE_CHANGED"
         }
       ],
       "blockers": [
-        "No public release authorized; no real shared-live or cross-thread send interface",
-        "Landmark performance FAIL retained"
+        "Natural V1 defeated wave5; no full natural ten-wave victory",
+        "Original landmark mixed-scene +21.4percent regression remains FAIL; narrow opening sample not a waiver",
+        "Simulation clock, strict SaveLoad determinism, Rift natural crash and hardware gaps remain",
+        "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
       ],
       "next_steps": [
-        "Seed/terrain accessibility audit and smallest actual reproducible fix",
-        "Natural ten-wave UI campaigns with raw state/inputs, then spec-backed difficulty/Boss changes",
-        "New Game+ only with limited-inheritance rules confirmed"
+        "Continue existing natural policyV2 process; preserve outcome before end",
+        "Review resulting army/economy/Boss failure evidence and choose minimum grounded fix",
+        "Natural ten-wave to NG+ transition remains required; do not substitute controlled fixture"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+      "remote_head": "c40e42f57bc1c23258cba59c8f463530b44dfd74",
       "unpushed_commits": [],
       "changed_files": [
         {
@@ -590,7 +592,7 @@
         },
         {
           "status": "??",
-          "path": "docs/handoff/AUTONOMOUS-HANDOFF.json"
+          "path": "docs/evidence/v240-new-game-plus/affected-regression.log.txt"
         }
       ],
       "dirty": true,
@@ -605,10 +607,10 @@
         "remote_head",
         "changed_files"
       ],
-      "previous_head": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
-      "actual_head": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0"
+      "previous_head": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+      "actual_head": "c40e42f57bc1c23258cba59c8f463530b44dfd74"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "e9b25a72363d44c434806ca5854cb5acfe551c4418b80b52b45ed06d038fd3a1"
+  "snapshot_id": "50765bff760028f3428c2ba305dd3be29c01de93ccd38a9d66e588e1dcbc6440"
 }
