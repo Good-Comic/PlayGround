@@ -15,8 +15,8 @@ Application source: `5cbd58fbf4048c06ce964c44aa973bff2d5e23e0`
 
 ## Verification
 
-- Focused Node/save/report checks: 9/9 PASS (`focused-node.log`).
-- Locale validation: 4 locales, 679 keys each PASS (`locales.log`).
+- Focused Node/save/report checks: 9/9 PASS (`focused-node.log.txt`).
+- Locale validation: 4 locales, 679 keys each PASS (`locales.log.txt`).
 - Real Chromium exact-artifact run: 8/8 PASS (`browser.json`).
 - Artifact: 28 payload files from the exact application source, runtime integrity `SHA256_MATCH_28_FILES`.
 - Real UI actions: inspect generated Seed, edit Seed, switch four locales, press reroll, Start Game, Pause/Save, reload/Continue, quit, and start a second game with the same Seed.
