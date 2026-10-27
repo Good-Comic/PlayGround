@@ -2,67 +2,59 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-27T10:57:06.091858+00:00",
+  "updated_at": "2026-10-27T11:12:03.299793+00:00",
   "latest_event": {
-    "task_id": "V240-CIV-VISUAL-FAMILIES",
+    "task_id": "V240-DIRECTIONAL-ANIMATION",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-    "build_sha": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
-    "summary": "Five reusable civilization architecture and military silhouette families are locally verified across all sixteen civilization mappings.",
+    "commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
+    "build_sha": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+    "summary": "Direction-aware representative unit animation is implemented, locally verified in an exact artifact, checkpointed, pushed and remotely verified.",
     "code_changes": [
-      "Added data-driven steppe fortress desert eastern and mesoamerican visual families.",
-      "Added distinct roof ornaments and military kit silhouettes beyond tinting.",
-      "Connected player rendering to the selected civilization accent without changing collision or balance."
+      "Added eight isometric movement and attack facings",
+      "Added renderer-driven walk attack hit and death-fall states",
+      "Persisted presentation state without changing gameplay geometry or balance"
     ],
     "next_steps": [
-      "Extend one representative unit set with direction-aware walk attack hit and death presentation.",
-      "Expand family materials to landmark buildings while keeping footprints invariant."
+      "Revalidate ownership and continue an authored frame or atlas descriptor, landmark material, or Seed-driven terrain slice"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Focused civilization visual tests 5/5",
+        "name": "Focused animation combat and visual regression 18/18",
         "status": "PASS",
-        "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
-        "evidence": "docs/evidence/v240-civ-visuals/focused-node.log.txt",
-        "evidence_commit": "0fb83fb0666b63aa678cc412e4f49c548f55be89",
-        "evidence_blob": "007e88ae95d242e3c2a1b4df0bf6d5555f36c79a",
+        "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+        "evidence": "docs/evidence/v240-directional-animation/focused-node.log.txt",
+        "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
+        "evidence_blob": "dd660fa5ca5f7c2d5c5c5fa69d1cf401f4435820",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Exact 29-file Chromium family gallery 4/4",
+        "name": "Exact 29-file artifact real Chromium 5/5",
         "status": "PASS",
-        "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
-        "evidence": "docs/evidence/v240-civ-visuals/browser.json",
-        "evidence_commit": "0fb83fb0666b63aa678cc412e4f49c548f55be89",
-        "evidence_blob": "61f4e87e3038e0de3784c28c347ed45ed71d331d",
+        "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+        "evidence": "docs/evidence/v240-directional-animation/browser.json",
+        "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
+        "evidence_blob": "9f567840a0a374d5f92ed35f4f608789f648dab1",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "VISUAL_COVERAGE",
-        "severity": "WARNING",
-        "summary": "The family pipeline is verified but sixteen complete unique asset sets and multidirectional animation remain unfinished.",
-        "source_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-        "requires_user_decision": false
-      },
-      {
-        "id": "SIMULATION_INTEGRITY",
-        "severity": "BLOCKED",
-        "summary": "Low-FPS simulation time loss remains open.",
-        "source_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+        "id": "AFTER-LOCAL-ONLY",
+        "severity": "INFO",
+        "summary": "No v2.4 public Candidate is authorized or deployed; existing simulation SaveLoad performance natural Rift ten-wave and hardware gaps remain.",
+        "source_commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
         "requires_user_decision": false
       }
     ],
-    "response": "Riftwatch v2.4 now has five data-driven architecture and military silhouette families covering all sixteen civilizations. Five representative frames are visibly distinct, collision values are unchanged, and exact-artifact Chromium passed with zero errors. Branch codex/riftwatch-v240-game-first is saved at d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357. AFTER_LOCAL only.",
-    "event_id": "a4aa9ec609fadf8f56898ac4bcddaac9936b6403af77794bf05e0ed13e40703a",
-    "remote_head": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+    "response": "Direction-aware animation checkpoint saved. Source 8e8fd67712431cf46cbcd2bae3f7285d33384e1a; evidence 7b32f49cc469c0e830a140c519734f6144fb0411; final branch checkpoint 5c53280b1f49b91339f45100df06a6795979d0e2. Focused tests 18/18 and exact-artifact Chromium 5/5 passed with zero browser errors. Status remains LOCAL_VERIFIED / AFTER_LOCAL.",
+    "event_id": "44ce64a146e829a0a49443ad481ea77eb62f02469d52701ce54179243f6482c4",
+    "remote_head": "5c53280b1f49b91339f45100df06a6795979d0e2",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-27T10:57:06.091858+00:00",
+    "recorded_at": "2026-10-27T11:12:03.299793+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2048,65 +2040,119 @@
       ]
     },
     "V240-CIV-VISUAL-FAMILIES": {
-      "task_id": "V240-CIV-VISUAL-FAMILIES",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [
+        {
+          "id": "VISUAL_COVERAGE",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+          "summary": "The family pipeline is verified but sixteen complete unique asset sets and multidirectional animation remain unfinished."
+        },
+        {
+          "id": "SIMULATION_INTEGRITY",
+          "requires_user_decision": false,
+          "severity": "BLOCKED",
+          "source_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+          "summary": "Low-FPS simulation time loss remains open."
+        }
+      ],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
       "build_sha": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
-      "summary": "Five reusable civilization architecture and military silhouette families are locally verified across all sixteen civilization mappings.",
       "code_changes": [
         "Added data-driven steppe fortress desert eastern and mesoamerican visual families.",
         "Added distinct roof ornaments and military kit silhouettes beyond tinting.",
         "Connected player rendering to the selected civilization accent without changing collision or balance."
       ],
+      "commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "a4aa9ec609fadf8f56898ac4bcddaac9936b6403af77794bf05e0ed13e40703a",
       "next_steps": [
         "Extend one representative unit set with direction-aware walk attack hit and death presentation.",
         "Expand family materials to landmark buildings while keeping footprints invariant."
       ],
+      "pushed": true,
+      "recorded_at": "2026-10-27T10:57:06.091858+00:00",
+      "remote_head": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Riftwatch v2.4 now has five data-driven architecture and military silhouette families covering all sixteen civilizations. Five representative frames are visibly distinct, collision values are unchanged, and exact-artifact Chromium passed with zero errors. Branch codex/riftwatch-v240-game-first is saved at d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357. AFTER_LOCAL only.",
+      "severity": "PROGRESS",
+      "summary": "Five reusable civilization architecture and military silhouette families are locally verified across all sixteen civilization mappings.",
+      "task_id": "V240-CIV-VISUAL-FAMILIES",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-civ-visuals/focused-node.log.txt",
+          "evidence_blob": "007e88ae95d242e3c2a1b4df0bf6d5555f36c79a",
+          "evidence_commit": "0fb83fb0666b63aa678cc412e4f49c548f55be89",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Focused civilization visual tests 5/5",
+          "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-civ-visuals/browser.json",
+          "evidence_blob": "61f4e87e3038e0de3784c28c347ed45ed71d331d",
+          "evidence_commit": "0fb83fb0666b63aa678cc412e4f49c548f55be89",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Exact 29-file Chromium family gallery 4/4",
+          "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-DIRECTIONAL-ANIMATION": {
+      "task_id": "V240-DIRECTIONAL-ANIMATION",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
+      "build_sha": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+      "summary": "Direction-aware representative unit animation is implemented, locally verified in an exact artifact, checkpointed, pushed and remotely verified.",
+      "code_changes": [
+        "Added eight isometric movement and attack facings",
+        "Added renderer-driven walk attack hit and death-fall states",
+        "Persisted presentation state without changing gameplay geometry or balance"
+      ],
+      "next_steps": [
+        "Revalidate ownership and continue an authored frame or atlas descriptor, landmark material, or Seed-driven terrain slice"
+      ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Focused civilization visual tests 5/5",
+          "name": "Focused animation combat and visual regression 18/18",
           "status": "PASS",
-          "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
-          "evidence": "docs/evidence/v240-civ-visuals/focused-node.log.txt",
-          "evidence_commit": "0fb83fb0666b63aa678cc412e4f49c548f55be89",
-          "evidence_blob": "007e88ae95d242e3c2a1b4df0bf6d5555f36c79a",
+          "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+          "evidence": "docs/evidence/v240-directional-animation/focused-node.log.txt",
+          "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
+          "evidence_blob": "dd660fa5ca5f7c2d5c5c5fa69d1cf401f4435820",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "Exact 29-file Chromium family gallery 4/4",
+          "name": "Exact 29-file artifact real Chromium 5/5",
           "status": "PASS",
-          "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
-          "evidence": "docs/evidence/v240-civ-visuals/browser.json",
-          "evidence_commit": "0fb83fb0666b63aa678cc412e4f49c548f55be89",
-          "evidence_blob": "61f4e87e3038e0de3784c28c347ed45ed71d331d",
+          "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+          "evidence": "docs/evidence/v240-directional-animation/browser.json",
+          "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
+          "evidence_blob": "9f567840a0a374d5f92ed35f4f608789f648dab1",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
       "blockers": [
         {
-          "id": "VISUAL_COVERAGE",
-          "severity": "WARNING",
-          "summary": "The family pipeline is verified but sixteen complete unique asset sets and multidirectional animation remain unfinished.",
-          "source_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-          "requires_user_decision": false
-        },
-        {
-          "id": "SIMULATION_INTEGRITY",
-          "severity": "BLOCKED",
-          "summary": "Low-FPS simulation time loss remains open.",
-          "source_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+          "id": "AFTER-LOCAL-ONLY",
+          "severity": "INFO",
+          "summary": "No v2.4 public Candidate is authorized or deployed; existing simulation SaveLoad performance natural Rift ten-wave and hardware gaps remain.",
+          "source_commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
           "requires_user_decision": false
         }
       ],
-      "response": "Riftwatch v2.4 now has five data-driven architecture and military silhouette families covering all sixteen civilizations. Five representative frames are visibly distinct, collision values are unchanged, and exact-artifact Chromium passed with zero errors. Branch codex/riftwatch-v240-game-first is saved at d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357. AFTER_LOCAL only.",
-      "event_id": "a4aa9ec609fadf8f56898ac4bcddaac9936b6403af77794bf05e0ed13e40703a",
-      "remote_head": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+      "response": "Direction-aware animation checkpoint saved. Source 8e8fd67712431cf46cbcd2bae3f7285d33384e1a; evidence 7b32f49cc469c0e830a140c519734f6144fb0411; final branch checkpoint 5c53280b1f49b91339f45100df06a6795979d0e2. Focused tests 18/18 and exact-artifact Chromium 5/5 passed with zero browser errors. Status remains LOCAL_VERIFIED / AFTER_LOCAL.",
+      "event_id": "44ce64a146e829a0a49443ad481ea77eb62f02469d52701ce54179243f6482c4",
+      "remote_head": "5c53280b1f49b91339f45100df06a6795979d0e2",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-27T10:57:06.091858+00:00",
+      "recorded_at": "2026-10-27T11:12:03.299793+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
