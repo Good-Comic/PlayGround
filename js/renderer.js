@@ -743,6 +743,35 @@ export class Renderer {
       for (let i = -2; i <= 2; i++) ctx.fillRect(x + i * 6 * z - 2 * z, y + (Math.abs(i) % 2) * 2 * z, 4 * z, 8 * z);
       ctx.strokeRect(x - 16 * z, y + 7 * z, 32 * z, 5 * z);
     }
+    // Structural materials stay inside the existing presentation footprint.
+    const military = ['barracks', 'archery', 'stable', 'tower'].includes(b.type);
+    const span = (military ? 28 : 23) * z, base = y + 28 * z;
+    ctx.lineWidth = Math.max(1, z);
+    if (profile.id === 'steppe') {
+      ctx.fillStyle = '#c5b38b';
+      ctx.beginPath(); ctx.moveTo(x-span,base); ctx.lineTo(x,base-21*z); ctx.lineTo(x+span,base); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle='#60452b';
+      for (let i=-2;i<=2;i++) { ctx.beginPath();ctx.moveTo(x+i*span/3,base);ctx.lineTo(x,base-21*z);ctx.stroke(); }
+    } else if (profile.id === 'fortress') {
+      ctx.fillStyle='#8e8977';ctx.fillRect(x-span,base-16*z,span*2,17*z);
+      ctx.strokeStyle='#514d43';
+      for(let row=0;row<3;row++){ctx.beginPath();ctx.moveTo(x-span,base-row*6*z);ctx.lineTo(x+span,base-row*6*z);ctx.stroke();}
+      for(let i=-2;i<=2;i++)ctx.strokeRect(x+i*9*z,base-16*z,8*z,16*z);
+    } else if (profile.id === 'desert') {
+      ctx.fillStyle='#cfb88c';ctx.fillRect(x-span,base-18*z,span*2,20*z);
+      ctx.fillStyle='#473f31';
+      for(let i=-1;i<=1;i++){ctx.beginPath();ctx.arc(x+i*14*z,base-7*z,5*z,Math.PI,0);ctx.lineTo(x+i*14*z+5*z,base+2*z);ctx.lineTo(x+i*14*z-5*z,base+2*z);ctx.fill();}
+    } else if (profile.id === 'eastern') {
+      ctx.fillStyle='#733f2c';
+      for(let i=-1;i<=1;i++)ctx.fillRect(x+i*span-2*z,base-21*z,4*z,24*z);
+      ctx.strokeStyle='#c7a45e';ctx.beginPath();ctx.moveTo(x-span-5*z,base-21*z);ctx.quadraticCurveTo(x,base-10*z,x+span+5*z,base-21*z);ctx.stroke();
+      ctx.fillStyle='#d1bc87';ctx.fillRect(x-span+4*z,base-11*z,span*2-8*z,5*z);
+    } else {
+      ctx.fillStyle='#a29a78';
+      for(let tier=0;tier<3;tier++)ctx.fillRect(x-span+tier*6*z,base-tier*7*z,span*2-tier*12*z,7*z);
+      ctx.strokeStyle='#40544b';ctx.lineWidth=3*z;ctx.strokeRect(x-6*z,base-13*z,12*z,13*z);
+    }
+    if(military){ctx.strokeStyle='#dbc98f';ctx.beginPath();ctx.moveTo(x-6*z,base-12*z);ctx.lineTo(x+6*z,base);ctx.moveTo(x+6*z,base-12*z);ctx.lineTo(x-6*z,base);ctx.stroke();}
     ctx.restore();
   }
 
