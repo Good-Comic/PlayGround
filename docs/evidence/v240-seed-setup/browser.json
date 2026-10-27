@@ -1,0 +1,184 @@
+{
+  "stage": "AFTER_LOCAL",
+  "mode": "NATURAL_UI_SETUP_AND_SAVELOAD",
+  "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+  "url": "http://127.0.0.1:8042/",
+  "checks": [
+    {
+      "name": "exact immutable 28-file artifact loaded",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-27T10:47:21.309818+00:00",
+        "resourceVerification": "SHA256_MATCH_28_FILES"
+      }
+    },
+    {
+      "name": "menu is prefilled with a valid visible seed",
+      "pass": true,
+      "detail": "RW-1L5W1ZP"
+    },
+    {
+      "name": "manual seed survives all four locale changes",
+      "pass": true,
+      "detail": {
+        "zh-Hant": "PLAYER-240",
+        "zh-Hans": "PLAYER-240",
+        "ja": "PLAYER-240",
+        "en": "PLAYER-240"
+      }
+    },
+    {
+      "name": "real reroll control generates another valid seed",
+      "pass": true,
+      "detail": {
+        "initialSeed": "RW-1L5W1ZP",
+        "rerolled": "RW-1ADHZEB"
+      }
+    },
+    {
+      "name": "manual seed starts a versioned playable map",
+      "pass": true,
+      "detail": {
+        "seed": 3188753779,
+        "mapGenerationVersion": 1,
+        "phase": "prep",
+        "signature": "d534c2770fb71870eeda6fce202b579354eccf4f4a470f39534a389261d2c79d",
+        "terrain": {
+          "grass": 2082,
+          "dirt": 186,
+          "forest": 30,
+          "cobble": 8,
+          "sand": 37,
+          "water": 157
+        },
+        "resources": 87,
+        "camps": 4
+      }
+    },
+    {
+      "name": "Save Reload Continue preserves seed generation version and frontier",
+      "pass": true,
+      "detail": {
+        "first": {
+          "seed": 3188753779,
+          "mapGenerationVersion": 1,
+          "phase": "prep",
+          "signature": "d534c2770fb71870eeda6fce202b579354eccf4f4a470f39534a389261d2c79d",
+          "terrain": {
+            "grass": 2082,
+            "dirt": 186,
+            "forest": 30,
+            "cobble": 8,
+            "sand": 37,
+            "water": 157
+          },
+          "resources": 87,
+          "camps": 4
+        },
+        "loaded": {
+          "seed": 3188753779,
+          "mapGenerationVersion": 1,
+          "phase": "prep",
+          "signature": "d534c2770fb71870eeda6fce202b579354eccf4f4a470f39534a389261d2c79d",
+          "terrain": {
+            "grass": 2082,
+            "dirt": 186,
+            "forest": 30,
+            "cobble": 8,
+            "sand": 37,
+            "water": 157
+          },
+          "resources": 87,
+          "camps": 4
+        }
+      }
+    },
+    {
+      "name": "same manual seed and biome reproduce the same generated frontier",
+      "pass": true,
+      "detail": {
+        "firstSeed": 3188753779,
+        "repeatedSeed": 3188753779,
+        "sameSignature": true
+      }
+    },
+    {
+      "name": "real Chromium produced no Console Page HTTP or request failures",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "timeline": [
+    {
+      "label": "FIRST_NATURAL_START",
+      "at": 1793098126219,
+      "state": {
+        "seed": 3188753779,
+        "mapGenerationVersion": 1,
+        "phase": "prep",
+        "signature": "d534c2770fb71870eeda6fce202b579354eccf4f4a470f39534a389261d2c79d",
+        "terrain": {
+          "grass": 2082,
+          "dirt": 186,
+          "forest": 30,
+          "cobble": 8,
+          "sand": 37,
+          "water": 157
+        },
+        "resources": 87,
+        "camps": 4
+      }
+    },
+    {
+      "label": "SAVE_RELOAD_CONTINUE",
+      "at": 1793098127506,
+      "state": {
+        "seed": 3188753779,
+        "mapGenerationVersion": 1,
+        "phase": "prep",
+        "signature": "d534c2770fb71870eeda6fce202b579354eccf4f4a470f39534a389261d2c79d",
+        "terrain": {
+          "grass": 2082,
+          "dirt": 186,
+          "forest": 30,
+          "cobble": 8,
+          "sand": 37,
+          "water": 157
+        },
+        "resources": 87,
+        "camps": 4
+      }
+    },
+    {
+      "label": "REPEATED_NATURAL_START",
+      "at": 1793098128483,
+      "state": {
+        "seed": 3188753779,
+        "mapGenerationVersion": 1,
+        "phase": "prep",
+        "signature": "d534c2770fb71870eeda6fce202b579354eccf4f4a470f39534a389261d2c79d",
+        "terrain": {
+          "grass": 2082,
+          "dirt": 186,
+          "forest": 30,
+          "cobble": 8,
+          "sand": 37,
+          "water": 157
+        },
+        "resources": 87,
+        "camps": 4
+      }
+    }
+  ],
+  "pass": true
+}
