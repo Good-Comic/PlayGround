@@ -1,0 +1,155 @@
+{
+  "stage": "AFTER_LOCAL",
+  "mode": "REAL_UI_START_THEN_CONTROLLED_DIRECTIONAL_COMBAT",
+  "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+  "checks": [
+    {
+      "name": "exact immutable 29-file artifact loaded",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-27T11:07:01.786240+00:00",
+        "resourceVerification": "SHA256_MATCH_29_FILES"
+      }
+    },
+    {
+      "name": "real movement visits all eight visual directions",
+      "pass": true,
+      "detail": [
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N",
+        "NE",
+        "E"
+      ]
+    },
+    {
+      "name": "melee ranged and cavalry expose live attack facings without radius changes",
+      "pass": true,
+      "detail": {
+        "directions": [
+          "SW",
+          "W",
+          "W"
+        ],
+        "states": [
+          "attack",
+          "attack",
+          "attack"
+        ],
+        "radius": [
+          0.26,
+          0.24,
+          0.32
+        ],
+        "foe": 23
+      }
+    },
+    {
+      "name": "controlled inspection shows three distinct death-fall frames without reviving",
+      "pass": true,
+      "detail": [
+        {
+          "level": 1.1,
+          "hash": "2947148b116a824775862308c3d5d7898f9be091ddd869149f326c3f9127cbae",
+          "state": {
+            "alive": false,
+            "deathAnim": 1.1
+          }
+        },
+        {
+          "level": 0.6,
+          "hash": "767f6319785757a8fd28135936b93700f4369b1fad8319ae3f0662fae2a12db2",
+          "state": {
+            "alive": false,
+            "deathAnim": 0.6
+          }
+        },
+        {
+          "level": 0.15,
+          "hash": "1ccfda9f3a32770d01f246070d721e4f413fa8b99bfd92f4f54d8bc63a1f2458",
+          "state": {
+            "alive": false,
+            "deathAnim": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "name": "real Chromium produced no Console Page HTTP or request failures",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      }
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "timeline": [
+    {
+      "observed": [
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N",
+        "NE",
+        "E"
+      ],
+      "combat": {
+        "directions": [
+          "SW",
+          "W",
+          "W"
+        ],
+        "states": [
+          "attack",
+          "attack",
+          "attack"
+        ],
+        "radius": [
+          0.26,
+          0.24,
+          0.32
+        ],
+        "foe": 23
+      },
+      "deathFrames": [
+        {
+          "level": 1.1,
+          "hash": "2947148b116a824775862308c3d5d7898f9be091ddd869149f326c3f9127cbae",
+          "state": {
+            "alive": false,
+            "deathAnim": 1.1
+          }
+        },
+        {
+          "level": 0.6,
+          "hash": "767f6319785757a8fd28135936b93700f4369b1fad8319ae3f0662fae2a12db2",
+          "state": {
+            "alive": false,
+            "deathAnim": 0.6
+          }
+        },
+        {
+          "level": 0.15,
+          "hash": "1ccfda9f3a32770d01f246070d721e4f413fa8b99bfd92f4f54d8bc63a1f2458",
+          "state": {
+            "alive": false,
+            "deathAnim": 0.15
+          }
+        }
+      ]
+    }
+  ],
+  "pass": true
+}
