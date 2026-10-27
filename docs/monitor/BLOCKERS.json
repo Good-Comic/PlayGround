@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T03:26:59.461270+00:00",
+  "updated_at": "2026-10-27T04:15:15.790016+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -259,19 +259,35 @@
     },
     {
       "id": "OMGH18-BUILD-INTEGRITY-PORT3000",
-      "severity": "ACTION_REQUIRED",
-      "summary": "Latest internal generation234 has no stable Preview. Official port3000 was publicly reachable but rendered BUILD BLOCKED; recovery requires a new official execution and exact artifact binding.",
-      "source_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
       "requires_user_decision": true,
+      "severity": "ACTION_REQUIRED",
+      "source_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+      "summary": "Latest internal generation234 has no stable Preview. Official port3000 was publicly reachable but rendered BUILD BLOCKED; recovery requires a new official execution and exact artifact binding.",
       "task_id": "V233-DYNAMIC-SCORE"
     },
     {
       "id": "RIFT-PROTOTYPE-NATURAL-NOT-REPRODUCED",
-      "severity": "WARNING",
-      "summary": "The natural claim crash still lacks the original player save/seed/state and remains NOT_REPRODUCED.",
-      "source_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+      "summary": "The natural claim crash still lacks the original player save/seed/state and remains NOT_REPRODUCED.",
       "task_id": "V233-DYNAMIC-SCORE"
+    },
+    {
+      "id": "OMGITHUB18-SOURCE-SWITCH",
+      "severity": "ACTION_REQUIRED",
+      "summary": "Existing #18 Resume sends prompt/request_id only and cannot guarantee the new branch/SHA. The minimum safe mechanism is one new isolated Issue against a frozen branch and exact launch SHA, which remains unauthorized.",
+      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+      "requires_user_decision": true,
+      "task_id": "V233-VISUAL-SILHOUETTES"
+    },
+    {
+      "id": "KNOWN-GAMEPLAY-GAPS",
+      "severity": "WARNING",
+      "summary": "Natural Rift Prototype crash is still not reproduced; low-FPS time loss, strict Save/Load nondeterminism, historical performance failures and hardware testing remain open.",
+      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+      "requires_user_decision": false,
+      "task_id": "V233-VISUAL-SILHOUETTES"
     }
   ]
 }
