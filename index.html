@@ -36,7 +36,10 @@
           </label>
           <label class="setup-field seed">
             <span data-i18n="menu.seed">Seed</span>
-            <input id="setup-seed" type="text" maxlength="16" autocomplete="off" spellcheck="false" placeholder="random" data-i18n-placeholder="menu.seedPlaceholder" />
+            <span class="seed-control">
+              <input id="setup-seed" type="text" maxlength="16" autocomplete="off" spellcheck="false" placeholder="random" data-i18n-placeholder="menu.seedPlaceholder" />
+              <button id="btn-seed-randomize" type="button" data-i18n-title="menu.seedRandomize" data-i18n-aria-label="menu.seedRandomize" title="Generate another seed" aria-label="Generate another seed">↻</button>
+            </span>
             <small data-i18n="menu.seedHint">Same seed, same frontier.</small>
           </label>
         </div>

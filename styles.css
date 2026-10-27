@@ -639,6 +639,15 @@ html[lang="ja"] .menu-title.stacked .title-series { letter-spacing: .08em; }
   border: 1px solid rgba(206, 170, 96, .22);
 }
 .setup-field.seed { grid-column: 1 / -1; }
+.seed-control { display: flex; align-items: center; gap: 8px; }
+.seed-control input { flex: 1; }
+.seed-control button {
+  width: 29px; height: 25px; flex: 0 0 auto; color: #d8bd82; cursor: pointer;
+  border: 1px solid rgba(213, 173, 88, .32); border-radius: 3px;
+  background: linear-gradient(180deg, rgba(72, 57, 35, .68), rgba(24, 20, 13, .72));
+  transition: color .16s ease, border-color .16s ease, transform .16s ease;
+}
+.seed-control button:hover, .seed-control button:focus-visible { color: #ffe4a6; border-color: rgba(240, 206, 132, .75); outline: none; transform: rotate(18deg); }
 .setup-field > span {
   font-family: var(--serif); font-size: calc(7.5px * var(--ui-scale, 1)); letter-spacing: 2px;
   color: #a48b58; text-transform: uppercase;

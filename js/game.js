@@ -191,6 +191,7 @@ export class Game {
       controlGroups: Object.fromEntries(Object.entries(this.controlGroups||{}).map(([k,v])=>[k,[...v]])),
       savedAt: Date.now(),
       seed: this.seed,
+      mapGenerationVersion: this.world.generationVersion || 1,
       civId: this.civ.id,
       biomeId: this.biome.id,
       resources: { ...this.resources },
@@ -286,6 +287,7 @@ export class Game {
     this.runConfig = { civId: civ.id, biomeId: biome.id };
     this.playerColors = { ...PLAYER_COLORS, primary: civ.accent, cloth: civ.accent };
     this.world = createWorld(this.seed, biome.id);
+    if ((snapshot.mapGenerationVersion || 1) !== this.world.generationVersion) throw new Error('Unsupported map generation version');
     const worldNodes = new Map(this.world.resources.map(node => [node.id, node]));
     for (const saved of snapshot.worldResources || []) {
       const node = worldNodes.get(saved.id);

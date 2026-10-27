@@ -24,6 +24,7 @@ export const ui = {
   "menu.seed": "种子",
   "menu.seedPlaceholder": "随机",
   "menu.seedHint": "相同种子，相同边境。",
+  "menu.seedRandomize": "重新生成种子",
   "menu.start": "Start Game",
   "menu.howto": "玩法说明",
   "menu.continue": "继续远征",

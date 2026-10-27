@@ -76,6 +76,7 @@ const EN_UI = {
   'menu.seed': 'Seed',
   'menu.seedPlaceholder': 'random',
   'menu.seedHint': 'Same seed, same frontier.',
+  'menu.seedRandomize': 'Generate another seed',
   'menu.start': 'Start Game',
   'menu.howto': 'How to Play',
   'menu.continue': 'Continue',

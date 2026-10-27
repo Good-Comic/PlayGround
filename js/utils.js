@@ -104,6 +104,19 @@ export function seedFromDate() {
   return (Date.now() ^ (Math.random() * 0xffffffff)) >>> 0;
 }
 
+export const SEED_NORMALIZATION_VERSION = 1;
+
+export function createSeedText(randomUint32 = null) {
+  let value;
+  if (typeof randomUint32 === 'function') value = randomUint32();
+  else if (globalThis.crypto?.getRandomValues) {
+    const values = new Uint32Array(1);
+    globalThis.crypto.getRandomValues(values);
+    value = values[0];
+  } else value = seedFromDate();
+  return `RW-${(Number(value) >>> 0).toString(36).toUpperCase().padStart(7, '0')}`;
+}
+
 export function seedFromString(value) {
   const text = String(value || '').trim();
   if (!text) return seedFromDate();

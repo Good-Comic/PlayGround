@@ -1,5 +1,5 @@
 import { BUILDING_TYPES, UNIT_TYPES, BUILD_OPTIONS, BOONS, WAVES, CIVILIZATIONS, BIOMES, PLAYER_COLORS, ENEMY_COLORS } from './data.js';
-import { formatNumber, formatTime, roman, clamp } from './utils.js';
+import { formatNumber, formatTime, roman, clamp, createSeedText } from './utils.js';
 import { applyStaticTranslations, getLocale, localeOptions, setLocale as setAppLocale, t } from './i18n.js';
 import { applySettings, loadSettings, resetSettings, saveSettings } from './settings.js';
 
@@ -79,7 +79,7 @@ export class UI {
       intelUnits: this.$('intel-units'), intelEvent: this.$('intel-event'), intelGates: this.$('intel-gates'),
       intelHazard: this.$('intel-hazard'), intelAssist: this.$('intel-assist'),
       objectiveAssist: this.$('objective-assist'), objectiveAssistText: this.$('objective-assist-text'),
-      civSelect: this.$('setup-civ'), biomeSelect: this.$('setup-biome'), seedInput: this.$('setup-seed'),
+      civSelect: this.$('setup-civ'), biomeSelect: this.$('setup-biome'), seedInput: this.$('setup-seed'), seedRandomize: this.$('btn-seed-randomize'),
       localeSelect: this.$('setup-locale'),
       civBlurb: this.$('setup-civ-blurb'), biomeBlurb: this.$('setup-biome-blurb'),
       autoEcon: this.$('auto-econ'), autoMil: this.$('auto-mil'), boonHint: this.$('boon-hint-text'),
@@ -98,6 +98,7 @@ export class UI {
     document.querySelectorAll('[data-order-mode]').forEach(b=>b.addEventListener('click',()=>this.callbacks.command?.('order:'+b.dataset.orderMode)));
     const clickSound = () => this.sound?.click();
     this.populateSetup();
+    this.ensureSetupSeed();
     this.$('btn-start').addEventListener('click', () => { clickSound(); this.startWithSetup(); });
     this.$('btn-howto').addEventListener('click', () => { clickSound(); this.openHowTo(); });
     this.$('btn-howto-close').addEventListener('click', () => { clickSound(); this.closeHowTo(); });
@@ -105,6 +106,7 @@ export class UI {
     this.$('setup-civ')?.addEventListener('change', () => this.paintSetupBlurbs());
     this.$('setup-biome')?.addEventListener('change', () => this.paintSetupBlurbs());
     this.$('setup-locale')?.addEventListener('change', e => this.changeLocale(e.target.value));
+    this.el.seedRandomize?.addEventListener('click', () => { clickSound(); this.el.seedInput.value = createSeedText(); this.el.seedInput.focus(); this.el.seedInput.select(); });
     this.$('auto-econ')?.addEventListener('change', e => {
       this.game.autoEconomy = e.target.checked;
       this.toast(t(e.target.checked ? 'toast.stewardEnabled' : 'toast.stewardPaused', { name: t('steward.economy') }), '', 1800);
@@ -198,6 +200,10 @@ export class UI {
     if (this.el.biomeBlurb && biome) this.el.biomeBlurb.textContent = t(`biome.${biome.id}.trait`);
   }
 
+  ensureSetupSeed() {
+    if (this.el.seedInput && !this.el.seedInput.value.trim()) this.el.seedInput.value = createSeedText();
+  }
+
   changeLocale(locale) {
     setAppLocale(locale);
     applyStaticTranslations();
@@ -210,6 +216,7 @@ export class UI {
   }
 
   startWithSetup() {
+    this.ensureSetupSeed();
     const seed = this.el.seedInput?.value.trim();
     const setup = {
       civ: this.el.civSelect?.value || 'TEU',

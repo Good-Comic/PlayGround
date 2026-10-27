@@ -24,6 +24,7 @@ export const ui = {
   'menu.seed': 'シード',
   'menu.seedPlaceholder': 'ランダム',
   'menu.seedHint': '同じシード、同じ辺境。',
+  'menu.seedRandomize': '別のシードを生成',
   'menu.start': 'Start Game',
   'menu.howto': '遊び方',
   'menu.continue': '遠征を続ける',

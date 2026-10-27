@@ -1,6 +1,7 @@
 import { mulberry32, rand, randInt, dist, pointSegmentDist, pick, hash2 } from './utils.js';
 
 export const WORLD_SIZE = 50;
+export const MAP_GENERATION_VERSION = 1;
 
 const CAMPS = [
   { x: 26, y: 3.5, name: 'The Northern Pyres', angle: 0.2 },
@@ -240,6 +241,7 @@ export function createWorld(seed, biomeId = 'ash') {
 
   return {
     size: WORLD_SIZE, tiles, resources, props, camps, base, wildlife, seed, biome: biomeId,
+    generationVersion: MAP_GENERATION_VERSION,
     tile(x, y) {
       const tx = Math.floor(x), ty = Math.floor(y);
       if (tx < 0 || ty < 0 || tx >= WORLD_SIZE || ty >= WORLD_SIZE) return null;
