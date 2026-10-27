@@ -1,7 +1,71 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T04:14:19.681524+00:00",
+  "updated_at": "2026-10-27T04:55:00+00:00",
   "tasks": [
+    {
+      "task_id": "V234-OMGITHUB-PREVIEW",
+      "name": "Isolated OmGitHub Issue #19 Preview verification",
+      "requirement_source": "Riftwatch OmGitHub new Preview final isolated verification authorization",
+      "priority": "P0",
+      "agent": "Codex / official OpenCode worker",
+      "environment": "Managed Linux; official OmGitHub port3000 and public HTTPS worker; independent Codex egress restricted",
+      "branch": "codex/riftwatch-v234-omgithub-preview",
+      "base_commit": "055fb12c92e3d48945315937058f1423b732241c",
+      "latest_pushed_commit": "99b2b0233a8b00c4ec987e292bb0cd61db805d27",
+      "application_source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+      "completed": [
+        "Created exactly one isolated Issue #19 and one actual OpenCode execution",
+        "Verified actual run source matches the authorized full SHA",
+        "Verified official port3000 generated and served the exact artifact rather than the source root",
+        "Preserved official 22/22 public HTTPS Chromium acceptance and screenshots",
+        "Pushed independent diagnostic evidence and verified the remote SHA"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Official public HTTPS Chromium acceptance",
+          "path": "docs/evidence/v234-omgithub19-preview/official/acceptance.json",
+          "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+          "result": "22/22 PASS; 28 hashes; 0 Console/Page/request/HTTP errors"
+        },
+        {
+          "name": "Independent Codex stable Preview access",
+          "path": "docs/evidence/v234-omgithub19-preview/platform-state.json",
+          "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+          "result": "BLOCKED by Envoy HTTP403 for the new exact hostname"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v234-omgithub19-preview/REPORT.md",
+        "docs/evidence/v234-omgithub19-preview/platform-state.json",
+        "docs/evidence/v234-omgithub19-preview/official/acceptance.json",
+        "docs/evidence/v234-omgithub19-preview/official/preview-receipt.json",
+        "docs/evidence/v234-omgithub19-preview/official/final-desktop-wip.png"
+      ],
+      "failures": [
+        "Independent Codex public Chromium verification blocked by the current exact-host allowlist",
+        "OmGitHub publication state remains unpublished even though deployment generation 161 is ready and a stable Preview URL exists",
+        "Low-FPS simulation loss, strict Save/Load nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED and HARDWARE_TEST_PENDING remain"
+      ],
+      "blockers": [
+        "Do not label OMGITHUB_PREVIEW_LIVE_VERIFIED without independent access or a clearly accepted attribution rule",
+        "No additional Issue, retry, Resume, Continue, Pages change or public publication is authorized"
+      ],
+      "next_steps": [
+        "Create independent codex/riftwatch-playtest-v234 from the verified gameplay source",
+        "Build and locally verify the next PLAYTEST-EXPERIMENTAL artifact",
+        "Prepare an immutable Pages version directory and approval plan without changing the live Pages branch"
+      ],
+      "permissions": [
+        "Candidate integration/build/test/preparation and normal branch push authorized",
+        "No public Pages update, main change, force push, #17/#18 overwrite, second Issue or workflow retry"
+      ],
+      "status": "CHECKPOINTED",
+      "quota_status": "QUOTA_PERCENT_UNKNOWN",
+      "resume_status": "SCHEDULED_RESUME_EXECUTED",
+      "updated_at": "2026-10-27T04:55:00+00:00"
+    },
     {
       "task_id": "V233-VISUAL-SILHOUETTES",
       "name": "OmGitHub #18 source-switch preflight and battlefield role silhouettes",
@@ -468,7 +532,7 @@
         "Use docs/playtest/v228/APPROVAL-PLAN.json; no automaticpublication"
       ],
       "name": "Approve and deploy isolated Candidate",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P0",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -507,7 +571,7 @@
         "Complete separate3-repeat12-case performance at294fa287; preserve all results before integration decision"
       ],
       "name": "A1-TARGET",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -543,7 +607,7 @@
         "Preserve final normal P0 evidence; retest performance before integration"
       ],
       "name": "B2-GDD",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -575,7 +639,7 @@
         "Run affected performance gates; resolve later-wave caps/monument spec before full GDD claim"
       ],
       "name": "A4-POP",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -606,7 +670,7 @@
         "Use existing cohort; actual hardware still pending"
       ],
       "name": "QA-TOOLS",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -636,7 +700,7 @@
         "Complete latest2f148c3 three-repeat quality/performance cohort after target-state diagnosis"
       ],
       "name": "B1-RALLY",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -664,7 +728,7 @@
         "Do not mark gameplay features integrated; gate each separately with pre/post snapshots"
       ],
       "name": "INTEGRATION",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -694,7 +758,7 @@
         "Independent Attack-Move/UI Scale slices after recovery; existing matrix remains scope"
       ],
       "name": "PHASE-B-E",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P2",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -722,7 +786,7 @@
         "Run Windows collector on real authorized physical machine; no predicted FPS claim"
       ],
       "name": "HARDWARE",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",

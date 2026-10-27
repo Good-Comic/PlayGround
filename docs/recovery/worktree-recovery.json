@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-27T04:14:19.719898+00:00",
-  "trigger": "SLICE_COMPLETE",
-  "collector_commit": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa",
-  "collector_dirty": true,
+  "captured_at_utc": "2026-10-27T04:54:41.372365+00:00",
+  "trigger": "POST_PUSH",
+  "collector_commit": "99b2b0233a8b00c4ec987e292bb0cd61db805d27",
+  "collector_dirty": false,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-27T04:14:19.719898+00:00"
+    "queried_at": "2026-10-27T04:54:41.372365+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -30,9 +30,9 @@
     "codex/riftwatch-playtest-site": "5b30bda085197cfa820a594224e2f6df929bf60d",
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
-    "codex/riftwatch-progress-feed": "0998a1909cbb511991edded72f4cc02fe6a13ad9",
+    "codex/riftwatch-progress-feed": "caf8e8cfd6da814a18764b9dce6c2f9bf20c59c6",
     "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
-    "codex/riftwatch-task-ownership": "ee3ed8fccee7e4fde57975642931ea6116a42f81",
+    "codex/riftwatch-task-ownership": "53bb9b5f024c5173571f8b99affea9b0292493fa",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -59,7 +59,8 @@
     "codex/riftwatch-v231-review": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
     "codex/riftwatch-v232-rift-prototype": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
     "codex/riftwatch-v233-dynamic-score": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
-    "codex/riftwatch-v233-visual-silhouettes": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa",
+    "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
+    "codex/riftwatch-v234-omgithub-preview": "99b2b0233a8b00c4ec987e292bb0cd61db805d27",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -69,6 +70,7 @@
     "opencode-checkpoints/16": "82007a506b01c0ac6c3986aeac40ef0e1d05a347",
     "opencode-checkpoints/17": "6476a4bc6d18f688b9c44db9a95c45901d76b741",
     "opencode-checkpoints/18": "35fde465ab40b011a7f33704d6b30d149802438e",
+    "opencode-checkpoints/19": "9866f491d71676f36185fa5f2bfffa4a9ad9f4ca",
     "opencode-checkpoints/2": "71c23b735ec2236d71cf4120410cc5ef6d33b773",
     "opencode-checkpoints/3": "c7d7ba520a6c11db8cec2c338f0b25b5c21e9b57",
     "opencode-checkpoints/4": "d3849df18360a209aa9b6843f409d461260ee93c",
@@ -149,7 +151,7 @@
     {
       "branch": "codex/riftwatch-progress-feed",
       "head": "596ff218c593b9fd9d6b2b4b4f2a43c9fb36c835",
-      "remote_head": "0998a1909cbb511991edded72f4cc02fe6a13ad9",
+      "remote_head": "caf8e8cfd6da814a18764b9dce6c2f9bf20c59c6",
       "status": "HEAD_DIFFERS_REVIEW_REQUIRED"
     },
     {
@@ -310,8 +312,14 @@
     },
     {
       "branch": "codex/riftwatch-v233-visual-silhouettes",
-      "head": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa",
-      "remote_head": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa",
+      "head": "055fb12c92e3d48945315937058f1423b732241c",
+      "remote_head": "055fb12c92e3d48945315937058f1423b732241c",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-v234-omgithub-preview",
+      "head": "99b2b0233a8b00c4ec987e292bb0cd61db805d27",
+      "remote_head": "99b2b0233a8b00c4ec987e292bb0cd61db805d27",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -547,13 +555,13 @@
         "Inspect task registry and relevant diff before writing"
       ],
       "remote_status": "REMOTE_AHEAD",
-      "remote_head": "0998a1909cbb511991edded72f4cc02fe6a13ad9",
+      "remote_head": "caf8e8cfd6da814a18764b9dce6c2f9bf20c59c6",
       "unpushed_commits": [],
       "changed_files": [],
       "dirty": false,
       "local_record_status": "LOCAL_INVENTORIED",
       "ahead": 0,
-      "behind": 5
+      "behind": 6
     },
     {
       "path": "/workspace/riftwatch-groups",
@@ -1134,8 +1142,8 @@
     },
     {
       "path": "/workspace/riftwatch-v233",
-      "branch": "codex/riftwatch-v233-visual-silhouettes",
-      "head": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa",
+      "branch": "codex/riftwatch-v234-omgithub-preview",
+      "head": "99b2b0233a8b00c4ec987e292bb0cd61db805d27",
       "locked": false,
       "task_id": null,
       "last_validation": [],
@@ -1146,23 +1154,10 @@
         "Inspect task registry and relevant diff before writing"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa",
+      "remote_head": "99b2b0233a8b00c4ec987e292bb0cd61db805d27",
       "unpushed_commits": [],
-      "changed_files": [
-        {
-          "status": " M",
-          "path": "docs/handoff/ACTIVE-TASK.json"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/HANDOFF.md"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/NEXT-TASKS.json"
-        }
-      ],
-      "dirty": true,
+      "changed_files": [],
+      "dirty": false,
       "local_record_status": "LOCAL_INVENTORIED"
     },
     {
@@ -1218,10 +1213,10 @@
         "remote_head",
         "changed_files"
       ],
-      "previous_head": "a6a54ef7674e033432f4233694f87ff1303ad6b6",
-      "actual_head": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa"
+      "previous_head": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa",
+      "actual_head": "99b2b0233a8b00c4ec987e292bb0cd61db805d27"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "5b1c43a212be9ae5b0fe6af1bdf40556e9b30fdb36cff492f049c05ab28407e9"
+  "snapshot_id": "61e452f3733eefebdba7a2478581dfdb90d924a0a6b08c6fb88c081cdb15e6a5"
 }
