@@ -338,6 +338,38 @@
         "Produce minimaldeterministicSaveLoadfailure beforefix; no productionloopinstalluntil exactstate andaffectedbrowser/overload/pause gatespass",
         "Ifuser explicitlyapprovesdocs/playtest/v228/APPROVAL-PLAN.json, claimsitebranch, recheckHEAD,addexactbuildsab56/rootpointerordinarycommit; preserveD6; onlythenactualpublicQA"
       ]
+    },
+    "codex/riftwatch-v240-game-first": {
+      "task_id": "V240-SETUP-RULES",
+      "last_validation": [
+        {
+          "name": "Affected gameplay regression",
+          "path": "docs/evidence/v240-setup-rules/focused-node.log.txt",
+          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+          "result": "46/46 PASS"
+        },
+        {
+          "name": "Four languages",
+          "path": "docs/evidence/v240-setup-rules/locales.log.txt",
+          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+          "result": "692 keys each PASS"
+        },
+        {
+          "name": "Real natural UI Chromium",
+          "path": "docs/evidence/v240-setup-rules/browser.json",
+          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+          "result": "17/17 PASS; exact33 files; four locales at130percent; native Start selection movement SaveReloadContinue; zero errors"
+        }
+      ],
+      "blockers": [
+        "No public release authorized; no real shared-live or cross-thread send interface",
+        "Landmark performance FAIL retained"
+      ],
+      "next_steps": [
+        "Seed/terrain accessibility audit and smallest actual reproducible fix",
+        "Natural ten-wave UI campaigns with raw state/inputs, then spec-backed difficulty/Boss changes",
+        "New Game+ only with limited-inheritance rules confirmed"
+      ]
     }
   }
 }

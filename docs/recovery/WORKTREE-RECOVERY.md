@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: a5c1c359b47fe7a8db9b9f17c923aee321537ce3815fcd2ba0cca94be9960e8a
-Captured UTC: 2026-10-27T20:18:33.431892+00:00 · Trigger: SLICE_COMPLETE
-Collector source: `d9aaab69293590007c60d7db69ebb9f4a24ecd6d` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: e9b25a72363d44c434806ca5854cb5acfe551c4418b80b52b45ed06d038fd3a1
+Captured UTC: 2026-10-27T20:26:09.057166+00:00 · Trigger: FINAL_CHECKPOINT
+Collector source: `30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -19,7 +19,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | d9aaab69293590007c60d7db69ebb9f4a24ecd6d | d9aaab69293590007c60d7db69ebb9f4a24ecd6d | REMOTE_SAVED | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0 | 30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0 | REMOTE_SAVED | True |
 
 ## work
 
@@ -112,7 +112,7 @@ Next: Inspect task registry and relevant diff before writing
 ## codex/riftwatch-v240-game-first
 
 Unpushed commits: []
-Uncommitted paths: [{"status": " M", "path": "docs/handoff/ACTIVE-TASK.json"}, {"status": " M", "path": "docs/handoff/HANDOFF.md"}, {"status": " M", "path": "docs/handoff/NEXT-TASKS.json"}]
-Validation: []
-Blockers: NOT_ASSESSED
-Next: Inspect task registry and relevant diff before writing
+Uncommitted paths: [{"status": " M", "path": "docs/handoff/ACTIVE-TASK.json"}, {"status": " M", "path": "docs/handoff/HANDOFF.md"}, {"status": " M", "path": "docs/handoff/NEXT-TASKS.json"}, {"status": " M", "path": "docs/recovery/task-registry.json"}, {"status": "??", "path": "docs/handoff/AUTONOMOUS-HANDOFF.json"}]
+Validation: [{"name": "Affected gameplay regression", "path": "docs/evidence/v240-setup-rules/focused-node.log.txt", "source_commit": "5ded54f43212116bdf966b537796849325c295bf", "result": "46/46 PASS", "exists": true, "storage": "REMOTE_SAVED", "sha256": "48bc467a771e5f253cb113fa36590f1719a0e25c83fc2d957f69366313796a67", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"name": "Four languages", "path": "docs/evidence/v240-setup-rules/locales.log.txt", "source_commit": "5ded54f43212116bdf966b537796849325c295bf", "result": "692 keys each PASS", "exists": true, "storage": "REMOTE_SAVED", "sha256": "08157f088ece22f921250e504dcd2f835a16dd764653334677d71209e902914c", "resource_freshness": "MATCHES_WORKING_RESOURCES"}, {"name": "Real natural UI Chromium", "path": "docs/evidence/v240-setup-rules/browser.json", "source_commit": "5ded54f43212116bdf966b537796849325c295bf", "result": "17/17 PASS; exact33 files; four locales at130percent; native Start selection movement SaveReloadContinue; zero errors", "exists": true, "storage": "REMOTE_SAVED", "sha256": "9cea937d77c7e5c056070009dee9f00b2e56bb1af9019495f97a8559276efe37", "resource_freshness": "MATCHES_WORKING_RESOURCES"}]
+Blockers: No public release authorized; no real shared-live or cross-thread send interface; Landmark performance FAIL retained
+Next: Seed/terrain accessibility audit and smallest actual reproducible fix; Natural ten-wave UI campaigns with raw state/inputs, then spec-backed difficulty/Boss changes; New Game+ only with limited-inheritance rules confirmed

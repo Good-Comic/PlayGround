@@ -1,65 +1,64 @@
 {
-  "task_id": "V240-LANDMARK-MATERIALS",
-  "name": "Five family house/barracks scoped visual QA",
-  "requirement_source": "Latest user instruction: complete existing QA then prioritize gameplay",
+  "task_id": "V240-SETUP-RULES",
+  "name": "Read-only pre-game standard rules query",
+  "requirement_source": "Active Strategy section6 and latest user gameplay priority",
   "priority": "P1",
   "agent": "Codex",
-  "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
+  "environment": "Managed Linux Chromium154 1280x720 130percent UI scale; actual UI no state injection",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
-  "latest_pushed_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
-  "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
-  "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+  "base_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+  "latest_pushed_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+  "application_source_commit": "5ded54f43212116bdf966b537796849325c295bf",
   "completed": [
-    "Found floating roof-material defect in actual original artifact screenshots",
-    "Projected existing materials onto clipped isometric wall planes without gameplay changes",
-    "Inspected five family house/barracks six-state images and recorded actual Chromium video",
-    "Measured three independent before/after mixed-scene runs; retained absolute performance FAIL and incremental draw overhead",
-    "Rejected and normally reverted ineffective cache experiment"
+    "Added localized accessible standard-run rules dialog driven by existing civilization terrain wave and settings data",
+    "Isolated Enter key while dialog is open",
+    "Verified rule queries preserve snapshot/RNG and actual Start/move/SaveReloadContinue/BugJSON",
+    "Preserved all landmark performance FAIL and other known issues"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Visual/state Chromium",
-      "result": "10/10 scoped checks PASS plus direct image inspection",
-      "path": "docs/evidence/v240-landmarks/fixed/browser.json",
-      "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef"
+      "name": "Affected gameplay regression",
+      "path": "docs/evidence/v240-setup-rules/focused-node.log.txt",
+      "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+      "result": "46/46 PASS"
     },
     {
-      "name": "Focused Node",
-      "result": "7/7 PASS",
-      "path": "docs/evidence/v240-landmarks/focused-node.log.txt",
-      "source_commit": "9fc6db69227432b162651017819e23cbd4b9153f"
+      "name": "Four languages",
+      "path": "docs/evidence/v240-setup-rules/locales.log.txt",
+      "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+      "result": "692 keys each PASS"
     },
     {
-      "name": "Mixed rendering",
-      "result": "All absolute rAF gates FAIL; renderer JS +21.4%; not full QA accepted",
-      "path": "docs/evidence/v240-landmarks/performance/summary.json",
-      "source_commit": "9fc6db69227432b162651017819e23cbd4b9153f"
+      "name": "Real natural UI Chromium",
+      "path": "docs/evidence/v240-setup-rules/browser.json",
+      "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+      "result": "17/17 PASS; exact33 files; four locales at130percent; native Start selection movement SaveReloadContinue; zero errors"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-landmarks/REPORT.md",
-    "docs/evidence/v240-landmarks/fixed/landmark-gallery.webm"
+    "docs/evidence/v240-setup-rules/REPORT.md",
+    "docs/evidence/v240-setup-rules/setup-rules.webm",
+    "docs/evidence/v240-setup-rules/rules-zh-Hant.png"
   ],
   "failures": [
-    "Absolute cloud frame gate FAIL; incremental renderer JS overhead remains",
-    "Historical simulation SaveLoad natural Rift campaign and hardware issues remain"
+    "No new game failure; first harness had English literal-key false-positive and Node compared wall-clock timestamp; corrected with original browser failure retained",
+    "Landmark absolute frame gate and incremental draw overhead remain; simulation SaveLoad Rift ten-wave and hardware gaps persist"
   ],
   "blockers": [
-    "Full QA acceptance withheld; no public release authorized"
+    "No public release authorized; no real shared-live or cross-thread send interface"
   ],
   "next_steps": [
-    "Do not schedule further pure art; implement read-only pre-game rules summary",
-    "Then Seed/terrain accessibility, natural ten-wave campaign, difficulty and New Game+ with explicit specs"
+    "Seed/terrain accessibility audit and smallest actual reproducible fix",
+    "Natural ten-wave UI campaigns with raw state/inputs, then spec-backed difficulty/Boss changes",
+    "New Game+ only with limited-inheritance rules confirmed"
   ],
   "permissions": [
-    "Independent development tests normal commit/push",
+    "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "CHECKPOINTED",
-  "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
+  "status": "VERIFIED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-  "updated_at": "2026-10-27T20:18:33.383117+00:00"
+  "updated_at": "2026-10-27T20:26:09.009924+00:00"
 }

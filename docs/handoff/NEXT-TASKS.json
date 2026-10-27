@@ -1,7 +1,71 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T20:18:33.383117+00:00",
+  "updated_at": "2026-10-27T20:26:09.009924+00:00",
   "tasks": [
+    {
+      "task_id": "V240-SETUP-RULES",
+      "name": "Read-only pre-game standard rules query",
+      "requirement_source": "Active Strategy section6 and latest user gameplay priority",
+      "priority": "P1",
+      "agent": "Codex",
+      "environment": "Managed Linux Chromium154 1280x720 130percent UI scale; actual UI no state injection",
+      "branch": "codex/riftwatch-v240-game-first",
+      "base_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+      "latest_pushed_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+      "application_source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+      "completed": [
+        "Added localized accessible standard-run rules dialog driven by existing civilization terrain wave and settings data",
+        "Isolated Enter key while dialog is open",
+        "Verified rule queries preserve snapshot/RNG and actual Start/move/SaveReloadContinue/BugJSON",
+        "Preserved all landmark performance FAIL and other known issues"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Affected gameplay regression",
+          "path": "docs/evidence/v240-setup-rules/focused-node.log.txt",
+          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+          "result": "46/46 PASS"
+        },
+        {
+          "name": "Four languages",
+          "path": "docs/evidence/v240-setup-rules/locales.log.txt",
+          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+          "result": "692 keys each PASS"
+        },
+        {
+          "name": "Real natural UI Chromium",
+          "path": "docs/evidence/v240-setup-rules/browser.json",
+          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+          "result": "17/17 PASS; exact33 files; four locales at130percent; native Start selection movement SaveReloadContinue; zero errors"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v240-setup-rules/REPORT.md",
+        "docs/evidence/v240-setup-rules/setup-rules.webm",
+        "docs/evidence/v240-setup-rules/rules-zh-Hant.png"
+      ],
+      "failures": [
+        "No new game failure; first harness had English literal-key false-positive and Node compared wall-clock timestamp; corrected with original browser failure retained",
+        "Landmark absolute frame gate and incremental draw overhead remain; simulation SaveLoad Rift ten-wave and hardware gaps persist"
+      ],
+      "blockers": [
+        "No public release authorized; no real shared-live or cross-thread send interface"
+      ],
+      "next_steps": [
+        "Seed/terrain accessibility audit and smallest actual reproducible fix",
+        "Natural ten-wave UI campaigns with raw state/inputs, then spec-backed difficulty/Boss changes",
+        "New Game+ only with limited-inheritance rules confirmed"
+      ],
+      "permissions": [
+        "Independent development tests normal push",
+        "No main Force Push Checkpoints Pages or OmGitHub publication"
+      ],
+      "status": "VERIFIED",
+      "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
+      "updated_at": "2026-10-27T20:26:09.009924+00:00"
+    },
     {
       "task_id": "V240-LANDMARK-MATERIALS",
       "name": "Five family house/barracks scoped visual QA",
@@ -1223,10 +1287,9 @@
   ],
   "active_strategy": "docs/STRATEGY-V2.4-GAME-FIRST.md",
   "gameplay_priority_override": [
-    "P1 pre-game rules query without balance changes",
-    "P1 Seed/terrain accessibility",
-    "P1 natural ten-wave campaign",
-    "P2 difficulty/Boss tuning based on authority",
-    "P2 New Game+ minimum playable flow"
+    "P1 Seed/terrain path accessibility",
+    "P1 natural ten-wave UI validation",
+    "P2 spec-backed difficulty/Boss balance",
+    "P2 New Game+ limited inheritance"
   ]
 }
