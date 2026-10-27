@@ -1,0 +1,117 @@
+{
+  "scope": "REAL_LOCAL_CHROMIUM_EXACT_ARTIFACT; WebAudio output recorded from production music bus; not online/hardware/full campaign",
+  "url": "http://127.0.0.1:8024/",
+  "checks": [
+    {
+      "name": "Exact 28-file artifact loaded",
+      "pass": true,
+      "detail": {
+        "commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
+        "files": 28
+      }
+    },
+    {
+      "name": "Preparation score is actively scheduling audible notes",
+      "pass": true,
+      "detail": {
+        "phase": "prep",
+        "mode": "prep",
+        "notes": 1,
+        "ctx": "running",
+        "gain": 0.012795405462384224
+      }
+    },
+    {
+      "name": "Preparation score recording contains audio payload",
+      "pass": true,
+      "detail": {
+        "mime": "audio/webm;codecs=opus",
+        "bytes": 43155
+      }
+    },
+    {
+      "name": "Wave score switches mode and continues producing notes",
+      "pass": true,
+      "detail": {
+        "before": 5,
+        "after": 11,
+        "recording": {
+          "mime": "audio/webm;codecs=opus",
+          "bytes": 50832
+        },
+        "mode": "wave"
+      }
+    },
+    {
+      "name": "Sound toggle stops score-note generation",
+      "pass": true,
+      "detail": {
+        "before": 11,
+        "after": 11,
+        "enabled": false
+      }
+    },
+    {
+      "name": "Pause transitions score to subdued pause mode",
+      "pass": true,
+      "detail": {
+        "paused": true,
+        "mode": "paused"
+      }
+    },
+    {
+      "name": "Living Boss switches score to Boss mode",
+      "pass": true,
+      "detail": {
+        "mode": "boss",
+        "bossAlive": true
+      }
+    }
+  ],
+  "actions": [
+    "Start Game through production UI and unlock WebAudio by user gesture",
+    "Allow production prep countdown transition into wave and record battle score",
+    "Spawn controlled Boss fixture during live wave to verify production bossAlive score routing"
+  ],
+  "console_errors": [],
+  "page_errors": [],
+  "failed_requests": [],
+  "build": {
+    "commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
+    "files": 28
+  },
+  "prep": {
+    "phase": "prep",
+    "mode": "prep",
+    "notes": 1,
+    "ctx": "running",
+    "gain": 0.012795405462384224
+  },
+  "prep_recording": {
+    "mime": "audio/webm;codecs=opus",
+    "bytes": 43155
+  },
+  "battle": {
+    "before": 5,
+    "after": 11,
+    "recording": {
+      "mime": "audio/webm;codecs=opus",
+      "bytes": 50832
+    },
+    "mode": "wave"
+  },
+  "muted": {
+    "before": 11,
+    "after": 11,
+    "enabled": false
+  },
+  "paused": {
+    "paused": true,
+    "mode": "paused"
+  },
+  "boss": {
+    "mode": "boss",
+    "bossAlive": true
+  },
+  "pass": true
+}
