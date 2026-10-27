@@ -29,3 +29,19 @@ export function applyDifficulty(plan, id) {
   plan.intel.units = [...new Set(plan.spawns.flatMap(s => Object.keys(s.units)))];
   return plan;
 }
+
+// A visible flank reinforcement changes positioning, not unit/Boss statistics.
+// Added after difficulty scaling so the announced modifier is exact.
+export function applyCycle(plan, cycle) {
+  if (!(cycle > 1) || !plan.spawns.length) return plan;
+  const first = plan.spawns[0];
+  const gate = (first.gate + 2) % 4;
+  const count = Math.min(3, cycle - 1);
+  plan.spawns.push({at: 25, gate, units: {light_cavalry: count}, cycleFlank: true});
+  plan.spawns.sort((a,b)=>a.at-b.at);
+  plan.totalUnits += count;
+  if (!plan.intel.units.includes('light_cavalry')) plan.intel.units.push('light_cavalry');
+  if (!plan.intel.entrances.some(e => e.gate === gate)) plan.intel.entrances.push({gate, certainty: 'reported'});
+  plan.intel.cycleModifier = {id: 'flank', count, at: 25, gate};
+  return plan;
+}

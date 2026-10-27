@@ -168,6 +168,7 @@ export class UI {
     this.$('btn-gm-age')?.addEventListener('click', () => this.gmAction('age'));
     this.$('btn-gm-wave')?.addEventListener('click', () => this.gmAction('wave'));
     this.$('btn-gm-spawn')?.addEventListener('click', () => this.gmAction('spawn'));
+    this.$('btn-next-cycle').addEventListener('click', () => { clickSound(); this.callbacks.nextCycle?.([...this.$('next-cycle-cards').querySelectorAll('input:checked')].map(el=>el.value)); });
     this.$('btn-new-run').addEventListener('click', () => { clickSound(); this.callbacks.restart?.(); });
     this.$('btn-end-menu').addEventListener('click', () => { clickSound(); this.callbacks.quit?.(); });
     this.$('btn-sound').addEventListener('click', () => {
@@ -416,6 +417,21 @@ export class UI {
 
   showEnd(victory, stats) {
     this.el.end.hidden = false;
+    const chooser = this.$('next-cycle-choice'), cards = this.$('next-cycle-cards');
+    chooser.hidden = !victory || !this.game.canStartNextCycle();
+    cards.replaceChildren();
+    if (!chooser.hidden) {
+      for (const boon of this.game.boons) {
+        const label = document.createElement('label'), input = document.createElement('input');
+        input.type = 'checkbox'; input.value = boon.id;
+        input.addEventListener('change', () => {
+          const selected = cards.querySelectorAll('input:checked').length;
+          for (const box of cards.querySelectorAll('input')) box.disabled = selected >= 3 && !box.checked;
+        });
+        label.append(input, document.createTextNode(t(`boon.${boon.id}.name`)));
+        cards.append(label);
+      }
+    }
     this.el.end.classList.toggle('defeat', !victory);
     const civ = CIVILIZATIONS.find(c => c.id === (stats.civId || stats.civ?.id || stats.civ));
     const biome = BIOMES.find(b => b.id === (stats.biomeId || stats.biome?.id || stats.biome));
@@ -562,7 +578,8 @@ export class UI {
     this.el.idleButton.classList.toggle('empty', game.idleVillagers === 0);
 
     const waveNum = Math.min(WAVES.length, game.waveIndex + 1);
-    this.el.objectiveWaves.textContent = `${Math.min(game.waveIndex, WAVES.length)} / ${WAVES.length}`;
+    this.el.objectiveWaves.textContent = `${Math.min(game.waveIndex, WAVES.length)} / ${WAVES.length}` +
+      (game.cycle > 1 ? ` · ${t('cycle.label',{cycle:game.cycle})}` : '');
     if (this.el.ageLabel) this.el.ageLabel.textContent = game.ageResearch
       ? t('age.researching', { age: t(`age.${game.ageResearch.level}`), seconds: Math.ceil(game.ageResearch.remaining) })
       : t(`age.${game.ageLevel}`);
@@ -623,7 +640,7 @@ export class UI {
       this.el.intelCountdown.textContent = formatTime(Math.max(0, game.prepTimer));
       this.el.intelUnits.textContent = plan.units.map(type => UNIT_TYPES[type] ? t(`unit.${type}.name`) : type).join('\u00a0· ') || '—';
       if (this.el.intelEvent) {
-        this.el.intelEvent.textContent = plan.event ? t(`event.${plan.event.id}.name`) : '—';
+        this.el.intelEvent.textContent = plan.cycleModifier ? t('cycle.modifier',{count:plan.cycleModifier.count}) : plan.event ? t(`event.${plan.event.id}.name`) : '—';
         this.el.intelEvent.title = plan.event ? t(`event.${plan.event.id}.desc`) : '';
       }
       this.el.intelGates.textContent = plan.entrances.map(entry => t(`camp.${entry.gate}`)).join('\u00a0/ ') || '—';

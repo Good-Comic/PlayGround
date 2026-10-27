@@ -41,6 +41,15 @@ function startGame(setup = {}) {
   ui.renderCommands(game);
 }
 
+function nextCycle(cards) {
+  if (!game.startNextCycle(cards)) return;
+  sound.init(); ui.hideEnd(); ui.hideBoons(); ui.clearToasts();
+  ui.showPause(false); ui.hideMenu(); ui.setPlacement(null);
+  currentSetup = {civ:game.civ.id, biome:game.biome.id, difficulty:game.difficulty};
+  ui.lastSignature = ''; ui.lastCommandSignature = '';
+  ui.updateSelection(true); ui.renderCommands(game); game.start();
+}
+
 function restartRun() {
   sound.init();
   game.newRun(seedFromDate(), currentSetup);
@@ -129,6 +138,7 @@ ui = new UI(game, {
   sound,
   start: startGame,
   restart: restartRun,
+  nextCycle,
   quit: quitToMenu,
   pause: togglePauseGame,
   resume: resumeGame,

@@ -1,4 +1,4 @@
-import { difficultyId, preparationSeconds, applyDifficulty } from './campaign.js';
+import { difficultyId, preparationSeconds, applyDifficulty, applyCycle } from './campaign.js';
 import { Crowd } from './crowd.js';
 import { findPath, segmentClear, crossesRect } from './navigation.js';
 import {
@@ -65,6 +65,8 @@ export class Game {
     this.seed = seed;
     this.civ = CIVILIZATIONS.find(c => c.id === (options.civId || options.civ)) || CIVILIZATIONS[1];
     this.biome = BIOMES.find(b => b.id === (options.biomeId || options.biome)) || BIOMES.find(b => b.id === 'ash') || BIOMES[0];
+    this.cycle = 1;
+    this.inheritedBoons = [];
     this.difficulty = difficultyId(options.difficulty);
     this.runConfig = { civId: this.civ.id, biomeId: this.biome.id, difficulty: this.difficulty };
     this.playerColors = { ...PLAYER_COLORS, primary: this.civ.accent, cloth: this.civ.accent };
@@ -163,6 +165,35 @@ export class Game {
   }
 
 
+  canStartNextCycle() {
+    return this.phase === 'victory' && this.stats.waves === WAVES.length;
+  }
+
+  startNextCycle(cardIds = []) {
+    // Validate everything before resetting the player's completed campaign.
+    if (!this.canStartNextCycle() || !Array.isArray(cardIds) || cardIds.length > 3 ||
+        new Set(cardIds).size !== cardIds.length) return false;
+    const cards = cardIds.map(id => this.boons.find(b => b.id === id));
+    if (cards.some(b => !b)) return false;
+    const nextCycle = this.cycle + 1;
+    const options = { ...this.runConfig };
+    const speed = this.speed, autoEconomy = this.autoEconomy, autoMilitary = this.autoMilitary;
+    // A new, reproducible frontier; no old economy, research or entities carry.
+    const seed = (this.seed ^ Math.imul(nextCycle, 0x9e3779b9)) >>> 0;
+    this.newRun(seed, options);
+    this.cycle = nextCycle;
+    this.inheritedBoons = [...cardIds];
+    for (const card of cards) { card.apply(this); this.boons.push(card); }
+    this.refreshPlayerStats(); this.refreshBuildingStats();
+    this.speed = speed; this.autoEconomy = autoEconomy; this.autoMilitary = autoMilitary;
+    // newRun already consumed the first director plan; start the fresh director
+    // again so cycle-one and later cycles share the same deterministic stream.
+    this.director = new NemesisDirector(seed);
+    this.prepareNextWavePlan();
+    this.inMenu = false; this.paused = false;
+    return true;
+  }
+
   snapshot() {
     const ref = entity => {
       if (!entity) return null;
@@ -196,6 +227,8 @@ export class Game {
       seed: this.seed,
       mapGenerationVersion: this.world.generationVersion || 1,
       difficulty: this.difficulty,
+      cycle: this.cycle,
+      inheritedBoons: [...this.inheritedBoons],
       civId: this.civ.id,
       biomeId: this.biome.id,
       resources: { ...this.resources },
@@ -288,6 +321,8 @@ export class Game {
     this.seed = snapshot.seed;
     this.civ = civ;
     this.biome = biome;
+    this.cycle = Number.isSafeInteger(snapshot.cycle) && snapshot.cycle > 0 ? snapshot.cycle : 1;
+    this.inheritedBoons = (snapshot.inheritedBoons || []).filter(id => BOONS.some(b => b.id === id)).slice(0,3);
     this.difficulty = difficultyId(snapshot.difficulty);
     this.runConfig = { civId: civ.id, biomeId: biome.id, difficulty: this.difficulty };
     this.playerColors = { ...PLAYER_COLORS, primary: civ.accent, cloth: civ.accent };
@@ -2160,6 +2195,7 @@ export class Game {
       prepSeconds: this.prepTotal,
     });
     applyDifficulty(plan, this.difficulty);
+    applyCycle(plan, this.cycle);
     this.pendingWavePlan = plan;
     this.intel = plan.intel;
     this.waveName = t(`wave.${this.waveIndex}.name`);
