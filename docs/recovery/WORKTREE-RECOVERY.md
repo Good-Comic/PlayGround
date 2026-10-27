@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: 7fdcce28e03195a7e2b0e46f41a3c6004171a7156f27357f7afaee3eabca8bca
-Captured UTC: 2026-10-27T14:53:51.186846+00:00 · Trigger: FINAL_CHECKPOINT
-Collector source: `39767c4b58a37353b4f51bea13bd451a614fb2fc` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: ff1bc5403bc96fc8ec594fd611f706bad826ee1bba88c0935b668e955246fbee
+Captured UTC: 2026-10-27T15:01:23.525323+00:00 · Trigger: SLICE_COMPLETE
+Collector source: `833ec9517f603000355d9ed1cbbf0c17fa876a94` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -19,7 +19,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first-recovery | 39767c4b58a37353b4f51bea13bd451a614fb2fc | None | REMOTE_BRANCH_ABSENT | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first-recovery | 833ec9517f603000355d9ed1cbbf0c17fa876a94 | None | REMOTE_BRANCH_ABSENT | True |
 
 ## work
 
@@ -111,8 +111,8 @@ Next: Inspect task registry and relevant diff before writing
 
 ## codex/riftwatch-v240-game-first-recovery
 
-Unpushed commits: ["39767c4b58a37353b4f51bea13bd451a614fb2fc"]
-Uncommitted paths: [{"status": " M", "path": "docs/STRATEGY-V2.4-GAME-FIRST.md"}, {"status": " M", "path": "docs/handoff/ACTIVE-TASK.json"}, {"status": " M", "path": "docs/handoff/HANDOFF.md"}, {"status": " M", "path": "docs/handoff/NEXT-TASKS.json"}, {"status": " M", "path": "docs/handoff/RESUME-V228.md"}, {"status": " M", "path": "docs/handoff/STRATEGY-V2.2.8.md"}, {"status": " M", "path": "tests/dev/test_quota_guard.py"}, {"status": " M", "path": "tools/dev/quota_guard.py"}, {"status": "??", "path": "docs/evidence/v240-sprite-atlas/REPORT.md"}, {"status": "??", "path": "docs/evidence/v240-sprite-atlas/atlas-gameplay.png"}, {"status": "??", "path": "docs/evidence/v240-sprite-atlas/browser.json"}, {"status": "??", "path": "docs/evidence/v240-sprite-atlas/focused-node.log.txt"}, {"status": "??", "path": "docs/evidence/v240-sprite-atlas/sprite-atlas.webm"}, {"status": "??", "path": "docs/evidence/v240-sprite-atlas/state-attack.png"}, {"status": "??", "path": "docs/evidence/v240-sprite-atlas/state-death.png"}, {"status": "??", "path": "docs/evidence/v240-sprite-atlas/state-hit.png"}, {"status": "??", "path": "tools/qa/v240_sprite_atlas_browser.mjs"}]
+Unpushed commits: ["833ec9517f603000355d9ed1cbbf0c17fa876a94", "b9a3d527787cd2384902f259dcec9bc695aa2d42", "2c01280950b50c619eafd9182c03dd13d1dc6894", "39767c4b58a37353b4f51bea13bd451a614fb2fc"]
+Uncommitted paths: [{"status": " M", "path": "docs/handoff/HANDOFF.md"}]
 Validation: []
 Blockers: NOT_ASSESSED
 Next: Inspect task registry and relevant diff before writing

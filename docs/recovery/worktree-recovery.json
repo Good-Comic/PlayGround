@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-27T14:53:51.186846+00:00",
-  "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+  "captured_at_utc": "2026-10-27T15:01:23.525323+00:00",
+  "trigger": "SLICE_COMPLETE",
+  "collector_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-27T14:53:51.186846+00:00"
+    "queried_at": "2026-10-27T15:01:23.525323+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -31,9 +31,9 @@
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-    "codex/riftwatch-progress-feed": "a47260ccb52764cf8f10b5d9c6a261d77cf3b998",
+    "codex/riftwatch-progress-feed": "a75ae5b8ccda1c8b7c8f5d6bed179c0e8701cbf1",
     "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
-    "codex/riftwatch-task-ownership": "f4a1d0029a00525dc42381730506e35eafa52cd1",
+    "codex/riftwatch-task-ownership": "fd9df5452bbfab692e8f33924907eb2314405acd",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -63,7 +63,7 @@
     "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
     "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
     "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-    "codex/riftwatch-v240-game-first": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+    "codex/riftwatch-v240-game-first": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -183,7 +183,7 @@
     },
     {
       "branch": "codex/riftwatch-v240-game-first-recovery",
-      "head": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+      "head": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
       "remote_head": null,
       "status": "REMOTE_BRANCH_ABSENT"
     }
@@ -412,7 +412,7 @@
     {
       "path": "/workspace/riftwatch-v240",
       "branch": "codex/riftwatch-v240-game-first-recovery",
-      "head": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+      "head": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
       "locked": false,
       "task_id": null,
       "last_validation": [],
@@ -425,76 +425,15 @@
       "remote_status": "REMOTE_BRANCH_ABSENT",
       "remote_head": null,
       "unpushed_commits": [
+        "833ec9517f603000355d9ed1cbbf0c17fa876a94",
+        "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+        "2c01280950b50c619eafd9182c03dd13d1dc6894",
         "39767c4b58a37353b4f51bea13bd451a614fb2fc"
       ],
       "changed_files": [
         {
           "status": " M",
-          "path": "docs/STRATEGY-V2.4-GAME-FIRST.md"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/ACTIVE-TASK.json"
-        },
-        {
-          "status": " M",
           "path": "docs/handoff/HANDOFF.md"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/NEXT-TASKS.json"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/RESUME-V228.md"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/STRATEGY-V2.2.8.md"
-        },
-        {
-          "status": " M",
-          "path": "tests/dev/test_quota_guard.py"
-        },
-        {
-          "status": " M",
-          "path": "tools/dev/quota_guard.py"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-sprite-atlas/REPORT.md"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-sprite-atlas/atlas-gameplay.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-sprite-atlas/browser.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-sprite-atlas/focused-node.log.txt"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-sprite-atlas/sprite-atlas.webm"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-sprite-atlas/state-attack.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-sprite-atlas/state-death.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-sprite-atlas/state-hit.png"
-        },
-        {
-          "status": "??",
-          "path": "tools/qa/v240_sprite_atlas_browser.mjs"
         }
       ],
       "dirty": true,
@@ -503,25 +442,15 @@
   ],
   "comparison": [
     {
-      "path": "/workspace/PlayGround",
-      "changed_fields": [
-        "head"
-      ],
-      "previous_head": "8ef7358d61980eada812ae16b8e12c2f1e28baa8",
-      "actual_head": "e35a73329ee7942627496e55b844d02b2501e685"
-    },
-    {
       "path": "/workspace/riftwatch-v240",
       "changed_fields": [
-        "branch",
         "head",
-        "remote_head",
         "changed_files"
       ],
-      "previous_head": "7b32f49cc469c0e830a140c519734f6144fb0411",
-      "actual_head": "39767c4b58a37353b4f51bea13bd451a614fb2fc"
+      "previous_head": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+      "actual_head": "833ec9517f603000355d9ed1cbbf0c17fa876a94"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "7fdcce28e03195a7e2b0e46f41a3c6004171a7156f27357f7afaee3eabca8bca"
+  "snapshot_id": "ff1bc5403bc96fc8ec594fd611f706bad826ee1bba88c0935b668e955246fbee"
 }
