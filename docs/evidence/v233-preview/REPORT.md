@@ -8,7 +8,7 @@ Status: `PUBLIC_PREVIEW_ACCEPTED_PENDING_OFFICIAL_PUBLICATION`. PLAYTEST-EXPERIM
 - Artifact build commit: `055fb12c92e3d48945315937058f1423b732241c`; 28 payload files; runtime `SHA256_MATCH_28_FILES`
 - Artifact ZIP: `docs/playtest/v233/Riftwatch-v233-055fb12.zip` (`6ee43627cdf16fd15e87b041e76568dff21bffe244a54afaf2891280cb380b36`)
 - Canonical 28-file manifest SHA-256: `d3f977c91c3e08de400ba74b84b2276e547bc0c6a1c2fa6ac44a14002c9dac1b`
-- OpenCode branch: `opencode/40450603568` (run `40450603568`, Issue #19)
+- OpenCode branch: `opencode/40450603568` (run `40450603568`, Issue #19; preview commit `305fd6741591f1539ac9d4a71f7d57d210ab4c4b`)
 - Deployment commit: assigned by the official OmGitHub lifecycle at completion; not fabricated locally.
 
 ## Service
