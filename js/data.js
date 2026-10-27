@@ -1,5 +1,11 @@
 export const RESOURCES = ['food', 'wood', 'gold', 'stone'];
 
+export const INITIAL_BUILDINGS = Object.freeze([
+  {type:'core',x:23,y:25},{type:'barracks',x:17,y:28},
+  {type:'house',x:28,y:21},{type:'house',x:30,y:23},
+  {type:'tower',x:20,y:21},{type:'farm',x:31,y:28},
+].map(Object.freeze));
+
 export const CIVILIZATIONS = [
   {
     id: 'MNG', name: 'Mongols', epithet: 'Steppe Riders', accent: '#8e6b3a',

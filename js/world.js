@@ -1,7 +1,8 @@
 import { mulberry32, rand, randInt, dist, pointSegmentDist, pick, hash2 } from './utils.js';
+import { INITIAL_BUILDINGS, BUILDING_TYPES } from './data.js';
 
 export const WORLD_SIZE = 50;
-export const MAP_GENERATION_VERSION = 1;
+export const MAP_GENERATION_VERSION = 2;
 
 const CAMPS = [
   { x: 26, y: 3.5, name: 'The Northern Pyres', angle: 0.2 },
@@ -45,12 +46,25 @@ const BERRY_PATCHES = [
   { x: 25.5, y: 37.5, count: 4 },
 ];
 
-export function createWorld(seed, biomeId = 'ash') {
+export function createWorld(seed, biomeId = 'ash', generationVersion = MAP_GENERATION_VERSION) {
+  if (![1, 2].includes(generationVersion)) throw new Error('Unsupported map generation version');
+  const varied = generationVersion === 2;
+  // This independent stream changes layout without consuming combat RNG. Keep
+  // the version-1 stream and all conditional legacy paths byte-reproducible.
+  const layoutRng = mulberry32((seed ^ 0x6d617032) >>> 0);
+  const offset = (amount) => varied ? rand(layoutRng, -amount, amount) : 0;
   const rng = mulberry32(seed);
   const tiles = new Array(WORLD_SIZE * WORLD_SIZE);
   const resources = [];
   const props = [];
-  const camps = CAMPS.map(c => ({ ...c }));
+  const camps = CAMPS.map(c => ({ ...c, x:c.x+offset(1.4), y:c.y+offset(1.4) }));
+  const forestClusters = FOREST_CLUSTERS.map(c=>({...c,x:c.x+offset(2),y:c.y+offset(2)}));
+  const goldPatches = GOLD_PATCHES.map(c=>({...c,x:c.x+offset(1.8),y:c.y+offset(1.8)}));
+  const stonePatches = STONE_PATCHES.map(c=>({...c,x:c.x+offset(1.8),y:c.y+offset(1.8)}));
+  const berryPatches = BERRY_PATCHES.map(c=>({...c,x:c.x+offset(1.5),y:c.y+offset(1.5)}));
+  const lakeCenter = {x:44.5+offset(3),y:43.5+offset(3)};
+  const riverOffset = offset(2), riverPhase = offset(2);
+  const bridges = [20+Math.round(offset(3)), 36+Math.round(offset(3))];
   let nextId = 1;
 
   for (let y = 0; y < WORLD_SIZE; y++) {
@@ -67,16 +81,18 @@ export function createWorld(seed, biomeId = 'ash') {
   const base = { x: 24.5, y: 26.5 };
   const lakeScale = biomeId === 'island' ? 1.75 : biomeId === 'fjord' ? 1.45 : biomeId === 'dune' ? 0.45 : 1;
   const inLake = (x, y) => {
-    const cx = 44.5, cy = 43.5;
+    const cx = lakeCenter.x, cy = lakeCenter.y;
     const wobble = Math.sin(x * 1.7 + y * 0.8) * 1.2 + Math.cos(y * 2.1) * 0.8;
     return dist(x, y, cx, cy) + wobble < 7.8 * lakeScale && x > 36 - lakeScale * 2 && y > 34 - lakeScale * 2;
   };
   const inRiver = (x, y) => {
     if (biomeId !== 'river') return false;
-    const center = 11.5 + Math.sin(y * 0.33) * 1.6 + Math.cos(y * 0.11) * 0.9;
+    const center = 11.5 + riverOffset + Math.sin(y * 0.33 + riverPhase) * 1.6 + Math.cos(y * 0.11) * 0.9;
     return Math.abs(x + 0.5 - center) < 1.7;
   };
-  const onBridge = (x, y) => biomeId === 'river' && ((y >= 19 && y <= 21) || (y >= 34 && y <= 39));
+  const onBridge = (x, y) => biomeId === 'river' && (varied
+    ? Math.abs(x-(11.5+riverOffset+Math.sin(y*.33+riverPhase)*1.6+Math.cos(y*.11)*.9))<3.2 && bridges.some(b=>Math.abs(y-b)<=2)
+    : ((y >= 19 && y <= 21) || (y >= 34 && y <= 39)));
 
   for (let y = 0; y < WORLD_SIZE; y++) {
     for (let x = 0; x < WORLD_SIZE; x++) {
@@ -115,8 +131,26 @@ export function createWorld(seed, biomeId = 'ash') {
     }
   }
 
+  if (varied) {
+    // Reserve a buildable starting area and wide, continuous invasion lanes.
+    // Water crossings become visible cobbled fords; no runtime teleporting or
+    // obstacle bypass is needed by units. Paths are checked again with the real
+    // unit-radius collision predicate in acceptance tests.
+    for (const camp of camps) {
+      for (let t=0;t<=1;t+=.005) {
+        const cx=camp.x+(base.x-camp.x)*t,cy=camp.y+(base.y-camp.y)*t;
+        for(let oy=-2;oy<=2;oy++)for(let ox=-2;ox<=2;ox++) {
+          const x=Math.floor(cx)+ox,y=Math.floor(cy)+oy;
+          if(x<1||y<1||x>=WORLD_SIZE-1||y>=WORLD_SIZE-1||Math.hypot(x+.5-cx,y+.5-cy)>1.8)continue;
+          const tile=tiles[y*WORLD_SIZE+x];tile.terrain=tile.terrain==='water'?'cobble':tile.terrain;
+        }
+      }
+    }
+    for(let y=0;y<WORLD_SIZE;y++)for(let x=0;x<WORLD_SIZE;x++)if(dist(x+.5,y+.5,base.x,base.y)<7.8&&tiles[y*WORLD_SIZE+x].terrain==='water')tiles[y*WORLD_SIZE+x].terrain='grass';
+  }
+
   const forestScale = biomeId === 'forest' ? 1.45 : biomeId === 'steppe' ? 0.6 : biomeId === 'dune' ? 0.38 : biomeId === 'ash' ? 0.72 : 1;
-  for (const cluster of FOREST_CLUSTERS) {
+  for (const cluster of forestClusters) {
     const clusterCount = Math.round(cluster.count * forestScale);
     for (let i = 0; i < clusterCount; i++) {
       const ang = rng() * Math.PI * 2;
@@ -145,7 +179,7 @@ export function createWorld(seed, biomeId = 'ash') {
     resources.push(makeNode(nextId++, 'wood', kind, x + rand(rng, -0.2, 0.2), y + rand(rng, -0.2, 0.2), rand(rng, 115, 160), rng));
   }
 
-  for (const patch of GOLD_PATCHES) {
+  for (const patch of goldPatches) {
     for (let i = 0; i < patch.count; i++) {
       const ang = rng() * Math.PI * 2, rad = Math.sqrt(rng()) * 1.7;
       const x = patch.x + Math.cos(ang) * rad, y = patch.y + Math.sin(ang) * rad;
@@ -154,7 +188,7 @@ export function createWorld(seed, biomeId = 'ash') {
     }
   }
 
-  for (const patch of STONE_PATCHES) {
+  for (const patch of stonePatches) {
     for (let i = 0; i < patch.count; i++) {
       const ang = rng() * Math.PI * 2, rad = Math.sqrt(rng()) * 1.6;
       const x = patch.x + Math.cos(ang) * rad, y = patch.y + Math.sin(ang) * rad;
@@ -163,7 +197,7 @@ export function createWorld(seed, biomeId = 'ash') {
     }
   }
 
-  for (const patch of BERRY_PATCHES) {
+  for (const patch of berryPatches) {
     for (let i = 0; i < patch.count; i++) {
       const ang = rng() * Math.PI * 2, rad = Math.sqrt(rng()) * 1.6;
       const x = patch.x + Math.cos(ang) * rad, y = patch.y + Math.sin(ang) * rad;
@@ -233,6 +267,24 @@ export function createWorld(seed, biomeId = 'ash') {
     { kind: 'deer', x: 33.2, y: 38.1, phase: 1.2, homeX: 33.2, homeY: 38.1 },
   ];
 
+  if (varied) {
+    const overlapsBase=(x,y)=>INITIAL_BUILDINGS.some(b=>{const d=BUILDING_TYPES[b.type];return x>b.x-.65&&x<b.x+d.w+.65&&y>b.y-.65&&y<b.y+d.h+.65});
+    for(const n of resources)if(overlapsBase(n.x,n.y)) {
+      // Keep the node and its amount/identity; relocate only invalid spawns.
+      // A bounded deterministic radial search stays local to its resource patch.
+      const original={x:n.x,y:n.y};
+      for(let radius=.5;radius<=8;radius+=.5){
+        let placed=false;
+        for(let i=0;i<32;i++){
+          const a=i*Math.PI/16,x=original.x+Math.cos(a)*radius,y=original.y+Math.sin(a)*radius;
+          if(x<1||y<1||x>=WORLD_SIZE-1||y>=WORLD_SIZE-1||overlapsBase(x,y)||tiles[Math.floor(y)*WORLD_SIZE+Math.floor(x)].terrain==='water'||resources.some(other=>other!==n&&dist(other.x,other.y,x,y)<.8))continue;
+          n.x=x;n.y=y;placed=true;break;
+        }
+        if(placed)break;
+      }
+    }
+  }
+
   for (let i = resources.length - 1; i >= 0; i--) {
     const n = resources[i];
     const t = tiles[Math.floor(n.y) * WORLD_SIZE + Math.floor(n.x)];
@@ -241,7 +293,7 @@ export function createWorld(seed, biomeId = 'ash') {
 
   return {
     size: WORLD_SIZE, tiles, resources, props, camps, base, wildlife, seed, biome: biomeId,
-    generationVersion: MAP_GENERATION_VERSION,
+    generationVersion,
     tile(x, y) {
       const tx = Math.floor(x), ty = Math.floor(y);
       if (tx < 0 || ty < 0 || tx >= WORLD_SIZE || ty >= WORLD_SIZE) return null;

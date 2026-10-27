@@ -2,7 +2,7 @@ import { Crowd } from './crowd.js';
 import { findPath, segmentClear, crossesRect } from './navigation.js';
 import {
   UNIT_TYPES, BUILDING_TYPES, TRAINABLE, GENERIC_UNITS, BUILD_OPTIONS, WAVES, BOONS,
-  START_RESOURCES, CIVILIZATIONS, BIOMES, AGE_COSTS,
+  START_RESOURCES, CIVILIZATIONS, BIOMES, AGE_COSTS, INITIAL_BUILDINGS,
   RARITY_WEIGHT, MAX_BOONS, PLAYER_COLORS,
 } from './data.js';
 import { createWorld } from './world.js';
@@ -287,8 +287,7 @@ export class Game {
     this.biome = biome;
     this.runConfig = { civId: civ.id, biomeId: biome.id };
     this.playerColors = { ...PLAYER_COLORS, primary: civ.accent, cloth: civ.accent };
-    this.world = createWorld(this.seed, biome.id);
-    if ((snapshot.mapGenerationVersion || 1) !== this.world.generationVersion) throw new Error('Unsupported map generation version');
+    this.world = createWorld(this.seed, biome.id, snapshot.mapGenerationVersion ?? 1);
     const worldNodes = new Map(this.world.resources.map(node => [node.id, node]));
     for (const saved of snapshot.worldResources || []) {
       const node = worldNodes.get(saved.id);
@@ -448,12 +447,7 @@ export class Game {
   toast(text, type = '', duration) { this.hooks.toast?.(text, type, duration); }
 
   buildInitialBase() {
-    this.addBuilding('core', 23, 25, true);
-    this.addBuilding('barracks', 17, 28, true);
-    this.addBuilding('house', 28, 21, true);
-    this.addBuilding('house', 30, 23, true);
-    this.addBuilding('tower', 20, 21, true);
-    this.addBuilding('farm', 31, 28, true);
+    for(const b of INITIAL_BUILDINGS)this.addBuilding(b.type,b.x,b.y,true);
 
     const villagers = [
       this.spawnUnit('villager', 22.2, 29.2),
