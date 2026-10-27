@@ -17,7 +17,7 @@ let ui;
 let currentSetup = { civ: 'TEU', biome: 'ash' };
 
 function startGame(setup = {}) {
-  currentSetup = { civ: setup.civ || 'TEU', biome: setup.biome || 'ash' };
+  currentSetup = { civ: setup.civ || 'TEU', biome: setup.biome || 'ash', difficulty: setup.difficulty || 'normal' };
   const seed = setup.seed ? seedFromString(setup.seed) : seedFromDate();
   game.newRun(seed, currentSetup);
   game.speed = ui.settings.gameSpeed;
@@ -74,7 +74,7 @@ function continueRun() {
     ui.showMenu();
     return;
   }
-  currentSetup = { civ: game.civ.id, biome: game.biome.id };
+  currentSetup = { civ: game.civ.id, biome: game.biome.id, difficulty: game.difficulty };
   sound.init();
   ui.hideMenu();
   ui.hideEnd();

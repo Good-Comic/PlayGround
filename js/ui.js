@@ -1,4 +1,5 @@
 import { BUILDING_TYPES, UNIT_TYPES, BUILD_OPTIONS, BOONS, WAVES, CIVILIZATIONS, BIOMES, PLAYER_COLORS, ENEMY_COLORS } from './data.js';
+import { difficultyId, DIFFICULTIES } from './campaign.js';
 import { formatNumber, formatTime, roman, clamp, createSeedText } from './utils.js';
 import { applyStaticTranslations, getLocale, localeOptions, setLocale as setAppLocale, t } from './i18n.js';
 import { applySettings, loadSettings, resetSettings, saveSettings } from './settings.js';
@@ -28,7 +29,7 @@ export function setupRulesView(setup, settings, economicCap) {
   const biome = BIOMES.find(b=>b.id===setup.biome) || BIOMES.find(b=>b.id==='ash');
   return {
     civ:civ.id, biome:biome.id, seed:String(setup.seed || '').trim(),
-    waves:WAVES.length, bossWaves:WAVES.flatMap((w,i)=>w.boss?[i+1]:[]),
+    difficulty:difficultyId(setup.difficulty), waves:WAVES.length, bossWaves:WAVES.flatMap((w,i)=>w.boss?[i+1]:[]),
     economicCap, militaryLimit:civ.bonuses?.militaryPopCap || null,
     speed:settings.gameSpeed, autoEconomy:settings.autoEconomy, autoMilitary:settings.autoMilitary,
   };
@@ -215,11 +216,12 @@ export class UI {
 
   openSetupRules() {
     this.ensureSetupSeed();
-    const rules = setupRulesView({civ:this.el.civSelect.value,biome:this.el.biomeSelect.value,seed:this.el.seedInput.value},this.settings,this.game.economicPopCap);
+    const rules = setupRulesView({civ:this.el.civSelect.value,biome:this.el.biomeSelect.value,seed:this.el.seedInput.value,difficulty:this.$('setup-difficulty').value},this.settings,this.game.economicPopCap);
     const rows = [
       [t('menu.civ'), `${t(`civ.${rules.civ}.name`)} — ${t(`civ.${rules.civ}.trait`)}`],
       [t('menu.biome'), `${t(`biome.${rules.biome}.name`)} — ${t(`biome.${rules.biome}.trait`)}`],
       [t('menu.seed'), rules.seed],
+      [t('difficulty.title'), `${t('difficulty.'+rules.difficulty)} · ${t('difficulty.values',{forces:Math.round(DIFFICULTIES[rules.difficulty].ordinary*100),prep:Math.round(DIFFICULTIES[rules.difficulty].preparation*100)})}`],
       [t('rules.campaign'), t('rules.waves',{count:rules.waves,boss:rules.bossWaves.join(', ')})],
       [t('rules.population'), t('rules.caps',{economic:rules.economicCap,military:rules.militaryLimit?t('rules.limited',{cap:rules.militaryLimit}):t('rules.buildings')})],
       [t('settings.speed'), `${rules.speed}×`],
@@ -252,6 +254,7 @@ export class UI {
       civ: this.el.civSelect?.value || 'TEU',
       biome: this.el.biomeSelect?.value || 'ash',
       seed: seed || null,
+      difficulty: this.$('setup-difficulty').value,
     };
     this.callbacks.start?.(setup);
   }

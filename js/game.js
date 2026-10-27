@@ -1,3 +1,4 @@
+import { difficultyId, preparationSeconds, applyDifficulty } from './campaign.js';
 import { Crowd } from './crowd.js';
 import { findPath, segmentClear, crossesRect } from './navigation.js';
 import {
@@ -64,7 +65,8 @@ export class Game {
     this.seed = seed;
     this.civ = CIVILIZATIONS.find(c => c.id === (options.civId || options.civ)) || CIVILIZATIONS[1];
     this.biome = BIOMES.find(b => b.id === (options.biomeId || options.biome)) || BIOMES.find(b => b.id === 'ash') || BIOMES[0];
-    this.runConfig = { civId: this.civ.id, biomeId: this.biome.id };
+    this.difficulty = difficultyId(options.difficulty);
+    this.runConfig = { civId: this.civ.id, biomeId: this.biome.id, difficulty: this.difficulty };
     this.playerColors = { ...PLAYER_COLORS, primary: this.civ.accent, cloth: this.civ.accent };
     this.world = createWorld(seed, this.biome.id);
     this.resources = { ...START_RESOURCES };
@@ -120,8 +122,8 @@ export class Game {
     this.assistActive = false;
     this.waveIndex = 0;
     this.phase = 'prep';
-    this.prepTotal = 45;
-    this.prepTimer = 45;
+    this.prepTotal = preparationSeconds(45, this.difficulty);
+    this.prepTimer = this.prepTotal;
     this.waveTotal = 0;
     this.waveName = t(`wave.0.name`);
     this.waveClock = 0;
@@ -193,6 +195,7 @@ export class Game {
       savedAt: Date.now(),
       seed: this.seed,
       mapGenerationVersion: this.world.generationVersion || 1,
+      difficulty: this.difficulty,
       civId: this.civ.id,
       biomeId: this.biome.id,
       resources: { ...this.resources },
@@ -285,7 +288,8 @@ export class Game {
     this.seed = snapshot.seed;
     this.civ = civ;
     this.biome = biome;
-    this.runConfig = { civId: civ.id, biomeId: biome.id };
+    this.difficulty = difficultyId(snapshot.difficulty);
+    this.runConfig = { civId: civ.id, biomeId: biome.id, difficulty: this.difficulty };
     this.playerColors = { ...PLAYER_COLORS, primary: civ.accent, cloth: civ.accent };
     this.world = createWorld(this.seed, biome.id, snapshot.mapGenerationVersion ?? 1);
     const worldNodes = new Map(this.world.resources.map(node => [node.id, node]));
@@ -2155,6 +2159,7 @@ export class Game {
       camps: this.world.camps,
       prepSeconds: this.prepTotal,
     });
+    applyDifficulty(plan, this.difficulty);
     this.pendingWavePlan = plan;
     this.intel = plan.intel;
     this.waveName = t(`wave.${this.waveIndex}.name`);
@@ -2680,8 +2685,8 @@ export class Game {
     this.waveName = t(`wave.${Math.min(this.waveIndex, WAVES.length - 1)}.name`);
     this.phase = 'prep';
     const midBreak = this.waveIndex === 5 ? 75 : 0;
-    this.prepTotal = 30 + midBreak;
-    this.prepTimer = 30 + midBreak;
+    this.prepTotal = preparationSeconds(30 + midBreak, this.difficulty);
+    this.prepTimer = this.prepTotal;
     this.prepareNextWavePlan();
     if (midBreak) this.toast(t('toast.midBreak'), 'good', 6200);
     this.camera.targetZoom = 1.12;
