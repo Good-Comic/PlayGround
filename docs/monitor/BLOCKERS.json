@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T03:17:13.804686+00:00",
+  "updated_at": "2026-10-27T03:26:59.461270+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -243,19 +243,35 @@
     },
     {
       "id": "OMGH-18-PREVIEW-SUPERSEDED",
-      "severity": "ACTION_REQUIRED",
-      "summary": "All observed deployment registration callbacks returned HTTP 409 superseded; publication remains draft with no URL or deploy-only control. A new official Resume/Continue OpenCode execution needs explicit authorization.",
-      "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
       "requires_user_decision": true,
+      "severity": "ACTION_REQUIRED",
+      "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+      "summary": "All observed deployment registration callbacks returned HTTP 409 superseded; publication remains draft with no URL or deploy-only control. A new official Resume/Continue OpenCode execution needs explicit authorization.",
       "task_id": "V232-RIFT-PROTOTYPE-NATURAL"
     },
     {
       "id": "RIFT-PROTOTYPE-NATURAL-NOT-REPRODUCED",
-      "severity": "WARNING",
-      "summary": "The genuine natural wave completed without errors but did not offer Rift Prototype; exact player crash conditions remain unavailable.",
-      "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+      "summary": "The genuine natural wave completed without errors but did not offer Rift Prototype; exact player crash conditions remain unavailable.",
       "task_id": "V232-RIFT-PROTOTYPE-NATURAL"
+    },
+    {
+      "id": "OMGH18-BUILD-INTEGRITY-PORT3000",
+      "severity": "ACTION_REQUIRED",
+      "summary": "Latest internal generation234 has no stable Preview. Official port3000 was publicly reachable but rendered BUILD BLOCKED; recovery requires a new official execution and exact artifact binding.",
+      "source_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+      "requires_user_decision": true,
+      "task_id": "V233-DYNAMIC-SCORE"
+    },
+    {
+      "id": "RIFT-PROTOTYPE-NATURAL-NOT-REPRODUCED",
+      "severity": "WARNING",
+      "summary": "The natural claim crash still lacks the original player save/seed/state and remains NOT_REPRODUCED.",
+      "source_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+      "requires_user_decision": false,
+      "task_id": "V233-DYNAMIC-SCORE"
     }
   ]
 }
