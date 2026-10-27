@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T20:19:03.459680+00:00",
+  "updated_at": "2026-10-27T20:26:41.733962+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -395,11 +395,19 @@
     },
     {
       "id": "LANDMARK-PERF",
-      "severity": "WARNING",
-      "summary": "Absolute frame gate fails in baseline and after; draw JS median +21.4%. No full QA approval. Cloud is not physical hardware.",
-      "source_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+      "summary": "Absolute frame gate fails in baseline and after; draw JS median +21.4%. No full QA approval. Cloud is not physical hardware.",
       "task_id": "V240-LANDMARK-MATERIALS"
+    },
+    {
+      "id": "LANDMARK-PERFORMANCE-RETAINED",
+      "severity": "WARNING",
+      "summary": "Landmark visual/state passes but original absolute cloud frame gates fail and draw overhead remains. SaveLoad lowFPS Rift natural campaign and hardware gaps persist.",
+      "source_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
+      "requires_user_decision": false,
+      "task_id": "V240-SETUP-RULES"
     }
   ]
 }

@@ -2,59 +2,67 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-27T20:19:03.459680+00:00",
+  "updated_at": "2026-10-27T20:26:41.733962+00:00",
   "latest_event": {
-    "task_id": "V240-LANDMARK-MATERIALS",
+    "task_id": "V240-SETUP-RULES",
     "agent": "Codex",
-    "severity": "WARNING",
+    "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
-    "build_sha": "9fc6db69227432b162651017819e23cbd4b9153f",
-    "summary": "QA_FAILED performance; scoped visual/state QA passes after correcting floating roof materials. Full QA not accepted.",
+    "commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
+    "build_sha": "5ded54f43212116bdf966b537796849325c295bf",
+    "summary": "Pre-game rules query completed and remotely verified; gameplay priorities now terrain/accessibility and natural campaign.",
     "code_changes": [
-      "Project existing family materials onto actual clipped wall planes",
-      "Tested and reverted ineffective static cache",
-      "Prioritize gameplay instead of more art"
+      "Localized data-backed rules dialog and modal Enter guard",
+      "No gameplay balance or simulation changes"
     ],
     "next_steps": [
-      "Independent pre-game rules query followed by Seed/terrain accessibility and natural campaign"
+      "Seed/terrain accessibility and natural campaign; no further pure-art expansion"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Five-family state gallery and direct visual review 10 checks",
+        "name": "Affected gameplay tests46/46",
         "status": "PASS",
-        "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
-        "evidence": "docs/evidence/v240-landmarks/fixed/browser.json",
-        "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
-        "evidence_blob": "97dc19157ba63260ac23026b0501e7ee2a89d240",
+        "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+        "evidence": "docs/evidence/v240-setup-rules/focused-node.log.txt",
+        "evidence_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+        "evidence_blob": "8948bd4b43f9f4d87fea42acaa84022a22fc4fbf",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Mixed rendering three before/after repeats",
-        "status": "FAIL",
-        "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
-        "evidence": "docs/evidence/v240-landmarks/performance/summary.json",
-        "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
-        "evidence_blob": "ffb81e591236e3d26c2dfed0302f3ae6c039b10a",
+        "name": "Exact artifact actual UI Chromium17/17",
+        "status": "PASS",
+        "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+        "evidence": "docs/evidence/v240-setup-rules/browser.json",
+        "evidence_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+        "evidence_blob": "0742007caf955c004136e20eed047b84ccab8ba6",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "Four locales692 keys",
+        "status": "PASS",
+        "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+        "evidence": "docs/evidence/v240-setup-rules/locales.log.txt",
+        "evidence_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+        "evidence_blob": "888fea5b5f3ac6eb77d24eadfd5449bc867dfcb8",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "LANDMARK-PERF",
+        "id": "LANDMARK-PERFORMANCE-RETAINED",
         "severity": "WARNING",
-        "summary": "Absolute frame gate fails in baseline and after; draw JS median +21.4%. No full QA approval. Cloud is not physical hardware.",
-        "source_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+        "summary": "Landmark visual/state passes but original absolute cloud frame gates fail and draw overhead remains. SaveLoad lowFPS Rift natural campaign and hardware gaps persist.",
+        "source_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
         "requires_user_decision": false
       }
     ],
-    "response": "Landmark QA saved at b55650e06b5e6454045bfdacc0dcf5bc4349cfb0. Visual/state LOCAL_VERIFIED; performance FAIL. Actual screenshots, video and failed measurements are retained. No public publication.",
-    "event_id": "bc335f29145d15a4a0e462267a300437cf9eaffa316896b89fbc1d5addbde1f4",
-    "remote_head": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+    "response": "Saved f206b210b8b3c0e08dc36ecaae8d01e4ed174faa on codex/riftwatch-v240-game-first. Completed scoped landmark visual repair (7Node/10Chromium, performanceFAIL retained) and pre-game rules query (46Node/17Chromium/four localesPASS). Screenshots and video in docs/evidence/v240-landmarks and docs/evidence/v240-setup-rules. No public deployment. Recovery/Handoff updated; gameplay ownership released. Cross-thread send is unavailable, structured report persisted. Next: Seed/terrain accessibility, then natural ten-wave campaign and spec-backed difficulty/New Game+.",
+    "event_id": "c9b8aeae0b21969dc2533474d7187fcfbd8e0c8dca6fe67c359c358d34e7afd4",
+    "remote_head": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-27T20:19:03.459680+00:00",
+    "recorded_at": "2026-10-27T20:26:41.733962+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2255,57 +2263,119 @@
       ]
     },
     "V240-LANDMARK-MATERIALS": {
-      "task_id": "V240-LANDMARK-MATERIALS",
       "agent": "Codex",
-      "severity": "WARNING",
+      "blockers": [
+        {
+          "id": "LANDMARK-PERF",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+          "summary": "Absolute frame gate fails in baseline and after; draw JS median +21.4%. No full QA approval. Cloud is not physical hardware."
+        }
+      ],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
       "build_sha": "9fc6db69227432b162651017819e23cbd4b9153f",
-      "summary": "QA_FAILED performance; scoped visual/state QA passes after correcting floating roof materials. Full QA not accepted.",
       "code_changes": [
         "Project existing family materials onto actual clipped wall planes",
         "Tested and reverted ineffective static cache",
         "Prioritize gameplay instead of more art"
       ],
+      "commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "bc335f29145d15a4a0e462267a300437cf9eaffa316896b89fbc1d5addbde1f4",
       "next_steps": [
         "Independent pre-game rules query followed by Seed/terrain accessibility and natural campaign"
+      ],
+      "pushed": true,
+      "recorded_at": "2026-10-27T20:19:03.459680+00:00",
+      "remote_head": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Landmark QA saved at b55650e06b5e6454045bfdacc0dcf5bc4349cfb0. Visual/state LOCAL_VERIFIED; performance FAIL. Actual screenshots, video and failed measurements are retained. No public publication.",
+      "severity": "WARNING",
+      "summary": "QA_FAILED performance; scoped visual/state QA passes after correcting floating roof materials. Full QA not accepted.",
+      "task_id": "V240-LANDMARK-MATERIALS",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-landmarks/fixed/browser.json",
+          "evidence_blob": "97dc19157ba63260ac23026b0501e7ee2a89d240",
+          "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Five-family state gallery and direct visual review 10 checks",
+          "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-landmarks/performance/summary.json",
+          "evidence_blob": "ffb81e591236e3d26c2dfed0302f3ae6c039b10a",
+          "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Mixed rendering three before/after repeats",
+          "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+          "status": "FAIL"
+        }
+      ]
+    },
+    "V240-SETUP-RULES": {
+      "task_id": "V240-SETUP-RULES",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
+      "build_sha": "5ded54f43212116bdf966b537796849325c295bf",
+      "summary": "Pre-game rules query completed and remotely verified; gameplay priorities now terrain/accessibility and natural campaign.",
+      "code_changes": [
+        "Localized data-backed rules dialog and modal Enter guard",
+        "No gameplay balance or simulation changes"
+      ],
+      "next_steps": [
+        "Seed/terrain accessibility and natural campaign; no further pure-art expansion"
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Five-family state gallery and direct visual review 10 checks",
+          "name": "Affected gameplay tests46/46",
           "status": "PASS",
-          "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
-          "evidence": "docs/evidence/v240-landmarks/fixed/browser.json",
-          "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
-          "evidence_blob": "97dc19157ba63260ac23026b0501e7ee2a89d240",
+          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+          "evidence": "docs/evidence/v240-setup-rules/focused-node.log.txt",
+          "evidence_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+          "evidence_blob": "8948bd4b43f9f4d87fea42acaa84022a22fc4fbf",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "Mixed rendering three before/after repeats",
-          "status": "FAIL",
-          "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
-          "evidence": "docs/evidence/v240-landmarks/performance/summary.json",
-          "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
-          "evidence_blob": "ffb81e591236e3d26c2dfed0302f3ae6c039b10a",
+          "name": "Exact artifact actual UI Chromium17/17",
+          "status": "PASS",
+          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+          "evidence": "docs/evidence/v240-setup-rules/browser.json",
+          "evidence_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+          "evidence_blob": "0742007caf955c004136e20eed047b84ccab8ba6",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Four locales692 keys",
+          "status": "PASS",
+          "source_commit": "5ded54f43212116bdf966b537796849325c295bf",
+          "evidence": "docs/evidence/v240-setup-rules/locales.log.txt",
+          "evidence_commit": "30c7fc4bc9356f7c1eb12f0dde1d459760b0a7a0",
+          "evidence_blob": "888fea5b5f3ac6eb77d24eadfd5449bc867dfcb8",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
       "blockers": [
         {
-          "id": "LANDMARK-PERF",
+          "id": "LANDMARK-PERFORMANCE-RETAINED",
           "severity": "WARNING",
-          "summary": "Absolute frame gate fails in baseline and after; draw JS median +21.4%. No full QA approval. Cloud is not physical hardware.",
-          "source_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+          "summary": "Landmark visual/state passes but original absolute cloud frame gates fail and draw overhead remains. SaveLoad lowFPS Rift natural campaign and hardware gaps persist.",
+          "source_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
           "requires_user_decision": false
         }
       ],
-      "response": "Landmark QA saved at b55650e06b5e6454045bfdacc0dcf5bc4349cfb0. Visual/state LOCAL_VERIFIED; performance FAIL. Actual screenshots, video and failed measurements are retained. No public publication.",
-      "event_id": "bc335f29145d15a4a0e462267a300437cf9eaffa316896b89fbc1d5addbde1f4",
-      "remote_head": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+      "response": "Saved f206b210b8b3c0e08dc36ecaae8d01e4ed174faa on codex/riftwatch-v240-game-first. Completed scoped landmark visual repair (7Node/10Chromium, performanceFAIL retained) and pre-game rules query (46Node/17Chromium/four localesPASS). Screenshots and video in docs/evidence/v240-landmarks and docs/evidence/v240-setup-rules. No public deployment. Recovery/Handoff updated; gameplay ownership released. Cross-thread send is unavailable, structured report persisted. Next: Seed/terrain accessibility, then natural ten-wave campaign and spec-backed difficulty/New Game+.",
+      "event_id": "c9b8aeae0b21969dc2533474d7187fcfbd8e0c8dca6fe67c359c358d34e7afd4",
+      "remote_head": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-27T20:19:03.459680+00:00",
+      "recorded_at": "2026-10-27T20:26:41.733962+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
