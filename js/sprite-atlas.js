@@ -7,7 +7,7 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
     frame: Object.freeze({ width: 64, height: 64 }),
     anchor: Object.freeze({ x: 32, y: 54 }),
     offset: Object.freeze({ x: 0, y: 0 }),
-    scale: 1.05,
+    scale: 0.78,
     directions: Object.freeze(Object.fromEntries(DIRECTIONS.map((direction, index) => [direction, index]))),
     states: Object.freeze({
       idle: Object.freeze({ row: 0, frames: 2, fps: 2, loop: true }),
