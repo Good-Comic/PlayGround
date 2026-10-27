@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T04:15:15.790016+00:00",
+  "updated_at": "2026-10-27T04:56:26.803676+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -275,19 +275,35 @@
     },
     {
       "id": "OMGITHUB18-SOURCE-SWITCH",
-      "severity": "ACTION_REQUIRED",
-      "summary": "Existing #18 Resume sends prompt/request_id only and cannot guarantee the new branch/SHA. The minimum safe mechanism is one new isolated Issue against a frozen branch and exact launch SHA, which remains unauthorized.",
-      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
       "requires_user_decision": true,
+      "severity": "ACTION_REQUIRED",
+      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+      "summary": "Existing #18 Resume sends prompt/request_id only and cannot guarantee the new branch/SHA. The minimum safe mechanism is one new isolated Issue against a frozen branch and exact launch SHA, which remains unauthorized.",
       "task_id": "V233-VISUAL-SILHOUETTES"
     },
     {
       "id": "KNOWN-GAMEPLAY-GAPS",
+      "requires_user_decision": false,
       "severity": "WARNING",
+      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
       "summary": "Natural Rift Prototype crash is still not reproduced; low-FPS time loss, strict Save/Load nondeterminism, historical performance failures and hardware testing remain open.",
+      "task_id": "V233-VISUAL-SILHOUETTES"
+    },
+    {
+      "id": "OMGITHUB_PREVIEW_BLOCKED",
+      "severity": "WARNING",
+      "summary": "Current Codex environment gets Envoy HTTP403 for the new exact stable Preview hostname; OmGitHub publication state also remains unpublished despite ready generation161 and a stable URL.",
       "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
       "requires_user_decision": false,
-      "task_id": "V233-VISUAL-SILHOUETTES"
+      "task_id": "V234-OMGITHUB-PREVIEW"
+    },
+    {
+      "id": "SIMULATION_SAVELOAD_HARDWARE_OPEN",
+      "severity": "WARNING",
+      "summary": "Low-FPS simulation loss, strict Save/Load nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, and HARDWARE_TEST_PENDING remain.",
+      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+      "requires_user_decision": false,
+      "task_id": "V234-OMGITHUB-PREVIEW"
     }
   ]
 }
