@@ -1,4 +1,12 @@
 const DIRECTIONS = ['E', 'SE', 'S', 'SW', 'W', 'NW', 'N', 'NE'];
+const STATES = Object.freeze({
+  idle: Object.freeze({ row: 0, frames: 2, fps: 2, loop: true }),
+  walk: Object.freeze({ row: 1, frames: 2, fps: 7, loop: true }),
+  attack: Object.freeze({ row: 2, frames: 2, fps: 10, loop: false }),
+  hit: Object.freeze({ row: 3, frames: 2, fps: 12, loop: false }),
+  death: Object.freeze({ row: 4, frames: 2, fps: 4, loop: false }),
+});
+const DIRECTION_MAP = Object.freeze(Object.fromEntries(DIRECTIONS.map((direction, index) => [direction, index])));
 
 export const UNIT_SPRITE_ATLASES = Object.freeze({
   militia: Object.freeze({
@@ -8,14 +16,18 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
     anchor: Object.freeze({ x: 32, y: 54 }),
     offset: Object.freeze({ x: 0, y: 0 }),
     scale: 0.78,
-    directions: Object.freeze(Object.fromEntries(DIRECTIONS.map((direction, index) => [direction, index]))),
-    states: Object.freeze({
-      idle: Object.freeze({ row: 0, frames: 2, fps: 2, loop: true }),
-      walk: Object.freeze({ row: 1, frames: 2, fps: 7, loop: true }),
-      attack: Object.freeze({ row: 2, frames: 2, fps: 10, loop: false }),
-      hit: Object.freeze({ row: 3, frames: 2, fps: 12, loop: false }),
-      death: Object.freeze({ row: 4, frames: 2, fps: 4, loop: false }),
-    }),
+    directions: DIRECTION_MAP,
+    states: STATES,
+  }),
+  archer: Object.freeze({
+    id: 'archer-v1', src: 'assets/sprites/archer-atlas.svg',
+    frame: Object.freeze({ width: 64, height: 64 }), anchor: Object.freeze({ x: 32, y: 54 }),
+    offset: Object.freeze({ x: 0, y: 0 }), scale: 0.76, directions: DIRECTION_MAP, states: STATES,
+  }),
+  light_cavalry: Object.freeze({
+    id: 'light-cavalry-v1', src: 'assets/sprites/light-cavalry-atlas.svg',
+    frame: Object.freeze({ width: 80, height: 64 }), anchor: Object.freeze({ x: 40, y: 54 }),
+    offset: Object.freeze({ x: 0, y: 0 }), scale: 0.88, directions: DIRECTION_MAP, states: STATES,
   }),
 });
 
