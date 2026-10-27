@@ -2,59 +2,50 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-27T14:55:02.979207+00:00",
+  "updated_at": "2026-10-27T16:27:20.744894+00:00",
   "latest_event": {
-    "task_id": "V240-SPRITE-ATLAS-RECOVERY",
+    "task_id": "V240-ARCHER-CAVALRY-ATLASES",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
-    "build_sha": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-    "summary": "Recovered and remotely preserved the external militia Sprite Atlas after the prior environment lost four unpushed objects.",
+    "commit": "51e56d936ec8af9683916f03c54c6343afa43d67",
+    "build_sha": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+    "summary": "Independent archer and light-cavalry external atlases are remotely verified.",
     "code_changes": [
-      "Rebuilt the confirmed 0.78 atlas visual scale as a normal fast-forward commit",
-      "Rebuilt exact-artifact Chromium evidence",
-      "Revoked all quota-percentage stop thresholds under the user-approved override"
+      "Added longbow/quiver archer atlas",
+      "Added horse/rider/lance cavalry atlas"
     ],
     "next_steps": [
-      "Revalidate ownership and extend external Atlas support to archer and cavalry"
+      "Add representative civilization landmark building materials"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Focused atlas combat and visual regression 20/20",
+        "name": "Focused regression 15/15",
         "status": "PASS",
-        "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-        "evidence": "docs/evidence/v240-sprite-atlas/focused-node.log.txt",
-        "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
-        "evidence_blob": "530158e90fbb1d00396a2cacf3a94bda3972bd7b",
+        "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+        "evidence": "docs/evidence/v240-archer-cavalry-atlases/focused-node.log.txt",
+        "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
+        "evidence_blob": "3768461cb0ead13fae37e10260ecad5e719bf5b7",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Exact 31-file artifact Chromium 6/6",
+        "name": "Exact artifact Chromium 7/7",
         "status": "PASS",
-        "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-        "evidence": "docs/evidence/v240-sprite-atlas/browser.json",
-        "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
-        "evidence_blob": "0c2013b78f454e02e276c11e574023a9a200c996",
+        "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+        "evidence": "docs/evidence/v240-archer-cavalry-atlases/browser.json",
+        "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
+        "evidence_blob": "0e5ea9e5309075c5bb4111116487b356720e674a",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
-    "blockers": [
-      {
-        "id": "AFTER-LOCAL-ONLY",
-        "severity": "INFO",
-        "summary": "No public v2.4 Candidate is authorized; simulation SaveLoad performance Rift ten-wave and hardware gaps remain.",
-        "source_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
-        "requires_user_decision": false
-      }
-    ],
-    "response": "Sprite Atlas recovery is REMOTE_VERIFIED at 2c01280950b50c619eafd9182c03dd13d1dc6894. Application source 39767c4b58a37353b4f51bea13bd451a614fb2fc passes 20/20 focused Node and 6/6 exact-artifact Chromium checks. Original local-only SHAs were lost with the prior environment and are not claimed as preserved.",
-    "event_id": "69d06438947b0051b93d1c124f7a5d1a1559228a4a8527fdea442c570b775c84",
-    "remote_head": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+    "blockers": [],
+    "response": "Archer/cavalry atlases REMOTE_VERIFIED at 51e56d936ec8af9683916f03c54c6343afa43d67; 15/15 Node and 7/7 Chromium PASS.",
+    "event_id": "821e5d8535a44e020ce22936c0cd4098d91a553aa9f4f98a5c0e84937b300dc1",
+    "remote_head": "51e56d936ec8af9683916f03c54c6343afa43d67",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-27T14:55:02.979207+00:00",
+    "recorded_at": "2026-10-27T16:27:20.744894+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2156,57 +2147,102 @@
       ]
     },
     "V240-SPRITE-ATLAS-RECOVERY": {
-      "task_id": "V240-SPRITE-ATLAS-RECOVERY",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [
+        {
+          "id": "AFTER-LOCAL-ONLY",
+          "requires_user_decision": false,
+          "severity": "INFO",
+          "source_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+          "summary": "No public v2.4 Candidate is authorized; simulation SaveLoad performance Rift ten-wave and hardware gaps remain."
+        }
+      ],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
       "build_sha": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-      "summary": "Recovered and remotely preserved the external militia Sprite Atlas after the prior environment lost four unpushed objects.",
       "code_changes": [
         "Rebuilt the confirmed 0.78 atlas visual scale as a normal fast-forward commit",
         "Rebuilt exact-artifact Chromium evidence",
         "Revoked all quota-percentage stop thresholds under the user-approved override"
       ],
+      "commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "69d06438947b0051b93d1c124f7a5d1a1559228a4a8527fdea442c570b775c84",
       "next_steps": [
         "Revalidate ownership and extend external Atlas support to archer and cavalry"
+      ],
+      "pushed": true,
+      "recorded_at": "2026-10-27T14:55:02.979207+00:00",
+      "remote_head": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Sprite Atlas recovery is REMOTE_VERIFIED at 2c01280950b50c619eafd9182c03dd13d1dc6894. Application source 39767c4b58a37353b4f51bea13bd451a614fb2fc passes 20/20 focused Node and 6/6 exact-artifact Chromium checks. Original local-only SHAs were lost with the prior environment and are not claimed as preserved.",
+      "severity": "PROGRESS",
+      "summary": "Recovered and remotely preserved the external militia Sprite Atlas after the prior environment lost four unpushed objects.",
+      "task_id": "V240-SPRITE-ATLAS-RECOVERY",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-sprite-atlas/focused-node.log.txt",
+          "evidence_blob": "530158e90fbb1d00396a2cacf3a94bda3972bd7b",
+          "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Focused atlas combat and visual regression 20/20",
+          "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-sprite-atlas/browser.json",
+          "evidence_blob": "0c2013b78f454e02e276c11e574023a9a200c996",
+          "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Exact 31-file artifact Chromium 6/6",
+          "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-ARCHER-CAVALRY-ATLASES": {
+      "task_id": "V240-ARCHER-CAVALRY-ATLASES",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "51e56d936ec8af9683916f03c54c6343afa43d67",
+      "build_sha": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+      "summary": "Independent archer and light-cavalry external atlases are remotely verified.",
+      "code_changes": [
+        "Added longbow/quiver archer atlas",
+        "Added horse/rider/lance cavalry atlas"
+      ],
+      "next_steps": [
+        "Add representative civilization landmark building materials"
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Focused atlas combat and visual regression 20/20",
+          "name": "Focused regression 15/15",
           "status": "PASS",
-          "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-          "evidence": "docs/evidence/v240-sprite-atlas/focused-node.log.txt",
-          "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
-          "evidence_blob": "530158e90fbb1d00396a2cacf3a94bda3972bd7b",
+          "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+          "evidence": "docs/evidence/v240-archer-cavalry-atlases/focused-node.log.txt",
+          "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
+          "evidence_blob": "3768461cb0ead13fae37e10260ecad5e719bf5b7",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "Exact 31-file artifact Chromium 6/6",
+          "name": "Exact artifact Chromium 7/7",
           "status": "PASS",
-          "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-          "evidence": "docs/evidence/v240-sprite-atlas/browser.json",
-          "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
-          "evidence_blob": "0c2013b78f454e02e276c11e574023a9a200c996",
+          "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+          "evidence": "docs/evidence/v240-archer-cavalry-atlases/browser.json",
+          "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
+          "evidence_blob": "0e5ea9e5309075c5bb4111116487b356720e674a",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
-      "blockers": [
-        {
-          "id": "AFTER-LOCAL-ONLY",
-          "severity": "INFO",
-          "summary": "No public v2.4 Candidate is authorized; simulation SaveLoad performance Rift ten-wave and hardware gaps remain.",
-          "source_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
-          "requires_user_decision": false
-        }
-      ],
-      "response": "Sprite Atlas recovery is REMOTE_VERIFIED at 2c01280950b50c619eafd9182c03dd13d1dc6894. Application source 39767c4b58a37353b4f51bea13bd451a614fb2fc passes 20/20 focused Node and 6/6 exact-artifact Chromium checks. Original local-only SHAs were lost with the prior environment and are not claimed as preserved.",
-      "event_id": "69d06438947b0051b93d1c124f7a5d1a1559228a4a8527fdea442c570b775c84",
-      "remote_head": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+      "blockers": [],
+      "response": "Archer/cavalry atlases REMOTE_VERIFIED at 51e56d936ec8af9683916f03c54c6343afa43d67; 15/15 Node and 7/7 Chromium PASS.",
+      "event_id": "821e5d8535a44e020ce22936c0cd4098d91a553aa9f4f98a5c0e84937b300dc1",
+      "remote_head": "51e56d936ec8af9683916f03c54c6343afa43d67",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-27T14:55:02.979207+00:00",
+      "recorded_at": "2026-10-27T16:27:20.744894+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },

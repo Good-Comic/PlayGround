@@ -1,1 +1,1 @@
-Sprite Atlas recovery is REMOTE_VERIFIED at 2c01280950b50c619eafd9182c03dd13d1dc6894. Application source 39767c4b58a37353b4f51bea13bd451a614fb2fc passes 20/20 focused Node and 6/6 exact-artifact Chromium checks. Original local-only SHAs were lost with the prior environment and are not claimed as preserved.
+Archer/cavalry atlases REMOTE_VERIFIED at 51e56d936ec8af9683916f03c54c6343afa43d67; 15/15 Node and 7/7 Chromium PASS.
