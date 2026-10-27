@@ -1,0 +1,59 @@
+{
+  "stage": "AFTER_LOCAL",
+  "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+  "url": "http://127.0.0.1:8035",
+  "fixture": "Explicit visual gallery using production spawnUnit and renderer; local Chromium only",
+  "checks": [
+    {
+      "name": "exact immutable 28-file artifact loaded",
+      "pass": true,
+      "detail": {
+        "metadataCommit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+        "runtimeCommit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+        "files": 28,
+        "verification": "SHA256_MATCH_28_FILES"
+      }
+    },
+    {
+      "name": "all eight production unit drawings have distinct raster samples",
+      "pass": true,
+      "detail": {
+        "archer": "e2c62b17efa9a7e98444e25aecb502a4fda42da4f3caf33f611402617a0613c2",
+        "skirmisher": "0c2cd079acce6400bf2b948af32d69f6a6032554d02bba4c79c8fa0cdc6a1944",
+        "chu_ko_nu": "fbb33dd603a5dcfb6e3619f547d570f156c3d99aa978775ed876d9d7c83f99dc",
+        "militia": "9b0464481eed521e8254ca504bbfe3688f4c7d508337cdb14192f6e41b41ef30",
+        "guard": "2775befbc0ebda1fad16afc3367f8bf98ea4f61584df24a5df26a14a9f4949bf",
+        "knight": "ff121d46ea0815d11bed6f6034b2d8d100ce0afc93e452f21e11e75d1c471796",
+        "light_cavalry": "0bffb55239a4853f620636e83dacb719c768d59bed13570005d6df36160f4c96",
+        "horse_archer": "6932627d89adeda4f377d0175806ba16dfb7e0aedf51a55f9b8368f156fefc12"
+      }
+    },
+    {
+      "name": "visually updated cavalry remains a live movable gameplay unit",
+      "pass": true,
+      "detail": {
+        "before": {
+          "id": 26,
+          "startX": 27,
+          "startY": 32
+        },
+        "after": {
+          "x": 31.491603951703382,
+          "y": 31.43158292665447,
+          "state": "move"
+        }
+      }
+    },
+    {
+      "name": "real Chromium produced no Console, Page, or failed-request errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failedRequests": []
+      }
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "pass": true
+}

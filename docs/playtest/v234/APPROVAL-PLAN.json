@@ -1,0 +1,51 @@
+{
+  "status": "PREPARED_AWAITING_EXPLICIT_V234_PAGES_APPROVAL",
+  "release_status": "PLAYTEST-EXPERIMENTAL, not formal QA or Gameplay Integration",
+  "build_id": "riftwatch-playtest-v2.3.4",
+  "build_sha": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+  "gameplay_predecessor_sha": "055fb12c92e3d48945315937058f1423b732241c",
+  "source_branch": "codex/riftwatch-playtest-v234",
+  "artifact": "docs/playtest/v234/Riftwatch-v234-34873f7.zip",
+  "artifact_sha256": "6553da1178ede1cb0af4539b0851f617a2753082c978d4f05d26e3bf266b1b90",
+  "canonical_manifest_sha256": "3db2378a3c9fc6d986135213ef45a5e20ce3af46e419065c7cc0e95123cde71e",
+  "payload_files": 28,
+  "hosting_files": 31,
+  "pages_source": "codex/riftwatch-playtest-site",
+  "pages_ref_observed": "5b30bda085197cfa820a594224e2f6df929bf60d",
+  "pages_status_observed": "built",
+  "proposed_new_url": "https://good-comic.github.io/PlayGround/builds/34873f76e8ad88d1f238210cfea87ff12f0fa587/",
+  "preserve_urls": [
+    "https://good-comic.github.io/PlayGround/builds/d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c/",
+    "https://good-comic.github.io/PlayGround/builds/ab56a5b824fabc5e123cf33e912d11bd3c625911/"
+  ],
+  "published": false,
+  "actions_requiring_new_approval": [
+    "Recheck the dedicated site branch remote HEAD and exclusive ownership",
+    "Add the exact 31 hosting files only under builds/34873f76e8ad88d1f238210cfea87ff12f0fa587/",
+    "Update only root index.html and CURRENT.json to point to the new immutable directory",
+    "Ordinary fast-forward commit and push to codex/riftwatch-playtest-site",
+    "Verify the public HTTPS resource hashes and repeat scoped live Chromium acceptance"
+  ],
+  "excluded": [
+    "main",
+    "Force Push",
+    "OpenCode checkpoints",
+    "Issue #17 or #18",
+    "OmGitHub Resume, Continue, or Publish",
+    "new Issue or workflow",
+    "Pages configuration",
+    "DNS",
+    "paid service",
+    "credentials or network policy"
+  ],
+  "rollback": "Create an ordinary new site commit restoring root index.html and CURRENT.json to v228 while retaining every immutable full-SHA directory.",
+  "known_risks": [
+    "Low-FPS elapsed-time loss remains unresolved; no fixed-step engine is installed",
+    "Strict deterministic Save/Load continuation remains FAIL despite playable Continue PASS",
+    "Historical performance FAIL and physical HARDWARE_TEST_PENDING remain",
+    "Natural Rift Prototype crash remains NOT_REPRODUCED",
+    "Full natural ten-wave campaign stability is not certified"
+  ],
+  "authorization_boundary": "Candidate integration, build, test, and publication preparation are authorized. Public Pages files and root pointer are not authorized in this task.",
+  "checked_at": "2026-10-27T05:03:00+00:00"
+}
