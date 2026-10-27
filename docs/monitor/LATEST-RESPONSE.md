@@ -1,1 +1,1 @@
-Archer/cavalry atlases REMOTE_VERIFIED at 51e56d936ec8af9683916f03c54c6343afa43d67; 15/15 Node and 7/7 Chromium PASS.
+Landmark QA saved at b55650e06b5e6454045bfdacc0dcf5bc4349cfb0. Visual/state LOCAL_VERIFIED; performance FAIL. Actual screenshots, video and failed measurements are retained. No public publication.

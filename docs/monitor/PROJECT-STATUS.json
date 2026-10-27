@@ -2,50 +2,59 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-27T16:27:20.744894+00:00",
+  "updated_at": "2026-10-27T20:19:03.459680+00:00",
   "latest_event": {
-    "task_id": "V240-ARCHER-CAVALRY-ATLASES",
+    "task_id": "V240-LANDMARK-MATERIALS",
     "agent": "Codex",
-    "severity": "PROGRESS",
+    "severity": "WARNING",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "51e56d936ec8af9683916f03c54c6343afa43d67",
-    "build_sha": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
-    "summary": "Independent archer and light-cavalry external atlases are remotely verified.",
+    "commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+    "build_sha": "9fc6db69227432b162651017819e23cbd4b9153f",
+    "summary": "QA_FAILED performance; scoped visual/state QA passes after correcting floating roof materials. Full QA not accepted.",
     "code_changes": [
-      "Added longbow/quiver archer atlas",
-      "Added horse/rider/lance cavalry atlas"
+      "Project existing family materials onto actual clipped wall planes",
+      "Tested and reverted ineffective static cache",
+      "Prioritize gameplay instead of more art"
     ],
     "next_steps": [
-      "Add representative civilization landmark building materials"
+      "Independent pre-game rules query followed by Seed/terrain accessibility and natural campaign"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Focused regression 15/15",
+        "name": "Five-family state gallery and direct visual review 10 checks",
         "status": "PASS",
-        "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
-        "evidence": "docs/evidence/v240-archer-cavalry-atlases/focused-node.log.txt",
-        "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
-        "evidence_blob": "3768461cb0ead13fae37e10260ecad5e719bf5b7",
+        "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+        "evidence": "docs/evidence/v240-landmarks/fixed/browser.json",
+        "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
+        "evidence_blob": "97dc19157ba63260ac23026b0501e7ee2a89d240",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Exact artifact Chromium 7/7",
-        "status": "PASS",
-        "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
-        "evidence": "docs/evidence/v240-archer-cavalry-atlases/browser.json",
-        "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
-        "evidence_blob": "0e5ea9e5309075c5bb4111116487b356720e674a",
+        "name": "Mixed rendering three before/after repeats",
+        "status": "FAIL",
+        "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+        "evidence": "docs/evidence/v240-landmarks/performance/summary.json",
+        "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
+        "evidence_blob": "ffb81e591236e3d26c2dfed0302f3ae6c039b10a",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
-    "blockers": [],
-    "response": "Archer/cavalry atlases REMOTE_VERIFIED at 51e56d936ec8af9683916f03c54c6343afa43d67; 15/15 Node and 7/7 Chromium PASS.",
-    "event_id": "821e5d8535a44e020ce22936c0cd4098d91a553aa9f4f98a5c0e84937b300dc1",
-    "remote_head": "51e56d936ec8af9683916f03c54c6343afa43d67",
+    "blockers": [
+      {
+        "id": "LANDMARK-PERF",
+        "severity": "WARNING",
+        "summary": "Absolute frame gate fails in baseline and after; draw JS median +21.4%. No full QA approval. Cloud is not physical hardware.",
+        "source_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+        "requires_user_decision": false
+      }
+    ],
+    "response": "Landmark QA saved at b55650e06b5e6454045bfdacc0dcf5bc4349cfb0. Visual/state LOCAL_VERIFIED; performance FAIL. Actual screenshots, video and failed measurements are retained. No public publication.",
+    "event_id": "bc335f29145d15a4a0e462267a300437cf9eaffa316896b89fbc1d5addbde1f4",
+    "remote_head": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-27T16:27:20.744894+00:00",
+    "recorded_at": "2026-10-27T20:19:03.459680+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2201,48 +2210,102 @@
       ]
     },
     "V240-ARCHER-CAVALRY-ATLASES": {
-      "task_id": "V240-ARCHER-CAVALRY-ATLASES",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "51e56d936ec8af9683916f03c54c6343afa43d67",
       "build_sha": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
-      "summary": "Independent archer and light-cavalry external atlases are remotely verified.",
       "code_changes": [
         "Added longbow/quiver archer atlas",
         "Added horse/rider/lance cavalry atlas"
       ],
+      "commit": "51e56d936ec8af9683916f03c54c6343afa43d67",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "821e5d8535a44e020ce22936c0cd4098d91a553aa9f4f98a5c0e84937b300dc1",
       "next_steps": [
         "Add representative civilization landmark building materials"
+      ],
+      "pushed": true,
+      "recorded_at": "2026-10-27T16:27:20.744894+00:00",
+      "remote_head": "51e56d936ec8af9683916f03c54c6343afa43d67",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Archer/cavalry atlases REMOTE_VERIFIED at 51e56d936ec8af9683916f03c54c6343afa43d67; 15/15 Node and 7/7 Chromium PASS.",
+      "severity": "PROGRESS",
+      "summary": "Independent archer and light-cavalry external atlases are remotely verified.",
+      "task_id": "V240-ARCHER-CAVALRY-ATLASES",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-archer-cavalry-atlases/focused-node.log.txt",
+          "evidence_blob": "3768461cb0ead13fae37e10260ecad5e719bf5b7",
+          "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Focused regression 15/15",
+          "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-archer-cavalry-atlases/browser.json",
+          "evidence_blob": "0e5ea9e5309075c5bb4111116487b356720e674a",
+          "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Exact artifact Chromium 7/7",
+          "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-LANDMARK-MATERIALS": {
+      "task_id": "V240-LANDMARK-MATERIALS",
+      "agent": "Codex",
+      "severity": "WARNING",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+      "build_sha": "9fc6db69227432b162651017819e23cbd4b9153f",
+      "summary": "QA_FAILED performance; scoped visual/state QA passes after correcting floating roof materials. Full QA not accepted.",
+      "code_changes": [
+        "Project existing family materials onto actual clipped wall planes",
+        "Tested and reverted ineffective static cache",
+        "Prioritize gameplay instead of more art"
+      ],
+      "next_steps": [
+        "Independent pre-game rules query followed by Seed/terrain accessibility and natural campaign"
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Focused regression 15/15",
+          "name": "Five-family state gallery and direct visual review 10 checks",
           "status": "PASS",
-          "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
-          "evidence": "docs/evidence/v240-archer-cavalry-atlases/focused-node.log.txt",
-          "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
-          "evidence_blob": "3768461cb0ead13fae37e10260ecad5e719bf5b7",
+          "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+          "evidence": "docs/evidence/v240-landmarks/fixed/browser.json",
+          "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
+          "evidence_blob": "97dc19157ba63260ac23026b0501e7ee2a89d240",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "Exact artifact Chromium 7/7",
-          "status": "PASS",
-          "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
-          "evidence": "docs/evidence/v240-archer-cavalry-atlases/browser.json",
-          "evidence_commit": "833ec9517f603000355d9ed1cbbf0c17fa876a94",
-          "evidence_blob": "0e5ea9e5309075c5bb4111116487b356720e674a",
+          "name": "Mixed rendering three before/after repeats",
+          "status": "FAIL",
+          "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+          "evidence": "docs/evidence/v240-landmarks/performance/summary.json",
+          "evidence_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
+          "evidence_blob": "ffb81e591236e3d26c2dfed0302f3ae6c039b10a",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
-      "blockers": [],
-      "response": "Archer/cavalry atlases REMOTE_VERIFIED at 51e56d936ec8af9683916f03c54c6343afa43d67; 15/15 Node and 7/7 Chromium PASS.",
-      "event_id": "821e5d8535a44e020ce22936c0cd4098d91a553aa9f4f98a5c0e84937b300dc1",
-      "remote_head": "51e56d936ec8af9683916f03c54c6343afa43d67",
+      "blockers": [
+        {
+          "id": "LANDMARK-PERF",
+          "severity": "WARNING",
+          "summary": "Absolute frame gate fails in baseline and after; draw JS median +21.4%. No full QA approval. Cloud is not physical hardware.",
+          "source_commit": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
+          "requires_user_decision": false
+        }
+      ],
+      "response": "Landmark QA saved at b55650e06b5e6454045bfdacc0dcf5bc4349cfb0. Visual/state LOCAL_VERIFIED; performance FAIL. Actual screenshots, video and failed measurements are retained. No public publication.",
+      "event_id": "bc335f29145d15a4a0e462267a300437cf9eaffa316896b89fbc1d5addbde1f4",
+      "remote_head": "b55650e06b5e6454045bfdacc0dcf5bc4349cfb0",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-27T16:27:20.744894+00:00",
+      "recorded_at": "2026-10-27T20:19:03.459680+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
