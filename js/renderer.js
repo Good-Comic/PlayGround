@@ -1,6 +1,7 @@
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.js';
+import { atlasFrame, loadUnitSpriteAtlases } from './sprite-atlas.js';
 
 const TERRAIN_COLORS = {
   grass: ['#62753a', '#697d3f', '#5d7037', '#708341'],
@@ -115,6 +116,7 @@ export class Renderer {
     this.terrainLayer = document.createElement('canvas');
     this.terrainCtx = this.terrainLayer.getContext('2d', { alpha: false });
     this.terrainKey = '';
+    this.unitSpriteAtlases = loadUnitSpriteAtlases();
     this.buildTileSprites();
     this.motes = Array.from({ length: 44 }, (_, i) => ({
       x: hash2(i, 2, 9), y: hash2(i, 7, 13), speed: 0.12 + hash2(i, 9, 3) * 0.3,
@@ -1232,7 +1234,9 @@ export class Renderer {
       ctx.fillStyle = 'rgba(7,9,5,0.34)';
       const big = ['knight', 'light_cavalry', 'horse_archer', 'elephant', 'ram', 'mangonel', 'patrol_cart', 'prototype'].includes(u.type) ? 19 : 12;
       this.drawUnitShadow(p.x+2*scale,p.y+1.5*scale,big*scale,(big===19?7:4.5)*scale);
-      if (['knight', 'light_cavalry', 'horse_archer'].includes(u.type)) this.drawKnightUnit(p, u, scale, team, walk, time, bob);
+      const atlasDrawn = this.drawSpriteAtlasUnit(u, p, scale, frame, time);
+      if (atlasDrawn) { /* external atlas replaces this unit's procedural body */ }
+      else if (['knight', 'light_cavalry', 'horse_archer'].includes(u.type)) this.drawKnightUnit(p, u, scale, team, walk, time, bob);
       else if (u.typeDef.visual==='archer' || u.type === 'archer' || u.type === 'marauder' || u.type === 'skirmisher' || u.type === 'patrol_cart') this.drawArcherUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'mangonel') this.drawMangonelUnit(p, u, scale, team, walk, time, bob);
       else if (u.type === 'villager') this.drawVillagerUnit(p, u, scale, team, walk, time, bob);
@@ -1244,7 +1248,7 @@ export class Renderer {
       else if (u.type === 'spearman') this.drawSpearUnit(p, u, scale, team, walk, time, bob);
       else if (['brute', 'warlord', 'warlord2'].includes(u.type)) this.drawBruteUnit(p, u, scale, team, walk, time, bob);
       else this.drawInfantryUnit(p, u, scale, team, walk, time, bob);
-      if (u.team === 'player' && u.type !== 'villager') this.drawCivilizationUnitAccent(u, game, p, scale, bob);
+      if (!atlasDrawn && u.team === 'player' && u.type !== 'villager') this.drawCivilizationUnitAccent(u, game, p, scale, bob);
       if (u.selected || u.hp < u.maxHp) {
         const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
         const w = (wide ? 40 : 24) * scale;
@@ -1268,6 +1272,25 @@ export class Renderer {
         this.ctx.globalAlpha = 1;
       }
     });
+  }
+
+  drawSpriteAtlasUnit(u, p, scale, visual, time) {
+    const entry = this.unitSpriteAtlases?.get(u.type);
+    if (!entry?.ready || entry.failed || !entry.image?.naturalWidth) return false;
+    const descriptor = entry.descriptor;
+    let progress = null;
+    if (visual.state === 'death') progress = 1 - clamp((u.deathAnim || 0) / 1.2, 0, 1);
+    else if (visual.state === 'hit') progress = 1 - clamp((u.hitFlash || 0) / .2, 0, 1);
+    else if (visual.state === 'attack') progress = 1 - clamp((u.attackAnim || 0) / .22, 0, 1);
+    const frame = atlasFrame(descriptor, visual.direction, visual.state, time, progress);
+    if (!frame) return false;
+    const drawScale = scale * descriptor.scale;
+    const width = frame.sw * drawScale, height = frame.sh * drawScale;
+    this.ctx.drawImage(entry.image, frame.sx, frame.sy, frame.sw, frame.sh,
+      p.x + descriptor.offset.x * drawScale - descriptor.anchor.x * drawScale,
+      p.y + descriptor.offset.y * drawScale - descriptor.anchor.y * drawScale,
+      width, height);
+    return true;
   }
 
   drawCivilizationUnitAccent(u, game, p, s, bob) {
