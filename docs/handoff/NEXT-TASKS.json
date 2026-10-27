@@ -1,7 +1,72 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T11:11:13.373124+00:00",
+  "updated_at": "2026-10-27T14:53:51.140238+00:00",
   "tasks": [
+    {
+      "task_id": "V240-SPRITE-ATLAS",
+      "name": "External Sprite Atlas recovery and acceptance",
+      "requirement_source": "Strategy v2.4.0 GAME FIRST and P0 credential recovery",
+      "priority": "P0",
+      "agent": "Codex",
+      "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
+      "branch": "codex/riftwatch-v240-game-first",
+      "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
+      "latest_pushed_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+      "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+      "completed": [
+        "Recovered from remotely saved atlas implementation after prior worktree loss",
+        "Rebuilt and normally pushed the confirmed 0.78 visual scale correction",
+        "Rebuilt exact-artifact Chromium evidence for eight directions five states and fallback",
+        "Applied user override revoking all quota-percentage stop thresholds"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Focused atlas/combat/visual regression",
+          "path": "docs/evidence/v240-sprite-atlas/focused-node.log.txt",
+          "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+          "result": "20/20 PASS"
+        },
+        {
+          "name": "Exact-artifact Chromium atlas",
+          "path": "docs/evidence/v240-sprite-atlas/browser.json",
+          "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+          "result": "6/6 PASS; exact 31 files; zero errors"
+        },
+        {
+          "name": "Quota guard override",
+          "path": "tests/dev/test_quota_guard.py",
+          "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+          "result": "8/8 PASS in recovery worktree"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v240-sprite-atlas/REPORT.md",
+        "docs/evidence/v240-sprite-atlas/browser.json",
+        "docs/evidence/v240-sprite-atlas/atlas-gameplay.png",
+        "docs/evidence/v240-sprite-atlas/sprite-atlas.webm"
+      ],
+      "failures": [
+        "Prior local-only commit objects were unavailable in the replacement environment; equivalent verified content received new SHA values",
+        "Existing simulation SaveLoad performance natural Rift ten-wave and hardware gaps remain"
+      ],
+      "blockers": [
+        "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
+      ],
+      "next_steps": [
+        "Push this evidence/recovery checkpoint and verify remote HEAD",
+        "Publish Progress Feed and release ownership version 142",
+        "Then extend atlas to archer and cavalry in a new owned slice"
+      ],
+      "permissions": [
+        "Independent gameplay development tests and normal push authorized",
+        "No public deployment protected branch change or OmGitHub execution"
+      ],
+      "status": "LOCAL_VERIFIED",
+      "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
+      "updated_at": "2026-10-27T14:53:51.140238+00:00"
+    },
     {
       "task_id": "V240-DIRECTIONAL-ANIMATION",
       "name": "Direction-aware representative unit animation",
@@ -816,7 +881,7 @@
         "Use docs/playtest/v228/APPROVAL-PLAN.json; no automaticpublication"
       ],
       "name": "Approve and deploy isolated Candidate",
-      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P0",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -855,7 +920,7 @@
         "Complete separate3-repeat12-case performance at294fa287; preserve all results before integration decision"
       ],
       "name": "A1-TARGET",
-      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -891,7 +956,7 @@
         "Preserve final normal P0 evidence; retest performance before integration"
       ],
       "name": "B2-GDD",
-      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -923,7 +988,7 @@
         "Run affected performance gates; resolve later-wave caps/monument spec before full GDD claim"
       ],
       "name": "A4-POP",
-      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -954,7 +1019,7 @@
         "Use existing cohort; actual hardware still pending"
       ],
       "name": "QA-TOOLS",
-      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -984,7 +1049,7 @@
         "Complete latest2f148c3 three-repeat quality/performance cohort after target-state diagnosis"
       ],
       "name": "B1-RALLY",
-      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -1012,7 +1077,7 @@
         "Do not mark gameplay features integrated; gate each separately with pre/post snapshots"
       ],
       "name": "INTEGRATION",
-      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -1042,7 +1107,7 @@
         "Independent Attack-Move/UI Scale slices after recovery; existing matrix remains scope"
       ],
       "name": "PHASE-B-E",
-      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P2",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -1070,7 +1135,7 @@
         "Run Windows collector on real authorized physical machine; no predicted FPS claim"
       ],
       "name": "HARDWARE",
-      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",

@@ -11,7 +11,10 @@ def decide(percent=None,*,simulation=False,checkpoint_saved=False):
         raise ValueError('No official quota adapter connected; supplied percentages are accepted only as labelled simulations')
     if not isinstance(percent,(int,float)) or isinstance(percent,bool) or not math.isfinite(percent) or not 0<=percent<=100:
         raise ValueError('Invalid remaining percent')
-    state='PAUSED_QUOTA' if percent<=3 and checkpoint_saved else 'SAFE_CHECKPOINT' if percent<=3 else 'LOW_BUDGET' if percent<=10 else 'NORMAL'
+    # USER-APPROVED OVERRIDE 2026-10-27: percentages are informational only.
+    # Actual platform refusal, environment/tool/auth failure, ownership conflict,
+    # or an exhausted execution/context window controls checkpointing.
+    state='INFORMATIONAL_ONLY'
     return {'state':state,'start_large_work':state=='NORMAL','source':'SIMULATION_ONLY_NOT_ACCOUNT_TELEMETRY','account_percent':None,'simulated_percent':percent}
 
 def resume_plan(*,reset_at,now,service_available,quota_available,dispatch_connected=False):

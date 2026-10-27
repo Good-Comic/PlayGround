@@ -1,65 +1,65 @@
 {
-  "task_id": "V240-DIRECTIONAL-ANIMATION",
-  "name": "Direction-aware representative unit animation",
-  "requirement_source": "Strategy v2.4.0 GAME FIRST Phase A/B and latest Handoff",
-  "priority": "P1",
+  "task_id": "V240-SPRITE-ATLAS",
+  "name": "External Sprite Atlas recovery and acceptance",
+  "requirement_source": "Strategy v2.4.0 GAME FIRST and P0 credential recovery",
+  "priority": "P0",
   "agent": "Codex",
-  "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
+  "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-  "latest_pushed_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
-  "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+  "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
+  "latest_pushed_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+  "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
   "completed": [
-    "Added eight-direction isometric facing derived from real movement and live attack targets",
-    "Added walk attack hit and short death-fall visual states for representative procedural units",
-    "Persisted visual direction and death transition while ensuring dead units never revive",
-    "Preserved unit radii pathfinding attack cadence damage and balance values",
-    "Verified militia archer and light cavalry through real Chromium after the real Start flow"
+    "Recovered from remotely saved atlas implementation after prior worktree loss",
+    "Rebuilt and normally pushed the confirmed 0.78 visual scale correction",
+    "Rebuilt exact-artifact Chromium evidence for eight directions five states and fallback",
+    "Applied user override revoking all quota-percentage stop thresholds"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Focused animation combat and visual regression",
-      "path": "docs/evidence/v240-directional-animation/focused-node.log.txt",
-      "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
-      "result": "18/18 PASS"
+      "name": "Focused atlas/combat/visual regression",
+      "path": "docs/evidence/v240-sprite-atlas/focused-node.log.txt",
+      "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+      "result": "20/20 PASS"
     },
     {
-      "name": "Exact-artifact Chromium directional combat",
-      "path": "docs/evidence/v240-directional-animation/browser.json",
-      "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
-      "result": "5/5 PASS; exact 29 files; eight directions; live attacks; three death frames; zero errors"
+      "name": "Exact-artifact Chromium atlas",
+      "path": "docs/evidence/v240-sprite-atlas/browser.json",
+      "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+      "result": "6/6 PASS; exact 31 files; zero errors"
+    },
+    {
+      "name": "Quota guard override",
+      "path": "tests/dev/test_quota_guard.py",
+      "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+      "result": "8/8 PASS in recovery worktree"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-directional-animation/REPORT.md",
-    "docs/evidence/v240-directional-animation/browser.json",
-    "docs/evidence/v240-directional-animation/directional-animation.webm",
-    "docs/evidence/v240-directional-animation/directional-movement.png",
-    "docs/evidence/v240-directional-animation/attack-hit.png",
-    "docs/evidence/v240-directional-animation/death-1_1.png",
-    "docs/evidence/v240-directional-animation/death-0_6.png",
-    "docs/evidence/v240-directional-animation/death-0_15.png"
+    "docs/evidence/v240-sprite-atlas/REPORT.md",
+    "docs/evidence/v240-sprite-atlas/browser.json",
+    "docs/evidence/v240-sprite-atlas/atlas-gameplay.png",
+    "docs/evidence/v240-sprite-atlas/sprite-atlas.webm"
   ],
   "failures": [
-    "This is a representative procedural renderer state rather than an authored sprite atlas or complete animation set for every unit",
-    "Low-FPS simulation time loss strict deterministic SaveLoad historical performance natural Rift Prototype reproduction ten-wave and hardware gaps remain"
+    "Prior local-only commit objects were unavailable in the replacement environment; equivalent verified content received new SHA values",
+    "Existing simulation SaveLoad performance natural Rift ten-wave and hardware gaps remain"
   ],
   "blockers": [
     "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
   ],
   "next_steps": [
-    "Extend the direction-aware pipeline to authored interchangeable frame or atlas descriptors without changing gameplay geometry",
-    "Add family-specific materials to additional landmark buildings without changing footprints",
-    "Continue Seed-driven terrain and natural campaign slices after ownership revalidation"
+    "Push this evidence/recovery checkpoint and verify remote HEAD",
+    "Publish Progress Feed and release ownership version 142",
+    "Then extend atlas to archer and cavalry in a new owned slice"
   ],
   "permissions": [
     "Independent gameplay development tests and normal push authorized",
     "No public deployment protected branch change or OmGitHub execution"
   ],
-  "status": "VERIFIED",
-  "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "resume_status": "SCHEDULED_RESUME_EXECUTED",
-  "updated_at": "2026-10-27T11:11:13.373124+00:00"
+  "status": "LOCAL_VERIFIED",
+  "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
+  "updated_at": "2026-10-27T14:53:51.140238+00:00"
 }

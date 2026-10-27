@@ -1,0 +1,127 @@
+{
+  "stage": "AFTER_LOCAL",
+  "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+  "checks": [
+    {
+      "name": "exact 31-file artifact",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-27T14:52:06.682214+00:00",
+        "resourceVerification": "SHA256_MATCH_31_FILES"
+      }
+    },
+    {
+      "name": "external atlas loaded",
+      "pass": true,
+      "detail": {
+        "ready": true,
+        "failed": false,
+        "width": 1024,
+        "height": 320,
+        "directions": [
+          "E",
+          "SE",
+          "S",
+          "SW",
+          "W",
+          "NW",
+          "N",
+          "NE"
+        ],
+        "states": [
+          "idle",
+          "walk",
+          "attack",
+          "hit",
+          "death"
+        ],
+        "scale": 0.78
+      }
+    },
+    {
+      "name": "eight distinct live directions",
+      "pass": true,
+      "detail": [
+        {
+          "direction": "E",
+          "hash": "ec941566cad36ed914eb034e46e271fbade2f2f6ceef65b2b0f987d23b5550b9"
+        },
+        {
+          "direction": "SE",
+          "hash": "99be10f7cc4881f5c0c6b95520c27eb969904e765b6fefb8bbf753f19569c253"
+        },
+        {
+          "direction": "S",
+          "hash": "048717fe80472ef781d755e68ac8b15da70c65d7c2e5c147531eeaa53b346ddc"
+        },
+        {
+          "direction": "SW",
+          "hash": "3c756aab849c7e2fe8ea288df6731fa9e22e9d677e8e75d09d171222f2707d9c"
+        },
+        {
+          "direction": "W",
+          "hash": "753125c55dea9e26c67e6df9a84da20f488814e5c17595c731e7f82be2d68534"
+        },
+        {
+          "direction": "NW",
+          "hash": "630ff20a673fcbdd4e049f31563bb313d79c9b86f332499a1b9b1547f934c1c4"
+        },
+        {
+          "direction": "N",
+          "hash": "0b49b6a4cc92f4ed897e5ca3e0a28b5f2523ac9d46f0121f55b9986b9e8e04ad"
+        },
+        {
+          "direction": "NE",
+          "hash": "a226c8335df458ea420a16f9fb25e4c957a85024be3fc5a7ca3c218260359063"
+        }
+      ]
+    },
+    {
+      "name": "five distinct live action states",
+      "pass": true,
+      "detail": [
+        {
+          "name": "idle",
+          "hash": "167f20783ff8035810aefb21728fef064928b52972695112f11b112aae83e6fb"
+        },
+        {
+          "name": "walk",
+          "hash": "71dcb1e06ef3a467a372a27b042f31dd172394e432cad1ecf7725d2556b12cd0"
+        },
+        {
+          "name": "attack",
+          "hash": "3b51d38b2d6e41539863f06069627c44c71e6bb7776f8b88bad5a8f7bc251ee7"
+        },
+        {
+          "name": "hit",
+          "hash": "e493f3cd17a8036180a7b9bb0c2be76147dc0c563c1686cb80d68478a49573ef"
+        },
+        {
+          "name": "death",
+          "hash": "2f503df9235c5ac906153e1db6a92ecb929798a5bb6865e20e3636b65d47b211"
+        }
+      ]
+    },
+    {
+      "name": "failed asset preserves Canvas fallback",
+      "pass": true,
+      "detail": {
+        "atlasUsed": false
+      }
+    },
+    {
+      "name": "no browser errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failed": []
+      }
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "pass": true
+}

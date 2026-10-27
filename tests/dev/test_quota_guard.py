@@ -10,8 +10,8 @@ class QuotaTests(unittest.TestCase):
   self.assertEqual(decide()['state'],'QUOTA_PERCENT_UNKNOWN');self.assertIsNone(decide()['account_percent'])
   with self.assertRaises(ValueError):decide(2)
  def test_simulated_boundaries(self):
-  for value,status in [(10.001,'NORMAL'),(10,'LOW_BUDGET'),(3.001,'LOW_BUDGET'),(3,'SAFE_CHECKPOINT'),(0,'SAFE_CHECKPOINT')]:self.assertEqual(decide(value,simulation=True)['state'],status)
-  self.assertEqual(decide(3,simulation=True,checkpoint_saved=True)['state'],'PAUSED_QUOTA')
+  for value in [100,10.001,10,3.001,3,0]:self.assertEqual(decide(value,simulation=True)['state'],'INFORMATIONAL_ONLY')
+  self.assertEqual(decide(3,simulation=True,checkpoint_saved=True)['state'],'INFORMATIONAL_ONLY')
   for invalid in [-1,101,float('nan'),True]:
    with self.assertRaises(ValueError):decide(invalid,simulation=True)
  def test_reset_is_check_not_promise_or_recurring_schedule(self):
