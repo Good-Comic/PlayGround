@@ -5,6 +5,12 @@ export class Sound {
     this.enabled = true;
     this.last = new Map();
     this.ambience = null;
+    this.musicBus = null;
+    this.scoreTimer = null;
+    this.scoreMode = 'menu';
+    this.scoreStep = 0;
+    this.scoreNotesPlayed = 0;
+    this.scoreSignature = '';
   }
 
   init() {
@@ -19,6 +25,7 @@ export class Sound {
     this.master.gain.value = 0.34;
     this.master.connect(this.ctx.destination);
     this.startAmbience();
+    this.startScore();
   }
 
   setEnabled(enabled) {
@@ -108,6 +115,60 @@ export class Sound {
     if (!this.ctx || !this.enabled) return;
     this.noise(0.42, 0.045, 520, 0, 'bandpass');
     [82.5, 123.5, 185, 370].forEach((f, i) => this.tone(f, 0.55, i < 2 ? 'sawtooth' : 'triangle', 0.035, f * 1.06, i * 0.09));
+  }
+
+  startScore() {
+    if (!this.ctx || this.musicBus) return;
+    this.musicBus = this.ctx.createGain();
+    this.musicBus.gain.value = 0.0001;
+    this.musicBus.connect(this.master);
+    this.setGameState('menu', { inMenu: true });
+    this.scoreTimer = setInterval(() => this.scoreTick(), 520);
+    this.scoreTimer?.unref?.();
+  }
+
+  setGameState(phase, { boss = false, paused = false, inMenu = false } = {}) {
+    if (!this.ctx || !this.musicBus) return;
+    const mode = inMenu ? 'menu' : paused ? 'paused' : boss ? 'boss' : phase;
+    const next = ['menu', 'prep', 'wave', 'boss', 'boon', 'paused', 'victory', 'defeat'].includes(mode) ? mode : 'prep';
+    const signature = `${next}:${this.enabled}`;
+    if (signature === this.scoreSignature) return;
+    this.scoreSignature = signature;
+    this.scoreMode = next;
+    this.scoreStep = 0;
+    const levels = { menu: 0.016, prep: 0.013, wave: 0.021, boss: 0.027, boon: 0.018, paused: 0.005, victory: 0.0001, defeat: 0.0001 };
+    this.musicBus.gain.setTargetAtTime(levels[next], this.ctx.currentTime, 0.35);
+  }
+
+  scoreTick() {
+    if (!this.ctx || !this.musicBus || !this.enabled || this.ctx.state !== 'running') return;
+    const scores = {
+      menu:   { notes: [110, 130.81, 164.81, 196], every: 2, duration: 0.95 },
+      prep:   { notes: [110, 146.83, 164.81, 220], every: 2, duration: 0.82 },
+      wave:   { notes: [110, 146.83, 164.81, 220, 164.81, 146.83], every: 1, duration: 0.46 },
+      boss:   { notes: [82.41, 116.54, 123.47, 155.56, 123.47, 116.54], every: 1, duration: 0.42 },
+      boon:   { notes: [130.81, 164.81, 196, 261.63], every: 1, duration: 0.7 },
+      paused: { notes: [82.41, 110], every: 4, duration: 1.1 },
+    };
+    const score = scores[this.scoreMode];
+    const tick = this.scoreStep++;
+    if (!score || tick % score.every) return;
+    const frequency = score.notes[Math.floor(tick / score.every) % score.notes.length];
+    const now = this.ctx.currentTime;
+    const oscillator = this.ctx.createOscillator();
+    const filter = this.ctx.createBiquadFilter();
+    const gain = this.ctx.createGain();
+    oscillator.type = this.scoreMode === 'boss' ? 'sawtooth' : 'triangle';
+    oscillator.frequency.setValueAtTime(frequency, now);
+    filter.type = 'lowpass';
+    filter.frequency.value = this.scoreMode === 'boss' ? 720 : 980;
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(this.scoreMode === 'boss' ? 0.36 : 0.28, now + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + score.duration);
+    oscillator.connect(filter).connect(gain).connect(this.musicBus);
+    oscillator.start(now);
+    oscillator.stop(now + score.duration + 0.03);
+    this.scoreNotesPlayed++;
   }
   victory() {
     [261.6, 329.6, 392, 523, 659].forEach((f, i) => this.tone(f, 1.2, 'triangle', 0.045, f, i * 0.16));

@@ -321,6 +321,7 @@ function frame(now) {
   const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
   last = now;
   if (game.inMenu) {
+    sound.setGameState(game.phase, { inMenu: true });
     if (menuNeedsFrame) {
       menuNeedsFrame = false;
       game.update(dt);
@@ -331,6 +332,7 @@ function frame(now) {
     return;
   }
   game.update(dt);
+  sound.setGameState(game.phase, { boss: !!game.bossAlive, paused: game.paused });
   renderer.draw(game, game.time);
   ui.update(game);
   requestAnimationFrame(frame);

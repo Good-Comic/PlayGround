@@ -1,0 +1,110 @@
+{
+  "observed_at_utc": "2026-10-27T03:23:15.074432+00:00",
+  "issue": 18,
+  "latest_internal_deployment": {
+    "run": "40377196806",
+    "generation": "234",
+    "attempt": 1,
+    "state": "deploying",
+    "error": "",
+    "updated_at": "2026-10-26T19:03:16.362Z",
+    "stage": "publishing",
+    "stage_identity": "40377196806:1",
+    "stage_started_at": "2026-10-26T19:03:01.568Z",
+    "stage_durations": {
+      "building": 1238.994
+    }
+  },
+  "progress": {
+    "status": "Finished without preview",
+    "terminal": true,
+    "outcome": "success",
+    "updated_at": "2026-10-27T00:03:15.605Z",
+    "run": "40377196806"
+  },
+  "session": {
+    "state": "ended",
+    "can_resume": true,
+    "reason": ""
+  },
+  "publication": {
+    "state": "draft",
+    "project_path": "",
+    "preview_url": "",
+    "screenshots": [],
+    "error": "",
+    "can_publish": false
+  },
+  "can_manage": false,
+  "latest_identifiable_deployment_identity": {
+    "run": "40377196806",
+    "generation": "234",
+    "attempt": 1,
+    "stage_identity": "40377196806:1"
+  },
+  "github_deployments": [
+    {
+      "id": 7335431016,
+      "environment": "github-pages",
+      "sha": "5b30bda085197cfa820a594224e2f6df929bf60d"
+    },
+    {
+      "id": 7334520267,
+      "environment": "github-pages",
+      "sha": "92e426327cfcfa6e27b2d400880681edd5256688"
+    },
+    {
+      "id": 7325342423,
+      "environment": "github-pages",
+      "sha": "6c98a8e6b7f7759ca57a9c9f94f675e2b6070381"
+    }
+  ],
+  "actions": {
+    "run": 40377196806,
+    "attempt": 1,
+    "head_sha": "45435a323c729a28da1de454a3e53740fc9159f2",
+    "status": "completed",
+    "conclusion": "success",
+    "second_competing_run_observed": false
+  },
+  "worker_service": {
+    "tunnel_origin": "http://127.0.0.1:3000",
+    "tunnel_registered": true,
+    "public_progress_capture_succeeded": true,
+    "capture_result": "Riftwatch menu rendered with PLAYTEST \u00b7 BUILD BLOCKED and riftwatch-playtest-v228 label",
+    "stable_preview_registered": false
+  },
+  "generation_analysis": {
+    "rejected_callback_generations": [
+      5,
+      19,
+      21,
+      35,
+      39,
+      41,
+      49,
+      53,
+      59,
+      63,
+      67,
+      69,
+      71,
+      73,
+      91,
+      93,
+      161,
+      167,
+      203,
+      221
+    ],
+    "current_generation": 234,
+    "conclusion": "Callbacks were stale relative to newer internal generations in the same run/attempt. No second Actions run, worker, or GitHub Deployment was observed; parallel external deployment competition is not established."
+  },
+  "official_interface_analysis": {
+    "issue_retry": "Only rendered for failed issue status; issue 18 status is complete.",
+    "issue_resume": "Available but creates a new OpenCode execution; prohibited this turn.",
+    "project_publication": "Requires a generated project ID/path and can_publish or can_manage; issue 18 has neither.",
+    "deploy_only_repair": "NOT_OBSERVED"
+  },
+  "classification": "PREVIEW_BUILD_INTEGRITY_BLOCKED_AND_DEPLOYMENT_GENERATION_SUPERSEDED"
+}
