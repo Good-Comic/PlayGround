@@ -3,6 +3,52 @@
   "updated_at": "2026-10-26T18:02:56Z",
   "tasks": [
     {
+      "task_id": "V231-HERO-SKILL-PREVIEW",
+      "name": "Hero visual distinction and skill-range preview",
+      "requirement_source": "Strategy v2.3.0 handoff next slice",
+      "priority": "P1",
+      "agent": "OpenCode; execution opencode-omgithub17-20261027-a",
+      "environment": "Managed Linux; local Chromium/SwiftShader",
+      "branch": "codex/riftwatch-v231-hero-skill-preview",
+      "base_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "latest_pushed_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
+      "completed": [
+        "Shared Mark/Aegis radii, commander ground marker, and hover/focus range preview implemented and locally verified"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Full Node and local Chromium verification",
+          "path": "docs/evidence/v231-hero-skill-preview/REPORT.md",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "result": "109/109 Node, 8/8 local Chromium, four locales 678 keys PASS"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v231-hero-skill-preview/REPORT.md",
+        "docs/evidence/v231-hero-skill-preview/browser-checks.json"
+      ],
+      "failures": [
+        "Rift Prototype crash not reproduced in controlled real-UI path",
+        "GDD hero stats and Aegis radius 4 still differ from production"
+      ],
+      "status": "CHECKPOINTED",
+      "next_steps": [
+        "Natural wave-end Rift Prototype offer with complete browser evidence",
+        "Explicit GDD decision on hero stats and Aegis radius",
+        "Representative hero art and audio vertical slice"
+      ],
+      "blockers": [
+        "Exact player crash conditions remain unknown; controlled real-UI reproduction passes",
+        "New public game SHA requires separate concrete authorization"
+      ],
+      "permissions": [
+        "Independent development/test/normal push; no main/force/#17/Checkpoints/workflow/new public SHA"
+      ],
+      "updated_at": "2026-10-26T18:55:00Z"
+    },
+    {
       "task_id": "V230-P0-INPUT",
       "name": "Natural Rift Prototype crash reproduction and Game First continuation",
       "requirement_source": "Strategy v2.3.0 P0/P9",
@@ -45,7 +91,7 @@
       "permissions": [
         "Independent development/test/normal push; no main/force/#17/Checkpoints/workflow/new public SHA"
       ],
-      "updated_at": "2026-10-26T18:29:01.384127+00:00"
+      "updated_at": "2026-10-27T01:18:59.736467+00:00"
     },
     {
       "task_id": "V228-CANDIDATE",
@@ -143,7 +189,7 @@
       },
       "quota_status": "QUOTA_PERCENT_UNKNOWN",
       "resume_status": "RESUME_READY_MANUAL_DISPATCH",
-      "updated_at": "2026-10-26T18:29:01.384127+00:00"
+      "updated_at": "2026-10-27T01:18:59.736467+00:00"
     },
     {
       "task_id": "V227-CANDIDATE",
@@ -205,7 +251,7 @@
         "NewSHA publicPages requires preciseapproval under v227"
       ],
       "status": "CHECKPOINTED",
-      "updated_at": "2026-10-26T18:29:01.384127+00:00"
+      "updated_at": "2026-10-27T01:18:59.736467+00:00"
     },
     {
       "task_id": "PLAYTEST-DEPLOY",
@@ -244,7 +290,7 @@
       "permissions": [
         "Do not create site/Pages/workflow before approval"
       ],
-      "updated_at": "2026-10-26T18:29:01.384127+00:00"
+      "updated_at": "2026-10-27T01:18:59.736467+00:00"
     },
     {
       "task_id": "A1-TARGET",
@@ -280,7 +326,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T18:29:01.384127+00:00"
+      "updated_at": "2026-10-27T01:18:59.736467+00:00"
     },
     {
       "task_id": "B2-GDD",
@@ -312,7 +358,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T18:29:01.384127+00:00"
+      "updated_at": "2026-10-27T01:18:59.736467+00:00"
     },
     {
       "task_id": "A4-POP",
@@ -343,7 +389,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T18:29:01.384127+00:00"
+      "updated_at": "2026-10-27T01:18:59.736467+00:00"
     },
     {
       "task_id": "QA-TOOLS",
@@ -401,7 +447,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T18:29:01.384127+00:00"
+      "updated_at": "2026-10-27T01:18:59.736467+00:00"
     },
     {
       "task_id": "INTEGRATION",
@@ -431,7 +477,7 @@
       "permissions": [
         "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
       ],
-      "updated_at": "2026-10-26T18:29:01.384127+00:00"
+      "updated_at": "2026-10-27T01:18:59.736467+00:00"
     },
     {
       "task_id": "PHASE-B-E",

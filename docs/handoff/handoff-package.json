@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-26T18:29:02.343946+00:00",
+  "generated_at": "2026-10-27T01:19:00.560024+00:00",
   "framework_status": "HANDOFF_FRAMEWORK_READY",
   "cross_agent_status": "NOT_TESTED",
   "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
@@ -10,72 +10,123 @@
     "evidence": null
   },
   "active_task": {
-    "task_id": "OMGITHUB17-UPGRADE",
-    "name": "Preserve Issue #17 and start latest verified Riftwatch candidate through the supported OmGitHub path",
-    "requirement_source": "Explicit user authorization: OmGitHub Issue #17 latest-version upgrade",
+    "task_id": "V231-INDEPENDENT-REVIEW",
+    "name": "Independent review of OpenCode hero skill-range preview slice",
+    "requirement_source": "Universal Autonomous Resume Protocol and Strategy v2.3 GAME FIRST",
     "priority": "P0",
-    "agent": "Codex; official OmGitHub/OpenCode run started separately",
-    "environment": "Managed environment revision 42; GitHub Actions and OmGitHub public API observed",
-    "branch": "codex/riftwatch-omgithub17-upgrade-evidence",
-    "base_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-    "latest_pushed_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+    "agent": "Codex; OpenCode run 40377196806 completed before review",
+    "environment": "Managed revision 42; local Chromium 154/SwiftShader; no public Preview URL",
+    "branch": "codex/riftwatch-v231-review",
+    "base_commit": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+    "latest_pushed_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
     "completed": [
-      "Preserved Issue #17 body, comments, session state, preview URL, resume branch and checkpoint hashes",
-      "Proved legacy preview game and main assets are byte-identical to opencode-checkpoints/17",
-      "Published immutable candidate branch at exact SHA 45435a323c729a28da1de454a3e53740fc9159f2",
-      "Passed exact-candidate local Chromium core 12/12, input/Rally 7/7, hero 6/6 and natural-wave observation",
-      "Created supported isolated Issue #18 with OpenCode label and branch request marker",
-      "Verified workflow 40377196806 resolved and started from the candidate branch and exact SHA"
+      "Verified no active Task Ownership and confirmed OpenCode completion before taking an independent review branch",
+      "Reviewed gameplay and renderer diff from candidate 45435a3 through application source 5df177b",
+      "Independently reran full 109-test suite and four-locale 678-key validation",
+      "Built a fresh immutable 28-file artifact from exact application commit 5df177b",
+      "Independently reran real local Chromium hero preview checks: 9/9 PASS with zero browser errors",
+      "Visually inspected orange Mark and blue Aegis range previews around the selected hero"
     ],
     "uncommitted": [],
     "unpushed": [],
     "tests": [
       {
-        "name": "Candidate minimum acceptance",
-        "path": "docs/evidence/omgithub17-upgrade/REPORT.md",
-        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-        "result": "AFTER_LOCAL PASS for scoped startup/build/train/Rally/hero/input/SaveLoad/four-locale checks"
+        "name": "Independent full Node regression",
+        "path": "docs/evidence/v231-independent-review/full-node.log.txt",
+        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+        "result": "109/109 PASS"
       },
       {
-        "name": "Official target resolution",
-        "path": "docs/evidence/omgithub17-upgrade/opencode-run-40377196806.json",
-        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-        "result": "Prepare PASS; workflow head branch and full SHA exact match"
+        "name": "Independent real Chromium hero preview",
+        "path": "docs/evidence/v231-independent-review/browser-checks.json",
+        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+        "result": "9/9 PASS; Console/Page/request errors 0"
       }
     ],
     "evidence": [
-      "docs/evidence/omgithub17-upgrade/PRE-UPGRADE.json",
-      "docs/evidence/omgithub17-upgrade/POST-UPGRADE.json",
-      "docs/evidence/omgithub17-upgrade/REPORT.md",
-      "docs/evidence/omgithub17-upgrade/UPGRADE-PLAN.json"
+      "docs/evidence/v231-independent-review/REPORT.md",
+      "docs/evidence/v231-independent-review/browser-checks.json",
+      "docs/evidence/v231-independent-review/first-attempt.json",
+      "docs/evidence/v231-independent-review/full-node.log.txt",
+      "docs/evidence/v231-independent-review/locales.log.txt"
     ],
     "failures": [
-      "New OmGitHub worker lost its heartbeat during Configure Linux Playwright CLI with WebGPU",
-      "No new Preview URL was assigned; AFTER_DEPLOY_LIVE is not verified",
-      "Historical low-FPS simulation loss, strict Save/Load nondeterminism, performance FAIL and HARDWARE_TEST_PENDING remain"
+      "First independent browser harness attempt timed out because the source-only server lacked build-metadata.json; preserved and excluded from gameplay acceptance",
+      "Original v231 report says 8/8 although its raw browser evidence contains nine passing checks",
+      "Natural Rift Prototype crash remains not reproduced",
+      "Production low-FPS time loss, strict Save/Load nondeterminism, historical performance FAIL and HARDWARE_TEST_PENDING remain"
     ],
     "blockers": [
-      "Issue #18 platform session is disconnected with Worker heartbeat expired while Actions still reports in progress",
-      "Do not retry or replace the workflow without checking the existing run and confirming the supported operation"
+      "Issue #18 completed with status Finished without preview; publication draft has no Preview URL, so AFTER_DEPLOY_LIVE is blocked",
+      "Aegis production radius 5 differs from recovered GDD radius 4 and requires SPEC_DECISION_REQUIRED before balance changes"
     ],
     "next_steps": [
-      "Check run 40377196806 once after the platform has had time to settle; distinguish recovery, terminal failure and stale in-progress state",
-      "If a separate Preview URL appears, verify actual resource hashes and perform AFTER_DEPLOY_LIVE without modifying Issue #17",
-      "If the run terminates failed, preserve logs and use only an official supported retry/resume control after confirming its exact effect",
-      "Continue Strategy v2.3 gameplay work on independent branches; do not write concurrently to the OmGitHub worker branch"
+      "Preserve this review with a normal push, then refresh Recovery and Progress Feed",
+      "Run a natural multi-wave Rift Prototype occurrence on an independent branch with complete state and browser evidence",
+      "Continue representative hero art/audio distinction or simulation/SaveLoad research on nonconflicting independent branches"
     ],
     "permissions": [
-      "The isolated official upgrade path was explicitly authorized",
-      "No main, Force Push, checkpoint rewrite, Issue #17 overwrite or old Preview deletion"
+      "Independent development, tests, normal commits and normal pushes remain authorized",
+      "No main, Force Push, Issue #17, checkpoint overwrite or unapproved public deployment"
     ],
-    "status": "BLOCKED",
+    "status": "VERIFIED",
+    "resume_event": {
+      "status": "SCHEDULED_RESUME_EXECUTED",
+      "basis": "Actual remote ownership and Git checks followed by independent tests, Chromium operation, evidence and branch work"
+    },
     "quota_status": "QUOTA_PERCENT_UNKNOWN",
-    "updated_at": "2026-10-26T18:29:02.008517+00:00"
+    "updated_at": "2026-10-27T01:19:00.234667+00:00"
   },
   "next_tasks": {
     "schema_version": 1,
     "updated_at": "2026-10-26T18:02:56Z",
     "tasks": [
+      {
+        "task_id": "V231-HERO-SKILL-PREVIEW",
+        "name": "Hero visual distinction and skill-range preview",
+        "requirement_source": "Strategy v2.3.0 handoff next slice",
+        "priority": "P1",
+        "agent": "OpenCode; execution opencode-omgithub17-20261027-a",
+        "environment": "Managed Linux; local Chromium/SwiftShader",
+        "branch": "codex/riftwatch-v231-hero-skill-preview",
+        "base_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "latest_pushed_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
+        "completed": [
+          "Shared Mark/Aegis radii, commander ground marker, and hover/focus range preview implemented and locally verified"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Full Node and local Chromium verification",
+            "path": "docs/evidence/v231-hero-skill-preview/REPORT.md",
+            "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+            "result": "109/109 Node, 8/8 local Chromium, four locales 678 keys PASS"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v231-hero-skill-preview/REPORT.md",
+          "docs/evidence/v231-hero-skill-preview/browser-checks.json"
+        ],
+        "failures": [
+          "Rift Prototype crash not reproduced in controlled real-UI path",
+          "GDD hero stats and Aegis radius 4 still differ from production"
+        ],
+        "status": "CHECKPOINTED",
+        "next_steps": [
+          "Natural wave-end Rift Prototype offer with complete browser evidence",
+          "Explicit GDD decision on hero stats and Aegis radius",
+          "Representative hero art and audio vertical slice"
+        ],
+        "blockers": [
+          "Exact player crash conditions remain unknown; controlled real-UI reproduction passes",
+          "New public game SHA requires separate concrete authorization"
+        ],
+        "permissions": [
+          "Independent development/test/normal push; no main/force/#17/Checkpoints/workflow/new public SHA"
+        ],
+        "updated_at": "2026-10-26T18:55:00Z"
+      },
       {
         "task_id": "V230-P0-INPUT",
         "name": "Natural Rift Prototype crash reproduction and Game First continuation",
@@ -119,7 +170,7 @@
         "permissions": [
           "Independent development/test/normal push; no main/force/#17/Checkpoints/workflow/new public SHA"
         ],
-        "updated_at": "2026-10-26T18:29:01.384127+00:00"
+        "updated_at": "2026-10-27T01:18:59.736467+00:00"
       },
       {
         "task_id": "V228-CANDIDATE",
@@ -217,7 +268,7 @@
         },
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "RESUME_READY_MANUAL_DISPATCH",
-        "updated_at": "2026-10-26T18:29:01.384127+00:00"
+        "updated_at": "2026-10-27T01:18:59.736467+00:00"
       },
       {
         "task_id": "V227-CANDIDATE",
@@ -279,7 +330,7 @@
           "NewSHA publicPages requires preciseapproval under v227"
         ],
         "status": "CHECKPOINTED",
-        "updated_at": "2026-10-26T18:29:01.384127+00:00"
+        "updated_at": "2026-10-27T01:18:59.736467+00:00"
       },
       {
         "task_id": "PLAYTEST-DEPLOY",
@@ -318,7 +369,7 @@
         "permissions": [
           "Do not create site/Pages/workflow before approval"
         ],
-        "updated_at": "2026-10-26T18:29:01.384127+00:00"
+        "updated_at": "2026-10-27T01:18:59.736467+00:00"
       },
       {
         "task_id": "A1-TARGET",
@@ -354,7 +405,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-26T18:29:01.384127+00:00"
+        "updated_at": "2026-10-27T01:18:59.736467+00:00"
       },
       {
         "task_id": "B2-GDD",
@@ -386,7 +437,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-26T18:29:01.384127+00:00"
+        "updated_at": "2026-10-27T01:18:59.736467+00:00"
       },
       {
         "task_id": "A4-POP",
@@ -417,7 +468,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-26T18:29:01.384127+00:00"
+        "updated_at": "2026-10-27T01:18:59.736467+00:00"
       },
       {
         "task_id": "QA-TOOLS",
@@ -475,7 +526,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-26T18:29:01.384127+00:00"
+        "updated_at": "2026-10-27T01:18:59.736467+00:00"
       },
       {
         "task_id": "INTEGRATION",
@@ -505,7 +556,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-26T18:29:01.384127+00:00"
+        "updated_at": "2026-10-27T01:18:59.736467+00:00"
       },
       {
         "task_id": "PHASE-B-E",
@@ -567,14 +618,14 @@
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-26T18:29:01.384127+00:00",
+    "captured_at_utc": "2026-10-27T01:18:59.736467+00:00",
     "trigger": "RECOVERY_RESUME",
-    "collector_commit": "dcbf99db4776172d9384749da80135903046dd5e",
+    "collector_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
     "collector_dirty": false,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-26T18:29:01.384127+00:00"
+      "queried_at": "2026-10-27T01:18:59.736467+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -597,9 +648,9 @@
       "codex/riftwatch-playtest-site": "5b30bda085197cfa820a594224e2f6df929bf60d",
       "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
       "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
-      "codex/riftwatch-progress-feed": "596ff218c593b9fd9d6b2b4b4f2a43c9fb36c835",
-      "codex/riftwatch-recovery-index": "9d85bec9a3cc4789b3f3d543c9168bd5f358dbaf",
-      "codex/riftwatch-task-ownership": "db5ed8ba6cd568c5a0e51a5b4124055bc854b705",
+      "codex/riftwatch-progress-feed": "2d40f4f12cf8b0c1487e33d63be04a1dfdd95ef9",
+      "codex/riftwatch-recovery-index": "772e56c213067cfc8681b95a689a61306b1c4bea",
+      "codex/riftwatch-task-ownership": "fe94fde30c7d4d732734e8d57e0a5e5b5ee7a65d",
       "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
       "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
       "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -622,6 +673,8 @@
       "codex/riftwatch-v228-save-research": "03e3a8423e4956be7face8009d7bfff48aa6a11e",
       "codex/riftwatch-v229-group-clear": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
       "codex/riftwatch-v230-p0-input": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "codex/riftwatch-v231-hero-skill-preview": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+      "codex/riftwatch-v231-review": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
       "main": "e35a73329ee7942627496e55b844d02b2501e685",
       "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
       "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -630,6 +683,7 @@
       "opencode-checkpoints/15": "909fc707786e6ae54f33c6388ca582377ff09252",
       "opencode-checkpoints/16": "82007a506b01c0ac6c3986aeac40ef0e1d05a347",
       "opencode-checkpoints/17": "6476a4bc6d18f688b9c44db9a95c45901d76b741",
+      "opencode-checkpoints/18": "35fde465ab40b011a7f33704d6b30d149802438e",
       "opencode-checkpoints/2": "71c23b735ec2236d71cf4120410cc5ef6d33b773",
       "opencode-checkpoints/3": "c7d7ba520a6c11db8cec2c338f0b25b5c21e9b57",
       "opencode-checkpoints/4": "d3849df18360a209aa9b6843f409d461260ee93c",
@@ -706,6 +760,12 @@
         "head": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
         "remote_head": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
         "status": "REMOTE_SAVED"
+      },
+      {
+        "branch": "codex/riftwatch-progress-feed",
+        "head": "596ff218c593b9fd9d6b2b4b4f2a43c9fb36c835",
+        "remote_head": "2d40f4f12cf8b0c1487e33d63be04a1dfdd95ef9",
+        "status": "HEAD_DIFFERS_REVIEW_REQUIRED"
       },
       {
         "branch": "codex/riftwatch-v2-baseline",
@@ -837,6 +897,18 @@
         "branch": "codex/riftwatch-v230-p0-input",
         "head": "45435a323c729a28da1de454a3e53740fc9159f2",
         "remote_head": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "status": "REMOTE_SAVED"
+      },
+      {
+        "branch": "codex/riftwatch-v231-hero-skill-preview",
+        "head": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+        "remote_head": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+        "status": "REMOTE_SAVED"
+      },
+      {
+        "branch": "codex/riftwatch-v231-review",
+        "head": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+        "remote_head": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
         "status": "REMOTE_SAVED"
       }
     ],
@@ -1057,6 +1129,28 @@
         "changed_files": [],
         "dirty": false,
         "local_record_status": "LOCAL_INVENTORIED"
+      },
+      {
+        "path": "/workspace/riftwatch-feed18",
+        "branch": "codex/riftwatch-progress-feed",
+        "head": "596ff218c593b9fd9d6b2b4b4f2a43c9fb36c835",
+        "locked": false,
+        "task_id": null,
+        "last_validation": [],
+        "blockers": [
+          "NOT_ASSESSED"
+        ],
+        "next_steps": [
+          "Inspect task registry and relevant diff before writing"
+        ],
+        "remote_status": "REMOTE_AHEAD",
+        "remote_head": "2d40f4f12cf8b0c1487e33d63be04a1dfdd95ef9",
+        "unpushed_commits": [],
+        "changed_files": [],
+        "dirty": false,
+        "local_record_status": "LOCAL_INVENTORIED",
+        "ahead": 0,
+        "behind": 2
       },
       {
         "path": "/workspace/riftwatch-groups",
@@ -1596,6 +1690,26 @@
         "local_record_status": "LOCAL_INVENTORIED"
       },
       {
+        "path": "/workspace/riftwatch-v231-review",
+        "branch": "codex/riftwatch-v231-review",
+        "head": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+        "locked": false,
+        "task_id": null,
+        "last_validation": [],
+        "blockers": [
+          "NOT_ASSESSED"
+        ],
+        "next_steps": [
+          "Inspect task registry and relevant diff before writing"
+        ],
+        "remote_status": "REMOTE_SAVED",
+        "remote_head": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+        "unpushed_commits": [],
+        "changed_files": [],
+        "dirty": false,
+        "local_record_status": "LOCAL_INVENTORIED"
+      },
+      {
         "path": "/workspace/riftwatch-wave",
         "branch": "codex/riftwatch-v227-wave",
         "head": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
@@ -1645,6 +1759,10 @@
         "change": "NEW_OR_MANIFEST_MISSING"
       },
       {
+        "path": "/workspace/riftwatch-feed18",
+        "change": "NEW_OR_MANIFEST_MISSING"
+      },
+      {
         "path": "/workspace/riftwatch-live228",
         "change": "NEW_OR_MANIFEST_MISSING"
       },
@@ -1663,16 +1781,20 @@
       {
         "path": "/workspace/riftwatch-v230-p0",
         "change": "NEW_OR_MANIFEST_MISSING"
+      },
+      {
+        "path": "/workspace/riftwatch-v231-review",
+        "change": "NEW_OR_MANIFEST_MISSING"
       }
     ],
     "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."
   },
   "ownership": {
     "status": "REMOTE_QUERIED",
-    "commit": "db5ed8ba6cd568c5a0e51a5b4124055bc854b705",
+    "commit": "fe94fde30c7d4d732734e8d57e0a5e5b5ee7a65d",
     "state": {
       "schema_version": 1,
-      "version": 91,
+      "version": 101,
       "tasks": {
         "DEV-RECOVERY-P0": {
           "agent": "Codex",
@@ -1739,11 +1861,11 @@
         },
         "RECOVERY-INDEX": {
           "agent": "Codex",
-          "execution": "codex-omgithub17-recovery-20261027",
+          "execution": "codex-v231-review-recovery-20261027",
           "branch": "codex/riftwatch-recovery-index",
           "status": "OWNED",
-          "revision": 91,
-          "updated_at": "2026-10-26T18:28:54.614434+00:00",
+          "revision": 101,
+          "updated_at": "2026-10-27T01:18:52.458669+00:00",
           "previous_owner_stopped_asserted": false
         },
         "PLAYTEST-P0": {
@@ -1952,6 +2074,33 @@
           "revision": 90,
           "updated_at": "2026-10-26T18:28:49.363697+00:00",
           "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED": {
+          "agent": "OpenCode",
+          "execution": "opencode-omgithub17-20261027-a",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 97,
+          "updated_at": "2026-10-26T19:01:17.673981+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V231-HERO-SKILL-PREVIEW": {
+          "agent": "OpenCode",
+          "execution": "opencode-omgithub17-20261027-a",
+          "branch": "codex/riftwatch-v231-hero-skill-preview",
+          "status": "RELEASED",
+          "revision": 98,
+          "updated_at": "2026-10-26T19:01:35.762470+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V231-REVIEW": {
+          "agent": "Codex",
+          "execution": "codex-v231-review-20261027",
+          "branch": "codex/riftwatch-v231-review",
+          "status": "RELEASED",
+          "revision": 100,
+          "updated_at": "2026-10-27T01:18:46.645621+00:00",
+          "previous_owner_stopped_asserted": false
         }
       }
     }
@@ -1962,6 +2111,12 @@
       "branch": "work",
       "dirty": false,
       "remote_status": "REMOTE_BRANCH_ABSENT",
+      "unpushed": []
+    },
+    {
+      "branch": "codex/riftwatch-progress-feed",
+      "dirty": false,
+      "remote_status": "REMOTE_AHEAD",
       "unpushed": []
     }
   ]
