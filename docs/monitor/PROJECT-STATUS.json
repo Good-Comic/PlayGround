@@ -2,73 +2,67 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-27T09:20:18.235798+00:00",
+  "updated_at": "2026-10-27T10:51:12.077241+00:00",
   "latest_event": {
-    "task_id": "V240-GAME-FIRST-BUILDINGS",
+    "task_id": "V240-SEED-SETUP",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-    "build_sha": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
-    "summary": "Strategy v2.4.0 adopted and first GAME FIRST building-state visual slice locally verified and remotely checkpointed.",
+    "commit": "72050c77c377cace5516fb0e69a0adc686720180",
+    "build_sha": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+    "summary": "Visible generated and editable Seeds are locally verified with reproducible map identity and versioned SaveLoad metadata.",
     "code_changes": [
-      "Added stable construction, damaged, critical and ruined rendering states for representative buildings.",
-      "Kept dead ruins dead and made no simulation, economy or balance change.",
-      "Added real Chromium recording, state timeline and exact-artifact verification."
+      "Prefill a bounded shareable RW Seed and add a localized reroll control.",
+      "Preserve manual Seed edits across locale changes.",
+      "Record map generation version 1 in saves and Bug JSON while accepting older saves without the optional field."
     ],
     "next_steps": [
-      "Revalidate ownership and continue another independent GAME FIRST visual or audio slice.",
-      "Continue natural campaign evidence without relabelling controlled fixtures as full gameplay acceptance."
+      "Continue an independent high-quality 2.5D civilization or animation slice after ownership revalidation.",
+      "Keep version-1 generator stable and version any later map-rule changes."
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Focused visual signatures 3/3",
+        "name": "Focused Seed SaveLoad and report checks 9/9",
         "status": "PASS",
-        "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
-        "evidence": "docs/evidence/v240-building-states/focused-node.log",
-        "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
-        "evidence_status": "NOT_FOUND_NOT_VERIFIED"
+        "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+        "evidence": "docs/evidence/v240-seed-setup/focused-node.log.txt",
+        "evidence_commit": "229eb6df99b82740641f85e471563d8dbd98d315",
+        "evidence_blob": "fdba6cb2673d06f0cf9109404d191026e7d78e0f",
+        "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Exact 28-file artifact Chromium building states 5/5",
+        "name": "Exact 28-file Chromium Seed workflow 8/8",
         "status": "PASS",
-        "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
-        "evidence": "docs/evidence/v240-building-states/browser.json",
-        "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
-        "evidence_blob": "a11ec42bb7d4545f109b02495f185312969e57fc",
+        "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+        "evidence": "docs/evidence/v240-seed-setup/browser.json",
+        "evidence_commit": "229eb6df99b82740641f85e471563d8dbd98d315",
+        "evidence_blob": "01cf7e0539abf4826122ddb6ac9ef2c0cf10ad6e",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
+        "id": "STRICT_SAVELOAD",
+        "severity": "WARNING",
+        "summary": "Generated frontier identity passes but strict whole-simulation SaveLoad determinism remains failing.",
+        "source_commit": "72050c77c377cace5516fb0e69a0adc686720180",
+        "requires_user_decision": false
+      },
+      {
         "id": "SIMULATION_INTEGRITY",
         "severity": "BLOCKED",
         "summary": "Low-FPS simulation time loss remains open.",
-        "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-        "requires_user_decision": false
-      },
-      {
-        "id": "SAVELOAD_DETERMINISM",
-        "severity": "WARNING",
-        "summary": "Strict deterministic Save/Load remains failing.",
-        "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-        "requires_user_decision": false
-      },
-      {
-        "id": "RIFT_CRASH_REPRO",
-        "severity": "WARNING",
-        "summary": "Natural Rift Prototype crash remains NOT_REPRODUCED without the original player save, seed and state.",
-        "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+        "source_commit": "72050c77c377cace5516fb0e69a0adc686720180",
         "requires_user_decision": false
       }
     ],
-    "response": "Strategy v2.4.0 is active. Building construction, damage, critical and ruin states are now locally verified in a real exact-artifact Chromium run. Branch codex/riftwatch-v240-game-first is saved at 1d46c7e6ea90d1998ed1156029d5cfc526126ef4. This is AFTER_LOCAL only; no public site or protected branch changed.",
-    "event_id": "2bc604e935e1a88027b262b406f03c055438403c5c027c80ef9042ad9182ba5b",
-    "remote_head": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+    "response": "Riftwatch v2.4 now prefills a visible editable Seed, supports explicit reroll, preserves manual input across four languages, and reproduces the same versioned frontier through Save/Load and a second run. Branch codex/riftwatch-v240-game-first is saved at 72050c77c377cace5516fb0e69a0adc686720180. AFTER_LOCAL only; no public deployment changed.",
+    "event_id": "dab56c9e87930fcf6c5cf202ccc2afbc8f836acf80129ba75e38e92bc5150cb8",
+    "remote_head": "72050c77c377cace5516fb0e69a0adc686720180",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-27T09:20:18.235798+00:00",
+    "recorded_at": "2026-10-27T10:51:12.077241+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -1924,71 +1918,133 @@
       ]
     },
     "V240-GAME-FIRST-BUILDINGS": {
-      "task_id": "V240-GAME-FIRST-BUILDINGS",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [
+        {
+          "id": "SIMULATION_INTEGRITY",
+          "requires_user_decision": false,
+          "severity": "BLOCKED",
+          "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+          "summary": "Low-FPS simulation time loss remains open."
+        },
+        {
+          "id": "SAVELOAD_DETERMINISM",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+          "summary": "Strict deterministic Save/Load remains failing."
+        },
+        {
+          "id": "RIFT_CRASH_REPRO",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+          "summary": "Natural Rift Prototype crash remains NOT_REPRODUCED without the original player save, seed and state."
+        }
+      ],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
       "build_sha": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
-      "summary": "Strategy v2.4.0 adopted and first GAME FIRST building-state visual slice locally verified and remotely checkpointed.",
       "code_changes": [
         "Added stable construction, damaged, critical and ruined rendering states for representative buildings.",
         "Kept dead ruins dead and made no simulation, economy or balance change.",
         "Added real Chromium recording, state timeline and exact-artifact verification."
       ],
+      "commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "2bc604e935e1a88027b262b406f03c055438403c5c027c80ef9042ad9182ba5b",
       "next_steps": [
         "Revalidate ownership and continue another independent GAME FIRST visual or audio slice.",
         "Continue natural campaign evidence without relabelling controlled fixtures as full gameplay acceptance."
       ],
+      "pushed": true,
+      "recorded_at": "2026-10-27T09:20:18.235798+00:00",
+      "remote_head": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Strategy v2.4.0 is active. Building construction, damage, critical and ruin states are now locally verified in a real exact-artifact Chromium run. Branch codex/riftwatch-v240-game-first is saved at 1d46c7e6ea90d1998ed1156029d5cfc526126ef4. This is AFTER_LOCAL only; no public site or protected branch changed.",
+      "severity": "PROGRESS",
+      "summary": "Strategy v2.4.0 adopted and first GAME FIRST building-state visual slice locally verified and remotely checkpointed.",
+      "task_id": "V240-GAME-FIRST-BUILDINGS",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-building-states/focused-node.log",
+          "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
+          "evidence_status": "NOT_FOUND_NOT_VERIFIED",
+          "name": "Focused visual signatures 3/3",
+          "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-building-states/browser.json",
+          "evidence_blob": "a11ec42bb7d4545f109b02495f185312969e57fc",
+          "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Exact 28-file artifact Chromium building states 5/5",
+          "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-SEED-SETUP": {
+      "task_id": "V240-SEED-SETUP",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "72050c77c377cace5516fb0e69a0adc686720180",
+      "build_sha": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+      "summary": "Visible generated and editable Seeds are locally verified with reproducible map identity and versioned SaveLoad metadata.",
+      "code_changes": [
+        "Prefill a bounded shareable RW Seed and add a localized reroll control.",
+        "Preserve manual Seed edits across locale changes.",
+        "Record map generation version 1 in saves and Bug JSON while accepting older saves without the optional field."
+      ],
+      "next_steps": [
+        "Continue an independent high-quality 2.5D civilization or animation slice after ownership revalidation.",
+        "Keep version-1 generator stable and version any later map-rule changes."
+      ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Focused visual signatures 3/3",
+          "name": "Focused Seed SaveLoad and report checks 9/9",
           "status": "PASS",
-          "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
-          "evidence": "docs/evidence/v240-building-states/focused-node.log",
-          "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
-          "evidence_status": "NOT_FOUND_NOT_VERIFIED"
+          "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+          "evidence": "docs/evidence/v240-seed-setup/focused-node.log.txt",
+          "evidence_commit": "229eb6df99b82740641f85e471563d8dbd98d315",
+          "evidence_blob": "fdba6cb2673d06f0cf9109404d191026e7d78e0f",
+          "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "Exact 28-file artifact Chromium building states 5/5",
+          "name": "Exact 28-file Chromium Seed workflow 8/8",
           "status": "PASS",
-          "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
-          "evidence": "docs/evidence/v240-building-states/browser.json",
-          "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
-          "evidence_blob": "a11ec42bb7d4545f109b02495f185312969e57fc",
+          "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+          "evidence": "docs/evidence/v240-seed-setup/browser.json",
+          "evidence_commit": "229eb6df99b82740641f85e471563d8dbd98d315",
+          "evidence_blob": "01cf7e0539abf4826122ddb6ac9ef2c0cf10ad6e",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
       "blockers": [
         {
+          "id": "STRICT_SAVELOAD",
+          "severity": "WARNING",
+          "summary": "Generated frontier identity passes but strict whole-simulation SaveLoad determinism remains failing.",
+          "source_commit": "72050c77c377cace5516fb0e69a0adc686720180",
+          "requires_user_decision": false
+        },
+        {
           "id": "SIMULATION_INTEGRITY",
           "severity": "BLOCKED",
           "summary": "Low-FPS simulation time loss remains open.",
-          "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-          "requires_user_decision": false
-        },
-        {
-          "id": "SAVELOAD_DETERMINISM",
-          "severity": "WARNING",
-          "summary": "Strict deterministic Save/Load remains failing.",
-          "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-          "requires_user_decision": false
-        },
-        {
-          "id": "RIFT_CRASH_REPRO",
-          "severity": "WARNING",
-          "summary": "Natural Rift Prototype crash remains NOT_REPRODUCED without the original player save, seed and state.",
-          "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+          "source_commit": "72050c77c377cace5516fb0e69a0adc686720180",
           "requires_user_decision": false
         }
       ],
-      "response": "Strategy v2.4.0 is active. Building construction, damage, critical and ruin states are now locally verified in a real exact-artifact Chromium run. Branch codex/riftwatch-v240-game-first is saved at 1d46c7e6ea90d1998ed1156029d5cfc526126ef4. This is AFTER_LOCAL only; no public site or protected branch changed.",
-      "event_id": "2bc604e935e1a88027b262b406f03c055438403c5c027c80ef9042ad9182ba5b",
-      "remote_head": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "response": "Riftwatch v2.4 now prefills a visible editable Seed, supports explicit reroll, preserves manual input across four languages, and reproduces the same versioned frontier through Save/Load and a second run. Branch codex/riftwatch-v240-game-first is saved at 72050c77c377cace5516fb0e69a0adc686720180. AFTER_LOCAL only; no public deployment changed.",
+      "event_id": "dab56c9e87930fcf6c5cf202ccc2afbc8f836acf80129ba75e38e92bc5150cb8",
+      "remote_head": "72050c77c377cace5516fb0e69a0adc686720180",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-27T09:20:18.235798+00:00",
+      "recorded_at": "2026-10-27T10:51:12.077241+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },

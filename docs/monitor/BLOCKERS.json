@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T09:20:18.235798+00:00",
+  "updated_at": "2026-10-27T10:51:12.077241+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -323,27 +323,43 @@
     },
     {
       "id": "SIMULATION_INTEGRITY",
-      "severity": "BLOCKED",
-      "summary": "Low-FPS simulation time loss remains open.",
-      "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
       "requires_user_decision": false,
+      "severity": "BLOCKED",
+      "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "summary": "Low-FPS simulation time loss remains open.",
       "task_id": "V240-GAME-FIRST-BUILDINGS"
     },
     {
       "id": "SAVELOAD_DETERMINISM",
-      "severity": "WARNING",
-      "summary": "Strict deterministic Save/Load remains failing.",
-      "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "summary": "Strict deterministic Save/Load remains failing.",
       "task_id": "V240-GAME-FIRST-BUILDINGS"
     },
     {
       "id": "RIFT_CRASH_REPRO",
-      "severity": "WARNING",
-      "summary": "Natural Rift Prototype crash remains NOT_REPRODUCED without the original player save, seed and state.",
-      "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "summary": "Natural Rift Prototype crash remains NOT_REPRODUCED without the original player save, seed and state.",
       "task_id": "V240-GAME-FIRST-BUILDINGS"
+    },
+    {
+      "id": "STRICT_SAVELOAD",
+      "severity": "WARNING",
+      "summary": "Generated frontier identity passes but strict whole-simulation SaveLoad determinism remains failing.",
+      "source_commit": "72050c77c377cace5516fb0e69a0adc686720180",
+      "requires_user_decision": false,
+      "task_id": "V240-SEED-SETUP"
+    },
+    {
+      "id": "SIMULATION_INTEGRITY",
+      "severity": "BLOCKED",
+      "summary": "Low-FPS simulation time loss remains open.",
+      "source_commit": "72050c77c377cace5516fb0e69a0adc686720180",
+      "requires_user_decision": false,
+      "task_id": "V240-SEED-SETUP"
     }
   ]
 }
