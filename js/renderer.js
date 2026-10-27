@@ -90,6 +90,21 @@ export function unitVisualSignature(type) {
   })[type] || 'standard';
 }
 
+// Building presentation state is derived only from persisted simulation data.
+// Rendering can therefore show construction, damage and ruins without adding
+// timers or randomness to the gameplay/save model.
+export function buildingVisualState(building) {
+  if (!building?.alive) return 'ruined';
+  const construction = Number.isFinite(building.construction) ? building.construction : 1;
+  if (construction < 0.45) return 'foundation';
+  if (construction < 1) return 'scaffolded';
+  const maxHp = Math.max(1, building.maxHp || 1);
+  const health = clamp((building.hp ?? maxHp) / maxHp, 0, 1);
+  if (health <= 0.35) return 'critical';
+  if (health <= 0.7) return 'damaged';
+  return 'complete';
+}
+
 export class Renderer {
   constructor(canvas) {
     this.canvas = canvas;
@@ -253,8 +268,8 @@ export class Renderer {
 
     const drawables = [];
     for (const b of game.buildings) {
-      if (!b.alive) continue;
-      drawables.push({ kind: 'building', obj: b, depth: b.x + b.y + b.w * 0.4 + b.h * 0.4 });
+      if (!b.alive && (b.construction || 0) < 0.15) continue;
+      drawables.push({ kind: b.alive ? 'building' : 'ruin', obj: b, depth: b.x + b.y + b.w * 0.4 + b.h * 0.4 });
     }
     for (const u of game.units) {
       if (!u.alive) continue;
@@ -273,6 +288,7 @@ export class Renderer {
     drawables.sort((a, b) => a.depth - b.depth);
     for (const d of drawables) {
       if (d.kind === 'building') this.drawBuilding(d.obj, game, time);
+      else if (d.kind === 'ruin') this.drawBuildingRuin(d.obj, game, time);
       else if (d.kind === 'unit') this.drawUnit(d.obj, game, time);
       else if (d.kind === 'resource') this.drawResource(d.obj, game, time);
       else if (d.kind === 'prop') this.drawProp(d.obj, game, time);
@@ -654,7 +670,71 @@ export class Renderer {
     else if (b.type === 'gate') this.drawGate(b, game, time);
     else if (b.type === 'fishing_hut') this.drawHouse(b, game, time);
     else this.drawBarracks(b, game, time);
+    this.drawBuildingDamageState(b, game, time);
     this.drawBuildingBar(b, game);
+  }
+
+  drawBuildingDamageState(b, game, time) {
+    const state = buildingVisualState(b);
+    if (state !== 'damaged' && state !== 'critical') return;
+    const ctx = this.ctx, z = game.camera.zoom, f = this.footprint(game, b);
+    const damage = 1 - clamp(b.hp / Math.max(1, b.maxHp), 0, 1);
+    const frontX = f.C.x + (hash2(b.id || 1, 3, 19) - 0.5) * 32 * z;
+    const frontY = f.C.y - (16 + hash2(b.id || 1, 5, 23) * 18) * z;
+    ctx.save();
+    ctx.strokeStyle = `rgba(49,35,25,${0.45 + damage * 0.35})`;
+    ctx.lineWidth = Math.max(1, 1.25 * z);
+    ctx.beginPath();
+    ctx.moveTo(frontX, frontY - 13 * z);
+    ctx.lineTo(frontX - 4 * z, frontY - 6 * z);
+    ctx.lineTo(frontX + 2 * z, frontY);
+    ctx.lineTo(frontX - 5 * z, frontY + 8 * z);
+    ctx.moveTo(frontX - 3 * z, frontY - 5 * z);
+    ctx.lineTo(frontX - 10 * z, frontY - 1 * z);
+    ctx.moveTo(frontX + 1 * z, frontY);
+    ctx.lineTo(frontX + 9 * z, frontY + 4 * z);
+    ctx.stroke();
+    if (state === 'critical') {
+      const pulse = 0.55 + Math.sin(time * 5 + (b.id || 0)) * 0.2;
+      ctx.fillStyle = 'rgba(33,24,20,0.82)';
+      ctx.beginPath();
+      ctx.moveTo(f.cx - 14 * z, f.cy - 48 * z);
+      ctx.lineTo(f.cx - 2 * z, f.cy - 61 * z);
+      ctx.lineTo(f.cx + 11 * z, f.cy - 49 * z);
+      ctx.lineTo(f.cx + 4 * z, f.cy - 37 * z);
+      ctx.closePath(); ctx.fill();
+      ctx.fillStyle = `rgba(230,117,52,${pulse})`;
+      for (let i = 0; i < 3; i++) {
+        const ox = (hash2(b.id || 1, i, 31) - 0.5) * 18 * z;
+        const oy = (4 + ((time * (7 + i) + i * 3) % 13)) * z;
+        ctx.beginPath(); ctx.arc(f.cx + ox, f.cy - 35 * z - oy, (1.1 + i * 0.25) * z, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    ctx.restore();
+  }
+
+  drawBuildingRuin(b, game, time) {
+    const ctx = this.ctx, z = game.camera.zoom, f = this.footprint(game, b);
+    this.drawPlatform(f, z, '#585346');
+    this.prism(f, 5 * z, '#544b3d', '#675d4a', '#716754');
+    ctx.save();
+    ctx.fillStyle = 'rgba(27,23,18,0.34)';
+    ctx.beginPath(); ctx.ellipse(f.cx + 5 * z, f.cy + 5 * z, 39 * z, 13 * z, 0, 0, Math.PI * 2); ctx.fill();
+    const colors = ['#786d59', '#95866b', '#5f5748', '#493a2b'];
+    for (let i = 0; i < 13; i++) {
+      const x = f.cx + (hash2(b.id || 1, i, 41) - 0.5) * 70 * z;
+      const y = f.cy + (hash2(b.id || 1, i, 43) - 0.45) * 23 * z;
+      const w = (4 + hash2(b.id || 1, i, 47) * 9) * z;
+      const h = (2 + hash2(b.id || 1, i, 53) * 5) * z;
+      ctx.fillStyle = colors[i % colors.length];
+      ctx.beginPath(); ctx.roundRect(x - w / 2, y - h, w, h, Math.max(1, z)); ctx.fill();
+    }
+    ctx.strokeStyle = '#4b3322'; ctx.lineWidth = 3 * z;
+    ctx.beginPath(); ctx.moveTo(f.cx - 27 * z, f.cy - 2 * z); ctx.lineTo(f.cx + 20 * z, f.cy - 30 * z); ctx.stroke();
+    ctx.lineWidth = 2 * z;
+    ctx.beginPath(); ctx.moveTo(f.cx - 12 * z, f.cy - 24 * z); ctx.lineTo(f.cx + 29 * z, f.cy + 1 * z); ctx.stroke();
+    ctx.restore();
+    this.drawDamageSmoke(f, z, time, 1);
   }
 
   footprint(game, b) {

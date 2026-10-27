@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Renderer, unitVisualSignature } from '../js/renderer.js';
+import { Renderer, buildingVisualState, unitVisualSignature } from '../js/renderer.js';
 
 const EXPECTED = {
   chu_ko_nu: 'repeating-crossbow',
@@ -49,4 +49,14 @@ test('ranged and mounted battlefield roles produce distinct rendered geometry', 
   assert.equal(new Set(ranged).size, ranged.length);
   assert.equal(new Set(mounted).size, mounted.length);
   assert.notEqual(fingerprint('guard'), fingerprint('militia'));
+});
+
+test('building visuals expose construction damage and persistent ruin states without simulation timers', () => {
+  const base = { alive: true, construction: 1, hp: 100, maxHp: 100 };
+  assert.equal(buildingVisualState({ ...base, construction: 0.2 }), 'foundation');
+  assert.equal(buildingVisualState({ ...base, construction: 0.7 }), 'scaffolded');
+  assert.equal(buildingVisualState(base), 'complete');
+  assert.equal(buildingVisualState({ ...base, hp: 70 }), 'damaged');
+  assert.equal(buildingVisualState({ ...base, hp: 35 }), 'critical');
+  assert.equal(buildingVisualState({ ...base, alive: false, hp: 0 }), 'ruined');
 });
