@@ -1,64 +1,63 @@
 {
-  "task_id": "V233-DYNAMIC-SCORE",
-  "name": "OmGitHub #18 generation diagnosis and adaptive battlefield score",
-  "requirement_source": "Riftwatch v2.3.2 OmGitHub Preview Diagnosis and Game First",
-  "priority": "P0",
+  "task_id": "V233-VISUAL-SILHOUETTES",
+  "name": "OmGitHub #18 source-switch preflight and battlefield role silhouettes",
+  "requirement_source": "Riftwatch v2.3.3 Preview Recovery & Game First",
+  "priority": "P0/P1",
   "agent": "Codex",
-  "environment": "Managed Linux; Chromium 154; local WebAudio recording; OmGitHub read-only",
-  "branch": "codex/riftwatch-v233-dynamic-score",
-  "base_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
-  "latest_pushed_commit": "a6a54ef7674e033432f4233694f87ff1303ad6b6",
-  "application_source_commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
+  "environment": "Managed Linux; Chromium 154; OmGitHub read-only",
+  "branch": "codex/riftwatch-v233-visual-silhouettes",
+  "base_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+  "latest_pushed_commit": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa",
+  "application_source_commit": "d989bb7236cb7e6bc4bee6892ff0fae9196bc2da",
   "completed": [
-    "Read-only Issue #18 generation/Worker/port-3000/official-interface diagnosis",
-    "Confirmed official public progress screenshot rendered Riftwatch on port 3000 with BUILD BLOCKED",
-    "Implemented phase-aware procedural score for prep, wave, Boss, boon and pause",
-    "Recorded real Chromium WebAudio preparation and battle score payloads",
-    "111/111 Node and 7/7 exact-artifact Chromium checks passed",
-    "Normal push and exact remote verification completed"
+    "Confirmed #18 Resume client accepts prompt/request_id only and cannot enforce branch/full SHA",
+    "Documented safe new-Issue source switch without executing it",
+    "Added distinct production silhouettes for Chu Ko Nu, skirmisher, guard, knight, light cavalry and horse archer",
+    "113/113 Node and 4/4 exact-artifact Chromium checks passed",
+    "Normal pushes and exact remote SHA verification completed"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Full Node regression",
-      "path": "docs/evidence/v233-dynamic-score/full-node.log.txt",
-      "source_commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
-      "result": "111/111 PASS"
+      "path": "docs/evidence/v233-visual-silhouettes/full-node.log.txt",
+      "source_commit": "d989bb7236cb7e6bc4bee6892ff0fae9196bc2da",
+      "result": "113/113 PASS"
     },
     {
-      "name": "Exact-artifact Chromium WebAudio",
-      "path": "docs/evidence/v233-dynamic-score/browser.json",
-      "source_commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
-      "result": "7/7 PASS; two playable Opus recordings; browser errors 0"
+      "name": "Exact-artifact Chromium visual gallery",
+      "path": "docs/evidence/v233-visual-silhouettes/browser.json",
+      "source_commit": "d989bb7236cb7e6bc4bee6892ff0fae9196bc2da",
+      "result": "4/4 PASS; eight distinct raster samples; live move; browser errors 0"
     },
     {
-      "name": "OmGitHub Issue 18 Preview",
-      "path": "docs/evidence/v233-omgithub18-preview/REPORT.md",
-      "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-      "result": "BLOCKED; generation234; port3000 BUILD BLOCKED"
+      "name": "OmGitHub #18 source switch",
+      "path": "docs/evidence/v233-preview-recovery/resume-source-analysis.json",
+      "source_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+      "result": "BLOCKED; Resume cannot enforce branch/SHA"
     }
   ],
   "evidence": [
-    "docs/evidence/v233-omgithub18-preview/REPORT.md",
-    "docs/evidence/v233-omgithub18-preview/official-port3000-build-blocked.png",
-    "docs/evidence/v233-dynamic-score/REPORT.md",
-    "docs/evidence/v233-dynamic-score/prep-score.webm",
-    "docs/evidence/v233-dynamic-score/battle-score.webm"
+    "docs/evidence/v233-preview-recovery/REPORT.md",
+    "docs/evidence/v233-preview-recovery/resume-source-analysis.json",
+    "docs/evidence/v233-visual-silhouettes/REPORT.md",
+    "docs/evidence/v233-visual-silhouettes/browser.json",
+    "docs/evidence/v233-visual-silhouettes/battlefield-silhouettes.png"
   ],
   "failures": [
-    "Issue #18 has no stable Preview URL; no deploy-only repair interface observed",
-    "Natural Rift Prototype claim crash remains NOT_REPRODUCED",
+    "Issue #18 still has no playable Preview and current Resume cannot enforce a source switch",
+    "Natural Rift Prototype crash remains NOT_REPRODUCED",
     "Low-FPS simulation loss, strict Save/Load nondeterminism, historical performance FAIL and HARDWARE_TEST_PENDING remain"
   ],
   "blockers": [
-    "Issue #18 recovery requires a new official execution, currently unauthorized",
-    "Port3000 must serve a generated artifact with matching build-metadata rather than source root"
+    "A new isolated OmGitHub Issue is the minimum observed branch-selecting mechanism and remains unauthorized",
+    "No official online port3000 execution was started; visual slice is AFTER_LOCAL only"
   ],
   "next_steps": [
-    "Continue natural campaign sampling and request original player Rift Prototype save/seed/state if available",
-    "Next independent GAME FIRST slice: representative civilization/unit/building visual differentiation or battle alerts",
-    "If separately authorized, Resume #18, fast-forward its clean source to a6a54ef7674e033432f4233694f87ff1303ad6b6, serve exact generated artifact on official port3000, and require Preview Build-SHA verification"
+    "If separately authorized, create one isolated Issue against the frozen latest branch and exact launch SHA; serve its generated 28-file artifact on official port3000",
+    "Continue GAME FIRST with civilization/building landmark silhouettes or battle alerts",
+    "Continue natural campaign sampling for Rift Prototype and ten-wave progression without replacing known failures"
   ],
   "permissions": [
     "Independent gameplay development/tests/normal push authorized",
@@ -66,5 +65,6 @@
   ],
   "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-27T03:26:22.730136+00:00"
+  "resume_status": "SCHEDULED_RESUME_EXECUTED",
+  "updated_at": "2026-10-27T04:14:19.681524+00:00"
 }
