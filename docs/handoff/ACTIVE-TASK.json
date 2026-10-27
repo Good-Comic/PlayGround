@@ -1,65 +1,70 @@
 {
-  "task_id": "V240-GAME-FIRST-BUILDINGS",
-  "name": "Strategy v2.4 adoption and persistent building-state visuals",
-  "requirement_source": "User-approved Strategy v2.4.0 GAME FIRST",
+  "task_id": "V240-SEED-SETUP",
+  "name": "Generated editable reproducible Seed setup",
+  "requirement_source": "Strategy v2.4.0 GAME FIRST Phase C and user continuation priority",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-  "latest_pushed_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
-  "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+  "base_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+  "latest_pushed_commit": "229eb6df99b82740641f85e471563d8dbd98d315",
+  "application_source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
   "completed": [
-    "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
-    "Added construction, completed, damaged, critical and persistent ruined states to representative production building rendering",
-    "Preserved simulation and balance behavior; ruined structures remain dead",
-    "Built an exact 28-file artifact and completed real Chromium Start plus controlled visual verification",
-    "Recorded screenshot, WebM, timeline, raster hashes and zero material browser errors",
-    "Pushed source and evidence commits and verified the remote branch SHA"
+    "Prefilled each new-game menu with a visible shareable RW Seed",
+    "Added an explicit localized reroll control while preserving manual edits across locale changes",
+    "Recorded map generation version 1 in SaveLoad and Bug JSON with backward compatibility for prior saves",
+    "Verified the same manual Seed and biome produce an identical world signature before and after SaveLoad and on a second run",
+    "Saved real Chromium screenshots, WebM, timeline and raw results and verified the remote branch SHA"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Focused visual signatures",
-      "path": "docs/evidence/v240-building-states/focused-node.log",
-      "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
-      "result": "3/3 PASS"
+      "name": "Focused Seed SaveLoad and report checks",
+      "path": "docs/evidence/v240-seed-setup/focused-node.log.txt",
+      "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+      "result": "9/9 PASS"
     },
     {
-      "name": "Exact-artifact Chromium building states",
-      "path": "docs/evidence/v240-building-states/browser.json",
-      "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
-      "result": "5/5 PASS; exact 28 files; real Start; zero material errors; recording saved"
+      "name": "Four locale validation",
+      "path": "docs/evidence/v240-seed-setup/locales.log.txt",
+      "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+      "result": "4 locales 679 keys each PASS"
+    },
+    {
+      "name": "Exact-artifact Chromium Seed workflow",
+      "path": "docs/evidence/v240-seed-setup/browser.json",
+      "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+      "result": "8/8 PASS; exact 28 files; natural setup SaveLoad repeat; zero errors"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-building-states/REPORT.md",
-    "docs/evidence/v240-building-states/browser.json",
-    "docs/evidence/v240-building-states/building-states.png",
-    "docs/evidence/v240-building-states/building-states.webm",
-    "docs/evidence/v240-building-states/timeline.json"
+    "docs/evidence/v240-seed-setup/REPORT.md",
+    "docs/evidence/v240-seed-setup/browser.json",
+    "docs/evidence/v240-seed-setup/generated-seed-menu.png",
+    "docs/evidence/v240-seed-setup/reproduced-seed-game.png",
+    "docs/evidence/v240-seed-setup/seed-setup.webm",
+    "docs/evidence/v240-seed-setup/timeline.json"
   ],
   "failures": [
     "Low-FPS simulation time loss remains SIMULATION_INTEGRITY_BLOCKED",
-    "Strict deterministic SaveLoad remains FAIL",
+    "Strict whole-simulation deterministic SaveLoad remains FAIL; this slice verifies generated frontier identity only",
     "Historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain"
   ],
   "blockers": [
-    "Building-state evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed",
-    "Original player save/seed for the reported natural Rift Prototype crash is still unavailable"
+    "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
   ],
   "next_steps": [
-    "Continue the next independent GAME FIRST visual/audio slice after ownership revalidation",
-    "Continue natural campaign sampling and request the original Rift Prototype save/seed/state when available",
-    "Prepare a later v2.4 Candidate only after sufficient slices; public publication still requires explicit approval"
+    "Continue a distinct high-quality 2.5D civilization or animation visual slice after ownership revalidation",
+    "Extend Seed-driven map mechanics separately without changing the version-1 generator silently",
+    "Continue natural campaign sampling when an original Rift Prototype reproduction state is available"
   ],
   "permissions": [
-    "Independent gameplay development/tests/normal push authorized",
-    "No public Pages change, main, Force Push, Checkpoint overwrite or additional OmGitHub execution"
+    "Independent gameplay development tests and normal push authorized",
+    "No public Pages change main Force Push Checkpoint overwrite or additional OmGitHub execution"
   ],
   "status": "VERIFIED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
   "resume_status": "SCHEDULED_RESUME_EXECUTED",
-  "updated_at": "2026-10-27T09:19:32.045783+00:00"
+  "updated_at": "2026-10-27T10:50:40.885261+00:00"
 }
