@@ -13,6 +13,24 @@ async function build(type){const worker=await p.evaluate(()=>ageOfAsh.game.units
  for(const [x,y]of [[23,20],[25,20],[28,28],[23,31],[26,31],[21,31],[28,31],[22,18],[26,18],[30,26],[19,24]]){const pos=await p.evaluate(([x,y])=>{const g=ageOfAsh.game,d=g.buildingDefs[g.placement.type];return g.screenPos(x+d.w/2,y+d.h/2)},[x,y]);if(pos.x<270||pos.x>1200||pos.y<145||pos.y>620)continue;await p.mouse.move(pos.x,pos.y);await p.waitForTimeout(80);if(await p.evaluate(()=>ageOfAsh.game.placement?.valid)){await p.mouse.click(pos.x,pos.y);record('action',{command:'place',type,world:[x,y]});return true}}
  await p.keyboard.press('Escape');return false;
 }
+async function defend(s) {
+ const threat=s.units.find(u=>u.team==='enemy'&&Math.hypot(u.x-25,u.y-26)<13);
+ const target=threat?{x:threat.x,y:threat.y}:{x:28,y:26};
+ for(const type of ['militia','spearman','archer','commander']) {
+  const u=s.units.find(u=>u.team==='player'&&u.type===type&&u.state==='idle');
+  if(!u||!await select(u.id))continue;
+  const pos=await p.evaluate(id=>{const g=ageOfAsh.game,u=g.units.find(u=>u.id===id),q=g.screenPos(u.x,u.y);return{x:q.x,y:q.y-18*g.camera.zoom}},u.id);
+  await p.mouse.dblclick(pos.x,pos.y);await p.keyboard.press('Shift+A');
+  if(!await p.evaluate(()=>ageOfAsh.game.orderMode==='attackMove'))continue;
+  const goal=await p.evaluate(v=>ageOfAsh.game.screenPos(v.x,v.y),target);
+  if(goal.x>270&&goal.x<1210&&goal.y>130&&goal.y<620){await p.mouse.click(goal.x,goal.y);record('action',{command:'defensive-attack-move',type,target})}
+  else await p.keyboard.press('Escape');
+ }
+ const barracks=s.buildings.find(b=>b.alive&&b.type==='barracks');
+ if(barracks&&await select(barracks.id)) {
+  const goal=await p.evaluate(()=>ageOfAsh.game.screenPos(28,26));await p.mouse.click(goal.x,goal.y,{button:'right'});record('action',{command:'rally',building:barracks.id,world:[28,26]});
+ }
+}
 let result={status:'INCOMPLETE'};
 try{
  await p.goto(url,{waitUntil:'networkidle'});await p.waitForFunction(()=>ageOfAsh?.playtestBuild?.resourceVerification?.startsWith('SHA256_MATCH_'));if(await p.evaluate(()=>ageOfAsh.playtestBuild.commit)!==commit)throw Error('SOURCE_MISMATCH');
@@ -27,9 +45,10 @@ try{
   if(s.phase==='victory'||s.phase==='defeat'){result={status:s.phase==='victory'?'NATURAL_VICTORY':'NATURAL_DEFEAT',state:s,wallSeconds:wall};break}
   if(errors.length){result={status:'BROWSER_ERROR',state:s};break}
   if(s.phase==='boon'){
-    const priority=['rift_prototype','tc_regen','building_hp','veteran'];const index=Math.max(0,s.choices.findIndex(id=>priority.includes(id)));await p.locator('.boon-card').nth(index).click();await p.locator('#btn-claim').click();record('action',{command:'claim-boon',id:s.choices[index]});await p.waitForTimeout(1000);continue;
+    const priority=['rift_prototype','tc_regen','siege_math','veteran_honors'];const index=Math.max(0,s.choices.findIndex(id=>priority.includes(id)));await p.locator('.boon-card').nth(index).click();await p.locator('#btn-claim').click();record('action',{command:'claim-boon',id:s.choices[index]});await p.waitForTimeout(1000);continue;
   }
   if(wall-lastPolicy>6){lastPolicy=wall;
+    await defend(s);
     // Native defensive construction and production/technology choices, paid by
     // the game's normal affordability checks. No GM shortcuts are used.
     const towers=s.buildings.filter(b=>b.alive&&b.type==='tower').length,houses=s.buildings.filter(b=>b.alive&&b.type==='house').length;
@@ -45,4 +64,4 @@ try{
  }
  if(result.status==='INCOMPLETE')result={status:'BOUNDED_SAMPLE_INCOMPLETE',state:await state(),seconds};
 }catch(e){result={status:'HARNESS_OR_GAME_ERROR',error:e.message,stack:e.stack};await p.screenshot({path:resolve(out,'failure.png')}).catch(()=>{})}
-result={source_commit:commit,stage:'AFTER_LOCAL',mode:'NATURAL_UI_LEGAL_POLICY_NO_STATE_INJECTION',...result,errors,failures,actions};writeFileSync(resolve(out,'result.json'),JSON.stringify(result,null,2)+'\n');const v=p.video();await c.close();if(v)copyFileSync(await v.path(),resolve(out,'campaign.webm'));await b.close();console.log(JSON.stringify({status:result.status,wave:result.state?.wave,sim:result.state?.simulationSeconds,errors}));
+result={source_commit:commit,stage:'AFTER_LOCAL',mode:'NATURAL_UI_LEGAL_POLICY_NO_STATE_INJECTION',policy:'V2_NATIVE_ARMY_DEFENSE_AND_RALLY',...result,errors,failures,actions};writeFileSync(resolve(out,'result.json'),JSON.stringify(result,null,2)+'\n');const v=p.video();await c.close();if(v)copyFileSync(await v.path(),resolve(out,'campaign.webm'));await b.close();console.log(JSON.stringify({status:result.status,wave:result.state?.wave,sim:result.state?.simulationSeconds,errors}));

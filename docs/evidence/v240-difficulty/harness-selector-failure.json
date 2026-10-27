@@ -1,0 +1,55 @@
+{
+  "source_commit": "b0be3175b738705207b2e00ff61e67cd24575255",
+  "stage": "AFTER_LOCAL",
+  "mode": "NATIVE_UI_NO_STATE_INJECTION",
+  "checks": [
+    {
+      "name": "exact source34 files",
+      "pass": true
+    },
+    {
+      "name": "localized difficulty en",
+      "pass": true,
+      "detail": [
+        "Easy",
+        "Normal",
+        "Hard"
+      ]
+    },
+    {
+      "name": "localized difficulty zh-Hant",
+      "pass": true,
+      "detail": [
+        "簡單",
+        "普通",
+        "困難"
+      ]
+    },
+    {
+      "name": "localized difficulty zh-Hans",
+      "pass": true,
+      "detail": [
+        "简单",
+        "普通",
+        "困难"
+      ]
+    },
+    {
+      "name": "localized difficulty ja",
+      "pass": true,
+      "detail": [
+        "イージー",
+        "ノーマル",
+        "ハード"
+      ]
+    },
+    {
+      "name": "completion",
+      "pass": false,
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-rules')\u001b[22m\n"
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "pass": false
+}
