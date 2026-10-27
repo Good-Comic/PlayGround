@@ -2,84 +2,85 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-27T01:19:49.031109+00:00",
+  "updated_at": "2026-10-27T03:17:13.804686+00:00",
   "latest_event": {
-    "task_id": "V231-INDEPENDENT-REVIEW",
+    "task_id": "V232-RIFT-PROTOTYPE-NATURAL",
     "agent": "Codex",
-    "severity": "PROGRESS",
-    "branch": "codex/riftwatch-v231-review",
-    "commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-    "build_sha": "5df177bee911b8f9251248115e6128aa92b7b563",
-    "summary": "Scheduled resume independently reviewed the OpenCode v231 hero preview slice: full regression, four locales and fresh real Chromium artifact pass; source is locally verified while OmGitHub preview remains unavailable.",
-    "code_changes": [],
-    "next_steps": [
-      "Reproduce the natural wave-end Rift Prototype crash on an independent branch with full state and browser evidence",
-      "Continue representative hero art/audio distinction without changing balance",
-      "Keep AFTER_DEPLOY_LIVE blocked until Issue #18 exposes an actual Preview URL"
+    "severity": "WARNING",
+    "branch": "codex/riftwatch-v232-rift-prototype",
+    "commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+    "build_sha": "86704e1fe6d8ef356a6706c0218854ca6aa593b7",
+    "summary": "Issue #18 Preview publication is blocked by superseded deployment registration; GAME FIRST slice adds and verifies a dedicated Rift Prototype awakening cue. A real natural first wave settled cleanly but did not offer the target card, so the reported natural crash remains NOT_REPRODUCED.",
+    "code_changes": [
+      "Added a dedicated Web Audio mechanical awakening cue for Rift Prototype after successful spawn.",
+      "Preserved read-only Issue #18 publication diagnosis and real natural-wave/browser evidence."
     ],
-    "requires_user_decision": false,
+    "next_steps": [
+      "Continue natural campaigns or use the original player seed/save/browser state to reproduce the Rift Prototype claim crash without injected boon state.",
+      "Continue a separate GAME FIRST visual or battle-audio/BGM slice.",
+      "Only if separately authorized, use official Issue #18 Resume/Continue and require public Preview Build-SHA verification."
+    ],
+    "requires_user_decision": true,
     "tests": [
       {
-        "name": "Independent full Node regression",
+        "name": "Full Node regression",
         "status": "PASS",
-        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-        "evidence": "docs/evidence/v231-independent-review/full-node.log.txt",
-        "evidence_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-        "evidence_blob": "a9fcdb5385f7ae9bc9d850e6c589672149d48fbb",
+        "source_commit": "86704e1fe6d8ef356a6706c0218854ca6aa593b7",
+        "evidence": "docs/evidence/v232-rift-prototype/full-node.log.txt",
+        "evidence_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+        "evidence_blob": "c163909fccf8fee02350adffcb5fc1ee3d8ce6bb",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Independent real Chromium hero preview",
-        "status": "PASS",
-        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-        "evidence": "docs/evidence/v231-independent-review/browser-checks.json",
-        "evidence_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-        "evidence_blob": "af7d871d1754614e1f8fe1f56c5d3d0bdf960dea",
+        "name": "Natural first-wave Chromium target offer",
+        "status": "FAIL",
+        "source_commit": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+        "evidence": "docs/evidence/v232-rift-prototype/natural-browser.json",
+        "evidence_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+        "evidence_blob": "64415de18803e22f2db7a5fdd1758bce3602dcac",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Issue 18 OmGitHub AFTER_DEPLOY_LIVE",
+        "name": "Post-change immutable-artifact Chromium",
+        "status": "PASS",
+        "source_commit": "86704e1fe6d8ef356a6706c0218854ca6aa593b7",
+        "evidence": "docs/evidence/v232-rift-prototype/post-change-browser.json",
+        "evidence_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+        "evidence_blob": "0dfa4c565470b602ff5885d6b6845d3177f54a2a",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "OmGitHub Issue 18 online Preview",
         "status": "BLOCKED",
-        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-        "evidence": "docs/evidence/v231-independent-review/REPORT.md",
-        "evidence_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-        "evidence_blob": "3e404e9033352978f2a740df1af9ab99c2d71243",
+        "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "evidence": "docs/evidence/v232-omgithub18-preview/REPORT.md",
+        "evidence_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+        "evidence_blob": "09f9dca959f793d50b0117ef95b0e72d86288733",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "OMGITHUB18_FINISHED_WITHOUT_PREVIEW",
-        "severity": "BLOCKED",
-        "summary": "OpenCode completed from the correct SHA, but OmGitHub publication remains draft with no Preview URL; online gameplay acceptance was not possible.",
-        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-        "requires_user_decision": false
+        "id": "OMGH-18-PREVIEW-SUPERSEDED",
+        "severity": "ACTION_REQUIRED",
+        "summary": "All observed deployment registration callbacks returned HTTP 409 superseded; publication remains draft with no URL or deploy-only control. A new official Resume/Continue OpenCode execution needs explicit authorization.",
+        "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+        "requires_user_decision": true
       },
       {
-        "id": "HERO_AEGIS_RADIUS_SPEC_DECISION",
+        "id": "RIFT-PROTOTYPE-NATURAL-NOT-REPRODUCED",
         "severity": "WARNING",
-        "summary": "Production Aegis radius 5 differs from recovered GDD radius 4. The visual slice intentionally preserves production behavior; a future balance change requires an explicit specification decision.",
-        "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-        "requires_user_decision": true
+        "summary": "The genuine natural wave completed without errors but did not offer Rift Prototype; exact player crash conditions remain unavailable.",
+        "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+        "requires_user_decision": false
       }
     ],
-    "response": "SCHEDULED_RESUME_EXECUTED. OpenCode v231 hero range previews were independently verified: 109/109 Node, four locales, and 9/9 real local Chromium checks pass. Review branch b91a070 preserves evidence. Issue #18 started from the correct candidate and completed, but produced no Preview URL, so AFTER_DEPLOY_LIVE remains blocked.",
-    "event_type": "TASK_COMPLETED",
-    "occurred_at": "2026-10-27T01:18:00Z",
-    "completed": [
-      "Confirmed OpenCode stopped and no active ownership before review",
-      "Reviewed candidate-to-v231 gameplay and renderer diff",
-      "Independently passed 109 Node tests and four locales with 678 keys",
-      "Independently built exact 28-file artifact from 5df177b",
-      "Independently passed 9/9 real Chromium checks and visually inspected both range previews",
-      "Saved failed first harness attempt separately from valid gameplay acceptance"
-    ],
-    "event_id": "3997f35de2050a52f1e9a248e5820c4db8331b5d2d266be177caa0ae331d9235",
-    "remote_head": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+    "response": "Issue #18 remains Finished without preview because its publication registration was superseded; no restart was attempted. Gameplay branch codex/riftwatch-v232-rift-prototype is remotely saved at 43b3223ca8cde4ddb0cfb80e767e183af5f4d70d. Rift Prototype now has a dedicated awakening cue; 110/110 Node tests and exact-artifact Chromium spawn/cue/move checks pass. A genuine natural first wave reached boon without browser errors, but the target card was not offered, so the player crash remains NOT_REPRODUCED.",
+    "event_id": "df0abe05dcf6ad3fcb08bcf04618416391c8f1c2a1b51891405317c8a2cb99b3",
+    "remote_head": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "latest_pushed_sha": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-    "recorded_at": "2026-10-27T01:19:49.031109+00:00",
+    "recorded_at": "2026-10-27T03:17:13.804686+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -1489,68 +1490,27 @@
       ]
     },
     "V231-INDEPENDENT-REVIEW": {
-      "task_id": "V231-INDEPENDENT-REVIEW",
       "agent": "Codex",
-      "severity": "PROGRESS",
-      "branch": "codex/riftwatch-v231-review",
-      "commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-      "build_sha": "5df177bee911b8f9251248115e6128aa92b7b563",
-      "summary": "Scheduled resume independently reviewed the OpenCode v231 hero preview slice: full regression, four locales and fresh real Chromium artifact pass; source is locally verified while OmGitHub preview remains unavailable.",
-      "code_changes": [],
-      "next_steps": [
-        "Reproduce the natural wave-end Rift Prototype crash on an independent branch with full state and browser evidence",
-        "Continue representative hero art/audio distinction without changing balance",
-        "Keep AFTER_DEPLOY_LIVE blocked until Issue #18 exposes an actual Preview URL"
-      ],
-      "requires_user_decision": false,
-      "tests": [
-        {
-          "name": "Independent full Node regression",
-          "status": "PASS",
-          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-          "evidence": "docs/evidence/v231-independent-review/full-node.log.txt",
-          "evidence_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-          "evidence_blob": "a9fcdb5385f7ae9bc9d850e6c589672149d48fbb",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Independent real Chromium hero preview",
-          "status": "PASS",
-          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-          "evidence": "docs/evidence/v231-independent-review/browser-checks.json",
-          "evidence_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-          "evidence_blob": "af7d871d1754614e1f8fe1f56c5d3d0bdf960dea",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Issue 18 OmGitHub AFTER_DEPLOY_LIVE",
-          "status": "BLOCKED",
-          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-          "evidence": "docs/evidence/v231-independent-review/REPORT.md",
-          "evidence_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-          "evidence_blob": "3e404e9033352978f2a740df1af9ab99c2d71243",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        }
-      ],
       "blockers": [
         {
           "id": "OMGITHUB18_FINISHED_WITHOUT_PREVIEW",
+          "requires_user_decision": false,
           "severity": "BLOCKED",
-          "summary": "OpenCode completed from the correct SHA, but OmGitHub publication remains draft with no Preview URL; online gameplay acceptance was not possible.",
           "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-          "requires_user_decision": false
+          "summary": "OpenCode completed from the correct SHA, but OmGitHub publication remains draft with no Preview URL; online gameplay acceptance was not possible."
         },
         {
           "id": "HERO_AEGIS_RADIUS_SPEC_DECISION",
+          "requires_user_decision": true,
           "severity": "WARNING",
-          "summary": "Production Aegis radius 5 differs from recovered GDD radius 4. The visual slice intentionally preserves production behavior; a future balance change requires an explicit specification decision.",
           "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-          "requires_user_decision": true
+          "summary": "Production Aegis radius 5 differs from recovered GDD radius 4. The visual slice intentionally preserves production behavior; a future balance change requires an explicit specification decision."
         }
       ],
-      "response": "SCHEDULED_RESUME_EXECUTED. OpenCode v231 hero range previews were independently verified: 109/109 Node, four locales, and 9/9 real local Chromium checks pass. Review branch b91a070 preserves evidence. Issue #18 started from the correct candidate and completed, but produced no Preview URL, so AFTER_DEPLOY_LIVE remains blocked.",
-      "event_type": "TASK_COMPLETED",
-      "occurred_at": "2026-10-27T01:18:00Z",
+      "branch": "codex/riftwatch-v231-review",
+      "build_sha": "5df177bee911b8f9251248115e6128aa92b7b563",
+      "code_changes": [],
+      "commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
       "completed": [
         "Confirmed OpenCode stopped and no active ownership before review",
         "Reviewed candidate-to-v231 gameplay and renderer diff",
@@ -1559,12 +1519,133 @@
         "Independently passed 9/9 real Chromium checks and visually inspected both range previews",
         "Saved failed first harness attempt separately from valid gameplay acceptance"
       ],
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
       "event_id": "3997f35de2050a52f1e9a248e5820c4db8331b5d2d266be177caa0ae331d9235",
+      "event_type": "TASK_COMPLETED",
+      "latest_pushed_sha": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+      "next_steps": [
+        "Reproduce the natural wave-end Rift Prototype crash on an independent branch with full state and browser evidence",
+        "Continue representative hero art/audio distinction without changing balance",
+        "Keep AFTER_DEPLOY_LIVE blocked until Issue #18 exposes an actual Preview URL"
+      ],
+      "occurred_at": "2026-10-27T01:18:00Z",
+      "pushed": true,
+      "recorded_at": "2026-10-27T01:19:49.031109+00:00",
       "remote_head": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "SCHEDULED_RESUME_EXECUTED. OpenCode v231 hero range previews were independently verified: 109/109 Node, four locales, and 9/9 real local Chromium checks pass. Review branch b91a070 preserves evidence. Issue #18 started from the correct candidate and completed, but produced no Preview URL, so AFTER_DEPLOY_LIVE remains blocked.",
+      "severity": "PROGRESS",
+      "summary": "Scheduled resume independently reviewed the OpenCode v231 hero preview slice: full regression, four locales and fresh real Chromium artifact pass; source is locally verified while OmGitHub preview remains unavailable.",
+      "task_id": "V231-INDEPENDENT-REVIEW",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v231-independent-review/full-node.log.txt",
+          "evidence_blob": "a9fcdb5385f7ae9bc9d850e6c589672149d48fbb",
+          "evidence_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Independent full Node regression",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v231-independent-review/browser-checks.json",
+          "evidence_blob": "af7d871d1754614e1f8fe1f56c5d3d0bdf960dea",
+          "evidence_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Independent real Chromium hero preview",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v231-independent-review/REPORT.md",
+          "evidence_blob": "3e404e9033352978f2a740df1af9ab99c2d71243",
+          "evidence_commit": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Issue 18 OmGitHub AFTER_DEPLOY_LIVE",
+          "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+          "status": "BLOCKED"
+        }
+      ]
+    },
+    "V232-RIFT-PROTOTYPE-NATURAL": {
+      "task_id": "V232-RIFT-PROTOTYPE-NATURAL",
+      "agent": "Codex",
+      "severity": "WARNING",
+      "branch": "codex/riftwatch-v232-rift-prototype",
+      "commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+      "build_sha": "86704e1fe6d8ef356a6706c0218854ca6aa593b7",
+      "summary": "Issue #18 Preview publication is blocked by superseded deployment registration; GAME FIRST slice adds and verifies a dedicated Rift Prototype awakening cue. A real natural first wave settled cleanly but did not offer the target card, so the reported natural crash remains NOT_REPRODUCED.",
+      "code_changes": [
+        "Added a dedicated Web Audio mechanical awakening cue for Rift Prototype after successful spawn.",
+        "Preserved read-only Issue #18 publication diagnosis and real natural-wave/browser evidence."
+      ],
+      "next_steps": [
+        "Continue natural campaigns or use the original player seed/save/browser state to reproduce the Rift Prototype claim crash without injected boon state.",
+        "Continue a separate GAME FIRST visual or battle-audio/BGM slice.",
+        "Only if separately authorized, use official Issue #18 Resume/Continue and require public Preview Build-SHA verification."
+      ],
+      "requires_user_decision": true,
+      "tests": [
+        {
+          "name": "Full Node regression",
+          "status": "PASS",
+          "source_commit": "86704e1fe6d8ef356a6706c0218854ca6aa593b7",
+          "evidence": "docs/evidence/v232-rift-prototype/full-node.log.txt",
+          "evidence_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+          "evidence_blob": "c163909fccf8fee02350adffcb5fc1ee3d8ce6bb",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Natural first-wave Chromium target offer",
+          "status": "FAIL",
+          "source_commit": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+          "evidence": "docs/evidence/v232-rift-prototype/natural-browser.json",
+          "evidence_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+          "evidence_blob": "64415de18803e22f2db7a5fdd1758bce3602dcac",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Post-change immutable-artifact Chromium",
+          "status": "PASS",
+          "source_commit": "86704e1fe6d8ef356a6706c0218854ca6aa593b7",
+          "evidence": "docs/evidence/v232-rift-prototype/post-change-browser.json",
+          "evidence_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+          "evidence_blob": "0dfa4c565470b602ff5885d6b6845d3177f54a2a",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "OmGitHub Issue 18 online Preview",
+          "status": "BLOCKED",
+          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "evidence": "docs/evidence/v232-omgithub18-preview/REPORT.md",
+          "evidence_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+          "evidence_blob": "09f9dca959f793d50b0117ef95b0e72d86288733",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        }
+      ],
+      "blockers": [
+        {
+          "id": "OMGH-18-PREVIEW-SUPERSEDED",
+          "severity": "ACTION_REQUIRED",
+          "summary": "All observed deployment registration callbacks returned HTTP 409 superseded; publication remains draft with no URL or deploy-only control. A new official Resume/Continue OpenCode execution needs explicit authorization.",
+          "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+          "requires_user_decision": true
+        },
+        {
+          "id": "RIFT-PROTOTYPE-NATURAL-NOT-REPRODUCED",
+          "severity": "WARNING",
+          "summary": "The genuine natural wave completed without errors but did not offer Rift Prototype; exact player crash conditions remain unavailable.",
+          "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+          "requires_user_decision": false
+        }
+      ],
+      "response": "Issue #18 remains Finished without preview because its publication registration was superseded; no restart was attempted. Gameplay branch codex/riftwatch-v232-rift-prototype is remotely saved at 43b3223ca8cde4ddb0cfb80e767e183af5f4d70d. Rift Prototype now has a dedicated awakening cue; 110/110 Node tests and exact-artifact Chromium spawn/cue/move checks pass. A genuine natural first wave reached boon without browser errors, but the target card was not offered, so the player crash remains NOT_REPRODUCED.",
+      "event_id": "df0abe05dcf6ad3fcb08bcf04618416391c8f1c2a1b51891405317c8a2cb99b3",
+      "remote_head": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "latest_pushed_sha": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
-      "recorded_at": "2026-10-27T01:19:49.031109+00:00",
+      "recorded_at": "2026-10-27T03:17:13.804686+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },

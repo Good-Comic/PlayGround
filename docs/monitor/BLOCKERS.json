@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T01:19:49.031109+00:00",
+  "updated_at": "2026-10-27T03:17:13.804686+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -227,19 +227,35 @@
     },
     {
       "id": "OMGITHUB18_FINISHED_WITHOUT_PREVIEW",
-      "severity": "BLOCKED",
-      "summary": "OpenCode completed from the correct SHA, but OmGitHub publication remains draft with no Preview URL; online gameplay acceptance was not possible.",
-      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
       "requires_user_decision": false,
+      "severity": "BLOCKED",
+      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+      "summary": "OpenCode completed from the correct SHA, but OmGitHub publication remains draft with no Preview URL; online gameplay acceptance was not possible.",
       "task_id": "V231-INDEPENDENT-REVIEW"
     },
     {
       "id": "HERO_AEGIS_RADIUS_SPEC_DECISION",
-      "severity": "WARNING",
-      "summary": "Production Aegis radius 5 differs from recovered GDD radius 4. The visual slice intentionally preserves production behavior; a future balance change requires an explicit specification decision.",
-      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
       "requires_user_decision": true,
+      "severity": "WARNING",
+      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+      "summary": "Production Aegis radius 5 differs from recovered GDD radius 4. The visual slice intentionally preserves production behavior; a future balance change requires an explicit specification decision.",
       "task_id": "V231-INDEPENDENT-REVIEW"
+    },
+    {
+      "id": "OMGH-18-PREVIEW-SUPERSEDED",
+      "severity": "ACTION_REQUIRED",
+      "summary": "All observed deployment registration callbacks returned HTTP 409 superseded; publication remains draft with no URL or deploy-only control. A new official Resume/Continue OpenCode execution needs explicit authorization.",
+      "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+      "requires_user_decision": true,
+      "task_id": "V232-RIFT-PROTOTYPE-NATURAL"
+    },
+    {
+      "id": "RIFT-PROTOTYPE-NATURAL-NOT-REPRODUCED",
+      "severity": "WARNING",
+      "summary": "The genuine natural wave completed without errors but did not offer Rift Prototype; exact player crash conditions remain unavailable.",
+      "source_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+      "requires_user_decision": false,
+      "task_id": "V232-RIFT-PROTOTYPE-NATURAL"
     }
   ]
 }
