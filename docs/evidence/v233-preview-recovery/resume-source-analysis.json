@@ -1,0 +1,73 @@
+{
+  "observed_at_utc": "2026-10-27T04:13:44.839963+00:00",
+  "issue": 18,
+  "requested_candidate": {
+    "branch": "codex/riftwatch-v233-dynamic-score",
+    "head": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed"
+  },
+  "current_issue_source_marker": {
+    "branch": "codex/riftwatch-omgithub17-upgrade-candidate",
+    "expected_sha_in_body": "45435a323c729a28da1de454a3e53740fc9159f2"
+  },
+  "current_issue_state": {
+    "status": "complete",
+    "progress": "Finished without preview",
+    "run": "40377196806",
+    "deployment": {
+      "run": "40377196806",
+      "generation": "234",
+      "attempt": 1,
+      "state": "deploying",
+      "error": "",
+      "updated_at": "2026-10-26T19:03:16.362Z",
+      "stage": "publishing",
+      "stage_identity": "40377196806:1",
+      "stage_started_at": "2026-10-26T19:03:01.568Z",
+      "stage_durations": {
+        "building": 1238.994
+      }
+    },
+    "publication": {
+      "state": "draft",
+      "project_path": "",
+      "preview_url": "",
+      "screenshots": [],
+      "error": "",
+      "can_publish": false
+    },
+    "can_manage": false,
+    "session": {
+      "state": "ended",
+      "can_resume": true,
+      "reason": ""
+    }
+  },
+  "resume_client": {
+    "bundle_url": "https://omgithub.com/assets/index-BeRL5y-I.js",
+    "bundle_sha256": "e5aba2b15d28be648b3e706a45dd62e367302d48b1fe774e19a8143144b7707a",
+    "endpoint": "POST /api/github/{owner}/{repo}/issues/{number}/resume",
+    "json_fields": [
+      "prompt",
+      "request_id"
+    ],
+    "branch_field_present": false,
+    "commit_sha_field_present": false,
+    "result_navigation": "omgithub_path returned by new execution"
+  },
+  "finding": "SOURCE_SWITCH_NOT_GUARANTEED",
+  "operation_performed": "READ_ONLY_ONLY; no Resume, Continue, issue creation, publication, or port-3000 registration",
+  "minimum_safe_future_path": {
+    "mechanism": "new isolated OmGitHub Issue carrying omgithub-request:v1 branch marker, because existing #18 Resume has no source selector",
+    "branch": "codex/riftwatch-v233-visual-silhouettes",
+    "application_sha": "d989bb7236cb7e6bc4bee6892ff0fae9196bc2da",
+    "preflight": "freeze branch and require git rev-parse HEAD equality before any work",
+    "official_service": "generate the 28-file build_playtest artifact from that exact SHA, verify build-metadata hashes, then bind that directory to 127.0.0.1:3000 before publication readiness",
+    "side_effects": [
+      "creates a new GitHub Issue and OpenCode execution",
+      "creates a new run/deployment generation and may create a new branch/checkpoint",
+      "may consume OpenCode resources"
+    ],
+    "rollback": "close/abandon only the isolated new Issue/run; keep #18, #17, Pages, main, and existing checkpoints unchanged"
+  },
+  "authorization": "NOT_AUTHORIZED_THIS_TURN"
+}
