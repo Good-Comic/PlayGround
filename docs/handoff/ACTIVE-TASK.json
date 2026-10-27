@@ -1,65 +1,65 @@
 {
-  "task_id": "V240-SPRITE-ATLAS",
-  "name": "External Sprite Atlas recovery and acceptance",
-  "requirement_source": "Strategy v2.4.0 GAME FIRST and P0 credential recovery",
-  "priority": "P0",
+  "task_id": "V240-LANDMARK-MATERIALS",
+  "name": "Five family house/barracks scoped visual QA",
+  "requirement_source": "Latest user instruction: complete existing QA then prioritize gameplay",
+  "priority": "P1",
   "agent": "Codex",
-  "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
+  "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
-  "latest_pushed_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-  "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+  "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
+  "latest_pushed_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
+  "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
+  "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
   "completed": [
-    "Recovered from remotely saved atlas implementation after prior worktree loss",
-    "Rebuilt and normally pushed the confirmed 0.78 visual scale correction",
-    "Rebuilt exact-artifact Chromium evidence for eight directions five states and fallback",
-    "Applied user override revoking all quota-percentage stop thresholds"
+    "Found floating roof-material defect in actual original artifact screenshots",
+    "Projected existing materials onto clipped isometric wall planes without gameplay changes",
+    "Inspected five family house/barracks six-state images and recorded actual Chromium video",
+    "Measured three independent before/after mixed-scene runs; retained absolute performance FAIL and incremental draw overhead",
+    "Rejected and normally reverted ineffective cache experiment"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Focused atlas/combat/visual regression",
-      "path": "docs/evidence/v240-sprite-atlas/focused-node.log.txt",
-      "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-      "result": "20/20 PASS"
+      "name": "Visual/state Chromium",
+      "result": "10/10 scoped checks PASS plus direct image inspection",
+      "path": "docs/evidence/v240-landmarks/fixed/browser.json",
+      "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef"
     },
     {
-      "name": "Exact-artifact Chromium atlas",
-      "path": "docs/evidence/v240-sprite-atlas/browser.json",
-      "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-      "result": "6/6 PASS; exact 31 files; zero errors"
+      "name": "Focused Node",
+      "result": "7/7 PASS",
+      "path": "docs/evidence/v240-landmarks/focused-node.log.txt",
+      "source_commit": "9fc6db69227432b162651017819e23cbd4b9153f"
     },
     {
-      "name": "Quota guard override",
-      "path": "tests/dev/test_quota_guard.py",
-      "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
-      "result": "8/8 PASS in recovery worktree"
+      "name": "Mixed rendering",
+      "result": "All absolute rAF gates FAIL; renderer JS +21.4%; not full QA accepted",
+      "path": "docs/evidence/v240-landmarks/performance/summary.json",
+      "source_commit": "9fc6db69227432b162651017819e23cbd4b9153f"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-sprite-atlas/REPORT.md",
-    "docs/evidence/v240-sprite-atlas/browser.json",
-    "docs/evidence/v240-sprite-atlas/atlas-gameplay.png",
-    "docs/evidence/v240-sprite-atlas/sprite-atlas.webm"
+    "docs/evidence/v240-landmarks/REPORT.md",
+    "docs/evidence/v240-landmarks/fixed/landmark-gallery.webm"
   ],
   "failures": [
-    "Prior local-only commit objects were unavailable in the replacement environment; equivalent verified content received new SHA values",
-    "Existing simulation SaveLoad performance natural Rift ten-wave and hardware gaps remain"
+    "Absolute cloud frame gate FAIL; incremental renderer JS overhead remains",
+    "Historical simulation SaveLoad natural Rift campaign and hardware issues remain"
   ],
   "blockers": [
-    "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
+    "Full QA acceptance withheld; no public release authorized"
   ],
   "next_steps": [
-    "Push this evidence/recovery checkpoint and verify remote HEAD",
-    "Publish Progress Feed and release ownership version 142",
-    "Then extend atlas to archer and cavalry in a new owned slice"
+    "Do not schedule further pure art; implement read-only pre-game rules summary",
+    "Then Seed/terrain accessibility, natural ten-wave campaign, difficulty and New Game+ with explicit specs"
   ],
   "permissions": [
-    "Independent gameplay development tests and normal push authorized",
-    "No public deployment protected branch change or OmGitHub execution"
+    "Independent development tests normal commit/push",
+    "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "LOCAL_VERIFIED",
-  "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
-  "updated_at": "2026-10-27T14:53:51.140238+00:00"
+  "status": "CHECKPOINTED",
+  "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
+  "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
+  "updated_at": "2026-10-27T20:18:33.383117+00:00"
 }

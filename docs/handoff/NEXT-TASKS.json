@@ -1,7 +1,72 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T14:53:51.140238+00:00",
+  "updated_at": "2026-10-27T20:18:33.383117+00:00",
   "tasks": [
+    {
+      "task_id": "V240-LANDMARK-MATERIALS",
+      "name": "Five family house/barracks scoped visual QA",
+      "requirement_source": "Latest user instruction: complete existing QA then prioritize gameplay",
+      "priority": "P1",
+      "agent": "Codex",
+      "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
+      "branch": "codex/riftwatch-v240-game-first",
+      "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
+      "latest_pushed_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
+      "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
+      "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+      "completed": [
+        "Found floating roof-material defect in actual original artifact screenshots",
+        "Projected existing materials onto clipped isometric wall planes without gameplay changes",
+        "Inspected five family house/barracks six-state images and recorded actual Chromium video",
+        "Measured three independent before/after mixed-scene runs; retained absolute performance FAIL and incremental draw overhead",
+        "Rejected and normally reverted ineffective cache experiment"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Visual/state Chromium",
+          "result": "10/10 scoped checks PASS plus direct image inspection",
+          "path": "docs/evidence/v240-landmarks/fixed/browser.json",
+          "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef"
+        },
+        {
+          "name": "Focused Node",
+          "result": "7/7 PASS",
+          "path": "docs/evidence/v240-landmarks/focused-node.log.txt",
+          "source_commit": "9fc6db69227432b162651017819e23cbd4b9153f"
+        },
+        {
+          "name": "Mixed rendering",
+          "result": "All absolute rAF gates FAIL; renderer JS +21.4%; not full QA accepted",
+          "path": "docs/evidence/v240-landmarks/performance/summary.json",
+          "source_commit": "9fc6db69227432b162651017819e23cbd4b9153f"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v240-landmarks/REPORT.md",
+        "docs/evidence/v240-landmarks/fixed/landmark-gallery.webm"
+      ],
+      "failures": [
+        "Absolute cloud frame gate FAIL; incremental renderer JS overhead remains",
+        "Historical simulation SaveLoad natural Rift campaign and hardware issues remain"
+      ],
+      "blockers": [
+        "Full QA acceptance withheld; no public release authorized"
+      ],
+      "next_steps": [
+        "Do not schedule further pure art; implement read-only pre-game rules summary",
+        "Then Seed/terrain accessibility, natural ten-wave campaign, difficulty and New Game+ with explicit specs"
+      ],
+      "permissions": [
+        "Independent development tests normal commit/push",
+        "No main Force Push Checkpoints Pages or OmGitHub publication"
+      ],
+      "status": "CHECKPOINTED",
+      "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
+      "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
+      "updated_at": "2026-10-27T20:18:33.383117+00:00"
+    },
     {
       "task_id": "V240-SPRITE-ATLAS",
       "name": "External Sprite Atlas recovery and acceptance",
@@ -1156,5 +1221,12 @@
       "updated_at": "2026-10-25T18:24:53.917813+00:00"
     }
   ],
-  "active_strategy": "docs/STRATEGY-V2.4-GAME-FIRST.md"
+  "active_strategy": "docs/STRATEGY-V2.4-GAME-FIRST.md",
+  "gameplay_priority_override": [
+    "P1 pre-game rules query without balance changes",
+    "P1 Seed/terrain accessibility",
+    "P1 natural ten-wave campaign",
+    "P2 difficulty/Boss tuning based on authority",
+    "P2 New Game+ minimum playable flow"
+  ]
 }
