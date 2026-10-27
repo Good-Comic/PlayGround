@@ -60,3 +60,18 @@ test('building visuals expose construction damage and persistent ruin states wit
   assert.equal(buildingVisualState({ ...base, hp: 35 }), 'critical');
   assert.equal(buildingVisualState({ ...base, alive: false, hp: 0 }), 'ruined');
 });
+
+test('landmark material clips to both house and barracks isometric wall planes', () => {
+  for (const type of ['house', 'barracks']) {
+    const { renderer, calls } = recordingRenderer();
+    renderer.footprint = () => ({ D:{x:0,y:40}, C:{x:64,y:72}, B:{x:128,y:40}, cx:64, cy:40 });
+    const building = { id:1,type,w:type==='house'?2:3,h:type==='house'?2:3 };
+    const before = JSON.stringify(building);
+    renderer.drawCivilizationBuildingAccent(building,{camera:{zoom:1},civ:{id:'SAR'}},0);
+    const transforms = calls.filter(c=>c[0]==='transform');
+    assert.equal(transforms.length,2);
+    assert.ok(transforms[0][2]>0 && transforms[1][2]<0, 'opposite isometric slopes');
+    assert.equal(calls.filter(c=>c[0]==='clip').length,2);
+    assert.equal(JSON.stringify(building),before,'rendering never mutates building geometry');
+  }
+});
