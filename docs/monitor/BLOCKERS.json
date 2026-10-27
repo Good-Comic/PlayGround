@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T04:56:26.803676+00:00",
+  "updated_at": "2026-10-27T05:05:06.895382+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -291,19 +291,35 @@
     },
     {
       "id": "OMGITHUB_PREVIEW_BLOCKED",
-      "severity": "WARNING",
-      "summary": "Current Codex environment gets Envoy HTTP403 for the new exact stable Preview hostname; OmGitHub publication state also remains unpublished despite ready generation161 and a stable URL.",
-      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+      "summary": "Current Codex environment gets Envoy HTTP403 for the new exact stable Preview hostname; OmGitHub publication state also remains unpublished despite ready generation161 and a stable URL.",
       "task_id": "V234-OMGITHUB-PREVIEW"
     },
     {
       "id": "SIMULATION_SAVELOAD_HARDWARE_OPEN",
-      "severity": "WARNING",
-      "summary": "Low-FPS simulation loss, strict Save/Load nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, and HARDWARE_TEST_PENDING remain.",
-      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+      "summary": "Low-FPS simulation loss, strict Save/Load nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, and HARDWARE_TEST_PENDING remain.",
       "task_id": "V234-OMGITHUB-PREVIEW"
+    },
+    {
+      "id": "V234_PAGES_APPROVAL_REQUIRED",
+      "severity": "ACTION_REQUIRED",
+      "summary": "Publishing the immutable v234 directory and switching the Pages root remains outside this task authorization and requires explicit approval of docs/playtest/v234/APPROVAL-PLAN.json.",
+      "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+      "requires_user_decision": true,
+      "task_id": "V234-CANDIDATE"
+    },
+    {
+      "id": "SIMULATION_SAVELOAD_HARDWARE_OPEN",
+      "severity": "WARNING",
+      "summary": "Low-FPS simulation loss, strict SaveLoad nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain.",
+      "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+      "requires_user_decision": false,
+      "task_id": "V234-CANDIDATE"
     }
   ]
 }
