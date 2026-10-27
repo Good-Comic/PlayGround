@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T18:59:51.849060+00:00",
+  "updated_at": "2026-10-27T01:19:49.031109+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -203,27 +203,43 @@
     },
     {
       "id": "RIFT-PROTOTYPE-NATURAL-REPRO",
-      "severity": "BLOCKED",
-      "summary": "Controlled real-UI Rift Prototype path passes; the reported natural wave-end crash remains NOT_REPRODUCED and needs the original or equivalent state.",
-      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
       "requires_user_decision": false,
+      "severity": "BLOCKED",
+      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+      "summary": "Controlled real-UI Rift Prototype path passes; the reported natural wave-end crash remains NOT_REPRODUCED and needs the original or equivalent state.",
       "task_id": "V231-HERO-SKILL-PREVIEW"
     },
     {
       "id": "GDD-HERO-STATS-DECISION",
-      "severity": "ACTION_REQUIRED",
-      "summary": "Production hero stats and Aegis radius 5 differ from the recovered GDD snapshot (Aegis radius 4). This slice deliberately made no balance change; an explicit decision is required.",
-      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
       "requires_user_decision": true,
+      "severity": "ACTION_REQUIRED",
+      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+      "summary": "Production hero stats and Aegis radius 5 differ from the recovered GDD snapshot (Aegis radius 4). This slice deliberately made no balance change; an explicit decision is required.",
       "task_id": "V231-HERO-SKILL-PREVIEW"
     },
     {
       "id": "SIM-228-01",
+      "requires_user_decision": false,
       "severity": "BLOCKED",
+      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
       "summary": "Production low-FPS simulation-time loss and strict Save/Load determinism failure remain open; historical performance FAIL and HARDWARE_TEST_PENDING are preserved.",
+      "task_id": "V231-HERO-SKILL-PREVIEW"
+    },
+    {
+      "id": "OMGITHUB18_FINISHED_WITHOUT_PREVIEW",
+      "severity": "BLOCKED",
+      "summary": "OpenCode completed from the correct SHA, but OmGitHub publication remains draft with no Preview URL; online gameplay acceptance was not possible.",
       "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
       "requires_user_decision": false,
-      "task_id": "V231-HERO-SKILL-PREVIEW"
+      "task_id": "V231-INDEPENDENT-REVIEW"
+    },
+    {
+      "id": "HERO_AEGIS_RADIUS_SPEC_DECISION",
+      "severity": "WARNING",
+      "summary": "Production Aegis radius 5 differs from recovered GDD radius 4. The visual slice intentionally preserves production behavior; a future balance change requires an explicit specification decision.",
+      "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+      "requires_user_decision": true,
+      "task_id": "V231-INDEPENDENT-REVIEW"
     }
   ]
 }
