@@ -1,72 +1,68 @@
 {
-  "task_id": "V231-HERO-SKILL-PREVIEW",
-  "name": "Hero visual distinction and skill-range preview",
-  "requirement_source": "Strategy v2.3.0 handoff next slice",
-  "priority": "P1",
-  "agent": "OpenCode; execution opencode-omgithub17-20261027-a",
-  "environment": "Managed Linux; local Chromium/SwiftShader; not physical GPU or public deployment",
-  "branch": "codex/riftwatch-v231-hero-skill-preview",
-  "base_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
-  "latest_pushed_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
-  "predecessor_task": "V230-P0-INPUT",
+  "task_id": "V231-INDEPENDENT-REVIEW",
+  "name": "Independent review of OpenCode hero skill-range preview slice",
+  "requirement_source": "Universal Autonomous Resume Protocol and Strategy v2.3 GAME FIRST",
+  "priority": "P0",
+  "agent": "Codex; OpenCode run 40377196806 completed before review",
+  "environment": "Managed revision 42; local Chromium 154/SwiftShader; no public Preview URL",
+  "branch": "codex/riftwatch-v231-review",
+  "base_commit": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+  "latest_pushed_commit": null,
   "completed": [
-    "Exported shared Mark radius 9 and Aegis radius 5 constants consumed by gameplay",
-    "Added commander gold ground ring, direction ticks, and sigil for crowd distinction",
-    "Added Mark/Aegis hover and keyboard-focus range preview with cleanup on leave, blur, death, restore, and selection change",
-    "109/109 Node tests and four-locale 678-key validation pass",
-    "8/8 real local Chromium artifact checks pass with no Console, Page, or request errors"
+    "Verified no active Task Ownership and confirmed OpenCode completion before taking an independent review branch",
+    "Reviewed gameplay and renderer diff from candidate 45435a3 through application source 5df177b",
+    "Independently reran full 109-test suite and four-locale 678-key validation",
+    "Built a fresh immutable 28-file artifact from exact application commit 5df177b",
+    "Independently reran real local Chromium hero preview checks: 9/9 PASS with zero browser errors",
+    "Visually inspected orange Mark and blue Aegis range previews around the selected hero"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Full Node regression including hero preview",
-      "path": "docs/evidence/v231-hero-skill-preview/REPORT.md",
+      "name": "Independent full Node regression",
+      "path": "docs/evidence/v231-independent-review/full-node.log.txt",
       "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-      "result": "109/109 Node PASS; four locales 678 keys PASS"
+      "result": "109/109 PASS"
     },
     {
-      "name": "Real local Chromium skill preview",
-      "path": "docs/evidence/v231-hero-skill-preview/browser-checks.json",
+      "name": "Independent real Chromium hero preview",
+      "path": "docs/evidence/v231-independent-review/browser-checks.json",
       "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
-      "result": "8/8 LOCAL PASS; Console/Page/request errors 0"
+      "result": "9/9 PASS; Console/Page/request errors 0"
     }
   ],
   "evidence": [
-    "docs/evidence/v231-hero-skill-preview/REPORT.md",
-    "docs/evidence/v231-hero-skill-preview/browser-checks.json",
-    "docs/evidence/v231-hero-skill-preview/mark-preview.png",
-    "docs/evidence/v231-hero-skill-preview/aegis-preview.png",
-    "tools/qa/v231_hero_skill_browser.mjs"
+    "docs/evidence/v231-independent-review/REPORT.md",
+    "docs/evidence/v231-independent-review/browser-checks.json",
+    "docs/evidence/v231-independent-review/first-attempt.json",
+    "docs/evidence/v231-independent-review/full-node.log.txt",
+    "docs/evidence/v231-independent-review/locales.log.txt"
   ],
   "failures": [
-    "Natural wave-end Rift Prototype crash remains NOT_REPRODUCED",
-    "Production low-FPS simulation-time loss and strict Save/Load determinism failure remain",
-    "Historical performance FAIL and HARDWARE_TEST_PENDING remain",
-    "Recovered GDD hero stats and Aegis radius 4 differ from production; no balance change made in this slice"
+    "First independent browser harness attempt timed out because the source-only server lacked build-metadata.json; preserved and excluded from gameplay acceptance",
+    "Original v231 report says 8/8 although its raw browser evidence contains nine passing checks",
+    "Natural Rift Prototype crash remains not reproduced",
+    "Production low-FPS time loss, strict Save/Load nondeterminism, historical performance FAIL and HARDWARE_TEST_PENDING remain"
   ],
   "blockers": [
-    "Natural wave-end Rift Prototype reproduction still needs the original state or an equivalent natural campaign occurrence",
-    "GDD hero/Aegis balance values require an explicit specification decision before changing production",
-    "HARDWARE_TEST_PENDING and no OmGitHub online/public acceptance authorization",
-    "QUOTA_PERCENT_UNKNOWN; dispatcher remains manual"
+    "Issue #18 completed with status Finished without preview; publication draft has no Preview URL, so AFTER_DEPLOY_LIVE is blocked",
+    "Aegis production radius 5 differs from recovered GDD radius 4 and requires SPEC_DECISION_REQUIRED before balance changes"
   ],
   "next_steps": [
-    "Run a natural multi-wave campaign until Rift Prototype is offered, preserving seed, state, Console, Page, and network evidence",
-    "Decide whether production hero stats and Aegis radius should follow the recovered GDD snapshot",
-    "Add representative hero art/audio distinction beyond the procedural ground marker",
-    "Continue low-FPS simulation-time and strict Save/Load determinism research without lowering historical gates"
+    "Preserve this review with a normal push, then refresh Recovery and Progress Feed",
+    "Run a natural multi-wave Rift Prototype occurrence on an independent branch with complete state and browser evidence",
+    "Continue representative hero art/audio distinction or simulation/SaveLoad research on nonconflicting independent branches"
   ],
   "permissions": [
-    "Independent development, tests, normal commits, and normal pushes remain authorized",
-    "No main, force push, Issue 17, OpenCode Checkpoints/workflows, Pages configuration, or new public game SHA"
+    "Independent development, tests, normal commits and normal pushes remain authorized",
+    "No main, Force Push, Issue #17, checkpoint overwrite or unapproved public deployment"
   ],
-  "status": "CHECKPOINTED",
+  "status": "VERIFIED",
   "resume_event": {
-    "status": "MANUAL_CONTINUATION_EXECUTED",
-    "basis": "User requested continuation from verified candidate SHA; work used explicit ownership claim, tests, ordinary commit, and verified branch push"
+    "status": "SCHEDULED_RESUME_EXECUTED",
+    "basis": "Actual remote ownership and Git checks followed by independent tests, Chromium operation, evidence and branch work"
   },
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "resume_status": "RESUME_READY_MANUAL_DISPATCH",
-  "updated_at": "2026-10-26T18:55:00Z"
+  "updated_at": "2026-10-27T01:18:00Z"
 }

@@ -7,3 +7,11 @@ The hero vertical slice now shares production Mark radius `9` and Aegis radius `
 The reported Rift Prototype crash remains open and is still the P0 reproduction gap: the controlled real-UI boon path passes. Resume with a natural wave-end offer while recording seed, state, browser errors, and the precise input sequence. A separate specification decision is required before changing production hero stats or the GDD's Aegis radius `4`; this slice did not alter balance. Preserve public v228, main, Issue #17, OpenCode Checkpoints, historical FAIL, strict Save/Load failure, low-FPS clock loss, and `HARDWARE_TEST_PENDING`.
 
 Actual quota percentage is unavailable and no authorized dispatcher is connected: `QUOTA_PERCENT_UNKNOWN`, `RESUME_READY_MANUAL_DISPATCH`.
+
+## Independent scheduled-resume review
+
+The scheduled-resume agent independently checked the remote ownership lease, exact Git ancestry and OpenCode stop state before reading or testing this slice. Review branch `codex/riftwatch-v231-review` preserves the review under `docs/evidence/v231-independent-review/`.
+
+The full 109-test suite, four-locale 678-key validator and a fresh exact-`5df177b` Chromium artifact all pass. The browser rerun contains nine passing checks; the original report's `8/8` text is a count-only discrepancy. The first independent browser attempt is preserved as a harness failure because its source-only server lacked `build-metadata.json`; the correct immutable artifact rerun passed with no Console, Page or request failures.
+
+Issue #18 finished successfully from the exact candidate SHA but OmGitHub reports `Finished without preview`; publication remains draft with no Preview URL. Keep `AFTER_DEPLOY_LIVE` blocked. The next GAME FIRST slice remains natural Rift Prototype reproduction or a separate representative hero art/audio slice after claiming an independent branch.
