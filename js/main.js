@@ -163,6 +163,7 @@ ui.setSound(true);
 const movementKeys = new Set(['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright']);
 
 window.addEventListener('keydown', e => {
+  if (ui.$('setup-rules-dialog')?.open) return;
   if (!ui.el.howto.hidden) {
     if (e.key === 'Escape') ui.closeHowTo();
     return;

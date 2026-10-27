@@ -1,4 +1,18 @@
 export const ui = {
+  "rules.open": "開始ルール",
+  "rules.title": "今回のルール",
+  "rules.objective": "町の中心を守り、すべての襲撃を生き延びましょう。現在の標準キャンペーンのルールです。",
+  "rules.campaign": "キャンペーン",
+  "rules.waves": "襲撃 {count} 回 · ボスの波：{boss}",
+  "rules.population": "人口",
+  "rules.caps": "経済：{economic} · 軍事：{military}",
+  "rules.limited": "最大 {cap}、建物の収容力にも制限されます",
+  "rules.buildings": "完成した建物の収容力に応じる",
+  "rules.aids": "自動補助",
+  "rules.aidValues": "経済：{economy} · 軍事：{military}",
+  "rules.on": "オン",
+  "rules.off": "オフ",
+
   'group.label': "グループ",
   'group.slot': "グループ {slot}：{count}体",
   'group.hint': "クリックで選択、Ctrl+クリックで登録、Shiftで追加、右クリックで登録解除。",

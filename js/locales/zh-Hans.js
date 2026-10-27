@@ -1,4 +1,18 @@
 export const ui = {
+  "rules.open": "开局规则",
+  "rules.title": "本局规则",
+  "rules.objective": "守住城镇中心并撑过所有袭击。以下为当前标准战役的规则。",
+  "rules.campaign": "战役",
+  "rules.waves": "{count} 波袭击 · Boss 波次：{boss}",
+  "rules.population": "人口",
+  "rules.caps": "经济：{economic} · 军事：{military}",
+  "rules.limited": "最多 {cap}，同时受建筑容量限制",
+  "rules.buildings": "由已完工建筑提供容量",
+  "rules.aids": "自动辅助",
+  "rules.aidValues": "经济：{economy} · 军事：{military}",
+  "rules.on": "开启",
+  "rules.off": "关闭",
+
   'group.label': "群组",
   'group.slot': "群组 {slot}：{count} 个单位",
   'group.hint': "点击选择；Ctrl+点击保存；Shift 追加；右键清除群组。",

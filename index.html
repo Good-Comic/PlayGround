@@ -10,6 +10,12 @@
 </head>
 <body>
   <div id="app">
+    <dialog id="setup-rules-dialog" aria-labelledby="setup-rules-title">
+      <h2 id="setup-rules-title" data-i18n="rules.title">This run</h2>
+      <p data-i18n="rules.objective">Protect the Town Center and survive all raids. These are the current standard campaign rules.</p>
+      <dl id="setup-rules-list"></dl>
+      <button id="btn-setup-rules-close" data-i18n="playtest.close">Close</button>
+    </dialog>
     <canvas id="game" aria-label="Age of Empires II: Riftwatch battlefield" data-i18n-aria-label="a11y.battlefield"></canvas>
     <div class="canvas-vignette"></div>
 
@@ -54,6 +60,7 @@
             <span data-i18n="menu.start">Start Game</span>
           </button>
           <div class="menu-secondary-actions">
+            <button class="secondary-button" id="btn-setup-rules" data-i18n="rules.open">Run rules</button>
             <button class="secondary-button" id="btn-continue" hidden>
               <svg><use href="#i-hourglass"/></svg>
               <span data-i18n="menu.continue">Continue</span>

@@ -676,6 +676,14 @@ html[lang="zh-Hant"] .menu-kicker, html[lang="zh-Hans"] .menu-kicker, html[lang=
 html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="ja"] .menu-title { letter-spacing: .02em; }
 .menu-screen .menu-rail { max-height: calc(100vh - 48px); overflow-y: auto; scrollbar-width: none; }
 .menu-screen .menu-rail::-webkit-scrollbar { display: none; }
+#setup-rules-dialog { box-sizing:border-box; width:min(620px,92vw); max-height:85vh; overflow:auto; padding:24px; background:#231e17; color:#f0e7ce; border:1px solid #b69b65; border-radius:8px; font:calc(14px * var(--ui-scale,1))/1.55 system-ui; }
+#setup-rules-dialog::backdrop { background:#000b; }
+#setup-rules-dialog h2 { margin:0 0 10px; font-size:1.35em; }
+#setup-rules-dialog dl { display:grid; grid-template-columns:minmax(90px,1fr) 3fr; gap:12px 18px; }
+#setup-rules-dialog dt { color:#d6b574; }
+#setup-rules-dialog dd { margin:0; overflow-wrap:anywhere; }
+#setup-rules-dialog button { padding:9px 20px; color:#f0e7ce; background:#4a3d29; border:1px solid #b69b65; cursor:pointer; }
+@media(max-width:480px) { #setup-rules-dialog dl { grid-template-columns:1fr; gap:4px; } #setup-rules-dialog dd { margin-bottom:10px; } }
 .menu-facts { margin-top: 24px; }
 .menu-tip { margin-top: 22px; }
 .objective-row b#objective-age { color: #c9d8b5; }

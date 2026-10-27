@@ -23,6 +23,17 @@ export function controlGroupView(game) {
   return Array.from({length:9},(_,i)=>{const slot=String(i+1),members=[...new Set(game.controlGroups?.[slot]||[])].filter(id=>alive.has(id));return{slot,count:members.length,active:members.length>0&&members.every(id=>selected.has(id))};});
 }
 
+export function setupRulesView(setup, settings, economicCap) {
+  const civ = CIVILIZATIONS.find(c=>c.id===setup.civ) || CIVILIZATIONS[1];
+  const biome = BIOMES.find(b=>b.id===setup.biome) || BIOMES.find(b=>b.id==='ash');
+  return {
+    civ:civ.id, biome:biome.id, seed:String(setup.seed || '').trim(),
+    waves:WAVES.length, bossWaves:WAVES.flatMap((w,i)=>w.boss?[i+1]:[]),
+    economicCap, militaryLimit:civ.bonuses?.militaryPopCap || null,
+    speed:settings.gameSpeed, autoEconomy:settings.autoEconomy, autoMilitary:settings.autoMilitary,
+  };
+}
+
 export class UI {
   constructor(game, callbacks = {}) {
     this.game = game;
@@ -100,6 +111,8 @@ export class UI {
     this.populateSetup();
     this.ensureSetupSeed();
     this.$('btn-start').addEventListener('click', () => { clickSound(); this.startWithSetup(); });
+    this.$('btn-setup-rules')?.addEventListener('click', () => { clickSound(); this.openSetupRules(); });
+    this.$('btn-setup-rules-close')?.addEventListener('click', () => this.$('setup-rules-dialog').close());
     this.$('btn-howto').addEventListener('click', () => { clickSound(); this.openHowTo(); });
     this.$('btn-howto-close').addEventListener('click', () => { clickSound(); this.closeHowTo(); });
     this.$('btn-howto-play').addEventListener('click', () => { clickSound(); this.closeHowTo(); this.startWithSetup(); });
@@ -198,6 +211,23 @@ export class UI {
     const biome = BIOMES.find(b => b.id === this.el.biomeSelect?.value);
     if (this.el.civBlurb && civ) this.el.civBlurb.textContent = t(`civ.${civ.id}.trait`);
     if (this.el.biomeBlurb && biome) this.el.biomeBlurb.textContent = t(`biome.${biome.id}.trait`);
+  }
+
+  openSetupRules() {
+    this.ensureSetupSeed();
+    const rules = setupRulesView({civ:this.el.civSelect.value,biome:this.el.biomeSelect.value,seed:this.el.seedInput.value},this.settings,this.game.economicPopCap);
+    const rows = [
+      [t('menu.civ'), `${t(`civ.${rules.civ}.name`)} — ${t(`civ.${rules.civ}.trait`)}`],
+      [t('menu.biome'), `${t(`biome.${rules.biome}.name`)} — ${t(`biome.${rules.biome}.trait`)}`],
+      [t('menu.seed'), rules.seed],
+      [t('rules.campaign'), t('rules.waves',{count:rules.waves,boss:rules.bossWaves.join(', ')})],
+      [t('rules.population'), t('rules.caps',{economic:rules.economicCap,military:rules.militaryLimit?t('rules.limited',{cap:rules.militaryLimit}):t('rules.buildings')})],
+      [t('settings.speed'), `${rules.speed}×`],
+      [t('rules.aids'), t('rules.aidValues',{economy:t(rules.autoEconomy?'rules.on':'rules.off'),military:t(rules.autoMilitary?'rules.on':'rules.off')})],
+    ];
+    const list=this.$('setup-rules-list');list.replaceChildren();
+    for(const [label,value]of rows){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;list.append(dt,dd);}
+    this.$('setup-rules-dialog').showModal();
   }
 
   ensureSetupSeed() {
