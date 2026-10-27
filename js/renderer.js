@@ -743,9 +743,25 @@ export class Renderer {
       for (let i = -2; i <= 2; i++) ctx.fillRect(x + i * 6 * z - 2 * z, y + (Math.abs(i) % 2) * 2 * z, 4 * z, 8 * z);
       ctx.strokeRect(x - 16 * z, y + 7 * z, 32 * z, 5 * z);
     }
-    // Structural materials stay inside the existing presentation footprint.
-    const military = ['barracks', 'archery', 'stable', 'tower'].includes(b.type);
-    const span = (military ? 28 : 23) * z, base = y + 28 * z;
+    ctx.restore();
+    // Apply materials to the actual wall planes instead of a floating roof badge.
+    if (b.type === 'house' || b.type === 'barracks') {
+      const wallHeight = (b.type === 'house' ? 25 : 33) * z;
+      const width = (b.type === 'house' ? 46 : 56) * z;
+      for (const [a, c] of [[f.D, f.C], [f.C, f.B]]) {
+        ctx.save();
+        ctx.transform((c.x - a.x) / width, (c.y - a.y) / width, 0, 1, a.x, a.y);
+        ctx.beginPath(); ctx.rect(0, -wallHeight, width, wallHeight); ctx.clip();
+        this.drawCivilizationWallMaterial(b, profile, z);
+        ctx.restore();
+      }
+    }
+  }
+
+  drawCivilizationWallMaterial(b, profile, z) {
+    const ctx = this.ctx;
+    const military = ['barracks', 'range', 'stable', 'tower'].includes(b.type);
+    const span = (military ? 28 : 23) * z, x = span, base = -7 * z;
     ctx.lineWidth = Math.max(1, z);
     if (profile.id === 'steppe') {
       ctx.fillStyle = '#c5b38b';
@@ -772,7 +788,6 @@ export class Renderer {
       ctx.strokeStyle='#40544b';ctx.lineWidth=3*z;ctx.strokeRect(x-6*z,base-13*z,12*z,13*z);
     }
     if(military){ctx.strokeStyle='#dbc98f';ctx.beginPath();ctx.moveTo(x-6*z,base-12*z);ctx.lineTo(x+6*z,base);ctx.moveTo(x+6*z,base-12*z);ctx.lineTo(x-6*z,base);ctx.stroke();}
-    ctx.restore();
   }
 
   drawBuildingRuin(b, game, time) {
