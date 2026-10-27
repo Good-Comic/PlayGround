@@ -1,0 +1,167 @@
+{
+  "stage": "AFTER_LOCAL",
+  "source_commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+  "checks": [
+    {
+      "name": "exact 33-file artifact",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "b9a3d527787cd2384902f259dcec9bc695aa2d42",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-27T14:59:39.692719+00:00",
+        "resourceVerification": "SHA256_MATCH_33_FILES"
+      }
+    },
+    {
+      "name": "three independent external atlases load",
+      "pass": true,
+      "detail": {
+        "militia": {
+          "src": "assets/sprites/militia-atlas.svg",
+          "width": 1024,
+          "height": 320,
+          "frameWidth": 64,
+          "anchor": {
+            "x": 32,
+            "y": 54
+          },
+          "states": [
+            "idle",
+            "walk",
+            "attack",
+            "hit",
+            "death"
+          ],
+          "directions": [
+            "E",
+            "SE",
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE"
+          ]
+        },
+        "archer": {
+          "src": "assets/sprites/archer-atlas.svg",
+          "width": 1024,
+          "height": 320,
+          "frameWidth": 64,
+          "anchor": {
+            "x": 32,
+            "y": 54
+          },
+          "states": [
+            "idle",
+            "walk",
+            "attack",
+            "hit",
+            "death"
+          ],
+          "directions": [
+            "E",
+            "SE",
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE"
+          ]
+        },
+        "light_cavalry": {
+          "src": "assets/sprites/light-cavalry-atlas.svg",
+          "width": 1280,
+          "height": 320,
+          "frameWidth": 80,
+          "anchor": {
+            "x": 40,
+            "y": 54
+          },
+          "states": [
+            "idle",
+            "walk",
+            "attack",
+            "hit",
+            "death"
+          ],
+          "directions": [
+            "E",
+            "SE",
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE"
+          ]
+        }
+      }
+    },
+    {
+      "name": "archer and cavalry each render eight directions",
+      "pass": true,
+      "detail": {
+        "archer": 8,
+        "cavalry": 8
+      }
+    },
+    {
+      "name": "multi-unit live combat uses distinct atlas silhouettes",
+      "pass": true,
+      "detail": {
+        "states": [
+          "attack",
+          "attack",
+          "attack"
+        ],
+        "hit": [
+          1,
+          1
+        ],
+        "radii": [
+          0.24,
+          0.32,
+          0.26
+        ]
+      }
+    },
+    {
+      "name": "archer and cavalry death frames remain dead and distinct",
+      "pass": true,
+      "detail": [
+        {
+          "name": "archer",
+          "hash": "a1fc830c1854c602ef8f3b8d2dd820e65602bd6860dbdfccd6e48b6e042221d1",
+          "alive": false
+        },
+        {
+          "name": "cavalry",
+          "hash": "e2ef61d360aa000e6d248bd21b6ebee58eb9fbf44f98a47b3da34a4938201b9f",
+          "alive": false
+        }
+      ]
+    },
+    {
+      "name": "both assets retain procedural fallback",
+      "pass": true,
+      "detail": {
+        "archer": false,
+        "light_cavalry": false
+      }
+    },
+    {
+      "name": "no browser errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failed": []
+      }
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "pass": true
+}
