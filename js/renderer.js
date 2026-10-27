@@ -1,5 +1,6 @@
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
+import { civilizationVisualProfile } from './visuals.js';
 
 const TERRAIN_COLORS = {
   grass: ['#62753a', '#697d3f', '#5d7037', '#708341'],
@@ -670,6 +671,7 @@ export class Renderer {
     else if (b.type === 'gate') this.drawGate(b, game, time);
     else if (b.type === 'fishing_hut') this.drawHouse(b, game, time);
     else this.drawBarracks(b, game, time);
+    if (b.team === 'player' && !['farm', 'wall', 'gate'].includes(b.type)) this.drawCivilizationBuildingAccent(b, game, time);
     this.drawBuildingDamageState(b, game, time);
     this.drawBuildingBar(b, game);
   }
@@ -709,6 +711,35 @@ export class Renderer {
         const oy = (4 + ((time * (7 + i) + i * 3) % 13)) * z;
         ctx.beginPath(); ctx.arc(f.cx + ox, f.cy - 35 * z - oy, (1.1 + i * 0.25) * z, 0, Math.PI * 2); ctx.fill();
       }
+    }
+    ctx.restore();
+  }
+
+  drawCivilizationBuildingAccent(b, game, time) {
+    const ctx = this.ctx, z = game.camera.zoom, f = this.footprint(game, b);
+    const profile = civilizationVisualProfile(game.civ?.id);
+    const height = ({ core: 116, tower: 92, monument: 100, house: 57, fishing_hut: 57 }[b.type] || 68) * z;
+    const x = f.cx, y = f.cy - height;
+    ctx.save();
+    ctx.strokeStyle = game.playerColors?.accent || game.civ?.accent || '#c8aa68';
+    ctx.fillStyle = game.civ?.accent || '#82643a';
+    ctx.lineWidth = Math.max(1, 1.7 * z);
+    if (profile.roof === 'swallowtail') {
+      ctx.beginPath(); ctx.moveTo(x, y + 15 * z); ctx.lineTo(x, y - 10 * z); ctx.stroke();
+      const flutter = Math.sin(time * 2.4 + (b.id || 0)) * 2 * z;
+      ctx.beginPath(); ctx.moveTo(x, y - 9 * z); ctx.lineTo(x + 17 * z, y - 4 * z + flutter); ctx.lineTo(x + 11 * z, y + 1 * z); ctx.lineTo(x + 17 * z, y + 5 * z + flutter); ctx.lineTo(x, y + 1 * z); ctx.closePath(); ctx.fill();
+    } else if (profile.roof === 'dome') {
+      ctx.beginPath(); ctx.arc(x, y + 3 * z, 10 * z, Math.PI, 0); ctx.lineTo(x + 10 * z, y + 7 * z); ctx.lineTo(x - 10 * z, y + 7 * z); ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(x, y - 10 * z); ctx.lineTo(x, y + 1 * z); ctx.stroke();
+      ctx.beginPath(); ctx.arc(x + 3 * z, y - 11 * z, 3 * z, 0.45, Math.PI * 1.7); ctx.stroke();
+    } else if (profile.roof === 'upturned') {
+      ctx.beginPath(); ctx.moveTo(x - 16 * z, y + 6 * z); ctx.quadraticCurveTo(x - 9 * z, y + 12 * z, x, y + 4 * z); ctx.quadraticCurveTo(x + 9 * z, y + 12 * z, x + 16 * z, y + 6 * z); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x - 13 * z, y); ctx.quadraticCurveTo(x, y + 8 * z, x + 13 * z, y); ctx.stroke();
+    } else if (profile.roof === 'stepped') {
+      ctx.beginPath(); ctx.moveTo(x - 13 * z, y + 9 * z); ctx.lineTo(x - 13 * z, y + 3 * z); ctx.lineTo(x - 7 * z, y + 3 * z); ctx.lineTo(x - 7 * z, y - 3 * z); ctx.lineTo(x, y - 3 * z); ctx.lineTo(x, y - 10 * z); ctx.lineTo(x + 7 * z, y - 3 * z); ctx.lineTo(x + 7 * z, y + 3 * z); ctx.lineTo(x + 13 * z, y + 3 * z); ctx.lineTo(x + 13 * z, y + 9 * z); ctx.closePath(); ctx.fill();
+    } else {
+      for (let i = -2; i <= 2; i++) ctx.fillRect(x + i * 6 * z - 2 * z, y + (Math.abs(i) % 2) * 2 * z, 4 * z, 8 * z);
+      ctx.strokeRect(x - 16 * z, y + 7 * z, 32 * z, 5 * z);
     }
     ctx.restore();
   }
@@ -1182,7 +1213,7 @@ export class Renderer {
     if (p.x < -80 || p.x > this.w + 80 || p.y < -80 || p.y > this.h + 100) return;
     const z = game.camera.zoom;
     const scale = z * (u.typeDef.scale || 1);
-    const team = u.team === 'player' ? PLAYER_COLORS : ENEMY_COLORS;
+    const team = u.team === 'player' ? { ...PLAYER_COLORS, ...game.playerColors, trim: PLAYER_COLORS.trim } : ENEMY_COLORS;
     const moving = u.state === 'move' || u.state === 'return' || u.state === 'build' || u.state === 'gather';
     const walk = moving ? Math.sin(u.walkPhase) : 0;
     const bob = moving ? Math.abs(Math.cos(u.walkPhase)) * 1.2 : Math.sin(time * 2 + u.id) * 0.35;
@@ -1203,6 +1234,7 @@ export class Renderer {
       else if (u.type === 'spearman') this.drawSpearUnit(p, u, scale, team, walk, time, bob);
       else if (['brute', 'warlord', 'warlord2'].includes(u.type)) this.drawBruteUnit(p, u, scale, team, walk, time, bob);
       else this.drawInfantryUnit(p, u, scale, team, walk, time, bob);
+      if (u.team === 'player' && u.type !== 'villager') this.drawCivilizationUnitAccent(u, game, p, scale, bob);
       if (u.selected || u.hp < u.maxHp) {
         const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
         const w = (wide ? 40 : 24) * scale;
@@ -1226,6 +1258,27 @@ export class Renderer {
         this.ctx.globalAlpha = 1;
       }
     });
+  }
+
+  drawCivilizationUnitAccent(u, game, p, s, bob) {
+    const ctx = this.ctx, profile = civilizationVisualProfile(game.civ?.id), x = p.x, y = p.y - bob * s;
+    ctx.save();
+    ctx.fillStyle = game.civ?.accent || '#8b6a3d';
+    ctx.strokeStyle = '#dbc68e'; ctx.lineWidth = Math.max(0.7, 0.9 * s);
+    if (profile.kit === 'horsehair') {
+      ctx.beginPath(); ctx.moveTo(x - 2 * s, y - 34 * s); ctx.quadraticCurveTo(x - 10 * s, y - 40 * s, x - 7 * s, y - 47 * s); ctx.lineTo(x, y - 37 * s); ctx.closePath(); ctx.fill();
+    } else if (profile.kit === 'round') {
+      ctx.beginPath(); ctx.arc(x - 9 * s, y - 20 * s, 4.6 * s, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.arc(x - 9 * s, y - 20 * s, 1.5 * s, 0, Math.PI * 2); ctx.stroke();
+    } else if (profile.kit === 'lamellar') {
+      for (let i = -1; i <= 1; i++) { ctx.fillRect(x + (i * 4 - 1.5) * s, y - 25 * s, 3 * s, 8 * s); ctx.strokeRect(x + (i * 4 - 1.5) * s, y - 25 * s, 3 * s, 8 * s); }
+    } else if (profile.kit === 'feathered') {
+      for (let i = -2; i <= 2; i++) { ctx.save(); ctx.translate(x, y - 34 * s); ctx.rotate(i * 0.28); ctx.beginPath(); ctx.ellipse(0, -7 * s, 1.7 * s, 7 * s, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+    } else {
+      ctx.beginPath(); ctx.moveTo(x - 14 * s, y - 28 * s); ctx.lineTo(x - 7 * s, y - 20 * s); ctx.lineTo(x - 12 * s, y - 9 * s); ctx.lineTo(x - 18 * s, y - 20 * s); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x - 15 * s, y - 23 * s); ctx.lineTo(x - 10 * s, y - 18 * s); ctx.lineTo(x - 14 * s, y - 14 * s); ctx.stroke();
+    }
+    ctx.restore();
   }
 
   drawVillagerUnit(p, u, s, team, walk, time, bob) {
