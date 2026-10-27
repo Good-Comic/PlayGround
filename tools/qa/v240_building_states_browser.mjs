@@ -20,16 +20,19 @@ mkdirSync(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/usr/bin/chromium', headless: true, args: ['--no-sandbox'] });
 const context = await browser.newContext({ viewport: { width: 1600, height: 1000 }, recordVideo: { dir: out, size: { width: 1600, height: 1000 } } });
 const page = await context.newPage();
-const errors = [], failedRequests = [], checks = [], timeline = [];
+const errors = [], failedRequests = [], httpErrors = [], checks = [], timeline = [];
 page.on('console', message => { if (message.type() === 'error') errors.push(`console: ${message.text()}`); });
 page.on('pageerror', error => errors.push(`page: ${error.message}`));
 page.on('requestfailed', request => failedRequests.push({ url: request.url(), error: request.failure()?.errorText || '' }));
+page.on('response', response => { if (response.status() >= 400) httpErrors.push({ url: response.url(), status: response.status() }); });
 const check = (name, pass, detail) => checks.push({ name, pass: !!pass, detail });
 const record = async label => timeline.push({ wall_ms: Date.now(), label, state: await page.evaluate(() => ({ seed: window.ageOfAsh?.game?.seed, phase: window.ageOfAsh?.game?.phase, buildings: window.ageOfAsh?.game?.buildings?.map(b => ({ id: b.id, type: b.type, alive: b.alive, construction: b.construction, hp: b.hp, maxHp: b.maxHp })) || [] })) });
 
 let video;
 try {
-  await page.goto(url, { waitUntil: 'networkidle' });
+  // Audio and browser-owned requests can remain active; readiness is established
+  // by the actual Start control and game object below rather than network idleness.
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
   await page.waitForFunction(() => !document.querySelector('#btn-start')?.disabled, null, { timeout: 15000 });
   const metadata = await page.evaluate(async () => (await fetch('/__qa_build.json')).json());
   check('exact clean source snapshot loaded', metadata.commit === expected && metadata.dirty === false, metadata);
@@ -75,13 +78,15 @@ try {
   }
   check('complete damaged critical construction and ruin presentations are distinct', new Set(Object.values(hashes)).size === fixture.length, { fixture, hashes });
   check('ruined tower remains visible as battlefield rubble without becoming alive', await page.evaluate(() => { const b = window.ageOfAsh.game.buildings.find(entry => entry.type === 'tower'); return !!b && !b.alive; }), fixture.find(b => b.type === 'tower'));
-  check('real Chromium produced no Console Page or request errors', errors.length === 0 && failedRequests.length === 0, { errors, failedRequests });
+  const materialHttpErrors = httpErrors.filter(item => !item.url.endsWith('/favicon.ico'));
+  const materialConsoleErrors = errors.filter(item => !(httpErrors.some(error => error.url.endsWith('/favicon.ico')) && item.includes('Failed to load resource')));
+  check('real Chromium produced no material Console Page or request errors', materialConsoleErrors.length === 0 && failedRequests.length === 0 && materialHttpErrors.length === 0, { errors, failedRequests, httpErrors });
 } catch (error) {
   checks.push({ name: 'browser run completed', pass: false, detail: { message: error.message, stack: error.stack } });
   try { await page.screenshot({ path: resolve(out, 'failure.png') }); } catch {}
 }
 
-const result = { stage: 'AFTER_LOCAL', mode: 'REAL_UI_START_THEN_CONTROLLED_FIXTURE', source_commit: expected, url, checks, errors, failedRequests, timeline, pass: checks.length > 0 && checks.every(item => item.pass) };
+const result = { stage: 'AFTER_LOCAL', mode: 'REAL_UI_START_THEN_CONTROLLED_FIXTURE', source_commit: expected, url, checks, errors, failedRequests, httpErrors, timeline, pass: checks.length > 0 && checks.every(item => item.pass) };
 writeFileSync(resolve(out, 'browser.json'), JSON.stringify(result, null, 2) + '\n');
 writeFileSync(resolve(out, 'timeline.json'), JSON.stringify(timeline, null, 2) + '\n');
 video = page.video();
