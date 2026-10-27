@@ -1,7 +1,77 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T03:16:23.605222+00:00",
+  "updated_at": "2026-10-27T03:26:22.730136+00:00",
   "tasks": [
+    {
+      "task_id": "V233-DYNAMIC-SCORE",
+      "name": "OmGitHub #18 generation diagnosis and adaptive battlefield score",
+      "requirement_source": "Riftwatch v2.3.2 OmGitHub Preview Diagnosis and Game First",
+      "priority": "P0",
+      "agent": "Codex",
+      "environment": "Managed Linux; Chromium 154; local WebAudio recording; OmGitHub read-only",
+      "branch": "codex/riftwatch-v233-dynamic-score",
+      "base_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+      "latest_pushed_commit": "a6a54ef7674e033432f4233694f87ff1303ad6b6",
+      "application_source_commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
+      "completed": [
+        "Read-only Issue #18 generation/Worker/port-3000/official-interface diagnosis",
+        "Confirmed official public progress screenshot rendered Riftwatch on port 3000 with BUILD BLOCKED",
+        "Implemented phase-aware procedural score for prep, wave, Boss, boon and pause",
+        "Recorded real Chromium WebAudio preparation and battle score payloads",
+        "111/111 Node and 7/7 exact-artifact Chromium checks passed",
+        "Normal push and exact remote verification completed"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Full Node regression",
+          "path": "docs/evidence/v233-dynamic-score/full-node.log.txt",
+          "source_commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
+          "result": "111/111 PASS"
+        },
+        {
+          "name": "Exact-artifact Chromium WebAudio",
+          "path": "docs/evidence/v233-dynamic-score/browser.json",
+          "source_commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
+          "result": "7/7 PASS; two playable Opus recordings; browser errors 0"
+        },
+        {
+          "name": "OmGitHub Issue 18 Preview",
+          "path": "docs/evidence/v233-omgithub18-preview/REPORT.md",
+          "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+          "result": "BLOCKED; generation234; port3000 BUILD BLOCKED"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v233-omgithub18-preview/REPORT.md",
+        "docs/evidence/v233-omgithub18-preview/official-port3000-build-blocked.png",
+        "docs/evidence/v233-dynamic-score/REPORT.md",
+        "docs/evidence/v233-dynamic-score/prep-score.webm",
+        "docs/evidence/v233-dynamic-score/battle-score.webm"
+      ],
+      "failures": [
+        "Issue #18 has no stable Preview URL; no deploy-only repair interface observed",
+        "Natural Rift Prototype claim crash remains NOT_REPRODUCED",
+        "Low-FPS simulation loss, strict Save/Load nondeterminism, historical performance FAIL and HARDWARE_TEST_PENDING remain"
+      ],
+      "blockers": [
+        "Issue #18 recovery requires a new official execution, currently unauthorized",
+        "Port3000 must serve a generated artifact with matching build-metadata rather than source root"
+      ],
+      "next_steps": [
+        "Continue natural campaign sampling and request original player Rift Prototype save/seed/state if available",
+        "Next independent GAME FIRST slice: representative civilization/unit/building visual differentiation or battle alerts",
+        "If separately authorized, Resume #18, fast-forward its clean source to a6a54ef7674e033432f4233694f87ff1303ad6b6, serve exact generated artifact on official port3000, and require Preview Build-SHA verification"
+      ],
+      "permissions": [
+        "Independent gameplay development/tests/normal push authorized",
+        "No Resume/Continue/new Issue/main/Force Push/Checkpoint overwrite/public deployment"
+      ],
+      "status": "CHECKPOINTED",
+      "quota_status": "QUOTA_PERCENT_UNKNOWN",
+      "updated_at": "2026-10-27T03:26:22.730136+00:00"
+    },
     {
       "task_id": "V232-RIFT-PROTOTYPE-NATURAL",
       "name": "Natural Rift Prototype diagnosis and Game First audio continuation",
