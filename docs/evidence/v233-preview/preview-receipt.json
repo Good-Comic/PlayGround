@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "PUBLIC_PREVIEW_ACCEPTED_PENDING_OFFICIAL_PUBLICATION",
+  "observed_at_utc": "2026-10-27T04:48:00Z",
+  "source_sha": "055fb12c92e3d48945315937058f1423b732241c",
+  "source_preflight": "git rev-parse HEAD exact match before any other Git operation",
+  "artifact": {
+    "build_metadata_commit": "055fb12c92e3d48945315937058f1423b732241c",
+    "build_id": "riftwatch-playtest-v2.3.3",
+    "payload_files": 28,
+    "canonical_manifest_sha256": "d3f977c91c3e08de400ba74b84b2276e547bc0c6a1c2fa6ac44a14002c9dac1b",
+    "zip": "docs/playtest/v233/Riftwatch-v233-055fb12.zip",
+    "zip_sha256": "6ee43627cdf16fd15e87b041e76568dff21bffe244a54afaf2891280cb380b36",
+    "runtime_verification": "SHA256_MATCH_28_FILES"
+  },
+  "opencode": {
+    "branch": "opencode/40450603568",
+    "run": "40450603568",
+    "issue": 19,
+    "preview_commit": null,
+    "deployment_commit": "assigned by the official OmGitHub lifecycle after response completion; not fabricated locally"
+  },
+  "service": {
+    "local_url": "http://127.0.0.1:3000",
+    "public_url": "https://beaches-friendship-charges-belongs.trycloudflare.com",
+    "served_directory": "generated 28-file artifact under PROJECT_DIR/.preview-artifact; repository source root is not served",
+    "build_blocked_banner": false,
+    "local_public_metadata_sha256": "816188a61aa07df35c1c0df1ae96685cd4b4f9fb9e0e2b32a8b2ffa0779ab33e"
+  },
+  "acceptance": {
+    "stage": "PUBLIC_PREVIEW",
+    "passed": 22,
+    "total": 22,
+    "result": "PASS",
+    "console_errors": 0,
+    "page_errors": 0,
+    "failed_requests": 0,
+    "http_errors": 0,
+    "checks": [
+      "public Preview loads the exact source and all 28 resource hashes",
+      "public Preview does not show PLAYTEST \u00b7 BUILD BLOCKED",
+      "game menu and Start control are available",
+      "real public Start reaches gameplay",
+      "dynamic BGM is running in preparation and schedules notes",
+      "preparation BGM recording contains real WebAudio payload",
+      "real pointer selects a moving villager",
+      "real UI places and completes a house",
+      "real UI selects the Town Center and trains a villager",
+      "double-click selects all visible same-type units",
+      "WASD pans the camera",
+      "Shift+A arms Attack-Move and Escape cancels it",
+      "real right-click sets a Rally Point on the selected barracks",
+      "hero skill range previews Mark 9 and Aegis 5",
+      "natural first wave starts with enemy units and switches dynamic BGM",
+      "battle BGM recording contains real WebAudio payload",
+      "key SFX fire during construction, training, commands, and wave start",
+      "Save, reload, and Continue restore the public run",
+      "all four languages render real translated UI text",
+      "public Playtest dialog names the exact 40-character SHA",
+      "all eight new unit silhouettes have distinct raster samples",
+      "public Preview run produced no Console, Page, failed-request, or HTTP errors"
+    ]
+  },
+  "known_issues_preserved": [
+    "Low-FPS simulation time loss / SIMULATION_INTEGRITY_BLOCKED remains; fixed-step prototype is not in production.",
+    "Basic Save/Load continuation passes, but strict deterministic Save/Load continuation remains FAIL.",
+    "Historical 100/200/250/500/1000 performance FAIL remains; no thresholds were lowered.",
+    "Natural Rift Prototype crash remains NOT_REPRODUCED; no natural claim is certified.",
+    "HARDWARE_TEST_PENDING: no physical Windows GTX1650/RTX3050-class acceptance.",
+    "PLAYTEST-EXPERIMENTAL candidate only; not formal QA, Integration, or a release.",
+    "Natural first wave passed this run; full natural ten-wave stability is not certified."
+  ],
+  "isolation": {
+    "main_issue17_issue18_checkpoints_pages_existing_previews": "unchanged",
+    "gameplay_source_modified": false,
+    "start_sh_scope": "regenerates and verifies the fixed 055fb12 artifact, writes deployment output, and serves it on port 3000 only"
+  }
+}
