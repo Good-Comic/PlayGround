@@ -1,7 +1,90 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T04:14:19.681524+00:00",
+  "updated_at": "2026-10-27T05:04:00+00:00",
   "tasks": [
+    {
+      "task_id": "V234-CANDIDATE",
+      "name": "Riftwatch v234 Playtest Candidate integration and publication preparation",
+      "requirement_source": "Riftwatch next Playtest Candidate integration authorization",
+      "priority": "P1",
+      "agent": "Codex",
+      "environment": "Managed Linux; Chromium 154; local immutable artifact",
+      "branch": "codex/riftwatch-playtest-v234",
+      "base_commit": "055fb12c92e3d48945315937058f1423b732241c",
+      "latest_pushed_commit": "d4078fb6cf21db8a75bf69ec4f455cb6b279ada8",
+      "application_source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+      "completed": [
+        "Audited the linear Game First dependency chain without overwriting competing Agent work",
+        "Updated v234 candidate disclosure while preserving every known failure",
+        "Built and hash-verified a 28-payload/31-hosting-file artifact",
+        "Ran exact-artifact real Chromium core, input, Rally, Prototype, hero, silhouette, SaveLoad, locale and Bug JSON checks",
+        "Prepared an immutable Pages path and approval plan without changing public Pages",
+        "Pushed the candidate package and verified the remote SHA"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Full Node regression",
+          "path": "docs/evidence/v234-candidate/full-node.log.txt",
+          "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+          "result": "113/113 PASS; later Build commit changes only Known Issues documentation"
+        },
+        {
+          "name": "Exact v234 artifact core Chromium",
+          "path": "docs/evidence/v234-candidate/playtest-results.json",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "result": "12/12 PASS; Start/build/train/SaveLoad/four locales/BugJSON; zero errors"
+        },
+        {
+          "name": "Input, Rally and Prototype Chromium",
+          "path": "docs/evidence/v234-candidate/player-feedback.json",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "result": "7/7 PASS; zero errors"
+        },
+        {
+          "name": "Hero range Chromium",
+          "path": "docs/evidence/v234-candidate/hero-skill.json",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "result": "9/9 PASS; zero errors"
+        },
+        {
+          "name": "Unit silhouette Chromium",
+          "path": "docs/evidence/v234-candidate/visuals.json",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "result": "4/4 PASS; zero errors"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v234-candidate/REPORT.md",
+        "docs/evidence/v234-candidate/artifact-verification.json",
+        "docs/evidence/v234-candidate/candidate-game.png",
+        "docs/evidence/v234-candidate/hero-mark-preview.png",
+        "docs/evidence/v234-candidate/battlefield-silhouettes.png",
+        "docs/playtest/v234/APPROVAL-PLAN.json"
+      ],
+      "failures": [
+        "Low-FPS simulation time loss remains SIMULATION_INTEGRITY_BLOCKED",
+        "Strict deterministic SaveLoad remains FAIL",
+        "Historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain"
+      ],
+      "blockers": [
+        "Public v234 Pages directory/root switch needs explicit new authorization",
+        "No public v234 AFTER_DEPLOY_LIVE evidence exists"
+      ],
+      "next_steps": [
+        "Continue GAME FIRST on an independent feature branch or SaveLoad/simulation diagnosis",
+        "If separately authorized, publish only the approved immutable v234 artifact to the dedicated Pages branch and run actual public HTTPS acceptance"
+      ],
+      "permissions": [
+        "Independent gameplay development/tests/normal push authorized",
+        "No public Pages change, main, Force Push, Checkpoint overwrite or additional OmGitHub execution"
+      ],
+      "status": "CHECKPOINTED",
+      "quota_status": "QUOTA_PERCENT_UNKNOWN",
+      "resume_status": "SCHEDULED_RESUME_EXECUTED",
+      "updated_at": "2026-10-27T05:04:00+00:00"
+    },
     {
       "task_id": "V233-VISUAL-SILHOUETTES",
       "name": "OmGitHub #18 source-switch preflight and battlefield role silhouettes",
@@ -468,7 +551,7 @@
         "Use docs/playtest/v228/APPROVAL-PLAN.json; no automaticpublication"
       ],
       "name": "Approve and deploy isolated Candidate",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P0",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -507,7 +590,7 @@
         "Complete separate3-repeat12-case performance at294fa287; preserve all results before integration decision"
       ],
       "name": "A1-TARGET",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -543,7 +626,7 @@
         "Preserve final normal P0 evidence; retest performance before integration"
       ],
       "name": "B2-GDD",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -575,7 +658,7 @@
         "Run affected performance gates; resolve later-wave caps/monument spec before full GDD claim"
       ],
       "name": "A4-POP",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -606,7 +689,7 @@
         "Use existing cohort; actual hardware still pending"
       ],
       "name": "QA-TOOLS",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -636,7 +719,7 @@
         "Complete latest2f148c3 three-repeat quality/performance cohort after target-state diagnosis"
       ],
       "name": "B1-RALLY",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -664,7 +747,7 @@
         "Do not mark gameplay features integrated; gate each separately with pre/post snapshots"
       ],
       "name": "INTEGRATION",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -694,7 +777,7 @@
         "Independent Attack-Move/UI Scale slices after recovery; existing matrix remains scope"
       ],
       "name": "PHASE-B-E",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P2",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -722,7 +805,7 @@
         "Run Windows collector on real authorized physical machine; no predicted FPS claim"
       ],
       "name": "HARDWARE",
-      "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+      "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
       "priority": "P1",
       "agent": "UNASSIGNED; claim ownership before writing",
       "environment": "managed cloud, except HARDWARE requires physical Windows",
