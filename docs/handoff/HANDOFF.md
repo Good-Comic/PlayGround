@@ -1,3 +1,14 @@
+# CURRENT AUTHORITATIVE STRATEGY — v2.4.0 GAME FIRST
+
+**ACTIVE STRATEGY:** [docs/STRATEGY-V2.4-GAME-FIRST.md](../STRATEGY-V2.4-GAME-FIRST.md)  
+**Strategy publication commit (this independent branch):** `9a806169677ea28c07b80bb317f51f34feae5224`  
+**Effective:** User approved consolidated v2.4.0 and its developer-decision, tool/Skills and browser-visualization amendments.  
+**Branch:** `codex/riftwatch-v240-authoritative-strategy`. This handoff is authoritative **within this branch**; downstream gameplay branches and the progress-feed have not yet been rebased/updated. A receiving Agent must reconcile ownership and explicitly adopt it rather than assume the changes were merged.
+
+On next eligible resume: read the single Strategy file once, deduplicate and prioritize work, surface only material architecture/rules/tool authorization decisions to the user, then continue authorized GAME FIRST slices. **Try a genuinely user-viewable live browser session where supported; otherwise record real Chromium gameplay video plus timestamped game-state updates without blocking development.** Preserve v234 unpublished; v2.4.0 is next public Candidate and still requires explicit launch approval. Preserve old failures and protected git/OmGitHub/Pages boundaries.
+
+---
+
 # Strategy v2.3.0 handoff
 
 `V231_HERO_SKILL_PREVIEW_PUSHED`. Branch `codex/riftwatch-v231-hero-skill-preview` has a verified remote checkpoint at `2d7699e712c614da1a36124bad4b7b408b8a3393`; application source is `5df177bee911b8f9251248115e6128aa92b7b563`, based on required preflight SHA `45435a323c729a28da1de454a3e53740fc9159f2`.
