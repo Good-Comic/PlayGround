@@ -2,93 +2,73 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-27T05:05:06.895382+00:00",
+  "updated_at": "2026-10-27T09:20:18.235798+00:00",
   "latest_event": {
-    "task_id": "V234-CANDIDATE",
+    "task_id": "V240-GAME-FIRST-BUILDINGS",
     "agent": "Codex",
     "severity": "PROGRESS",
-    "branch": "codex/riftwatch-playtest-v234",
-    "commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
-    "build_sha": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
-    "summary": "v234 PLAYTEST-EXPERIMENTAL is integrated, packaged, locally Chromium-verified, remotely checkpointed, and ready for a separate Pages publication decision. The public Pages branch and root pointer were not changed.",
+    "branch": "codex/riftwatch-v240-game-first",
+    "commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+    "build_sha": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+    "summary": "Strategy v2.4.0 adopted and first GAME FIRST building-state visual slice locally verified and remotely checkpointed.",
     "code_changes": [
-      "Updated the candidate Known Issues to describe the integrated Game First feature chain and preserved failures",
-      "Prepared an immutable 28-payload/31-hosting-file artifact and exact Pages approval plan"
+      "Added stable construction, damaged, critical and ruined rendering states for representative buildings.",
+      "Kept dead ruins dead and made no simulation, economy or balance change.",
+      "Added real Chromium recording, state timeline and exact-artifact verification."
     ],
     "next_steps": [
-      "Continue authorized GAME FIRST development or SaveLoad/simulation diagnosis on an independent branch",
-      "If separately approved, deploy only the exact v234 artifact to the immutable Pages directory and run public HTTPS acceptance"
+      "Revalidate ownership and continue another independent GAME FIRST visual or audio slice.",
+      "Continue natural campaign evidence without relabelling controlled fixtures as full gameplay acceptance."
     ],
-    "requires_user_decision": true,
+    "requires_user_decision": false,
     "tests": [
       {
-        "name": "Full Node regression",
+        "name": "Focused visual signatures 3/3",
         "status": "PASS",
-        "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
-        "evidence": "docs/evidence/v234-candidate/full-node.log.txt",
-        "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
-        "evidence_blob": "9f57722ef3f09fc4922f84d469628c13524599e7",
-        "evidence_status": "GIT_BLOB_VERIFIED"
+        "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+        "evidence": "docs/evidence/v240-building-states/focused-node.log",
+        "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
+        "evidence_status": "NOT_FOUND_NOT_VERIFIED"
       },
       {
-        "name": "Exact v234 core Chromium",
+        "name": "Exact 28-file artifact Chromium building states 5/5",
         "status": "PASS",
-        "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
-        "evidence": "docs/evidence/v234-candidate/playtest-results.json",
-        "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
-        "evidence_blob": "96db24e0813474ae553b0f6daf3dfcd514bf31a3",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "Input Rally and Prototype Chromium",
-        "status": "PASS",
-        "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
-        "evidence": "docs/evidence/v234-candidate/player-feedback.json",
-        "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
-        "evidence_blob": "6fa4ee624144d95d6f69ad3f1f0c9b84d03404b6",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "Hero range Chromium",
-        "status": "PASS",
-        "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
-        "evidence": "docs/evidence/v234-candidate/hero-skill.json",
-        "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
-        "evidence_blob": "804a95058a1f22f5e0dbe6254912ba081c012ca1",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "Unit silhouette Chromium",
-        "status": "PASS",
-        "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
-        "evidence": "docs/evidence/v234-candidate/visuals.json",
-        "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
-        "evidence_blob": "ef2d3eccb19ccda3a41b327782c37c6c8004c81f",
+        "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+        "evidence": "docs/evidence/v240-building-states/browser.json",
+        "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
+        "evidence_blob": "a11ec42bb7d4545f109b02495f185312969e57fc",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "V234_PAGES_APPROVAL_REQUIRED",
-        "severity": "ACTION_REQUIRED",
-        "summary": "Publishing the immutable v234 directory and switching the Pages root remains outside this task authorization and requires explicit approval of docs/playtest/v234/APPROVAL-PLAN.json.",
-        "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
-        "requires_user_decision": true
+        "id": "SIMULATION_INTEGRITY",
+        "severity": "BLOCKED",
+        "summary": "Low-FPS simulation time loss remains open.",
+        "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+        "requires_user_decision": false
       },
       {
-        "id": "SIMULATION_SAVELOAD_HARDWARE_OPEN",
+        "id": "SAVELOAD_DETERMINISM",
         "severity": "WARNING",
-        "summary": "Low-FPS simulation loss, strict SaveLoad nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain.",
-        "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+        "summary": "Strict deterministic Save/Load remains failing.",
+        "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+        "requires_user_decision": false
+      },
+      {
+        "id": "RIFT_CRASH_REPRO",
+        "severity": "WARNING",
+        "summary": "Natural Rift Prototype crash remains NOT_REPRODUCED without the original player save, seed and state.",
+        "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
         "requires_user_decision": false
       }
     ],
-    "response": "v234 Candidate is ready but not published. Build SHA 34873f76e8ad88d1f238210cfea87ff12f0fa587; candidate branch HEAD 2f475e2fac1d3b98e01a6292021d76420312da41; ZIP SHA-256 6553da1178ede1cb0af4539b0851f617a2753082c978d4f05d26e3bf266b1b90. The proposed URL is https://good-comic.github.io/PlayGround/builds/34873f76e8ad88d1f238210cfea87ff12f0fa587/. Publishing and switching the root were not authorized or performed.",
-    "event_id": "1f31fbd8a740b9165675905b19cda0ce6d8baece71c943df7c4b8e5c800b6e2c",
-    "remote_head": "2f475e2fac1d3b98e01a6292021d76420312da41",
+    "response": "Strategy v2.4.0 is active. Building construction, damage, critical and ruin states are now locally verified in a real exact-artifact Chromium run. Branch codex/riftwatch-v240-game-first is saved at 1d46c7e6ea90d1998ed1156029d5cfc526126ef4. This is AFTER_LOCAL only; no public site or protected branch changed.",
+    "event_id": "2bc604e935e1a88027b262b406f03c055438403c5c027c80ef9042ad9182ba5b",
+    "remote_head": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-27T05:05:06.895382+00:00",
+    "recorded_at": "2026-10-27T09:20:18.235798+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -1856,91 +1836,159 @@
       ]
     },
     "V234-CANDIDATE": {
-      "task_id": "V234-CANDIDATE",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [
+        {
+          "id": "V234_PAGES_APPROVAL_REQUIRED",
+          "requires_user_decision": true,
+          "severity": "ACTION_REQUIRED",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "summary": "Publishing the immutable v234 directory and switching the Pages root remains outside this task authorization and requires explicit approval of docs/playtest/v234/APPROVAL-PLAN.json."
+        },
+        {
+          "id": "SIMULATION_SAVELOAD_HARDWARE_OPEN",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "summary": "Low-FPS simulation loss, strict SaveLoad nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain."
+        }
+      ],
       "branch": "codex/riftwatch-playtest-v234",
-      "commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
       "build_sha": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
-      "summary": "v234 PLAYTEST-EXPERIMENTAL is integrated, packaged, locally Chromium-verified, remotely checkpointed, and ready for a separate Pages publication decision. The public Pages branch and root pointer were not changed.",
       "code_changes": [
         "Updated the candidate Known Issues to describe the integrated Game First feature chain and preserved failures",
         "Prepared an immutable 28-payload/31-hosting-file artifact and exact Pages approval plan"
       ],
+      "commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "1f31fbd8a740b9165675905b19cda0ce6d8baece71c943df7c4b8e5c800b6e2c",
       "next_steps": [
         "Continue authorized GAME FIRST development or SaveLoad/simulation diagnosis on an independent branch",
         "If separately approved, deploy only the exact v234 artifact to the immutable Pages directory and run public HTTPS acceptance"
       ],
+      "pushed": true,
+      "recorded_at": "2026-10-27T05:05:06.895382+00:00",
+      "remote_head": "2f475e2fac1d3b98e01a6292021d76420312da41",
+      "remote_query": "VERIFIED",
       "requires_user_decision": true,
+      "response": "v234 Candidate is ready but not published. Build SHA 34873f76e8ad88d1f238210cfea87ff12f0fa587; candidate branch HEAD 2f475e2fac1d3b98e01a6292021d76420312da41; ZIP SHA-256 6553da1178ede1cb0af4539b0851f617a2753082c978d4f05d26e3bf266b1b90. The proposed URL is https://good-comic.github.io/PlayGround/builds/34873f76e8ad88d1f238210cfea87ff12f0fa587/. Publishing and switching the root were not authorized or performed.",
+      "severity": "PROGRESS",
+      "summary": "v234 PLAYTEST-EXPERIMENTAL is integrated, packaged, locally Chromium-verified, remotely checkpointed, and ready for a separate Pages publication decision. The public Pages branch and root pointer were not changed.",
+      "task_id": "V234-CANDIDATE",
       "tests": [
         {
-          "name": "Full Node regression",
-          "status": "PASS",
-          "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
           "evidence": "docs/evidence/v234-candidate/full-node.log.txt",
-          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
           "evidence_blob": "9f57722ef3f09fc4922f84d469628c13524599e7",
-          "evidence_status": "GIT_BLOB_VERIFIED"
+          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Full Node regression",
+          "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+          "status": "PASS"
         },
         {
-          "name": "Exact v234 core Chromium",
-          "status": "PASS",
-          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
           "evidence": "docs/evidence/v234-candidate/playtest-results.json",
-          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
           "evidence_blob": "96db24e0813474ae553b0f6daf3dfcd514bf31a3",
-          "evidence_status": "GIT_BLOB_VERIFIED"
+          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Exact v234 core Chromium",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "status": "PASS"
         },
         {
-          "name": "Input Rally and Prototype Chromium",
-          "status": "PASS",
-          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
           "evidence": "docs/evidence/v234-candidate/player-feedback.json",
-          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
           "evidence_blob": "6fa4ee624144d95d6f69ad3f1f0c9b84d03404b6",
-          "evidence_status": "GIT_BLOB_VERIFIED"
+          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Input Rally and Prototype Chromium",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "status": "PASS"
         },
         {
-          "name": "Hero range Chromium",
-          "status": "PASS",
-          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
           "evidence": "docs/evidence/v234-candidate/hero-skill.json",
-          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
           "evidence_blob": "804a95058a1f22f5e0dbe6254912ba081c012ca1",
-          "evidence_status": "GIT_BLOB_VERIFIED"
+          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Hero range Chromium",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "status": "PASS"
         },
         {
-          "name": "Unit silhouette Chromium",
-          "status": "PASS",
-          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
           "evidence": "docs/evidence/v234-candidate/visuals.json",
-          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
           "evidence_blob": "ef2d3eccb19ccda3a41b327782c37c6c8004c81f",
+          "evidence_commit": "2f475e2fac1d3b98e01a6292021d76420312da41",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Unit silhouette Chromium",
+          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-GAME-FIRST-BUILDINGS": {
+      "task_id": "V240-GAME-FIRST-BUILDINGS",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "build_sha": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+      "summary": "Strategy v2.4.0 adopted and first GAME FIRST building-state visual slice locally verified and remotely checkpointed.",
+      "code_changes": [
+        "Added stable construction, damaged, critical and ruined rendering states for representative buildings.",
+        "Kept dead ruins dead and made no simulation, economy or balance change.",
+        "Added real Chromium recording, state timeline and exact-artifact verification."
+      ],
+      "next_steps": [
+        "Revalidate ownership and continue another independent GAME FIRST visual or audio slice.",
+        "Continue natural campaign evidence without relabelling controlled fixtures as full gameplay acceptance."
+      ],
+      "requires_user_decision": false,
+      "tests": [
+        {
+          "name": "Focused visual signatures 3/3",
+          "status": "PASS",
+          "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+          "evidence": "docs/evidence/v240-building-states/focused-node.log",
+          "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
+          "evidence_status": "NOT_FOUND_NOT_VERIFIED"
+        },
+        {
+          "name": "Exact 28-file artifact Chromium building states 5/5",
+          "status": "PASS",
+          "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+          "evidence": "docs/evidence/v240-building-states/browser.json",
+          "evidence_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
+          "evidence_blob": "a11ec42bb7d4545f109b02495f185312969e57fc",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
       "blockers": [
         {
-          "id": "V234_PAGES_APPROVAL_REQUIRED",
-          "severity": "ACTION_REQUIRED",
-          "summary": "Publishing the immutable v234 directory and switching the Pages root remains outside this task authorization and requires explicit approval of docs/playtest/v234/APPROVAL-PLAN.json.",
-          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
-          "requires_user_decision": true
+          "id": "SIMULATION_INTEGRITY",
+          "severity": "BLOCKED",
+          "summary": "Low-FPS simulation time loss remains open.",
+          "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+          "requires_user_decision": false
         },
         {
-          "id": "SIMULATION_SAVELOAD_HARDWARE_OPEN",
+          "id": "SAVELOAD_DETERMINISM",
           "severity": "WARNING",
-          "summary": "Low-FPS simulation loss, strict SaveLoad nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain.",
-          "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+          "summary": "Strict deterministic Save/Load remains failing.",
+          "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+          "requires_user_decision": false
+        },
+        {
+          "id": "RIFT_CRASH_REPRO",
+          "severity": "WARNING",
+          "summary": "Natural Rift Prototype crash remains NOT_REPRODUCED without the original player save, seed and state.",
+          "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
           "requires_user_decision": false
         }
       ],
-      "response": "v234 Candidate is ready but not published. Build SHA 34873f76e8ad88d1f238210cfea87ff12f0fa587; candidate branch HEAD 2f475e2fac1d3b98e01a6292021d76420312da41; ZIP SHA-256 6553da1178ede1cb0af4539b0851f617a2753082c978d4f05d26e3bf266b1b90. The proposed URL is https://good-comic.github.io/PlayGround/builds/34873f76e8ad88d1f238210cfea87ff12f0fa587/. Publishing and switching the root were not authorized or performed.",
-      "event_id": "1f31fbd8a740b9165675905b19cda0ce6d8baece71c943df7c4b8e5c800b6e2c",
-      "remote_head": "2f475e2fac1d3b98e01a6292021d76420312da41",
+      "response": "Strategy v2.4.0 is active. Building construction, damage, critical and ruin states are now locally verified in a real exact-artifact Chromium run. Branch codex/riftwatch-v240-game-first is saved at 1d46c7e6ea90d1998ed1156029d5cfc526126ef4. This is AFTER_LOCAL only; no public site or protected branch changed.",
+      "event_id": "2bc604e935e1a88027b262b406f03c055438403c5c027c80ef9042ad9182ba5b",
+      "remote_head": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-27T05:05:06.895382+00:00",
+      "recorded_at": "2026-10-27T09:20:18.235798+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },

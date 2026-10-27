@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T05:05:06.895382+00:00",
+  "updated_at": "2026-10-27T09:20:18.235798+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -307,19 +307,43 @@
     },
     {
       "id": "V234_PAGES_APPROVAL_REQUIRED",
-      "severity": "ACTION_REQUIRED",
-      "summary": "Publishing the immutable v234 directory and switching the Pages root remains outside this task authorization and requires explicit approval of docs/playtest/v234/APPROVAL-PLAN.json.",
-      "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
       "requires_user_decision": true,
+      "severity": "ACTION_REQUIRED",
+      "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+      "summary": "Publishing the immutable v234 directory and switching the Pages root remains outside this task authorization and requires explicit approval of docs/playtest/v234/APPROVAL-PLAN.json.",
       "task_id": "V234-CANDIDATE"
     },
     {
       "id": "SIMULATION_SAVELOAD_HARDWARE_OPEN",
-      "severity": "WARNING",
-      "summary": "Low-FPS simulation loss, strict SaveLoad nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain.",
-      "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+      "summary": "Low-FPS simulation loss, strict SaveLoad nondeterminism, historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain.",
       "task_id": "V234-CANDIDATE"
+    },
+    {
+      "id": "SIMULATION_INTEGRITY",
+      "severity": "BLOCKED",
+      "summary": "Low-FPS simulation time loss remains open.",
+      "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "requires_user_decision": false,
+      "task_id": "V240-GAME-FIRST-BUILDINGS"
+    },
+    {
+      "id": "SAVELOAD_DETERMINISM",
+      "severity": "WARNING",
+      "summary": "Strict deterministic Save/Load remains failing.",
+      "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "requires_user_decision": false,
+      "task_id": "V240-GAME-FIRST-BUILDINGS"
+    },
+    {
+      "id": "RIFT_CRASH_REPRO",
+      "severity": "WARNING",
+      "summary": "Natural Rift Prototype crash remains NOT_REPRODUCED without the original player save, seed and state.",
+      "source_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+      "requires_user_decision": false,
+      "task_id": "V240-GAME-FIRST-BUILDINGS"
     }
   ]
 }
