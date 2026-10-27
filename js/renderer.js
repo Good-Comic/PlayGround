@@ -76,6 +76,20 @@ function terrainPalette(biome, terrain) {
   return BIOME_COLORS[biome]?.[terrain] || TERRAIN_COLORS[terrain] || TERRAIN_COLORS.grass;
 }
 
+// Visual roles are deliberately independent from combat stats.  Keeping this
+// small vocabulary explicit lets the renderer make silhouettes readable at
+// normal zoom without changing unit balance or simulation state.
+export function unitVisualSignature(type) {
+  return ({
+    chu_ko_nu: 'repeating-crossbow',
+    skirmisher: 'javelin-buckler',
+    guard: 'heavy-guard',
+    knight: 'mounted-sword',
+    light_cavalry: 'mounted-spear',
+    horse_archer: 'mounted-bow',
+  })[type] || 'standard';
+}
+
 export class Renderer {
   constructor(canvas) {
     this.canvas = canvas;
@@ -1194,6 +1208,19 @@ export class Renderer {
     ctx.beginPath(); ctx.moveTo(x - 3 * s, y - 10 * s); ctx.lineTo(x - 3 * s - walk * 1.6 * s, y); ctx.moveTo(x + 3 * s, y - 10 * s); ctx.lineTo(x + 3 * s + walk * 1.6 * s, y); ctx.stroke();
     this.drawInfantryBody(x,y,s,team);
     const swing = u.attackAnim > 0 ? Math.sin(u.attackAnim * Math.PI) : 0;
+    if (unitVisualSignature(u.type) === 'heavy-guard') {
+      // Broad shoulders, a crested helm and a tall kite shield give the guard
+      // a heavier outline than ordinary militia, even in a dense formation.
+      ctx.fillStyle = '#85877f';
+      ctx.beginPath(); ctx.ellipse(x - 7.5 * s, y - 25 * s, 5.2 * s, 3.2 * s, -0.25, 0, 6.3); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(x + 7.5 * s, y - 25 * s, 5.2 * s, 3.2 * s, 0.25, 0, 6.3); ctx.fill();
+      ctx.fillStyle = team.trim;
+      ctx.beginPath(); ctx.moveTo(x - 2 * s, y - 35 * s); ctx.lineTo(x, y - 43 * s); ctx.lineTo(x + 3 * s, y - 35 * s); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = team.primary;
+      ctx.beginPath(); ctx.moveTo(x - 13 * s, y - 29 * s); ctx.quadraticCurveTo(x - 19 * s, y - 20 * s, x - 12 * s, y - 8 * s); ctx.quadraticCurveTo(x - 5 * s, y - 19 * s, x - 9 * s, y - 29 * s); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = '#d7c98d'; ctx.lineWidth = 1.2 * s;
+      ctx.beginPath(); ctx.moveTo(x - 11 * s, y - 27 * s); ctx.lineTo(x - 13 * s, y - 11 * s); ctx.stroke();
+    }
     ctx.strokeStyle = '#70654d'; ctx.lineWidth = 1.6 * s;
     ctx.beginPath(); ctx.moveTo(x + 6 * s, y - 21 * s); ctx.lineTo(x + 11 * s + swing * 5 * s, y - 31 * s - swing * 6 * s); ctx.stroke();
     ctx.strokeStyle = '#d5d8cf'; ctx.lineWidth = 2 * s;
@@ -1213,6 +1240,34 @@ export class Renderer {
     ctx.beginPath(); ctx.arc(x, y - 29 * s, 4.4 * s, Math.PI * 0.85, Math.PI * 2.1); ctx.fill();
     ctx.beginPath(); ctx.moveTo(x - 4 * s, y - 30 * s); ctx.lineTo(x - 8 * s, y - 23 * s); ctx.lineTo(x - 3 * s, y - 26 * s); ctx.closePath(); ctx.fill();
     const draw = u.attackAnim > 0 ? Math.sin(u.attackAnim * Math.PI) : 0;
+    const signature = unitVisualSignature(u.type);
+    if (signature === 'javelin-buckler') {
+      ctx.fillStyle = team.primary;
+      ctx.beginPath(); ctx.arc(x - 8 * s, y - 20 * s, 5.2 * s, 0, 6.3); ctx.fill();
+      ctx.strokeStyle = '#d2bd7b'; ctx.lineWidth = 1 * s;
+      ctx.beginPath(); ctx.arc(x - 8 * s, y - 20 * s, 3.2 * s, 0, 6.3); ctx.stroke();
+      ctx.save(); ctx.translate(x + 5 * s, y - 23 * s); ctx.rotate(-0.72 + draw * 0.45);
+      ctx.strokeStyle = '#80643c'; ctx.lineWidth = 1.5 * s;
+      ctx.beginPath(); ctx.moveTo(-5 * s, 0); ctx.lineTo(27 * s, 0); ctx.stroke();
+      ctx.fillStyle = '#d8ddd5'; ctx.beginPath(); ctx.moveTo(27 * s, -2.3 * s); ctx.lineTo(35 * s, 0); ctx.lineTo(27 * s, 2.3 * s); ctx.closePath(); ctx.fill();
+      ctx.restore();
+      return;
+    }
+    if (signature === 'repeating-crossbow') {
+      // A horizontal double-limbed stock and top magazine distinguish the
+      // Chinese unique unit from the ordinary long-bow silhouette.
+      const recoil = draw * 2.5 * s;
+      ctx.save(); ctx.translate(x + 7 * s - recoil, y - 22 * s); ctx.rotate(-0.08);
+      ctx.strokeStyle = '#81542d'; ctx.lineWidth = 2.4 * s;
+      ctx.beginPath(); ctx.moveTo(-5 * s, 0); ctx.lineTo(18 * s, 0); ctx.stroke();
+      ctx.strokeStyle = '#b68b50'; ctx.lineWidth = 1.4 * s;
+      for (const ox of [3, 7]) { ctx.beginPath(); ctx.moveTo(ox * s, -8 * s); ctx.lineTo(ox * s, 8 * s); ctx.stroke(); }
+      ctx.fillStyle = '#5d3c24'; ctx.fillRect(-1 * s, -7 * s, 9 * s, 4 * s);
+      ctx.strokeStyle = '#ded3ad'; ctx.lineWidth = 0.7 * s;
+      ctx.beginPath(); ctx.moveTo(3 * s, -8 * s); ctx.lineTo(18 * s, 0); ctx.lineTo(3 * s, 8 * s); ctx.stroke();
+      ctx.restore();
+      return;
+    }
     ctx.strokeStyle = '#8c6937'; ctx.lineWidth = 1.3 * s;
     ctx.beginPath(); ctx.arc(x + 9 * s, y - 22 * s, 8 * s, -Math.PI * 0.46, Math.PI * 0.46); ctx.stroke();
     ctx.strokeStyle = 'rgba(220,211,174,0.85)'; ctx.lineWidth = 0.7 * s;
@@ -1243,8 +1298,23 @@ export class Renderer {
     ctx.fillStyle = '#77776f'; ctx.beginPath(); ctx.arc(x, y - 36 * s + riderBob, 4.2 * s, Math.PI, 0); ctx.fill();
     ctx.fillStyle = team.trim;
     ctx.beginPath(); ctx.moveTo(x - 3 * s, y - 39 * s + riderBob); ctx.lineTo(x, y - 44 * s + riderBob); ctx.lineTo(x + 3 * s, y - 39 * s + riderBob); ctx.closePath(); ctx.fill();
-    ctx.strokeStyle = '#d7d5c8'; ctx.lineWidth = 1.5 * s;
-    ctx.beginPath(); ctx.moveTo(x + 5 * s, y - 27 * s + riderBob); ctx.lineTo(x + 17 * s, y - 45 * s + riderBob); ctx.stroke();
+    const signature = unitVisualSignature(u.type);
+    if (signature === 'mounted-bow') {
+      ctx.strokeStyle = '#8c6937'; ctx.lineWidth = 1.5 * s;
+      ctx.beginPath(); ctx.arc(x + 10 * s, y - 29 * s + riderBob, 9 * s, -1.2, 1.2); ctx.stroke();
+      ctx.strokeStyle = '#e1d6b0'; ctx.lineWidth = 0.7 * s;
+      ctx.beginPath(); ctx.moveTo(x + 13.3 * s, y - 37.4 * s + riderBob); ctx.lineTo(x + 5 * s, y - 29 * s + riderBob); ctx.lineTo(x + 13.3 * s, y - 20.6 * s + riderBob); ctx.stroke();
+      ctx.fillStyle = '#655036'; ctx.fillRect(x - 11 * s, y - 30 * s + riderBob, 3 * s, 12 * s);
+    } else if (signature === 'mounted-spear') {
+      ctx.strokeStyle = '#7a603a'; ctx.lineWidth = 1.7 * s;
+      ctx.beginPath(); ctx.moveTo(x + 3 * s, y - 27 * s + riderBob); ctx.lineTo(x + 27 * s, y - 44 * s + riderBob); ctx.stroke();
+      ctx.fillStyle = '#d9dbd2'; ctx.beginPath(); ctx.moveTo(x + 27 * s, y - 44 * s + riderBob); ctx.lineTo(x + 34 * s, y - 51 * s + riderBob); ctx.lineTo(x + 25 * s, y - 47 * s + riderBob); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = team.trim; ctx.beginPath(); ctx.moveTo(x + 18 * s, y - 39 * s + riderBob); ctx.lineTo(x + 12 * s, y - 43 * s + riderBob); ctx.lineTo(x + 15 * s, y - 34 * s + riderBob); ctx.closePath(); ctx.fill();
+    } else {
+      ctx.strokeStyle = '#d7d5c8'; ctx.lineWidth = 2 * s;
+      ctx.beginPath(); ctx.moveTo(x + 5 * s, y - 27 * s + riderBob); ctx.lineTo(x + 18 * s, y - 42 * s + riderBob); ctx.stroke();
+      ctx.fillStyle = '#d7d5c8'; ctx.beginPath(); ctx.moveTo(x + 18 * s, y - 42 * s + riderBob); ctx.lineTo(x + 22 * s, y - 47 * s + riderBob); ctx.lineTo(x + 19 * s, y - 40 * s + riderBob); ctx.closePath(); ctx.fill();
+    }
     ctx.fillStyle = team.primary;
     ctx.beginPath(); ctx.moveTo(x - 8 * s, y - 29 * s + riderBob); ctx.lineTo(x - 4 * s, y - 33 * s + riderBob); ctx.lineTo(x - 3 * s, y - 24 * s + riderBob); ctx.lineTo(x - 7 * s, y - 22 * s + riderBob); ctx.closePath(); ctx.fill();
   }
