@@ -76,3 +76,7 @@ The prior environment lost its unpushed objects after application source `18d994
 ## v2.4 archer and cavalry atlas checkpoint
 
 Application `b9a3d527787cd2384902f259dcec9bc695aa2d42` and evidence `833ec9517f603000355d9ed1cbbf0c17fa876a94` add independent longbow/quiver archer and horse/rider/lance light-cavalry atlases. Focused tests pass 15/15 and the exact 33-file artifact passes 7/7 real Chromium checks with eight directions per unit, live three-unit combat, hit/death states, Canvas fallback and zero errors. Evidence: `docs/evidence/v240-archer-cavalry-atlases/`. This is AFTER_LOCAL. Continue with representative civilization buildings or Seed-driven terrain after ownership revalidation; existing simulation, Save/Load, performance, Rift, ten-wave and hardware gaps remain.
+
+## V240-LANDMARK-MATERIALS in-progress checkpoint
+
+Source commit 61755f0 adds renderer-only five-family structural material layers: canvas ribs, masonry, arches, timber pillars/eaves, and stepped stone. Focused visual regression 6/6 PASS; Chromium screenshots/video, building-state overlay inspection and mixed-scene performance are NOT_TESTED. Status IMPLEMENTED / QA_PENDING, not LOCAL_VERIFIED. Resume with an exact artifact gallery containing house and barracks for MNG/TEU/SAR/CHN/AZT, inspect foundation/scaffold/damage/critical/ruin, and compare before/after rendering on the same mixed scene. Do not promote until those gates pass. After this slice prioritize terrain, rules/settings, difficulty, natural ten-wave campaign and New Game+ over further art expansion.
