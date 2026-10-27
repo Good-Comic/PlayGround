@@ -57,7 +57,7 @@ try {
       await page.waitForTimeout(450);await page.screenshot({path:resolve(out,`family-${id}.png`)});timeline.push({id,states:state});
       check(`${id} both buildings expose all six states`,state.filter(x=>x.type==='house').length===6&&state.filter(x=>x.type==='barracks').length===6&&new Set(state.map(x=>x.state)).size===6,state);
     }
-    const invariants=await page.evaluate(()=>({unchanged:beforeGeometry===JSON.stringify(gallery.map(b=>({type:b.type,w:b.w,h:b.h,cost:b.typeDef.cost,hp:b.hp,maxHp:b.maxHp,construction:b.construction,alive:b.alive}))),ruins:gallery.filter(b=>!b.alive).map(b=>({id:b.id,alive:b.alive,hp:b.hp}))}));
+    const invariants=await page.evaluate(()=>({unchanged:beforeGeometry===JSON.stringify(gallery.map(b=>({type:b.type,w:b.w,h:b.h,cost:b.typeDef.cost,hp:b.hp,maxHp:b.maxHp,construction:b.construction,alive:b.alive}))),cacheLayers:ageOfAsh.renderer.landmarkMaterialCache?.size??null,ruins:gallery.filter(b=>!b.alive).map(b=>({id:b.id,alive:b.alive,hp:b.hp}))}));
     check('drawing preserves geometry cost health and permanent dead ruins',invariants.unchanged&&invariants.ruins.every(b=>!b.alive&&b.hp===0),invariants);
     const order=await page.evaluate(()=>{
       const r=ageOfAsh.renderer,g=ageOfAsh.game,events=[];const methods=['drawBuilding','drawBuildingRuin','drawUnit'];const originals={};

@@ -1,0 +1,137 @@
+{
+  "scenario": "100 units + 24 buildings, paused simulation, normal native main render/UI, cloud SwiftShader 1920x1080 DPR1; not battle/physical hardware acceptance",
+  "seed": "LANDMARK-240",
+  "warmup_seconds": 3,
+  "sample_seconds": 15,
+  "repetitions": 3,
+  "quantile": "nearest rank",
+  "metrics": "native draw start intervals and synchronous renderer JS spans; not GPU time or whole-loop CPU",
+  "runs": [
+    {
+      "run": "after-1",
+      "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+      "draws": 29,
+      "raf_samples": 28,
+      "raf": {
+        "mean": 528.2142857142857,
+        "p50": 432.9000000000233,
+        "p95": 993.3000000000466,
+        "p99": 1020.2000000000698
+      },
+      "draw": {
+        "mean": 15.062068965514833,
+        "p50": 10.5,
+        "p95": 20.79999999993015,
+        "p99": 114.90000000002328
+      },
+      "original_absolute_gate": "FAIL"
+    },
+    {
+      "run": "after-2",
+      "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+      "draws": 32,
+      "raf_samples": 31,
+      "raf": {
+        "mean": 469.68387096774046,
+        "p50": 419.30000000004657,
+        "p95": 1030.3999999999069,
+        "p99": 1248.3000000000466
+      },
+      "draw": {
+        "mean": 13.206249999995634,
+        "p50": 11.699999999953434,
+        "p95": 19.899999999906868,
+        "p99": 34.90000000002328
+      },
+      "original_absolute_gate": "FAIL"
+    },
+    {
+      "run": "after-3",
+      "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+      "draws": 28,
+      "raf_samples": 27,
+      "raf": {
+        "mean": 552.0962962962998,
+        "p50": 445.30000000004657,
+        "p95": 1153.7999999999302,
+        "p99": 1212.1000000000931
+      },
+      "draw": {
+        "mean": 18.75357142856644,
+        "p50": 15,
+        "p95": 26.100000000093132,
+        "p99": 125.30000000004657
+      },
+      "original_absolute_gate": "FAIL"
+    },
+    {
+      "run": "before-1",
+      "source_commit": "51e56d936ec8af9683916f03c54c6343afa43d67",
+      "draws": 31,
+      "raf_samples": 30,
+      "raf": {
+        "mean": 482.69333333333486,
+        "p50": 379.4000000000233,
+        "p95": 1139.0999999999767,
+        "p99": 1387.2000000000116
+      },
+      "draw": {
+        "mean": 12.25161290322543,
+        "p50": 10.299999999988358,
+        "p95": 21.899999999965075,
+        "p99": 25.79999999998836
+      },
+      "original_absolute_gate": "FAIL"
+    },
+    {
+      "run": "before-2",
+      "source_commit": "51e56d936ec8af9683916f03c54c6343afa43d67",
+      "draws": 28,
+      "raf_samples": 27,
+      "raf": {
+        "mean": 518.7111111111094,
+        "p50": 390.0999999999767,
+        "p95": 1064.2000000000698,
+        "p99": 1786.3999999999069
+      },
+      "draw": {
+        "mean": 12.407142857147846,
+        "p50": 10,
+        "p95": 21.100000000093132,
+        "p99": 24.70000000006985
+      },
+      "original_absolute_gate": "FAIL"
+    },
+    {
+      "run": "before-3",
+      "source_commit": "51e56d936ec8af9683916f03c54c6343afa43d67",
+      "draws": 31,
+      "raf_samples": 30,
+      "raf": {
+        "mean": 475.18999999999846,
+        "p50": 395.4000000000233,
+        "p95": 976.7999999999302,
+        "p99": 1304.0999999999767
+      },
+      "draw": {
+        "mean": 13.893548387102783,
+        "p50": 10.400000000023283,
+        "p95": 33.09999999997672,
+        "p99": 37.800000000046566
+      },
+      "original_absolute_gate": "FAIL"
+    }
+  ],
+  "raf_median_run_mean": {
+    "before": 482.69333333333486,
+    "after": 528.2142857142857,
+    "delta_ms": 45.5209523809508,
+    "delta_percent": 9.43061551453317
+  },
+  "draw_median_run_mean": {
+    "before": 12.407142857147846,
+    "after": 15.062068965514833,
+    "delta_ms": 2.654926108366986,
+    "delta_percent": 21.39836817335801
+  }
+}

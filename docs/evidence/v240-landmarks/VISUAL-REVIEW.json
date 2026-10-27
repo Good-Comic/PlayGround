@@ -1,0 +1,19 @@
+{
+  "original_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
+  "original_visual_result": "FAIL: wall materials appear as floating vertical roof badges (TEU and SAR captures retained)",
+  "fixed_source": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+  "final_equivalent_source": "9fc6db69227432b162651017819e23cbd4b9153f",
+  "review_type": "Assistant inspected actual full-resolution Chromium screenshots, not a hash-only criterion",
+  "families": {
+    "MNG": "PASS: swallowtail crest and projected fabric tension ribs",
+    "TEU": "PASS: crenellations and projected masonry courses",
+    "SAR": "PASS: dome/crescent and two projected arched facades",
+    "CHN": "PASS: curved crest and timber pillars/infill bands",
+    "AZT": "PASS: stepped crest and stepped stone panels with contrasting inset frames"
+  },
+  "states": "PASS: foundation, scaffold wall height/progress, complete, cracks, critical fire/roof hole and persistent rubble visible for both building types",
+  "occlusion": "PASS: rear militia occluded by building and front archer remains visible; native draw ordering also checked",
+  "scope": "Representative existing house/barracks visual slice only; shared base mass and red roofs remain. Not complete unique civilization art.",
+  "performance": "FAIL original absolute rAF gate in all six before/after runs. Draw JS increase 21.4%, rAF increase 9.4% in median run mean; material CPU overhead remains. No claim of no significant regression or full QA acceptance.",
+  "cache_experiment": "REJECTED: median draw JS 17.43 ms vs uncached15.06ms; reverted normally. Raw runs retained."
+}
