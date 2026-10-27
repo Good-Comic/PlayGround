@@ -1,7 +1,72 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T05:04:00+00:00",
+  "updated_at": "2026-10-27T09:19:32.045783+00:00",
   "tasks": [
+    {
+      "task_id": "V240-GAME-FIRST-BUILDINGS",
+      "name": "Strategy v2.4 adoption and persistent building-state visuals",
+      "requirement_source": "User-approved Strategy v2.4.0 GAME FIRST",
+      "priority": "P1",
+      "agent": "Codex",
+      "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
+      "branch": "codex/riftwatch-v240-game-first",
+      "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
+      "latest_pushed_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
+      "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+      "completed": [
+        "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
+        "Added construction, completed, damaged, critical and persistent ruined states to representative production building rendering",
+        "Preserved simulation and balance behavior; ruined structures remain dead",
+        "Built an exact 28-file artifact and completed real Chromium Start plus controlled visual verification",
+        "Recorded screenshot, WebM, timeline, raster hashes and zero material browser errors",
+        "Pushed source and evidence commits and verified the remote branch SHA"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Focused visual signatures",
+          "path": "docs/evidence/v240-building-states/focused-node.log",
+          "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+          "result": "3/3 PASS"
+        },
+        {
+          "name": "Exact-artifact Chromium building states",
+          "path": "docs/evidence/v240-building-states/browser.json",
+          "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+          "result": "5/5 PASS; exact 28 files; real Start; zero material errors; recording saved"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v240-building-states/REPORT.md",
+        "docs/evidence/v240-building-states/browser.json",
+        "docs/evidence/v240-building-states/building-states.png",
+        "docs/evidence/v240-building-states/building-states.webm",
+        "docs/evidence/v240-building-states/timeline.json"
+      ],
+      "failures": [
+        "Low-FPS simulation time loss remains SIMULATION_INTEGRITY_BLOCKED",
+        "Strict deterministic SaveLoad remains FAIL",
+        "Historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain"
+      ],
+      "blockers": [
+        "Building-state evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed",
+        "Original player save/seed for the reported natural Rift Prototype crash is still unavailable"
+      ],
+      "next_steps": [
+        "Continue the next independent GAME FIRST visual/audio slice after ownership revalidation",
+        "Continue natural campaign sampling and request the original Rift Prototype save/seed/state when available",
+        "Prepare a later v2.4 Candidate only after sufficient slices; public publication still requires explicit approval"
+      ],
+      "permissions": [
+        "Independent gameplay development/tests/normal push authorized",
+        "No public Pages change, main, Force Push, Checkpoint overwrite or additional OmGitHub execution"
+      ],
+      "status": "VERIFIED",
+      "quota_status": "QUOTA_PERCENT_UNKNOWN",
+      "resume_status": "SCHEDULED_RESUME_EXECUTED",
+      "updated_at": "2026-10-27T09:19:32.045783+00:00"
+    },
     {
       "task_id": "V234-CANDIDATE",
       "name": "Riftwatch v234 Playtest Candidate integration and publication preparation",
@@ -825,5 +890,6 @@
       ],
       "updated_at": "2026-10-25T18:24:53.917813+00:00"
     }
-  ]
+  ],
+  "active_strategy": "docs/STRATEGY-V2.4-GAME-FIRST.md"
 }

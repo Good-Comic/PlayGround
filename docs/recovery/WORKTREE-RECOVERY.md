@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: c65f6fe23b90484084bc4b1bcb6215e863bd4807b44d47749ab6a36edcbd929b
-Captured UTC: 2026-10-27T05:03:48.005174+00:00 · Trigger: POST_PUSH
-Collector source: `d4078fb6cf21db8a75bf69ec4f455cb6b279ada8` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: d737281347f8908d01622f1ac62955a0450031953bea7dc94d7f7bd0682a3b81
+Captured UTC: 2026-10-27T09:19:32.085874+00:00 · Trigger: SLICE_COMPLETE
+Collector source: `f4c474e8f26f42739e9f28ec73c23684c29c22d8` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -12,11 +12,11 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch | codex/riftwatch-v222-recovery | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | 317ef162b4f4b69c43644cb0e7c031387dc898c1 | REMOTE_SAVED | False |
 | /workspace/riftwatch-budget | codex/riftwatch-v228-budget | 094324e1b61e6fddf60763848d36eca107b6282f | 094324e1b61e6fddf60763848d36eca107b6282f | REMOTE_SAVED | False |
 | /workspace/riftwatch-candidate228 | codex/riftwatch-playtest-v228 | a56e55f8554810ffdf1d08b6ccd75289c4a1e267 | a56e55f8554810ffdf1d08b6ccd75289c4a1e267 | REMOTE_SAVED | False |
-| /workspace/riftwatch-candidate234 | codex/riftwatch-playtest-v234 | d4078fb6cf21db8a75bf69ec4f455cb6b279ada8 | d4078fb6cf21db8a75bf69ec4f455cb6b279ada8 | REMOTE_SAVED | False |
+| /workspace/riftwatch-candidate234 | codex/riftwatch-playtest-v234 | 2f475e2fac1d3b98e01a6292021d76420312da41 | 2f475e2fac1d3b98e01a6292021d76420312da41 | REMOTE_SAVED | False |
 | /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | c456cae581b3ec85a7dd222d017453d2e589e095 | c456cae581b3ec85a7dd222d017453d2e589e095 | REMOTE_SAVED | False |
 | /workspace/riftwatch-clear229 | codex/riftwatch-v229-group-clear | 80bec7a68cb0f822b3071642dc02bd9ff3964750 | 80bec7a68cb0f822b3071642dc02bd9ff3964750 | REMOTE_SAVED | False |
 | /workspace/riftwatch-clock | codex/riftwatch-v228-clock | 6d11aa2fc7bb3c749a9f714c16081b4f6e98c580 | 6d11aa2fc7bb3c749a9f714c16081b4f6e98c580 | REMOTE_SAVED | False |
-| /workspace/riftwatch-feed18 | codex/riftwatch-progress-feed | caf8e8cfd6da814a18764b9dce6c2f9bf20c59c6 | d16dbeb78aa36e79dc57e4793a374ec774be5ead | REMOTE_AHEAD | False |
+| /workspace/riftwatch-feed18 | codex/riftwatch-progress-feed | caf8e8cfd6da814a18764b9dce6c2f9bf20c59c6 | 8b118591e00ae9e64b5815b2fe10d4f47c6a4233 | REMOTE_AHEAD | False |
 | /workspace/riftwatch-groups | codex/riftwatch-v228-groups | 56fedb49483e5843f4584eb641382c7e93b5d072 | 56fedb49483e5843f4584eb641382c7e93b5d072 | REMOTE_SAVED | False |
 | /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | REMOTE_SAVED | False |
 | /workspace/riftwatch-live | codex/riftwatch-v226-live-acceptance | 1a5a67c5373bdd5ede925484776339f95ded78a0 | 1a5a67c5373bdd5ede925484776339f95ded78a0 | REMOTE_SAVED | False |
@@ -39,6 +39,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-v231-review | codex/riftwatch-v231-review | b91a07018753900ed5f4e26cf392b6e8e8b0e449 | b91a07018753900ed5f4e26cf392b6e8e8b0e449 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v232 | codex/riftwatch-v232-rift-prototype | 43b3223ca8cde4ddb0cfb80e767e183af5f4d70d | 43b3223ca8cde4ddb0cfb80e767e183af5f4d70d | REMOTE_SAVED | False |
 | /workspace/riftwatch-v233 | codex/riftwatch-v234-omgithub-preview | 681d7952486853c7df79ddfb183421b871e73ae9 | 681d7952486853c7df79ddfb183421b871e73ae9 | REMOTE_SAVED | False |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | f4c474e8f26f42739e9f28ec73c23684c29c22d8 | f4c474e8f26f42739e9f28ec73c23684c29c22d8 | REMOTE_SAVED | True |
 | /workspace/riftwatch-wave | codex/riftwatch-v227-wave | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | REMOTE_SAVED | False |
 
 ## work
@@ -285,6 +286,14 @@ Next: Inspect task registry and relevant diff before writing
 
 Unpushed commits: []
 Uncommitted paths: []
+Validation: []
+Blockers: NOT_ASSESSED
+Next: Inspect task registry and relevant diff before writing
+
+## codex/riftwatch-v240-game-first
+
+Unpushed commits: []
+Uncommitted paths: [{"status": " M", "path": "docs/handoff/ACTIVE-TASK.json"}, {"status": " M", "path": "docs/handoff/HANDOFF.md"}, {"status": " M", "path": "docs/handoff/NEXT-TASKS.json"}]
 Validation: []
 Blockers: NOT_ASSESSED
 Next: Inspect task registry and relevant diff before writing
