@@ -1,8 +1,8 @@
 # Worktree Recovery Manifest
 
-Snapshot ID: 331559ffd6e8f6b8b68dd6ba3f5e1702d55982068e14c5faed81b09efce2ebd2
-Captured UTC: 2026-10-27T10:50:40.922277+00:00 · Trigger: SLICE_COMPLETE
-Collector source: `229eb6df99b82740641f85e471563d8dbd98d315` · LOCAL_INVENTORIED_NOT_A_PUSH
+Snapshot ID: d00759c0ac0a0c2cebce3e0982dbfa2437fa55792fe5884699e0136fa6a175b8
+Captured UTC: 2026-10-27T10:56:31.090931+00:00 · Trigger: SLICE_COMPLETE
+Collector source: `0fb83fb0666b63aa678cc412e4f49c548f55be89` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.
 
@@ -16,7 +16,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-civ | codex/riftwatch-v22-civ-alignment | c456cae581b3ec85a7dd222d017453d2e589e095 | c456cae581b3ec85a7dd222d017453d2e589e095 | REMOTE_SAVED | False |
 | /workspace/riftwatch-clear229 | codex/riftwatch-v229-group-clear | 80bec7a68cb0f822b3071642dc02bd9ff3964750 | 80bec7a68cb0f822b3071642dc02bd9ff3964750 | REMOTE_SAVED | False |
 | /workspace/riftwatch-clock | codex/riftwatch-v228-clock | 6d11aa2fc7bb3c749a9f714c16081b4f6e98c580 | 6d11aa2fc7bb3c749a9f714c16081b4f6e98c580 | REMOTE_SAVED | False |
-| /workspace/riftwatch-feed18 | codex/riftwatch-progress-feed | caf8e8cfd6da814a18764b9dce6c2f9bf20c59c6 | 6a6e81c709034a6d9219dc7d8e67525e78cb30e2 | REMOTE_AHEAD | False |
+| /workspace/riftwatch-feed18 | codex/riftwatch-progress-feed | caf8e8cfd6da814a18764b9dce6c2f9bf20c59c6 | 453ab5d526d6cd71bf8afa7b4fb9ef82281f1287 | REMOTE_AHEAD | False |
 | /workspace/riftwatch-groups | codex/riftwatch-v228-groups | 56fedb49483e5843f4584eb641382c7e93b5d072 | 56fedb49483e5843f4584eb641382c7e93b5d072 | REMOTE_SAVED | False |
 | /workspace/riftwatch-integration | codex/riftwatch-gameplay-integration | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | 2cd6f099d72a980bfa24dd7ae0f79676918884e8 | REMOTE_SAVED | False |
 | /workspace/riftwatch-live | codex/riftwatch-v226-live-acceptance | 1a5a67c5373bdd5ede925484776339f95ded78a0 | 1a5a67c5373bdd5ede925484776339f95ded78a0 | REMOTE_SAVED | False |
@@ -39,7 +39,7 @@ Point-in-time observation before writing output; snapshot publication commit is 
 | /workspace/riftwatch-v231-review | codex/riftwatch-v231-review | b91a07018753900ed5f4e26cf392b6e8e8b0e449 | b91a07018753900ed5f4e26cf392b6e8e8b0e449 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v232 | codex/riftwatch-v232-rift-prototype | 43b3223ca8cde4ddb0cfb80e767e183af5f4d70d | 43b3223ca8cde4ddb0cfb80e767e183af5f4d70d | REMOTE_SAVED | False |
 | /workspace/riftwatch-v233 | codex/riftwatch-v234-omgithub-preview | 681d7952486853c7df79ddfb183421b871e73ae9 | 681d7952486853c7df79ddfb183421b871e73ae9 | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 229eb6df99b82740641f85e471563d8dbd98d315 | 229eb6df99b82740641f85e471563d8dbd98d315 | REMOTE_SAVED | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 0fb83fb0666b63aa678cc412e4f49c548f55be89 | 0fb83fb0666b63aa678cc412e4f49c548f55be89 | REMOTE_SAVED | True |
 | /workspace/riftwatch-wave | codex/riftwatch-v227-wave | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | 35bb4dcf8d0e48843b68831a89a1d07c41d33c36 | REMOTE_SAVED | False |
 
 ## work

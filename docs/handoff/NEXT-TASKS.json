@@ -1,7 +1,72 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T10:50:40.885261+00:00",
+  "updated_at": "2026-10-27T10:56:31.051845+00:00",
   "tasks": [
+    {
+      "task_id": "V240-CIV-VISUAL-FAMILIES",
+      "name": "Civilization architecture and military silhouette families",
+      "requirement_source": "Strategy v2.4.0 GAME FIRST Phase B and user continuation priority",
+      "priority": "P1",
+      "agent": "Codex",
+      "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
+      "branch": "codex/riftwatch-v240-game-first",
+      "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
+      "latest_pushed_commit": "0fb83fb0666b63aa678cc412e4f49c548f55be89",
+      "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
+      "completed": [
+        "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
+        "Added family-specific roof ornaments and military kit silhouettes beyond color tinting",
+        "Connected player render colors to the selected civilization accent",
+        "Preserved collision radii building footprints navigation and balance values",
+        "Verified five representative families in a real exact-artifact Chromium gallery with video and zero browser errors"
+      ],
+      "uncommitted": [],
+      "unpushed": [],
+      "tests": [
+        {
+          "name": "Focused civilization and visual signature tests",
+          "path": "docs/evidence/v240-civ-visuals/focused-node.log.txt",
+          "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
+          "result": "5/5 PASS"
+        },
+        {
+          "name": "Exact-artifact Chromium civilization gallery",
+          "path": "docs/evidence/v240-civ-visuals/browser.json",
+          "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
+          "result": "4/4 PASS; exact 29 files; five distinct frames; collision invariant; zero errors"
+        }
+      ],
+      "evidence": [
+        "docs/evidence/v240-civ-visuals/REPORT.md",
+        "docs/evidence/v240-civ-visuals/browser.json",
+        "docs/evidence/v240-civ-visuals/civ-visual-families.webm",
+        "docs/evidence/v240-civ-visuals/family-MNG.png",
+        "docs/evidence/v240-civ-visuals/family-TEU.png",
+        "docs/evidence/v240-civ-visuals/family-SAR.png",
+        "docs/evidence/v240-civ-visuals/family-CHN.png",
+        "docs/evidence/v240-civ-visuals/family-AZT.png"
+      ],
+      "failures": [
+        "This is a representative family pipeline not sixteen complete unique asset sets or multidirectional animation",
+        "Low-FPS simulation time loss strict deterministic SaveLoad historical performance natural Rift Prototype reproduction ten-wave and hardware gaps remain"
+      ],
+      "blockers": [
+        "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
+      ],
+      "next_steps": [
+        "Extend the visual pipeline with direction-aware walk attack hit and death frames for one representative unit set",
+        "Add family-specific materials to additional landmark buildings without changing footprints",
+        "Continue Seed-driven terrain and natural campaign slices after ownership revalidation"
+      ],
+      "permissions": [
+        "Independent gameplay development tests and normal push authorized",
+        "No public deployment protected branch change or OmGitHub execution"
+      ],
+      "status": "VERIFIED",
+      "quota_status": "QUOTA_PERCENT_UNKNOWN",
+      "resume_status": "SCHEDULED_RESUME_EXECUTED",
+      "updated_at": "2026-10-27T10:56:31.051845+00:00"
+    },
     {
       "task_id": "V240-SEED-SETUP",
       "name": "Generated editable reproducible Seed setup",
