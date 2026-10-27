@@ -2,41 +2,41 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-27T11:12:03.299793+00:00",
+  "updated_at": "2026-10-27T14:55:02.979207+00:00",
   "latest_event": {
-    "task_id": "V240-DIRECTIONAL-ANIMATION",
+    "task_id": "V240-SPRITE-ATLAS-RECOVERY",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
-    "build_sha": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
-    "summary": "Direction-aware representative unit animation is implemented, locally verified in an exact artifact, checkpointed, pushed and remotely verified.",
+    "commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+    "build_sha": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+    "summary": "Recovered and remotely preserved the external militia Sprite Atlas after the prior environment lost four unpushed objects.",
     "code_changes": [
-      "Added eight isometric movement and attack facings",
-      "Added renderer-driven walk attack hit and death-fall states",
-      "Persisted presentation state without changing gameplay geometry or balance"
+      "Rebuilt the confirmed 0.78 atlas visual scale as a normal fast-forward commit",
+      "Rebuilt exact-artifact Chromium evidence",
+      "Revoked all quota-percentage stop thresholds under the user-approved override"
     ],
     "next_steps": [
-      "Revalidate ownership and continue an authored frame or atlas descriptor, landmark material, or Seed-driven terrain slice"
+      "Revalidate ownership and extend external Atlas support to archer and cavalry"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Focused animation combat and visual regression 18/18",
+        "name": "Focused atlas combat and visual regression 20/20",
         "status": "PASS",
-        "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
-        "evidence": "docs/evidence/v240-directional-animation/focused-node.log.txt",
-        "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
-        "evidence_blob": "dd660fa5ca5f7c2d5c5c5fa69d1cf401f4435820",
+        "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+        "evidence": "docs/evidence/v240-sprite-atlas/focused-node.log.txt",
+        "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+        "evidence_blob": "530158e90fbb1d00396a2cacf3a94bda3972bd7b",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Exact 29-file artifact real Chromium 5/5",
+        "name": "Exact 31-file artifact Chromium 6/6",
         "status": "PASS",
-        "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
-        "evidence": "docs/evidence/v240-directional-animation/browser.json",
-        "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
-        "evidence_blob": "9f567840a0a374d5f92ed35f4f608789f648dab1",
+        "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+        "evidence": "docs/evidence/v240-sprite-atlas/browser.json",
+        "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+        "evidence_blob": "0c2013b78f454e02e276c11e574023a9a200c996",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -44,17 +44,17 @@
       {
         "id": "AFTER-LOCAL-ONLY",
         "severity": "INFO",
-        "summary": "No v2.4 public Candidate is authorized or deployed; existing simulation SaveLoad performance natural Rift ten-wave and hardware gaps remain.",
-        "source_commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
+        "summary": "No public v2.4 Candidate is authorized; simulation SaveLoad performance Rift ten-wave and hardware gaps remain.",
+        "source_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
         "requires_user_decision": false
       }
     ],
-    "response": "Direction-aware animation checkpoint saved. Source 8e8fd67712431cf46cbcd2bae3f7285d33384e1a; evidence 7b32f49cc469c0e830a140c519734f6144fb0411; final branch checkpoint 5c53280b1f49b91339f45100df06a6795979d0e2. Focused tests 18/18 and exact-artifact Chromium 5/5 passed with zero browser errors. Status remains LOCAL_VERIFIED / AFTER_LOCAL.",
-    "event_id": "44ce64a146e829a0a49443ad481ea77eb62f02469d52701ce54179243f6482c4",
-    "remote_head": "5c53280b1f49b91339f45100df06a6795979d0e2",
+    "response": "Sprite Atlas recovery is REMOTE_VERIFIED at 2c01280950b50c619eafd9182c03dd13d1dc6894. Application source 39767c4b58a37353b4f51bea13bd451a614fb2fc passes 20/20 focused Node and 6/6 exact-artifact Chromium checks. Original local-only SHAs were lost with the prior environment and are not claimed as preserved.",
+    "event_id": "69d06438947b0051b93d1c124f7a5d1a1559228a4a8527fdea442c570b775c84",
+    "remote_head": "2c01280950b50c619eafd9182c03dd13d1dc6894",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-27T11:12:03.299793+00:00",
+    "recorded_at": "2026-10-27T14:55:02.979207+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2102,39 +2102,93 @@
       ]
     },
     "V240-DIRECTIONAL-ANIMATION": {
-      "task_id": "V240-DIRECTIONAL-ANIMATION",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [
+        {
+          "id": "AFTER-LOCAL-ONLY",
+          "requires_user_decision": false,
+          "severity": "INFO",
+          "source_commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
+          "summary": "No v2.4 public Candidate is authorized or deployed; existing simulation SaveLoad performance natural Rift ten-wave and hardware gaps remain."
+        }
+      ],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
       "build_sha": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
-      "summary": "Direction-aware representative unit animation is implemented, locally verified in an exact artifact, checkpointed, pushed and remotely verified.",
       "code_changes": [
         "Added eight isometric movement and attack facings",
         "Added renderer-driven walk attack hit and death-fall states",
         "Persisted presentation state without changing gameplay geometry or balance"
       ],
+      "commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "44ce64a146e829a0a49443ad481ea77eb62f02469d52701ce54179243f6482c4",
       "next_steps": [
         "Revalidate ownership and continue an authored frame or atlas descriptor, landmark material, or Seed-driven terrain slice"
+      ],
+      "pushed": true,
+      "recorded_at": "2026-10-27T11:12:03.299793+00:00",
+      "remote_head": "5c53280b1f49b91339f45100df06a6795979d0e2",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "Direction-aware animation checkpoint saved. Source 8e8fd67712431cf46cbcd2bae3f7285d33384e1a; evidence 7b32f49cc469c0e830a140c519734f6144fb0411; final branch checkpoint 5c53280b1f49b91339f45100df06a6795979d0e2. Focused tests 18/18 and exact-artifact Chromium 5/5 passed with zero browser errors. Status remains LOCAL_VERIFIED / AFTER_LOCAL.",
+      "severity": "PROGRESS",
+      "summary": "Direction-aware representative unit animation is implemented, locally verified in an exact artifact, checkpointed, pushed and remotely verified.",
+      "task_id": "V240-DIRECTIONAL-ANIMATION",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-directional-animation/focused-node.log.txt",
+          "evidence_blob": "dd660fa5ca5f7c2d5c5c5fa69d1cf401f4435820",
+          "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Focused animation combat and visual regression 18/18",
+          "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-directional-animation/browser.json",
+          "evidence_blob": "9f567840a0a374d5f92ed35f4f608789f648dab1",
+          "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Exact 29-file artifact real Chromium 5/5",
+          "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-SPRITE-ATLAS-RECOVERY": {
+      "task_id": "V240-SPRITE-ATLAS-RECOVERY",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+      "build_sha": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+      "summary": "Recovered and remotely preserved the external militia Sprite Atlas after the prior environment lost four unpushed objects.",
+      "code_changes": [
+        "Rebuilt the confirmed 0.78 atlas visual scale as a normal fast-forward commit",
+        "Rebuilt exact-artifact Chromium evidence",
+        "Revoked all quota-percentage stop thresholds under the user-approved override"
+      ],
+      "next_steps": [
+        "Revalidate ownership and extend external Atlas support to archer and cavalry"
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Focused animation combat and visual regression 18/18",
+          "name": "Focused atlas combat and visual regression 20/20",
           "status": "PASS",
-          "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
-          "evidence": "docs/evidence/v240-directional-animation/focused-node.log.txt",
-          "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
-          "evidence_blob": "dd660fa5ca5f7c2d5c5c5fa69d1cf401f4435820",
+          "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+          "evidence": "docs/evidence/v240-sprite-atlas/focused-node.log.txt",
+          "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+          "evidence_blob": "530158e90fbb1d00396a2cacf3a94bda3972bd7b",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "Exact 29-file artifact real Chromium 5/5",
+          "name": "Exact 31-file artifact Chromium 6/6",
           "status": "PASS",
-          "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
-          "evidence": "docs/evidence/v240-directional-animation/browser.json",
-          "evidence_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
-          "evidence_blob": "9f567840a0a374d5f92ed35f4f608789f648dab1",
+          "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+          "evidence": "docs/evidence/v240-sprite-atlas/browser.json",
+          "evidence_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
+          "evidence_blob": "0c2013b78f454e02e276c11e574023a9a200c996",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -2142,17 +2196,17 @@
         {
           "id": "AFTER-LOCAL-ONLY",
           "severity": "INFO",
-          "summary": "No v2.4 public Candidate is authorized or deployed; existing simulation SaveLoad performance natural Rift ten-wave and hardware gaps remain.",
-          "source_commit": "5c53280b1f49b91339f45100df06a6795979d0e2",
+          "summary": "No public v2.4 Candidate is authorized; simulation SaveLoad performance Rift ten-wave and hardware gaps remain.",
+          "source_commit": "2c01280950b50c619eafd9182c03dd13d1dc6894",
           "requires_user_decision": false
         }
       ],
-      "response": "Direction-aware animation checkpoint saved. Source 8e8fd67712431cf46cbcd2bae3f7285d33384e1a; evidence 7b32f49cc469c0e830a140c519734f6144fb0411; final branch checkpoint 5c53280b1f49b91339f45100df06a6795979d0e2. Focused tests 18/18 and exact-artifact Chromium 5/5 passed with zero browser errors. Status remains LOCAL_VERIFIED / AFTER_LOCAL.",
-      "event_id": "44ce64a146e829a0a49443ad481ea77eb62f02469d52701ce54179243f6482c4",
-      "remote_head": "5c53280b1f49b91339f45100df06a6795979d0e2",
+      "response": "Sprite Atlas recovery is REMOTE_VERIFIED at 2c01280950b50c619eafd9182c03dd13d1dc6894. Application source 39767c4b58a37353b4f51bea13bd451a614fb2fc passes 20/20 focused Node and 6/6 exact-artifact Chromium checks. Original local-only SHAs were lost with the prior environment and are not claimed as preserved.",
+      "event_id": "69d06438947b0051b93d1c124f7a5d1a1559228a4a8527fdea442c570b775c84",
+      "remote_head": "2c01280950b50c619eafd9182c03dd13d1dc6894",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-27T11:12:03.299793+00:00",
+      "recorded_at": "2026-10-27T14:55:02.979207+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
