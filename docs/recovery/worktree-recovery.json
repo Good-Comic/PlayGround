@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-28T01:14:04.765423+00:00",
-  "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "3b6a5b87fdaf2fe6468003e73dfeb32b6c4e9d8a",
+  "captured_at_utc": "2026-10-28T05:03:46.241768+00:00",
+  "trigger": "RECOVERY_RESUME",
+  "collector_commit": "f2438d965a7bd86faf2baebd46de69a06ed7d7c2",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-28T01:14:04.765423+00:00"
+    "queried_at": "2026-10-28T05:03:46.241768+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -31,9 +31,9 @@
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-    "codex/riftwatch-progress-feed": "48354ffbce4719d00f460cb16818bd76ddd579f1",
+    "codex/riftwatch-progress-feed": "b1e232a47c31aa4fe35bb5c4db391ea41c9520a1",
     "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
-    "codex/riftwatch-task-ownership": "8c0ca6d4683abd8d70fb6560befae80c5203eafc",
+    "codex/riftwatch-task-ownership": "1c6142773f9536df1710620dca838f70ab5b10b2",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -63,7 +63,7 @@
     "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
     "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
     "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-    "codex/riftwatch-v240-game-first": "3b6a5b87fdaf2fe6468003e73dfeb32b6c4e9d8a",
+    "codex/riftwatch-v240-game-first": "f2438d965a7bd86faf2baebd46de69a06ed7d7c2",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -183,8 +183,8 @@
     },
     {
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "3b6a5b87fdaf2fe6468003e73dfeb32b6c4e9d8a",
-      "remote_head": "3b6a5b87fdaf2fe6468003e73dfeb32b6c4e9d8a",
+      "head": "f2438d965a7bd86faf2baebd46de69a06ed7d7c2",
+      "remote_head": "f2438d965a7bd86faf2baebd46de69a06ed7d7c2",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -524,7 +524,7 @@
     {
       "path": "/workspace/riftwatch-v240",
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "3b6a5b87fdaf2fe6468003e73dfeb32b6c4e9d8a",
+      "head": "f2438d965a7bd86faf2baebd46de69a06ed7d7c2",
       "locked": false,
       "task_id": "V240-GAMEPLAY-MILESTONE",
       "last_validation": [
@@ -554,7 +554,7 @@
           "source_commit": "da97f86f0e3677419f1d58b705b0952dc1beeeae",
           "result": "FAIL defeated wave5; policyV2 running, no ten-wave claim",
           "exists": true,
-          "storage": "LOCAL_ONLY_OR_MISSING",
+          "storage": "REMOTE_SAVED",
           "sha256": "8eec8f926685e3a92cc1bfbb61ce6a3e7be424fc75fd69fded2a8a519a284b30",
           "resource_freshness": "SOURCE_CHANGED"
         },
@@ -574,7 +574,7 @@
           "source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
           "result": "FAIL defeated wave4 with actual age2; zero game errors",
           "exists": true,
-          "storage": "LOCAL_ONLY_OR_MISSING",
+          "storage": "REMOTE_SAVED",
           "sha256": "8eec8f926685e3a92cc1bfbb61ce6a3e7be424fc75fd69fded2a8a519a284b30",
           "resource_freshness": "MATCHES_WORKING_RESOURCES"
         }
@@ -592,16 +592,16 @@
         "All code/evidence saved; revalidate ownership and actual remote HEAD before writes"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "3b6a5b87fdaf2fe6468003e73dfeb32b6c4e9d8a",
+      "remote_head": "f2438d965a7bd86faf2baebd46de69a06ed7d7c2",
       "unpushed_commits": [],
       "changed_files": [
         {
           "status": " M",
-          "path": "docs/evidence/v240-campaign-natural/REPORT.md"
+          "path": "AGENTS.md"
         },
         {
           "status": " M",
-          "path": "docs/handoff/ACTIVE-TASK.json"
+          "path": "docs/STRATEGY-V2.4-GAME-FIRST.md"
         },
         {
           "status": " M",
@@ -609,39 +609,11 @@
         },
         {
           "status": " M",
-          "path": "docs/handoff/NEXT-TASKS.json"
+          "path": "docs/handoff/SHARED-RULES.md"
         },
         {
           "status": " M",
-          "path": "docs/recovery/task-registry.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-campaign-natural/policy-v4/STOP_REQUESTED"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-campaign-natural/policy-v4/campaign.mp4"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-campaign-natural/policy-v4/checkpoint-provenance.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-campaign-natural/policy-v4/events.jsonl"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-campaign-natural/policy-v4/result.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-campaign-natural/policy-v4/save-snapshot.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-campaign-natural/policy-v4/wave-4-defeat-367.png"
+          "path": "tools/dev/worktree_recovery.py"
         }
       ],
       "dirty": true,
@@ -656,10 +628,10 @@
         "remote_head",
         "changed_files"
       ],
-      "previous_head": "c40e42f57bc1c23258cba59c8f463530b44dfd74",
-      "actual_head": "3b6a5b87fdaf2fe6468003e73dfeb32b6c4e9d8a"
+      "previous_head": "3b6a5b87fdaf2fe6468003e73dfeb32b6c4e9d8a",
+      "actual_head": "f2438d965a7bd86faf2baebd46de69a06ed7d7c2"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "ec12c1dcf956d5a3aca3f329fbb9781dc04e2d14a5f564680a985d12f1ca8f1b"
+  "snapshot_id": "066ccd9c28ddf396fd67f6c4ff8f4d635baef929b55a6bec91fdf62de30d7731"
 }

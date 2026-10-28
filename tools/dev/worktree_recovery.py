@@ -100,10 +100,14 @@ def inventory(repo,registry=None,trigger='TASK_START',prior=None):
   rh=heads.get(name);branches.append({'branch':name,'head':head,'remote_head':rh,'status':'REMOTE_UNKNOWN' if remote['status']=='REMOTE_UNKNOWN' else 'REMOTE_SAVED' if head==rh else 'REMOTE_BRANCH_ABSENT' if not rh else 'HEAD_DIFFERS_REVIEW_REQUIRED'})
  return {'schema_version':SCHEMA,'captured_at_utc':captured,'trigger':trigger,'collector_commit':git(repo,'rev-parse','HEAD'),'collector_dirty':bool(status_files(repo)),'local_record_status':'LOCAL_INVENTORIED_NOT_A_PUSH','remote_query':remote,'remote_heads':heads,'local_branches':branches,'worktrees':rows,'comparison':deltas,'snapshot_semantics':'Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.'}
 def markdown(data):
- lines=['# Worktree Recovery Manifest','',f"Snapshot ID: {data.get('snapshot_id','legacy')}",f"Captured UTC: {data['captured_at_utc']} · Trigger: {data['trigger']}",f"Collector source: `{data['collector_commit']}` · {data['local_record_status']}",'',data['snapshot_semantics'],'','| Worktree | Branch | HEAD | Remote HEAD | Status | Dirty |','|---|---|---|---|---|---|']
+ lines=['# 工作樹恢復清單 / Worktree Recovery Manifest','','`BILINGUAL_DOCUMENTATION_REQUIRED = true`','',
+ '本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。',
+ 'This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.','',
+ f"快照 ID / Snapshot ID: {data.get('snapshot_id','legacy')}",f"擷取時間 UTC / Captured UTC: {data['captured_at_utc']} · 觸發 / Trigger: {data['trigger']}",f"來源 / Collector source: `{data['collector_commit']}` · {data['local_record_status']}",'',
+ '| 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |','|---|---|---|---|---|---|']
  for r in data['worktrees']:lines.append('| '+' | '.join(str(v).replace('|','\\|') for v in [r['path'],r['branch'],r['head'],r['remote_head'],r['remote_status'],r['dirty']])+' |')
  for r in data['worktrees']:
-  lines.extend(['',f"## {r['branch'] or r['path']}",'',f"Unpushed commits: {json.dumps(r['unpushed_commits'])}",f"Uncommitted paths: {json.dumps(r['changed_files'])}",f"Validation: {json.dumps(r['last_validation'],ensure_ascii=False)}",f"Blockers: {'; '.join(r['blockers'])}",f"Next: {'; '.join(r['next_steps'])}"])
+  lines.extend(['',f"## {r['branch'] or r['path']}",'','原始機器資料（欄位不翻譯） / Raw machine data (field names unchanged):','', '```json',json.dumps({'unpushed_commits':r['unpushed_commits'],'changed_files':r['changed_files'],'last_validation':r['last_validation'],'blockers':r['blockers'],'next_steps':r['next_steps']},ensure_ascii=False,indent=2),'```'])
  return '\n'.join(lines)+'\n'
 def write_snapshot(out,data):
  out=Path(out);out.mkdir(parents=True,exist_ok=True);lock=out/'.snapshot-write.lock'

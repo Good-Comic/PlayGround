@@ -1,5 +1,8 @@
 # Riftwatch — Strategy v2.4.0 GAME FIRST（单一权威开发规范）
 
+> 雙語遷移範圍：新第16節已完整雙語；既有條文保留原文，後續依優先級補譯。
+> Bilingual migration scope: new section16 is fully bilingual; existing provisions remain preserved for incremental translation.
+
 > Status: **USER-APPROVED / ACTIVE ON THIS STRATEGY BRANCH**  
 > Project: 《世纪帝国二：裂境守望》 / Age of Empires II: Riftwatch  
 > Repository: `Good-Comic/PlayGround`  
@@ -133,3 +136,23 @@ Roguelite：有意义的卡牌/稀有度/文明差异、敌军种族与路线、
 Commit/Push/Handoff are process checkpoints, not a reason to stop after one feature. Continue the v2.4 gameplay milestone in dependency order: versioned Seed terrain/accessibility → natural ten-wave campaigns → difficulty/enemy/Boss presets → New Game+ and end-to-end milestone acceptance. Continue independent authorized work around isolated blockers. Stop only for actual platform quota refusal, execution/context exhaustion, environment/tool/auth failures, unresolved ownership/Git conflict or a material decision requiring approval. Weekly percentage thresholds remain revoked. Preserve all FAIL and distinguish local/simulation/natural/live/hardware evidence.
 
 The user approved the conservative follow-up design in this session: Normal preserves the current baseline; Easy/Hard mainly change ordinary enemy counts and preparation windows without altering base-unit or Boss attributes. After normal ten-wave victory, an optional New Game+ retains at most three player-selected cards, resets resources/buildings/technology, and adds a visible enemy modifier. These mechanics still require implementation and actual validation; the approval itself is not a PASS.
+
+## 16. 永久雙語文件規範 / Permanent Bilingual Documentation Requirement
+
+`BILINGUAL_DOCUMENTATION_REQUIRED = true`
+
+**繁體中文：** 本條由使用者正式批准並永久生效，除非使用者明確修訂。整個專案所有新建、更新及對外提供的人類可讀文件，預設於同一文件採繁體中文在前、英文在後的實質對等段落。適用於 Markdown、README、Strategy、GDD、技術規格、開發與驗收報告、操作指南、Handoff、Recovery、監控摘要，以及其他人類可讀說明；不限於特定路徑。只翻譯標題不算完成。
+
+**English:** This user-approved requirement remains effective unless the user explicitly revises it. All newly created, updated, or externally provided human-readable project documentation must default to substantively equivalent Traditional Chinese followed by English paragraphs in the same document. This includes Markdown, README, Strategy, GDD, technical specifications, development and acceptance reports, operating guides, Handoff, Recovery, monitoring summaries, and other human-readable documentation across the repository. Translating headings alone is insufficient.
+
+**繁體中文：** Git Commit SHA、路徑、API、程式識別符、JSON Key、CLI 指令、錯誤代碼、狀態標識、原始日誌、程式碼與機器資料保留原始形式，例如 `LOCAL_VERIFIED`、`Save/Load`、`Sprite Atlas`、`New Game+`。不得為翻譯更改 JSON／YAML Schema、欄位名稱或破壞自動化解析；必要說明放在相鄰的雙語 Markdown。兩種語言不得改變測試數據、歷史 FAIL、已知問題或驗收結論。
+
+**English:** Preserve Git Commit SHAs, paths, APIs, identifiers, JSON keys, CLI commands, error codes, status identifiers, raw logs, code, and machine-readable data in their original form, including `LOCAL_VERIFIED`, `Save/Load`, `Sprite Atlas`, and `New Game+`. Translation must not alter JSON/YAML schemas, rename fields, or break automation. Put explanatory text in adjacent bilingual Markdown when needed. Both languages must preserve test data, historical FAIL results, known issues, and acceptance conclusions faithfully.
+
+**繁體中文：** 舊文件逐步遷移，順序為 ACTIVE STRATEGY／Handoff／Recovery，接著自然戰役、New Game+、地圖、難度與主要驗收報告，再到 README、玩家與工具指南及其他歷史文件。僅部分補譯時須如實標示剩餘範圍，不得宣稱整份文件已雙語化。新切片文件於正常 Commit 前同步完成雙語；Handoff 與 Recovery 明示此旗標，排程與其他 Agent 依共用規範繼承。
+
+**English:** Migrate existing documentation incrementally: ACTIVE STRATEGY/Handoff/Recovery first; natural campaigns, New Game+, maps, difficulty, and major acceptance reports next; then README, player/tool guides, and other historical documents. Clearly identify untranslated portions during partial migration rather than claiming whole-document compliance. Complete bilingual documentation for new slices before their normal commits. Handoff and Recovery must state this flag so scheduled tasks and other agents inherit it through shared instructions.
+
+**繁體中文：** 不得因純翻譯長時間中斷 GAME FIRST、重跑無關歷史測試或製造大量文件 Commit。沿用正常安全保存點與既有權限，保持 v234 不發布及 v2.4.0 下一里程碑；未完成十波自然通關與自然 New Game+ 驗收仍不得標為 PASS。
+
+**English:** Translation alone must not significantly interrupt GAME FIRST, trigger unrelated historical retests, or generate excessive documentation commits. Use normal safety checkpoints and existing permission boundaries. Keep v234 unpublished and v2.4.0 as the next milestone; incomplete natural ten-wave and natural New Game+ acceptance must not be marked PASS.

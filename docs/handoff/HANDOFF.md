@@ -1,3 +1,24 @@
+# 目前接續狀態 / Current Handoff
+
+`ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md`  
+`BILINGUAL_DOCUMENTATION_REQUIRED = true`
+
+**繁體中文：** 有效開發分支為 `codex/riftwatch-v240-game-first`，本輪開始前已核對遠端 `f2438d965a7bd86faf2baebd46de69a06ed7d7c2`。遊戲來源為 `a5a538d287b9c29951a83ebede5431db9fce7dc7`。舊歷史段落中的 Strategy 分支限定敘述不代表目前未整合；本分支已採用 v2.4.0 與最新雙語規範。每次恢復仍須重新查詢最新遠端及 Task Ownership。
+
+**English:** The active development branch is `codex/riftwatch-v240-game-first`; its remote was verified as `f2438d965a7bd86faf2baebd46de69a06ed7d7c2` at the start of this turn. Game source is `a5a538d287b9c29951a83ebede5431db9fce7dc7`. Historical Strategy-branch-only statements below do not describe current adoption: this branch has adopted v2.4.0 and the latest bilingual requirement. Re-query current remote refs and Task Ownership on every resume.
+
+**繁體中文：** Seed 地圖、難度與 New Game+ 已有限定本地驗證；自然十波仍未通過。V1 第五波戰敗；V2 第四波工具中斷；V3、V4 第四波戰敗，V4 有實際第二時代研究。V4 最終快照為戰敗診斷資料，不能當成存活戰役接續。保留低 FPS 時鐘、嚴格 Save/Load 非確定性、建築材質效能 FAIL、自然 Rift Prototype 未重現與 `HARDWARE_TEST_PENDING`。
+
+**English:** Seed maps, difficulty, and New Game+ have scoped local verification; natural ten-wave acceptance has not passed. V1 lost at wave5; V2 had a harness interruption at wave4; V3 and V4 lost at wave4, with actual age2 research in V4. V4's final snapshot is defeated-state diagnostic evidence, not a living campaign continuation. Preserve low-FPS clock issues, strict Save/Load nondeterminism, the building-material performance FAIL, the unreproduced natural Rift Prototype crash, and `HARDWARE_TEST_PENDING`.
+
+**繁體中文：** 下一步為以 V4 原始資料改善 V5 合法玩家策略，再繼續自然十波與 New Game+；不能改 Normal 數值、灌資源、跳波或將受控勝利 Fixture 當自然通關。雙語遷移先處理目前接續摘要及新報告；以下歷史英語／簡體內容尚待逐步補譯，原始數據及結論保留。不得為翻譯重跑無關測試或擅自發布。
+
+**English:** Next, use V4 raw evidence to improve the legal V5 player policy, then continue natural ten-wave and New Game+ acceptance. Do not change Normal statistics, inject resources, skip waves, or count controlled victory fixtures as natural wins. Bilingual migration starts with this current handoff and new reports; historical English/Simplified Chinese content below remains pending incremental translation, with original data and conclusions preserved. Do not rerun unrelated tests for translation or publish without authorization.
+
+---
+
+## 歷史交接封存（待逐步補譯） / Historical handoff archive (translation pending)
+
 # CURRENT AUTHORITATIVE STRATEGY — v2.4.0 GAME FIRST
 
 **ACTIVE STRATEGY:** [docs/STRATEGY-V2.4-GAME-FIRST.md](../STRATEGY-V2.4-GAME-FIRST.md)  

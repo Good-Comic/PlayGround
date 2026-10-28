@@ -13,3 +13,12 @@ No main changes, force push, checkpoint overwrite, new OmGitHub/OpenCode workflo
 Specs: Issue8/11 recovered GDD sections and SOURCES hashes; full package remains incomplete. SPEC_DECISION_REQUIRED for unsupported balance rules; continue independent deterministic fixes. Preserve all Strategy v2.2 requirements and existing matrix. No500/1000 blanket development block. Each safe slice gets tests, actual gameplay where applicable, evidence, commit/push and precise next step. Stop only the conflicting or unauthorized operation, not unrelated work.
 
 Final snapshot publishing: use publish_recovery_index.py --out a-fresh-outside-tree-directory (local-only by default). Explicit --publish requires confirmed codex/riftwatch-recovery-index ownership. Verify index HEAD; this immutable index can reference final clean application commits without recursively committing its own HEAD. On fresh feature-only clones, bootstrap these shared instructions from the verified Gameplay Integration ref before editing older feature branches.
+
+
+## 雙語文件 / Bilingual documentation
+
+`BILINGUAL_DOCUMENTATION_REQUIRED = true`
+
+新建或更新的人類可讀文件須以繁體中文在前、英文在後提供實質對等內容；機器格式、識別符、原始日誌與歷史證據不改名、不改結論。舊文件依 ACTIVE STRATEGY 第16節逐步遷移，不能只翻譯標題或為翻譯阻塞 GAME FIRST。
+
+New or updated human-readable documentation must provide substantively equivalent Traditional Chinese followed by English. Preserve machine formats, identifiers, raw logs, and historical conclusions. Migrate existing documents incrementally under ACTIVE STRATEGY section16; headings alone do not suffice, and translation must not block GAME FIRST.
