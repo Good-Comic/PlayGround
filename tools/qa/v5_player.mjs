@@ -32,7 +32,8 @@ export function createV5Player({page:p,record,build}){
   }
   for(const worker of s.units.filter(u=>u.team==='player'&&u.type==='villager'))await assign(worker);
   if(info.workers>=4&&s.resources.wood>=60&&s.buildings.filter(b=>b.alive&&b.type==='house').length<8)await build('house');
-  if(info.workers>=4){const building=await p.evaluate(()=>{const g=ageOfAsh.game;return g.buildings.find(b=>b.alive&&b.type==='barracks'&&b.queue.length<2)?.id});if(building&&s.resources.food>100)await train(building,'militia')}
+  const militaryBudget=await p.evaluate(()=>{const g=ageOfAsh.game,reserve=g.ageLevel<3&&!g.ageResearch?g.ageCost().food||0:0;return g.resources.food>=reserve+(g.unitCost('militia').food||0)});
+  if(info.workers>=4&&militaryBudget){const building=await p.evaluate(()=>{const g=ageOfAsh.game;return g.buildings.find(b=>b.alive&&b.type==='barracks'&&b.queue.length<2)?.id});if(building&&s.resources.food>100)await train(building,'militia')}
   const tc=await p.evaluate(()=>{const g=ageOfAsh.game,b=g.getTownCenter();return b?{id:b.id,x:b.x+2,y:b.y+2}:null});if(tc){await pan(tc.x,tc.y);
    const production=s.buildings.find(b=>b.alive&&b.type==='barracks');if(production&&await select(production.id)){
     const goal=await p.evaluate(core=>{const g=ageOfAsh.game;for(const[x,y]of [[core.x-3,core.y+1],[core.x+3,core.y+1],[core.x-2,core.y-3]]){const q=g.screenPos(x,y);if(q.x>270&&q.x<1210&&q.y>135&&q.y<610&&!g.pickAt(q.x,q.y))return{...q,wx:x,wy:y}}return null},tc);
