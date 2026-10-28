@@ -343,13 +343,19 @@
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
         {
-          "path": "docs/evidence/v240-worker-hits/final-tests.txt",
-          "result": "15 PASS"
+          "path": "docs/evidence/v240-easy-baseline/easy/result.json",
+          "result": "NATURAL_DEFEAT wave5",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
         },
         {
-          "path": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl",
-          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-          "result": "Native escort21 separated from siege focus; not campaign PASS"
+          "path": "docs/evidence/v240-easy-baseline/normal/result.json",
+          "result": "NATURAL_DEFEAT wave4",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
+        },
+        {
+          "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.json",
+          "result": "5 PASS CONTROLLED_FIXTURE only",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
         }
       ],
       "blockers": [
@@ -358,8 +364,8 @@
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "由escort-verified存活快照接續；補導航／返程觀測並驗證較長單護衛生存 / Continue living escort-verified save; add navigation/return observations and assess sustained escort survival",
-        "地形Custom方案仍待確認 / Custom terrain proposal still pending"
+        "先分析全資源預算、採集防守／操作延遲、攻城反制，再定最小不同測試 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
+        "不從已戰敗Easy／Normal快照冒充存活接續；自然NG+仍未測 / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
       ]
     }
   }

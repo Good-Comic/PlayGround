@@ -5,9 +5,9 @@
 本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。
 This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.
 
-快照 ID / Snapshot ID: 66c74d72f98a258e0c6a97f1c2891269c243b0a128b4b219848d410b2e7688d6
-擷取時間 UTC / Captured UTC: 2026-10-28T17:05:47.188658+00:00 · 觸發 / Trigger: POST_PUSH
-來源 / Collector source: `40a83d0c3bfac7b497f653d4f562264615e73fa4` · LOCAL_INVENTORIED_NOT_A_PUSH
+快照 ID / Snapshot ID: bc05f1d8e7fe4ad6a92005054282cb7f0b9ba87ef16d3065cfb813220a385cd9
+擷取時間 UTC / Captured UTC: 2026-10-28T17:59:28.933322+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
+來源 / Collector source: `af016f0e360dca02c74d3c18dab9dac52b7afd3a` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 | 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ This manifest records local Git state and actual remote queries at capture time;
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 40a83d0c3bfac7b497f653d4f562264615e73fa4 | 40a83d0c3bfac7b497f653d4f562264615e73fa4 | REMOTE_SAVED | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | af016f0e360dca02c74d3c18dab9dac52b7afd3a | af016f0e360dca02c74d3c18dab9dac52b7afd3a | REMOTE_SAVED | True |
 
 ## work
 
@@ -344,25 +344,179 @@ This manifest records local Git state and actual remote queries at capture time;
   "changed_files": [
     {
       "status": " M",
+      "path": "docs/evidence/v240-easy-baseline/REPORT.md"
+    },
+    {
+      "status": " M",
       "path": "docs/handoff/ACTIVE-TASK.json"
+    },
+    {
+      "status": " M",
+      "path": "docs/handoff/HANDOFF.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/handoff/NEXT-TASKS.json"
+    },
+    {
+      "status": " M",
+      "path": "docs/recovery/task-registry.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/comparison.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/easy/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/execution-environment.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/game-build-metadata.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal-interrupted/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-106.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-211.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-326.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-433.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-535.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/events.jsonl"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/latest-state.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/result.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/save-snapshot.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-1-boon-168.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-1-prep-0.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-1-wave-120.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-1-wave-52.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-2-boon-324.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-2-prep-170.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-2-wave-211.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-2-wave-280.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-3-boon-479.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-3-prep-326.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-3-wave-372.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-3-wave-433.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-4-defeat-602.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-4-prep-481.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-4-wave-515.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-easy-baseline/normal/wave-4-wave-578.png"
     }
   ],
   "last_validation": [
     {
-      "path": "docs/evidence/v240-worker-hits/final-tests.txt",
-      "result": "15 PASS",
+      "path": "docs/evidence/v240-easy-baseline/easy/result.json",
+      "result": "NATURAL_DEFEAT wave5",
+      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
       "exists": true,
       "storage": "REMOTE_SAVED",
-      "sha256": "495007174e29ac221e083a1b561f7b193ad4a556442630e1be5c310876ae7db8",
-      "resource_freshness": "UNKNOWN"
+      "sha256": "07b872f659222ac8419a8261b28215e8c6af30efcf07753ea6e4843b955274e5",
+      "resource_freshness": "MATCHES_WORKING_RESOURCES"
     },
     {
-      "path": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl",
+      "path": "docs/evidence/v240-easy-baseline/normal/result.json",
+      "result": "NATURAL_DEFEAT wave4",
       "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-      "result": "Native escort21 separated from siege focus; not campaign PASS",
+      "exists": true,
+      "storage": "LOCAL_ONLY_OR_MISSING",
+      "sha256": "c153a1ff7009bac9e7dfc958a87c777a242fd03b116c16f524ddc95ed25dbfed",
+      "resource_freshness": "MATCHES_WORKING_RESOURCES"
+    },
+    {
+      "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.json",
+      "result": "5 PASS CONTROLLED_FIXTURE only",
+      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
       "exists": true,
       "storage": "REMOTE_SAVED",
-      "sha256": "27ec1db5c3b56759b59255935b9ea314b6c8a8029555bc0bce669a1911051e74",
+      "sha256": "64993964086ee8b660271db6fe33c2a0dc0d3dca9ac0645d5a66559070f1e276",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     }
   ],
@@ -372,8 +526,8 @@ This manifest records local Git state and actual remote queries at capture time;
     "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
   ],
   "next_steps": [
-    "由escort-verified存活快照接續；補導航／返程觀測並驗證較長單護衛生存 / Continue living escort-verified save; add navigation/return observations and assess sustained escort survival",
-    "地形Custom方案仍待確認 / Custom terrain proposal still pending"
+    "先分析全資源預算、採集防守／操作延遲、攻城反制，再定最小不同測試 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
+    "不從已戰敗Easy／Normal快照冒充存活接續；自然NG+仍未測 / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
   ]
 }
 ```

@@ -1,34 +1,41 @@
 {
   "task_id": "V240-EASY-BASELINE",
-  "name": "Easy自然十波與Normal配對 / Easy natural ten waves and Normal pairing",
+  "name": "Easy自然基準與Normal配對 / Easy natural baseline and Normal pairing",
   "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
   "priority": "P0",
   "agent": "Codex",
   "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-  "latest_pushed_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+  "latest_pushed_commit": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
   "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
   "completed": [
-    "逐擊真實證據62筆／9死亡 /62actual hit observations and9deaths",
-    "修正自動玩家集火／單護衛衝突，非引擎AI變更 / Corrected player focus/escort conflict, not engine AI",
-    "15定向測試與真實瀏覽器命令分離 /15directed tests and actual browser command separation"
+    "Easy自然第五波、Normal有效補測第四波戰敗；參數生效 / Easy defeat5and valid Normal defeat4; parameters verified",
+    "受控十波／Boss／原生NG+及周目存讀PASS，非自然 / Controlled ten waves/Boss/native NG+/cycle saves PASS, not natural",
+    "修復原生Save Pause副作用恢復，無平衡修改 / Fixed native Save Pause side-effect recovery without balance changes"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "path": "docs/evidence/v240-worker-hits/final-tests.txt",
-      "result": "15 PASS"
+      "path": "docs/evidence/v240-easy-baseline/easy/result.json",
+      "result": "NATURAL_DEFEAT wave5",
+      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
     },
     {
-      "path": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl",
-      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-      "result": "Native escort21 separated from siege focus; not campaign PASS"
+      "path": "docs/evidence/v240-easy-baseline/normal/result.json",
+      "result": "NATURAL_DEFEAT wave4",
+      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
+    },
+    {
+      "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.json",
+      "result": "5 PASS CONTROLLED_FIXTURE only",
+      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-worker-hits/REPORT.md"
+    "docs/evidence/v240-easy-baseline/REPORT.md",
+    "docs/evidence/v240-easy-baseline/comparison.json"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -39,22 +46,22 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "easy-natural-1執行中，勿重複啟動 / easy-natural-1 active; do not duplicate",
-    "自然測試結束後串行受控十波與Normal配對 / After natural run, serial controlled ten waves and Normal pairing"
+    "先分析全資源預算、採集防守／操作延遲、攻城反制，再定最小不同測試 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
+    "不從已戰敗Easy／Normal快照冒充存活接續；自然NG+仍未測 / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "IN_PROGRESS",
+  "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-  "updated_at": "2026-10-28T17:05:47.135498+00:00",
-  "stop_reason": null,
+  "updated_at": "2026-10-28T17:59:28.874287+00:00",
+  "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-EASY-BASELINE",
     "execution": "codex-easy-20261029",
-    "global_version": 196,
-    "status": "OWNED"
+    "global_version": 197,
+    "status": "RELEASE_PENDING_AFTER_PUSH"
   }
 }

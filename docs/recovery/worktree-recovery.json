@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-28T17:05:47.188658+00:00",
-  "trigger": "POST_PUSH",
-  "collector_commit": "40a83d0c3bfac7b497f653d4f562264615e73fa4",
+  "captured_at_utc": "2026-10-28T17:59:28.933322+00:00",
+  "trigger": "FINAL_CHECKPOINT",
+  "collector_commit": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-28T17:05:47.188658+00:00"
+    "queried_at": "2026-10-28T17:59:28.933322+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -31,9 +31,9 @@
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-    "codex/riftwatch-progress-feed": "98a412700eb9343cfca2ad74e975af2e9cebb4c0",
+    "codex/riftwatch-progress-feed": "d98bbbc753c4e21b85022d69c4eefe5a18dc83f3",
     "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
-    "codex/riftwatch-task-ownership": "d5cce5ef6a09e686f4fcc872a544f610c0a84893",
+    "codex/riftwatch-task-ownership": "87c05055919ecbd5667a0e21ee7e7f0091be62c7",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -63,7 +63,7 @@
     "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
     "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
     "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-    "codex/riftwatch-v240-game-first": "40a83d0c3bfac7b497f653d4f562264615e73fa4",
+    "codex/riftwatch-v240-game-first": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -183,8 +183,8 @@
     },
     {
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "40a83d0c3bfac7b497f653d4f562264615e73fa4",
-      "remote_head": "40a83d0c3bfac7b497f653d4f562264615e73fa4",
+      "head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+      "remote_head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -524,25 +524,35 @@
     {
       "path": "/workspace/riftwatch-v240",
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "40a83d0c3bfac7b497f653d4f562264615e73fa4",
+      "head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
       "locked": false,
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
         {
-          "path": "docs/evidence/v240-worker-hits/final-tests.txt",
-          "result": "15 PASS",
+          "path": "docs/evidence/v240-easy-baseline/easy/result.json",
+          "result": "NATURAL_DEFEAT wave5",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
           "exists": true,
           "storage": "REMOTE_SAVED",
-          "sha256": "495007174e29ac221e083a1b561f7b193ad4a556442630e1be5c310876ae7db8",
-          "resource_freshness": "UNKNOWN"
+          "sha256": "07b872f659222ac8419a8261b28215e8c6af30efcf07753ea6e4843b955274e5",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
         },
         {
-          "path": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl",
+          "path": "docs/evidence/v240-easy-baseline/normal/result.json",
+          "result": "NATURAL_DEFEAT wave4",
           "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-          "result": "Native escort21 separated from siege focus; not campaign PASS",
+          "exists": true,
+          "storage": "LOCAL_ONLY_OR_MISSING",
+          "sha256": "c153a1ff7009bac9e7dfc958a87c777a242fd03b116c16f524ddc95ed25dbfed",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+        },
+        {
+          "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.json",
+          "result": "5 PASS CONTROLLED_FIXTURE only",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
           "exists": true,
           "storage": "REMOTE_SAVED",
-          "sha256": "27ec1db5c3b56759b59255935b9ea314b6c8a8029555bc0bce669a1911051e74",
+          "sha256": "64993964086ee8b660271db6fe33c2a0dc0d3dca9ac0645d5a66559070f1e276",
           "resource_freshness": "MATCHES_WORKING_RESOURCES"
         }
       ],
@@ -552,16 +562,160 @@
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "\u7531escort-verified\u5b58\u6d3b\u5feb\u7167\u63a5\u7e8c\uff1b\u88dc\u5c0e\u822a\uff0f\u8fd4\u7a0b\u89c0\u6e2c\u4e26\u9a57\u8b49\u8f03\u9577\u55ae\u8b77\u885b\u751f\u5b58 / Continue living escort-verified save; add navigation/return observations and assess sustained escort survival",
-        "\u5730\u5f62Custom\u65b9\u6848\u4ecd\u5f85\u78ba\u8a8d / Custom terrain proposal still pending"
+        "\u5148\u5206\u6790\u5168\u8cc7\u6e90\u9810\u7b97\u3001\u63a1\u96c6\u9632\u5b88\uff0f\u64cd\u4f5c\u5ef6\u9072\u3001\u653b\u57ce\u53cd\u5236\uff0c\u518d\u5b9a\u6700\u5c0f\u4e0d\u540c\u6e2c\u8a66 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
+        "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "40a83d0c3bfac7b497f653d4f562264615e73fa4",
+      "remote_head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
       "unpushed_commits": [],
       "changed_files": [
         {
           "status": " M",
+          "path": "docs/evidence/v240-easy-baseline/REPORT.md"
+        },
+        {
+          "status": " M",
           "path": "docs/handoff/ACTIVE-TASK.json"
+        },
+        {
+          "status": " M",
+          "path": "docs/handoff/HANDOFF.md"
+        },
+        {
+          "status": " M",
+          "path": "docs/handoff/NEXT-TASKS.json"
+        },
+        {
+          "status": " M",
+          "path": "docs/recovery/task-registry.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/comparison.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/easy/campaign.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/execution-environment.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/game-build-metadata.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal-interrupted/campaign.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/campaign.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-106.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-211.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-326.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-433.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-535.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/events.jsonl"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/latest-state.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/save-snapshot.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-1-boon-168.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-1-prep-0.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-1-wave-120.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-1-wave-52.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-2-boon-324.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-2-prep-170.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-2-wave-211.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-2-wave-280.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-3-boon-479.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-3-prep-326.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-3-wave-372.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-3-wave-433.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-4-defeat-602.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-4-prep-481.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-4-wave-515.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-easy-baseline/normal/wave-4-wave-578.png"
         }
       ],
       "dirty": true,
@@ -576,10 +730,10 @@
         "remote_head",
         "changed_files"
       ],
-      "previous_head": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
-      "actual_head": "40a83d0c3bfac7b497f653d4f562264615e73fa4"
+      "previous_head": "40a83d0c3bfac7b497f653d4f562264615e73fa4",
+      "actual_head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "66c74d72f98a258e0c6a97f1c2891269c243b0a128b4b219848d410b2e7688d6"
+  "snapshot_id": "bc05f1d8e7fe4ad6a92005054282cb7f0b9ba87ef16d3065cfb813220a385cd9"
 }

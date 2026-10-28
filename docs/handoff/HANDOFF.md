@@ -1,3 +1,22 @@
+# Easy基準與Normal配對接續 / Easy baseline and Normal-pair continuation
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+**中文：** 使用者最新優先級為Easy自然十波，遊戲來源仍`798bcffdfe8e97bdd4e8abe6c67f18223b540877`，本輪不改平衡。TEU／steppe／MILESTONE-NORMAL、1×、相同策略：Easy自然第五波戰敗；Normal有效補測自然第四波戰敗。首組Normal第五波停滯，舊工具未記paused，意外Pause符合但非完全證實；確認修復逾時點擊副作用未恢復的工具缺陷，補測有直接paused遙測且自然結束。不要從戰敗存檔恢復健康戰役，也不要重跑相同策略求綠。
+
+**English:** Latest user priority is natural Easy ten waves. Game source remains`798bcffdfe8e97bdd4e8abe6c67f18223b540877`, with no balance changes. FixedTEU/steppe/MILESTONE-NORMAL,1×and shared policy: Easy naturally lost wave5; valid Normal rerun naturally lost wave4. Initial Normal stalled at wave5withoutpausedtelemetry; accidental Pause fits but is not fully proven. Fixed the confirmed timed-out-click side-effect recovery defect; rerun recordspausedand ends naturally. Do not restore defeated saves as healthy campaigns or rerun the same policy for green results.
+
+**中文：** 受控低密度組正式完成十波與Boss擊殺，實際Chromium原生勝利／三卡／NG+／經濟科技重置／第二周目側翼／存讀通過。玩家HP覆寫與注入守軍明示，只是CONTROLLED_FIXTURE，三個前置失敗保留；自然Easy／Normal NG+仍NOT_TESTED。最新完整證據與比較：`docs/evidence/v240-easy-baseline/REPORT.md`及`comparison.json`。
+
+**English:** The low-density controlled fixture completed production ten-wave/Boss kills; actual Chromium passed native victory/3cards/NG+/economy-technology reset/cycle2flank/save-load. Explicit player-HP overrides/injected defenders make thisCONTROLLED_FIXTUREonly; retain3preceding failures. Natural Easy/Normal NG+remainNOT_TESTED. Evidence/comparison:`docs/evidence/v240-easy-baseline/REPORT.md` and`comparison.json`.
+
+**中文：** 下一步先核對科技／軍費全資源預算、採集防守與操作延遲、攻城反制的共同瓶頸，獨立重現確認的Bug後才修，不無限制新增版本。RELEASE_BLOCKED、所有歷史FAIL及硬體待測保留。所有測試停止；本輪因執行窗口保存，所有權於Push後釋放，以遠端ownership.json為準。無公開發布，跨對話寫入不可用。
+
+**English:** Next inspect shared bottlenecks in all-resource technology/military budgeting, resource defense/operation latency and siege counters. Reproduce confirmed bugs before repairing rather than endlessly versioning players. Retain RELEASE_BLOCKED, all historical FAIL and hardware pending. Tests stopped; checkpointed at execution-window boundary, ownership released after push, with remoteownership.json authoritative. No publication; cross-thread writing unavailable.
+
+---
+
 # 村民逐擊與護衛接續 / Worker damage and escort continuation
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

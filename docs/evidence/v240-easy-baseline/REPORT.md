@@ -1,3 +1,46 @@
+# 最終狀態摘要 / Final status summary
+
+**中文：** 本輪未建立Easy自然十波勝利路徑：Easy第五波戰敗，Normal有效配對第四波戰敗；首組Normal因停滯中斷，排除自然勝敗比較。受控十波／Boss／勝利／New Game+／周目存讀限定通過，不替代自然驗收。保持RELEASE_BLOCKED，未修改遊戲難度數值、main、Pages或OmGitHub。
+
+**English:** This round establishes no natural Easy ten-wave winning route: Easy lost wave5and the valid Normal pair lost wave4. Initial Normal stalled and is excluded from natural win/loss comparison. Controlled ten-wave/Boss/victory/New Game+/cycle-save flow passes within scope, never replacing natural acceptance. Retain RELEASE_BLOCKED; no difficulty-stat, main, Pages or OmGitHub changes.
+
+|指標 / Metric|Easy自然 / Natural Easy|Normal有效補測 / Valid Normal|
+|---|---|---|
+|結果／最遠波 / Outcome/farthest wave|NATURAL_DEFEAT /5|NATURAL_DEFEAT /4|
+|模擬秒 / Simulation seconds|731.64|581.93|
+|牆鐘秒 / Wall seconds|763.58|605.47|
+|終點村民／軍事人口 / Final workers/military|0/0|0/0|
+|終點食物／木／金／石 / Final food/wood/gold/stone|11.18 / 283.99 / 22.28 / 93.15|33.73 / 338.16 / 1.77 / 73.73|
+|終點時代 / Final age|2|1|
+|觀測村民傷害死亡 / Observed worker damage deaths|34|27|
+|觀測軍事單位消失下限 / Observed military disappearance lower bound|≥36|≥37|
+|建築損失 / Buildings lost|core×1|core×1|
+|觀測攻城單位ID / Observed siege unit IDs|8|7|
+|Boss / Boss|warlord2042/2124HP存活 / alive|未抵達Boss波 / Boss wave not reached|
+|Console／Page／失敗請求 / Console/Page/failed requests|0|0|
+
+**中文：** 軍事消失為稀疏存活名單的下限，不假稱逐擊完整軍損；村民死亡由逐擊觀測記錄。兩組卡牌不同（完整列表見comparison.json），例如Easy取得siege_math增加建築生命，Normal沒有；不能把單次差異全歸於難度。相同策略只涵蓋民兵／弓兵、塔與有限科技，尚未驗證完整兵種反制與經濟投資路徑。共同可確認的是村民與補兵在後期崩潰，Normal停留第一時代且黃金不足；尚未確認遊戲平衡Bug。
+
+**English:** Military disappearances are lower bounds from sparse live rosters, not complete per-hit losses; worker deaths are directly observed. Cards differ (full lists incomparison.json), includingEasy'ssiege_mathbuilding-health bonus absent in Normal, so one-run differences are not entirely attributable to difficulty. The shared policy covers militia/archers, towers and limited technology, not complete counters/economic investment. Confirmed common failure is late worker/reinforcement collapse; Normal remained age1with low gold. No balance bug is established.
+
+|驗收 / Acceptance|狀態 / Status|
+|---|---|
+|原生Easy／Normal參數 / Native Easy/Normal parameters|PASS，含實際存檔 / including actual saves|
+|Easy自然十波 / Natural Easy ten waves|FAIL（該策略樣本 / this policy sample）|
+|Normal自然十波 / Natural Normal ten waves|FAIL（有效補測 / valid rerun）|
+|受控十波、Boss正式死亡、勝利 / Controlled ten waves, production Boss deaths and victory|CONTROLLED_FIXTURE PASS；三次前置FAIL保留 /3preceding FAIL retained|
+|受控原生NG+、三卡、重置、二周目與存讀 / Controlled native NG+,3cards, reset,cycle2and save/load|PASS，非自然 / not natural|
+|自然Easy／Normal NG+ / Natural Easy/Normal NG+|NOT_TESTED（無自然勝利 / no natural victory）|
+|低FPS／嚴格確定性／性能／目標硬體 / Low-FPS/strict determinism/performance/target hardware|歷史FAIL／PENDING保留 / historical FAIL/PENDING retained|
+
+**中文：** 下一步先檢查科技與補兵的全資源預算、採集區防守／命令延遲與攻城反制，再設計具有明確差異的最小驗證；不立即新增多輪相同自動玩家。所有測試已停止，本輪因執行窗口安全保存。HARDWARE_TEST_PENDING，牆鐘／模擬時間不等同FPS或時鐘正確性。無公開發布，跨對話寫入不可用，不宣稱送達。
+
+**English:** Next inspect full-resource technology/reinforcement budgets, resource-line defense/command latency and siege counters before a materially different minimal test; do not immediately add repeated similar player versions. Tests have stopped, checkpointed at the execution-window boundary. HARDWARE_TEST_PENDING; wall/simulation time is neither FPS nor clock-correctness certification. No publication; cross-thread writing unavailable and delivery not claimed.
+
+---
+
+## 執行歷程與範圍 / Execution history and scope
+
 # Easy自然基準與Normal配對 / Easy natural baseline and Normal pairing
 
 **中文：** 按使用者最新決策，優先正式Start／Easy／TEU／steppe／MILESTONE-NORMAL（數字Seed1376821427）、1×、手動經濟／軍費、單步兵護衛與庫存感知策略。不使用戰術暫停、跳波、單位／資源／時間注入，不改Easy或Normal。遊戲來源798bcffdfe8e97bdd4e8abe6c67f18223b540877；harness新增難度選擇並讀回實際值，不假設UI預設。自然測試進行中，VALIDATION_IN_PROGRESS，尚未通過十波。
