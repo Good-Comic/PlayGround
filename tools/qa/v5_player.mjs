@@ -26,7 +26,7 @@ export function createV5Player({page:p,record,build}){
   if(choice.danger){
    if(choice.returning||choice.sheltered)return;
    if(!await select(worker.id))return;
-   const stop=p.locator('[data-command="stop"]');if(await stop.count())await stop.click({timeout:1500});
+   const stop=p.locator('[data-command="stop"]');if(await stop.count()){try{await stop.click({timeout:1500})}catch(e){if(e.name!=='TimeoutError')throw e;const observed=await p.evaluate(id=>({alive:ageOfAsh.game.units.some(u=>u.id===id&&u.alive),phase:ageOfAsh.game.phase,selection:ageOfAsh.game.selection.map(u=>u.id)}),worker.id);record('action-skipped',{command:'withdraw-worker-stop',worker:worker.id,reason:'NATIVE_TARGET_CHANGED_OR_HIDDEN',observed});return}}
    const tc=await p.evaluate(()=>{const g=ageOfAsh.game,b=g.getTownCenter();return b?{id:b.id,x:b.x+2,y:b.y+2}:null});
    if(tc){await pan(tc.x,tc.y);const q=await point(tc.id);if(q){await p.mouse.click(q.x,q.y,{button:'right'});const outcome=await p.evaluate(id=>{const g=ageOfAsh.game,u=g.units.find(u=>u.id===id);return{state:u?.state,drop:u?.dropTarget?.id,gather:u?.gatherTarget?.id,distance:u?g.distanceTo(u,g.getTownCenter()):null}},worker.id);record(outcome.drop===tc.id&&!outcome.gather?'action':'action-skipped',{command:'verified-worker-withdraw-to-core',worker:worker.id,outcome});return}}
    record('action-skipped',{command:'withdraw-worker',id:worker.id,reason:'NO_NATIVE_CORE_TARGET'});return;
