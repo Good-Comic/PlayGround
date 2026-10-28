@@ -5,9 +5,9 @@
 本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。
 This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.
 
-快照 ID / Snapshot ID: cdbd43b05a096231eab43ff4fde554f063785085713687ace47954bfd74d6fdb
-擷取時間 UTC / Captured UTC: 2026-10-28T16:29:01.981320+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
-來源 / Collector source: `d33810af147bbde8f1ea7ef00e30314f33f305a7` · LOCAL_INVENTORIED_NOT_A_PUSH
+快照 ID / Snapshot ID: 66c74d72f98a258e0c6a97f1c2891269c243b0a128b4b219848d410b2e7688d6
+擷取時間 UTC / Captured UTC: 2026-10-28T17:05:47.188658+00:00 · 觸發 / Trigger: POST_PUSH
+來源 / Collector source: `40a83d0c3bfac7b497f653d4f562264615e73fa4` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 | 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ This manifest records local Git state and actual remote queries at capture time;
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | d33810af147bbde8f1ea7ef00e30314f33f305a7 | d33810af147bbde8f1ea7ef00e30314f33f305a7 | REMOTE_SAVED | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 40a83d0c3bfac7b497f653d4f562264615e73fa4 | 40a83d0c3bfac7b497f653d4f562264615e73fa4 | REMOTE_SAVED | True |
 
 ## work
 
@@ -345,186 +345,6 @@ This manifest records local Git state and actual remote queries at capture time;
     {
       "status": " M",
       "path": "docs/handoff/ACTIVE-TASK.json"
-    },
-    {
-      "status": " M",
-      "path": "docs/handoff/HANDOFF.md"
-    },
-    {
-      "status": " M",
-      "path": "docs/handoff/NEXT-TASKS.json"
-    },
-    {
-      "status": " M",
-      "path": "docs/recovery/task-registry.json"
-    },
-    {
-      "status": " M",
-      "path": "tests/v5-player.test.mjs"
-    },
-    {
-      "status": " M",
-      "path": "tools/qa/natural_campaign.mjs"
-    },
-    {
-      "status": " M",
-      "path": "tools/qa/v5_player.mjs"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/REPORT.md"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/damage-summary.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-before.txt"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/campaign.mp4"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/checkpoint-96.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/events.jsonl"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/latest-state.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/result.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/save-snapshot.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/wave-3-boon-94.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/wave-3-wave-0.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/wave-3-wave-64.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/wave-4-prep-96.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-verified/campaign.mp4"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-verified/latest-state.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-verified/result.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-verified/resume-integrity.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-verified/save-snapshot.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/escort-verified/wave-3-wave-0.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/final-tests.txt"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/initial-policy-tests.txt"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/campaign.mp4"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/checkpoint-94.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/events.jsonl"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/latest-state.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/result.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/save-snapshot.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/wave-3-boon-45.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/wave-3-wave-0.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/wave-4-prep-47.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/wave-4-wave-141.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observed/wave-4-wave-79.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/observer-tests.txt"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/startup-failure/events.jsonl"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/startup-failure/failure.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-worker-hits/startup-failure/result.json"
-    },
-    {
-      "status": "??",
-      "path": "tests/worker-observer.test.mjs"
-    },
-    {
-      "status": "??",
-      "path": "tools/qa/worker_damage_observer.mjs"
     }
   ],
   "last_validation": [
@@ -532,7 +352,7 @@ This manifest records local Git state and actual remote queries at capture time;
       "path": "docs/evidence/v240-worker-hits/final-tests.txt",
       "result": "15 PASS",
       "exists": true,
-      "storage": "LOCAL_ONLY_OR_MISSING",
+      "storage": "REMOTE_SAVED",
       "sha256": "495007174e29ac221e083a1b561f7b193ad4a556442630e1be5c310876ae7db8",
       "resource_freshness": "UNKNOWN"
     },
@@ -541,7 +361,7 @@ This manifest records local Git state and actual remote queries at capture time;
       "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
       "result": "Native escort21 separated from siege focus; not campaign PASS",
       "exists": true,
-      "storage": "LOCAL_ONLY_OR_MISSING",
+      "storage": "REMOTE_SAVED",
       "sha256": "27ec1db5c3b56759b59255935b9ea314b6c8a8029555bc0bce669a1911051e74",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     }
