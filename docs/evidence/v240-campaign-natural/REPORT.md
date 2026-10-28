@@ -9,3 +9,9 @@ Observed first four waves completed and four real card selections; defeated on w
 policy-v1/result.json and events.jsonl retain state and commands; actual final screenshot and continuous campaign.mp4 show the loss. MP4 is a transcoding of the original Playwright WebM, not an image sequence. Original WebM retained outside Git in the execution diagnostics while available. A second legal policy may add native army Attack-Move and Rally commands; do not compare it as an unchanged-policy run.
 
 All prior simulation-clock, strict SaveLoad determinism, landmark performance FAIL and HARDWARE_TEST_PENDING remain open. New Game+ functional fixture evidence must be separated from natural campaign evidence.
+
+## Policy V2: HARNESS_INCOMPLETE at wave4
+
+Game5f63a939f64f3d3d40c66abfd4af655732dae7b0; tool c40e42f57bc1c23258cba59c8f463530b44dfd74 (native Attack-Move and Rally). No game errors. An unstable build:range button timed out during a hero cooldown UI rebuild. Raw error/state/action evidence retained in policy-v2/. This sample cannot establish a campaign win/loss. A separate native reproduction verified unnecessary worker command-grid replacement, fixed in dc48b7c; see v240-command-stability.
+
+PolicyV3 uses the same normal combat/economy rules with manual paid archer production and farms instead of the automatic spearman priority. Scoped transient UI timeouts are logged/skipped, not force-clicked or treated as successful actions; full run snapshots are exported for safe checkpointing. This is a different player strategy cohort, not an unchanged-policy rerun.

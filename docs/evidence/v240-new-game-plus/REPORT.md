@@ -9,3 +9,7 @@ Chromium browser.json records9/9 checks: an incomplete native run cannot enter N
 The victory snapshot is explicitly injected ONLY for this feature test and saved as controlled-victory-fixture.json. It is NOT a natural ten-wave victory, not strict full simulation determinism, not the live public game, not formal gameplay integration or public deployment. Natural policyV1 lost wave5; full campaign→NG+ transition remains NOT_TESTED. No whole-milestone PASS.
 
 Cycle modifier is one cavalry on cycle2, two on cycle3, maximumthree thereafter, arriving opposite the first planned entrance. Preparation/intel and HUD disclose the modifier/cycle. Difficulty multipliers affect ordinary director forces before this exact visible modifier; Boss definitions unchanged. Balance remains experimental pending natural play.
+
+## Compact interface follow-up
+
+At1280x720/130percent text, original source5f63a93 produced a victory card from y=-73.8 to793.8, clipping controls. Fix815557d caps panel to viewport with native scrolling. All four locales now bound y12..708; actual native scroll/click starts cycle2 in each locale with zero Page Errors. Controlled completed-victory UI fixture only. Four-locale video and source-pinned browser.json in compact/. It is legitimate for lower controls to require scrolling; no forced click was used.
