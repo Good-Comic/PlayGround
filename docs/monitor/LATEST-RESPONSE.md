@@ -1,3 +1,5 @@
-中文：盤點已保存；真實1× Normal仍在驗證，未公開發布。V5.13初次設定比較無效已保留，修正版已讀回軍事輔助off、手動經濟及1×。
+## 盤點與接續 / Audit and continuation
 
-English: Audit saved; actual1× Normal validation remains active, without publication. InitialV5.13 settings comparison was invalid and retained; corrected run reads back army aid off, manual economy and1×.
+中文：完成11類以上需求盤點，狀態及證據見docs/release/v240/REMAINING-WORK-AUDIT.md。V5.12與V5.13第三波自然戰敗；V5.11存活目標FAIL；初次V5.13設定未套用比較無效並保留。修正Continue後實際設定覆核，9項策略測試通過；34本地Artifact校驗一致。完整十波與自然New Game+未通過，RELEASE_BLOCKED。遊戲引擎／平衡未改，未公開發布。因執行窗口結束保存，所有戰役已結束；下一步V6投資／防守策略。CROSS_THREAD_HANDOFF_UNAVAILABLE，不宣稱送達。BILINGUAL_DOCUMENTATION_REQUIRED=true。
+
+English: Audited more than11requirement areas with statuses and evidence in docs/release/v240/REMAINING-WORK-AUDIT.md. V5.12/V5.13 naturally lost wave3; V5.11 failed worker survival; initialV5.13 settings comparison was invalid and retained. Fixed actual-settings verification after Continue;9policy tests pass and34local artifact checksums match. Ten waves and natural New Game+ remain incomplete: RELEASE_BLOCKED. Engine/balance unchanged; no public deployment. Checkpointed at execution-window limit; all campaigns ended. Next:V6investment/defense policy. CROSS_THREAD_HANDOFF_UNAVAILABLE; delivery not claimed. BILINGUAL_DOCUMENTATION_REQUIRED=true.
