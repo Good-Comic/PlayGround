@@ -13,3 +13,9 @@
 **中文：** 受影響固定步長原型4項測試通過，但輸出仍明示determinism_equal=false。10Hz正式更新10秒僅模擬5秒；主迴圈與Game.update各自截斷0.05秒。原型仍不安裝，導航與其他暫態仍需處理。本修復只完成投射物／區域的限定Save/Load一致性，不解決全部RNG、導航、時鐘或舊存檔已遺失的攻擊。
 
 **English:** Four affected fixed-step prototype tests pass, but explicitly report determinism_equal=false. Ten seconds at10Hz through production updates advances only5simulation seconds; main loop and Game.update independently clip to0.05seconds. The prototype remains uninstalled; navigation and other transients still need work. This fix provides scoped projectile/zone Save/Load consistency, not complete RNG/navigation/clock determinism or recovery of attacks already omitted in old saves.
+
+## 第二個確定性缺陷：暈眩強度 / Second deterministic defect: stun strength
+
+**中文：** 另已重現Save/Load只保存slowUntil而未保存slowAmount：完整暈眩原應速度0，讀檔後卻變2.04。新增強度欄位後，全暈與40%緩速在原到期時間前後保持一致；21項受影響測試通過。此修正不改技能數值，只保留既有效果；真實瀏覽器新來源驗證尚待完成。
+
+**English:** Also reproduced Save/Load retaining slowUntil but omitting slowAmount: a full stun should yield speed0but resumed at2.04. Saving the strength field preserves full stun and40%slow before/after the original expiry;21affected tests pass. This retains existing effects without changing skill values. Actual browser verification of the new source remains pending.

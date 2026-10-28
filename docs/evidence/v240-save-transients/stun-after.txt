@@ -1,0 +1,29 @@
+✔ dead attack target is replaced on the next player update (37.764577ms)
+✔ dead target with no replacement returns to idle (14.32762ms)
+✔ manual move and attack take precedence over automatic acquisition (21.169349ms)
+✔ passive never acquires or retaliates automatically (17.08185ms)
+✔ hold position can attack in range without pursuing (35.34701ms)
+✔ defensive units return to guard origin after leash is exceeded (19.007905ms)
+✔ idle defensive unit retaliates; moving unit keeps manual order (10.387544ms)
+✔ enemy opportunistic attack cannot target itself or friendly units (7.55694ms)
+✔ stances persist in snapshots and old saves default to defensive (29.46305ms)
+✔ single stance command cycles through all four stances, including for heroes (8.146539ms)
+✔ save mid-flight and during boss telegraph preserves remaining damage, timers and entity references (61.589228ms)
+✔ resolved zones do not damage twice and legacy saves remain loadable (52.640399ms)
+✔ SaveLoad preserves full stun and partial slow strength until their original expiry (61.062087ms)
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (98.544305ms)
+✔ Patrol completes both legs using native navigation (53.935768ms)
+✔ Guard follows a living ally then recovers when ally dies (24.292092ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (31.794681ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (14.558653ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (51.432921ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (21.191726ms)
+✔ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (57.579139ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 598.941727

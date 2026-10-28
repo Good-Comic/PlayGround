@@ -204,7 +204,7 @@ export class Game {
       'id', 'team', 'type', 'x', 'y', 'hp', 'maxHp', 'baseMaxHp', 'pop', 'armor', 'attack',
       'state', 'carry', 'carryType', 'cooldown', 'attackAnim', 'walkPhase', 'facing', 'visualDirection', 'deathAnim', 'hitFlash',
       'alive', 'retargetTimer', 'hold', 'idleTimer', 'buildingHint', 'hero', 'shield', 'shieldTime',
-      'marked', 'slowUntil', 'shots', 'rescueUsed', 'expireIn', 'bossSkillTimer', 'rageStage',
+      'marked', 'slowUntil', 'slowAmount', 'shots', 'rescueUsed', 'expireIn', 'bossSkillTimer', 'rageStage',
       'summoned', 'markCd', 'aegisCd', 'eventFlags', 'eventSpeedMul', 'eventAttackSpeedMul',
       'eventRegen', 'buildingDamageMul', 'convertResist', 'eventRetreat', 'eventRetreatCd',
       'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'moraleUsed',
