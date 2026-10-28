@@ -1,0 +1,93 @@
+{
+  "source_commit": "8f202458a5b11f9e96b937aefd26ce175b17ba3b",
+  "mode": "AFTER_LOCAL_CONTROLLED_FIXTURE_NATIVE_SAVE_RELOAD_CONTINUE",
+  "checks": [
+    {
+      "name": "pending projectile and typed references survive native Save Reload Continue",
+      "pass": true,
+      "data": {
+        "speed": 0,
+        "slowUntil": 10.4166,
+        "projectiles": 5,
+        "zones": [
+          {
+            "kind": "boss",
+            "elapsed": 0.4665999999999999,
+            "done": false,
+            "source": 20
+          },
+          {
+            "kind": "smoke",
+            "elapsed": 3.2665999999999995,
+            "done": true
+          }
+        ],
+        "savedProjectile": true,
+        "source": 20,
+        "target": 19,
+        "hp": 520
+      }
+    },
+    {
+      "name": "full stun remains zero-speed after native restore",
+      "pass": true,
+      "data": {
+        "speed": 0,
+        "slowUntil": 10.4166,
+        "projectiles": 5,
+        "zones": [
+          {
+            "kind": "boss",
+            "elapsed": 0.4665999999999999,
+            "done": false,
+            "source": 20
+          },
+          {
+            "kind": "smoke",
+            "elapsed": 3.2665999999999995,
+            "done": true
+          }
+        ],
+        "savedProjectile": true,
+        "source": 20,
+        "target": 19,
+        "hp": 520
+      }
+    },
+    {
+      "name": "boss telegraph remaining timer and smoke survive",
+      "pass": true,
+      "data": [
+        {
+          "kind": "boss",
+          "elapsed": 0.4665999999999999,
+          "done": false,
+          "source": 20
+        },
+        {
+          "kind": "smoke",
+          "elapsed": 3.2665999999999995,
+          "done": true
+        }
+      ]
+    },
+    {
+      "name": "restored attacks resolve and hero remains alive",
+      "pass": true,
+      "data": {
+        "hp": 481.6,
+        "savedProjectile": false,
+        "projectiles": 0,
+        "zones": [
+          {
+            "kind": "smoke",
+            "done": true,
+            "elapsed": 6.5162
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "failures": []
+}

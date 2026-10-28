@@ -25,3 +25,9 @@
 **中文：** 最小重現亦確認：暫停或選卡時Game.time仍增加，讓以slowUntil表示的完整暈眩在暫停中自然消失。修復只把戰鬥絕對時間累計移至活動模擬區塊；相機與粒子仍走既有更新，不安裝固定步長、不改正式低FPS截斷。42項受影響測試通過，包括暫停／選卡／主選單不消耗狀態時間。真實瀏覽器新來源驗證待完成。
 
 **English:** A minimal reproduction also confirms Game.time advanced while paused or choosing cards, allowing full stuns expressed with slowUntil to expire during pause. The fix only moves combat absolute-time accumulation into active simulation; camera/particles retain their existing updates. No fixed-step installation or change to production low-FPS clipping.42affected tests pass, including pause/card/menu preserving status time. Actual browser verification of this source is pending.
+
+## 最新來源瀏覽器驗證 / Latest-source browser validation
+
+**中文：** `8f202458a5b11f9e96b937aefd26ce175b17ba3b` 四項原生瀏覽器檢查通過，包括完整暈眩讀檔後速度0。`cfc42ee511b35cbefe1359af476fbd9396054a70` 五項通過，新增原生Pause等待1.5秒後戰鬥時間不變；投射物、Boss／煙霧及恢復結算仍通過。兩組皆34檔精確Artifact，Console／Page／失敗請求0；原始WebM與截圖分別保存，不合併來源。此為實際本地Chromium且使用受控戰鬥場景，不是公開網站或自然通關。
+
+**English:** Four native-browser checks pass at `8f202458a5b11f9e96b937aefd26ce175b17ba3b`, including zero-speed full stun after loading. Five pass at `cfc42ee511b35cbefe1359af476fbd9396054a70`, adding unchanged combat time after1.5seconds in native Pause; projectile, Boss/smoke and resumed resolution checks remain passing. Both use exact34-file artifacts with0Console/Page/failed-request errors. Original WebM and screenshots are stored separately by source. This is actual local Chromium with controlled combat, not public-site or natural-victory acceptance.

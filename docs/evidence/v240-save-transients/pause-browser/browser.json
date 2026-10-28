@@ -1,0 +1,101 @@
+{
+  "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+  "mode": "AFTER_LOCAL_CONTROLLED_FIXTURE_NATIVE_SAVE_RELOAD_CONTINUE",
+  "checks": [
+    {
+      "name": "native Pause preserves combat timestamp and stun",
+      "pass": true,
+      "data": {
+        "time": 0.4666000000000001,
+        "speed": 0
+      }
+    },
+    {
+      "name": "pending projectile and typed references survive native Save Reload Continue",
+      "pass": true,
+      "data": {
+        "speed": 0,
+        "slowUntil": 10.4666,
+        "projectiles": 6,
+        "zones": [
+          {
+            "kind": "boss",
+            "elapsed": 0.4666,
+            "done": false,
+            "source": 20
+          },
+          {
+            "kind": "smoke",
+            "elapsed": 3.266599999999999,
+            "done": true
+          }
+        ],
+        "savedProjectile": true,
+        "source": 20,
+        "target": 19,
+        "hp": 520
+      }
+    },
+    {
+      "name": "full stun remains zero-speed after native restore",
+      "pass": true,
+      "data": {
+        "speed": 0,
+        "slowUntil": 10.4666,
+        "projectiles": 6,
+        "zones": [
+          {
+            "kind": "boss",
+            "elapsed": 0.4666,
+            "done": false,
+            "source": 20
+          },
+          {
+            "kind": "smoke",
+            "elapsed": 3.266599999999999,
+            "done": true
+          }
+        ],
+        "savedProjectile": true,
+        "source": 20,
+        "target": 19,
+        "hp": 520
+      }
+    },
+    {
+      "name": "boss telegraph remaining timer and smoke survive",
+      "pass": true,
+      "data": [
+        {
+          "kind": "boss",
+          "elapsed": 0.4666,
+          "done": false,
+          "source": 20
+        },
+        {
+          "kind": "smoke",
+          "elapsed": 3.266599999999999,
+          "done": true
+        }
+      ]
+    },
+    {
+      "name": "restored attacks resolve and hero remains alive",
+      "pass": true,
+      "data": {
+        "hp": 481.6,
+        "savedProjectile": false,
+        "projectiles": 0,
+        "zones": [
+          {
+            "kind": "smoke",
+            "done": true,
+            "elapsed": 6.516400000000018
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "failures": []
+}

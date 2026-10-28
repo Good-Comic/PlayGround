@@ -20,7 +20,8 @@ export function protectionTargets(workers,enemies,core) {
  return ranked.slice(0,2).map(r=>r.worker.id);
 }
 export function housingPriority({military,queued=0,cap,civLimit=0}){return !(civLimit>0&&cap>=civLimit)&&cap-military-queued<=5}
-export function createV5Player({page:p,record,build}){
+export function researchPriority(state,openingPolicy='legacy'){return openingPolicy==='economy'&&state.age===1?state.military>=12:shouldResearch(state)}
+export function createV5Player({page:p,record,build,openingPolicy='legacy',defense='workers'}){
  let regrouped=false;
  async function pan(x,y){const r=await p.locator('#minimap').boundingBox();await p.mouse.click(r.x+x/50*r.width,r.y+y/50*r.height);await p.waitForTimeout(400)}
  async function point(id,resource=false){return p.evaluate(({id,resource})=>{const g=ageOfAsh.game,e=(resource?g.world.resources:[...g.units,...g.buildings]).find(e=>e.id===id&&e.alive);if(!e)return null;const q=g.screenPos(e.x+(e.w||0)/2,e.y+(e.h||0)/2),offsets=e.w?[-22,-45,-65,-90]:e.resource?[-10,-20,0]:[-18,-10,-25];for(const dy of offsets)for(const dx of [0,-9,9]){const x=q.x+dx*g.camera.zoom,y=q.y+dy*g.camera.zoom;if(x>270&&x<1210&&y>135&&y<610&&g.pickAt(x,y)===e&&document.elementFromPoint(x,y)===document.getElementById('game'))return{x,y,wx:e.x+(e.w||0)/2,wy:e.y+(e.h||0)/2}}return null},{id,resource})}
@@ -49,7 +50,7 @@ export function createV5Player({page:p,record,build}){
  return{async step(s){
   const info=await p.evaluate(()=>{const g=ageOfAsh.game,tc=g.getTownCenter();return{workers:g.economicPopulation,queued:tc?.queue.filter(q=>q.type==='villager').length||0,food:g.resources.food,cost:g.unitCost('villager').food,coreAlive:!!tc,core:tc?.id}});
   if(recoveryPriority({...info,target:workerTarget(s.wave)}))await train(info.core,'villager');
-  if(info.workers>=4&&shouldResearch({age:s.age,wave:s.wave,military:s.population.mil})&&!s.ageResearch){
+  if(info.workers>=4&&researchPriority({age:s.age,wave:s.wave,military:s.population.mil},openingPolicy)&&!s.ageResearch){
    const affordable=await p.evaluate(()=>{const g=ageOfAsh.game;return g.canAfford(g.ageCost())});
    if(affordable&&await select(info.core)){const button=p.locator('[data-command="age:advance"]');if(await button.count()){try{await button.click({timeout:1500});const research=await p.evaluate(()=>ageOfAsh.game.ageResearch);record(research?'action':'action-skipped',{command:'verified-age-research',research})}catch(e){record('action-skipped',{command:'age:advance',reason:e.name})}}}
   }
@@ -62,7 +63,7 @@ export function createV5Player({page:p,record,build}){
   else if(info.workers>=4&&housingPriority(supply)&&supply.canBuildHouse)await build('house');
   const ranged=await p.evaluate(()=>{const g=ageOfAsh.game;return{archers:g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='archer').length,range:g.buildings.find(b=>b.alive&&b.type==='range'&&b.construction>=1&&b.queue.length<2)?.id,affordable:g.canAfford(g.unitCost('archer'))}});
   if(ranged.range&&ranged.affordable&&ranged.archers<8)await train(ranged.range,'archer');
-  const reserveTechnology=shouldResearch({age:s.age,wave:s.wave,military:s.population.mil});
+  const reserveTechnology=researchPriority({age:s.age,wave:s.wave,military:s.population.mil},openingPolicy);
   const militaryBudget=await p.evaluate(reserveTechnology=>{const g=ageOfAsh.game,reserve=reserveTechnology&&!g.ageResearch?g.ageCost().food||0:0;return g.resources.food>=reserve+(g.unitCost('militia').food||0)},reserveTechnology);
   if(info.workers>=4&&militaryBudget){const building=await p.evaluate(()=>{const g=ageOfAsh.game;return g.buildings.find(b=>b.alive&&b.type==='barracks'&&b.queue.length<2)?.id});if(building&&s.resources.food>100)await train(building,'militia')}
   const tc=await p.evaluate(()=>{const g=ageOfAsh.game,b=g.getTownCenter();return b?{id:b.id,x:b.x+2,y:b.y+2}:null});if(tc){await pan(tc.x,tc.y);
@@ -76,7 +77,7 @@ export function createV5Player({page:p,record,build}){
    const siege=await p.evaluate(()=>{const g=ageOfAsh.game,tc=g.getTownCenter(),enemy=g.units.find(u=>u.alive&&u.team==='enemy'&&u.type==='ram'&&g.distanceTo(u,tc)<8);return enemy?{x:enemy.x,y:enemy.y,id:enemy.id}:null});
    if(siege){const armed=await p.evaluate(()=>!!(ageOfAsh.game.orderMode||ageOfAsh.game.placement));if(armed)await p.keyboard.press('Escape');if(await meleeGroup()){const q=await point(siege.id);if(q){await p.mouse.click(q.x,q.y,{button:'right'});const focused=await p.evaluate(id=>ageOfAsh.game.selection.filter(u=>u.alive&&u.team==='player'&&u.type!=='villager'&&u.manualAttack&&u.target?.id===id).map(u=>u.id),siege.id);record(focused.length?'action':'action-skipped',{command:'verified-direct-focus-siege',enemy:siege.id,actors:focused})}}}
    const live=await p.evaluate(()=>{const g=ageOfAsh.game;return{workers:g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager').map(u=>({id:u.id,x:u.x,y:u.y,hp:u.hp,state:u.state,gatherType:u.gatherTarget?.resource})),enemies:g.units.filter(u=>u.alive&&u.team==='enemy').map(u=>({target:u.target?.id})),army:g.units.filter(u=>u.alive&&u.team==='player'&&u.type!=='villager').sort((a,b)=>(a.hero?-2:a.type==='archer'?-1:0)-(b.hero?-2:b.type==='archer'?-1:0)).map(u=>({id:u.id,order:u.tacticalOrder,focus:u.manualAttack&&u.target?.alive&&u.target.type==='ram'}))}});
-   const targets=protectionTargets(live.workers,live.enemies,tc);
+   const targets=defense==='core'?[]:protectionTargets(live.workers,live.enemies,tc);
    const desired=live.army.map((u,i)=>({...u,protect:i<3&&targets.length?targets[i%targets.length]:tc.id})).filter(u=>!u.focus&&u.order?.type!=='attackMove'&&(u.order?.type!=='guard'||u.order.protectedId!==u.protect));
    for(const unit of desired.slice(0,8)){const id=unit.id;if(!await select(id))continue;const ally=await p.evaluate(id=>{const g=ageOfAsh.game,e=[...g.units,...g.buildings].find(e=>e.id===id&&e.alive);return e?{x:e.x+(e.w||0)/2,y:e.y+(e.h||0)/2}:null},unit.protect);if(!ally)continue;await pan(ally.x,ally.y);const q=await point(unit.protect);if(!q)continue;await p.keyboard.press('g');if(await p.evaluate(()=>ageOfAsh.game.orderMode==='guard')){await p.mouse.click(q.x,q.y);const order=await p.evaluate(id=>ageOfAsh.game.units.find(u=>u.id===id)?.tacticalOrder,id);record(order?.type==='guard'&&order.protectedId===unit.protect?'action':'action-skipped',{command:unit.protect===tc.id?'verified-guard-core':'verified-guard-resource-worker',id,protected:unit.protect,order})}}
 
