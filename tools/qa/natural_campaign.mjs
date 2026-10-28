@@ -81,7 +81,7 @@ try{
   if(s.phase==='victory'||s.phase==='defeat'){result={status:s.phase==='victory'?'NATURAL_VICTORY':'NATURAL_DEFEAT',state:s,wallSeconds:wall};break}
   if(errors.length){result={status:'BROWSER_ERROR',state:s};break}
   if(s.phase==='boon'){
-    const priority=policy==='v5'?['rift_prototype','siege_math','night_watch','farwatch','citizen_arms','butcher','fire_oil','veteran_honors']:['rift_prototype','tc_regen','siege_math','veteran_honors'];const index=Math.max(0,priority.map(id=>s.choices.indexOf(id)).find(i=>i>=0)??0);await p.locator('.boon-card').nth(index).click();await p.locator('#btn-claim').click();record('action',{command:'claim-boon',id:s.choices[index]});await p.waitForTimeout(1000);continue;
+    const priority=(policy==='v5'||policy.startsWith('v5.'))?['rift_prototype','siege_math','night_watch','farwatch','citizen_arms','butcher','fire_oil','veteran_honors']:['rift_prototype','tc_regen','siege_math','veteran_honors'];const index=Math.max(0,priority.map(id=>s.choices.indexOf(id)).find(i=>i>=0)??0);await p.locator('.boon-card').nth(index).click();await p.locator('#btn-claim').click();record('action',{command:'claim-boon',id:s.choices[index]});await p.waitForTimeout(1000);continue;
   }
   if(wall-lastPolicy>6){lastPolicy=wall;
     if(policy.startsWith('v5.'))await adaptive.step(s);
