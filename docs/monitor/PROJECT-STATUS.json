@@ -2,68 +2,66 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-28T05:50:59.650275+00:00",
+  "updated_at": "2026-10-28T06:51:39.332056+00:00",
   "latest_event": {
-    "task_id": "V240-V5-PLAYABILITY",
+    "task_id": "V240-V55-ECONOMY",
     "agent": "Codex",
     "severity": "WARNING",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+    "commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
     "build_sha": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-    "summary": "V5 \u6839\u56e0\u5c0d\u7167\u5b8c\u6210\uff1b\u4fee\u5fa9\u771f\u5be6\u8cc7\u6e90\u9078\u53d6\u4f8b\u5916\uff1bV5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u91cc\u7a0b\u7891\u672a\u901a\u904e\u3002 / Compared V5 causes; fixed real resource-selection exception; V5.4 lost wave4, milestone incomplete.",
+    "summary": "\u81ea\u7136\u6230\u5f79\u7b56\u7565\u8207\u771f\u5be6\u9304\u5f71\u5df2\u4fdd\u5b58\uff1b\u5341\u6ce2\u672a\u901a\u904e / Natural campaign policies and browser recordings preserved; ten waves not passed",
     "code_changes": [
-      "\u8cc7\u6e90\u9078\u53d6\u5b89\u5168\u9762\u677f\u8207\u56db\u8a9e\u6307\u5f15\uff1bNormal\u73a9\u6cd5\u8cc7\u6599\u672a\u6539 / Safe resource-selection panel and four-locale hints; Normal gameplay data unchanged",
-      "\u81ea\u52d5\u73a9\u5bb6\u6838\u5c0d\u5be6\u969b\u968a\u5217\u3001\u63a1\u96c6\u3001Guard\u3001Rally\uff1b\u539f\u751f\u64a4\u9000\u9650\u5b9a\u9a57\u8b49 / Policy verifies queues, gathering, Guard and Rally; scoped native withdrawal test"
+      "\u81ea\u52d5\u73a9\u5bb6\u52de\u52d5\u914d\u984d\u3001\u8b77\u885b\u3001\u653b\u57ce\u76ee\u6a19\u53ca\u623f\u5c4b\u9810\u7b97\u4fee\u6b63\uff1b\u672a\u4fee\u6539\u904a\u6232\u5e73\u8861 / Automated-player labor, escort, siege-target and housing corrections; game balance unchanged"
     ],
     "next_steps": [
-      "\u6539\u5584\u6ce2\u6b21\u7d93\u6fdf\u6210\u9577\u3001\u98df\u7269\u914d\u7f6e\u53ca\u88dc\u5175\uff0f\u79d1\u6280\u9810\u7b97\uff0c\u4e0d\u6539 Normal / Improve economic growth, food allocation and reinforcement/technology budgeting, preserving Normal",
-      "\u5c07\u539f\u751f\u64a4\u9000\u6295\u5165\u81ea\u7136\u5168\u6230\u5f79\uff0c\u518d\u4f9d\u8b49\u64da\u6c7a\u5b9a\u4e0b\u4e00\u6b65 / Exercise native withdrawal in a full natural campaign and decide next steps from evidence"
+      "\u7e7c\u7e8c v510 \u5b58\u6d3b\u5feb\u7167\uff0c1\u00d7 Normal\uff0c\u539f\u751f\u6230\u722d\u7ba1\u5bb6\u958b\u555f / Continue living v510 snapshot at1\u00d7 Normal with native army steward"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "\u8cc7\u6e90\u9078\u53d6\u4fee\u5fa9 / Resource-selection repair",
+        "name": "\u7b56\u75658\u9805 / Eight policy tests",
         "status": "PASS",
         "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-        "evidence": "docs/evidence/v240-resource-selection/REPORT.md",
-        "evidence_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
-        "evidence_blob": "a3f1b339f32e206c1667c311e6d30c3cbf336614",
+        "evidence": "docs/evidence/v240-v55-economy/policy-final.log.txt",
+        "evidence_commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
+        "evidence_blob": "1b3b4697c56a65f14413d9b06139698a723f6b8c",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "V5.4\u81ea\u7136\u6230\u5f79 / V5.4 natural campaign",
+        "name": "\u9650\u5b9a\u958b\u5c40 / Scoped opening",
+        "status": "PASS",
+        "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+        "evidence": "docs/evidence/v240-v55-economy/v510/verification.json",
+        "evidence_commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
+        "evidence_blob": "4d658cd18e1f069d22f2150c820aae93b673f7a6",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "V5.9\u81ea\u7136\u6230\u5f79 / V5.9 natural campaign",
         "status": "FAIL",
         "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-        "evidence": "docs/evidence/v240-v5-playability/REPORT.md",
-        "evidence_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
-        "evidence_blob": "b83b83b4987d4e8fdb8e5d132c8642095e1deb68",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "\u539f\u751f\u6751\u6c11\u64a4\u9000\u8f38\u5165 / Native worker-withdraw input",
-        "status": "PASS",
-        "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-        "evidence": "docs/evidence/v240-v5-playability/withdraw/browser.json",
-        "evidence_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
-        "evidence_blob": "517e4f6a2a9a18411a0d881f6f6f8dcad5c9b778",
+        "evidence": "docs/evidence/v240-v55-economy/v59/result.json",
+        "evidence_commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
+        "evidence_blob": "263338ccf00f168c2172ab3b054293ca92575edc",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "NATURAL-TEN-WAVES",
+        "id": "TEN_WAVES_PENDING",
         "severity": "WARNING",
-        "summary": "\u98df\u7269\u4f9b\u61c9\u53ca\u751f\u7522\u9810\u7b97\u4ecd\u4e0d\u8db3\uff1b\u5341\u6ce2\u8207\u81ea\u7136 New Game+ \u672a\u901a\u904e\uff0c\u4e0d\u80fd\u63a8\u8ad6 Normal \u4e0d\u53ef\u901a\u95dc / Food supply/production budgeting remain insufficient; ten waves and natural New Game+ not passed; Normal impossibility not established.",
-        "source_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+        "summary": "V5.7\u2013V5.9\u7b2c\u4e09\u6ce2\u6230\u6557\uff1bV5.10\u50c5\u958b\u5c40PASS / V5.7\u2013V5.9 defeat3; V5.10 opening-only PASS",
+        "source_commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u771f\u6b63\u6700\u65b0\u9060\u7aef\u5df2\u6838\u5c0d\uff0cV1\u2013V4\u6839\u56e0\u5c0d\u7167\u53caV5\u591a\u7248\u672c\u8b49\u64da\u5747\u5df2\u4fdd\u5b58\u3002\u81ea\u7136\u64cd\u4f5c\u767c\u73fe\u8cc7\u6e90\u9078\u53d6TypeError\uff0c\u5df2\u4fee\u5fa9\u4e26\u4ee510\u9805\u5b9a\u5411Node\u53ca\u56db\u8cc7\u6e90\uff0f\u56db\u8a9e\u539f\u751fSaveContinue\u9a57\u8b49\u3002V5.3\u70ba\u4ecb\u9762\u4f8b\u5916\u4e2d\u65b7\uff0c\u4e0d\u662f\u6230\u6557\uff1b\u4fee\u5fa9\u5f8cV5.4\u7b2c\u56db\u6ce2\u6230\u6557\u4f46\u7121\u8a72\u4f8b\u5916\u3002\u98df\u72692.17\u3001\u6728\u6750740.76\u3001\u9ec3\u91d1227.22\u986f\u793a\u5148\u6539\u81ea\u52d5\u73a9\u5bb6\u7d93\u6fdf\uff0f\u9810\u7b97\u3002\u539f\u751f\u64a4\u9000\u9650\u5b9a\u8f38\u5165\u901a\u904e\uff0c\u5c1a\u672a\u5b8c\u6574\u6230\u5f79\u9a57\u8b49\u3002\u91cc\u7a0b\u7891\u3001\u81ea\u7136\u5341\u6ce2\u53caNew Game+\u4ecd\u672a\u901a\u904e\u3002\u56e0\u672c\u6b21\u57f7\u884c\u7a97\u53e3\u5b89\u5168\u4fdd\u5b58\uff1b\u7121\u516c\u958b\u767c\u5e03\uff0c\u6b77\u53f2FAIL\u5168\u90e8\u4fdd\u7559\u3002\n\nEnglish: Verified the actual latest remote; preserved V1\u2013V4 analysis and versioned V5 evidence. Natural input exposed a resource-selection TypeError, now fixed and checked by10directed Node tests plus native SaveContinue across4resources/locales. V5.3 was UI-error interruption, not defeat; post-fix V5.4 lost wave4 without that exception. Final2.17food/740.76wood/227.22gold points first to policy economy/budget improvements. Native withdrawal passed input-level testing, not a complete campaign. The milestone, natural ten waves and New Game+ remain incomplete. Safely checkpointed for this execution window; no public release and all historical FAIL retained.",
-    "event_id": "51423fab9482a4869d8f9329f9e70aa57b6708a7500611911ebaa5504915e04f",
-    "remote_head": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+    "response": "## \u5b89\u5168\u63a5\u7e8c / Safe continuation\n\n\u4e2d\u6587\uff1aSCHEDULED_RESUME_EXECUTED\u30028\u9805\u7b56\u7565\u6e2c\u8a66\u8207V5.10\u9650\u5b9a\u958b\u5c40\u901a\u904e\uff1b\u5b8c\u6574\u5341\u6ce2\u53caNew Game+\u672a\u901a\u904e\u3002\u771f\u5be6\u672c\u5730Chromium\u9304\u5f71\u5df2\u63a8\u9001\u3002\u56e0\u57f7\u884c\u7a97\u53e3\u7d50\u675f\u4fdd\u5b58\uff0c\u4e26\u975e\u984d\u5ea6\u767e\u5206\u6bd4\u505c\u6b62\u3002\u8de8\u5c0d\u8a71\u5beb\u5165\u4e0d\u53ef\u7528\uff1aCROSS_THREAD_HANDOFF_UNAVAILABLE\uff1b\u4e0d\u5ba3\u7a31\u9001\u9054\u3002\u820a\u6027\u80fdFAIL\u3001\u4f4eFPS\u3001Save/Load\u53ca\u786c\u9ad4\u5f85\u6e2c\u4fdd\u7559\u3002\n\nEnglish: SCHEDULED_RESUME_EXECUTED. Eight policy tests and the scoped V5.10 opening passed; full ten-wave and New Game+ acceptance remain incomplete. Actual local Chromium recordings were pushed. Checkpointed at the execution-window limit, not a quota-percentage threshold. CROSS_THREAD_HANDOFF_UNAVAILABLE; delivery is not claimed. Historical performance FAIL, low-FPS, Save/Load and hardware-pending issues remain.\n",
+    "event_id": "b850bf8239da8d60b7782040eca8c11ac754fa4ae2d6d20eed60b22618ca459e",
+    "remote_head": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-28T05:50:59.650275+00:00",
+    "recorded_at": "2026-10-28T06:51:39.332056+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2550,66 +2548,127 @@
       ]
     },
     "V240-V5-PLAYABILITY": {
-      "task_id": "V240-V5-PLAYABILITY",
       "agent": "Codex",
-      "severity": "WARNING",
+      "blockers": [
+        {
+          "id": "NATURAL-TEN-WAVES",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+          "summary": "\u98df\u7269\u4f9b\u61c9\u53ca\u751f\u7522\u9810\u7b97\u4ecd\u4e0d\u8db3\uff1b\u5341\u6ce2\u8207\u81ea\u7136 New Game+ \u672a\u901a\u904e\uff0c\u4e0d\u80fd\u63a8\u8ad6 Normal \u4e0d\u53ef\u901a\u95dc / Food supply/production budgeting remain insufficient; ten waves and natural New Game+ not passed; Normal impossibility not established."
+        }
+      ],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
       "build_sha": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-      "summary": "V5 \u6839\u56e0\u5c0d\u7167\u5b8c\u6210\uff1b\u4fee\u5fa9\u771f\u5be6\u8cc7\u6e90\u9078\u53d6\u4f8b\u5916\uff1bV5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u91cc\u7a0b\u7891\u672a\u901a\u904e\u3002 / Compared V5 causes; fixed real resource-selection exception; V5.4 lost wave4, milestone incomplete.",
       "code_changes": [
         "\u8cc7\u6e90\u9078\u53d6\u5b89\u5168\u9762\u677f\u8207\u56db\u8a9e\u6307\u5f15\uff1bNormal\u73a9\u6cd5\u8cc7\u6599\u672a\u6539 / Safe resource-selection panel and four-locale hints; Normal gameplay data unchanged",
         "\u81ea\u52d5\u73a9\u5bb6\u6838\u5c0d\u5be6\u969b\u968a\u5217\u3001\u63a1\u96c6\u3001Guard\u3001Rally\uff1b\u539f\u751f\u64a4\u9000\u9650\u5b9a\u9a57\u8b49 / Policy verifies queues, gathering, Guard and Rally; scoped native withdrawal test"
       ],
+      "commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "51423fab9482a4869d8f9329f9e70aa57b6708a7500611911ebaa5504915e04f",
       "next_steps": [
         "\u6539\u5584\u6ce2\u6b21\u7d93\u6fdf\u6210\u9577\u3001\u98df\u7269\u914d\u7f6e\u53ca\u88dc\u5175\uff0f\u79d1\u6280\u9810\u7b97\uff0c\u4e0d\u6539 Normal / Improve economic growth, food allocation and reinforcement/technology budgeting, preserving Normal",
         "\u5c07\u539f\u751f\u64a4\u9000\u6295\u5165\u81ea\u7136\u5168\u6230\u5f79\uff0c\u518d\u4f9d\u8b49\u64da\u6c7a\u5b9a\u4e0b\u4e00\u6b65 / Exercise native withdrawal in a full natural campaign and decide next steps from evidence"
       ],
+      "pushed": true,
+      "recorded_at": "2026-10-28T05:50:59.650275+00:00",
+      "remote_head": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u771f\u6b63\u6700\u65b0\u9060\u7aef\u5df2\u6838\u5c0d\uff0cV1\u2013V4\u6839\u56e0\u5c0d\u7167\u53caV5\u591a\u7248\u672c\u8b49\u64da\u5747\u5df2\u4fdd\u5b58\u3002\u81ea\u7136\u64cd\u4f5c\u767c\u73fe\u8cc7\u6e90\u9078\u53d6TypeError\uff0c\u5df2\u4fee\u5fa9\u4e26\u4ee510\u9805\u5b9a\u5411Node\u53ca\u56db\u8cc7\u6e90\uff0f\u56db\u8a9e\u539f\u751fSaveContinue\u9a57\u8b49\u3002V5.3\u70ba\u4ecb\u9762\u4f8b\u5916\u4e2d\u65b7\uff0c\u4e0d\u662f\u6230\u6557\uff1b\u4fee\u5fa9\u5f8cV5.4\u7b2c\u56db\u6ce2\u6230\u6557\u4f46\u7121\u8a72\u4f8b\u5916\u3002\u98df\u72692.17\u3001\u6728\u6750740.76\u3001\u9ec3\u91d1227.22\u986f\u793a\u5148\u6539\u81ea\u52d5\u73a9\u5bb6\u7d93\u6fdf\uff0f\u9810\u7b97\u3002\u539f\u751f\u64a4\u9000\u9650\u5b9a\u8f38\u5165\u901a\u904e\uff0c\u5c1a\u672a\u5b8c\u6574\u6230\u5f79\u9a57\u8b49\u3002\u91cc\u7a0b\u7891\u3001\u81ea\u7136\u5341\u6ce2\u53caNew Game+\u4ecd\u672a\u901a\u904e\u3002\u56e0\u672c\u6b21\u57f7\u884c\u7a97\u53e3\u5b89\u5168\u4fdd\u5b58\uff1b\u7121\u516c\u958b\u767c\u5e03\uff0c\u6b77\u53f2FAIL\u5168\u90e8\u4fdd\u7559\u3002\n\nEnglish: Verified the actual latest remote; preserved V1\u2013V4 analysis and versioned V5 evidence. Natural input exposed a resource-selection TypeError, now fixed and checked by10directed Node tests plus native SaveContinue across4resources/locales. V5.3 was UI-error interruption, not defeat; post-fix V5.4 lost wave4 without that exception. Final2.17food/740.76wood/227.22gold points first to policy economy/budget improvements. Native withdrawal passed input-level testing, not a complete campaign. The milestone, natural ten waves and New Game+ remain incomplete. Safely checkpointed for this execution window; no public release and all historical FAIL retained.",
+      "severity": "WARNING",
+      "summary": "V5 \u6839\u56e0\u5c0d\u7167\u5b8c\u6210\uff1b\u4fee\u5fa9\u771f\u5be6\u8cc7\u6e90\u9078\u53d6\u4f8b\u5916\uff1bV5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u91cc\u7a0b\u7891\u672a\u901a\u904e\u3002 / Compared V5 causes; fixed real resource-selection exception; V5.4 lost wave4, milestone incomplete.",
+      "task_id": "V240-V5-PLAYABILITY",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-resource-selection/REPORT.md",
+          "evidence_blob": "a3f1b339f32e206c1667c311e6d30c3cbf336614",
+          "evidence_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "\u8cc7\u6e90\u9078\u53d6\u4fee\u5fa9 / Resource-selection repair",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-v5-playability/REPORT.md",
+          "evidence_blob": "b83b83b4987d4e8fdb8e5d132c8642095e1deb68",
+          "evidence_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "V5.4\u81ea\u7136\u6230\u5f79 / V5.4 natural campaign",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "status": "FAIL"
+        },
+        {
+          "evidence": "docs/evidence/v240-v5-playability/withdraw/browser.json",
+          "evidence_blob": "517e4f6a2a9a18411a0d881f6f6f8dcad5c9b778",
+          "evidence_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "\u539f\u751f\u6751\u6c11\u64a4\u9000\u8f38\u5165 / Native worker-withdraw input",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-V55-ECONOMY": {
+      "task_id": "V240-V55-ECONOMY",
+      "agent": "Codex",
+      "severity": "WARNING",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
+      "build_sha": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+      "summary": "\u81ea\u7136\u6230\u5f79\u7b56\u7565\u8207\u771f\u5be6\u9304\u5f71\u5df2\u4fdd\u5b58\uff1b\u5341\u6ce2\u672a\u901a\u904e / Natural campaign policies and browser recordings preserved; ten waves not passed",
+      "code_changes": [
+        "\u81ea\u52d5\u73a9\u5bb6\u52de\u52d5\u914d\u984d\u3001\u8b77\u885b\u3001\u653b\u57ce\u76ee\u6a19\u53ca\u623f\u5c4b\u9810\u7b97\u4fee\u6b63\uff1b\u672a\u4fee\u6539\u904a\u6232\u5e73\u8861 / Automated-player labor, escort, siege-target and housing corrections; game balance unchanged"
+      ],
+      "next_steps": [
+        "\u7e7c\u7e8c v510 \u5b58\u6d3b\u5feb\u7167\uff0c1\u00d7 Normal\uff0c\u539f\u751f\u6230\u722d\u7ba1\u5bb6\u958b\u555f / Continue living v510 snapshot at1\u00d7 Normal with native army steward"
+      ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "\u8cc7\u6e90\u9078\u53d6\u4fee\u5fa9 / Resource-selection repair",
+          "name": "\u7b56\u75658\u9805 / Eight policy tests",
           "status": "PASS",
           "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "evidence": "docs/evidence/v240-resource-selection/REPORT.md",
-          "evidence_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
-          "evidence_blob": "a3f1b339f32e206c1667c311e6d30c3cbf336614",
+          "evidence": "docs/evidence/v240-v55-economy/policy-final.log.txt",
+          "evidence_commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
+          "evidence_blob": "1b3b4697c56a65f14413d9b06139698a723f6b8c",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "V5.4\u81ea\u7136\u6230\u5f79 / V5.4 natural campaign",
+          "name": "\u9650\u5b9a\u958b\u5c40 / Scoped opening",
+          "status": "PASS",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "evidence": "docs/evidence/v240-v55-economy/v510/verification.json",
+          "evidence_commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
+          "evidence_blob": "4d658cd18e1f069d22f2150c820aae93b673f7a6",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "V5.9\u81ea\u7136\u6230\u5f79 / V5.9 natural campaign",
           "status": "FAIL",
           "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "evidence": "docs/evidence/v240-v5-playability/REPORT.md",
-          "evidence_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
-          "evidence_blob": "b83b83b4987d4e8fdb8e5d132c8642095e1deb68",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "\u539f\u751f\u6751\u6c11\u64a4\u9000\u8f38\u5165 / Native worker-withdraw input",
-          "status": "PASS",
-          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "evidence": "docs/evidence/v240-v5-playability/withdraw/browser.json",
-          "evidence_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
-          "evidence_blob": "517e4f6a2a9a18411a0d881f6f6f8dcad5c9b778",
+          "evidence": "docs/evidence/v240-v55-economy/v59/result.json",
+          "evidence_commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
+          "evidence_blob": "263338ccf00f168c2172ab3b054293ca92575edc",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
       "blockers": [
         {
-          "id": "NATURAL-TEN-WAVES",
+          "id": "TEN_WAVES_PENDING",
           "severity": "WARNING",
-          "summary": "\u98df\u7269\u4f9b\u61c9\u53ca\u751f\u7522\u9810\u7b97\u4ecd\u4e0d\u8db3\uff1b\u5341\u6ce2\u8207\u81ea\u7136 New Game+ \u672a\u901a\u904e\uff0c\u4e0d\u80fd\u63a8\u8ad6 Normal \u4e0d\u53ef\u901a\u95dc / Food supply/production budgeting remain insufficient; ten waves and natural New Game+ not passed; Normal impossibility not established.",
-          "source_commit": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+          "summary": "V5.7\u2013V5.9\u7b2c\u4e09\u6ce2\u6230\u6557\uff1bV5.10\u50c5\u958b\u5c40PASS / V5.7\u2013V5.9 defeat3; V5.10 opening-only PASS",
+          "source_commit": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u771f\u6b63\u6700\u65b0\u9060\u7aef\u5df2\u6838\u5c0d\uff0cV1\u2013V4\u6839\u56e0\u5c0d\u7167\u53caV5\u591a\u7248\u672c\u8b49\u64da\u5747\u5df2\u4fdd\u5b58\u3002\u81ea\u7136\u64cd\u4f5c\u767c\u73fe\u8cc7\u6e90\u9078\u53d6TypeError\uff0c\u5df2\u4fee\u5fa9\u4e26\u4ee510\u9805\u5b9a\u5411Node\u53ca\u56db\u8cc7\u6e90\uff0f\u56db\u8a9e\u539f\u751fSaveContinue\u9a57\u8b49\u3002V5.3\u70ba\u4ecb\u9762\u4f8b\u5916\u4e2d\u65b7\uff0c\u4e0d\u662f\u6230\u6557\uff1b\u4fee\u5fa9\u5f8cV5.4\u7b2c\u56db\u6ce2\u6230\u6557\u4f46\u7121\u8a72\u4f8b\u5916\u3002\u98df\u72692.17\u3001\u6728\u6750740.76\u3001\u9ec3\u91d1227.22\u986f\u793a\u5148\u6539\u81ea\u52d5\u73a9\u5bb6\u7d93\u6fdf\uff0f\u9810\u7b97\u3002\u539f\u751f\u64a4\u9000\u9650\u5b9a\u8f38\u5165\u901a\u904e\uff0c\u5c1a\u672a\u5b8c\u6574\u6230\u5f79\u9a57\u8b49\u3002\u91cc\u7a0b\u7891\u3001\u81ea\u7136\u5341\u6ce2\u53caNew Game+\u4ecd\u672a\u901a\u904e\u3002\u56e0\u672c\u6b21\u57f7\u884c\u7a97\u53e3\u5b89\u5168\u4fdd\u5b58\uff1b\u7121\u516c\u958b\u767c\u5e03\uff0c\u6b77\u53f2FAIL\u5168\u90e8\u4fdd\u7559\u3002\n\nEnglish: Verified the actual latest remote; preserved V1\u2013V4 analysis and versioned V5 evidence. Natural input exposed a resource-selection TypeError, now fixed and checked by10directed Node tests plus native SaveContinue across4resources/locales. V5.3 was UI-error interruption, not defeat; post-fix V5.4 lost wave4 without that exception. Final2.17food/740.76wood/227.22gold points first to policy economy/budget improvements. Native withdrawal passed input-level testing, not a complete campaign. The milestone, natural ten waves and New Game+ remain incomplete. Safely checkpointed for this execution window; no public release and all historical FAIL retained.",
-      "event_id": "51423fab9482a4869d8f9329f9e70aa57b6708a7500611911ebaa5504915e04f",
-      "remote_head": "4b00c6834705f3ecfc6d0491daf505578b8e2276",
+      "response": "## \u5b89\u5168\u63a5\u7e8c / Safe continuation\n\n\u4e2d\u6587\uff1aSCHEDULED_RESUME_EXECUTED\u30028\u9805\u7b56\u7565\u6e2c\u8a66\u8207V5.10\u9650\u5b9a\u958b\u5c40\u901a\u904e\uff1b\u5b8c\u6574\u5341\u6ce2\u53caNew Game+\u672a\u901a\u904e\u3002\u771f\u5be6\u672c\u5730Chromium\u9304\u5f71\u5df2\u63a8\u9001\u3002\u56e0\u57f7\u884c\u7a97\u53e3\u7d50\u675f\u4fdd\u5b58\uff0c\u4e26\u975e\u984d\u5ea6\u767e\u5206\u6bd4\u505c\u6b62\u3002\u8de8\u5c0d\u8a71\u5beb\u5165\u4e0d\u53ef\u7528\uff1aCROSS_THREAD_HANDOFF_UNAVAILABLE\uff1b\u4e0d\u5ba3\u7a31\u9001\u9054\u3002\u820a\u6027\u80fdFAIL\u3001\u4f4eFPS\u3001Save/Load\u53ca\u786c\u9ad4\u5f85\u6e2c\u4fdd\u7559\u3002\n\nEnglish: SCHEDULED_RESUME_EXECUTED. Eight policy tests and the scoped V5.10 opening passed; full ten-wave and New Game+ acceptance remain incomplete. Actual local Chromium recordings were pushed. Checkpointed at the execution-window limit, not a quota-percentage threshold. CROSS_THREAD_HANDOFF_UNAVAILABLE; delivery is not claimed. Historical performance FAIL, low-FPS, Save/Load and hardware-pending issues remain.\n",
+      "event_id": "b850bf8239da8d60b7782040eca8c11ac754fa4ae2d6d20eed60b22618ca459e",
+      "remote_head": "4aff2c38b3cfaa21efc33e9b0e773975404efdd8",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-28T05:50:59.650275+00:00",
+      "recorded_at": "2026-10-28T06:51:39.332056+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },

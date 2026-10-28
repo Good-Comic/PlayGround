@@ -1,3 +1,5 @@
-繁體中文：真正最新遠端已核對，V1–V4根因對照及V5多版本證據均已保存。自然操作發現資源選取TypeError，已修復並以10項定向Node及四資源／四語原生SaveContinue驗證。V5.3為介面例外中斷，不是戰敗；修復後V5.4第四波戰敗但無該例外。食物2.17、木材740.76、黃金227.22顯示先改自動玩家經濟／預算。原生撤退限定輸入通過，尚未完整戰役驗證。里程碑、自然十波及New Game+仍未通過。因本次執行窗口安全保存；無公開發布，歷史FAIL全部保留。
+## 安全接續 / Safe continuation
 
-English: Verified the actual latest remote; preserved V1–V4 analysis and versioned V5 evidence. Natural input exposed a resource-selection TypeError, now fixed and checked by10directed Node tests plus native SaveContinue across4resources/locales. V5.3 was UI-error interruption, not defeat; post-fix V5.4 lost wave4 without that exception. Final2.17food/740.76wood/227.22gold points first to policy economy/budget improvements. Native withdrawal passed input-level testing, not a complete campaign. The milestone, natural ten waves and New Game+ remain incomplete. Safely checkpointed for this execution window; no public release and all historical FAIL retained.
+中文：SCHEDULED_RESUME_EXECUTED。8項策略測試與V5.10限定開局通過；完整十波及New Game+未通過。真實本地Chromium錄影已推送。因執行窗口結束保存，並非額度百分比停止。跨對話寫入不可用：CROSS_THREAD_HANDOFF_UNAVAILABLE；不宣稱送達。舊性能FAIL、低FPS、Save/Load及硬體待測保留。
+
+English: SCHEDULED_RESUME_EXECUTED. Eight policy tests and the scoped V5.10 opening passed; full ten-wave and New Game+ acceptance remain incomplete. Actual local Chromium recordings were pushed. Checkpointed at the execution-window limit, not a quota-percentage threshold. CROSS_THREAD_HANDOFF_UNAVAILABLE; delivery is not claimed. Historical performance FAIL, low-FPS, Save/Load and hardware-pending issues remain.
