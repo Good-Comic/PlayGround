@@ -1,3 +1,22 @@
+# 村民逐擊與護衛接續 / Worker damage and escort continuation
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+**中文：** 本輪只改QA觀測／自動玩家，遊戲來源仍`798bcffdfe8e97bdd4e8abe6c67f18223b540877`。實際逐擊接續捕獲62筆記錄、9次村民死亡；可見靠近友軍但友軍正打另一目標，不能推論引擎重新索敵壞掉。單護衛新模式原被全體攻城集火抵銷，已修正原生逐單位選取與保留護衛。15項定向測試及真實Chromium命令分離通過；不等同生存或十波通過。詳見`docs/evidence/v240-worker-hits/REPORT.md`。
+
+**English:** Only QA observation/automated-player code changed; game source remains`798bcffdfe8e97bdd4e8abe6c67f18223b540877`. Actual hit observation captured62records and9worker deaths, including nearby allies attacking another target; this does not establish an engine retargeting defect. Whole-army siege focus previously overrode the new single-escort mode; corrected native per-unit selection/reserved escort.15directed tests and actual Chromium command separation pass, not survival or ten-wave acceptance. See`docs/evidence/v240-worker-hits/REPORT.md`.
+
+**中文：** 下一步由`docs/evidence/v240-worker-hits/escort-verified/save-snapshot.json`接續，校驗`a29fa343e57df3b0b0e5914183fbf6615735447cfb0193cc3ed88a13572149e6`。第三波424.3471秒、3村民／6軍事、城心滿血；45秒限定樣本未通關。補只讀導航／返程記錄，驗證單護衛較長戰鬥生存，不修改Normal或宣稱AI修復。地形Custom決策仍待回答。
+
+**English:** Next continue`docs/evidence/v240-worker-hits/escort-verified/save-snapshot.json`, digest`a29fa343e57df3b0b0e5914183fbf6615735447cfb0193cc3ed88a13572149e6`: wave3sim424.3471,3workers/6military/full core; a45-second bounded sample, not victory. Add read-only navigation/return tracing and assess sustained escort survival; do not alter Normal or claim AI repair. Custom terrain decisions remain pending.
+
+**中文：** 本次因執行預算安全保存，無活躍測試；所有權於Push後釋放，以遠端ownership.json為準。保持RELEASE_BLOCKED及全部歷史FAIL，無公開發布。跨對話工具不可用，不宣稱送達。
+
+**English:** Safely checkpointed at the execution-budget boundary; no active tests. Ownership is released after push; remoteownership.json prevails. Retain RELEASE_BLOCKED and all historical FAIL; no public deployment. Cross-thread tools unavailable; delivery not claimed.
+
+---
+
 # 選卡存檔接續 / Card-choice save continuation
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

@@ -1,10 +1,11 @@
+import{installWorkerDamageObserver}from'./worker_damage_observer.mjs';
 import{createV5Player}from'./v5_player.mjs';
 // Legal player-policy automation: actual UI commands only; never grants resources,
 // health, units, clock progress, boons, age or waves. Read-only state inspection
-// is used to choose actions and persist evidence. Normal production aids remain on.
+// is used to choose actions and persist evidence. Native aid settings are explicitly verified.
 import{createRequire}from'node:module';import{mkdirSync,writeFileSync,appendFileSync,copyFileSync,existsSync,readFileSync}from'node:fs';import{resolve}from'node:path';import{createHash}from'node:crypto';
 const{chromium}=createRequire(import.meta.url)('playwright-core'),a=process.argv.slice(2),arg=(n,d)=>{const i=a.indexOf(n);return i<0?d:a[i+1]},url=arg('--url'),commit=arg('--commit'),out=resolve(arg('--out')),seconds=Number(arg('--seconds','1800')),policy=arg('--policy','v2'),speed=arg('--speed','1.5'),armySteward=arg('--army-steward','off')==='on';mkdirSync(out,{recursive:true});
-const harnessHash=createHash('sha256').update(readFileSync(new URL(import.meta.url))).update(readFileSync(new URL('./v5_player.mjs',import.meta.url))).digest('hex');
+const harnessHash=createHash('sha256').update(readFileSync(new URL(import.meta.url))).update(readFileSync(new URL('./v5_player.mjs',import.meta.url))).update(readFileSync(new URL('./worker_damage_observer.mjs',import.meta.url))).digest('hex');
 const b=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']}),c=await b.newContext({viewport:{width:1280,height:800},recordVideo:{dir:out,size:{width:640,height:400}}}),p=await c.newPage();const errors=[],failures=[],actions=[],started=Date.now();
 const record=(kind,data)=>{const row={wallSeconds:(Date.now()-started)/1000,kind,...data};appendFileSync(resolve(out,'events.jsonl'),JSON.stringify(row)+'\n');if(kind==='action')actions.push(row)};
 p.on('pageerror',e=>{errors.push(e.message);record('page-error',{message:e.message})});p.on('console',m=>{if(m.type()==='error'){errors.push(m.text());record('console-error',{message:m.text()})}});p.on('requestfailed',r=>failures.push(r.url()));
@@ -69,6 +70,7 @@ try{
  if(['v3','v4','v5'].includes(policy)){await p.locator('#btn-pause').click();await p.locator('#auto-mil').uncheck();await p.locator('#btn-resume').click();record('action',{command:'disable-auto-military-manual-ranged-production'})}
  }
  if(policy.startsWith('v5.')){await p.locator('#btn-pause').click();await p.locator('#auto-mil').setChecked(armySteward);await p.locator('#auto-econ').uncheck();await p.locator('#btn-resume').click();const actual=await p.evaluate(()=>({armySteward:ageOfAsh.game.autoMilitary,autoEconomy:ageOfAsh.game.autoEconomy,speed:ageOfAsh.game.speed}));record('action',{command:'manual-economy-army-setting',requested:{armySteward,speed:Number(speed)},actual});if(actual.armySteward!==armySteward||actual.autoEconomy||actual.speed!==Number(speed))throw Error('NATIVE_SETTINGS_MISMATCH')}
+ await p.exposeFunction('qaWorkerHit',row=>record('worker-hit',row));await p.evaluate(installWorkerDamageObserver);record('observer',{type:'WORKER_DAMAGE_FORWARD_ONLY'});
  let lastPhase='',lastShot=0,lastPolicy=0,lastSave=0;const gameStart=Date.now();
  while((Date.now()-gameStart)/1000<seconds&&!existsSync(resolve(out,'STOP_REQUESTED'))){
   const s=await state(),wall=(Date.now()-gameStart)/1000;record('state',s);writeFileSync(resolve(out,'latest-state.json'),JSON.stringify(s,null,2)+'\n');

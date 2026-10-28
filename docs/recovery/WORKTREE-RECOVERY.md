@@ -5,9 +5,9 @@
 本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。
 This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.
 
-快照 ID / Snapshot ID: f18045f9a62e3b7d9ff568092448129c3f5247578e5971654faa95279e84e359
-擷取時間 UTC / Captured UTC: 2026-10-28T15:24:23.208605+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
-來源 / Collector source: `798bcffdfe8e97bdd4e8abe6c67f18223b540877` · LOCAL_INVENTORIED_NOT_A_PUSH
+快照 ID / Snapshot ID: cdbd43b05a096231eab43ff4fde554f063785085713687ace47954bfd74d6fdb
+擷取時間 UTC / Captured UTC: 2026-10-28T16:29:01.981320+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
+來源 / Collector source: `d33810af147bbde8f1ea7ef00e30314f33f305a7` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 | 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ This manifest records local Git state and actual remote queries at capture time;
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 798bcffdfe8e97bdd4e8abe6c67f18223b540877 | 9f33fa15f04ae2e9da35f9512f03468f20605ce6 | LOCAL_AHEAD | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | d33810af147bbde8f1ea7ef00e30314f33f305a7 | d33810af147bbde8f1ea7ef00e30314f33f305a7 | REMOTE_SAVED | True |
 
 ## work
 
@@ -340,14 +340,8 @@ This manifest records local Git state and actual remote queries at capture time;
 
 ```json
 {
-  "unpushed_commits": [
-    "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
-  ],
+  "unpushed_commits": [],
   "changed_files": [
-    {
-      "status": " M",
-      "path": "docs/evidence/v240-boon-save/REPORT.md"
-    },
     {
       "status": " M",
       "path": "docs/handoff/ACTIVE-TASK.json"
@@ -365,87 +359,190 @@ This manifest records local Git state and actual remote queries at capture time;
       "path": "docs/recovery/task-registry.json"
     },
     {
-      "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-100/browser.json"
+      "status": " M",
+      "path": "tests/v5-player.test.mjs"
+    },
+    {
+      "status": " M",
+      "path": "tools/qa/natural_campaign.mjs"
+    },
+    {
+      "status": " M",
+      "path": "tools/qa/v5_player.mjs"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-100/browser.mp4"
+      "path": "docs/evidence/v240-worker-hits/REPORT.md"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-100/en-restored.png"
+      "path": "docs/evidence/v240-worker-hits/damage-summary.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-100/ja-restored.png"
+      "path": "docs/evidence/v240-worker-hits/escort-before.txt"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-100/zh-Hans-restored.png"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-100/zh-Hant-restored.png"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/checkpoint-96.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-130/browser.json"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/events.jsonl"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-130/browser.mp4"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/latest-state.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-130/en-restored.png"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/result.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-130/ja-restored.png"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/save-snapshot.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-130/zh-Hans-restored.png"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/wave-3-boon-94.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/browser-130/zh-Hant-restored.png"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/wave-3-wave-0.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/build-metadata.json"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/wave-3-wave-64.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/final-tests.txt"
+      "path": "docs/evidence/v240-worker-hits/escort-not-exercised/wave-4-prep-96.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-boon-save/worker-loss-observations.json"
+      "path": "docs/evidence/v240-worker-hits/escort-verified/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "tools/qa/boon_save_browser.mjs"
+      "path": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/escort-verified/latest-state.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/escort-verified/result.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/escort-verified/resume-integrity.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/escort-verified/save-snapshot.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/escort-verified/wave-3-wave-0.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/final-tests.txt"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/initial-policy-tests.txt"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/checkpoint-94.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/events.jsonl"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/latest-state.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/result.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/save-snapshot.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/wave-3-boon-45.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/wave-3-wave-0.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/wave-4-prep-47.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/wave-4-wave-141.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observed/wave-4-wave-79.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/observer-tests.txt"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/startup-failure/events.jsonl"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/startup-failure/failure.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-worker-hits/startup-failure/result.json"
+    },
+    {
+      "status": "??",
+      "path": "tests/worker-observer.test.mjs"
+    },
+    {
+      "status": "??",
+      "path": "tools/qa/worker_damage_observer.mjs"
     }
   ],
   "last_validation": [
     {
-      "path": "docs/evidence/v240-boon-save/final-tests.txt",
-      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-      "result": "21 PASS",
+      "path": "docs/evidence/v240-worker-hits/final-tests.txt",
+      "result": "15 PASS",
       "exists": true,
       "storage": "LOCAL_ONLY_OR_MISSING",
-      "sha256": "7e371919f912c74e6094f8c6e6fa22f1bb1ae81b946c3bf4f4158bd32d9e1a31",
-      "resource_freshness": "MATCHES_WORKING_RESOURCES"
+      "sha256": "495007174e29ac221e083a1b561f7b193ad4a556442630e1be5c310876ae7db8",
+      "resource_freshness": "UNKNOWN"
     },
     {
-      "path": "docs/evidence/v240-boon-save/browser-130/browser.json",
+      "path": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl",
       "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-      "result": "4 locales native save/reload/reroll/claim PASS; CONTROLLED_FIXTURE",
+      "result": "Native escort21 separated from siege focus; not campaign PASS",
       "exists": true,
       "storage": "LOCAL_ONLY_OR_MISSING",
-      "sha256": "a9d21060a8ee245d9ee6d56cec4fe06980ea3908322baebb918dc0b238a82cfb",
+      "sha256": "27ec1db5c3b56759b59255935b9ea314b6c8a8029555bc0bce669a1911051e74",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     }
   ],
@@ -455,8 +552,8 @@ This manifest records local Git state and actual remote queries at capture time;
     "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
   ],
   "next_steps": [
-    "以只讀逐擊／護衛／返程觀測重現村民失守 / Reproduce worker exposure using read-only hit/guard/return observations",
-    "地形Custom方案仍待確認 / Custom terrain proposal still awaits confirmation"
+    "由escort-verified存活快照接續；補導航／返程觀測並驗證較長單護衛生存 / Continue living escort-verified save; add navigation/return observations and assess sustained escort survival",
+    "地形Custom方案仍待確認 / Custom terrain proposal still pending"
   ]
 }
 ```

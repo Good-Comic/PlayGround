@@ -343,14 +343,13 @@
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
         {
-          "path": "docs/evidence/v240-boon-save/final-tests.txt",
-          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-          "result": "21 PASS"
+          "path": "docs/evidence/v240-worker-hits/final-tests.txt",
+          "result": "15 PASS"
         },
         {
-          "path": "docs/evidence/v240-boon-save/browser-130/browser.json",
+          "path": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl",
           "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-          "result": "4 locales native save/reload/reroll/claim PASS; CONTROLLED_FIXTURE"
+          "result": "Native escort21 separated from siege focus; not campaign PASS"
         }
       ],
       "blockers": [
@@ -359,8 +358,8 @@
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "以只讀逐擊／護衛／返程觀測重現村民失守 / Reproduce worker exposure using read-only hit/guard/return observations",
-        "地形Custom方案仍待確認 / Custom terrain proposal still awaits confirmation"
+        "由escort-verified存活快照接續；補導航／返程觀測並驗證較長單護衛生存 / Continue living escort-verified save; add navigation/return observations and assess sustained escort survival",
+        "地形Custom方案仍待確認 / Custom terrain proposal still pending"
       ]
     }
   }
