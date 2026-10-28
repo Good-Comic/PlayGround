@@ -26,6 +26,10 @@ export function createV5Player({page:p,record,build}){
  return{async step(s){
   const info=await p.evaluate(()=>{const g=ageOfAsh.game,tc=g.getTownCenter();return{workers:g.economicPopulation,queued:tc?.queue.filter(q=>q.type==='villager').length||0,food:g.resources.food,cost:g.unitCost('villager').food,coreAlive:!!tc,core:tc?.id}});
   if(recoveryPriority(info))await train(info.core,'villager');
+  if(info.workers>=4&&s.age<3&&!s.ageResearch){
+   const affordable=await p.evaluate(()=>{const g=ageOfAsh.game;return g.canAfford(g.ageCost())});
+   if(affordable&&await select(info.core)){const button=p.locator('[data-command="age:advance"]');if(await button.count()){try{await button.click({timeout:1500});const research=await p.evaluate(()=>ageOfAsh.game.ageResearch);record(research?'action':'action-skipped',{command:'verified-age-research',research})}catch(e){record('action-skipped',{command:'age:advance',reason:e.name})}}}
+  }
   for(const worker of s.units.filter(u=>u.team==='player'&&u.type==='villager'))await assign(worker);
   if(info.workers>=4&&s.resources.wood>=60&&s.buildings.filter(b=>b.alive&&b.type==='house').length<8)await build('house');
   if(info.workers>=4){const building=await p.evaluate(()=>{const g=ageOfAsh.game;return g.buildings.find(b=>b.alive&&b.type==='barracks'&&b.queue.length<2)?.id});if(building&&s.resources.food>100)await train(building,'militia')}
