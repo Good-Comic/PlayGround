@@ -33,3 +33,17 @@
 **繁體中文：** V5.6 為新的完整正常開局，不把舊失敗存檔誤當新成功。移除上述重複操作，優先建造射箭場，用實際木材／黃金訓練弓兵，並用正式 Shift+A 對靠近市鎮中心的攻城槌下 Attack-Move；其餘部隊仍用 Guard／Rally 集結。所有建造與訓練都由原生 UI 接受並扣款，未修改 Normal。第一波觀察為市鎮中心滿血、村民8人，只有限定觀察；後續波次與 New Game+ 尚待結果。
 
 **English:** V5.6 is a fresh full normal start, not a relabelled failed save. It removes those redundant inputs, prioritizes an Archery Range, trains archers with actual wood/gold, and uses official Shift+A Attack-Move against rams near the Town Center; other troops regroup through Guard/Rally. All construction/training uses native UI acceptance and payment without changing Normal. Wave1 observations showed full Town Center health and8workers, a scoped observation only; subsequent waves and New Game+ still require results.
+
+## 後續根因與版本 / Further Causes and Revisions
+
+**繁體中文：** V5.6 是 Stop 按鈕逾時的工具中斷，非戰敗；V5.7 從該存檔接續後第三波戰敗。V5.8 改用正式1×即時設定並區分 Attack-Move 集結與右鍵攻城槌的直接集火，仍第三波戰敗。成功下達 Attack-Move 不等於部隊實際鎖定指定攻城槌；新紀錄核對 manualAttack 與目標 ID。這些結果都保留，不能宣稱即時 Normal 可玩性已通過。
+
+**English:** V5.6 was a harness interruption from a Stop-button timeout, not defeat; V5.7 continued that save and lost at wave3. V5.8 used the standard1×real-time setting and distinguished Attack-Move regrouping from direct right-click siege focus, but also lost at wave3. Accepted Attack-Move does not prove a specific ram was targeted; new logs check manualAttack and target IDs. Preserve all outcomes without claiming real-time Normal playability acceptance.
+
+**繁體中文：** 另建立可重現的策略錯誤測試：食物僅2但木材500、黃金227時，舊配置仍先採木，測試先 FAIL 後修復為採食物。同時修正6名村民卻要求3食物＋2木材＋2黃金的不可行配額；新配額為3／1／2，對0–22人均驗證總配額不超過可用人數。七項定向測試通過。建造中的村民不被一般採集改派打斷，已付款但未完成的建築可用原生右鍵續建。
+
+**English:** A reproducible policy test showed that with only2food but500wood/227gold, the old allocation still chose wood; it failed before the fix and now chooses food. Another fix removes infeasible quotas of3food+2wood+2gold for only6workers; the new allocation is3/1/2, with total quotas checked against available workforce for0–22workers. Seven directed tests passed. Routine gathering reassignment excludes builders, and unfinished paid structures can resume through native right-click input.
+
+**繁體中文：** V5.9 正以新正常開局測試：1×即時、手動經濟加遊戲原有的軍事管家。軍事管家由原生 Pause 選項啟用，仍照遊戲規則付費與受人口限制；不是注入單位。此為新的策略配置，與舊的關閉管家樣本分組，不回溯更改失敗。尚未採用戰術暫停輔助模式；完整十波與自然 New Game+ 仍等實際結果。
+
+**English:** V5.9 is a fresh normal-start test at1×real time with manual economy and the game's existing war steward. The steward is enabled through native Pause options, pays normal costs and obeys population limits; it is not unit injection. Record this as a distinct policy configuration rather than relabelling previous steward-off failures. Tactical pause assistance has not been adopted; full ten-wave and natural New Game+ acceptance still require observed results.

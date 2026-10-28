@@ -1,0 +1,1117 @@
+{
+  "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+  "harness_sha256": "4fbad9382e9a222bba6e24aa146669e4bfa2a1a4641d1281e3766d37e62298e1",
+  "policy_revision": "v5.6",
+  "elapsed_wall_seconds": 170.199,
+  "stop_reason": null,
+  "stage": "AFTER_LOCAL",
+  "mode": "NATURAL_UI_LEGAL_POLICY_NO_STATE_INJECTION",
+  "policy": "V5_1_VERIFIED_INPUT_AND_ECONOMY_RECOVERY",
+  "status": "HARNESS_ACTION_TIMEOUT",
+  "error": "locator.click: Timeout 1500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-command=\"stop\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button data-command=\"stop\" class=\"command-button\" title=\"Halt current orders (1)\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - element is not visible\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n",
+  "stack": "locator.click: Timeout 1500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-command=\"stop\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button data-command=\"stop\" class=\"command-button\" title=\"Halt current orders (1)\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - element is not visible\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n\n    at assign (/workspace/riftwatch-v240/tools/qa/v5_player.mjs:24:83)\n    at async Object.step (/workspace/riftwatch-v240/tools/qa/v5_player.mjs:44:81)\n    at async file:///workspace/riftwatch-v240/tools/qa/natural_campaign.mjs:87:33",
+  "errors": [],
+  "failures": [],
+  "actions": [
+    {
+      "wallSeconds": 2.229,
+      "kind": "action",
+      "command": "Start",
+      "mode": "standard",
+      "speed": 1.5,
+      "policy": "v5.6"
+    },
+    {
+      "wallSeconds": 2.835,
+      "kind": "action",
+      "command": "manual-economy-and-army"
+    },
+    {
+      "wallSeconds": 9.734,
+      "kind": "action",
+      "command": "verified-age-research",
+      "research": {
+        "level": 2,
+        "remaining": 19.950050000000005,
+        "total": 20
+      }
+    },
+    {
+      "wallSeconds": 13.016,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 7,
+      "node": 68,
+      "type": "gold",
+      "outcome": {
+        "state": "gather",
+        "target": 68,
+        "selection": [
+          7
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "prep"
+      }
+    },
+    {
+      "wallSeconds": 16.101,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 12,
+      "node": 89,
+      "type": "food",
+      "outcome": {
+        "state": "return",
+        "target": 89,
+        "selection": [
+          12
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "prep"
+      }
+    },
+    {
+      "wallSeconds": 16.922,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 113.02380799999999,
+          "wood": 330,
+          "gold": 30,
+          "stone": 110
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 73.02380799999999,
+          "wood": 330,
+          "gold": 20,
+          "stone": 110
+        }
+      }
+    },
+    {
+      "wallSeconds": 17.864,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 28.018862720606638,
+        "y": 27.98478312290467
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 18.318,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 15
+    },
+    {
+      "wallSeconds": 18.681,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 16
+    },
+    {
+      "wallSeconds": 19.035,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 17
+    },
+    {
+      "wallSeconds": 19.382,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 18
+    },
+    {
+      "wallSeconds": 19.725,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19
+    },
+    {
+      "wallSeconds": 22.71,
+      "kind": "action",
+      "command": "build:page"
+    },
+    {
+      "wallSeconds": 22.933,
+      "kind": "action",
+      "command": "build:range"
+    },
+    {
+      "wallSeconds": 23.522,
+      "kind": "action",
+      "command": "place",
+      "type": "range",
+      "world": [
+        25,
+        29
+      ]
+    },
+    {
+      "wallSeconds": 24.257,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 24.423,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 20
+    },
+    {
+      "wallSeconds": 28.886,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 116.03561599999998,
+          "wood": 230,
+          "gold": 40,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 76.03561599999998,
+          "wood": 230,
+          "gold": 30,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 29.48,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 39.293,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 7,
+      "node": 68,
+      "type": "gold",
+      "outcome": {
+        "state": "gather",
+        "target": 68,
+        "selection": [
+          7
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 40.19,
+      "kind": "action",
+      "command": "build:page"
+    },
+    {
+      "wallSeconds": 40.654,
+      "kind": "action",
+      "command": "build:page"
+    },
+    {
+      "wallSeconds": 41.162,
+      "kind": "action",
+      "command": "build:page"
+    },
+    {
+      "wallSeconds": 41.652,
+      "kind": "action",
+      "command": "build:house"
+    },
+    {
+      "wallSeconds": 42.48,
+      "kind": "action",
+      "command": "place",
+      "type": "house",
+      "world": [
+        25,
+        23
+      ]
+    },
+    {
+      "wallSeconds": 43.864,
+      "kind": "action",
+      "command": "verified-train:archer",
+      "building": 21,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 139.04747199999997,
+          "wood": 180,
+          "gold": 50,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 139.04747199999997,
+          "wood": 155,
+          "gold": 25,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 44.527,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 139.04747199999997,
+          "wood": 155,
+          "gold": 25,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 109.04747199999997,
+          "wood": 165,
+          "gold": 15,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 45.525,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.996121209864796,
+        "y": 27.990950198829673
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 45.979,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 17
+    },
+    {
+      "wallSeconds": 46.297,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19
+    },
+    {
+      "wallSeconds": 46.536,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 22
+    },
+    {
+      "wallSeconds": 49.327,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 130.05532799999997,
+          "wood": 165,
+          "gold": 15,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 81.06318399999998,
+          "wood": 165,
+          "gold": 15,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 50.609,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 8,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 2.3959511499097075
+      }
+    },
+    {
+      "wallSeconds": 51.625,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 11,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 2.222771267229838
+      }
+    },
+    {
+      "wallSeconds": 52.606,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 13,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 2.5304170781061086
+      }
+    },
+    {
+      "wallSeconds": 52.968,
+      "kind": "action",
+      "command": "build:house"
+    },
+    {
+      "wallSeconds": 53.535,
+      "kind": "action",
+      "command": "place",
+      "type": "house",
+      "world": [
+        27,
+        27
+      ]
+    },
+    {
+      "wallSeconds": 53.957,
+      "kind": "action",
+      "command": "verified-train:archer",
+      "building": 21,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 92.06710399999997,
+          "wood": 125.12177499999999,
+          "gold": 25,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 92.06710399999997,
+          "wood": 90.12177499999999,
+          "gold": 0,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 55.305,
+      "kind": "action",
+      "command": "verified-attack-move-siege",
+      "id": 15,
+      "enemy": 30,
+      "order": {
+        "type": "attackMove",
+        "destination": {
+          "x": 27.001586130687173,
+          "y": 22.567215872250394
+        },
+        "origin": {
+          "x": 24.574874248394586,
+          "y": 23.051282054674427
+        },
+        "leg": 1,
+        "protectedId": null,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 55.538,
+      "kind": "action",
+      "command": "verified-attack-move-siege",
+      "id": 16,
+      "enemy": 30,
+      "order": {
+        "type": "attackMove",
+        "destination": {
+          "x": 27.001586130687173,
+          "y": 22.567215872250394
+        },
+        "origin": {
+          "x": 24.335759037474293,
+          "y": 22.524675222788098
+        },
+        "leg": 1,
+        "protectedId": null,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 55.75,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19
+    },
+    {
+      "wallSeconds": 55.959,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 32
+    },
+    {
+      "wallSeconds": 56.202,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 33
+    },
+    {
+      "wallSeconds": 56.206,
+      "kind": "action",
+      "command": "hero-aegis"
+    },
+    {
+      "wallSeconds": 56.262,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 58.717,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 103.07107199999997,
+          "wood": 90.12177499999999,
+          "gold": 0,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 53.07107199999997,
+          "wood": 90.12177499999999,
+          "gold": 0,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 59.754,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 8,
+      "outcome": {
+        "state": "idle",
+        "drop": 1,
+        "distance": 0.7853377976214944
+      }
+    },
+    {
+      "wallSeconds": 60.217,
+      "kind": "action",
+      "command": "build:house"
+    },
+    {
+      "wallSeconds": 61.12,
+      "kind": "action",
+      "command": "place",
+      "type": "house",
+      "world": [
+        27,
+        25
+      ]
+    },
+    {
+      "wallSeconds": 62.398,
+      "kind": "action",
+      "command": "verified-attack-move-siege",
+      "id": 18,
+      "enemy": 30,
+      "order": {
+        "type": "attackMove",
+        "destination": {
+          "x": 27.32658045632499,
+          "y": 22.5233868739572
+        },
+        "origin": {
+          "x": 28.07281785840807,
+          "y": 23.571061572678627
+        },
+        "leg": 1,
+        "protectedId": null,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 62.643,
+      "kind": "action",
+      "command": "verified-attack-move-siege",
+      "id": 19,
+      "enemy": 30,
+      "order": {
+        "type": "attackMove",
+        "destination": {
+          "x": 27.32658045632499,
+          "y": 22.5233868739572
+        },
+        "origin": {
+          "x": 25.4,
+          "y": 23.3
+        },
+        "leg": 1,
+        "protectedId": null,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 62.881,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 44
+    },
+    {
+      "wallSeconds": 65.338,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 74.07501599999998,
+          "wood": 40.121774999999985,
+          "gold": 0,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 24.075015999999977,
+          "wood": 40.121774999999985,
+          "gold": 0,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 66.377,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 8,
+      "outcome": {
+        "state": "idle",
+        "drop": 1,
+        "distance": 0.7853377976214944
+      }
+    },
+    {
+      "wallSeconds": 67.441,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 12,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 2.7027435003918945
+      }
+    },
+    {
+      "wallSeconds": 68.485,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 35,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 5.880938635491901
+      }
+    },
+    {
+      "wallSeconds": 70.021,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19
+    },
+    {
+      "wallSeconds": 70.246,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 20
+    },
+    {
+      "wallSeconds": 73.426,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 47,
+      "outcome": {
+        "state": "idle",
+        "drop": 1,
+        "distance": 0.2707144390256708
+      }
+    },
+    {
+      "wallSeconds": 74.919,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19
+    },
+    {
+      "wallSeconds": 75.132,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 20
+    },
+    {
+      "wallSeconds": 80.393,
+      "kind": "action",
+      "command": "verified-attack-move-siege",
+      "id": 19,
+      "enemy": 30,
+      "order": {
+        "type": "attackMove",
+        "destination": {
+          "x": 26.510714633124216,
+          "y": 20.902410459957913
+        },
+        "origin": {
+          "x": 25.4,
+          "y": 23.3
+        },
+        "leg": 1,
+        "protectedId": null,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 80.887,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19
+    },
+    {
+      "wallSeconds": 81.095,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 20
+    },
+    {
+      "wallSeconds": 81.136,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 86.192,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 10,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 1.2270512754306706
+      }
+    },
+    {
+      "wallSeconds": 87.242,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 46,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 2.423008457409342
+      }
+    },
+    {
+      "wallSeconds": 88.265,
+      "kind": "action",
+      "command": "verified-attack-move-siege",
+      "id": 19,
+      "enemy": 30,
+      "order": {
+        "type": "attackMove",
+        "destination": {
+          "x": 25.798007420131142,
+          "y": 20.079996640781104
+        },
+        "origin": {
+          "x": 25.4,
+          "y": 23.3
+        },
+        "leg": 1,
+        "protectedId": null,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 88.707,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 20
+    },
+    {
+      "wallSeconds": 93.213,
+      "kind": "action",
+      "command": "build:house"
+    },
+    {
+      "wallSeconds": 94.264,
+      "kind": "action",
+      "command": "place",
+      "type": "house",
+      "world": [
+        23,
+        29
+      ]
+    },
+    {
+      "wallSeconds": 95.439,
+      "kind": "action",
+      "command": "verified-attack-move-siege",
+      "id": 22,
+      "enemy": 30,
+      "order": {
+        "type": "attackMove",
+        "destination": {
+          "x": 25.798007420131142,
+          "y": 20.079996640781104
+        },
+        "origin": {
+          "x": 25.65531429054591,
+          "y": 21.10450533896703
+        },
+        "leg": 1,
+        "protectedId": null,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 95.734,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 20
+    },
+    {
+      "wallSeconds": 98.712,
+      "kind": "action",
+      "command": "native-save-checkpoint"
+    },
+    {
+      "wallSeconds": 101.671,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 8,
+      "outcome": {
+        "state": "idle",
+        "drop": 1,
+        "distance": 0.7853377976214944
+      }
+    },
+    {
+      "wallSeconds": 102.932,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 20
+    },
+    {
+      "wallSeconds": 102.97,
+      "kind": "action",
+      "command": "hero-aegis"
+    },
+    {
+      "wallSeconds": 109.62,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 10,
+      "node": 54,
+      "type": "wood",
+      "outcome": {
+        "state": "gather",
+        "target": 54,
+        "selection": [
+          10
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 114.959,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 117.672,
+      "kind": "action",
+      "command": "claim-boon",
+      "id": "night_watch"
+    },
+    {
+      "wallSeconds": 119.38,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 156.12243999999998,
+          "wood": 63.684096875,
+          "gold": 20,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 106.12243999999998,
+          "wood": 63.684096875,
+          "gold": 20,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 128.44,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 11,
+      "node": 68,
+      "type": "gold",
+      "outcome": {
+        "state": "gather",
+        "target": 68,
+        "selection": [
+          11
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "prep"
+      }
+    },
+    {
+      "wallSeconds": 132.698,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 12,
+      "node": 68,
+      "type": "gold",
+      "outcome": {
+        "state": "gather",
+        "target": 68,
+        "selection": [
+          12
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "prep"
+      }
+    },
+    {
+      "wallSeconds": 143.805,
+      "kind": "action",
+      "command": "verified-train:archer",
+      "building": 21,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 112.16199199999997,
+          "wood": 113.684096875,
+          "gold": 30,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 112.16199199999997,
+          "wood": 78.684096875,
+          "gold": 5,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 147.824,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19
+    },
+    {
+      "wallSeconds": 147.905,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 151.303,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 114.18175999999997,
+          "wood": 98.684096875,
+          "gold": 25,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 64.18175999999997,
+          "wood": 98.684096875,
+          "gold": 25,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 154.637,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 35,
+      "node": 89,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 89,
+        "selection": [
+          35
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 157.065,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 47,
+      "node": 97,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 97,
+        "selection": [
+          47
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 158.739,
+      "kind": "action",
+      "command": "verified-train:archer",
+      "building": 21,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 65.18563199999997,
+          "wood": 98.684096875,
+          "gold": 35,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 65.18563199999997,
+          "wood": 63.684096874999994,
+          "gold": 10,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 159.572,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 66.19346399999996,
+          "wood": 73.684096875,
+          "gold": 20,
+          "stone": 112.4061875
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 26.193463999999963,
+          "wood": 73.684096875,
+          "gold": 10,
+          "stone": 112.4061875
+        }
+      }
+    },
+    {
+      "wallSeconds": 162.978,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19
+    },
+    {
+      "wallSeconds": 163.442,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 20
+    },
+    {
+      "wallSeconds": 164.676,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 60
+    },
+    {
+      "wallSeconds": 164.765,
+      "kind": "action",
+      "command": "hero-aegis"
+    }
+  ]
+}

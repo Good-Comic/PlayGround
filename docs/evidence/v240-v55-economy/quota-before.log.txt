@@ -1,0 +1,37 @@
+✔ zero-worker recovery buys real workers before military and does not overspend or duplicate queued workers (1.836136ms)
+✔ manual economy avoids the recorded gold starvation while maintaining wood and food workers (0.373734ms)
+✔ wave economy grows within existing steward target and prioritizes food over surplus wood (0.792668ms)
+✔ age2 reinforcements are not blocked by premature age3 reserve while actual age1 research remains prioritized (5.320832ms)
+✔ resource escorts react to actual worker targeting and food production instead of guarding only the core (2.933298ms)
+✖ critical food deficit is addressed before already-stocked wood and gold (2.296999ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 170.789063
+
+✖ failing tests:
+
+test at tests/v5-player.test.mjs:7:1
+✖ critical food deficit is addressed before already-stocked wood and gold (2.296999ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'wood' !== 'food'
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240/tests/v5-player.test.mjs:7:92)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'wood',
+    expected: 'food',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
