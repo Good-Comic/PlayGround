@@ -2,50 +2,49 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-28T15:25:12.622022+00:00",
+  "updated_at": "2026-10-28T16:30:43.900787+00:00",
   "latest_event": {
-    "task_id": "V240-BOON-SAVE",
+    "task_id": "V240-WORKER-HITS",
     "agent": "Codex",
-    "severity": "PROGRESS",
+    "severity": "WARNING",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+    "commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
     "build_sha": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-    "summary": "\u9078\u5361\u539f\u751f\u5b58\u6a94\u8207Continue\u6062\u5fa9\u901a\u904e\u56db\u8a9e\uff0f\u7e2e\u653e\u9a57\u8b49 / Native card-choice saving and Continue recovery pass four-locale/scale validation",
+    "summary": "\u53d6\u5f9762\u7b46\u6751\u6c11\u9010\u64ca\u89c0\u6e2c\u82079\u6b7b\u4ea1\uff0c\u4fee\u6b63\u6e2c\u8a66\u73a9\u5bb6\u96c6\u706b\uff0f\u8b77\u885b\u885d\u7a81 / Captured62worker hit observations and9deaths; fixed test-player focus/escort conflict",
     "code_changes": [
-      "\u4fdd\u5b58\u5019\u9078\u9806\u5e8f\u8207\u4ed8\u8cbb\u91cd\u62bd\u6b21\u6578\uff0cContinue\u91cd\u958b\u4ecb\u9762 / Persist offers/order/paid rerolls and reopen rewards on Continue",
-      "\u62d2\u7d55\u7f3a\u8cc7\u6599\u820aboon\u5feb\u7167\uff0c\u4e0d\u731c\u6e2c\u91cd\u62bd / Reject incomplete legacy boon snapshots without guessed redraw"
+      "QA\u8f49\u9001\u5f0f\u9010\u64ca\u89c0\u5bdf\uff1b\u4e0d\u6539\u5f15\u64ce\u8207Normal / QA forwarding hit observer; engine and Normal unchanged",
+      "\u539f\u751f\u9010\u55ae\u4f4d\u96c6\u706b\u6392\u9664\u4fdd\u7559\u8b77\u885b / Native per-unit focus excludes reserved escort"
     ],
     "next_steps": [
-      "\u89c0\u5bdf\u9010\u64ca\u50b7\u5bb3\uff0f\u8b77\u885b\uff0f\u8fd4\u7a0b\uff0c\u91cd\u73fe\u7b2c\u4e09\u6ce2\u6751\u6c11\u640d\u5931 / Observe per-hit damage, guards and return routes to reproduce wave3worker losses",
-      "\u5730\u5f62Custom\u9078\u9805\u4ecd\u5f85\u4f7f\u7528\u8005\u56de\u7b54 / Custom terrain options await user"
+      "\u5f9eescort-verified\u5b58\u6d3b\u5feb\u7167\u63a5\u7e8c\uff0c\u88dc\u5c0e\u822a\uff0f\u8fd4\u7a0b\u89c0\u6e2c\u4e26\u6e2c\u8f03\u9577\u8b77\u885b\u751f\u5b58 / Continue living escort-verified save, add navigation/return observations and test sustained escort survival"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "21\u9805\u56de\u6b78 /21regressions",
+        "name": "15\u9805QA\u53ca\u7b56\u7565\u6e2c\u8a66 /15QA/policy tests",
         "status": "PASS",
-        "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-        "evidence": "docs/evidence/v240-boon-save/final-tests.txt",
-        "evidence_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
-        "evidence_blob": "2dc12b258de45e93f859ea312dbb00c7fd0a0c0e",
+        "source_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
+        "evidence": "docs/evidence/v240-worker-hits/final-tests.txt",
+        "evidence_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
+        "evidence_blob": "3dbce7e7a86aa136a11700ec41a3842334ca3ae1",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "\u56db\u8a9e\u539f\u751f\u5b58\u8b80100% / Four-locale native save/load100%",
+        "name": "\u539f\u751f\u547d\u4ee4\u8b77\u885b\uff0f\u96c6\u706b\u5206\u96e2\uff08\u975e\u901a\u95dc\uff09 / Native escort/focus separation, not victory",
         "status": "PASS",
         "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-        "evidence": "docs/evidence/v240-boon-save/browser-100/browser.json",
-        "evidence_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
-        "evidence_blob": "017350a8dbeeb4a23fd6a6f628a823eb034861b3",
+        "evidence": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl",
+        "evidence_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
+        "evidence_blob": "9b8da5ce9ffa850187917db47620eb31db04b82c",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "\u56db\u8a9e\u539f\u751f\u5b58\u8b80130% / Four-locale native save/load130%",
-        "status": "PASS",
+        "name": "180\u79d2\u5b58\u6d3b\u76ee\u6a19 /180-second survival goal",
+        "status": "FAIL",
         "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-        "evidence": "docs/evidence/v240-boon-save/browser-130/browser.json",
-        "evidence_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
-        "evidence_blob": "769675732c93c1f99787fe71427604cbced3a739",
+        "evidence": "docs/evidence/v240-worker-hits/observed/result.json",
+        "evidence_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
+        "evidence_blob": "6b01649e8d62ffb974477d78e4e80f1075e695dc",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -53,17 +52,17 @@
       {
         "id": "RELEASE_BLOCKED",
         "severity": "WARNING",
-        "summary": "\u5341\u6ce2\uff0f\u81ea\u7136New Game+\u3001\u4f4eFPS\u3001\u56b4\u683c\u78ba\u5b9a\u6027\u53ca\u6027\u80fd\uff0f\u786c\u9ad4\u7f3a\u53e3\u4ecd\u4fdd\u7559 / Ten waves/natural New Game+, low-FPS, strict determinism, performance/hardware gaps retained",
-        "source_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+        "summary": "\u5341\u6ce2\u8207\u81ea\u7136New Game+\u672a\u5b8c\u6210\uff1b\u4fdd\u7559\u6b77\u53f2FAIL\u8207\u786c\u9ad4\u5f85\u6e2c / Ten waves/natural New Game+ incomplete; historical FAIL and hardware pending retained",
+        "source_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
         "requires_user_decision": false
       }
     ],
-    "response": "\u4e2d\u6587\uff1aSCHEDULED_RESUME_EXECUTED\u3002\u65b0\u589e\u539f\u751f\u9078\u5361\u5b58\u6a94\uff0c\u8b80\u6a94\u4fdd\u7559\u5019\u9078\u9806\u5e8f\u3001RNG\u3001\u91cd\u62bd\u50f9\u683c\u4e26\u91cd\u958b\u4ecb\u9762\u300221\u9805\u53d7\u5f71\u97ff\u6e2c\u8a66\u53ca\u56db\u8a9e\u00d7100%/130%\u51718\u7d44\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff1b\u5834\u666f\u70baCONTROLLED_FIXTURE\uff0c\u4e0d\u662f\u81ea\u7136\u5341\u6ce2\u3002V6\u820a\u8cc7\u6599\u7a00\u758f\u5206\u6790\u652f\u6301\u6aa2\u67e5\u63a1\u96c6\uff0f\u8fd4\u7a0b\u8b77\u885b\uff0c\u672a\u5ba3\u7a31\u9010\u64ca\u56e0\u679c\u3002\u672c\u8f2a\u56e0\u57f7\u884c\u7a97\u53e3\u5b89\u5168\u4fdd\u5b58\uff0c\u6240\u6709\u6b0a\u91cb\u653e\uff1b\u672a\u516c\u958b\u767c\u5e03\u3002\u8de8\u5c0d\u8a71\u5de5\u5177\u4e0d\u53ef\u7528\uff0c\u672a\u5ba3\u7a31\u9001\u9054\u3002\n\nEnglish: SCHEDULED_RESUME_EXECUTED. Added native card-choice saving and reopening with preserved offer order, RNG and reroll prices.21affected tests and8actual local Chromium workflows across four locales\u00d7100%/130% pass; CONTROLLED_FIXTURE, not natural ten waves. Sparse existingV6analysis supports inspecting gather/return guard coverage, not per-hit causality. Safely checkpointed at the execution-window limit and ownership released; no public deployment. Cross-thread tools unavailable; delivery not claimed.\n",
-    "event_id": "801bc65d516d15ef30978a01bed3e92095610349acca0e7a27b025cab23dac83",
-    "remote_head": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+    "response": "\u4e2d\u6587\uff1aSCHEDULED_RESUME_EXECUTED\u3002\u672c\u8f2a\u53ea\u6539QA\u8207\u81ea\u52d5\u73a9\u5bb6\uff0c\u672a\u6539\u904a\u6232\u5f15\u64ce\u6216\u5e73\u8861\u3002\u9010\u64ca\u8a3a\u65b7\u53d6\u5f97\u5be6\u969b\u6b7b\u4ea1\u4f86\u6e90\u53ca\u8b77\u885b\u76ee\u6a19\uff1b\u4e0d\u80fd\u628a\u9644\u8fd1\u53cb\u8ecd\u7b49\u540c\u6709\u6548\u4fdd\u8b77\u6216\u63a8\u8ad6\u91cd\u65b0\u7d22\u6575\u6545\u969c\u3002\u4fee\u6b63\u65b0\u8b77\u885b\u6a21\u5f0f\u88ab\u5168\u9ad4\u653b\u57ce\u96c6\u706b\u8986\u84cb\u7684\u885d\u7a81\uff0c15\u9805\u5b9a\u5411\u6e2c\u8a66\u8207\u771f\u5be6Chromium\u539f\u751f\u547d\u4ee4\u5206\u96e2\u901a\u904e\u300245\u79d2\u9650\u5b9a\u6a23\u672c3\u6751\u6c11\uff0f6\u8ecd\u4e8b\u3001\u57ce\u5fc3\u6eff\u8840\uff0c\u4f46\u5b8c\u6574\u751f\u5b58\u8207\u5341\u6ce2\u672a\u901a\u904e\u3002\u5931\u6557\u8207\u672a\u751f\u6548\u6a23\u672c\u5747\u4fdd\u7559\u3002\u56e0\u57f7\u884c\u9810\u7b97\u4fdd\u5b58\uff0c\u7121\u6d3b\u8e8d\u6e2c\u8a66\uff0c\u6240\u6709\u6b0a\u91cb\u653e\u3002Recovery/Handoff\u5df2\u66f4\u65b0\uff1b\u672a\u516c\u958b\u767c\u5e03\u3002CROSS_THREAD_HANDOFF_UNAVAILABLE\uff0c\u672a\u5ba3\u7a31\u9001\u9054\u3002\n\nEnglish: SCHEDULED_RESUME_EXECUTED. Only QA/test-player code changed, not engine or balance. Per-hit diagnosis captured actual damage sources and guard targets; nearby allies do not establish coverage or a retargeting defect. Fixed the new escort mode being overridden by whole-army siege focus.15directed tests and actual Chromium native-command separation pass. The45-second bounded sample has3workers/6military/full core, but sustained survival and ten waves have not passed. Failure/unexercised cohorts retained. Checkpointed at execution-budget boundary; tests stopped, ownership released. Recovery/Handoff updated; no publication. CROSS_THREAD_HANDOFF_UNAVAILABLE; delivery not claimed.\n",
+    "event_id": "5bf83a6bd43f60086a129748ffcfa707d8c719f2805200f964ae089c22fe08a0",
+    "remote_head": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-28T15:25:12.622022+00:00",
+    "recorded_at": "2026-10-28T16:30:43.900787+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2799,48 +2798,110 @@
       ]
     },
     "V240-BOON-SAVE": {
-      "task_id": "V240-BOON-SAVE",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [
+        {
+          "id": "RELEASE_BLOCKED",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+          "summary": "\u5341\u6ce2\uff0f\u81ea\u7136New Game+\u3001\u4f4eFPS\u3001\u56b4\u683c\u78ba\u5b9a\u6027\u53ca\u6027\u80fd\uff0f\u786c\u9ad4\u7f3a\u53e3\u4ecd\u4fdd\u7559 / Ten waves/natural New Game+, low-FPS, strict determinism, performance/hardware gaps retained"
+        }
+      ],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
       "build_sha": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-      "summary": "\u9078\u5361\u539f\u751f\u5b58\u6a94\u8207Continue\u6062\u5fa9\u901a\u904e\u56db\u8a9e\uff0f\u7e2e\u653e\u9a57\u8b49 / Native card-choice saving and Continue recovery pass four-locale/scale validation",
       "code_changes": [
         "\u4fdd\u5b58\u5019\u9078\u9806\u5e8f\u8207\u4ed8\u8cbb\u91cd\u62bd\u6b21\u6578\uff0cContinue\u91cd\u958b\u4ecb\u9762 / Persist offers/order/paid rerolls and reopen rewards on Continue",
         "\u62d2\u7d55\u7f3a\u8cc7\u6599\u820aboon\u5feb\u7167\uff0c\u4e0d\u731c\u6e2c\u91cd\u62bd / Reject incomplete legacy boon snapshots without guessed redraw"
       ],
+      "commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "801bc65d516d15ef30978a01bed3e92095610349acca0e7a27b025cab23dac83",
       "next_steps": [
         "\u89c0\u5bdf\u9010\u64ca\u50b7\u5bb3\uff0f\u8b77\u885b\uff0f\u8fd4\u7a0b\uff0c\u91cd\u73fe\u7b2c\u4e09\u6ce2\u6751\u6c11\u640d\u5931 / Observe per-hit damage, guards and return routes to reproduce wave3worker losses",
         "\u5730\u5f62Custom\u9078\u9805\u4ecd\u5f85\u4f7f\u7528\u8005\u56de\u7b54 / Custom terrain options await user"
       ],
+      "pushed": true,
+      "recorded_at": "2026-10-28T15:25:12.622022+00:00",
+      "remote_head": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "\u4e2d\u6587\uff1aSCHEDULED_RESUME_EXECUTED\u3002\u65b0\u589e\u539f\u751f\u9078\u5361\u5b58\u6a94\uff0c\u8b80\u6a94\u4fdd\u7559\u5019\u9078\u9806\u5e8f\u3001RNG\u3001\u91cd\u62bd\u50f9\u683c\u4e26\u91cd\u958b\u4ecb\u9762\u300221\u9805\u53d7\u5f71\u97ff\u6e2c\u8a66\u53ca\u56db\u8a9e\u00d7100%/130%\u51718\u7d44\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff1b\u5834\u666f\u70baCONTROLLED_FIXTURE\uff0c\u4e0d\u662f\u81ea\u7136\u5341\u6ce2\u3002V6\u820a\u8cc7\u6599\u7a00\u758f\u5206\u6790\u652f\u6301\u6aa2\u67e5\u63a1\u96c6\uff0f\u8fd4\u7a0b\u8b77\u885b\uff0c\u672a\u5ba3\u7a31\u9010\u64ca\u56e0\u679c\u3002\u672c\u8f2a\u56e0\u57f7\u884c\u7a97\u53e3\u5b89\u5168\u4fdd\u5b58\uff0c\u6240\u6709\u6b0a\u91cb\u653e\uff1b\u672a\u516c\u958b\u767c\u5e03\u3002\u8de8\u5c0d\u8a71\u5de5\u5177\u4e0d\u53ef\u7528\uff0c\u672a\u5ba3\u7a31\u9001\u9054\u3002\n\nEnglish: SCHEDULED_RESUME_EXECUTED. Added native card-choice saving and reopening with preserved offer order, RNG and reroll prices.21affected tests and8actual local Chromium workflows across four locales\u00d7100%/130% pass; CONTROLLED_FIXTURE, not natural ten waves. Sparse existingV6analysis supports inspecting gather/return guard coverage, not per-hit causality. Safely checkpointed at the execution-window limit and ownership released; no public deployment. Cross-thread tools unavailable; delivery not claimed.\n",
+      "severity": "PROGRESS",
+      "summary": "\u9078\u5361\u539f\u751f\u5b58\u6a94\u8207Continue\u6062\u5fa9\u901a\u904e\u56db\u8a9e\uff0f\u7e2e\u653e\u9a57\u8b49 / Native card-choice saving and Continue recovery pass four-locale/scale validation",
+      "task_id": "V240-BOON-SAVE",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-boon-save/final-tests.txt",
+          "evidence_blob": "2dc12b258de45e93f859ea312dbb00c7fd0a0c0e",
+          "evidence_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "21\u9805\u56de\u6b78 /21regressions",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-boon-save/browser-100/browser.json",
+          "evidence_blob": "017350a8dbeeb4a23fd6a6f628a823eb034861b3",
+          "evidence_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "\u56db\u8a9e\u539f\u751f\u5b58\u8b80100% / Four-locale native save/load100%",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-boon-save/browser-130/browser.json",
+          "evidence_blob": "769675732c93c1f99787fe71427604cbced3a739",
+          "evidence_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "\u56db\u8a9e\u539f\u751f\u5b58\u8b80130% / Four-locale native save/load130%",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-WORKER-HITS": {
+      "task_id": "V240-WORKER-HITS",
+      "agent": "Codex",
+      "severity": "WARNING",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
+      "build_sha": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+      "summary": "\u53d6\u5f9762\u7b46\u6751\u6c11\u9010\u64ca\u89c0\u6e2c\u82079\u6b7b\u4ea1\uff0c\u4fee\u6b63\u6e2c\u8a66\u73a9\u5bb6\u96c6\u706b\uff0f\u8b77\u885b\u885d\u7a81 / Captured62worker hit observations and9deaths; fixed test-player focus/escort conflict",
+      "code_changes": [
+        "QA\u8f49\u9001\u5f0f\u9010\u64ca\u89c0\u5bdf\uff1b\u4e0d\u6539\u5f15\u64ce\u8207Normal / QA forwarding hit observer; engine and Normal unchanged",
+        "\u539f\u751f\u9010\u55ae\u4f4d\u96c6\u706b\u6392\u9664\u4fdd\u7559\u8b77\u885b / Native per-unit focus excludes reserved escort"
+      ],
+      "next_steps": [
+        "\u5f9eescort-verified\u5b58\u6d3b\u5feb\u7167\u63a5\u7e8c\uff0c\u88dc\u5c0e\u822a\uff0f\u8fd4\u7a0b\u89c0\u6e2c\u4e26\u6e2c\u8f03\u9577\u8b77\u885b\u751f\u5b58 / Continue living escort-verified save, add navigation/return observations and test sustained escort survival"
+      ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "21\u9805\u56de\u6b78 /21regressions",
+          "name": "15\u9805QA\u53ca\u7b56\u7565\u6e2c\u8a66 /15QA/policy tests",
           "status": "PASS",
-          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-          "evidence": "docs/evidence/v240-boon-save/final-tests.txt",
-          "evidence_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
-          "evidence_blob": "2dc12b258de45e93f859ea312dbb00c7fd0a0c0e",
+          "source_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
+          "evidence": "docs/evidence/v240-worker-hits/final-tests.txt",
+          "evidence_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
+          "evidence_blob": "3dbce7e7a86aa136a11700ec41a3842334ca3ae1",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "\u56db\u8a9e\u539f\u751f\u5b58\u8b80100% / Four-locale native save/load100%",
+          "name": "\u539f\u751f\u547d\u4ee4\u8b77\u885b\uff0f\u96c6\u706b\u5206\u96e2\uff08\u975e\u901a\u95dc\uff09 / Native escort/focus separation, not victory",
           "status": "PASS",
           "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-          "evidence": "docs/evidence/v240-boon-save/browser-100/browser.json",
-          "evidence_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
-          "evidence_blob": "017350a8dbeeb4a23fd6a6f628a823eb034861b3",
+          "evidence": "docs/evidence/v240-worker-hits/escort-verified/events.jsonl",
+          "evidence_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
+          "evidence_blob": "9b8da5ce9ffa850187917db47620eb31db04b82c",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "\u56db\u8a9e\u539f\u751f\u5b58\u8b80130% / Four-locale native save/load130%",
-          "status": "PASS",
+          "name": "180\u79d2\u5b58\u6d3b\u76ee\u6a19 /180-second survival goal",
+          "status": "FAIL",
           "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-          "evidence": "docs/evidence/v240-boon-save/browser-130/browser.json",
-          "evidence_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
-          "evidence_blob": "769675732c93c1f99787fe71427604cbced3a739",
+          "evidence": "docs/evidence/v240-worker-hits/observed/result.json",
+          "evidence_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
+          "evidence_blob": "6b01649e8d62ffb974477d78e4e80f1075e695dc",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -2848,17 +2909,17 @@
         {
           "id": "RELEASE_BLOCKED",
           "severity": "WARNING",
-          "summary": "\u5341\u6ce2\uff0f\u81ea\u7136New Game+\u3001\u4f4eFPS\u3001\u56b4\u683c\u78ba\u5b9a\u6027\u53ca\u6027\u80fd\uff0f\u786c\u9ad4\u7f3a\u53e3\u4ecd\u4fdd\u7559 / Ten waves/natural New Game+, low-FPS, strict determinism, performance/hardware gaps retained",
-          "source_commit": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+          "summary": "\u5341\u6ce2\u8207\u81ea\u7136New Game+\u672a\u5b8c\u6210\uff1b\u4fdd\u7559\u6b77\u53f2FAIL\u8207\u786c\u9ad4\u5f85\u6e2c / Ten waves/natural New Game+ incomplete; historical FAIL and hardware pending retained",
+          "source_commit": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
           "requires_user_decision": false
         }
       ],
-      "response": "\u4e2d\u6587\uff1aSCHEDULED_RESUME_EXECUTED\u3002\u65b0\u589e\u539f\u751f\u9078\u5361\u5b58\u6a94\uff0c\u8b80\u6a94\u4fdd\u7559\u5019\u9078\u9806\u5e8f\u3001RNG\u3001\u91cd\u62bd\u50f9\u683c\u4e26\u91cd\u958b\u4ecb\u9762\u300221\u9805\u53d7\u5f71\u97ff\u6e2c\u8a66\u53ca\u56db\u8a9e\u00d7100%/130%\u51718\u7d44\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff1b\u5834\u666f\u70baCONTROLLED_FIXTURE\uff0c\u4e0d\u662f\u81ea\u7136\u5341\u6ce2\u3002V6\u820a\u8cc7\u6599\u7a00\u758f\u5206\u6790\u652f\u6301\u6aa2\u67e5\u63a1\u96c6\uff0f\u8fd4\u7a0b\u8b77\u885b\uff0c\u672a\u5ba3\u7a31\u9010\u64ca\u56e0\u679c\u3002\u672c\u8f2a\u56e0\u57f7\u884c\u7a97\u53e3\u5b89\u5168\u4fdd\u5b58\uff0c\u6240\u6709\u6b0a\u91cb\u653e\uff1b\u672a\u516c\u958b\u767c\u5e03\u3002\u8de8\u5c0d\u8a71\u5de5\u5177\u4e0d\u53ef\u7528\uff0c\u672a\u5ba3\u7a31\u9001\u9054\u3002\n\nEnglish: SCHEDULED_RESUME_EXECUTED. Added native card-choice saving and reopening with preserved offer order, RNG and reroll prices.21affected tests and8actual local Chromium workflows across four locales\u00d7100%/130% pass; CONTROLLED_FIXTURE, not natural ten waves. Sparse existingV6analysis supports inspecting gather/return guard coverage, not per-hit causality. Safely checkpointed at the execution-window limit and ownership released; no public deployment. Cross-thread tools unavailable; delivery not claimed.\n",
-      "event_id": "801bc65d516d15ef30978a01bed3e92095610349acca0e7a27b025cab23dac83",
-      "remote_head": "d33810af147bbde8f1ea7ef00e30314f33f305a7",
+      "response": "\u4e2d\u6587\uff1aSCHEDULED_RESUME_EXECUTED\u3002\u672c\u8f2a\u53ea\u6539QA\u8207\u81ea\u52d5\u73a9\u5bb6\uff0c\u672a\u6539\u904a\u6232\u5f15\u64ce\u6216\u5e73\u8861\u3002\u9010\u64ca\u8a3a\u65b7\u53d6\u5f97\u5be6\u969b\u6b7b\u4ea1\u4f86\u6e90\u53ca\u8b77\u885b\u76ee\u6a19\uff1b\u4e0d\u80fd\u628a\u9644\u8fd1\u53cb\u8ecd\u7b49\u540c\u6709\u6548\u4fdd\u8b77\u6216\u63a8\u8ad6\u91cd\u65b0\u7d22\u6575\u6545\u969c\u3002\u4fee\u6b63\u65b0\u8b77\u885b\u6a21\u5f0f\u88ab\u5168\u9ad4\u653b\u57ce\u96c6\u706b\u8986\u84cb\u7684\u885d\u7a81\uff0c15\u9805\u5b9a\u5411\u6e2c\u8a66\u8207\u771f\u5be6Chromium\u539f\u751f\u547d\u4ee4\u5206\u96e2\u901a\u904e\u300245\u79d2\u9650\u5b9a\u6a23\u672c3\u6751\u6c11\uff0f6\u8ecd\u4e8b\u3001\u57ce\u5fc3\u6eff\u8840\uff0c\u4f46\u5b8c\u6574\u751f\u5b58\u8207\u5341\u6ce2\u672a\u901a\u904e\u3002\u5931\u6557\u8207\u672a\u751f\u6548\u6a23\u672c\u5747\u4fdd\u7559\u3002\u56e0\u57f7\u884c\u9810\u7b97\u4fdd\u5b58\uff0c\u7121\u6d3b\u8e8d\u6e2c\u8a66\uff0c\u6240\u6709\u6b0a\u91cb\u653e\u3002Recovery/Handoff\u5df2\u66f4\u65b0\uff1b\u672a\u516c\u958b\u767c\u5e03\u3002CROSS_THREAD_HANDOFF_UNAVAILABLE\uff0c\u672a\u5ba3\u7a31\u9001\u9054\u3002\n\nEnglish: SCHEDULED_RESUME_EXECUTED. Only QA/test-player code changed, not engine or balance. Per-hit diagnosis captured actual damage sources and guard targets; nearby allies do not establish coverage or a retargeting defect. Fixed the new escort mode being overridden by whole-army siege focus.15directed tests and actual Chromium native-command separation pass. The45-second bounded sample has3workers/6military/full core, but sustained survival and ten waves have not passed. Failure/unexercised cohorts retained. Checkpointed at execution-budget boundary; tests stopped, ownership released. Recovery/Handoff updated; no publication. CROSS_THREAD_HANDOFF_UNAVAILABLE; delivery not claimed.\n",
+      "event_id": "5bf83a6bd43f60086a129748ffcfa707d8c719f2805200f964ae089c22fe08a0",
+      "remote_head": "b8e3b4f762882b3c2333fcf0a8d04741ce63b7fd",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-28T15:25:12.622022+00:00",
+      "recorded_at": "2026-10-28T16:30:43.900787+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
