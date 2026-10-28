@@ -7,3 +7,9 @@
 **中文：** 原策略在模擬130–156秒約有6/7村民閒置：八格威脅半徑即使對射程1的步兵也觸發撤退／庇護。V5.11改以實際武器射程+1.25格緩衝或直接目標判斷，並保留資源點六格安全檢查。9項定向測試通過，明確區分五格外步兵與弓兵、近身與直接鎖定。這只修改測試玩家，不改Normal。V5.11真實Chromium接續正在進行，尚未宣稱改善存活或通關。
 
 **English:** Around simulation130–156seconds, roughly6of7workers were idle: the eight-tile threat radius triggered retreat/sheltering even for range1infantry. V5.11 uses actual weapon range plus a1.25-tile buffer or direct targeting, retaining the six-tile resource-node safety filter. Nine directed tests pass, distinguishing infantry versus archers five tiles away, proximity and direct targeting. This changes only the test player, not Normal. Actual Chromium continuation withV5.11 is underway; improved survival or victory is not yet claimed.
+
+## V5.11結果與V5.12差異 / V5.11 result and V5.12 distinction
+
+**中文：** V5.11於第二波損失全部村民及軍隊，模擬314.5618秒主動保存；市鎮中心尚存活，因此是「存活目標FAIL／限定樣本未完成」，不是自然戰敗結算。無瀏覽器例外。縮小撤退半徑未證明改善，不作推薦結論。V5.12回到相同已驗證30.53秒存活開局，增加以真實成本80木／60石建造第二塔的防守策略；原本資源沒有用於防禦建設。兩組工具雜湊及樣本分開保存，不合併成同一驗收批次。
+
+**English:** V5.11 lost all workers and army at wave2 and deliberately checkpointed at simulation314.5618seconds. The core remained alive, so this is a survival-goal FAIL/incomplete bounded sample, not a natural defeat settlement. No browser exceptions occurred. Reduced retreat distance has not demonstrated improvement and is not recommended as proven. V5.12 returns to the same verified30.53-second living opening and adds a second tower at the real80wood/60stone cost; those resources previously went unused for defensive construction. Keep tool hashes and samples separate rather than combine acceptance cohorts.

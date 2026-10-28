@@ -1,0 +1,780 @@
+{
+  "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+  "harness_sha256": "0a5ac5cb1b1e079c1b36da98e766314699003b5f93f5c1602bce92db77909523",
+  "user_speed": 1,
+  "army_steward": true,
+  "policy_revision": "v5.11",
+  "elapsed_wall_seconds": 116.085,
+  "stop_reason": "REQUESTED_SAFE_CHECKPOINT",
+  "stage": "AFTER_LOCAL",
+  "mode": "NATIVE_UI_OBSERVED_SAVE_CONTINUATION",
+  "policy": "V5_1_VERIFIED_INPUT_AND_ECONOMY_RECOVERY",
+  "status": "BOUNDED_SAMPLE_INCOMPLETE",
+  "state": {
+    "seed": 1376821427,
+    "version": 2,
+    "phase": "wave",
+    "cycle": 1,
+    "wave": 2,
+    "simulationSeconds": 314.5618000000107,
+    "clock": 119.4900000000094,
+    "prep": -0.031800000000238735,
+    "resources": {
+      "food": 3.554960974714067,
+      "wood": 0.27389321863151395,
+      "gold": 21.812375000000003,
+      "stone": 105.312125
+    },
+    "population": {
+      "mil": 1,
+      "eco": 0,
+      "cap": 40
+    },
+    "core": {
+      "id": 1,
+      "hp": 2345.1,
+      "maxHp": 3000
+    },
+    "age": 2,
+    "ageCost": {
+      "food": 450,
+      "gold": 250
+    },
+    "ageResearch": null,
+    "boons": [
+      "night_watch"
+    ],
+    "choices": [],
+    "units": [
+      {
+        "id": 84,
+        "type": "spearman",
+        "team": "player",
+        "state": "idle",
+        "x": 25.463836318868548,
+        "y": 24.588293040695795,
+        "hp": 55,
+        "gatherType": null,
+        "orderFailure": null
+      }
+    ],
+    "buildings": [
+      {
+        "id": 1,
+        "type": "core",
+        "x": 23,
+        "y": 25,
+        "hp": 2345.1,
+        "alive": true,
+        "construction": 1,
+        "queue": []
+      },
+      {
+        "id": 2,
+        "type": "barracks",
+        "x": 17,
+        "y": 28,
+        "hp": 600,
+        "alive": true,
+        "construction": 1,
+        "queue": []
+      },
+      {
+        "id": 3,
+        "type": "house",
+        "x": 28,
+        "y": 21,
+        "hp": 300,
+        "alive": true,
+        "construction": 1,
+        "queue": []
+      },
+      {
+        "id": 4,
+        "type": "house",
+        "x": 30,
+        "y": 23,
+        "hp": 300,
+        "alive": true,
+        "construction": 1,
+        "queue": []
+      },
+      {
+        "id": 5,
+        "type": "tower",
+        "x": 20,
+        "y": 21,
+        "hp": 650,
+        "alive": true,
+        "construction": 1,
+        "queue": []
+      },
+      {
+        "id": 6,
+        "type": "farm",
+        "x": 31,
+        "y": 28,
+        "hp": 160,
+        "alive": true,
+        "construction": 1,
+        "queue": []
+      },
+      {
+        "id": 21,
+        "type": "range",
+        "x": 25,
+        "y": 29,
+        "hp": 600,
+        "alive": true,
+        "construction": 1,
+        "queue": []
+      }
+    ],
+    "stats": {
+      "kills": 25,
+      "gathered": 830.9533541933457,
+      "trained": 24,
+      "waves": 1,
+      "assists": 0,
+      "withdrawals": 15,
+      "lastReport": {
+        "wave": 0,
+        "rangedShare": 0.0395176521865466,
+        "cavalryShare": 0.04213279093418567,
+        "towerShare": 0.19032398663373526,
+        "mapControl": 0.25,
+        "workerLosses": 2,
+        "workerLossRatio": 0.6666666666666666,
+        "totalDamage": 688.3000000000001
+      }
+    },
+    "hero": {
+      "alive": false,
+      "hp": -0.16999999999899984,
+      "mark": 0.8700999999998295,
+      "aegis": 10.206400000000645
+    }
+  },
+  "seconds": 1800,
+  "errors": [],
+  "failures": [],
+  "actions": [
+    {
+      "wallSeconds": 2.639,
+      "kind": "action",
+      "command": "ContinueObservedSave",
+      "snapshotSha256": "e07a7b23206c206556ade0ec44a4f1cb85dbdd00e4eee5e80217ee78315bd8ba",
+      "priorWave": 2,
+      "priorRunTime": 202.8213000000035
+    },
+    {
+      "wallSeconds": 11.996,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 13,
+      "node": 97,
+      "type": "food",
+      "outcome": {
+        "state": "return",
+        "target": 97,
+        "selection": [
+          13
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 13.819,
+      "kind": "action",
+      "command": "verified-train:archer",
+      "building": 21,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 19.772895901011104,
+          "wood": 97.35730571863152,
+          "gold": 31.812375000000003,
+          "stone": 105.312125
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 20.778207901011104,
+          "wood": 62.35730571863152,
+          "gold": 6.812375000000003,
+          "stone": 105.312125
+        }
+      }
+    },
+    {
+      "wallSeconds": 16.073,
+      "kind": "action",
+      "command": "hero-aegis"
+    },
+    {
+      "wallSeconds": 16.374,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 20.899,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 19,
+      "protected": 10,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 20.66524538413254,
+          "y": 23.854997467970733
+        },
+        "origin": {
+          "x": 20.35665705057012,
+          "y": 28.732396904091104
+        },
+        "leg": 1,
+        "protectedId": 10
+      }
+    },
+    {
+      "wallSeconds": 22.027,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 24,
+      "protected": 7,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 16.315096478800903,
+          "y": 25.49702947490664
+        },
+        "origin": {
+          "x": 11.595455838317267,
+          "y": 22.819588087796085
+        },
+        "leg": 1,
+        "protectedId": 7
+      }
+    },
+    {
+      "wallSeconds": 23.075,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 34,
+      "protected": 10,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 16.233212524341496,
+          "y": 24.392261870966244
+        },
+        "origin": {
+          "x": 20.717676390271357,
+          "y": 28.148934895067594
+        },
+        "leg": 1,
+        "protectedId": 10
+      }
+    },
+    {
+      "wallSeconds": 24.889,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 65,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.55094183130907,
+          "y": 25.875565539235925
+        },
+        "origin": {
+          "x": 24.42365417184238,
+          "y": 34.1390877331052
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 24.964,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 29.698,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 50,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 3.519264753030732
+      }
+    },
+    {
+      "wallSeconds": 30.643,
+      "kind": "action",
+      "command": "verified-train:archer",
+      "building": 21,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 27.7860319010111,
+          "wood": 65.27389321863151,
+          "gold": 26.812375000000003,
+          "stone": 105.312125
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 27.7860319010111,
+          "wood": 30.273893218631514,
+          "gold": 1.812375000000003,
+          "stone": 105.312125
+        }
+      }
+    },
+    {
+      "wallSeconds": 31.79,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999988771415,
+        "y": 27.99999911444716
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 32.981,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 19,
+      "protected": 11,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 18.194349710716004,
+          "y": 26.773788352958547
+        },
+        "origin": {
+          "x": 20.222180045271845,
+          "y": 25.29089404020593
+        },
+        "leg": 1,
+        "protectedId": 11
+      }
+    },
+    {
+      "wallSeconds": 34.083,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 24,
+      "protected": 8,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 21.82521810214534,
+          "y": 25.071482328712253
+        },
+        "origin": {
+          "x": 20.311616693290464,
+          "y": 26.501103791305916
+        },
+        "leg": 1,
+        "protectedId": 8
+      }
+    },
+    {
+      "wallSeconds": 35.211,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 34,
+      "protected": 11,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 18.29450558956649,
+          "y": 26.81534978445196
+        },
+        "origin": {
+          "x": 20.295186258334212,
+          "y": 25.838007341218503
+        },
+        "leg": 1,
+        "protectedId": 11
+      }
+    },
+    {
+      "wallSeconds": 36.375,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 66,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.48673158007613,
+          "y": 26.30313190990005
+        },
+        "origin": {
+          "x": 25.984599288321352,
+          "y": 32.741508890546974
+        },
+        "leg": 1,
+        "protectedId": 1,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 37.526,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 67,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31256180263481,
+          "y": 26.312495991115476
+        },
+        "origin": {
+          "x": 28.76569851142054,
+          "y": 28.647210337420205
+        },
+        "leg": 1,
+        "protectedId": 1,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 37.612,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 44.255,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 28.028542017607126,
+        "y": 27.98884203312323
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 45.459,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 19,
+      "protected": 13,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 21.588320924381872,
+          "y": 27.227515272258326
+        },
+        "origin": {
+          "x": 21.976146483776578,
+          "y": 23.499929435935876
+        },
+        "leg": 1,
+        "protectedId": 13,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 46.571,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 34,
+      "protected": 13,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 21.693753868910207,
+          "y": 27.19828765277235
+        },
+        "origin": {
+          "x": 21.19536529281057,
+          "y": 26.841513770436762
+        },
+        "leg": 1,
+        "protectedId": 13,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 47.665,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 79,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.418059716120716,
+          "y": 26.283230673430175
+        },
+        "origin": {
+          "x": 27.428744722254624,
+          "y": 25.238248802853697
+        },
+        "leg": 1,
+        "protectedId": 1,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 50.905,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.999999693452065,
+        "y": 28.000000429595627
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 52.051,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 19,
+      "protected": 7,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 21.63178659938358,
+          "y": 26.22595560463874
+        },
+        "origin": {
+          "x": 22.230964245240635,
+          "y": 23.509568338489956
+        },
+        "leg": 1,
+        "protectedId": 7,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 53.094,
+      "kind": "action",
+      "command": "verified-guard-resource-worker",
+      "id": 24,
+      "protected": 11,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 19.22588030906048,
+          "y": 26.96080537211006
+        },
+        "origin": {
+          "x": 20.44918582321508,
+          "y": 26.44433068556486
+        },
+        "leg": 1,
+        "protectedId": 11,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 58.377,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 11,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 3.962288844329123
+      }
+    },
+    {
+      "wallSeconds": 59.406,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 28.00003451700949,
+        "y": 27.9999954539578
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 64.951,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 65.734,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31249959128243,
+          "y": 26.312500123054747
+        },
+        "origin": {
+          "x": 22.65364651782725,
+          "y": 23.196305017303704
+        },
+        "leg": 1,
+        "protectedId": 1,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 70.351,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 77.097,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 83.901,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 90.666,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 93.11,
+      "kind": "action",
+      "command": "native-save-checkpoint"
+    },
+    {
+      "wallSeconds": 97.758,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 104.491,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 111.187,
+      "kind": "action",
+      "command": "verified-rally",
+      "building": 2,
+      "actual": {
+        "x": 27.99999969346182,
+        "y": 28.00000042959292
+      },
+      "expected": {
+        "x": 28,
+        "y": 28
+      }
+    },
+    {
+      "wallSeconds": 111.944,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 84,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31249959128243,
+          "y": 26.312500123054747
+        },
+        "origin": {
+          "x": 25.463836318868548,
+          "y": 24.588293040695795
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    }
+  ]
+}

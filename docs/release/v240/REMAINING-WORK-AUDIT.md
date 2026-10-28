@@ -38,3 +38,9 @@
 **中文：** 目前判定 `RELEASE_BLOCKED`（整體v2.4里程碑驗收，不代表遊戲完全不可玩）。十波與自然New Game+尚未通過，無法建議 `PUBLIC_PLAYTEST_READY_WITH_KNOWN_ISSUES`。可繼續內部Artifact與測試，但不宣稱 `INTERNAL_CANDIDATE_READY` 全閘門通過。不修改Pages、OmGitHub、main或公開入口；保留v234不發布與歷史不可變Build。
 
 **English:** Current verdict is `RELEASE_BLOCKED` for overallv2.4 milestone acceptance, not a claim that the game is entirely unplayable. Ten waves and natural New Game+ have not passed, so `PUBLIC_PLAYTEST_READY_WITH_KNOWN_ISSUES` is not recommended yet. Internal artifacts and testing may continue without claiming all `INTERNAL_CANDIDATE_READY` gates. Do not change Pages, OmGitHub, main or public entry points; keepv234 unpublished and historical builds immutable.
+
+## 尚待核對的明確GDD差異 / Explicit GDD discrepancies requiring reconciliation
+
+**中文：** Issue8快照§核心規則要求第五／十波軍事人口階段上限150／240，現行 `militaryPopCap` 主要由建築容量與文明特例衍生；既有需求矩陣已將封頂調和列為待決，不應標為完整符合。英雄Aegis目前半徑5，GDD快照為4；現有技能預覽沿用正式行為而未改數值。這些屬 `IMPLEMENTED_QA_PENDING / SPEC_DECISION_REQUIRED`，需對照使用者後續批准與規則版本後再改，不能在測試中暗改平衡。
+
+**English:** The Issue8 core-rule snapshot specifies military ceilings150/240 at waves5/10, whereas current `militaryPopCap` primarily derives from buildings and civilization exceptions; the existing requirements matrix already tracks ceiling reconciliation as unresolved. Aegis currently has radius5 versus4in the GDD snapshot; the preview preserved production behavior rather than changing values. These are `IMPLEMENTED_QA_PENDING / SPEC_DECISION_REQUIRED`: reconcile later approvals and rule versions before changing them, never silently alter balance during testing.
