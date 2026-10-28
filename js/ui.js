@@ -830,7 +830,9 @@ export class UI {
   }
 
   commandSignature(game) {
-    const hero = game.hero;
+    // Cooldown ticks only change hero commands. Rebuilding unrelated worker
+    // buttons interrupts focus/pointer input and wastes DOM work in combat.
+    const hero = game.selection.some(e => e.alive && e.team === 'player' && e.hero) ? game.hero : null;
     return game.selection.map(e => `${e.id}:${e.type}:${e.team}:${e.stance}:${e.trainingPage||0}:${e.rally?.x},${e.rally?.y}:${Math.floor(e.construction * 5)}`).join('|') + `:${game.phase}:a${game.ageLevel}:r${Math.ceil(game.ageResearch?.remaining || 0)}:h${game.heroControl}:b${game.buildPage || 0}:${Math.ceil(hero?.markCd || 0)}:${Math.ceil(hero?.aegisCd || 0)}`;
   }
 
