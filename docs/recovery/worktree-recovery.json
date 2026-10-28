@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-28T05:49:54.266796+00:00",
-  "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "8c012e3d856381819990ff50bcf3424504a4af2c",
+  "captured_at_utc": "2026-10-28T06:07:58.582173+00:00",
+  "trigger": "SLICE_COMPLETE",
+  "collector_commit": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-28T05:49:54.266796+00:00"
+    "queried_at": "2026-10-28T06:07:58.582173+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -31,9 +31,9 @@
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-    "codex/riftwatch-progress-feed": "c57e5d2e5fa1704c0163780e6c75ab84136b1b8d",
+    "codex/riftwatch-progress-feed": "1174b2c420dfa4e01f78c3ff32934e5d03090462",
     "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
-    "codex/riftwatch-task-ownership": "19240edccfef806814b0d1a796617b19d87f0c3f",
+    "codex/riftwatch-task-ownership": "aedf37952991e0d310ed79ba54cc738494aed278",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -63,7 +63,7 @@
     "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
     "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
     "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-    "codex/riftwatch-v240-game-first": "2f218838155636746ff03e552f564e8584766822",
+    "codex/riftwatch-v240-game-first": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -183,9 +183,9 @@
     },
     {
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "8c012e3d856381819990ff50bcf3424504a4af2c",
-      "remote_head": "2f218838155636746ff03e552f564e8584766822",
-      "status": "HEAD_DIFFERS_REVIEW_REQUIRED"
+      "head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+      "remote_head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+      "status": "REMOTE_SAVED"
     }
   ],
   "worktrees": [
@@ -524,7 +524,7 @@
     {
       "path": "/workspace/riftwatch-v240",
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "8c012e3d856381819990ff50bcf3424504a4af2c",
+      "head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
       "locked": false,
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
@@ -534,7 +534,7 @@
           "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
           "result": "10 focused Node tests;4native resource/locale SaveContinue checks PASS",
           "exists": true,
-          "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
+          "storage": "REMOTE_SAVED",
           "sha256": "49cd00301e857fc80455e332a792e74d15976730ccde4c17281645f911092a63",
           "resource_freshness": "MATCHES_WORKING_RESOURCES"
         },
@@ -544,7 +544,7 @@
           "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
           "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED",
           "exists": true,
-          "storage": "LOCAL_ONLY_OR_MISSING",
+          "storage": "REMOTE_SAVED",
           "sha256": "d6744df1942bf2d5368c10be5376880761bd353552ed019f00d736f9878b21f9",
           "resource_freshness": "MATCHES_WORKING_RESOURCES"
         }
@@ -560,81 +560,37 @@
         "V5.4\u6700\u7d42\u5feb\u7167\u70ba\u6230\u6557\uff0c\u4e0d\u53ef\u7576\u5b58\u6d3b\u72c0\u614b\uff1b\u82e5\u4f7f\u7528V5.3\u9808\u63ed\u9732\u4fee\u5fa9\u524d\u4f86\u6e90\u53ca\u4e2d\u65b7 / V5.4 final save is defeated; disclose pre-fix source/interruption if using V5.3",
         "\u5be6\u969b\u5341\u6ce2\u52dd\u5229\u5f8c\u624d\u9a57\u8b49\u81ea\u7136 New Game+\uff0c\u4e0d\u53ef\u7528 Fixture\u66ff\u4ee3 / Verify natural New Game+ only after actual ten-wave victory, never substitute fixtures"
       ],
-      "remote_status": "LOCAL_AHEAD",
-      "remote_head": "2f218838155636746ff03e552f564e8584766822",
-      "unpushed_commits": [
-        "8c012e3d856381819990ff50bcf3424504a4af2c"
-      ],
+      "remote_status": "REMOTE_SAVED",
+      "remote_head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+      "unpushed_commits": [],
       "changed_files": [
-        {
-          "status": " M",
-          "path": "docs/evidence/v240-v5-playability/REPORT.md"
-        },
         {
           "status": " M",
           "path": "docs/handoff/ACTIVE-TASK.json"
         },
         {
-          "status": " M",
-          "path": "docs/handoff/HANDOFF.md"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/NEXT-TASKS.json"
-        },
-        {
-          "status": " M",
-          "path": "docs/recovery/task-registry.json"
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/REPORT.md"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v5-playability/v5-1/campaign.mp4"
+          "path": "docs/evidence/v240-v55-economy/node.log.txt"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v5-playability/v5-1/wave-3-defeat-124.png"
+          "path": "docs/evidence/v240-v55-economy/v55/events.jsonl"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v5-playability/v5-4/campaign.mp4"
+          "path": "docs/evidence/v240-v55-economy/v55/result.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v5-playability/v5-4/events.jsonl"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v5-playability/v5-4/result.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v5-playability/v5-4/save-snapshot.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v5-playability/v5-4/wave-4-defeat-241.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v5-playability/withdraw/browser.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v5-playability/withdraw/withdraw.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v5-playability/withdraw/withdraw.webm"
-        },
-        {
-          "status": "??",
-          "path": "tools/qa/worker_withdraw_browser.mjs"
+          "path": "docs/evidence/v240-v55-economy/v55/save-snapshot.json"
         }
       ],
       "dirty": true,
-      "local_record_status": "LOCAL_INVENTORIED",
-      "ahead": 1,
-      "behind": 0
+      "local_record_status": "LOCAL_INVENTORIED"
     }
   ],
   "comparison": [
@@ -645,10 +601,10 @@
         "remote_head",
         "changed_files"
       ],
-      "previous_head": "e4b321efee8169e82f1a4bc5b9c97ca191b38a36",
-      "actual_head": "8c012e3d856381819990ff50bcf3424504a4af2c"
+      "previous_head": "8c012e3d856381819990ff50bcf3424504a4af2c",
+      "actual_head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "39b9defab82e96503ae20b25cf8f54555449785acf4964f3a33bdb4aa471c873"
+  "snapshot_id": "4e35dc5b00b3b57a6bf0ea9abea02261cf9b00a819545bb0e50bd80b70df9435"
 }

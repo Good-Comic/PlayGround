@@ -5,9 +5,9 @@
 本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。
 This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.
 
-快照 ID / Snapshot ID: 39b9defab82e96503ae20b25cf8f54555449785acf4964f3a33bdb4aa471c873
-擷取時間 UTC / Captured UTC: 2026-10-28T05:49:54.266796+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
-來源 / Collector source: `8c012e3d856381819990ff50bcf3424504a4af2c` · LOCAL_INVENTORIED_NOT_A_PUSH
+快照 ID / Snapshot ID: 4e35dc5b00b3b57a6bf0ea9abea02261cf9b00a819545bb0e50bd80b70df9435
+擷取時間 UTC / Captured UTC: 2026-10-28T06:07:58.582173+00:00 · 觸發 / Trigger: SLICE_COMPLETE
+來源 / Collector source: `1f13ff3f349ddc2a7104c417a1a9eea0b5261673` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 | 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ This manifest records local Git state and actual remote queries at capture time;
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 8c012e3d856381819990ff50bcf3424504a4af2c | 2f218838155636746ff03e552f564e8584766822 | LOCAL_AHEAD | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 1f13ff3f349ddc2a7104c417a1a9eea0b5261673 | 1f13ff3f349ddc2a7104c417a1a9eea0b5261673 | REMOTE_SAVED | True |
 
 ## work
 
@@ -340,73 +340,31 @@ This manifest records local Git state and actual remote queries at capture time;
 
 ```json
 {
-  "unpushed_commits": [
-    "8c012e3d856381819990ff50bcf3424504a4af2c"
-  ],
+  "unpushed_commits": [],
   "changed_files": [
-    {
-      "status": " M",
-      "path": "docs/evidence/v240-v5-playability/REPORT.md"
-    },
     {
       "status": " M",
       "path": "docs/handoff/ACTIVE-TASK.json"
     },
     {
-      "status": " M",
-      "path": "docs/handoff/HANDOFF.md"
-    },
-    {
-      "status": " M",
-      "path": "docs/handoff/NEXT-TASKS.json"
-    },
-    {
-      "status": " M",
-      "path": "docs/recovery/task-registry.json"
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/REPORT.md"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v5-playability/v5-1/campaign.mp4"
+      "path": "docs/evidence/v240-v55-economy/node.log.txt"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v5-playability/v5-1/wave-3-defeat-124.png"
+      "path": "docs/evidence/v240-v55-economy/v55/events.jsonl"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v5-playability/v5-4/campaign.mp4"
+      "path": "docs/evidence/v240-v55-economy/v55/result.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v5-playability/v5-4/events.jsonl"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v5-playability/v5-4/result.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v5-playability/v5-4/save-snapshot.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v5-playability/v5-4/wave-4-defeat-241.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v5-playability/withdraw/browser.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v5-playability/withdraw/withdraw.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v5-playability/withdraw/withdraw.webm"
-    },
-    {
-      "status": "??",
-      "path": "tools/qa/worker_withdraw_browser.mjs"
+      "path": "docs/evidence/v240-v55-economy/v55/save-snapshot.json"
     }
   ],
   "last_validation": [
@@ -416,7 +374,7 @@ This manifest records local Git state and actual remote queries at capture time;
       "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
       "result": "10 focused Node tests;4native resource/locale SaveContinue checks PASS",
       "exists": true,
-      "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
+      "storage": "REMOTE_SAVED",
       "sha256": "49cd00301e857fc80455e332a792e74d15976730ccde4c17281645f911092a63",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     },
@@ -426,7 +384,7 @@ This manifest records local Git state and actual remote queries at capture time;
       "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
       "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED",
       "exists": true,
-      "storage": "LOCAL_ONLY_OR_MISSING",
+      "storage": "REMOTE_SAVED",
       "sha256": "d6744df1942bf2d5368c10be5376880761bd353552ed019f00d736f9878b21f9",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     }
