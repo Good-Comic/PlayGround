@@ -78,7 +78,7 @@ try{
   if(wall-lastPolicy>6){lastPolicy=wall;
     if(policy==='v5.1')await adaptive.step(s);
     else if(['v4','v5'].includes(policy))await economy(s);
-    await defend(s);
+    if(policy!=='v5.1')await defend(s);
     // Native defensive construction and production/technology choices, paid by
     // the game's normal affordability checks. No GM shortcuts are used.
     const towers=s.buildings.filter(b=>b.alive&&b.type==='tower').length,houses=s.buildings.filter(b=>b.alive&&b.type==='house').length;
