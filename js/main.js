@@ -99,6 +99,7 @@ function continueRun() {
   ui.lastCommandSignature = '';
   ui.updateSelection(true);
   ui.renderCommands(game);
+  if (game.phase === 'victory') game.showEnd(true);
   ui.toast(t('toast.runLoaded'), 'good', 2400);
 }
 
@@ -163,7 +164,12 @@ ui = new UI(game, {
 
 game.hook('toast', (text, type, duration) => ui.toast(text, type, duration));
 game.hook('boons', (choices, choose) => ui.showBoons(choices, choose));
-game.hook('end', (victory, stats) => ui.showEnd(victory, stats));
+game.hook('end', (victory, stats) => {
+  // Preserve the completed campaign before the player chooses New Game+.
+  // Continue restores its real victory screen instead of an inert battlefield.
+  if (victory) saveRun(game);
+  ui.showEnd(victory, stats);
+});
 game.hook('selectionChanged', () => ui.updateSelection(true));
 game.hook('placement', placement => ui.setPlacement(placement));
 
