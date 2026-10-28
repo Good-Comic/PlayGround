@@ -13,12 +13,13 @@ try {
  const metadata=await page.evaluate(()=>ageOfAsh.playtestBuild);check('exact committed 36-file artifact',metadata.commit===source,metadata);
  await page.locator('#setup-civ').selectOption('CHN');await page.locator('#setup-seed').fill('CROSSBOW-VISUAL');await page.locator('#btn-start').click();
  await page.waitForFunction(()=>ageOfAsh?.renderer?.unitSpriteAtlases.get('chu_ko_nu')?.ready);
+ await page.evaluate(async()=>{window.atlasAPI=await import('./js/sprite-atlas.js')});
  await page.evaluate(()=>{
   const g=ageOfAsh.game,r=ageOfAsh.renderer;g.paused=true;g.phase='prep';g.prepTimer=1e6;g.units=[];g.selection=[];g.world.resources=[];g.world.props=[];g.world.wildlife=[];
   for(const t of g.world.tiles)t.terrain='grass';r.terrainKey='';
   window.actor=g.spawnUnit('chu_ko_nu',29,33);window.bow=g.spawnUnit('archer',31,33);window.sword=g.spawnUnit('militia',27,33);window.horse=g.spawnUnit('light_cavalry',29,36);
   g.focusAt(29,33);g.camera.x=g.camera.targetX;g.camera.y=g.camera.targetY;g.camera.zoom=g.camera.targetZoom=2;
-  const draw=r.drawSpriteAtlasUnit.bind(r);window.visualStates={};r.drawSpriteAtlasUnit=(u,p,s,v,t)=>{if(u===actor)visualStates[v.state]=(visualStates[v.state]||0)+1;return draw(u,p,s,v,t)};
+  const draw=r.drawSpriteAtlasUnit.bind(r);window.visualStates={};window.attackFrames=[];r.drawSpriteAtlasUnit=(u,p,s,v,t)=>{if(u===actor){visualStates[v.state]=(visualStates[v.state]||0)+1;if(v.state==='attack'){const e=r.unitSpriteAtlases.get(u.type),f=atlasAPI.atlasFrame(e.descriptor,v.direction,v.state,t,atlasAPI.atlasActionProgress(u,v.state)).frame;if(!attackFrames.includes(f))attackFrames.push(f)}}return draw(u,p,s,v,t)};
  });
  const asset=await page.evaluate(()=>{const e=ageOfAsh.renderer.unitSpriteAtlases.get('chu_ko_nu');return{width:e.image.naturalWidth,height:e.image.naturalHeight,src:e.descriptor.src}});
  check('independent external crossbow loaded',asset.width===2560&&asset.height===400,asset);
@@ -34,8 +35,8 @@ try {
  await page.screenshot({path:out+'/moving.png'});
  const targetPoint=await page.evaluate(()=>{const g=ageOfAsh.game;window.enemy=g.spawnUnit('brute',actor.x+1,actor.y,'enemy');window.enemyStartHP=enemy.hp;g.selection=[actor];bow.hold=true;sword.hold=true;horse.hold=true;const p=ageOfAsh.renderer.screen(g,enemy.x,enemy.y);return{x:p.x,y:p.y-18*g.camera.zoom}});
  await page.mouse.click(targetPoint.x,targetPoint.y,{button:'right'});
- await page.waitForFunction(()=>actor.shots>0&&visualStates.attack>0,null,{timeout:15000});await page.screenshot({path:out+'/combat.png'});
- const combat=await page.evaluate(()=>({enemyHP:enemy.hp,startHP:enemyStartHP,actorState:actor.state,shots:actor.shots,seen:{...visualStates}}));check('production ranged attack and live state synchronization',combat.shots>0&&combat.seen.attack>0,combat);
+ await page.waitForFunction(()=>actor.shots>0&&visualStates.attack>0,null,{timeout:15000});await page.waitForFunction(()=>attackFrames.length===4,null,{timeout:5000});await page.screenshot({path:out+'/combat.png'});
+ const combat=await page.evaluate(()=>({enemyHP:enemy.hp,startHP:enemyStartHP,actorState:actor.state,shots:actor.shots,seen:{...visualStates},attackFrames:[...attackFrames]}));check('production ranged attack and live state synchronization',combat.shots>0&&combat.seen.attack>0&&combat.attackFrames.length===4,combat);
  await page.evaluate(()=>{ageOfAsh.game.applyDamage(actor,1,enemy);ageOfAsh.game.paused=true});await page.waitForTimeout(100);await page.screenshot({path:out+'/hit.png'});
  check('production damage displays hit animation',await page.evaluate(()=>visualStates.hit>0),await page.evaluate(()=>({hitFlash:actor.hitFlash,seen:{...visualStates}})));
  await page.evaluate(()=>{ageOfAsh.game.killEntity(actor,enemy);actor.deathAnim=.5});await page.waitForTimeout(100);await page.screenshot({path:out+'/death.png'});

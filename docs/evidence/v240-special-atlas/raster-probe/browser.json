@@ -1,0 +1,53 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_VISUAL_SCENE_NOT_NATURAL_PLAY",
+  "source_commit": "6cfe71f4577491a228658e2633034b149e38fb54",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed 36-file artifact",
+      "pass": true,
+      "detail": {
+        "id": "v240-crossbow-raster",
+        "commit": "6cfe71f4577491a228658e2633034b149e38fb54",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-28T18:13:51.747863+00:00",
+        "resourceVerification": "SHA256_MATCH_36_FILES"
+      }
+    },
+    {
+      "name": "independent external crossbow loaded",
+      "pass": true,
+      "detail": {
+        "width": 2560,
+        "height": 400,
+        "src": "assets/sprites/chu-ko-nu-atlas.png"
+      }
+    },
+    {
+      "name": "production move command advances crossbow",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.97014250014533,
+          "y": 33.24253562503636
+        },
+        "state": "move"
+      }
+    },
+    {
+      "name": "browser execution",
+      "pass": false,
+      "detail": {
+        "message": "page.waitForFunction: Timeout 15000ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 15000ms exceeded.\n    at /workspace/riftwatch-v240/tools/qa/v240_special_atlas_browser.mjs:36:13"
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": false
+}

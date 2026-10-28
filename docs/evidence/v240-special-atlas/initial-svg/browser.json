@@ -1,0 +1,144 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_VISUAL_SCENE_NOT_NATURAL_PLAY",
+  "source_commit": "e3ccd1c6bf43782a213c210787becf0352e6a757",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed 35-file artifact",
+      "pass": true,
+      "detail": {
+        "id": "v240-special-atlas",
+        "commit": "e3ccd1c6bf43782a213c210787becf0352e6a757",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-28T18:11:55.948676+00:00",
+        "resourceVerification": "SHA256_MATCH_35_FILES"
+      }
+    },
+    {
+      "name": "independent external crossbow loaded",
+      "pass": true,
+      "detail": {
+        "width": 2560,
+        "height": 400,
+        "src": "assets/sprites/chu-ko-nu-atlas.svg"
+      }
+    },
+    {
+      "name": "production move command advances crossbow",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 25,
+          "y": 24
+        },
+        "end": {
+          "x": 26.01040341390136,
+          "y": 24.25260085347532
+        },
+        "state": "move"
+      }
+    },
+    {
+      "name": "production ranged attack and live state synchronization",
+      "pass": false,
+      "detail": {
+        "enemyHP": 136.2,
+        "startHP": 145,
+        "actorState": "move",
+        "shots": 0,
+        "seen": {
+          "idle": 75,
+          "walk": 396
+        }
+      }
+    },
+    {
+      "name": "production damage displays hit animation",
+      "pass": true,
+      "detail": {
+        "hitFlash": 1,
+        "seen": {
+          "idle": 75,
+          "walk": 396,
+          "hit": 32
+        }
+      }
+    },
+    {
+      "name": "production death displays terminal atlas",
+      "pass": true,
+      "detail": {
+        "idle": 75,
+        "walk": 396,
+        "hit": 33,
+        "death": 33
+      }
+    },
+    {
+      "name": "failed asset retains procedural fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "bounded 100-unit render JS cost below 33.3ms in three runs",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "fallback",
+          "mean": 1.9100000001490116,
+          "p50": 1.7999999970197678,
+          "p95": 2.7000000029802322
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 29.73000000026077,
+          "p50": 28.600000008940697,
+          "p95": 34.099999994039536
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 28.61000000014901,
+          "p50": 28.400000005960464,
+          "p95": 30.5
+        },
+        {
+          "repeat": 1,
+          "mode": "fallback",
+          "mean": 1.746250000037253,
+          "p50": 1.5,
+          "p95": 2.7999999970197678
+        },
+        {
+          "repeat": 2,
+          "mode": "fallback",
+          "mean": 1.90625,
+          "p50": 1.5,
+          "p95": 3
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 28.101249999925493,
+          "p50": 27.900000005960464,
+          "p95": 29.600000008940697
+        }
+      ]
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": false
+}

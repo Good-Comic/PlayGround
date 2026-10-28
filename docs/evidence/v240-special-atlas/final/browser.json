@@ -1,0 +1,154 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_VISUAL_SCENE_NOT_NATURAL_PLAY",
+  "source_commit": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed 36-file artifact",
+      "pass": true,
+      "detail": {
+        "id": "v240-crossbow-actions",
+        "commit": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-28T18:16:09.406684+00:00",
+        "resourceVerification": "SHA256_MATCH_36_FILES"
+      }
+    },
+    {
+      "name": "independent external crossbow loaded",
+      "pass": true,
+      "detail": {
+        "width": 2560,
+        "height": 400,
+        "src": "assets/sprites/chu-ko-nu-atlas.png"
+      }
+    },
+    {
+      "name": "production move command advances crossbow",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.97014250014534,
+          "y": 33.242535625036375
+        },
+        "state": "move"
+      }
+    },
+    {
+      "name": "production ranged attack and live state synchronization",
+      "pass": true,
+      "detail": {
+        "enemyHP": 131.39999999999998,
+        "startHP": 145,
+        "actorState": "attack",
+        "shots": 2,
+        "seen": {
+          "idle": 203,
+          "walk": 349,
+          "hit": 23,
+          "attack": 11
+        },
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production damage displays hit animation",
+      "pass": true,
+      "detail": {
+        "hitFlash": 1,
+        "seen": {
+          "idle": 204,
+          "walk": 349,
+          "hit": 65,
+          "attack": 11
+        }
+      }
+    },
+    {
+      "name": "production death displays terminal atlas",
+      "pass": true,
+      "detail": {
+        "idle": 204,
+        "walk": 349,
+        "hit": 65,
+        "attack": 11,
+        "death": 43
+      }
+    },
+    {
+      "name": "failed asset retains procedural fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "bounded 100-unit renderer JS within budget and no >20% median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "fallback",
+          "mean": 2.046250000037253,
+          "p50": 1.7999999970197678,
+          "p95": 3.5
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.027500000037253,
+          "p50": 0.8999999910593033,
+          "p95": 2
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 0.8737499997019768,
+          "p50": 0.7999999970197678,
+          "p95": 1.1000000089406967
+        },
+        {
+          "repeat": 1,
+          "mode": "fallback",
+          "mean": 1.8412499999627472,
+          "p50": 1.5999999940395355,
+          "p95": 2.8999999910593033
+        },
+        {
+          "repeat": 2,
+          "mode": "fallback",
+          "mean": 1.8700000001117587,
+          "p50": 1.5999999940395355,
+          "p95": 2.9000000059604645
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 0.85625,
+          "p50": 0.7000000029802322,
+          "p95": 1.9000000059604645
+        }
+      ]
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}

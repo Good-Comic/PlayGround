@@ -1,3 +1,18 @@
+# 內容優先與諸葛弩接續 / Content-first and crossbow continuation
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+**繁體中文：** 2026-10-29使用者正式將內容／美術／戰術／音效開發優先於反覆自動玩家通關；自然十波不再是其他工作的前置條件。受測遊戲Build `b9893ac1319f033a8ef0db0b98ed9fc183dde3f1`新增獨立諸葛弩四影格八方向Atlas及修正正規化攻擊／受擊播放時序；PNG替代SVG繪製成本退步，保留Canvas回退、未改平衡。12項Node與9項真實本地Chromium檢查PASS；原始失敗、錄影、前後截圖及三組render-JS樣本見`docs/evidence/v240-special-atlas/REPORT.md`。
+
+**English:** The user formally prioritized content/art/tactics/audio over repeated autoplayer win attempts on2026-10-29; natural ten waves no longer gates other work. Tested game Build`b9893ac1319f033a8ef0db0b98ed9fc183dde3f1`adds an independent four-frame/eight-direction repeating-crossbow atlas and fixes normalized attack/hit playback. PNG removes the SVG draw-cost regression; Canvas fallback remains and balance is unchanged.12Node and9actual local Chromium checks PASS; original failures, recording, before/after images and3render-JSgroups:`docs/evidence/v240-special-atlas/REPORT.md`.
+
+**繁體中文：** 下一個最小切片：依同一風格製作具有長兵器與盾牌獨立輪廓的兵種，或改善地形素材；不要重做本輪Atlas或重跑相同自然戰敗策略。重大高地／通行成本／Fog規則仍先確認。Easy／Normal自然十波未通過、自然NG+NOT_TESTED；受控十波／NG+限定PASS。保留所有歷史FAIL、硬體待測及RELEASE_BLOCKED；無公開發布。實際Git/API與遠端ownership.json優先於快照；工作切片存檔後若可繼續即繼續。
+
+**English:** Next minimal slice: an independent long-weapon/shield silhouette in the same style, or terrain artwork. Do not repeat this atlas or identical natural-defeat policies. Confirm material high-ground/traversal/Fog rule changes first. Natural Easy/Normal ten waves remain unpassed; naturalNG+NOT_TESTED; controlled ten-wave/NG+PASSis scoped. Retain all historical FAIL, hardware pending andRELEASE_BLOCKED; no public deployment. ActualGit/APIand remoteownership.jsonprevail over snapshots; continue after slice checkpoints when executable.
+
+---
+
 # Easy基準與Normal配對接續 / Easy baseline and Normal-pair continuation
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

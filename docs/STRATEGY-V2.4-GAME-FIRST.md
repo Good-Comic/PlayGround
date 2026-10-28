@@ -156,3 +156,13 @@ The user approved the conservative follow-up design in this session: Normal pres
 **繁體中文：** 不得因純翻譯長時間中斷 GAME FIRST、重跑無關歷史測試或製造大量文件 Commit。沿用正常安全保存點與既有權限，保持 v234 不發布及 v2.4.0 下一里程碑；未完成十波自然通關與自然 New Game+ 驗收仍不得標為 PASS。
 
 **English:** Translation alone must not significantly interrupt GAME FIRST, trigger unrelated historical retests, or generate excessive documentation commits. Use normal safety checkpoints and existing permission boundaries. Keep v234 unpublished and v2.4.0 as the next milestone; incomplete natural ten-wave and natural New Game+ acceptance must not be marked PASS.
+
+## 17. 內容優先覆寫 / Content-first priority override (2026-10-29)
+
+**繁體中文：** 依使用者最新正式決策，不再將自動玩家自然十波通關作為美術、文明兵種、地形戰術、音效或內部 Candidate 的前置條件。依序推進可見的2.5D美術、文明兵種辨識、地形戰術、音效與Boss、整合及Candidate；重大玩法變更仍須確認。自然戰役改為重要玩法修改後及Candidate階段的定期整合驗證，不無限制新增策略版本求PASS。受控十波／Boss／NG+僅限定PASS，Easy／Normal自然十波未通過、自然NG+仍NOT_TESTED，完整里程碑未完成；發布風險獨立評估，不因改變優先級而自動解除RELEASE_BLOCKED。
+
+**English:** Under the latest user decision, an autoplayer natural ten-wave win is no longer a prerequisite for art, civilization/unit identity, terrain/tactics, audio or internal Candidates. Prioritize visible2.5Dart, civilization/unit identity, terrain/tactics, audio/Boss, then integration/Candidate; material gameplay changes still require confirmation. Natural campaigns become periodic integration validation after substantial gameplay changes and at Candidate gates, without endless policy versions chasing PASS. Controlled ten-wave/Boss/NG+results remain scoped PASS; natural Easy/Normal ten waves are unpassed, natural NG+isNOT_TESTED, and the full milestone is incomplete. Evaluate release risks independently; this priority change does not automatically clearRELEASE_BLOCKED.
+
+**繁體中文：** 所有歷史FAIL、低FPS時鐘、嚴格Save/Load、建築混合場景退步、自然Rift Prototype與硬體缺口保持原狀。未取得新的明確公開授權前，不修改Pages、OmGitHub、main或公開入口。安全Commit／Push後仍接續可執行的授權工作；雙語文件及任務所有權要求不變。
+
+**English:** Retain all historical FAIL, low-FPS clock, strictSave/Load, mixed-building regression, naturalRift Prototype and hardware gaps. Without new explicit public authorization, do not change Pages, OmGitHub, main or public entry points. Continue executable authorized work after safety commits/pushes; bilingual documentation and task ownership requirements remain unchanged.
