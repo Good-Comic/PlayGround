@@ -1,0 +1,77 @@
+✖ pending reward preserves offered order, paid reroll count, RNG and next reroll (108.600229ms)
+✖ claim after restored pending choice advances exactly once without replaying wave rewards (47.391366ms)
+✖ unrecoverable legacy pending choices fail before mutating a live game; normal legacy saves still load (22.84771ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 445.605791
+
+✖ failing tests:
+
+test at tests/boon-save.test.mjs:5:1
+✖ pending reward preserves offered order, paid reroll count, RNG and next reroll (108.600229ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'horse_armor',
+  -   'wartime_rotation',
+  -   'hooked_lines'
+  - ]
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240/tests/boon-save.test.mjs:5:226)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'horse_armor', 'wartime_rotation', 'hooked_lines' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/boon-save.test.mjs:6:1
+✖ claim after restored pending choice advances exactly once without replaying wave rewards (47.391366ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'boon' !== 'prep'
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240/tests/boon-save.test.mjs:6:269)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'boon',
+    expected: 'prep',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/boon-save.test.mjs:7:1
+✖ unrecoverable legacy pending choices fail before mutating a live game; normal legacy saves still load (22.84771ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240/tests/boon-save.test.mjs:7:251)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /choice/i,
+    operator: 'throws',
+    diff: 'simple'
+  }

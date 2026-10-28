@@ -100,11 +100,12 @@ function continueRun() {
   ui.updateSelection(true);
   ui.renderCommands(game);
   if (game.phase === 'victory') game.showEnd(true);
+  if (game.phase === 'boon') ui.showBoons(game.boonChoices, boon => game.chooseBoon(boon));
   ui.toast(t('toast.runLoaded'), 'good', 2400);
 }
 
 function saveCurrentRun() {
-  if (!game || game.inMenu || ['boon', 'victory', 'defeat'].includes(game.phase)) return false;
+  if (!game || game.inMenu || ['victory', 'defeat'].includes(game.phase)) return false;
   return saveRun(game);
 }
 

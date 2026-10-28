@@ -134,6 +134,7 @@ export class UI {
     this.$('btn-restart').addEventListener('click', () => { clickSound(); this.callbacks.restart?.(); });
     this.$('btn-quit').addEventListener('click', () => { clickSound(); this.callbacks.quit?.(); });
     this.$('btn-continue')?.addEventListener('click', () => { clickSound(); this.callbacks.continue?.(); });
+    this.$('btn-boon-save')?.addEventListener('click', () => { clickSound(); this.saveCurrentRun(); });
     this.$('btn-save')?.addEventListener('click', () => { clickSound(); this.saveCurrentRun(); });
     this.$('btn-settings')?.addEventListener('click', () => { clickSound(); this.openSettings(); });
     this.$('btn-pause-settings')?.addEventListener('click', () => { clickSound(); this.openSettings(); });

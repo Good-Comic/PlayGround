@@ -234,6 +234,8 @@ export class Game {
       resources: { ...this.resources },
       effects: { ...this.effects },
       boons: this.boons.map(boon => boon.id),
+      boonChoices: this.boonChoices.map(boon => boon.id),
+      boonRerolls: this.boonRerolls,
       stats: { ...this.stats },
       waveIndex: this.waveIndex,
       phase: this.phase,
@@ -323,6 +325,12 @@ export class Game {
 
   restore(snapshot) {
     if (!snapshot || snapshot.version !== 1) throw new Error('Unsupported save version');
+    const offered = Array.isArray(snapshot.boonChoices) ? snapshot.boonChoices : [];
+    if (snapshot.phase === 'boon' && (!offered.length || offered.length > 3 ||
+      new Set(offered).size !== offered.length || offered.some(id =>
+        !BOONS.some(b => b.id === id) || snapshot.boons?.includes(id)))) {
+      throw new Error('Save is missing valid pending boon choices');
+    }
     const civ = CIVILIZATIONS.find(c => c.id === snapshot.civId);
     const biome = BIOMES.find(b => b.id === snapshot.biomeId);
     if (!civ || !biome) throw new Error('Save references unknown civilization or biome');
@@ -346,6 +354,8 @@ export class Game {
     this.resources = { ...snapshot.resources };
     this.effects = { ...snapshot.effects };
     this.boons = BOONS.filter(boon => snapshot.boons?.includes(boon.id));
+    this.boonChoices = offered.map(id => BOONS.find(b => b.id === id)).filter(Boolean);
+    this.boonRerolls = Number.isSafeInteger(snapshot.boonRerolls) && snapshot.boonRerolls >= 0 ? snapshot.boonRerolls : 0;
     this.stats = { ...snapshot.stats };
     this.buildings = [];
     this.units = [];
