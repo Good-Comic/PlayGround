@@ -1,0 +1,2351 @@
+{
+  "source_commit": "a58abaf370376b8085ea0c852c40a60dba04fae5",
+  "harness_sha256": "05665207ac75b75fa1774d82323edae6d772458e2adfa47910a6433c41a173c8",
+  "user_speed": 1,
+  "army_steward": false,
+  "opening_policy": "economy",
+  "defense": "core",
+  "policy_revision": "v5.14",
+  "elapsed_wall_seconds": 511.206,
+  "stop_reason": null,
+  "stage": "AFTER_LOCAL",
+  "mode": "NATURAL_UI_LEGAL_POLICY_NO_STATE_INJECTION",
+  "policy": "V5_1_VERIFIED_INPUT_AND_ECONOMY_RECOVERY",
+  "status": "HARNESS_ACTION_TIMEOUT",
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-pause')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"btn-pause\" aria-label=\"Pause\" class=\"icon-button\" title=\"Pause (Space)\" data-i18n-aria-label=\"hud.pause\" data-i18n-title=\"hud.pauseTitle\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"boon-overlay\" class=\"modal-overlay boon-overlay\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"boon-overlay\" class=\"modal-overlay boon-overlay\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div id=\"boon-overlay\" class=\"modal-overlay boon-overlay\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+  "stack": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-pause')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"btn-pause\" aria-label=\"Pause\" class=\"icon-button\" title=\"Pause (Space)\" data-i18n-aria-label=\"hud.pause\" data-i18n-title=\"hud.pauseTitle\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"boon-overlay\" class=\"modal-overlay boon-overlay\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"boon-overlay\" class=\"modal-overlay boon-overlay\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div id=\"boon-overlay\" class=\"modal-overlay boon-overlay\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /workspace/riftwatch-v240/tools/qa/natural_campaign.mjs:107:68",
+  "errors": [],
+  "failures": [],
+  "actions": [
+    {
+      "wallSeconds": 1.742,
+      "kind": "action",
+      "command": "Start",
+      "mode": "standard",
+      "speed": 1,
+      "policy": "v5.14"
+    },
+    {
+      "wallSeconds": 2.307,
+      "kind": "action",
+      "command": "manual-economy-army-setting",
+      "requested": {
+        "armySteward": false,
+        "speed": 1
+      },
+      "actual": {
+        "armySteward": false,
+        "autoEconomy": false,
+        "speed": 1
+      }
+    },
+    {
+      "wallSeconds": 12.089,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 7,
+      "node": 68,
+      "type": "gold",
+      "outcome": {
+        "state": "return",
+        "target": 68,
+        "selection": [
+          7
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "prep"
+      }
+    },
+    {
+      "wallSeconds": 14.924,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 12,
+      "node": 89,
+      "type": "food",
+      "outcome": {
+        "state": "return",
+        "target": 89,
+        "selection": [
+          12
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "prep"
+      }
+    },
+    {
+      "wallSeconds": 15.597,
+      "kind": "action",
+      "command": "build:page"
+    },
+    {
+      "wallSeconds": 15.94,
+      "kind": "action",
+      "command": "build:tower"
+    },
+    {
+      "wallSeconds": 16.601,
+      "kind": "action",
+      "command": "place",
+      "type": "tower",
+      "world": [
+        27,
+        27
+      ]
+    },
+    {
+      "wallSeconds": 17.3,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 302.005216,
+          "wood": 237.97560625,
+          "gold": 130,
+          "stone": 40
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 262.005216,
+          "wood": 237.97560625,
+          "gold": 120,
+          "stone": 40
+        }
+      }
+    },
+    {
+      "wallSeconds": 18.873,
+      "kind": "action",
+      "command": "verified-initial-attack-move-regroup",
+      "actors": [
+        15,
+        16,
+        19
+      ]
+    },
+    {
+      "wallSeconds": 19.907,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 17,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31250071688974,
+          "y": 26.31249888587629
+        },
+        "origin": {
+          "x": 27.1,
+          "y": 24.6
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 20.838,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 18,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312499590367135,
+          "y": 26.312500123793182
+        },
+        "origin": {
+          "x": 28.3,
+          "y": 26.3
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 28.469,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 284.01046400000007,
+          "wood": 247.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 244.01046400000007,
+          "wood": 247.97560625,
+          "gold": 120,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 30.629,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31255626646092,
+          "y": 26.312478570485244
+        },
+        "origin": {
+          "x": 27.346066422298176,
+          "y": 25.497819568496194
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 31.667,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 16,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31249957067461,
+          "y": 26.312500130967777
+        },
+        "origin": {
+          "x": 28.5296202143877,
+          "y": 25.353892108835424
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 32.865,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 21,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312499591267823,
+          "y": 26.31250012306036
+        },
+        "origin": {
+          "x": 20.795594264202446,
+          "y": 29.642291862595272
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 40.684,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 286.01564800000006,
+          "wood": 267.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 246.01564800000006,
+          "wood": 267.97560625,
+          "gold": 120,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 42.554,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 15,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312602602163754,
+          "y": 26.312461362266593
+        },
+        "origin": {
+          "x": 27.928482650622215,
+          "y": 25.355081201475382
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 43.496,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 22,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312500279527903,
+          "y": 26.31249933425586
+        },
+        "origin": {
+          "x": 19.807971130936473,
+          "y": 31.443942105453683
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 50.912,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 7,
+      "node": 56,
+      "type": "wood",
+      "outcome": {
+        "state": "gather",
+        "target": 56,
+        "selection": [
+          7
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 55.714,
+      "kind": "action",
+      "command": "build:range"
+    },
+    {
+      "wallSeconds": 57.055,
+      "kind": "action",
+      "command": "place",
+      "type": "range",
+      "world": [
+        25,
+        21
+      ]
+    },
+    {
+      "wallSeconds": 58.4,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 288.02355200000005,
+          "wood": 157.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 248.02355200000005,
+          "wood": 157.97560625,
+          "gold": 120,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 60.873,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 23,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.53052690664953,
+          "y": 26.254817904501
+        },
+        "origin": {
+          "x": 16.20655793905341,
+          "y": 29.326438733926423
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 69.915,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 270.0314240000001,
+          "wood": 167.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 230.03142400000007,
+          "wood": 167.97560625,
+          "gold": 120,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 72.209,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        23,
+        33,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 72.346,
+      "kind": "action",
+      "command": "hero-aegis"
+    },
+    {
+      "wallSeconds": 72.452,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 74.808,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 241.03660800000006,
+          "wood": 177.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 191.03660800000006,
+          "wood": 177.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 75.725,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 7,
+      "outcome": {
+        "state": "idle",
+        "drop": 1,
+        "distance": 0.5974622124734275
+      }
+    },
+    {
+      "wallSeconds": 77.535,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 1,
+        "resources": {
+          "food": 191.03660800000006,
+          "wood": 177.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 2,
+        "resources": {
+          "food": 151.03660800000006,
+          "wood": 177.97560625,
+          "gold": 120,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 79.086,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        23,
+        33,
+        34,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 81.835,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 1,
+        "resources": {
+          "food": 162.04180800000006,
+          "wood": 177.97560625,
+          "gold": 120,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 2,
+        "resources": {
+          "food": 112.04180800000006,
+          "wood": 187.97560625,
+          "gold": 120,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 84.419,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 1,
+        "resources": {
+          "food": 122.04180800000006,
+          "wood": 187.97560625,
+          "gold": 120,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 2,
+        "resources": {
+          "food": 82.04180800000006,
+          "wood": 187.97560625,
+          "gold": 110,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 86.057,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        23,
+        33,
+        34,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 91.597,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 13,
+      "node": 89,
+      "type": "food",
+      "outcome": {
+        "state": "return",
+        "target": 89,
+        "selection": [
+          13
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 93.391,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        23,
+        33,
+        34,
+        44,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 97.288,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 8,
+      "node": 89,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 89,
+        "selection": [
+          8
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 99.51,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        23,
+        33,
+        34,
+        44,
+        46,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 100.565,
+      "kind": "action",
+      "command": "native-save-checkpoint"
+    },
+    {
+      "wallSeconds": 103.362,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 105.05214400000006,
+          "wood": 207.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 65.05214400000006,
+          "wood": 207.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 105.998,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 66.05464000000005,
+          "wood": 207.97560625,
+          "gold": 130,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 26.05464000000005,
+          "wood": 207.97560625,
+          "gold": 120,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 107.713,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        23,
+        33,
+        34,
+        44,
+        46,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 111.511,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 7,
+      "node": 97,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 97,
+        "selection": [
+          7
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 113.845,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 8,
+      "node": 97,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 97,
+        "selection": [
+          8
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 115.465,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 10,
+      "node": 97,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 97,
+        "selection": [
+          10
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 117.039,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 12,
+      "node": 97,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 97,
+        "selection": [
+          12
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 118.59,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 13,
+      "node": 97,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 97,
+        "selection": [
+          13
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 120.296,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        33,
+        34,
+        44,
+        46,
+        48,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 120.366,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 125.365,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 8,
+      "node": 64,
+      "type": "gold",
+      "outcome": {
+        "state": "gather",
+        "target": 64,
+        "selection": [
+          8
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 127.252,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        33,
+        34,
+        44,
+        46,
+        48,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 135.698,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 43,
+      "node": 64,
+      "type": "gold",
+      "outcome": {
+        "state": "gather",
+        "target": 64,
+        "selection": [
+          43
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 137.432,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        33,
+        34,
+        44,
+        48,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 140.251,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 82.72244790100713,
+          "wood": 237.82521196862825,
+          "gold": 150,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 32.72244790100713,
+          "wood": 237.82521196862825,
+          "gold": 150,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 144.53,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        33,
+        44,
+        48,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 144.623,
+      "kind": "action",
+      "command": "hero-aegis"
+    },
+    {
+      "wallSeconds": 150.253,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        33,
+        44,
+        48,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 157.632,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 32,
+      "actors": [
+        15,
+        16,
+        21,
+        22,
+        33,
+        44,
+        48,
+        19,
+        18
+      ]
+    },
+    {
+      "wallSeconds": 157.745,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 162.153,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 96.74603190100713,
+          "wood": 237.82521196862825,
+          "gold": 190,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 56.74603190100713,
+          "wood": 237.82521196862825,
+          "gold": 190,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 166.706,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 8,
+      "node": 54,
+      "type": "wood",
+      "outcome": {
+        "state": "gather",
+        "target": 54,
+        "selection": [
+          8
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 171.802,
+      "kind": "action",
+      "command": "claim-boon",
+      "id": "rift_prototype"
+    },
+    {
+      "wallSeconds": 174.684,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 1,
+        "resources": {
+          "food": 147.7486559010071,
+          "wood": 297.82521196862825,
+          "gold": 230,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 97.74865590100711,
+          "wood": 297.82521196862825,
+          "gold": 230,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 185.189,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31047746698561,
+          "y": 27.02058237401186
+        },
+        "origin": {
+          "x": 25.91858096435332,
+          "y": 5.44961586753193
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 187.089,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 15,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.299420235931375,
+          "y": 27.528685745943204
+        },
+        "origin": {
+          "x": 26.476114053277154,
+          "y": 5.215462117639663
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 189.15,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 16,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.286553659611734,
+          "y": 27.382923891961696
+        },
+        "origin": {
+          "x": 26.381130570398856,
+          "y": 5.850987388785808
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 191.013,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 18,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.32152351898976,
+          "y": 27.212135471079893
+        },
+        "origin": {
+          "x": 26.259563300704396,
+          "y": 4.56997920812818
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 192.827,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 21,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.302697469035806,
+          "y": 26.925174250853864
+        },
+        "origin": {
+          "x": 25.69124152533313,
+          "y": 6.212288407581616
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 194.581,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 22,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.294929121634226,
+          "y": 26.901327442753086
+        },
+        "origin": {
+          "x": 25.587493955233647,
+          "y": 7.312142612915865
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 196.351,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 33,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.324855599466506,
+          "y": 27.156428048142804
+        },
+        "origin": {
+          "x": 26.700552047584665,
+          "y": 3.9328113730784695
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 198.34,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 44,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312443160964882,
+          "y": 27.152397917539744
+        },
+        "origin": {
+          "x": 26.826589423072924,
+          "y": 4.426207808927714
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 201.059,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 161.77214390100713,
+          "wood": 317.82521196862825,
+          "gold": 270,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 121.32780497471074,
+          "wood": 317.82521196862825,
+          "gold": 270,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 208.641,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 10,
+      "node": 86,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 86,
+        "selection": [
+          10
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 212.328,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 12,
+      "node": 86,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 86,
+        "selection": [
+          12
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 216.285,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 13,
+      "node": 86,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 86,
+        "selection": [
+          13
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 219.828,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 51,
+      "node": 85,
+      "type": "food",
+      "outcome": {
+        "state": "return",
+        "target": 85,
+        "selection": [
+          51
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 222.616,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 48,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.292011386174998,
+          "y": 26.933052832657793
+        },
+        "origin": {
+          "x": 26.1727631527771,
+          "y": 6.4035454827977905
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 223.699,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 50,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312491710508812,
+          "y": 26.312750335229882
+        },
+        "origin": {
+          "x": 28.5,
+          "y": 26
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 224.681,
+      "kind": "action",
+      "command": "native-save-checkpoint"
+    },
+    {
+      "wallSeconds": 227.79,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 147.50990497471082,
+          "wood": 349.3095869686282,
+          "gold": 310,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 97.50990497471082,
+          "wood": 349.3095869686282,
+          "gold": 310,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 228.764,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 12,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 5.259958185970982
+      }
+    },
+    {
+      "wallSeconds": 229.648,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 13,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 5.933616686661401
+      }
+    },
+    {
+      "wallSeconds": 231.236,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 52,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 4.363419160569445
+      }
+    },
+    {
+      "wallSeconds": 232.68,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31249959128243,
+          "y": 26.312500123054747
+        },
+        "origin": {
+          "x": 26.3261941200149,
+          "y": 24.64994220444657
+        },
+        "leg": 1,
+        "protectedId": 1,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 232.721,
+      "kind": "action",
+      "command": "hero-aegis"
+    },
+    {
+      "wallSeconds": 232.76,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 235.246,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 1,
+        "resources": {
+          "food": 99.52044897471083,
+          "wood": 349.3095869686282,
+          "gold": 310,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 2,
+        "resources": {
+          "food": 49.937198974710824,
+          "wood": 349.3095869686282,
+          "gold": 320,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 237.405,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 11,
+      "node": 92,
+      "type": "food",
+      "outcome": {
+        "state": "return",
+        "target": 92,
+        "selection": [
+          11
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 240.747,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 12,
+      "node": 92,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 92,
+        "selection": [
+          12
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 244.903,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 1,
+        "resources": {
+          "food": 50.9423189747108,
+          "wood": 349.3095869686282,
+          "gold": 320.145875,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 2,
+        "resources": {
+          "food": 0.9423189747108012,
+          "wood": 349.3095869686282,
+          "gold": 320.145875,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 252.329,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 64,
+      "node": 91,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 91,
+        "selection": [
+          64
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 254.332,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 18,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312346336976816,
+          "y": 26.31235913960954
+        },
+        "origin": {
+          "x": 21.468476297379198,
+          "y": 25.536865685152666
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 255.391,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 22,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312499655343238,
+          "y": 26.312500181954277
+        },
+        "origin": {
+          "x": 22.421995272812026,
+          "y": 23.65559165743554
+        },
+        "leg": 1,
+        "protectedId": 1,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 256.441,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 33,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312499591327786,
+          "y": 26.31250012309645
+        },
+        "origin": {
+          "x": 23.498277378638953,
+          "y": 21.260900084132544
+        },
+        "leg": 1,
+        "protectedId": 1,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 268.464,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 279.901,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 55.960350974710806,
+          "wood": 359.3095869686282,
+          "gold": 320.145875,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 6.96566297471081,
+          "wood": 359.3095869686282,
+          "gold": 320.145875,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 283.663,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.313455020968444,
+          "y": 26.31187404662101
+        },
+        "origin": {
+          "x": 23.46721794881487,
+          "y": 20.647400783306548
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 284.672,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 22,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31250073134803,
+          "y": 26.312498789359132
+        },
+        "origin": {
+          "x": 22.78515719520272,
+          "y": 21.604044140599672
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 290.932,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 18,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31265153010541,
+          "y": 26.312400603867562
+        },
+        "origin": {
+          "x": 24.06846946385868,
+          "y": 21.03819205928852
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 298.745,
+      "kind": "action",
+      "command": "native-save-checkpoint"
+    },
+    {
+      "wallSeconds": 305.272,
+      "kind": "action",
+      "command": "hero-aegis"
+    },
+    {
+      "wallSeconds": 305.301,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 307.932,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 70.98414297471079,
+          "wood": 369.3095869686282,
+          "gold": 320.145875,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 20.984142974710792,
+          "wood": 369.3095869686282,
+          "gold": 320.145875,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 321.4,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 81,
+      "node": 64,
+      "type": "gold",
+      "outcome": {
+        "state": "return",
+        "target": 64,
+        "selection": [
+          81
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 325.065,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 53.9919669747108,
+          "wood": 389.3095869686282,
+          "gold": 320.145875,
+          "stone": 45.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 3.991966974710799,
+          "wood": 389.3095869686282,
+          "gold": 320.145875,
+          "stone": 45.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 328.968,
+      "kind": "action",
+      "command": "claim-boon",
+      "id": "siege_math"
+    },
+    {
+      "wallSeconds": 332.721,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 1,
+        "resources": {
+          "food": 103.9919669747108,
+          "wood": 459.3095869686282,
+          "gold": 345.145875,
+          "stone": 55.562124999999995
+        }
+      },
+      "after": {
+        "n": 2,
+        "resources": {
+          "food": 53.991966974710806,
+          "wood": 459.3095869686282,
+          "gold": 345.145875,
+          "stone": 55.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 338.779,
+      "kind": "action",
+      "command": "verified-train:militia",
+      "building": 2,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 74.99727897471081,
+          "wood": 469.3095869686282,
+          "gold": 345.145875,
+          "stone": 55.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 34.99727897471081,
+          "wood": 469.3095869686282,
+          "gold": 345.145875,
+          "stone": 55.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 349.405,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 82,
+      "node": 68,
+      "type": "gold",
+      "outcome": {
+        "state": "return",
+        "target": 68,
+        "selection": [
+          82
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "prep"
+      }
+    },
+    {
+      "wallSeconds": 352.229,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 84,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.574496347001556,
+          "y": 26.25325293522436
+        },
+        "origin": {
+          "x": 16.260393375922263,
+          "y": 28.976395025436997
+        },
+        "leg": 1,
+        "protectedId": 1
+      }
+    },
+    {
+      "wallSeconds": 354.932,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 68.0103989747108,
+          "wood": 479.3095869686282,
+          "gold": 355.145875,
+          "stone": 55.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 18.010398974710796,
+          "wood": 479.3095869686282,
+          "gold": 355.145875,
+          "stone": 55.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 370.025,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 83,
+      "node": 86,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 86,
+        "selection": [
+          83
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 373.899,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 61.02356697471079,
+          "wood": 518.8684869686282,
+          "gold": 365.145875,
+          "stone": 55.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 11.02356697471079,
+          "wood": 518.8684869686282,
+          "gold": 375.145875,
+          "stone": 55.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 377.812,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 85,
+      "outcome": {
+        "state": "idle",
+        "drop": 1,
+        "distance": 3.33503783712057
+      }
+    },
+    {
+      "wallSeconds": 379.938,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 19,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.312499710329767,
+          "y": 26.31249999790579
+        },
+        "origin": {
+          "x": 24.5358329317497,
+          "y": 21.864866051007557
+        },
+        "leg": 1,
+        "protectedId": 1,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 380.968,
+      "kind": "action",
+      "command": "verified-guard-core",
+      "id": 22,
+      "protected": 1,
+      "order": {
+        "type": "guard",
+        "destination": {
+          "x": 24.31249959137702,
+          "y": 26.31250012295532
+        },
+        "origin": {
+          "x": 24.561535744375256,
+          "y": 21.29185547594227
+        },
+        "leg": 1,
+        "protectedId": 1,
+        "engaged": true
+      }
+    },
+    {
+      "wallSeconds": 381.004,
+      "kind": "action",
+      "command": "hero-aegis"
+    },
+    {
+      "wallSeconds": 381.076,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 387.471,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 83,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 5.249912053241839
+      }
+    },
+    {
+      "wallSeconds": 389.051,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 97,
+      "actors": [
+        21,
+        44,
+        84,
+        19
+      ]
+    },
+    {
+      "wallSeconds": 389.9,
+      "kind": "action",
+      "command": "native-save-checkpoint"
+    },
+    {
+      "wallSeconds": 396.844,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 11,
+      "node": 95,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 95,
+        "selection": [
+          11
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 398.947,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 12,
+      "node": 95,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 95,
+        "selection": [
+          12
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 401.126,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 86,
+      "node": 95,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 95,
+        "selection": [
+          86
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 402.623,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 99,
+      "node": 54,
+      "type": "wood",
+      "outcome": {
+        "state": "gather",
+        "target": 54,
+        "selection": [
+          99
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 404.059,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 97,
+      "actors": [
+        21,
+        44,
+        84,
+        19
+      ]
+    },
+    {
+      "wallSeconds": 406.768,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 60.32235195208431,
+          "wood": 552.2364501620754,
+          "gold": 395.145875,
+          "stone": 55.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 10.322351952084311,
+          "wood": 552.2364501620754,
+          "gold": 395.145875,
+          "stone": 55.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 410.26,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 12,
+      "outcome": {
+        "state": "return",
+        "drop": 1,
+        "distance": 4.842835899883124
+      }
+    },
+    {
+      "wallSeconds": 411.849,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 97,
+      "actors": [
+        21,
+        44,
+        84,
+        19
+      ]
+    },
+    {
+      "wallSeconds": 418.95,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 99,
+      "node": 91,
+      "type": "food",
+      "outcome": {
+        "state": "return",
+        "target": 91,
+        "selection": [
+          99
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 420.383,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 97,
+      "actors": [
+        44,
+        84,
+        19
+      ]
+    },
+    {
+      "wallSeconds": 420.496,
+      "kind": "action",
+      "command": "hero-mark"
+    },
+    {
+      "wallSeconds": 427.055,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 97,
+      "actors": [
+        84,
+        19
+      ]
+    },
+    {
+      "wallSeconds": 432.912,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 97,
+      "actors": [
+        19
+      ]
+    },
+    {
+      "wallSeconds": 437.424,
+      "kind": "action",
+      "command": "verified-train:villager",
+      "building": 1,
+      "before": {
+        "n": 0,
+        "resources": {
+          "food": 50.0930619520843,
+          "wood": 562.2364501620754,
+          "gold": 425.145875,
+          "stone": 55.562124999999995
+        }
+      },
+      "after": {
+        "n": 1,
+        "resources": {
+          "food": 0.09306195208429813,
+          "wood": 562.2364501620754,
+          "gold": 425.145875,
+          "stone": 55.562124999999995
+        }
+      }
+    },
+    {
+      "wallSeconds": 440.875,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 97,
+      "actors": [
+        19
+      ]
+    },
+    {
+      "wallSeconds": 449.42,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 104,
+      "node": 64,
+      "type": "gold",
+      "outcome": {
+        "state": "return",
+        "target": 64,
+        "selection": [
+          104
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 464.71,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 64,
+      "node": 95,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 95,
+        "selection": [
+          64
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 466.923,
+      "kind": "action",
+      "command": "verified-gather",
+      "worker": 99,
+      "node": 95,
+      "type": "food",
+      "outcome": {
+        "state": "gather",
+        "target": 95,
+        "selection": [
+          99
+        ],
+        "order": null,
+        "paused": false,
+        "phase": "wave"
+      }
+    },
+    {
+      "wallSeconds": 473.768,
+      "kind": "action",
+      "command": "verified-worker-withdraw-to-core",
+      "worker": 64,
+      "outcome": {
+        "state": "idle",
+        "drop": 1,
+        "distance": 0.5
+      }
+    },
+    {
+      "wallSeconds": 475.292,
+      "kind": "action",
+      "command": "verified-direct-focus-siege",
+      "enemy": 97,
+      "actors": [
+        118
+      ]
+    },
+    {
+      "wallSeconds": 480.61,
+      "kind": "action",
+      "command": "hero-aegis"
+    },
+    {
+      "wallSeconds": 480.611,
+      "kind": "action",
+      "command": "hero-mark"
+    }
+  ]
+}

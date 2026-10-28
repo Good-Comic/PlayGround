@@ -1,3 +1,22 @@
+# 最新品質修復與接續 / Latest quality fixes and continuation
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+**中文：** 本輪完成三項確定性修復：Save/Load保留飛行投射物及Boss／煙霧區域、保存緩速／暈眩強度、Pause／選卡不消耗絕對戰鬥時間。最新受測遊戲來源 `cfc42ee511b35cbefe1359af476fbd9396054a70`，42項受影響測試與5項原生本地Chromium檢查通過。嚴格確定性仍false、低FPS截斷未改。證據：`docs/evidence/v240-save-transients/REPORT.md`。
+
+**English:** Three deterministic repairs: Save/Load preserves in-flight projectiles and Boss/smoke zones, retains slow/stun strength, and Pause/card choice no longer consumes absolute combat time. Latest tested game source `cfc42ee511b35cbefe1359af476fbd9396054a70`;42affected tests and5native local Chromium checks pass. Strict determinism remains false; low-FPS clipping unchanged. Evidence:`docs/evidence/v240-save-transients/REPORT.md`.
+
+**中文：** V6正式Start、1× Normal、手動軍費／經濟、集中守城與延後科技，自然完成第三波；來源a58abaf。領取rift_prototype後未當機，僅該情境NOT_REPRODUCED。第三波選卡攔截週期Pause而工具逾時，非戰敗。已修工具遇選卡延後、不強制點擊。最新cfc42ee限定接續仍第三波、6軍事／2村民，未通過十波。存活快照與校驗：`docs/evidence/v240-v6-investment/stock-continuation/save-snapshot.json`及`resume-integrity.json`。不要用原始V6終點boon診斷快照恢復，boonChoices尚未保存。
+
+**English:** V6used native Start,1× Normal, manual spending/economy, concentrated core defense and delayed research, naturally completing wave3at sourcea58abaf. Rift Prototype was claimed without a crash in this case only. Card choice blocked a periodic Pause save and caused a harness timeout, not defeat. The harness now defers on card overlays without forced clicks. Latestcfc42eescoped continuation remains wave3with6military/2workers; ten waves not passed. Living save/digest:`docs/evidence/v240-v6-investment/stock-continuation/save-snapshot.json` and`resume-integrity.json`. Do not restore the originalV6finalboondiagnostic snapshot; boonChoices are not saved.
+
+**中文：** 下一步分析第三波村民死亡位置、護衛範圍、返程與可達性；不要重跑全歷史或以指令成功當存活通過。地形Custom選項待使用者回答。全部戰役已停止，本輪因執行窗口結束保存；所有權於Push後釋放，遠端ownership.json為準。RELEASE_BLOCKED，v234不發布；無Pages／OmGitHub／main變更。跨對話寫入不可用，不宣稱送達。
+
+**English:** Next analyze wave3worker deaths, guard range, return routes and reachability; do not repeat all history or equate command acceptance with survival. Custom terrain options await the user. All campaigns stopped; checkpointed at the execution-window limit. Ownership is released after push; remoteownership.json prevails. RELEASE_BLOCKED,v234unpublished; no Pages/OmGitHub/main changes. Cross-thread writing is unavailable; delivery not claimed.
+
+---
+
 # 目前接續 / Current continuation
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

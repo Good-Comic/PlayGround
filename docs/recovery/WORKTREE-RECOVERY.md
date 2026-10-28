@@ -5,9 +5,9 @@
 本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。
 This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.
 
-快照 ID / Snapshot ID: 5af4519eca66f081f56411dbcf21a10df5182b774f311e4c4efb4ad2f36623d8
-擷取時間 UTC / Captured UTC: 2026-10-28T07:31:53.286144+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
-來源 / Collector source: `4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45` · LOCAL_INVENTORIED_NOT_A_PUSH
+快照 ID / Snapshot ID: bada3c9676144ec752ff756c5e043cd5c7224a616d415703e68d1a0f7a8e19f9
+擷取時間 UTC / Captured UTC: 2026-10-28T07:54:41.712050+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
+來源 / Collector source: `a8fe9578a4136a3b2d80edad13e7fba62ba8dd42` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 | 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ This manifest records local Git state and actual remote queries at capture time;
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45 | 4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45 | REMOTE_SAVED | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | a8fe9578a4136a3b2d80edad13e7fba62ba8dd42 | a8fe9578a4136a3b2d80edad13e7fba62ba8dd42 | REMOTE_SAVED | True |
 
 ## work
 
@@ -344,7 +344,7 @@ This manifest records local Git state and actual remote queries at capture time;
   "changed_files": [
     {
       "status": " M",
-      "path": "docs/evidence/v240-remaining-audit/REPORT.md"
+      "path": "docs/evidence/v240-v6-investment/REPORT.md"
     },
     {
       "status": " M",
@@ -371,54 +371,159 @@ This manifest records local Git state and actual remote queries at capture time;
       "path": "docs/recovery/worktree-recovery.json"
     },
     {
-      "status": "??",
-      "path": "docs/evidence/v240-remaining-audit/v510-continuation/campaign.mp4"
+      "status": " M",
+      "path": "docs/release/v240/KNOWN-ISSUES.md"
+    },
+    {
+      "status": " M",
+      "path": "tests/v5-player.test.mjs"
+    },
+    {
+      "status": " M",
+      "path": "tools/qa/natural_campaign.mjs"
+    },
+    {
+      "status": " M",
+      "path": "tools/qa/v5_player.mjs"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-remaining-audit/v511/campaign.mp4"
+      "path": "docs/evidence/v240-save-transients/builds/8f202458a5b11f9e96b937aefd26ce175b17ba3b.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-remaining-audit/v512/campaign.mp4"
+      "path": "docs/evidence/v240-save-transients/builds/a58abaf370376b8085ea0c852c40a60dba04fae5.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-remaining-audit/v513-invalid-settings/campaign.mp4"
+      "path": "docs/evidence/v240-save-transients/builds/cfc42ee511b35cbefe1359af476fbd9396054a70.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-remaining-audit/v513/campaign.mp4"
+      "path": "docs/evidence/v240-v6-investment/natural/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-remaining-audit/v513/events.jsonl"
+      "path": "docs/evidence/v240-v6-investment/natural/checkpoint-198.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-remaining-audit/v513/final-frame.png"
+      "path": "docs/evidence/v240-v6-investment/natural/checkpoint-290.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-remaining-audit/v513/result.json"
+      "path": "docs/evidence/v240-v6-investment/natural/checkpoint-380.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-remaining-audit/v513/save-snapshot.json"
+      "path": "docs/evidence/v240-v6-investment/natural/checkpoint-93.json"
     },
     {
       "status": "??",
-      "path": "docs/release/v240/RELEASE-NOTES-DRAFT.md"
+      "path": "docs/evidence/v240-v6-investment/natural/events.jsonl"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/failure.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/result.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/save-snapshot.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-1-boon-168.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-1-prep-0.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-1-wave-126.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-1-wave-60.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-2-boon-326.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-2-prep-170.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-2-wave-224.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-2-wave-290.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-3-prep-327.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-3-wave-359.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/natural/wave-3-wave-420.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/stock-continuation/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/stock-continuation/events.jsonl"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/stock-continuation/result.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/stock-continuation/resume-integrity.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/stock-continuation/save-snapshot.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/stock-continuation/wave-3-wave-0.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v6-investment/stock-policy-tests.txt"
     }
   ],
   "last_validation": [
     {
-      "path": "docs/evidence/v240-remaining-audit/REPORT.md",
-      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-      "result": "9policyPASS;V5.12/V5.13defeat3; ten waves NOT_PASSED",
+      "path": "docs/evidence/v240-save-transients/pause-after.txt",
+      "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+      "result": "42 PASS; strict determinism still false",
       "exists": true,
-      "storage": "LOCAL_ONLY_OR_MISSING",
-      "sha256": "77f1f3a09da81cde41ef0e87cdd9d35d7d5bd428ae7179f7f4da29db39a11201",
+      "storage": "REMOTE_SAVED",
+      "sha256": "36aa0adc5d5d2b4d635220a9dc7387e396ffe74a84f5d7b7c5481eceebf812c8",
+      "resource_freshness": "MATCHES_WORKING_RESOURCES"
+    },
+    {
+      "path": "docs/evidence/v240-save-transients/pause-browser/browser.json",
+      "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+      "result": "5native browser checks PASS; CONTROLLED_FIXTURE",
+      "exists": true,
+      "storage": "REMOTE_SAVED",
+      "sha256": "ba69f50764ef150d4401fab9010cc8ddda788f4f24ffa1f6a37f642e3dd6d7ac",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     }
   ],
@@ -428,8 +533,8 @@ This manifest records local Git state and actual remote queries at capture time;
     "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
   ],
   "next_steps": [
-    "V6開局科技成本與集中防守策略；先設計可證偽假設，再正式Start驗證 / V6 technology-cost and concentrated-defense policy; define falsifiable hypothesis then native Start",
-    "不能從已戰敗V5.13恢復；存活V5.10接續點見REPORT / Do not resume defeatedV5.13; livingV5.10 checkpoint in REPORT"
+    "分析第三波村民死亡／護衛／返程可達性 / Analyze wave3worker deaths, guard and return reachability",
+    "地形成本Custom方案待確認；不擅自改平衡 / Custom terrain costs await confirmation; no silent balance change"
   ]
 }
 ```

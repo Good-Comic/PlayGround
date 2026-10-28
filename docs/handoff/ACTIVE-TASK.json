@@ -1,44 +1,35 @@
 {
-  "task_id": "V240-REMAINING-AUDIT",
-  "name": "剩餘工作盤點與自然戰役 / Remaining-work audit and natural campaign",
+  "task_id": "V240-SAVE-TRANSIENT",
+  "name": "戰鬥狀態修復與自然戰役 / Combat-state repair and natural campaign",
   "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
   "priority": "P0",
   "agent": "Codex",
   "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-  "latest_pushed_commit": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
-  "application_source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+  "latest_pushed_commit": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42",
+  "application_source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
   "completed": [
-    "雙語剩餘工作、Known Issues、發布草稿及回滾計畫 / Bilingual remaining-work audit, known issues, draft notes and rollback plan",
-    "9策略測試PASS；Continue實際設定覆核修復 /9 policy tests PASS; actual-settings verification fixed after Continue",
-    "V5.12與V5.13第三波自然戰敗；保留錄影與無效設定樣本 / V5.12/V5.13 natural defeat3; recordings and invalid-settings cohort preserved"
+    "三項核心修復與真實瀏覽器驗證 / Three core repairs with actual browser verification",
+    "V6自然第三波結算，工具中斷；最新限定接續仍未通關 / V6natural wave3settled with harness interruption; scoped continuation incomplete"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "資源選取修復 / Resource-selection fix",
-      "path": "docs/evidence/v240-resource-selection/REPORT.md",
-      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-      "result": "10 focused Node tests;4native resource/locale SaveContinue checks PASS"
+      "path": "docs/evidence/v240-save-transients/pause-after.txt",
+      "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+      "result": "42 PASS; strict determinism still false"
     },
     {
-      "name": "V5 自然策略 / V5 natural policy",
-      "path": "docs/evidence/v240-v5-playability/REPORT.md",
-      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-      "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED"
-    },
-    {
-      "name": "V5.10限定開局 / Scoped opening",
-      "path": "docs/evidence/v240-v55-economy/v510/verification.json",
-      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-      "result": "PASS opening only; full campaign NOT_PASSED"
+      "path": "docs/evidence/v240-save-transients/pause-browser/browser.json",
+      "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+      "result": "5native browser checks PASS; CONTROLLED_FIXTURE"
     }
   ],
   "evidence": [
-    "docs/release/v240/REMAINING-WORK-AUDIT.md",
-    "docs/evidence/v240-remaining-audit/REPORT.md"
+    "docs/evidence/v240-save-transients/REPORT.md",
+    "docs/evidence/v240-v6-investment/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -49,8 +40,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "V6開局科技成本與集中防守策略；先設計可證偽假設，再正式Start驗證 / V6 technology-cost and concentrated-defense policy; define falsifiable hypothesis then native Start",
-    "不能從已戰敗V5.13恢復；存活V5.10接續點見REPORT / Do not resume defeatedV5.13; livingV5.10 checkpoint in REPORT"
+    "分析第三波村民死亡／護衛／返程可達性 / Analyze wave3worker deaths, guard and return reachability",
+    "地形成本Custom方案待確認；不擅自改平衡 / Custom terrain costs await confirmation; no silent balance change"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -58,13 +49,13 @@
   ],
   "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-  "updated_at": "2026-10-28T07:31:53.230851+00:00",
+  "updated_at": "2026-10-28T07:54:41.669826+00:00",
   "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
-    "task": "V240-REMAINING-AUDIT",
-    "execution": "codex-audit-20261028",
-    "global_version": 181,
+    "task": "V240-SAVE-TRANSIENT",
+    "execution": "codex-quality-20261028",
+    "global_version": 184,
     "status": "RELEASE_PENDING_AFTER_PUSH"
   }
 }

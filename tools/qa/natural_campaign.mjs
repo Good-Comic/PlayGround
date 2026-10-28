@@ -104,7 +104,11 @@ try{
     else {const barracks=s.buildings.find(b=>b.alive&&b.type==='barracks'&&b.queue.length<2);if(barracks&&s.resources.food>(['v4','v5'].includes(policy)?60:120)&&await select(barracks.id))await command('train:militia')}
     if(s.units.some(u=>u.team==='enemy')&&s.hero?.alive){if(s.hero.aegis<=0){await p.keyboard.press('e');record('action',{command:'hero-aegis'})}if(s.hero.mark<=0){await p.keyboard.press('q');record('action',{command:'hero-mark'})}}
   }
-  if(wall-lastSave>90){lastSave=wall;await p.locator('#btn-pause').click();await p.locator('#btn-save').click();await p.locator('#btn-resume').click();writeFileSync(resolve(out,`checkpoint-${Math.floor(wall)}.json`),JSON.stringify(await p.evaluate(()=>ageOfAsh.game.snapshot()),null,2)+'\n');record('action',{command:'native-save-checkpoint'})}
+  if(wall-lastSave>90){
+   const eligible=await p.evaluate(()=>!ageOfAsh.game.paused&&!ageOfAsh.game.inMenu&&['prep','wave'].includes(ageOfAsh.game.phase));
+   if(eligible){try{await p.locator('#btn-pause').click({timeout:1200})}catch(e){if(e.name!=='TimeoutError')throw e;record('action-skipped',{command:'native-save-checkpoint',reason:'PHASE_CHANGED_OR_OVERLAY_NO_FORCE'});continue}
+    await p.locator('#btn-save').click();await p.locator('#btn-resume').click();lastSave=wall;writeFileSync(resolve(out,`checkpoint-${Math.floor(wall)}.json`),JSON.stringify(await p.evaluate(()=>ageOfAsh.game.snapshot()),null,2)+'\n');record('action',{command:'native-save-checkpoint'})}
+  }
   await p.waitForTimeout(2000);
  }
  if(result.status==='INCOMPLETE')result={status:'BOUNDED_SAMPLE_INCOMPLETE',state:await state(),seconds};

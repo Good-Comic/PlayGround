@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-28T07:31:53.286144+00:00",
+  "captured_at_utc": "2026-10-28T07:54:41.712050+00:00",
   "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
+  "collector_commit": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-28T07:31:53.286144+00:00"
+    "queried_at": "2026-10-28T07:54:41.712050+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -31,9 +31,9 @@
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-    "codex/riftwatch-progress-feed": "c128462eee621117d36b9002d9e028e9d93ecee1",
+    "codex/riftwatch-progress-feed": "e2ce0b26632067200de787ad6ef98f74501408e8",
     "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
-    "codex/riftwatch-task-ownership": "19982387d92d3613dbe5571188759a11b4003ec0",
+    "codex/riftwatch-task-ownership": "dc65358c95ff47bcbe7e51cbd5428cc1e3cada2c",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -63,7 +63,7 @@
     "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
     "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
     "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-    "codex/riftwatch-v240-game-first": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
+    "codex/riftwatch-v240-game-first": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -183,8 +183,8 @@
     },
     {
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
-      "remote_head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
+      "head": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42",
+      "remote_head": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -524,17 +524,26 @@
     {
       "path": "/workspace/riftwatch-v240",
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
+      "head": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42",
       "locked": false,
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
         {
-          "path": "docs/evidence/v240-remaining-audit/REPORT.md",
-          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "result": "9policyPASS;V5.12/V5.13defeat3; ten waves NOT_PASSED",
+          "path": "docs/evidence/v240-save-transients/pause-after.txt",
+          "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+          "result": "42 PASS; strict determinism still false",
           "exists": true,
-          "storage": "LOCAL_ONLY_OR_MISSING",
-          "sha256": "77f1f3a09da81cde41ef0e87cdd9d35d7d5bd428ae7179f7f4da29db39a11201",
+          "storage": "REMOTE_SAVED",
+          "sha256": "36aa0adc5d5d2b4d635220a9dc7387e396ffe74a84f5d7b7c5481eceebf812c8",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+        },
+        {
+          "path": "docs/evidence/v240-save-transients/pause-browser/browser.json",
+          "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+          "result": "5native browser checks PASS; CONTROLLED_FIXTURE",
+          "exists": true,
+          "storage": "REMOTE_SAVED",
+          "sha256": "ba69f50764ef150d4401fab9010cc8ddda788f4f24ffa1f6a37f642e3dd6d7ac",
           "resource_freshness": "MATCHES_WORKING_RESOURCES"
         }
       ],
@@ -544,16 +553,16 @@
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "V6\u958b\u5c40\u79d1\u6280\u6210\u672c\u8207\u96c6\u4e2d\u9632\u5b88\u7b56\u7565\uff1b\u5148\u8a2d\u8a08\u53ef\u8b49\u507d\u5047\u8a2d\uff0c\u518d\u6b63\u5f0fStart\u9a57\u8b49 / V6 technology-cost and concentrated-defense policy; define falsifiable hypothesis then native Start",
-        "\u4e0d\u80fd\u5f9e\u5df2\u6230\u6557V5.13\u6062\u5fa9\uff1b\u5b58\u6d3bV5.10\u63a5\u7e8c\u9ede\u898bREPORT / Do not resume defeatedV5.13; livingV5.10 checkpoint in REPORT"
+        "\u5206\u6790\u7b2c\u4e09\u6ce2\u6751\u6c11\u6b7b\u4ea1\uff0f\u8b77\u885b\uff0f\u8fd4\u7a0b\u53ef\u9054\u6027 / Analyze wave3worker deaths, guard and return reachability",
+        "\u5730\u5f62\u6210\u672cCustom\u65b9\u6848\u5f85\u78ba\u8a8d\uff1b\u4e0d\u64c5\u81ea\u6539\u5e73\u8861 / Custom terrain costs await confirmation; no silent balance change"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
+      "remote_head": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42",
       "unpushed_commits": [],
       "changed_files": [
         {
           "status": " M",
-          "path": "docs/evidence/v240-remaining-audit/REPORT.md"
+          "path": "docs/evidence/v240-v6-investment/REPORT.md"
         },
         {
           "status": " M",
@@ -580,44 +589,140 @@
           "path": "docs/recovery/worktree-recovery.json"
         },
         {
-          "status": "??",
-          "path": "docs/evidence/v240-remaining-audit/v510-continuation/campaign.mp4"
+          "status": " M",
+          "path": "docs/release/v240/KNOWN-ISSUES.md"
+        },
+        {
+          "status": " M",
+          "path": "tests/v5-player.test.mjs"
+        },
+        {
+          "status": " M",
+          "path": "tools/qa/natural_campaign.mjs"
+        },
+        {
+          "status": " M",
+          "path": "tools/qa/v5_player.mjs"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-remaining-audit/v511/campaign.mp4"
+          "path": "docs/evidence/v240-save-transients/builds/8f202458a5b11f9e96b937aefd26ce175b17ba3b.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-remaining-audit/v512/campaign.mp4"
+          "path": "docs/evidence/v240-save-transients/builds/a58abaf370376b8085ea0c852c40a60dba04fae5.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-remaining-audit/v513-invalid-settings/campaign.mp4"
+          "path": "docs/evidence/v240-save-transients/builds/cfc42ee511b35cbefe1359af476fbd9396054a70.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-remaining-audit/v513/campaign.mp4"
+          "path": "docs/evidence/v240-v6-investment/natural/campaign.mp4"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-remaining-audit/v513/events.jsonl"
+          "path": "docs/evidence/v240-v6-investment/natural/checkpoint-198.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-remaining-audit/v513/final-frame.png"
+          "path": "docs/evidence/v240-v6-investment/natural/checkpoint-290.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-remaining-audit/v513/result.json"
+          "path": "docs/evidence/v240-v6-investment/natural/checkpoint-380.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-remaining-audit/v513/save-snapshot.json"
+          "path": "docs/evidence/v240-v6-investment/natural/checkpoint-93.json"
         },
         {
           "status": "??",
-          "path": "docs/release/v240/RELEASE-NOTES-DRAFT.md"
+          "path": "docs/evidence/v240-v6-investment/natural/events.jsonl"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/failure.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/save-snapshot.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-1-boon-168.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-1-prep-0.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-1-wave-126.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-1-wave-60.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-2-boon-326.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-2-prep-170.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-2-wave-224.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-2-wave-290.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-3-prep-327.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-3-wave-359.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/natural/wave-3-wave-420.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/stock-continuation/campaign.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/stock-continuation/events.jsonl"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/stock-continuation/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/stock-continuation/resume-integrity.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/stock-continuation/save-snapshot.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/stock-continuation/wave-3-wave-0.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v6-investment/stock-policy-tests.txt"
         }
       ],
       "dirty": true,
@@ -628,12 +733,13 @@
     {
       "path": "/workspace/riftwatch-v240",
       "changed_fields": [
+        "dirty",
         "changed_files"
       ],
-      "previous_head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
-      "actual_head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45"
+      "previous_head": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42",
+      "actual_head": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "5af4519eca66f081f56411dbcf21a10df5182b774f311e4c4efb4ad2f36623d8"
+  "snapshot_id": "bada3c9676144ec752ff756c5e043cd5c7224a616d415703e68d1a0f7a8e19f9"
 }

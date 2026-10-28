@@ -343,9 +343,14 @@
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
         {
-          "path": "docs/evidence/v240-remaining-audit/REPORT.md",
-          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "result": "9policyPASS;V5.12/V5.13defeat3; ten waves NOT_PASSED"
+          "path": "docs/evidence/v240-save-transients/pause-after.txt",
+          "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+          "result": "42 PASS; strict determinism still false"
+        },
+        {
+          "path": "docs/evidence/v240-save-transients/pause-browser/browser.json",
+          "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+          "result": "5native browser checks PASS; CONTROLLED_FIXTURE"
         }
       ],
       "blockers": [
@@ -354,8 +359,8 @@
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "V6開局科技成本與集中防守策略；先設計可證偽假設，再正式Start驗證 / V6 technology-cost and concentrated-defense policy; define falsifiable hypothesis then native Start",
-        "不能從已戰敗V5.13恢復；存活V5.10接續點見REPORT / Do not resume defeatedV5.13; livingV5.10 checkpoint in REPORT"
+        "分析第三波村民死亡／護衛／返程可達性 / Analyze wave3worker deaths, guard and return reachability",
+        "地形成本Custom方案待確認；不擅自改平衡 / Custom terrain costs await confirmation; no silent balance change"
       ]
     }
   }

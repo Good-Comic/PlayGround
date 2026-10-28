@@ -17,3 +17,7 @@
 **中文：** v234仍不發布。沒有修改公開入口，沒有新的公開回滾動作。本地失敗存檔是診斷資料，不得誤當下一次存活接續。
 
 **English:** v234 remains unpublished. No public entry point was changed and no public rollback was performed. Defeated/local failure saves are diagnostic evidence, not living continuation points.
+
+**中文：** 本輪已限定修復投射物／區域存檔、緩速強度遺失、暫停消耗絕對狀態時間，見`docs/evidence/v240-save-transients/REPORT.md`。這不取消嚴格Save/Load或低FPS時鐘FAIL。V6自然領取裂界原型後第三波仍正常，只構成該情境NOT_REPRODUCED，不是全域修復。
+
+**English:** Scoped fixes this round cover projectile/zone persistence, omitted slow strength and paused absolute-status time; see`docs/evidence/v240-save-transients/REPORT.md`. They do not clear strict Save/Load or low-FPS clock FAIL. V6remained operational into wave3after naturally claiming Rift Prototype, only a case-specific NOT_REPRODUCED result, not a global fix.
