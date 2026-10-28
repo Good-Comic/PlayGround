@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { UNIT_SPRITE_ATLASES, atlasFrame, loadUnitSpriteAtlases } from '../js/sprite-atlas.js';
+import { UNIT_SPRITE_ATLASES, atlasActionProgress, atlasFrame, loadUnitSpriteAtlases } from '../js/sprite-atlas.js';
 
 test('militia atlas describes eight directions and all combat states', () => {
   const atlas = UNIT_SPRITE_ATLASES.militia;
@@ -44,4 +44,21 @@ test('repeating crossbow has independent four-frame directional actions within s
   }
   assert.equal(atlas.states.death.loop, false);
   assert.equal(atlasFrame(atlas, 'E', 'death', 99).frame, 3);
+});
+
+// Regression: treating normalized amplitude as seconds froze most of each action at frame zero.
+test('production normalized attack and hit amplitudes play all four frames without changing timers', () => {
+  const atlas = UNIT_SPRITE_ATLASES.chu_ko_nu;
+  for (const [state,key] of [['attack','attackAnim'],['hit','hitFlash']]) {
+    const unit = { [key]: 1 };
+    const frames = [1,.74,.49,.24].map(value => {
+      unit[key]=value;
+      const frame=atlasFrame(atlas,'E',state,0,atlasActionProgress(unit,state)).frame;
+      assert.equal(unit[key],value);
+      return frame;
+    });
+    assert.deepEqual(frames,[0,1,2,3]);
+  }
+  assert.equal(atlasActionProgress({deathAnim:.6},'death'),.5);
+  assert.equal(atlasActionProgress({},'walk'),null);
 });

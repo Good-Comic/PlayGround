@@ -53,6 +53,15 @@ export function atlasFrame(atlas, direction, state, elapsed = 0, progress = null
   };
 }
 
+export function atlasActionProgress(unit, state) {
+  // Combat flashes are normalized amplitudes (1 -> 0), not seconds.
+  // Death alone is stored as a 1.2-second remaining lifetime.
+  if (state === 'death') return 1 - Math.max(0, Math.min(1, (unit.deathAnim || 0) / 1.2));
+  if (state === 'hit') return 1 - Math.max(0, Math.min(1, unit.hitFlash || 0));
+  if (state === 'attack') return 1 - Math.max(0, Math.min(1, unit.attackAnim || 0));
+  return null;
+}
+
 export function loadUnitSpriteAtlases(descriptors = UNIT_SPRITE_ATLASES, ImageClass = globalThis.Image) {
   const loaded = new Map();
   if (typeof ImageClass !== 'function') return loaded;

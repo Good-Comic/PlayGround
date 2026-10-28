@@ -1,7 +1,7 @@
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.js';
-import { atlasFrame, loadUnitSpriteAtlases } from './sprite-atlas.js';
+import { atlasFrame, atlasActionProgress, loadUnitSpriteAtlases } from './sprite-atlas.js';
 
 const TERRAIN_COLORS = {
   grass: ['#62753a', '#697d3f', '#5d7037', '#708341'],
@@ -1322,10 +1322,7 @@ export class Renderer {
     const entry = this.unitSpriteAtlases?.get(u.type);
     if (!entry?.ready || entry.failed || !entry.image?.naturalWidth) return false;
     const descriptor = entry.descriptor;
-    let progress = null;
-    if (visual.state === 'death') progress = 1 - clamp((u.deathAnim || 0) / 1.2, 0, 1);
-    else if (visual.state === 'hit') progress = 1 - clamp((u.hitFlash || 0) / .2, 0, 1);
-    else if (visual.state === 'attack') progress = 1 - clamp((u.attackAnim || 0) / .22, 0, 1);
+    const progress = atlasActionProgress(u, visual.state);
     const frame = atlasFrame(descriptor, visual.direction, visual.state, time, progress);
     if (!frame) return false;
     const drawScale = scale * descriptor.scale;
