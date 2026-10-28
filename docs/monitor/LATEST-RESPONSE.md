@@ -1,3 +1,3 @@
-中文：VALIDATION_IN_PROGRESS。固定TEU／steppe／MILESTONE-NORMAL、1×、手動經濟／軍費、單護衛。Easy已自然結算第三波、第四波準備期；並非十波PASS。實際第一波8民兵／3弓兵／2攻城槌、56.25秒，Normal同Seed計畫10／4／2、45秒。Boss定義未改。受控流程測試尚未執行，不冒充自然驗收。所有權仍由本Agent持有，勿重複派送。
+中文：Easy第一輪第五波自然戰敗，無瀏覽器錯誤，沒有自然NG+通過。Normal同條件配對仍活躍，勿重複派送。三個受控場景均Boss超時，不能當十波流程PASS，也尚不足以判定Softlock；失敗已保存。
 
-English: VALIDATION_IN_PROGRESS. Fixed TEU/steppe/MILESTONE-NORMAL,1×, manual economy/spending and single escort. Easy naturally settled wave3and entered wave4prep, not a ten-wave PASS. Actual wave1has8militia/3archers/2rams and56.25seconds, versus matched Normal plan10/4/2and45seconds. Boss definitions unchanged. Controlled flow test not yet executed and never a natural-acceptance substitute. This Agent retains ownership; do not duplicate dispatch.
+English: First Easy run naturally lost at wave5with no browser errors; no natural NG+ pass. Same-condition Normal pairing remains active; do not duplicate dispatch. Three controlled scenes timed out on the Boss, neither a ten-wave PASS nor sufficient softlock proof; failures preserved.

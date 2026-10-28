@@ -2,40 +2,40 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-28T17:08:28.457214+00:00",
+  "updated_at": "2026-10-28T17:28:08.562897+00:00",
   "latest_event": {
     "task_id": "V240-EASY-BASELINE",
     "agent": "Codex",
-    "severity": "PROGRESS",
+    "severity": "WARNING",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "0f2a59493c661b7bb0546bef1c87188f9d3f6b1f",
+    "commit": "c5562a79676e0a5e7cf700e05110f0974d71dad5",
     "build_sha": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-    "summary": "Easy\u6b63\u5f0fStart\u81ea\u7136\u57fa\u6e96\u9032\u884c\u4e2d\uff0c\u56fa\u5b9a\u689d\u4ef6\u672a\u6539\u5e73\u8861 / Easy native-Start natural baseline active, fixed conditions without balance changes",
+    "summary": "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u6230\u6557\uff0cNormal\u914d\u5c0d\u9032\u884c\u4e2d\uff1b\u53d7\u63a7Boss\u6e2c\u8a66\u5c1a\u672a\u901a\u904e / Easy naturally lost wave5, Normal pairing active; controlled Boss flow not yet passed",
     "code_changes": [
       "\u6e2c\u8a66\u5de5\u5177\u5be6\u969b\u9078\u64c7\u4e26\u6838\u5c0d\u96e3\u5ea6 / Harness selects and verifies actual difficulty"
     ],
     "next_steps": [
-      "\u7b49\u5f85Easy\u5b8c\u6574\u7d50\u679c\uff1b\u5176\u5f8c\u4e32\u884c\u53d7\u63a7\u5341\u6ce2\u8207Normal\u914d\u5c0d / Follow Easy outcome, then serial controlled ten-wave flow and Normal pairing"
+      "Normal\u81ea\u7136\u7d50\u679c\u5f8c\uff0c\u57f7\u884c\u5df2\u6839\u56e0\u6bd4\u8f03\u7684\u6700\u5f8c\u4f4e\u5bc6\u5ea6\u53d7\u63a7\u7d44 / After Normal outcome, run final root-reviewed low-density controlled cohort"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "Easy\u5be6\u969b\u7b2c\u4e00\u6ce2\u53c3\u6578 / Actual Easy first-wave parameters",
-        "status": "PASS",
+        "name": "Easy\u81ea\u7136\u5341\u6ce2 / Easy natural ten waves",
+        "status": "FAIL",
         "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-        "evidence": "docs/evidence/v240-easy-baseline/easy-first-wave-save.json",
-        "evidence_commit": "0f2a59493c661b7bb0546bef1c87188f9d3f6b1f",
-        "evidence_blob": "da3727b5077cf319f941dcd9bcd20297d718a850",
+        "evidence": "docs/evidence/v240-easy-baseline/easy/result.json",
+        "evidence_commit": "c5562a79676e0a5e7cf700e05110f0974d71dad5",
+        "evidence_blob": "c82dfa2cc171dad157a9a3be826d0810aeb80dae",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [],
-    "response": "\u4e2d\u6587\uff1aVALIDATION_IN_PROGRESS\u3002\u56fa\u5b9aTEU\uff0fsteppe\uff0fMILESTONE-NORMAL\u30011\u00d7\u3001\u624b\u52d5\u7d93\u6fdf\uff0f\u8ecd\u8cbb\u3001\u55ae\u8b77\u885b\u3002Easy\u5df2\u81ea\u7136\u7d50\u7b97\u7b2c\u4e09\u6ce2\u3001\u7b2c\u56db\u6ce2\u6e96\u5099\u671f\uff1b\u4e26\u975e\u5341\u6ce2PASS\u3002\u5be6\u969b\u7b2c\u4e00\u6ce28\u6c11\u5175\uff0f3\u5f13\u5175\uff0f2\u653b\u57ce\u69cc\u300156.25\u79d2\uff0cNormal\u540cSeed\u8a08\u756b10\uff0f4\uff0f2\u300145\u79d2\u3002Boss\u5b9a\u7fa9\u672a\u6539\u3002\u53d7\u63a7\u6d41\u7a0b\u6e2c\u8a66\u5c1a\u672a\u57f7\u884c\uff0c\u4e0d\u5192\u5145\u81ea\u7136\u9a57\u6536\u3002\u6240\u6709\u6b0a\u4ecd\u7531\u672cAgent\u6301\u6709\uff0c\u52ff\u91cd\u8907\u6d3e\u9001\u3002\n\nEnglish: VALIDATION_IN_PROGRESS. Fixed TEU/steppe/MILESTONE-NORMAL,1\u00d7, manual economy/spending and single escort. Easy naturally settled wave3and entered wave4prep, not a ten-wave PASS. Actual wave1has8militia/3archers/2rams and56.25seconds, versus matched Normal plan10/4/2and45seconds. Boss definitions unchanged. Controlled flow test not yet executed and never a natural-acceptance substitute. This Agent retains ownership; do not duplicate dispatch.\n",
-    "event_id": "17977e09781e10e4ce7c7c266bac789c0307393f0b127cfcae1da3e819150621",
-    "remote_head": "0f2a59493c661b7bb0546bef1c87188f9d3f6b1f",
+    "response": "\u4e2d\u6587\uff1aEasy\u7b2c\u4e00\u8f2a\u7b2c\u4e94\u6ce2\u81ea\u7136\u6230\u6557\uff0c\u7121\u700f\u89bd\u5668\u932f\u8aa4\uff0c\u6c92\u6709\u81ea\u7136NG+\u901a\u904e\u3002Normal\u540c\u689d\u4ef6\u914d\u5c0d\u4ecd\u6d3b\u8e8d\uff0c\u52ff\u91cd\u8907\u6d3e\u9001\u3002\u4e09\u500b\u53d7\u63a7\u5834\u666f\u5747Boss\u8d85\u6642\uff0c\u4e0d\u80fd\u7576\u5341\u6ce2\u6d41\u7a0bPASS\uff0c\u4e5f\u5c1a\u4e0d\u8db3\u4ee5\u5224\u5b9aSoftlock\uff1b\u5931\u6557\u5df2\u4fdd\u5b58\u3002\n\nEnglish: First Easy run naturally lost at wave5with no browser errors; no natural NG+ pass. Same-condition Normal pairing remains active; do not duplicate dispatch. Three controlled scenes timed out on the Boss, neither a ten-wave PASS nor sufficient softlock proof; failures preserved.\n",
+    "event_id": "351707fc906bf83afcce9be345fea39f1b4003f282e6831daa7cefe54d31f783",
+    "remote_head": "c5562a79676e0a5e7cf700e05110f0974d71dad5",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-28T17:08:28.457214+00:00",
+    "recorded_at": "2026-10-28T17:28:08.562897+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2898,36 +2898,36 @@
     "V240-EASY-BASELINE": {
       "task_id": "V240-EASY-BASELINE",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "severity": "WARNING",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "0f2a59493c661b7bb0546bef1c87188f9d3f6b1f",
+      "commit": "c5562a79676e0a5e7cf700e05110f0974d71dad5",
       "build_sha": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-      "summary": "Easy\u6b63\u5f0fStart\u81ea\u7136\u57fa\u6e96\u9032\u884c\u4e2d\uff0c\u56fa\u5b9a\u689d\u4ef6\u672a\u6539\u5e73\u8861 / Easy native-Start natural baseline active, fixed conditions without balance changes",
+      "summary": "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u6230\u6557\uff0cNormal\u914d\u5c0d\u9032\u884c\u4e2d\uff1b\u53d7\u63a7Boss\u6e2c\u8a66\u5c1a\u672a\u901a\u904e / Easy naturally lost wave5, Normal pairing active; controlled Boss flow not yet passed",
       "code_changes": [
         "\u6e2c\u8a66\u5de5\u5177\u5be6\u969b\u9078\u64c7\u4e26\u6838\u5c0d\u96e3\u5ea6 / Harness selects and verifies actual difficulty"
       ],
       "next_steps": [
-        "\u7b49\u5f85Easy\u5b8c\u6574\u7d50\u679c\uff1b\u5176\u5f8c\u4e32\u884c\u53d7\u63a7\u5341\u6ce2\u8207Normal\u914d\u5c0d / Follow Easy outcome, then serial controlled ten-wave flow and Normal pairing"
+        "Normal\u81ea\u7136\u7d50\u679c\u5f8c\uff0c\u57f7\u884c\u5df2\u6839\u56e0\u6bd4\u8f03\u7684\u6700\u5f8c\u4f4e\u5bc6\u5ea6\u53d7\u63a7\u7d44 / After Normal outcome, run final root-reviewed low-density controlled cohort"
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "Easy\u5be6\u969b\u7b2c\u4e00\u6ce2\u53c3\u6578 / Actual Easy first-wave parameters",
-          "status": "PASS",
+          "name": "Easy\u81ea\u7136\u5341\u6ce2 / Easy natural ten waves",
+          "status": "FAIL",
           "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-          "evidence": "docs/evidence/v240-easy-baseline/easy-first-wave-save.json",
-          "evidence_commit": "0f2a59493c661b7bb0546bef1c87188f9d3f6b1f",
-          "evidence_blob": "da3727b5077cf319f941dcd9bcd20297d718a850",
+          "evidence": "docs/evidence/v240-easy-baseline/easy/result.json",
+          "evidence_commit": "c5562a79676e0a5e7cf700e05110f0974d71dad5",
+          "evidence_blob": "c82dfa2cc171dad157a9a3be826d0810aeb80dae",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
       "blockers": [],
-      "response": "\u4e2d\u6587\uff1aVALIDATION_IN_PROGRESS\u3002\u56fa\u5b9aTEU\uff0fsteppe\uff0fMILESTONE-NORMAL\u30011\u00d7\u3001\u624b\u52d5\u7d93\u6fdf\uff0f\u8ecd\u8cbb\u3001\u55ae\u8b77\u885b\u3002Easy\u5df2\u81ea\u7136\u7d50\u7b97\u7b2c\u4e09\u6ce2\u3001\u7b2c\u56db\u6ce2\u6e96\u5099\u671f\uff1b\u4e26\u975e\u5341\u6ce2PASS\u3002\u5be6\u969b\u7b2c\u4e00\u6ce28\u6c11\u5175\uff0f3\u5f13\u5175\uff0f2\u653b\u57ce\u69cc\u300156.25\u79d2\uff0cNormal\u540cSeed\u8a08\u756b10\uff0f4\uff0f2\u300145\u79d2\u3002Boss\u5b9a\u7fa9\u672a\u6539\u3002\u53d7\u63a7\u6d41\u7a0b\u6e2c\u8a66\u5c1a\u672a\u57f7\u884c\uff0c\u4e0d\u5192\u5145\u81ea\u7136\u9a57\u6536\u3002\u6240\u6709\u6b0a\u4ecd\u7531\u672cAgent\u6301\u6709\uff0c\u52ff\u91cd\u8907\u6d3e\u9001\u3002\n\nEnglish: VALIDATION_IN_PROGRESS. Fixed TEU/steppe/MILESTONE-NORMAL,1\u00d7, manual economy/spending and single escort. Easy naturally settled wave3and entered wave4prep, not a ten-wave PASS. Actual wave1has8militia/3archers/2rams and56.25seconds, versus matched Normal plan10/4/2and45seconds. Boss definitions unchanged. Controlled flow test not yet executed and never a natural-acceptance substitute. This Agent retains ownership; do not duplicate dispatch.\n",
-      "event_id": "17977e09781e10e4ce7c7c266bac789c0307393f0b127cfcae1da3e819150621",
-      "remote_head": "0f2a59493c661b7bb0546bef1c87188f9d3f6b1f",
+      "response": "\u4e2d\u6587\uff1aEasy\u7b2c\u4e00\u8f2a\u7b2c\u4e94\u6ce2\u81ea\u7136\u6230\u6557\uff0c\u7121\u700f\u89bd\u5668\u932f\u8aa4\uff0c\u6c92\u6709\u81ea\u7136NG+\u901a\u904e\u3002Normal\u540c\u689d\u4ef6\u914d\u5c0d\u4ecd\u6d3b\u8e8d\uff0c\u52ff\u91cd\u8907\u6d3e\u9001\u3002\u4e09\u500b\u53d7\u63a7\u5834\u666f\u5747Boss\u8d85\u6642\uff0c\u4e0d\u80fd\u7576\u5341\u6ce2\u6d41\u7a0bPASS\uff0c\u4e5f\u5c1a\u4e0d\u8db3\u4ee5\u5224\u5b9aSoftlock\uff1b\u5931\u6557\u5df2\u4fdd\u5b58\u3002\n\nEnglish: First Easy run naturally lost at wave5with no browser errors; no natural NG+ pass. Same-condition Normal pairing remains active; do not duplicate dispatch. Three controlled scenes timed out on the Boss, neither a ten-wave PASS nor sufficient softlock proof; failures preserved.\n",
+      "event_id": "351707fc906bf83afcce9be345fea39f1b4003f282e6831daa7cefe54d31f783",
+      "remote_head": "c5562a79676e0a5e7cf700e05110f0974d71dad5",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-28T17:08:28.457214+00:00",
+      "recorded_at": "2026-10-28T17:28:08.562897+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
