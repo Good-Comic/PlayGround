@@ -3,6 +3,12 @@
 `ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md`
 `BILINGUAL_DOCUMENTATION_REQUIRED = true`
 
+**目前接續繁體中文：** 本輪以真正最新遠端 e00ce53 接續，並建立 V1–V4 根因對照。自然操作發現資源選取 TypeError，已修於 `0f85357303bf2bca809e6ff32b490769e1d3f836`，四資源／四語原生選取與 SaveContinue 通過。V5.4修復後仍第四波戰敗、無瀏覽器錯誤；缺食物但木材／黃金富餘，先修自動玩家資源／軍費／科技預算，不改 Normal。原生撤退限定驗證通過，尚未自然全戰役驗證。所有測試程序已停止；本輪因執行窗口安全保存。完整十波與自然 New Game+ 仍未通過；不要把任何受控 Fixture當自然通關。最新索引 `docs/evidence/v240-v5-playability/REPORT.md`。V5.4最終快照已戰敗，不可誤當存活接續。
+
+**Current English:** Resumed from actual latest remote e00ce53 and compared V1–V4 causes. Natural input exposed a resource-selection TypeError, fixed in `0f85357303bf2bca809e6ff32b490769e1d3f836`; native selection/SaveContinue passed across4resources/locales. Post-fix V5.4 still lost at wave4 without browser errors; food shortage despite wood/gold surplus points first to policy allocation/reinforcement/technology budgeting, not Normal-stat changes. Native withdrawal passed scoped input verification, not full-campaign testing. All test processes are stopped; safely checkpointed for this execution window. Ten-wave and natural New Game+ acceptance remain incomplete; never substitute controlled fixtures. Latest index: `docs/evidence/v240-v5-playability/REPORT.md`. V5.4's final save is defeated, not a living continuation.
+
+## 先前快照觀察（歷史，非最新狀態） / Earlier snapshot observations (historical, not current)
+
 **最新繁體中文：** 本輪永久雙語規範已整合。V5 180秒試跑自然完成第一波並到第二波，第二時代與8間房屋已完成，但最終村民為0，存活目標 FAIL。市鎮中心仍存活，最新完整快照在 `docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json`；SHA-256 見相鄰 `verification.json`。原生 Continue 接續與錯誤雜湊拒絕均已測試；嚴格確定性未通過。下一輪以此 V5 存活戰役為準，先處理村民損失，不從 V4 戰敗狀態恢復。完整十波／自然 New Game+ 仍 NOT_PASSED。
 
 **Latest English:** The permanent bilingual policy is integrated. V5's180-second pilot naturally completed wave1 and entered wave2, reaching age2 and8houses, but ended with0workers: worker-survival goal FAIL. The Town Center remains alive; the latest complete snapshot is `docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json`, with SHA-256 in the adjacent `verification.json`. Native Continue and incorrect-digest rejection were tested; strict determinism has not passed. Continue this living V5 campaign next, prioritize worker losses, and do not restore V4's defeated state. Full ten-wave/natural New Game+ acceptance remains NOT_PASSED.

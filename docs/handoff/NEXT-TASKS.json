@@ -1,46 +1,46 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-28T05:10:13.082041+00:00",
+  "updated_at": "2026-10-28T05:49:53.704961+00:00",
   "tasks": [
     {
-      "task_id": "V240-BILINGUAL-V5",
-      "name": "永久雙語規範與 V5 自然戰役 / Permanent bilingual policy and V5 natural campaign",
+      "task_id": "V240-V5-PLAYABILITY",
+      "name": "V5 自然戰役與資源選取修復 / V5 natural campaign and resource-selection fix",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P0",
       "agent": "Codex",
       "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-      "latest_pushed_commit": "e4b321efee8169e82f1a4bc5b9c97ca191b38a36",
-      "application_source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
+      "latest_pushed_commit": "2f218838155636746ff03e552f564e8584766822",
+      "application_source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
       "completed": [
-        "Strategy／Handoff／Recovery 與共用規範已加入永久雙語要求 / Permanent bilingual requirement added to Strategy, Handoff, Recovery and shared instructions",
-        "V5 實際第一波完成、第二時代與8間房屋；第二波末村民全失，目標 FAIL / V5 completed wave1, age2 and8houses; all workers lost during wave2, survival goal FAIL",
-        "存活市鎮中心快照及原生 Continue 已驗證 / Living Town Center snapshot and native Continue verified"
+        "V1–V4 根因對照；既有失敗不等於 Normal 無法通關 / Compared V1–V4; failed policies do not establish Normal impossibility",
+        "修復真實資源選取例外，4資源／4語原生 SaveContinue 通過 / Fixed real resource-selection exception; native selection/SaveContinue passed across4resource types/locales",
+        "V5.1 第三波戰敗；V5.2短檢查；V5.3第二波 UI 例外；V5.4第四波戰敗且無例外 / V5.1 defeat3; V5.2 short check; V5.3 UI exception2; V5.4 defeat4 without exceptions",
+        "原生 Stop／市鎮中心撤退輸入已驗證，但未完成全戰役 / Native Stop/core-withdraw input verified, not a full campaign"
       ],
       "uncommitted": [],
       "unpushed": [],
       "tests": [
         {
-          "name": "Recovery 定向測試 / Directed Recovery tests",
-          "result": "9/9 PASS; JSON schema unchanged",
-          "path": "docs/evidence/v240-bilingual-v5/recovery-tests.log.txt"
+          "name": "資源選取修復 / Resource-selection fix",
+          "path": "docs/evidence/v240-resource-selection/REPORT.md",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "result": "10 focused Node tests;4native resource/locale SaveContinue checks PASS"
         },
         {
-          "name": "V5 限定試跑 / V5 bounded pilot",
-          "result": "BOUNDED_SAMPLE_INCOMPLETE; wave2; worker survival FAIL; ten waves NOT_PASSED",
-          "source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
-          "path": "docs/evidence/v240-bilingual-v5/REPORT.md"
+          "name": "V5 自然策略 / V5 natural policy",
+          "path": "docs/evidence/v240-v5-playability/REPORT.md",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-map-generation/REPORT.md",
-        "docs/evidence/v240-new-game-plus/REPORT.md",
-        "docs/evidence/v240-campaign-natural/REPORT.md",
-        "docs/evidence/v240-standard-render/REPORT.md"
+        "docs/evidence/v240-v5-playability/REPORT.md",
+        "docs/evidence/v240-resource-selection/REPORT.md"
       ],
       "failures": [
-        "Natural V1 defeat5, V2 harness-incomplete4, V3 defeat4, V4 defeat4; ten-wave/NG+ natural end-to-end NOT_PASSED",
+        "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
         "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
@@ -48,10 +48,10 @@
         "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
       ],
       "next_steps": [
-        "依最新遠端與所有權核對後接續 V5 第二波 / Revalidate latest remote and ownership before continuing V5 wave2",
-        "使用 docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json 與 verification.json 的 SHA-256；不可使用 V4 戰敗快照 / Use V5 observed save and its recorded SHA-256, not V4 defeated save",
-        "優先解決實際村民損失與資源分配，再完成十波及自然 New Game+ / Prioritize observed worker losses and allocation, then finish ten waves and natural New Game+",
-        "新文件須雙語；舊文件分階段補譯，不改歷史 FAIL / New documentation must be bilingual; migrate history incrementally without changing FAIL results"
+        "優先修自動玩家食物分配、波次經濟成長、補兵／科技預算，不改 Normal / Prioritize food allocation, economic growth and reinforcement/technology budgeting without changing Normal",
+        "將原生撤退修正納入下一次自然戰役；目前只通過限定輸入驗證 / Exercise the native withdrawal fix in the next natural campaign; only input-level verification passed",
+        "V5.4最終快照為戰敗，不可當存活狀態；若使用V5.3須揭露修復前來源及中斷 / V5.4 final save is defeated; disclose pre-fix source/interruption if using V5.3",
+        "實際十波勝利後才驗證自然 New Game+，不可用 Fixture替代 / Verify natural New Game+ only after actual ten-wave victory, never substitute fixtures"
       ],
       "permissions": [
         "Independent development tests normal push",
@@ -59,14 +59,14 @@
       ],
       "status": "CHECKPOINTED",
       "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-      "updated_at": "2026-10-28T05:10:13.082041+00:00",
-      "stop_reason": "EXECUTION_WINDOW_CHECKPOINT; full milestone remains incomplete",
+      "updated_at": "2026-10-28T05:49:53.704961+00:00",
+      "stop_reason": "EXECUTION_WINDOW_SAFE_CHECKPOINT; milestone incomplete",
       "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
       "ownership_at_snapshot": {
-        "task": "V240-BILINGUAL-V5",
+        "task": "V240-V5-PLAYABILITY",
         "agent": "Codex",
-        "execution": "codex-bilingual-v5-20261028",
-        "global_version": 168,
+        "execution": "codex-v5-playability-20261028",
+        "global_version": 172,
         "status": "OWNED_UNTIL_FINAL_PUSH_THEN_RELEASE"
       }
     },

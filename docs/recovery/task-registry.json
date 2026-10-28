@@ -340,30 +340,31 @@
       ]
     },
     "codex/riftwatch-v240-game-first": {
-      "task_id": "V240-BILINGUAL-V5",
+      "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
         {
-          "name": "Recovery 定向測試 / Directed Recovery tests",
-          "result": "9/9 PASS; JSON schema unchanged",
-          "path": "docs/evidence/v240-bilingual-v5/recovery-tests.log.txt"
+          "name": "資源選取修復 / Resource-selection fix",
+          "path": "docs/evidence/v240-resource-selection/REPORT.md",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "result": "10 focused Node tests;4native resource/locale SaveContinue checks PASS"
         },
         {
-          "name": "V5 限定試跑 / V5 bounded pilot",
-          "result": "BOUNDED_SAMPLE_INCOMPLETE; wave2; worker survival FAIL; ten waves NOT_PASSED",
-          "source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
-          "path": "docs/evidence/v240-bilingual-v5/REPORT.md"
+          "name": "V5 自然策略 / V5 natural policy",
+          "path": "docs/evidence/v240-v5-playability/REPORT.md",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED"
         }
       ],
       "blockers": [
-        "Natural V1 defeat5, V2 harness-incomplete4, V3 defeat4, V4 defeat4; ten-wave/NG+ natural end-to-end NOT_PASSED",
+        "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
         "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "依最新遠端與所有權核對後接續 V5 第二波 / Revalidate latest remote and ownership before continuing V5 wave2",
-        "使用 docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json 與 verification.json 的 SHA-256；不可使用 V4 戰敗快照 / Use V5 observed save and its recorded SHA-256, not V4 defeated save",
-        "優先解決實際村民損失與資源分配，再完成十波及自然 New Game+ / Prioritize observed worker losses and allocation, then finish ten waves and natural New Game+",
-        "新文件須雙語；舊文件分階段補譯，不改歷史 FAIL / New documentation must be bilingual; migrate history incrementally without changing FAIL results"
+        "優先修自動玩家食物分配、波次經濟成長、補兵／科技預算，不改 Normal / Prioritize food allocation, economic growth and reinforcement/technology budgeting without changing Normal",
+        "將原生撤退修正納入下一次自然戰役；目前只通過限定輸入驗證 / Exercise the native withdrawal fix in the next natural campaign; only input-level verification passed",
+        "V5.4最終快照為戰敗，不可當存活狀態；若使用V5.3須揭露修復前來源及中斷 / V5.4 final save is defeated; disclose pre-fix source/interruption if using V5.3",
+        "實際十波勝利後才驗證自然 New Game+，不可用 Fixture替代 / Verify natural New Game+ only after actual ten-wave victory, never substitute fixtures"
       ]
     }
   }

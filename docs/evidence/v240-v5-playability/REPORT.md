@@ -40,3 +40,17 @@
 **繁體中文：** V5.3 運作到第二波時，仍有13軍事人口與7名村民，但遇到資源選取介面例外而以 BROWSER_ERROR 結束；不能當戰敗。最終存檔仍為存活戰役。獨立原生點擊重現並修復後，V5.4 使用修復來源 `0f85357303bf2bca809e6ff32b490769e1d3f836` 接續該存檔；玩法資料與 Normal 數值相同，只有介面修復。另保留實際科技成本所需食物，避免軍事訓練持續耗盡升級預算。十波與自然 New Game+ 仍需實際結果，不能由工具後續分支存在便視為通過。
 
 **English:** V5.3 reached wave2 with13military population and7workers, but ended as BROWSER_ERROR from resource selection; it must not count as defeat. Its final save remains a living campaign. After independent native-click reproduction and repair, V5.4 continues that save on fixed source `0f85357303bf2bca809e6ff32b490769e1d3f836`; gameplay data and Normal statistics are unchanged, with only the UI fix. Actual technology food costs are reserved so military training cannot continuously consume the upgrade budget. Ten-wave and natural New Game+ acceptance still require observed results; merely implementing the follow-up branch does not pass them.
+
+## V5.4 結果與真正接續點 / V5.4 Outcome and Next Step
+
+**繁體中文：** 修復介面後的 V5.4 於第四波自然戰敗，無 Page Error／Console Error。最終食物2.17、木材740.76、黃金227.22、石材392.76，村民與軍事人口皆為0。這不是完整 QA，也不足以證明 Normal 不可通關。相比資源選取例外，現在有證據支持的主要瓶頸是食物供應與生產預算：軍事訓練等待科技保留額、手動經濟規模小、撤退在無可點地面時未成功，仍需具體策略修正。不得把木材／黃金富餘誤認為整體經濟充足。
+
+**English:** After the UI fix, V5.4 naturally lost at wave4 with no Page/Console Errors. Final resources were2.17food,740.76wood,227.22gold,392.76stone, with0workers and military population. This is not full QA and does not prove Normal unwinnable. Beyond the repaired exception, evidence supports food supply/production-budget bottlenecks: military training waits on technology reserves, the manual economy remains small, and withdrawal failed when no ground point was clickable. These need concrete policy changes. Wood/gold surplus does not establish a healthy overall economy.
+
+**繁體中文：** 原生新開局的獨立撤退測試使用 Stop 清除採集，再右鍵市鎮中心；實際狀態為 return、dropTarget=1、無 gatherTarget，Page Error 為0。此修正只通過限定輸入測試，尚未用於一場完整自然戰役，不能宣稱村民生存已解決。工具亦改為避開 DOM 遮擋與未取消的建造／戰術游標；未改遊戲規則。
+
+**English:** The independent native fresh-start withdrawal test used Stop to clear gathering, then right-clicked the Town Center. Actual state became return with dropTarget=1 and no gatherTarget, with0Page Errors. This is scoped input verification, not a complete natural campaign; worker survival is not solved. The harness also avoids DOM overlays and uncancelled build/tactical cursors. Game rules are unchanged.
+
+**繁體中文：** 下一最小策略切片：依波次增加合法訓練的經濟人口；重新分配過量採木工到食物；先完成第二時代，再以實際補兵成本與兵力需求決定第三時代保留額；將已驗證撤退方式納入實戰。所有選擇只影響自動玩家，不改 Normal 數值。V5.4 的最終快照是戰敗狀態；不可當存活戰役恢復。V5.3 存檔屬修復前、經介面例外中斷的分支；若重用須明示版本與 Save/Load 風險，不能假稱未中斷通關。自然 New Game+ 分支未到達，狀態 NOT_TESTED。
+
+**English:** Next minimal policy slice: grow legally trained economic population with waves, reassign excess wood workers to food, complete age2 before reserving for age3 according to actual reinforcement costs/army needs, and exercise the verified withdrawal protocol in combat. These are player-policy changes only, not Normal-stat changes. V5.4's final snapshot is defeated and cannot resume as a living campaign. V5.3's save belongs to the pre-fix UI-error-interrupted branch; disclose its version and Save/Load risks if reused rather than claiming uninterrupted victory. The natural New Game+ branch was never reached and remains NOT_TESTED.

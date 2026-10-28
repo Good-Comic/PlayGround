@@ -5,9 +5,9 @@
 本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。
 This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.
 
-快照 ID / Snapshot ID: 3c72fd377e67df7b987b9936a59e80d93f39d3001460ebea998274de17774650
-擷取時間 UTC / Captured UTC: 2026-10-28T05:10:13.142073+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
-來源 / Collector source: `e4b321efee8169e82f1a4bc5b9c97ca191b38a36` · LOCAL_INVENTORIED_NOT_A_PUSH
+快照 ID / Snapshot ID: 39b9defab82e96503ae20b25cf8f54555449785acf4964f3a33bdb4aa471c873
+擷取時間 UTC / Captured UTC: 2026-10-28T05:49:54.266796+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
+來源 / Collector source: `8c012e3d856381819990ff50bcf3424504a4af2c` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 | 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ This manifest records local Git state and actual remote queries at capture time;
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | e4b321efee8169e82f1a4bc5b9c97ca191b38a36 | e4b321efee8169e82f1a4bc5b9c97ca191b38a36 | REMOTE_SAVED | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 8c012e3d856381819990ff50bcf3424504a4af2c | 2f218838155636746ff03e552f564e8584766822 | LOCAL_AHEAD | True |
 
 ## work
 
@@ -340,8 +340,14 @@ This manifest records local Git state and actual remote queries at capture time;
 
 ```json
 {
-  "unpushed_commits": [],
+  "unpushed_commits": [
+    "8c012e3d856381819990ff50bcf3424504a4af2c"
+  ],
   "changed_files": [
+    {
+      "status": " M",
+      "path": "docs/evidence/v240-v5-playability/REPORT.md"
+    },
     {
       "status": " M",
       "path": "docs/handoff/ACTIVE-TASK.json"
@@ -359,85 +365,82 @@ This manifest records local Git state and actual remote queries at capture time;
       "path": "docs/recovery/task-registry.json"
     },
     {
-      "status": " M",
-      "path": "tools/qa/natural_campaign.mjs"
+      "status": "??",
+      "path": "docs/evidence/v240-v5-playability/v5-1/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/REPORT.md"
+      "path": "docs/evidence/v240-v5-playability/v5-1/wave-3-defeat-124.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/pilot/campaign.mp4"
+      "path": "docs/evidence/v240-v5-playability/v5-4/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/pilot/checkpoint-91.json"
+      "path": "docs/evidence/v240-v5-playability/v5-4/events.jsonl"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/pilot/events.jsonl"
+      "path": "docs/evidence/v240-v5-playability/v5-4/result.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/pilot/final-observation.png"
+      "path": "docs/evidence/v240-v5-playability/v5-4/save-snapshot.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/pilot/result.json"
+      "path": "docs/evidence/v240-v5-playability/v5-4/wave-4-defeat-241.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json"
+      "path": "docs/evidence/v240-v5-playability/withdraw/browser.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/recovery-tests.log.txt"
+      "path": "docs/evidence/v240-v5-playability/withdraw/withdraw.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/resume/rejected-digest.json"
+      "path": "docs/evidence/v240-v5-playability/withdraw/withdraw.webm"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/resume/valid.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-bilingual-v5/verification.json"
+      "path": "tools/qa/worker_withdraw_browser.mjs"
     }
   ],
   "last_validation": [
     {
-      "name": "Recovery 定向測試 / Directed Recovery tests",
-      "result": "9/9 PASS; JSON schema unchanged",
-      "path": "docs/evidence/v240-bilingual-v5/recovery-tests.log.txt",
+      "name": "資源選取修復 / Resource-selection fix",
+      "path": "docs/evidence/v240-resource-selection/REPORT.md",
+      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+      "result": "10 focused Node tests;4native resource/locale SaveContinue checks PASS",
       "exists": true,
-      "storage": "LOCAL_ONLY_OR_MISSING",
-      "sha256": "d5c5662101e1dca885af99229b203a13137c3bbe43dbb9d2bb59493026a6c2c9",
-      "resource_freshness": "UNKNOWN"
+      "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
+      "sha256": "49cd00301e857fc80455e332a792e74d15976730ccde4c17281645f911092a63",
+      "resource_freshness": "MATCHES_WORKING_RESOURCES"
     },
     {
-      "name": "V5 限定試跑 / V5 bounded pilot",
-      "result": "BOUNDED_SAMPLE_INCOMPLETE; wave2; worker survival FAIL; ten waves NOT_PASSED",
-      "source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
-      "path": "docs/evidence/v240-bilingual-v5/REPORT.md",
+      "name": "V5 自然策略 / V5 natural policy",
+      "path": "docs/evidence/v240-v5-playability/REPORT.md",
+      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+      "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED",
       "exists": true,
       "storage": "LOCAL_ONLY_OR_MISSING",
-      "sha256": "b0aa6e52283849028b4fb0ec78efabb1d8d7ac41ed359cea631e198d2737e91a",
+      "sha256": "d6744df1942bf2d5368c10be5376880761bd353552ed019f00d736f9878b21f9",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     }
   ],
   "blockers": [
-    "Natural V1 defeat5, V2 harness-incomplete4, V3 defeat4, V4 defeat4; ten-wave/NG+ natural end-to-end NOT_PASSED",
+    "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
     "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
     "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
   ],
   "next_steps": [
-    "依最新遠端與所有權核對後接續 V5 第二波 / Revalidate latest remote and ownership before continuing V5 wave2",
-    "使用 docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json 與 verification.json 的 SHA-256；不可使用 V4 戰敗快照 / Use V5 observed save and its recorded SHA-256, not V4 defeated save",
-    "優先解決實際村民損失與資源分配，再完成十波及自然 New Game+ / Prioritize observed worker losses and allocation, then finish ten waves and natural New Game+",
-    "新文件須雙語；舊文件分階段補譯，不改歷史 FAIL / New documentation must be bilingual; migrate history incrementally without changing FAIL results"
+    "優先修自動玩家食物分配、波次經濟成長、補兵／科技預算，不改 Normal / Prioritize food allocation, economic growth and reinforcement/technology budgeting without changing Normal",
+    "將原生撤退修正納入下一次自然戰役；目前只通過限定輸入驗證 / Exercise the native withdrawal fix in the next natural campaign; only input-level verification passed",
+    "V5.4最終快照為戰敗，不可當存活狀態；若使用V5.3須揭露修復前來源及中斷 / V5.4 final save is defeated; disclose pre-fix source/interruption if using V5.3",
+    "實際十波勝利後才驗證自然 New Game+，不可用 Fixture替代 / Verify natural New Game+ only after actual ten-wave victory, never substitute fixtures"
   ]
 }
 ```
