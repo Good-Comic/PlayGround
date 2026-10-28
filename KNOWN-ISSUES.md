@@ -1,4 +1,16 @@
-# Riftwatch v234 Playtest Candidate — known issues
+# Riftwatch v2.4.0 development — known issues
+
+PLAYTEST-EXPERIMENTAL. This branch is not publicly released; v234 remains unpublished. Exact artifact metadata and SHA are authoritative, not the historical candidate label below.
+
+- Versioned Seed terrain generation2 has bounded40-map/480-route and native river-crossing evidence. Historical saves restore generation1. This is not exhaustive all-Seed/civilization certification.
+- User-approved Easy/Hard change ordinary force counts and prep time only; Normal cycle1 preserves original director plans. Balance/full natural campaigns are pending.
+- Optional New Game+ resets economy/research/entities, keeps zero to three selected owned cards, and adds a visible25s cavalry flank. Functional native UI and SaveLoad pass from an explicitly controlled completed-victory fixture; a natural ten-wave→NG+ sequence has NOT passed.
+- Natural policyV1 lost wave5; policyV2 stopped on a harness action timeout at wave4. Worker command churn during hero cooldown and compact130percent victory-panel overflow have targeted local fixes, not a whole-game QA waiver.
+- Original landmark100-unit/24-building drawing JS increase about21.4percent remains FAIL. Short standard-opening samples did not show blocking regression; no physical-hardware FPS conclusion is available.
+- Low-FPS time loss, strict SaveLoad nondeterminism, natural Rift Prototype crash NOT_REPRODUCED and HARDWARE_TEST_PENDING remain open.
+
+## Preserved v234 candidate history and unresolved upstream issues
+
 
 PLAYTEST-EXPERIMENTAL, not QA-ACCEPTED, Gameplay Integration, or a formal release. Legacy OmGitHub Issue #17 and the published v228 full-SHA directory remain unchanged. The v234 Game First chain is experimental until complete combined quality acceptance.
 

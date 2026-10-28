@@ -39,6 +39,11 @@ export async function verifyBuild(meta,fetcher=fetch) {
   }
   return entries.length;
 }
+// Use verified artifact identity rather than the historical hard-coded v1 label.
+export function buildIdentity(meta, count) {
+  const label = typeof meta.id === 'string' && /^[a-zA-Z0-9_.-]{1,80}$/.test(meta.id) ? meta.id : 'riftwatch-playtest';
+  return Object.freeze({id:label,commit:meta.commit,status:meta.status,builtAt:meta.builtAt,resourceVerification:`SHA256_MATCH_${count}_FILES`});
+}
 export async function installPlaytest({game,ui}) {
   const start=document.getElementById('btn-start'),cont=document.getElementById('btn-continue');
   const setDisabled=value=>{start.disabled=value;cont.disabled=value||!hasSavedRun();};setDisabled(true);
@@ -52,7 +57,8 @@ export async function installPlaytest({game,ui}) {
   toggle.addEventListener('click',()=>dialog.showModal());close.addEventListener('click',()=>dialog.close());
   try{
     const response=await fetch(new URL('../build-metadata.json',import.meta.url),{cache:'no-store'});if(!response.ok)throw Error('Candidate metadata missing');const meta=await response.json();
-    const count=await verifyBuild(meta);const build=Object.freeze({id:'riftwatch-playtest-v1',commit:meta.commit,status:meta.status,builtAt:meta.builtAt,resourceVerification:`SHA256_MATCH_${count}_FILES`});
+    const count=await verifyBuild(meta);const build=buildIdentity(meta,count);
+    const sourceLabel=document.getElementById('build-version');if(sourceLabel)sourceLabel.textContent=build.id;document.documentElement.dataset.buildId=build.id;
     window.ageOfAsh.playtestBuild=build;toggle.textContent='PLAYTEST · '+build.commit.slice(0,7);version.textContent=`${build.id}\n${build.status}\n${build.commit}\n${build.builtAt}\n${build.resourceVerification}`;document.documentElement.dataset.playtestSha=build.commit;
     download.addEventListener('click',()=>{const report=makeBugReport(game,{...ui.settings,locale:getLocale()},build,errors,{userAgent:navigator.userAgent,width:innerWidth,height:innerHeight,dpr:devicePixelRatio});const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`riftwatch-bug-${build.commit.slice(0,7)}-${game.seed||'menu'}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
     setDisabled(false);

@@ -24,3 +24,10 @@ test('legacy SaveLoad defaults cycle one and no inherited cards, leaving Boss st
  const g=new Game(),snapshot=g.snapshot();delete snapshot.cycle;delete snapshot.inheritedBoons;g.restore(snapshot);assert.equal(g.cycle,1);assert.deepEqual(g.inheritedBoons,[]);assert.equal(g.pendingWavePlan.intel.cycleModifier,undefined);
  const before=JSON.stringify(UNIT_TYPES);const h=completed();h.startNextCycle([]);assert.equal(JSON.stringify(UNIT_TYPES),before);
 });
+test('every shipped card can be inherited once on a fresh frontier and restored without effect duplication',()=>{
+ for(const card of BOONS){
+  const g=completed();g.boons=[card];assert.equal(g.startNextCycle([card.id]),true,card.id);
+  const snapshot=g.snapshot(),r=new Game();r.restore(snapshot);
+  assert.deepEqual(r.effects,g.effects,card.id);assert.deepEqual(r.inheritedBoons,[card.id]);assert.equal(r.boons.length,1);assert.equal(r.boons[0].id,card.id);assert.deepEqual(r.resources,g.resources);
+ }
+});
