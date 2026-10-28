@@ -1,3 +1,22 @@
+# 選卡存檔接續 / Card-choice save continuation
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+**中文：** 本輪新增選卡介面原生存檔，保存候選順序、付費重抽次數及原有RNG；Continue重開選卡。缺候選的舊boon快照在修改遊戲前拒絕，普通舊存檔仍可讀，不重抽猜測。受測遊戲來源 `798bcffdfe8e97bdd4e8abe6c67f18223b540877`，21項定向測試、四語×100%／130%共8組真實本地Chromium通過；詳細證據`docs/evidence/v240-boon-save/REPORT.md`。未宣稱完整確定性或自然戰役通過。
+
+**English:** Added native reward-screen saving, persisting offered order, paid reroll count and existing RNG; Continue reopens rewards. Oldboonsaves missing choices are rejected before mutation, while ordinary legacy saves remain loadable; no guessed redraw. Tested game source `798bcffdfe8e97bdd4e8abe6c67f18223b540877`;21directed tests and8actual local Chromium workflows (four locales×100%/130%) pass. Evidence:`docs/evidence/v240-boon-save/REPORT.md`. Full determinism and natural campaign acceptance are not claimed.
+
+**中文：** V6稀疏死亡資料分析指向採集／返程與護衛覆蓋：18次消失觀察中16次在採集／返程，11次三格內無友軍，並非逐擊因果證明。下一步於最新存活快照加入只讀傷害／路徑／護衛記錄再重現。存活起點仍為`docs/evidence/v240-v6-investment/stock-continuation/save-snapshot.json`，SHA256 `0fa1b7242b4211c8bc917c4d036a13dd5263863c320b350ff643d19158dcc82d`；其舊來源cfc42ee與新遊戲來源要分組記錄。不要使用原V6終點缺候選的boon診斷快照。
+
+**English:** SparseV6loss analysis points toward gathering/returning and guard coverage:16of18disappearances last gathered/returned;11had no friendly military within3tiles, not per-hit causal proof. Next reproduce with read-only damage/path/guard observations from the latest living save: `docs/evidence/v240-v6-investment/stock-continuation/save-snapshot.json`, SHA256 `0fa1b7242b4211c8bc917c4d036a13dd5263863c320b350ff643d19158dcc82d`. Record its oldcfc42eesource separately from the new game. Do not use the originalV6finalboondiagnostic save missing choices.
+
+**中文：** 因執行窗口保存；所有測試停止，所有權於Push後釋放，遠端ownership.json為準。保持RELEASE_BLOCKED、全部歷史FAIL與地形選項待確認；無公開發布。跨對話寫入不可用，不宣稱送達。
+
+**English:** Checkpointed at the execution-window limit; tests stopped, ownership released after push, and remoteownership.json prevails. Retain RELEASE_BLOCKED, all historical FAIL and pending terrain decisions. No public deployment. Cross-thread writing unavailable; delivery not claimed.
+
+---
+
 # 最新品質修復與接續 / Latest quality fixes and continuation
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

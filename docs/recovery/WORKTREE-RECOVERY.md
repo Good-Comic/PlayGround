@@ -5,9 +5,9 @@
 本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。
 This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.
 
-快照 ID / Snapshot ID: bada3c9676144ec752ff756c5e043cd5c7224a616d415703e68d1a0f7a8e19f9
-擷取時間 UTC / Captured UTC: 2026-10-28T07:54:41.712050+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
-來源 / Collector source: `a8fe9578a4136a3b2d80edad13e7fba62ba8dd42` · LOCAL_INVENTORIED_NOT_A_PUSH
+快照 ID / Snapshot ID: f18045f9a62e3b7d9ff568092448129c3f5247578e5971654faa95279e84e359
+擷取時間 UTC / Captured UTC: 2026-10-28T15:24:23.208605+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
+來源 / Collector source: `798bcffdfe8e97bdd4e8abe6c67f18223b540877` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 | 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ This manifest records local Git state and actual remote queries at capture time;
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | a8fe9578a4136a3b2d80edad13e7fba62ba8dd42 | a8fe9578a4136a3b2d80edad13e7fba62ba8dd42 | REMOTE_SAVED | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 798bcffdfe8e97bdd4e8abe6c67f18223b540877 | 9f33fa15f04ae2e9da35f9512f03468f20605ce6 | LOCAL_AHEAD | True |
 
 ## work
 
@@ -340,11 +340,13 @@ This manifest records local Git state and actual remote queries at capture time;
 
 ```json
 {
-  "unpushed_commits": [],
+  "unpushed_commits": [
+    "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
+  ],
   "changed_files": [
     {
       "status": " M",
-      "path": "docs/evidence/v240-v6-investment/REPORT.md"
+      "path": "docs/evidence/v240-boon-save/REPORT.md"
     },
     {
       "status": " M",
@@ -360,170 +362,90 @@ This manifest records local Git state and actual remote queries at capture time;
     },
     {
       "status": " M",
-      "path": "docs/recovery/WORKTREE-RECOVERY.md"
-    },
-    {
-      "status": " M",
       "path": "docs/recovery/task-registry.json"
     },
     {
-      "status": " M",
-      "path": "docs/recovery/worktree-recovery.json"
-    },
-    {
-      "status": " M",
-      "path": "docs/release/v240/KNOWN-ISSUES.md"
-    },
-    {
-      "status": " M",
-      "path": "tests/v5-player.test.mjs"
-    },
-    {
-      "status": " M",
-      "path": "tools/qa/natural_campaign.mjs"
-    },
-    {
-      "status": " M",
-      "path": "tools/qa/v5_player.mjs"
+      "status": "??",
+      "path": "docs/evidence/v240-boon-save/browser-100/browser.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-save-transients/builds/8f202458a5b11f9e96b937aefd26ce175b17ba3b.json"
+      "path": "docs/evidence/v240-boon-save/browser-100/browser.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-save-transients/builds/a58abaf370376b8085ea0c852c40a60dba04fae5.json"
+      "path": "docs/evidence/v240-boon-save/browser-100/en-restored.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-save-transients/builds/cfc42ee511b35cbefe1359af476fbd9396054a70.json"
+      "path": "docs/evidence/v240-boon-save/browser-100/ja-restored.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/campaign.mp4"
+      "path": "docs/evidence/v240-boon-save/browser-100/zh-Hans-restored.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/checkpoint-198.json"
+      "path": "docs/evidence/v240-boon-save/browser-100/zh-Hant-restored.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/checkpoint-290.json"
+      "path": "docs/evidence/v240-boon-save/browser-130/browser.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/checkpoint-380.json"
+      "path": "docs/evidence/v240-boon-save/browser-130/browser.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/checkpoint-93.json"
+      "path": "docs/evidence/v240-boon-save/browser-130/en-restored.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/events.jsonl"
+      "path": "docs/evidence/v240-boon-save/browser-130/ja-restored.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/failure.png"
+      "path": "docs/evidence/v240-boon-save/browser-130/zh-Hans-restored.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/result.json"
+      "path": "docs/evidence/v240-boon-save/browser-130/zh-Hant-restored.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/save-snapshot.json"
+      "path": "docs/evidence/v240-boon-save/build-metadata.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-1-boon-168.png"
+      "path": "docs/evidence/v240-boon-save/final-tests.txt"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-1-prep-0.png"
+      "path": "docs/evidence/v240-boon-save/worker-loss-observations.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-1-wave-126.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-1-wave-60.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-2-boon-326.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-2-prep-170.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-2-wave-224.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-2-wave-290.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-3-prep-327.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-3-wave-359.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/natural/wave-3-wave-420.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/stock-continuation/campaign.mp4"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/stock-continuation/events.jsonl"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/stock-continuation/result.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/stock-continuation/resume-integrity.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/stock-continuation/save-snapshot.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/stock-continuation/wave-3-wave-0.png"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v6-investment/stock-policy-tests.txt"
+      "path": "tools/qa/boon_save_browser.mjs"
     }
   ],
   "last_validation": [
     {
-      "path": "docs/evidence/v240-save-transients/pause-after.txt",
-      "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
-      "result": "42 PASS; strict determinism still false",
+      "path": "docs/evidence/v240-boon-save/final-tests.txt",
+      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+      "result": "21 PASS",
       "exists": true,
-      "storage": "REMOTE_SAVED",
-      "sha256": "36aa0adc5d5d2b4d635220a9dc7387e396ffe74a84f5d7b7c5481eceebf812c8",
+      "storage": "LOCAL_ONLY_OR_MISSING",
+      "sha256": "7e371919f912c74e6094f8c6e6fa22f1bb1ae81b946c3bf4f4158bd32d9e1a31",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     },
     {
-      "path": "docs/evidence/v240-save-transients/pause-browser/browser.json",
-      "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
-      "result": "5native browser checks PASS; CONTROLLED_FIXTURE",
+      "path": "docs/evidence/v240-boon-save/browser-130/browser.json",
+      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+      "result": "4 locales native save/reload/reroll/claim PASS; CONTROLLED_FIXTURE",
       "exists": true,
-      "storage": "REMOTE_SAVED",
-      "sha256": "ba69f50764ef150d4401fab9010cc8ddda788f4f24ffa1f6a37f642e3dd6d7ac",
+      "storage": "LOCAL_ONLY_OR_MISSING",
+      "sha256": "a9d21060a8ee245d9ee6d56cec4fe06980ea3908322baebb918dc0b238a82cfb",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     }
   ],
@@ -533,8 +455,8 @@ This manifest records local Git state and actual remote queries at capture time;
     "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
   ],
   "next_steps": [
-    "分析第三波村民死亡／護衛／返程可達性 / Analyze wave3worker deaths, guard and return reachability",
-    "地形成本Custom方案待確認；不擅自改平衡 / Custom terrain costs await confirmation; no silent balance change"
+    "以只讀逐擊／護衛／返程觀測重現村民失守 / Reproduce worker exposure using read-only hit/guard/return observations",
+    "地形Custom方案仍待確認 / Custom terrain proposal still awaits confirmation"
   ]
 }
 ```

@@ -1,0 +1,29 @@
+✔ pending reward preserves offered order, paid reroll count, RNG and next reroll (42.653429ms)
+✔ claim after restored pending choice advances exactly once without replaying wave rewards (18.533801ms)
+✔ unrecoverable legacy pending choices fail before mutating a live game; normal legacy saves still load (16.917147ms)
+✔ NG+ is gated behind completed victory and validates owned unique maximum-three cards before mutation (42.886787ms)
+✔ NG+ resets economy entities technology and stats, applies only selected cards once and announces flank (44.404719ms)
+✔ NG+ frontier and RNG are repeatable; SaveLoad does not reapply inherited effects or alter plan (64.204145ms)
+✔ inherited immediate Prototype card uses its real effect; no prior entities are carried (101.063877ms)
+✔ legacy SaveLoad defaults cycle one and no inherited cards, leaving Boss stats unchanged (27.027982ms)
+✔ every shipped card can be inherited once on a fresh frontier and restored without effect duplication (491.88694ms)
+✔ save mid-flight and during boss telegraph preserves remaining damage, timers and entity references (72.985408ms)
+✔ resolved zones do not damage twice and legacy saves remain loadable (71.234061ms)
+✔ SaveLoad preserves full stun and partial slow strength until their original expiry (74.928346ms)
+✔ native pause and card-choice overlays do not expire absolute-time combat statuses (42.580646ms)
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (55.536596ms)
+✔ Patrol completes both legs using native navigation (18.552079ms)
+✔ Guard follows a living ally then recovers when ally dies (12.515865ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (19.714682ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (7.074116ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (14.857389ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (11.813297ms)
+✔ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (22.835989ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 983.873276

@@ -1,35 +1,35 @@
 {
-  "task_id": "V240-SAVE-TRANSIENT",
-  "name": "戰鬥狀態修復與自然戰役 / Combat-state repair and natural campaign",
+  "task_id": "V240-BOON-SAVE",
+  "name": "選卡存檔恢復 / Card-choice save recovery",
   "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
   "priority": "P0",
   "agent": "Codex",
   "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-  "latest_pushed_commit": "a8fe9578a4136a3b2d80edad13e7fba62ba8dd42",
-  "application_source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
+  "latest_pushed_commit": "9f33fa15f04ae2e9da35f9512f03468f20605ce6",
+  "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
   "completed": [
-    "三項核心修復與真實瀏覽器驗證 / Three core repairs with actual browser verification",
-    "V6自然第三波結算，工具中斷；最新限定接續仍未通關 / V6natural wave3settled with harness interruption; scoped continuation incomplete"
+    "選卡原生存檔與Continue恢復 / Native reward saving and Continue restoration",
+    "21定向測試、8組四語／縮放瀏覽器通過 /21directed tests and8locale/scale browser workflows pass",
+    "既有V6村民消失資料分析，未重跑戰役 / ExistingV6worker-loss analysis without campaign rerun"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "path": "docs/evidence/v240-save-transients/pause-after.txt",
-      "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
-      "result": "42 PASS; strict determinism still false"
+      "path": "docs/evidence/v240-boon-save/final-tests.txt",
+      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+      "result": "21 PASS"
     },
     {
-      "path": "docs/evidence/v240-save-transients/pause-browser/browser.json",
-      "source_commit": "cfc42ee511b35cbefe1359af476fbd9396054a70",
-      "result": "5native browser checks PASS; CONTROLLED_FIXTURE"
+      "path": "docs/evidence/v240-boon-save/browser-130/browser.json",
+      "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+      "result": "4 locales native save/reload/reroll/claim PASS; CONTROLLED_FIXTURE"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-save-transients/REPORT.md",
-    "docs/evidence/v240-v6-investment/REPORT.md"
+    "docs/evidence/v240-boon-save/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -40,8 +40,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "分析第三波村民死亡／護衛／返程可達性 / Analyze wave3worker deaths, guard and return reachability",
-    "地形成本Custom方案待確認；不擅自改平衡 / Custom terrain costs await confirmation; no silent balance change"
+    "以只讀逐擊／護衛／返程觀測重現村民失守 / Reproduce worker exposure using read-only hit/guard/return observations",
+    "地形Custom方案仍待確認 / Custom terrain proposal still awaits confirmation"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -49,13 +49,13 @@
   ],
   "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-  "updated_at": "2026-10-28T07:54:41.669826+00:00",
+  "updated_at": "2026-10-28T15:24:23.150220+00:00",
   "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
-    "task": "V240-SAVE-TRANSIENT",
-    "execution": "codex-quality-20261028",
-    "global_version": 184,
+    "task": "V240-BOON-SAVE",
+    "execution": "codex-boon-resume-20261028",
+    "global_version": 188,
     "status": "RELEASE_PENDING_AFTER_PUSH"
   }
 }
