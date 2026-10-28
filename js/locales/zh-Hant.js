@@ -173,7 +173,7 @@ export const ui = {
   'pause.title': '已暫停',
   'pause.flavor': '「守住陣線。裂界終將平息。」',
   'pause.econTitle': '村務總管',
-  'pause.econDesc': '自動指派待命村民並維持房屋',
+  "pause.econDesc": "自動指派待命村民，並花費食物訓練村民；房屋需手動建造。",
   'pause.milTitle': '軍務總管',
   'pause.milDesc': '自動訓練士兵並讓兵營持續運作',
   'pause.resume': '繼續',

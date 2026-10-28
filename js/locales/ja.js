@@ -174,7 +174,7 @@ export const ui = {
   'pause.title': '一時停止',
   'pause.flavor': '「戦線を保て。リフトはやがて鎮まる。」',
   'pause.econTitle': '村の執事',
-  'pause.econDesc': '待機中の村人を自動配置し、家を維持',
+  "pause.econDesc": "待機中の村人を配置し、食料で村人を訓練。家は手動で建設します。",
   'pause.milTitle': '戦の執事',
   'pause.milDesc': '兵士を自動訓練し、兵舎を稼働',
   'pause.resume': '再開',

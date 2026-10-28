@@ -174,7 +174,7 @@ export const ui = {
   "pause.title": "已暂停",
   "pause.flavor": "“守住阵线。裂界终将平息。”",
   "pause.econTitle": "村务总管",
-  "pause.econDesc": "自动指派待命村民并维持房屋",
+  "pause.econDesc": "自动指派待命村民，并花费食物训练村民；房屋需手动建造。",
   "pause.milTitle": "军务总管",
   "pause.milDesc": "自动训练士兵并让兵营持续运作",
   "pause.resume": "继续",

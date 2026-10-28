@@ -225,7 +225,7 @@ const EN_UI = {
   'pause.title': 'Paused',
   'pause.flavor': '“Hold the line. The Rift will settle.”',
   'pause.econTitle': 'Village steward',
-  'pause.econDesc': 'Auto-assign idle villagers and maintain houses',
+  "pause.econDesc": "Assign idle villagers and spend food to train workers; build houses manually.",
   'pause.milTitle': 'War steward',
   'pause.milDesc': 'Auto-train soldiers and keep the barracks busy',
   'pause.resume': 'Resume',
