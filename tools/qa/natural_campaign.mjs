@@ -1,3 +1,4 @@
+import{createV5Player}from'./v5_player.mjs';
 // Legal player-policy automation: actual UI commands only; never grants resources,
 // health, units, clock progress, boons, age or waves. Read-only state inspection
 // is used to choose actions and persist evidence. Normal production aids remain on.
@@ -46,6 +47,7 @@ async function economy(s) {
   if(pos.x>270&&pos.x<1210&&pos.y>130&&pos.y<620){await p.mouse.click(pos.x,pos.y,{button:'right'});record('action',{command:danger?'withdraw-threatened-worker':'assign-idle-worker',worker:worker.id,target:{x:target.x,y:target.y}})}
  }
 }
+const adaptive=createV5Player({page:p,record});
 let result={status:'INCOMPLETE'};
 try{
  await p.goto(url,{waitUntil:'networkidle'});await p.waitForFunction(()=>ageOfAsh?.playtestBuild?.resourceVerification?.startsWith('SHA256_MATCH_'));if(await p.evaluate(()=>ageOfAsh.playtestBuild.commit)!==commit)throw Error('SOURCE_MISMATCH');
@@ -74,12 +76,14 @@ try{
     const priority=policy==='v5'?['rift_prototype','siege_math','night_watch','farwatch','citizen_arms','butcher','fire_oil','veteran_honors']:['rift_prototype','tc_regen','siege_math','veteran_honors'];const index=Math.max(0,priority.map(id=>s.choices.indexOf(id)).find(i=>i>=0)??0);await p.locator('.boon-card').nth(index).click();await p.locator('#btn-claim').click();record('action',{command:'claim-boon',id:s.choices[index]});await p.waitForTimeout(1000);continue;
   }
   if(wall-lastPolicy>6){lastPolicy=wall;
-    if(['v4','v5'].includes(policy))await economy(s);
+    if(policy==='v5.1')await adaptive.step(s);
+    else if(['v4','v5'].includes(policy))await economy(s);
     await defend(s);
     // Native defensive construction and production/technology choices, paid by
     // the game's normal affordability checks. No GM shortcuts are used.
     const towers=s.buildings.filter(b=>b.alive&&b.type==='tower').length,houses=s.buildings.filter(b=>b.alive&&b.type==='house').length;
-    if(['v4','v5'].includes(policy)&&s.age<3&&!s.ageResearch&&Object.entries(s.ageCost).every(([k,v])=>s.resources[k]>=v)&&s.core&&await select(s.core.id))await command('age:advance');
+    if(policy==='v5.1'){/* recovery and production handled above */}
+    else if(['v4','v5'].includes(policy)&&s.age<3&&!s.ageResearch&&Object.entries(s.ageCost).every(([k,v])=>s.resources[k]>=v)&&s.core&&await select(s.core.id))await command('age:advance');
     else if(policy==='v5'&&houses<8&&s.resources.wood>=60)await build('house');
     else if(['v3','v4','v5'].includes(policy)&&!s.buildings.some(b=>b.alive&&b.type==='range')&&s.resources.wood>=120)await build('range');
     else if(['v3','v4','v5'].includes(policy)&&(!['v4','v5'].includes(policy)||s.resources.wood>250)&&s.buildings.filter(b=>b.alive&&b.type==='farm').length<3&&s.resources.wood>=60)await build('farm');
@@ -97,4 +101,4 @@ try{
  if(result.status==='INCOMPLETE')result={status:'BOUNDED_SAMPLE_INCOMPLETE',state:await state(),seconds};
 }catch(e){result={status:e.name==='TimeoutError'?'HARNESS_ACTION_TIMEOUT':'HARNESS_OR_GAME_ERROR',error:e.message,stack:e.stack};await p.screenshot({path:resolve(out,'failure.png')}).catch(()=>{})}
 try{writeFileSync(resolve(out,'save-snapshot.json'),JSON.stringify(await p.evaluate(()=>ageOfAsh.game.snapshot()),null,2)+'\n')}catch(e){record('checkpoint-unavailable',{reason:e.name})}
-result={source_commit:commit,stage:'AFTER_LOCAL',mode:arg('--resume')?'NATIVE_UI_OBSERVED_SAVE_CONTINUATION':'NATURAL_UI_LEGAL_POLICY_NO_STATE_INJECTION',policy:policy==='v5'?'V5_TEUTON_HOUSE_DEFENSE_MANUAL_ECONOMY':['v4','v5'].includes(policy)?'V4_ACTUAL_TECH_COSTS_AND_MANUAL_ECONOMY':['v3','v4','v5'].includes(policy)?'V3_NATIVE_RANGED_FARM_DEFENSIVE_MACRO':'V2_NATIVE_ARMY_DEFENSE_AND_RALLY',...result,errors,failures,actions};writeFileSync(resolve(out,'result.json'),JSON.stringify(result,null,2)+'\n');const v=p.video();await c.close();if(v)copyFileSync(await v.path(),resolve(out,'campaign.webm'));await b.close();console.log(JSON.stringify({status:result.status,wave:result.state?.wave,sim:result.state?.simulationSeconds,errors}));
+result={source_commit:commit,stage:'AFTER_LOCAL',mode:arg('--resume')?'NATIVE_UI_OBSERVED_SAVE_CONTINUATION':'NATURAL_UI_LEGAL_POLICY_NO_STATE_INJECTION',policy:policy==='v5.1'?'V5_1_VERIFIED_INPUT_AND_ECONOMY_RECOVERY':policy==='v5'?'V5_TEUTON_HOUSE_DEFENSE_MANUAL_ECONOMY':['v4','v5'].includes(policy)?'V4_ACTUAL_TECH_COSTS_AND_MANUAL_ECONOMY':['v3','v4','v5'].includes(policy)?'V3_NATIVE_RANGED_FARM_DEFENSIVE_MACRO':'V2_NATIVE_ARMY_DEFENSE_AND_RALLY',...result,errors,failures,actions};writeFileSync(resolve(out,'result.json'),JSON.stringify(result,null,2)+'\n');const v=p.video();await c.close();if(v)copyFileSync(await v.path(),resolve(out,'campaign.webm'));await b.close();console.log(JSON.stringify({status:result.status,wave:result.state?.wave,sim:result.state?.simulationSeconds,errors}));
