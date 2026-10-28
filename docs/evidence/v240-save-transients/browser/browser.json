@@ -1,0 +1,65 @@
+{
+  "source_commit": "a58abaf370376b8085ea0c852c40a60dba04fae5",
+  "mode": "AFTER_LOCAL_CONTROLLED_FIXTURE_NATIVE_SAVE_RELOAD_CONTINUE",
+  "checks": [
+    {
+      "name": "pending projectile and typed references survive native Save Reload Continue",
+      "pass": true,
+      "data": {
+        "projectiles": 5,
+        "zones": [
+          {
+            "kind": "boss",
+            "elapsed": 0.49990000000000007,
+            "done": false,
+            "source": 20
+          },
+          {
+            "kind": "smoke",
+            "elapsed": 3.299899999999999,
+            "done": true
+          }
+        ],
+        "savedProjectile": true,
+        "source": 20,
+        "target": 19,
+        "hp": 520
+      }
+    },
+    {
+      "name": "boss telegraph remaining timer and smoke survive",
+      "pass": true,
+      "data": [
+        {
+          "kind": "boss",
+          "elapsed": 0.49990000000000007,
+          "done": false,
+          "source": 20
+        },
+        {
+          "kind": "smoke",
+          "elapsed": 3.299899999999999,
+          "done": true
+        }
+      ]
+    },
+    {
+      "name": "restored attacks resolve and hero remains alive",
+      "pass": true,
+      "data": {
+        "hp": 481.6,
+        "savedProjectile": false,
+        "projectiles": 0,
+        "zones": [
+          {
+            "kind": "smoke",
+            "done": true,
+            "elapsed": 6.582800000000008
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "failures": []
+}

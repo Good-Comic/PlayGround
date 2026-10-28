@@ -3,3 +3,13 @@
 **中文：** 原版本424e246在Save/Load後清空飛行投射物與傷害／煙霧區域，最小測試確認投射物數由1變0。修復保存剩餘計時、位置與來源／目標引用，於實體重建後解析；舊存檔缺少欄位仍可讀。36項定向戰鬥、姿態、命令及暫態測試通過。真實瀏覽器待驗，不宣稱嚴格Save/Load確定性或自然戰役通過。
 
 **English:** Version424e246 clears in-flight projectiles and damage/smoke zones after Save/Load; the minimal test confirms projectile count drops from1to0. The fix preserves remaining timers, position and source/target references, resolving them after entity reconstruction. Legacy saves without these fields remain loadable.36directed combat, stance, order and transient tests pass. Actual browser verification is pending; strict Save/Load determinism and natural campaign acceptance are not claimed.
+
+## 真實瀏覽器與剩餘缺口 / Actual browser and remaining gaps
+
+**中文：** 精確來源 `a58abaf370376b8085ea0c852c40a60dba04fae5` 的34檔本地Artifact，真實Chromium原生Start／Pause／Save／Reload／Continue通過三項檢查：特定投射物與來源／目標保留、Boss及煙霧剩餘時間保留、恢復後攻擊實際結算。這是明確標示CONTROLLED_FIXTURE的戰鬥準備，不是自然戰役或公開網站。Console／Page／失敗請求皆0。第一次工具錯誤要求所有投射物總數等於1，但恢復後其他實體正常產生新投射物；失敗原始結果保留。修正後追蹤特定投射物，沒有修改遊戲來滿足測試。
+
+**English:** The exact34-file local artifact from `a58abaf370376b8085ea0c852c40a60dba04fae5` passed three actual Chromium checks through native Start/Pause/Save/Reload/Continue: preserved the identified projectile and typed references, retained Boss/smoke remaining times, and resolved attacks after resuming. Combat preparation is explicitly CONTROLLED_FIXTURE, not natural campaign or public-site acceptance. Console/Page/failed requests:0. The initial harness incorrectly required total projectile count1although other entities legitimately launched new attacks; original failure retained. Corrected checks track the identified projectile, without changing gameplay to satisfy the test.
+
+**中文：** 受影響固定步長原型4項測試通過，但輸出仍明示determinism_equal=false。10Hz正式更新10秒僅模擬5秒；主迴圈與Game.update各自截斷0.05秒。原型仍不安裝，導航與其他暫態仍需處理。本修復只完成投射物／區域的限定Save/Load一致性，不解決全部RNG、導航、時鐘或舊存檔已遺失的攻擊。
+
+**English:** Four affected fixed-step prototype tests pass, but explicitly report determinism_equal=false. Ten seconds at10Hz through production updates advances only5simulation seconds; main loop and Game.update independently clip to0.05seconds. The prototype remains uninstalled; navigation and other transients still need work. This fix provides scoped projectile/zone Save/Load consistency, not complete RNG/navigation/clock determinism or recovery of attacks already omitted in old saves.

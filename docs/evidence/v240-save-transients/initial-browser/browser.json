@@ -1,0 +1,36 @@
+{
+  "source_commit": "a58abaf370376b8085ea0c852c40a60dba04fae5",
+  "mode": "AFTER_LOCAL_CONTROLLED_FIXTURE_NATIVE_SAVE_RELOAD_CONTINUE",
+  "checks": [
+    {
+      "name": "pending projectile and typed references survive native Save Reload Continue",
+      "pass": false,
+      "data": {
+        "projectiles": 5,
+        "zones": [
+          {
+            "kind": "boss",
+            "elapsed": 0.5166000000000001,
+            "done": false,
+            "source": 20
+          },
+          {
+            "kind": "smoke",
+            "elapsed": 3.3165999999999993,
+            "done": true
+          }
+        ],
+        "source": 20,
+        "target": 19,
+        "hp": 520
+      }
+    },
+    {
+      "name": "browser execution",
+      "pass": false,
+      "error": "pending projectile and typed references survive native Save Reload Continue"
+    }
+  ],
+  "errors": [],
+  "failures": []
+}
