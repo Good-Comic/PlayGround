@@ -47,3 +47,19 @@
 **繁體中文：** V5.9 正以新正常開局測試：1×即時、手動經濟加遊戲原有的軍事管家。軍事管家由原生 Pause 選項啟用，仍照遊戲規則付費與受人口限制；不是注入單位。此為新的策略配置，與舊的關閉管家樣本分組，不回溯更改失敗。尚未採用戰術暫停輔助模式；完整十波與自然 New Game+ 仍等實際結果。
 
 **English:** V5.9 is a fresh normal-start test at1×real time with manual economy and the game's existing war steward. The steward is enabled through native Pause options, pays normal costs and obeys population limits; it is not unit injection. Record this as a distinct policy configuration rather than relabelling previous steward-off failures. Tactical pause assistance has not been adopted; full ten-wave and natural New Game+ acceptance still require observed results.
+
+
+## 最新安全接續點 / Latest safe resume point
+
+**中文：** V5.7、V5.8及V5.9於第三波自然戰敗，不能推論 Normal 無法通關。V5.10僅完成30.53秒開局檢查：8村民、第二時代、7軍事人口、兩間初始房屋、射箭場施工中，木材212.01。八項策略測試通過。完整十波及 New Game+ 尚未通過。遊戲來源仍為 `0f85357303bf2bca809e6ff32b490769e1d3f836`，本輪只修改自動玩家與證據。
+
+**English:** V5.7, V5.8 and V5.9 naturally lost at wave three; this does not establish that Normal is unwinnable. V5.10 completed only a30.53-second opening check:8workers, age2,7military, two initial houses, a range under construction and212.01wood. Eight policy tests passed. Full ten-wave and New Game+ acceptance remain incomplete. The tested game source remains `0f85357303bf2bca809e6ff32b490769e1d3f836`; this round changed only the automated player and evidence.
+
+**中文：** 下一步由 `docs/evidence/v240-v55-economy/v510/save-snapshot.json` 繼續1× Normal，原生戰爭管家開啟。快照 SHA256：`fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f`。本次因執行窗口結束保存；沒有正在執行的戰役。保留低FPS、Save/Load非確定性、性能FAIL與硬體待測。跨對話傳送不可用，不宣稱送達。
+
+**English:** Next, continue `docs/evidence/v240-v55-economy/v510/save-snapshot.json` at1× Normal with the native army steward enabled. Snapshot SHA256: `fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f`. This checkpoint ends the execution window; no campaign remains active. Low-FPS, Save/Load nondeterminism, performance FAIL and hardware-pending issues remain. Cross-thread delivery is unavailable and is not claimed.
+
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+
+[錄影 / Recording](v510/campaign.mp4) · [實際錄影擷取 / Recorded frame](v510/recorded-final-frame.png) · [開局判定 / Opening receipt](v510/verification.json)

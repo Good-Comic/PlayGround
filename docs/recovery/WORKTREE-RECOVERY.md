@@ -5,9 +5,9 @@
 本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。
 This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.
 
-快照 ID / Snapshot ID: 4e35dc5b00b3b57a6bf0ea9abea02261cf9b00a819545bb0e50bd80b70df9435
-擷取時間 UTC / Captured UTC: 2026-10-28T06:07:58.582173+00:00 · 觸發 / Trigger: SLICE_COMPLETE
-來源 / Collector source: `1f13ff3f349ddc2a7104c417a1a9eea0b5261673` · LOCAL_INVENTORIED_NOT_A_PUSH
+快照 ID / Snapshot ID: caca854d3a8fd8af3ed53dd4700f86dfc5bbf2320bf15498f2298c8c278238d0
+擷取時間 UTC / Captured UTC: 2026-10-28T06:50:36.931258+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
+來源 / Collector source: `14154b63ef55b5d4ce35bfa60fc4133b2d965c45` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 | 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ This manifest records local Git state and actual remote queries at capture time;
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 1f13ff3f349ddc2a7104c417a1a9eea0b5261673 | 1f13ff3f349ddc2a7104c417a1a9eea0b5261673 | REMOTE_SAVED | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 14154b63ef55b5d4ce35bfa60fc4133b2d965c45 | 14154b63ef55b5d4ce35bfa60fc4133b2d965c45 | REMOTE_SAVED | True |
 
 ## work
 
@@ -344,27 +344,83 @@ This manifest records local Git state and actual remote queries at capture time;
   "changed_files": [
     {
       "status": " M",
-      "path": "docs/handoff/ACTIVE-TASK.json"
-    },
-    {
-      "status": "??",
       "path": "docs/evidence/v240-v55-economy/REPORT.md"
     },
     {
-      "status": "??",
-      "path": "docs/evidence/v240-v55-economy/node.log.txt"
+      "status": " M",
+      "path": "docs/handoff/ACTIVE-TASK.json"
+    },
+    {
+      "status": " M",
+      "path": "docs/handoff/HANDOFF.md"
+    },
+    {
+      "status": " M",
+      "path": "docs/handoff/NEXT-TASKS.json"
+    },
+    {
+      "status": " M",
+      "path": "docs/recovery/task-registry.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v55/events.jsonl"
+      "path": "docs/evidence/v240-v55-economy/policy-final.log.txt"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v55/result.json"
+      "path": "docs/evidence/v240-v55-economy/v510/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v55/save-snapshot.json"
+      "path": "docs/evidence/v240-v55-economy/v510/events.jsonl"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v510/recorded-final-frame.png"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v510/result.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v510/save-snapshot.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v510/verification.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v55/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v56/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v57/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v58/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v59/campaign.mp4"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v59/events.jsonl"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v59/result.json"
+    },
+    {
+      "status": "??",
+      "path": "docs/evidence/v240-v55-economy/v59/save-snapshot.json"
     }
   ],
   "last_validation": [
@@ -387,6 +443,16 @@ This manifest records local Git state and actual remote queries at capture time;
       "storage": "REMOTE_SAVED",
       "sha256": "d6744df1942bf2d5368c10be5376880761bd353552ed019f00d736f9878b21f9",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
+    },
+    {
+      "name": "V5.10限定開局 / Scoped opening",
+      "path": "docs/evidence/v240-v55-economy/v510/verification.json",
+      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+      "result": "PASS opening only; full campaign NOT_PASSED",
+      "exists": true,
+      "storage": "LOCAL_ONLY_OR_MISSING",
+      "sha256": "40605f48543222b3dfae414d7b79c6c4feb79d929d2eddd76d0d3e86b701d7d8",
+      "resource_freshness": "MATCHES_WORKING_RESOURCES"
     }
   ],
   "blockers": [
@@ -395,10 +461,8 @@ This manifest records local Git state and actual remote queries at capture time;
     "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
   ],
   "next_steps": [
-    "優先修自動玩家食物分配、波次經濟成長、補兵／科技預算，不改 Normal / Prioritize food allocation, economic growth and reinforcement/technology budgeting without changing Normal",
-    "將原生撤退修正納入下一次自然戰役；目前只通過限定輸入驗證 / Exercise the native withdrawal fix in the next natural campaign; only input-level verification passed",
-    "V5.4最終快照為戰敗，不可當存活狀態；若使用V5.3須揭露修復前來源及中斷 / V5.4 final save is defeated; disclose pre-fix source/interruption if using V5.3",
-    "實際十波勝利後才驗證自然 New Game+，不可用 Fixture替代 / Verify natural New Game+ only after actual ten-wave victory, never substitute fixtures"
+    "由 v510/save-snapshot.json 繼續1× Normal，保持戰爭管家啟用；不得重跑全部歷史測試 / Continue v510/save-snapshot.json at1× Normal with native army steward enabled; do not repeat all history",
+    "SHA256 fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f; only actual victory permits natural New Game+ acceptance"
   ]
 }
 ```

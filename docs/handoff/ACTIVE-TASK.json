@@ -7,12 +7,12 @@
   "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-  "latest_pushed_commit": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+  "latest_pushed_commit": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
   "application_source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
   "completed": [
-    "依波次擴經濟、提高食物工比例、放寬過早第三時代保留額 / Wave-scaled economy, food reallocation and less premature age3 reserves",
-    "4項定向策略測試通過；V5.5第三波保存時村民0仍FAIL /4directed policy tests passed; V5.5 worker survival still FAIL at wave3 checkpoint",
-    "V5.6 新正常開局正在進行，已使用原生弓兵、Guard、Rally及攻城槌Attack-Move / V5.6 fresh normal run active with native archers, Guard, Rally and siege Attack-Move"
+    "修正自動玩家的勞動配額、護衛、原生攻城目標與房屋預算；未改 Normal 規則 / Corrected player labor quotas, escorts, native siege targeting and housing budget; Normal rules unchanged",
+    "8項策略測試 PASS；V5.7–V5.9第三波自然戰敗 /8 policy tests PASS; V5.7–V5.9 natural defeat at wave3",
+    "V5.10限定開局：第二時代、8村民、7軍事人口、兩房屋及施工中射箭場 / V5.10 scoped opening: age2,8workers,7military, two houses and a range under construction"
   ],
   "uncommitted": [],
   "unpushed": [],
@@ -28,11 +28,17 @@
       "path": "docs/evidence/v240-v5-playability/REPORT.md",
       "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
       "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED"
+    },
+    {
+      "name": "V5.10限定開局 / Scoped opening",
+      "path": "docs/evidence/v240-v55-economy/v510/verification.json",
+      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+      "result": "PASS opening only; full campaign NOT_PASSED"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-v5-playability/REPORT.md",
-    "docs/evidence/v240-resource-selection/REPORT.md"
+    "docs/evidence/v240-v55-economy/REPORT.md",
+    "docs/evidence/v240-v55-economy/v510/verification.json"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,22 +49,22 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "V5.6 程序仍活躍，勿啟動重複戰役；追蹤完整結果 / V5.6 process active; do not duplicate; follow full outcome",
-    "若實際十波勝利，工具才執行自然 New Game+；否則保留失敗 / Only actual ten-wave victory triggers natural New Game+; otherwise preserve failures"
+    "由 v510/save-snapshot.json 繼續1× Normal，保持戰爭管家啟用；不得重跑全部歷史測試 / Continue v510/save-snapshot.json at1× Normal with native army steward enabled; do not repeat all history",
+    "SHA256 fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f; only actual victory permits natural New Game+ acceptance"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "IN_PROGRESS",
+  "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-  "updated_at": "2026-10-28T06:07:57.947162+00:00",
-  "stop_reason": null,
+  "updated_at": "2026-10-28T06:50:36.885169+00:00",
+  "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-V55-ECONOMY",
     "execution": "codex-v55-resume-20261028",
     "global_version": 176,
-    "status": "OWNED"
+    "status": "RELEASE_PENDING_AFTER_PUSH"
   }
 }

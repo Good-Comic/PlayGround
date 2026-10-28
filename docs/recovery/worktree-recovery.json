@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-28T06:07:58.582173+00:00",
-  "trigger": "SLICE_COMPLETE",
-  "collector_commit": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+  "captured_at_utc": "2026-10-28T06:50:36.931258+00:00",
+  "trigger": "FINAL_CHECKPOINT",
+  "collector_commit": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-28T06:07:58.582173+00:00"
+    "queried_at": "2026-10-28T06:50:36.931258+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -63,7 +63,7 @@
     "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
     "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
     "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-    "codex/riftwatch-v240-game-first": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+    "codex/riftwatch-v240-game-first": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -183,8 +183,8 @@
     },
     {
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
-      "remote_head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+      "head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
+      "remote_head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -524,7 +524,7 @@
     {
       "path": "/workspace/riftwatch-v240",
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+      "head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
       "locked": false,
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
@@ -547,6 +547,16 @@
           "storage": "REMOTE_SAVED",
           "sha256": "d6744df1942bf2d5368c10be5376880761bd353552ed019f00d736f9878b21f9",
           "resource_freshness": "MATCHES_WORKING_RESOURCES"
+        },
+        {
+          "name": "V5.10\u9650\u5b9a\u958b\u5c40 / Scoped opening",
+          "path": "docs/evidence/v240-v55-economy/v510/verification.json",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "result": "PASS opening only; full campaign NOT_PASSED",
+          "exists": true,
+          "storage": "LOCAL_ONLY_OR_MISSING",
+          "sha256": "40605f48543222b3dfae414d7b79c6c4feb79d929d2eddd76d0d3e86b701d7d8",
+          "resource_freshness": "MATCHES_WORKING_RESOURCES"
         }
       ],
       "blockers": [
@@ -555,38 +565,92 @@
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "\u512a\u5148\u4fee\u81ea\u52d5\u73a9\u5bb6\u98df\u7269\u5206\u914d\u3001\u6ce2\u6b21\u7d93\u6fdf\u6210\u9577\u3001\u88dc\u5175\uff0f\u79d1\u6280\u9810\u7b97\uff0c\u4e0d\u6539 Normal / Prioritize food allocation, economic growth and reinforcement/technology budgeting without changing Normal",
-        "\u5c07\u539f\u751f\u64a4\u9000\u4fee\u6b63\u7d0d\u5165\u4e0b\u4e00\u6b21\u81ea\u7136\u6230\u5f79\uff1b\u76ee\u524d\u53ea\u901a\u904e\u9650\u5b9a\u8f38\u5165\u9a57\u8b49 / Exercise the native withdrawal fix in the next natural campaign; only input-level verification passed",
-        "V5.4\u6700\u7d42\u5feb\u7167\u70ba\u6230\u6557\uff0c\u4e0d\u53ef\u7576\u5b58\u6d3b\u72c0\u614b\uff1b\u82e5\u4f7f\u7528V5.3\u9808\u63ed\u9732\u4fee\u5fa9\u524d\u4f86\u6e90\u53ca\u4e2d\u65b7 / V5.4 final save is defeated; disclose pre-fix source/interruption if using V5.3",
-        "\u5be6\u969b\u5341\u6ce2\u52dd\u5229\u5f8c\u624d\u9a57\u8b49\u81ea\u7136 New Game+\uff0c\u4e0d\u53ef\u7528 Fixture\u66ff\u4ee3 / Verify natural New Game+ only after actual ten-wave victory, never substitute fixtures"
+        "\u7531 v510/save-snapshot.json \u7e7c\u7e8c1\u00d7 Normal\uff0c\u4fdd\u6301\u6230\u722d\u7ba1\u5bb6\u555f\u7528\uff1b\u4e0d\u5f97\u91cd\u8dd1\u5168\u90e8\u6b77\u53f2\u6e2c\u8a66 / Continue v510/save-snapshot.json at1\u00d7 Normal with native army steward enabled; do not repeat all history",
+        "SHA256 fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f; only actual victory permits natural New Game+ acceptance"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+      "remote_head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
       "unpushed_commits": [],
       "changed_files": [
+        {
+          "status": " M",
+          "path": "docs/evidence/v240-v55-economy/REPORT.md"
+        },
         {
           "status": " M",
           "path": "docs/handoff/ACTIVE-TASK.json"
         },
         {
-          "status": "??",
-          "path": "docs/evidence/v240-v55-economy/REPORT.md"
+          "status": " M",
+          "path": "docs/handoff/HANDOFF.md"
+        },
+        {
+          "status": " M",
+          "path": "docs/handoff/NEXT-TASKS.json"
+        },
+        {
+          "status": " M",
+          "path": "docs/recovery/task-registry.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/node.log.txt"
+          "path": "docs/evidence/v240-v55-economy/policy-final.log.txt"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v55/events.jsonl"
+          "path": "docs/evidence/v240-v55-economy/v510/campaign.mp4"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v55/result.json"
+          "path": "docs/evidence/v240-v55-economy/v510/events.jsonl"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v55/save-snapshot.json"
+          "path": "docs/evidence/v240-v55-economy/v510/recorded-final-frame.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v510/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v510/save-snapshot.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v510/verification.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v55/campaign.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v56/campaign.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v57/campaign.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v58/campaign.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v59/campaign.mp4"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v59/events.jsonl"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v59/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/evidence/v240-v55-economy/v59/save-snapshot.json"
         }
       ],
       "dirty": true,
@@ -601,10 +665,10 @@
         "remote_head",
         "changed_files"
       ],
-      "previous_head": "8c012e3d856381819990ff50bcf3424504a4af2c",
-      "actual_head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673"
+      "previous_head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
+      "actual_head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "4e35dc5b00b3b57a6bf0ea9abea02261cf9b00a819545bb0e50bd80b70df9435"
+  "snapshot_id": "caca854d3a8fd8af3ed53dd4700f86dfc5bbf2320bf15498f2298c8c278238d0"
 }

@@ -353,6 +353,12 @@
           "path": "docs/evidence/v240-v5-playability/REPORT.md",
           "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
           "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED"
+        },
+        {
+          "name": "V5.10限定開局 / Scoped opening",
+          "path": "docs/evidence/v240-v55-economy/v510/verification.json",
+          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
+          "result": "PASS opening only; full campaign NOT_PASSED"
         }
       ],
       "blockers": [
@@ -361,10 +367,8 @@
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "優先修自動玩家食物分配、波次經濟成長、補兵／科技預算，不改 Normal / Prioritize food allocation, economic growth and reinforcement/technology budgeting without changing Normal",
-        "將原生撤退修正納入下一次自然戰役；目前只通過限定輸入驗證 / Exercise the native withdrawal fix in the next natural campaign; only input-level verification passed",
-        "V5.4最終快照為戰敗，不可當存活狀態；若使用V5.3須揭露修復前來源及中斷 / V5.4 final save is defeated; disclose pre-fix source/interruption if using V5.3",
-        "實際十波勝利後才驗證自然 New Game+，不可用 Fixture替代 / Verify natural New Game+ only after actual ten-wave victory, never substitute fixtures"
+        "由 v510/save-snapshot.json 繼續1× Normal，保持戰爭管家啟用；不得重跑全部歷史測試 / Continue v510/save-snapshot.json at1× Normal with native army steward enabled; do not repeat all history",
+        "SHA256 fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f; only actual victory permits natural New Game+ acceptance"
       ]
     }
   }
