@@ -165,3 +165,9 @@ Committed current evidence under `docs/evidence/phase-a-v3/`: game/crowd/narrow/
 - AFTER_DEPLOY_LIVE: **DEPLOYMENT_BLOCKED / NOT_TESTED**. Final read-only issue17 metadata still points to914016d. No deployment action was taken.
 
 See OMGITHUB-DEPLOYMENT.md. A documented Issue `branch:` directive can select a starting branch for a new OpenCode workflow, not prove direct mirroring into issue17's existing Preview. Starting that run or using Continue/Publish requires separate user authorization and can create/change a commit. No deploy-only direct update mechanism was verified. Phase B remains BLOCKED.
+
+## v2.4.0 continuous gameplay milestone
+
+Source chain: map0bfbecf/da97f86; difficulty b0be317; NG+5f63a93; stable commands dc48b7c; compact UI815557d; artifact identity276b460; victory recovery db0512d; truthful steward labels a5a538d. All full source SHAs are in the corresponding source-pinned evidence reports. Map132Node/480paths/8native checks pass; campaign95 affected regression checks pass; separate UI/Save/report targeted cohorts and four-language checks pass. NG+ proof explicitly uses a controlled victory fixture.
+
+Natural ten-wave milestone is incomplete. V1 lost5, V2 harness timeout4, V3 lost4; all failures retained. Prior strategies had no actual technology progression because the tool required600 food instead of actual age2 cost200/100. V4 fixes player policy only and has genuine native age2 progression. Do not mark full campaign or natural NG+ PASS without final evidence. Normal and the official simulation loop are unchanged. Original material performance regression, simulation, deterministic SaveLoad, Rift and hardware gaps persist. v234 remains unpublished; v2.4 remains next milestone.

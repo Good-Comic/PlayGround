@@ -53,3 +53,7 @@ Current release rule: **Phase A core correctness + measured current-product-scal
 Do not equate count of features with playability. Rendering/backend limitations, synthetic scenes and accelerated simulation are always labelled. Candidate deployment plan remains separate authorization; no Issue/workflow/Preview write this round. Local exact-commit candidates may be served read-only, with source hashes and fresh disposable saves; never labelled DEPLOYED_VERIFIED.
 
 Current evidence and actual source mapping: [STRATEGY-V2-EXECUTION.md](STRATEGY-V2-EXECUTION.md). Full ten-wave peak/stability remains NOT_TESTED, product budget provisional,500/1000 historical FAIL unchanged. Both gameplay branches are unmerged; QA integration is not a gameplay release. Known A-BUDGET-02 undefined cap getters/global queue reservations and E1-BOSS-02 missing M reinforcement ID are open.
+
+## Continuous Milestone execution update
+
+Phase1 versioned Seed terrain has bounded local route/native proof. Phase2 natural ten-wave campaign remains incomplete; preserve failed player policies and use actual technology costs/worker protection, no forced resources or waves. Conservative Phase3 difficulty and Phase4 optional three-card NG+ have independent local feature gates; their implementation does not complete campaign balance or natural NG+ end-to-end acceptance. Continue gameplay QA rather than pure art. No public release/integration promotion.

@@ -1,0 +1,61 @@
+{
+  "source_commit": "276b46040b782216c9b39d31d89107f009bb6518",
+  "mode": "NATIVE_UI_NO_STATE_INJECTION",
+  "checks": [
+    {
+      "name": "verified artifact SHA and visible ID agree",
+      "pass": true,
+      "detail": {
+        "build": {
+          "id": "riftwatch-v240-gameplay-experimental",
+          "commit": "276b46040b782216c9b39d31d89107f009bb6518",
+          "status": "PLAYTEST-EXPERIMENTAL",
+          "builtAt": "2026-10-28T01:00:59.320223+00:00",
+          "resourceVerification": "SHA256_MATCH_34_FILES"
+        },
+        "footer": "riftwatch-v240-gameplay-experimental",
+        "root": "riftwatch-v240-gameplay-experimental"
+      }
+    },
+    {
+      "name": "native downloaded Bug JSON has actual ID SHA difficulty and cycle",
+      "pass": true,
+      "detail": {
+        "build": {
+          "id": "riftwatch-v240-gameplay-experimental",
+          "commit": "276b46040b782216c9b39d31d89107f009bb6518",
+          "status": "PLAYTEST-EXPERIMENTAL",
+          "builtAt": "2026-10-28T01:00:59.320223+00:00",
+          "resourceVerification": "SHA256_MATCH_34_FILES"
+        },
+        "run": {
+          "seed": 3490075123,
+          "mapGenerationVersion": 2,
+          "difficulty": "hard",
+          "cycle": 1,
+          "inheritedBoons": [],
+          "civilization": "TEU",
+          "map": "ash",
+          "wave": 1,
+          "phase": "prep",
+          "simulationSeconds": 0.8833000000000003
+        }
+      }
+    },
+    {
+      "name": "native SaveReloadContinue retains hard cycle1 and verified identity",
+      "pass": true
+    },
+    {
+      "name": "no browser errors or failed resources",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failed": []
+      }
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "pass": true
+}

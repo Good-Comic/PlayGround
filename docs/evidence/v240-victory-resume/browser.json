@@ -1,0 +1,134 @@
+{
+  "source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
+  "stage": "AFTER_LOCAL",
+  "mode": "CONTROLLED_COMPLETED_VICTORY_FIXTURE_THEN_NATIVE_UI",
+  "naturalTenWaveVictory": false,
+  "checks": [
+    {
+      "name": "exact source34files",
+      "pass": true
+    },
+    {
+      "name": "ordinary incomplete run cannot enter NG+",
+      "pass": true
+    },
+    {
+      "name": "native ReloadContinue recovers persisted completed victory without reinjecting fixture",
+      "pass": true
+    },
+    {
+      "name": "victory presents explicit inheritance/reset choice",
+      "pass": true
+    },
+    {
+      "name": "fourth card disabled at three selections",
+      "pass": true
+    },
+    {
+      "name": "unselecting restores remaining options",
+      "pass": true
+    },
+    {
+      "name": "native NextCycle resets economy/technology and applies only chosen three",
+      "pass": true,
+      "detail": {
+        "cycle": 2,
+        "phase": "prep",
+        "age": 1,
+        "gold": 120,
+        "boons": [
+          "farwatch",
+          "light_axles",
+          "patrol_depot"
+        ],
+        "inherited": [
+          "farwatch",
+          "light_axles",
+          "patrol_depot"
+        ],
+        "modifier": {
+          "id": "flank",
+          "count": 1,
+          "at": 25,
+          "gate": 2
+        },
+        "difficulty": "hard",
+        "buildings": 6,
+        "kills": 0
+      }
+    },
+    {
+      "name": "native SaveReloadContinue retains cycle, chosen cards and visible modifier",
+      "pass": true
+    },
+    {
+      "name": "real loop spawns the announced flank at25seconds",
+      "pass": true,
+      "detail": {
+        "clock": 26.04660000000007,
+        "group": {
+          "at": 25,
+          "gate": 2,
+          "units": {
+            "light_cavalry": 1
+          },
+          "cycleFlank": true,
+          "spawned": true
+        },
+        "enemies": [
+          {
+            "type": "militia",
+            "x": 28.006829584235412,
+            "y": 18.209399370772264
+          },
+          {
+            "type": "militia",
+            "x": 27.508773333172478,
+            "y": 18.117496594425806
+          },
+          {
+            "type": "militia",
+            "x": 27.006983083980327,
+            "y": 18.18321730452066
+          },
+          {
+            "type": "militia",
+            "x": 28.07200551598141,
+            "y": 18.770979041432064
+          },
+          {
+            "type": "archer",
+            "x": 26.708913346000273,
+            "y": 15.009320173294483
+          },
+          {
+            "type": "archer",
+            "x": 27.629798276337503,
+            "y": 14.72924858081513
+          },
+          {
+            "type": "ram",
+            "x": 26.353583219238814,
+            "y": 18.29783666548331
+          },
+          {
+            "type": "light_cavalry",
+            "x": 24.670742300166616,
+            "y": 43.8337135921165
+          }
+        ]
+      }
+    },
+    {
+      "name": "zero page console network failures",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failures": []
+      }
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "pass": true
+}

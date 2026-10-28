@@ -50,3 +50,14 @@ The old p0.2 narrow PASS was withdrawn after detecting an outer bypass. The corr
 Performance recovery: legal swept-clear direct routes, reusable crowd buckets, static infantry/shadow/spark rasters and terrain-lighting cache implemented; negative dt/radius fixed. Current39-test log includes actual forced A* fairness and speed/collision-preserving1000 direct-route checks. Full root-cause audit and unchanged failed gates: PERFORMANCE-RECOVERY.md. No blanket release approval.
 
 Current v2 evidence overrides old development embargo but not old measured FAILs: STRATEGY-V2-EXECUTION.md. All original A/B/C/D/E groups remain tracked in GAMEPLAY-ROADMAP.md. Full natural ten-wave peak, release budget, candidate remote deployment and remaining GDD content remain explicitly unverified.
+
+## Continuous Milestone v2.4.0 — bounded local status
+
+- MAP-240-GEN2: IMPLEMENTED / LOCAL_VERIFIED: Seed-varying water/camps/resources, base/invasion crossings, legacy generator1 save compatibility.40 maps/480 routes and real scout river crossing; not exhaustive all Seeds.
+- DIFF-240-PRESETS: IMPLEMENTED / LOCAL_VERIFIED functional only. Approved conservative axes: Normal identity, ordinary force80/120percent and prep125/80percent; base/Boss definitions unchanged. Difficulty balance NOT_TESTED.
+- NGP-240-INHERIT3: IMPLEMENTED / LOCAL_VERIFIED controlled victory. Optional max3 owned cards, new deterministic frontier, economy/research reset, visible25s opposing-gate flank and cycle save state. Natural campaign→NG+ NOT_TESTED.
+- SAVE-240-VICTORY: LOCAL_VERIFIED controlled completed-run persistence/native Continue; strict simulation determinism remains FAIL.
+- UI-240-COMMAND-STABILITY: LOCAL_VERIFIED original node/focus preservation during unrelated hero cooldown. Compact720p/130percent NG+ controls native-scrollable in four languages.
+- QA-240-NATURAL-CAMPAIGN: NOT_PASSED; V1 wave5 defeat, V2 harness-incomplete wave4, V3 wave4 defeat. V1–V3 did not develop technology due a policy threshold error; not evidence that Normal is impossible. V4 reads actual costs and uses native worker micro. See handoff for current state.
+
+Evidence indexes: docs/evidence/v240-map-generation, v240-difficulty, v240-new-game-plus, v240-command-stability, v240-victory-resume, v240-build-identity, v240-campaign-natural. No Gameplay Integration, public-release or hardware acceptance implied.
