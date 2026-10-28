@@ -28,3 +28,20 @@ test('archer and cavalry use independent assets geometry and equipment scales', 
   assert.notEqual(cavalry.anchor.x, archer.anchor.x);
   assert.equal(Object.keys(archer.directions).length, 8); assert.equal(Object.keys(cavalry.states).length, 5);
 });
+
+test('repeating crossbow has independent four-frame directional actions within sheet bounds', () => {
+  const atlas = UNIT_SPRITE_ATLASES.chu_ko_nu;
+  assert.notEqual(atlas.src, UNIT_SPRITE_ATLASES.archer.src);
+  for (const direction of Object.keys(atlas.directions)) {
+    for (const state of Object.keys(atlas.states)) {
+      assert.equal(atlas.states[state].frames, 4);
+      for (const progress of [0, .26, .51, .99]) {
+        const f = atlasFrame(atlas, direction, state, 0, progress);
+        assert.ok(f.sx >= 0 && f.sx + f.sw <= 2560);
+        assert.ok(f.sy >= 0 && f.sy + f.sh <= 400);
+      }
+    }
+  }
+  assert.equal(atlas.states.death.loop, false);
+  assert.equal(atlasFrame(atlas, 'E', 'death', 99).frame, 3);
+});
