@@ -8,7 +8,7 @@ export function resourcePriority(counts,resources) {
  if(counts.food<2)return 'food';
  return resources.food<200?'food':resources.wood<180?'wood':'gold';
 }
-export function createV5Player({page:p,record}){
+export function createV5Player({page:p,record,build}){
  async function pan(x,y){const r=await p.locator('#minimap').boundingBox();await p.mouse.click(r.x+x/50*r.width,r.y+y/50*r.height);await p.waitForTimeout(400)}
  async function point(id,resource=false){return p.evaluate(({id,resource})=>{const g=ageOfAsh.game,e=(resource?g.world.resources:[...g.units,...g.buildings]).find(e=>e.id===id&&e.alive);if(!e)return null;const q=g.screenPos(e.x+(e.w||0)/2,e.y+(e.h||0)/2),offsets=e.w?[-22,-45,-65,-90]:e.resource?[-10,-20,0]:[-18,-10,-25];for(const dy of offsets)for(const dx of [0,-9,9]){const x=q.x+dx*g.camera.zoom,y=q.y+dy*g.camera.zoom;if(x>270&&x<1210&&y>135&&y<610&&g.pickAt(x,y)===e)return{x,y,wx:e.x+(e.w||0)/2,wy:e.y+(e.h||0)/2}}return null},{id,resource})}
  async function select(id){let q=await point(id);if(!q){const e=await p.evaluate(id=>{const g=ageOfAsh.game,e=[...g.units,...g.buildings].find(e=>e.id===id&&e.alive);return e?{x:e.x+(e.w||0)/2,y:e.y+(e.h||0)/2}:null},id);if(!e)return false;await pan(e.x,e.y);q=await point(id)}if(!q){record('action-skipped',{command:'select',id,reason:'NO_NATIVE_PICK_POINT'});return false}await p.mouse.click(q.x,q.y);return p.evaluate(id=>ageOfAsh.game.selection.some(u=>u.id===id),id)}
@@ -27,8 +27,14 @@ export function createV5Player({page:p,record}){
   const info=await p.evaluate(()=>{const g=ageOfAsh.game,tc=g.getTownCenter();return{workers:g.economicPopulation,queued:tc?.queue.filter(q=>q.type==='villager').length||0,food:g.resources.food,cost:g.unitCost('villager').food,coreAlive:!!tc,core:tc?.id}});
   if(recoveryPriority(info))await train(info.core,'villager');
   for(const worker of s.units.filter(u=>u.team==='player'&&u.type==='villager'))await assign(worker);
+  if(info.workers>=4&&s.resources.wood>=60&&s.buildings.filter(b=>b.alive&&b.type==='house').length<8)await build('house');
   if(info.workers>=4){const building=await p.evaluate(()=>{const g=ageOfAsh.game;return g.buildings.find(b=>b.alive&&b.type==='barracks'&&b.queue.length<2)?.id});if(building&&s.resources.food>100)await train(building,'militia')}
   const tc=await p.evaluate(()=>{const g=ageOfAsh.game,b=g.getTownCenter();return b?{id:b.id,x:b.x+2,y:b.y+2}:null});if(tc){await pan(tc.x,tc.y);
+   const production=s.buildings.find(b=>b.alive&&b.type==='barracks');if(production&&await select(production.id)){
+    const goal=await p.evaluate(core=>{const g=ageOfAsh.game;for(const[x,y]of [[core.x-3,core.y+1],[core.x+3,core.y+1],[core.x-2,core.y-3]]){const q=g.screenPos(x,y);if(q.x>270&&q.x<1210&&q.y>135&&q.y<610&&!g.pickAt(q.x,q.y))return{...q,wx:x,wy:y}}return null},tc);
+    if(goal){await p.mouse.click(goal.x,goal.y,{button:'right'});const actual=await p.evaluate(id=>ageOfAsh.game.buildings.find(b=>b.id===id)?.rally,production.id);record(actual?'action':'action-skipped',{command:'verified-rally',building:production.id,actual})}
+   }
+
    const guard=await p.evaluate(()=>ageOfAsh.game.units.filter(u=>u.alive&&u.team==='player'&&u.type!=='villager'&&u.tacticalOrder?.type!=='guard').map(u=>u.id));
    for(const id of guard.slice(0,8)){if(!await select(id))continue;await p.keyboard.press('g');const q=await point(tc.id);if(q&&await p.evaluate(()=>ageOfAsh.game.orderMode==='guard')){await p.mouse.click(q.x,q.y);const accepted=await p.evaluate(id=>ageOfAsh.game.units.find(u=>u.id===id)?.tacticalOrder?.type==='guard',id);record(accepted?'action':'action-skipped',{command:'verified-guard-core',id})}}
   }

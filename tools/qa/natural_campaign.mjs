@@ -48,7 +48,7 @@ async function economy(s) {
   if(pos.x>270&&pos.x<1210&&pos.y>130&&pos.y<620){await p.mouse.click(pos.x,pos.y,{button:'right'});record('action',{command:danger?'withdraw-threatened-worker':'assign-idle-worker',worker:worker.id,target:{x:target.x,y:target.y}})}
  }
 }
-const adaptive=createV5Player({page:p,record});
+const adaptive=createV5Player({page:p,record,build});
 let result={status:'INCOMPLETE'},naturalVictory=false;
 try{
  await p.goto(url,{waitUntil:'networkidle'});await p.waitForFunction(()=>ageOfAsh?.playtestBuild?.resourceVerification?.startsWith('SHA256_MATCH_'));if(await p.evaluate(()=>ageOfAsh.playtestBuild.commit)!==commit)throw Error('SOURCE_MISMATCH');
@@ -65,7 +65,8 @@ try{
  // Use a supported user-facing speed; report simulation/wall discrepancy rather
  // than assume the game's known low-FPS cap is semantically correct.
  await p.locator('#btn-settings').click();await p.locator('#settings-speed').selectOption('1.5');await p.locator('#btn-settings-close').click();await p.locator('#btn-start').click();record('action',{command:'Start',mode:'standard',speed:1.5,policy});
- if(['v3','v4','v5'].includes(policy)){await p.locator('#btn-pause').click();await p.locator('#auto-mil').uncheck();await p.locator('#btn-resume').click();record('action',{command:'disable-auto-military-manual-ranged-production'})}
+ if(policy.startsWith('v5.')){await p.locator('#btn-pause').click();await p.locator('#auto-mil').uncheck();await p.locator('#auto-econ').uncheck();await p.locator('#btn-resume').click();record('action',{command:'manual-economy-and-army'})}
+ else if(['v3','v4','v5'].includes(policy)){await p.locator('#btn-pause').click();await p.locator('#auto-mil').uncheck();await p.locator('#btn-resume').click();record('action',{command:'disable-auto-military-manual-ranged-production'})}
  }
  let lastPhase='',lastShot=0,lastPolicy=0,lastSave=0;const gameStart=Date.now();
  while((Date.now()-gameStart)/1000<seconds&&!existsSync(resolve(out,'STOP_REQUESTED'))){
