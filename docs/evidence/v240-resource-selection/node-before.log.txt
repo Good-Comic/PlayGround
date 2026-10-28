@@ -1,0 +1,37 @@
+✖ resource selection renders remaining amount instead of reading undefined unit combat data (19.066378ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 158.471323
+
+✖ failing tests:
+
+test at tests/resource-selection.test.mjs:5:1
+✖ resource selection renders remaining amount instead of reading undefined unit combat data (19.066378ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "Cannot read properties of undefined (reading 'attack')"
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240/tests/resource-selection.test.mjs:9:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: Cannot read properties of undefined (reading 'attack')
+        at Object.renderSelection (file:///workspace/riftwatch-v240/js/ui.js:774:66)
+        at file:///workspace/riftwatch-v240/tests/resource-selection.test.mjs:9:55
+        at getActual (node:assert:611:5)
+        at strict.doesNotThrow (node:assert:779:32)
+        at TestContext.<anonymous> (file:///workspace/riftwatch-v240/tests/resource-selection.test.mjs:9:9)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.start (node:internal/test_runner/test:1242:17)
+        at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17),
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }

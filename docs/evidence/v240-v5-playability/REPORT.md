@@ -24,3 +24,19 @@
 **繁體中文：** 先確認0村民可合法補訓且資源正常扣除；新村民能實際收到安全採集／撤退命令。若失敗，保存實際點選對象、隊列與資源差異，先分辨工具、引擎及策略問題。主目標仍為自然十波，勝利後才用原生入口選卡並開始 New Game+；不灌資源、不改 Normal、不跳波。所有歷史 FAIL、低 FPS、Save/Load 與 Rift Prototype 問題保留。測試為本地真實 Chromium，不是線上發布或硬體驗收。
 
 **English:** First verify legal recovery from0workers with normal resource deductions, then verify new workers actually receive safe gathering/withdrawal orders. On failure, preserve picked entities, queues and resource deltas to separate harness, engine and strategy defects. The main target remains ten natural waves, followed only after victory by native card selection and New Game+. No resource grants, Normal changes or wave skips. Preserve historical FAIL, low-FPS, Save/Load and Rift Prototype gaps. Tests use real local Chromium, not public deployment or hardware acceptance.
+
+## 已執行的版本與結果 / Executed Revisions and Results
+
+**繁體中文：** V5.1 從 V5 第二波真實存檔接續，合法訓練恢復到4名村民，最終第三波戰敗，無遊戲例外。工具版本 `f90d518` 未重新分配已採木的工人；新村民原本會先採木，因此只處理待命者仍未恢復黃金。隊列長度有時不變，但食物減少50，原因是舊工作完成同時新工作入列；修正版保留扣款證據，不把這種情況錯標為未接受。此結論是策略／紀錄問題，不是免費訓練或引擎資源錯誤。
+
+**English:** V5.1 continued the actual V5 wave2 save, legally recovered4workers, then lost at wave3 without game exceptions. Harness `f90d518` did not rebalance workers already gathering wood; newly trained workers initially gather wood, so handling idle workers alone did not restore gold income. Queue length sometimes stayed constant while food dropped50 because one job completed as another entered; revised logging retains the debit evidence rather than incorrectly marking the new job unaccepted. These are policy/logging issues, not free training or an engine resource defect.
+
+**繁體中文：** V5.2 為新策略的短開局檢查：正常 Start，74.34遊戲秒時仍在第一波，主動保存以補齊缺少的原生科技分支，並非戰敗或通關。V5.3 從該存活快照接續；入列、採集、Guard、Rally 與科技均核對實際結果，工具記錄自身 SHA-256、版本及實際經過時間。若自然十波勝利，才經原生結算選擇最多3張已持有卡牌進入第二周目，並檢查真實25秒側襲。這個後續分支尚未執行時，不宣稱驗收通過。
+
+**English:** V5.2 was a short fresh-start policy check: at74.34 reported game seconds it remained alive in wave1 and was intentionally checkpointed to add the missing native technology branch; it was neither defeat nor victory. V5.3 continues that living snapshot. Queues, gathering, Guard, Rally and technology are checked against actual outcomes; the harness records its own SHA-256, revision and real elapsed time. Only after a natural ten-wave victory will native settlement select up to3owned cards, enter cycle2 and check the actual25-second flank. Until executed, that follow-up is not accepted.
+
+## V5.3 真實程式問題與接續 / V5.3 Real Defect and Continuation
+
+**繁體中文：** V5.3 運作到第二波時，仍有13軍事人口與7名村民，但遇到資源選取介面例外而以 BROWSER_ERROR 結束；不能當戰敗。最終存檔仍為存活戰役。獨立原生點擊重現並修復後，V5.4 使用修復來源 `0f85357303bf2bca809e6ff32b490769e1d3f836` 接續該存檔；玩法資料與 Normal 數值相同，只有介面修復。另保留實際科技成本所需食物，避免軍事訓練持續耗盡升級預算。十波與自然 New Game+ 仍需實際結果，不能由工具後續分支存在便視為通過。
+
+**English:** V5.3 reached wave2 with13military population and7workers, but ended as BROWSER_ERROR from resource selection; it must not count as defeat. Its final save remains a living campaign. After independent native-click reproduction and repair, V5.4 continues that save on fixed source `0f85357303bf2bca809e6ff32b490769e1d3f836`; gameplay data and Normal statistics are unchanged, with only the UI fix. Actual technology food costs are reserved so military training cannot continuously consume the upgrade budget. Ten-wave and natural New Game+ acceptance still require observed results; merely implementing the follow-up branch does not pass them.
