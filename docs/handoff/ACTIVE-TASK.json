@@ -1,59 +1,32 @@
 {
-  "task_id": "V240-GAMEPLAY-MILESTONE",
-  "name": "Seed terrain, natural campaign and approved conservative difficulty/NG+",
+  "task_id": "V240-BILINGUAL-V5",
+  "name": "永久雙語規範與 V5 自然戰役 / Permanent bilingual policy and V5 natural campaign",
   "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
   "priority": "P0",
   "agent": "Codex",
   "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-  "latest_pushed_commit": "3b6a5b87fdaf2fe6468003e73dfeb32b6c4e9d8a",
+  "latest_pushed_commit": "e4b321efee8169e82f1a4bc5b9c97ca191b38a36",
   "application_source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
   "completed": [
-    "Map generator2 preserves v1 saves;40 maps/480 actual routes pass after resource overlap fix",
-    "132 baseline/map tests;8 native map checks and actual river scout crossing",
-    "Conservative difficulty: Normal exact director identity over3Seeds/all10waves; native three-level SaveReload",
-    "Optional max3-card NG+ reset and visible25s cavalry flank;9 Chromium checks from controlled victory fixture",
-    "95 affected regression tests pass; all four locales703 keys",
-    "Natural policyV1 lost wave5 with zero browser errors; full evidence saved",
-    "Native worker cooldown button/focus and compact720p four-locale NG+ fixes verified",
-    "Verified artifact ID/BugJSON matches actual metadata; native victory autosave/ReloadContinue10checks pass",
-    "Four natural cohorts finished: V1 defeat5, V2 harness-incomplete4, V3 defeat4, V4 real age2 then defeat4; no natural win"
+    "Strategy／Handoff／Recovery 與共用規範已加入永久雙語要求 / Permanent bilingual requirement added to Strategy, Handoff, Recovery and shared instructions",
+    "V5 實際第一波完成、第二時代與8間房屋；第二波末村民全失，目標 FAIL / V5 completed wave1, age2 and8houses; all workers lost during wave2, survival goal FAIL",
+    "存活市鎮中心快照及原生 Continue 已驗證 / Living Town Center snapshot and native Continue verified"
   ],
-  "uncommitted": [
-    "Final evidence/recovery snapshot publication pending this bounded commit"
-  ],
+  "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Map and legacy regression",
-      "path": "docs/evidence/v240-map-generation/REPORT.md",
-      "source_commit": "da97f86f0e3677419f1d58b705b0952dc1beeeae",
-      "result": "132Node/480routes/8native PASS"
+      "name": "Recovery 定向測試 / Directed Recovery tests",
+      "result": "9/9 PASS; JSON schema unchanged",
+      "path": "docs/evidence/v240-bilingual-v5/recovery-tests.log.txt"
     },
     {
-      "name": "Approved campaign feature regression",
-      "path": "docs/evidence/v240-new-game-plus/affected-regression.log.txt",
-      "source_commit": "5f63a939f64f3d3d40c66abfd4af655732dae7b0",
-      "result": "95/95 PASS; NG+ natural transition NOT_TESTED"
-    },
-    {
-      "name": "Natural campaignV1",
-      "path": "docs/evidence/v240-campaign-natural/REPORT.md",
-      "source_commit": "da97f86f0e3677419f1d58b705b0952dc1beeeae",
-      "result": "FAIL defeated wave5; policyV2 running, no ten-wave claim"
-    },
-    {
-      "name": "Native completed-campaign persistence",
-      "path": "docs/evidence/v240-victory-resume/REPORT.md",
+      "name": "V5 限定試跑 / V5 bounded pilot",
+      "result": "BOUNDED_SAMPLE_INCOMPLETE; wave2; worker survival FAIL; ten waves NOT_PASSED",
       "source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
-      "result": "10/10 native controlled-victory checks PASS; not a natural victory"
-    },
-    {
-      "name": "Natural policyV4",
-      "path": "docs/evidence/v240-campaign-natural/REPORT.md",
-      "source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
-      "result": "FAIL defeated wave4 with actual age2; zero game errors"
+      "path": "docs/evidence/v240-bilingual-v5/REPORT.md"
     }
   ],
   "evidence": [
@@ -71,10 +44,10 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "No campaign process remains active; read final V4 failure snapshot and all cohort reports",
-    "Analyze worker losses, actual technology and defensive army/fortification choices before another bounded natural attempt; avoid rerunning historical valid tests",
-    "Use latest exact artifact and legal native UI for natural ten-wave victory then actual NG+; do not alter Normal statistics just to get green",
-    "All code/evidence saved; revalidate ownership and actual remote HEAD before writes"
+    "依最新遠端與所有權核對後接續 V5 第二波 / Revalidate latest remote and ownership before continuing V5 wave2",
+    "使用 docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json 與 verification.json 的 SHA-256；不可使用 V4 戰敗快照 / Use V5 observed save and its recorded SHA-256, not V4 defeated save",
+    "優先解決實際村民損失與資源分配，再完成十波及自然 New Game+ / Prioritize observed worker losses and allocation, then finish ten waves and natural New Game+",
+    "新文件須雙語；舊文件分階段補譯，不改歷史 FAIL / New documentation must be bilingual; migrate history incrementally without changing FAIL results"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -82,15 +55,14 @@
   ],
   "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-  "updated_at": "2026-10-28T01:14:04.709396+00:00",
-  "stop_reason": "EXECUTION_WINDOW_EXHAUSTED_AFTER_SAFE_CHECKPOINT",
+  "updated_at": "2026-10-28T05:10:13.082041+00:00",
+  "stop_reason": "EXECUTION_WINDOW_CHECKPOINT; full milestone remains incomplete",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
-    "task": "V240-GAMEPLAY-MILESTONE-PHASE1",
+    "task": "V240-BILINGUAL-V5",
     "agent": "Codex",
-    "execution": "codex-milestone-20261028",
-    "revision": 162,
-    "global_version": 164,
-    "status": "OWNED_UNTIL_FINAL_PUSH_THEN_RELEASE; query actual ownership ref"
+    "execution": "codex-bilingual-v5-20261028",
+    "global_version": 168,
+    "status": "OWNED_UNTIL_FINAL_PUSH_THEN_RELEASE"
   }
 }

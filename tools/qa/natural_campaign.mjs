@@ -1,7 +1,7 @@
 // Legal player-policy automation: actual UI commands only; never grants resources,
 // health, units, clock progress, boons, age or waves. Read-only state inspection
 // is used to choose actions and persist evidence. Normal production aids remain on.
-import{createRequire}from'node:module';import{mkdirSync,writeFileSync,appendFileSync,copyFileSync,existsSync}from'node:fs';import{resolve}from'node:path';
+import{createRequire}from'node:module';import{mkdirSync,writeFileSync,appendFileSync,copyFileSync,existsSync,readFileSync}from'node:fs';import{resolve}from'node:path';import{createHash}from'node:crypto';
 const{chromium}=createRequire(import.meta.url)('playwright-core'),a=process.argv.slice(2),arg=(n,d)=>{const i=a.indexOf(n);return i<0?d:a[i+1]},url=arg('--url'),commit=arg('--commit'),out=resolve(arg('--out')),seconds=Number(arg('--seconds','1800')),policy=arg('--policy','v2');mkdirSync(out,{recursive:true});
 const b=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']}),c=await b.newContext({viewport:{width:1280,height:800},recordVideo:{dir:out,size:{width:640,height:400}}}),p=await c.newPage();const errors=[],failures=[],actions=[],started=Date.now();
 const record=(kind,data)=>{const row={wallSeconds:(Date.now()-started)/1000,kind,...data};appendFileSync(resolve(out,'events.jsonl'),JSON.stringify(row)+'\n');if(kind==='action')actions.push(row)};
@@ -49,11 +49,21 @@ async function economy(s) {
 let result={status:'INCOMPLETE'};
 try{
  await p.goto(url,{waitUntil:'networkidle'});await p.waitForFunction(()=>ageOfAsh?.playtestBuild?.resourceVerification?.startsWith('SHA256_MATCH_'));if(await p.evaluate(()=>ageOfAsh.playtestBuild.commit)!==commit)throw Error('SOURCE_MISMATCH');
+ const resume=arg('--resume');
+ if(resume){
+  const raw=readFileSync(resolve(resume)),digest=createHash('sha256').update(raw).digest('hex');
+  if(digest!==arg('--resume-sha256'))throw Error('RESUME_DIGEST_MISMATCH');
+  const snapshot=JSON.parse(raw);if(snapshot.version!==1||!['prep','wave'].includes(snapshot.phase)||!snapshot.buildings?.some(b=>b.type==='core'&&b.alive&&b.hp>0))throw Error('RESUME_REQUIRES_LIVING_OBSERVED_RUN');
+  await p.locator('#btn-settings').click();await p.locator('#settings-speed').selectOption('1.5');await p.locator('#btn-settings-close').click();
+  await p.evaluate(snapshot=>localStorage.setItem('riftwatch.playtest.v227.run.v1',JSON.stringify(snapshot)),snapshot);
+  await p.reload();await p.waitForFunction(()=>ageOfAsh?.playtestBuild?.resourceVerification?.startsWith('SHA256_MATCH_'));await p.locator('#btn-continue').click();record('action',{command:'ContinueObservedSave',snapshotSha256:digest,priorWave:snapshot.waveIndex+1,priorRunTime:snapshot.runTime});
+ }else{
  await p.locator('#setup-seed').fill(arg('--seed','MILESTONE-NORMAL'));await p.locator('#setup-civ').selectOption('TEU');await p.locator('#setup-biome').selectOption('steppe');
  // Use a supported user-facing speed; report simulation/wall discrepancy rather
  // than assume the game's known low-FPS cap is semantically correct.
  await p.locator('#btn-settings').click();await p.locator('#settings-speed').selectOption('1.5');await p.locator('#btn-settings-close').click();await p.locator('#btn-start').click();record('action',{command:'Start',mode:'standard',speed:1.5,policy});
  if(['v3','v4','v5'].includes(policy)){await p.locator('#btn-pause').click();await p.locator('#auto-mil').uncheck();await p.locator('#btn-resume').click();record('action',{command:'disable-auto-military-manual-ranged-production'})}
+ }
  let lastPhase='',lastShot=0,lastPolicy=0,lastSave=0;const gameStart=Date.now();
  while((Date.now()-gameStart)/1000<seconds&&!existsSync(resolve(out,'STOP_REQUESTED'))){
   const s=await state(),wall=(Date.now()-gameStart)/1000;record('state',s);writeFileSync(resolve(out,'latest-state.json'),JSON.stringify(s,null,2)+'\n');
@@ -87,4 +97,4 @@ try{
  if(result.status==='INCOMPLETE')result={status:'BOUNDED_SAMPLE_INCOMPLETE',state:await state(),seconds};
 }catch(e){result={status:e.name==='TimeoutError'?'HARNESS_ACTION_TIMEOUT':'HARNESS_OR_GAME_ERROR',error:e.message,stack:e.stack};await p.screenshot({path:resolve(out,'failure.png')}).catch(()=>{})}
 try{writeFileSync(resolve(out,'save-snapshot.json'),JSON.stringify(await p.evaluate(()=>ageOfAsh.game.snapshot()),null,2)+'\n')}catch(e){record('checkpoint-unavailable',{reason:e.name})}
-result={source_commit:commit,stage:'AFTER_LOCAL',mode:'NATURAL_UI_LEGAL_POLICY_NO_STATE_INJECTION',policy:policy==='v5'?'V5_TEUTON_HOUSE_DEFENSE_MANUAL_ECONOMY':['v4','v5'].includes(policy)?'V4_ACTUAL_TECH_COSTS_AND_MANUAL_ECONOMY':['v3','v4','v5'].includes(policy)?'V3_NATIVE_RANGED_FARM_DEFENSIVE_MACRO':'V2_NATIVE_ARMY_DEFENSE_AND_RALLY',...result,errors,failures,actions};writeFileSync(resolve(out,'result.json'),JSON.stringify(result,null,2)+'\n');const v=p.video();await c.close();if(v)copyFileSync(await v.path(),resolve(out,'campaign.webm'));await b.close();console.log(JSON.stringify({status:result.status,wave:result.state?.wave,sim:result.state?.simulationSeconds,errors}));
+result={source_commit:commit,stage:'AFTER_LOCAL',mode:arg('--resume')?'NATIVE_UI_OBSERVED_SAVE_CONTINUATION':'NATURAL_UI_LEGAL_POLICY_NO_STATE_INJECTION',policy:policy==='v5'?'V5_TEUTON_HOUSE_DEFENSE_MANUAL_ECONOMY':['v4','v5'].includes(policy)?'V4_ACTUAL_TECH_COSTS_AND_MANUAL_ECONOMY':['v3','v4','v5'].includes(policy)?'V3_NATIVE_RANGED_FARM_DEFENSIVE_MACRO':'V2_NATIVE_ARMY_DEFENSE_AND_RALLY',...result,errors,failures,actions};writeFileSync(resolve(out,'result.json'),JSON.stringify(result,null,2)+'\n');const v=p.video();await c.close();if(v)copyFileSync(await v.path(),resolve(out,'campaign.webm'));await b.close();console.log(JSON.stringify({status:result.status,wave:result.state?.wave,sim:result.state?.simulationSeconds,errors}));

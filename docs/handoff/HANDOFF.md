@@ -1,7 +1,11 @@
 # 目前接續狀態 / Current Handoff
 
-`ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md`  
+`ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md`
 `BILINGUAL_DOCUMENTATION_REQUIRED = true`
+
+**最新繁體中文：** 本輪永久雙語規範已整合。V5 180秒試跑自然完成第一波並到第二波，第二時代與8間房屋已完成，但最終村民為0，存活目標 FAIL。市鎮中心仍存活，最新完整快照在 `docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json`；SHA-256 見相鄰 `verification.json`。原生 Continue 接續與錯誤雜湊拒絕均已測試；嚴格確定性未通過。下一輪以此 V5 存活戰役為準，先處理村民損失，不從 V4 戰敗狀態恢復。完整十波／自然 New Game+ 仍 NOT_PASSED。
+
+**Latest English:** The permanent bilingual policy is integrated. V5's180-second pilot naturally completed wave1 and entered wave2, reaching age2 and8houses, but ended with0workers: worker-survival goal FAIL. The Town Center remains alive; the latest complete snapshot is `docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json`, with SHA-256 in the adjacent `verification.json`. Native Continue and incorrect-digest rejection were tested; strict determinism has not passed. Continue this living V5 campaign next, prioritize worker losses, and do not restore V4's defeated state. Full ten-wave/natural New Game+ acceptance remains NOT_PASSED.
 
 **繁體中文：** 有效開發分支為 `codex/riftwatch-v240-game-first`，本輪開始前已核對遠端 `f2438d965a7bd86faf2baebd46de69a06ed7d7c2`。遊戲來源為 `a5a538d287b9c29951a83ebede5431db9fce7dc7`。舊歷史段落中的 Strategy 分支限定敘述不代表目前未整合；本分支已採用 v2.4.0 與最新雙語規範。每次恢復仍須重新查詢最新遠端及 Task Ownership。
 
@@ -22,7 +26,7 @@
 # CURRENT AUTHORITATIVE STRATEGY — v2.4.0 GAME FIRST
 
 **ACTIVE STRATEGY:** [docs/STRATEGY-V2.4-GAME-FIRST.md](../STRATEGY-V2.4-GAME-FIRST.md)  
-**Strategy publication commit (this independent branch):** `9a806169677ea28c07b80bb317f51f34feae5224`  
+**Strategy publication commit (this independent branch):** `9a806169677ea28c07b80bb317f51f34feae5224`
 **Effective:** User approved consolidated v2.4.0 and its developer-decision, tool/Skills and browser-visualization amendments.  
 **Branch:** `codex/riftwatch-v240-authoritative-strategy`. This handoff is authoritative **within this branch**; downstream gameplay branches and the progress-feed have not yet been rebased/updated. A receiving Agent must reconcile ownership and explicitly adopt it rather than assume the changes were merged.
 

@@ -146,7 +146,7 @@
       "next_steps": [
         "Obtain user approval for APPROVAL-PLAN.json",
         "If approved recheck no existing Pages,deploy only approved artifact toisolated site branch,enablePages then actual remote acceptance",
-        "Keep full formal feature gates unchanged; independent performance and B\u2013E work can continue"
+        "Keep full formal feature gates unchanged; independent performance and B–E work can continue"
       ]
     },
     "codex/riftwatch-v227-wave": {
@@ -340,50 +340,30 @@
       ]
     },
     "codex/riftwatch-v240-game-first": {
-      "task_id": "V240-GAMEPLAY-MILESTONE",
+      "task_id": "V240-BILINGUAL-V5",
       "last_validation": [
         {
-          "name": "Map and legacy regression",
-          "path": "docs/evidence/v240-map-generation/REPORT.md",
-          "source_commit": "da97f86f0e3677419f1d58b705b0952dc1beeeae",
-          "result": "132Node/480routes/8native PASS"
+          "name": "Recovery 定向測試 / Directed Recovery tests",
+          "result": "9/9 PASS; JSON schema unchanged",
+          "path": "docs/evidence/v240-bilingual-v5/recovery-tests.log.txt"
         },
         {
-          "name": "Approved campaign feature regression",
-          "path": "docs/evidence/v240-new-game-plus/affected-regression.log.txt",
-          "source_commit": "5f63a939f64f3d3d40c66abfd4af655732dae7b0",
-          "result": "95/95 PASS; NG+ natural transition NOT_TESTED"
-        },
-        {
-          "name": "Natural campaignV1",
-          "path": "docs/evidence/v240-campaign-natural/REPORT.md",
-          "source_commit": "da97f86f0e3677419f1d58b705b0952dc1beeeae",
-          "result": "FAIL defeated wave5; policyV2 running, no ten-wave claim"
-        },
-        {
-          "name": "Native completed-campaign persistence",
-          "path": "docs/evidence/v240-victory-resume/REPORT.md",
+          "name": "V5 限定試跑 / V5 bounded pilot",
+          "result": "BOUNDED_SAMPLE_INCOMPLETE; wave2; worker survival FAIL; ten waves NOT_PASSED",
           "source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
-          "result": "10/10 native controlled-victory checks PASS; not a natural victory"
-        },
-        {
-          "name": "Natural policyV4",
-          "path": "docs/evidence/v240-campaign-natural/REPORT.md",
-          "source_commit": "a5a538d287b9c29951a83ebede5431db9fce7dc7",
-          "result": "FAIL defeated wave4 with actual age2; zero game errors"
+          "path": "docs/evidence/v240-bilingual-v5/REPORT.md"
         }
       ],
       "blockers": [
         "Natural V1 defeat5, V2 harness-incomplete4, V3 defeat4, V4 defeat4; ten-wave/NG+ natural end-to-end NOT_PASSED",
         "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
-        "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain",
-        "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
+        "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "No campaign process remains active; read final V4 failure snapshot and all cohort reports",
-        "Analyze worker losses, actual technology and defensive army/fortification choices before another bounded natural attempt; avoid rerunning historical valid tests",
-        "Use latest exact artifact and legal native UI for natural ten-wave victory then actual NG+; do not alter Normal statistics just to get green",
-        "All code/evidence saved; revalidate ownership and actual remote HEAD before writes"
+        "依最新遠端與所有權核對後接續 V5 第二波 / Revalidate latest remote and ownership before continuing V5 wave2",
+        "使用 docs/evidence/v240-bilingual-v5/pilot/save-snapshot.json 與 verification.json 的 SHA-256；不可使用 V4 戰敗快照 / Use V5 observed save and its recorded SHA-256, not V4 defeated save",
+        "優先解決實際村民損失與資源分配，再完成十波及自然 New Game+ / Prioritize observed worker losses and allocation, then finish ten waves and natural New Game+",
+        "新文件須雙語；舊文件分階段補譯，不改歷史 FAIL / New documentation must be bilingual; migrate history incrementally without changing FAIL results"
       ]
     }
   }
