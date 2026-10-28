@@ -310,6 +310,14 @@ export class Game {
         targetPos: unit.targetPos ? { ...unit.targetPos } : null,
       })),
       buildings: this.buildings.map(building => pick(building, buildingKeys)),
+      projectiles: this.projectiles.map(p => ({
+        ...pick(p, ['x','y','tx','ty','team','damage','speed','alive','scale']),
+        target: ref(p.target), source: ref(p.source),
+      })),
+      zones: this.zones.map(z => ({
+        ...pick(z, ['x','y','r','delay','elapsed','damage','kind','done','persist','duration']),
+        source: ref(z.source),
+      })),
     };
   }
 
@@ -460,6 +468,15 @@ export class Game {
       unit.dropTarget = resolve(saved.dropTarget);
       unit.targetPos = saved.targetPos ? { ...saved.targetPos } : null;
     }
+    // Restore gameplay transients only after all entity references exist.
+    const finiteFields = (value, fields) => value && fields.every(k => Number.isFinite(value[k]));
+    this.projectiles = (Array.isArray(snapshot.projectiles) ? snapshot.projectiles : [])
+      .filter(p => finiteFields(p, ['x','y','damage','speed']) && p.damage >= 0 && p.speed >= 0)
+      .map(p => ({ ...p, target: resolve(p.target), source: resolve(p.source) }))
+      .filter(p => p.target);
+    this.zones = (Array.isArray(snapshot.zones) ? snapshot.zones : [])
+      .filter(z => finiteFields(z, ['x','y','r','delay','elapsed','damage']) && z.r >= 0 && z.elapsed >= 0)
+      .map(z => ({ ...z, source: resolve(z.source) }));
     this.hero = snapshot.heroId ? byKind.unit.get(snapshot.heroId) || null : null;
     this.selection = (snapshot.selection || []).map(resolve).filter(Boolean);
     for (const entity of this.selection) entity.selected = true;

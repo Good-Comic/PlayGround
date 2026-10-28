@@ -1,0 +1,59 @@
+✔ dead attack target is replaced on the next player update (21.37714ms)
+✔ dead target with no replacement returns to idle (25.170402ms)
+✔ manual move and attack take precedence over automatic acquisition (20.975096ms)
+✔ passive never acquires or retaliates automatically (14.493383ms)
+✔ hold position can attack in range without pursuing (25.281534ms)
+✔ defensive units return to guard origin after leash is exceeded (6.961341ms)
+✔ idle defensive unit retaliates; moving unit keeps manual order (3.538657ms)
+✔ enemy opportunistic attack cannot target itself or friendly units (4.403115ms)
+✔ stances persist in snapshots and old saves default to defensive (23.036021ms)
+✔ single stance command cycles through all four stances, including for heroes (4.339304ms)
+OBSERVATION {"name":"crowd-24","threshold":"24/24 arrive within 70s; penetration <= .025; static clips 0","observed":{"arrived":24,"penetration":0,"clipped":0}}
+OBSERVATION {"name":"narrow-opposing","threshold":"both arrive <=60s, penetration <=.025, no static clipping","observed":{"a":{"x":18,"y":9.5,"state":"idle"},"b":{"x":6.0199942307239045,"y":9.499481071667935,"state":"idle"},"penetration":0,"clipped":0}}
+OBSERVATION {"name":"unreachable-combat","threshold":"failure recorded <=5s, target replaced, no water crossing","observed":{"time":0.05,"failure":"unreachable","target":22,"x":10}}
+OBSERVATION {"name":"continuous-retarget","threshold":"zero dead references immediately after each of 3 kills","observed":[{"dead":21,"target":22,"state":"attack"},{"dead":22,"target":23,"state":"attack"},{"dead":23,"state":"idle"}]}
+OBSERVATION {"name":"stances","threshold":"all four stance contracts match; explicit move never stolen","observed":[{"stance":"aggressive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"defensive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"hold","acquired":false,"retaliates":false,"manualMove":true},{"stance":"passive","acquired":false,"retaliates":false,"manualMove":true}]}
+OBSERVATION {"name":"economy-competition-food","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"economy-competition-wood","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[24,26,24,25,24,26,23,25,23,26,25,27],"credited":2980,"carried":46.48749999999997,"error":2.003403665185033e-9,"penetration":0.014977406250572867}}
+OBSERVATION {"name":"economy-competition-gold","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"economy-competition-stone","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"save-load","threshold":"move completes, cargo credited once, no dead attack references","observed":{"moveState":"idle","goldDelta":47,"deadRefs":0}}
+OBSERVATION {"name":"narrow-queues-8","threshold":"8/8 within80s, penetration<=.025, static clips0","observed":{"arrived":8,"maxPenetration":0.014853785277115894,"clipped":0,"crossed":8}}
+OBSERVATION {"name":"fair-queue-100","threshold":"all100 move within4.8s; <=2 searches/update","observed":{"moved":100,"maxSearches":2,"searches":182}}
+OBSERVATION {"name":"passive-direct-hero","threshold":"no damage or autonomous target while passive","observed":{"enemyHp":60,"initialHp":60}}
+OBSERVATION {"name":"move-failure-vs-arrival","threshold":"unreachable result reported; new valid order reaches actual destination","observed":{"failurePreserved":true,"newX":12,"newY":10}}
+OBSERVATION {"name":"direct-route-1000","threshold":"1000/1000 move in first update; unchanged speed cap; A*0","observed":{"moved":1000,"searches":0,"directRoutes":1000}}
+✔ 24-unit crowd reaches separate formation slots without overlap or static clipping (404.158875ms)
+✔ opposing units pass a narrow building corridor by yielding, without overlap (35.145444ms)
+✔ unreachable manual combat target is abandoned and reachable enemy acquired (35.136407ms)
+✔ continuous combat clears death references in the same kill event and acquires next (6.607175ms)
+✔ all stances obey acquire, chase, retaliation and manual priority contracts (21.779831ms)
+✔ 12 villagers competing for food complete long-run cycles with conservation (641.539528ms)
+✔ 12 villagers competing for wood complete long-run cycles with conservation (541.391745ms)
+✔ 12 villagers competing for gold complete long-run cycles with conservation (488.884798ms)
+✔ 12 villagers competing for stone complete long-run cycles with conservation (480.546385ms)
+✔ save/load resumes move, gather, return and valid attack orders without path-cache dependence (282.699193ms)
+✔ eight units in opposing queues pass the one-tile corridor (80.622791ms)
+✔ fair search queue starts all 100 units despite continuous low-ID demand (1372.398986ms)
+✔ directly controlled passive hero does not auto-attack (2.708134ms)
+✔ an unreachable move is a reported failure, not arrival, and a new move clears it (7.40277ms)
+✔ legal direct routes start 1000 units without bypassing speed or collision (47.315588ms)
+✔ negative startup delta cannot reverse game time or break smoke geometry (6.607947ms)
+✔ save mid-flight and during boss telegraph preserves remaining damage, timers and entity references (105.530412ms)
+✔ resolved zones do not damage twice and legacy saves remain loadable (49.338019ms)
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (59.874622ms)
+✔ Patrol completes both legs using native navigation (21.056438ms)
+✔ Guard follows a living ally then recovers when ally dies (17.013153ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (24.513739ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (9.542325ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (20.392619ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (22.064851ms)
+✔ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (41.589204ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4676.771906
