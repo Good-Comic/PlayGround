@@ -13,6 +13,7 @@ export const ui = {
   "cycle.start": "New Game+を開始",
   "cycle.label": "周回 {cycle}",
   "cycle.modifier": "騎兵側襲：25秒後に {count} 体",
+  "selection.hintResource": "村人を選択し、この資源を右クリックすると採集します。",
   "rules.campaign": "キャンペーン",
   "rules.waves": "襲撃 {count} 回 · ボスの波：{boss}",
   "rules.population": "人口",

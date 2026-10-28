@@ -702,7 +702,9 @@ export class UI {
       this.renderCommands(game);
     } else {
       const one = game.selection[0];
-      if (one) {
+      if (one?.resource) {
+        this.renderSelection(game);
+      } else if (one) {
         const ratio = clamp(one.hp / one.maxHp, 0, 1);
         this.el.selectionHp.style.width = `${ratio * 100}%`;
         this.el.selectionHp.style.background = one.team === 'enemy' ? 'linear-gradient(90deg,#7c3028,#c06353)' : ratio < 0.3 ? 'linear-gradient(90deg,#7d3328,#b95043)' : 'linear-gradient(90deg,#3f7145,#79a45d)';
@@ -745,7 +747,16 @@ export class UI {
     }
     const e = sel[0];
     el.selectionCount.hidden = true;
-    if (e.w) {
+    if (e.resource) {
+      el.selectionName.textContent = resourceName(e);
+      el.selectionSub.textContent = t('tooltip.remaining', {resource:t(`resourceType.${e.resource}`),count:Math.max(0,Math.round(e.amount))});
+      el.selectionHp.style.width = `${clamp(e.amount / Math.max(1,e.maxAmount),0,1)*100}%`;
+      el.selectionHp.style.background = 'linear-gradient(90deg,#79642d,#c6a65b)';
+      el.selectionHpText.textContent = `${Math.max(0,Math.round(e.amount))} / ${Math.round(e.maxAmount)}`;
+      el.selectionStats.textContent = t(`resourceType.${e.resource}`);
+      el.panelHint.textContent = t('selection.hintResource');
+      this.drawPortrait(null);
+    } else if (e.w) {
       const def = BUILDING_TYPES[e.type];
       el.selectionName.textContent = t(`building.${e.type}.name`);
       el.selectionSub.textContent = e.construction < 1

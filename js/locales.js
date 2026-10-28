@@ -90,6 +90,7 @@ const EN_UI = {
   "cycle.start": "Start New Game+",
   "cycle.label": "Cycle {cycle}",
   "cycle.modifier": "Cavalry flank: {count} at 25s",
+  "selection.hintResource": "Select a villager, then right-click this resource to gather.",
   "rules.campaign": "Campaign",
   "rules.waves": "{count} raids · Boss raids: {boss}",
   "rules.population": "Population",

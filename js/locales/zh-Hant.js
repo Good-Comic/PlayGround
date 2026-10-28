@@ -38,6 +38,7 @@ export const ui = {
   "cycle.start": "開始 New Game+",
   "cycle.label": "第 {cycle} 周目",
   "cycle.modifier": "騎兵側襲：第 25 秒出現 {count} 名",
+  "selection.hintResource": "先選取村民，再右鍵點擊此資源開始採集。",
   "rules.campaign": "戰役",
   "rules.waves": "{count} 波襲擊 · Boss 波次：{boss}",
   "rules.population": "人口",
