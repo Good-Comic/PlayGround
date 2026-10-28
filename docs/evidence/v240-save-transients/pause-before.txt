@@ -1,0 +1,32 @@
+✖ native pause and card-choice overlays do not expire absolute-time combat statuses (29.813993ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 186.201919
+
+✖ failing tests:
+
+test at tests/save-transients.test.mjs:9:1
+✖ native pause and card-choice overlays do not expire absolute-time combat statuses (29.813993ms)
+  AssertionError [ERR_ASSERTION]: pause
+  + actual - expected
+  
+  + 1.9999999999999978
+  - 0
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240/tests/save-transients.test.mjs:9:350)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1.9999999999999978,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

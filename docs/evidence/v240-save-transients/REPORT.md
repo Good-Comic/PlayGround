@@ -19,3 +19,9 @@
 **中文：** 另已重現Save/Load只保存slowUntil而未保存slowAmount：完整暈眩原應速度0，讀檔後卻變2.04。新增強度欄位後，全暈與40%緩速在原到期時間前後保持一致；21項受影響測試通過。此修正不改技能數值，只保留既有效果；真實瀏覽器新來源驗證尚待完成。
 
 **English:** Also reproduced Save/Load retaining slowUntil but omitting slowAmount: a full stun should yield speed0but resumed at2.04. Saving the strength field preserves full stun and40%slow before/after the original expiry;21affected tests pass. This retains existing effects without changing skill values. Actual browser verification of the new source remains pending.
+
+## 暫停期間的戰鬥時鐘 / Combat clock while paused
+
+**中文：** 最小重現亦確認：暫停或選卡時Game.time仍增加，讓以slowUntil表示的完整暈眩在暫停中自然消失。修復只把戰鬥絕對時間累計移至活動模擬區塊；相機與粒子仍走既有更新，不安裝固定步長、不改正式低FPS截斷。42項受影響測試通過，包括暫停／選卡／主選單不消耗狀態時間。真實瀏覽器新來源驗證待完成。
+
+**English:** A minimal reproduction also confirms Game.time advanced while paused or choosing cards, allowing full stuns expressed with slowUntil to expire during pause. The fix only moves combat absolute-time accumulation into active simulation; camera/particles retain their existing updates. No fixed-step installation or change to production low-FPS clipping.42affected tests pass, including pause/card/menu preserving status time. Actual browser verification of this source is pending.

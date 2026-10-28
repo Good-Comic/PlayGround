@@ -895,12 +895,11 @@ export class Game {
 
   update(dt) {
     const baseDt = Math.max(0, Math.min(dt, 0.05));
-    this.time += baseDt;
     this.updateCamera(baseDt);
     if (this.inMenu || this.paused || this.phase === 'boon') { this.updateParticles(baseDt); return; }
     if (this.phase === 'victory' || this.phase === 'defeat') { this.updateParticles(baseDt); return; }
     dt = baseDt * (this.speed || 1);
-    this.time += baseDt * ((this.speed || 1) - 1);
+    this.time += dt;
     this.updateAgeResearch(dt);
 
     if (this.phase === 'prep') {
