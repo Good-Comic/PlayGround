@@ -1,0 +1,75 @@
+{
+  "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+  "mode": "CONTROLLED_FIXTURE_VICTORY_FROM_ACTUAL_HEADLESS_FLOW_NOT_NATURAL",
+  "checks": [
+    {
+      "name": "CONTROLLED_OPERATION_FAULT resumes an already-delivered Pause",
+      "pass": true
+    },
+    {
+      "name": "production victory snapshot opens native victory and NG+ entry",
+      "pass": true
+    },
+    {
+      "name": "native cycle reset excludes fixture HP and retains at most three cards",
+      "pass": true,
+      "data": {
+        "cycle": 2,
+        "age": 1,
+        "research": null,
+        "resources": {
+          "food": 300,
+          "wood": 300,
+          "gold": 120,
+          "stone": 100
+        },
+        "inherited": [
+          "elephant_compact",
+          "patrol_depot",
+          "citizen_arms"
+        ],
+        "coreBaseHP": 3000,
+        "buildingCount": 6,
+        "maxUnitBaseHP": 520,
+        "waves": 0
+      }
+    },
+    {
+      "name": "native Save Reload Continue retains cycle cards and Easy",
+      "pass": true,
+      "data": {
+        "cycle": 2,
+        "cards": [
+          "elephant_compact",
+          "patrol_depot",
+          "citizen_arms"
+        ],
+        "difficulty": "easy"
+      }
+    },
+    {
+      "name": "cycle two actual combat and visible flank production",
+      "pass": true,
+      "data": {
+        "phase": "wave",
+        "cycle": 2,
+        "wave": 1,
+        "clock": 26.015599999999818,
+        "flank": [
+          {
+            "at": 25,
+            "gate": 2,
+            "units": {
+              "light_cavalry": 1
+            },
+            "cycleFlank": true,
+            "spawned": true
+          }
+        ],
+        "enemyCount": 4
+      }
+    }
+  ],
+  "errors": [],
+  "failures": []
+}

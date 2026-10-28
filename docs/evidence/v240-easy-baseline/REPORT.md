@@ -27,3 +27,19 @@
 **中文：** 第三個受控組集火確實被接受，但第五波仍Boss超時，Boss剩484HP，134守軍idle、6攻擊。三組均未證實十波可完成；不把戰鬥配置與擁擠混為流程Softlock。根因對照後只再準備一組低密度耐久攻城測試：注入8攻城器、明示玩家HP覆寫，保留攻擊／冷卻／射程及Boss屬性，不直接殺敵。它將在Normal自然測試結束後串行執行；若仍失敗，不再繼續調整追綠燈。
 
 **English:** The third controlled focus command was accepted, but wave5still timed out with484BossHP,134idle guards and6attacking. None establishes ten-wave completability; combat setup/crowding is not a proven flow softlock. After this root comparison, prepare one final low-density durable-siege fixture:8injected siege units with explicit player HP overrides, unchanged attack/cooldown/range and Boss statistics, and no direct kills. Run serially after Normal natural testing; if it fails, stop further green-seeking fixture adjustments.
+
+## Normal第一次工具中斷 / First Normal harness interruption
+
+**中文：** Normal第一組第五波runTime644.8958秒後不再前進，狀態輪詢仍正常且無PageError。追查wall684秒的週期存檔Pause點擊逾時，舊工具沒有核對暫停副作用是否已發生，直接略過，沒有恢復。這是確認的操作恢復缺陷，但首組未記錄直接paused值，尚不能排除其他停滯原因；此組NORMAL_HARNESS_INTERRUPTED，不是自然戰敗／即時通過。保留全部停滯樣本及診斷存檔。修復依實際paused狀態透過原生Resume恢復；無Resume介面即報錯，不讓主流程空轉。補測前先以真實瀏覽器受控操作故障驗證，不能把長暫停組悄悄接成自然通關。
+
+**English:** First Normal stopped advancing after wave5runTime644.8958seconds while state polling remained responsive without PageError. At wall684seconds a periodic-save Pause click timed out; the old harness skipped it without checking whether its pause side effect had occurred. This is a confirmed recovery defect, but the first cohort lacked a directpausedvalue, so other stall causes remain unexcluded. Classify NORMAL_HARNESS_INTERRUPTED, not natural defeat or real-time acceptance. Preserve all stalled samples/diagnostic save. The fix reads actualpausedstate and uses native Resume, surfacing an error if recovery controls are absent rather than spinning. Validate the fix with a real-browser controlled operation fault before a fresh rerun; never silently stitch the long-paused cohort into a natural win.
+
+## 受控流程最終結果 / Final controlled-flow result
+
+**中文：** 最後低密度組FLOW_REACHED_VICTORY，36573次0.05秒正式Game.update；第五波warlord與第十波warlord2皆由mangonel投射物正式傷害擊敗，沒有直接kill或跳波。每次波間選卡經JSON Save/Load後正常推進，勝利後第二周目開始、三卡繼承、資源300/300/120/100、時代1、城心baseHP3000；第二周目正式側翼生成且再次存讀保留周目。玩家8攻城器HP1e6及城心1e7是明確控制條件，不代表自然可玩性或Boss平衡通過。三組先前失敗原樣保留。
+
+**English:** Final low-density fixture reachedFLOW_REACHED_VICTORY after36573productionGame.updatecalls of0.05seconds. Wave5warlord and wave10warlord2 died from production mangonel projectile damage, without direct kills/wave skips. Each inter-wave card phase progressed after JSON Save/Load; victory entered cycle2with3cards, resources300/300/120/100, age1and corebaseHP3000. The cycle2flank spawned and another save/load retained cycle information. Eight player siege units at1e6HPand a1e7HPcore are explicit fixture conditions, not natural playability/Boss-balance acceptance. Preserve all three preceding failures.
+
+**中文：** 真實本地Chromium再以該實際受控勝利快照經Continue開啟勝利介面，原生勾選三卡、NextCycle、Pause/Save/Reload/Continue，實際進入第二周目第一波26秒、側翼生成。五項檢查通過，Console／Page／失敗請求0，原始錄影與截圖保留。完整自然Easy／Normal NG+仍NOT_TESTED。Pause恢復另以明示受控操作故障檢查驗證；兩項Node測試通過。
+
+**English:** Actual local Chromium then loaded the genuinely produced controlled-victory snapshot via Continue, opened victory UI, natively selected3cards/NextCycle and Pause/Save/Reload/Continue, reaching actual cycle2wave1at26seconds with the flank spawned. Five checks pass with0Console/Page/failed requests; recordings/screenshots retained. Natural Easy/Normal NG+ remainNOT_TESTED. Pause recovery is separately verified through an explicit controlled operation-fault check;2Node tests pass.
