@@ -2,40 +2,93 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-28T17:46:19.643312+00:00",
+  "updated_at": "2026-10-28T18:02:46.772921+00:00",
   "latest_event": {
     "task_id": "V240-EASY-BASELINE",
     "agent": "Codex",
-    "severity": "PROGRESS",
+    "severity": "WARNING",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+    "commit": "8884649f06e09606348723f27503da393558ac40",
     "build_sha": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-    "summary": "\u53d7\u63a7\u5341\u6ce2\u8207\u539f\u751fNG+\u6d41\u7a0b\u901a\u904e\uff1bEasy\u81ea\u7136\u5931\u6557\uff0cNormal\u64cd\u4f5c\u4fee\u5fa9\u5f8c\u88dc\u6e2c\u4e2d / Controlled ten waves/native NG+ passed; Easy natural failed, corrected Normal rerun active",
+    "summary": "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53d7\u63a7\u5341\u6ce2\u53ca\u539f\u751fNG+\u6d41\u7a0b\u901a\u904e / Easy natural defeat5, valid Normal defeat4; controlled ten waves/native NG+passed",
     "code_changes": [
       "\u6e2c\u8a66\u5de5\u5177\u5be6\u969b\u9078\u64c7\u4e26\u6838\u5c0d\u96e3\u5ea6 / Harness selects and verifies actual difficulty"
     ],
     "next_steps": [
-      "\u8ffd\u8e64\u6709\u6548Normal\u88dc\u6e2c\uff0c\u4e0d\u91cd\u8907\u6d3e\u9001 / Follow valid Normal rerun; do not duplicate dispatch"
+      "\u5148\u5206\u6790\u5168\u8cc7\u6e90\u79d1\u6280\uff0f\u88dc\u5175\u9810\u7b97\u3001\u63a1\u96c6\u9632\u5b88\u8207\u64cd\u4f5c\u5ef6\u9072\u3001\u653b\u57ce\u53cd\u5236\uff1b\u4e0d\u518d\u76f8\u540c\u7b56\u7565\u76f2\u8dd1 / Analyze full-resource technology/reinforcement budgets, resource defense/latency and siege counters; no blind identical reruns"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "CONTROLLED_FIXTURE\u52dd\u5229\u8207NG+\u539f\u751f\u6d41\u7a0b / CONTROLLED_FIXTURE native victory and NG+",
+        "name": "\u539f\u751f\u96e3\u5ea6\u53c3\u6578 / Native difficulty parameters",
+        "status": "PASS",
+        "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+        "evidence": "docs/evidence/v240-easy-baseline/native-parameters.json",
+        "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+        "evidence_blob": "c8d7edab06ac4f46ca0abd3793a229a43f211f76",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "Easy\u81ea\u7136\u5341\u6ce2 / Natural Easy ten waves",
+        "status": "FAIL",
+        "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+        "evidence": "docs/evidence/v240-easy-baseline/easy/result.json",
+        "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+        "evidence_blob": "c82dfa2cc171dad157a9a3be826d0810aeb80dae",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "Normal\u6709\u6548\u81ea\u7136\u5341\u6ce2 / Valid natural Normal ten waves",
+        "status": "FAIL",
+        "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+        "evidence": "docs/evidence/v240-easy-baseline/normal/result.json",
+        "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+        "evidence_blob": "884e7fb854cadb0a6bdba71d69730de94760c13e",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "CONTROLLED_FIXTURE\u5341\u6ce2\u6d41\u7a0b / CONTROLLED_FIXTURE ten-wave flow",
+        "status": "PASS",
+        "source_commit": "c5562a79676e0a5e7cf700e05110f0974d71dad5",
+        "evidence": "docs/evidence/v240-easy-baseline/controlled-durable/result.json",
+        "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+        "evidence_blob": "e633209b6c2621f6faaf29b3a74835dfaa4ddaff",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "CONTROLLED_FIXTURE\u539f\u751f\u52dd\u5229\u8207NG+ / CONTROLLED_FIXTURE native victory and NG+",
         "status": "PASS",
         "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
         "evidence": "docs/evidence/v240-easy-baseline/controlled-browser/browser.json",
-        "evidence_commit": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+        "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
         "evidence_blob": "5475f8d9c789e04edd0aa4bac9536c2aac284c55",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "\u81ea\u7136NG+ / Natural NG+",
+        "status": "NOT_TESTED",
+        "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+        "evidence": "docs/evidence/v240-easy-baseline/REPORT.md",
+        "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+        "evidence_blob": "224ca58685fa3c9169f48201abd6ff65ec5a0cf2",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
-    "blockers": [],
-    "response": "\u4e2d\u6587\uff1a\u53d7\u63a7\u4f4e\u5bc6\u5ea6\u8010\u4e45\u653b\u57ce\u5834\u666f\u5b8c\u6210\u6b63\u5f0f\u5341\u6ce2\u53caBoss\u6b7b\u4ea1\uff1b\u771f\u5be6Chromium\u539f\u751f\u52dd\u5229\uff0fNG+\uff0f\u4e09\u5361\uff0f\u91cd\u7f6e\uff0f\u7b2c\u4e8c\u5468\u76ee\u5074\u7ffc\u8207\u5b58\u8b805\u9805\u901a\u904e\u3002\u73a9\u5bb6HP\u8986\u5beb\u660e\u793a\uff0c\u7d55\u975e\u81ea\u7136\u901a\u95dc\u3002Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u6230\u6557\uff1bNormal\u9996\u7d44\u56e0\u505c\u6eef\u5de5\u5177\u4e2d\u65b7\uff0c\u5df2\u4fee\u5fa9\u4e26\u5f9eStart\u91cd\u8dd1\u3002\n\nEnglish: Controlled low-density durable siege completed production ten waves/Boss deaths; actual Chromium passed5native victory/NG+/three-card/reset/cycle2flank/save-load checks. Explicit player-HP overrides; never natural victory. Easy naturally lost wave5; initial Normal was interrupted by a stalled harness, now corrected and rerun from Start.\n",
-    "event_id": "aae8839561a39eead55e0967a4f9eae3ca784b48160cc177550d1e9992193777",
-    "remote_head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+    "blockers": [
+      {
+        "id": "RELEASE_BLOCKED",
+        "severity": "WARNING",
+        "summary": "Easy\uff0fNormal\u81ea\u7136\u5341\u6ce2\u8207NG+\u672a\u901a\u904e\uff0c\u4f4eFPS\uff0f\u56b4\u683c\u78ba\u5b9a\u6027\uff0f\u6b77\u53f2\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559 / Natural Easy/Normal ten waves/NG+not passed; low-FPS/strict determinism/historical performance/hardware gaps retained",
+        "source_commit": "8884649f06e09606348723f27503da393558ac40",
+        "requires_user_decision": false
+      }
+    ],
+    "response": "\u4e2d\u6587\uff1a\u56fa\u5b9aTEU\uff0fsteppe\uff0fMILESTONE-NORMAL\u30011\u00d7\u3001\u540c\u7b56\u7565\u3002Easy\u81ea\u7136\u7b2c\u4e94\u6ce2731.64\u79d2\u6230\u6557\uff0cNormal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2581.93\u79d2\u6230\u6557\uff1b\u9996\u7d44Normal\u505c\u6eef\u4e2d\u65b7\u53e6\u5b58\uff0c\u4e0d\u5408\u4f75\u3002\u539f\u751f\u7b2c\u4e00\u6ce2\u53c3\u6578\u78ba\u8a8dEasy8/3/2\u300156.25\u79d2\uff0cNormal10/4/2\u300145\u79d2\uff0c\u672a\u6539Boss\u6216Normal\u3002\u53d7\u63a7\u4f4e\u5bc6\u5ea6\u73a9\u5bb6HP\u8986\u5beb\u5834\u666f\u5b8c\u6210\u5341\u6ce2\u53caBoss\u6b63\u5f0f\u50b7\u5bb3\u64ca\u6bba\uff1b\u771f\u5be6Chromium\u52dd\u5229\uff0f\u4e09\u5361\uff0fNG+\u91cd\u7f6e\uff0f\u7b2c\u4e8c\u5468\u76ee\u5074\u7ffc\u8207\u5b58\u8b805\u9805PASS\uff0c\u7d55\u975e\u81ea\u7136\u52dd\u5229\u3002\u81ea\u7136Easy\u8207Normal NG+\u4ecdNOT_TESTED\uff0c\u5c1a\u7121\u81ea\u7136\u52dd\u5229\u8def\u5f91\uff0c\u4e0d\u8db3\u4ee5\u5224\u5b9a\u5e73\u8861Bug\u3002\u5de5\u5177Pause\u6062\u5fa9\u7f3a\u9677\u5df2\u4fee\uff0c\u9996\u7d44\u505c\u6eef\u6839\u56e0\u56e0\u7f3a\u539fpaused\u9059\u6e2c\u4e0d\u80fd\u5b8c\u5168\u5b9a\u8ad6\u3002\u6240\u6709\u539f\u59cbFAIL\u8207\u9304\u5f71\u5df2\u63a8\u9001\u3002RELEASE_BLOCKED\uff1b\u6e2c\u8a66\u505c\u6b62\u3001\u6240\u6709\u6b0a\u91cb\u653e\uff0c\u56e0\u57f7\u884c\u7a97\u53e3\u4fdd\u5b58\u3002\u7121\u516c\u958b\u767c\u5e03\uff1bCROSS_THREAD_HANDOFF_UNAVAILABLE\uff0c\u672a\u5ba3\u7a31\u9001\u9054\u3002\n\nEnglish: FixedTEU/steppe/MILESTONE-NORMAL,1\u00d7and shared strategy. Easy naturally lost wave5at731.64seconds; valid Normal rerun lost wave4at581.93seconds. Initial stalled Normal is separate, never stitched. Native wave1parameters matchEasy8/3/2and56.25seconds versusNormal10/4/2and45seconds; Boss/Normal unchanged. The explicitly HP-overridden controlled low-density fixture completed ten waves with production Boss damage/deaths; actual Chromium passed5native victory/3cards/NG+reset/cycle2flank/save-load checks, never natural victory. Natural Easy/Normal NG+remainNOT_TESTED. No natural winning route established and no balance bug proven. Fixed the Pause-recovery defect, but original stall cause remains uncertain without originalpausedtelemetry. Raw FAIL and recordings pushed. RELEASE_BLOCKED; tests stopped and ownership released at execution-window checkpoint. No publication; CROSS_THREAD_HANDOFF_UNAVAILABLE, delivery not claimed.\n",
+    "event_id": "1b4899c2e7c05f78e9b26b859c6f9369ffe899af0b7d9f4747da37bacc4353e1",
+    "remote_head": "8884649f06e09606348723f27503da393558ac40",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-28T17:46:19.643312+00:00",
+    "recorded_at": "2026-10-28T18:02:46.772921+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2898,36 +2951,89 @@
     "V240-EASY-BASELINE": {
       "task_id": "V240-EASY-BASELINE",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "severity": "WARNING",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+      "commit": "8884649f06e09606348723f27503da393558ac40",
       "build_sha": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
-      "summary": "\u53d7\u63a7\u5341\u6ce2\u8207\u539f\u751fNG+\u6d41\u7a0b\u901a\u904e\uff1bEasy\u81ea\u7136\u5931\u6557\uff0cNormal\u64cd\u4f5c\u4fee\u5fa9\u5f8c\u88dc\u6e2c\u4e2d / Controlled ten waves/native NG+ passed; Easy natural failed, corrected Normal rerun active",
+      "summary": "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53d7\u63a7\u5341\u6ce2\u53ca\u539f\u751fNG+\u6d41\u7a0b\u901a\u904e / Easy natural defeat5, valid Normal defeat4; controlled ten waves/native NG+passed",
       "code_changes": [
         "\u6e2c\u8a66\u5de5\u5177\u5be6\u969b\u9078\u64c7\u4e26\u6838\u5c0d\u96e3\u5ea6 / Harness selects and verifies actual difficulty"
       ],
       "next_steps": [
-        "\u8ffd\u8e64\u6709\u6548Normal\u88dc\u6e2c\uff0c\u4e0d\u91cd\u8907\u6d3e\u9001 / Follow valid Normal rerun; do not duplicate dispatch"
+        "\u5148\u5206\u6790\u5168\u8cc7\u6e90\u79d1\u6280\uff0f\u88dc\u5175\u9810\u7b97\u3001\u63a1\u96c6\u9632\u5b88\u8207\u64cd\u4f5c\u5ef6\u9072\u3001\u653b\u57ce\u53cd\u5236\uff1b\u4e0d\u518d\u76f8\u540c\u7b56\u7565\u76f2\u8dd1 / Analyze full-resource technology/reinforcement budgets, resource defense/latency and siege counters; no blind identical reruns"
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "CONTROLLED_FIXTURE\u52dd\u5229\u8207NG+\u539f\u751f\u6d41\u7a0b / CONTROLLED_FIXTURE native victory and NG+",
+          "name": "\u539f\u751f\u96e3\u5ea6\u53c3\u6578 / Native difficulty parameters",
+          "status": "PASS",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+          "evidence": "docs/evidence/v240-easy-baseline/native-parameters.json",
+          "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+          "evidence_blob": "c8d7edab06ac4f46ca0abd3793a229a43f211f76",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Easy\u81ea\u7136\u5341\u6ce2 / Natural Easy ten waves",
+          "status": "FAIL",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+          "evidence": "docs/evidence/v240-easy-baseline/easy/result.json",
+          "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+          "evidence_blob": "c82dfa2cc171dad157a9a3be826d0810aeb80dae",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "Normal\u6709\u6548\u81ea\u7136\u5341\u6ce2 / Valid natural Normal ten waves",
+          "status": "FAIL",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+          "evidence": "docs/evidence/v240-easy-baseline/normal/result.json",
+          "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+          "evidence_blob": "884e7fb854cadb0a6bdba71d69730de94760c13e",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "CONTROLLED_FIXTURE\u5341\u6ce2\u6d41\u7a0b / CONTROLLED_FIXTURE ten-wave flow",
+          "status": "PASS",
+          "source_commit": "c5562a79676e0a5e7cf700e05110f0974d71dad5",
+          "evidence": "docs/evidence/v240-easy-baseline/controlled-durable/result.json",
+          "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+          "evidence_blob": "e633209b6c2621f6faaf29b3a74835dfaa4ddaff",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "CONTROLLED_FIXTURE\u539f\u751f\u52dd\u5229\u8207NG+ / CONTROLLED_FIXTURE native victory and NG+",
           "status": "PASS",
           "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
           "evidence": "docs/evidence/v240-easy-baseline/controlled-browser/browser.json",
-          "evidence_commit": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+          "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
           "evidence_blob": "5475f8d9c789e04edd0aa4bac9536c2aac284c55",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "\u81ea\u7136NG+ / Natural NG+",
+          "status": "NOT_TESTED",
+          "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+          "evidence": "docs/evidence/v240-easy-baseline/REPORT.md",
+          "evidence_commit": "8884649f06e09606348723f27503da393558ac40",
+          "evidence_blob": "224ca58685fa3c9169f48201abd6ff65ec5a0cf2",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
-      "blockers": [],
-      "response": "\u4e2d\u6587\uff1a\u53d7\u63a7\u4f4e\u5bc6\u5ea6\u8010\u4e45\u653b\u57ce\u5834\u666f\u5b8c\u6210\u6b63\u5f0f\u5341\u6ce2\u53caBoss\u6b7b\u4ea1\uff1b\u771f\u5be6Chromium\u539f\u751f\u52dd\u5229\uff0fNG+\uff0f\u4e09\u5361\uff0f\u91cd\u7f6e\uff0f\u7b2c\u4e8c\u5468\u76ee\u5074\u7ffc\u8207\u5b58\u8b805\u9805\u901a\u904e\u3002\u73a9\u5bb6HP\u8986\u5beb\u660e\u793a\uff0c\u7d55\u975e\u81ea\u7136\u901a\u95dc\u3002Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u6230\u6557\uff1bNormal\u9996\u7d44\u56e0\u505c\u6eef\u5de5\u5177\u4e2d\u65b7\uff0c\u5df2\u4fee\u5fa9\u4e26\u5f9eStart\u91cd\u8dd1\u3002\n\nEnglish: Controlled low-density durable siege completed production ten waves/Boss deaths; actual Chromium passed5native victory/NG+/three-card/reset/cycle2flank/save-load checks. Explicit player-HP overrides; never natural victory. Easy naturally lost wave5; initial Normal was interrupted by a stalled harness, now corrected and rerun from Start.\n",
-      "event_id": "aae8839561a39eead55e0967a4f9eae3ca784b48160cc177550d1e9992193777",
-      "remote_head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+      "blockers": [
+        {
+          "id": "RELEASE_BLOCKED",
+          "severity": "WARNING",
+          "summary": "Easy\uff0fNormal\u81ea\u7136\u5341\u6ce2\u8207NG+\u672a\u901a\u904e\uff0c\u4f4eFPS\uff0f\u56b4\u683c\u78ba\u5b9a\u6027\uff0f\u6b77\u53f2\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559 / Natural Easy/Normal ten waves/NG+not passed; low-FPS/strict determinism/historical performance/hardware gaps retained",
+          "source_commit": "8884649f06e09606348723f27503da393558ac40",
+          "requires_user_decision": false
+        }
+      ],
+      "response": "\u4e2d\u6587\uff1a\u56fa\u5b9aTEU\uff0fsteppe\uff0fMILESTONE-NORMAL\u30011\u00d7\u3001\u540c\u7b56\u7565\u3002Easy\u81ea\u7136\u7b2c\u4e94\u6ce2731.64\u79d2\u6230\u6557\uff0cNormal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2581.93\u79d2\u6230\u6557\uff1b\u9996\u7d44Normal\u505c\u6eef\u4e2d\u65b7\u53e6\u5b58\uff0c\u4e0d\u5408\u4f75\u3002\u539f\u751f\u7b2c\u4e00\u6ce2\u53c3\u6578\u78ba\u8a8dEasy8/3/2\u300156.25\u79d2\uff0cNormal10/4/2\u300145\u79d2\uff0c\u672a\u6539Boss\u6216Normal\u3002\u53d7\u63a7\u4f4e\u5bc6\u5ea6\u73a9\u5bb6HP\u8986\u5beb\u5834\u666f\u5b8c\u6210\u5341\u6ce2\u53caBoss\u6b63\u5f0f\u50b7\u5bb3\u64ca\u6bba\uff1b\u771f\u5be6Chromium\u52dd\u5229\uff0f\u4e09\u5361\uff0fNG+\u91cd\u7f6e\uff0f\u7b2c\u4e8c\u5468\u76ee\u5074\u7ffc\u8207\u5b58\u8b805\u9805PASS\uff0c\u7d55\u975e\u81ea\u7136\u52dd\u5229\u3002\u81ea\u7136Easy\u8207Normal NG+\u4ecdNOT_TESTED\uff0c\u5c1a\u7121\u81ea\u7136\u52dd\u5229\u8def\u5f91\uff0c\u4e0d\u8db3\u4ee5\u5224\u5b9a\u5e73\u8861Bug\u3002\u5de5\u5177Pause\u6062\u5fa9\u7f3a\u9677\u5df2\u4fee\uff0c\u9996\u7d44\u505c\u6eef\u6839\u56e0\u56e0\u7f3a\u539fpaused\u9059\u6e2c\u4e0d\u80fd\u5b8c\u5168\u5b9a\u8ad6\u3002\u6240\u6709\u539f\u59cbFAIL\u8207\u9304\u5f71\u5df2\u63a8\u9001\u3002RELEASE_BLOCKED\uff1b\u6e2c\u8a66\u505c\u6b62\u3001\u6240\u6709\u6b0a\u91cb\u653e\uff0c\u56e0\u57f7\u884c\u7a97\u53e3\u4fdd\u5b58\u3002\u7121\u516c\u958b\u767c\u5e03\uff1bCROSS_THREAD_HANDOFF_UNAVAILABLE\uff0c\u672a\u5ba3\u7a31\u9001\u9054\u3002\n\nEnglish: FixedTEU/steppe/MILESTONE-NORMAL,1\u00d7and shared strategy. Easy naturally lost wave5at731.64seconds; valid Normal rerun lost wave4at581.93seconds. Initial stalled Normal is separate, never stitched. Native wave1parameters matchEasy8/3/2and56.25seconds versusNormal10/4/2and45seconds; Boss/Normal unchanged. The explicitly HP-overridden controlled low-density fixture completed ten waves with production Boss damage/deaths; actual Chromium passed5native victory/3cards/NG+reset/cycle2flank/save-load checks, never natural victory. Natural Easy/Normal NG+remainNOT_TESTED. No natural winning route established and no balance bug proven. Fixed the Pause-recovery defect, but original stall cause remains uncertain without originalpausedtelemetry. Raw FAIL and recordings pushed. RELEASE_BLOCKED; tests stopped and ownership released at execution-window checkpoint. No publication; CROSS_THREAD_HANDOFF_UNAVAILABLE, delivery not claimed.\n",
+      "event_id": "1b4899c2e7c05f78e9b26b859c6f9369ffe899af0b7d9f4747da37bacc4353e1",
+      "remote_head": "8884649f06e09606348723f27503da393558ac40",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-28T17:46:19.643312+00:00",
+      "recorded_at": "2026-10-28T18:02:46.772921+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
