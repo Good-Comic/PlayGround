@@ -11,6 +11,11 @@ export function resourcePriority(counts,resources,desiredFood=2) {
  if(counts.food<desiredFood)return 'food';
  return resources.food<200?'food':resources.wood<180?'wood':'gold';
 }
+export function protectionTargets(workers,enemies,core) {
+ const active=workers.filter(w=>w.alive!==false);
+ const ranked=active.map(w=>({worker:w,score:(enemies.some(e=>e.target===w.id)?100:0)+(w.gatherType==='food'?20:0)+(w.state==='gather'?10:0)-Math.hypot(w.x-core.x,w.y-core.y)*.01})).sort((a,b)=>b.score-a.score);
+ return ranked.slice(0,2).map(r=>r.worker.id);
+}
 export function createV5Player({page:p,record,build}){
  async function pan(x,y){const r=await p.locator('#minimap').boundingBox();await p.mouse.click(r.x+x/50*r.width,r.y+y/50*r.height);await p.waitForTimeout(400)}
  async function point(id,resource=false){return p.evaluate(({id,resource})=>{const g=ageOfAsh.game,e=(resource?g.world.resources:[...g.units,...g.buildings]).find(e=>e.id===id&&e.alive);if(!e)return null;const q=g.screenPos(e.x+(e.w||0)/2,e.y+(e.h||0)/2),offsets=e.w?[-22,-45,-65,-90]:e.resource?[-10,-20,0]:[-18,-10,-25];for(const dy of offsets)for(const dx of [0,-9,9]){const x=q.x+dx*g.camera.zoom,y=q.y+dy*g.camera.zoom;if(x>270&&x<1210&&y>135&&y<610&&g.pickAt(x,y)===e&&document.elementFromPoint(x,y)===document.getElementById('game'))return{x,y,wx:e.x+(e.w||0)/2,wy:e.y+(e.h||0)/2}}return null},{id,resource})}
@@ -57,8 +62,11 @@ export function createV5Player({page:p,record,build}){
 
    const siege=await p.evaluate(()=>{const g=ageOfAsh.game,tc=g.getTownCenter(),enemy=g.units.find(u=>u.alive&&u.team==='enemy'&&u.type==='ram'&&g.distanceTo(u,tc)<8);return enemy?{x:enemy.x,y:enemy.y,id:enemy.id,actors:g.units.filter(u=>u.alive&&u.team==='player'&&['militia','commander','light_cavalry'].includes(u.type)&&u.tacticalOrder?.type!=='attackMove').slice(0,2).map(u=>u.id)}:null});
    if(siege)for(const id of siege.actors){if(!await select(id))continue;await p.keyboard.press('Shift+A');const q=await p.evaluate(v=>{const q=ageOfAsh.game.screenPos(v.x,v.y);return document.elementFromPoint(q.x,q.y)===document.querySelector('#game')?q:null},siege);if(q){await p.mouse.click(q.x,q.y);const order=await p.evaluate(id=>ageOfAsh.game.units.find(u=>u.id===id)?.tacticalOrder,id);record(order?.type==='attackMove'?'action':'action-skipped',{command:'verified-attack-move-siege',id,enemy:siege.id,order})}}
-   const guard=await p.evaluate(()=>ageOfAsh.game.units.filter(u=>u.alive&&u.team==='player'&&u.type!=='villager'&&!['guard','attackMove'].includes(u.tacticalOrder?.type)).map(u=>u.id));
-   for(const id of guard.slice(0,8)){if(!await select(id))continue;await p.keyboard.press('g');const q=await point(tc.id);if(q&&await p.evaluate(()=>ageOfAsh.game.orderMode==='guard')){await p.mouse.click(q.x,q.y);const accepted=await p.evaluate(id=>ageOfAsh.game.units.find(u=>u.id===id)?.tacticalOrder?.type==='guard',id);record(accepted?'action':'action-skipped',{command:'verified-guard-core',id})}else if(await p.evaluate(()=>!!ageOfAsh.game.orderMode))await p.keyboard.press('Escape')}
+   const live=await p.evaluate(()=>{const g=ageOfAsh.game;return{workers:g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager').map(u=>({id:u.id,x:u.x,y:u.y,hp:u.hp,state:u.state,gatherType:u.gatherTarget?.resource})),enemies:g.units.filter(u=>u.alive&&u.team==='enemy').map(u=>({target:u.target?.id})),army:g.units.filter(u=>u.alive&&u.team==='player'&&u.type!=='villager').sort((a,b)=>(a.hero?-2:a.type==='archer'?-1:0)-(b.hero?-2:b.type==='archer'?-1:0)).map(u=>({id:u.id,order:u.tacticalOrder}))}});
+   const targets=protectionTargets(live.workers,live.enemies,tc);
+   const desired=live.army.map((u,i)=>({...u,protect:i<3&&targets.length?targets[i%targets.length]:tc.id})).filter(u=>u.order?.type!=='attackMove'&&(u.order?.type!=='guard'||u.order.protectedId!==u.protect));
+   for(const unit of desired.slice(0,8)){const id=unit.id;if(!await select(id))continue;const ally=await p.evaluate(id=>{const g=ageOfAsh.game,e=[...g.units,...g.buildings].find(e=>e.id===id&&e.alive);return e?{x:e.x+(e.w||0)/2,y:e.y+(e.h||0)/2}:null},unit.protect);if(!ally)continue;await pan(ally.x,ally.y);const q=await point(unit.protect);if(!q)continue;await p.keyboard.press('g');if(await p.evaluate(()=>ageOfAsh.game.orderMode==='guard')){await p.mouse.click(q.x,q.y);const order=await p.evaluate(id=>ageOfAsh.game.units.find(u=>u.id===id)?.tacticalOrder,id);record(order?.type==='guard'&&order.protectedId===unit.protect?'action':'action-skipped',{command:unit.protect===tc.id?'verified-guard-core':'verified-guard-resource-worker',id,protected:unit.protect,order})}}
+
   }
  }};
 }
