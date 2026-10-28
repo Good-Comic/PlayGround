@@ -5,9 +5,9 @@
 本清單記錄產生當下的本地 Git 與實際遠端查詢；本地記錄不代表已 Push。快照的提交必然晚於其觀察版本，不能反覆追寫自身 SHA。機器欄位及歷史原始資料保留原文，歷史敘述仍依優先級逐步補譯。
 This manifest records local Git state and actual remote queries at capture time; a local record is not a push. The snapshot publication commit necessarily follows its observed version; do not recursively update its own SHA. Machine fields and historical raw data remain unchanged; historical narrative is translated incrementally by priority.
 
-快照 ID / Snapshot ID: caca854d3a8fd8af3ed53dd4700f86dfc5bbf2320bf15498f2298c8c278238d0
-擷取時間 UTC / Captured UTC: 2026-10-28T06:50:36.931258+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
-來源 / Collector source: `14154b63ef55b5d4ce35bfa60fc4133b2d965c45` · LOCAL_INVENTORIED_NOT_A_PUSH
+快照 ID / Snapshot ID: 5af4519eca66f081f56411dbcf21a10df5182b774f311e4c4efb4ad2f36623d8
+擷取時間 UTC / Captured UTC: 2026-10-28T07:31:53.286144+00:00 · 觸發 / Trigger: FINAL_CHECKPOINT
+來源 / Collector source: `4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45` · LOCAL_INVENTORIED_NOT_A_PUSH
 
 | 工作樹 / Worktree | 分支 / Branch | HEAD | 遠端 / Remote HEAD | 狀態 / Status | Dirty |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ This manifest records local Git state and actual remote queries at capture time;
 | /workspace/riftwatch-rally | codex/riftwatch-b1-rally | 2a0da8a7320336ac342c1af0953a424d08ef1515 | 2a0da8a7320336ac342c1af0953a424d08ef1515 | REMOTE_SAVED | False |
 | /workspace/riftwatch-v22 | codex/riftwatch-v22-target-state | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | 2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec | REMOTE_SAVED | False |
 | /workspace/riftwatch-v226 | codex/riftwatch-v226-delivery | ee0d219a916d8388fab5d66ff86e3bd650aa66af | ee0d219a916d8388fab5d66ff86e3bd650aa66af | REMOTE_SAVED | False |
-| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 14154b63ef55b5d4ce35bfa60fc4133b2d965c45 | 14154b63ef55b5d4ce35bfa60fc4133b2d965c45 | REMOTE_SAVED | True |
+| /workspace/riftwatch-v240 | codex/riftwatch-v240-game-first | 4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45 | 4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45 | REMOTE_SAVED | True |
 
 ## work
 
@@ -344,7 +344,7 @@ This manifest records local Git state and actual remote queries at capture time;
   "changed_files": [
     {
       "status": " M",
-      "path": "docs/evidence/v240-v55-economy/REPORT.md"
+      "path": "docs/evidence/v240-remaining-audit/REPORT.md"
     },
     {
       "status": " M",
@@ -360,98 +360,65 @@ This manifest records local Git state and actual remote queries at capture time;
     },
     {
       "status": " M",
+      "path": "docs/recovery/WORKTREE-RECOVERY.md"
+    },
+    {
+      "status": " M",
       "path": "docs/recovery/task-registry.json"
     },
     {
-      "status": "??",
-      "path": "docs/evidence/v240-v55-economy/policy-final.log.txt"
+      "status": " M",
+      "path": "docs/recovery/worktree-recovery.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v510/campaign.mp4"
+      "path": "docs/evidence/v240-remaining-audit/v510-continuation/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v510/events.jsonl"
+      "path": "docs/evidence/v240-remaining-audit/v511/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v510/recorded-final-frame.png"
+      "path": "docs/evidence/v240-remaining-audit/v512/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v510/result.json"
+      "path": "docs/evidence/v240-remaining-audit/v513-invalid-settings/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v510/save-snapshot.json"
+      "path": "docs/evidence/v240-remaining-audit/v513/campaign.mp4"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v510/verification.json"
+      "path": "docs/evidence/v240-remaining-audit/v513/events.jsonl"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v55/campaign.mp4"
+      "path": "docs/evidence/v240-remaining-audit/v513/final-frame.png"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v56/campaign.mp4"
+      "path": "docs/evidence/v240-remaining-audit/v513/result.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v57/campaign.mp4"
+      "path": "docs/evidence/v240-remaining-audit/v513/save-snapshot.json"
     },
     {
       "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v58/campaign.mp4"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v59/campaign.mp4"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v59/events.jsonl"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v59/result.json"
-    },
-    {
-      "status": "??",
-      "path": "docs/evidence/v240-v55-economy/v59/save-snapshot.json"
+      "path": "docs/release/v240/RELEASE-NOTES-DRAFT.md"
     }
   ],
   "last_validation": [
     {
-      "name": "資源選取修復 / Resource-selection fix",
-      "path": "docs/evidence/v240-resource-selection/REPORT.md",
+      "path": "docs/evidence/v240-remaining-audit/REPORT.md",
       "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-      "result": "10 focused Node tests;4native resource/locale SaveContinue checks PASS",
-      "exists": true,
-      "storage": "REMOTE_SAVED",
-      "sha256": "49cd00301e857fc80455e332a792e74d15976730ccde4c17281645f911092a63",
-      "resource_freshness": "MATCHES_WORKING_RESOURCES"
-    },
-    {
-      "name": "V5 自然策略 / V5 natural policy",
-      "path": "docs/evidence/v240-v5-playability/REPORT.md",
-      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-      "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED",
-      "exists": true,
-      "storage": "REMOTE_SAVED",
-      "sha256": "d6744df1942bf2d5368c10be5376880761bd353552ed019f00d736f9878b21f9",
-      "resource_freshness": "MATCHES_WORKING_RESOURCES"
-    },
-    {
-      "name": "V5.10限定開局 / Scoped opening",
-      "path": "docs/evidence/v240-v55-economy/v510/verification.json",
-      "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-      "result": "PASS opening only; full campaign NOT_PASSED",
+      "result": "9policyPASS;V5.12/V5.13defeat3; ten waves NOT_PASSED",
       "exists": true,
       "storage": "LOCAL_ONLY_OR_MISSING",
-      "sha256": "40605f48543222b3dfae414d7b79c6c4feb79d929d2eddd76d0d3e86b701d7d8",
+      "sha256": "77f1f3a09da81cde41ef0e87cdd9d35d7d5bd428ae7179f7f4da29db39a11201",
       "resource_freshness": "MATCHES_WORKING_RESOURCES"
     }
   ],
@@ -461,8 +428,8 @@ This manifest records local Git state and actual remote queries at capture time;
     "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
   ],
   "next_steps": [
-    "由 v510/save-snapshot.json 繼續1× Normal，保持戰爭管家啟用；不得重跑全部歷史測試 / Continue v510/save-snapshot.json at1× Normal with native army steward enabled; do not repeat all history",
-    "SHA256 fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f; only actual victory permits natural New Game+ acceptance"
+    "V6開局科技成本與集中防守策略；先設計可證偽假設，再正式Start驗證 / V6 technology-cost and concentrated-defense policy; define falsifiable hypothesis then native Start",
+    "不能從已戰敗V5.13恢復；存活V5.10接續點見REPORT / Do not resume defeatedV5.13; livingV5.10 checkpoint in REPORT"
   ]
 }
 ```

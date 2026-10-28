@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-28T06:50:36.931258+00:00",
+  "captured_at_utc": "2026-10-28T07:31:53.286144+00:00",
   "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
+  "collector_commit": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-28T06:50:36.931258+00:00"
+    "queried_at": "2026-10-28T07:31:53.286144+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -31,9 +31,9 @@
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-    "codex/riftwatch-progress-feed": "1174b2c420dfa4e01f78c3ff32934e5d03090462",
+    "codex/riftwatch-progress-feed": "c128462eee621117d36b9002d9e028e9d93ecee1",
     "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
-    "codex/riftwatch-task-ownership": "aedf37952991e0d310ed79ba54cc738494aed278",
+    "codex/riftwatch-task-ownership": "19982387d92d3613dbe5571188759a11b4003ec0",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -63,7 +63,7 @@
     "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
     "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
     "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-    "codex/riftwatch-v240-game-first": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
+    "codex/riftwatch-v240-game-first": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -183,8 +183,8 @@
     },
     {
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
-      "remote_head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
+      "head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
+      "remote_head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
       "status": "REMOTE_SAVED"
     }
   ],
@@ -524,38 +524,17 @@
     {
       "path": "/workspace/riftwatch-v240",
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
+      "head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
       "locked": false,
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
         {
-          "name": "\u8cc7\u6e90\u9078\u53d6\u4fee\u5fa9 / Resource-selection fix",
-          "path": "docs/evidence/v240-resource-selection/REPORT.md",
+          "path": "docs/evidence/v240-remaining-audit/REPORT.md",
           "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "result": "10 focused Node tests;4native resource/locale SaveContinue checks PASS",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "49cd00301e857fc80455e332a792e74d15976730ccde4c17281645f911092a63",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        },
-        {
-          "name": "V5 \u81ea\u7136\u7b56\u7565 / V5 natural policy",
-          "path": "docs/evidence/v240-v5-playability/REPORT.md",
-          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "d6744df1942bf2d5368c10be5376880761bd353552ed019f00d736f9878b21f9",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        },
-        {
-          "name": "V5.10\u9650\u5b9a\u958b\u5c40 / Scoped opening",
-          "path": "docs/evidence/v240-v55-economy/v510/verification.json",
-          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "result": "PASS opening only; full campaign NOT_PASSED",
+          "result": "9policyPASS;V5.12/V5.13defeat3; ten waves NOT_PASSED",
           "exists": true,
           "storage": "LOCAL_ONLY_OR_MISSING",
-          "sha256": "40605f48543222b3dfae414d7b79c6c4feb79d929d2eddd76d0d3e86b701d7d8",
+          "sha256": "77f1f3a09da81cde41ef0e87cdd9d35d7d5bd428ae7179f7f4da29db39a11201",
           "resource_freshness": "MATCHES_WORKING_RESOURCES"
         }
       ],
@@ -565,16 +544,16 @@
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "\u7531 v510/save-snapshot.json \u7e7c\u7e8c1\u00d7 Normal\uff0c\u4fdd\u6301\u6230\u722d\u7ba1\u5bb6\u555f\u7528\uff1b\u4e0d\u5f97\u91cd\u8dd1\u5168\u90e8\u6b77\u53f2\u6e2c\u8a66 / Continue v510/save-snapshot.json at1\u00d7 Normal with native army steward enabled; do not repeat all history",
-        "SHA256 fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f; only actual victory permits natural New Game+ acceptance"
+        "V6\u958b\u5c40\u79d1\u6280\u6210\u672c\u8207\u96c6\u4e2d\u9632\u5b88\u7b56\u7565\uff1b\u5148\u8a2d\u8a08\u53ef\u8b49\u507d\u5047\u8a2d\uff0c\u518d\u6b63\u5f0fStart\u9a57\u8b49 / V6 technology-cost and concentrated-defense policy; define falsifiable hypothesis then native Start",
+        "\u4e0d\u80fd\u5f9e\u5df2\u6230\u6557V5.13\u6062\u5fa9\uff1b\u5b58\u6d3bV5.10\u63a5\u7e8c\u9ede\u898bREPORT / Do not resume defeatedV5.13; livingV5.10 checkpoint in REPORT"
       ],
       "remote_status": "REMOTE_SAVED",
-      "remote_head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
+      "remote_head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
       "unpushed_commits": [],
       "changed_files": [
         {
           "status": " M",
-          "path": "docs/evidence/v240-v55-economy/REPORT.md"
+          "path": "docs/evidence/v240-remaining-audit/REPORT.md"
         },
         {
           "status": " M",
@@ -590,67 +569,55 @@
         },
         {
           "status": " M",
+          "path": "docs/recovery/WORKTREE-RECOVERY.md"
+        },
+        {
+          "status": " M",
           "path": "docs/recovery/task-registry.json"
         },
         {
-          "status": "??",
-          "path": "docs/evidence/v240-v55-economy/policy-final.log.txt"
+          "status": " M",
+          "path": "docs/recovery/worktree-recovery.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v510/campaign.mp4"
+          "path": "docs/evidence/v240-remaining-audit/v510-continuation/campaign.mp4"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v510/events.jsonl"
+          "path": "docs/evidence/v240-remaining-audit/v511/campaign.mp4"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v510/recorded-final-frame.png"
+          "path": "docs/evidence/v240-remaining-audit/v512/campaign.mp4"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v510/result.json"
+          "path": "docs/evidence/v240-remaining-audit/v513-invalid-settings/campaign.mp4"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v510/save-snapshot.json"
+          "path": "docs/evidence/v240-remaining-audit/v513/campaign.mp4"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v510/verification.json"
+          "path": "docs/evidence/v240-remaining-audit/v513/events.jsonl"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v55/campaign.mp4"
+          "path": "docs/evidence/v240-remaining-audit/v513/final-frame.png"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v56/campaign.mp4"
+          "path": "docs/evidence/v240-remaining-audit/v513/result.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v57/campaign.mp4"
+          "path": "docs/evidence/v240-remaining-audit/v513/save-snapshot.json"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v58/campaign.mp4"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v59/campaign.mp4"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v59/events.jsonl"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v59/result.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-v55-economy/v59/save-snapshot.json"
+          "path": "docs/release/v240/RELEASE-NOTES-DRAFT.md"
         }
       ],
       "dirty": true,
@@ -661,14 +628,12 @@
     {
       "path": "/workspace/riftwatch-v240",
       "changed_fields": [
-        "head",
-        "remote_head",
         "changed_files"
       ],
-      "previous_head": "1f13ff3f349ddc2a7104c417a1a9eea0b5261673",
-      "actual_head": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45"
+      "previous_head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
+      "actual_head": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "caca854d3a8fd8af3ed53dd4700f86dfc5bbf2320bf15498f2298c8c278238d0"
+  "snapshot_id": "5af4519eca66f081f56411dbcf21a10df5182b774f311e4c4efb4ad2f36623d8"
 }

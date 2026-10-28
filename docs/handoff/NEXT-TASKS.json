@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-28T06:50:36.885169+00:00",
+  "updated_at": "2026-10-28T07:31:53.230851+00:00",
   "tasks": [
     {
-      "task_id": "V240-V55-ECONOMY",
-      "name": "V5 食物預算與混合部隊 / V5 food budgeting and combined arms",
+      "task_id": "V240-REMAINING-AUDIT",
+      "name": "剩餘工作盤點與自然戰役 / Remaining-work audit and natural campaign",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P0",
       "agent": "Codex",
       "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-      "latest_pushed_commit": "14154b63ef55b5d4ce35bfa60fc4133b2d965c45",
+      "latest_pushed_commit": "4eb1a8e2fdb8a8b5cbe945180061cefe3b424f45",
       "application_source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
       "completed": [
-        "修正自動玩家的勞動配額、護衛、原生攻城目標與房屋預算；未改 Normal 規則 / Corrected player labor quotas, escorts, native siege targeting and housing budget; Normal rules unchanged",
-        "8項策略測試 PASS；V5.7–V5.9第三波自然戰敗 /8 policy tests PASS; V5.7–V5.9 natural defeat at wave3",
-        "V5.10限定開局：第二時代、8村民、7軍事人口、兩房屋及施工中射箭場 / V5.10 scoped opening: age2,8workers,7military, two houses and a range under construction"
+        "雙語剩餘工作、Known Issues、發布草稿及回滾計畫 / Bilingual remaining-work audit, known issues, draft notes and rollback plan",
+        "9策略測試PASS；Continue實際設定覆核修復 /9 policy tests PASS; actual-settings verification fixed after Continue",
+        "V5.12與V5.13第三波自然戰敗；保留錄影與無效設定樣本 / V5.12/V5.13 natural defeat3; recordings and invalid-settings cohort preserved"
       ],
       "uncommitted": [],
       "unpushed": [],
@@ -41,8 +41,8 @@
         }
       ],
       "evidence": [
-        "docs/evidence/v240-v55-economy/REPORT.md",
-        "docs/evidence/v240-v55-economy/v510/verification.json"
+        "docs/release/v240/REMAINING-WORK-AUDIT.md",
+        "docs/evidence/v240-remaining-audit/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -53,8 +53,8 @@
         "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
       ],
       "next_steps": [
-        "由 v510/save-snapshot.json 繼續1× Normal，保持戰爭管家啟用；不得重跑全部歷史測試 / Continue v510/save-snapshot.json at1× Normal with native army steward enabled; do not repeat all history",
-        "SHA256 fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f; only actual victory permits natural New Game+ acceptance"
+        "V6開局科技成本與集中防守策略；先設計可證偽假設，再正式Start驗證 / V6 technology-cost and concentrated-defense policy; define falsifiable hypothesis then native Start",
+        "不能從已戰敗V5.13恢復；存活V5.10接續點見REPORT / Do not resume defeatedV5.13; livingV5.10 checkpoint in REPORT"
       ],
       "permissions": [
         "Independent development tests normal push",
@@ -62,13 +62,13 @@
       ],
       "status": "READY",
       "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-      "updated_at": "2026-10-28T06:50:36.885169+00:00",
+      "updated_at": "2026-10-28T07:31:53.230851+00:00",
       "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
       "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
       "ownership_at_snapshot": {
-        "task": "V240-V55-ECONOMY",
-        "execution": "codex-v55-resume-20261028",
-        "global_version": 176,
+        "task": "V240-REMAINING-AUDIT",
+        "execution": "codex-audit-20261028",
+        "global_version": 181,
         "status": "RELEASE_PENDING_AFTER_PUSH"
       }
     },

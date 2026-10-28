@@ -343,22 +343,9 @@
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
         {
-          "name": "資源選取修復 / Resource-selection fix",
-          "path": "docs/evidence/v240-resource-selection/REPORT.md",
+          "path": "docs/evidence/v240-remaining-audit/REPORT.md",
           "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "result": "10 focused Node tests;4native resource/locale SaveContinue checks PASS"
-        },
-        {
-          "name": "V5 自然策略 / V5 natural policy",
-          "path": "docs/evidence/v240-v5-playability/REPORT.md",
-          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "result": "V5.4 wave4 defeat; no errors; full campaign NOT_PASSED"
-        },
-        {
-          "name": "V5.10限定開局 / Scoped opening",
-          "path": "docs/evidence/v240-v55-economy/v510/verification.json",
-          "source_commit": "0f85357303bf2bca809e6ff32b490769e1d3f836",
-          "result": "PASS opening only; full campaign NOT_PASSED"
+          "result": "9policyPASS;V5.12/V5.13defeat3; ten waves NOT_PASSED"
         }
       ],
       "blockers": [
@@ -367,8 +354,8 @@
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
       ],
       "next_steps": [
-        "由 v510/save-snapshot.json 繼續1× Normal，保持戰爭管家啟用；不得重跑全部歷史測試 / Continue v510/save-snapshot.json at1× Normal with native army steward enabled; do not repeat all history",
-        "SHA256 fac53498b0379a8f6ef35b390f2b30ba4c09275b1f9854b02256622e689d576f; only actual victory permits natural New Game+ acceptance"
+        "V6開局科技成本與集中防守策略；先設計可證偽假設，再正式Start驗證 / V6 technology-cost and concentrated-defense policy; define falsifiable hypothesis then native Start",
+        "不能從已戰敗V5.13恢復；存活V5.10接續點見REPORT / Do not resume defeatedV5.13; livingV5.10 checkpoint in REPORT"
       ]
     }
   }

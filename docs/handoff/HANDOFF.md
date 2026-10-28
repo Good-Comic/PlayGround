@@ -1,3 +1,20 @@
+# 目前接續 / Current continuation
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+**中文：** 最新工作為剩餘項目盤點與V5.10–V5.13真實本地Chromium比較。V5.12與已覆核設定的V5.13均第三波自然戰敗，十波／自然New Game+未通過。已修復Continue後設定未套用的測試工具缺陷，不能將修正誤報為遊戲平衡改善。最新詳細索引：`docs/evidence/v240-remaining-audit/REPORT.md`；發布判定：`docs/release/v240/REMAINING-WORK-AUDIT.md`，RELEASE_BLOCKED。遊戲來源0f85357303bf2bca809e6ff32b490769e1d3f836不變。所有戰役已結束。
+
+**English:** Latest work is the remaining-work audit and actual local ChromiumV5.10–V5.13comparisons. V5.12 and settings-verifiedV5.13 naturally lost at wave3; ten waves/natural New Game+ have not passed. Fixed the harness defect where settings were not applied after Continue; this is not a game-balance improvement. Detailed index: `docs/evidence/v240-remaining-audit/REPORT.md`; verdict: `docs/release/v240/REMAINING-WORK-AUDIT.md`, RELEASE_BLOCKED. Game source0f85357303bf2bca809e6ff32b490769e1d3f836 is unchanged. All campaigns ended.
+
+**中文：** 下一步設計V6開局投資／集中防禦，勿再次重跑同一失敗策略。延後科技必須正式Start，因舊存活快照已第二時代，禁止退款／灌資源。若要接續存活樣本，使用 `docs/evidence/v240-remaining-audit/v510-continuation/save-snapshot.json`，SHA256 `e07a7b23206c206556ade0ec44a4f1cb85dbdd00e4eee5e80217ee78315bd8ba`；後續V5.13快照已戰敗。停止原因是執行窗口，不是額度百分比。所有權於推送後釋放，以遠端ownership.json為準。
+
+**English:** Next designV6opening investment/concentrated defense; do not rerun the same failed policy. Delayed technology requires native Start because old living saves are already age2; no refunds/resource injection. For a living continuation use `docs/evidence/v240-remaining-audit/v510-continuation/save-snapshot.json`, SHA256 `e07a7b23206c206556ade0ec44a4f1cb85dbdd00e4eee5e80217ee78315bd8ba`; laterV5.13saves are defeated. Stop reason is execution window, not quota percentage. Ownership is released after push; remoteownership.json is authoritative.
+
+---
+
+## 歷史接續摘要 / Historical continuation summaries
+
 ## 最新安全接續點 / Latest safe resume point
 
 **中文：** V5.7、V5.8及V5.9於第三波自然戰敗，不能推論 Normal 無法通關。V5.10僅完成30.53秒開局檢查：8村民、第二時代、7軍事人口、兩間初始房屋、射箭場施工中，木材212.01。八項策略測試通過。完整十波及 New Game+ 尚未通過。遊戲來源仍為 `0f85357303bf2bca809e6ff32b490769e1d3f836`，本輪只修改自動玩家與證據。
