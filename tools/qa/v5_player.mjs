@@ -18,6 +18,7 @@ export function protectionTargets(workers,enemies,core) {
  const ranked=active.map(w=>({worker:w,score:(enemies.some(e=>e.target===w.id)?100:0)+(w.gatherType==='food'?20:0)+(w.state==='gather'?10:0)-Math.hypot(w.x-core.x,w.y-core.y)*.01})).sort((a,b)=>b.score-a.score);
  return ranked.slice(0,2).map(r=>r.worker.id);
 }
+export function housingPriority({military,queued=0,cap,civLimit=0}){return !(civLimit>0&&cap>=civLimit)&&cap-military-queued<=5}
 export function createV5Player({page:p,record,build}){
  let regrouped=false;
  async function pan(x,y){const r=await p.locator('#minimap').boundingBox();await p.mouse.click(r.x+x/50*r.width,r.y+y/50*r.height);await p.waitForTimeout(400)}
@@ -54,8 +55,9 @@ export function createV5Player({page:p,record,build}){
   const unfinished=s.buildings.find(b=>b.alive&&b.construction<1),idle=s.units.find(u=>u.team==='player'&&u.type==='villager'&&u.state==='idle');
   if(unfinished&&idle&&!s.units.some(u=>u.team==='enemy'&&Math.hypot(u.x-unfinished.x,u.y-unfinished.y)<8)&&await select(idle.id)){await pan(unfinished.x,unfinished.y);const q=await point(unfinished.id);if(q){await p.mouse.click(q.x,q.y,{button:'right'});const result=await p.evaluate(id=>{const u=ageOfAsh.game.units.find(u=>u.id===id);return{state:u?.state,target:u?.buildTarget?.id}},idle.id);record(result.state==='build'&&result.target===unfinished.id?'action':'action-skipped',{command:'verified-resume-construction',worker:idle.id,building:unfinished.id,result})}}
   for(const worker of s.units.filter(u=>u.team==='player'&&u.type==='villager'))await assign(worker);
-  if(info.workers>=4&&!s.buildings.some(b=>b.alive&&b.type==='range')&&s.resources.wood>=120)await build('range');
-  else if(info.workers>=4&&s.resources.wood>=60&&s.buildings.filter(b=>b.alive&&b.type==='house').length<6)await build('house');
+  const supply=await p.evaluate(()=>{const g=ageOfAsh.game;return{military:g.militaryPopulation,queued:g.queuedPopulation(false),cap:g.militaryPopCap,civLimit:g.effects.militaryPopCap,canBuildHouse:g.canAfford(g.buildingCost('house')),canBuildRange:g.canAfford(g.buildingCost('range'))}});
+  if(info.workers>=4&&!s.buildings.some(b=>b.alive&&b.type==='range')&&supply.canBuildRange)await build('range');
+  else if(info.workers>=4&&housingPriority(supply)&&supply.canBuildHouse)await build('house');
   const ranged=await p.evaluate(()=>{const g=ageOfAsh.game;return{archers:g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='archer').length,range:g.buildings.find(b=>b.alive&&b.type==='range'&&b.construction>=1&&b.queue.length<2)?.id,affordable:g.canAfford(g.unitCost('archer'))}});
   if(ranged.range&&ranged.affordable&&ranged.archers<8)await train(ranged.range,'archer');
   const reserveTechnology=shouldResearch({age:s.age,wave:s.wave,military:s.population.mil});
