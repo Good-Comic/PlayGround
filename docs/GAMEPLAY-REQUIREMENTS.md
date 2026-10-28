@@ -1,3 +1,9 @@
+## v2.4最新盤點入口 / Current v2.4 audit entry
+
+**中文：** 最新未完成項目與發布判定見 [v2.4剩餘工作盤點](release/v240/REMAINING-WORK-AUDIT.md)。以下舊版本矩陣保留歷史，不可將其中NOT_STARTED、舊窄道FAIL或v228未發布敘述視為目前狀態；亦不可將後續限定通過擴大為完整玩家驗收。
+
+**English:** See the [v2.4 remaining-work audit](release/v240/REMAINING-WORK-AUDIT.md) for current gaps and release verdict. Older matrices below remain historical: their NOT_STARTED labels, superseded narrow-path FAIL and v228-unpublished statements are not current status. Later scoped passes likewise do not certify complete player acceptance.
+
 ## Strategy v2.2.8 — current scoped checkpoint
 
 Candidate `codex/riftwatch-playtest-v228`, game Build `ab56a5b824fabc5e123cf33e912d11bd3c625911`. [Report](evidence/v228-candidate/REPORT.md), [exact release proposal](playtest/v228/APPROVAL-PLAN.json). NAV-228-01 LOCAL_VERIFIED: recordednative dt reproduces7/8 exactly; dynamicdetour fix gives8/8native16.73s plusaffectedP0/orders/24crowd. B-GROUP-228-01 LOCAL_VERIFIED: clickablegroups/Settingsvisibility,18targetedNode/19native/fourlocale678keys;100selectedMOVE-only impact3+3PASS, notcombat/hardware. DEV-QUOTA-228-01 local8fixturesPASS; actualQUOTA_PERCENT_UNKNOWN/manualdispatchonly. SIM-228-01 remainsFAIL/BLOCKED:20realvirtualseconds at10Hz→10sim; fixedprototype SaveLoaddeterminismfails, notinstalled. No new publicSHA, GameplayIntegration orD6changes. Fullcampaign/current-scalecombat/hardware/independentSupervisor remainpending; historicalFAIL preserved. Formationeditor/Fog/newRoguelite slices queued.

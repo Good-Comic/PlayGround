@@ -65,9 +65,9 @@ try{
  // Use a supported user-facing speed; report simulation/wall discrepancy rather
  // than assume the game's known low-FPS cap is semantically correct.
  await p.locator('#btn-settings').click();await p.locator('#settings-speed').selectOption(speed);await p.locator('#btn-settings-close').click();await p.locator('#btn-start').click();record('action',{command:'Start',mode:'standard',speed:Number(speed),policy});
- if(policy.startsWith('v5.')){await p.locator('#btn-pause').click();await p.locator('#auto-mil').setChecked(armySteward);await p.locator('#auto-econ').uncheck();await p.locator('#btn-resume').click();record('action',{command:'manual-economy-army-setting',armySteward})}
- else if(['v3','v4','v5'].includes(policy)){await p.locator('#btn-pause').click();await p.locator('#auto-mil').uncheck();await p.locator('#btn-resume').click();record('action',{command:'disable-auto-military-manual-ranged-production'})}
+ if(['v3','v4','v5'].includes(policy)){await p.locator('#btn-pause').click();await p.locator('#auto-mil').uncheck();await p.locator('#btn-resume').click();record('action',{command:'disable-auto-military-manual-ranged-production'})}
  }
+ if(policy.startsWith('v5.')){await p.locator('#btn-pause').click();await p.locator('#auto-mil').setChecked(armySteward);await p.locator('#auto-econ').uncheck();await p.locator('#btn-resume').click();const actual=await p.evaluate(()=>({armySteward:ageOfAsh.game.autoMilitary,autoEconomy:ageOfAsh.game.autoEconomy,speed:ageOfAsh.game.speed}));record('action',{command:'manual-economy-army-setting',requested:{armySteward,speed:Number(speed)},actual});if(actual.armySteward!==armySteward||actual.autoEconomy||actual.speed!==Number(speed))throw Error('NATIVE_SETTINGS_MISMATCH')}
  let lastPhase='',lastShot=0,lastPolicy=0,lastSave=0;const gameStart=Date.now();
  while((Date.now()-gameStart)/1000<seconds&&!existsSync(resolve(out,'STOP_REQUESTED'))){
   const s=await state(),wall=(Date.now()-gameStart)/1000;record('state',s);writeFileSync(resolve(out,'latest-state.json'),JSON.stringify(s,null,2)+'\n');
