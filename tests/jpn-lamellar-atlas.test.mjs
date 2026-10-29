@@ -18,13 +18,13 @@ test('every lamellar direction and animation frame fits the actual PNG', () => {
   assert.equal(a.bakedPose,true);assert.equal(a.cacheFrames,true);
 });
 
-test('existing Japanese infantry speed, cost and snapshot identity; legacy block limitation remains explicit', () => {
+test('Japanese infantry speed, cost, snapshot identity and recovered block stay integrated', () => {
   const g=new Game();g.newRun(42,{civ:'JPN',biome:'steppe'});
   const a=g.spawnUnit('guard',30,30),enemy=g.spawnUnit('brute',31,30,'enemy');
   const cost=g.unitCost('guard'),radius=a.typeDef.radius;
   assert.equal(g.effects.infantryAttackSpeedMul,1.15);
   const hp=a.hp;g.time=10;g.applyDamage(a,20,enemy);
-  assert.equal(a.civ,undefined);assert.ok(a.hp<hp);assert.equal(a._blockCd,undefined);
+  assert.equal(a.civ,undefined);assert.equal(a.hp,hp);assert.equal(a._blockCd,20);
   const restored=new Game();restored.restore(g.snapshot());
   assert.equal(restored.civ.id,'JPN');assert.deepEqual(restored.unitCost('guard'),cost);
   const b=restored.units.find(u=>u.id===a.id);assert.equal(b.typeDef.radius,radius);

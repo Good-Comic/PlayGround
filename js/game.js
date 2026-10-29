@@ -206,7 +206,7 @@ export class Game {
       'eventRegen', 'buildingDamageMul', 'convertResist', 'eventRetreat', 'eventRetreatCd',
       'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'moraleUsed',
       'lureUsed', 'feintUsed', 'spawnGate', 'eventModsApplied', 'scale',
-      'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover', '_orderScanAt',
+      'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover', '_orderScanAt', '_blockCd',
     ];
     const buildingKeys = [
       'id', 'team', 'type', 'x', 'y', 'w', 'h', 'hp', 'maxHp', 'baseMaxHp', 'armor',
@@ -458,6 +458,7 @@ export class Game {
       const point=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.y>=0&&p.x<this.world.size&&p.y<this.world.size;
       unit.tacticalOrder = order&&['attackMove','guard','patrol'].includes(order.type)&&point(order.destination)&&point(order.origin)&&[0,1].includes(order.leg)&&(order.type!=='guard'||Number.isSafeInteger(order.protectedId)) ? JSON.parse(JSON.stringify(order)) : null;
       unit.typeDef = UNIT_TYPES[saved.type];
+      unit._blockCd = Number.isFinite(saved._blockCd) && saved._blockCd >= 0 ? saved._blockCd : 0;
       unit.selected = false;
     }
     const byKind = {
@@ -1908,7 +1909,7 @@ export class Game {
       }
       this.sound?.arrow(u.type);
     } else {
-      this.applyDamage(target, damage, u);
+      this.applyDamage(target, damage, u, 'melee');
       // Spanish villager stun: first hit every 8s stuns non-boss for 0.5s
       if (u.team === 'player' && u.civ?.id === 'SPA' && u.type === 'villager' && !target.typeDef?.boss) {
         if (!target._stunCd || target._stunCd <= this.time) {
@@ -1924,7 +1925,7 @@ export class Game {
           if (hit >= this.effects.elephantTrampleTargets) break;
           if (!e.alive || e.team !== 'enemy' || e === target) continue;
           if (dist(e.x, e.y, target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0)) > 1.5) continue;
-          this.applyDamage(e, damage * this.effects.elephantTrample, u);
+          this.applyDamage(e, damage * this.effects.elephantTrample, u, 'splash');
           hit++;
         }
       }
@@ -1954,13 +1955,13 @@ export class Game {
       if (d < 0.24) {
         p.alive = false;
         const source = p.source;
-        this.applyDamage(target, p.damage, source);
+        this.applyDamage(target, p.damage, source, 'projectile');
         if (source?.typeDef?.family === 'S') {
           let hits = 0;
           for (const e of this.units) {
             if (e === target || !e.alive || e.team === source.team) continue;
             if (dist(e.x, e.y, target.x, target.y) > 1.5) continue;
-            this.applyDamage(e, p.damage * 0.5, source);
+            this.applyDamage(e, p.damage * 0.5, source, 'splash');
             if (++hits >= 7) break;
           }
           this.addParticles(p.tx, p.ty, 'ring', 'rgba(227,166,85,ALPHA)', 1.8, 9, 0.55);
@@ -1973,7 +1974,7 @@ export class Game {
           if (this.effects.splash > 0 && this.unitCategory(source) === 'ranged') {
             for (const e of this.units) {
               if (e === target || !e.alive || e.team !== 'enemy') continue;
-              if (dist(e.x, e.y, target.x, target.y) <= 1.5) this.applyDamage(e, p.damage * this.effects.splash, source);
+              if (dist(e.x, e.y, target.x, target.y) <= 1.5) this.applyDamage(e, p.damage * this.effects.splash, source, 'splash');
             }
             this.addParticles(target.x, target.y, 'ring', 'rgba(227,134,65,ALPHA)', 1, 4, 0.4);
           }
@@ -1981,7 +1982,7 @@ export class Game {
             const chained = this.units
               .filter(e => e.alive && e.team === 'enemy' && e !== target && dist(e.x, e.y, target.x, target.y) <= 4)
               .slice(0, 2);
-            for (const e of chained) this.applyDamage(e, p.damage * 0.55, source);
+            for (const e of chained) this.applyDamage(e, p.damage * 0.55, source, 'splash');
             this.addParticles(target.x, target.y, 'ring', 'rgba(137,190,222,ALPHA)', 1, 3, 0.35);
           }
         }
@@ -2003,13 +2004,13 @@ export class Game {
         zone.done = true;
         for (const u of this.units) {
           if (!u.alive || u.team !== 'player') continue;
-          if (dist(u.x, u.y, zone.x, zone.y) <= zone.r) this.applyDamage(u, zone.damage, zone.source);
+          if (dist(u.x, u.y, zone.x, zone.y) <= zone.r) this.applyDamage(u, zone.damage, zone.source, 'zone');
         }
         for (const b of this.buildings) {
           if (!b.alive || b.team !== 'player') continue;
           const dx = Math.max(b.x - zone.x, 0, zone.x - (b.x + b.w));
           const dy = Math.max(b.y - zone.y, 0, zone.y - (b.y + b.h));
-          if (Math.hypot(dx, dy) <= zone.r) this.applyDamage(b, zone.damage * 0.8, zone.source);
+          if (Math.hypot(dx, dy) <= zone.r) this.applyDamage(b, zone.damage * 0.8, zone.source, 'zone');
         }
         this.addParticles(zone.x, zone.y, 'ring', 'rgba(229,92,68,ALPHA)', 2.2, 12, 0.8);
         this.addParticles(zone.x, zone.y, 'smoke', 'rgba(80,35,29,ALPHA)', 5, 12, 1.1);
@@ -2019,7 +2020,7 @@ export class Game {
     this.zones = this.zones.filter(z => z.persist ? z.elapsed < (z.duration || 60) : z.elapsed < z.delay + 0.9);
   }
 
-  applyDamage(target, amount, source) {
+  applyDamage(target, amount, source, damageKind = 'direct') {
     if (!target || !target.alive) return;
     let damage = amount;
     if (this.waveEventActive && source?.team === 'enemy' && target.w && source.buildingDamageMul > 1) {
@@ -2042,8 +2043,10 @@ export class Game {
     }
 
     // Japanese melee block: block one ordinary melee hit every 10s
-    if (target.team === 'player' && target.civ?.id === 'JPN' && source && !source.typeDef?.projectile && !source.typeDef?.boss) {
-      if (!target._blockCd || target._blockCd <= this.time) {
+    if (target.team === 'player' && target.kind === 'unit' && this.civ?.id === 'JPN' &&
+        source?.kind === 'unit' && source.team === 'enemy' && !source.typeDef?.projectile && !source.typeDef?.boss &&
+        (damageKind === 'melee' || damageKind === 'direct')) {
+      if ((target._blockCd || 0) <= this.time) {
         target._blockCd = this.time + 10;
         this.addFloating(target.x, target.y, t('toast.japaneseBlock'), 'rgba(147,197,220,ALPHA)');
         return; // Block the attack completely
