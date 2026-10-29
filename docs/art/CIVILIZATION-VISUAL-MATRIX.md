@@ -17,7 +17,7 @@ English: This records actual progress against the existing sixteen civilizations
 | PER | 沙漠 / Desert | 戰象已驗收 / Elephant atlas accepted; v240-elephant |
 | KOR | 東方 / Eastern | 巡防車已復原驗收 / Patrol-cart atlas recovered and accepted; v240-kor-cart |
 | SPA | 堡壘 / Fortress | morion 胸甲長槍兵已驗收；既有村民暈擊保留 / Morion/breastplate pike infantry accepted; native villager stun retained; v240-spa-spearman, v240-spa-stun |
-| TUR | 沙漠 / Desert | 家族層；既有單位外觀待擴充 / Family layer; existing-unit appearance pending |
+| TUR | 沙漠 / Desert | 反曲弓箭袋弓兵已驗收 / Recurve-bow/quiver archer accepted; v240-tur-archer |
 | BYZ | 沙漠 / Desert | 札甲圓盾 spearman 已驗收 / Lamellar/round-shield spearman accepted; v240-byz-spearman |
 | VIK | 堡壘 / Fortress | 圓盾 guard 已驗收 / Round-shield guard accepted; v240-vik-roundshield |
 | MAG | 草原 / Steppe | 裸馬弧刀圓盾輕騎已驗收 / Unbarded sabre/round-shield light cavalry accepted; v240-mag-cavalry |
@@ -28,3 +28,7 @@ English: This records actual progress against the existing sixteen civilizations
 English: Retain existing shared hero/recruiter/two-Boss atlases and skill evidence; omission from this civilization table does not request recreation. JPN/SPA/RNG/FRK are accepted and must not be repeated. AZT/BYZ/MAG are remotely saved; melee audio/GOT are saved; continue SPA pike appearance after checking current remote and ownership. This table does not clear natural-campaign, low-FPS, strict Save/Load, performance or hardware gaps.
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+繁體中文：十六文明目前各有至少一項表中代表性切片；這不代表所有兵種、建築、文明英雄或動畫品質全面完成。接續先處理隨大型圖集增長的載入／解碼負擔，再擴充玩法與文明英雄。
+
+English: All sixteen civilizations now have at least one representative slice listed here; this does not establish complete unit/building/civilization-hero or animation-quality coverage. Next address loading/decode footprint as large atlases grow, then expand gameplay and civilization heroes.

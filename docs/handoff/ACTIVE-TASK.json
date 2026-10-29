@@ -1,36 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "SAR 纏巾鎖甲長衣彎刀盾衛八方向動作已整合 / SAR turban mail coat curved-blade guard integrated with directional actions",
+  "name": "TUR 反曲弓箭袋弓兵八方向射擊動作已整合 / TUR recurve bow quiver archer integrated with directional firing actions",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
-  "application_source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+  "latest_pushed_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
+  "application_source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
   "completed": [
-    "SAR 纏巾鎖甲長衣彎刀盾衛八方向動作已整合",
-    "SAR turban mail coat curved-blade guard integrated with directional actions"
+    "TUR 反曲弓箭袋弓兵八方向射擊動作已整合",
+    "TUR recurve bow quiver archer integrated with directional firing actions"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Focused Node",
-      "result": "6 PASS",
-      "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
-      "path": "docs/evidence/v240-sar-guard/focused-node.txt"
+      "result": "3 PASS",
+      "source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
+      "path": "docs/evidence/v240-tur-archer/focused-node.txt"
     },
     {
       "name": "Actual Chromium",
       "result": "14 PASS",
-      "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
-      "path": "docs/evidence/v240-sar-guard/verified/browser.json"
+      "source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
+      "path": "docs/evidence/v240-tur-archer/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-sar-guard/REPORT.md"
+    "docs/evidence/v240-tur-archer/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "接續 TUR 既有弓兵反曲弓與獨立裝備輪廓",
-    "Continue TUR existing archers with recurve bow and independent kit silhouette"
+    "檢查文明 Atlas 同時解碼的記憶體負擔並縮減不必要載入",
+    "Inspect simultaneous civilization-atlas decode footprint and reduce unnecessary loading"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T19:47:51.158845+00:00",
+  "updated_at": "2026-10-29T19:51:54.901867+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -155,6 +155,13 @@
       "node": 6,
       "chromium": 14,
       "report": "docs/evidence/v240-sar-guard/REPORT.md"
+    },
+    {
+      "slice": "v240-tur-archer",
+      "source": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
+      "node": 3,
+      "chromium": 14,
+      "report": "docs/evidence/v240-tur-archer/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -168,7 +175,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Continue TUR existing archers with recurve bow and independent kit silhouette"
+    "NEXT_AUTHORIZED_TASK": "Inspect simultaneous civilization-atlas decode footprint and reduce unnecessary loading"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

@@ -1,0 +1,226 @@
+{
+  "source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
+  "civ": "TUR",
+  "type": "archer",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T19:49:01.653145+00:00",
+        "resourceVerification": "SHA256_MATCH_79_FILES"
+      }
+    },
+    {
+      "name": "native archery range pays exact production costs",
+      "pass": true,
+      "detail": {
+        "queued": true,
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "wood": 35,
+            "gold": 25
+          },
+          "ids": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "after": {
+          "food": 300,
+          "wood": 265,
+          "gold": 95,
+          "stone": 100
+        }
+      }
+    },
+    {
+      "name": "actual trained unit uses civilization atlas",
+      "pass": true,
+      "detail": {
+        "id": 21,
+        "civ": "TUR",
+        "key": "TUR:archer",
+        "hp": 39,
+        "radius": 0.24
+      }
+    },
+    {
+      "name": "all 160 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": true,
+      "detail": {
+        "width": 3072,
+        "height": 1920,
+        "touchedFrameEdges": 0
+      }
+    },
+    {
+      "name": "native helmet click selects the actual trained actor",
+      "pass": true,
+      "detail": {
+        "point": {
+          "x": 720,
+          "y": 359.52
+        }
+      }
+    },
+    {
+      "name": "native right-click moves the trained actor",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.067031539482294,
+          "y": 33.35567717982742
+        },
+        "seen": {
+          "idle": 195,
+          "walk": 337
+        }
+      }
+    },
+    {
+      "name": "production arrow damage and four-frame release/reload",
+      "pass": true,
+      "detail": {
+        "before": 145,
+        "after": 140.9,
+        "shots": 1,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production attack sound dispatch",
+      "pass": true,
+      "detail": [
+        "archer"
+      ]
+    },
+    {
+      "name": "production damage renders hit animation",
+      "pass": true,
+      "detail": {
+        "flash": 1,
+        "seen": {
+          "idle": 242,
+          "walk": 379,
+          "attack": 7,
+          "hit": 5
+        }
+      }
+    },
+    {
+      "name": "production death plays all four frames",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "enemy and other civilization retain generic atlas",
+      "pass": true,
+      "detail": {
+        "enemy": "archer",
+        "other": "archer"
+      }
+    },
+    {
+      "name": "asset failure retains renderer fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "100-unit static draw JS budget and <=20% paired median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 9.863749999925494,
+          "p50": 9.300000004470348,
+          "p95": 13.899999998509884
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.5000000000931322,
+          "p50": 1.2000000029802322,
+          "p95": 3.100000001490116
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.0687499999068677,
+          "p50": 1,
+          "p95": 1.6999999955296516
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 8.947499999962748,
+          "p50": 8.5,
+          "p95": 12
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 10.107499999925494,
+          "p50": 8.5,
+          "p95": 12.799999997019768
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.0049999999813735,
+          "p50": 0.8999999985098839,
+          "p95": 1.8999999985098839
+        }
+      ]
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}
