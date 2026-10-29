@@ -1,3 +1,11 @@
+# 最新內容接續 / Latest content continuation
+
+繁體中文：移轉、長矛／盾衛與水岸已完成，不重做。英雄、招募使及雙Boss新Atlas已完成；英雄施法、標記／護盾、真正Boss落點預警／傷害與原生移動閃避均已驗收。最新應用來源6fae8aa71f24acc3e0a695218f3fd05009afc771，相關18 Node、12技能Chromium及24整合Champion Chromium通過。優先查最新Git遠端與Ownership，再開發文明特定既有單位（例如PER戰象），不把自然戰役當內容前置。詳讀當前ACTIVE-TASK與Handoff，以下為仍適用的共用規則及歷史切片資訊。
+
+English: Migration, spear/guard and shorelines are complete; do not redo them. New hero/recruiter/two-Boss atlases, hero casting, mark/shield feedback, actual Boss warning/damage and native movement escape are accepted. Latest application source6fae8aa71f24acc3e0a695218f3fd05009afc771 passes18related Node,12skillChromiumand24integratedChampionChromium checks. Query latest Git remote and ownership, then prioritize an existing civilization-specific unit such as the PER war elephant, without a natural-campaign prerequisite. Read current ACTIVE-TASK and Handoff; shared rules and historical slice information follow.
+
+---
+
 # 新主控接續指示 / New primary continuation instructions
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

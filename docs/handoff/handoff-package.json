@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T07:40:23.507363+00:00",
+  "generated_at": "2026-10-29T07:43:07.566550+00:00",
   "framework_status": "HANDOFF_FRAMEWORK_READY",
   "cross_agent_status": "NOT_TESTED",
   "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
   "trigger": {
     "kind": "MANUAL_HANDOFF",
     "confidence": "CONFIRMED",
-    "evidence": "CONTENT_FIRST_CHECKPOINT"
+    "evidence": "CONTENT_FIRST_ACCEPTED_CHECKPOINT"
   },
   "active_task": {
     "task_id": "V240-SPECIAL-ATLAS",
@@ -18,7 +18,7 @@
     "environment": "New independent Linux Chromium workspace; local software rendering",
     "branch": "codex/riftwatch-v240-game-first",
     "base_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-    "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+    "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
     "application_source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
     "completed": [
       "Four independent original eight-direction five-state atlases integrated",
@@ -26,9 +26,18 @@
       "Clipping and relative renderer regression fixed; both initialFAIL preserved",
       "Hero casting and persistent Mark/Aegis feedback;18Node/12Chromium PASS",
       "Both Boss production warnings/impacts and native player escape verified",
-      "Corrected visible Boss footprint without changing damage/range/timing"
+      "Corrected visible Boss footprint without changing damage/range/timing",
+      "Final6fae8aa integrated Champion regression:24Chromium PASS, all672frames and bounded drawA/B"
     ],
     "uncommitted": [
+      {
+        "status": " M",
+        "path": "docs/evidence/v240-champion-skills/REPORT.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+      },
       {
         "status": " M",
         "path": "docs/handoff/ACTIVE-TASK.json"
@@ -36,6 +45,10 @@
       {
         "status": " M",
         "path": "docs/handoff/HANDOFF.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
       },
       {
         "status": " M",
@@ -50,67 +63,39 @@
         "path": "docs/recovery/worktree-recovery.json"
       },
       {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/REPORT.md"
+        "status": " M",
+        "path": "tools/qa/v240_champion_browser.mjs"
       },
       {
         "status": "??",
-        "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+        "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
       },
       {
         "status": "??",
-        "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+        "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
       },
       {
         "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+        "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
       },
       {
         "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+        "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
       },
       {
         "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+        "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
       },
       {
         "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+        "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
       },
       {
         "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+        "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
       }
     ],
-    "unpushed": [
-      "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-      "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-      "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-    ],
+    "unpushed": [],
     "tests": [
       {
         "name": "Champion Node",
@@ -135,6 +120,12 @@
         "result": "12 PASS LOCAL CONTROLLED; not natural campaign",
         "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
         "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+      },
+      {
+        "name": "Final integrated Champion Chromium",
+        "result": "24 PASS LOCAL CONTROLLED",
+        "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+        "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
       }
     ],
     "evidence": [
@@ -160,7 +151,7 @@
     ],
     "status": "CHECKPOINTED",
     "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-    "updated_at": "2026-10-29T07:40:22.994180+00:00",
+    "updated_at": "2026-10-29T07:43:07.000385+00:00",
     "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
     "ownership_at_snapshot": {
       "task": "V240-SPECIAL-ATLAS",
@@ -193,10 +184,18 @@
         "environment": "New independent Linux Chromium workspace; local software rendering",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-        "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
         "application_source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
         "completed": [],
         "uncommitted": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -204,6 +203,10 @@
           {
             "status": " M",
             "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
           },
           {
             "status": " M",
@@ -218,67 +221,39 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+            "status": " M",
+            "path": "tools/qa/v240_champion_browser.mjs"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
           }
         ],
-        "unpushed": [
-          "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-          "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-        ],
+        "unpushed": [],
         "tests": [
           {
             "name": "Champion Node",
@@ -303,6 +278,12 @@
             "result": "12 PASS LOCAL CONTROLLED; not natural campaign",
             "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
             "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+          },
+          {
+            "name": "Final integrated Champion Chromium",
+            "result": "24 PASS LOCAL CONTROLLED",
+            "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           }
         ],
         "evidence": [
@@ -328,7 +309,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T07:40:22.386394+00:00",
+        "updated_at": "2026-10-29T07:43:06.456651+00:00",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
           "task": "V240-SPECIAL-ATLAS",
@@ -356,7 +337,7 @@
         "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-        "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
         "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
         "completed": [
           "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53c3\u6578\u751f\u6548 / Easy defeat5and valid Normal defeat4; parameters verified",
@@ -366,11 +347,23 @@
         "uncommitted": [
           {
             "status": " M",
+            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+          },
+          {
+            "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
           },
           {
             "status": " M",
             "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
           },
           {
             "status": " M",
@@ -385,67 +378,39 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+            "status": " M",
+            "path": "tools/qa/v240_champion_browser.mjs"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
           }
         ],
-        "unpushed": [
-          "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-          "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-        ],
+        "unpushed": [],
         "tests": [
           {
             "path": "docs/evidence/v240-easy-baseline/easy/result.json",
@@ -485,7 +450,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T07:40:22.386394+00:00",
+        "updated_at": "2026-10-29T07:43:06.456651+00:00",
         "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
@@ -504,7 +469,7 @@
         "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
-        "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
         "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
         "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
         "completed": [
@@ -517,11 +482,23 @@
         "uncommitted": [
           {
             "status": " M",
+            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+          },
+          {
+            "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
           },
           {
             "status": " M",
             "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
           },
           {
             "status": " M",
@@ -536,67 +513,39 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+            "status": " M",
+            "path": "tools/qa/v240_champion_browser.mjs"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
           }
         ],
-        "unpushed": [
-          "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-          "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-        ],
+        "unpushed": [],
         "tests": [
           {
             "name": "Visual/state Chromium",
@@ -639,7 +588,7 @@
         "status": "CHECKPOINTED",
         "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T07:40:22.386394+00:00"
+        "updated_at": "2026-10-29T07:43:06.456651+00:00"
       },
       {
         "task_id": "V240-SPRITE-ATLAS",
@@ -650,7 +599,7 @@
         "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
-        "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
         "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
         "completed": [
           "Recovered from remotely saved atlas implementation after prior worktree loss",
@@ -661,11 +610,23 @@
         "uncommitted": [
           {
             "status": " M",
+            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+          },
+          {
+            "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
           },
           {
             "status": " M",
             "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
           },
           {
             "status": " M",
@@ -680,67 +641,39 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+            "status": " M",
+            "path": "tools/qa/v240_champion_browser.mjs"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
           }
         ],
-        "unpushed": [
-          "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-          "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-        ],
+        "unpushed": [],
         "tests": [
           {
             "name": "Focused atlas/combat/visual regression",
@@ -785,7 +718,7 @@
         ],
         "status": "CHECKPOINTED",
         "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T07:40:22.386394+00:00",
+        "updated_at": "2026-10-29T07:43:06.456651+00:00",
         "acceptance": "LOCAL_VERIFIED"
       },
       {
@@ -797,7 +730,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-        "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
         "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
         "completed": [
           "Added eight-direction isometric facing derived from real movement and live attack targets",
@@ -809,11 +742,23 @@
         "uncommitted": [
           {
             "status": " M",
+            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+          },
+          {
+            "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
           },
           {
             "status": " M",
             "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
           },
           {
             "status": " M",
@@ -828,67 +773,39 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+            "status": " M",
+            "path": "tools/qa/v240_champion_browser.mjs"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
           }
         ],
-        "unpushed": [
-          "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-          "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-        ],
+        "unpushed": [],
         "tests": [
           {
             "name": "Focused animation combat and visual regression",
@@ -932,7 +849,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T07:40:22.386394+00:00"
+        "updated_at": "2026-10-29T07:43:06.456651+00:00"
       },
       {
         "task_id": "V240-CIV-VISUAL-FAMILIES",
@@ -943,7 +860,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
-        "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
         "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
         "completed": [
           "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
@@ -955,11 +872,23 @@
         "uncommitted": [
           {
             "status": " M",
+            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+          },
+          {
+            "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
           },
           {
             "status": " M",
             "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
           },
           {
             "status": " M",
@@ -974,67 +903,39 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+            "status": " M",
+            "path": "tools/qa/v240_champion_browser.mjs"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
           }
         ],
-        "unpushed": [
-          "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-          "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-        ],
+        "unpushed": [],
         "tests": [
           {
             "name": "Focused civilization and visual signature tests",
@@ -1078,7 +979,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T07:40:22.386394+00:00"
+        "updated_at": "2026-10-29T07:43:06.456651+00:00"
       },
       {
         "task_id": "V240-SEED-SETUP",
@@ -1089,7 +990,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-        "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
         "application_source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
         "completed": [
           "Prefilled each new-game menu with a visible shareable RW Seed",
@@ -1101,11 +1002,23 @@
         "uncommitted": [
           {
             "status": " M",
+            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+          },
+          {
+            "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
           },
           {
             "status": " M",
             "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
           },
           {
             "status": " M",
@@ -1120,67 +1033,39 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+            "status": " M",
+            "path": "tools/qa/v240_champion_browser.mjs"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
           }
         ],
-        "unpushed": [
-          "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-          "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-        ],
+        "unpushed": [],
         "tests": [
           {
             "name": "Focused Seed SaveLoad and report checks",
@@ -1229,7 +1114,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T07:40:22.386394+00:00"
+        "updated_at": "2026-10-29T07:43:06.456651+00:00"
       },
       {
         "task_id": "V240-GAME-FIRST-BUILDINGS",
@@ -1240,7 +1125,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-        "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
         "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
         "completed": [
           "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
@@ -1253,11 +1138,23 @@
         "uncommitted": [
           {
             "status": " M",
+            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+          },
+          {
+            "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
           },
           {
             "status": " M",
             "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
           },
           {
             "status": " M",
@@ -1272,67 +1169,39 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+            "status": " M",
+            "path": "tools/qa/v240_champion_browser.mjs"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
           }
         ],
-        "unpushed": [
-          "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-          "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-        ],
+        "unpushed": [],
         "tests": [
           {
             "name": "Focused visual signatures",
@@ -1375,7 +1244,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T07:40:22.386394+00:00"
+        "updated_at": "2026-10-29T07:43:06.456651+00:00"
       },
       {
         "task_id": "V234-CANDIDATE",
@@ -2212,14 +2081,14 @@
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-29T07:40:22.386394+00:00",
+    "captured_at_utc": "2026-10-29T07:43:06.456651+00:00",
     "trigger": "RECOVERY_RESUME",
-    "collector_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+    "collector_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
     "collector_dirty": true,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-29T07:40:22.386394+00:00"
+      "queried_at": "2026-10-29T07:43:06.456651+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -2275,7 +2144,7 @@
       "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
       "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
       "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-      "codex/riftwatch-v240-game-first": "e651b7782cbf09d21660508d0b9368145e701100",
+      "codex/riftwatch-v240-game-first": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
       "main": "e35a73329ee7942627496e55b844d02b2501e685",
       "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
       "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -2305,16 +2174,16 @@
     "local_branches": [
       {
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-        "remote_head": "e651b7782cbf09d21660508d0b9368145e701100",
-        "status": "HEAD_DIFFERS_REVIEW_REQUIRED"
+        "head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "remote_head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "status": "REMOTE_SAVED"
       }
     ],
     "worktrees": [
       {
         "path": "/workspace/riftwatch-v240-takeover",
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+        "head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
         "locked": false,
         "task_id": "V240-V5-PLAYABILITY",
         "last_validation": [
@@ -2323,7 +2192,7 @@
             "result": "NATURAL_DEFEAT wave5",
             "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
             "exists": true,
-            "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
+            "storage": "REMOTE_SAVED",
             "sha256": "07b872f659222ac8419a8261b28215e8c6af30efcf07753ea6e4843b955274e5",
             "resource_freshness": "SOURCE_CHANGED"
           },
@@ -2332,7 +2201,7 @@
             "result": "NATURAL_DEFEAT wave4",
             "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
             "exists": true,
-            "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
+            "storage": "REMOTE_SAVED",
             "sha256": "c153a1ff7009bac9e7dfc958a87c777a242fd03b116c16f524ddc95ed25dbfed",
             "resource_freshness": "SOURCE_CHANGED"
           },
@@ -2341,7 +2210,7 @@
             "result": "5 PASS CONTROLLED_FIXTURE only",
             "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
             "exists": true,
-            "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
+            "storage": "REMOTE_SAVED",
             "sha256": "64993964086ee8b660271db6fe33c2a0dc0d3dca9ac0645d5a66559070f1e276",
             "resource_freshness": "SOURCE_CHANGED"
           }
@@ -2355,14 +2224,18 @@
           "\u5148\u5206\u6790\u5168\u8cc7\u6e90\u9810\u7b97\u3001\u63a1\u96c6\u9632\u5b88\uff0f\u64cd\u4f5c\u5ef6\u9072\u3001\u653b\u57ce\u53cd\u5236\uff0c\u518d\u5b9a\u6700\u5c0f\u4e0d\u540c\u6e2c\u8a66 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
           "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
         ],
-        "remote_status": "LOCAL_AHEAD",
-        "remote_head": "e651b7782cbf09d21660508d0b9368145e701100",
-        "unpushed_commits": [
-          "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-          "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-        ],
+        "remote_status": "REMOTE_SAVED",
+        "remote_head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "unpushed_commits": [],
         "changed_files": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -2370,6 +2243,10 @@
           {
             "status": " M",
             "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
           },
           {
             "status": " M",
@@ -2384,66 +2261,40 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
+            "status": " M",
+            "path": "tools/qa/v240_champion_browser.mjs"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/build-metadata.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.webm"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-aegis.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/hero-mark.png"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-impact-and-escape.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-final/warlord2-warning.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-fixed/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/skills-initial/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
+            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
           }
         ],
         "dirty": true,
-        "local_record_status": "LOCAL_INVENTORIED",
-        "ahead": 3,
-        "behind": 0
+        "local_record_status": "LOCAL_INVENTORIED"
       }
     ],
     "comparison": [
@@ -2452,8 +2303,8 @@
         "changed_fields": [
           "changed_files"
         ],
-        "previous_head": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-        "actual_head": "6fae8aa71f24acc3e0a695218f3fd05009afc771"
+        "previous_head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "actual_head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61"
       }
     ],
     "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."
@@ -3193,12 +3044,8 @@
     {
       "branch": "codex/riftwatch-v240-game-first",
       "dirty": true,
-      "remote_status": "LOCAL_AHEAD",
-      "unpushed": [
-        "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-        "56fc3b88fdcdf7ee52b516592d7c3d1c9e691fab",
-        "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6"
-      ]
+      "remote_status": "REMOTE_SAVED",
+      "unpushed": []
     }
   ]
 }

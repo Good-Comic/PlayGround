@@ -21,3 +21,9 @@ English: These are explicit CONTROLLED_FIXTURE checks: after native startup, tes
 English: Natural Easy/Normal ten waves, natural NG+ and historical clock, strict-save, building-performance, natural-Rift and hardware gaps remain. Scoped Save/Load regression passes do not establish complete determinism. Migration, spear/guard, shorelines and natural campaigns were not rerun. Scheduler rebinding remains incomplete; the old environment is only an isolated recovery source. No main, Pages, OmGitHub or public-release changes.
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+## 最終整合回歸 / Final integrated regression
+
+繁體中文：因新增英雄施法列及共用渲染回饋，將本切片的Champion瀏覽器工具改為依實際影格列數驗證，再對同一6fae8aa來源執行相關整合回歸。24項Chromium檢查通過，涵蓋所有672影格、四單位的移動／戰鬥或noAttack支援角色、受擊／死亡、回退及100人靜態繪製A/B。沒有重跑長矛／盾衛、水岸或自然十波。原始資料與實際影片見integrated-final；QA工具雜湊與遊戲來源分開保存於source-provenance.json。此結果仍為本地受控驗證，不是自然通關或硬體性能認證。
+
+English: Because the hero cast row and shared rendering feedback changed, updated this slice's Champion browser tool to inspect actual sheet-row counts and ran the related integration regression on the same6fae8aa source. Twenty-four Chromium checks pass, covering all672frames, movement/combat or the noAttack support role for four units, hit/death, fallback and100-unit static drawA/B. Spear/guard, shorelines and natural ten waves were not rerun. Raw data and actual video are under integrated-final; QA tool hash and game source are recorded separately in source-provenance.json. Results remain local controlled validation, not natural victory or hardware performance certification.
