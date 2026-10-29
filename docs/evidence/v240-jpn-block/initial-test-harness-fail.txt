@@ -1,0 +1,153 @@
+✖ production-spawned JPN guard blocks first ordinary melee hit without a unit civ field (35.978858ms)
+✖ ordinary damage during cooldown keeps armor and block returns exactly at ten seconds (34.137661ms)
+✖ other civilizations, enemies, buildings and source-less damage do not acquire Japanese block (40.099915ms)
+✖ arrows, splash and environmental zones neither block nor consume block readiness (14.070402ms)
+✔ actual Boss warning zone and Boss strike remain damaging without spending block (13.627665ms)
+✖ shield absorbs first, remaining damage can block, and other defenses remain intact (17.115425ms)
+✖ JSON SaveLoad preserves per-unit block cooldown; legacy saves default to ready (17.201922ms)
+✖ block is per defender and consumes no simulation RNG (13.097079ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 1
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 422.382918
+
+✖ failing tests:
+
+test at tests/jpn-block.test.mjs:7:1
+✖ production-spawned JPN guard blocks first ordinary melee hit without a unit civ field (35.978858ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  129 !== 130
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-block.test.mjs:9:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 129,
+    expected: 130,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/jpn-block.test.mjs:11:1
+✖ ordinary damage during cooldown keeps armor and block returns exactly at ten seconds (34.137661ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  128 !== 129
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-block.test.mjs:13:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 128,
+    expected: 129,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/jpn-block.test.mjs:15:1
+✖ other civilizations, enemies, buildings and source-less damage do not acquire Japanese block (40.099915ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(guard.hp<hp)
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-block.test.mjs:16:147)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/jpn-block.test.mjs:21:1
+✖ arrows, splash and environmental zones neither block nor consume block readiness (14.070402ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  109 !== 110
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-block.test.mjs:25:45)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 109,
+    expected: 110,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/jpn-block.test.mjs:31:1
+✖ shield absorbs first, remaining damage can block, and other defenses remain intact (17.115425ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  129.5 !== 130
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-block.test.mjs:33:78)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 129.5,
+    expected: 130,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/jpn-block.test.mjs:35:1
+✖ JSON SaveLoad preserves per-unit block cooldown; legacy saves default to ready (17.201922ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 30
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-block.test.mjs:37:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 30,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/jpn-block.test.mjs:41:1
+✖ block is per defender and consumes no simulation RNG (13.097079ms)
+  TypeError: g.rng.getState is not a function
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-block.test.mjs:42:90)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

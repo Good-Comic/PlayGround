@@ -21,7 +21,7 @@ English: This records actual progress against the existing sixteen civilizations
 | BYZ | 沙漠 / Desert | 家族層；反制步兵外觀待擴充 / Family layer; counter-infantry appearance pending |
 | VIK | 堡壘 / Fortress | 圓盾 guard 已驗收 / Round-shield guard accepted; v240-vik-roundshield |
 | MAG | 草原 / Steppe | 家族層；輕騎外觀待擴充 / Family layer; light-cavalry appearance pending |
-| JPN | 東方 / Eastern | 札甲 guard 外觀限定驗收；格擋仍 FAIL / Lamellar guard visual acceptance only; block remains FAIL; v240-jpn-lamellar |
+| JPN | 東方 / Eastern | 札甲外觀已保存；格擋修復限定驗收 / Lamellar appearance saved; scoped block fix accepted; v240-jpn-lamellar, v240-jpn-block |
 
 繁體中文：英雄／招募使／雙 Boss 的共用 Atlas 與技能表現沿用 v240-champions 相關證據，不因矩陣未列而重做。下一項獨立核對 JPN 格擋缺口與已批准規則；先核對最新遠端及所有權。自然戰役、低 FPS、嚴格 Save/Load、性能與硬體缺口不在此表宣告通過。
 

@@ -1,0 +1,42 @@
+{
+  "mode": "CONTROLLED_FIXTURE_PRODUCTION_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+  "checks": [
+    {
+      "name": "exact artifact verified",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T16:43:56.987318+00:00",
+        "resourceVerification": "SHA256_MATCH_61_FILES"
+      }
+    },
+    {
+      "name": "real enemy first melee is blocked on production JPN guard",
+      "pass": false,
+      "detail": {
+        "row": {
+          "time": 0.11659999999999991,
+          "hpBefore": 130,
+          "hpAfter": 129,
+          "source": "brute"
+        },
+        "unitCiv": null,
+        "civ": "JPN",
+        "text": []
+      }
+    },
+    {
+      "name": "execution",
+      "pass": false,
+      "detail": {
+        "message": "real enemy first melee is blocked on production JPN guard",
+        "stack": "Error: real enemy first melee is blocked on production JPN guard\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/v240_jpn_block_browser.mjs:11:88)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/v240_jpn_block_browser.mjs:29:55"
+      }
+    }
+  ],
+  "errors": [],
+  "pass": false
+}
