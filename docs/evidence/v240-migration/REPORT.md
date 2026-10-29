@@ -29,3 +29,9 @@ English: Original environment `ccarenv_b64_Y2NhcmVudl9lYTJkMmY2OTc1NTA4MTkxYTI3N
 English: No shared-live-browser tool exists; actualWebM recordings are the fallback. No scheduler-management tool exists either: the existing310-minute schedule was not inspected/rebound; if still targeting the old conversation the user must retarget it in the schedulerUI. NaturalEasy/Normalten waves remain unpassed and naturalNG+untested; controlledten-wave/NG+passes are scoped. Retain low-FPSclock, strictSave/Load, mixed-buildingperformanceFAIL, unreproduced naturalRift andHARDWARE_TEST_PENDING. No main,Pages,Issue,Checkpoint or public-release changes. Next independentGAME FIRSTslice: shoreline visual transitions without new elevation/balance rules.
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+## 已驗證移轉完成紀錄 / Verified migration completion receipt
+
+繁體中文：以上為分階段歷史觀察。現在來源／證據／Recovery／Handoff已正常推送並核對至 `c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b`，完成Feed為 `1a09e26665506018c8f04f2404550af3293e8959`。新主控判定 MIGRATION_COMPLETE，排程與原資料復原不冒稱完成。交接Schema檢查另外發現歷史V240-SPRITE-ATLAS使用不合法狀態LOCAL_VERIFIED；將流程狀態改為CHECKPOINTED並將原結論保存於acceptance，未改測試結果。此為最小必要交接修復，不重跑歷史遊戲測試。
+
+English: The sections above record staged historical observations. Source, evidence, Recovery and Handoff are now normally pushed and verified at `c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b`, with completion Feed `1a09e26665506018c8f04f2404550af3293e8959`. Primary migration is MIGRATION_COMPLETE; scheduler rebinding and original-data recovery are not claimed complete. Handoff schema validation separately found historical V240-SPRITE-ATLAS using unsupported workflow state LOCAL_VERIFIED. Changed its workflow status to CHECKPOINTED and preserved the original verdict in acceptance, without changing any test result. This is a minimal required handoff repair, without rerunning historical game tests.

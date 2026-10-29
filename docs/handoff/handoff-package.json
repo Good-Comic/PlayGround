@@ -1,40 +1,39 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-25T18:58:48.587301+00:00",
+  "generated_at": "2026-10-29T07:01:32.912862+00:00",
   "framework_status": "HANDOFF_FRAMEWORK_READY",
   "cross_agent_status": "NOT_TESTED",
   "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
   "trigger": {
     "kind": "MANUAL_HANDOFF",
-    "confidence": "OPERATOR_REQUESTED_NOT_AUTODETECTED",
-    "evidence": null
+    "confidence": "CONFIRMED",
+    "evidence": "USER_AUTHORIZED_NEW_PRIMARY_MIGRATION"
   },
   "active_task": {
-    "task_id": "DEV-RECOVERY-P0",
-    "name": "Worktree recovery and cross-agent manual handoff",
-    "requirement_source": "Strategy v2.2.1 P0 / v2.2.2 P9",
-    "priority": "P0",
+    "task_id": "V240-SPECIAL-ATLAS",
+    "name": "\u4e3b\u63a7\u79fb\u8f49\u8207\u5167\u5bb9\u512a\u5148\u5207\u7247 / Primary migration and content-first slices",
+    "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
+    "priority": "P1",
     "agent": "Codex",
-    "environment": "managed Linux cloud; no external agent connected",
-    "branch": "codex/riftwatch-v222-recovery",
-    "base_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
-    "latest_pushed_commit": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
+    "environment": "New independent Linux Chromium workspace; local software rendering",
+    "branch": "codex/riftwatch-v240-game-first",
+    "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
+    "latest_pushed_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+    "application_source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
     "completed": [
-      "Recovery/handoff framework pushed and tooling-only integrated at72e978417afd3c95f897cc7cb35395f00008c313",
-      "All interrupted code restored, tested, committed and normally pushed",
-      "Three resumed gameplay sources pass native browser and normal P0 regression",
-      "Recovered complete12-case baseline cohort without rerun",
-      "Independent conservative Level1/2 research prototype pushed; no hardware FPS claim",
-      "Target new3x4 cohort complete:9PASS/3FAIL, allstate/movement gates pass; failures retained"
+      "Exact latest remote and active Strategy/GDD hashes reconciled",
+      "Ownership safely transferred under explicit offline-original migration authorization",
+      "New spear/guard atlases;22 focused Node and14 local Chromium checks pass",
+      "First spear/guard source/evidence pushed and verified at878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+      "Progress Feed verified at572d40607310b07b24dce1ec7a22670aaed5da7a",
+      "Biome-specific water banks:5focusedNode/13localChromiumchecks pass; native maps unchanged",
+      "Source/evidence/Recovery/Handoff remotely saved atc733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+      "Migration-completion Progress Feed remotely saved at1a09e26665506018c8f04f2404550af3293e8959"
     ],
     "uncommitted": [
       {
         "status": " M",
-        "path": "docs/STRATEGY-V2.2-EXECUTION.md"
-      },
-      {
-        "status": " M",
-        "path": "docs/evidence/strategy-v222/recovery-tests.log.txt"
+        "path": "docs/evidence/v240-migration/REPORT.md"
       },
       {
         "status": " M",
@@ -42,119 +41,1420 @@
       },
       {
         "status": " M",
+        "path": "docs/handoff/HANDOFF.md"
+      },
+      {
+        "status": " M",
         "path": "docs/handoff/NEXT-TASKS.json"
-      },
-      {
-        "status": " M",
-        "path": "docs/handoff/SHARED-RULES.md"
-      },
-      {
-        "status": " M",
-        "path": "docs/recovery/WORKTREE-RECOVERY.md"
-      },
-      {
-        "status": " M",
-        "path": "docs/recovery/task-registry.json"
       },
       {
         "status": " M",
         "path": "docs/recovery/worktree-recovery.json"
       },
       {
-        "status": " M",
-        "path": "tests/dev/test_recovery.py"
-      },
-      {
         "status": "??",
-        "path": "docs/evidence/strategy-v222/integration-dev.log.txt"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/strategy-v222/integration-locales.log.txt"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/strategy-v222/integration-node.log.txt"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/strategy-v222/integration-smoke-game.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/strategy-v222/integration-smoke-resources.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/strategy-v222/integration-smoke-result.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/strategy-v222/protected-files.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/strategy-v222/protected-refs.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/strategy-v222/target-performance-summary.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/recovery/README.md"
-      },
-      {
-        "status": "??",
-        "path": "docs/recovery/post-merge-72e9784.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/recovery/pre-merge-763ba6c.json"
-      },
-      {
-        "status": "??",
-        "path": "tools/dev/publish_recovery_index.py"
+        "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
       }
     ],
     "unpushed": [],
     "tests": [
       {
-        "name": "recovery/CAS tests",
-        "result": "PASS6",
-        "path": "docs/evidence/strategy-v222/recovery-tests.log.txt"
+        "name": "Focused Node",
+        "result": "22 PASS NEW_ENVIRONMENT",
+        "path": "docs/evidence/v240-migration/focused-node.txt",
+        "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d"
+      },
+      {
+        "name": "Local controlled Chromium",
+        "result": "14 PASS; not natural campaign",
+        "path": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
+        "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d"
+      },
+      {
+        "name": "Shoreline Node",
+        "result": "5 PASS",
+        "path": "docs/evidence/v240-shorelines/focused-node.txt",
+        "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457"
+      },
+      {
+        "name": "Shoreline Chromium",
+        "result": "13 PASS; controlled camera/pause",
+        "path": "docs/evidence/v240-shorelines/final/browser.json",
+        "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457"
       }
     ],
     "evidence": [
-      "docs/recovery/worktree-recovery.json"
+      "docs/evidence/v240-migration/REPORT.md",
+      "docs/evidence/v240-shorelines/REPORT.md"
     ],
     "failures": [
-      "Real Gemini relay NOT_TESTED"
+      "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
+      "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
+      "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
     ],
     "blockers": [
-      "SIMULATION_INTEGRITY_BLOCKED",
-      "HARDWARE_TEST_PENDING",
-      "DEPLOYMENT_BLOCKED",
-      "Actual Gemini relay NOT_TESTED; Gemini/Claude CLIs unavailable",
-      "New100-case severe cloud rAF stall retained; performance integration gate not waived"
+      "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
     ],
     "next_steps": [
-      "Re-read latest recovery-index and shared ownership; no active heavy test remains",
-      "Diagnose100 severe rAF stall and clock loss separately without retrying acceptance to green",
-      "Keep unmerged game features isolated; run latest Rally/B2 integration gates next",
-      "Continue independent UI Scale/Attack-Move slices; physical Windows and actual Gemini remain pending"
+      "Expand the next existing special-unit/hero visual identity with directed Node/Chromium/visual checks; no whole art pipeline rerun",
+      "Terrain elevation/ramp rule decisions remain separate; current shorelines are visual only",
+      "Periodically integrate natural campaigns after material gameplay changes; preserve known failures"
     ],
     "permissions": [
-      "Independent codex/riftwatch-* commits/normal pushes",
-      "Gated Gameplay Integration only; no main/checkpoint/Preview/workflow writes"
+      "Independent development tests normal push",
+      "No main Force Push Checkpoints Pages or OmGitHub publication"
     ],
-    "status": "HANDOFF_READY",
-    "updated_at": "2026-10-25T18:58:47.898687+00:00"
+    "status": "CHECKPOINTED",
+    "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
+    "updated_at": "2026-10-29T07:01:32.464086+00:00",
+    "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
+    "ownership_at_snapshot": {
+      "task": "V240-SPECIAL-ATLAS",
+      "execution": "codex-migration-20261029",
+      "global_version": 203,
+      "status": "OWNED_REMOTE_VERIFIED_REVALIDATE_BEFORE_WRITING"
+    },
+    "migration_status": "MIGRATION_COMPLETE",
+    "recovery_pending": {
+      "status": "UNPUSHED_WORK_RECOVERY_PENDING",
+      "commit": "9a0f19e67ff16c7d0e0efc005d7d98b81449f17d",
+      "original_worktree": "/workspace/riftwatch-v240",
+      "uncommitted_script": "tools/qa/v240_special_atlas_browser.mjs",
+      "evidence": "/workspace/diagnostics/riftwatch/spearman-final",
+      "artifact": "/tmp/riftwatch-spear"
+    },
+    "scheduler_status": "UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL",
+    "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959"
   },
   "next_tasks": {
     "schema_version": 1,
-    "updated_at": "2026-10-25T18:24:01.472574+00:00",
+    "updated_at": "2026-10-29",
     "tasks": [
+      {
+        "task_id": "V240-CONTENT-CONTINUATION",
+        "name": "\u7279\u6b8a\u55ae\u4f4d\uff0f\u82f1\u96c4\u8996\u89ba\u8fa8\u8b58\u63a5\u7e8c / Special-unit and hero visual identity continuation",
+        "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
+        "priority": "P1",
+        "agent": "Codex",
+        "environment": "New independent Linux Chromium workspace; local software rendering",
+        "branch": "codex/riftwatch-v240-game-first",
+        "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
+        "latest_pushed_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "application_source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
+        "completed": [],
+        "uncommitted": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-migration/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/ACTIVE-TASK.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-TASKS.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
+          }
+        ],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Focused Node",
+            "result": "22 PASS NEW_ENVIRONMENT",
+            "path": "docs/evidence/v240-migration/focused-node.txt",
+            "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d"
+          },
+          {
+            "name": "Local controlled Chromium",
+            "result": "14 PASS; not natural campaign",
+            "path": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
+            "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d"
+          },
+          {
+            "name": "Shoreline Node",
+            "result": "5 PASS",
+            "path": "docs/evidence/v240-shorelines/focused-node.txt",
+            "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457"
+          },
+          {
+            "name": "Shoreline Chromium",
+            "result": "13 PASS; controlled camera/pause",
+            "path": "docs/evidence/v240-shorelines/final/browser.json",
+            "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v240-migration/REPORT.md",
+          "docs/evidence/v240-shorelines/REPORT.md"
+        ],
+        "failures": [
+          "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
+          "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
+          "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
+        ],
+        "blockers": [
+          "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
+        ],
+        "next_steps": [
+          "Expand the next existing special-unit/hero visual identity with directed Node/Chromium/visual checks; no whole art pipeline rerun",
+          "Terrain elevation/ramp rule decisions remain separate; current shorelines are visual only",
+          "Periodically integrate natural campaigns after material gameplay changes; preserve known failures"
+        ],
+        "permissions": [
+          "Independent development tests normal push",
+          "No main Force Push Checkpoints Pages or OmGitHub publication"
+        ],
+        "status": "READY",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
+        "updated_at": "2026-10-29T07:01:31.834673+00:00",
+        "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
+        "ownership_at_snapshot": {
+          "task": "V240-SPECIAL-ATLAS",
+          "execution": "codex-migration-20261029",
+          "global_version": 203,
+          "status": "OWNED_REMOTE_VERIFIED_REVALIDATE_BEFORE_WRITING"
+        },
+        "migration_status": "MIGRATION_IN_PROGRESS_PENDING_FINAL_RECOVERY_PUSH_AND_FEED",
+        "recovery_pending": {
+          "status": "UNPUSHED_WORK_RECOVERY_PENDING",
+          "commit": "9a0f19e67ff16c7d0e0efc005d7d98b81449f17d",
+          "original_worktree": "/workspace/riftwatch-v240",
+          "uncommitted_script": "tools/qa/v240_special_atlas_browser.mjs",
+          "evidence": "/workspace/diagnostics/riftwatch/spearman-final",
+          "artifact": "/tmp/riftwatch-spear"
+        },
+        "scheduler_status": "UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL"
+      },
+      {
+        "task_id": "V240-EASY-BASELINE",
+        "name": "Easy\u81ea\u7136\u57fa\u6e96\u8207Normal\u914d\u5c0d / Easy natural baseline and Normal pairing",
+        "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
+        "priority": "P0",
+        "agent": "Codex",
+        "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
+        "branch": "codex/riftwatch-v240-game-first",
+        "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
+        "latest_pushed_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+        "completed": [
+          "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53c3\u6578\u751f\u6548 / Easy defeat5and valid Normal defeat4; parameters verified",
+          "\u53d7\u63a7\u5341\u6ce2\uff0fBoss\uff0f\u539f\u751fNG+\u53ca\u5468\u76ee\u5b58\u8b80PASS\uff0c\u975e\u81ea\u7136 / Controlled ten waves/Boss/native NG+/cycle saves PASS, not natural",
+          "\u4fee\u5fa9\u539f\u751fSave Pause\u526f\u4f5c\u7528\u6062\u5fa9\uff0c\u7121\u5e73\u8861\u4fee\u6539 / Fixed native Save Pause side-effect recovery without balance changes"
+        ],
+        "uncommitted": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-migration/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/ACTIVE-TASK.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-TASKS.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
+          }
+        ],
+        "unpushed": [],
+        "tests": [
+          {
+            "path": "docs/evidence/v240-easy-baseline/easy/result.json",
+            "result": "NATURAL_DEFEAT wave5",
+            "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
+          },
+          {
+            "path": "docs/evidence/v240-easy-baseline/normal/result.json",
+            "result": "NATURAL_DEFEAT wave4",
+            "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
+          },
+          {
+            "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.json",
+            "result": "5 PASS CONTROLLED_FIXTURE only",
+            "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v240-easy-baseline/REPORT.md",
+          "docs/evidence/v240-easy-baseline/comparison.json"
+        ],
+        "failures": [
+          "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
+          "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
+          "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
+        ],
+        "blockers": [
+          "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
+        ],
+        "next_steps": [
+          "\u5148\u5206\u6790\u5168\u8cc7\u6e90\u9810\u7b97\u3001\u63a1\u96c6\u9632\u5b88\uff0f\u64cd\u4f5c\u5ef6\u9072\u3001\u653b\u57ce\u53cd\u5236\uff0c\u518d\u5b9a\u6700\u5c0f\u4e0d\u540c\u6e2c\u8a66 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
+          "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
+        ],
+        "permissions": [
+          "Independent development tests normal push",
+          "No main Force Push Checkpoints Pages or OmGitHub publication"
+        ],
+        "status": "READY",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
+        "updated_at": "2026-10-29T07:01:31.834673+00:00",
+        "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
+        "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
+        "ownership_at_snapshot": {
+          "task": "V240-EASY-BASELINE",
+          "execution": "codex-easy-20261029",
+          "global_version": 197,
+          "status": "RELEASE_PENDING_AFTER_PUSH"
+        }
+      },
+      {
+        "task_id": "V240-LANDMARK-MATERIALS",
+        "name": "Five family house/barracks scoped visual QA",
+        "requirement_source": "Latest user instruction: complete existing QA then prioritize gameplay",
+        "priority": "P1",
+        "agent": "Codex",
+        "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
+        "branch": "codex/riftwatch-v240-game-first",
+        "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
+        "latest_pushed_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
+        "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
+        "completed": [
+          "Found floating roof-material defect in actual original artifact screenshots",
+          "Projected existing materials onto clipped isometric wall planes without gameplay changes",
+          "Inspected five family house/barracks six-state images and recorded actual Chromium video",
+          "Measured three independent before/after mixed-scene runs; retained absolute performance FAIL and incremental draw overhead",
+          "Rejected and normally reverted ineffective cache experiment"
+        ],
+        "uncommitted": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-migration/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/ACTIVE-TASK.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-TASKS.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
+          }
+        ],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Visual/state Chromium",
+            "result": "10/10 scoped checks PASS plus direct image inspection",
+            "path": "docs/evidence/v240-landmarks/fixed/browser.json",
+            "source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef"
+          },
+          {
+            "name": "Focused Node",
+            "result": "7/7 PASS",
+            "path": "docs/evidence/v240-landmarks/focused-node.log.txt",
+            "source_commit": "9fc6db69227432b162651017819e23cbd4b9153f"
+          },
+          {
+            "name": "Mixed rendering",
+            "result": "All absolute rAF gates FAIL; renderer JS +21.4%; not full QA accepted",
+            "path": "docs/evidence/v240-landmarks/performance/summary.json",
+            "source_commit": "9fc6db69227432b162651017819e23cbd4b9153f"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v240-landmarks/REPORT.md",
+          "docs/evidence/v240-landmarks/fixed/landmark-gallery.webm"
+        ],
+        "failures": [
+          "Absolute cloud frame gate FAIL; incremental renderer JS overhead remains",
+          "Historical simulation SaveLoad natural Rift campaign and hardware issues remain"
+        ],
+        "blockers": [
+          "Full QA acceptance withheld; no public release authorized"
+        ],
+        "next_steps": [
+          "Do not schedule further pure art; implement read-only pre-game rules summary",
+          "Then Seed/terrain accessibility, natural ten-wave campaign, difficulty and New Game+ with explicit specs"
+        ],
+        "permissions": [
+          "Independent development tests normal commit/push",
+          "No main Force Push Checkpoints Pages or OmGitHub publication"
+        ],
+        "status": "CHECKPOINTED",
+        "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
+        "updated_at": "2026-10-29T07:01:31.834673+00:00"
+      },
+      {
+        "task_id": "V240-SPRITE-ATLAS",
+        "name": "External Sprite Atlas recovery and acceptance",
+        "requirement_source": "Strategy v2.4.0 GAME FIRST and P0 credential recovery",
+        "priority": "P0",
+        "agent": "Codex",
+        "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
+        "branch": "codex/riftwatch-v240-game-first",
+        "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
+        "latest_pushed_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+        "completed": [
+          "Recovered from remotely saved atlas implementation after prior worktree loss",
+          "Rebuilt and normally pushed the confirmed 0.78 visual scale correction",
+          "Rebuilt exact-artifact Chromium evidence for eight directions five states and fallback",
+          "Applied user override revoking all quota-percentage stop thresholds"
+        ],
+        "uncommitted": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-migration/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/ACTIVE-TASK.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-TASKS.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
+          }
+        ],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Focused atlas/combat/visual regression",
+            "path": "docs/evidence/v240-sprite-atlas/focused-node.log.txt",
+            "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+            "result": "20/20 PASS"
+          },
+          {
+            "name": "Exact-artifact Chromium atlas",
+            "path": "docs/evidence/v240-sprite-atlas/browser.json",
+            "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+            "result": "6/6 PASS; exact 31 files; zero errors"
+          },
+          {
+            "name": "Quota guard override",
+            "path": "tests/dev/test_quota_guard.py",
+            "source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
+            "result": "8/8 PASS in recovery worktree"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v240-sprite-atlas/REPORT.md",
+          "docs/evidence/v240-sprite-atlas/browser.json",
+          "docs/evidence/v240-sprite-atlas/atlas-gameplay.png",
+          "docs/evidence/v240-sprite-atlas/sprite-atlas.webm"
+        ],
+        "failures": [
+          "Prior local-only commit objects were unavailable in the replacement environment; equivalent verified content received new SHA values",
+          "Existing simulation SaveLoad performance natural Rift ten-wave and hardware gaps remain"
+        ],
+        "blockers": [
+          "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
+        ],
+        "next_steps": [
+          "Push this evidence/recovery checkpoint and verify remote HEAD",
+          "Publish Progress Feed and release ownership version 142",
+          "Then extend atlas to archer and cavalry in a new owned slice"
+        ],
+        "permissions": [
+          "Independent gameplay development tests and normal push authorized",
+          "No public deployment protected branch change or OmGitHub execution"
+        ],
+        "status": "CHECKPOINTED",
+        "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
+        "updated_at": "2026-10-29T07:01:31.834673+00:00",
+        "acceptance": "LOCAL_VERIFIED"
+      },
+      {
+        "task_id": "V240-DIRECTIONAL-ANIMATION",
+        "name": "Direction-aware representative unit animation",
+        "requirement_source": "Strategy v2.4.0 GAME FIRST Phase A/B and latest Handoff",
+        "priority": "P1",
+        "agent": "Codex",
+        "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
+        "branch": "codex/riftwatch-v240-game-first",
+        "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
+        "latest_pushed_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+        "completed": [
+          "Added eight-direction isometric facing derived from real movement and live attack targets",
+          "Added walk attack hit and short death-fall visual states for representative procedural units",
+          "Persisted visual direction and death transition while ensuring dead units never revive",
+          "Preserved unit radii pathfinding attack cadence damage and balance values",
+          "Verified militia archer and light cavalry through real Chromium after the real Start flow"
+        ],
+        "uncommitted": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-migration/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/ACTIVE-TASK.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-TASKS.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
+          }
+        ],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Focused animation combat and visual regression",
+            "path": "docs/evidence/v240-directional-animation/focused-node.log.txt",
+            "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+            "result": "18/18 PASS"
+          },
+          {
+            "name": "Exact-artifact Chromium directional combat",
+            "path": "docs/evidence/v240-directional-animation/browser.json",
+            "source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
+            "result": "5/5 PASS; exact 29 files; eight directions; live attacks; three death frames; zero errors"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v240-directional-animation/REPORT.md",
+          "docs/evidence/v240-directional-animation/browser.json",
+          "docs/evidence/v240-directional-animation/directional-animation.webm",
+          "docs/evidence/v240-directional-animation/directional-movement.png",
+          "docs/evidence/v240-directional-animation/attack-hit.png",
+          "docs/evidence/v240-directional-animation/death-1_1.png",
+          "docs/evidence/v240-directional-animation/death-0_6.png",
+          "docs/evidence/v240-directional-animation/death-0_15.png"
+        ],
+        "failures": [
+          "This is a representative procedural renderer state rather than an authored sprite atlas or complete animation set for every unit",
+          "Low-FPS simulation time loss strict deterministic SaveLoad historical performance natural Rift Prototype reproduction ten-wave and hardware gaps remain"
+        ],
+        "blockers": [
+          "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
+        ],
+        "next_steps": [
+          "Extend the direction-aware pipeline to authored interchangeable frame or atlas descriptors without changing gameplay geometry",
+          "Add family-specific materials to additional landmark buildings without changing footprints",
+          "Continue Seed-driven terrain and natural campaign slices after ownership revalidation"
+        ],
+        "permissions": [
+          "Independent gameplay development tests and normal push authorized",
+          "No public deployment protected branch change or OmGitHub execution"
+        ],
+        "status": "VERIFIED",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN",
+        "resume_status": "SCHEDULED_RESUME_EXECUTED",
+        "updated_at": "2026-10-29T07:01:31.834673+00:00"
+      },
+      {
+        "task_id": "V240-CIV-VISUAL-FAMILIES",
+        "name": "Civilization architecture and military silhouette families",
+        "requirement_source": "Strategy v2.4.0 GAME FIRST Phase B and user continuation priority",
+        "priority": "P1",
+        "agent": "Codex",
+        "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
+        "branch": "codex/riftwatch-v240-game-first",
+        "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
+        "latest_pushed_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
+        "completed": [
+          "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
+          "Added family-specific roof ornaments and military kit silhouettes beyond color tinting",
+          "Connected player render colors to the selected civilization accent",
+          "Preserved collision radii building footprints navigation and balance values",
+          "Verified five representative families in a real exact-artifact Chromium gallery with video and zero browser errors"
+        ],
+        "uncommitted": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-migration/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/ACTIVE-TASK.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-TASKS.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
+          }
+        ],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Focused civilization and visual signature tests",
+            "path": "docs/evidence/v240-civ-visuals/focused-node.log.txt",
+            "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
+            "result": "5/5 PASS"
+          },
+          {
+            "name": "Exact-artifact Chromium civilization gallery",
+            "path": "docs/evidence/v240-civ-visuals/browser.json",
+            "source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
+            "result": "4/4 PASS; exact 29 files; five distinct frames; collision invariant; zero errors"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v240-civ-visuals/REPORT.md",
+          "docs/evidence/v240-civ-visuals/browser.json",
+          "docs/evidence/v240-civ-visuals/civ-visual-families.webm",
+          "docs/evidence/v240-civ-visuals/family-MNG.png",
+          "docs/evidence/v240-civ-visuals/family-TEU.png",
+          "docs/evidence/v240-civ-visuals/family-SAR.png",
+          "docs/evidence/v240-civ-visuals/family-CHN.png",
+          "docs/evidence/v240-civ-visuals/family-AZT.png"
+        ],
+        "failures": [
+          "This is a representative family pipeline not sixteen complete unique asset sets or multidirectional animation",
+          "Low-FPS simulation time loss strict deterministic SaveLoad historical performance natural Rift Prototype reproduction ten-wave and hardware gaps remain"
+        ],
+        "blockers": [
+          "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
+        ],
+        "next_steps": [
+          "Extend the visual pipeline with direction-aware walk attack hit and death frames for one representative unit set",
+          "Add family-specific materials to additional landmark buildings without changing footprints",
+          "Continue Seed-driven terrain and natural campaign slices after ownership revalidation"
+        ],
+        "permissions": [
+          "Independent gameplay development tests and normal push authorized",
+          "No public deployment protected branch change or OmGitHub execution"
+        ],
+        "status": "VERIFIED",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN",
+        "resume_status": "SCHEDULED_RESUME_EXECUTED",
+        "updated_at": "2026-10-29T07:01:31.834673+00:00"
+      },
+      {
+        "task_id": "V240-SEED-SETUP",
+        "name": "Generated editable reproducible Seed setup",
+        "requirement_source": "Strategy v2.4.0 GAME FIRST Phase C and user continuation priority",
+        "priority": "P1",
+        "agent": "Codex",
+        "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
+        "branch": "codex/riftwatch-v240-game-first",
+        "base_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
+        "latest_pushed_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "application_source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+        "completed": [
+          "Prefilled each new-game menu with a visible shareable RW Seed",
+          "Added an explicit localized reroll control while preserving manual edits across locale changes",
+          "Recorded map generation version 1 in SaveLoad and Bug JSON with backward compatibility for prior saves",
+          "Verified the same manual Seed and biome produce an identical world signature before and after SaveLoad and on a second run",
+          "Saved real Chromium screenshots, WebM, timeline and raw results and verified the remote branch SHA"
+        ],
+        "uncommitted": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-migration/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/ACTIVE-TASK.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-TASKS.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
+          }
+        ],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Focused Seed SaveLoad and report checks",
+            "path": "docs/evidence/v240-seed-setup/focused-node.log.txt",
+            "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+            "result": "9/9 PASS"
+          },
+          {
+            "name": "Four locale validation",
+            "path": "docs/evidence/v240-seed-setup/locales.log.txt",
+            "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+            "result": "4 locales 679 keys each PASS"
+          },
+          {
+            "name": "Exact-artifact Chromium Seed workflow",
+            "path": "docs/evidence/v240-seed-setup/browser.json",
+            "source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
+            "result": "8/8 PASS; exact 28 files; natural setup SaveLoad repeat; zero errors"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v240-seed-setup/REPORT.md",
+          "docs/evidence/v240-seed-setup/browser.json",
+          "docs/evidence/v240-seed-setup/generated-seed-menu.png",
+          "docs/evidence/v240-seed-setup/reproduced-seed-game.png",
+          "docs/evidence/v240-seed-setup/seed-setup.webm",
+          "docs/evidence/v240-seed-setup/timeline.json"
+        ],
+        "failures": [
+          "Low-FPS simulation time loss remains SIMULATION_INTEGRITY_BLOCKED",
+          "Strict whole-simulation deterministic SaveLoad remains FAIL; this slice verifies generated frontier identity only",
+          "Historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain"
+        ],
+        "blockers": [
+          "Evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed"
+        ],
+        "next_steps": [
+          "Continue a distinct high-quality 2.5D civilization or animation visual slice after ownership revalidation",
+          "Extend Seed-driven map mechanics separately without changing the version-1 generator silently",
+          "Continue natural campaign sampling when an original Rift Prototype reproduction state is available"
+        ],
+        "permissions": [
+          "Independent gameplay development tests and normal push authorized",
+          "No public Pages change main Force Push Checkpoint overwrite or additional OmGitHub execution"
+        ],
+        "status": "VERIFIED",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN",
+        "resume_status": "SCHEDULED_RESUME_EXECUTED",
+        "updated_at": "2026-10-29T07:01:31.834673+00:00"
+      },
+      {
+        "task_id": "V240-GAME-FIRST-BUILDINGS",
+        "name": "Strategy v2.4 adoption and persistent building-state visuals",
+        "requirement_source": "User-approved Strategy v2.4.0 GAME FIRST",
+        "priority": "P1",
+        "agent": "Codex",
+        "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
+        "branch": "codex/riftwatch-v240-game-first",
+        "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
+        "latest_pushed_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+        "completed": [
+          "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
+          "Added construction, completed, damaged, critical and persistent ruined states to representative production building rendering",
+          "Preserved simulation and balance behavior; ruined structures remain dead",
+          "Built an exact 28-file artifact and completed real Chromium Start plus controlled visual verification",
+          "Recorded screenshot, WebM, timeline, raster hashes and zero material browser errors",
+          "Pushed source and evidence commits and verified the remote branch SHA"
+        ],
+        "uncommitted": [
+          {
+            "status": " M",
+            "path": "docs/evidence/v240-migration/REPORT.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/ACTIVE-TASK.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
+            "path": "docs/handoff/NEXT-TASKS.json"
+          },
+          {
+            "status": " M",
+            "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
+          }
+        ],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Focused visual signatures",
+            "path": "docs/evidence/v240-building-states/focused-node.log",
+            "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+            "result": "3/3 PASS"
+          },
+          {
+            "name": "Exact-artifact Chromium building states",
+            "path": "docs/evidence/v240-building-states/browser.json",
+            "source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
+            "result": "5/5 PASS; exact 28 files; real Start; zero material errors; recording saved"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v240-building-states/REPORT.md",
+          "docs/evidence/v240-building-states/browser.json",
+          "docs/evidence/v240-building-states/building-states.png",
+          "docs/evidence/v240-building-states/building-states.webm",
+          "docs/evidence/v240-building-states/timeline.json"
+        ],
+        "failures": [
+          "Low-FPS simulation time loss remains SIMULATION_INTEGRITY_BLOCKED",
+          "Strict deterministic SaveLoad remains FAIL",
+          "Historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain"
+        ],
+        "blockers": [
+          "Building-state evidence is AFTER_LOCAL only; no v2.4 public Candidate is authorized or deployed",
+          "Original player save/seed for the reported natural Rift Prototype crash is still unavailable"
+        ],
+        "next_steps": [
+          "Continue the next independent GAME FIRST visual/audio slice after ownership revalidation",
+          "Continue natural campaign sampling and request the original Rift Prototype save/seed/state when available",
+          "Prepare a later v2.4 Candidate only after sufficient slices; public publication still requires explicit approval"
+        ],
+        "permissions": [
+          "Independent gameplay development/tests/normal push authorized",
+          "No public Pages change, main, Force Push, Checkpoint overwrite or additional OmGitHub execution"
+        ],
+        "status": "VERIFIED",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN",
+        "resume_status": "SCHEDULED_RESUME_EXECUTED",
+        "updated_at": "2026-10-29T07:01:31.834673+00:00"
+      },
+      {
+        "task_id": "V234-CANDIDATE",
+        "name": "Riftwatch v234 Playtest Candidate integration and publication preparation",
+        "requirement_source": "Riftwatch next Playtest Candidate integration authorization",
+        "priority": "P1",
+        "agent": "Codex",
+        "environment": "Managed Linux; Chromium 154; local immutable artifact",
+        "branch": "codex/riftwatch-playtest-v234",
+        "base_commit": "055fb12c92e3d48945315937058f1423b732241c",
+        "latest_pushed_commit": "d4078fb6cf21db8a75bf69ec4f455cb6b279ada8",
+        "application_source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+        "completed": [
+          "Audited the linear Game First dependency chain without overwriting competing Agent work",
+          "Updated v234 candidate disclosure while preserving every known failure",
+          "Built and hash-verified a 28-payload/31-hosting-file artifact",
+          "Ran exact-artifact real Chromium core, input, Rally, Prototype, hero, silhouette, SaveLoad, locale and Bug JSON checks",
+          "Prepared an immutable Pages path and approval plan without changing public Pages",
+          "Pushed the candidate package and verified the remote SHA"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Full Node regression",
+            "path": "docs/evidence/v234-candidate/full-node.log.txt",
+            "source_commit": "055fb12c92e3d48945315937058f1423b732241c",
+            "result": "113/113 PASS; later Build commit changes only Known Issues documentation"
+          },
+          {
+            "name": "Exact v234 artifact core Chromium",
+            "path": "docs/evidence/v234-candidate/playtest-results.json",
+            "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+            "result": "12/12 PASS; Start/build/train/SaveLoad/four locales/BugJSON; zero errors"
+          },
+          {
+            "name": "Input, Rally and Prototype Chromium",
+            "path": "docs/evidence/v234-candidate/player-feedback.json",
+            "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+            "result": "7/7 PASS; zero errors"
+          },
+          {
+            "name": "Hero range Chromium",
+            "path": "docs/evidence/v234-candidate/hero-skill.json",
+            "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+            "result": "9/9 PASS; zero errors"
+          },
+          {
+            "name": "Unit silhouette Chromium",
+            "path": "docs/evidence/v234-candidate/visuals.json",
+            "source_commit": "34873f76e8ad88d1f238210cfea87ff12f0fa587",
+            "result": "4/4 PASS; zero errors"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v234-candidate/REPORT.md",
+          "docs/evidence/v234-candidate/artifact-verification.json",
+          "docs/evidence/v234-candidate/candidate-game.png",
+          "docs/evidence/v234-candidate/hero-mark-preview.png",
+          "docs/evidence/v234-candidate/battlefield-silhouettes.png",
+          "docs/playtest/v234/APPROVAL-PLAN.json"
+        ],
+        "failures": [
+          "Low-FPS simulation time loss remains SIMULATION_INTEGRITY_BLOCKED",
+          "Strict deterministic SaveLoad remains FAIL",
+          "Historical performance FAIL, natural Rift Prototype crash NOT_REPRODUCED, full ten-wave stability gap and HARDWARE_TEST_PENDING remain"
+        ],
+        "blockers": [
+          "Public v234 Pages directory/root switch needs explicit new authorization",
+          "No public v234 AFTER_DEPLOY_LIVE evidence exists"
+        ],
+        "next_steps": [
+          "Continue GAME FIRST on an independent feature branch or SaveLoad/simulation diagnosis",
+          "If separately authorized, publish only the approved immutable v234 artifact to the dedicated Pages branch and run actual public HTTPS acceptance"
+        ],
+        "permissions": [
+          "Independent gameplay development/tests/normal push authorized",
+          "No public Pages change, main, Force Push, Checkpoint overwrite or additional OmGitHub execution"
+        ],
+        "status": "CHECKPOINTED",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN",
+        "resume_status": "SCHEDULED_RESUME_EXECUTED",
+        "updated_at": "2026-10-27T05:04:00+00:00"
+      },
+      {
+        "task_id": "V233-VISUAL-SILHOUETTES",
+        "name": "OmGitHub #18 source-switch preflight and battlefield role silhouettes",
+        "requirement_source": "Riftwatch v2.3.3 Preview Recovery & Game First",
+        "priority": "P0/P1",
+        "agent": "Codex",
+        "environment": "Managed Linux; Chromium 154; OmGitHub read-only",
+        "branch": "codex/riftwatch-v233-visual-silhouettes",
+        "base_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+        "latest_pushed_commit": "eb9d0acc4486fd8ede3136ac134b90d828e56dfa",
+        "application_source_commit": "d989bb7236cb7e6bc4bee6892ff0fae9196bc2da",
+        "completed": [
+          "Confirmed #18 Resume client accepts prompt/request_id only and cannot enforce branch/full SHA",
+          "Documented safe new-Issue source switch without executing it",
+          "Added distinct production silhouettes for Chu Ko Nu, skirmisher, guard, knight, light cavalry and horse archer",
+          "113/113 Node and 4/4 exact-artifact Chromium checks passed",
+          "Normal pushes and exact remote SHA verification completed"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Full Node regression",
+            "path": "docs/evidence/v233-visual-silhouettes/full-node.log.txt",
+            "source_commit": "d989bb7236cb7e6bc4bee6892ff0fae9196bc2da",
+            "result": "113/113 PASS"
+          },
+          {
+            "name": "Exact-artifact Chromium visual gallery",
+            "path": "docs/evidence/v233-visual-silhouettes/browser.json",
+            "source_commit": "d989bb7236cb7e6bc4bee6892ff0fae9196bc2da",
+            "result": "4/4 PASS; eight distinct raster samples; live move; browser errors 0"
+          },
+          {
+            "name": "OmGitHub #18 source switch",
+            "path": "docs/evidence/v233-preview-recovery/resume-source-analysis.json",
+            "source_commit": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+            "result": "BLOCKED; Resume cannot enforce branch/SHA"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v233-preview-recovery/REPORT.md",
+          "docs/evidence/v233-preview-recovery/resume-source-analysis.json",
+          "docs/evidence/v233-visual-silhouettes/REPORT.md",
+          "docs/evidence/v233-visual-silhouettes/browser.json",
+          "docs/evidence/v233-visual-silhouettes/battlefield-silhouettes.png"
+        ],
+        "failures": [
+          "Issue #18 still has no playable Preview and current Resume cannot enforce a source switch",
+          "Natural Rift Prototype crash remains NOT_REPRODUCED",
+          "Low-FPS simulation loss, strict Save/Load nondeterminism, historical performance FAIL and HARDWARE_TEST_PENDING remain"
+        ],
+        "blockers": [
+          "A new isolated OmGitHub Issue is the minimum observed branch-selecting mechanism and remains unauthorized",
+          "No official online port3000 execution was started; visual slice is AFTER_LOCAL only"
+        ],
+        "next_steps": [
+          "If separately authorized, create one isolated Issue against the frozen latest branch and exact launch SHA; serve its generated 28-file artifact on official port3000",
+          "Continue GAME FIRST with civilization/building landmark silhouettes or battle alerts",
+          "Continue natural campaign sampling for Rift Prototype and ten-wave progression without replacing known failures"
+        ],
+        "permissions": [
+          "Independent gameplay development/tests/normal push authorized",
+          "No Resume/Continue/new Issue/main/Force Push/Checkpoint overwrite/public deployment"
+        ],
+        "status": "CHECKPOINTED",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN",
+        "resume_status": "SCHEDULED_RESUME_EXECUTED",
+        "updated_at": "2026-10-27T04:14:19.681524+00:00"
+      },
+      {
+        "task_id": "V233-DYNAMIC-SCORE",
+        "name": "OmGitHub #18 generation diagnosis and adaptive battlefield score",
+        "requirement_source": "Riftwatch v2.3.2 OmGitHub Preview Diagnosis and Game First",
+        "priority": "P0",
+        "agent": "Codex",
+        "environment": "Managed Linux; Chromium 154; local WebAudio recording; OmGitHub read-only",
+        "branch": "codex/riftwatch-v233-dynamic-score",
+        "base_commit": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+        "latest_pushed_commit": "a6a54ef7674e033432f4233694f87ff1303ad6b6",
+        "application_source_commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
+        "completed": [
+          "Read-only Issue #18 generation/Worker/port-3000/official-interface diagnosis",
+          "Confirmed official public progress screenshot rendered Riftwatch on port 3000 with BUILD BLOCKED",
+          "Implemented phase-aware procedural score for prep, wave, Boss, boon and pause",
+          "Recorded real Chromium WebAudio preparation and battle score payloads",
+          "111/111 Node and 7/7 exact-artifact Chromium checks passed",
+          "Normal push and exact remote verification completed"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Full Node regression",
+            "path": "docs/evidence/v233-dynamic-score/full-node.log.txt",
+            "source_commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
+            "result": "111/111 PASS"
+          },
+          {
+            "name": "Exact-artifact Chromium WebAudio",
+            "path": "docs/evidence/v233-dynamic-score/browser.json",
+            "source_commit": "f9d458ac5e578d4e1b6ce0f764aac844774f7fcf",
+            "result": "7/7 PASS; two playable Opus recordings; browser errors 0"
+          },
+          {
+            "name": "OmGitHub Issue 18 Preview",
+            "path": "docs/evidence/v233-omgithub18-preview/REPORT.md",
+            "source_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+            "result": "BLOCKED; generation234; port3000 BUILD BLOCKED"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v233-omgithub18-preview/REPORT.md",
+          "docs/evidence/v233-omgithub18-preview/official-port3000-build-blocked.png",
+          "docs/evidence/v233-dynamic-score/REPORT.md",
+          "docs/evidence/v233-dynamic-score/prep-score.webm",
+          "docs/evidence/v233-dynamic-score/battle-score.webm"
+        ],
+        "failures": [
+          "Issue #18 has no stable Preview URL; no deploy-only repair interface observed",
+          "Natural Rift Prototype claim crash remains NOT_REPRODUCED",
+          "Low-FPS simulation loss, strict Save/Load nondeterminism, historical performance FAIL and HARDWARE_TEST_PENDING remain"
+        ],
+        "blockers": [
+          "Issue #18 recovery requires a new official execution, currently unauthorized",
+          "Port3000 must serve a generated artifact with matching build-metadata rather than source root"
+        ],
+        "next_steps": [
+          "Continue natural campaign sampling and request original player Rift Prototype save/seed/state if available",
+          "Next independent GAME FIRST slice: representative civilization/unit/building visual differentiation or battle alerts",
+          "If separately authorized, Resume #18, fast-forward its clean source to a6a54ef7674e033432f4233694f87ff1303ad6b6, serve exact generated artifact on official port3000, and require Preview Build-SHA verification"
+        ],
+        "permissions": [
+          "Independent gameplay development/tests/normal push authorized",
+          "No Resume/Continue/new Issue/main/Force Push/Checkpoint overwrite/public deployment"
+        ],
+        "status": "CHECKPOINTED",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN",
+        "updated_at": "2026-10-27T03:26:22.730136+00:00"
+      },
+      {
+        "task_id": "V232-RIFT-PROTOTYPE-NATURAL",
+        "name": "Natural Rift Prototype diagnosis and Game First audio continuation",
+        "requirement_source": "OmGitHub #18 Preview Recovery & Game First Continuation",
+        "priority": "P0",
+        "agent": "Codex",
+        "environment": "Managed Linux; Chromium 154; local browser only; OmGitHub read-only diagnosis",
+        "branch": "codex/riftwatch-v232-rift-prototype",
+        "base_commit": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+        "latest_pushed_commit": "f57946fc0cbdb4c8b15f2b81d3f4473ef34dd6d1",
+        "application_source_commit": "86704e1fe6d8ef356a6706c0218854ca6aa593b7",
+        "completed": [
+          "Read-only Issue #18 publication diagnosis with release-log and API evidence",
+          "Real Chromium natural first-wave run reached boon cleanly; target card was not offered so reported crash remains NOT_REPRODUCED",
+          "Added dedicated Rift Prototype awakening cue without combat/balance changes",
+          "Full 110-test regression and exact 28-file artifact Chromium spawn/cue/move checks passed",
+          "Normal pushes and remote SHA verification completed"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Full Node regression",
+            "path": "docs/evidence/v232-rift-prototype/full-node.log.txt",
+            "source_commit": "86704e1fe6d8ef356a6706c0218854ca6aa593b7",
+            "result": "110/110 PASS"
+          },
+          {
+            "name": "Natural wave Chromium",
+            "path": "docs/evidence/v232-rift-prototype/natural-browser.json",
+            "source_commit": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+            "result": "wave settlement PASS; Rift card offer FAIL/NOT_REPRODUCED; browser errors 0"
+          },
+          {
+            "name": "Affected post-change Chromium",
+            "path": "docs/evidence/v232-rift-prototype/post-change-browser.json",
+            "source_commit": "86704e1fe6d8ef356a6706c0218854ca6aa593b7",
+            "result": "3/3 PASS; cue once; live move; browser errors 0"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v232-omgithub18-preview/REPORT.md",
+          "docs/evidence/v232-rift-prototype/REPORT.md",
+          "docs/evidence/v232-rift-prototype/post-change-prototype.png"
+        ],
+        "failures": [
+          "Natural wave did not offer Rift Prototype, so reported natural-claim crash remains NOT_REPRODUCED",
+          "Explicit-SwiftShader 1600x1000 run reproduced known low-FPS simulation-time loss",
+          "Production low-FPS clock loss, strict Save/Load nondeterminism, historical performance FAIL and HARDWARE_TEST_PENDING remain"
+        ],
+        "blockers": [
+          "Issue #18 deployment callbacks were superseded with HTTP 409; no Preview URL or deploy-only control",
+          "Recovering #18 requires a new official Resume/Continue OpenCode execution and separate explicit approval"
+        ],
+        "next_steps": [
+          "Obtain original player crash seed/save/browser state or run additional natural campaigns without injected boons",
+          "Continue a representative battle-audio/BGM or visual-quality gameplay slice on an independent branch",
+          "If user authorizes Issue #18 Resume, start exact verified branch/SHA and require public Build-SHA browser verification"
+        ],
+        "permissions": [
+          "Independent gameplay development/tests/normal pushes authorized",
+          "No main/Force Push/Issue #17/Checkpoints/public deployment/new OpenCode execution"
+        ],
+        "status": "CHECKPOINTED",
+        "quota_status": "QUOTA_PERCENT_UNKNOWN",
+        "updated_at": "2026-10-27T03:16:23.605222+00:00"
+      },
+      {
+        "task_id": "V231-HERO-SKILL-PREVIEW",
+        "name": "Hero visual distinction and skill-range preview",
+        "requirement_source": "Strategy v2.3.0 handoff next slice",
+        "priority": "P1",
+        "agent": "OpenCode; execution opencode-omgithub17-20261027-a",
+        "environment": "Managed Linux; local Chromium/SwiftShader",
+        "branch": "codex/riftwatch-v231-hero-skill-preview",
+        "base_commit": "45435a323c729a28da1de454a3e53740fc9159f2",
+        "latest_pushed_commit": "2d7699e712c614da1a36124bad4b7b408b8a3393",
+        "completed": [
+          "Shared Mark/Aegis radii, commander ground marker, and hover/focus range preview implemented and locally verified"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Full Node and local Chromium verification",
+            "path": "docs/evidence/v231-hero-skill-preview/REPORT.md",
+            "source_commit": "5df177bee911b8f9251248115e6128aa92b7b563",
+            "result": "109/109 Node, 8/8 local Chromium, four locales 678 keys PASS"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v231-hero-skill-preview/REPORT.md",
+          "docs/evidence/v231-hero-skill-preview/browser-checks.json"
+        ],
+        "failures": [
+          "Rift Prototype crash not reproduced in controlled real-UI path",
+          "GDD hero stats and Aegis radius 4 still differ from production"
+        ],
+        "status": "CHECKPOINTED",
+        "next_steps": [
+          "Natural wave-end Rift Prototype offer with complete browser evidence",
+          "Explicit GDD decision on hero stats and Aegis radius",
+          "Representative hero art and audio vertical slice"
+        ],
+        "blockers": [
+          "Exact player crash conditions remain unknown; controlled real-UI reproduction passes",
+          "New public game SHA requires separate concrete authorization"
+        ],
+        "permissions": [
+          "Independent development/test/normal push; no main/force/#17/Checkpoints/workflow/new public SHA"
+        ],
+        "updated_at": "2026-10-26T18:55:00Z"
+      },
+      {
+        "task_id": "V230-P0-INPUT",
+        "name": "Natural Rift Prototype crash reproduction and Game First continuation",
+        "requirement_source": "Strategy v2.3.0 P0/P9",
+        "priority": "P0",
+        "agent": "Codex; no additional agent connected",
+        "environment": "Managed revision 40; local Chromium 154/SwiftShader",
+        "branch": "codex/riftwatch-v230-p0-input",
+        "base_commit": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
+        "latest_pushed_commit": "0c422d9ae04af2435626a7f2be3b6f354c6f5a90",
+        "completed": [
+          "A/WASD conflict, Rally-facing exit, and Canvas same-type double-click implemented and locally verified"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Focused Node and Chromium verification",
+            "path": "docs/evidence/v230-p0-input/REPORT.md",
+            "source_commit": "d92641dc73e1ea85c4ab585dcecab72cc6f43a82",
+            "result": "20/20 Node, 7/7 local Chromium, four locales PASS"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v230-p0-input/REPORT.md",
+          "docs/evidence/v230-p0-input/browser.json"
+        ],
+        "failures": [
+          "Rift Prototype crash not reproduced in controlled real-UI path"
+        ],
+        "status": "CHECKPOINTED",
+        "next_steps": [
+          "Natural wave-end Rift Prototype offer with complete browser evidence",
+          "Hero visual distinction and skill range preview vertical slice",
+          "Representative art and audio vertical slices"
+        ],
+        "blockers": [
+          "Exact player crash conditions remain unknown; controlled real-UI reproduction passes",
+          "New public game SHA requires separate concrete authorization"
+        ],
+        "permissions": [
+          "Independent development/test/normal push; no main/force/#17/Checkpoints/workflow/new public SHA"
+        ],
+        "updated_at": "2026-10-26T18:02:56Z"
+      },
+      {
+        "task_id": "V228-CANDIDATE",
+        "name": "v228 playable experimental candidate and deterministic-clock continuation",
+        "requirement_source": "Explicit Strategy v2.2.8 andP0quotaaddendum",
+        "priority": "P0",
+        "agent": "Codex; no additionalAgent connected",
+        "environment": "ManagedLinux revision5; Chromium154.0.8037.57/SwiftShader; localnativebrowser, notphysicalPC ornewonlinebuild",
+        "branch": "codex/riftwatch-playtest-v228",
+        "base_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+        "latest_pushed_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
+        "completed": [
+          "Recoveredv227 cleanrefs, completeFeed/API4/4 anddedup; no unnecessary97test rerun",
+          "NAV dynamicdetour bug confirmed byexactnative5282step replay, minimalfix, native8/8/24crowd/orders/SaveLoad/normal135s8P0PASS",
+          "Groupbuttons/visibilitySettings/scaling18focusedNode/19native/fourlocale678keysPASS; bounded3+3MOVEimpact recorded",
+          "Quota guard8fixture tests, honestcheckpoint/push/ownerrefusal andmanualresume; actualpercentunknown",
+          "Clock allsystems nativeframe/cadence/debt/SaveLoad analysis; unverifiedprototype NOTinstalled",
+          "Merged independentbranches intoexperimentalCandidate only; sealednewBuild28payloads/8nativechecks/106hashmatches; artifact andexactapprovalplan"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "Sharednavigation regression",
+            "path": "docs/evidence/v228-nav/unit-after.log.txt",
+            "result": "98fullNodePASS; rerun justifiedbychangednavigation",
+            "source_commit": "144c1f3f8769f94e15e94a190279dc04f445b8a5"
+          },
+          {
+            "name": "Normal135s8P0",
+            "path": "docs/evidence/v228-nav/normal135-summary.json",
+            "result": "PASS8;10retarget;fourresource40/33/30/11unloads",
+            "source_commit": "144c1f3f8769f94e15e94a190279dc04f445b8a5"
+          },
+          {
+            "name": "Newgroup UI",
+            "path": "docs/evidence/v228-groups/browser.json",
+            "result": "19nativePASS;18targetedNode and678keysseparatelysaved",
+            "source_commit": "042f3a75868e80268f799a54b1b9d4121c4c60e5"
+          },
+          {
+            "name": "FinalexactCandidate",
+            "path": "docs/evidence/v228-candidate/results.json",
+            "result": "8native/106resourcesPASS",
+            "source_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911"
+          },
+          {
+            "name": "Quota safety",
+            "path": "docs/evidence/v228-budget/tests-after.log.txt",
+            "result": "8localfixture/SIMULATION testsPASS, notactualaccounttelemetry",
+            "source_commit": "094324e1b61e6fddf60763848d36eca107b6282f"
+          },
+          {
+            "name": "Strictsimulationintegrity",
+            "path": "docs/evidence/v228-clock/acceptance.json",
+            "result": "FAILproductionlowFPS andstrictSaveLoad; fixedcrossFPS/replayPASS butprototypeonly",
+            "source_commit": "144c1f3f8769f94e15e94a190279dc04f445b8a5"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v228-candidate/REPORT.md",
+          "docs/evidence/v228-nav/ROOT-CAUSE.md",
+          "docs/evidence/v228-clock/REPORT.md",
+          "docs/playtest/v228/APPROVAL-PLAN.json"
+        ],
+        "failures": [
+          "Originalv2277/8 preserved, fixedonlyinv228; oldD6unchanged",
+          "Actualproductiondtcaplosestimeat15/10Hz",
+          "StrictJSONSaveLoad divergesafter.1s; initialRNGcorrect/transientnavlost",
+          "Historical100/200/250/500/1000performanceFAIL retained"
+        ],
+        "blockers": [
+          "NewSHApublicationrequiresuserapproval; nothingdeployed",
+          "ClockprototypeadoptionBLOCKEDbydeterministiccontinuity andremainingpause/backlog/browsergates",
+          "HARDWARE_TEST_PENDING; current-scalecombat/fullcampaignformalacceptance pending",
+          "QUOTA_PERCENT_UNKNOWN; no connectedautomaticAgentdispatch/realGeminihandoff"
+        ],
+        "next_steps": [
+          "Do not rerun valid98/18/fourlocale/nativeproofunlessaffectedsourcechanges. VerifyactualremoteCandidateHEAD/appBuildab56 andlatestRecovery/ownership first",
+          "P0 isolate strictSaveLoad transientcontinuity: snapshot10s nativeclockfixture, record nav/yield/progress/searchqueue/relevantcombat effects before/afterrestore; replay identicalfixedticks; do not blame RNGrestore when initialstateequals",
+          "Produce minimaldeterministicSaveLoadfailure beforefix; no productionloopinstalluntil exactstate andaffectedbrowser/overload/pause gatespass",
+          "Ifuser explicitlyapprovesdocs/playtest/v228/APPROVAL-PLAN.json, claimsitebranch, recheckHEAD,addexactbuildsab56/rootpointerordinarycommit; preserveD6; onlythenactualpublicQA",
+          "P1nextindependentslice: selectableformationdesign orFogOFF/Tactical/Classic underGDD; no blanket1000unitblock",
+          "Futureonceuserresetcheck17:39UTC: verifyactualservice/quota/ownership, manualdispatchunless supportedinterfaceactuallyconnected; do not assumescheduledresume"
+        ],
+        "permissions": [
+          "Independentdev/test/commit/normalpush andexperimentalcandidateassembly",
+          "No newpublicSHA/site-rootupdatewithoutconcretenewapproval",
+          "No main/force/OpenCodecheckpoints/#17/workflow/newIssue/auth/network/paidservicechanges"
+        ],
+        "status": "CHECKPOINTED",
+        "resume_event": {
+          "status": "RESUMED",
+          "basis": "Actualmanualuserprompt recovery andGitverified continuation, notautomaticdispatch"
+        },
+        "quota_status": "QUOTA_PERCENT_UNKNOWN",
+        "resume_status": "RESUME_READY_MANUAL_DISPATCH",
+        "updated_at": "2026-10-26T13:30:09.105137+00:00"
+      },
+      {
+        "task_id": "V227-CANDIDATE",
+        "name": "v227 scoped local candidate and remaining narrow-queue diagnosis",
+        "requirement_source": "Explicit Strategy v2.2.7; v226 new-SHA deployment scope boundary",
+        "priority": "P0",
+        "agent": "Codex; release ownership before next writer",
+        "environment": "Managed Linux environment revision5, Chromium154 headless/SwiftShader; LOCAL browser; no new online test",
+        "branch": "codex/riftwatch-playtest-v227",
+        "base_commit": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+        "latest_pushed_commit": "27b279410db1bb9c14b3c1b921b146059a6c6341",
+        "completed": [
+          "Wave settlement/withdrawal/carry SaveLoad fixes; confirmed original softlock risk by native navigation islands without killing residual",
+          "AttackMove/unitGuard/Patrol/groups, text scale;97Node/four673-keylocales",
+          "Native tactical/scale/SaveLoad gates and normal180sP0 PASS; historicalnativefailures retained",
+          "Freshcontext Continue gate fixed; candidate/D6 keys isolated",
+          "Serial3before+3after100militia movement trends; no combat/hardware claims"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "name": "FinalJS Node regression",
+            "path": "docs/evidence/v227-candidate/unit-af594.log.txt",
+            "result": "97PASS; candidate appJS identical toaf594",
+            "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9"
+          },
+          {
+            "name": "Actual180s normal8P0",
+            "path": "docs/evidence/v227-candidate/normal-summary.json",
+            "result": "PASS8;10retarget;fourresourceunloads56/24/26/14",
+            "source_commit": "e845d2cd68b423bb2c16266a2c2f434edfa3f93a"
+          },
+          {
+            "name": "Affectednativecorridor",
+            "path": "docs/evidence/v227-candidate/crowd-fixed-results.json",
+            "result": "FAIL7/8destination despite8cross;24unitPASS separately",
+            "source_commit": "af5944ae9480c6458a899b6f4e335fa842219df9"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/v227-candidate/REPORT.md",
+          "docs/playtest/v227/APPROVAL-PLAN.json"
+        ],
+        "failures": [
+          "OPEN-NAV-NARROW-01 native7/8destination85s; no confirmedrootcause",
+          "15virtualHz22.5simseconds/30real,10Hz15seconds; productionclockunchanged",
+          "Historical current-scale/500/1000 performance FAIL retained"
+        ],
+        "blockers": [
+          "Oldnarrowfailurefixedinnewv228only; oldsource/historyuntouched"
+        ],
+        "next_steps": [
+          "HistoricalfrozenCandidate; continuefromV228-CANDIDATE andactualrefs instead"
+        ],
+        "permissions": [
+          "Independentdevelopment/tests/normalcommitpush; scopedintegrationonlyaftergates",
+          "No main/checkpoint/force/#17/OpenCode/paidAPI/networkpolicy changes",
+          "NewSHA publicPages requires preciseapproval under v227"
+        ],
+        "status": "CHECKPOINTED",
+        "updated_at": "2026-10-26T09:30:24.505338+00:00"
+      },
+      {
+        "task_id": "PLAYTEST-DEPLOY",
+        "status": "BLOCKED",
+        "branch": "codex/riftwatch-playtest-v228",
+        "next_steps": [
+          "Use docs/playtest/v228/APPROVAL-PLAN.json; no automaticpublication"
+        ],
+        "name": "Approve and deploy isolated Candidate",
+        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "priority": "P0",
+        "agent": "UNASSIGNED; claim ownership before writing",
+        "environment": "managed cloud, except HARDWARE requires physical Windows",
+        "base_commit": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+        "latest_pushed_commit": "ab56a5b824fabc5e123cf33e912d11bd3c625911",
+        "completed": [
+          "D6limitedLIVEpreserved; v228localartifactprepared"
+        ],
+        "uncommitted": [],
+        "unpushed": [],
+        "tests": [
+          {
+            "result": "LOCAL_VERIFIED",
+            "source": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c"
+          }
+        ],
+        "evidence": [
+          "docs/evidence/playtest-candidate/acceptance.json"
+        ],
+        "failures": [
+          "Historicalperformance failures unchanged"
+        ],
+        "blockers": [
+          "AwaitexactnewSHApublicationapproval; notformalQA"
+        ],
+        "permissions": [
+          "Do not create site/Pages/workflow before approval"
+        ],
+        "updated_at": "2026-10-25T18:24:53.917746+00:00"
+      },
       {
         "task_id": "A1-TARGET",
         "status": "IN_PROGRESS",
@@ -168,7 +1468,7 @@
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
         "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-        "latest_pushed_commit": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
+        "latest_pushed_commit": null,
         "completed": [
           "51 Node tests and5 native browser checks pass",
           "135s normal P0 passes with8 retargets,35/23/23/11 deposits"
@@ -189,7 +1489,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T18:58:47.022895+00:00"
+        "updated_at": "2026-10-25T18:24:53.917746+00:00"
       },
       {
         "task_id": "B2-GDD",
@@ -204,7 +1504,7 @@
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
         "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-        "latest_pushed_commit": "c456cae581b3ec85a7dd222d017453d2e589e095",
+        "latest_pushed_commit": null,
         "completed": [
           "47 Node tests and8 browser checks pass",
           "Four stale descriptions fixed with retained failure",
@@ -221,7 +1521,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T18:58:47.022895+00:00"
+        "updated_at": "2026-10-25T18:24:53.917760+00:00"
       },
       {
         "task_id": "A4-POP",
@@ -236,7 +1536,7 @@
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
         "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-        "latest_pushed_commit": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
+        "latest_pushed_commit": "46759494baa05ba3d1be7c59b2c7f78a1735e89d",
         "completed": [
           "50 Node tests and7 browser checks pass",
           "Normal P0 source8d090287 passes,8 retargets and40/22/24/10 deposits"
@@ -252,7 +1552,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T18:58:47.022895+00:00"
+        "updated_at": "2026-10-25T18:24:53.917764+00:00"
       },
       {
         "task_id": "QA-TOOLS",
@@ -310,7 +1610,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T18:58:47.022895+00:00"
+        "updated_at": "2026-10-25T18:24:53.917771+00:00"
       },
       {
         "task_id": "INTEGRATION",
@@ -325,7 +1625,7 @@
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
         "base_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
-        "latest_pushed_commit": "72e978417afd3c95f897cc7cb35395f00008c313",
+        "latest_pushed_commit": "d778cf2d8157edd9716b4790bcd29e00e967579f",
         "completed": [
           "Recovery/tooling only integrated and verified at72e978417afd3c95f897cc7cb35395f00008c313; zero production resource changes"
         ],
@@ -340,7 +1640,7 @@
         "permissions": [
           "Independent feature branch normal commits/push; no protected refs/Preview/workflow"
         ],
-        "updated_at": "2026-10-25T18:58:47.022895+00:00"
+        "updated_at": "2026-10-25T18:24:53.917774+00:00"
       },
       {
         "task_id": "PHASE-B-E",
@@ -398,18 +1698,26 @@
         ],
         "updated_at": "2026-10-25T18:24:53.917813+00:00"
       }
-    ]
+    ],
+    "active_strategy": "docs/STRATEGY-V2.4-GAME-FIRST.md",
+    "gameplay_priority_override": [
+      "P1 2.5D artwork and civilization/unit identity",
+      "P2 terrain/tactics after material-rule approval",
+      "P3 audio/Boss",
+      "P4 integration/Candidate with periodic natural campaign validation; not a prerequisite"
+    ],
+    "priority_override": "Latest user migration and GAME FIRST: natural campaigns are periodic integration, not a content prerequisite; historical priorities below are preserved only"
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-25T18:58:47.022895+00:00",
+    "captured_at_utc": "2026-10-29T07:01:31.834673+00:00",
     "trigger": "RECOVERY_RESUME",
-    "collector_commit": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
+    "collector_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
     "collector_dirty": true,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-25T18:58:47.022895+00:00"
+      "queried_at": "2026-10-29T07:01:31.834673+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -425,16 +1733,47 @@
       "codex/riftwatch-b2-civ-training": "0b072b7ae211deb8789a88290b495ce2c58773c9",
       "codex/riftwatch-forge-integration": "3674a33d95c5165dc9ee5813a051f894a8c72378",
       "codex/riftwatch-gameplay-improvement": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
-      "codex/riftwatch-gameplay-integration": "72e978417afd3c95f897cc7cb35395f00008c313",
-      "codex/riftwatch-task-ownership": "f502d0ddb7504709f571f19a6d7a5bf671917143",
+      "codex/riftwatch-gameplay-integration": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
+      "codex/riftwatch-omgithub17-upgrade-candidate": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "codex/riftwatch-omgithub17-upgrade-evidence": "dcbf99db4776172d9384749da80135903046dd5e",
+      "codex/riftwatch-playtest-candidate": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+      "codex/riftwatch-playtest-site": "5b30bda085197cfa820a594224e2f6df929bf60d",
+      "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+      "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
+      "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
+      "codex/riftwatch-progress-feed": "1a09e26665506018c8f04f2404550af3293e8959",
+      "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
+      "codex/riftwatch-task-ownership": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
       "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
       "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
       "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
       "codex/riftwatch-v22-population": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
       "codex/riftwatch-v22-quality-tools": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
       "codex/riftwatch-v22-target-state": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
-      "codex/riftwatch-v222-prediction": "0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc",
-      "codex/riftwatch-v222-recovery": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
+      "codex/riftwatch-v222-prediction": "b72f9603bf2d8fd865da5cf9dccc32be1dd90830",
+      "codex/riftwatch-v222-recovery": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
+      "codex/riftwatch-v224-monitor": "fa520ae3006329bd2b1c54ac90938519465bf320",
+      "codex/riftwatch-v226-delivery": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+      "codex/riftwatch-v226-live-acceptance": "1a5a67c5373bdd5ede925484776339f95ded78a0",
+      "codex/riftwatch-v227-orders": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+      "codex/riftwatch-v227-ui": "6ad09704c184ee772bf88d92949e8889fca086ce",
+      "codex/riftwatch-v227-wave": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+      "codex/riftwatch-v228-budget": "094324e1b61e6fddf60763848d36eca107b6282f",
+      "codex/riftwatch-v228-clock": "6d11aa2fc7bb3c749a9f714c16081b4f6e98c580",
+      "codex/riftwatch-v228-groups": "56fedb49483e5843f4584eb641382c7e93b5d072",
+      "codex/riftwatch-v228-live": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+      "codex/riftwatch-v228-nav": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
+      "codex/riftwatch-v228-save-research": "03e3a8423e4956be7face8009d7bfff48aa6a11e",
+      "codex/riftwatch-v229-group-clear": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
+      "codex/riftwatch-v230-p0-input": "45435a323c729a28da1de454a3e53740fc9159f2",
+      "codex/riftwatch-v231-hero-skill-preview": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+      "codex/riftwatch-v231-review": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+      "codex/riftwatch-v232-rift-prototype": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+      "codex/riftwatch-v233-dynamic-score": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+      "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
+      "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
+      "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
+      "codex/riftwatch-v240-game-first": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
       "main": "e35a73329ee7942627496e55b844d02b2501e685",
       "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
       "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -443,6 +1782,8 @@
       "opencode-checkpoints/15": "909fc707786e6ae54f33c6388ca582377ff09252",
       "opencode-checkpoints/16": "82007a506b01c0ac6c3986aeac40ef0e1d05a347",
       "opencode-checkpoints/17": "6476a4bc6d18f688b9c44db9a95c45901d76b741",
+      "opencode-checkpoints/18": "35fde465ab40b011a7f33704d6b30d149802438e",
+      "opencode-checkpoints/19": "9866f491d71676f36185fa5f2bfffa4a9ad9f4ca",
       "opencode-checkpoints/2": "71c23b735ec2236d71cf4120410cc5ef6d33b773",
       "opencode-checkpoints/3": "c7d7ba520a6c11db8cec2c338f0b25b5c21e9b57",
       "opencode-checkpoints/4": "d3849df18360a209aa9b6843f409d461260ee93c",
@@ -461,133 +1802,64 @@
     },
     "local_branches": [
       {
-        "branch": "codex/riftwatch-b1-rally",
-        "head": "2a0da8a7320336ac342c1af0953a424d08ef1515",
-        "remote_head": "2a0da8a7320336ac342c1af0953a424d08ef1515",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-b2-civ-training",
-        "head": "0b072b7ae211deb8789a88290b495ce2c58773c9",
-        "remote_head": "0b072b7ae211deb8789a88290b495ce2c58773c9",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-gameplay-improvement",
-        "head": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
-        "remote_head": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-gameplay-integration",
-        "head": "72e978417afd3c95f897cc7cb35395f00008c313",
-        "remote_head": "72e978417afd3c95f897cc7cb35395f00008c313",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-v2-baseline",
-        "head": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
-        "remote_head": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-v22-boss",
-        "head": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
-        "remote_head": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-v22-civ-alignment",
-        "head": "c456cae581b3ec85a7dd222d017453d2e589e095",
-        "remote_head": "c456cae581b3ec85a7dd222d017453d2e589e095",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-v22-population",
-        "head": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
-        "remote_head": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-v22-quality-tools",
-        "head": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
-        "remote_head": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-v22-target-state",
-        "head": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
-        "remote_head": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-v222-prediction",
-        "head": "0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc",
-        "remote_head": "0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc",
-        "status": "REMOTE_SAVED"
-      },
-      {
-        "branch": "codex/riftwatch-v222-recovery",
-        "head": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
-        "remote_head": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
+        "branch": "codex/riftwatch-v240-game-first",
+        "head": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "remote_head": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
         "status": "REMOTE_SAVED"
       }
     ],
     "worktrees": [
       {
-        "path": "/workspace/PlayGround",
-        "branch": "work",
-        "head": "8ef7358d61980eada812ae16b8e12c2f1e28baa8",
+        "path": "/workspace/riftwatch-v240-takeover",
+        "branch": "codex/riftwatch-v240-game-first",
+        "head": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
         "locked": false,
-        "task_id": null,
-        "last_validation": [],
-        "blockers": [
-          "NOT_ASSESSED"
-        ],
-        "next_steps": [
-          "Inspect task registry and relevant diff before writing"
-        ],
-        "remote_status": "REMOTE_BRANCH_ABSENT",
-        "remote_head": null,
-        "unpushed_commits": [],
-        "changed_files": [],
-        "dirty": false,
-        "local_record_status": "LOCAL_INVENTORIED"
-      },
-      {
-        "path": "/workspace/riftwatch",
-        "branch": "codex/riftwatch-v222-recovery",
-        "head": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
-        "locked": false,
-        "task_id": "DEV-RECOVERY-P0",
+        "task_id": "V240-V5-PLAYABILITY",
         "last_validation": [
           {
-            "path": "/workspace/diagnostics/riftwatch/v22-quality-baseline/results.json",
-            "source_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
-            "result": "REFER_TO_EVIDENCE; no automatic PASS inferred",
+            "path": "docs/evidence/v240-easy-baseline/easy/result.json",
+            "result": "NATURAL_DEFEAT wave5",
+            "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
             "exists": true,
-            "storage": "LOCAL_ONLY_OR_MISSING",
-            "sha256": "b3bf19051816248b1dccd9bbd38e7bfe2221c6eb1f8e70d4092c4f816974d41d",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
+            "storage": "REMOTE_SAVED",
+            "sha256": "07b872f659222ac8419a8261b28215e8c6af30efcf07753ea6e4843b955274e5",
+            "resource_freshness": "SOURCE_CHANGED"
+          },
+          {
+            "path": "docs/evidence/v240-easy-baseline/normal/result.json",
+            "result": "NATURAL_DEFEAT wave4",
+            "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+            "exists": true,
+            "storage": "REMOTE_SAVED",
+            "sha256": "c153a1ff7009bac9e7dfc958a87c777a242fd03b116c16f524ddc95ed25dbfed",
+            "resource_freshness": "SOURCE_CHANGED"
+          },
+          {
+            "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.json",
+            "result": "5 PASS CONTROLLED_FIXTURE only",
+            "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
+            "exists": true,
+            "storage": "REMOTE_SAVED",
+            "sha256": "64993964086ee8b660271db6fe33c2a0dc0d3dca9ac0645d5a66559070f1e276",
+            "resource_freshness": "SOURCE_CHANGED"
           }
         ],
         "blockers": [
-          "Feature-specific remaining gates; see handoff"
+          "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
+          "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
+          "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
         ],
         "next_steps": [
-          "Publish framework; preserve other worktrees; do not rerun valid12 baseline cases"
+          "\u5148\u5206\u6790\u5168\u8cc7\u6e90\u9810\u7b97\u3001\u63a1\u96c6\u9632\u5b88\uff0f\u64cd\u4f5c\u5ef6\u9072\u3001\u653b\u57ce\u53cd\u5236\uff0c\u518d\u5b9a\u6700\u5c0f\u4e0d\u540c\u6e2c\u8a66 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
+          "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
         ],
         "remote_status": "REMOTE_SAVED",
-        "remote_head": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
+        "remote_head": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
         "unpushed_commits": [],
         "changed_files": [
           {
             "status": " M",
-            "path": "docs/STRATEGY-V2.2-EXECUTION.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/strategy-v222/recovery-tests.log.txt"
+            "path": "docs/evidence/v240-migration/REPORT.md"
           },
           {
             "status": " M",
@@ -595,383 +1867,764 @@
           },
           {
             "status": " M",
+            "path": "docs/handoff/HANDOFF.md"
+          },
+          {
+            "status": " M",
             "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/SHARED-RULES.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/task-registry.json"
           },
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tests/dev/test_recovery.py"
-          },
-          {
             "status": "??",
-            "path": "docs/evidence/strategy-v222/integration-dev.log.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/strategy-v222/integration-locales.log.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/strategy-v222/integration-node.log.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/strategy-v222/integration-smoke-game.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/strategy-v222/integration-smoke-resources.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/strategy-v222/integration-smoke-result.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/strategy-v222/protected-files.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/strategy-v222/protected-refs.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/strategy-v222/target-performance-summary.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/recovery/README.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/recovery/post-merge-72e9784.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/recovery/pre-merge-763ba6c.json"
-          },
-          {
-            "status": "??",
-            "path": "tools/dev/publish_recovery_index.py"
+            "path": "docs/evidence/v240-migration/completion-publication-receipt.json"
           }
         ],
         "dirty": true,
-        "local_record_status": "LOCAL_INVENTORIED"
-      },
-      {
-        "path": "/workspace/riftwatch-civ",
-        "branch": "codex/riftwatch-v22-civ-alignment",
-        "head": "c456cae581b3ec85a7dd222d017453d2e589e095",
-        "locked": false,
-        "task_id": "B2-GDD",
-        "last_validation": [
-          {
-            "path": "docs/evidence/strategy-v222/civ-results.json",
-            "source_commit": "da0823c6341b1ee85e32d1b6c0f776ef3008255c",
-            "result": "PASS8 browser,47 full Node,4locales; prior description FAIL fixed",
-            "exists": true,
-            "storage": "REMOTE_SAVED",
-            "sha256": "ed43181fc96ec3f6463dfff37203727a307e9c5eba443a51dd92e361e99f3908",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
-          },
-          {
-            "path": "docs/evidence/strategy-v222/civ-p0-summary.json",
-            "source_commit": "2ad2fe4a6466c6c38a033d1194f004924dbfda37",
-            "result": "PASS normal P0; performance/combined B1/B2 still pending",
-            "exists": true,
-            "storage": "REMOTE_SAVED",
-            "sha256": "d5d392bea72713c02c184baca4f00558da547abe0ed016e6b74caa9c50a0f5e2",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
-          }
-        ],
-        "blockers": [
-          "Feature-specific remaining gates; see handoff"
-        ],
-        "next_steps": [
-          "Persist normal P0 evidence; performance/combined B1/B2 gates pending"
-        ],
-        "remote_status": "REMOTE_SAVED",
-        "remote_head": "c456cae581b3ec85a7dd222d017453d2e589e095",
-        "unpushed_commits": [],
-        "changed_files": [],
-        "dirty": false,
-        "local_record_status": "LOCAL_INVENTORIED"
-      },
-      {
-        "path": "/workspace/riftwatch-integration",
-        "branch": "codex/riftwatch-gameplay-integration",
-        "head": "72e978417afd3c95f897cc7cb35395f00008c313",
-        "locked": false,
-        "task_id": "INTEGRATION",
-        "last_validation": [
-          {
-            "path": "/workspace/diagnostics/riftwatch/v222-tooling-smoke/result.json",
-            "source_commit": "72e978417afd3c95f897cc7cb35395f00008c313",
-            "result": "INTEGRATED_VERIFIED tooling only;44Node+8dev+4locales and actual Start/Save/Continue pass; no game resource changes",
-            "exists": true,
-            "storage": "LOCAL_ONLY_OR_MISSING",
-            "sha256": "62f412196a38f35f655c092d31e06ef6cb9dee08d2613ff03a5d37f182848fb4",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
-          }
-        ],
-        "blockers": [
-          "Gameplay feature gates not yet complete"
-        ],
-        "next_steps": [
-          "Keep Boss/Population/Target/Civ/Rally game changes isolated until gates"
-        ],
-        "remote_status": "REMOTE_SAVED",
-        "remote_head": "72e978417afd3c95f897cc7cb35395f00008c313",
-        "unpushed_commits": [],
-        "changed_files": [],
-        "dirty": false,
-        "local_record_status": "LOCAL_INVENTORIED"
-      },
-      {
-        "path": "/workspace/riftwatch-pop",
-        "branch": "codex/riftwatch-v22-population",
-        "head": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
-        "locked": false,
-        "task_id": "A4-POP",
-        "last_validation": [
-          {
-            "path": "docs/evidence/strategy-v222/pop-results.json",
-            "source_commit": "86d7e81394eaab7a2aa579bd30dbbbc278224c3c",
-            "result": "PASS7 browser,50 full Node,4locales",
-            "exists": true,
-            "storage": "REMOTE_SAVED",
-            "sha256": "10ff353b42f23f07713bcfcdae147e0d44b0a04ccfd14ffb42e7d6b7998f6161",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
-          },
-          {
-            "path": "docs/evidence/strategy-v222/pop-p0-summary.json",
-            "source_commit": "8d0902877564872ee5382155ebf38474c125c950",
-            "result": "PASS normal P0; performance/spec ceilings still pending",
-            "exists": true,
-            "storage": "REMOTE_SAVED",
-            "sha256": "674edd4b6b044f1d425c213947d73424ae9db612c467fdcec334a5389b7a7403",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
-          }
-        ],
-        "blockers": [
-          "Feature-specific remaining gates; see handoff"
-        ],
-        "next_steps": [
-          "P0/bounded browser pass; performance and spec ceilings still need gating"
-        ],
-        "remote_status": "REMOTE_SAVED",
-        "remote_head": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
-        "unpushed_commits": [],
-        "changed_files": [],
-        "dirty": false,
-        "local_record_status": "LOCAL_INVENTORIED"
-      },
-      {
-        "path": "/workspace/riftwatch-prediction",
-        "branch": "codex/riftwatch-v222-prediction",
-        "head": "0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc",
-        "locked": false,
-        "task_id": "QA-PREDICTION",
-        "last_validation": [
-          {
-            "path": "/workspace/diagnostics/riftwatch/v222-prediction-committed-tests.log.txt",
-            "source_commit": "0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc",
-            "result": "5 actual committed-tool tests PASS; synthetic model fixtures only; real hardware prediction INSUFFICIENT_DATA",
-            "exists": true,
-            "storage": "LOCAL_ONLY_OR_MISSING",
-            "sha256": "76cc889252eafc122067ecebc2cdc76f06378d97cd42c08e421280b5f03f3523",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
-          }
-        ],
-        "blockers": [
-          "No matched physical hardware calibration"
-        ],
-        "next_steps": [
-          "Collect comparable actual measurements; do not translate cloud ratios to verified FPS"
-        ],
-        "remote_status": "REMOTE_SAVED",
-        "remote_head": "0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc",
-        "unpushed_commits": [],
-        "changed_files": [],
-        "dirty": false,
-        "local_record_status": "LOCAL_INVENTORIED"
-      },
-      {
-        "path": "/workspace/riftwatch-rally",
-        "branch": "codex/riftwatch-b1-rally",
-        "head": "2a0da8a7320336ac342c1af0953a424d08ef1515",
-        "locked": false,
-        "task_id": "B1-RALLY",
-        "last_validation": [
-          {
-            "path": "docs/evidence/strategy-v2/acceptance.json",
-            "source_commit": "2f148c3e3877fc04b6566c0fc6c680b699c73895",
-            "result": "REFER_TO_EVIDENCE; no automatic PASS inferred",
-            "exists": true,
-            "storage": "REMOTE_SAVED",
-            "sha256": "e1b3656c28533bd787dff6db01c70f40fcdbd1400d36075debd2409c6ae08455",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
-          }
-        ],
-        "blockers": [
-          "Feature-specific remaining gates; see handoff"
-        ],
-        "next_steps": [
-          "Latest source2f148c3 needs full three-repeat performance"
-        ],
-        "remote_status": "REMOTE_SAVED",
-        "remote_head": "2a0da8a7320336ac342c1af0953a424d08ef1515",
-        "unpushed_commits": [],
-        "changed_files": [],
-        "dirty": false,
-        "local_record_status": "LOCAL_INVENTORIED"
-      },
-      {
-        "path": "/workspace/riftwatch-v22",
-        "branch": "codex/riftwatch-v22-target-state",
-        "head": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
-        "locked": false,
-        "task_id": "A1-TARGET",
-        "last_validation": [
-          {
-            "path": "docs/evidence/strategy-v222/target-p0-summary.json",
-            "source_commit": "77c20609da28b38fa405531a0215a8261dc6b1ef",
-            "result": "PASS full normal P0 and51Node/fourlocales/5native browser checks",
-            "exists": true,
-            "storage": "REMOTE_SAVED",
-            "sha256": "a74ca0c7c7c6c650b110ae41dfc2dce5bea5e8c4843e94ec689172d36fe9f851",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
-          },
-          {
-            "path": "docs/evidence/strategy-v222/target-performance-summary.json",
-            "source_commit": "294fa287aed37af7820e682d175577a89867380f",
-            "result": "9/12qualityPASS;12/12stuck+movementPASS;3FAIL retained; integration BLOCKED",
-            "exists": true,
-            "storage": "REMOTE_SAVED",
-            "sha256": "b07b652f31cbea97ef32217b7b166b4e4c60b51e766ef0e22f1a737c47253ae3",
-            "resource_freshness": "MATCHES_WORKING_RESOURCES"
-          }
-        ],
-        "blockers": [
-          "New100r1 severe rAF stall;250r1/r3 clock-progress loss; no retry/waiver"
-        ],
-        "next_steps": [
-          "Diagnose stalls/time loss in separate diagnostic cohort, no repeated acceptance retry",
-          "Then gate feature merge; do not label all collisions fixed"
-        ],
-        "remote_status": "REMOTE_SAVED",
-        "remote_head": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
-        "unpushed_commits": [],
-        "changed_files": [],
-        "dirty": false,
         "local_record_status": "LOCAL_INVENTORIED"
       }
     ],
     "comparison": [
       {
-        "path": "/workspace/riftwatch",
+        "path": "/workspace/riftwatch-v240-takeover",
         "changed_fields": [
+          "dirty",
           "changed_files"
         ],
-        "previous_head": "763ba6c1c4b285f9523a7ef342b57024be6e7326",
-        "actual_head": "763ba6c1c4b285f9523a7ef342b57024be6e7326"
+        "previous_head": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+        "actual_head": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b"
       }
     ],
     "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."
   },
   "ownership": {
     "status": "REMOTE_QUERIED",
-    "commit": "f502d0ddb7504709f571f19a6d7a5bf671917143",
+    "commit": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
     "state": {
       "schema_version": 1,
-      "version": 8,
+      "version": 203,
       "tasks": {
         "DEV-RECOVERY-P0": {
           "agent": "Codex",
           "execution": "codex-v222-20261026-a",
           "branch": "codex/riftwatch-v222-recovery",
-          "status": "OWNED",
-          "revision": 1,
-          "updated_at": "2026-10-25T18:24:06.029362+00:00",
+          "status": "RELEASED",
+          "revision": 16,
+          "updated_at": "2026-10-25T19:07:04.534161+00:00",
           "previous_owner_stopped_asserted": false
         },
         "A1-TARGET": {
           "agent": "Codex",
           "execution": "codex-v222-20261026-a",
           "branch": "codex/riftwatch-v22-target-state",
-          "status": "OWNED",
-          "revision": 2,
-          "updated_at": "2026-10-25T18:26:12.508733+00:00",
+          "status": "RELEASED",
+          "revision": 10,
+          "updated_at": "2026-10-25T19:06:49.682220+00:00",
           "previous_owner_stopped_asserted": false
         },
         "B2-GDD": {
           "agent": "Codex",
           "execution": "codex-v222-20261026-a",
           "branch": "codex/riftwatch-v22-civ-alignment",
-          "status": "OWNED",
-          "revision": 3,
-          "updated_at": "2026-10-25T18:26:15.526317+00:00",
+          "status": "RELEASED",
+          "revision": 11,
+          "updated_at": "2026-10-25T19:06:52.285129+00:00",
           "previous_owner_stopped_asserted": false
         },
         "A4-POP": {
           "agent": "Codex",
           "execution": "codex-v222-20261026-a",
           "branch": "codex/riftwatch-v22-population",
-          "status": "OWNED",
-          "revision": 4,
-          "updated_at": "2026-10-25T18:26:18.269055+00:00",
+          "status": "RELEASED",
+          "revision": 12,
+          "updated_at": "2026-10-25T19:06:55.481311+00:00",
           "previous_owner_stopped_asserted": false
         },
         "QA-TOOLS": {
           "agent": "Codex",
           "execution": "codex-v222-20261026-a",
           "branch": "codex/riftwatch-v22-quality-tools",
-          "status": "OWNED",
-          "revision": 5,
-          "updated_at": "2026-10-25T18:26:20.878607+00:00",
+          "status": "RELEASED",
+          "revision": 9,
+          "updated_at": "2026-10-25T19:06:46.931329+00:00",
           "previous_owner_stopped_asserted": false
         },
         "INTEGRATION": {
           "agent": "Codex",
           "execution": "codex-v222-20261026-a",
           "branch": "codex/riftwatch-gameplay-integration",
-          "status": "OWNED",
-          "revision": 6,
-          "updated_at": "2026-10-25T18:29:56.629613+00:00",
+          "status": "RELEASED",
+          "revision": 14,
+          "updated_at": "2026-10-25T19:07:00.268695+00:00",
           "previous_owner_stopped_asserted": false
         },
         "QA-PREDICTION": {
           "agent": "Codex",
           "execution": "codex-v222-20261026-a",
           "branch": "codex/riftwatch-v222-prediction",
-          "status": "OWNED",
-          "revision": 7,
-          "updated_at": "2026-10-25T18:43:27.220659+00:00",
+          "status": "RELEASED",
+          "revision": 13,
+          "updated_at": "2026-10-25T19:06:57.945967+00:00",
           "previous_owner_stopped_asserted": false
         },
         "RECOVERY-INDEX": {
           "agent": "Codex",
-          "execution": "codex-v222-20261026-a",
+          "execution": "codex-v231-review-recovery-20261027",
           "branch": "codex/riftwatch-recovery-index",
-          "status": "OWNED",
-          "revision": 8,
-          "updated_at": "2026-10-25T18:55:14.586299+00:00",
+          "status": "RELEASED",
+          "revision": 102,
+          "updated_at": "2026-10-27T01:19:09.187380+00:00",
           "previous_owner_stopped_asserted": false
+        },
+        "PLAYTEST-P0": {
+          "agent": "Codex",
+          "execution": "codex-v224-20261026-a",
+          "branch": "codex/riftwatch-playtest-candidate",
+          "status": "RELEASED",
+          "revision": 21,
+          "updated_at": "2026-10-25T20:42:02.722829+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "MONITOR-V224": {
+          "agent": "Codex",
+          "execution": "codex-supervisor-20261026-b",
+          "branch": "codex/riftwatch-v224-monitor",
+          "status": "RELEASED",
+          "revision": 28,
+          "updated_at": "2026-10-26T03:48:07.938619+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "MONITOR-FEED": {
+          "agent": "Codex",
+          "execution": "codex-v230-resume-20261027",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 86,
+          "updated_at": "2026-10-26T18:05:56.925266+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V226-DELIVERY": {
+          "agent": "Codex",
+          "execution": "codex-v226-20261026-c",
+          "branch": "codex/riftwatch-v226-delivery",
+          "status": "RELEASED",
+          "revision": 36,
+          "updated_at": "2026-10-26T04:12:58.808018+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PLAYTEST-SITE": {
+          "agent": "Codex",
+          "execution": "codex-v226-20261026-c",
+          "branch": "codex/riftwatch-playtest-site",
+          "status": "RELEASED",
+          "revision": 37,
+          "updated_at": "2026-10-26T04:13:01.606689+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "SUPERVISOR-QA-NEXT": {
+          "agent": "Codex",
+          "execution": "codex-v226-20261026-c",
+          "branch": "codex/riftwatch-supervisor-qa-next",
+          "status": "RELEASED",
+          "revision": 39,
+          "updated_at": "2026-10-26T04:13:07.270286+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "LIVE-D6": {
+          "agent": "Codex",
+          "execution": "codex-live-d6-20261026",
+          "branch": "codex/riftwatch-v226-live-acceptance",
+          "status": "RELEASED",
+          "revision": 44,
+          "updated_at": "2026-10-26T06:56:59.946530+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V227-WAVE": {
+          "agent": "Codex",
+          "execution": "codex-v227-20261026",
+          "branch": "codex/riftwatch-v227-wave",
+          "status": "RELEASED",
+          "revision": 53,
+          "updated_at": "2026-10-26T12:44:55.295677+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V227-UI": {
+          "agent": "Codex",
+          "execution": "codex-v227-20261026",
+          "branch": "codex/riftwatch-v227-ui",
+          "status": "RELEASED",
+          "revision": 54,
+          "updated_at": "2026-10-26T12:44:57.998153+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V227-ORDERS": {
+          "agent": "Codex",
+          "execution": "codex-v227-20261026",
+          "branch": "codex/riftwatch-v227-orders",
+          "status": "RELEASED",
+          "revision": 55,
+          "updated_at": "2026-10-26T12:45:00.648260+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V227-CANDIDATE": {
+          "agent": "Codex",
+          "execution": "codex-v227-20261026",
+          "branch": "codex/riftwatch-playtest-v227",
+          "status": "RELEASED",
+          "revision": 56,
+          "updated_at": "2026-10-26T12:45:02.967507+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V228-BUDGET": {
+          "agent": "Codex",
+          "execution": "codex-v228-20261026",
+          "branch": "codex/riftwatch-v228-budget",
+          "status": "RELEASED",
+          "revision": 62,
+          "updated_at": "2026-10-26T13:44:01.555424+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V228-NAV": {
+          "agent": "Codex",
+          "execution": "codex-v228-20261026",
+          "branch": "codex/riftwatch-v228-nav",
+          "status": "RELEASED",
+          "revision": 63,
+          "updated_at": "2026-10-26T13:44:04.611853+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V228-CLOCK": {
+          "agent": "Codex",
+          "execution": "codex-v228-20261026",
+          "branch": "codex/riftwatch-v228-clock",
+          "status": "RELEASED",
+          "revision": 64,
+          "updated_at": "2026-10-26T13:44:07.439944+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V228-GROUPS": {
+          "agent": "Codex",
+          "execution": "codex-v228-20261026",
+          "branch": "codex/riftwatch-v228-groups",
+          "status": "RELEASED",
+          "revision": 65,
+          "updated_at": "2026-10-26T13:44:09.956163+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V228-CANDIDATE": {
+          "agent": "Codex",
+          "execution": "codex-v228-20261026",
+          "branch": "codex/riftwatch-playtest-v228",
+          "status": "RELEASED",
+          "revision": 66,
+          "updated_at": "2026-10-26T13:44:12.265193+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V228-PAGES": {
+          "agent": "Codex",
+          "execution": "codex-v228-deploy",
+          "branch": "codex/riftwatch-playtest-site",
+          "status": "RELEASED",
+          "revision": 75,
+          "updated_at": "2026-10-26T15:30:35.083131+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V228-LIVE": {
+          "agent": "Codex",
+          "execution": "codex-v228-deploy",
+          "branch": "codex/riftwatch-v228-live",
+          "status": "RELEASED",
+          "revision": 76,
+          "updated_at": "2026-10-26T15:30:40.035188+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V228-SAVE-RESEARCH": {
+          "agent": "Codex",
+          "execution": "codex-v228-deploy",
+          "branch": "codex/riftwatch-v228-save-research",
+          "status": "RELEASED",
+          "revision": 77,
+          "updated_at": "2026-10-26T15:30:43.641577+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V229-GROUP-CLEAR": {
+          "agent": "Codex",
+          "execution": "codex-v228-deploy",
+          "branch": "codex/riftwatch-v229-group-clear",
+          "status": "RELEASED",
+          "revision": 78,
+          "updated_at": "2026-10-26T15:30:46.641899+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V230-P0-INPUT": {
+          "agent": "Codex",
+          "execution": "codex-v230-resume-20261027",
+          "branch": "codex/riftwatch-v230-p0-input",
+          "status": "RELEASED",
+          "revision": 84,
+          "updated_at": "2026-10-26T18:05:44.604078+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "OMGITHUB17-UPGRADE": {
+          "agent": "Codex",
+          "execution": "codex-omgithub17-upgrade-20261027",
+          "branch": "codex/riftwatch-omgithub17-upgrade-candidate",
+          "status": "RELEASED",
+          "revision": 88,
+          "updated_at": "2026-10-26T18:19:53.929871+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "OMGITHUB17-EVIDENCE": {
+          "agent": "Codex",
+          "execution": "codex-omgithub17-evidence-20261027",
+          "branch": "codex/riftwatch-omgithub17-upgrade-evidence",
+          "status": "RELEASED",
+          "revision": 90,
+          "updated_at": "2026-10-26T18:28:49.363697+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED": {
+          "agent": "Codex",
+          "execution": "codex-v231-review-feed-20261027",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 104,
+          "updated_at": "2026-10-27T01:19:56.651847+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V231-HERO-SKILL-PREVIEW": {
+          "agent": "OpenCode",
+          "execution": "opencode-omgithub17-20261027-a",
+          "branch": "codex/riftwatch-v231-hero-skill-preview",
+          "status": "RELEASED",
+          "revision": 98,
+          "updated_at": "2026-10-26T19:01:35.762470+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V231-REVIEW": {
+          "agent": "Codex",
+          "execution": "codex-v231-review-20261027",
+          "branch": "codex/riftwatch-v231-review",
+          "status": "RELEASED",
+          "revision": 100,
+          "updated_at": "2026-10-27T01:18:46.645621+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V232-RIFT-PROTOTYPE-NATURAL": {
+          "agent": "Codex",
+          "execution": "ccarenv-v232-rift-natural",
+          "branch": "codex/riftwatch-v232-rift-prototype",
+          "status": "RELEASED",
+          "revision": 108,
+          "updated_at": "2026-10-27T03:17:22.292163+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V232": {
+          "agent": "Codex",
+          "execution": "ccarenv-v232-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 107,
+          "updated_at": "2026-10-27T03:17:20.373332+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V233-DYNAMIC-SCORE": {
+          "agent": "Codex",
+          "execution": "ccarenv-v233-score",
+          "branch": "codex/riftwatch-v233-dynamic-score",
+          "status": "RELEASED",
+          "revision": 112,
+          "updated_at": "2026-10-27T03:27:12.624025+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V233": {
+          "agent": "Codex",
+          "execution": "ccarenv-v233-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 111,
+          "updated_at": "2026-10-27T03:27:10.678507+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V233-VISUAL-SILHOUETTES": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v233-visual",
+          "branch": "codex/riftwatch-v233-visual-silhouettes",
+          "status": "RELEASED",
+          "revision": 116,
+          "updated_at": "2026-10-27T04:15:26.196478+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V233-VISUAL": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v233-visual-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 115,
+          "updated_at": "2026-10-27T04:15:24.371229+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V234-OMGITHUB-PREVIEW": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v234-preview",
+          "branch": "codex/riftwatch-v234-omgithub-preview",
+          "status": "RELEASED",
+          "revision": 118,
+          "updated_at": "2026-10-27T04:55:51.224008+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V234-PREVIEW": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v234-preview-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 120,
+          "updated_at": "2026-10-27T04:56:33.475997+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V234-CANDIDATE": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v234-candidate",
+          "branch": "codex/riftwatch-playtest-v234",
+          "status": "RELEASED",
+          "revision": 122,
+          "updated_at": "2026-10-27T05:04:31.062270+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V234-CANDIDATE": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v234-candidate-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 124,
+          "updated_at": "2026-10-27T05:05:15.720038+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-GAME-FIRST-BUILDINGS": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-buildings",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 126,
+          "updated_at": "2026-10-27T09:19:43.438528+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V240-BUILDINGS": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 128,
+          "updated_at": "2026-10-27T09:20:25.563010+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-SEED-SETUP": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-seed",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 130,
+          "updated_at": "2026-10-27T10:50:53.201883+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V240-SEED": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-seed-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 132,
+          "updated_at": "2026-10-27T10:51:28.556068+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-CIV-VISUAL-FAMILIES": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-civ-visuals",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 134,
+          "updated_at": "2026-10-27T10:56:43.278769+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V240-CIV-VISUALS": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-civ-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 136,
+          "updated_at": "2026-10-27T10:57:10.025482+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-DIRECTIONAL-ANIMATION": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-directional-animation",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 138,
+          "updated_at": "2026-10-27T11:11:30.030687+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V240-DIRECTIONAL": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-directional-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 140,
+          "updated_at": "2026-10-27T11:12:10.829047+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-SPRITE-ATLAS": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-atlas-recovery",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 143,
+          "updated_at": "2026-10-27T14:54:33.004067+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V240-ATLAS-RECOVERY": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-atlas-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 145,
+          "updated_at": "2026-10-27T14:55:10.598949+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-ARCHER-CAVALRY-ATLASES": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261027-v240-archer-cavalry",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 147,
+          "updated_at": "2026-10-27T15:01:31.710628+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "PROGRESS-FEED-V240-DUAL-ATLAS": {
+          "agent": "Codex",
+          "execution": "codex-cloud-20261028-v240-dual-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 149,
+          "updated_at": "2026-10-27T16:27:24.439393+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-LANDMARK-MATERIALS": {
+          "agent": "Codex",
+          "execution": "codex-cloud-v240-landmark-qa-20261028",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 155,
+          "updated_at": "2026-10-27T20:18:37.489223+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "FEED-LANDMARK-QA": {
+          "agent": "Codex",
+          "execution": "codex-v240-landmark-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 157,
+          "updated_at": "2026-10-27T20:19:06.797307+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-SETUP-RULES": {
+          "agent": "Codex",
+          "execution": "codex-v240-setup-rules-20261028",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 159,
+          "updated_at": "2026-10-27T20:26:13.392756+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "FEED-SETUP-RULES": {
+          "agent": "Codex",
+          "execution": "codex-v240-rules-feed",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 161,
+          "updated_at": "2026-10-27T20:26:45.966813+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-GAMEPLAY-MILESTONE-PHASE1": {
+          "agent": "Codex",
+          "execution": "codex-milestone-20261028",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 165,
+          "updated_at": "2026-10-28T01:14:31.150605+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-MILESTONE-FEED": {
+          "agent": "Codex",
+          "execution": "codex-milestone-20261028",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 167,
+          "updated_at": "2026-10-28T01:14:39.700803+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-BILINGUAL-V5": {
+          "agent": "Codex",
+          "execution": "codex-bilingual-v5-20261028",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 169,
+          "updated_at": "2026-10-28T05:10:32.269686+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-BILINGUAL-FEED": {
+          "agent": "Codex",
+          "execution": "codex-bilingual-v5-20261028",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 171,
+          "updated_at": "2026-10-28T05:11:00.599376+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-V5-PLAYABILITY": {
+          "agent": "Codex",
+          "execution": "codex-v5-playability-20261028",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 173,
+          "updated_at": "2026-10-28T05:50:22.667030+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-V5-FEED": {
+          "agent": "Codex",
+          "execution": "codex-v5-playability-20261028",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 175,
+          "updated_at": "2026-10-28T05:51:02.829030+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-V55-ECONOMY": {
+          "agent": "Codex",
+          "execution": "codex-v55-resume-20261028",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 177,
+          "updated_at": "2026-10-28T06:50:49.214994+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-V55-FEED": {
+          "agent": "Codex",
+          "execution": "codex-v55-resume-20261028",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 179,
+          "updated_at": "2026-10-28T06:51:49.852387+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-REMAINING-AUDIT": {
+          "agent": "Codex",
+          "execution": "codex-audit-20261028",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 182,
+          "updated_at": "2026-10-28T07:32:34.682307+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-AUDIT-FEED": {
+          "agent": "Codex",
+          "execution": "codex-audit-20261028",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 183,
+          "updated_at": "2026-10-28T07:32:47.910905+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-SAVE-TRANSIENT": {
+          "agent": "Codex",
+          "execution": "codex-quality-20261028",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 185,
+          "updated_at": "2026-10-28T07:54:59.748895+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-QUALITY-FEED": {
+          "agent": "Codex",
+          "execution": "codex-quality-20261028",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 187,
+          "updated_at": "2026-10-28T07:55:55.481937+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-BOON-SAVE": {
+          "agent": "Codex",
+          "execution": "codex-boon-resume-20261028",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 189,
+          "updated_at": "2026-10-28T15:24:47.235363+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-BOON-FEED": {
+          "agent": "Codex",
+          "execution": "codex-boon-resume-20261028",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 191,
+          "updated_at": "2026-10-28T15:25:40.872226+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-WORKER-HITS": {
+          "agent": "Codex",
+          "execution": "codex-worker-resume-20261029",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 193,
+          "updated_at": "2026-10-28T16:30:16.535360+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-WORKER-FEED": {
+          "agent": "Codex",
+          "execution": "codex-worker-resume-20261029",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 195,
+          "updated_at": "2026-10-28T16:31:04.013922+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-EASY-BASELINE": {
+          "agent": "Codex",
+          "execution": "codex-easy-20261029",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "RELEASED",
+          "revision": 198,
+          "updated_at": "2026-10-28T18:02:40.817657+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-EASY-FEED": {
+          "agent": "Codex",
+          "execution": "codex-easy-20261029",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "RELEASED",
+          "revision": 199,
+          "updated_at": "2026-10-28T18:03:39.025897+00:00",
+          "previous_owner_stopped_asserted": false
+        },
+        "V240-SPECIAL-ATLAS": {
+          "agent": "Codex",
+          "execution": "codex-migration-20261029",
+          "branch": "codex/riftwatch-v240-game-first",
+          "status": "OWNED",
+          "revision": 202,
+          "updated_at": "2026-10-29T06:45:01.668002+00:00",
+          "previous_owner_stopped_asserted": true
+        },
+        "V240-CONTENT-FEED": {
+          "agent": "Codex",
+          "execution": "codex-migration-20261029",
+          "branch": "codex/riftwatch-progress-feed",
+          "status": "OWNED",
+          "revision": 203,
+          "updated_at": "2026-10-29T06:45:13.195587+00:00",
+          "previous_owner_stopped_asserted": true
         }
       }
     }
@@ -979,13 +2632,7 @@
   "validation_errors": [],
   "pending_preservation": [
     {
-      "branch": "work",
-      "dirty": false,
-      "remote_status": "REMOTE_BRANCH_ABSENT",
-      "unpushed": []
-    },
-    {
-      "branch": "codex/riftwatch-v222-recovery",
+      "branch": "codex/riftwatch-v240-game-first",
       "dirty": true,
       "remote_status": "REMOTE_SAVED",
       "unpushed": []
