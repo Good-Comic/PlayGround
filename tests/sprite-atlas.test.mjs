@@ -1,6 +1,29 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { UNIT_SPRITE_ATLASES, atlasActionProgress, atlasFrame, loadUnitSpriteAtlases } from '../js/sprite-atlas.js';
+
+test('new spear and shield atlases have complete independent four-frame actions and real PNG dimensions', () => {
+  for (const type of ['spearman', 'guard']) {
+    const atlas = UNIT_SPRITE_ATLASES[type];
+    const png = readFileSync(new URL('../' + atlas.src, import.meta.url));
+    assert.equal(png.subarray(1, 4).toString(), 'PNG');
+    const width = png.readUInt32BE(16), height = png.readUInt32BE(20);
+    assert.equal(width, 4096); assert.equal(height, 560);
+    assert.notEqual(atlas.src, UNIT_SPRITE_ATLASES.militia.src);
+    for (const direction of Object.keys(atlas.directions)) for (const state of Object.keys(atlas.states)) {
+      const frames = [0, .26, .51, .99].map(progress => {
+        const f = atlasFrame(atlas, direction, state, 0, progress);
+        assert.ok(f.sx >= 0 && f.sx + f.sw <= width && f.sy + f.sh <= height);
+        return f.frame;
+      });
+      assert.deepEqual(frames, [0, 1, 2, 3]);
+    }
+    assert.equal(atlas.states.death.loop, false);
+    assert.equal(atlasFrame(atlas, 'E', 'death', 99).frame, 3);
+  }
+  assert.notEqual(UNIT_SPRITE_ATLASES.spearman.src, UNIT_SPRITE_ATLASES.guard.src);
+});
 
 test('militia atlas describes eight directions and all combat states', () => {
   const atlas = UNIT_SPRITE_ATLASES.militia;
