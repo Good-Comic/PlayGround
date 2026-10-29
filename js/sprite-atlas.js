@@ -63,6 +63,12 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
 });
 
 export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
+  'KOR:patrol_cart': Object.freeze({
+    id: 'kor-patrol-cart-v1', src: 'assets/sprites/kor-patrol-cart-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .9, directions: DIRECTION_MAP,
+    states: UNIT_SPRITE_ATLASES.elephant.states,
+  }),
   'MNG:horse_archer': Object.freeze({
     id: 'mng-horse-archer-v1', src: 'assets/sprites/mng-horse-archer-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,
