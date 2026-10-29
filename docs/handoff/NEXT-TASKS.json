@@ -1,35 +1,37 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T19:41:39.227367+00:00",
+  "updated_at": "2026-10-29T19:47:51.158845+00:00",
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "SAR 纏巾彎刀盾衛 / SAR turban/sabre guard",
+      "name": "接續 TUR 既有弓兵反曲弓與獨立裝備輪廓 / Continue TUR existing archers with recurve bow and independent kit silhouette",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
+      "latest_pushed_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
       "application_source_commit": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
       "completed": [],
       "uncommitted": [],
       "unpushed": [],
       "tests": [
         {
-          "name": "Node",
-          "result": "9 PASS",
-          "path": "docs/evidence/v240-frk-picking/focused-node.txt"
+          "name": "Focused Node",
+          "result": "6 PASS",
+          "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+          "path": "docs/evidence/v240-sar-guard/focused-node.txt"
         },
         {
-          "name": "Chromium",
-          "result": "6 PASS",
-          "path": "docs/evidence/v240-frk-picking/after-browser/browser.json"
+          "name": "Actual Chromium",
+          "result": "14 PASS",
+          "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+          "path": "docs/evidence/v240-sar-guard/verified/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-frk-picking/REPORT.md"
+        "docs/evidence/v240-sar-guard/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -40,8 +42,8 @@
       ],
       "blockers": [],
       "next_steps": [
-        "SAR 纏巾彎刀盾衛獨立外觀",
-        "SAR turban/sabre guard appearance"
+        "接續 TUR 既有弓兵反曲弓與獨立裝備輪廓",
+        "Continue TUR existing archers with recurve bow and independent kit silhouette"
       ],
       "permissions": [
         "Independent development tests normal push",

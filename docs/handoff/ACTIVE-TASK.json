@@ -1,34 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "FRK 騎兵原生頭盔選取已修復 / FRK native cavalry helmet picking fixed",
+  "name": "SAR 纏巾鎖甲長衣彎刀盾衛八方向動作已整合 / SAR turban mail coat curved-blade guard integrated with directional actions",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
-  "application_source_commit": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
+  "latest_pushed_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+  "application_source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
   "completed": [
-    "FRK 頭部選取、血條可讀性",
-    "FRK head picking and health-bar readability"
+    "SAR 纏巾鎖甲長衣彎刀盾衛八方向動作已整合",
+    "SAR turban mail coat curved-blade guard integrated with directional actions"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Node",
-      "result": "9 PASS",
-      "path": "docs/evidence/v240-frk-picking/focused-node.txt"
+      "name": "Focused Node",
+      "result": "6 PASS",
+      "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+      "path": "docs/evidence/v240-sar-guard/focused-node.txt"
     },
     {
-      "name": "Chromium",
-      "result": "6 PASS",
-      "path": "docs/evidence/v240-frk-picking/after-browser/browser.json"
+      "name": "Actual Chromium",
+      "result": "14 PASS",
+      "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+      "path": "docs/evidence/v240-sar-guard/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-frk-picking/REPORT.md"
+    "docs/evidence/v240-sar-guard/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -41,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "SAR 纏巾彎刀盾衛獨立外觀",
-    "SAR turban/sabre guard appearance"
+    "接續 TUR 既有弓兵反曲弓與獨立裝備輪廓",
+    "Continue TUR existing archers with recurve bow and independent kit silhouette"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -50,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T19:44:21.324117+00:00",
+  "updated_at": "2026-10-29T19:47:51.158845+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -146,6 +148,13 @@
       "node": 9,
       "chromium": 6,
       "report": "docs/evidence/v240-frk-picking/REPORT.md"
+    },
+    {
+      "slice": "v240-sar-guard",
+      "source": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+      "node": 6,
+      "chromium": 14,
+      "report": "docs/evidence/v240-sar-guard/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -159,7 +168,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "SAR turban/sabre guard appearance"
+    "NEXT_AUTHORIZED_TASK": "Continue TUR existing archers with recurve bow and independent kit silhouette"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
