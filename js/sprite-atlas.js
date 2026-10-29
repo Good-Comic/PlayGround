@@ -63,6 +63,12 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
 });
 
 export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
+  'AZT:militia': Object.freeze({
+    id: 'azt-militia-v1', src: 'assets/sprites/azt-militia-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 72,
+    states: UNIT_SPRITE_ATLASES.elephant.states,
+  }),
   'TEU:guard': Object.freeze({
     id: 'teu-guard-v1', src: 'assets/sprites/teu-guard-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
