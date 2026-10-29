@@ -26,6 +26,7 @@ try {
   await page.evaluate(async () => { window.atlasAPI = await import('./js/sprite-atlas.js'); });
   await page.evaluate(() => {
     const g = ageOfAsh.game; g.paused=true; g.phase='prep'; g.prepTimer=1e6; g.ageLevel=2;
+    window.towerCountBefore=g.buildings.filter(b=>b.alive&&b.team==='player'&&b.type==='tower').length;
     window.cartCountBefore=g.units.filter(u=>u.type==='patrol_cart').length;
     g.addBuilding('tower',33,10,true);g.addBuilding('tower',36,10,true);
     window.cartCountAfterTwo=g.units.filter(u=>u.type==='patrol_cart').length;
@@ -34,8 +35,8 @@ try {
     window.workshop=g.addBuilding('workshop',35,15,true); g.setSelection([workshop]); ageOfAsh.ui.renderCommands(g);
     window.beforeTraining={resources:{...g.resources},cost:g.unitCost('patrol_cart'),time:g.runTime};
   });
-  const bonus=await page.evaluate(()=>({before:cartCountBefore,afterTwo:cartCountAfterTwo,afterThree:ageOfAsh.game.units.filter(u=>u.type==='patrol_cart').length,bonusId:bonusCartId,every:ageOfAsh.game.effects.towerCartEvery}));
-  check('production Korean three-completed-tower fixture grants a real bonus cart',bonus.before===0&&bonus.afterTwo===0&&bonus.afterThree===1&&bonus.every===3,bonus);
+  const bonus=await page.evaluate(()=>({before:cartCountBefore,towersBefore:towerCountBefore,afterTwo:cartCountAfterTwo,afterThree:ageOfAsh.game.units.filter(u=>u.type==='patrol_cart').length,bonusId:bonusCartId,every:ageOfAsh.game.effects.towerCartEvery}));
+  check('production Korean tower-count thresholds grant a real bonus cart',bonus.afterTwo-bonus.before===Math.floor((bonus.towersBefore+2)/3)-Math.floor(bonus.towersBefore/3)&&bonus.afterThree-bonus.before===Math.floor((bonus.towersBefore+3)/3)-Math.floor(bonus.towersBefore/3)&&bonus.bonusId&&bonus.every===3,bonus);
   await page.locator('[data-command="train:patrol_cart"]').click();
   const payment=await page.evaluate(()=>({before:beforeTraining,after:{...ageOfAsh.game.resources},queue:workshop.queue.map(q=>({type:q.type,remaining:q.remaining}))}));
   check('native Korean workshop training pays all production costs',payment.queue.some(q=>q.type==='patrol_cart')&&Object.entries(payment.before.cost).every(([k,v])=>payment.before.resources[k]-payment.after[k]===v),payment);
