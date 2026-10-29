@@ -1,3 +1,9 @@
+# 最新遊戲修復 / Latest gameplay fix
+
+修復 TEU／AZT／BYZ 可見頭部與身體點選 / Fix visible-head and body selection for TEU/AZT/BYZ. Source `659b1b2ba472150da5abb75c22550ee86873b737`; 8 Node / 16 Chromium PASS. 原始 FAIL 保留／Original FAIL preserved: docs/evidence/v240-infantry-picking/REPORT.md. 下一項 MAG 輕騎，保存後繼續／Next MAG light cavalry; continue after saving.
+
+---
+
 # GAME FIRST 最新內容 / Latest GAME FIRST content
 
 繁體中文：BYZ 札甲圓盾槍兵八方向動作已整合；來源 `c8c4ec1444e5b84cba935bff70dd06897fd6a982`，3 Node／13 Chromium PASS，報告 docs/evidence/v240-byz-spearman/REPORT.md。以真實左鍵檢查新步兵頭部選取，若有缺陷先修復輸入再接續文明內容。本次只做遊戲內容；不重做既有成果、不處理排程，安全保存後直接繼續。歷史自然戰役、嚴格存讀、低 FPS、性能與硬體缺口保留，未公開發布。

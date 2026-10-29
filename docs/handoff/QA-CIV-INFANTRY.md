@@ -15,3 +15,9 @@ English: Main diff adds two CIV_UNIT_SPRITE_ATLASES keys, original SVG/PNG/gener
 English: Representative directions/zoom/melee/death were reviewed; 160 frame borders, actual four-frame attack/death and drawing comparisons pass, with no game FAIL in these slices. Independent QA should examine crowded combat, natural-biome occlusion, other devices, long battles and full art quality. Existing natural ten-wave/NG+, low-FPS, strict Save/Load, historical render-performance, Rift/hardware gaps remain. No second Agent was launched. Authentication failure was observed, then normal Git reads/writes/push recovered and the provisional stop was cancelled. Original failures remain; do not force-overwrite remote. Main development continues with native head picking; QA should examine vertical occlusion and whether feathers/weapons misselect nearby units.
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+## 第四切片輸入修復 / Fourth-slice input correction
+
+繁體中文：頭部點選原始 FAIL 已重現並修復，來源 `659b1b2ba472150da5abb75c22550ee86873b737`，8 Node／16 Chromium PASS。見 docs/evidence/v240-infantry-picking/REPORT.md 與原始失敗／前後影片。實體半徑不變，獨立 QA 仍需檢查擁擠遮擋／相鄰單位誤選。
+
+English: Native head-picking FAIL reproduced and fixed at `659b1b2ba472150da5abb75c22550ee86873b737`, eight Node/16 Chromium PASS; see docs/evidence/v240-infantry-picking/REPORT.md and original failure/before-after video. Physical radii unchanged; independent QA should still check crowded occlusion and adjacent-unit misselection.

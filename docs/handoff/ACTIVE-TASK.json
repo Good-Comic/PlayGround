@@ -1,36 +1,34 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "BYZ 札甲圓盾槍兵八方向動作已整合 / BYZ lamellar round-shield spearman directional actions integrated",
+  "name": "修復 TEU／AZT／BYZ 可見頭部與身體點選 / Fix visible-head and body selection for TEU/AZT/BYZ",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
-  "application_source_commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
+  "latest_pushed_commit": "659b1b2ba472150da5abb75c22550ee86873b737",
+  "application_source_commit": "659b1b2ba472150da5abb75c22550ee86873b737",
   "completed": [
-    "BYZ 札甲圓盾槍兵八方向動作已整合",
-    "BYZ lamellar round-shield spearman directional actions integrated"
+    "修復 TEU／AZT／BYZ 可見頭部與身體點選",
+    "Fix visible-head and body selection for TEU/AZT/BYZ"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Focused Node",
-      "result": "3 PASS",
-      "source_commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
-      "path": "docs/evidence/v240-byz-spearman/focused-node.txt"
+      "name": "Node",
+      "result": "8 PASS",
+      "path": "docs/evidence/v240-infantry-picking/focused-node.txt"
     },
     {
-      "name": "Actual Chromium",
-      "result": "13 PASS",
-      "source_commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
-      "path": "docs/evidence/v240-byz-spearman/verified/browser.json"
+      "name": "Chromium",
+      "result": "16 PASS",
+      "path": "docs/evidence/v240-infantry-picking/optimized-browser/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-byz-spearman/REPORT.md"
+    "docs/evidence/v240-infantry-picking/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +41,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "以真實左鍵檢查新步兵頭部選取，若有缺陷先修復輸入再接續文明內容",
-    "Check native head clicks on new infantry; fix any input defect before further civilization content"
+    "MAG 輕騎獨立外觀與原生命令驗收",
+    "MAG light-cavalry appearance and native-command acceptance"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +50,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T19:12:04.663025+00:00",
+  "updated_at": "2026-10-29T19:25:55.047365+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -106,6 +104,13 @@
       "node": 3,
       "chromium": 13,
       "report": "docs/evidence/v240-byz-spearman/REPORT.md"
+    },
+    {
+      "slice": "v240-infantry-picking",
+      "source": "659b1b2ba472150da5abb75c22550ee86873b737",
+      "node": 8,
+      "chromium": 16,
+      "report": "docs/evidence/v240-infantry-picking/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -119,7 +124,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Check native head clicks on new infantry; fix any input defect before further civilization content"
+    "NEXT_AUTHORIZED_TASK": "MAG light-cavalry appearance and native-command acceptance"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
