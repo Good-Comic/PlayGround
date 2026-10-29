@@ -84,6 +84,13 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
     offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 60,
     states: UNIT_SPRITE_ATLASES.elephant.states,
   }),
+  'MAG:light_cavalry': Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -34, rx: 31, ry: 46 }),
+    id: 'mag-cavalry-v1', src: 'assets/sprites/mag-cavalry-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .88, directions: DIRECTION_MAP, healthBarHeight: 74,
+    states: UNIT_SPRITE_ATLASES.elephant.states,
+  }),
   'FRK:light_cavalry': Object.freeze({
     id: 'frk-cavalry-v1', src: 'assets/sprites/frk-cavalry-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,
