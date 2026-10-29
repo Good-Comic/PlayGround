@@ -1364,10 +1364,11 @@ export class Renderer {
       else this.drawInfantryUnit(p, u, scale, team, walk, time, bob);
       if (!atlasDrawn && u.team === 'player' && u.type !== 'villager') this.drawCivilizationUnitAccent(u, game, p, scale, bob);
       this.drawChampionFeedback(u, p, scale, time, casting);
+      if (u.type === 'elephant') this.drawElephantTrample(u, game);
       if (u.selected || u.hp < u.maxHp) {
         const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
         const w = (wide ? 40 : 24) * scale;
-        const high = ['knight', 'light_cavalry', 'horse_archer'].includes(u.type) ? 48 : wide ? 62 : bakedPose ? 54 : 38;
+        const high = u.type === 'elephant' && bakedPose ? 78 : ['knight', 'light_cavalry', 'horse_archer'].includes(u.type) ? 48 : wide ? 62 : bakedPose ? 54 : 38;
         const y = p.y - high * scale;
         this.healthBar(p.x - w / 2, y, w, 3.6 * scale, Math.max(0, u.hp / u.maxHp), u.team === 'player' ? '#78a95b' : '#b25046');
       }
@@ -1429,6 +1430,18 @@ export class Renderer {
       p.y + descriptor.offset.y * drawScale - descriptor.anchor.y * drawScale,
       width, height);
     return true;
+  }
+
+  drawElephantTrample(u, game) {
+    if (!u.alive || u.team !== 'player' || !(game.effects?.elephantTrample > 0) || !(u.attackAnim > 0) || !u.target) return;
+    const ctx = this.ctx, p = this.screen(game, u.target.x, u.target.y), z = game.camera.zoom;
+    const progress = 1 - u.attackAnim, rx = (12 + progress * 24) * z, ry = rx / 2;
+    ctx.save(); ctx.strokeStyle = `rgba(212,183,125,${u.attackAnim * .7})`; ctx.lineWidth = (2 - progress) * z;
+    for (let i = 0; i < 4; i++) {
+      const a = i * Math.PI / 2;
+      ctx.beginPath(); ctx.ellipse(p.x, p.y, rx, ry, 0, a, a + .8); ctx.stroke();
+    }
+    ctx.restore();
   }
 
   spriteFrameImage(entry, frame) {
