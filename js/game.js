@@ -3243,7 +3243,8 @@ export class Game {
     if (hit) {
       if (hit.team === 'enemy') {
         for (const u of units) {
-          if (u.type === 'villager') continue;
+          if (u.type === 'villager' && this.civ?.id !== 'SPA') continue;
+          if (u.type === 'villager') { u.gatherTarget = null; u.buildTarget = null; }
           u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1; u.manualAttack = true; u.blockedTargets = {}; u.orderFailure = null; u._progress=null; u._nav=null;
           u.hold = false;
         }
