@@ -14,6 +14,14 @@ try {
  await page.locator('#setup-civ').selectOption('VIK');await page.locator('#setup-seed').fill('VIK-ROUNDSHIELD-VISUAL');await page.locator('#btn-start').click();
  await page.waitForFunction(()=>ageOfAsh?.renderer?.unitSpriteAtlases.get('VIK:guard')?.ready);
  await page.evaluate(async()=>{window.atlasAPI=await import('./js/sprite-atlas.js')});
+ // CONTROLLED_FIXTURE age/preparation; actual command payment, queue and spawn remain production.
+ await page.evaluate(()=>{const g=ageOfAsh.game;g.ageLevel=2;g.prepTimer=1e6;window.barracks=g.buildings.find(b=>b.type==='barracks'&&b.alive);g.setSelection([barracks]);ageOfAsh.ui.renderCommands(g);window.trainBefore={resources:{...g.resources},cost:g.unitCost('guard'),ids:g.units.map(u=>u.id)}});
+ await page.locator('[data-command="train:guard"]').click();
+ const payment=await page.evaluate(()=>({before:trainBefore,after:{...ageOfAsh.game.resources},queued:barracks.queue.some(q=>q.type==='guard')}));
+ check('native barracks guard training pays exact costs',payment.queued&&Object.entries(payment.before.cost).every(([k,v])=>payment.before.resources[k]-payment.after[k]===v),payment);
+ await page.waitForFunction(()=>ageOfAsh.game.units.some(u=>u.type==='guard'&&!trainBefore.ids.includes(u.id)),null,{timeout:60000});
+ check('production queue spawns the civilization guard',await page.evaluate(()=>{const g=ageOfAsh.game,u=g.units.find(u=>u.type==='guard'&&!trainBefore.ids.includes(u.id));return !!u&&atlasAPI.unitSpriteAtlasKey(u,g.civ.id)==='VIK:guard'}),{});
+
  await page.evaluate(()=>{
   const g=ageOfAsh.game,r=ageOfAsh.renderer;g.paused=true;g.phase='prep';g.prepTimer=1e6;g.units=[];g.selection=[];g.world.resources=[];g.world.props=[];g.world.wildlife=[];
   for(const t of g.world.tiles)t.terrain='grass';r.terrainKey='';
@@ -35,7 +43,7 @@ try {
  await page.screenshot({path:out+'/moving.png'});
  const targetPoint=await page.evaluate(()=>{const g=ageOfAsh.game;window.enemy=g.spawnUnit('brute',actor.x+1,actor.y,'enemy');window.enemyStartHP=enemy.hp;enemy.cooldown=999;g.selection=[actor];bow.hold=true;sword.hold=true;horse.hold=true;const p=ageOfAsh.renderer.screen(g,enemy.x,enemy.y);return{x:p.x,y:p.y-18*g.camera.zoom}});
  await page.mouse.click(targetPoint.x,targetPoint.y,{button:'right'});
- await page.waitForFunction(()=>enemy.hp<enemyStartHP&&visualStates.attack>0,null,{timeout:15000});await page.waitForFunction(()=>attackFrames.length===4,null,{timeout:5000});await page.screenshot({path:out+'/combat.png'});check('production roundshield uses existing arrow sound',await page.evaluate(()=>soundCalls.includes('guard')),await page.evaluate(()=>soundCalls));
+ await page.waitForFunction(()=>enemy.hp<enemyStartHP&&visualStates.attack>0,null,{timeout:15000});await page.waitForFunction(()=>attackFrames.length===4,null,{timeout:5000});await page.screenshot({path:out+'/combat.png'});check('production roundshield uses existing melee sound',await page.evaluate(()=>soundCalls.includes('guard')),await page.evaluate(()=>soundCalls));
  const combat=await page.evaluate(()=>({enemyHP:enemy.hp,startHP:enemyStartHP,actorState:actor.state,shots:actor.shots,seen:{...visualStates},attackFrames:[...attackFrames]}));check('production melee attack and live state synchronization',combat.enemyHP<combat.startHP&&combat.seen.attack>0&&combat.attackFrames.length===4,combat);
  await page.evaluate(()=>{ageOfAsh.game.applyDamage(actor,1,enemy);ageOfAsh.game.paused=true});await page.waitForTimeout(100);await page.screenshot({path:out+'/hit.png'});
  check('production damage displays hit animation',await page.evaluate(()=>visualStates.hit>0),await page.evaluate(()=>({hitFlash:actor.hitFlash,seen:{...visualStates}})));
