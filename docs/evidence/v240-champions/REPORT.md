@@ -1,0 +1,19 @@
+# 英雄、招募使與雙Boss外部動畫 / Hero, support and two-boss external animations
+
+繁體中文：由已確認遠端e6214c9接續，未重做移轉、長矛／盾衛或水岸。四個獨立原創Atlas已整合真正生產單位：commander藍披風、冠飾與劍盾；recruiter長袍、卷軸與手杖；warlord角盔、寬肩與砍刀；warlord2裂境紫甲、長戟與旗幟。每種八方向、五狀態、四影格，共640影格。生成器、SVG、PNG均保存；無外部素材或新授權負擔。這是可辨識的初步2.5D切片，非16文明完整美術或最終插畫品質。
+
+English: Continued from verified remote e6214c9 without repeating migration, spear/guard or shorelines. Four independent original atlases integrate with actual production units: commander with blue cloak, crown and sword/shield; recruiter with robe, scroll and staff; warlord with horned helm, broad shoulders and cleaver; warlord2 with violet rift armor, polearm and banner. Eight directions, five states and four frames each:640frames. Generator, SVG and PNG are saved without external artwork or new licensing dependencies. This is an identifiable initial2.5Dslice, not complete16-civilization artwork or final illustration quality.
+
+繁體中文：受測最終來源／Build為d5d75c4c760b1462969b8772e505d4841f394573，48檔SHA256一致。18項Node與24項真實Chromium本地檢查通過，包含640影格有像素且四邊留白、正式移動、英雄滑鼠右鍵近戰、兩Boss正式AI追擊／攻擊及四影格、受擊／死亡、三縮放與失敗素材回退。招募使維持既有noAttack，沒有假稱已實作招募／轉化技能。Start與Seed為原生輸入，之後明示CONTROLLED_FIXTURE擺設與擺姿；不等同自然第五／十波Boss或十波通關。直接檢視英雄一般縮放與Boss戰鬥圖片，冠飾披風、角盔砍刀與紫色旗戟可辨識。沒有即時共享瀏覽器工具，採真正Chromium WebM。
+
+English: Final tested source/Build d5d75c4c760b1462969b8772e505d4841f394573 verifies48payloadSHA256hashes. EighteenNodeand24actual localChromiumchecks pass:640visible frames with transparent gutters, production movement, native hero right-click melee, both bosses' productionAIpursuit/attacks and four attack frames, hit/death, three zooms and missing-assetfallback. Recruiter preserves existingnoAttack; no recruitment/conversion skill is claimed. Start/Seedare native inputs followed by explicitCONTROLLED_FIXTUREsetup/poses, not natural wave5/10Bossor ten-wave acceptance. Direct inspection of normal-zoomheroandBosscombat images distinguishes crown/cloak, hornedcleaverandvioletbanner/polearm. No live-sharing tool exists; recordings are actualChromiumWebM.
+
+繁體中文：首輪e3d9961的第十波Boss三個死亡影格碰到邊界，100人同步Renderer.draw JS平均16.99–18.34ms，相對回退5.51–6.23ms為FAIL。排版改為2816×1760並加留白的289309e修好裁切，但平均20.06–21.13ms仍FAIL；不能把縮窄紋理說成已修好性能。最後以每資產最多64影格的懶裁切Canvas快取重用小Bitmap，d5d75c4三組平均0.59–0.77ms，回退5.61–6.62ms；P50均約0.60ms。三組皆通過平均≤33.3ms、P95≤50ms且相對P50不退步超20%。測試為同一靜態100人場景交錯A/B、各20draw暖機及80樣本，不是冷啟動三次，不包含GPU完成、rAF、完整戰鬥或目標硬體FPS。原始兩次FAIL與全部樣本保留。
+
+English: Initial e3d9961 hit frame boundaries in three final-Bossdeathcells;100-unit synchronousRenderer.drawJSaveraged16.99–18.34ms versus fallback5.51–6.23ms:relativeFAIL. Compact2816×1760layout/gutters in289309efixed clipping but still averaged20.06–21.13ms:FAIL; narrower textures alone did not fix performance. Finald5d75c4lazily caches at most64cropped frame canvases per asset, reusing small bitmaps:three groups average0.59–0.77ms versus fallback5.61–6.62ms, withP50about0.60ms. All meet mean≤33.3ms,P95≤50ms and no>20%pairedP50regression. These are interleavedA/Bgroups on one static100-unit scene, each20drawwarmup/80samples, not three cold launches; excludesGPUcompletion,rAF,fullcombatandtargethardwareFPS. Both originalFAILandallrawsamplesare retained.
+
+繁體中文：新Atlas自行包含方向、受擊與倒伏，bakedPose避免再套程序鏡射／旋轉；若素材失敗仍使用原有程序變換。未變更傷害、碰撞、移速、Boss機制、RNG或存檔。獨立兩Boss輪廓已完成本地限定驗收，接續英雄施法與Boss技能預警的真正戰場回饋。所有歷史自然戰役、NG+、時鐘、存讀、建築性能、Rift及硬體缺口保留；排程未切換，無main／Pages／OmGitHub／公開發布修改。
+
+English: New atlases bake direction, hit and fallen poses; bakedPose avoids applying procedural mirror/rotation again, while failed assets retain the original procedural transforms. No damage, collision, movement speed, boss mechanics, RNG or save changes. The two boss silhouettes have scoped local acceptance; continuing actual hero-cast/Boss-warning battlefield feedback. Preserve historical campaign,NG+,clock,save,buildingperformance,Riftandhardwaregaps. Scheduler remains unbound; no main,Pages,OmGitHuborpublic-releasechanges.
+
+BILINGUAL_DOCUMENTATION_REQUIRED = true

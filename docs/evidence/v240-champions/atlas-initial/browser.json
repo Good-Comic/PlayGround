@@ -1,0 +1,378 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_FIXTURE_NOT_NATURAL_PLAY",
+  "source_commit": "e3d996154a1e47d7184b62337ea652300ee4f26f",
+  "seed": "CHAMPION-IDENTITY",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed payload verified",
+      "pass": true,
+      "detail": {
+        "id": "v240-champions",
+        "commit": "e3d996154a1e47d7184b62337ea652300ee4f26f",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T07:23:38.128296+00:00",
+        "resourceVerification": "SHA256_MATCH_48_FILES"
+      }
+    },
+    {
+      "name": "640 decoded frames have visible artwork and no edge clipping",
+      "pass": false,
+      "detail": [
+        {
+          "type": "commander",
+          "width": 5120,
+          "height": 800,
+          "failures": []
+        },
+        {
+          "type": "recruiter",
+          "width": 5120,
+          "height": 800,
+          "failures": []
+        },
+        {
+          "type": "warlord",
+          "width": 5120,
+          "height": 800,
+          "failures": []
+        },
+        {
+          "type": "warlord2",
+          "width": 5120,
+          "height": 800,
+          "failures": [
+            {
+              "row": 4,
+              "col": 27,
+              "ink": 2764,
+              "border": 3
+            },
+            {
+              "row": 4,
+              "col": 28,
+              "ink": 2715,
+              "border": 1
+            },
+            {
+              "row": 4,
+              "col": 31,
+              "ink": 2671,
+              "border": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "commander: production movement and walk presentation",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.912315734819888,
+          "y": 33.45615786740992
+        },
+        "seen": {
+          "idle": 107,
+          "walk": 174
+        }
+      }
+    },
+    {
+      "name": "commander: production combat and four attack frames",
+      "pass": true,
+      "detail": {
+        "hp": 508.8,
+        "enemyHP": 130.6,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 122,
+          "walk": 175,
+          "attack": 10,
+          "hit": 12
+        },
+        "time": 1.216600000000001
+      }
+    },
+    {
+      "name": "commander: production hit presentation",
+      "pass": true
+    },
+    {
+      "name": "commander: production death presentation",
+      "pass": true
+    },
+    {
+      "name": "commander: missing asset permits procedural fallback",
+      "pass": true
+    },
+    {
+      "name": "recruiter: production movement and walk presentation",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.89449874517518,
+          "y": 33.44724937258763
+        },
+        "seen": {
+          "walk": 176,
+          "idle": 100
+        }
+      }
+    },
+    {
+      "name": "recruiter: support retains production no-attack role",
+      "pass": true
+    },
+    {
+      "name": "recruiter: production hit presentation",
+      "pass": true
+    },
+    {
+      "name": "recruiter: production death presentation",
+      "pass": true
+    },
+    {
+      "name": "recruiter: missing asset permits procedural fallback",
+      "pass": true
+    },
+    {
+      "name": "warlord: production movement and walk presentation",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.01970000000004,
+          "y": 33
+        },
+        "seen": {
+          "walk": 187,
+          "idle": 104
+        }
+      }
+    },
+    {
+      "name": "warlord: production combat and four attack frames",
+      "pass": true,
+      "detail": {
+        "hp": 1800,
+        "enemyHP": 500.8,
+        "enemyStartHP": 520,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "walk": 275,
+          "idle": 129,
+          "attack": 11
+        },
+        "time": 4.2998
+      }
+    },
+    {
+      "name": "warlord: production hit presentation",
+      "pass": true
+    },
+    {
+      "name": "warlord: production death presentation",
+      "pass": true
+    },
+    {
+      "name": "warlord: missing asset permits procedural fallback",
+      "pass": true
+    },
+    {
+      "name": "warlord2: production movement and walk presentation",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.04994000000004,
+          "y": 33
+        },
+        "seen": {
+          "idle": 102,
+          "walk": 185
+        }
+      }
+    },
+    {
+      "name": "warlord2: production combat and four attack frames",
+      "pass": true,
+      "detail": {
+        "hp": 3200,
+        "enemyHP": 492.8,
+        "enemyStartHP": 520,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 130,
+          "walk": 268,
+          "attack": 11
+        },
+        "time": 6.933000000000034
+      }
+    },
+    {
+      "name": "warlord2: production hit presentation",
+      "pass": true
+    },
+    {
+      "name": "warlord2: production death presentation",
+      "pass": true
+    },
+    {
+      "name": "warlord2: missing asset permits procedural fallback",
+      "pass": true
+    },
+    {
+      "name": "100-unit static renderer JS budget and paired medians",
+      "pass": false,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "fallback",
+          "mean": 6.227500000002328,
+          "p50": 5.899999999906868,
+          "p95": 7.2999999998137355
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 16.99000000000233,
+          "p50": 17,
+          "p95": 17.600000000093132
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 17.737499999994178,
+          "p50": 17.200000000186265,
+          "p95": 21.5
+        },
+        {
+          "repeat": 1,
+          "mode": "fallback",
+          "mean": 5.511249999993015,
+          "p50": 5.600000000093132,
+          "p95": 6.2000000001862645
+        },
+        {
+          "repeat": 2,
+          "mode": "fallback",
+          "mean": 5.7037499999976715,
+          "p50": 5.899999999906868,
+          "p95": 6.699999999720603
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 18.3375,
+          "p50": 17.5,
+          "p95": 23.600000000093132
+        }
+      ]
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "snapshots": [
+    {
+      "type": "commander",
+      "combat": {
+        "hp": 508.8,
+        "enemyHP": 130.6,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 122,
+          "walk": 175,
+          "attack": 10,
+          "hit": 12
+        },
+        "time": 1.216600000000001
+      }
+    },
+    {
+      "type": "warlord",
+      "combat": {
+        "hp": 1800,
+        "enemyHP": 500.8,
+        "enemyStartHP": 520,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "walk": 275,
+          "idle": 129,
+          "attack": 11
+        },
+        "time": 4.2998
+      }
+    },
+    {
+      "type": "warlord2",
+      "combat": {
+        "hp": 3200,
+        "enemyHP": 492.8,
+        "enemyStartHP": 520,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 130,
+          "walk": 268,
+          "attack": 11
+        },
+        "time": 6.933000000000034
+      }
+    }
+  ],
+  "pass": false
+}
