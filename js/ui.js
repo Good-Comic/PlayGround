@@ -272,7 +272,11 @@ export class UI {
     this.el.hud.setAttribute('aria-hidden', 'true');
     this.closeSettings();
     this.closeGM();
-    if (this.el.continueBtn) this.el.continueBtn.hidden = !this.callbacks.hasSave?.();
+    if (this.el.continueBtn) {
+      const hasSave = !!this.callbacks.hasSave?.();
+      this.el.continueBtn.hidden = !hasSave;
+      this.el.continueBtn.disabled = this.playtestReady === false || !hasSave;
+    }
   }
 
   hideMenu() {

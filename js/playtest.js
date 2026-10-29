@@ -45,6 +45,7 @@ export function buildIdentity(meta, count) {
   return Object.freeze({id:label,commit:meta.commit,status:meta.status,builtAt:meta.builtAt,resourceVerification:`SHA256_MATCH_${count}_FILES`});
 }
 export async function installPlaytest({game,ui}) {
+  ui.playtestReady=false;
   const start=document.getElementById('btn-start'),cont=document.getElementById('btn-continue');
   const setDisabled=value=>{start.disabled=value;cont.disabled=value||!hasSavedRun();};setDisabled(true);
   const errors=[];addEventListener('error',e=>errors.push(safeError(e.error||{})));addEventListener('unhandledrejection',e=>errors.push(safeError(e.reason||{})));
@@ -61,6 +62,6 @@ export async function installPlaytest({game,ui}) {
     const sourceLabel=document.getElementById('build-version');if(sourceLabel)sourceLabel.textContent=build.id;document.documentElement.dataset.buildId=build.id;
     window.ageOfAsh.playtestBuild=build;toggle.textContent='PLAYTEST · '+build.commit.slice(0,7);version.textContent=`${build.id}\n${build.status}\n${build.commit}\n${build.builtAt}\n${build.resourceVerification}`;document.documentElement.dataset.playtestSha=build.commit;
     download.addEventListener('click',()=>{const report=makeBugReport(game,{...ui.settings,locale:getLocale()},build,errors,{userAgent:navigator.userAgent,width:innerWidth,height:innerHeight,dpr:devicePixelRatio});const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`riftwatch-bug-${build.commit.slice(0,7)}-${game.seed||'menu'}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
-    setDisabled(false);
+    ui.playtestReady=true;setDisabled(false);
   }catch(error){version.textContent='BUILD_INTEGRITY_BLOCKED: '+safeError(error).message;toggle.textContent='PLAYTEST · BUILD BLOCKED';download.disabled=true;window.ageOfAsh.playtestBlocked=true;}
 }
