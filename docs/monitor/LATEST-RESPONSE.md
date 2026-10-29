@@ -1,3 +1,3 @@
-繁體中文：英雄、招募使與雙Boss原創Atlas、英雄施法及Boss預警／命中互動已保存。最終來源6fae8aa有18項相關Node、12項技能Chromium及24項整合Champion Chromium通過。原生移動閃避後英雄滿血，區內盾衛實際受傷；保持所有原傷害／範圍／冷卻。保留裁切、相對性能及測試暫停右鍵FAIL，不冒稱自然十波／NG+通關或硬體性能。排程未切換，原環境獨立待復原，沒有公開發布。
+繁體中文：PER戰象已正常保存，7項Node及12項真實本地Chromium通過，包含原生付費訓練25秒與真正次要踐踏傷害。已接續MNG騎射兵文明外觀，未公開部署。
 
-English: Original hero/recruiter/two-Boss atlases, hero casting and actual Boss warning/impact interactions are saved. Final source6fae8aa passes18relatedNode,12skillChromiumand24integratedChampionChromium checks. Native escape leaves the hero unharmed while the guard inside takes actual damage; original damage/range/cooldowns remain. Preserve clipping, relative-performance and paused-test-input failures; no natural ten-wave/NG+orhardware acceptance claimed. Scheduler remains unbound, original recovery isolated, no public release.
+English: PER elephant is normally saved with7Nodeand12actual localChromiumchecks passed, including native paid25-secondtraining and actual secondary trample damage. Continuing MNG horse-archer identity without public deployment.

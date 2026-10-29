@@ -2,50 +2,40 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-29T07:43:43.519116+00:00",
+  "updated_at": "2026-10-29T12:56:53.822674+00:00",
   "latest_event": {
-    "task_id": "V240-CHAMPION-SKILLS",
+    "task_id": "V240-PER-ELEPHANT",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-    "build_sha": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-    "summary": "\u82f1\u96c4\u65bd\u6cd5\u8207\u96d9Boss\u771f\u6b63\u50b7\u5bb3\uff0f\u9583\u907f\u56de\u994b\u5df2\u901a\u904e / Hero casting and actual two-Boss damage/escape feedback accepted",
+    "commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
+    "build_sha": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+    "summary": "PER\u6230\u8c61\u539f\u5275Atlas\u3001\u539f\u751f\u8a13\u7df4\u53ca\u8e10\u8e0f\u9a57\u6536\u901a\u904e / Original PER elephant atlas, native training and trample accepted",
     "code_changes": [
-      "Mark\uff0fAegis\u56db\u5f71\u683c\u65bd\u6cd5\u3001\u6301\u7e8c\u6e96\u661f\u8207\u7a1c\u9762\u8b77\u76fe / Four-frame Mark/Aegis casts, persistent crosshairs and faceted shields",
-      "\u5169Boss\u4e0d\u540c\u7b26\u5370\uff0f\u547d\u4e2d\u53ca\u771f\u6b63\u534a\u5f91\u6295\u5f71 / Distinct Boss sigils/impacts and correctly projected damage radius"
+      "\u516b\u65b9\u5411\u4e94\u72c0\u614b\u56db\u5f71\u683c\u3001\u8c61\u7259\u8207\u9a0e\u4e58\u5e73\u53f0 / Eight-direction five-state four-frame tusked elephant with rider platform",
+      "\u4f7f\u7528\u65e2\u6709attackAnim\u7684\u8e10\u8e0f\u63da\u5875 / Trample dust driven by existing attackAnim"
     ],
     "next_steps": [
-      "\u6587\u660e\u7279\u8272\u65e2\u6709\u5175\u7a2e\uff1a\u512a\u5148PER\u6230\u8c61\u8fa8\u8b58\u5ea6 / Civilization-specific existing units: prioritize PER war-elephant identity",
-      "\u4e8b\u4ef6\u9a45\u52d5\u6230\u5834\u97f3\u6548\uff0c\u4e0d\u6d88\u8017\u6a21\u64ecRNG / Event-driven battlefield audio without simulation RNG"
+      "\u63a5\u7e8cMNG\u9a0e\u5c04\u5175\u6587\u660e\u5916\u89c0\u8b8a\u9ad4 / Continue MNG horse-archer civilization variant"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "18 final skill-related Node",
+        "name": "7 focused Node",
         "status": "PASS",
-        "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-        "evidence": "docs/evidence/v240-champion-skills/focused-node.txt",
-        "evidence_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-        "evidence_blob": "11258bd74524875e5c6ffc57587d7d90bd298d41",
+        "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+        "evidence": "docs/evidence/v240-elephant/focused-node.txt",
+        "evidence_commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
+        "evidence_blob": "5f8f82f70c77cdf2de8c3fbd0310c9f85e00b310",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "12 actual Chromium skill interactions",
+        "name": "12 actual Chromium checks",
         "status": "PASS",
-        "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-        "evidence": "docs/evidence/v240-champion-skills/skills-final/browser.json",
-        "evidence_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-        "evidence_blob": "18c1ff318c51c1b6d828f9df4d6c1f8550221009",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "24 final integrated Champion Chromium",
-        "status": "PASS",
-        "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-        "evidence": "docs/evidence/v240-champion-skills/integrated-final/browser.json",
-        "evidence_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-        "evidence_blob": "604d1bc3f14ad9fb60e75ea9eddd2f56da37aec8",
+        "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+        "evidence": "docs/evidence/v240-elephant/browser/browser.json",
+        "evidence_commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
+        "evidence_blob": "f652d7c5ff5de496a996aa702961ac037824a9c9",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -53,31 +43,24 @@
       {
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
-        "summary": "\u81ea\u7136Easy\uff0fNormal\u5341\u6ce2\u53caNG+\u672a\u901a\u904e\uff1b\u4fdd\u7559\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3 / Natural Easy/Normal ten waves and NG+ unpassed; retain clock, save, performance and hardware gaps",
-        "source_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+        "summary": "\u81ea\u7136\u6230\u5f79\u3001NG+\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559 / Retain natural-campaign, NG+, clock, save, performance, Rift and hardware gaps",
+        "source_commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
         "requires_user_decision": false
       },
       {
         "id": "SCHEDULER_NOT_REBOUND",
         "severity": "ACTION_REQUIRED",
-        "summary": "310\u5206\u9418\u6392\u7a0b\u672a\u5207\u63db\uff0c\u7121\u7ba1\u7406\u5de5\u5177 /310-minute schedule not rebound; management tool unavailable",
-        "source_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-        "requires_user_decision": false
-      },
-      {
-        "id": "UNPUSHED_WORK_RECOVERY_PENDING",
-        "severity": "WARNING",
-        "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u672a\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u4e3b\u7dda / Original9a0f19eanduncommittedQA remain unrecovered without blocking new development",
-        "source_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+        "summary": "310\u5206\u9418\u6392\u7a0b\u672a\u5207\u63db\uff0c\u7121\u7ba1\u7406\u5de5\u5177 /310-minute schedule not rebound; no management tool",
+        "source_commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u82f1\u96c4\u3001\u62db\u52df\u4f7f\u8207\u96d9Boss\u539f\u5275Atlas\u3001\u82f1\u96c4\u65bd\u6cd5\u53caBoss\u9810\u8b66\uff0f\u547d\u4e2d\u4e92\u52d5\u5df2\u4fdd\u5b58\u3002\u6700\u7d42\u4f86\u6e906fae8aa\u670918\u9805\u76f8\u95dcNode\u300112\u9805\u6280\u80fdChromium\u53ca24\u9805\u6574\u5408Champion Chromium\u901a\u904e\u3002\u539f\u751f\u79fb\u52d5\u9583\u907f\u5f8c\u82f1\u96c4\u6eff\u8840\uff0c\u5340\u5167\u76fe\u885b\u5be6\u969b\u53d7\u50b7\uff1b\u4fdd\u6301\u6240\u6709\u539f\u50b7\u5bb3\uff0f\u7bc4\u570d\uff0f\u51b7\u537b\u3002\u4fdd\u7559\u88c1\u5207\u3001\u76f8\u5c0d\u6027\u80fd\u53ca\u6e2c\u8a66\u66ab\u505c\u53f3\u9375FAIL\uff0c\u4e0d\u5192\u7a31\u81ea\u7136\u5341\u6ce2\uff0fNG+\u901a\u95dc\u6216\u786c\u9ad4\u6027\u80fd\u3002\u6392\u7a0b\u672a\u5207\u63db\uff0c\u539f\u74b0\u5883\u7368\u7acb\u5f85\u5fa9\u539f\uff0c\u6c92\u6709\u516c\u958b\u767c\u5e03\u3002\n\nEnglish: Original hero/recruiter/two-Boss atlases, hero casting and actual Boss warning/impact interactions are saved. Final source6fae8aa passes18relatedNode,12skillChromiumand24integratedChampionChromium checks. Native escape leaves the hero unharmed while the guard inside takes actual damage; original damage/range/cooldowns remain. Preserve clipping, relative-performance and paused-test-input failures; no natural ten-wave/NG+orhardware acceptance claimed. Scheduler remains unbound, original recovery isolated, no public release.",
-    "event_id": "183ab2b33f5dced594da4a22854dcbaf37ebf30d01204c97cf74bc215e9d3248",
-    "remote_head": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aPER\u6230\u8c61\u5df2\u6b63\u5e38\u4fdd\u5b58\uff0c7\u9805Node\u53ca12\u9805\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff0c\u5305\u542b\u539f\u751f\u4ed8\u8cbb\u8a13\u7df425\u79d2\u8207\u771f\u6b63\u6b21\u8981\u8e10\u8e0f\u50b7\u5bb3\u3002\u5df2\u63a5\u7e8cMNG\u9a0e\u5c04\u5175\u6587\u660e\u5916\u89c0\uff0c\u672a\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: PER elephant is normally saved with7Nodeand12actual localChromiumchecks passed, including native paid25-secondtraining and actual secondary trample damage. Continuing MNG horse-archer identity without public deployment.",
+    "event_id": "2db7a7b1ffa3a8c698a57f311b2d7224a3193bf7fd09c4db42e165ff49a4c4d2",
+    "remote_head": "9dd20d2a1d689b73c513d0310320a979e06b8979",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-29T07:43:43.519116+00:00",
+    "recorded_at": "2026-10-29T12:56:53.822674+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3239,48 +3222,115 @@
       ]
     },
     "V240-CHAMPION-SKILLS": {
-      "task_id": "V240-CHAMPION-SKILLS",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [
+        {
+          "id": "HISTORICAL-GAPS",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+          "summary": "\u81ea\u7136Easy\uff0fNormal\u5341\u6ce2\u53caNG+\u672a\u901a\u904e\uff1b\u4fdd\u7559\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3 / Natural Easy/Normal ten waves and NG+ unpassed; retain clock, save, performance and hardware gaps"
+        },
+        {
+          "id": "SCHEDULER_NOT_REBOUND",
+          "requires_user_decision": false,
+          "severity": "ACTION_REQUIRED",
+          "source_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+          "summary": "310\u5206\u9418\u6392\u7a0b\u672a\u5207\u63db\uff0c\u7121\u7ba1\u7406\u5de5\u5177 /310-minute schedule not rebound; management tool unavailable"
+        },
+        {
+          "id": "UNPUSHED_WORK_RECOVERY_PENDING",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+          "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u672a\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u4e3b\u7dda / Original9a0f19eanduncommittedQA remain unrecovered without blocking new development"
+        }
+      ],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
       "build_sha": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-      "summary": "\u82f1\u96c4\u65bd\u6cd5\u8207\u96d9Boss\u771f\u6b63\u50b7\u5bb3\uff0f\u9583\u907f\u56de\u994b\u5df2\u901a\u904e / Hero casting and actual two-Boss damage/escape feedback accepted",
       "code_changes": [
         "Mark\uff0fAegis\u56db\u5f71\u683c\u65bd\u6cd5\u3001\u6301\u7e8c\u6e96\u661f\u8207\u7a1c\u9762\u8b77\u76fe / Four-frame Mark/Aegis casts, persistent crosshairs and faceted shields",
         "\u5169Boss\u4e0d\u540c\u7b26\u5370\uff0f\u547d\u4e2d\u53ca\u771f\u6b63\u534a\u5f91\u6295\u5f71 / Distinct Boss sigils/impacts and correctly projected damage radius"
       ],
+      "commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "183ab2b33f5dced594da4a22854dcbaf37ebf30d01204c97cf74bc215e9d3248",
       "next_steps": [
         "\u6587\u660e\u7279\u8272\u65e2\u6709\u5175\u7a2e\uff1a\u512a\u5148PER\u6230\u8c61\u8fa8\u8b58\u5ea6 / Civilization-specific existing units: prioritize PER war-elephant identity",
         "\u4e8b\u4ef6\u9a45\u52d5\u6230\u5834\u97f3\u6548\uff0c\u4e0d\u6d88\u8017\u6a21\u64ecRNG / Event-driven battlefield audio without simulation RNG"
       ],
+      "pushed": true,
+      "recorded_at": "2026-10-29T07:43:43.519116+00:00",
+      "remote_head": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u82f1\u96c4\u3001\u62db\u52df\u4f7f\u8207\u96d9Boss\u539f\u5275Atlas\u3001\u82f1\u96c4\u65bd\u6cd5\u53caBoss\u9810\u8b66\uff0f\u547d\u4e2d\u4e92\u52d5\u5df2\u4fdd\u5b58\u3002\u6700\u7d42\u4f86\u6e906fae8aa\u670918\u9805\u76f8\u95dcNode\u300112\u9805\u6280\u80fdChromium\u53ca24\u9805\u6574\u5408Champion Chromium\u901a\u904e\u3002\u539f\u751f\u79fb\u52d5\u9583\u907f\u5f8c\u82f1\u96c4\u6eff\u8840\uff0c\u5340\u5167\u76fe\u885b\u5be6\u969b\u53d7\u50b7\uff1b\u4fdd\u6301\u6240\u6709\u539f\u50b7\u5bb3\uff0f\u7bc4\u570d\uff0f\u51b7\u537b\u3002\u4fdd\u7559\u88c1\u5207\u3001\u76f8\u5c0d\u6027\u80fd\u53ca\u6e2c\u8a66\u66ab\u505c\u53f3\u9375FAIL\uff0c\u4e0d\u5192\u7a31\u81ea\u7136\u5341\u6ce2\uff0fNG+\u901a\u95dc\u6216\u786c\u9ad4\u6027\u80fd\u3002\u6392\u7a0b\u672a\u5207\u63db\uff0c\u539f\u74b0\u5883\u7368\u7acb\u5f85\u5fa9\u539f\uff0c\u6c92\u6709\u516c\u958b\u767c\u5e03\u3002\n\nEnglish: Original hero/recruiter/two-Boss atlases, hero casting and actual Boss warning/impact interactions are saved. Final source6fae8aa passes18relatedNode,12skillChromiumand24integratedChampionChromium checks. Native escape leaves the hero unharmed while the guard inside takes actual damage; original damage/range/cooldowns remain. Preserve clipping, relative-performance and paused-test-input failures; no natural ten-wave/NG+orhardware acceptance claimed. Scheduler remains unbound, original recovery isolated, no public release.",
+      "severity": "PROGRESS",
+      "summary": "\u82f1\u96c4\u65bd\u6cd5\u8207\u96d9Boss\u771f\u6b63\u50b7\u5bb3\uff0f\u9583\u907f\u56de\u994b\u5df2\u901a\u904e / Hero casting and actual two-Boss damage/escape feedback accepted",
+      "task_id": "V240-CHAMPION-SKILLS",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-champion-skills/focused-node.txt",
+          "evidence_blob": "11258bd74524875e5c6ffc57587d7d90bd298d41",
+          "evidence_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "18 final skill-related Node",
+          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-champion-skills/skills-final/browser.json",
+          "evidence_blob": "18c1ff318c51c1b6d828f9df4d6c1f8550221009",
+          "evidence_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "12 actual Chromium skill interactions",
+          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-champion-skills/integrated-final/browser.json",
+          "evidence_blob": "604d1bc3f14ad9fb60e75ea9eddd2f56da37aec8",
+          "evidence_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "24 final integrated Champion Chromium",
+          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-PER-ELEPHANT": {
+      "task_id": "V240-PER-ELEPHANT",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
+      "build_sha": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+      "summary": "PER\u6230\u8c61\u539f\u5275Atlas\u3001\u539f\u751f\u8a13\u7df4\u53ca\u8e10\u8e0f\u9a57\u6536\u901a\u904e / Original PER elephant atlas, native training and trample accepted",
+      "code_changes": [
+        "\u516b\u65b9\u5411\u4e94\u72c0\u614b\u56db\u5f71\u683c\u3001\u8c61\u7259\u8207\u9a0e\u4e58\u5e73\u53f0 / Eight-direction five-state four-frame tusked elephant with rider platform",
+        "\u4f7f\u7528\u65e2\u6709attackAnim\u7684\u8e10\u8e0f\u63da\u5875 / Trample dust driven by existing attackAnim"
+      ],
+      "next_steps": [
+        "\u63a5\u7e8cMNG\u9a0e\u5c04\u5175\u6587\u660e\u5916\u89c0\u8b8a\u9ad4 / Continue MNG horse-archer civilization variant"
+      ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "18 final skill-related Node",
+          "name": "7 focused Node",
           "status": "PASS",
-          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "evidence": "docs/evidence/v240-champion-skills/focused-node.txt",
-          "evidence_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-          "evidence_blob": "11258bd74524875e5c6ffc57587d7d90bd298d41",
+          "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+          "evidence": "docs/evidence/v240-elephant/focused-node.txt",
+          "evidence_commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
+          "evidence_blob": "5f8f82f70c77cdf2de8c3fbd0310c9f85e00b310",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "12 actual Chromium skill interactions",
+          "name": "12 actual Chromium checks",
           "status": "PASS",
-          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "evidence": "docs/evidence/v240-champion-skills/skills-final/browser.json",
-          "evidence_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-          "evidence_blob": "18c1ff318c51c1b6d828f9df4d6c1f8550221009",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "24 final integrated Champion Chromium",
-          "status": "PASS",
-          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "evidence": "docs/evidence/v240-champion-skills/integrated-final/browser.json",
-          "evidence_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-          "evidence_blob": "604d1bc3f14ad9fb60e75ea9eddd2f56da37aec8",
+          "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+          "evidence": "docs/evidence/v240-elephant/browser/browser.json",
+          "evidence_commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
+          "evidence_blob": "f652d7c5ff5de496a996aa702961ac037824a9c9",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3288,31 +3338,24 @@
         {
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
-          "summary": "\u81ea\u7136Easy\uff0fNormal\u5341\u6ce2\u53caNG+\u672a\u901a\u904e\uff1b\u4fdd\u7559\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3 / Natural Easy/Normal ten waves and NG+ unpassed; retain clock, save, performance and hardware gaps",
-          "source_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+          "summary": "\u81ea\u7136\u6230\u5f79\u3001NG+\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559 / Retain natural-campaign, NG+, clock, save, performance, Rift and hardware gaps",
+          "source_commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
           "requires_user_decision": false
         },
         {
           "id": "SCHEDULER_NOT_REBOUND",
           "severity": "ACTION_REQUIRED",
-          "summary": "310\u5206\u9418\u6392\u7a0b\u672a\u5207\u63db\uff0c\u7121\u7ba1\u7406\u5de5\u5177 /310-minute schedule not rebound; management tool unavailable",
-          "source_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-          "requires_user_decision": false
-        },
-        {
-          "id": "UNPUSHED_WORK_RECOVERY_PENDING",
-          "severity": "WARNING",
-          "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u672a\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u4e3b\u7dda / Original9a0f19eanduncommittedQA remain unrecovered without blocking new development",
-          "source_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+          "summary": "310\u5206\u9418\u6392\u7a0b\u672a\u5207\u63db\uff0c\u7121\u7ba1\u7406\u5de5\u5177 /310-minute schedule not rebound; no management tool",
+          "source_commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u82f1\u96c4\u3001\u62db\u52df\u4f7f\u8207\u96d9Boss\u539f\u5275Atlas\u3001\u82f1\u96c4\u65bd\u6cd5\u53caBoss\u9810\u8b66\uff0f\u547d\u4e2d\u4e92\u52d5\u5df2\u4fdd\u5b58\u3002\u6700\u7d42\u4f86\u6e906fae8aa\u670918\u9805\u76f8\u95dcNode\u300112\u9805\u6280\u80fdChromium\u53ca24\u9805\u6574\u5408Champion Chromium\u901a\u904e\u3002\u539f\u751f\u79fb\u52d5\u9583\u907f\u5f8c\u82f1\u96c4\u6eff\u8840\uff0c\u5340\u5167\u76fe\u885b\u5be6\u969b\u53d7\u50b7\uff1b\u4fdd\u6301\u6240\u6709\u539f\u50b7\u5bb3\uff0f\u7bc4\u570d\uff0f\u51b7\u537b\u3002\u4fdd\u7559\u88c1\u5207\u3001\u76f8\u5c0d\u6027\u80fd\u53ca\u6e2c\u8a66\u66ab\u505c\u53f3\u9375FAIL\uff0c\u4e0d\u5192\u7a31\u81ea\u7136\u5341\u6ce2\uff0fNG+\u901a\u95dc\u6216\u786c\u9ad4\u6027\u80fd\u3002\u6392\u7a0b\u672a\u5207\u63db\uff0c\u539f\u74b0\u5883\u7368\u7acb\u5f85\u5fa9\u539f\uff0c\u6c92\u6709\u516c\u958b\u767c\u5e03\u3002\n\nEnglish: Original hero/recruiter/two-Boss atlases, hero casting and actual Boss warning/impact interactions are saved. Final source6fae8aa passes18relatedNode,12skillChromiumand24integratedChampionChromium checks. Native escape leaves the hero unharmed while the guard inside takes actual damage; original damage/range/cooldowns remain. Preserve clipping, relative-performance and paused-test-input failures; no natural ten-wave/NG+orhardware acceptance claimed. Scheduler remains unbound, original recovery isolated, no public release.",
-      "event_id": "183ab2b33f5dced594da4a22854dcbaf37ebf30d01204c97cf74bc215e9d3248",
-      "remote_head": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aPER\u6230\u8c61\u5df2\u6b63\u5e38\u4fdd\u5b58\uff0c7\u9805Node\u53ca12\u9805\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff0c\u5305\u542b\u539f\u751f\u4ed8\u8cbb\u8a13\u7df425\u79d2\u8207\u771f\u6b63\u6b21\u8981\u8e10\u8e0f\u50b7\u5bb3\u3002\u5df2\u63a5\u7e8cMNG\u9a0e\u5c04\u5175\u6587\u660e\u5916\u89c0\uff0c\u672a\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: PER elephant is normally saved with7Nodeand12actual localChromiumchecks passed, including native paid25-secondtraining and actual secondary trample damage. Continuing MNG horse-archer identity without public deployment.",
+      "event_id": "2db7a7b1ffa3a8c698a57f311b2d7224a3193bf7fd09c4db42e165ff49a4c4d2",
+      "remote_head": "9dd20d2a1d689b73c513d0310320a979e06b8979",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-29T07:43:43.519116+00:00",
+      "recorded_at": "2026-10-29T12:56:53.822674+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
