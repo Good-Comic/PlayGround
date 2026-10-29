@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T16:36:04.287601+00:00",
+  "updated_at": "2026-10-29T16:41:38.853489+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -491,10 +491,10 @@
     },
     {
       "id": "HISTORICAL-GAPS",
-      "severity": "WARNING",
-      "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
-      "source_commit": "55ef78365dae7ab79954ab75c992b063efe70df7",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "55ef78365dae7ab79954ab75c992b063efe70df7",
+      "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
       "task_id": "V240-SPECIAL-ATLAS"
     },
     {
@@ -600,6 +600,14 @@
       "source_commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
       "summary": "\u66f4\u65e9 9a0f19e \u5fa9\u539f\u53e6\u6848\u5f85\u8655\u7406\uff1b\u81ea\u7136\u6230\u5f79\u6b77\u53f2 FAIL \u4fdd\u7559\uff1b310 \u5206\u9418\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Older 9a0f19e recovery separately pending; historical natural-campaign FAIL retained; scheduler rebinding unconfirmed.",
       "task_id": "V240-P0-ENVLOST-RECOVERY"
+    },
+    {
+      "id": "SCHEDULER-UNVERIFIED",
+      "severity": "WARNING",
+      "summary": "310 \u5206\u9418\u65b0 Agent \u559a\u9192\u7121\u53ef\u67e5\u8a2d\u5b9a\uff0f\u5be6\u8dd1\u6536\u64da\uff0c\u4e0d\u5ba3\u7a31\u5207\u63db\uff1b\u7121\u6b63\u5f0f\u984d\u5ea6\u8cc7\u6599\u3002 / No queryable 310-minute configuration/current-Agent wake receipt; no rebinding claim or official quota telemetry.",
+      "source_commit": "d7ed2ce300acc13ca65c981c38ab767a9eee50cc",
+      "requires_user_decision": false,
+      "task_id": "V240-EXECUTION-CONTINUITY"
     }
   ]
 }
