@@ -1,59 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "P0原成果復原與安全保存 / P0 original-work recovery and safe saving",
-  "requirement_source": "Latest explicit user P0 ENVIRONMENT_LOST recovery instruction",
-  "priority": "P0",
+  "name": "BRI 長弓兵原創八方向動畫、正式戰鬥與音效事件已驗收 / BRI original eight-direction longbow animation, production combat and sound dispatch accepted",
+  "requirement_source": "Latest explicit GAME FIRST content continuation; existing civilization matrix",
+  "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "8f22a395e420a852b8632e0d843651d023d367e7",
-  "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-  "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+  "base_commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
+  "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
+  "application_source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
   "completed": [
-    "Original7f8a739andbcd03b0recovered with unchanged parent chain and diffs",
-    "Original audio WIP bytes preserved, committed and normally pushed",
-    "7original KOR images reviewed; old4Node/14Chromium preserved, not claimed rerun",
-    "Actually reran4soundNode and completed19newChromium checks with real audio/video",
-    "Original commits, source and all evidence now remote-saved"
+    "BRI 長弓兵原創八方向動畫、正式戰鬥與音效事件已驗收",
+    "BRI original eight-direction longbow animation, production combat and sound dispatch accepted"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Recovered original KOR Node, not rerun",
-      "result": "4 ORIGINAL PASS REUSED",
-      "source_commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
-      "path": "docs/evidence/v240-kor-cart/focused-node.txt"
+      "name": "Focused Node",
+      "result": "11 PASS",
+      "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+      "path": "docs/evidence/v240-bri-longbow/focused-node.txt"
     },
     {
-      "name": "Recovered original KOR Chromium, not rerun",
-      "result": "14 ORIGINAL PASS REUSED",
-      "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-      "path": "docs/evidence/v240-kor-cart/fixed/browser.json"
-    },
-    {
-      "name": "KOR original image review this turn",
-      "result": "PASS representative images",
-      "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-      "path": "docs/evidence/v240-kor-cart/recovery-visual-review.json"
-    },
-    {
-      "name": "Sound Node actually rerun after recovery",
-      "result": "4 PASS",
-      "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-      "path": "docs/evidence/v240-unit-sounds/recovery-node.txt"
-    },
-    {
-      "name": "Sound Chromium after recovery",
-      "result": "19 PASS LOCAL CONTROLLED",
-      "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-      "path": "docs/evidence/v240-unit-sounds/browser/browser.json"
+      "name": "Actual Chromium",
+      "result": "11 PASS",
+      "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+      "path": "docs/evidence/v240-bri-longbow/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/p0-envlost-recovery/STATUS.md",
-    "docs/evidence/v240-kor-cart/REPORT.md",
-    "docs/evidence/v240-unit-sounds/REPORT.md"
+    "docs/evidence/v240-bri-longbow/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -64,8 +41,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "Verify latest remote and final Handoff/Feed receipt on resume; do not recreate recovered work",
-    "Only future continuation may resume new content; this turn was P0 recovery only"
+    "核對所有權後接續 VIK 盾衛圓盾鏈甲外觀，不改平衡",
+    "Revalidate ownership, then continue VIK round-shield and mail guard appearance without balance changes"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -73,7 +50,7 @@
   ],
   "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29",
+  "updated_at": "2026-10-29T16:31:30.851372+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -92,7 +69,7 @@
   },
   "scheduler_status": "UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "P0_RECOVERED_AND_REMOTE_SAVED",
+  "execution_state": "CONTENT_SLICE_REMOTE_SAVED",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK",
   "latest_feed_commit": "3f802fa6d2c963d973d7eafe185f4efee9bfaace",
   "current_envlost_recovery": {

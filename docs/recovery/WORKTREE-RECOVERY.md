@@ -1,7 +1,9 @@
-# P0 原成果恢復 / P0 original-work recovery
+# 最新內容切片 / Latest content slice
 
-繁體中文：相鄰JSON為09b3d3904755dddf84a2faf692f34d4858de9b14已遠端保存後的盤點，不遞迴提交自身SHA。原7f8a739、bcd03b0及音效WIP均恢復，來源／證據／報告已保存。原KOR測試與本輪音效4 Node／19 Chromium分開記錄。詳見docs/evidence/p0-envlost-recovery/STATUS.md。最終乾淨快照在/workspace/diagnostics/riftwatch/p0-envlost-recovery-20261029/final。更早9a0f19e仍獨立待復原；本輪沒有新兵種或公開部署，歷史FAIL及排程未確認狀態保留。
+繁體中文：BRI 長弓兵原創八方向動畫、正式戰鬥與音效事件已驗收。來源 `c69bb252519fc1082166e0e37081685e98bcd568`，證據 `e4865613d2a62cbc924716c52bd52d15ab8416d0`，11 Node／11 Chromium PASS。詳見 docs/evidence/v240-bri-longbow/REPORT.md。核對所有權後接續 VIK 盾衛圓盾鏈甲外觀，不改平衡。既有恢復已完成，不重做；歷史自然戰役、嚴格 Save/Load、低 FPS、性能及硬體缺口保留，未公開發布，排程切換未確認。
 
-English: Adjacent JSON inventories remotely saved09b3d3904755dddf84a2faf692f34d4858de9b14 without recursively committing its own SHA. Original7f8a739,bcd03b0 and sound WIP are recovered with source/evidence/reports saved. Original KOR tests are separate from this turn's4Node/19Chromium sound results. See docs/evidence/p0-envlost-recovery/STATUS.md. Final clean snapshot: /workspace/diagnostics/riftwatch/p0-envlost-recovery-20261029/final. Older9a0f19e remains separately pending. No new unit or public deployment this turn; historicalFAIL and unverified scheduler status remain.
+English: BRI original eight-direction longbow animation, production combat and sound dispatch accepted. Source `c69bb252519fc1082166e0e37081685e98bcd568`, evidence `e4865613d2a62cbc924716c52bd52d15ab8416d0`, 11 Node/11 Chromium PASS. See docs/evidence/v240-bri-longbow/REPORT.md. Revalidate ownership, then continue VIK round-shield and mail guard appearance without balance changes. Recovery is complete and must not be repeated; historical natural campaign, strict Save/Load, low-FPS, performance and hardware gaps remain. Nothing publicly deployed; scheduler rebinding unconfirmed.
+
+---
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true

@@ -1,31 +1,28 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T16:17:23.885457+00:00",
+  "generated_at": "2026-10-29T16:31:32.123208+00:00",
   "framework_status": "HANDOFF_FRAMEWORK_READY",
   "cross_agent_status": "NOT_TESTED",
   "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
   "trigger": {
-    "kind": "ENVIRONMENT_LOST",
+    "kind": "MANUAL_HANDOFF",
     "confidence": "CONFIRMED",
-    "evidence": "ORIGINAL_WORK_RECOVERED_AND_REMOTE_SAVED"
+    "evidence": "SOURCE_AND_BROWSER_EVIDENCE_REMOTE_SAVED"
   },
   "active_task": {
     "task_id": "V240-SPECIAL-ATLAS",
-    "name": "P0\u539f\u6210\u679c\u5fa9\u539f\u8207\u5b89\u5168\u4fdd\u5b58 / P0 original-work recovery and safe saving",
-    "requirement_source": "Latest explicit user P0 ENVIRONMENT_LOST recovery instruction",
-    "priority": "P0",
+    "name": "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u3001\u6b63\u5f0f\u6230\u9b25\u8207\u97f3\u6548\u4e8b\u4ef6\u5df2\u9a57\u6536 / BRI original eight-direction longbow animation, production combat and sound dispatch accepted",
+    "requirement_source": "Latest explicit GAME FIRST content continuation; existing civilization matrix",
+    "priority": "P1",
     "agent": "Codex",
     "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
     "branch": "codex/riftwatch-v240-game-first",
-    "base_commit": "8f22a395e420a852b8632e0d843651d023d367e7",
-    "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-    "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+    "base_commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
+    "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
+    "application_source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
     "completed": [
-      "Original7f8a739andbcd03b0recovered with unchanged parent chain and diffs",
-      "Original audio WIP bytes preserved, committed and normally pushed",
-      "7original KOR images reviewed; old4Node/14Chromium preserved, not claimed rerun",
-      "Actually reran4soundNode and completed19newChromium checks with real audio/video",
-      "Original commits, source and all evidence now remote-saved"
+      "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u3001\u6b63\u5f0f\u6230\u9b25\u8207\u97f3\u6548\u4e8b\u4ef6\u5df2\u9a57\u6536",
+      "BRI original eight-direction longbow animation, production combat and sound dispatch accepted"
     ],
     "uncommitted": [
       {
@@ -56,40 +53,20 @@
     "unpushed": [],
     "tests": [
       {
-        "name": "Recovered original KOR Node, not rerun",
-        "result": "4 ORIGINAL PASS REUSED",
-        "source_commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
-        "path": "docs/evidence/v240-kor-cart/focused-node.txt"
+        "name": "Focused Node",
+        "result": "11 PASS",
+        "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+        "path": "docs/evidence/v240-bri-longbow/focused-node.txt"
       },
       {
-        "name": "Recovered original KOR Chromium, not rerun",
-        "result": "14 ORIGINAL PASS REUSED",
-        "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-        "path": "docs/evidence/v240-kor-cart/fixed/browser.json"
-      },
-      {
-        "name": "KOR original image review this turn",
-        "result": "PASS representative images",
-        "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-        "path": "docs/evidence/v240-kor-cart/recovery-visual-review.json"
-      },
-      {
-        "name": "Sound Node actually rerun after recovery",
-        "result": "4 PASS",
-        "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-        "path": "docs/evidence/v240-unit-sounds/recovery-node.txt"
-      },
-      {
-        "name": "Sound Chromium after recovery",
-        "result": "19 PASS LOCAL CONTROLLED",
-        "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-        "path": "docs/evidence/v240-unit-sounds/browser/browser.json"
+        "name": "Actual Chromium",
+        "result": "11 PASS",
+        "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+        "path": "docs/evidence/v240-bri-longbow/verified/browser.json"
       }
     ],
     "evidence": [
-      "docs/evidence/p0-envlost-recovery/STATUS.md",
-      "docs/evidence/v240-kor-cart/REPORT.md",
-      "docs/evidence/v240-unit-sounds/REPORT.md"
+      "docs/evidence/v240-bri-longbow/REPORT.md"
     ],
     "failures": [
       "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -100,8 +77,8 @@
       "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
     ],
     "next_steps": [
-      "Verify latest remote and final Handoff/Feed receipt on resume; do not recreate recovered work",
-      "Only future continuation may resume new content; this turn was P0 recovery only"
+      "\u6838\u5c0d\u6240\u6709\u6b0a\u5f8c\u63a5\u7e8c VIK \u76fe\u885b\u5713\u76fe\u93c8\u7532\u5916\u89c0\uff0c\u4e0d\u6539\u5e73\u8861",
+      "Revalidate ownership, then continue VIK round-shield and mail guard appearance without balance changes"
     ],
     "permissions": [
       "Independent development tests normal push",
@@ -109,7 +86,7 @@
     ],
     "status": "CHECKPOINTED",
     "quota_status": "QUOTA_PERCENT_UNKNOWN",
-    "updated_at": "2026-10-29T16:17:23.562039+00:00",
+    "updated_at": "2026-10-29T16:31:31.791454+00:00",
     "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
     "ownership_at_snapshot": {
       "task": "V240-SPECIAL-ATLAS",
@@ -128,7 +105,7 @@
     },
     "scheduler_status": "UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL",
     "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-    "execution_state": "P0_RECOVERED_AND_REMOTE_SAVED",
+    "execution_state": "CONTENT_SLICE_REMOTE_SAVED",
     "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK",
     "latest_feed_commit": "3f802fa6d2c963d973d7eafe185f4efee9bfaace",
     "current_envlost_recovery": {
@@ -145,18 +122,18 @@
   },
   "next_tasks": {
     "schema_version": 1,
-    "updated_at": "2026-10-29",
+    "updated_at": "2026-10-29T16:31:30.851372+00:00",
     "tasks": [
       {
         "task_id": "V240-CONTENT-CONTINUATION",
-        "name": "P0\u4fdd\u5b58\u5f8c\u7684\u672a\u4f86\u63a5\u7e8c / Future continuation after P0 saving",
+        "name": "\u6838\u5c0d\u6240\u6709\u6b0a\u5f8c\u63a5\u7e8c VIK \u76fe\u885b\u5713\u76fe\u93c8\u7532\u5916\u89c0\uff0c\u4e0d\u6539\u5e73\u8861 / Revalidate ownership, then continue VIK round-shield and mail guard appearance without balance changes",
         "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
         "priority": "P1",
         "agent": "Codex",
         "environment": "New independent Linux Chromium workspace; local software rendering",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-        "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
         "completed": [],
         "uncommitted": [
@@ -188,40 +165,20 @@
         "unpushed": [],
         "tests": [
           {
-            "name": "Recovered original KOR Node, not rerun",
-            "result": "4 ORIGINAL PASS REUSED",
-            "source_commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
-            "path": "docs/evidence/v240-kor-cart/focused-node.txt"
+            "name": "Focused Node",
+            "result": "11 PASS",
+            "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+            "path": "docs/evidence/v240-bri-longbow/focused-node.txt"
           },
           {
-            "name": "Recovered original KOR Chromium, not rerun",
-            "result": "14 ORIGINAL PASS REUSED",
-            "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-            "path": "docs/evidence/v240-kor-cart/fixed/browser.json"
-          },
-          {
-            "name": "KOR original image review this turn",
-            "result": "PASS representative images",
-            "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-            "path": "docs/evidence/v240-kor-cart/recovery-visual-review.json"
-          },
-          {
-            "name": "Sound Node actually rerun after recovery",
-            "result": "4 PASS",
-            "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-            "path": "docs/evidence/v240-unit-sounds/recovery-node.txt"
-          },
-          {
-            "name": "Sound Chromium after recovery",
-            "result": "19 PASS LOCAL CONTROLLED",
-            "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-            "path": "docs/evidence/v240-unit-sounds/browser/browser.json"
+            "name": "Actual Chromium",
+            "result": "11 PASS",
+            "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+            "path": "docs/evidence/v240-bri-longbow/verified/browser.json"
           }
         ],
         "evidence": [
-          "docs/evidence/p0-envlost-recovery/STATUS.md",
-          "docs/evidence/v240-kor-cart/REPORT.md",
-          "docs/evidence/v240-unit-sounds/REPORT.md"
+          "docs/evidence/v240-bri-longbow/REPORT.md"
         ],
         "failures": [
           "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -232,8 +189,8 @@
           "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
         ],
         "next_steps": [
-          "Verify latest remote and final Handoff/Feed receipt on resume; do not recreate recovered work",
-          "Only future continuation may resume new content; this turn was P0 recovery only"
+          "\u6838\u5c0d\u6240\u6709\u6b0a\u5f8c\u63a5\u7e8c VIK \u76fe\u885b\u5713\u76fe\u93c8\u7532\u5916\u89c0\uff0c\u4e0d\u6539\u5e73\u8861",
+          "Revalidate ownership, then continue VIK round-shield and mail guard appearance without balance changes"
         ],
         "permissions": [
           "Independent development tests normal push",
@@ -241,7 +198,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T16:17:22.815092+00:00",
+        "updated_at": "2026-10-29T16:31:30.982565+00:00",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
           "task": "V240-SPECIAL-ATLAS",
@@ -269,7 +226,7 @@
         "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-        "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
         "completed": [
           "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53c3\u6578\u751f\u6548 / Easy defeat5and valid Normal defeat4; parameters verified",
@@ -342,7 +299,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T16:17:22.815092+00:00",
+        "updated_at": "2026-10-29T16:31:30.982565+00:00",
         "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
@@ -361,7 +318,7 @@
         "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
-        "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
         "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
         "completed": [
@@ -440,7 +397,7 @@
         "status": "CHECKPOINTED",
         "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T16:17:22.815092+00:00"
+        "updated_at": "2026-10-29T16:31:30.982565+00:00"
       },
       {
         "task_id": "V240-SPRITE-ATLAS",
@@ -451,7 +408,7 @@
         "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
-        "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
         "completed": [
           "Recovered from remotely saved atlas implementation after prior worktree loss",
@@ -530,7 +487,7 @@
         ],
         "status": "CHECKPOINTED",
         "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T16:17:22.815092+00:00",
+        "updated_at": "2026-10-29T16:31:30.982565+00:00",
         "acceptance": "LOCAL_VERIFIED"
       },
       {
@@ -542,7 +499,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-        "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
         "completed": [
           "Added eight-direction isometric facing derived from real movement and live attack targets",
@@ -621,7 +578,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T16:17:22.815092+00:00"
+        "updated_at": "2026-10-29T16:31:30.982565+00:00"
       },
       {
         "task_id": "V240-CIV-VISUAL-FAMILIES",
@@ -632,7 +589,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
-        "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
         "completed": [
           "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
@@ -711,7 +668,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T16:17:22.815092+00:00"
+        "updated_at": "2026-10-29T16:31:30.982565+00:00"
       },
       {
         "task_id": "V240-SEED-SETUP",
@@ -722,7 +679,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-        "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "application_source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
         "completed": [
           "Prefilled each new-game menu with a visible shareable RW Seed",
@@ -806,7 +763,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T16:17:22.815092+00:00"
+        "updated_at": "2026-10-29T16:31:30.982565+00:00"
       },
       {
         "task_id": "V240-GAME-FIRST-BUILDINGS",
@@ -817,7 +774,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-        "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "latest_pushed_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
         "completed": [
           "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
@@ -896,7 +853,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T16:17:22.815092+00:00"
+        "updated_at": "2026-10-29T16:31:30.982565+00:00"
       },
       {
         "task_id": "V234-CANDIDATE",
@@ -1733,14 +1690,14 @@
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-29T16:17:22.815092+00:00",
+    "captured_at_utc": "2026-10-29T16:31:30.982565+00:00",
     "trigger": "RECOVERY_RESUME",
-    "collector_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+    "collector_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
     "collector_dirty": true,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-29T16:17:22.815092+00:00"
+      "queried_at": "2026-10-29T16:31:30.982565+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -1764,7 +1721,7 @@
       "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
       "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
       "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-      "codex/riftwatch-progress-feed": "609a68ad238adc2d3da29c87ad40055f70b6c321",
+      "codex/riftwatch-progress-feed": "91256842710576082c13499160edf3a3f66c24a5",
       "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
       "codex/riftwatch-task-ownership": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
       "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
@@ -1796,7 +1753,7 @@
       "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
       "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
       "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-      "codex/riftwatch-v240-game-first": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+      "codex/riftwatch-v240-game-first": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
       "main": "e35a73329ee7942627496e55b844d02b2501e685",
       "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
       "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -1826,8 +1783,8 @@
     "local_branches": [
       {
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-        "remote_head": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "head": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
+        "remote_head": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "status": "REMOTE_SAVED"
       }
     ],
@@ -1835,7 +1792,7 @@
       {
         "path": "/workspace/riftwatch-v240-takeover",
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "head": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "locked": false,
         "task_id": "V240-V5-PLAYABILITY",
         "last_validation": [
@@ -1877,7 +1834,7 @@
           "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
         ],
         "remote_status": "REMOTE_SAVED",
-        "remote_head": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+        "remote_head": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
         "unpushed_commits": [],
         "changed_files": [
           {
@@ -1916,8 +1873,8 @@
           "dirty",
           "changed_files"
         ],
-        "previous_head": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-        "actual_head": "09b3d3904755dddf84a2faf692f34d4858de9b14"
+        "previous_head": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
+        "actual_head": "e4865613d2a62cbc924716c52bd52d15ab8416d0"
       }
     ],
     "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."
