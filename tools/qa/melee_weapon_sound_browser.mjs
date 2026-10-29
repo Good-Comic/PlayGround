@@ -28,7 +28,7 @@ try {
     await page.waitForFunction(() => ageOfAsh.game.sound?.ctx?.state === 'running');
     const audioContext = await page.evaluate(() => ({ state: ageOfAsh.game.sound.ctx.state, rate: ageOfAsh.game.sound.ctx.sampleRate, enabled: ageOfAsh.game.sound.enabled }));
     check(`${label}: native gesture resumes actual AudioContext`, audioContext.state === 'running' && audioContext.enabled, audioContext);
-    const target = await page.evaluate(({ type }) => {
+    const target = await page.evaluate(async ({ type }) => {
       const g = ageOfAsh.game, r = ageOfAsh.renderer, sound = g.sound, ctx = sound.ctx;
       g.paused = true; g.phase = 'prep'; g.prepTimer = 240; g.units = []; g.particles = []; g.projectiles = []; g.selection = [];
       g.world.resources = []; g.world.props = []; g.world.wildlife = [];
@@ -36,14 +36,14 @@ try {
       window.actor = g.spawnUnit(type, 29, 33); window.enemy = g.spawnUnit('brute', 30.3, 33, 'enemy');
       enemy.hp = enemy.maxHp = 2000; enemy.cooldown = 999; actor.cooldown = 0; g.hero = null; g.setSelection([actor]);
       g.focusAt(29.5, 33); g.camera.x = g.camera.targetX; g.camera.y = g.camera.targetY; g.camera.zoom = g.camera.targetZoom = 1.7;
-      window.sfxActiveUntil = 0; window.initialHP = enemy.hp; window.soundEvents = []; window.voices = [];
+      window.initialHP = enemy.hp; window.soundEvents = []; window.voices = [];
       // Tap only tone/noise SFX; ambience/music remain on their original buses.
       const tap = ctx.createGain(), media = ctx.createMediaStreamDestination(), analyser = ctx.createAnalyser();
       tap.gain.value = 1; tap.connect(sound.master); tap.connect(media); tap.connect(analyser); analyser.fftSize = 2048;
       for (const key of ['tone', 'noise']) {
         const original = sound[key].bind(sound);
         sound[key] = (...args) => {
-          if (sound.enabled) { voices.push({ kind: key, args, at: ctx.currentTime }); sfxActiveUntil = ctx.currentTime + .2; }
+          if (sound.enabled) { voices.push({ kind: key, args, at: ctx.currentTime }); }
           const master = sound.master; sound.master = tap;
           try { return original(...args); } finally { sound.master = master; }
         };
@@ -52,12 +52,17 @@ try {
         const original = sound[key].bind(sound);
         sound[key] = (...args) => { soundEvents.push({ method: key, type: args[0], civ: args[1], at: ctx.currentTime }); return original(...args); };
       }
-      window.signal = { sum: 0, count: 0, peak: 0 };
-      window.signalTimer = setInterval(() => {
-        if (ctx.currentTime > sfxActiveUntil) return;
-        const data = new Float32Array(analyser.fftSize); analyser.getFloatTimeDomainData(data);
-        for (const value of data) { signal.sum += value * value; signal.count++; signal.peak = Math.max(signal.peak, Math.abs(value)); }
-      }, 20);
+      // 音訊執行緒逐樣本量測，避免主執行緒錯過短音效。 / Sample on the audio thread so short cues cannot be missed by main-thread timers.
+      window.meterEpoch = 0; window.signal = { sum: 0, count: 0, activeCount: 0, peak: 0, epoch: 0 };
+      const moduleURL = URL.createObjectURL(new Blob([`class SfxMeter extends AudioWorkletProcessor {
+        constructor(){super();this.epoch=0;this.reset();this.port.onmessage=e=>{this.epoch=e.data;this.reset()}}
+        reset(){this.sum=0;this.count=0;this.activeCount=0;this.peak=0;this.blocks=0}
+        process(inputs){const d=inputs[0]?.[0];if(d)for(const v of d){this.sum+=v*v;this.count++;if(Math.abs(v)>1e-8)this.activeCount++;this.peak=Math.max(this.peak,Math.abs(v))}if(++this.blocks%16===0)this.port.postMessage({epoch:this.epoch,sum:this.sum,count:this.count,activeCount:this.activeCount,peak:this.peak});return true}
+      }registerProcessor('sfx-meter',SfxMeter);`], {type:'text/javascript'}));
+      await ctx.audioWorklet.addModule(moduleURL); URL.revokeObjectURL(moduleURL);
+      window.meter = new AudioWorkletNode(ctx,'sfx-meter'); const silent = ctx.createGain(); silent.gain.value=0;
+      tap.connect(meter); meter.connect(silent).connect(ctx.destination);
+      meter.port.onmessage=e=>{if(e.data.epoch===meterEpoch)window.signal=e.data};
       window.audioChunks = []; window.audioRecorder = new MediaRecorder(media.stream, { mimeType: 'audio/webm;codecs=opus' });
       audioRecorder.ondataavailable = e => { if (e.data.size) audioChunks.push(e.data); }; audioRecorder.start(100);
       sound.last.clear(); g.paused = false;
@@ -68,15 +73,15 @@ try {
     await page.waitForTimeout(650);
     await page.evaluate(() => { ageOfAsh.game.paused = true; });
     await page.mouse.move(8, 8); await page.screenshot({ path: `${out}/${label}-combat.png` });
-    const audible = await page.evaluate(() => ({ rms: Math.sqrt(signal.sum / Math.max(1, signal.count)), peak: signal.peak, events: [...soundEvents], voices: [...voices], hp: enemy.hp, startHP: initialHP, shots: actor.shots }));
+    const audible = await page.evaluate(() => ({ totalSamples: signal.count, activeSamples: signal.activeCount, rms: Math.sqrt(signal.sum / Math.max(1, signal.activeCount)), peak: signal.peak, events: [...soundEvents], voices: [...voices], hp: enemy.hp, startHP: initialHP, shots: actor.shots }));
     check(`${label}: native combat routes the weapon cue and records non-silent unclipped SFX`, audible.events.some(e => e.type === type && e.method === method && e.civ === civ) && audible.voices.some(v => v.kind === 'tone' && v.args[0] === frequency) && audible.rms > .0001 && audible.peak < .98 && audible.hp < audible.startHP, audible);
     await page.locator('#btn-sound').click();
     await page.waitForTimeout(400);
-    await page.evaluate(() => { window.mutedVoiceCount = voices.length; window.mutedEventCount = soundEvents.length; signal = { sum: 0, count: 0, peak: 0 }; sfxActiveUntil = ageOfAsh.game.sound.ctx.currentTime + 10; actor.cooldown = 0; ageOfAsh.game.paused = false; });
+    await page.evaluate(() => { window.mutedVoiceCount = voices.length; window.mutedEventCount = soundEvents.length; meterEpoch++; meter.port.postMessage(meterEpoch); signal = { sum: 0, count: 0, activeCount: 0, peak: 0, epoch: meterEpoch }; actor.cooldown = 0; ageOfAsh.game.paused = false; });
     await page.waitForFunction(() => soundEvents.length > mutedEventCount, null, { timeout: 5000 });
     await page.waitForTimeout(350);
     await page.evaluate(() => { ageOfAsh.game.paused = true; });
-    const muted = await page.evaluate(() => ({ enabled: ageOfAsh.game.sound.enabled, voices: voices.length - mutedVoiceCount, requests: soundEvents.length - mutedEventCount, rms: Math.sqrt(signal.sum / Math.max(1, signal.count)), peak: signal.peak }));
+    const muted = await page.evaluate(() => ({ enabled: ageOfAsh.game.sound.enabled, voices: voices.length - mutedVoiceCount, requests: soundEvents.length - mutedEventCount, totalSamples: signal.count, activeSamples: signal.activeCount, rms: Math.sqrt(signal.sum / Math.max(1, signal.activeCount)), peak: signal.peak }));
     check(`${label}: native mute suppresses voices during real combat`, !muted.enabled && muted.voices === 0 && muted.requests > 0 && muted.peak < 1e-6, muted);
     await page.locator('#btn-sound').click();
     const throttle = await page.evaluate(({ type, method, civ }) => {
@@ -87,7 +92,7 @@ try {
     check(`${label}: shared throttle bounds a100-request burst and native unmute restores sound`, throttle.enabled && throttle.voices > 0 && throttle.voices <= 3, throttle);
     await page.waitForTimeout(350);
     const encoded = await page.evaluate(async () => {
-      clearInterval(signalTimer);
+      meter.disconnect();
       await new Promise(resolve => { audioRecorder.onstop = resolve; audioRecorder.stop(); });
       const blob = new Blob(audioChunks, { type: 'audio/webm' });
       return await new Promise(resolve => { const r = new FileReader(); r.onload = () => resolve(r.result.split(',')[1]); r.readAsDataURL(blob); });
@@ -103,7 +108,7 @@ try {
   checks.push({ name: 'browser execution', pass: false, detail: { message: e.message, stack: e.stack } });
   await page?.screenshot({ path: `${out}/failure.png` }).catch(() => {});
 } finally { await context.close(); await browser.close(); }
-const result = { source_commit: source, mode: 'NEW_MELEE_CUES_LOCAL_CONTROLLED_2000HP_TARGET_NATIVE_COMBAT_AND_MUTE', signal_scope: 'RMS sampled within200ms of each synthesized SFX; muted silence window explicitly open; pre-contact walking silence excluded', audio_scope: 'tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance', checks, recordings, errors, pass: checks.length > 0 && checks.every(c => c.pass) };
+const result = { source_commit: source, mode: 'NEW_MELEE_CUES_LOCAL_CONTROLLED_2000HP_TARGET_NATIVE_COMBAT_AND_MUTE', signal_scope: 'AudioWorklet sample-level energy and peak; RMS over nonzero samples (>1e-8); full sample counts retained; muted window resets meter epoch', audio_scope: 'tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance', checks, recordings, errors, pass: checks.length > 0 && checks.every(c => c.pass) };
 writeFileSync(`${out}/browser.json`, JSON.stringify(result, null, 2));
 console.log(JSON.stringify({ pass: result.pass, checks: checks.map(({ name, pass }) => ({ name, pass })) }));
 if (!result.pass) process.exitCode = 1;
