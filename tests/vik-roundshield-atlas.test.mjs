@@ -7,7 +7,7 @@ const {Game} = await import('../js/game.js');
 
 test('VIK roundshield appearance is isolated from other civilizations and enemies', () => {
   for (const civ of ['VIK','BRI','MNG','TEU','JPN']) for (const team of ['player','enemy'])
-    assert.equal(unitSpriteAtlasKey({type:'guard',team},civ),civ==='VIK'&&team==='player'?'VIK:guard':'guard');
+    assert.equal(unitSpriteAtlasKey({type:'guard',team},civ),team==='player'&&['VIK','JPN'].includes(civ)?`${civ}:guard`:'guard');
 });
 
 test('every roundshield direction and animation frame fits the actual PNG', () => {
