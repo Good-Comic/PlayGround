@@ -1,0 +1,275 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_FIXTURE_NOT_NATURAL_PLAY",
+  "source_commit": "9f81e0c307e68e54254e31ef787ede51401e113a",
+  "seed": "MIGRATION-SPEAR-GUARD",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed payload verified",
+      "pass": true,
+      "detail": {
+        "id": "v240-migration-spear-guard",
+        "commit": "9f81e0c307e68e54254e31ef787ede51401e113a",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T06:48:54.092926+00:00",
+        "resourceVerification": "SHA256_MATCH_40_FILES"
+      }
+    },
+    {
+      "name": "320 decoded frames have visible artwork and no edge clipping",
+      "pass": false,
+      "detail": [
+        {
+          "type": "spearman",
+          "width": 4096,
+          "height": 560,
+          "failures": [
+            {
+              "row": 4,
+              "col": 2,
+              "ink": 1460,
+              "border": 7
+            },
+            {
+              "row": 4,
+              "col": 3,
+              "ink": 1332,
+              "border": 5
+            },
+            {
+              "row": 4,
+              "col": 6,
+              "ink": 1430,
+              "border": 4
+            },
+            {
+              "row": 4,
+              "col": 7,
+              "ink": 1356,
+              "border": 7
+            },
+            {
+              "row": 4,
+              "col": 31,
+              "ink": 1357,
+              "border": 7
+            }
+          ]
+        },
+        {
+          "type": "guard",
+          "width": 4096,
+          "height": 560,
+          "failures": []
+        }
+      ]
+    },
+    {
+      "name": "spearman: production move and walk presentation",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.894650797797667,
+          "y": 33.44732539889887
+        },
+        "seen": {
+          "walk": 279,
+          "idle": 98
+        }
+      }
+    },
+    {
+      "name": "spearman: native right-click combat and four attack frames",
+      "pass": true,
+      "detail": {
+        "hp": 24,
+        "enemyHP": 119.39999999999998,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "walk": 279,
+          "idle": 202,
+          "hit": 24,
+          "attack": 11
+        },
+        "time": 2.983299999999998
+      }
+    },
+    {
+      "name": "spearman: production hit presentation",
+      "pass": true
+    },
+    {
+      "name": "spearman: production death presentation",
+      "pass": true
+    },
+    {
+      "name": "spearman: missing asset permits procedural fallback",
+      "pass": true
+    },
+    {
+      "name": "guard: production move and walk presentation",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.90796881867164,
+          "y": 33.45398440933584
+        },
+        "seen": {
+          "idle": 100,
+          "walk": 274
+        }
+      }
+    },
+    {
+      "name": "guard: native right-click combat and four attack frames",
+      "pass": true,
+      "detail": {
+        "hp": 128,
+        "enemyHP": 119.39999999999998,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 206,
+          "walk": 275,
+          "attack": 13,
+          "hit": 25
+        },
+        "time": 5.8999000000000175
+      }
+    },
+    {
+      "name": "guard: production hit presentation",
+      "pass": true
+    },
+    {
+      "name": "guard: production death presentation",
+      "pass": true
+    },
+    {
+      "name": "guard: missing asset permits procedural fallback",
+      "pass": true
+    },
+    {
+      "name": "100-unit static renderer JS budget and paired medians",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "fallback",
+          "mean": 10.319999999998254,
+          "p50": 9.199999999953434,
+          "p95": 11.400000000139698
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 0.6149999999994179,
+          "p50": 0.5999999998603016,
+          "p95": 0.8000000000465661
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 0.9300000000046567,
+          "p50": 0.6000000000931323,
+          "p95": 1.4000000001396984
+        },
+        {
+          "repeat": 1,
+          "mode": "fallback",
+          "mean": 9.267499999995925,
+          "p50": 9.199999999953434,
+          "p95": 10.199999999953434
+        },
+        {
+          "repeat": 2,
+          "mode": "fallback",
+          "mean": 10.4375,
+          "p50": 9.100000000093132,
+          "p95": 10.699999999953434
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 0.575,
+          "p50": 0.5999999998603016,
+          "p95": 0.6999999999534339
+        }
+      ]
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "snapshots": [
+    {
+      "type": "spearman",
+      "combat": {
+        "hp": 24,
+        "enemyHP": 119.39999999999998,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "walk": 279,
+          "idle": 202,
+          "hit": 24,
+          "attack": 11
+        },
+        "time": 2.983299999999998
+      }
+    },
+    {
+      "type": "guard",
+      "combat": {
+        "hp": 128,
+        "enemyHP": 119.39999999999998,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 206,
+          "walk": 275,
+          "attack": 13,
+          "hit": 25
+        },
+        "time": 5.8999000000000175
+      }
+    }
+  ],
+  "pass": false
+}

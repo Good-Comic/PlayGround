@@ -1,0 +1,31 @@
+# 新 Agent 移轉與長矛／盾衛切片 / Agent migration and spear/shield slice
+
+繁體中文：本次從 GitHub 實際核對的 `463c9d863b45af5be1e934499a61634921e19d65` 建立獨立乾淨工作區 `/workspace/riftwatch-v240-takeover`，沿用 ACTIVE STRATEGY `docs/STRATEGY-V2.4-GAME-FIRST.md`。GDD 四份快照均符合 SOURCES.json 雜湊；完整規格套件仍不完整。Recovery Index 為舊 v231 快照，實際主線 Handoff、Progress Feed 與 Git 優先。本文件保存時為 MIGRATION_IN_PROGRESS，尚待本次來源／證據 Push 與 Progress Feed 遠端保存；不能提前宣稱移轉完成。
+
+English: Created the independent clean worktree `/workspace/riftwatch-v240-takeover` from GitHub-verified `463c9d863b45af5be1e934499a61634921e19d65`, retaining ACTIVE STRATEGY `docs/STRATEGY-V2.4-GAME-FIRST.md`. All four GDD snapshots match SOURCES.json hashes; the full specification package remains incomplete. The Recovery Index is an older v231 snapshot; current main development Handoff, Progress Feed and Git take precedence. At this document snapshot the status is MIGRATION_IN_PROGRESS, pending source/evidence push and remote Progress Feed preservation; migration completion is not claimed prematurely.
+
+繁體中文：依使用者明示原環境離線及唯一新執行者移轉授權，原 V240-SPECIAL-ATLAS 與 V240-CONTENT-FEED 任務以既有 CAS dry-run、正常 Push、遠端 SHA 核對移轉至 `codex-migration-20261029`，Ownership revision202／203，遠端 `e4187e5579f8489a5682706b82e8d3b1ffa74422`。未以租約過期推論停機。遠端無其他 OWNED 任務；無跨平台其他 Agent 執行狀態 API，不宣稱已停止未知程序。
+
+English: Under the user's explicit offline-original-environment and sole-new-executor migration authorization, transferred existing V240-SPECIAL-ATLAS and V240-CONTENT-FEED tasks to `codex-migration-20261029` using existing CAS dry runs, normal pushes and exact remote SHA verification. Ownership revisions202/203, remote `e4187e5579f8489a5682706b82e8d3b1ffa74422`. Shutdown was not inferred from lease expiry. No other remote tasks were OWNED; no cross-platform agent-runtime API exists, so unknown processes are not claimed stopped.
+
+繁體中文：新成果為 spearman 與 guard 各自原創 PNG／SVG Atlas，八方向、五狀態、每組四影格；共320影格，長槍突刺／圓盾有別於盾衛大鳶盾、劍與盔飾。原始碼生成器可重建，未使用外部素材或新增授權依賴。沿用正式 Atlas 渲染與程序回退，不修改兵種數值、碰撞、導航、RNG、存檔或平衡。這是可辨識的初步2.5D切片，不代表最終高品質或16文明美術全部完成。
+
+English: New work comprises independent original PNG/SVG atlases for spearman and guard: eight directions, five states, four frames each,320frames total. Spear thrust/round buckler differ from the guard's large kite shield, sword and crest. The source generator reproduces the assets without external artwork or new license dependencies. Uses production atlas rendering and procedural fallback without changing unit stats, collisions, navigation, RNG, saves or balance. This is an identifiable initial2.5Dslice, not final high-quality artwork or completion of all16civilizations.
+
+繁體中文：新環境最小基準11項Node通過；基準36檔Artifact由真正首頁Start啟動13單位，無頁面錯誤。原錄影缺FFmpeg為工具失敗，以工作區Playwright快取連結系統FFmpeg修復，未修改平台工具。新來源 `dc88fd96a810936f99919b57d27804a682185d2d` 的22項定向Node及14項Chromium通過；40檔payload全部SHA256一致。初版 `9f81e0c307e68e54254e31ef787ede51401e113a` 抓到5個長矛死亡影格邊界碰觸，結果保留於 spear-guard-initial；擴大留白後320影格像素檢查全部通過。
+
+English: New-environment minimal baseline:11Node tests passed; native homepage Start launched13units from the exact36-file baseline artifact with no page errors. Initial missing-FFmpeg recording was a tooling failure, repaired with a workspace Playwright-cache symlink to systemFFmpeg without modifying platform tools. New source `dc88fd96a810936f99919b57d27804a682185d2d` passes22focused Node and14Chromium checks, with all40payloadSHA256hashes matching. Initial `9f81e0c307e68e54254e31ef787ede51401e113a` exposed5spear death frames touching boundaries; retained under spear-guard-initial. Expanded gutters pass pixel checks for all320frames.
+
+繁體中文：錄影是真正Chromium操作；首頁與Seed為原生輸入，其後明示CONTROLLED_FIXTURE建立展示。正式移動、滑鼠右鍵攻擊、真實傷害與四攻擊影格通過；受擊／死亡由正式Game方法觸發。八方向為擺姿、三縮放為視覺檢查，非八方向自然導航或十波通關。直接檢視確認長槍、圓盾、大鳶盾、直立身體與完整倒伏可辨識。100人靜態交錯A/B只量測Renderer.draw同步JS：三組Atlas均通過平均≤33.3ms、P95≤50ms、同組P50不退步超20%；原始資料見render-samples.json，不能推論整體FPS、GPU完成或硬體驗收。
+
+English: Recordings capture actual Chromium operations. Homepage/Seed inputs are native, followed by explicitly CONTROLLED_FIXTURE galleries. Production movement, right-mouse attack, real damage and four attack frames pass; productionGame methods trigger hit/death. Eight directions are posed and three zooms visually checked, not eight-direction natural navigation or ten-wave victory. Direct inspection distinguishes long spear, buckler, large kite shield, upright bodies and full fallen poses. The100-unit interleaved staticA/B measures synchronousRenderer.drawJS only: all three atlas groups meet mean≤33.3ms,P95≤50ms and pairedP50regression≤20%. Raw render-samples.json cannot establish whole-gameFPS,GPUcompletion or hardware acceptance.
+
+繁體中文：原環境 `ccarenv_b64_Y2NhcmVudl9lYTJkMmY2OTc1NTA4MTkxYTI3NzU1MmQ5MTA3MTQ4OQ` 的 `9a0f19e67ff16c7d0e0efc005d7d98b81449f17d`、未提交QA、spearman-final及/tmp/riftwatch-spear維持 UNPUSHED_WORK_RECOVERY_PENDING。新clone仍無該物件；這不證明原資料遺失。本切片是新成果，不冒用原13項PASS。未修改原環境；未來恢復必須先獨立Recovery分支審核再整合。
+
+English: Original environment `ccarenv_b64_Y2NhcmVudl9lYTJkMmY2OTc1NTA4MTkxYTI3NzU1MmQ5MTA3MTQ4OQ` commit `9a0f19e67ff16c7d0e0efc005d7d98b81449f17d`, uncommittedQA,spearman-final and/tmp/riftwatch-spear remain UNPUSHED_WORK_RECOVERY_PENDING. The object is absent in the new clone; this does not establish loss of original data. This slice is new work and does not reuse the old13PASS. Original environment untouched; any recovered work must first be reviewed on an independentRecoverybranch.
+
+繁體中文：沒有可共享即時瀏覽器工具，因此提供真實WebM備援。也無排程管理工具，既有310分鐘排程未核對／切換，若仍指向原對話需使用者在排程介面改指本對話。自然Easy／Normal十波未通過、自然NG+未測；受控十波／NG+只限定通過。低FPS時鐘、嚴格Save/Load、建築混合場景性能FAIL、自然Rift未重現及HARDWARE_TEST_PENDING全部保留。沒有main、Pages、Issue、Checkpoint或公開發布修改。下一個獨立GAME FIRST切片為水岸視覺過渡，不新增高度／平衡規則。
+
+English: No shared-live-browser tool exists; actualWebM recordings are the fallback. No scheduler-management tool exists either: the existing310-minute schedule was not inspected/rebound; if still targeting the old conversation the user must retarget it in the schedulerUI. NaturalEasy/Normalten waves remain unpassed and naturalNG+untested; controlledten-wave/NG+passes are scoped. Retain low-FPSclock, strictSave/Load, mixed-buildingperformanceFAIL, unreproduced naturalRift andHARDWARE_TEST_PENDING. No main,Pages,Issue,Checkpoint or public-release changes. Next independentGAME FIRSTslice: shoreline visual transitions without new elevation/balance rules.
+
+BILINGUAL_DOCUMENTATION_REQUIRED = true

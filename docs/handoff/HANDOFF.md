@@ -1,3 +1,14 @@
+# 新主控移轉快照 / New primary migration snapshot
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+繁體中文：使用者已正式移轉全部後續開發至本Agent。基準463c9d8，新工作區/workspace/riftwatch-v240-takeover，Ownership revision203已安全取得。長矛／盾衛新成果來源dc88fd96a810936f99919b57d27804a682185d2d：22 Node及14本地Chromium通過，保留首輪影格邊界FAIL。此快照MIGRATION_IN_PROGRESS，尚待本次Push／Feed保存。原9a0f19e及未提交QA為UNPUSHED_WORK_RECOVERY_PENDING，不阻塞新主線，不冒用原13項測試。下一切片為水岸視覺。自然戰役不是美術前置；保留全部歷史FAIL及未發布限制。排程無管理工具，未宣稱切換。詳見docs/evidence/v240-migration/REPORT.md。以下為歷史快照，不覆蓋本段。
+
+English: The user formally migrated all further development to thisAgent. Baseline463c9d8,newworktree/workspace/riftwatch-v240-takeover; ownershiprevision203safely acquired. New spear/guard source dc88fd96a810936f99919b57d27804a682185d2d passes22Node/14localChromium checks; initial boundaryFAIL retained. This snapshot is MIGRATION_IN_PROGRESS pending this push/feed preservation. Original9a0f19eanduncommittedQA remain UNPUSHED_WORK_RECOVERY_PENDING, do not block new development, and old13tests are not reused. Nextslice:shorelinevisuals. Naturalcampaigns are not an artprerequisite; all historicalFAIL/publicationrestrictions remain. No scheduler-management tool; no switching claimed. See docs/evidence/v240-migration/REPORT.md. Earlier snapshots below are historical and do not override this paragraph.
+
+---
+
 # 內容優先與諸葛弩接續 / Content-first and crossbow continuation
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

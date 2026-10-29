@@ -1,30 +1,37 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "內容優先特殊兵種素材 / Content-first special-unit atlas",
+  "name": "移轉與長矛盾衛新素材 / Migration and new spear/shield artwork",
   "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
   "priority": "P1",
   "agent": "Codex",
-  "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
+  "environment": "New independent Linux Chromium workspace; local software rendering",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-  "latest_pushed_commit": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
-  "application_source_commit": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1",
+  "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
+  "latest_pushed_commit": "463c9d863b45af5be1e934499a61634921e19d65",
+  "application_source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
   "completed": [
-    "獨立諸葛弩八方向五狀態四影格Atlas / Independent eight-direction five-state four-frame crossbow atlas",
-    "正規化攻擊與受擊播放修復 / Normalized attack and hit playback repair",
-    "12 Node / 9 local Chromium PASS; retained original failures"
+    "Exact latest remote and active Strategy/GDD hashes reconciled",
+    "Ownership safely transferred under explicit offline-original migration authorization",
+    "New spear/guard atlases;22 focused Node and14 local Chromium checks pass"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "path": "docs/evidence/v240-special-atlas/final/browser.json",
-      "result": "9 PASS LOCAL CONTROLLED VISUAL ONLY",
-      "source_commit": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1"
+      "name": "Focused Node",
+      "result": "22 PASS NEW_ENVIRONMENT",
+      "path": "docs/evidence/v240-migration/focused-node.txt",
+      "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d"
+    },
+    {
+      "name": "Local controlled Chromium",
+      "result": "14 PASS; not natural campaign",
+      "path": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
+      "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-special-atlas/REPORT.md"
+    "docs/evidence/v240-migration/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -35,21 +42,31 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "Long-weapon/shield silhouette or terrain artwork; no repeated natural campaign prerequisite"
+    "Shoreline visual transitions; preserve navigation and world data",
+    "Periodic natural campaigns after material gameplay changes, not an art prerequisite"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "CHECKPOINTED",
+  "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
   "updated_at": "2026-10-29",
-  "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
-    "task": "V240-EASY-BASELINE",
-    "execution": "codex-easy-20261029",
-    "global_version": 197,
-    "status": "RELEASE_PENDING_AFTER_PUSH"
-  }
+    "task": "V240-SPECIAL-ATLAS",
+    "execution": "codex-migration-20261029",
+    "global_version": 203,
+    "status": "OWNED_REMOTE_VERIFIED"
+  },
+  "migration_status": "MIGRATION_IN_PROGRESS",
+  "recovery_pending": {
+    "status": "UNPUSHED_WORK_RECOVERY_PENDING",
+    "commit": "9a0f19e67ff16c7d0e0efc005d7d98b81449f17d",
+    "original_worktree": "/workspace/riftwatch-v240",
+    "uncommitted_script": "tools/qa/v240_special_atlas_browser.mjs",
+    "evidence": "/workspace/diagnostics/riftwatch/spearman-final",
+    "artifact": "/tmp/riftwatch-spear"
+  },
+  "scheduler_status": "UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL"
 }
