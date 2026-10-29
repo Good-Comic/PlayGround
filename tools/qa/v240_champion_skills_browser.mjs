@@ -97,8 +97,10 @@ try {
     check(`${type}: production warning geometry and distinct glyph`, warning.r === (type === 'warlord2' ? 3.3 : 2.8) && warning.damage === (type === 'warlord2' ? 105 : 65) && warning.delay === 2.4 && warning.visual.spokes === (type === 'warlord2' ? 8 : 6), warning);
     await page.mouse.move(8, 8); await page.screenshot({ path: `${out}/${type}-warning.png` });
     const target = await page.evaluate(() => { const p = ageOfAsh.renderer.screen(ageOfAsh.game, 24, 37); return { x: p.x, y: p.y }; });
-    await page.mouse.click(target.x, target.y, { button: 'right' });
     await page.evaluate(() => { ageOfAsh.game.paused = false; });
+    await page.mouse.click(target.x, target.y, { button: 'right' });
+    const order = await page.evaluate(() => ({ state: actor.state, target: actor.targetPos }));
+    check(`${type}: native escape command accepted while running`, order.state === 'move' && order.target && Math.hypot(order.target.x - 24, order.target.y - 37) < 1, order);
     await page.waitForFunction(() => feedbackSeen.impacts > 0, null, { timeout: 10000 });
     await page.evaluate(() => { ageOfAsh.game.paused = true; });
     await page.screenshot({ path: `${out}/${type}-impact-and-escape.png` });

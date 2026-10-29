@@ -85,7 +85,8 @@ def build(kind):
             for frame in range(4):
                 cells.append(f'<g transform="translate({((direction%4)*4+frame)*SIZE} {(row*2+direction//4)*SIZE})">{cell(kind,direction,state,frame)}</g>')
     height = len(states) * 2 * SIZE
-    return f'<svg xmlns="http://www.w3.org/2000/svg" width="2816" height="{height}" viewBox="0 0 2816 {height}"><title>Riftwatch original {kind} animation atlas</title>{"".join(cells)}</svg>\n'
+    svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="2816" height="{height}" viewBox="0 0 2816 {height}"><title>Riftwatch original {kind} animation atlas</title>{"".join(cells)}</svg>\n'
+    return '\n'.join(line.rstrip() for line in svg.split('\n'))
 
 
 if __name__ == '__main__':
