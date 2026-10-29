@@ -1,0 +1,126 @@
+{
+  "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
+  "mode": "LOCAL_NATIVE_MAPS_CONTROLLED_CAMERA_PAUSE",
+  "seed": "MIGRATION-SHORELINE",
+  "checks": [
+    {
+      "name": "river: exact payload",
+      "pass": true
+    },
+    {
+      "name": "river: visible shoreline changes without world mutation",
+      "pass": true,
+      "detail": {
+        "target": {
+          "x": 14,
+          "y": 20
+        },
+        "bankTiles": 138,
+        "seed": 3333935457,
+        "generationVersion": 2,
+        "terrainBefore": "0ab3c2685e80e04d83e36e6f4d35d5615b6317e951b2dd42e830c2b954f1212a",
+        "terrainAfter": "a67f55d8d796759bb53389dd71fce6d5e4ada7a4691a70b2b2e561421b51a33d",
+        "unchangedWorld": true
+      }
+    },
+    {
+      "name": "river: banks baked once and reused for30frames",
+      "pass": true,
+      "detail": {
+        "rebuiltCalls": 80,
+        "cachedCalls": 0
+      }
+    },
+    {
+      "name": "fjord: exact payload",
+      "pass": true
+    },
+    {
+      "name": "fjord: visible shoreline changes without world mutation",
+      "pass": true,
+      "detail": {
+        "target": {
+          "x": 34,
+          "y": 34
+        },
+        "bankTiles": 34,
+        "seed": 3333935457,
+        "generationVersion": 2,
+        "terrainBefore": "1e5baf5a8cc86de788623592205425d0c53ee53874e472025803123aba0513f0",
+        "terrainAfter": "7854c9e9c676ffa5cd5c9436448bb61bda7d024c3ef17e363e94d0026d8490fe",
+        "unchangedWorld": true
+      }
+    },
+    {
+      "name": "fjord: banks baked once and reused for30frames",
+      "pass": true,
+      "detail": {
+        "rebuiltCalls": 274,
+        "cachedCalls": 0
+      }
+    },
+    {
+      "name": "island: exact payload",
+      "pass": true
+    },
+    {
+      "name": "island: visible shoreline changes without world mutation",
+      "pass": true,
+      "detail": {
+        "target": {
+          "x": 33,
+          "y": 31
+        },
+        "bankTiles": 35,
+        "seed": 3333935457,
+        "generationVersion": 2,
+        "terrainBefore": "ee75e9e87ebb4d2dd189e3f4f33cf443b598e5c250c90ce86a46beee6f5f6334",
+        "terrainAfter": "e0da2d192d500101d3ae61b8fe665475dbf521ba07133d9283964ad4e38f4f05",
+        "unchangedWorld": true
+      }
+    },
+    {
+      "name": "island: banks baked once and reused for30frames",
+      "pass": true,
+      "detail": {
+        "rebuiltCalls": 301,
+        "cachedCalls": 0
+      }
+    },
+    {
+      "name": "ash: exact payload",
+      "pass": true
+    },
+    {
+      "name": "ash: visible shoreline changes without world mutation",
+      "pass": true,
+      "detail": {
+        "target": {
+          "x": 38,
+          "y": 35
+        },
+        "bankTiles": 57,
+        "seed": 3333935457,
+        "generationVersion": 2,
+        "terrainBefore": "088ff9a7555c0b8f622816efddc930cb3f0d14c2ecd1cfeda48bd0f9fc289cea",
+        "terrainAfter": "1bbf5935becaeec2286962db34745cc2f1bb7708837e7aee12b7edb0da1a8c4a",
+        "unchangedWorld": true
+      }
+    },
+    {
+      "name": "ash: banks baked once and reused for30frames",
+      "pass": true,
+      "detail": {
+        "rebuiltCalls": 178,
+        "cachedCalls": 0
+      }
+    },
+    {
+      "name": "no console page or resource errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

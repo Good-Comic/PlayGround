@@ -1,18 +1,21 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "移轉與長矛盾衛新素材 / Migration and new spear/shield artwork",
+  "name": "主控移轉與內容優先切片 / Primary migration and content-first slices",
   "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
   "priority": "P1",
   "agent": "Codex",
   "environment": "New independent Linux Chromium workspace; local software rendering",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-  "latest_pushed_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-  "application_source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
+  "latest_pushed_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+  "application_source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
   "completed": [
     "Exact latest remote and active Strategy/GDD hashes reconciled",
     "Ownership safely transferred under explicit offline-original migration authorization",
-    "New spear/guard atlases;22 focused Node and14 local Chromium checks pass"
+    "New spear/guard atlases;22 focused Node and14 local Chromium checks pass",
+    "First spear/guard source/evidence pushed and verified at878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+    "Progress Feed verified at572d40607310b07b24dce1ec7a22670aaed5da7a",
+    "Biome-specific water banks:5focusedNode/13localChromiumchecks pass; native maps unchanged"
   ],
   "uncommitted": [],
   "unpushed": [],
@@ -28,10 +31,23 @@
       "result": "14 PASS; not natural campaign",
       "path": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
       "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d"
+    },
+    {
+      "name": "Shoreline Node",
+      "result": "5 PASS",
+      "path": "docs/evidence/v240-shorelines/focused-node.txt",
+      "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457"
+    },
+    {
+      "name": "Shoreline Chromium",
+      "result": "13 PASS; controlled camera/pause",
+      "path": "docs/evidence/v240-shorelines/final/browser.json",
+      "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-migration/REPORT.md"
+    "docs/evidence/v240-migration/REPORT.md",
+    "docs/evidence/v240-shorelines/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -42,14 +58,15 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "Shoreline visual transitions; preserve navigation and world data",
-    "Periodic natural campaigns after material gameplay changes, not an art prerequisite"
+    "Expand the next existing special-unit/hero visual identity with directed Node/Chromium/visual checks; no whole art pipeline rerun",
+    "Terrain elevation/ramp rule decisions remain separate; current shorelines are visual only",
+    "Periodically integrate natural campaigns after material gameplay changes; preserve known failures"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "IN_PROGRESS",
+  "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
   "updated_at": "2026-10-29",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
@@ -57,9 +74,9 @@
     "task": "V240-SPECIAL-ATLAS",
     "execution": "codex-migration-20261029",
     "global_version": 203,
-    "status": "OWNED_REMOTE_VERIFIED"
+    "status": "OWNED_REMOTE_VERIFIED_REVALIDATE_BEFORE_WRITING"
   },
-  "migration_status": "MIGRATION_IN_PROGRESS",
+  "migration_status": "MIGRATION_IN_PROGRESS_PENDING_FINAL_RECOVERY_PUSH_AND_FEED",
   "recovery_pending": {
     "status": "UNPUSHED_WORK_RECOVERY_PENDING",
     "commit": "9a0f19e67ff16c7d0e0efc005d7d98b81449f17d",

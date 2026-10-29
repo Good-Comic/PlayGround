@@ -25,6 +25,10 @@ try {
     await page.locator('#setup-biome').selectOption(biome);
     await page.locator('#btn-start').click();
     await page.waitForFunction(() => !ageOfAsh.game.inMenu);
+    await page.waitForFunction(() => {
+      const style = getComputedStyle(document.querySelector('#menu-screen'));
+      return style.visibility === 'hidden' && Number(style.opacity) === 0;
+    });
     const observation = await page.evaluate(async () => {
       const { waterBankEdges } = await import('./js/renderer.js');
       const g = ageOfAsh.game, r = ageOfAsh.renderer; g.paused = true;

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-10-28T17:59:28.933322+00:00",
-  "trigger": "FINAL_CHECKPOINT",
-  "collector_commit": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+  "captured_at_utc": "2026-10-29T06:59:31.055716+00:00",
+  "trigger": "SLICE_COMPLETE",
+  "collector_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
   "collector_dirty": true,
   "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
   "remote_query": {
     "status": "REMOTE_QUERIED",
-    "queried_at": "2026-10-28T17:59:28.933322+00:00"
+    "queried_at": "2026-10-29T06:59:31.055716+00:00"
   },
   "remote_heads": {
     "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -31,9 +31,9 @@
     "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
     "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
     "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-    "codex/riftwatch-progress-feed": "d98bbbc753c4e21b85022d69c4eefe5a18dc83f3",
+    "codex/riftwatch-progress-feed": "572d40607310b07b24dce1ec7a22670aaed5da7a",
     "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
-    "codex/riftwatch-task-ownership": "87c05055919ecbd5667a0e21ee7e7f0091be62c7",
+    "codex/riftwatch-task-ownership": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
     "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
     "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
     "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
@@ -63,7 +63,7 @@
     "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
     "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
     "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-    "codex/riftwatch-v240-game-first": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+    "codex/riftwatch-v240-game-first": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
     "main": "e35a73329ee7942627496e55b844d02b2501e685",
     "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
     "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -92,439 +92,17 @@
   },
   "local_branches": [
     {
-      "branch": "codex/riftwatch-b1-rally",
-      "head": "2a0da8a7320336ac342c1af0953a424d08ef1515",
-      "remote_head": "2a0da8a7320336ac342c1af0953a424d08ef1515",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-b2-civ-training",
-      "head": "0b072b7ae211deb8789a88290b495ce2c58773c9",
-      "remote_head": "0b072b7ae211deb8789a88290b495ce2c58773c9",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-gameplay-improvement",
-      "head": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
-      "remote_head": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-gameplay-integration",
-      "head": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
-      "remote_head": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-playtest-candidate",
-      "head": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-      "remote_head": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v2-baseline",
-      "head": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
-      "remote_head": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v22-boss",
-      "head": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
-      "remote_head": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v22-civ-alignment",
-      "head": "c456cae581b3ec85a7dd222d017453d2e589e095",
-      "remote_head": "c456cae581b3ec85a7dd222d017453d2e589e095",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v22-population",
-      "head": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
-      "remote_head": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v22-quality-tools",
-      "head": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
-      "remote_head": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v22-target-state",
-      "head": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
-      "remote_head": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v222-prediction",
-      "head": "b72f9603bf2d8fd865da5cf9dccc32be1dd90830",
-      "remote_head": "b72f9603bf2d8fd865da5cf9dccc32be1dd90830",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v222-recovery",
-      "head": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
-      "remote_head": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v224-monitor",
-      "head": "fa520ae3006329bd2b1c54ac90938519465bf320",
-      "remote_head": "fa520ae3006329bd2b1c54ac90938519465bf320",
-      "status": "REMOTE_SAVED"
-    },
-    {
-      "branch": "codex/riftwatch-v226-delivery",
-      "head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
-      "remote_head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
-      "status": "REMOTE_SAVED"
-    },
-    {
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
-      "remote_head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
-      "status": "REMOTE_SAVED"
+      "head": "771a6ddea2d458f1362f9717c42a10e171c85457",
+      "remote_head": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+      "status": "HEAD_DIFFERS_REVIEW_REQUIRED"
     }
   ],
   "worktrees": [
     {
-      "path": "/workspace/PlayGround",
-      "branch": "work",
-      "head": "e35a73329ee7942627496e55b844d02b2501e685",
-      "locked": false,
-      "task_id": null,
-      "last_validation": [],
-      "blockers": [
-        "NOT_ASSESSED"
-      ],
-      "next_steps": [
-        "Inspect task registry and relevant diff before writing"
-      ],
-      "remote_status": "REMOTE_BRANCH_ABSENT",
-      "remote_head": null,
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch",
-      "branch": "codex/riftwatch-v222-recovery",
-      "head": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
-      "locked": false,
-      "task_id": "DEV-RECOVERY-P0",
-      "last_validation": [
-        {
-          "path": "/workspace/diagnostics/riftwatch/v22-quality-baseline/results.json",
-          "source_commit": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
-          "result": "REFER_TO_EVIDENCE; no automatic PASS inferred",
-          "exists": true,
-          "storage": "LOCAL_ONLY_OR_MISSING",
-          "sha256": "b3bf19051816248b1dccd9bbd38e7bfe2221c6eb1f8e70d4092c4f816974d41d",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
-      "blockers": [
-        "Feature-specific remaining gates; see handoff"
-      ],
-      "next_steps": [
-        "Publish framework; preserve other worktrees; do not rerun valid12 baseline cases"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-civ",
-      "branch": "codex/riftwatch-v22-civ-alignment",
-      "head": "c456cae581b3ec85a7dd222d017453d2e589e095",
-      "locked": false,
-      "task_id": "B2-GDD",
-      "last_validation": [
-        {
-          "path": "docs/evidence/strategy-v222/civ-results.json",
-          "source_commit": "da0823c6341b1ee85e32d1b6c0f776ef3008255c",
-          "result": "PASS8 browser,47 full Node,4locales; prior description FAIL fixed",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "ed43181fc96ec3f6463dfff37203727a307e9c5eba443a51dd92e361e99f3908",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        },
-        {
-          "path": "docs/evidence/strategy-v222/civ-p0-summary.json",
-          "source_commit": "2ad2fe4a6466c6c38a033d1194f004924dbfda37",
-          "result": "PASS normal P0; performance/combined B1/B2 still pending",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "d5d392bea72713c02c184baca4f00558da547abe0ed016e6b74caa9c50a0f5e2",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
-      "blockers": [
-        "Feature-specific remaining gates; see handoff"
-      ],
-      "next_steps": [
-        "Persist normal P0 evidence; performance/combined B1/B2 gates pending"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "c456cae581b3ec85a7dd222d017453d2e589e095",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-integration",
-      "branch": "codex/riftwatch-gameplay-integration",
-      "head": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
-      "locked": false,
-      "task_id": "INTEGRATION",
-      "last_validation": [
-        {
-          "path": "/workspace/diagnostics/riftwatch/v222-tooling-smoke/result.json",
-          "source_commit": "72e978417afd3c95f897cc7cb35395f00008c313",
-          "result": "INTEGRATED_VERIFIED tooling only;44Node+8dev+4locales and actual Start/Save/Continue pass; no game resource changes",
-          "exists": true,
-          "storage": "LOCAL_ONLY_OR_MISSING",
-          "sha256": "62f412196a38f35f655c092d31e06ef6cb9dee08d2613ff03a5d37f182848fb4",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
-      "blockers": [
-        "Gameplay feature gates not yet complete"
-      ],
-      "next_steps": [
-        "Keep Boss/Population/Target/Civ/Rally game changes isolated until gates"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-monitor",
-      "branch": "codex/riftwatch-v224-monitor",
-      "head": "fa520ae3006329bd2b1c54ac90938519465bf320",
-      "locked": false,
-      "task_id": null,
-      "last_validation": [],
-      "blockers": [
-        "NOT_ASSESSED"
-      ],
-      "next_steps": [
-        "Inspect task registry and relevant diff before writing"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "fa520ae3006329bd2b1c54ac90938519465bf320",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-playtest",
-      "branch": "codex/riftwatch-playtest-candidate",
-      "head": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-      "locked": false,
-      "task_id": "PLAYTEST-P0",
-      "last_validation": [
-        {
-          "path": "docs/evidence/playtest-candidate/acceptance.json",
-          "source_commit": "d6ee34a5c5d3f2082ee635adb27d6405a41e5f3c",
-          "result": "LOCAL_VERIFIED bounded experimental candidate; Pages approval pending",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "f7aa32e6797823b1d48a98ed1ef8803526435c67261a360c04284351c6e9dd67",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
-      "blockers": [
-        "DEPLOYMENT_BLOCKED_AWAITING_USER_APPROVAL",
-        "HARDWARE_TEST_PENDING",
-        "SIMULATION_INTEGRITY_BLOCKED"
-      ],
-      "next_steps": [
-        "Obtain user approval for APPROVAL-PLAN.json",
-        "If approved recheck no existing Pages,deploy only approved artifact toisolated site branch,enablePages then actual remote acceptance",
-        "Keep full formal feature gates unchanged; independent performance and B\u2013E work can continue"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-pop",
-      "branch": "codex/riftwatch-v22-population",
-      "head": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
-      "locked": false,
-      "task_id": "A4-POP",
-      "last_validation": [
-        {
-          "path": "docs/evidence/strategy-v222/pop-results.json",
-          "source_commit": "86d7e81394eaab7a2aa579bd30dbbbc278224c3c",
-          "result": "PASS7 browser,50 full Node,4locales",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "10ff353b42f23f07713bcfcdae147e0d44b0a04ccfd14ffb42e7d6b7998f6161",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        },
-        {
-          "path": "docs/evidence/strategy-v222/pop-p0-summary.json",
-          "source_commit": "8d0902877564872ee5382155ebf38474c125c950",
-          "result": "PASS normal P0; performance/spec ceilings still pending",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "674edd4b6b044f1d425c213947d73424ae9db612c467fdcec334a5389b7a7403",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
-      "blockers": [
-        "Feature-specific remaining gates; see handoff"
-      ],
-      "next_steps": [
-        "P0/bounded browser pass; performance and spec ceilings still need gating"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-prediction",
-      "branch": "codex/riftwatch-v222-prediction",
-      "head": "b72f9603bf2d8fd865da5cf9dccc32be1dd90830",
-      "locked": false,
-      "task_id": "QA-PREDICTION",
-      "last_validation": [
-        {
-          "path": "/workspace/diagnostics/riftwatch/v222-prediction-committed-tests.log.txt",
-          "source_commit": "0ac8effc8c99cc4524e2a90279fdb41eacc3e7dc",
-          "result": "5 actual committed-tool tests PASS; synthetic model fixtures only; real hardware prediction INSUFFICIENT_DATA",
-          "exists": true,
-          "storage": "LOCAL_ONLY_OR_MISSING",
-          "sha256": "76cc889252eafc122067ecebc2cdc76f06378d97cd42c08e421280b5f03f3523",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
-      "blockers": [
-        "No matched physical hardware calibration"
-      ],
-      "next_steps": [
-        "Collect comparable actual measurements; do not translate cloud ratios to verified FPS"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "b72f9603bf2d8fd865da5cf9dccc32be1dd90830",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-rally",
-      "branch": "codex/riftwatch-b1-rally",
-      "head": "2a0da8a7320336ac342c1af0953a424d08ef1515",
-      "locked": false,
-      "task_id": "B1-RALLY",
-      "last_validation": [
-        {
-          "path": "docs/evidence/strategy-v2/acceptance.json",
-          "source_commit": "2f148c3e3877fc04b6566c0fc6c680b699c73895",
-          "result": "REFER_TO_EVIDENCE; no automatic PASS inferred",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "e1b3656c28533bd787dff6db01c70f40fcdbd1400d36075debd2409c6ae08455",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
-      "blockers": [
-        "Feature-specific remaining gates; see handoff"
-      ],
-      "next_steps": [
-        "Latest source2f148c3 needs full three-repeat performance"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "2a0da8a7320336ac342c1af0953a424d08ef1515",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-v22",
-      "branch": "codex/riftwatch-v22-target-state",
-      "head": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
-      "locked": false,
-      "task_id": "A1-TARGET",
-      "last_validation": [
-        {
-          "path": "docs/evidence/strategy-v222/target-p0-summary.json",
-          "source_commit": "77c20609da28b38fa405531a0215a8261dc6b1ef",
-          "result": "PASS full normal P0 and51Node/fourlocales/5native browser checks",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "a74ca0c7c7c6c650b110ae41dfc2dce5bea5e8c4843e94ec689172d36fe9f851",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        },
-        {
-          "path": "docs/evidence/strategy-v222/target-performance-summary.json",
-          "source_commit": "294fa287aed37af7820e682d175577a89867380f",
-          "result": "9/12qualityPASS;12/12stuck+movementPASS;3FAIL retained; integration BLOCKED",
-          "exists": true,
-          "storage": "REMOTE_SAVED",
-          "sha256": "b07b652f31cbea97ef32217b7b166b4e4c60b51e766ef0e22f1a737c47253ae3",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
-        }
-      ],
-      "blockers": [
-        "New100r1 severe rAF stall;250r1/r3 clock-progress loss; no retry/waiver"
-      ],
-      "next_steps": [
-        "Diagnose stalls/time loss in separate diagnostic cohort, no repeated acceptance retry",
-        "Then gate feature merge; do not label all collisions fixed"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-v226",
-      "branch": "codex/riftwatch-v226-delivery",
-      "head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
-      "locked": false,
-      "task_id": null,
-      "last_validation": [],
-      "blockers": [
-        "NOT_ASSESSED"
-      ],
-      "next_steps": [
-        "Inspect task registry and relevant diff before writing"
-      ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
-      "unpushed_commits": [],
-      "changed_files": [],
-      "dirty": false,
-      "local_record_status": "LOCAL_INVENTORIED"
-    },
-    {
-      "path": "/workspace/riftwatch-v240",
+      "path": "/workspace/riftwatch-v240-takeover",
       "branch": "codex/riftwatch-v240-game-first",
-      "head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
+      "head": "771a6ddea2d458f1362f9717c42a10e171c85457",
       "locked": false,
       "task_id": "V240-V5-PLAYABILITY",
       "last_validation": [
@@ -533,27 +111,27 @@
           "result": "NATURAL_DEFEAT wave5",
           "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
           "exists": true,
-          "storage": "REMOTE_SAVED",
+          "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
           "sha256": "07b872f659222ac8419a8261b28215e8c6af30efcf07753ea6e4843b955274e5",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+          "resource_freshness": "SOURCE_CHANGED"
         },
         {
           "path": "docs/evidence/v240-easy-baseline/normal/result.json",
           "result": "NATURAL_DEFEAT wave4",
           "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
           "exists": true,
-          "storage": "LOCAL_ONLY_OR_MISSING",
+          "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
           "sha256": "c153a1ff7009bac9e7dfc958a87c777a242fd03b116c16f524ddc95ed25dbfed",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+          "resource_freshness": "SOURCE_CHANGED"
         },
         {
           "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.json",
           "result": "5 PASS CONTROLLED_FIXTURE only",
           "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
           "exists": true,
-          "storage": "REMOTE_SAVED",
+          "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
           "sha256": "64993964086ee8b660271db6fe33c2a0dc0d3dca9ac0645d5a66559070f1e276",
-          "resource_freshness": "MATCHES_WORKING_RESOURCES"
+          "resource_freshness": "SOURCE_CHANGED"
         }
       ],
       "blockers": [
@@ -565,175 +143,33 @@
         "\u5148\u5206\u6790\u5168\u8cc7\u6e90\u9810\u7b97\u3001\u63a1\u96c6\u9632\u5b88\uff0f\u64cd\u4f5c\u5ef6\u9072\u3001\u653b\u57ce\u53cd\u5236\uff0c\u518d\u5b9a\u6700\u5c0f\u4e0d\u540c\u6e2c\u8a66 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
         "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
       ],
-      "remote_status": "REMOTE_SAVED",
-      "remote_head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
-      "unpushed_commits": [],
+      "remote_status": "LOCAL_AHEAD",
+      "remote_head": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+      "unpushed_commits": [
+        "771a6ddea2d458f1362f9717c42a10e171c85457"
+      ],
       "changed_files": [
         {
           "status": " M",
-          "path": "docs/evidence/v240-easy-baseline/REPORT.md"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/ACTIVE-TASK.json"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/HANDOFF.md"
-        },
-        {
-          "status": " M",
-          "path": "docs/handoff/NEXT-TASKS.json"
-        },
-        {
-          "status": " M",
-          "path": "docs/recovery/task-registry.json"
+          "path": "tools/qa/v240_shoreline_browser.mjs"
         },
         {
           "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/comparison.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/controlled-browser/browser.mp4"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/easy/campaign.mp4"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/execution-environment.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/game-build-metadata.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal-interrupted/campaign.mp4"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/campaign.mp4"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-106.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-211.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-326.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-433.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/checkpoint-535.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/events.jsonl"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/latest-state.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/result.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/save-snapshot.json"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-1-boon-168.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-1-prep-0.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-1-wave-120.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-1-wave-52.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-2-boon-324.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-2-prep-170.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-2-wave-211.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-2-wave-280.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-3-boon-479.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-3-prep-326.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-3-wave-372.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-3-wave-433.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-4-defeat-602.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-4-prep-481.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-4-wave-515.png"
-        },
-        {
-          "status": "??",
-          "path": "docs/evidence/v240-easy-baseline/normal/wave-4-wave-578.png"
+          "path": "docs/evidence/v240-shorelines/focused-node.txt"
         }
       ],
       "dirty": true,
-      "local_record_status": "LOCAL_INVENTORIED"
+      "local_record_status": "LOCAL_INVENTORIED",
+      "ahead": 1,
+      "behind": 0
     }
   ],
   "comparison": [
     {
-      "path": "/workspace/riftwatch-v240",
-      "changed_fields": [
-        "head",
-        "remote_head",
-        "changed_files"
-      ],
-      "previous_head": "40a83d0c3bfac7b497f653d4f562264615e73fa4",
-      "actual_head": "af016f0e360dca02c74d3c18dab9dac52b7afd3a"
+      "path": "/workspace/riftwatch-v240-takeover",
+      "change": "NEW_OR_MANIFEST_MISSING"
     }
   ],
   "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
-  "snapshot_id": "bc05f1d8e7fe4ad6a92005054282cb7f0b9ba87ef16d3065cfb813220a385cd9"
+  "snapshot_id": "266e8cdff19313babacf6d74cbdf50d7f921a8adc8faec9e861e34d87f7e00c5"
 }

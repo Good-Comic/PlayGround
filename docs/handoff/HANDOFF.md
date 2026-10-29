@@ -1,3 +1,18 @@
+# 新主線主控接續 / New primary continuation
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+繁體中文：本Agent已安全取得V240-SPECIAL-ATLAS與V240-CONTENT-FEED，執行識別codex-migration-20261029。長矛／盾衛dc88fd9：22Node／14Chromium通過，第一輪裁切FAIL保留；已正常Push至878ec8f8cac6a06b0e80f420ac49e957820a65a2，Feed572d40607310b07b24dce1ec7a22670aaed5da7a已保存。後續水岸來源771a6ddea2d458f1362f9717c42a10e171c85457：5Node／13Chromium通過，四地貌世界資料不變、岸線只於快取重建繪製。此快照仍MIGRATION_IN_PROGRESS，最後Recovery／證據Push及Feed核對後才判定接管完成；本次最終回報與Feed提供最新實際結果。
+
+English: This Agent safely holds V240-SPECIAL-ATLAS and V240-CONTENT-FEED as codex-migration-20261029. Spear/guard source dc88fd9 passes 22 Node and 14 Chromium checks; the initial clipping FAIL is retained. It was normally pushed to 878ec8f8cac6a06b0e80f420ac49e957820a65a2, with Feed 572d40607310b07b24dce1ec7a22670aaed5da7a saved. Following shoreline source 771a6ddea2d458f1362f9717c42a10e171c85457 passes 5 Node and 13 Chromium checks, with unchanged world data across four biomes and banks drawn only when rebuilding the cache. This snapshot remains MIGRATION_IN_PROGRESS until final Recovery/evidence push and Feed verification; the final response and Feed report actual completion.
+
+繁體中文：原離線環境9a0f19e、QA／證據／Artifact獨立待復原，不阻塞本主線，不冒用舊13項測試。自然Easy／Normal十波未通過、自然NG+未測，保留全部時鐘／存讀／性能／Rift／硬體限制。無排程管理工具；若310分鐘排程仍指原對話，使用者需在排程介面改指本對話。下一個GAME FIRST切片為特殊兵種／英雄辨識度，先核對已保存功能，不重跑全美術流程、不因自然十波卡住其他開發。未公開發布。以下歷史摘要不覆蓋本段。
+
+English: Original offline commit 9a0f19e and its QA, evidence and artifact remain isolated for recovery without blocking new development or reusing the old 13 tests. Natural Easy/Normal ten waves remain unpassed and natural NG+ untested; retain all clock, save, performance, Rift and hardware limits. No scheduler management tool exists: if the 310-minute schedule still targets the old conversation, the user must retarget it in the UI. Next GAME FIRST slice: special-unit/hero identity; reconcile existing work first, with no full art pipeline rerun or natural ten-wave prerequisite. No public release. Historical notes below do not override this paragraph.
+
+---
+
 # 新主控移轉快照 / New primary migration snapshot
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
