@@ -6,7 +6,7 @@ from worktree_recovery import git,utc,atomic_json
 
 def decide(percent=None,*,simulation=False,checkpoint_saved=False):
     if percent is None:
-        return {'state':'QUOTA_PERCENT_UNKNOWN','start_large_work':'USE_BOUNDED_SLICES','source':'NO_SUPPORTED_QUOTA_INTERFACE_CONNECTED','account_percent':None}
+        return {'state':'QUOTA_PERCENT_UNKNOWN','start_large_work':True,'source':'NO_SUPPORTED_QUOTA_INTERFACE_CONNECTED','account_percent':None,'execution_decision':'RECHECK_ACTUAL_CONSTRAINTS_NOT_PERCENT'}
     if not simulation:
         raise ValueError('No official quota adapter connected; supplied percentages are accepted only as labelled simulations')
     if not isinstance(percent,(int,float)) or isinstance(percent,bool) or not math.isfinite(percent) or not 0<=percent<=100:
@@ -15,7 +15,7 @@ def decide(percent=None,*,simulation=False,checkpoint_saved=False):
     # Actual platform refusal, environment/tool/auth failure, ownership conflict,
     # or an exhausted execution/context window controls checkpointing.
     state='INFORMATIONAL_ONLY'
-    return {'state':state,'start_large_work':state=='NORMAL','source':'SIMULATION_ONLY_NOT_ACCOUNT_TELEMETRY','account_percent':None,'simulated_percent':percent}
+    return {'state':state,'start_large_work':True,'source':'SIMULATION_ONLY_NOT_ACCOUNT_TELEMETRY','account_percent':None,'simulated_percent':percent,'execution_decision':'RECHECK_ACTUAL_CONSTRAINTS_NOT_PERCENT'}
 
 def resume_plan(*,reset_at,now,service_available,quota_available,dispatch_connected=False):
     if reset_at.tzinfo is None or now.tzinfo is None:raise ValueError('Timezone-aware times required')

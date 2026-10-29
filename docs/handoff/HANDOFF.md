@@ -1,3 +1,11 @@
+# 最新排程覆寫 / Latest scheduler override
+
+繁體中文：每週額度百分比僅供參考，不是停止或禁止大型工作的門檻。每小時監督任務 6ade57ccd4f48191b827a443fd53f567 依使用者提供狀態維持暫停，非發布階段不啟用／重建／替代高頻輪詢；發布階段也須另獲明確確認。既有 310 分鐘頻率與送達目標保持原值。修正版 Prompt 已備於 docs/automation/RIFTWATCH-310-PROMPT.txt，但無排程管理工具，實際線上 Prompt 未讀取、未修改、未回讀驗證，狀態 PREPARED_NOT_APPLIED_TO_SCHEDULER。送達／防重複已觀察，閒置自動恢復 NOT_TESTED，詳見 scheduler-status.json。遊戲下一項仍為 JPN／SPA 音效與狀態回饋，不重做既有成果。
+
+English: Weekly quota percentages are informational, not stop/large-work gates. Keep hourly supervision task 6ade57ccd4f48191b827a443fd53f567 paused per the user's report; no enabling/recreation/replacement high-frequency polling outside release phases, and separate explicit confirmation is required even during release. Preserve existing 310-minute frequency/target. Replacement prompt is docs/automation/RIFTWATCH-310-PROMPT.txt, but no scheduler management tool is connected: actual online prompt was not read/edited/read back, so status is PREPARED_NOT_APPLIED_TO_SCHEDULER. Delivery/deduplication were observed; idle auto-resume is NOT_TESTED. See scheduler-status.json. Next gameplay remains JPN/SPA sound/status feedback; do not recreate accepted work.
+
+---
+
 # 最新內容切片 / Latest content slice
 
 繁體中文：FRK 披掛騎槍輕騎已完成原生訓練、戰鬥動畫與性能限定驗收。來源 `8774db51cafa8bdcdbc1fead7f82188070f3d050`，證據 `1d42dbf1f346a1ae1345aa2287f1ba6eca7e55b3`，11 Node／13 Chromium PASS。詳見 docs/evidence/v240-frk-cavalry/REPORT.md。接續 JPN 格擋與 SPA 暈擊的獨立音效／狀態視覺回饋，沿用既有冷卻與數值，先核對最新遠端與所有權。既有恢復已完成，不重做；歷史自然戰役、嚴格 Save/Load、低 FPS、性能及硬體缺口保留，未公開發布，排程切換未確認。

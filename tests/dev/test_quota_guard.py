@@ -7,10 +7,11 @@ from agent_handoff import transition
 def git(p,*args,input=None,env=None):return subprocess.check_output(['git','-C',str(p),*args],input=input,env=env,stderr=subprocess.DEVNULL).decode().strip()
 class QuotaTests(unittest.TestCase):
  def test_unknown_is_not_low_or_account_percent(self):
-  self.assertEqual(decide()['state'],'QUOTA_PERCENT_UNKNOWN');self.assertIsNone(decide()['account_percent'])
+  self.assertEqual(decide()['state'],'QUOTA_PERCENT_UNKNOWN');self.assertIsNone(decide()['account_percent']);self.assertTrue(decide()['start_large_work'])
   with self.assertRaises(ValueError):decide(2)
  def test_simulated_boundaries(self):
-  for value in [100,10.001,10,3.001,3,0]:self.assertEqual(decide(value,simulation=True)['state'],'INFORMATIONAL_ONLY')
+  for value in [100,10.001,10,3.001,3,0]:
+   self.assertEqual(decide(value,simulation=True)['state'],'INFORMATIONAL_ONLY');self.assertTrue(decide(value,simulation=True)['start_large_work']);self.assertEqual(decide(value,simulation=True)['execution_decision'],'RECHECK_ACTUAL_CONSTRAINTS_NOT_PERCENT')
   self.assertEqual(decide(3,simulation=True,checkpoint_saved=True)['state'],'INFORMATIONAL_ONLY')
   for invalid in [-1,101,float('nan'),True]:
    with self.assertRaises(ValueError):decide(invalid,simulation=True)

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-29T18:32:54.383354+00:00",
+  "status": "PREPARED_NOT_APPLIED_TO_SCHEDULER",
+  "actual_prompt_read": false,
+  "actual_prompt_saved": false,
+  "scheduler_tools_available": [],
+  "scheduler_mutations_performed": [],
+  "development_resume": {
+    "task_id": null,
+    "task_id_status": "UNKNOWN_NOT_PROVIDED_OR_QUERYABLE",
+    "frequency_minutes_desired": 310,
+    "frequency_mutation": "NONE",
+    "delivery_target": "PRESERVE_EXISTING_NOT_READ_OR_CHANGED",
+    "replacement_prompt": "docs/automation/RIFTWATCH-310-PROMPT.txt",
+    "replacement_sha256": "ca6cfd3919b82d99681123de4b2c1cfbd4caad584b7212ad2c5410298e282eb5",
+    "percentage_stop_gates": false,
+    "remote_verification": "BLOCKED_NO_SCHEDULER_READ_WRITE_TOOL"
+  },
+  "hourly_supervision": {
+    "task_id": "6ade57ccd4f48191b827a443fd53f567",
+    "name": "Riftwatch 開發監督與接續",
+    "user_reported_state": "PAUSED",
+    "desired_state": "KEEP_PAUSED",
+    "remote_observed_state": "NOT_QUERIED_NO_SCHEDULER_TOOL",
+    "enabled_or_recreated_by_agent": false,
+    "replacement_polling_created": false,
+    "resume_requires": "Release-stage context AND separate explicit user confirmation"
+  },
+  "acceptance": {
+    "message_delivery": {
+      "status": "OBSERVED_DELEGATED_MESSAGE_NOT_CONFIGURATION_VERIFIED",
+      "evidence": "docs/evidence/v240-visual-rng/duplicate-wake.json"
+    },
+    "duplicate_writer_avoidance": {
+      "status": "OBSERVED_ACTIVE_EXECUTION_CONTINUED_NO_SECOND_WRITER",
+      "evidence": "docs/evidence/v240-visual-rng/duplicate-wake.json"
+    },
+    "idle_automatic_recovery": {
+      "status": "NOT_TESTED",
+      "execution_receipt": null
+    },
+    "overall_auto_resume": "NOT_VERIFIED"
+  }
+}

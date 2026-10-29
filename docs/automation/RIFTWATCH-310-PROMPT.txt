@@ -1,0 +1,33 @@
+Riftwatch — Universal Autonomous Resume Protocol / 已授權的每 310 分鐘開發接續
+
+繁體中文：這是既有排程的開發喚醒。從 Good-Comic/PlayGround 最新安全 GitHub Checkpoint 接續 ACTIVE STRATEGY v2.4.0 — GAME FIRST，以最新使用者明確指令優先。只替換既有任務的 Prompt；維持原本每 310 分鐘頻率及現有送達目標，不建立重複排程或自行重綁目標。
+
+English: This is the existing scheduled development wake. Resume Good-Comic/PlayGround from its latest safe GitHub checkpoint under ACTIVE STRATEGY v2.4.0 — GAME FIRST, prioritizing the latest explicit user instructions. Replace only the existing task's prompt; preserve its 310-minute frequency and current delivery target. Do not create a duplicate schedule or rebind its target.
+
+繁體中文：先核對 GitHub HEAD、Recovery Manifest、Handoff／NEXT-TASKS、Progress Feed、有效 Strategy／GDD／玩家回饋、測試證據、Task Ownership、執行租約及 worktree／未推送修改。以最新有效狀態為準，不強制回退。已有同一任務的有效執行者時，記錄 RESUME_SKIPPED_ACTIVE_TASK，不另啟寫入者、不搶分支、不覆蓋修改；只結束這次重複喚醒，不中止原本正在執行的開發。
+
+English: First verify GitHub HEAD, Recovery Manifest, Handoff/NEXT-TASKS, Progress Feed, effective Strategy/GDD/player feedback, test evidence, Task Ownership, execution lease and worktrees/unpushed changes. Follow the latest valid state without forcing rollback. If the same task already has an active executor, record RESUME_SKIPPED_ACTIVE_TASK; do not start another writer, seize the branch or overwrite changes. End only the duplicate wake, not the development already in progress.
+
+繁體中文：沒有衝突且仍有已授權工作時，直接恢復實際開發。INTERRUPTED／PAUSED_QUOTA 從最近安全點恢復；BLOCKED 核對是否解除，未解除則做不衝突的授權切片；TASK_COMPLETED 從 NEXT-TASKS 選下一項；IN_PROGRESS 不重複啟動；真的沒有授權待辦才記 NO_PENDING_TASK。優先玩家缺陷、核心 RTS、文明特色單位／英雄／Boss、2.5D 美術、戰術、音效與品質。自然十波／New Game+ 是週期性整合驗收，不是其他開發的前置條件；保留歷史 FAIL，不重做已完成成果或重跑全部歷史測試。
+
+English: When unconflicted authorized work remains, directly resume actual development. Resume INTERRUPTED/PAUSED_QUOTA from the latest safe point; recheck BLOCKED and otherwise take an independent authorized slice; select the next NEXT-TASKS item after TASK_COMPLETED; do not duplicate IN_PROGRESS work; record NO_PENDING_TASK only when no authorized task remains. Prioritize player defects, core RTS, civilization units/heroes/Bosses, 2.5D art, tactics, audio and quality. Natural ten-wave/New Game+ runs are periodic integration validation, not prerequisites for other development. Preserve historical FAIL and do not recreate accepted work or rerun all historical tests.
+
+繁體中文：每週剩餘額度百分比僅供參考，不構成停止條件，也不因百分比禁止啟動大型任務。沒有正式資料則記 QUOTA_PERCENT_UNKNOWN，不推估帳戶額度。只有平台實際拒絕執行、單輪執行預算／上下文耗盡、環境故障、權限或 Task Ownership 衝突時，才安全保存並停止。保留實際錯誤、觀察與證據，不以固定分鐘數、切片數、未知額度或完成報告推斷限制；不高頻重試。
+
+English: Weekly remaining-quota percentages are informational only, never a stopping condition or a percentage-based prohibition on large tasks. Record QUOTA_PERCENT_UNKNOWN when official data is unavailable; do not estimate account quota. Safely save and stop only on an actual platform execution refusal, single-turn execution-budget/context exhaustion, environment failure, permission or Task Ownership conflict. Preserve actual errors, observations and evidence. Do not infer limits from fixed elapsed minutes, slice count, unknown quota or report completion; avoid frequent retries.
+
+繁體中文：持續循環「開發 → 定向 Node／真實 Chromium 遊玩與必要圖片／錄影驗收 → 正常 Commit／Push → 遠端完整 SHA 核對 → Recovery／Handoff／Progress Feed 安全點 → 下一項已授權工作」。Checkpoint 不是工作完成，不等待使用者再次輸入繼續。只做有意義的遊戲／素材／穩定性改善，不為延長執行而空轉、重複測試或堆積文件；WIP 不冒稱正式驗收。新文件維持繁體中文與英文實質並行。
+
+English: Continue the loop: development → focused Node/real Chromium gameplay and necessary image/video acceptance → normal commit/push → verify full remote SHA → Recovery/Handoff/Progress Feed safety checkpoint → next authorized task. Checkpoints are not completion and do not require another continue prompt. Make meaningful game/asset/stability improvements rather than idle activity, redundant tests or document churn. Do not present WIP as accepted. New documentation must provide substantively equivalent Traditional Chinese and English.
+
+繁體中文：每小時 GitHub 監督任務「Riftwatch 開發監督與接續」（Task ID 6ade57ccd4f48191b827a443fd53f567）依使用者決定維持暫停。非發布階段不得重新啟用、重建相同任務、建立替代高頻輪詢或執行每小時監督。僅在 Candidate 發布準備、發布驗收或正式發布階段，且使用者另行明確確認後，才恢復必要監督。一般開發切片的事件式 Progress Feed 保存不代表每小時監督或 Agent 自動喚醒；不得把它排程化成替代輪詢。這項暫停不影響既有 310 分鐘開發接續任務。
+
+English: Keep hourly GitHub supervision task “Riftwatch 開發監督與接續” (Task ID 6ade57ccd4f48191b827a443fd53f567) paused under the user's decision. Outside release phases, do not enable it, recreate it, create replacement high-frequency polling or run hourly supervision. Resume necessary supervision only during Candidate release preparation, release acceptance or formal release and after separate explicit user confirmation. Event-based Progress Feed saves during ordinary development are neither hourly supervision nor Agent waking; do not schedule them as replacement polling. This pause does not affect the existing 310-minute development-resume task.
+
+繁體中文：分別記錄三項接續證據：排程訊息送達、開發中避免重複寫入者、真正閒置狀態下自動喚醒並開始遊戲開發。前兩項不能替代第三項，也不能合併宣告整體 PASS。只有真的從閒置自動恢復並開始實作，才記 SCHEDULED_RESUME_EXECUTED，並附訊息時間、送達對話／來源識別、執行識別、起始 Checkpoint 及實際修改／測試證據。未知設定或未驗證喚醒不得冒稱已重綁或 AUTO_RESUME_VERIFIED。
+
+English: Record three separate capabilities: scheduled-message delivery, duplicate-writer avoidance during development, and automatic waking from genuine idle followed by actual game development. The first two do not substitute for the third or establish an overall PASS. Record SCHEDULED_RESUME_EXECUTED only after genuine automatic idle recovery and implementation, with message time, delivery-conversation/source identity, execution identity, starting checkpoint and actual changes/test evidence. Unknown settings or unverified wakes must not be called rebound or AUTO_RESUME_VERIFIED.
+
+繁體中文：停止時記錄 STOP_REASON、EXECUTION_DURATION（註明量測範圍，無完整時長則未知）、NEXT_AUTHORIZED_TASK、CHECKPOINT_SHA、AUTO_RESUME_AVAILABLE。沒有真實限制卻自行結束則記 AGENT_EARLY_STOP，不冒稱平台強制停止。不得修改 main、Pages、OmGitHub／歷史 Issue #17／#18／#19、OpenCode Checkpoints 或既有 Immutable Playtest Build；不 Force Push、不公開發布、不用未授權付費服務、不覆蓋其他 Agent 成果。簡潔回報實際成果、驗收、完整 SHA、未解問題與下一接續點。
+
+English: On stopping, record STOP_REASON, EXECUTION_DURATION (measurement scope; unknown when full duration is unavailable), NEXT_AUTHORIZED_TASK, CHECKPOINT_SHA and AUTO_RESUME_AVAILABLE. Voluntary ending without a real constraint is AGENT_EARLY_STOP, not a forced platform stop. Do not modify main, Pages, OmGitHub/historical Issues #17/#18/#19, OpenCode Checkpoints or existing Immutable Playtest Builds. No force pushes, public releases, unauthorized paid services or overwriting other agents. Briefly report actual results, acceptance, full SHA, unresolved issues and the next continuation point.
