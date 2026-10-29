@@ -1,0 +1,99 @@
+{
+  "source_commit": "1d64cb6e712debbc76616c67a8d0d32669a73c05",
+  "mode": "NEW_MELEE_CUES_LOCAL_CONTROLLED_2000HP_TARGET_NATIVE_COMBAT_AND_MUTE",
+  "signal_scope": "RMS sampled within200ms of each synthesized SFX; muted silence window explicitly open; pre-contact walking silence excluded",
+  "audio_scope": "tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance",
+  "checks": [
+    {
+      "name": "mag-sabre: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "mag-sabre: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "mag-sabre: native combat routes the weapon cue and records non-silent unclipped SFX",
+      "pass": false,
+      "detail": {
+        "rms": 0,
+        "peak": 0,
+        "events": [
+          {
+            "method": "attack",
+            "type": "light_cavalry",
+            "civ": "MAG",
+            "at": 1.4628571428571429
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.4309297052154195
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.1,
+              0.033,
+              3000,
+              0,
+              "highpass"
+            ],
+            "at": 1.4628571428571429
+          },
+          {
+            "kind": "tone",
+            "args": [
+              720,
+              0.075,
+              "triangle",
+              0.024,
+              290,
+              0.012
+            ],
+            "at": 1.4628571428571429
+          },
+          {
+            "kind": "tone",
+            "args": [
+              145,
+              0.065,
+              "sine",
+              0.028,
+              80,
+              0.025
+            ],
+            "at": 1.4628571428571429
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      }
+    },
+    {
+      "name": "browser execution",
+      "pass": false,
+      "detail": {
+        "message": "mag-sabre: native combat routes the weapon cue and records non-silent unclipped SFX",
+        "stack": "Error: mag-sabre: native combat routes the weapon cue and records non-silent unclipped SFX\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/melee_weapon_sound_browser.mjs:12:103)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/melee_weapon_sound_browser.mjs:72:5"
+      }
+    }
+  ],
+  "recordings": [],
+  "errors": [],
+  "pass": false
+}

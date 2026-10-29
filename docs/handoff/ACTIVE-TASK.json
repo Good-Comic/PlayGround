@@ -1,36 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "MAG 裸馬弧刀圓盾輕騎八方向動作已整合 / MAG unbarded sabre round-shield light cavalry integrated with directional actions",
+  "name": "GOT 鎖子甲毛領長盾民兵八方向動作已整合 / GOT mail fur-collar oval-shield militia integrated with directional actions",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
-  "application_source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+  "latest_pushed_commit": "897086d8eaf4360f660c83104ca411a602be6656",
+  "application_source_commit": "897086d8eaf4360f660c83104ca411a602be6656",
   "completed": [
-    "MAG 裸馬弧刀圓盾輕騎八方向動作已整合",
-    "MAG unbarded sabre round-shield light cavalry integrated with directional actions"
+    "GOT 鎖子甲毛領長盾民兵八方向動作已整合",
+    "GOT mail fur-collar oval-shield militia integrated with directional actions"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Focused Node",
-      "result": "4 PASS",
-      "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
-      "path": "docs/evidence/v240-mag-cavalry/focused-node.txt"
+      "result": "3 PASS",
+      "source_commit": "897086d8eaf4360f660c83104ca411a602be6656",
+      "path": "docs/evidence/v240-got-militia/focused-node.txt"
     },
     {
       "name": "Actual Chromium",
-      "result": "13 PASS",
-      "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
-      "path": "docs/evidence/v240-mag-cavalry/verified/browser.json"
+      "result": "14 PASS",
+      "source_commit": "897086d8eaf4360f660c83104ca411a602be6656",
+      "path": "docs/evidence/v240-got-militia/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-mag-cavalry/REPORT.md"
+    "docs/evidence/v240-got-militia/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "接續兵器近戰音效差異與真實瀏覽器混音驗收",
-    "Continue melee weapon sound differentiation and actual browser mix acceptance"
+    "接續 SPA 長槍與 morion 頭盔代表性外觀",
+    "Continue representative SPA pike and morion infantry appearance"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T19:29:15.079160+00:00",
+  "updated_at": "2026-10-29T19:37:12.989421+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -120,6 +120,20 @@
       "node": 4,
       "chromium": 13,
       "report": "docs/evidence/v240-mag-cavalry/REPORT.md"
+    },
+    {
+      "slice": "v240-melee-weapon-sound",
+      "source": "8c348256a2865195c28575684970e98f4e037ae8",
+      "node": 7,
+      "chromium": 31,
+      "report": "docs/evidence/v240-melee-weapon-sound/REPORT.md"
+    },
+    {
+      "slice": "v240-got-militia",
+      "source": "897086d8eaf4360f660c83104ca411a602be6656",
+      "node": 3,
+      "chromium": 14,
+      "report": "docs/evidence/v240-got-militia/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -133,7 +147,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Continue melee weapon sound differentiation and actual browser mix acceptance"
+    "NEXT_AUTHORIZED_TASK": "Continue representative SPA pike and morion infantry appearance"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

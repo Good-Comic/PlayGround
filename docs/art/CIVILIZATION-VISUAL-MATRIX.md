@@ -8,7 +8,7 @@ English: This records actual progress against the existing sixteen civilizations
 |---|---|---|
 | MNG | 草原 / Steppe | 騎射 Atlas 已驗收 / Mounted-archer atlas accepted; v240-mng-horse-archer |
 | TEU | 堡壘 / Fortress | 厚板甲長盾 guard 已驗收 / Plate/tower-shield guard accepted; v240-teu-guard |
-| GOT | 堡壘 / Fortress | 家族層；步兵外觀待擴充 / Family layer; infantry appearance pending |
+| GOT | 堡壘 / Fortress | 鎖子甲毛領長盾民兵已驗收 / Mail/fur-collar/oval-shield militia accepted; v240-got-militia |
 | FRK | 堡壘 / Fortress | 披掛／長盾／騎槍輕騎已驗收 / Caparison/shield/lance light-cavalry atlas accepted; v240-frk-cavalry |
 | SAR | 沙漠 / Desert | 家族層；既有單位外觀待擴充 / Family layer; existing-unit appearance pending |
 | AZT | 中美洲 / Mesoamerican | 黑曜石武器民兵已驗收及遠端保存 / Obsidian militia accepted and remotely saved; v240-azt-militia |
@@ -23,8 +23,8 @@ English: This records actual progress against the existing sixteen civilizations
 | MAG | 草原 / Steppe | 裸馬弧刀圓盾輕騎已驗收 / Unbarded sabre/round-shield light cavalry accepted; v240-mag-cavalry |
 | JPN | 東方 / Eastern | 札甲外觀已保存；格擋修復限定驗收 / Lamellar appearance saved; scoped block fix accepted; v240-jpn-lamellar, v240-jpn-block |
 
-繁體中文：英雄／招募使／雙 Boss 的共用 Atlas 與技能表現沿用 v240-champions 相關證據，不因矩陣未列而重做。JPN／SPA／RNG／FRK 已驗收，不重做。AZT／BYZ／MAG 已遠端保存；接續近戰兵器聲音差異，先核對最新遠端及所有權。自然戰役、低 FPS、嚴格 Save/Load、性能與硬體缺口不在此表宣告通過。
+繁體中文：英雄／招募使／雙 Boss 的共用 Atlas 與技能表現沿用 v240-champions 相關證據，不因矩陣未列而重做。JPN／SPA／RNG／FRK 已驗收，不重做。AZT／BYZ／MAG 已遠端保存；近戰聲音與 GOT 已保存，接續 SPA 長槍外觀，先核對最新遠端及所有權。自然戰役、低 FPS、嚴格 Save/Load、性能與硬體缺口不在此表宣告通過。
 
-English: Retain existing shared hero/recruiter/two-Boss atlases and skill evidence; omission from this civilization table does not request recreation. JPN/SPA/RNG/FRK are accepted and must not be repeated. AZT/BYZ/MAG are remotely saved; continue melee weapon sound differentiation after checking current remote and ownership. This table does not clear natural-campaign, low-FPS, strict Save/Load, performance or hardware gaps.
+English: Retain existing shared hero/recruiter/two-Boss atlases and skill evidence; omission from this civilization table does not request recreation. JPN/SPA/RNG/FRK are accepted and must not be repeated. AZT/BYZ/MAG are remotely saved; melee audio/GOT are saved; continue SPA pike appearance after checking current remote and ownership. This table does not clear natural-campaign, low-FPS, strict Save/Load, performance or hardware gaps.
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true

@@ -1,49 +1,49 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T19:29:15.079160+00:00",
+  "updated_at": "2026-10-29T19:37:12.989421+00:00",
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "接續兵器近戰音效差異與真實瀏覽器混音驗收 / Continue melee weapon sound differentiation and actual browser mix acceptance",
+      "name": "接續 SPA 長槍與 morion 頭盔代表性外觀 / Continue representative SPA pike and morion infantry appearance",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
-      "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+      "latest_pushed_commit": "897086d8eaf4360f660c83104ca411a602be6656",
+      "application_source_commit": "897086d8eaf4360f660c83104ca411a602be6656",
       "completed": [],
       "uncommitted": [],
       "unpushed": [],
       "tests": [
         {
           "name": "Focused Node",
-          "result": "4 PASS",
-          "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
-          "path": "docs/evidence/v240-mag-cavalry/focused-node.txt"
+          "result": "3 PASS",
+          "source_commit": "897086d8eaf4360f660c83104ca411a602be6656",
+          "path": "docs/evidence/v240-got-militia/focused-node.txt"
         },
         {
           "name": "Actual Chromium",
-          "result": "13 PASS",
-          "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
-          "path": "docs/evidence/v240-mag-cavalry/verified/browser.json"
+          "result": "14 PASS",
+          "source_commit": "897086d8eaf4360f660c83104ca411a602be6656",
+          "path": "docs/evidence/v240-got-militia/verified/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-mag-cavalry/REPORT.md"
+        "docs/evidence/v240-got-militia/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
         "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
         "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain",
-        "JPN-MELEE-BLOCK-MISSING-CIV: FAIL, inherited and not fixed",
+        "HISTORICAL JPN-MELEE-BLOCK-MISSING-CIV FAIL preserved; scoped fix accepted at 3a07094748122d9046f4e46b54b3cecd0fad2e3f",
         "JPN first renderer comparison FAIL; recheck PASS does not erase unexplained variability"
       ],
       "blockers": [],
       "next_steps": [
-        "接續兵器近戰音效差異與真實瀏覽器混音驗收",
-        "Continue melee weapon sound differentiation and actual browser mix acceptance"
+        "接續 SPA 長槍與 morion 頭盔代表性外觀",
+        "Continue representative SPA pike and morion infantry appearance"
       ],
       "permissions": [
         "Independent development tests normal push",
