@@ -1367,11 +1367,26 @@ export class Renderer {
     if (!frame) return false;
     const drawScale = scale * descriptor.scale;
     const width = frame.sw * drawScale, height = frame.sh * drawScale;
-    this.ctx.drawImage(entry.image, frame.sx, frame.sy, frame.sw, frame.sh,
+    const image = descriptor.cacheFrames ? this.spriteFrameImage(entry, frame) : entry.image;
+    this.ctx.drawImage(image, descriptor.cacheFrames ? 0 : frame.sx, descriptor.cacheFrames ? 0 : frame.sy, frame.sw, frame.sh,
       p.x + descriptor.offset.x * drawScale - descriptor.anchor.x * drawScale,
       p.y + descriptor.offset.y * drawScale - descriptor.anchor.y * drawScale,
       width, height);
     return true;
+  }
+
+  spriteFrameImage(entry, frame) {
+    // Keep repeated CPU canvas draws on small bitmaps rather than four large sheets.
+    // Lazily crop real decoded pixels; at most64frames per asset are retained.
+    const cache = entry.frameImages ||= new Map();
+    const key = `${frame.sx}:${frame.sy}`;
+    if (cache.has(key)) return cache.get(key);
+    const canvas = document.createElement('canvas');
+    canvas.width = frame.sw; canvas.height = frame.sh;
+    canvas.getContext('2d').drawImage(entry.image, frame.sx, frame.sy, frame.sw, frame.sh, 0, 0, frame.sw, frame.sh);
+    if (cache.size >= 64) cache.delete(cache.keys().next().value);
+    cache.set(key, canvas);
+    return canvas;
   }
 
   drawCivilizationUnitAccent(u, game, p, s, bob) {

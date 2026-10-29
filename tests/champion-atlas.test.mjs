@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { UNIT_SPRITE_ATLASES, atlasFrame } from '../js/sprite-atlas.js';
 import { Renderer } from '../js/renderer.js';
+let crops = 0;
+globalThis.document = { createElement: () => ({ getContext: () => ({ drawImage() { crops++; } }) }) };
 
 test('hero support and bosses use independent complete decoded PNG sheets', () => {
   const sources = new Set();
@@ -21,6 +23,17 @@ test('hero support and bosses use independent complete decoded PNG sheets', () =
     }
   }
   assert.equal(sources.size, 4);
+});
+
+test('champion frame cache reuses cropped pixels and stays bounded across action/direction changes', () => {
+  const r = Object.create(Renderer.prototype), entry = { image: {} }, atlas = UNIT_SPRITE_ATLASES.commander;
+  const frame = atlasFrame(atlas, 'E', 'idle', 0);
+  const before = crops, first = r.spriteFrameImage(entry, frame);
+  assert.equal(r.spriteFrameImage(entry, frame), first); assert.equal(crops - before, 1);
+  for (const direction of Object.keys(atlas.directions)) for (const state of Object.keys(atlas.states)) {
+    for (const progress of [0, .26, .51, .99]) r.spriteFrameImage(entry, atlasFrame(atlas, direction, state, 0, progress));
+  }
+  assert.equal(entry.frameImages.size, 64);
 });
 
 test('production renderer does not mirror or rotate an already-baked champion pose twice; fallback keeps transforms', () => {
