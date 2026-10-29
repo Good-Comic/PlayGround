@@ -2,18 +2,18 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-29T19:26:19.620265+00:00",
+  "updated_at": "2026-10-29T19:29:31.362240+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "49644d54212f7477d80f9809074108b78d5e9358",
-    "build_sha": "659b1b2ba472150da5abb75c22550ee86873b737",
-    "summary": "\u65b0\u6b65\u5175\u982d\u90e8\u9078\u53d6\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557 / New infantry head selection and movement fixed; original failure retained",
+    "commit": "c75ee84fa939a66a94608886928a0d074f6700f2",
+    "build_sha": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+    "summary": "MAG \u5f27\u5200\u88f8\u99ac\u8f15\u9a0e\u5df2\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536 / MAG sabre unbarded light cavalry passed native training combat and visual acceptance",
     "code_changes": [
-      "\u65b0\u6b65\u5175\u982d\u90e8\u9078\u53d6\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557",
-      "New infantry head selection and movement fixed; original failure retained"
+      "MAG \u5f27\u5200\u88f8\u99ac\u8f15\u9a0e\u5df2\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536",
+      "MAG sabre unbarded light cavalry passed native training combat and visual acceptance"
     ],
     "next_steps": [
       "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -21,21 +21,21 @@
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "8 focused Node PASS",
+        "name": "4 focused Node PASS",
         "status": "PASS",
-        "source_commit": "659b1b2ba472150da5abb75c22550ee86873b737",
-        "evidence": "docs/evidence/v240-infantry-picking/focused-node.txt",
-        "evidence_commit": "49644d54212f7477d80f9809074108b78d5e9358",
-        "evidence_blob": "ee0bec9019994819bae3d92ad7f94d6d2c10ce59",
+        "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+        "evidence": "docs/evidence/v240-mag-cavalry/focused-node.txt",
+        "evidence_commit": "c75ee84fa939a66a94608886928a0d074f6700f2",
+        "evidence_blob": "fb437d0a6e2a47ee20ea9533684897442ac81aa5",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "16 actual Chromium PASS",
+        "name": "13 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "659b1b2ba472150da5abb75c22550ee86873b737",
-        "evidence": "docs/evidence/v240-infantry-picking/optimized-browser/browser.json",
-        "evidence_commit": "49644d54212f7477d80f9809074108b78d5e9358",
-        "evidence_blob": "e6a119750a413031d556540513c1bca3e250c594",
+        "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+        "evidence": "docs/evidence/v240-mag-cavalry/verified/browser.json",
+        "evidence_commit": "c75ee84fa939a66a94608886928a0d074f6700f2",
+        "evidence_blob": "2a2c89eb6e7de0dfc7a7143eb0963aba358fd0c1",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -43,17 +43,17 @@
       {
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
-        "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u5b58\u8b80\u3001\u4f4e FPS\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, save/load, low-FPS, performance and hardware gaps remain.",
-        "source_commit": "49644d54212f7477d80f9809074108b78d5e9358",
+        "summary": "\u6b77\u53f2\u6230\u5f79\u3001\u5b58\u8b80\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, save/load, low-FPS, performance and hardware gaps remain.",
+        "source_commit": "c75ee84fa939a66a94608886928a0d074f6700f2",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u65b0\u6b65\u5175\u982d\u90e8\u9078\u53d6\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557\u3002\u5b9a\u5411 Node 8\uff0f\u771f\u5be6 Chromium 16 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: New infantry head selection and movement fixed; original failure retained. 8 focused Node/16 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "e2b828b307f9dd99ca47ebed039f321386645c4836a912bb60af4dea6e06e3d0",
-    "remote_head": "49644d54212f7477d80f9809074108b78d5e9358",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aMAG \u5f27\u5200\u88f8\u99ac\u8f15\u9a0e\u5df2\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536\u3002\u5b9a\u5411 Node 4\uff0f\u771f\u5be6 Chromium 13 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: MAG sabre unbarded light cavalry passed native training combat and visual acceptance. 4 focused Node/13 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "96520722eb3ef3de34819f8d16eb42fa396ac41148c5e35499448bc2a9afb0a9",
+    "remote_head": "c75ee84fa939a66a94608886928a0d074f6700f2",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-29T19:26:19.620265+00:00",
+    "recorded_at": "2026-10-29T19:29:31.362240+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3006,12 +3006,12 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "49644d54212f7477d80f9809074108b78d5e9358",
-      "build_sha": "659b1b2ba472150da5abb75c22550ee86873b737",
-      "summary": "\u65b0\u6b65\u5175\u982d\u90e8\u9078\u53d6\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557 / New infantry head selection and movement fixed; original failure retained",
+      "commit": "c75ee84fa939a66a94608886928a0d074f6700f2",
+      "build_sha": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+      "summary": "MAG \u5f27\u5200\u88f8\u99ac\u8f15\u9a0e\u5df2\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536 / MAG sabre unbarded light cavalry passed native training combat and visual acceptance",
       "code_changes": [
-        "\u65b0\u6b65\u5175\u982d\u90e8\u9078\u53d6\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557",
-        "New infantry head selection and movement fixed; original failure retained"
+        "MAG \u5f27\u5200\u88f8\u99ac\u8f15\u9a0e\u5df2\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536",
+        "MAG sabre unbarded light cavalry passed native training combat and visual acceptance"
       ],
       "next_steps": [
         "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -3019,21 +3019,21 @@
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "8 focused Node PASS",
+          "name": "4 focused Node PASS",
           "status": "PASS",
-          "source_commit": "659b1b2ba472150da5abb75c22550ee86873b737",
-          "evidence": "docs/evidence/v240-infantry-picking/focused-node.txt",
-          "evidence_commit": "49644d54212f7477d80f9809074108b78d5e9358",
-          "evidence_blob": "ee0bec9019994819bae3d92ad7f94d6d2c10ce59",
+          "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+          "evidence": "docs/evidence/v240-mag-cavalry/focused-node.txt",
+          "evidence_commit": "c75ee84fa939a66a94608886928a0d074f6700f2",
+          "evidence_blob": "fb437d0a6e2a47ee20ea9533684897442ac81aa5",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "16 actual Chromium PASS",
+          "name": "13 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "659b1b2ba472150da5abb75c22550ee86873b737",
-          "evidence": "docs/evidence/v240-infantry-picking/optimized-browser/browser.json",
-          "evidence_commit": "49644d54212f7477d80f9809074108b78d5e9358",
-          "evidence_blob": "e6a119750a413031d556540513c1bca3e250c594",
+          "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+          "evidence": "docs/evidence/v240-mag-cavalry/verified/browser.json",
+          "evidence_commit": "c75ee84fa939a66a94608886928a0d074f6700f2",
+          "evidence_blob": "2a2c89eb6e7de0dfc7a7143eb0963aba358fd0c1",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3041,17 +3041,17 @@
         {
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
-          "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u5b58\u8b80\u3001\u4f4e FPS\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, save/load, low-FPS, performance and hardware gaps remain.",
-          "source_commit": "49644d54212f7477d80f9809074108b78d5e9358",
+          "summary": "\u6b77\u53f2\u6230\u5f79\u3001\u5b58\u8b80\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, save/load, low-FPS, performance and hardware gaps remain.",
+          "source_commit": "c75ee84fa939a66a94608886928a0d074f6700f2",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u65b0\u6b65\u5175\u982d\u90e8\u9078\u53d6\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557\u3002\u5b9a\u5411 Node 8\uff0f\u771f\u5be6 Chromium 16 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: New infantry head selection and movement fixed; original failure retained. 8 focused Node/16 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "e2b828b307f9dd99ca47ebed039f321386645c4836a912bb60af4dea6e06e3d0",
-      "remote_head": "49644d54212f7477d80f9809074108b78d5e9358",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aMAG \u5f27\u5200\u88f8\u99ac\u8f15\u9a0e\u5df2\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536\u3002\u5b9a\u5411 Node 4\uff0f\u771f\u5be6 Chromium 13 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: MAG sabre unbarded light cavalry passed native training combat and visual acceptance. 4 focused Node/13 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "96520722eb3ef3de34819f8d16eb42fa396ac41148c5e35499448bc2a9afb0a9",
+      "remote_head": "c75ee84fa939a66a94608886928a0d074f6700f2",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-29T19:26:19.620265+00:00",
+      "recorded_at": "2026-10-29T19:29:31.362240+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
