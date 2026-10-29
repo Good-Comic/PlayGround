@@ -1,0 +1,262 @@
+{
+  "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+  "seed": "CHAMPION-SKILLS",
+  "mode": "LOCAL_CONTROLLED_FIXTURE_NATIVE_UI_SKILLS_AND_UPDATE_LOOP_DAMAGE_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed artifact",
+      "pass": true,
+      "detail": {
+        "id": "v240-champion-skills-final",
+        "commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T07:37:27.774889+00:00",
+        "resourceVerification": "SHA256_MATCH_49_FILES"
+      }
+    },
+    {
+      "name": "all192 hero frames including casting have visible unclipped pixels",
+      "pass": true,
+      "detail": {
+        "width": 2816,
+        "height": 2112,
+        "failures": []
+      }
+    },
+    {
+      "name": "native Mark applies production duration and persistent target glyph",
+      "pass": true
+    },
+    {
+      "name": "native Aegis shields nearby ally and renders faceted ward",
+      "pass": true
+    },
+    {
+      "name": "both skills play all four real cooldown-driven cast frames",
+      "pass": true,
+      "detail": {
+        "mark": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "aegis": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "warlord: production warning geometry and distinct glyph",
+      "pass": true,
+      "detail": {
+        "source": "warlord",
+        "x": 30,
+        "y": 33,
+        "r": 2.8,
+        "damage": 65,
+        "delay": 2.4,
+        "elapsed": 0.06660000000000037,
+        "visual": {
+          "progress": 0.027750000000000153,
+          "fade": 1,
+          "tint": "235,126,62",
+          "spokes": 6,
+          "radiusX": 126.71353518862932,
+          "radiusY": 63.35676759431466
+        }
+      }
+    },
+    {
+      "name": "warlord: native escape command accepted while running",
+      "pass": true,
+      "detail": {
+        "state": "move",
+        "target": {
+          "x": 24.000000131541285,
+          "y": 37.000000131541285
+        }
+      }
+    },
+    {
+      "name": "warlord: native movement escapes actual resolved damage zone",
+      "pass": true,
+      "detail": {
+        "hero": {
+          "x": 24.28758959156536,
+          "y": 36.76992854990326,
+          "hp": 520,
+          "startHP": 520
+        },
+        "witness": {
+          "hp": 80,
+          "startHP": 130
+        },
+        "distance": 6.8442672322001075,
+        "radius": 2.8,
+        "done": true,
+        "elapsed": 2.4331999999999976,
+        "seen": {
+          "marks": 139,
+          "shields": 118,
+          "warnings": 171,
+          "impacts": 32
+        }
+      }
+    },
+    {
+      "name": "warlord2: production warning geometry and distinct glyph",
+      "pass": true,
+      "detail": {
+        "source": "warlord2",
+        "x": 30,
+        "y": 33,
+        "r": 3.3,
+        "damage": 105,
+        "delay": 2.4,
+        "elapsed": 0.050100000000000366,
+        "visual": {
+          "progress": 0.020875000000000154,
+          "fade": 1,
+          "tint": "176,123,226",
+          "spokes": 8,
+          "radiusX": 149.34095218659883,
+          "radiusY": 74.67047609329941
+        }
+      }
+    },
+    {
+      "name": "warlord2: native escape command accepted while running",
+      "pass": true,
+      "detail": {
+        "state": "move",
+        "target": {
+          "x": 24.000000131541285,
+          "y": 37.000000131541285
+        }
+      }
+    },
+    {
+      "name": "warlord2: native movement escapes actual resolved damage zone",
+      "pass": true,
+      "detail": {
+        "hero": {
+          "x": 24.320643767505437,
+          "y": 36.7434852075859,
+          "hp": 520,
+          "startHP": 520
+        },
+        "witness": {
+          "hp": 40,
+          "startHP": 130
+        },
+        "distance": 6.802115017771258,
+        "radius": 3.3,
+        "done": true,
+        "elapsed": 2.4167000000000014,
+        "seen": {
+          "marks": 139,
+          "shields": 118,
+          "warnings": 173,
+          "impacts": 29
+        }
+      }
+    },
+    {
+      "name": "no console page or resource errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "timeline": [
+    {
+      "type": "warlord",
+      "warning": {
+        "source": "warlord",
+        "x": 30,
+        "y": 33,
+        "r": 2.8,
+        "damage": 65,
+        "delay": 2.4,
+        "elapsed": 0.06660000000000037,
+        "visual": {
+          "progress": 0.027750000000000153,
+          "fade": 1,
+          "tint": "235,126,62",
+          "spokes": 6,
+          "radiusX": 126.71353518862932,
+          "radiusY": 63.35676759431466
+        }
+      },
+      "result": {
+        "hero": {
+          "x": 24.28758959156536,
+          "y": 36.76992854990326,
+          "hp": 520,
+          "startHP": 520
+        },
+        "witness": {
+          "hp": 80,
+          "startHP": 130
+        },
+        "distance": 6.8442672322001075,
+        "radius": 2.8,
+        "done": true,
+        "elapsed": 2.4331999999999976,
+        "seen": {
+          "marks": 139,
+          "shields": 118,
+          "warnings": 171,
+          "impacts": 32
+        }
+      }
+    },
+    {
+      "type": "warlord2",
+      "warning": {
+        "source": "warlord2",
+        "x": 30,
+        "y": 33,
+        "r": 3.3,
+        "damage": 105,
+        "delay": 2.4,
+        "elapsed": 0.050100000000000366,
+        "visual": {
+          "progress": 0.020875000000000154,
+          "fade": 1,
+          "tint": "176,123,226",
+          "spokes": 8,
+          "radiusX": 149.34095218659883,
+          "radiusY": 74.67047609329941
+        }
+      },
+      "result": {
+        "hero": {
+          "x": 24.320643767505437,
+          "y": 36.7434852075859,
+          "hp": 520,
+          "startHP": 520
+        },
+        "witness": {
+          "hp": 40,
+          "startHP": 130
+        },
+        "distance": 6.802115017771258,
+        "radius": 3.3,
+        "done": true,
+        "elapsed": 2.4167000000000014,
+        "seen": {
+          "marks": 139,
+          "shields": 118,
+          "warnings": 173,
+          "impacts": 29
+        }
+      }
+    }
+  ],
+  "pass": true
+}

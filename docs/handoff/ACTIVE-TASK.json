@@ -7,12 +7,15 @@
   "environment": "New independent Linux Chromium workspace; local software rendering",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-  "latest_pushed_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-  "application_source_commit": "d5d75c4c760b1462969b8772e505d4841f394573",
+  "latest_pushed_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+  "application_source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
   "completed": [
     "Four independent original eight-direction five-state atlases integrated",
     "18 focused Node and24 local Chromium checks pass",
-    "Clipping and relative renderer regression fixed; both initialFAIL preserved"
+    "Clipping and relative renderer regression fixed; both initialFAIL preserved",
+    "Hero casting and persistent Mark/Aegis feedback;18Node/12Chromium PASS",
+    "Both Boss production warnings/impacts and native player escape verified",
+    "Corrected visible Boss footprint without changing damage/range/timing"
   ],
   "uncommitted": [],
   "unpushed": [],
@@ -28,10 +31,23 @@
       "result": "24 PASS LOCAL CONTROLLED",
       "path": "docs/evidence/v240-champions/atlas-cached/browser.json",
       "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
+    },
+    {
+      "name": "Champion skill Node",
+      "result": "18 PASS",
+      "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+      "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+    },
+    {
+      "name": "Champion skill Chromium",
+      "result": "12 PASS LOCAL CONTROLLED; not natural campaign",
+      "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+      "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-champions/REPORT.md"
+    "docs/evidence/v240-champions/REPORT.md",
+    "docs/evidence/v240-champion-skills/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -42,14 +58,15 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "Continue hero casting animation and semantic skill feedback",
-    "Differentiate Boss warning/impact glyphs using existing zone timing and damage"
+    "Prioritize the next civilization-specific existing unit, e.g. PER war-elephant identity, with legal original assets and real Chromium interaction",
+    "Extend battle feedback/audio from production events without shared RNG",
+    "Natural campaigns remain periodic integration after material gameplay changes; preserve FAIL"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "IN_PROGRESS",
+  "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
   "updated_at": "2026-10-29",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",

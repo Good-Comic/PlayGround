@@ -1,8 +1,8 @@
-# 新工作區復原快照 / New-workspace recovery snapshot
+# 英雄與 Boss 切片復原 / Hero and Boss slice recovery
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
 BILINGUAL_DOCUMENTATION_REQUIRED = true
 
-繁體中文：worktree-recovery.json為本次切片完成時的真實Git盤點，包含當時dirty／未推送狀態，描述其自身發布前已核對的來源／遠端c733fd9，不遞迴提交自身SHA。正常Push後的新乾淨快照保留於/workspace/diagnostics/riftwatch/v240-migration/final。原環境9a0f19e與未提交QA為UNPUSHED_WORK_RECOVERY_PENDING，詳細欄位在ACTIVE-TASK.json，不能以新工作區盤點當成原資料遺失。恢復只進獨立Recovery分支後審核，不覆蓋新主線。
+繁體中文：相鄰JSON為本次來源6fae8aa的切片完成盤點，忠實記錄其發布前的dirty／未推送內容，遠端當時為e651b77。此快照不遞迴記錄自身提交；最終乾淨盤點與Feed收據保存在/workspace/diagnostics/riftwatch/v240-champions/final。新Atlas、施法與Boss戰場互動證據均隨正常Push保存，詳見Handoff與兩份雙語報告。原環境9a0f19e及QA仍UNPUSHED_WORK_RECOVERY_PENDING，不動原環境；若恢復先獨立Recovery分支審核。排程未切換；自然戰役及全部歷史限制保留。
 
-English: worktree-recovery.jsonis the actual slice-completionGitinventory, including then-dirty/unpushedstate. It describes verified source and remote c733fd9 before its own publication without recursively committing its ownSHA. A fresh clean post-pushsnapshot is kept under/workspace/diagnostics/riftwatch/v240-migration/final. Original9a0f19eanduncommittedQAremainUNPUSHED_WORK_RECOVERY_PENDING, with exact details inACTIVE-TASK.json; new-workspaceinventorydoes not establish original-data loss. Recovered work must first enter an independentRecoverybranchfor review, never overwrite new development.
+English: The adjacent JSON is the slice-completion inventory for source6fae8aa, faithfully recording dirty/unpushed content before publication; observed remote was e651b77. It does not recursively record its own commit. Final clean inventory and Feed receipt are kept at /workspace/diagnostics/riftwatch/v240-champions/final. New atlas, casting and Boss interaction evidence are preserved by normal push; see Handoff and both bilingual reports. Original9a0f19eandQAremainUNPUSHED_WORK_RECOVERY_PENDING; leave the original environment untouched and review recovered data on an independent Recovery branch first. Scheduler remains unbound; retain natural-campaign and historical limits.

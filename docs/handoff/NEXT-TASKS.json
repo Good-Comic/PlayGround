@@ -4,7 +4,7 @@
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "特殊單位／英雄視覺辨識接續 / Special-unit and hero visual identity continuation",
+      "name": "文明特殊單位與戰場回饋接續 / Civilization-specific units and battlefield feedback",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
@@ -12,39 +12,39 @@
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
       "latest_pushed_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-      "application_source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
+      "application_source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
       "completed": [],
       "uncommitted": [],
       "unpushed": [],
       "tests": [
         {
-          "name": "Focused Node",
-          "result": "22 PASS NEW_ENVIRONMENT",
-          "path": "docs/evidence/v240-migration/focused-node.txt",
-          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d"
+          "name": "Champion Node",
+          "result": "18 PASS",
+          "path": "docs/evidence/v240-champions/focused-node.txt",
+          "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
         },
         {
-          "name": "Local controlled Chromium",
-          "result": "14 PASS; not natural campaign",
-          "path": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
-          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d"
+          "name": "Champion Chromium",
+          "result": "24 PASS LOCAL CONTROLLED",
+          "path": "docs/evidence/v240-champions/atlas-cached/browser.json",
+          "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
         },
         {
-          "name": "Shoreline Node",
-          "result": "5 PASS",
-          "path": "docs/evidence/v240-shorelines/focused-node.txt",
-          "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457"
+          "name": "Champion skill Node",
+          "result": "18 PASS",
+          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+          "path": "docs/evidence/v240-champion-skills/focused-node.txt"
         },
         {
-          "name": "Shoreline Chromium",
-          "result": "13 PASS; controlled camera/pause",
-          "path": "docs/evidence/v240-shorelines/final/browser.json",
-          "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457"
+          "name": "Champion skill Chromium",
+          "result": "12 PASS LOCAL CONTROLLED; not natural campaign",
+          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+          "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-migration/REPORT.md",
-        "docs/evidence/v240-shorelines/REPORT.md"
+        "docs/evidence/v240-champions/REPORT.md",
+        "docs/evidence/v240-champion-skills/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -55,9 +55,9 @@
         "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
       ],
       "next_steps": [
-        "Expand the next existing special-unit/hero visual identity with directed Node/Chromium/visual checks; no whole art pipeline rerun",
-        "Terrain elevation/ramp rule decisions remain separate; current shorelines are visual only",
-        "Periodically integrate natural campaigns after material gameplay changes; preserve known failures"
+        "Prioritize the next civilization-specific existing unit, e.g. PER war-elephant identity, with legal original assets and real Chromium interaction",
+        "Extend battle feedback/audio from production events without shared RNG",
+        "Natural campaigns remain periodic integration after material gameplay changes; preserve FAIL"
       ],
       "permissions": [
         "Independent development tests normal push",

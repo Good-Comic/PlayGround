@@ -1,3 +1,18 @@
+# 英雄與 Boss 內容接續 / Hero and Boss content continuation
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+繁體中文：接續遠端e6214c9，四種新原創Atlas來源d5d75c4已通過18 Node／24 Chromium，正常推送至e651b7782cbf09d21660508d0b9368145e701100，Feed已保存。接著英雄施法、Mark／Aegis與雙Boss預警／命中特效來源6fae8aa71f24acc3e0a695218f3fd05009afc771通過18 Node／12 Chromium；英雄原生右鍵離開真實傷害區，區內盾衛實際受傷。另修正Boss範圍的等角投影，未改平衡。保留首輪裁切、性能及暫停期間測試右鍵失敗。此快照描述本身發布前來源；最新遠端與Feed須現查。詳細報告在docs/evidence/v240-champions及v240-champion-skills。
+
+English: Continued from remote e6214c9. Four original atlases at d5d75c4 pass18Node/24Chromium and are normally pushed through e651b7782cbf09d21660508d0b9368145e701100, with Feed saved. Following hero casting, Mark/Aegis and two-Boss warning/impact source6fae8aa71f24acc3e0a695218f3fd05009afc771 passes18Node/12Chromium: native right-click movement escapes actual damage while the guard inside is hit. Corrected Boss isometric range projection without balance changes. Preserve initial clipping, rendering-performance and paused-test-input failures. This snapshot describes source before its own publication; requery actual latest remote/Feed. Reports: docs/evidence/v240-champions and v240-champion-skills.
+
+繁體中文：新主控移轉已完成，不重跑已驗證切片或等待原環境。唯一目前寫入者codex-migration-20261029，遠端Ownership仍須每切片核對。下一切片優先文明特色既有單位，例如PER戰象獨立美術及真實戰鬥驗收，再擴充正式事件驅動音效。自然Easy／Normal十波與NG+未通過，所有時鐘／存讀／性能／Rift／硬體FAIL保留。310分鐘排程尚未切換；無main、Pages、OmGitHub或公開發布。原9a0f19e與未提交QA獨立待復原，不阻塞主線。以下歷史快照不覆蓋本段。
+
+English: Migration is complete; do not repeat verified slices or wait for the original environment. Current sole writer: codex-migration-20261029; revalidate remote ownership before each slice. Next prioritize an existing civilization-specific unit, such as independent PER war-elephant artwork with real combat acceptance, then production-event audio. Natural Easy/Normal ten waves and NG+ remain unpassed, with all clock/save/performance/Rift/hardware failures retained. The310-minute schedule has not been rebound. No main,Pages,OmGitHuborpublicrelease. Original9a0f19eanduncommittedQAremainisolatedforrecoverywithoutblockingnewwork. Historical snapshots below do not override this paragraph.
+
+---
+
 # 新主線主控接續 / New primary continuation
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

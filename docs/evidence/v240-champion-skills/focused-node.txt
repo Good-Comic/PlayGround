@@ -1,0 +1,27 @@
+BOSS_SPAWN [{"id":22,"x":27,"y":20,"type":"militia","target":20,"hp":73},{"id":23,"x":24,"y":23,"type":"militia","target":20,"hp":73},{"id":24,"x":21,"y":20,"type":"militia","target":20,"hp":73},{"id":25,"x":24,"y":17,"type":"militia","target":20,"hp":73}]
+✔ A3-BOSS-ID-01 creates4 registered M infantry with valid hostile orders and ordinary stats (29.749159ms)
+✔ extension generates4 at150/180/210 only, caps at3 rounds and does not double spawn per tick (17.11139ms)
+✔ starting wave10 clears wave5 extension counters; warning and each round can occur again (21.682255ms)
+✔ Save/Load preserves an already consumed round and seeded later reinforcement spawns (44.002098ms)
+✔ no living Boss cannot create reinforcement units (18.594993ms)
+✔ hero support and bosses use independent complete decoded PNG sheets (4.586342ms)
+✔ champion frame cache reuses cropped pixels and stays bounded across action/direction changes (0.661946ms)
+✔ production renderer does not mirror or rotate an already-baked champion pose twice; fallback keeps transforms (0.894697ms)
+✔ cast frames follow actual cooldowns and ignore unavailable dead or expired actions (1.269861ms)
+✔ boss presentation follows the production warning window and leaves zone damage radius and delay untouched (0.440944ms)
+✔ hero skills expose the production radii used by their effects (0.986354ms)
+✔ skill preview requires a living hero and reports render metadata (18.70629ms)
+✔ mark applies inside the previewed range and rejects targets outside it (20.920112ms)
+✔ aegis shields allies inside the previewed range only (6.548856ms)
+✔ save mid-flight and during boss telegraph preserves remaining damage, timers and entity references (40.333777ms)
+✔ resolved zones do not damage twice and legacy saves remain loadable (32.678867ms)
+✔ SaveLoad preserves full stun and partial slow strength until their original expiry (23.342367ms)
+✔ native pause and card-choice overlays do not expire absolute-time combat statuses (13.33076ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 469.938686

@@ -1,0 +1,150 @@
+{
+  "source_commit": "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6",
+  "seed": "CHAMPION-SKILLS",
+  "mode": "LOCAL_CONTROLLED_FIXTURE_NATIVE_UI_SKILLS_AND_UPDATE_LOOP_DAMAGE_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed artifact",
+      "pass": true,
+      "detail": {
+        "id": "v240-champion-skills",
+        "commit": "95fe5b191e77e2ea9a80ac4fc05a46460ff734f6",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T07:34:20.048626+00:00",
+        "resourceVerification": "SHA256_MATCH_49_FILES"
+      }
+    },
+    {
+      "name": "all192 hero frames including casting have visible unclipped pixels",
+      "pass": true,
+      "detail": {
+        "width": 2816,
+        "height": 2112,
+        "failures": []
+      }
+    },
+    {
+      "name": "native Mark applies production duration and persistent target glyph",
+      "pass": true
+    },
+    {
+      "name": "native Aegis shields nearby ally and renders faceted ward",
+      "pass": true
+    },
+    {
+      "name": "both skills play all four real cooldown-driven cast frames",
+      "pass": true,
+      "detail": {
+        "mark": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "aegis": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "warlord: production warning geometry and distinct glyph",
+      "pass": true,
+      "detail": {
+        "source": "warlord",
+        "x": 30,
+        "y": 33,
+        "r": 2.8,
+        "damage": 65,
+        "delay": 2.4,
+        "elapsed": 0.06669999999999981,
+        "visual": {
+          "progress": 0.02779166666666659,
+          "fade": 1,
+          "tint": "235,126,62",
+          "spokes": 6
+        }
+      }
+    },
+    {
+      "name": "warlord: native movement escapes actual resolved damage zone",
+      "pass": false,
+      "detail": {
+        "hero": {
+          "x": 31.010323318821143,
+          "y": 32.428946183239766,
+          "hp": 459.8,
+          "startHP": 520
+        },
+        "witness": {
+          "hp": 80,
+          "startHP": 130
+        },
+        "distance": 1.160541110943598,
+        "radius": 2.8,
+        "done": true,
+        "elapsed": 2.400099999999998,
+        "seen": {
+          "marks": 138,
+          "shields": 120,
+          "warnings": 172,
+          "impacts": 30
+        }
+      }
+    },
+    {
+      "name": "browser execution",
+      "pass": false,
+      "detail": {
+        "message": "warlord: native movement escapes actual resolved damage zone",
+        "stack": "Error: warlord: native movement escapes actual resolved damage zone\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/v240_champion_skills_browser.mjs:11:103)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/v240_champion_skills_browser.mjs:107:5\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:502:9)"
+      }
+    }
+  ],
+  "errors": [],
+  "timeline": [
+    {
+      "type": "warlord",
+      "warning": {
+        "source": "warlord",
+        "x": 30,
+        "y": 33,
+        "r": 2.8,
+        "damage": 65,
+        "delay": 2.4,
+        "elapsed": 0.06669999999999981,
+        "visual": {
+          "progress": 0.02779166666666659,
+          "fade": 1,
+          "tint": "235,126,62",
+          "spokes": 6
+        }
+      },
+      "result": {
+        "hero": {
+          "x": 31.010323318821143,
+          "y": 32.428946183239766,
+          "hp": 459.8,
+          "startHP": 520
+        },
+        "witness": {
+          "hp": 80,
+          "startHP": 130
+        },
+        "distance": 1.160541110943598,
+        "radius": 2.8,
+        "done": true,
+        "elapsed": 2.400099999999998,
+        "seen": {
+          "marks": 138,
+          "shields": 120,
+          "warnings": 172,
+          "impacts": 30
+        }
+      }
+    }
+  ],
+  "pass": false
+}
