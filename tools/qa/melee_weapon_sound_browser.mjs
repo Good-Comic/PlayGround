@@ -80,9 +80,10 @@ try {
     await page.evaluate(() => { window.mutedVoiceCount = voices.length; window.mutedEventCount = soundEvents.length; meterEpoch++; meter.port.postMessage(meterEpoch); signal = { sum: 0, count: 0, activeCount: 0, peak: 0, epoch: meterEpoch }; actor.cooldown = 0; ageOfAsh.game.paused = false; });
     await page.waitForFunction(() => soundEvents.length > mutedEventCount, null, { timeout: 5000 });
     await page.waitForTimeout(350);
+    await page.waitForFunction(() => signal.count >= 8192, null, {timeout:5000});
     await page.evaluate(() => { ageOfAsh.game.paused = true; });
     const muted = await page.evaluate(() => ({ enabled: ageOfAsh.game.sound.enabled, voices: voices.length - mutedVoiceCount, requests: soundEvents.length - mutedEventCount, totalSamples: signal.count, activeSamples: signal.activeCount, rms: Math.sqrt(signal.sum / Math.max(1, signal.activeCount)), peak: signal.peak }));
-    check(`${label}: native mute suppresses voices during real combat`, !muted.enabled && muted.voices === 0 && muted.requests > 0 && muted.peak < 1e-6, muted);
+    check(`${label}: native mute suppresses voices during real combat`, muted.totalSamples >= 8192 && !muted.enabled && muted.voices === 0 && muted.requests > 0 && muted.peak < 1e-6, muted);
     await page.locator('#btn-sound').click();
     const throttle = await page.evaluate(({ type, method, civ }) => {
       const s = ageOfAsh.game.sound; s.last.set(method, performance.now() - 1000);
