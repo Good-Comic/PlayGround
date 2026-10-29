@@ -1,17 +1,19 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "PER戰象與文明單位辨識 / PER elephant and civilization unit identity",
+  "name": "PER與MNG文明單位辨識 / PER and MNG civilization unit identity",
   "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
   "priority": "P1",
   "agent": "Codex",
   "environment": "New independent Linux Chromium workspace; local software rendering",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-  "latest_pushed_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-  "application_source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+  "latest_pushed_commit": "9dd20d2a1d689b73c513d0310320a979e06b8979",
+  "application_source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
   "completed": [
     "Original160-frame PER elephant atlas integrated",
-    "7Node/12localChromium PASS including native payment/training and actual trample"
+    "7Node/12localChromium PASS including native payment/training and actual trample",
+    "Original MNG-only160-frame horse-archer kit integrated, other civs/enemies unchanged",
+    "10Node/13localChromium PASS including paid14-second training and real arrows"
   ],
   "uncommitted": [],
   "unpushed": [],
@@ -27,10 +29,23 @@
       "result": "12 PASS CONTROLLED_FIXTURE",
       "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
       "path": "docs/evidence/v240-elephant/browser/browser.json"
+    },
+    {
+      "name": "MNG variant Node",
+      "result": "10 PASS",
+      "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+      "path": "docs/evidence/v240-mng-horse-archer/focused-node.txt"
+    },
+    {
+      "name": "MNG variant Chromium",
+      "result": "13 PASS CONTROLLED_FIXTURE",
+      "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+      "path": "docs/evidence/v240-mng-horse-archer/browser/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-elephant/REPORT.md"
+    "docs/evidence/v240-elephant/REPORT.md",
+    "docs/evidence/v240-mng-horse-archer/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -41,13 +56,15 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "MNG horse-archer civilization equipment variant; no balance/exclusivity change"
+    "Continue another approved existing civilization unit, e.g. KOR patrol-cart visual identity, using civilization-scoped atlases where appropriate",
+    "Improve production-event battlefield sound without using simulation RNG",
+    "Periodically integrate natural campaigns after material gameplay changes; preserve all FAIL"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "IN_PROGRESS",
+  "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
   "updated_at": "2026-10-29",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",

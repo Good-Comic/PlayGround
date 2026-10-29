@@ -1,0 +1,225 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_FIXTURE_NOT_NATURAL_PLAY",
+  "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+  "seed": "PERSIAN-HORSE-ARCHER",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed payload verified",
+      "pass": true,
+      "detail": {
+        "id": "v240-mng-horse-archer",
+        "commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T12:56:11.645568+00:00",
+        "resourceVerification": "SHA256_MATCH_53_FILES"
+      }
+    },
+    {
+      "name": "native Mongol stable training pays real food/gold cost",
+      "pass": true,
+      "detail": {
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "food": 35,
+            "wood": 25,
+            "gold": 40
+          },
+          "time": 0.11670000000000028
+        },
+        "after": {
+          "food": 265,
+          "wood": 275,
+          "gold": 80,
+          "stone": 100
+        },
+        "queue": [
+          {
+            "type": "horse_archer",
+            "remaining": 14
+          }
+        ]
+      }
+    },
+    {
+      "name": "production simulation completes ordinary horse_archer training",
+      "pass": true,
+      "detail": {
+        "id": 21,
+        "elapsed": 14.015000000000022,
+        "queue": 0,
+        "civ": "MNG"
+      }
+    },
+    {
+      "name": "all horse_archer frames have visible artwork and no edge clipping",
+      "pass": true,
+      "detail": [
+        {
+          "type": "horse_archer",
+          "width": 2816,
+          "height": 1760,
+          "failures": []
+        }
+      ]
+    },
+    {
+      "name": "horse_archer: production movement and walk presentation",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.991114770347007,
+          "y": 33.4955573851735
+        },
+        "seen": {
+          "idle": 99,
+          "walk": 181
+        }
+      }
+    },
+    {
+      "name": "production mounted bow fires actual arrows",
+      "pass": true,
+      "detail": {
+        "shots": 2,
+        "enemyHP": 134.60000000000002,
+        "startHP": 145
+      }
+    },
+    {
+      "name": "horse_archer: production combat and four attack frames",
+      "pass": true,
+      "detail": {
+        "hp": 21,
+        "enemyHP": 134.60000000000002,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 175,
+          "walk": 182,
+          "attack": 8,
+          "hit": 44
+        },
+        "time": 17.798
+      }
+    },
+    {
+      "name": "horse_archer: production hit presentation",
+      "pass": true
+    },
+    {
+      "name": "horse_archer: production death presentation",
+      "pass": true
+    },
+    {
+      "name": "horse_archer: missing asset permits procedural fallback",
+      "pass": true
+    },
+    {
+      "name": "100-unit static renderer JS budget and paired medians",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "fallback",
+          "mean": 3.356249999953434,
+          "p50": 2.900000000372529,
+          "p95": 4.799999998882413
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.54124999998603,
+          "p50": 1.300000000745058,
+          "p95": 2.800000000745058
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.0574999999720602,
+          "p50": 0.900000000372529,
+          "p95": 1.599999999627471
+        },
+        {
+          "repeat": 1,
+          "mode": "fallback",
+          "mean": 3.574999999976717,
+          "p50": 2.699999999254942,
+          "p95": 7.399999998509884
+        },
+        {
+          "repeat": 2,
+          "mode": "fallback",
+          "mean": 2.51875,
+          "p50": 2.400000000372529,
+          "p95": 3.599999999627471
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.49000000001397,
+          "p50": 1.199999999254942,
+          "p95": 2.599999999627471
+        }
+      ]
+    },
+    {
+      "name": "native Teuton game retains procedural horse archer, not Mongol kit",
+      "pass": true,
+      "detail": {
+        "civ": "TEU",
+        "key": "horse_archer",
+        "variant": false
+      }
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "snapshots": [
+    {
+      "type": "horse_archer",
+      "combat": {
+        "hp": 21,
+        "enemyHP": 134.60000000000002,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 175,
+          "walk": 182,
+          "attack": 8,
+          "hit": 44
+        },
+        "time": 17.798
+      }
+    }
+  ],
+  "pass": true
+}
