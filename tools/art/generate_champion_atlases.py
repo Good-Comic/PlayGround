@@ -25,6 +25,8 @@ def cell(kind, direction, state, frame):
     shoulder = 10 if support else 16 if hero else 21
     # Face and gear rotate in the isometric ground plane; the body stays upright.
     hand_x, hand_y = 13 * dx, -30 + 5 * dy
+    if state == 'cast':
+        hand_y -= [3, 11, 17, 7][frame]
     if support:
         weapon = f'''<g transform="translate({hand_x:.2f} {hand_y:.2f})">
           <path d="M0 29V-34" stroke="#47392d" stroke-width="3"/>
@@ -71,17 +73,19 @@ def cell(kind, direction, state, frame):
       <ellipse cx="{dx*2:.2f}" cy="-44" rx="6" ry="7" fill="{'#4b4d55' if back else '#bc926d'}"/>
       {helm}
       <path d="M8-31L{hand_x:.2f} {hand_y:.2f}M-8-31L-14-24" stroke="{metal}" stroke-width="4" stroke-linecap="round"/>
-      {'' if back else weapon}{'' if back else badge}
+      {'' if back else weapon}{'' if back else badge}{f'<circle cx="{hand_x:.2f}" cy="{hand_y:.2f}" r="{[2, 5, 8, 3][frame]}" fill="none" stroke="#f4e1a6" stroke-width="1.5"/>' if state=='cast' else ''}
       </g></g>'''
 
 
 def build(kind):
     cells = []
-    for row, state in enumerate(STATES):
+    states = STATES + (['cast'] if kind == 'commander' else [])
+    for row, state in enumerate(states):
         for direction in range(8):
             for frame in range(4):
                 cells.append(f'<g transform="translate({((direction%4)*4+frame)*SIZE} {(row*2+direction//4)*SIZE})">{cell(kind,direction,state,frame)}</g>')
-    return f'<svg xmlns="http://www.w3.org/2000/svg" width="2816" height="1760" viewBox="0 0 2816 1760"><title>Riftwatch original {kind} animation atlas</title>{"".join(cells)}</svg>\n'
+    height = len(states) * 2 * SIZE
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="2816" height="{height}" viewBox="0 0 2816 {height}"><title>Riftwatch original {kind} animation atlas</title>{"".join(cells)}</svg>\n'
 
 
 if __name__ == '__main__':

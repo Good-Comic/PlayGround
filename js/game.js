@@ -11,11 +11,8 @@ import { NemesisDirector, unitThreat } from './director.js';
 import { t } from './i18n.js';
 import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, rand, randInt, seedFromDate, formatNumber } from './utils.js';
 import { visualDirectionFromVector } from './visuals.js';
-
-export const HERO_SKILLS = Object.freeze({
-  mark: Object.freeze({ radius: 9, duration: 6, cooldown: 30, rangeColor: '229,160,74' }),
-  aegis: Object.freeze({ radius: 5, duration: 5, cooldown: 60, rangeColor: '147,197,220' }),
-});
+import { HERO_SKILLS } from './hero-skills.js';
+export { HERO_SKILLS } from './hero-skills.js';
 
 const DEFAULT_EFFECTS = () => ({
   woodMul: 1, foodMul: 1, goldMul: 1, stoneMul: 1, woodYield: 1,

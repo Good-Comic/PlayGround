@@ -2,6 +2,7 @@ import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, sh
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.js';
 import { atlasFrame, atlasActionProgress, loadUnitSpriteAtlases } from './sprite-atlas.js';
+import { heroCastVisual, bossStrikeVisual } from './hero-skills.js';
 
 const TERRAIN_COLORS = {
   grass: ['#62753a', '#697d3f', '#5d7037', '#708341'],
@@ -500,7 +501,31 @@ export class Renderer {
       ctx.beginPath();
       ctx.ellipse(p.x, p.y, zone.r * 32 * z * progress, zone.r * 16 * z * progress, 0, 0, Math.PI * 2);
       ctx.stroke();
+      const strike = bossStrikeVisual(zone);
+      if (strike) this.drawBossStrike(zone, strike, p, z);
       ctx.restore();
+    }
+  }
+
+  drawBossStrike(zone, visual, p, z) {
+    const ctx = this.ctx, rx = zone.r * 32 * z, ry = zone.r * 16 * z;
+    ctx.strokeStyle = `rgba(${visual.tint},${visual.fade * .85})`;
+    ctx.fillStyle = `rgba(${visual.tint},${visual.fade * .14})`;
+    ctx.lineWidth = (zone.done ? 2.8 : 2) * z;
+    ctx.beginPath(); ctx.ellipse(p.x, p.y, rx, ry, 0, 0, Math.PI * 2); ctx.stroke();
+    // Inward ticks preserve the exact existing damage footprint.
+    for (let i = 0; i < visual.spokes; i++) {
+      const a = i * Math.PI * 2 / visual.spokes, c = Math.cos(a), s = Math.sin(a);
+      ctx.beginPath(); ctx.moveTo(p.x + c * rx, p.y + s * ry);
+      ctx.lineTo(p.x + c * rx * .83, p.y + s * ry * .83); ctx.stroke();
+    }
+    const lift = (zone.done ? 64 * visual.fade : 12 + visual.progress * 35) * z;
+    ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x, p.y - lift); ctx.stroke();
+    const cy = p.y - lift, width = (zone.done ? 17 : 8) * z;
+    ctx.beginPath(); ctx.moveTo(p.x, cy - width); ctx.lineTo(p.x + width * .7, cy);
+    ctx.lineTo(p.x, cy + width); ctx.lineTo(p.x - width * .7, cy); ctx.closePath(); ctx.fill(); ctx.stroke();
+    if (!zone.done) {
+      ctx.beginPath(); ctx.ellipse(p.x, p.y, rx * .7, ry * .7, 0, -Math.PI / 2, -Math.PI / 2 + visual.progress * Math.PI * 2); ctx.stroke();
     }
   }
 
@@ -1302,6 +1327,10 @@ export class Renderer {
       const frame = directionalAnimationFrame(u);
       const entry = this.unitSpriteAtlases?.get(u.type);
       const bakedPose = entry?.descriptor.bakedPose && entry.ready && !entry.failed && entry.image?.naturalWidth;
+      const casting = heroCastVisual(u);
+      if (bakedPose && entry.descriptor.states.cast && casting && !['hit', 'death'].includes(frame.state)) {
+        frame.state = 'cast'; frame.progress = casting.progress;
+      }
       // New screen-space sheets already contain their directional and fallen poses.
       // Preserve the historical procedural transform when loading fails.
       if (!bakedPose) {
@@ -1333,10 +1362,11 @@ export class Renderer {
       else if (['brute', 'warlord', 'warlord2'].includes(u.type)) this.drawBruteUnit(p, u, scale, team, walk, time, bob);
       else this.drawInfantryUnit(p, u, scale, team, walk, time, bob);
       if (!atlasDrawn && u.team === 'player' && u.type !== 'villager') this.drawCivilizationUnitAccent(u, game, p, scale, bob);
+      this.drawChampionFeedback(u, p, scale, time, casting);
       if (u.selected || u.hp < u.maxHp) {
         const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
         const w = (wide ? 40 : 24) * scale;
-        const high = ['knight', 'light_cavalry', 'horse_archer'].includes(u.type) ? 48 : wide ? 62 : 38;
+        const high = ['knight', 'light_cavalry', 'horse_archer'].includes(u.type) ? 48 : wide ? 62 : bakedPose ? 54 : 38;
         const y = p.y - high * scale;
         this.healthBar(p.x - w / 2, y, w, 3.6 * scale, Math.max(0, u.hp / u.maxHp), u.team === 'player' ? '#78a95b' : '#b25046');
       }
@@ -1358,11 +1388,36 @@ export class Renderer {
     });
   }
 
+  drawChampionFeedback(u, p, s, time, casting) {
+    if (!u.alive) return;
+    const ctx = this.ctx;
+    if (u.marked > 0) {
+      const y = p.y - (u.typeDef.boss ? 69 : 48) * s, r = 7 * s;
+      ctx.save(); ctx.strokeStyle = 'rgba(255,190,87,.95)'; ctx.lineWidth = 1.6 * s;
+      ctx.beginPath(); ctx.arc(p.x, y, r, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(p.x - r * 1.5, y); ctx.lineTo(p.x + r * 1.5, y);
+      ctx.moveTo(p.x, y - r * 1.5); ctx.lineTo(p.x, y + r * 1.5); ctx.stroke(); ctx.restore();
+    }
+    if (u.shield > 0) {
+      ctx.save(); ctx.strokeStyle = 'rgba(160,221,246,.75)'; ctx.fillStyle = 'rgba(125,191,228,.08)'; ctx.lineWidth = 1.1 * s;
+      ctx.beginPath(); ctx.moveTo(p.x, p.y - 45 * s); ctx.lineTo(p.x + 16 * s, p.y - 32 * s);
+      ctx.lineTo(p.x + 11 * s, p.y - 6 * s); ctx.lineTo(p.x, p.y + 2 * s);
+      ctx.lineTo(p.x - 11 * s, p.y - 6 * s); ctx.lineTo(p.x - 16 * s, p.y - 32 * s); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
+    }
+    if (casting) {
+      ctx.save(); ctx.strokeStyle = `rgba(${casting.color},${1 - casting.progress * .65})`; ctx.lineWidth = 2 * s;
+      const r = (11 + casting.progress * 18) * s;
+      ctx.beginPath(); ctx.ellipse(p.x, p.y - 27 * s, r, r * .7, 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(p.x - r * .4, p.y - 27 * s); ctx.lineTo(p.x, p.y - (casting.id === 'aegis' ? 38 : 34) * s);
+      ctx.lineTo(p.x + r * .4, p.y - 27 * s); ctx.stroke(); ctx.restore();
+    }
+  }
+
   drawSpriteAtlasUnit(u, p, scale, visual, time) {
     const entry = this.unitSpriteAtlases?.get(u.type);
     if (!entry?.ready || entry.failed || !entry.image?.naturalWidth) return false;
     const descriptor = entry.descriptor;
-    const progress = atlasActionProgress(u, visual.state);
+    const progress = visual.progress ?? atlasActionProgress(u, visual.state);
     const frame = atlasFrame(descriptor, visual.direction, visual.state, time, progress);
     if (!frame) return false;
     const drawScale = scale * descriptor.scale;

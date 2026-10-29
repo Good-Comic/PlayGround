@@ -13,8 +13,11 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
     id: `${type}-v1`, src: `assets/sprites/${type}-atlas.png`, bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: 0.78, directions: DIRECTION_MAP,
-    states: Object.freeze(Object.fromEntries(Object.entries(STATES).map(([name, animation]) =>
-      [name, Object.freeze({ ...animation, frames: 4, fps: animation.fps * 2 })]))),
+    states: Object.freeze({
+      ...Object.fromEntries(Object.entries(STATES).map(([name, animation]) =>
+        [name, Object.freeze({ ...animation, frames: 4, fps: animation.fps * 2 })])),
+      ...(type === 'commander' ? { cast: Object.freeze({ row: 5, frames: 4, fps: 4 / .6, loop: false }) } : {}),
+    }),
   })])),
   ...Object.fromEntries(['spearman', 'guard'].map(type => [type, Object.freeze({
     id: `${type}-migration-v1`, src: `assets/sprites/${type}-atlas.png`,

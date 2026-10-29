@@ -12,13 +12,14 @@ test('hero support and bosses use independent complete decoded PNG sheets', () =
     const atlas = UNIT_SPRITE_ATLASES[type], png = readFileSync(new URL('../' + atlas.src, import.meta.url));
     sources.add(atlas.src);
     assert.equal(png.subarray(1, 4).toString(), 'PNG');
-    assert.equal(png.readUInt32BE(16), 2816); assert.equal(png.readUInt32BE(20), 1760);
+    const height = type === 'commander' ? 2112 : 1760;
+    assert.equal(png.readUInt32BE(16), 2816); assert.equal(png.readUInt32BE(20), height);
     assert.equal(Object.keys(atlas.directions).length, 8);
-    assert.equal(Object.keys(atlas.states).length, 5);
+    assert.equal(Object.keys(atlas.states).length, type === 'commander' ? 6 : 5);
     for (const direction of Object.keys(atlas.directions)) for (const state of Object.keys(atlas.states)) {
       assert.deepEqual([0, .26, .51, .99].map(progress => {
         const f = atlasFrame(atlas, direction, state, 0, progress);
-        assert.ok(f.sx + f.sw <= 2816 && f.sy + f.sh <= 1760); return f.frame;
+        assert.ok(f.sx + f.sw <= 2816 && f.sy + f.sh <= height); return f.frame;
       }), [0, 1, 2, 3]);
     }
   }
