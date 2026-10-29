@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Explicit authorized commit/push wrapper; manifests are snapshots, never recursively committed."""
-import argparse,subprocess
+import argparse,json,subprocess
 from pathlib import Path
 from worktree_recovery import git,inventory,load,write_snapshot
 def snapshot(repo,trigger):
@@ -24,4 +24,9 @@ def main():
   if actual!=head:raise SystemExit('REMOTE_HEAD_MISMATCH; preserve local work and re-inventory')
   snapshot(manifest_repo,'POST_PUSH');print('REMOTE_SAVED',branch,head)
  else:snapshot(manifest_repo,'SLICE_COMPLETE');print('LOCAL_SNAPSHOT_ONLY; no push performed')
+ from execution_continuity import evaluate
+ from worktree_recovery import utc
+ active=load(manifest_repo/'docs/handoff/ACTIVE-TASK.json',{})
+ steps=active.get('next_steps',[])
+ print(json.dumps(evaluate({'event':'checkpoint','CHECKPOINT_SHA':git(repo,'rev-parse','HEAD'),'NEXT_AUTHORIZED_TASK':steps[0] if steps else None,'duration_scope':'CHECKPOINT_COMMAND_NO_SESSION_START_TELEMETRY'},utc()),ensure_ascii=False))
 if __name__=='__main__':main()

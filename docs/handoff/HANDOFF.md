@@ -1,3 +1,11 @@
+# 連續執行覆寫 / Continuous execution override
+
+繁體中文：上一輪 55ef783 的停止已記為 AGENT_EARLY_STOP，詳見 docs/evidence/execution-continuity/REPORT.md。安全 Commit／Push 後仍有授權且無阻礙的工作即直接繼續，不以切片數、經過分鐘數或未知額度結束。下一項仍為 JPN 既有 guard 札甲 Atlas。每次真正停止記錄 STOP_REASON／EXECUTION_DURATION（量測範圍）／NEXT_AUTHORIZED_TASK／CHECKPOINT_SHA／AUTO_RESUME_AVAILABLE。310 分鐘新 Agent 喚醒未驗證，GitHub 監督不算自動續跑；無排程管理工具，不宣稱重綁完成。
+
+English: Previous stop at 55ef783 is recorded as AGENT_EARLY_STOP; see docs/evidence/execution-continuity/REPORT.md. Directly continue authorized unblocked work after safety commits/pushes; slice count, elapsed minutes and unknown quota are not ending criteria. Next remains JPN existing-guard lamellar atlas. Every actual stop records STOP_REASON/EXECUTION_DURATION (scope)/NEXT_AUTHORIZED_TASK/CHECKPOINT_SHA/AUTO_RESUME_AVAILABLE. Current-Agent 310-minute waking is unverified; GitHub supervision is not auto-resume. No scheduler management tool is connected and rebinding is not claimed.
+
+---
+
 # 最新內容切片 / Latest content slice
 
 繁體中文：VIK 圓盾鏈甲盾衛八方向動畫、原生訓練及近戰已驗收；BRI 長弓兵亦已保存。來源 `8425aedfa6bb020ebaff9e909cc5e89f7337ba78`，證據 `638acc1d2f9b3122edf3fce0c6ef2818896ebc23`，8 Node／13 Chromium PASS。詳見 docs/evidence/v240-vik-roundshield/REPORT.md。依文明矩陣接續 JPN 既有 guard 札甲外觀，先核對最新來源與所有權。既有恢復已完成，不重做；歷史自然戰役、嚴格 Save/Load、低 FPS、性能及硬體缺口保留，未公開發布，排程切換未確認。
