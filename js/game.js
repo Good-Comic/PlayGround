@@ -134,6 +134,7 @@ export class Game {
     this.placement = null;
     this.commandMarkers = [];
     this.rng = mulberry32(seed ^ 0x5f3759df);
+    this.visualRng = mulberry32(seed ^ 0x31a7c5e9);
     this.time = 0;
     this.runTime = 0;
     this.orderMode=null; this.controlGroups={};
@@ -432,6 +433,7 @@ export class Game {
     }
     this.nextId = 1;
     this.rng = mulberry32(this.seed ^ 0x5f3759df);
+    this.visualRng = mulberry32(this.seed ^ 0x31a7c5e9);
     this.buildings = (snapshot.buildings || []).map(saved => {
       const def = BUILDING_TYPES[saved.type];
       if (!def) return null;
@@ -1543,7 +1545,7 @@ export class Game {
     if (this.time - (u.gatherSoundAt || 0) > 0.55) {
       u.gatherSoundAt = this.time;
       if (node.resource === 'wood') this.sound?.chop(); else this.sound?.gather();
-      this.addParticles(node.x + rand(this.rng, -0.2, 0.2), node.y, 'spark', resourceParticle(node.resource), 1, 2 + this.rng() * 3);
+      this.addParticles(node.x + rand(this.visualRng, -0.2, 0.2), node.y, 'spark', resourceParticle(node.resource), 1, 2 + this.visualRng() * 3);
     }
     if (node.amount <= 0) {
       this.depleteNode(node);
@@ -1671,7 +1673,7 @@ export class Game {
     if (this.time - (u.buildSoundAt || 0) > 0.75) {
       u.buildSoundAt = this.time;
       this.sound?.build();
-      this.addParticles(cx + rand(this.rng, -0.6, 0.6), cy, 'spark', 'rgba(221,186,108,ALPHA)', 1.2, 2);
+      this.addParticles(cx + rand(this.visualRng, -0.6, 0.6), cy, 'spark', 'rgba(221,186,108,ALPHA)', 1.2, 2);
     }
     if (b.construction >= 1) {
       b.hp = b.maxHp;
@@ -1689,7 +1691,7 @@ export class Game {
     node.alive = false;
     node.amount = 0;
     if (node.kind === 'oak' || node.kind === 'pine') {
-      this.world.props.push({ kind: 'stump', x: node.x, y: node.y, angle: this.rng() * 6 });
+      this.world.props.push({ kind: 'stump', x: node.x, y: node.y, angle: this.visualRng() * 6 });
     }
     this.addParticles(node.x, node.y, 'spark', 'rgba(208,190,145,ALPHA)', 1.2, 8, 0.7);
   }
@@ -3429,16 +3431,16 @@ export class Game {
 
   addParticles(x, y, kind, color, size = 1, count = 5, life = 0.7) {
     for (let i = 0; i < count; i++) {
-      const a = this.rng() * Math.PI * 2;
-      const speed = kind === 'smoke' ? rand(this.rng, 0.1, 0.4) : rand(this.rng, 0.4, 1.7);
+      const a = this.visualRng() * Math.PI * 2;
+      const speed = kind === 'smoke' ? rand(this.visualRng, 0.1, 0.4) : rand(this.visualRng, 0.4, 1.7);
       this.particles.push({
-        kind, x: x + rand(this.rng, -0.1, 0.1), y: y + rand(this.rng, -0.1, 0.1),
+        kind, x: x + rand(this.visualRng, -0.1, 0.1), y: y + rand(this.visualRng, -0.1, 0.1),
         vx: Math.cos(a) * speed * (kind === 'smoke' ? 0.4 : 1),
         vy: Math.sin(a) * speed * (kind === 'smoke' ? 0.4 : 1),
-        z: kind === 'smoke' ? 10 + this.rng() * 10 : 8 + this.rng() * 12,
-        vz: kind === 'smoke' ? rand(this.rng, 6, 14) : rand(this.rng, -12, 18),
-        life: life * rand(this.rng, 0.7, 1.3), maxLife: life, color,
-        size: size * rand(this.rng, 0.7, 1.4),
+        z: kind === 'smoke' ? 10 + this.visualRng() * 10 : 8 + this.visualRng() * 12,
+        vz: kind === 'smoke' ? rand(this.visualRng, 6, 14) : rand(this.visualRng, -12, 18),
+        life: life * rand(this.visualRng, 0.7, 1.3), maxLife: life, color,
+        size: size * rand(this.visualRng, 0.7, 1.4),
       });
     }
   }
