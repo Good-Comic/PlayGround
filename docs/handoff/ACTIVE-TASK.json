@@ -1,24 +1,20 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "AZT 黑曜石民兵本地驗收完成，GitHub 認證阻擋推送 / AZT obsidian militia locally accepted, GitHub authentication blocks push",
+  "name": "AZT 黑曜石步兵已遠端保存，接續 BYZ / AZT obsidian infantry remotely saved, continuing BYZ",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
+  "latest_pushed_commit": "a1fa940d926a467f2d231232eff39a0f0bcf4d10",
   "application_source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
   "completed": [
-    "TEU 遠端已保存：9 Node／13 Chromium",
-    "AZT 本地驗收：3 Node／13 Chromium，尚未 Push",
-    "TEU remote-saved:9 Node/13 Chromium; AZT locally accepted:3 Node/13 Chromium, not pushed"
+    "TEU9 Node/13 Chromium accepted and remote saved",
+    "AZT3 Node/13 Chromium accepted, images reviewed and remote saved after transient auth recovery"
   ],
   "uncommitted": [],
-  "unpushed": [
-    "a7900ce7b833f65720206c3f611e0180a29e024d",
-    "2c5668cd7ee3f8498677743888467ee2d9006439"
-  ],
+  "unpushed": [],
   "tests": [
     {
       "name": "AZT focused Node",
@@ -46,20 +42,19 @@
     "JPN first renderer comparison FAIL; recheck PASS does not erase unexplained variability"
   ],
   "blockers": [
-    "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized",
-    "GitHub API 401 Bad credentials; existing gh authentication reports invalid token; remote HEAD/Ownership and push cannot be verified"
+    "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "恢復有效 GitHub 認證後，核對最新遠端與 Ownership，正常推送 AZT 來源與證據；之後接續 BYZ 既有槍兵外觀",
-    "Restore valid existing GitHub authorization, revalidate latest remote/Ownership, normally push AZT source/evidence, then continue BYZ existing-spearman visuals"
+    "直接接續 BYZ 既有槍兵的札甲／圓盾／長矛外觀，不改平衡",
+    "Directly continue BYZ existing-spearman lamellar/round-shield/spear appearance without balance changes"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "BLOCKED",
+  "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T19:03:40.102722+00:00",
+  "updated_at": "2026-10-29T19:06:17.701091+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -78,7 +73,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "LOCAL_VERIFIED_REMOTE_SAVE_BLOCKED_GITHUB_AUTH",
+  "execution_state": "CONTINUING_AFTER_TRANSIENT_AUTH_RECOVERY",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -105,7 +100,7 @@
       "source": "a7900ce7b833f65720206c3f611e0180a29e024d",
       "node": 3,
       "chromium": 13,
-      "status": "LOCAL_VERIFIED_NOT_PUSHED"
+      "status": "REMOTE_SAVED_AFTER_TRANSIENT_AUTH_RECOVERY"
     }
   ],
   "continuity_policy": {
@@ -118,21 +113,8 @@
     "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
   },
   "continuation_event": {
-    "STOP_REASON": "GITHUB_AUTHENTICATION_BLOCKED",
-    "EXECUTION_DURATION": {
-      "seconds": 1100.595,
-      "start": "2026-10-29T18:45:19.507523+00:00",
-      "end": "2026-10-29T19:03:40.102722+00:00",
-      "scope": "FIRST_CONTENT_TASK_SNAPSHOT_TO_LOCAL_HANDOFF_PREPARATION_NOT_FULL_TURN"
-    },
-    "NEXT_AUTHORIZED_TASK": "Restore valid existing GitHub authorization; revalidate latest HEAD/Ownership and normally push local AZT commits/evidence; then continue BYZ spearman visual slice",
-    "CHECKPOINT_SHA": "2c5668cd7ee3f8498677743888467ee2d9006439",
-    "CHECKPOINT_STATUS": "LOCAL_ONLY_NOT_PUSHED",
-    "LAST_VERIFIED_REMOTE_SHA": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
-    "LATEST_REMOTE_SHA_STATUS": "UNKNOWN_AFTER_AUTH_FAILURE",
-    "AUTO_RESUME_AVAILABLE": false,
-    "evidence": "docs/evidence/v240-azt-militia/auth-blocker.json",
-    "budget_or_quota_limit_claimed": false
+    "STOP_REASON": "NOT_STOPPED",
+    "NEXT_AUTHORIZED_TASK": "BYZ existing spearman visual atlas"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
@@ -153,6 +135,15 @@
   },
   "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json",
   "session_id": "game-first-civ-expansion-20261030",
-  "remote_query_status": "AUTHENTICATION_BLOCKED_LATEST_UNKNOWN",
-  "current_stop_record": "docs/recovery/game-first-auth-stop.json"
+  "remote_query_status": "REMOTE_HEAD_VERIFIED_AFTER_NORMAL_PUSH",
+  "current_stop_record": "docs/recovery/game-first-auth-stop.json",
+  "resolved_execution_blockers": [
+    {
+      "failure": "Git/API authentication401 and invalid gh auth observation",
+      "git_recovery": "Normal branch push and exact ls-remote succeeded",
+      "verified_commit": "a1fa940d926a467f2d231232eff39a0f0bcf4d10",
+      "observed_at": "2026-10-29T19:06:17.701091+00:00",
+      "stop_cancelled": true
+    }
+  ]
 }

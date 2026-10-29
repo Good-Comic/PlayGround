@@ -11,7 +11,7 @@ English: This records actual progress against the existing sixteen civilizations
 | GOT | 堡壘 / Fortress | 家族層；步兵外觀待擴充 / Family layer; infantry appearance pending |
 | FRK | 堡壘 / Fortress | 披掛／長盾／騎槍輕騎已驗收 / Caparison/shield/lance light-cavalry atlas accepted; v240-frk-cavalry |
 | SAR | 沙漠 / Desert | 家族層；既有單位外觀待擴充 / Family layer; existing-unit appearance pending |
-| AZT | 中美洲 / Mesoamerican | 黑曜石武器民兵本地驗收，推送遭認證阻擋 / Obsidian militia locally accepted; push authentication-blocked; v240-azt-militia |
+| AZT | 中美洲 / Mesoamerican | 黑曜石武器民兵已驗收及遠端保存 / Obsidian militia accepted and remotely saved; v240-azt-militia |
 | BRI | 堡壘 / Fortress | 長弓 archer 已驗收 / Longbow archer accepted; v240-bri-longbow |
 | CHN | 東方 / Eastern | 諸葛弩已驗收 / Repeating-crossbow atlas accepted; v240-special-atlas |
 | PER | 沙漠 / Desert | 戰象已驗收 / Elephant atlas accepted; v240-elephant |

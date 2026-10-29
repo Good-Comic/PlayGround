@@ -1,6 +1,12 @@
+繁體中文：更新：Git 讀取與正常 Push 已恢復；來源與證據已隨 `a1fa940d926a467f2d231232eff39a0f0bcf4d10` 推送並核對。先前 401／無效認證為保留的歷史執行錯誤，未再阻擋本輪；原停止準備取消，直接接續 BYZ。不宣稱未重測的 GitHub API／gh 狀態全部恢復。
+
+English: Update: Git reads and a normal push recovered; source/evidence are pushed and verified through `a1fa940d926a467f2d231232eff39a0f0bcf4d10`. Prior401/invalid-auth observations remain historical execution evidence, no longer blocking this turn. The provisional stop was cancelled and BYZ work directly continues. Untested GitHub API/gh status is not claimed recovered.
+
+---
+
 # AZT 黑曜石武器民兵 / AZT obsidian-weapon militia
 
-來源／Source: `a7900ce7b833f65720206c3f611e0180a29e024d`. 狀態／Status: LOCAL_VERIFIED_REMOTE_SAVE_BLOCKED.
+來源／Source: `a7900ce7b833f65720206c3f611e0180a29e024d`. 狀態／Status: REMOTE_SAVED_AFTER_TRANSIENT_GIT_AUTH_RECOVERY.
 
 繁體中文：真正可訓練的既有 AZT militia 新增羽冠、棉甲、圓盾與黑曜石刃片木質武器，八方向五狀態各四格，不只換色。原創 SVG／PNG 使用既有生成器，本次只生成 AZT 切片；未修改 game.js、data.js、傷害、成本、碰撞或導航。較高羽冠使用 descriptor 血條高度；其他文明與敵軍沿用各自路由。
 
