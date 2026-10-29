@@ -7,7 +7,7 @@ English: This records actual progress against the existing sixteen civilizations
 | 文明 / Civ | 家族 / Family | 獨立切片現況 / Independent slice status |
 |---|---|---|
 | MNG | 草原 / Steppe | 騎射 Atlas 已驗收 / Mounted-archer atlas accepted; v240-mng-horse-archer |
-| TEU | 堡壘 / Fortress | 家族層；盾衛外觀待擴充 / Family layer; guard appearance pending |
+| TEU | 堡壘 / Fortress | 厚板甲長盾 guard 已驗收 / Plate/tower-shield guard accepted; v240-teu-guard |
 | GOT | 堡壘 / Fortress | 家族層；步兵外觀待擴充 / Family layer; infantry appearance pending |
 | FRK | 堡壘 / Fortress | 披掛／長盾／騎槍輕騎已驗收 / Caparison/shield/lance light-cavalry atlas accepted; v240-frk-cavalry |
 | SAR | 沙漠 / Desert | 家族層；既有單位外觀待擴充 / Family layer; existing-unit appearance pending |

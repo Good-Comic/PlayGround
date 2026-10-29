@@ -1,37 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "FRK 披掛騎槍輕騎已完成原生訓練、戰鬥動畫與性能限定驗收 / FRK caparison/lance cavalry accepted for native training, combat animation and scoped drawing performance",
-  "requirement_source": "Latest explicit GAME FIRST content continuation; existing civilization matrix",
+  "name": "TEU 厚板甲長盾盾衛八方向動作已整合 / TEU plate-armored tower-shield guard directional actions integrated",
+  "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "14602521a23e3281f413a1119d80548067e38284",
-  "latest_pushed_commit": "1d42dbf1f346a1ae1345aa2287f1ba6eca7e55b3",
-  "application_source_commit": "8774db51cafa8bdcdbc1fead7f82188070f3d050",
+  "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
+  "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+  "application_source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
   "completed": [
-    "FRK 披掛騎槍輕騎已完成原生訓練、戰鬥動畫與性能限定驗收",
-    "FRK caparison/lance cavalry accepted for native training, combat animation and scoped drawing performance"
+    "TEU 厚板甲長盾盾衛八方向動作已整合",
+    "TEU plate-armored tower-shield guard directional actions integrated"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Focused Node",
-      "result": "11 PASS",
-      "source_commit": "8774db51cafa8bdcdbc1fead7f82188070f3d050",
-      "path": "docs/evidence/v240-frk-cavalry/focused-node.txt"
+      "result": "9 PASS",
+      "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+      "path": "docs/evidence/v240-teu-guard/focused-node.txt"
     },
     {
       "name": "Actual Chromium",
       "result": "13 PASS",
-      "source_commit": "8774db51cafa8bdcdbc1fead7f82188070f3d050",
-      "path": "docs/evidence/v240-frk-cavalry/verified/browser.json"
+      "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+      "path": "docs/evidence/v240-teu-guard/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-frk-cavalry/REPORT.md",
-    "docs/recovery/execution-stop-current.json"
+    "docs/evidence/v240-teu-guard/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -44,16 +43,16 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "接續 JPN 格擋與 SPA 暈擊的獨立音效／狀態視覺回饋，沿用既有冷卻與數值，先核對最新遠端與所有權",
-    "Continue distinct JPN block and SPA stun sound/status feedback without changing cooldowns or values, after checking latest remote and ownership"
+    "直接接續 AZT 既有民兵的黑曜石武器與棉甲羽冠輪廓",
+    "Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "CHECKPOINTED",
+  "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T18:34:04.877066+00:00",
+  "updated_at": "2026-10-29T18:53:57.224035+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -72,7 +71,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "SAVED_AT_EXECUTION_BUDGET_BOUNDARY",
+  "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -88,30 +87,11 @@
   },
   "current_session_slices": [
     {
-      "task": "JPN_BLOCK",
-      "source": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
-      "evidence_commit": "6efb89eab99aad8b77633f3e14c4e6ff1025052c",
-      "node": 20,
-      "chromium": 9
-    },
-    {
-      "task": "SPA_STUN_AND_SAME_PAGE_CONTINUE",
-      "source": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-      "node": 33,
-      "chromium_gameplay": 9,
-      "chromium_integrity": 1
-    },
-    {
-      "task": "VISUAL_RNG_ISOLATION",
-      "source": "5ec12dde251220174c64248f01633da8f2c9a0a5",
-      "node": 29,
-      "chromium": 6
-    },
-    {
-      "task": "FRK_CAVALRY_ATLAS",
-      "source": "8774db51cafa8bdcdbc1fead7f82188070f3d050",
-      "node": 11,
-      "chromium": 13
+      "slice": "v240-teu-guard",
+      "source": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+      "node": 9,
+      "chromium": 13,
+      "report": "docs/evidence/v240-teu-guard/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -124,17 +104,8 @@
     "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
   },
   "continuation_event": {
-    "STOP_REASON": "EXECUTION_BUDGET_BOUNDARY",
-    "EXECUTION_DURATION": {
-      "seconds": 3551.308,
-      "scope": "FIRST_JPN_TASK_SNAPSHOT_TO_FINAL_RECORD_PREPARATION_EXCLUDES_PREFLIGHT_AND_FINAL_PUBLICATION",
-      "start": "2026-10-29T17:03:57.391604+00:00",
-      "end": "2026-10-29T18:03:08.699536+00:00",
-      "status": "OBSERVED_INTERVAL_ONLY"
-    },
-    "NEXT_AUTHORIZED_TASK": "Distinct JPN block and SPA stun sound/status feedback using existing values",
-    "CHECKPOINT_SHA": "1d42dbf1f346a1ae1345aa2287f1ba6eca7e55b3",
-    "AUTO_RESUME_AVAILABLE": false
+    "STOP_REASON": "NOT_STOPPED",
+    "NEXT_AUTHORIZED_TASK": "Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
@@ -153,5 +124,6 @@
     "status": "PREPARED_NOT_APPLIED_TO_SCHEDULER",
     "hourly_supervision_mutated": false
   },
-  "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json"
+  "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json",
+  "session_id": "game-first-civ-expansion-20261030"
 }
