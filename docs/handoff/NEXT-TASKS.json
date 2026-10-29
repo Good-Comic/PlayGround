@@ -1,37 +1,42 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T18:53:57.224035+00:00",
+  "updated_at": "2026-10-29T19:03:40.102722+00:00",
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "直接接續 AZT 既有民兵的黑曜石武器與棉甲羽冠輪廓 / Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette",
+      "name": "先保存未推送 AZT，之後接續 BYZ 槍兵 / Save unpushed AZT, then continue BYZ spearmen",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+      "latest_pushed_commit": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
       "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
       "completed": [],
       "uncommitted": [],
-      "unpushed": [],
+      "unpushed": [
+        "a7900ce7b833f65720206c3f611e0180a29e024d",
+        "2c5668cd7ee3f8498677743888467ee2d9006439"
+      ],
       "tests": [
         {
-          "name": "Focused Node",
-          "result": "9 PASS",
-          "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-          "path": "docs/evidence/v240-teu-guard/focused-node.txt"
+          "name": "AZT focused Node",
+          "result": "3 PASS",
+          "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
+          "path": "docs/evidence/v240-azt-militia/focused-node.txt"
         },
         {
-          "name": "Actual Chromium",
+          "name": "AZT actual Chromium",
           "result": "13 PASS",
-          "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-          "path": "docs/evidence/v240-teu-guard/verified/browser.json"
+          "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
+          "path": "docs/evidence/v240-azt-militia/verified/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-teu-guard/REPORT.md"
+        "docs/evidence/v240-azt-militia/REPORT.md",
+        "docs/evidence/v240-azt-militia/auth-blocker.json",
+        "docs/handoff/QA-CIV-INFANTRY.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -41,17 +46,17 @@
         "JPN first renderer comparison FAIL; recheck PASS does not erase unexplained variability"
       ],
       "blockers": [
-        "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
+        "GITHUB_AUTHENTICATION_BLOCKED; revalidate Ownership before next writing slice"
       ],
       "next_steps": [
-        "直接接續 AZT 既有民兵的黑曜石武器與棉甲羽冠輪廓",
-        "Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette"
+        "恢復有效 GitHub 認證後，核對最新遠端與 Ownership，正常推送 AZT 來源與證據；之後接續 BYZ 既有槍兵外觀",
+        "Restore valid existing GitHub authorization, revalidate latest remote/Ownership, normally push AZT source/evidence, then continue BYZ existing-spearman visuals"
       ],
       "permissions": [
         "Independent development tests normal push",
         "No main Force Push Checkpoints Pages or OmGitHub publication"
       ],
-      "status": "READY",
+      "status": "BLOCKED",
       "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
       "updated_at": "2026-10-29",
       "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",

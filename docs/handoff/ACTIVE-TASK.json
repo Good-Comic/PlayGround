@@ -1,36 +1,42 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "TEU 厚板甲長盾盾衛八方向動作已整合 / TEU plate-armored tower-shield guard directional actions integrated",
+  "name": "AZT 黑曜石民兵本地驗收完成，GitHub 認證阻擋推送 / AZT obsidian militia locally accepted, GitHub authentication blocks push",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-  "application_source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+  "latest_pushed_commit": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
+  "application_source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
   "completed": [
-    "TEU 厚板甲長盾盾衛八方向動作已整合",
-    "TEU plate-armored tower-shield guard directional actions integrated"
+    "TEU 遠端已保存：9 Node／13 Chromium",
+    "AZT 本地驗收：3 Node／13 Chromium，尚未 Push",
+    "TEU remote-saved:9 Node/13 Chromium; AZT locally accepted:3 Node/13 Chromium, not pushed"
   ],
   "uncommitted": [],
-  "unpushed": [],
+  "unpushed": [
+    "a7900ce7b833f65720206c3f611e0180a29e024d",
+    "2c5668cd7ee3f8498677743888467ee2d9006439"
+  ],
   "tests": [
     {
-      "name": "Focused Node",
-      "result": "9 PASS",
-      "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-      "path": "docs/evidence/v240-teu-guard/focused-node.txt"
+      "name": "AZT focused Node",
+      "result": "3 PASS",
+      "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
+      "path": "docs/evidence/v240-azt-militia/focused-node.txt"
     },
     {
-      "name": "Actual Chromium",
+      "name": "AZT actual Chromium",
       "result": "13 PASS",
-      "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-      "path": "docs/evidence/v240-teu-guard/verified/browser.json"
+      "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
+      "path": "docs/evidence/v240-azt-militia/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-teu-guard/REPORT.md"
+    "docs/evidence/v240-azt-militia/REPORT.md",
+    "docs/evidence/v240-azt-militia/auth-blocker.json",
+    "docs/handoff/QA-CIV-INFANTRY.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -40,19 +46,20 @@
     "JPN first renderer comparison FAIL; recheck PASS does not erase unexplained variability"
   ],
   "blockers": [
-    "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
+    "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized",
+    "GitHub API 401 Bad credentials; existing gh authentication reports invalid token; remote HEAD/Ownership and push cannot be verified"
   ],
   "next_steps": [
-    "直接接續 AZT 既有民兵的黑曜石武器與棉甲羽冠輪廓",
-    "Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette"
+    "恢復有效 GitHub 認證後，核對最新遠端與 Ownership，正常推送 AZT 來源與證據；之後接續 BYZ 既有槍兵外觀",
+    "Restore valid existing GitHub authorization, revalidate latest remote/Ownership, normally push AZT source/evidence, then continue BYZ existing-spearman visuals"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "IN_PROGRESS",
+  "status": "BLOCKED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T18:53:57.224035+00:00",
+  "updated_at": "2026-10-29T19:03:40.102722+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -71,7 +78,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
+  "execution_state": "LOCAL_VERIFIED_REMOTE_SAVE_BLOCKED_GITHUB_AUTH",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -92,6 +99,13 @@
       "node": 9,
       "chromium": 13,
       "report": "docs/evidence/v240-teu-guard/REPORT.md"
+    },
+    {
+      "slice": "v240-azt-militia",
+      "source": "a7900ce7b833f65720206c3f611e0180a29e024d",
+      "node": 3,
+      "chromium": 13,
+      "status": "LOCAL_VERIFIED_NOT_PUSHED"
     }
   ],
   "continuity_policy": {
@@ -104,8 +118,21 @@
     "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
   },
   "continuation_event": {
-    "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette"
+    "STOP_REASON": "GITHUB_AUTHENTICATION_BLOCKED",
+    "EXECUTION_DURATION": {
+      "seconds": 1100.595,
+      "start": "2026-10-29T18:45:19.507523+00:00",
+      "end": "2026-10-29T19:03:40.102722+00:00",
+      "scope": "FIRST_CONTENT_TASK_SNAPSHOT_TO_LOCAL_HANDOFF_PREPARATION_NOT_FULL_TURN"
+    },
+    "NEXT_AUTHORIZED_TASK": "Restore valid existing GitHub authorization; revalidate latest HEAD/Ownership and normally push local AZT commits/evidence; then continue BYZ spearman visual slice",
+    "CHECKPOINT_SHA": "2c5668cd7ee3f8498677743888467ee2d9006439",
+    "CHECKPOINT_STATUS": "LOCAL_ONLY_NOT_PUSHED",
+    "LAST_VERIFIED_REMOTE_SHA": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
+    "LATEST_REMOTE_SHA_STATUS": "UNKNOWN_AFTER_AUTH_FAILURE",
+    "AUTO_RESUME_AVAILABLE": false,
+    "evidence": "docs/evidence/v240-azt-militia/auth-blocker.json",
+    "budget_or_quota_limit_claimed": false
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
@@ -125,5 +152,7 @@
     "hourly_supervision_mutated": false
   },
   "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json",
-  "session_id": "game-first-civ-expansion-20261030"
+  "session_id": "game-first-civ-expansion-20261030",
+  "remote_query_status": "AUTHENTICATION_BLOCKED_LATEST_UNKNOWN",
+  "current_stop_record": "docs/recovery/game-first-auth-stop.json"
 }

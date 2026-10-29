@@ -1,186 +1,76 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T18:53:58.245983+00:00",
-  "framework_status": "HANDOFF_FRAMEWORK_READY",
+  "generated_at": "2026-10-29T19:03:40.102722+00:00",
+  "framework_status": "LOCAL_HANDOFF_REMOTE_AUTH_BLOCKED",
   "cross_agent_status": "NOT_TESTED",
-  "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
+  "write_eligibility": "RESTORE_AUTH_AND_REVALIDATE_HEAD_OWNERSHIP_BEFORE_NEXT_SLICE",
   "trigger": {
-    "kind": "MANUAL_HANDOFF",
-    "confidence": "CONFIRMED",
-    "evidence": "ACCEPTED_CONTENT_CONTINUING_AZT"
+    "kind": "TOOL_FAILURE",
+    "confidence": "CONFIRMED_AUTH_FAILURE",
+    "evidence": "GitHub HTTP401 Bad credentials; gh existing token invalid"
   },
   "active_task": {
     "task_id": "V240-SPECIAL-ATLAS",
-    "name": "TEU \u539a\u677f\u7532\u9577\u76fe\u76fe\u885b\u516b\u65b9\u5411\u52d5\u4f5c\u5df2\u6574\u5408 / TEU plate-armored tower-shield guard directional actions integrated",
+    "name": "AZT 黑曜石民兵本地驗收完成，GitHub 認證阻擋推送 / AZT obsidian militia locally accepted, GitHub authentication blocks push",
     "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
     "priority": "P1",
     "agent": "Codex",
     "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
     "branch": "codex/riftwatch-v240-game-first",
     "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-    "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-    "application_source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+    "latest_pushed_commit": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
+    "application_source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
     "completed": [
-      "TEU \u539a\u677f\u7532\u9577\u76fe\u76fe\u885b\u516b\u65b9\u5411\u52d5\u4f5c\u5df2\u6574\u5408",
-      "TEU plate-armored tower-shield guard directional actions integrated"
+      "TEU 遠端已保存：9 Node／13 Chromium",
+      "AZT 本地驗收：3 Node／13 Chromium，尚未 Push",
+      "TEU remote-saved:9 Node/13 Chromium; AZT locally accepted:3 Node/13 Chromium, not pushed"
     ],
-    "uncommitted": [
-      {
-        "status": " M",
-        "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-      },
-      {
-        "status": " M",
-        "path": "docs/handoff/ACTIVE-TASK.json"
-      },
-      {
-        "status": " M",
-        "path": "docs/handoff/HANDOFF.md"
-      },
-      {
-        "status": " M",
-        "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-      },
-      {
-        "status": " M",
-        "path": "docs/handoff/NEXT-TASKS.json"
-      },
-      {
-        "status": " M",
-        "path": "docs/recovery/WORKTREE-RECOVERY.md"
-      },
-      {
-        "status": " M",
-        "path": "docs/recovery/worktree-recovery.json"
-      },
-      {
-        "status": " M",
-        "path": "tools/qa/v240_civ_infantry_browser.mjs"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/REPORT.md"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/death.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-      }
+    "uncommitted": [],
+    "unpushed": [
+      "a7900ce7b833f65720206c3f611e0180a29e024d",
+      "2c5668cd7ee3f8498677743888467ee2d9006439"
     ],
-    "unpushed": [],
     "tests": [
       {
-        "name": "Focused Node",
-        "result": "9 PASS",
-        "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-        "path": "docs/evidence/v240-teu-guard/focused-node.txt"
+        "name": "AZT focused Node",
+        "result": "3 PASS",
+        "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
+        "path": "docs/evidence/v240-azt-militia/focused-node.txt"
       },
       {
-        "name": "Actual Chromium",
+        "name": "AZT actual Chromium",
         "result": "13 PASS",
-        "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-        "path": "docs/evidence/v240-teu-guard/verified/browser.json"
+        "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
+        "path": "docs/evidence/v240-azt-militia/verified/browser.json"
       }
     ],
     "evidence": [
-      "docs/evidence/v240-teu-guard/REPORT.md"
+      "docs/evidence/v240-azt-militia/REPORT.md",
+      "docs/evidence/v240-azt-militia/auth-blocker.json",
+      "docs/handoff/QA-CIV-INFANTRY.md"
     ],
     "failures": [
-      "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
+      "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
       "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
       "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain",
       "HISTORICAL JPN-MELEE-BLOCK-MISSING-CIV FAIL preserved; scoped fix accepted at 3a07094748122d9046f4e46b54b3cecd0fad2e3f",
       "JPN first renderer comparison FAIL; recheck PASS does not erase unexplained variability"
     ],
     "blockers": [
-      "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
+      "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized",
+      "GitHub API 401 Bad credentials; existing gh authentication reports invalid token; remote HEAD/Ownership and push cannot be verified"
     ],
     "next_steps": [
-      "\u76f4\u63a5\u63a5\u7e8c AZT \u65e2\u6709\u6c11\u5175\u7684\u9ed1\u66dc\u77f3\u6b66\u5668\u8207\u68c9\u7532\u7fbd\u51a0\u8f2a\u5ed3",
-      "Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette"
+      "恢復有效 GitHub 認證後，核對最新遠端與 Ownership，正常推送 AZT 來源與證據；之後接續 BYZ 既有槍兵外觀",
+      "Restore valid existing GitHub authorization, revalidate latest remote/Ownership, normally push AZT source/evidence, then continue BYZ existing-spearman visuals"
     ],
     "permissions": [
       "Independent development tests normal push",
       "No main Force Push Checkpoints Pages or OmGitHub publication"
     ],
-    "status": "IN_PROGRESS",
+    "status": "BLOCKED",
     "quota_status": "QUOTA_PERCENT_UNKNOWN",
-    "updated_at": "2026-10-29T18:53:57.782749+00:00",
+    "updated_at": "2026-10-29T19:03:40.102722+00:00",
     "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
     "ownership_at_snapshot": {
       "task": "V240-SPECIAL-ATLAS",
@@ -199,7 +89,7 @@
     },
     "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
     "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-    "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
+    "execution_state": "LOCAL_VERIFIED_REMOTE_SAVE_BLOCKED_GITHUB_AUTH",
     "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
     "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
     "current_envlost_recovery": {
@@ -220,6 +110,13 @@
         "node": 9,
         "chromium": 13,
         "report": "docs/evidence/v240-teu-guard/REPORT.md"
+      },
+      {
+        "slice": "v240-azt-militia",
+        "source": "a7900ce7b833f65720206c3f611e0180a29e024d",
+        "node": 3,
+        "chromium": 13,
+        "status": "LOCAL_VERIFIED_NOT_PUSHED"
       }
     ],
     "continuity_policy": {
@@ -232,8 +129,21 @@
       "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
     },
     "continuation_event": {
-      "STOP_REASON": "NOT_STOPPED",
-      "NEXT_AUTHORIZED_TASK": "Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette"
+      "STOP_REASON": "GITHUB_AUTHENTICATION_BLOCKED",
+      "EXECUTION_DURATION": {
+        "seconds": 1100.595,
+        "start": "2026-10-29T18:45:19.507523+00:00",
+        "end": "2026-10-29T19:03:40.102722+00:00",
+        "scope": "FIRST_CONTENT_TASK_SNAPSHOT_TO_LOCAL_HANDOFF_PREPARATION_NOT_FULL_TURN"
+      },
+      "NEXT_AUTHORIZED_TASK": "Restore valid existing GitHub authorization; revalidate latest HEAD/Ownership and normally push local AZT commits/evidence; then continue BYZ spearman visual slice",
+      "CHECKPOINT_SHA": "2c5668cd7ee3f8498677743888467ee2d9006439",
+      "CHECKPOINT_STATUS": "LOCAL_ONLY_NOT_PUSHED",
+      "LAST_VERIFIED_REMOTE_SHA": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
+      "LATEST_REMOTE_SHA_STATUS": "UNKNOWN_AFTER_AUTH_FAILURE",
+      "AUTO_RESUME_AVAILABLE": false,
+      "evidence": "docs/evidence/v240-azt-militia/auth-blocker.json",
+      "budget_or_quota_limit_claimed": false
     },
     "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
     "hourly_supervision_policy": {
@@ -253,181 +163,71 @@
       "hourly_supervision_mutated": false
     },
     "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json",
-    "session_id": "game-first-civ-expansion-20261030"
+    "session_id": "game-first-civ-expansion-20261030",
+    "remote_query_status": "AUTHENTICATION_BLOCKED_LATEST_UNKNOWN",
+    "current_stop_record": "docs/recovery/game-first-auth-stop.json"
   },
   "next_tasks": {
     "schema_version": 1,
-    "updated_at": "2026-10-29T18:53:57.224035+00:00",
+    "updated_at": "2026-10-29T19:03:40.102722+00:00",
     "tasks": [
       {
         "task_id": "V240-CONTENT-CONTINUATION",
-        "name": "\u76f4\u63a5\u63a5\u7e8c AZT \u65e2\u6709\u6c11\u5175\u7684\u9ed1\u66dc\u77f3\u6b66\u5668\u8207\u68c9\u7532\u7fbd\u51a0\u8f2a\u5ed3 / Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette",
+        "name": "先保存未推送 AZT，之後接續 BYZ 槍兵 / Save unpushed AZT, then continue BYZ spearmen",
         "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
         "priority": "P1",
         "agent": "Codex",
         "environment": "New independent Linux Chromium workspace; local software rendering",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-        "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+        "latest_pushed_commit": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
         "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
         "completed": [],
-        "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/ACTIVE-TASK.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/HANDOFF.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          },
-          {
-            "status": " M",
-            "path": "tools/qa/v240_civ_infantry_browser.mjs"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/REPORT.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/death.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-          }
+        "uncommitted": [],
+        "unpushed": [
+          "a7900ce7b833f65720206c3f611e0180a29e024d",
+          "2c5668cd7ee3f8498677743888467ee2d9006439"
         ],
-        "unpushed": [],
         "tests": [
           {
-            "name": "Focused Node",
-            "result": "9 PASS",
-            "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
+            "name": "AZT focused Node",
+            "result": "3 PASS",
+            "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
+            "path": "docs/evidence/v240-azt-militia/focused-node.txt"
           },
           {
-            "name": "Actual Chromium",
+            "name": "AZT actual Chromium",
             "result": "13 PASS",
-            "source_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
+            "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
+            "path": "docs/evidence/v240-azt-militia/verified/browser.json"
           }
         ],
         "evidence": [
-          "docs/evidence/v240-teu-guard/REPORT.md"
+          "docs/evidence/v240-azt-militia/REPORT.md",
+          "docs/evidence/v240-azt-militia/auth-blocker.json",
+          "docs/handoff/QA-CIV-INFANTRY.md"
         ],
         "failures": [
-          "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
+          "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
           "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
           "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain",
           "JPN-MELEE-BLOCK-MISSING-CIV: FAIL, inherited and not fixed",
           "JPN first renderer comparison FAIL; recheck PASS does not erase unexplained variability"
         ],
         "blockers": [
-          "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
+          "GITHUB_AUTHENTICATION_BLOCKED; revalidate Ownership before next writing slice"
         ],
         "next_steps": [
-          "\u76f4\u63a5\u63a5\u7e8c AZT \u65e2\u6709\u6c11\u5175\u7684\u9ed1\u66dc\u77f3\u6b66\u5668\u8207\u68c9\u7532\u7fbd\u51a0\u8f2a\u5ed3",
-          "Directly continue AZT existing militia with obsidian weapon, quilted armor and feather silhouette"
+          "恢復有效 GitHub 認證後，核對最新遠端與 Ownership，正常推送 AZT 來源與證據；之後接續 BYZ 既有槍兵外觀",
+          "Restore valid existing GitHub authorization, revalidate latest remote/Ownership, normally push AZT source/evidence, then continue BYZ existing-spearman visuals"
         ],
         "permissions": [
           "Independent development tests normal push",
           "No main Force Push Checkpoints Pages or OmGitHub publication"
         ],
-        "status": "READY",
+        "status": "BLOCKED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T18:53:57.339159+00:00",
+        "updated_at": "2026-10-29",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
           "task": "V240-SPECIAL-ATLAS",
@@ -448,138 +248,21 @@
       },
       {
         "task_id": "V240-EASY-BASELINE",
-        "name": "Easy\u81ea\u7136\u57fa\u6e96\u8207Normal\u914d\u5c0d / Easy natural baseline and Normal pairing",
+        "name": "Easy自然基準與Normal配對 / Easy natural baseline and Normal pairing",
         "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
         "priority": "P0",
         "agent": "Codex",
         "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-        "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+        "latest_pushed_commit": "af016f0e360dca02c74d3c18dab9dac52b7afd3a",
         "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
         "completed": [
-          "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53c3\u6578\u751f\u6548 / Easy defeat5and valid Normal defeat4; parameters verified",
-          "\u53d7\u63a7\u5341\u6ce2\uff0fBoss\uff0f\u539f\u751fNG+\u53ca\u5468\u76ee\u5b58\u8b80PASS\uff0c\u975e\u81ea\u7136 / Controlled ten waves/Boss/native NG+/cycle saves PASS, not natural",
-          "\u4fee\u5fa9\u539f\u751fSave Pause\u526f\u4f5c\u7528\u6062\u5fa9\uff0c\u7121\u5e73\u8861\u4fee\u6539 / Fixed native Save Pause side-effect recovery without balance changes"
+          "Easy自然第五波、Normal有效補測第四波戰敗；參數生效 / Easy defeat5and valid Normal defeat4; parameters verified",
+          "受控十波／Boss／原生NG+及周目存讀PASS，非自然 / Controlled ten waves/Boss/native NG+/cycle saves PASS, not natural",
+          "修復原生Save Pause副作用恢復，無平衡修改 / Fixed native Save Pause side-effect recovery without balance changes"
         ],
-        "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/ACTIVE-TASK.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/HANDOFF.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          },
-          {
-            "status": " M",
-            "path": "tools/qa/v240_civ_infantry_browser.mjs"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/REPORT.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/death.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-          }
-        ],
+        "uncommitted": [],
         "unpushed": [],
         "tests": [
           {
@@ -603,7 +286,7 @@
           "docs/evidence/v240-easy-baseline/comparison.json"
         ],
         "failures": [
-          "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
+          "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
           "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
           "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
         ],
@@ -611,8 +294,8 @@
           "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
         ],
         "next_steps": [
-          "\u5148\u5206\u6790\u5168\u8cc7\u6e90\u9810\u7b97\u3001\u63a1\u96c6\u9632\u5b88\uff0f\u64cd\u4f5c\u5ef6\u9072\u3001\u653b\u57ce\u53cd\u5236\uff0c\u518d\u5b9a\u6700\u5c0f\u4e0d\u540c\u6e2c\u8a66 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
-          "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
+          "先分析全資源預算、採集防守／操作延遲、攻城反制，再定最小不同測試 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
+          "不從已戰敗Easy／Normal快照冒充存活接續；自然NG+仍未測 / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
         ],
         "permissions": [
           "Independent development tests normal push",
@@ -620,7 +303,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T18:53:57.339159+00:00",
+        "updated_at": "2026-10-28T17:59:28.874287+00:00",
         "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
@@ -639,7 +322,7 @@
         "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
-        "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+        "latest_pushed_commit": "d9aaab69293590007c60d7db69ebb9f4a24ecd6d",
         "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
         "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
         "completed": [
@@ -649,124 +332,7 @@
           "Measured three independent before/after mixed-scene runs; retained absolute performance FAIL and incremental draw overhead",
           "Rejected and normally reverted ineffective cache experiment"
         ],
-        "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/ACTIVE-TASK.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/HANDOFF.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          },
-          {
-            "status": " M",
-            "path": "tools/qa/v240_civ_infantry_browser.mjs"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/REPORT.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/death.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-          }
-        ],
+        "uncommitted": [],
         "unpushed": [],
         "tests": [
           {
@@ -810,7 +376,7 @@
         "status": "CHECKPOINTED",
         "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T18:53:57.339159+00:00"
+        "updated_at": "2026-10-27T20:18:33.383117+00:00"
       },
       {
         "task_id": "V240-SPRITE-ATLAS",
@@ -821,7 +387,7 @@
         "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
-        "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+        "latest_pushed_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
         "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
         "completed": [
           "Recovered from remotely saved atlas implementation after prior worktree loss",
@@ -829,124 +395,7 @@
           "Rebuilt exact-artifact Chromium evidence for eight directions five states and fallback",
           "Applied user override revoking all quota-percentage stop thresholds"
         ],
-        "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/ACTIVE-TASK.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/HANDOFF.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          },
-          {
-            "status": " M",
-            "path": "tools/qa/v240_civ_infantry_browser.mjs"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/REPORT.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/death.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-          }
-        ],
+        "uncommitted": [],
         "unpushed": [],
         "tests": [
           {
@@ -992,7 +441,7 @@
         ],
         "status": "CHECKPOINTED",
         "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T18:53:57.339159+00:00",
+        "updated_at": "2026-10-27T14:53:51.140238+00:00",
         "acceptance": "LOCAL_VERIFIED"
       },
       {
@@ -1004,7 +453,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-        "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+        "latest_pushed_commit": "7b32f49cc469c0e830a140c519734f6144fb0411",
         "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
         "completed": [
           "Added eight-direction isometric facing derived from real movement and live attack targets",
@@ -1013,124 +462,7 @@
           "Preserved unit radii pathfinding attack cadence damage and balance values",
           "Verified militia archer and light cavalry through real Chromium after the real Start flow"
         ],
-        "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/ACTIVE-TASK.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/HANDOFF.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          },
-          {
-            "status": " M",
-            "path": "tools/qa/v240_civ_infantry_browser.mjs"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/REPORT.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/death.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-          }
-        ],
+        "uncommitted": [],
         "unpushed": [],
         "tests": [
           {
@@ -1175,7 +507,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T18:53:57.339159+00:00"
+        "updated_at": "2026-10-27T11:11:13.373124+00:00"
       },
       {
         "task_id": "V240-CIV-VISUAL-FAMILIES",
@@ -1186,7 +518,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
-        "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+        "latest_pushed_commit": "0fb83fb0666b63aa678cc412e4f49c548f55be89",
         "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
         "completed": [
           "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
@@ -1195,124 +527,7 @@
           "Preserved collision radii building footprints navigation and balance values",
           "Verified five representative families in a real exact-artifact Chromium gallery with video and zero browser errors"
         ],
-        "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/ACTIVE-TASK.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/HANDOFF.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          },
-          {
-            "status": " M",
-            "path": "tools/qa/v240_civ_infantry_browser.mjs"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/REPORT.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/death.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-          }
-        ],
+        "uncommitted": [],
         "unpushed": [],
         "tests": [
           {
@@ -1357,7 +572,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T18:53:57.339159+00:00"
+        "updated_at": "2026-10-27T10:56:31.051845+00:00"
       },
       {
         "task_id": "V240-SEED-SETUP",
@@ -1368,7 +583,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-        "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+        "latest_pushed_commit": "229eb6df99b82740641f85e471563d8dbd98d315",
         "application_source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
         "completed": [
           "Prefilled each new-game menu with a visible shareable RW Seed",
@@ -1377,124 +592,7 @@
           "Verified the same manual Seed and biome produce an identical world signature before and after SaveLoad and on a second run",
           "Saved real Chromium screenshots, WebM, timeline and raw results and verified the remote branch SHA"
         ],
-        "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/ACTIVE-TASK.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/HANDOFF.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          },
-          {
-            "status": " M",
-            "path": "tools/qa/v240_civ_infantry_browser.mjs"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/REPORT.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/death.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-          }
-        ],
+        "uncommitted": [],
         "unpushed": [],
         "tests": [
           {
@@ -1544,7 +642,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T18:53:57.339159+00:00"
+        "updated_at": "2026-10-27T10:50:40.885261+00:00"
       },
       {
         "task_id": "V240-GAME-FIRST-BUILDINGS",
@@ -1555,7 +653,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-        "latest_pushed_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+        "latest_pushed_commit": "f4c474e8f26f42739e9f28ec73c23684c29c22d8",
         "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
         "completed": [
           "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
@@ -1565,124 +663,7 @@
           "Recorded screenshot, WebM, timeline, raster hashes and zero material browser errors",
           "Pushed source and evidence commits and verified the remote branch SHA"
         ],
-        "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/ACTIVE-TASK.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/HANDOFF.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          },
-          {
-            "status": " M",
-            "path": "tools/qa/v240_civ_infantry_browser.mjs"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/REPORT.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/death.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-          }
-        ],
+        "uncommitted": [],
         "unpushed": [],
         "tests": [
           {
@@ -1726,7 +707,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T18:53:57.339159+00:00"
+        "updated_at": "2026-10-27T09:19:32.045783+00:00"
       },
       {
         "task_id": "V234-CANDIDATE",
@@ -2277,7 +1258,7 @@
           "Use docs/playtest/v228/APPROVAL-PLAN.json; no automaticpublication"
         ],
         "name": "Approve and deploy isolated Candidate",
-        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
         "priority": "P0",
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -2316,7 +1297,7 @@
           "Complete separate3-repeat12-case performance at294fa287; preserve all results before integration decision"
         ],
         "name": "A1-TARGET",
-        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
         "priority": "P1",
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -2352,7 +1333,7 @@
           "Preserve final normal P0 evidence; retest performance before integration"
         ],
         "name": "B2-GDD",
-        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
         "priority": "P1",
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -2384,7 +1365,7 @@
           "Run affected performance gates; resolve later-wave caps/monument spec before full GDD claim"
         ],
         "name": "A4-POP",
-        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
         "priority": "P1",
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -2415,7 +1396,7 @@
           "Use existing cohort; actual hardware still pending"
         ],
         "name": "QA-TOOLS",
-        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
         "priority": "P1",
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -2445,7 +1426,7 @@
           "Complete latest2f148c3 three-repeat quality/performance cohort after target-state diagnosis"
         ],
         "name": "B1-RALLY",
-        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
         "priority": "P1",
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -2473,7 +1454,7 @@
           "Do not mark gameplay features integrated; gate each separately with pre/post snapshots"
         ],
         "name": "INTEGRATION",
-        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
         "priority": "P1",
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -2503,7 +1484,7 @@
           "Independent Attack-Move/UI Scale slices after recovery; existing matrix remains scope"
         ],
         "name": "PHASE-B-E",
-        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
         "priority": "P2",
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -2531,7 +1512,7 @@
           "Run Windows collector on real authorized physical machine; no predicted FPS claim"
         ],
         "name": "HARDWARE",
-        "requirement_source": "Strategy v2.2.1 P1\u2013P6 / v2.2.2",
+        "requirement_source": "Strategy v2.2.1 P1–P6 / v2.2.2",
         "priority": "P1",
         "agent": "UNASSIGNED; claim ownership before writing",
         "environment": "managed cloud, except HARDWARE requires physical Windows",
@@ -2563,14 +1544,14 @@
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-29T18:53:57.339159+00:00",
-    "trigger": "RECOVERY_RESUME",
-    "collector_commit": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-    "collector_dirty": true,
+    "captured_at_utc": "2026-10-29T19:03:39.503869+00:00",
+    "trigger": "SLICE_COMPLETE",
+    "collector_commit": "2c5668cd7ee3f8498677743888467ee2d9006439",
+    "collector_dirty": false,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-29T18:53:57.339159+00:00"
+      "queried_at": "2026-10-29T19:03:39.503869+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -2594,7 +1575,7 @@
       "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
       "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
       "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-      "codex/riftwatch-progress-feed": "5a2ed674499b4dc04706bc8926688cb5f0aeac1f",
+      "codex/riftwatch-progress-feed": "aad91de7131c8b3f29f17eb0422192fa130a43bc",
       "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
       "codex/riftwatch-task-ownership": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
       "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
@@ -2626,7 +1607,7 @@
       "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
       "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
       "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-      "codex/riftwatch-v240-game-first": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+      "codex/riftwatch-v240-game-first": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
       "main": "e35a73329ee7942627496e55b844d02b2501e685",
       "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
       "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -2656,16 +1637,16 @@
     "local_branches": [
       {
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-        "remote_head": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-        "status": "REMOTE_SAVED"
+        "head": "2c5668cd7ee3f8498677743888467ee2d9006439",
+        "remote_head": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
+        "status": "HEAD_DIFFERS_REVIEW_REQUIRED"
       }
     ],
     "worktrees": [
       {
         "path": "/workspace/riftwatch-v240-takeover",
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
+        "head": "2c5668cd7ee3f8498677743888467ee2d9006439",
         "locked": false,
         "task_id": "V240-V5-PLAYABILITY",
         "last_validation": [
@@ -2674,7 +1655,7 @@
             "result": "NATURAL_DEFEAT wave5",
             "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
             "exists": true,
-            "storage": "REMOTE_SAVED",
+            "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
             "sha256": "07b872f659222ac8419a8261b28215e8c6af30efcf07753ea6e4843b955274e5",
             "resource_freshness": "SOURCE_CHANGED"
           },
@@ -2683,7 +1664,7 @@
             "result": "NATURAL_DEFEAT wave4",
             "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
             "exists": true,
-            "storage": "REMOTE_SAVED",
+            "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
             "sha256": "c153a1ff7009bac9e7dfc958a87c777a242fd03b116c16f524ddc95ed25dbfed",
             "resource_freshness": "SOURCE_CHANGED"
           },
@@ -2692,894 +1673,57 @@
             "result": "5 PASS CONTROLLED_FIXTURE only",
             "source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
             "exists": true,
-            "storage": "REMOTE_SAVED",
+            "storage": "COMMITTED_LOCAL_REMOTE_UNCONFIRMED",
             "sha256": "64993964086ee8b660271db6fe33c2a0dc0d3dca9ac0645d5a66559070f1e276",
             "resource_freshness": "SOURCE_CHANGED"
           }
         ],
         "blockers": [
-          "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
+          "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
           "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
           "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
         ],
         "next_steps": [
-          "\u5148\u5206\u6790\u5168\u8cc7\u6e90\u9810\u7b97\u3001\u63a1\u96c6\u9632\u5b88\uff0f\u64cd\u4f5c\u5ef6\u9072\u3001\u653b\u57ce\u53cd\u5236\uff0c\u518d\u5b9a\u6700\u5c0f\u4e0d\u540c\u6e2c\u8a66 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
-          "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
+          "先分析全資源預算、採集防守／操作延遲、攻城反制，再定最小不同測試 / Analyze full-resource budgets, resource defense/operation latency and siege counters before a distinct minimal test",
+          "不從已戰敗Easy／Normal快照冒充存活接續；自然NG+仍未測 / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
         ],
-        "remote_status": "REMOTE_SAVED",
-        "remote_head": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-        "unpushed_commits": [],
-        "changed_files": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/ACTIVE-TASK.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/HANDOFF.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-AGENT-PROMPT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/handoff/NEXT-TASKS.json"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/WORKTREE-RECOVERY.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/recovery/worktree-recovery.json"
-          },
-          {
-            "status": " M",
-            "path": "tools/qa/v240_civ_infantry_browser.mjs"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/REPORT.md"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/build-metadata.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/focused-node.txt"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/death.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-E.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-N.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-NW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-S.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SE.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-SW.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/direction-W.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/hit.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/moving.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/trained-atlas.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-0.8.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-teu-guard/verified/zoom-1.4.png"
-          }
+        "remote_status": "LOCAL_AHEAD",
+        "remote_head": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
+        "unpushed_commits": [
+          "2c5668cd7ee3f8498677743888467ee2d9006439",
+          "a7900ce7b833f65720206c3f611e0180a29e024d"
         ],
-        "dirty": true,
-        "local_record_status": "LOCAL_INVENTORIED"
+        "changed_files": [],
+        "dirty": false,
+        "local_record_status": "LOCAL_INVENTORIED",
+        "ahead": 2,
+        "behind": 0
       }
     ],
     "comparison": [
       {
         "path": "/workspace/riftwatch-v240-takeover",
-        "changed_fields": [
-          "changed_files"
-        ],
-        "previous_head": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
-        "actual_head": "6079cd8b4c53b0afbb811aa29f47a9f482f28621"
+        "change": "NEW_OR_MANIFEST_MISSING"
       }
     ],
-    "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."
+    "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
+    "snapshot_id": "c56c8614578bbc4686b6db4b560796c81b0a3e9836d47d67fc150632e3795c89"
   },
   "ownership": {
-    "status": "REMOTE_QUERIED",
-    "commit": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
-    "state": {
-      "schema_version": 1,
-      "version": 203,
-      "tasks": {
-        "DEV-RECOVERY-P0": {
-          "agent": "Codex",
-          "execution": "codex-v222-20261026-a",
-          "branch": "codex/riftwatch-v222-recovery",
-          "status": "RELEASED",
-          "revision": 16,
-          "updated_at": "2026-10-25T19:07:04.534161+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "A1-TARGET": {
-          "agent": "Codex",
-          "execution": "codex-v222-20261026-a",
-          "branch": "codex/riftwatch-v22-target-state",
-          "status": "RELEASED",
-          "revision": 10,
-          "updated_at": "2026-10-25T19:06:49.682220+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "B2-GDD": {
-          "agent": "Codex",
-          "execution": "codex-v222-20261026-a",
-          "branch": "codex/riftwatch-v22-civ-alignment",
-          "status": "RELEASED",
-          "revision": 11,
-          "updated_at": "2026-10-25T19:06:52.285129+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "A4-POP": {
-          "agent": "Codex",
-          "execution": "codex-v222-20261026-a",
-          "branch": "codex/riftwatch-v22-population",
-          "status": "RELEASED",
-          "revision": 12,
-          "updated_at": "2026-10-25T19:06:55.481311+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "QA-TOOLS": {
-          "agent": "Codex",
-          "execution": "codex-v222-20261026-a",
-          "branch": "codex/riftwatch-v22-quality-tools",
-          "status": "RELEASED",
-          "revision": 9,
-          "updated_at": "2026-10-25T19:06:46.931329+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "INTEGRATION": {
-          "agent": "Codex",
-          "execution": "codex-v222-20261026-a",
-          "branch": "codex/riftwatch-gameplay-integration",
-          "status": "RELEASED",
-          "revision": 14,
-          "updated_at": "2026-10-25T19:07:00.268695+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "QA-PREDICTION": {
-          "agent": "Codex",
-          "execution": "codex-v222-20261026-a",
-          "branch": "codex/riftwatch-v222-prediction",
-          "status": "RELEASED",
-          "revision": 13,
-          "updated_at": "2026-10-25T19:06:57.945967+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "RECOVERY-INDEX": {
-          "agent": "Codex",
-          "execution": "codex-v231-review-recovery-20261027",
-          "branch": "codex/riftwatch-recovery-index",
-          "status": "RELEASED",
-          "revision": 102,
-          "updated_at": "2026-10-27T01:19:09.187380+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PLAYTEST-P0": {
-          "agent": "Codex",
-          "execution": "codex-v224-20261026-a",
-          "branch": "codex/riftwatch-playtest-candidate",
-          "status": "RELEASED",
-          "revision": 21,
-          "updated_at": "2026-10-25T20:42:02.722829+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "MONITOR-V224": {
-          "agent": "Codex",
-          "execution": "codex-supervisor-20261026-b",
-          "branch": "codex/riftwatch-v224-monitor",
-          "status": "RELEASED",
-          "revision": 28,
-          "updated_at": "2026-10-26T03:48:07.938619+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "MONITOR-FEED": {
-          "agent": "Codex",
-          "execution": "codex-v230-resume-20261027",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 86,
-          "updated_at": "2026-10-26T18:05:56.925266+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V226-DELIVERY": {
-          "agent": "Codex",
-          "execution": "codex-v226-20261026-c",
-          "branch": "codex/riftwatch-v226-delivery",
-          "status": "RELEASED",
-          "revision": 36,
-          "updated_at": "2026-10-26T04:12:58.808018+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PLAYTEST-SITE": {
-          "agent": "Codex",
-          "execution": "codex-v226-20261026-c",
-          "branch": "codex/riftwatch-playtest-site",
-          "status": "RELEASED",
-          "revision": 37,
-          "updated_at": "2026-10-26T04:13:01.606689+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "SUPERVISOR-QA-NEXT": {
-          "agent": "Codex",
-          "execution": "codex-v226-20261026-c",
-          "branch": "codex/riftwatch-supervisor-qa-next",
-          "status": "RELEASED",
-          "revision": 39,
-          "updated_at": "2026-10-26T04:13:07.270286+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "LIVE-D6": {
-          "agent": "Codex",
-          "execution": "codex-live-d6-20261026",
-          "branch": "codex/riftwatch-v226-live-acceptance",
-          "status": "RELEASED",
-          "revision": 44,
-          "updated_at": "2026-10-26T06:56:59.946530+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V227-WAVE": {
-          "agent": "Codex",
-          "execution": "codex-v227-20261026",
-          "branch": "codex/riftwatch-v227-wave",
-          "status": "RELEASED",
-          "revision": 53,
-          "updated_at": "2026-10-26T12:44:55.295677+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V227-UI": {
-          "agent": "Codex",
-          "execution": "codex-v227-20261026",
-          "branch": "codex/riftwatch-v227-ui",
-          "status": "RELEASED",
-          "revision": 54,
-          "updated_at": "2026-10-26T12:44:57.998153+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V227-ORDERS": {
-          "agent": "Codex",
-          "execution": "codex-v227-20261026",
-          "branch": "codex/riftwatch-v227-orders",
-          "status": "RELEASED",
-          "revision": 55,
-          "updated_at": "2026-10-26T12:45:00.648260+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V227-CANDIDATE": {
-          "agent": "Codex",
-          "execution": "codex-v227-20261026",
-          "branch": "codex/riftwatch-playtest-v227",
-          "status": "RELEASED",
-          "revision": 56,
-          "updated_at": "2026-10-26T12:45:02.967507+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V228-BUDGET": {
-          "agent": "Codex",
-          "execution": "codex-v228-20261026",
-          "branch": "codex/riftwatch-v228-budget",
-          "status": "RELEASED",
-          "revision": 62,
-          "updated_at": "2026-10-26T13:44:01.555424+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V228-NAV": {
-          "agent": "Codex",
-          "execution": "codex-v228-20261026",
-          "branch": "codex/riftwatch-v228-nav",
-          "status": "RELEASED",
-          "revision": 63,
-          "updated_at": "2026-10-26T13:44:04.611853+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V228-CLOCK": {
-          "agent": "Codex",
-          "execution": "codex-v228-20261026",
-          "branch": "codex/riftwatch-v228-clock",
-          "status": "RELEASED",
-          "revision": 64,
-          "updated_at": "2026-10-26T13:44:07.439944+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V228-GROUPS": {
-          "agent": "Codex",
-          "execution": "codex-v228-20261026",
-          "branch": "codex/riftwatch-v228-groups",
-          "status": "RELEASED",
-          "revision": 65,
-          "updated_at": "2026-10-26T13:44:09.956163+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V228-CANDIDATE": {
-          "agent": "Codex",
-          "execution": "codex-v228-20261026",
-          "branch": "codex/riftwatch-playtest-v228",
-          "status": "RELEASED",
-          "revision": 66,
-          "updated_at": "2026-10-26T13:44:12.265193+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V228-PAGES": {
-          "agent": "Codex",
-          "execution": "codex-v228-deploy",
-          "branch": "codex/riftwatch-playtest-site",
-          "status": "RELEASED",
-          "revision": 75,
-          "updated_at": "2026-10-26T15:30:35.083131+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V228-LIVE": {
-          "agent": "Codex",
-          "execution": "codex-v228-deploy",
-          "branch": "codex/riftwatch-v228-live",
-          "status": "RELEASED",
-          "revision": 76,
-          "updated_at": "2026-10-26T15:30:40.035188+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V228-SAVE-RESEARCH": {
-          "agent": "Codex",
-          "execution": "codex-v228-deploy",
-          "branch": "codex/riftwatch-v228-save-research",
-          "status": "RELEASED",
-          "revision": 77,
-          "updated_at": "2026-10-26T15:30:43.641577+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V229-GROUP-CLEAR": {
-          "agent": "Codex",
-          "execution": "codex-v228-deploy",
-          "branch": "codex/riftwatch-v229-group-clear",
-          "status": "RELEASED",
-          "revision": 78,
-          "updated_at": "2026-10-26T15:30:46.641899+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V230-P0-INPUT": {
-          "agent": "Codex",
-          "execution": "codex-v230-resume-20261027",
-          "branch": "codex/riftwatch-v230-p0-input",
-          "status": "RELEASED",
-          "revision": 84,
-          "updated_at": "2026-10-26T18:05:44.604078+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "OMGITHUB17-UPGRADE": {
-          "agent": "Codex",
-          "execution": "codex-omgithub17-upgrade-20261027",
-          "branch": "codex/riftwatch-omgithub17-upgrade-candidate",
-          "status": "RELEASED",
-          "revision": 88,
-          "updated_at": "2026-10-26T18:19:53.929871+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "OMGITHUB17-EVIDENCE": {
-          "agent": "Codex",
-          "execution": "codex-omgithub17-evidence-20261027",
-          "branch": "codex/riftwatch-omgithub17-upgrade-evidence",
-          "status": "RELEASED",
-          "revision": 90,
-          "updated_at": "2026-10-26T18:28:49.363697+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED": {
-          "agent": "Codex",
-          "execution": "codex-v231-review-feed-20261027",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 104,
-          "updated_at": "2026-10-27T01:19:56.651847+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V231-HERO-SKILL-PREVIEW": {
-          "agent": "OpenCode",
-          "execution": "opencode-omgithub17-20261027-a",
-          "branch": "codex/riftwatch-v231-hero-skill-preview",
-          "status": "RELEASED",
-          "revision": 98,
-          "updated_at": "2026-10-26T19:01:35.762470+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V231-REVIEW": {
-          "agent": "Codex",
-          "execution": "codex-v231-review-20261027",
-          "branch": "codex/riftwatch-v231-review",
-          "status": "RELEASED",
-          "revision": 100,
-          "updated_at": "2026-10-27T01:18:46.645621+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V232-RIFT-PROTOTYPE-NATURAL": {
-          "agent": "Codex",
-          "execution": "ccarenv-v232-rift-natural",
-          "branch": "codex/riftwatch-v232-rift-prototype",
-          "status": "RELEASED",
-          "revision": 108,
-          "updated_at": "2026-10-27T03:17:22.292163+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V232": {
-          "agent": "Codex",
-          "execution": "ccarenv-v232-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 107,
-          "updated_at": "2026-10-27T03:17:20.373332+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V233-DYNAMIC-SCORE": {
-          "agent": "Codex",
-          "execution": "ccarenv-v233-score",
-          "branch": "codex/riftwatch-v233-dynamic-score",
-          "status": "RELEASED",
-          "revision": 112,
-          "updated_at": "2026-10-27T03:27:12.624025+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V233": {
-          "agent": "Codex",
-          "execution": "ccarenv-v233-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 111,
-          "updated_at": "2026-10-27T03:27:10.678507+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V233-VISUAL-SILHOUETTES": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v233-visual",
-          "branch": "codex/riftwatch-v233-visual-silhouettes",
-          "status": "RELEASED",
-          "revision": 116,
-          "updated_at": "2026-10-27T04:15:26.196478+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V233-VISUAL": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v233-visual-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 115,
-          "updated_at": "2026-10-27T04:15:24.371229+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V234-OMGITHUB-PREVIEW": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v234-preview",
-          "branch": "codex/riftwatch-v234-omgithub-preview",
-          "status": "RELEASED",
-          "revision": 118,
-          "updated_at": "2026-10-27T04:55:51.224008+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V234-PREVIEW": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v234-preview-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 120,
-          "updated_at": "2026-10-27T04:56:33.475997+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V234-CANDIDATE": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v234-candidate",
-          "branch": "codex/riftwatch-playtest-v234",
-          "status": "RELEASED",
-          "revision": 122,
-          "updated_at": "2026-10-27T05:04:31.062270+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V234-CANDIDATE": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v234-candidate-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 124,
-          "updated_at": "2026-10-27T05:05:15.720038+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-GAME-FIRST-BUILDINGS": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-buildings",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 126,
-          "updated_at": "2026-10-27T09:19:43.438528+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V240-BUILDINGS": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 128,
-          "updated_at": "2026-10-27T09:20:25.563010+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-SEED-SETUP": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-seed",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 130,
-          "updated_at": "2026-10-27T10:50:53.201883+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V240-SEED": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-seed-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 132,
-          "updated_at": "2026-10-27T10:51:28.556068+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-CIV-VISUAL-FAMILIES": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-civ-visuals",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 134,
-          "updated_at": "2026-10-27T10:56:43.278769+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V240-CIV-VISUALS": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-civ-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 136,
-          "updated_at": "2026-10-27T10:57:10.025482+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-DIRECTIONAL-ANIMATION": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-directional-animation",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 138,
-          "updated_at": "2026-10-27T11:11:30.030687+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V240-DIRECTIONAL": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-directional-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 140,
-          "updated_at": "2026-10-27T11:12:10.829047+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-SPRITE-ATLAS": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-atlas-recovery",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 143,
-          "updated_at": "2026-10-27T14:54:33.004067+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V240-ATLAS-RECOVERY": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-atlas-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 145,
-          "updated_at": "2026-10-27T14:55:10.598949+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-ARCHER-CAVALRY-ATLASES": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261027-v240-archer-cavalry",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 147,
-          "updated_at": "2026-10-27T15:01:31.710628+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "PROGRESS-FEED-V240-DUAL-ATLAS": {
-          "agent": "Codex",
-          "execution": "codex-cloud-20261028-v240-dual-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 149,
-          "updated_at": "2026-10-27T16:27:24.439393+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-LANDMARK-MATERIALS": {
-          "agent": "Codex",
-          "execution": "codex-cloud-v240-landmark-qa-20261028",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 155,
-          "updated_at": "2026-10-27T20:18:37.489223+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "FEED-LANDMARK-QA": {
-          "agent": "Codex",
-          "execution": "codex-v240-landmark-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 157,
-          "updated_at": "2026-10-27T20:19:06.797307+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-SETUP-RULES": {
-          "agent": "Codex",
-          "execution": "codex-v240-setup-rules-20261028",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 159,
-          "updated_at": "2026-10-27T20:26:13.392756+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "FEED-SETUP-RULES": {
-          "agent": "Codex",
-          "execution": "codex-v240-rules-feed",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 161,
-          "updated_at": "2026-10-27T20:26:45.966813+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-GAMEPLAY-MILESTONE-PHASE1": {
-          "agent": "Codex",
-          "execution": "codex-milestone-20261028",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 165,
-          "updated_at": "2026-10-28T01:14:31.150605+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-MILESTONE-FEED": {
-          "agent": "Codex",
-          "execution": "codex-milestone-20261028",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 167,
-          "updated_at": "2026-10-28T01:14:39.700803+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-BILINGUAL-V5": {
-          "agent": "Codex",
-          "execution": "codex-bilingual-v5-20261028",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 169,
-          "updated_at": "2026-10-28T05:10:32.269686+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-BILINGUAL-FEED": {
-          "agent": "Codex",
-          "execution": "codex-bilingual-v5-20261028",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 171,
-          "updated_at": "2026-10-28T05:11:00.599376+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-V5-PLAYABILITY": {
-          "agent": "Codex",
-          "execution": "codex-v5-playability-20261028",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 173,
-          "updated_at": "2026-10-28T05:50:22.667030+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-V5-FEED": {
-          "agent": "Codex",
-          "execution": "codex-v5-playability-20261028",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 175,
-          "updated_at": "2026-10-28T05:51:02.829030+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-V55-ECONOMY": {
-          "agent": "Codex",
-          "execution": "codex-v55-resume-20261028",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 177,
-          "updated_at": "2026-10-28T06:50:49.214994+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-V55-FEED": {
-          "agent": "Codex",
-          "execution": "codex-v55-resume-20261028",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 179,
-          "updated_at": "2026-10-28T06:51:49.852387+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-REMAINING-AUDIT": {
-          "agent": "Codex",
-          "execution": "codex-audit-20261028",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 182,
-          "updated_at": "2026-10-28T07:32:34.682307+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-AUDIT-FEED": {
-          "agent": "Codex",
-          "execution": "codex-audit-20261028",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 183,
-          "updated_at": "2026-10-28T07:32:47.910905+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-SAVE-TRANSIENT": {
-          "agent": "Codex",
-          "execution": "codex-quality-20261028",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 185,
-          "updated_at": "2026-10-28T07:54:59.748895+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-QUALITY-FEED": {
-          "agent": "Codex",
-          "execution": "codex-quality-20261028",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 187,
-          "updated_at": "2026-10-28T07:55:55.481937+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-BOON-SAVE": {
-          "agent": "Codex",
-          "execution": "codex-boon-resume-20261028",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 189,
-          "updated_at": "2026-10-28T15:24:47.235363+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-BOON-FEED": {
-          "agent": "Codex",
-          "execution": "codex-boon-resume-20261028",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 191,
-          "updated_at": "2026-10-28T15:25:40.872226+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-WORKER-HITS": {
-          "agent": "Codex",
-          "execution": "codex-worker-resume-20261029",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 193,
-          "updated_at": "2026-10-28T16:30:16.535360+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-WORKER-FEED": {
-          "agent": "Codex",
-          "execution": "codex-worker-resume-20261029",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 195,
-          "updated_at": "2026-10-28T16:31:04.013922+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-EASY-BASELINE": {
-          "agent": "Codex",
-          "execution": "codex-easy-20261029",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "RELEASED",
-          "revision": 198,
-          "updated_at": "2026-10-28T18:02:40.817657+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-EASY-FEED": {
-          "agent": "Codex",
-          "execution": "codex-easy-20261029",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "RELEASED",
-          "revision": 199,
-          "updated_at": "2026-10-28T18:03:39.025897+00:00",
-          "previous_owner_stopped_asserted": false
-        },
-        "V240-SPECIAL-ATLAS": {
-          "agent": "Codex",
-          "execution": "codex-migration-20261029",
-          "branch": "codex/riftwatch-v240-game-first",
-          "status": "OWNED",
-          "revision": 202,
-          "updated_at": "2026-10-29T06:45:01.668002+00:00",
-          "previous_owner_stopped_asserted": true
-        },
-        "V240-CONTENT-FEED": {
-          "agent": "Codex",
-          "execution": "codex-migration-20261029",
-          "branch": "codex/riftwatch-progress-feed",
-          "status": "OWNED",
-          "revision": 203,
-          "updated_at": "2026-10-29T06:45:13.195587+00:00",
-          "previous_owner_stopped_asserted": true
-        }
-      }
-    }
+    "status": "AUTHENTICATION_BLOCKED_NOT_REVALIDATED",
+    "last_verified_commit": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
+    "last_verified_execution": "codex-migration-20261029"
   },
   "validation_errors": [],
   "pending_preservation": [
     {
       "branch": "codex/riftwatch-v240-game-first",
-      "dirty": true,
-      "remote_status": "REMOTE_SAVED",
-      "unpushed": []
+      "status": "LOCAL_ONLY_REMOTE_AUTH_BLOCKED",
+      "last_verified_remote_sha": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
+      "unpushed_commits_observed_before_metadata_commit": [
+        "a7900ce7b833f65720206c3f611e0180a29e024d",
+        "2c5668cd7ee3f8498677743888467ee2d9006439"
+      ]
     }
   ]
 }
