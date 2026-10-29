@@ -78,6 +78,16 @@ function terrainPalette(biome, terrain) {
   return BIOME_COLORS[biome]?.[terrain] || TERRAIN_COLORS[terrain] || TERRAIN_COLORS.grass;
 }
 
+// Read-only presentation: a shoreline never adds passable tiles or changes RNG.
+export function waterBankEdges(world, x, y) {
+  if (world.tiles[y * world.size + x]?.terrain !== 'water') return [];
+  return [[0, -1], [1, 0], [0, 1], [-1, 0]].flatMap(([dx, dy], edge) => {
+    const nx = x + dx, ny = y + dy;
+    if (nx < 0 || ny < 0 || nx >= world.size || ny >= world.size) return [];
+    return world.tiles[ny * world.size + nx]?.terrain !== 'water' ? [edge] : [];
+  });
+}
+
 // Visual roles are deliberately independent from combat stats.  Keeping this
 // small vocabulary explicit lets the renderer make silhouettes readable at
 // normal zoom without changing unit balance or simulation state.
@@ -336,6 +346,7 @@ export class Renderer {
           const p = this.screen(game, x + 0.5, y + 0.5);
           const sprite = this.tileSprites.get(`${game.world.biome || 'ash'}:${tile.terrain}-${tile.variant}`);
           if (sprite) lctx.drawImage(sprite, p.x - tw / 2, p.y - th / 2, tw, th);
+          if (tile.terrain === 'water') this.drawWaterBanks(game.world, x, y, lctx, p, z);
         }
       }
       // Lighting is invariant until the terrain/camera/viewport key changes.
@@ -346,6 +357,29 @@ export class Renderer {
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.drawImage(layer, 0, 0);
+    ctx.restore();
+  }
+
+  drawWaterBanks(world, x, y, ctx, p, z) {
+    const edges = waterBankEdges(world, x, y);
+    if (!edges.length) return;
+    const corners = [[0, -HALF_H], [HALF_W, 0], [0, HALF_H], [-HALF_W, 0]];
+    const colors = world.biome === 'fjord' ? ['#8c9f9e', '#c4dbd4']
+      : world.biome === 'ash' ? ['#636258', '#aab7a3'] : ['#b5a47b', '#d5d8ad'];
+    ctx.save(); ctx.translate(p.x, p.y); ctx.scale(z, z);
+    for (const edge of edges) {
+      const a = corners[edge], b = corners[(edge + 1) % 4];
+      // Both the bank and shallow-water strip stay inside the existing water tile.
+      ctx.beginPath(); ctx.moveTo(...a); ctx.lineTo(...b);
+      ctx.lineTo(b[0] * .7, b[1] * .7); ctx.lineTo(a[0] * .7, a[1] * .7); ctx.closePath();
+      ctx.fillStyle = 'rgba(133,181,173,.24)'; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(...a); ctx.lineTo(...b);
+      ctx.lineTo(b[0] * .88, b[1] * .88); ctx.lineTo(a[0] * .88, a[1] * .88); ctx.closePath();
+      ctx.fillStyle = colors[0]; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(a[0] * .87, a[1] * .87);
+      ctx.lineTo(b[0] * .87, b[1] * .87); ctx.strokeStyle = colors[1]; ctx.globalAlpha = .55;
+      ctx.lineWidth = .65; ctx.stroke(); ctx.globalAlpha = 1;
+    }
     ctx.restore();
   }
 
