@@ -1,0 +1,172 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_VISUAL_SCENE_NOT_NATURAL_PLAY",
+  "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed artifact",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T16:28:44.478679+00:00",
+        "resourceVerification": "SHA256_MATCH_57_FILES"
+      }
+    },
+    {
+      "name": "independent external longbow loaded",
+      "pass": true,
+      "detail": {
+        "width": 2048,
+        "height": 1280,
+        "src": "assets/sprites/bri-longbow-atlas.png"
+      }
+    },
+    {
+      "name": "production move command advances longbow",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.0106459495264,
+          "y": 33.252661487381616
+        },
+        "state": "move"
+      }
+    },
+    {
+      "name": "production longbow uses existing arrow sound",
+      "pass": true,
+      "detail": [
+        "archer",
+        "skirmisher",
+        "archer",
+        "skirmisher"
+      ]
+    },
+    {
+      "name": "production ranged attack and live state synchronization",
+      "pass": true,
+      "detail": {
+        "enemyHP": 135.39999999999998,
+        "startHP": 145,
+        "actorState": "attack",
+        "shots": 2,
+        "seen": {
+          "idle": 285,
+          "walk": 404,
+          "attack": 13,
+          "hit": 18
+        },
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production damage displays hit animation",
+      "pass": true,
+      "detail": {
+        "hitFlash": 1,
+        "seen": {
+          "idle": 285,
+          "walk": 404,
+          "attack": 13,
+          "hit": 63
+        }
+      }
+    },
+    {
+      "name": "production death displays terminal atlas",
+      "pass": true,
+      "detail": {
+        "idle": 285,
+        "walk": 404,
+        "attack": 13,
+        "hit": 63,
+        "death": 33
+      }
+    },
+    {
+      "name": "civilization and enemy isolation",
+      "pass": true,
+      "detail": {
+        "other": "archer",
+        "enemy": "archer"
+      }
+    },
+    {
+      "name": "failed asset retains procedural fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "bounded 100-unit renderer JS within budget and no >20% median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 9.71999999997206,
+          "p50": 9,
+          "p95": 14.099999997764826
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.3874999999534339,
+          "p50": 1,
+          "p95": 3.600000001490116
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.2387500000186265,
+          "p50": 1.1000000014901161,
+          "p95": 1.699999999254942
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 9.627500000037253,
+          "p50": 9.399999998509884,
+          "p95": 13.699999999254942
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 9.608749999990687,
+          "p50": 9.100000001490116,
+          "p95": 13
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 0.9925000000279397,
+          "p50": 0.8999999985098839,
+          "p95": 1.699999999254942
+        }
+      ]
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}
