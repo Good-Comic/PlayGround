@@ -1,3 +1,3 @@
-繁體中文：P0 原成果復原完成。KOR 原圖檢視完成，原 4 Node／14 Chromium 為歷史證據；音效本輪 4 Node／19 Chromium 通過，附實際畫面及音訊。未開發下一兵種或公開部署。
+繁體中文：BRI 長弓兵原創八方向動畫與實際戰鬥已保存。定向 Node 11／真實 Chromium 11 通過，圖片已人工檢視；未改平衡或公開部署。
 
-English: P0 original-work recovery is complete. KOR original images were reviewed; its original 4 Node/14 Chromium results remain historical evidence. Audio passed 4 Node/19 Chromium checks this turn with actual screenshots and audio. No next-unit development or public deployment.
+English: BRI original eight-direction longbow animation and actual combat saved. 11 focused Node/11 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.

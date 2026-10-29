@@ -2,84 +2,58 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-29T16:18:03.689029+00:00",
+  "updated_at": "2026-10-29T16:31:53.777615+00:00",
   "latest_event": {
-    "task_id": "V240-P0-ENVLOST-RECOVERY",
+    "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
-    "build_sha": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-    "summary": "P0 \u539f\u59cb\u6210\u679c\u5df2\u6062\u5fa9\u4e26\u63a8\u9001\uff0c\u672a\u91cd\u88fd\u7d20\u6750\u3002 / P0 original work recovered and remote-saved without recreating assets.",
+    "commit": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
+    "build_sha": "c69bb252519fc1082166e0e37081685e98bcd568",
+    "summary": "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58 / BRI original eight-direction longbow animation and actual combat saved",
     "code_changes": [
-      "\u539f\u59cb\u5169\u500b Commit \u8207\u97f3\u6548 WIP \u5b8c\u6574\u4fdd\u7559\u3002 / Both original commits and audio WIP preserved."
+      "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58",
+      "BRI original eight-direction longbow animation and actual combat saved"
     ],
     "next_steps": [
-      "\u5148\u6838\u5c0d\u6700\u65b0\u4f86\u6e90\u8207\u6240\u6709\u6b0a\uff0c\u518d\u6309\u65e2\u5b9a GAME FIRST \u63a5\u7e8c\uff1b\u52ff\u91cd\u505a\u672c\u6b21\u5df2\u4fdd\u5b58\u5207\u7247\u3002 / Verify current source and ownership before later GAME FIRST continuation; do not recreate this saved slice."
+      "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "KOR original 4 Node PASS reused, not rerun",
+        "name": "11 focused Node PASS",
         "status": "PASS",
-        "source_commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
-        "evidence": "docs/evidence/v240-kor-cart/focused-node.txt",
-        "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-        "evidence_blob": "b731168ede09bd7815fefcf9cb412eb69b921f0e",
+        "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+        "evidence": "docs/evidence/v240-bri-longbow/focused-node.txt",
+        "evidence_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
+        "evidence_blob": "fca3b0c647c2aa71703f971f92a9eb5dc62b10bc",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "KOR original 14 Chromium PASS reused, not rerun",
+        "name": "11 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-        "evidence": "docs/evidence/v240-kor-cart/fixed/browser.json",
-        "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-        "evidence_blob": "ea1192f5f7157795c6570e37bbd754197727d88f",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "KOR original representative image review this turn",
-        "status": "PASS",
-        "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-        "evidence": "docs/evidence/v240-kor-cart/recovery-visual-review.json",
-        "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-        "evidence_blob": "93d2f54490b01963a57b39140a4fc01824c59ce2",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "Audio 4 Node checks rerun this turn",
-        "status": "PASS",
-        "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-        "evidence": "docs/evidence/v240-unit-sounds/recovery-node.txt",
-        "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-        "evidence_blob": "52cb8ef1c867713856d13c5739e61f9f6ec8173d",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "Audio 19 real Chromium checks this turn",
-        "status": "PASS",
-        "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-        "evidence": "docs/evidence/v240-unit-sounds/browser/browser.json",
-        "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-        "evidence_blob": "f55bb412fcde37e940c077c63c478d11be3b67bd",
+        "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+        "evidence": "docs/evidence/v240-bri-longbow/verified/browser.json",
+        "evidence_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
+        "evidence_blob": "b6d3b756d4e0c40eaa4f4f0359153c888030b40e",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "OLDER-RECOVERY-AND-HISTORICAL-LIMITS",
+        "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
-        "summary": "\u66f4\u65e9 9a0f19e \u5fa9\u539f\u53e6\u6848\u5f85\u8655\u7406\uff1b\u81ea\u7136\u6230\u5f79\u6b77\u53f2 FAIL \u4fdd\u7559\uff1b310 \u5206\u9418\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Older 9a0f19e recovery separately pending; historical natural-campaign FAIL retained; scheduler rebinding unconfirmed.",
-        "source_commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
+        "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
+        "source_commit": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aP0 \u539f\u6210\u679c\u5fa9\u539f\u5b8c\u6210\u3002KOR \u539f\u5716\u6aa2\u8996\u5b8c\u6210\uff0c\u539f 4 Node\uff0f14 Chromium \u70ba\u6b77\u53f2\u8b49\u64da\uff1b\u97f3\u6548\u672c\u8f2a 4 Node\uff0f19 Chromium \u901a\u904e\uff0c\u9644\u5be6\u969b\u756b\u9762\u53ca\u97f3\u8a0a\u3002\u672a\u958b\u767c\u4e0b\u4e00\u5175\u7a2e\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: P0 original-work recovery is complete. KOR original images were reviewed; its original 4 Node/14 Chromium results remain historical evidence. Audio passed 4 Node/19 Chromium checks this turn with actual screenshots and audio. No next-unit development or public deployment.",
-    "event_id": "62dd508c0d1d946c9a9d0bc65f1a166302a4cc28ba5000b9ea8052f55234bd50",
-    "remote_head": "94d4d2896d3e6b718d58170594064fb9eb6995da",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aBRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58\u3002\u5b9a\u5411 Node 11\uff0f\u771f\u5be6 Chromium 11 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: BRI original eight-direction longbow animation and actual combat saved. 11 focused Node/11 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "b47824adf3252bfef0b2b25b1b8c4401b9a1dcbef72650d9c4ed729b10e7bca9",
+    "remote_head": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-29T16:18:03.689029+00:00",
+    "recorded_at": "2026-10-29T16:31:53.777615+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3028,71 +3002,57 @@
       ]
     },
     "V240-SPECIAL-ATLAS": {
-      "agent": "Codex",
-      "blockers": [
-        {
-          "id": "UNPUSHED_WORK_RECOVERY_PENDING",
-          "requires_user_decision": false,
-          "severity": "WARNING",
-          "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-          "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u5f85\u7368\u7acb\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u958b\u767c / Original9a0f19eanduncommittedQAawait isolated recovery, not blocking development"
-        },
-        {
-          "id": "SCHEDULER_REBIND_NOT_VERIFIED",
-          "requires_user_decision": false,
-          "severity": "ACTION_REQUIRED",
-          "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-          "summary": "\u7121\u6392\u7a0b\u7ba1\u7406\u5de5\u5177\uff1b\u82e5310\u5206\u9418\u6392\u7a0b\u4ecd\u6307\u539f\u5c0d\u8a71\uff0c\u4f7f\u7528\u8005\u9700\u6539\u6307\u65b0\u5c0d\u8a71 / No scheduler tool; user must retarget any310-minute schedule still pointing to the old conversation"
-        },
-        {
-          "id": "HISTORICAL-GAPS",
-          "requires_user_decision": false,
-          "severity": "WARNING",
-          "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-          "summary": "\u4fdd\u7559\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3 / Retain natural-campaign, clock, save, performance, Rift and hardware gaps"
-        }
-      ],
-      "branch": "codex/riftwatch-v240-game-first",
-      "build_sha": "dc88fd96a810936f99919b57d27804a682185d2d",
-      "code_changes": [
-        "\u65b0\u516b\u65b9\u5411\u4e94\u72c0\u614b\u56db\u5f71\u683c\u7d20\u6750\uff0c\u975e\u539f\u672a\u63a8\u9001Commit / New eight-direction five-state four-frame assets, not the original unpushed commit",
-        "\u4fee\u5fa9\u6b7b\u4ea1\u5f71\u683c\u88c1\u5207\u4e26\u4fdd\u7559\u521d\u6b21FAIL / Fixed death-frame clipping and retained initial FAIL"
-      ],
-      "commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
-      "event_id": "5c824e605576c6be9f62d2bf45198301f520e228d8af3458f664a0c0c46fd39f",
-      "next_steps": [
-        "\u63a5\u7e8c\u6c34\u5cb8\u8996\u89ba\u5207\u7247 / Continue shoreline visual slice"
-      ],
-      "pushed": true,
-      "recorded_at": "2026-10-29T06:54:10.719535+00:00",
-      "remote_head": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-      "remote_query": "VERIFIED",
-      "requires_user_decision": false,
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u65b0\u4e3b\u7dda22\u9805Node\u820714\u9805\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff0c\u9577\u77db\uff0f\u76fe\u885b\u65b0\u7d20\u6750\u8207\u539f\u59cb\u5931\u6557\u5df2\u6b63\u5e38\u63a8\u9001\u3002\u539f\u672a\u63a8\u9001\u5de5\u4f5c\u7368\u7acb\u5f85\u5fa9\u539f\uff0c\u4e0d\u5192\u7528\u820a13\u9805\u6e2c\u8a66\u3002\u63a5\u7e8c\u6c34\u5cb8\u8996\u89ba\uff0c\u7121\u516c\u958b\u767c\u5e03\uff1b\u6392\u7a0b\u5207\u63db\u9700\u4f7f\u7528\u8005\u65bc\u4ecb\u9762\u6838\u5c0d\u3002\n\nEnglish: New development passes22Nodeand14actual localChromiumchecks; new spear/shield artwork and initial failures are normally pushed. Original unpushed work remains isolated for recovery; old13tests are not reused. Continuing shoreline visuals without public release; scheduler rebinding requires userUIverification.",
-      "severity": "PROGRESS",
-      "summary": "\u65b0\u74b0\u5883\u9577\u77db\uff0f\u76fe\u885bAtlas\u901a\u904e\u9a57\u6536\u4e26\u4fdd\u5b58 / New-workspace spear/shield atlases accepted and saved",
       "task_id": "V240-SPECIAL-ATLAS",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
+      "build_sha": "c69bb252519fc1082166e0e37081685e98bcd568",
+      "summary": "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58 / BRI original eight-direction longbow animation and actual combat saved",
+      "code_changes": [
+        "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58",
+        "BRI original eight-direction longbow animation and actual combat saved"
+      ],
+      "next_steps": [
+        "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
+      ],
+      "requires_user_decision": false,
       "tests": [
         {
-          "evidence": "docs/evidence/v240-migration/focused-node.txt",
-          "evidence_blob": "eaaf0319ef6a013db5d681b2fdc232b94d21ffc1",
-          "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "22 focused Node",
-          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
-          "status": "PASS"
+          "name": "11 focused Node PASS",
+          "status": "PASS",
+          "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+          "evidence": "docs/evidence/v240-bri-longbow/focused-node.txt",
+          "evidence_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
+          "evidence_blob": "fca3b0c647c2aa71703f971f92a9eb5dc62b10bc",
+          "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "evidence": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
-          "evidence_blob": "acb556edf5edc9b4d7334b4d7a86f243d5e3261a",
-          "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-          "evidence_status": "GIT_BLOB_VERIFIED",
-          "name": "14 local controlled Chromium",
-          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
-          "status": "PASS"
+          "name": "11 actual Chromium PASS",
+          "status": "PASS",
+          "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
+          "evidence": "docs/evidence/v240-bri-longbow/verified/browser.json",
+          "evidence_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
+          "evidence_blob": "b6d3b756d4e0c40eaa4f4f0359153c888030b40e",
+          "evidence_status": "GIT_BLOB_VERIFIED"
         }
-      ]
+      ],
+      "blockers": [
+        {
+          "id": "HISTORICAL-GAPS",
+          "severity": "WARNING",
+          "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
+          "source_commit": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
+          "requires_user_decision": false
+        }
+      ],
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aBRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58\u3002\u5b9a\u5411 Node 11\uff0f\u771f\u5be6 Chromium 11 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: BRI original eight-direction longbow animation and actual combat saved. 11 focused Node/11 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "b47824adf3252bfef0b2b25b1b8c4401b9a1dcbef72650d9c4ed729b10e7bca9",
+      "remote_head": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
+      "pushed": true,
+      "remote_query": "VERIFIED",
+      "recorded_at": "2026-10-29T16:31:53.777615+00:00",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
       "agent": "Codex",
@@ -3457,83 +3417,83 @@
       ]
     },
     "V240-P0-ENVLOST-RECOVERY": {
-      "task_id": "V240-P0-ENVLOST-RECOVERY",
       "agent": "Codex",
-      "severity": "PROGRESS",
-      "branch": "codex/riftwatch-v240-game-first",
-      "commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
-      "build_sha": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-      "summary": "P0 \u539f\u59cb\u6210\u679c\u5df2\u6062\u5fa9\u4e26\u63a8\u9001\uff0c\u672a\u91cd\u88fd\u7d20\u6750\u3002 / P0 original work recovered and remote-saved without recreating assets.",
-      "code_changes": [
-        "\u539f\u59cb\u5169\u500b Commit \u8207\u97f3\u6548 WIP \u5b8c\u6574\u4fdd\u7559\u3002 / Both original commits and audio WIP preserved."
-      ],
-      "next_steps": [
-        "\u5148\u6838\u5c0d\u6700\u65b0\u4f86\u6e90\u8207\u6240\u6709\u6b0a\uff0c\u518d\u6309\u65e2\u5b9a GAME FIRST \u63a5\u7e8c\uff1b\u52ff\u91cd\u505a\u672c\u6b21\u5df2\u4fdd\u5b58\u5207\u7247\u3002 / Verify current source and ownership before later GAME FIRST continuation; do not recreate this saved slice."
-      ],
-      "requires_user_decision": false,
-      "tests": [
-        {
-          "name": "KOR original 4 Node PASS reused, not rerun",
-          "status": "PASS",
-          "source_commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
-          "evidence": "docs/evidence/v240-kor-cart/focused-node.txt",
-          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-          "evidence_blob": "b731168ede09bd7815fefcf9cb412eb69b921f0e",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "KOR original 14 Chromium PASS reused, not rerun",
-          "status": "PASS",
-          "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-          "evidence": "docs/evidence/v240-kor-cart/fixed/browser.json",
-          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-          "evidence_blob": "ea1192f5f7157795c6570e37bbd754197727d88f",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "KOR original representative image review this turn",
-          "status": "PASS",
-          "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
-          "evidence": "docs/evidence/v240-kor-cart/recovery-visual-review.json",
-          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-          "evidence_blob": "93d2f54490b01963a57b39140a4fc01824c59ce2",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Audio 4 Node checks rerun this turn",
-          "status": "PASS",
-          "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-          "evidence": "docs/evidence/v240-unit-sounds/recovery-node.txt",
-          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-          "evidence_blob": "52cb8ef1c867713856d13c5739e61f9f6ec8173d",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "Audio 19 real Chromium checks this turn",
-          "status": "PASS",
-          "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
-          "evidence": "docs/evidence/v240-unit-sounds/browser/browser.json",
-          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
-          "evidence_blob": "f55bb412fcde37e940c077c63c478d11be3b67bd",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        }
-      ],
       "blockers": [
         {
           "id": "OLDER-RECOVERY-AND-HISTORICAL-LIMITS",
+          "requires_user_decision": false,
           "severity": "WARNING",
-          "summary": "\u66f4\u65e9 9a0f19e \u5fa9\u539f\u53e6\u6848\u5f85\u8655\u7406\uff1b\u81ea\u7136\u6230\u5f79\u6b77\u53f2 FAIL \u4fdd\u7559\uff1b310 \u5206\u9418\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Older 9a0f19e recovery separately pending; historical natural-campaign FAIL retained; scheduler rebinding unconfirmed.",
           "source_commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
-          "requires_user_decision": false
+          "summary": "\u66f4\u65e9 9a0f19e \u5fa9\u539f\u53e6\u6848\u5f85\u8655\u7406\uff1b\u81ea\u7136\u6230\u5f79\u6b77\u53f2 FAIL \u4fdd\u7559\uff1b310 \u5206\u9418\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Older 9a0f19e recovery separately pending; historical natural-campaign FAIL retained; scheduler rebinding unconfirmed."
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aP0 \u539f\u6210\u679c\u5fa9\u539f\u5b8c\u6210\u3002KOR \u539f\u5716\u6aa2\u8996\u5b8c\u6210\uff0c\u539f 4 Node\uff0f14 Chromium \u70ba\u6b77\u53f2\u8b49\u64da\uff1b\u97f3\u6548\u672c\u8f2a 4 Node\uff0f19 Chromium \u901a\u904e\uff0c\u9644\u5be6\u969b\u756b\u9762\u53ca\u97f3\u8a0a\u3002\u672a\u958b\u767c\u4e0b\u4e00\u5175\u7a2e\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: P0 original-work recovery is complete. KOR original images were reviewed; its original 4 Node/14 Chromium results remain historical evidence. Audio passed 4 Node/19 Chromium checks this turn with actual screenshots and audio. No next-unit development or public deployment.",
+      "branch": "codex/riftwatch-v240-game-first",
+      "build_sha": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+      "code_changes": [
+        "\u539f\u59cb\u5169\u500b Commit \u8207\u97f3\u6548 WIP \u5b8c\u6574\u4fdd\u7559\u3002 / Both original commits and audio WIP preserved."
+      ],
+      "commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
       "event_id": "62dd508c0d1d946c9a9d0bc65f1a166302a4cc28ba5000b9ea8052f55234bd50",
-      "remote_head": "94d4d2896d3e6b718d58170594064fb9eb6995da",
+      "next_steps": [
+        "\u5148\u6838\u5c0d\u6700\u65b0\u4f86\u6e90\u8207\u6240\u6709\u6b0a\uff0c\u518d\u6309\u65e2\u5b9a GAME FIRST \u63a5\u7e8c\uff1b\u52ff\u91cd\u505a\u672c\u6b21\u5df2\u4fdd\u5b58\u5207\u7247\u3002 / Verify current source and ownership before later GAME FIRST continuation; do not recreate this saved slice."
+      ],
       "pushed": true,
-      "remote_query": "VERIFIED",
       "recorded_at": "2026-10-29T16:18:03.689029+00:00",
-      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
+      "remote_head": "94d4d2896d3e6b718d58170594064fb9eb6995da",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aP0 \u539f\u6210\u679c\u5fa9\u539f\u5b8c\u6210\u3002KOR \u539f\u5716\u6aa2\u8996\u5b8c\u6210\uff0c\u539f 4 Node\uff0f14 Chromium \u70ba\u6b77\u53f2\u8b49\u64da\uff1b\u97f3\u6548\u672c\u8f2a 4 Node\uff0f19 Chromium \u901a\u904e\uff0c\u9644\u5be6\u969b\u756b\u9762\u53ca\u97f3\u8a0a\u3002\u672a\u958b\u767c\u4e0b\u4e00\u5175\u7a2e\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: P0 original-work recovery is complete. KOR original images were reviewed; its original 4 Node/14 Chromium results remain historical evidence. Audio passed 4 Node/19 Chromium checks this turn with actual screenshots and audio. No next-unit development or public deployment.",
+      "severity": "PROGRESS",
+      "summary": "P0 \u539f\u59cb\u6210\u679c\u5df2\u6062\u5fa9\u4e26\u63a8\u9001\uff0c\u672a\u91cd\u88fd\u7d20\u6750\u3002 / P0 original work recovered and remote-saved without recreating assets.",
+      "task_id": "V240-P0-ENVLOST-RECOVERY",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-kor-cart/focused-node.txt",
+          "evidence_blob": "b731168ede09bd7815fefcf9cb412eb69b921f0e",
+          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "KOR original 4 Node PASS reused, not rerun",
+          "source_commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-kor-cart/fixed/browser.json",
+          "evidence_blob": "ea1192f5f7157795c6570e37bbd754197727d88f",
+          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "KOR original 14 Chromium PASS reused, not rerun",
+          "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-kor-cart/recovery-visual-review.json",
+          "evidence_blob": "93d2f54490b01963a57b39140a4fc01824c59ce2",
+          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "KOR original representative image review this turn",
+          "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-unit-sounds/recovery-node.txt",
+          "evidence_blob": "52cb8ef1c867713856d13c5739e61f9f6ec8173d",
+          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Audio 4 Node checks rerun this turn",
+          "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-unit-sounds/browser/browser.json",
+          "evidence_blob": "f55bb412fcde37e940c077c63c478d11be3b67bd",
+          "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "Audio 19 real Chromium checks this turn",
+          "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+          "status": "PASS"
+        }
+      ]
     }
   },
   "notification_policy": "Only material WARNING/BLOCKED/ACTION_REQUIRED; no external messages are automatically sent",

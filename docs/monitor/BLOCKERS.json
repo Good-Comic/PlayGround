@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T16:18:03.689029+00:00",
+  "updated_at": "2026-10-29T16:31:53.777615+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -490,27 +490,11 @@
       "task_id": "V240-EASY-BASELINE"
     },
     {
-      "id": "UNPUSHED_WORK_RECOVERY_PENDING",
-      "requires_user_decision": false,
-      "severity": "WARNING",
-      "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-      "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u5f85\u7368\u7acb\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u958b\u767c / Original9a0f19eanduncommittedQAawait isolated recovery, not blocking development",
-      "task_id": "V240-SPECIAL-ATLAS"
-    },
-    {
-      "id": "SCHEDULER_REBIND_NOT_VERIFIED",
-      "requires_user_decision": false,
-      "severity": "ACTION_REQUIRED",
-      "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-      "summary": "\u7121\u6392\u7a0b\u7ba1\u7406\u5de5\u5177\uff1b\u82e5310\u5206\u9418\u6392\u7a0b\u4ecd\u6307\u539f\u5c0d\u8a71\uff0c\u4f7f\u7528\u8005\u9700\u6539\u6307\u65b0\u5c0d\u8a71 / No scheduler tool; user must retarget any310-minute schedule still pointing to the old conversation",
-      "task_id": "V240-SPECIAL-ATLAS"
-    },
-    {
       "id": "HISTORICAL-GAPS",
-      "requires_user_decision": false,
       "severity": "WARNING",
-      "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-      "summary": "\u4fdd\u7559\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3 / Retain natural-campaign, clock, save, performance, Rift and hardware gaps",
+      "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
+      "source_commit": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
+      "requires_user_decision": false,
       "task_id": "V240-SPECIAL-ATLAS"
     },
     {
@@ -611,10 +595,10 @@
     },
     {
       "id": "OLDER-RECOVERY-AND-HISTORICAL-LIMITS",
-      "severity": "WARNING",
-      "summary": "\u66f4\u65e9 9a0f19e \u5fa9\u539f\u53e6\u6848\u5f85\u8655\u7406\uff1b\u81ea\u7136\u6230\u5f79\u6b77\u53f2 FAIL \u4fdd\u7559\uff1b310 \u5206\u9418\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Older 9a0f19e recovery separately pending; historical natural-campaign FAIL retained; scheduler rebinding unconfirmed.",
-      "source_commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
+      "summary": "\u66f4\u65e9 9a0f19e \u5fa9\u539f\u53e6\u6848\u5f85\u8655\u7406\uff1b\u81ea\u7136\u6230\u5f79\u6b77\u53f2 FAIL \u4fdd\u7559\uff1b310 \u5206\u9418\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Older 9a0f19e recovery separately pending; historical natural-campaign FAIL retained; scheduler rebinding unconfirmed.",
       "task_id": "V240-P0-ENVLOST-RECOVERY"
     }
   ]
