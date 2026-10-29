@@ -127,7 +127,7 @@ export class Renderer {
     this.terrainLayer = document.createElement('canvas');
     this.terrainCtx = this.terrainLayer.getContext('2d', { alpha: false });
     this.terrainKey = '';
-    this.unitSpriteAtlases = loadUnitSpriteAtlases();
+    this.unitSpriteAtlases = loadUnitSpriteAtlases(undefined, undefined, { deferCivilizations: true });
     this.buildTileSprites();
     this.motes = Array.from({ length: 44 }, (_, i) => ({
       x: hash2(i, 2, 9), y: hash2(i, 7, 13), speed: 0.12 + hash2(i, 9, 3) * 0.3,
@@ -268,7 +268,19 @@ export class Renderer {
     return isoToWorld(px, py);
   }
 
+  // 切換文明時釋放舊圖像／裁格引用，不更動遊戲狀態。 / Release old image/crop references on civ changes without changing simulation.
+  setSpriteAtlasCivilization(civId) {
+    if (this.spriteAtlasCivilization === civId) return;
+    this.spriteAtlasCivilization = civId;
+    for (const [key, entry] of this.unitSpriteAtlases) {
+      if (!key.includes(':')) continue;
+      if (civId && key.startsWith(`${civId}:`)) entry.load?.();
+      else entry.release?.();
+    }
+  }
+
   draw(game, time) {
+    this.setSpriteAtlasCivilization(game.inMenu ? null : game.civ?.id);
     const ctx = this.ctx;
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.fillStyle = '#141a10';

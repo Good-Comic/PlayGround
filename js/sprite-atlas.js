@@ -202,16 +202,30 @@ export function atlasActionProgress(unit, state) {
   return null;
 }
 
-export function loadUnitSpriteAtlases(descriptors = { ...UNIT_SPRITE_ATLASES, ...CIV_UNIT_SPRITE_ATLASES }, ImageClass = globalThis.Image) {
+// 文明圖集可延後解碼；預設保留既有 eager API。 / Civilization decoding can be deferred; default preserves the eager API.
+export function loadUnitSpriteAtlases(descriptors = { ...UNIT_SPRITE_ATLASES, ...CIV_UNIT_SPRITE_ATLASES }, ImageClass = globalThis.Image, { deferCivilizations = false } = {}) {
   const loaded = new Map();
   if (typeof ImageClass !== 'function') return loaded;
   for (const [type, descriptor] of Object.entries(descriptors)) {
-    const image = new ImageClass();
-    const entry = { descriptor, image, ready: false, failed: false };
-    image.onload = () => { entry.ready = true; };
-    image.onerror = () => { entry.failed = true; };
-    image.src = descriptor.src;
+    const deferred = deferCivilizations && type.includes(':');
+    const entry = { descriptor, image: null, ready: false, failed: false, requested: false };
+    entry.load = () => {
+      if (entry.requested) return entry;
+      entry.requested = true;
+      const image = new ImageClass();
+      entry.image = image;
+      image.onload = () => { if (entry.image === image) entry.ready = true; };
+      image.onerror = () => { if (entry.image === image) entry.failed = true; };
+      image.src = descriptor.src;
+      return entry;
+    };
+    if (deferred) entry.release = () => {
+      if (entry.image) { entry.image.onload = null; entry.image.onerror = null; }
+      entry.image = null; entry.ready = false; entry.failed = false; entry.requested = false;
+      delete entry.frameImages;
+    };
     loaded.set(type, entry);
+    if (!deferred) entry.load();
   }
   return loaded;
 }
