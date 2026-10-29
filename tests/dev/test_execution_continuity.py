@@ -30,7 +30,7 @@ class ContinuityTests(unittest.TestCase):
         self.assertIsNone(r['EXECUTION_DURATION']['seconds'])
 
     def test_blocker_requires_evidence_and_is_not_independently_certified(self):
-        for reason in ['QUOTA_REJECTED', 'TOOL_FAILURE', 'ENVIRONMENT_FAILURE', 'CONTEXT_LIMIT']:
+        for reason in ['QUOTA_REJECTED', 'TOOL_FAILURE', 'ENVIRONMENT_FAILURE', 'CONTEXT_LIMIT', 'EXECUTION_BUDGET_BOUNDARY']:
             with self.assertRaises(ValueError):
                 evaluate(self.state(observed_blocker={'reason': reason}), '2026-10-30T00:00:00Z')
             r = evaluate(self.state(observed_blocker={'reason': reason, 'evidence_reference': 'fixture/tool-result', 'observation': 'SIMULATED error'}), '2026-10-30T00:00:00Z')
