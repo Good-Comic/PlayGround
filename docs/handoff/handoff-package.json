@@ -1,30 +1,28 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T16:35:43.878808+00:00",
+  "generated_at": "2026-10-29T16:48:10.882452+00:00",
   "framework_status": "HANDOFF_FRAMEWORK_READY",
   "cross_agent_status": "NOT_TESTED",
   "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
   "trigger": {
     "kind": "MANUAL_HANDOFF",
     "confidence": "CONFIRMED",
-    "evidence": "TWO_GAME_FIRST_SLICES_REMOTE_SAVED"
+    "evidence": "VOLUNTARY_EARLY_STOP_RECORDED_NOT_PLATFORM_LIMIT"
   },
   "active_task": {
     "task_id": "V240-SPECIAL-ATLAS",
-    "name": "VIK \u5713\u76fe\u93c8\u7532\u76fe\u885b\u516b\u65b9\u5411\u52d5\u756b\u3001\u539f\u751f\u8a13\u7df4\u53ca\u8fd1\u6230\u5df2\u9a57\u6536\uff1bBRI \u9577\u5f13\u5175\u4ea6\u5df2\u4fdd\u5b58 / VIK round-shield mail guard animation, native training and melee accepted; BRI longbow also saved",
+    "name": "\u9023\u7e8c\u57f7\u884c\u8a3a\u65b7\u53ca JPN \u672d\u7532\u5916\u89c0\u9650\u5b9a\u9a57\u6536\u5df2\u4fdd\u5b58\uff1b\u683c\u64cb FAIL \u8207\u9996\u8f2a\u6027\u80fd FAIL \u4fdd\u7559 / Continuity diagnosis and scoped JPN lamellar visual acceptance saved; block FAIL and initial performance FAIL retained",
     "requirement_source": "Latest explicit GAME FIRST content continuation; existing civilization matrix",
     "priority": "P1",
     "agent": "Codex",
     "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
     "branch": "codex/riftwatch-v240-game-first",
     "base_commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
-    "latest_pushed_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
-    "application_source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
+    "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
+    "application_source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
     "completed": [
-      "VIK \u5713\u76fe\u93c8\u7532\u76fe\u885b\u516b\u65b9\u5411\u52d5\u756b\u3001\u539f\u751f\u8a13\u7df4\u53ca\u8fd1\u6230\u5df2\u9a57\u6536\uff1bBRI \u9577\u5f13\u5175\u4ea6\u5df2\u4fdd\u5b58",
-      "VIK round-shield mail guard animation, native training and melee accepted; BRI longbow also saved",
-      "BRI \u9577\u5f13\u5175\uff1a11 Node\uff0f11 Chromium\uff1bVIK \u5713\u76fe\u76fe\u885b\uff1a8 Node\uff0f13 Chromium\uff1b\u5169\u8005\u539f\u5275\u5f71\u683c\u8207\u771f\u5be6\u904a\u73a9\u8b49\u64da\u5df2\u63a8\u9001\u3002",
-      "BRI longbow:11 Node/11 Chromium; VIK round-shield guard:8 Node/13 Chromium; original frames and actual gameplay evidence remotely saved."
+      "\u9023\u7e8c\u57f7\u884c\u8a3a\u65b7\u53ca JPN \u672d\u7532\u5916\u89c0\u9650\u5b9a\u9a57\u6536\u5df2\u4fdd\u5b58\uff1b\u683c\u64cb FAIL \u8207\u9996\u8f2a\u6027\u80fd FAIL \u4fdd\u7559",
+      "Continuity diagnosis and scoped JPN lamellar visual acceptance saved; block FAIL and initial performance FAIL retained"
     ],
     "uncommitted": [
       {
@@ -50,37 +48,63 @@
       {
         "status": " M",
         "path": "docs/recovery/worktree-recovery.json"
+      },
+      {
+        "status": "??",
+        "path": "docs/recovery/execution-stop-current.json"
       }
     ],
     "unpushed": [],
     "tests": [
       {
         "name": "Focused Node",
-        "result": "8 PASS",
-        "source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
-        "path": "docs/evidence/v240-vik-roundshield/focused-node.txt"
+        "result": "9 PASS",
+        "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+        "path": "docs/evidence/v240-jpn-lamellar/focused-node.txt"
       },
       {
         "name": "Actual Chromium",
         "result": "13 PASS",
-        "source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
-        "path": "docs/evidence/v240-vik-roundshield/verified/browser.json"
+        "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+        "path": "docs/evidence/v240-jpn-lamellar/verified/browser.json"
+      },
+      {
+        "name": "Execution continuity Python",
+        "result": "6 PASS",
+        "source_commit": "d7ed2ce300acc13ca65c981c38ab767a9eee50cc",
+        "path": "docs/evidence/execution-continuity/focused-python.txt"
+      },
+      {
+        "name": "JPN initial renderer comparison",
+        "result": "FAIL first run; same-source recheck PASS, cause unresolved",
+        "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+        "path": "docs/evidence/v240-jpn-lamellar/initial/browser.json"
+      },
+      {
+        "name": "JPN inherited melee block",
+        "result": "FAIL NOT_FIXED",
+        "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+        "path": "docs/evidence/v240-jpn-lamellar/verified/browser.json"
       }
     ],
     "evidence": [
-      "docs/evidence/v240-vik-roundshield/REPORT.md"
+      "docs/evidence/v240-jpn-lamellar/REPORT.md",
+      "docs/evidence/execution-continuity/REPORT.md",
+      "docs/recovery/execution-stop-current.json"
     ],
     "failures": [
       "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
       "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
-      "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
+      "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain",
+      "JPN-MELEE-BLOCK-MISSING-CIV: FAIL, inherited and not fixed",
+      "JPN first renderer comparison FAIL; recheck PASS does not erase unexplained variability"
     ],
     "blockers": [
       "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
     ],
     "next_steps": [
-      "\u4f9d\u6587\u660e\u77e9\u9663\u63a5\u7e8c JPN \u65e2\u6709 guard \u672d\u7532\u5916\u89c0\uff0c\u5148\u6838\u5c0d\u6700\u65b0\u4f86\u6e90\u8207\u6240\u6709\u6b0a",
-      "Follow the civilization matrix with JPN existing-guard lamellar appearance after verifying current source and ownership"
+      "\u4fee\u5fa9\u65e2\u6709\u6279\u51c6\u7684 JPN \u683c\u64cb\u4f86\u6e90\u5224\u5b9a\uff0c\u9a57\u8b49\u666e\u901a\u8fd1\u6230\u3001\u6295\u5c04\u7269\u3001Boss \u8207\u5b58\u6a94\u9694\u96e2\uff1b\u4e0d\u5f97\u5192\u7a31\u5df2\u4fee\u5fa9",
+      "Fix the existing approved JPN block identity path and verify ordinary melee, projectiles, Boss and save isolation; do not claim already fixed"
     ],
     "permissions": [
       "Independent development tests normal push",
@@ -88,7 +112,7 @@
     ],
     "status": "CHECKPOINTED",
     "quota_status": "QUOTA_PERCENT_UNKNOWN",
-    "updated_at": "2026-10-29T16:35:43.288026+00:00",
+    "updated_at": "2026-10-29T16:48:10.449958+00:00",
     "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
     "ownership_at_snapshot": {
       "task": "V240-SPECIAL-ATLAS",
@@ -109,7 +133,7 @@
     "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
     "execution_state": "CONTENT_SLICE_REMOTE_SAVED",
     "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK",
-    "latest_feed_commit": "add229f496a2c4c21c61acb21273b72ff7e4f2a4",
+    "latest_feed_commit": "033f08db85af4b592a046e3b80b8603b2a95c1b5",
     "current_envlost_recovery": {
       "status": "RECOVERED_ORIGINAL_WORK_REMOTE_SAVED",
       "original_commits": [
@@ -123,35 +147,39 @@
     },
     "current_session_slices": [
       {
-        "source": "c69bb252519fc1082166e0e37081685e98bcd568",
-        "evidence_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
-        "report": "docs/evidence/v240-bri-longbow/REPORT.md",
-        "node": 11,
-        "chromium": 11
+        "type": "continuity_diagnosis",
+        "source": "d7ed2ce300acc13ca65c981c38ab767a9eee50cc",
+        "tests": "6 Python PASS"
       },
       {
-        "source": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
-        "evidence_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
-        "report": "docs/evidence/v240-vik-roundshield/REPORT.md",
-        "node": 8,
-        "chromium": 13
+        "type": "JPN_VISUAL_ONLY",
+        "source": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+        "tests": "9 Node;13 Chromium recheck PASS; initial perf FAIL and block FAIL retained"
       }
-    ]
+    ],
+    "continuity_policy": {
+      "checkpoint_is_stop": false,
+      "stop_record_required": true,
+      "previous_stop": "docs/recovery/execution-stop-55ef783.json",
+      "AUTO_RESUME_AVAILABLE": false,
+      "scheduler_status": "UNVERIFIED_NO_CONNECTED_SCHEDULER_ADAPTER",
+      "current_stop_record": "docs/recovery/execution-stop-current.json"
+    }
   },
   "next_tasks": {
     "schema_version": 1,
-    "updated_at": "2026-10-29T16:35:42.586458+00:00",
+    "updated_at": "2026-10-29T16:48:09.645199+00:00",
     "tasks": [
       {
         "task_id": "V240-CONTENT-CONTINUATION",
-        "name": "\u4f9d\u6587\u660e\u77e9\u9663\u63a5\u7e8c JPN \u65e2\u6709 guard \u672d\u7532\u5916\u89c0\uff0c\u5148\u6838\u5c0d\u6700\u65b0\u4f86\u6e90\u8207\u6240\u6709\u6b0a / Follow the civilization matrix with JPN existing-guard lamellar appearance after verifying current source and ownership",
+        "name": "\u4fee\u5fa9\u65e2\u6709\u6279\u51c6\u7684 JPN \u683c\u64cb\u4f86\u6e90\u5224\u5b9a\uff0c\u9a57\u8b49\u666e\u901a\u8fd1\u6230\u3001\u6295\u5c04\u7269\u3001Boss \u8207\u5b58\u6a94\u9694\u96e2\uff1b\u4e0d\u5f97\u5192\u7a31\u5df2\u4fee\u5fa9 / Fix the existing approved JPN block identity path and verify ordinary melee, projectiles, Boss and save isolation; do not claim already fixed",
         "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
         "priority": "P1",
         "agent": "Codex",
         "environment": "New independent Linux Chromium workspace; local software rendering",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-        "latest_pushed_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
         "completed": [],
         "uncommitted": [
@@ -178,37 +206,61 @@
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/recovery/execution-stop-current.json"
           }
         ],
         "unpushed": [],
         "tests": [
           {
             "name": "Focused Node",
-            "result": "8 PASS",
-            "source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
-            "path": "docs/evidence/v240-vik-roundshield/focused-node.txt"
+            "result": "9 PASS",
+            "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+            "path": "docs/evidence/v240-jpn-lamellar/focused-node.txt"
           },
           {
             "name": "Actual Chromium",
             "result": "13 PASS",
-            "source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
-            "path": "docs/evidence/v240-vik-roundshield/verified/browser.json"
+            "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+            "path": "docs/evidence/v240-jpn-lamellar/verified/browser.json"
+          },
+          {
+            "name": "Execution continuity Python",
+            "result": "6 PASS",
+            "source_commit": "d7ed2ce300acc13ca65c981c38ab767a9eee50cc",
+            "path": "docs/evidence/execution-continuity/focused-python.txt"
+          },
+          {
+            "name": "JPN initial renderer comparison",
+            "result": "FAIL first run; same-source recheck PASS, cause unresolved",
+            "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+            "path": "docs/evidence/v240-jpn-lamellar/initial/browser.json"
+          },
+          {
+            "name": "JPN inherited melee block",
+            "result": "FAIL NOT_FIXED",
+            "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+            "path": "docs/evidence/v240-jpn-lamellar/verified/browser.json"
           }
         ],
         "evidence": [
-          "docs/evidence/v240-vik-roundshield/REPORT.md"
+          "docs/evidence/v240-jpn-lamellar/REPORT.md"
         ],
         "failures": [
           "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
           "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
-          "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain"
+          "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain",
+          "JPN-MELEE-BLOCK-MISSING-CIV: FAIL, inherited and not fixed",
+          "JPN first renderer comparison FAIL; recheck PASS does not erase unexplained variability"
         ],
         "blockers": [
           "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
         ],
         "next_steps": [
-          "\u4f9d\u6587\u660e\u77e9\u9663\u63a5\u7e8c JPN \u65e2\u6709 guard \u672d\u7532\u5916\u89c0\uff0c\u5148\u6838\u5c0d\u6700\u65b0\u4f86\u6e90\u8207\u6240\u6709\u6b0a",
-          "Follow the civilization matrix with JPN existing-guard lamellar appearance after verifying current source and ownership"
+          "\u4fee\u5fa9\u65e2\u6709\u6279\u51c6\u7684 JPN \u683c\u64cb\u4f86\u6e90\u5224\u5b9a\uff0c\u9a57\u8b49\u666e\u901a\u8fd1\u6230\u3001\u6295\u5c04\u7269\u3001Boss \u8207\u5b58\u6a94\u9694\u96e2\uff1b\u4e0d\u5f97\u5192\u7a31\u5df2\u4fee\u5fa9",
+          "Fix the existing approved JPN block identity path and verify ordinary melee, projectiles, Boss and save isolation; do not claim already fixed"
         ],
         "permissions": [
           "Independent development tests normal push",
@@ -216,7 +268,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T16:35:42.694922+00:00",
+        "updated_at": "2026-10-29T16:48:09.800165+00:00",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
           "task": "V240-SPECIAL-ATLAS",
@@ -244,7 +296,7 @@
         "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-        "latest_pushed_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
         "completed": [
           "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53c3\u6578\u751f\u6548 / Easy defeat5and valid Normal defeat4; parameters verified",
@@ -275,6 +327,10 @@
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/recovery/execution-stop-current.json"
           }
         ],
         "unpushed": [],
@@ -317,7 +373,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T16:35:42.694922+00:00",
+        "updated_at": "2026-10-29T16:48:09.800165+00:00",
         "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
@@ -336,7 +392,7 @@
         "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
-        "latest_pushed_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
         "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
         "completed": [
@@ -370,6 +426,10 @@
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/recovery/execution-stop-current.json"
           }
         ],
         "unpushed": [],
@@ -415,7 +475,7 @@
         "status": "CHECKPOINTED",
         "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T16:35:42.694922+00:00"
+        "updated_at": "2026-10-29T16:48:09.800165+00:00"
       },
       {
         "task_id": "V240-SPRITE-ATLAS",
@@ -426,7 +486,7 @@
         "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
-        "latest_pushed_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
         "completed": [
           "Recovered from remotely saved atlas implementation after prior worktree loss",
@@ -458,6 +518,10 @@
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/recovery/execution-stop-current.json"
           }
         ],
         "unpushed": [],
@@ -505,7 +569,7 @@
         ],
         "status": "CHECKPOINTED",
         "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T16:35:42.694922+00:00",
+        "updated_at": "2026-10-29T16:48:09.800165+00:00",
         "acceptance": "LOCAL_VERIFIED"
       },
       {
@@ -517,7 +581,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-        "latest_pushed_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
         "completed": [
           "Added eight-direction isometric facing derived from real movement and live attack targets",
@@ -550,6 +614,10 @@
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/recovery/execution-stop-current.json"
           }
         ],
         "unpushed": [],
@@ -596,7 +664,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T16:35:42.694922+00:00"
+        "updated_at": "2026-10-29T16:48:09.800165+00:00"
       },
       {
         "task_id": "V240-CIV-VISUAL-FAMILIES",
@@ -607,7 +675,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
-        "latest_pushed_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
         "completed": [
           "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
@@ -640,6 +708,10 @@
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/recovery/execution-stop-current.json"
           }
         ],
         "unpushed": [],
@@ -686,7 +758,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T16:35:42.694922+00:00"
+        "updated_at": "2026-10-29T16:48:09.800165+00:00"
       },
       {
         "task_id": "V240-SEED-SETUP",
@@ -697,7 +769,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-        "latest_pushed_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "application_source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
         "completed": [
           "Prefilled each new-game menu with a visible shareable RW Seed",
@@ -730,6 +802,10 @@
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/recovery/execution-stop-current.json"
           }
         ],
         "unpushed": [],
@@ -781,7 +857,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T16:35:42.694922+00:00"
+        "updated_at": "2026-10-29T16:48:09.800165+00:00"
       },
       {
         "task_id": "V240-GAME-FIRST-BUILDINGS",
@@ -792,7 +868,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-        "latest_pushed_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
         "completed": [
           "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
@@ -826,6 +902,10 @@
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/recovery/execution-stop-current.json"
           }
         ],
         "unpushed": [],
@@ -871,7 +951,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T16:35:42.694922+00:00"
+        "updated_at": "2026-10-29T16:48:09.800165+00:00"
       },
       {
         "task_id": "V234-CANDIDATE",
@@ -1708,14 +1788,14 @@
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-29T16:35:42.694922+00:00",
+    "captured_at_utc": "2026-10-29T16:48:09.800165+00:00",
     "trigger": "RECOVERY_RESUME",
-    "collector_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+    "collector_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
     "collector_dirty": true,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-29T16:35:42.694922+00:00"
+      "queried_at": "2026-10-29T16:48:09.800165+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -1739,7 +1819,7 @@
       "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
       "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
       "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-      "codex/riftwatch-progress-feed": "add229f496a2c4c21c61acb21273b72ff7e4f2a4",
+      "codex/riftwatch-progress-feed": "033f08db85af4b592a046e3b80b8603b2a95c1b5",
       "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
       "codex/riftwatch-task-ownership": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
       "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
@@ -1771,7 +1851,7 @@
       "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
       "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
       "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-      "codex/riftwatch-v240-game-first": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+      "codex/riftwatch-v240-game-first": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
       "main": "e35a73329ee7942627496e55b844d02b2501e685",
       "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
       "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -1801,8 +1881,8 @@
     "local_branches": [
       {
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
-        "remote_head": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "head": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
+        "remote_head": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "status": "REMOTE_SAVED"
       }
     ],
@@ -1810,7 +1890,7 @@
       {
         "path": "/workspace/riftwatch-v240-takeover",
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "head": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "locked": false,
         "task_id": "V240-V5-PLAYABILITY",
         "last_validation": [
@@ -1852,7 +1932,7 @@
           "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
         ],
         "remote_status": "REMOTE_SAVED",
-        "remote_head": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "remote_head": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
         "unpushed_commits": [],
         "changed_files": [
           {
@@ -1878,6 +1958,10 @@
           {
             "status": " M",
             "path": "docs/recovery/worktree-recovery.json"
+          },
+          {
+            "status": "??",
+            "path": "docs/recovery/execution-stop-current.json"
           }
         ],
         "dirty": true,
@@ -1891,8 +1975,8 @@
           "dirty",
           "changed_files"
         ],
-        "previous_head": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
-        "actual_head": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23"
+        "previous_head": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
+        "actual_head": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6"
       }
     ],
     "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."

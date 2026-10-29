@@ -1,3 +1,11 @@
+# 最新內容切片 / Latest content slice
+
+繁體中文：連續執行診斷及 JPN 札甲外觀限定驗收已保存；格擋 FAIL 與首輪性能 FAIL 保留。來源 `3723fb2fd2a72cddc22e28e33b1a9d24551a893c`，證據 `40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6`，9 Node／13 Chromium PASS。詳見 docs/evidence/v240-jpn-lamellar/REPORT.md。修復既有批准的 JPN 格擋來源判定，驗證普通近戰、投射物、Boss 與存檔隔離；不得冒稱已修復。既有恢復已完成，不重做；歷史自然戰役、嚴格 Save/Load、低 FPS、性能及硬體缺口保留，未公開發布，排程切換未確認。
+
+English: Continuity diagnosis and scoped JPN lamellar visual acceptance saved; block FAIL and initial performance FAIL retained. Source `3723fb2fd2a72cddc22e28e33b1a9d24551a893c`, evidence `40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6`, 9 Node/13 Chromium PASS. See docs/evidence/v240-jpn-lamellar/REPORT.md. Fix the existing approved JPN block identity path and verify ordinary melee, projectiles, Boss and save isolation; do not claim already fixed. Recovery is complete and must not be repeated; historical natural campaign, strict Save/Load, low-FPS, performance and hardware gaps remain. Nothing publicly deployed; scheduler rebinding unconfirmed.
+
+---
+
 # 連續執行覆寫 / Continuous execution override
 
 繁體中文：上一輪 55ef783 的停止已記為 AGENT_EARLY_STOP，詳見 docs/evidence/execution-continuity/REPORT.md。安全 Commit／Push 後仍有授權且無阻礙的工作即直接繼續，不以切片數、經過分鐘數或未知額度結束。下一項仍為 JPN 既有 guard 札甲 Atlas。每次真正停止記錄 STOP_REASON／EXECUTION_DURATION（量測範圍）／NEXT_AUTHORIZED_TASK／CHECKPOINT_SHA／AUTO_RESUME_AVAILABLE。310 分鐘新 Agent 喚醒未驗證，GitHub 監督不算自動續跑；無排程管理工具，不宣稱重綁完成。
