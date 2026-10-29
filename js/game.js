@@ -3191,7 +3191,7 @@ export class Game {
       const p = this.screenPos(u.x, u.y);
       const dx = p.x - sx, dy = (p.y - 18 * z) - sy;
       const d = Math.hypot(dx, dy);
-      if ((d < 18 * z || atlasBodyContains(u, this.civ?.id, sx, sy, p, z * (u.typeDef.scale || 1))) && d < bestScore) { best = u; bestScore = d; }
+      if (d < bestScore && (d < 18 * z || atlasBodyContains(u, this.civ?.id, sx, sy, p, z * (u.typeDef.scale || 1)))) { best = u; bestScore = d; }
     }
     if (best) return best;
     for (const b of this.buildings) {
