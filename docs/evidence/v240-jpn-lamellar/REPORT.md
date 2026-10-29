@@ -1,0 +1,19 @@
+# JPN 札甲盾衛 / JPN lamellar guard
+
+繁體中文：連續執行診斷保存 `d7ed2ce` 後直接接續本切片，沒有再次等待「繼續」。遊戲來源／Build `3723fb2fd2a72cddc22e28e33b1a9d24551a893c`，61 個 payload SHA256 一致。原創兜盔、護肩、札甲層次及彎刃動畫只套用 JPN 玩家 guard，八方向 × 五狀態 × 四影格，其他文明／敵軍使用自己的 Atlas。生成器／SVG／PNG 皆為本專案原創，無外部素材依賴。正式近戰仍用既有音效；game.js、data.js、audio.js 與上一輪 55ef783 完全相同，雜湊證明見 unchanged-gameplay.json，沒有改動平衡或模擬。
+
+English: This slice directly follows continuity-diagnosis checkpoint `d7ed2ce` without another continue prompt. Game source/Build is `3723fb2fd2a72cddc22e28e33b1a9d24551a893c`, with 61 payload SHA256 hashes matching. Original helmet, shoulder plates, lamellar layers and curved blade animate only JPN player guards across eight directions, five states and four frames. Other civilizations/enemies retain their own atlases. Generator/SVG/PNG are project originals without external assets. Production melee retains existing sound. game.js/data.js/audio.js are byte-identical to previous 55ef783; see unchanged-gameplay.json. No balance or simulation changes were made.
+
+繁體中文：9 項定向 Node PASS，涵蓋三個文明變體、完整影格界限、成本／存檔與實際 typeDef.radius。新增 JPN 變體後，VIK 隔離測試更新為承認 JPN 自己的獨立 key，沒有移除隔離要求。初始 Node FAIL 完整保留：包含新變體使舊測試假設失效，以及實測未觸發既有 JPN 格擋。後者未修復，不能把新的 Node 通過當作格擋功能通過。
+
+English: 9 focused Node checks PASS, covering three civilization variants, frame bounds, cost/save identity and actual typeDef.radius. The VIK isolation test now recognizes JPN's independent key rather than assuming a generic guard; isolation requirements remain. Initial Node failures are preserved, including the newly introduced variant invalidating an older expectation and an actual failure of existing JPN melee block. The latter is unfixed; new Node passes do not certify block behavior.
+
+繁體中文：兩輪真實 Chromium 均有原生 JPN Start、付費軍營訓練／真正佇列生成、正式移動、滑鼠右鍵近戰傷害、四影格攻擊、音效事件、受擊、死亡、文明／敵軍隔離與失敗回退。皆為明示 CONTROLLED_FIXTURE，不代表自然戰役。第一輪 13 項中繪製比較 FAIL，其餘 12 PASS；同來源限定複查 13 項 PASS。兩輪都另外記錄 **JPN-MELEE-BLOCK-MISSING-CIV = FAIL**：傷害程式讀 target.civ.id，但正式 spawnUnit 沒有 civ，故格擋沒有生效。此為已存在的規則缺口，獨立接續修復，不用外觀 PASS 掩蓋。沒有 Console／Page／HTTP／網路錯誤。
+
+English: Both real Chromium runs use native JPN Start, paid barracks training/real queue spawn, production movement, right-click melee damage, four attack frames, sound dispatch, hit/death, civilization/enemy isolation and failed-asset fallback. They are explicit controlled fixtures, not natural campaign evidence. The first run passes 12/13 checks and fails the renderer comparison; a bounded same-source recheck passes 13/13. Both separately record **JPN-MELEE-BLOCK-MISSING-CIV = FAIL**: damage reads target.civ.id, but production spawnUnit has no civ field, so block does not trigger. This inherited rule gap needs a separate fix and is not concealed by visual acceptance. No Console/Page/HTTP/network errors occurred.
+
+繁體中文：第一輪 100 盾衛三組 renderer-only 比較中，一組新 Atlas p50=2.2ms 對原 1.0ms，違反 20% 相對門檻，另外兩組未退步。複查三組新 Atlas p50=1.1／1.1／1.0ms、原 1.1／1.1／0.9ms，通過相同門檻。沒有修改素材或放寬閾值；首輪 FAIL 保留，原因未確定，不能以一次複查抹除性能波動或宣稱完整性能通過。這只是特定靜態場景的 draw JS 成本，不是 FPS、完整戰鬥或硬體認證。人工檢視正面、背面、戰鬥與死亡，代表姿勢沒有明顯裁切／鏡像問題，未逐影格認證。歷史自然十波／NG+、嚴格 Save/Load、低 FPS、建築性能及硬體缺口全部保留；未公開部署。
+
+English: In the first three-pair renderer-only comparison with 100 guards, one new-atlas p50=2.2ms versus original 1.0ms fails the 20% relative gate; the other pairs do not regress. Recheck p50 is new 1.1/1.1/1.0ms versus original 1.1/1.1/0.9ms, passing the same gate. No assets or thresholds changed. Initial FAIL and its undetermined cause remain; a recheck does not erase variability or establish general performance acceptance. This is static-scene draw JS cost, not FPS/full-combat/hardware certification. Front/rear, combat/death images were reviewed without evident representative clipping/mirroring, not every-frame certification. Historical natural campaign/NG+, strict Save/Load, low-FPS, building performance and hardware gaps remain; nothing publicly deployed.
+
+BILINGUAL_DOCUMENTATION_REQUIRED = true

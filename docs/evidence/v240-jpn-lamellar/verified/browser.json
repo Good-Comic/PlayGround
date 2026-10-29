@@ -1,0 +1,224 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_VISUAL_SCENE_NOT_NATURAL_PLAY",
+  "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed artifact",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T16:43:56.987318+00:00",
+        "resourceVerification": "SHA256_MATCH_61_FILES"
+      }
+    },
+    {
+      "name": "native barracks guard training pays exact costs",
+      "pass": true,
+      "detail": {
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "food": 70,
+            "gold": 50
+          },
+          "ids": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "after": {
+          "food": 230,
+          "wood": 300,
+          "gold": 70,
+          "stone": 100
+        },
+        "queued": true
+      }
+    },
+    {
+      "name": "production queue spawns the civilization guard",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "independent external lamellar loaded",
+      "pass": true,
+      "detail": {
+        "width": 2048,
+        "height": 1280,
+        "src": "assets/sprites/jpn-lamellar-atlas.png"
+      }
+    },
+    {
+      "name": "production move command advances lamellar",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.984626727672513,
+          "y": 33.24615668191814
+        },
+        "state": "move"
+      }
+    },
+    {
+      "name": "production lamellar uses existing melee sound",
+      "pass": true,
+      "detail": [
+        "guard"
+      ]
+    },
+    {
+      "name": "production melee attack and live state synchronization",
+      "pass": true,
+      "detail": {
+        "enemyHP": 131.29999999999998,
+        "startHP": 145,
+        "actorState": "attack",
+        "shots": 0,
+        "seen": {
+          "idle": 230,
+          "walk": 434,
+          "attack": 9
+        },
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production damage displays hit animation",
+      "pass": true,
+      "detail": {
+        "hitFlash": 1,
+        "seen": {
+          "idle": 230,
+          "walk": 434,
+          "attack": 9,
+          "hit": 46
+        }
+      }
+    },
+    {
+      "name": "production death displays terminal atlas",
+      "pass": true,
+      "detail": {
+        "idle": 230,
+        "walk": 434,
+        "attack": 9,
+        "hit": 47,
+        "death": 42
+      }
+    },
+    {
+      "name": "civilization and enemy isolation",
+      "pass": true,
+      "detail": {
+        "other": "guard",
+        "enemy": "guard"
+      }
+    },
+    {
+      "name": "failed asset retains procedural fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "bounded 100-unit renderer JS within budget and no >20% median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 1.2649999999906867,
+          "p50": 1.1000000014901161,
+          "p95": 2.099999997764826
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.5149999999906867,
+          "p50": 1.1000000014901161,
+          "p95": 2.699999999254942
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.2262499999720604,
+          "p50": 1.0999999977648258,
+          "p95": 2.599999997764826
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 1.2674999999813736,
+          "p50": 1.0999999977648258,
+          "p95": 2.300000000745058
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 1.1974999999627471,
+          "p50": 0.9000000022351742,
+          "p95": 2.5
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.1925000000279398,
+          "p50": 1,
+          "p95": 1.9000000022351742
+        }
+      ]
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "known_failures": [
+    {
+      "id": "JPN-MELEE-BLOCK-MISSING-CIV",
+      "status": "FAIL",
+      "detail": {
+        "sameHP": false,
+        "blockCd": 0,
+        "time": 20.631799999999934
+      }
+    }
+  ],
+  "pass": true
+}

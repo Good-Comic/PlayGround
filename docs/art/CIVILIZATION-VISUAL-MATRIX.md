@@ -21,10 +21,10 @@ English: This records actual progress against the existing sixteen civilizations
 | BYZ | 沙漠 / Desert | 家族層；反制步兵外觀待擴充 / Family layer; counter-infantry appearance pending |
 | VIK | 堡壘 / Fortress | 圓盾 guard 已驗收 / Round-shield guard accepted; v240-vik-roundshield |
 | MAG | 草原 / Steppe | 家族層；輕騎外觀待擴充 / Family layer; light-cavalry appearance pending |
-| JPN | 東方 / Eastern | 家族層；下一項為既有 guard 札甲外觀 / Family layer; next: existing guard lamellar appearance |
+| JPN | 東方 / Eastern | 札甲 guard 外觀限定驗收；格擋仍 FAIL / Lamellar guard visual acceptance only; block remains FAIL; v240-jpn-lamellar |
 
-繁體中文：英雄／招募使／雙 Boss 的共用 Atlas 與技能表現沿用 v240-champions 相關證據，不因矩陣未列而重做。優先下一項 JPN 既有盾衛札甲外觀；先核對最新遠端及所有權。自然戰役、低 FPS、嚴格 Save/Load、性能與硬體缺口不在此表宣告通過。
+繁體中文：英雄／招募使／雙 Boss 的共用 Atlas 與技能表現沿用 v240-champions 相關證據，不因矩陣未列而重做。下一項獨立核對 JPN 格擋缺口與已批准規則；先核對最新遠端及所有權。自然戰役、低 FPS、嚴格 Save/Load、性能與硬體缺口不在此表宣告通過。
 
-English: Retain existing shared hero/recruiter/two-Boss atlases and skill evidence; omission from this civilization table does not request recreation. Prioritize JPN existing-guard lamellar appearance next, after checking current remote and ownership. This table does not clear natural-campaign, low-FPS, strict Save/Load, performance or hardware gaps.
+English: Retain existing shared hero/recruiter/two-Boss atlases and skill evidence; omission from this civilization table does not request recreation. Next independently reconcile the JPN block gap with approved rules after checking current remote and ownership. This table does not clear natural-campaign, low-FPS, strict Save/Load, performance or hardware gaps.
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true

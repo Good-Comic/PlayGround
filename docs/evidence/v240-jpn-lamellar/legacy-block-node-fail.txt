@@ -1,0 +1,40 @@
+✔ BRI longbow appearance is isolated from other civilizations and enemies (1.83373ms)
+✔ every longbow direction and animation frame fits the actual PNG (2.418803ms)
+✔ existing British range, first-shot penalty, cost and snapshot identity remain production rules (72.711679ms)
+✔ JPN lamellar appearance is isolated from other civilizations and enemies (0.927056ms)
+✔ every lamellar direction and animation frame fits the actual PNG (1.77567ms)
+✖ existing Japanese block, infantry speed, cost and snapshot identity remain production rules (36.645386ms)
+✔ VIK roundshield appearance is isolated from other civilizations and enemies (1.747735ms)
+✔ every roundshield direction and animation frame fits the actual PNG (2.16252ms)
+✔ existing Viking regeneration, cost and snapshot identity remain production rules (81.948927ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 480.290873
+
+✖ failing tests:
+
+test at tests/jpn-lamellar-atlas.test.mjs:21:1
+✖ existing Japanese block, infantry speed, cost and snapshot identity remain production rules (36.645386ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  125 !== 130
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-lamellar-atlas.test.mjs:26:60)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 125,
+    expected: 130,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

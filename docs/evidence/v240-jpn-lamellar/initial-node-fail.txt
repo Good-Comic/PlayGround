@@ -1,0 +1,82 @@
+✔ BRI longbow appearance is isolated from other civilizations and enemies (1.183036ms)
+✔ every longbow direction and animation frame fits the actual PNG (2.341754ms)
+✔ existing British range, first-shot penalty, cost and snapshot identity remain production rules (67.598115ms)
+✖ JPN lamellar appearance is isolated from other civilizations and enemies (2.984103ms)
+✔ every lamellar direction and animation frame fits the actual PNG (3.103912ms)
+✖ existing Japanese block, infantry speed, cost and snapshot identity remain production rules (64.033742ms)
+✖ VIK roundshield appearance is isolated from other civilizations and enemies (3.427715ms)
+✔ every roundshield direction and animation frame fits the actual PNG (4.072833ms)
+✔ existing Viking regeneration, cost and snapshot identity remain production rules (712.996141ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 6
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1245.440143
+
+✖ failing tests:
+
+test at tests/jpn-lamellar-atlas.test.mjs:8:1
+✖ JPN lamellar appearance is isolated from other civilizations and enemies (2.984103ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'VIK:guard'
+  - 'guard'
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-lamellar-atlas.test.mjs:10:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'VIK:guard',
+    expected: 'guard',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/jpn-lamellar-atlas.test.mjs:21:1
+✖ existing Japanese block, infantry speed, cost and snapshot identity remain production rules (64.033742ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  125 !== 130
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/jpn-lamellar-atlas.test.mjs:26:60)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 125,
+    expected: 130,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/vik-roundshield-atlas.test.mjs:8:1
+✖ VIK roundshield appearance is isolated from other civilizations and enemies (3.427715ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'JPN:guard'
+  - 'guard'
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/vik-roundshield-atlas.test.mjs:10:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'JPN:guard',
+    expected: 'guard',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
