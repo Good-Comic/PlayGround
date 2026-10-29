@@ -1,3 +1,3 @@
-繁體中文：SPA 暈擊與原生 Continue 已修復，續做特效 RNG 隔離。定向 Node 33／真實 Chromium 9 通過，圖片已人工檢視；未改平衡或公開部署。
+繁體中文：特效 RNG 已隔離，續做 FRK 輕騎辨識度。定向 Node 29／真實 Chromium 6 通過，圖片已人工檢視；未改平衡或公開部署。
 
-English: SPA stun and native Continue fixed; continuing effect RNG isolation. 33 focused Node/9 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.
+English: Effect RNG isolated; continuing FRK cavalry identity. 29 focused Node/6 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.
