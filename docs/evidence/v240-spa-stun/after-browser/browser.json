@@ -1,0 +1,108 @@
+{
+  "mode": "CONTROLLED_FIXTURE_NATIVE_INPUT_SAVE_CONTINUE_NOT_NATURAL_CAMPAIGN",
+  "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+  "checks": [
+    {
+      "name": "exact source artifact",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T17:20:05.483539+00:00",
+        "resourceVerification": "SHA256_MATCH_61_FILES"
+      }
+    },
+    {
+      "name": "native right-click villager attack applies half-second stun and eight-second source cooldown",
+      "pass": true,
+      "detail": {
+        "hit": {
+          "time": 0.2666999999999994,
+          "stunUntil": 0.7666999999999994,
+          "sourceCd": 8.2667,
+          "targetHP": 53.8,
+          "sourceId": 20
+        },
+        "speed": 0,
+        "sourceCiv": null,
+        "text": [
+          "Villager stuns enemy!"
+        ]
+      }
+    },
+    {
+      "name": "existing localized stun feedback visible",
+      "pass": true,
+      "detail": [
+        "Villager stuns enemy!"
+      ]
+    },
+    {
+      "name": "native Save Quit Continue preserves active stun and source cooldown",
+      "pass": true,
+      "detail": {
+        "sourceCd": 8.2667,
+        "until": 0.7666999999999994,
+        "speed": 0,
+        "time": 0.36669999999999936,
+        "civ": "SPA"
+      }
+    },
+    {
+      "name": "full stun rejects a new production attack",
+      "pass": true,
+      "detail": {
+        "hpBefore": 85,
+        "hpAfter": 85,
+        "until": 0.7666999999999994,
+        "time": 0.36669999999999936
+      }
+    },
+    {
+      "name": "next hit does not extend stun during source cooldown and enemy resumes",
+      "pass": true,
+      "detail": {
+        "hit": {
+          "time": 1.6168999999999987,
+          "stunUntil": 0.7666999999999994,
+          "sourceCd": 8.2667,
+          "targetHP": 49.599999999999994,
+          "sourceId": 20
+        },
+        "speed": 2,
+        "attacks": [
+          0.7666999999999996
+        ]
+      }
+    },
+    {
+      "name": "live source cooldown rearms after eight seconds",
+      "pass": true,
+      "detail": {
+        "time": 8.466500000000014,
+        "stunUntil": 8.966500000000014,
+        "sourceCd": 16.466500000000014,
+        "targetHP": 28.599999999999984,
+        "sourceId": 20
+      }
+    },
+    {
+      "name": "per-villager cooldown across targets, Boss exclusion and other-civ isolation",
+      "pass": true,
+      "detail": {
+        "spent": 0,
+        "separate": true,
+        "bossStunned": false,
+        "otherStunned": false
+      }
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

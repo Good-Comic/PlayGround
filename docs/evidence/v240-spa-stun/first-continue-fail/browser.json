@@ -1,0 +1,70 @@
+{
+  "mode": "CONTROLLED_FIXTURE_NATIVE_INPUT_SAVE_CONTINUE_NOT_NATURAL_CAMPAIGN",
+  "source_commit": "6ce61b78a683c9f60ec0fe98df264b01ad8844a7",
+  "checks": [
+    {
+      "name": "exact source artifact",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "6ce61b78a683c9f60ec0fe98df264b01ad8844a7",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T17:16:24.051974+00:00",
+        "resourceVerification": "SHA256_MATCH_61_FILES"
+      }
+    },
+    {
+      "name": "native right-click villager attack applies half-second stun and eight-second source cooldown",
+      "pass": true,
+      "detail": {
+        "hit": {
+          "time": 0.30000000000000027,
+          "stunUntil": 0.8000000000000003,
+          "sourceCd": 8.3,
+          "targetHP": 53.8,
+          "sourceId": 20
+        },
+        "speed": 0,
+        "sourceCiv": null,
+        "text": [
+          "Villager stuns enemy!"
+        ]
+      }
+    },
+    {
+      "name": "existing localized stun feedback visible",
+      "pass": true,
+      "detail": [
+        "Villager stuns enemy!"
+      ]
+    },
+    {
+      "name": "execution",
+      "pass": false,
+      "detail": {
+        "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-continue')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled id=\"btn-continue\" class=\"secondary-button\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not visible\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not enabled\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    54 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+        "stack": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#btn-continue')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled id=\"btn-continue\" class=\"secondary-button\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not visible\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not enabled\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    54 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /workspace/riftwatch-v240-takeover/tools/qa/v240_spa_stun_browser.mjs:19:171",
+        "state": {
+          "paused": false,
+          "actor": {
+            "state": "attack",
+            "manual": true,
+            "target": 21,
+            "hp": 85
+          },
+          "hits": [
+            {
+              "time": 0.30000000000000027,
+              "stunUntil": 0.8000000000000003,
+              "sourceCd": 8.3,
+              "targetHP": 53.8,
+              "sourceId": 20
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "pass": false
+}

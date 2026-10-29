@@ -1,0 +1,143 @@
+✖ production SPA villager applies approved half-second stun with eight-second per-attacker cooldown (34.014215ms)
+✖ cooldown follows each villager across targets while another villager has its own first hit (22.539066ms)
+✖ full stun prevents actual melee, ranged attack and AI action until exact expiry (20.419826ms)
+✔ partial slow does not suppress attacks and in-flight projectiles continue during stun (9.783873ms)
+✖ other civilizations, enemy villagers, non-villagers and Boss targets do not gain stun (8.585738ms)
+✖ JSON SaveLoad preserves source cooldown and target stun; legacy source defaults to ready (11.078757ms)
+✖ manual villager attack interrupts gathering through production command; normal gather does not attack (34.022562ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 1
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 396.538677
+
+✖ failing tests:
+
+test at tests/spa-stun.test.mjs:5:1
+✖ production SPA villager applies approved half-second stun with eight-second per-attacker cooldown (34.014215ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 10.5
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/spa-stun.test.mjs:5:187)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 10.5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/spa-stun.test.mjs:6:1
+✖ cooldown follows each villager across targets while another villager has its own first hit (22.539066ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 10.5
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/spa-stun.test.mjs:6:315)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 10.5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/spa-stun.test.mjs:7:1
+✖ full stun prevents actual melee, ranged attack and AI action until exact expiry (20.419826ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  69.6 !== 85
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/spa-stun.test.mjs:7:212)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 69.6,
+    expected: 85,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/spa-stun.test.mjs:9:1
+✖ other civilizations, enemy villagers, non-villagers and Boss targets do not gain stun (8.585738ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  10.5 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/spa-stun.test.mjs:9:203)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 10.5,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/spa-stun.test.mjs:10:1
+✖ JSON SaveLoad preserves source cooldown and target stun; legacy source defaults to ready (11.078757ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 18
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/spa-stun.test.mjs:10:197)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 18,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/spa-stun.test.mjs:11:1
+✖ manual villager attack interrupts gathering through production command; normal gather does not attack (34.022562ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 6509404
+  - -241679084
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/spa-stun.test.mjs:11:453)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 6509404,
+    expected: -241679084,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

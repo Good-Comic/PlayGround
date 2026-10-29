@@ -1,0 +1,59 @@
+✔ hero skills expose the production radii used by their effects (1.001695ms)
+✔ skill preview requires a living hero and reports render metadata (36.133537ms)
+✔ mark applies inside the previewed range and rejects targets outside it (45.026701ms)
+✔ aegis shields allies inside the previewed range only (14.378178ms)
+✔ production-spawned JPN guard blocks first ordinary melee hit without a unit civ field (49.845865ms)
+✔ ordinary damage during cooldown keeps armor and block returns exactly at ten seconds (16.111143ms)
+✔ other civilizations, enemies, buildings and source-less damage do not acquire Japanese block (70.847728ms)
+✔ arrows, splash and environmental zones neither block nor consume block readiness (12.844962ms)
+✔ actual Boss warning zone and Boss strike remain damaging without spending block (10.857865ms)
+✔ shield absorbs first, remaining damage can block, and other defenses remain intact (8.601825ms)
+✔ JSON SaveLoad preserves per-unit block cooldown; legacy saves default to ready (58.784007ms)
+✔ block is per defender and consumes no simulation RNG (15.116299ms)
+✔ save mid-flight and during boss telegraph preserves remaining damage, timers and entity references (84.514527ms)
+✔ resolved zones do not damage twice and legacy saves remain loadable (62.231242ms)
+✔ SaveLoad preserves full stun and partial slow strength until their original expiry (70.136137ms)
+✔ native pause and card-choice overlays do not expire absolute-time combat statuses (35.465152ms)
+✔ production SPA villager applies approved half-second stun with eight-second per-attacker cooldown (39.288354ms)
+✔ cooldown follows each villager across targets while another villager has its own first hit (12.213426ms)
+✔ full stun prevents actual melee, ranged attack and AI action until exact expiry (24.534295ms)
+✔ partial slow does not suppress attacks and in-flight projectiles continue during stun (9.381957ms)
+✔ other civilizations, enemy villagers, non-villagers and Boss targets do not gain stun (35.719711ms)
+✔ JSON SaveLoad preserves source cooldown and target stun; legacy source defaults to ready (33.262849ms)
+✖ normal gather does not auto-attack; stun attack does not consume simulation RNG (49.396571ms)
+✔ production unit cues have distinct low impact, wooden launch and bow signatures; mute stops all voices (1.493423ms)
+✔ unit-specific motifs retain shared attack/arrow throttle groups instead of multiplying per-unit voices (1.361789ms)
+✔ real combat with audible noise keeps damage projectiles and simulation RNG identical to silent combat (97.169138ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 25
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 874.429766
+
+✖ failing tests:
+
+test at tests/spa-stun.test.mjs:11:1
+✖ normal gather does not auto-attack; stun attack does not consume simulation RNG (49.396571ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + -1761115212
+  - -241679084
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/spa-stun.test.mjs:11:314)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -1761115212,
+    expected: -241679084,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,59 @@
+file:///workspace/riftwatch-v240-takeover/js/i18n.js:41
+  document.documentElement.lang = next;
+  ^
+
+ReferenceError: document is not defined
+    at setLocale (file:///workspace/riftwatch-v240-takeover/js/i18n.js:41:3)
+    at file:///workspace/riftwatch-v240-takeover/js/i18n.js:80:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0
+✖ tests/continue-menu.test.mjs (215.11628ms)
+✔ hero skills expose the production radii used by their effects (2.506303ms)
+✔ skill preview requires a living hero and reports render metadata (37.436317ms)
+✔ mark applies inside the previewed range and rejects targets outside it (31.717206ms)
+✔ aegis shields allies inside the previewed range only (14.743977ms)
+✔ production-spawned JPN guard blocks first ordinary melee hit without a unit civ field (56.561068ms)
+✔ ordinary damage during cooldown keeps armor and block returns exactly at ten seconds (16.762226ms)
+✔ other civilizations, enemies, buildings and source-less damage do not acquire Japanese block (65.306615ms)
+✔ arrows, splash and environmental zones neither block nor consume block readiness (18.724037ms)
+✔ actual Boss warning zone and Boss strike remain damaging without spending block (971.988392ms)
+✔ shield absorbs first, remaining damage can block, and other defenses remain intact (94.17504ms)
+✔ JSON SaveLoad preserves per-unit block cooldown; legacy saves default to ready (60.97083ms)
+✔ block is per defender and consumes no simulation RNG (15.753698ms)
+✔ report uses allowlisted state and never copies storage/credentials/URL/raw error (78.624098ms)
+✔ errors are categorised and arbitrary details never exported (0.59237ms)
+✔ state export is bounded and invalid IDs/nonfinite numbers are discarded (3.359329ms)
+✔ integrity verifier blocks payload mismatch and external/path traversal manifests (38.281126ms)
+✔ verified artifact identity replaces stale v1 label and rejects arbitrary identifying text (1.210286ms)
+✔ save mid-flight and during boss telegraph preserves remaining damage, timers and entity references (112.965139ms)
+✔ resolved zones do not damage twice and legacy saves remain loadable (50.688112ms)
+✔ SaveLoad preserves full stun and partial slow strength until their original expiry (87.704484ms)
+✔ native pause and card-choice overlays do not expire absolute-time combat statuses (69.124847ms)
+✔ production SPA villager applies approved half-second stun with eight-second per-attacker cooldown (77.274315ms)
+✔ cooldown follows each villager across targets while another villager has its own first hit (55.935358ms)
+✔ full stun prevents actual melee, ranged attack and AI action until exact expiry (39.942877ms)
+✔ partial slow does not suppress attacks and in-flight projectiles continue during stun (12.569632ms)
+✔ other civilizations, enemy villagers, non-villagers and Boss targets do not gain stun (165.912282ms)
+✔ JSON SaveLoad preserves source cooldown and target stun; legacy source defaults to ready (64.845856ms)
+✔ normal gather does not auto-attack; stun adds no RNG beyond existing attack damage effects (67.065462ms)
+✔ SPA native attack command interrupts gathering and reaches actual combat; other villagers stay excluded (20.151347ms)
+✔ production unit cues have distinct low impact, wooden launch and bow signatures; mute stops all voices (8.357914ms)
+✔ unit-specific motifs retain shared attack/arrow throttle groups instead of multiplying per-unit voices (2.054409ms)
+✔ real combat with audible noise keeps damage projectiles and simulation RNG identical to silent combat (175.002423ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 32
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5886.824466
+
+✖ failing tests:
+
+test at tests/continue-menu.test.mjs:1:1
+✖ tests/continue-menu.test.mjs (215.11628ms)
+  'test failed'
