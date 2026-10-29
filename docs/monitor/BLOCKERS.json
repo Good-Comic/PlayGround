@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T07:02:31.529983+00:00",
+  "updated_at": "2026-10-29T07:33:24.281328+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -515,27 +515,43 @@
     },
     {
       "id": "UNPUSHED_WORK_RECOVERY_PENDING",
-      "severity": "WARNING",
-      "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u5f85\u7368\u7acb\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u958b\u767c / Original9a0f19eanduncommittedQAawait isolated recovery, not blocking development",
-      "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
       "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+      "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u5f85\u7368\u7acb\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u958b\u767c / Original9a0f19eanduncommittedQAawait isolated recovery, not blocking development",
       "task_id": "V240-PRIMARY-MIGRATION"
     },
     {
       "id": "SCHEDULER_REBIND_NOT_VERIFIED",
-      "severity": "ACTION_REQUIRED",
-      "summary": "\u7121\u6392\u7a0b\u7ba1\u7406\u5de5\u5177\uff1b\u82e5310\u5206\u9418\u6392\u7a0b\u4ecd\u6307\u539f\u5c0d\u8a71\uff0c\u4f7f\u7528\u8005\u9700\u6539\u6307\u65b0\u5c0d\u8a71 / No scheduler tool; user must retarget any310-minute schedule still pointing to the old conversation",
-      "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
       "requires_user_decision": false,
+      "severity": "ACTION_REQUIRED",
+      "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+      "summary": "\u7121\u6392\u7a0b\u7ba1\u7406\u5de5\u5177\uff1b\u82e5310\u5206\u9418\u6392\u7a0b\u4ecd\u6307\u539f\u5c0d\u8a71\uff0c\u4f7f\u7528\u8005\u9700\u6539\u6307\u65b0\u5c0d\u8a71 / No scheduler tool; user must retarget any310-minute schedule still pointing to the old conversation",
+      "task_id": "V240-PRIMARY-MIGRATION"
+    },
+    {
+      "id": "HISTORICAL-GAPS",
+      "requires_user_decision": false,
+      "severity": "WARNING",
+      "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+      "summary": "\u4fdd\u7559\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3 / Retain natural-campaign, clock, save, performance, Rift and hardware gaps",
       "task_id": "V240-PRIMARY-MIGRATION"
     },
     {
       "id": "HISTORICAL-GAPS",
       "severity": "WARNING",
-      "summary": "\u4fdd\u7559\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3 / Retain natural-campaign, clock, save, performance, Rift and hardware gaps",
-      "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+      "summary": "\u81ea\u7136Easy\uff0fNormal\u5341\u6ce2\u53caNG+\u672a\u901a\u904e\uff1b\u4fdd\u7559\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3 / Natural Easy/Normal ten waves and NG+ unpassed; retain clock, save, performance and hardware gaps",
+      "source_commit": "e651b7782cbf09d21660508d0b9368145e701100",
       "requires_user_decision": false,
-      "task_id": "V240-PRIMARY-MIGRATION"
+      "task_id": "V240-CHAMPION-ATLASES"
+    },
+    {
+      "id": "SCHEDULER_NOT_REBOUND",
+      "severity": "ACTION_REQUIRED",
+      "summary": "310\u5206\u9418\u6392\u7a0b\u672a\u5207\u63db\uff0c\u7121\u7ba1\u7406\u5de5\u5177 /310-minute schedule not rebound; management tool unavailable",
+      "source_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+      "requires_user_decision": false,
+      "task_id": "V240-CHAMPION-ATLASES"
     }
   ]
 }

@@ -2,91 +2,65 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-29T07:02:31.529983+00:00",
+  "updated_at": "2026-10-29T07:33:24.281328+00:00",
   "latest_event": {
-    "task_id": "V240-PRIMARY-MIGRATION",
+    "task_id": "V240-CHAMPION-ATLASES",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-    "build_sha": "771a6ddea2d458f1362f9717c42a10e171c85457",
-    "summary": "\u65b0Agent\u958b\u767c\u4e3b\u63a7\u79fb\u8f49\u5b8c\u6210\uff1b\u5169\u500bGAME FIRST\u5207\u7247\u5df2\u4fdd\u5b58 / New Agent primary development migration complete; two GAME FIRST slices saved",
+    "commit": "e651b7782cbf09d21660508d0b9368145e701100",
+    "build_sha": "d5d75c4c760b1462969b8772e505d4841f394573",
+    "summary": "\u82f1\u96c4\u3001\u62db\u52df\u4f7f\u53ca\u96d9Boss\u7368\u7acbAtlas\u901a\u904e / Independent hero, recruiter and two-boss atlases accepted",
     "code_changes": [
-      "\u9577\u77db\u8207\u76fe\u885b\u7368\u7acbAtlas\u3001\u5b8c\u6574\u6b7b\u4ea1\u5f71\u683c / Independent spear and guard atlases with complete death frames",
-      "\u56db\u5730\u8c8c\u6c34\u5cb8\u53ca\u6dfa\u6c34\u904e\u6e21\uff0c\u65e2\u6709\u4e16\u754c\u8cc7\u6599\u4e0d\u8b8a / Four-biome shoreline/shallow-water transitions preserve world data",
-      "\u4ea4\u63a5Schema\u5df2\u4fee\u5fa9\u4e26\u9a57\u8b49HANDOFF_FRAMEWORK_READY / Repaired handoff schema and verified HANDOFF_FRAMEWORK_READY"
+      "\u56db\u7a2e\u7368\u7acb\u8f2a\u5ed3\u8207\u516b\u65b9\u5411\u4e94\u72c0\u614b\u52d5\u756b / Four distinct silhouettes and eight-direction five-state animations",
+      "\u4fee\u5fa9\u88c1\u5207\u53ca\u76f8\u5c0d\u7e6a\u88fd\u9000\u6b65\uff0c\u4fdd\u7559\u5169\u6b21FAIL / Fixed clipping and relative rendering regression, retaining both FAIL"
     ],
     "next_steps": [
-      "\u63a5\u7e8c\u65e2\u6709\u7279\u6b8a\u55ae\u4f4d\uff0f\u82f1\u96c4\u8996\u89ba\u8fa8\u8b58\uff0c\u4e0d\u91cd\u8dd1\u6574\u500b\u6d41\u7a0b / Continue special-unit/hero identity without rerunning the full pipeline"
+      "\u63a5\u7e8c\u82f1\u96c4\u65bd\u6cd5\u8207Boss\u9810\u8b66\u56de\u994b / Continue hero casting and Boss telegraphs"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "22 focused Node",
+        "name": "18 focused Node",
         "status": "PASS",
-        "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
-        "evidence": "docs/evidence/v240-migration/focused-node.txt",
-        "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-        "evidence_blob": "eaaf0319ef6a013db5d681b2fdc232b94d21ffc1",
+        "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573",
+        "evidence": "docs/evidence/v240-champions/focused-node.txt",
+        "evidence_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "evidence_blob": "7a1c5d71e3bf8940c16605029f55f400028df8bc",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "14 local controlled Chromium",
+        "name": "24 local controlled Chromium",
         "status": "PASS",
-        "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
-        "evidence": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
-        "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-        "evidence_blob": "acb556edf5edc9b4d7334b4d7a86f243d5e3261a",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "5 shoreline Node",
-        "status": "PASS",
-        "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
-        "evidence": "docs/evidence/v240-shorelines/focused-node.txt",
-        "evidence_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
-        "evidence_blob": "7ab01eea7578305121579b22d50af07f1ef5f6f4",
-        "evidence_status": "GIT_BLOB_VERIFIED"
-      },
-      {
-        "name": "13 shoreline local Chromium",
-        "status": "PASS",
-        "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
-        "evidence": "docs/evidence/v240-shorelines/final/browser.json",
-        "evidence_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
-        "evidence_blob": "0df37fb9d0bec0b27fba8ea16d72820bb9da902a",
+        "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573",
+        "evidence": "docs/evidence/v240-champions/atlas-cached/browser.json",
+        "evidence_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "evidence_blob": "e7013ed036216e129945fe9af6f4d56840239c8c",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "UNPUSHED_WORK_RECOVERY_PENDING",
-        "severity": "WARNING",
-        "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u5f85\u7368\u7acb\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u958b\u767c / Original9a0f19eanduncommittedQAawait isolated recovery, not blocking development",
-        "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-        "requires_user_decision": false
-      },
-      {
-        "id": "SCHEDULER_REBIND_NOT_VERIFIED",
-        "severity": "ACTION_REQUIRED",
-        "summary": "\u7121\u6392\u7a0b\u7ba1\u7406\u5de5\u5177\uff1b\u82e5310\u5206\u9418\u6392\u7a0b\u4ecd\u6307\u539f\u5c0d\u8a71\uff0c\u4f7f\u7528\u8005\u9700\u6539\u6307\u65b0\u5c0d\u8a71 / No scheduler tool; user must retarget any310-minute schedule still pointing to the old conversation",
-        "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-        "requires_user_decision": false
-      },
-      {
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
-        "summary": "\u4fdd\u7559\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3 / Retain natural-campaign, clock, save, performance, Rift and hardware gaps",
-        "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+        "summary": "\u81ea\u7136Easy\uff0fNormal\u5341\u6ce2\u53caNG+\u672a\u901a\u904e\uff1b\u4fdd\u7559\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3 / Natural Easy/Normal ten waves and NG+ unpassed; retain clock, save, performance and hardware gaps",
+        "source_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+        "requires_user_decision": false
+      },
+      {
+        "id": "SCHEDULER_NOT_REBOUND",
+        "severity": "ACTION_REQUIRED",
+        "summary": "310\u5206\u9418\u6392\u7a0b\u672a\u5207\u63db\uff0c\u7121\u7ba1\u7406\u5de5\u5177 /310-minute schedule not rebound; management tool unavailable",
+        "source_commit": "e651b7782cbf09d21660508d0b9368145e701100",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aMIGRATION_COMPLETE\u3002\u6700\u65b0\u4f86\u6e90\u3001\u7b56\u7565\uff0fGDD\u3001Ownership\u3001\u4e7e\u6de8\u5de5\u4f5c\u5340\u3001\u5be6\u969b\u555f\u52d5\u8207\u6e2c\u8a66\u3001\u5169\u9805GAME FIRST\u5167\u5bb9\u53ca\u6b63\u5e38Push\uff0f\u9060\u7aefSHA\u6838\u5c0d\u5b8c\u6210\uff0cRecovery\uff0fHandoff\u5df2\u9060\u7aef\u4fdd\u5b58\u3002\u9577\u77db\uff0f\u76fe\u885b22 Node\u820714 Chromium\u3001\u6c34\u5cb85 Node\u820713 Chromium\u901a\u904e\uff1b\u5168\u90e8\u70ba\u672c\u5730\u9650\u5b9a\u9a57\u8b49\uff0c\u975e\u81ea\u7136\u5341\u6ce2\u6216\u786c\u9ad4PASS\u3002\u539f\u672a\u63a8\u9001\u5de5\u4f5c\u4ecdUNPUSHED_WORK_RECOVERY_PENDING\u3002\u6392\u7a0b\u672a\u5207\u63db\uff0c\u9700\u4f7f\u7528\u8005\u65bc\u4ecb\u9762\u6838\u5c0d\uff1b\u6c92\u6709\u516c\u958b\u767c\u5e03\u3002\n\nEnglish: MIGRATION_COMPLETE. Latest source, Strategy/GDD, ownership, clean workspace, actual startup/tests, two GAME FIRST content slices, normal push and exact remote SHA verification are complete; Recovery/Handoff are remotely saved. Spear/guard passes22Node/14Chromium and shoreline passes5Node/13Chromium; all are scoped local validation, not natural ten-wave or hardware PASS. Original unpushed work remains UNPUSHED_WORK_RECOVERY_PENDING. Scheduler rebinding is not done and needs user UI verification. No public release.",
-    "event_id": "5990f9d2658a96aa16bd7f0bb6a6f5be3c04e3aaa24b7ea0ce0fb66e762b365a",
-    "remote_head": "e6214c95caea6844f41c49c396fb165e965b1acf",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u56db\u7a2e\u7368\u7acb\u539f\u5275Atlas\u5df2\u4fdd\u5b58\uff0c18\u9805Node\u53ca24\u9805\u672c\u5730Chromium\u901a\u904e\uff1b\u539f\u88c1\u5207\u8207\u6027\u80fdFAIL\u4fdd\u7559\u3002\u5df2\u76f4\u63a5\u63a5\u7e8c\u82f1\u96c4\u65bd\u6cd5\u8207Boss\u9810\u8b66\uff0c\u4e0d\u516c\u958b\u767c\u5e03\u3002\n\nEnglish: Four independent original atlases are saved with18Nodeand24localChromiumchecks passed; initial clipping/performanceFAILare retained. Continuing hero casting and Boss telegraphs directly, without public release.",
+    "event_id": "dba8a4319684c318e6d8e65d77d75b35905e435d13a4a3e731057b0681d076ac",
+    "remote_head": "e651b7782cbf09d21660508d0b9368145e701100",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-29T07:02:31.529983+00:00",
+    "recorded_at": "2026-10-29T07:33:24.281328+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3102,89 +3076,149 @@
       ]
     },
     "V240-PRIMARY-MIGRATION": {
-      "task_id": "V240-PRIMARY-MIGRATION",
       "agent": "Codex",
-      "severity": "PROGRESS",
+      "blockers": [
+        {
+          "id": "UNPUSHED_WORK_RECOVERY_PENDING",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+          "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u5f85\u7368\u7acb\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u958b\u767c / Original9a0f19eanduncommittedQAawait isolated recovery, not blocking development"
+        },
+        {
+          "id": "SCHEDULER_REBIND_NOT_VERIFIED",
+          "requires_user_decision": false,
+          "severity": "ACTION_REQUIRED",
+          "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+          "summary": "\u7121\u6392\u7a0b\u7ba1\u7406\u5de5\u5177\uff1b\u82e5310\u5206\u9418\u6392\u7a0b\u4ecd\u6307\u539f\u5c0d\u8a71\uff0c\u4f7f\u7528\u8005\u9700\u6539\u6307\u65b0\u5c0d\u8a71 / No scheduler tool; user must retarget any310-minute schedule still pointing to the old conversation"
+        },
+        {
+          "id": "HISTORICAL-GAPS",
+          "requires_user_decision": false,
+          "severity": "WARNING",
+          "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+          "summary": "\u4fdd\u7559\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3 / Retain natural-campaign, clock, save, performance, Rift and hardware gaps"
+        }
+      ],
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
       "build_sha": "771a6ddea2d458f1362f9717c42a10e171c85457",
-      "summary": "\u65b0Agent\u958b\u767c\u4e3b\u63a7\u79fb\u8f49\u5b8c\u6210\uff1b\u5169\u500bGAME FIRST\u5207\u7247\u5df2\u4fdd\u5b58 / New Agent primary development migration complete; two GAME FIRST slices saved",
       "code_changes": [
         "\u9577\u77db\u8207\u76fe\u885b\u7368\u7acbAtlas\u3001\u5b8c\u6574\u6b7b\u4ea1\u5f71\u683c / Independent spear and guard atlases with complete death frames",
         "\u56db\u5730\u8c8c\u6c34\u5cb8\u53ca\u6dfa\u6c34\u904e\u6e21\uff0c\u65e2\u6709\u4e16\u754c\u8cc7\u6599\u4e0d\u8b8a / Four-biome shoreline/shallow-water transitions preserve world data",
         "\u4ea4\u63a5Schema\u5df2\u4fee\u5fa9\u4e26\u9a57\u8b49HANDOFF_FRAMEWORK_READY / Repaired handoff schema and verified HANDOFF_FRAMEWORK_READY"
       ],
+      "commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+      "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE",
+      "event_id": "5990f9d2658a96aa16bd7f0bb6a6f5be3c04e3aaa24b7ea0ce0fb66e762b365a",
       "next_steps": [
         "\u63a5\u7e8c\u65e2\u6709\u7279\u6b8a\u55ae\u4f4d\uff0f\u82f1\u96c4\u8996\u89ba\u8fa8\u8b58\uff0c\u4e0d\u91cd\u8dd1\u6574\u500b\u6d41\u7a0b / Continue special-unit/hero identity without rerunning the full pipeline"
+      ],
+      "pushed": true,
+      "recorded_at": "2026-10-29T07:02:31.529983+00:00",
+      "remote_head": "e6214c95caea6844f41c49c396fb165e965b1acf",
+      "remote_query": "VERIFIED",
+      "requires_user_decision": false,
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aMIGRATION_COMPLETE\u3002\u6700\u65b0\u4f86\u6e90\u3001\u7b56\u7565\uff0fGDD\u3001Ownership\u3001\u4e7e\u6de8\u5de5\u4f5c\u5340\u3001\u5be6\u969b\u555f\u52d5\u8207\u6e2c\u8a66\u3001\u5169\u9805GAME FIRST\u5167\u5bb9\u53ca\u6b63\u5e38Push\uff0f\u9060\u7aefSHA\u6838\u5c0d\u5b8c\u6210\uff0cRecovery\uff0fHandoff\u5df2\u9060\u7aef\u4fdd\u5b58\u3002\u9577\u77db\uff0f\u76fe\u885b22 Node\u820714 Chromium\u3001\u6c34\u5cb85 Node\u820713 Chromium\u901a\u904e\uff1b\u5168\u90e8\u70ba\u672c\u5730\u9650\u5b9a\u9a57\u8b49\uff0c\u975e\u81ea\u7136\u5341\u6ce2\u6216\u786c\u9ad4PASS\u3002\u539f\u672a\u63a8\u9001\u5de5\u4f5c\u4ecdUNPUSHED_WORK_RECOVERY_PENDING\u3002\u6392\u7a0b\u672a\u5207\u63db\uff0c\u9700\u4f7f\u7528\u8005\u65bc\u4ecb\u9762\u6838\u5c0d\uff1b\u6c92\u6709\u516c\u958b\u767c\u5e03\u3002\n\nEnglish: MIGRATION_COMPLETE. Latest source, Strategy/GDD, ownership, clean workspace, actual startup/tests, two GAME FIRST content slices, normal push and exact remote SHA verification are complete; Recovery/Handoff are remotely saved. Spear/guard passes22Node/14Chromium and shoreline passes5Node/13Chromium; all are scoped local validation, not natural ten-wave or hardware PASS. Original unpushed work remains UNPUSHED_WORK_RECOVERY_PENDING. Scheduler rebinding is not done and needs user UI verification. No public release.",
+      "severity": "PROGRESS",
+      "summary": "\u65b0Agent\u958b\u767c\u4e3b\u63a7\u79fb\u8f49\u5b8c\u6210\uff1b\u5169\u500bGAME FIRST\u5207\u7247\u5df2\u4fdd\u5b58 / New Agent primary development migration complete; two GAME FIRST slices saved",
+      "task_id": "V240-PRIMARY-MIGRATION",
+      "tests": [
+        {
+          "evidence": "docs/evidence/v240-migration/focused-node.txt",
+          "evidence_blob": "eaaf0319ef6a013db5d681b2fdc232b94d21ffc1",
+          "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "22 focused Node",
+          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
+          "evidence_blob": "acb556edf5edc9b4d7334b4d7a86f243d5e3261a",
+          "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "14 local controlled Chromium",
+          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-shorelines/focused-node.txt",
+          "evidence_blob": "7ab01eea7578305121579b22d50af07f1ef5f6f4",
+          "evidence_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "5 shoreline Node",
+          "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
+          "status": "PASS"
+        },
+        {
+          "evidence": "docs/evidence/v240-shorelines/final/browser.json",
+          "evidence_blob": "0df37fb9d0bec0b27fba8ea16d72820bb9da902a",
+          "evidence_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
+          "evidence_status": "GIT_BLOB_VERIFIED",
+          "name": "13 shoreline local Chromium",
+          "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
+          "status": "PASS"
+        }
+      ]
+    },
+    "V240-CHAMPION-ATLASES": {
+      "task_id": "V240-CHAMPION-ATLASES",
+      "agent": "Codex",
+      "severity": "PROGRESS",
+      "branch": "codex/riftwatch-v240-game-first",
+      "commit": "e651b7782cbf09d21660508d0b9368145e701100",
+      "build_sha": "d5d75c4c760b1462969b8772e505d4841f394573",
+      "summary": "\u82f1\u96c4\u3001\u62db\u52df\u4f7f\u53ca\u96d9Boss\u7368\u7acbAtlas\u901a\u904e / Independent hero, recruiter and two-boss atlases accepted",
+      "code_changes": [
+        "\u56db\u7a2e\u7368\u7acb\u8f2a\u5ed3\u8207\u516b\u65b9\u5411\u4e94\u72c0\u614b\u52d5\u756b / Four distinct silhouettes and eight-direction five-state animations",
+        "\u4fee\u5fa9\u88c1\u5207\u53ca\u76f8\u5c0d\u7e6a\u88fd\u9000\u6b65\uff0c\u4fdd\u7559\u5169\u6b21FAIL / Fixed clipping and relative rendering regression, retaining both FAIL"
+      ],
+      "next_steps": [
+        "\u63a5\u7e8c\u82f1\u96c4\u65bd\u6cd5\u8207Boss\u9810\u8b66\u56de\u994b / Continue hero casting and Boss telegraphs"
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "22 focused Node",
+          "name": "18 focused Node",
           "status": "PASS",
-          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
-          "evidence": "docs/evidence/v240-migration/focused-node.txt",
-          "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-          "evidence_blob": "eaaf0319ef6a013db5d681b2fdc232b94d21ffc1",
+          "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573",
+          "evidence": "docs/evidence/v240-champions/focused-node.txt",
+          "evidence_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+          "evidence_blob": "7a1c5d71e3bf8940c16605029f55f400028df8bc",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "14 local controlled Chromium",
+          "name": "24 local controlled Chromium",
           "status": "PASS",
-          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
-          "evidence": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
-          "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
-          "evidence_blob": "acb556edf5edc9b4d7334b4d7a86f243d5e3261a",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "5 shoreline Node",
-          "status": "PASS",
-          "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
-          "evidence": "docs/evidence/v240-shorelines/focused-node.txt",
-          "evidence_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
-          "evidence_blob": "7ab01eea7578305121579b22d50af07f1ef5f6f4",
-          "evidence_status": "GIT_BLOB_VERIFIED"
-        },
-        {
-          "name": "13 shoreline local Chromium",
-          "status": "PASS",
-          "source_commit": "771a6ddea2d458f1362f9717c42a10e171c85457",
-          "evidence": "docs/evidence/v240-shorelines/final/browser.json",
-          "evidence_commit": "c733fd990fecd413a14bafe8cc8e9aa06a1dfb6b",
-          "evidence_blob": "0df37fb9d0bec0b27fba8ea16d72820bb9da902a",
+          "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573",
+          "evidence": "docs/evidence/v240-champions/atlas-cached/browser.json",
+          "evidence_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+          "evidence_blob": "e7013ed036216e129945fe9af6f4d56840239c8c",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
       "blockers": [
         {
-          "id": "UNPUSHED_WORK_RECOVERY_PENDING",
-          "severity": "WARNING",
-          "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u5f85\u7368\u7acb\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u958b\u767c / Original9a0f19eanduncommittedQAawait isolated recovery, not blocking development",
-          "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-          "requires_user_decision": false
-        },
-        {
-          "id": "SCHEDULER_REBIND_NOT_VERIFIED",
-          "severity": "ACTION_REQUIRED",
-          "summary": "\u7121\u6392\u7a0b\u7ba1\u7406\u5de5\u5177\uff1b\u82e5310\u5206\u9418\u6392\u7a0b\u4ecd\u6307\u539f\u5c0d\u8a71\uff0c\u4f7f\u7528\u8005\u9700\u6539\u6307\u65b0\u5c0d\u8a71 / No scheduler tool; user must retarget any310-minute schedule still pointing to the old conversation",
-          "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-          "requires_user_decision": false
-        },
-        {
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
-          "summary": "\u4fdd\u7559\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3 / Retain natural-campaign, clock, save, performance, Rift and hardware gaps",
-          "source_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
+          "summary": "\u81ea\u7136Easy\uff0fNormal\u5341\u6ce2\u53caNG+\u672a\u901a\u904e\uff1b\u4fdd\u7559\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3 / Natural Easy/Normal ten waves and NG+ unpassed; retain clock, save, performance and hardware gaps",
+          "source_commit": "e651b7782cbf09d21660508d0b9368145e701100",
+          "requires_user_decision": false
+        },
+        {
+          "id": "SCHEDULER_NOT_REBOUND",
+          "severity": "ACTION_REQUIRED",
+          "summary": "310\u5206\u9418\u6392\u7a0b\u672a\u5207\u63db\uff0c\u7121\u7ba1\u7406\u5de5\u5177 /310-minute schedule not rebound; management tool unavailable",
+          "source_commit": "e651b7782cbf09d21660508d0b9368145e701100",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aMIGRATION_COMPLETE\u3002\u6700\u65b0\u4f86\u6e90\u3001\u7b56\u7565\uff0fGDD\u3001Ownership\u3001\u4e7e\u6de8\u5de5\u4f5c\u5340\u3001\u5be6\u969b\u555f\u52d5\u8207\u6e2c\u8a66\u3001\u5169\u9805GAME FIRST\u5167\u5bb9\u53ca\u6b63\u5e38Push\uff0f\u9060\u7aefSHA\u6838\u5c0d\u5b8c\u6210\uff0cRecovery\uff0fHandoff\u5df2\u9060\u7aef\u4fdd\u5b58\u3002\u9577\u77db\uff0f\u76fe\u885b22 Node\u820714 Chromium\u3001\u6c34\u5cb85 Node\u820713 Chromium\u901a\u904e\uff1b\u5168\u90e8\u70ba\u672c\u5730\u9650\u5b9a\u9a57\u8b49\uff0c\u975e\u81ea\u7136\u5341\u6ce2\u6216\u786c\u9ad4PASS\u3002\u539f\u672a\u63a8\u9001\u5de5\u4f5c\u4ecdUNPUSHED_WORK_RECOVERY_PENDING\u3002\u6392\u7a0b\u672a\u5207\u63db\uff0c\u9700\u4f7f\u7528\u8005\u65bc\u4ecb\u9762\u6838\u5c0d\uff1b\u6c92\u6709\u516c\u958b\u767c\u5e03\u3002\n\nEnglish: MIGRATION_COMPLETE. Latest source, Strategy/GDD, ownership, clean workspace, actual startup/tests, two GAME FIRST content slices, normal push and exact remote SHA verification are complete; Recovery/Handoff are remotely saved. Spear/guard passes22Node/14Chromium and shoreline passes5Node/13Chromium; all are scoped local validation, not natural ten-wave or hardware PASS. Original unpushed work remains UNPUSHED_WORK_RECOVERY_PENDING. Scheduler rebinding is not done and needs user UI verification. No public release.",
-      "event_id": "5990f9d2658a96aa16bd7f0bb6a6f5be3c04e3aaa24b7ea0ce0fb66e762b365a",
-      "remote_head": "e6214c95caea6844f41c49c396fb165e965b1acf",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u56db\u7a2e\u7368\u7acb\u539f\u5275Atlas\u5df2\u4fdd\u5b58\uff0c18\u9805Node\u53ca24\u9805\u672c\u5730Chromium\u901a\u904e\uff1b\u539f\u88c1\u5207\u8207\u6027\u80fdFAIL\u4fdd\u7559\u3002\u5df2\u76f4\u63a5\u63a5\u7e8c\u82f1\u96c4\u65bd\u6cd5\u8207Boss\u9810\u8b66\uff0c\u4e0d\u516c\u958b\u767c\u5e03\u3002\n\nEnglish: Four independent original atlases are saved with18Nodeand24localChromiumchecks passed; initial clipping/performanceFAILare retained. Continuing hero casting and Boss telegraphs directly, without public release.",
+      "event_id": "dba8a4319684c318e6d8e65d77d75b35905e435d13a4a3e731057b0681d076ac",
+      "remote_head": "e651b7782cbf09d21660508d0b9368145e701100",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-29T07:02:31.529983+00:00",
+      "recorded_at": "2026-10-29T07:33:24.281328+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },

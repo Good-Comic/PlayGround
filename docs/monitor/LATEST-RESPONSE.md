@@ -1,3 +1,3 @@
-繁體中文：MIGRATION_COMPLETE。最新來源、策略／GDD、Ownership、乾淨工作區、實際啟動與測試、兩項GAME FIRST內容及正常Push／遠端SHA核對完成，Recovery／Handoff已遠端保存。長矛／盾衛22 Node與14 Chromium、水岸5 Node與13 Chromium通過；全部為本地限定驗證，非自然十波或硬體PASS。原未推送工作仍UNPUSHED_WORK_RECOVERY_PENDING。排程未切換，需使用者於介面核對；沒有公開發布。
+繁體中文：四種獨立原創Atlas已保存，18項Node及24項本地Chromium通過；原裁切與性能FAIL保留。已直接接續英雄施法與Boss預警，不公開發布。
 
-English: MIGRATION_COMPLETE. Latest source, Strategy/GDD, ownership, clean workspace, actual startup/tests, two GAME FIRST content slices, normal push and exact remote SHA verification are complete; Recovery/Handoff are remotely saved. Spear/guard passes22Node/14Chromium and shoreline passes5Node/13Chromium; all are scoped local validation, not natural ten-wave or hardware PASS. Original unpushed work remains UNPUSHED_WORK_RECOVERY_PENDING. Scheduler rebinding is not done and needs user UI verification. No public release.
+English: Four independent original atlases are saved with18Nodeand24localChromiumchecks passed; initial clipping/performanceFAILare retained. Continuing hero casting and Boss telegraphs directly, without public release.
