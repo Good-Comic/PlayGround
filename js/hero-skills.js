@@ -16,12 +16,15 @@ export function heroCastVisual(unit) {
 }
 
 export function bossStrikeVisual(zone) {
-  if (zone?.kind !== 'boss' || !Number.isFinite(zone.delay) || zone.delay <= 0 || !Number.isFinite(zone.elapsed)) return null;
+  if (zone?.kind !== 'boss' || !Number.isFinite(zone.delay) || zone.delay <= 0 || !Number.isFinite(zone.elapsed) || !Number.isFinite(zone.r) || zone.r < 0) return null;
   const marshal = zone.source?.type === 'warlord2';
   return {
     progress: Math.max(0, Math.min(1, zone.elapsed / zone.delay)),
     fade: zone.done ? Math.max(0, 1 - (zone.elapsed - zone.delay) / .9) : 1,
     tint: marshal ? '176,123,226' : '235,126,62',
     spokes: marshal ? 8 : 6,
+    // iso(x,y)=(32(x-y),16(x+y)); Euclidean world circles need sqrt(2).
+    radiusX: zone.r * 32 * Math.SQRT2,
+    radiusY: zone.r * 16 * Math.SQRT2,
   };
 }

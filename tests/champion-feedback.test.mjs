@@ -18,6 +18,11 @@ test('boss presentation follows the production warning window and leaves zone da
   const zone = { kind: 'boss', source: { type: 'warlord' }, elapsed: 1.2, delay: 2.4, r: 2.8, damage: 65, done: false };
   const before = JSON.stringify(zone), first = bossStrikeVisual(zone);
   assert.equal(first.progress, .5); assert.equal(first.spokes, 6);
+  for (let a = 0; a < Math.PI * 2; a += Math.PI / 8) {
+    const x = zone.r * Math.cos(a), y = zone.r * Math.sin(a);
+    const ellipse = (32 * (x - y) / first.radiusX) ** 2 + (16 * (x + y) / first.radiusY) ** 2;
+    assert.ok(Math.abs(ellipse - 1) < 1e-10, 'visible edge matches actual Euclidean damage radius');
+  }
   assert.notEqual(first.tint, bossStrikeVisual({ ...zone, source: { type: 'warlord2' } }).tint);
   assert.equal(bossStrikeVisual({ ...zone, done: true, elapsed: 4 }).fade, 0);
   assert.equal(bossStrikeVisual({ ...zone, elapsed: -5 }).progress, 0);

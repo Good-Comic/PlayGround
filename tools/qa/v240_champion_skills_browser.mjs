@@ -94,7 +94,7 @@ try {
     await page.evaluate(() => { ageOfAsh.game.paused = true; });
     await page.waitForFunction(() => feedbackSeen.warnings > 0);
     const warning = await page.evaluate(() => { const z = ageOfAsh.game.zones[0]; return { source: z.source.type, x: z.x, y: z.y, r: z.r, damage: z.damage, delay: z.delay, elapsed: z.elapsed, visual: skillAPI.bossStrikeVisual(z) }; });
-    check(`${type}: production warning geometry and distinct glyph`, warning.r === (type === 'warlord2' ? 3.3 : 2.8) && warning.damage === (type === 'warlord2' ? 105 : 65) && warning.delay === 2.4 && warning.visual.spokes === (type === 'warlord2' ? 8 : 6), warning);
+    check(`${type}: production warning geometry and distinct glyph`, warning.r === (type === 'warlord2' ? 3.3 : 2.8) && warning.damage === (type === 'warlord2' ? 105 : 65) && warning.delay === 2.4 && warning.visual.spokes === (type === 'warlord2' ? 8 : 6) && Math.abs(warning.visual.radiusX - warning.r * 32 * Math.SQRT2) < 1e-9, warning);
     await page.mouse.move(8, 8); await page.screenshot({ path: `${out}/${type}-warning.png` });
     const target = await page.evaluate(() => { const p = ageOfAsh.renderer.screen(ageOfAsh.game, 24, 37); return { x: p.x, y: p.y }; });
     await page.evaluate(() => { ageOfAsh.game.paused = false; });

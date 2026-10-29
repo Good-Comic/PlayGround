@@ -481,6 +481,8 @@ export class Renderer {
     const ctx = this.ctx, z = game.camera.zoom;
     for (const zone of game.zones) {
       const p = this.screen(game, zone.x, zone.y);
+      const strike = bossStrikeVisual(zone);
+      const rx = (strike?.radiusX ?? zone.r * 32) * z, ry = (strike?.radiusY ?? zone.r * 16) * z;
       const persist = !!zone.persist;
       const progress = persist ? 1 : Math.min(1, zone.elapsed / zone.delay);
       const alpha = persist ? 0.18 : zone.done ? Math.max(0, 1 - (zone.elapsed - zone.delay) / 0.9) : 0.12 + progress * 0.2;
@@ -492,23 +494,22 @@ export class Renderer {
       ctx.setLineDash(zone.done || persist ? [] : [8 * z, 5 * z]);
       ctx.lineDashOffset = -time * 14;
       ctx.beginPath();
-      ctx.ellipse(p.x, p.y, zone.r * 32 * z, zone.r * 16 * z, 0, 0, Math.PI * 2);
+      ctx.ellipse(p.x, p.y, rx, ry, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
       ctx.setLineDash([]);
       ctx.strokeStyle = `rgba(245,186,135,${0.5 + progress * 0.4})`;
       ctx.lineWidth = 2.2 * z;
       ctx.beginPath();
-      ctx.ellipse(p.x, p.y, zone.r * 32 * z * progress, zone.r * 16 * z * progress, 0, 0, Math.PI * 2);
+      ctx.ellipse(p.x, p.y, rx * progress, ry * progress, 0, 0, Math.PI * 2);
       ctx.stroke();
-      const strike = bossStrikeVisual(zone);
       if (strike) this.drawBossStrike(zone, strike, p, z);
       ctx.restore();
     }
   }
 
   drawBossStrike(zone, visual, p, z) {
-    const ctx = this.ctx, rx = zone.r * 32 * z, ry = zone.r * 16 * z;
+    const ctx = this.ctx, rx = visual.radiusX * z, ry = visual.radiusY * z;
     ctx.strokeStyle = `rgba(${visual.tint},${visual.fade * .85})`;
     ctx.fillStyle = `rgba(${visual.tint},${visual.fade * .14})`;
     ctx.lineWidth = (zone.done ? 2.8 : 2) * z;
