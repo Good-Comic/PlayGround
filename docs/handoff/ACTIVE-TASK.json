@@ -1,78 +1,58 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "連續執行診斷及 JPN 札甲外觀限定驗收已保存；格擋 FAIL 與首輪性能 FAIL 保留 / Continuity diagnosis and scoped JPN lamellar visual acceptance saved; block FAIL and initial performance FAIL retained",
+  "name": "JPN 主目標普通近戰格擋、傷害來源與冷卻存讀已修復驗收 / JPN ordinary primary melee block, damage provenance and saved cooldown fixed and accepted",
   "requirement_source": "Latest explicit GAME FIRST content continuation; existing civilization matrix",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "94d4d2896d3e6b718d58170594064fb9eb6995da",
-  "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
-  "application_source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
+  "base_commit": "14602521a23e3281f413a1119d80548067e38284",
+  "latest_pushed_commit": "6efb89eab99aad8b77633f3e14c4e6ff1025052c",
+  "application_source_commit": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
   "completed": [
-    "連續執行診斷及 JPN 札甲外觀限定驗收已保存；格擋 FAIL 與首輪性能 FAIL 保留",
-    "Continuity diagnosis and scoped JPN lamellar visual acceptance saved; block FAIL and initial performance FAIL retained"
+    "JPN 主目標普通近戰格擋、傷害來源與冷卻存讀已修復驗收",
+    "JPN ordinary primary melee block, damage provenance and saved cooldown fixed and accepted"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Focused Node",
-      "result": "9 PASS",
-      "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
-      "path": "docs/evidence/v240-jpn-lamellar/focused-node.txt"
+      "result": "20 PASS",
+      "source_commit": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
+      "path": "docs/evidence/v240-jpn-block/focused-node.txt"
     },
     {
       "name": "Actual Chromium",
-      "result": "13 PASS",
-      "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
-      "path": "docs/evidence/v240-jpn-lamellar/verified/browser.json"
-    },
-    {
-      "name": "Execution continuity Python",
-      "result": "6 PASS",
-      "source_commit": "d7ed2ce300acc13ca65c981c38ab767a9eee50cc",
-      "path": "docs/evidence/execution-continuity/focused-python.txt"
-    },
-    {
-      "name": "JPN initial renderer comparison",
-      "result": "FAIL first run; same-source recheck PASS, cause unresolved",
-      "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
-      "path": "docs/evidence/v240-jpn-lamellar/initial/browser.json"
-    },
-    {
-      "name": "JPN inherited melee block",
-      "result": "FAIL NOT_FIXED",
-      "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
-      "path": "docs/evidence/v240-jpn-lamellar/verified/browser.json"
+      "result": "9 PASS",
+      "source_commit": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
+      "path": "docs/evidence/v240-jpn-block/after-browser/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-jpn-lamellar/REPORT.md",
-    "docs/evidence/execution-continuity/REPORT.md",
-    "docs/recovery/execution-stop-current.json"
+    "docs/evidence/v240-jpn-block/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
     "Original landmark mixed-scene +21.4percent drawing regression FAIL remains",
     "Low-FPS clock, strict deterministic SaveLoad, Rift natural crash NOT_REPRODUCED and hardware pending remain",
-    "JPN-MELEE-BLOCK-MISSING-CIV: FAIL, inherited and not fixed",
+    "HISTORICAL JPN-MELEE-BLOCK-MISSING-CIV FAIL preserved; scoped fix accepted at 3a07094748122d9046f4e46b54b3cecd0fad2e3f",
     "JPN first renderer comparison FAIL; recheck PASS does not erase unexplained variability"
   ],
   "blockers": [
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "修復既有批准的 JPN 格擋來源判定，驗證普通近戰、投射物、Boss 與存檔隔離；不得冒稱已修復",
-    "Fix the existing approved JPN block identity path and verify ordinary melee, projectiles, Boss and save isolation; do not claim already fixed"
+    "直接接續 SPA 村民暈擊來源判定與冷卻存讀，不等待額外指令",
+    "Directly continue SPA villager stun identity and saved cooldown without another prompt"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "CHECKPOINTED",
+  "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T16:48:09.645199+00:00",
+  "updated_at": "2026-10-29T17:08:54.807856+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -91,7 +71,7 @@
   },
   "scheduler_status": "UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "CONTENT_SLICE_REMOTE_SAVED",
+  "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK",
   "latest_feed_commit": "033f08db85af4b592a046e3b80b8603b2a95c1b5",
   "current_envlost_recovery": {
@@ -107,14 +87,11 @@
   },
   "current_session_slices": [
     {
-      "type": "continuity_diagnosis",
-      "source": "d7ed2ce300acc13ca65c981c38ab767a9eee50cc",
-      "tests": "6 Python PASS"
-    },
-    {
-      "type": "JPN_VISUAL_ONLY",
-      "source": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
-      "tests": "9 Node;13 Chromium recheck PASS; initial perf FAIL and block FAIL retained"
+      "task": "JPN_BLOCK",
+      "source": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
+      "evidence_commit": "6efb89eab99aad8b77633f3e14c4e6ff1025052c",
+      "node": 20,
+      "chromium": 9
     }
   ],
   "continuity_policy": {
@@ -124,5 +101,11 @@
     "AUTO_RESUME_AVAILABLE": false,
     "scheduler_status": "UNVERIFIED_NO_CONNECTED_SCHEDULER_ADAPTER",
     "current_stop_record": "docs/recovery/execution-stop-current.json"
+  },
+  "continuation_event": {
+    "status": "CONTINUE_AUTHORIZED_TASK",
+    "STOP_REASON": "NOT_STOPPED",
+    "NEXT_AUTHORIZED_TASK": "SPA villager stun identity and cooldown SaveLoad",
+    "AUTO_RESUME_AVAILABLE": false
   }
 }

@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T16:48:09.645199+00:00",
+  "updated_at": "2026-10-29T17:08:54.807856+00:00",
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "修復既有批准的 JPN 格擋來源判定，驗證普通近戰、投射物、Boss 與存檔隔離；不得冒稱已修復 / Fix the existing approved JPN block identity path and verify ordinary melee, projectiles, Boss and save isolation; do not claim already fixed",
+      "name": "直接接續 SPA 村民暈擊來源判定與冷卻存讀，不等待額外指令 / Directly continue SPA villager stun identity and saved cooldown without another prompt",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "40f0e739fb3a6e1bd6c21815eb81a7701b24b4f6",
+      "latest_pushed_commit": "6efb89eab99aad8b77633f3e14c4e6ff1025052c",
       "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
       "completed": [],
       "uncommitted": [],
@@ -19,37 +19,19 @@
       "tests": [
         {
           "name": "Focused Node",
-          "result": "9 PASS",
-          "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
-          "path": "docs/evidence/v240-jpn-lamellar/focused-node.txt"
+          "result": "20 PASS",
+          "source_commit": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
+          "path": "docs/evidence/v240-jpn-block/focused-node.txt"
         },
         {
           "name": "Actual Chromium",
-          "result": "13 PASS",
-          "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
-          "path": "docs/evidence/v240-jpn-lamellar/verified/browser.json"
-        },
-        {
-          "name": "Execution continuity Python",
-          "result": "6 PASS",
-          "source_commit": "d7ed2ce300acc13ca65c981c38ab767a9eee50cc",
-          "path": "docs/evidence/execution-continuity/focused-python.txt"
-        },
-        {
-          "name": "JPN initial renderer comparison",
-          "result": "FAIL first run; same-source recheck PASS, cause unresolved",
-          "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
-          "path": "docs/evidence/v240-jpn-lamellar/initial/browser.json"
-        },
-        {
-          "name": "JPN inherited melee block",
-          "result": "FAIL NOT_FIXED",
-          "source_commit": "3723fb2fd2a72cddc22e28e33b1a9d24551a893c",
-          "path": "docs/evidence/v240-jpn-lamellar/verified/browser.json"
+          "result": "9 PASS",
+          "source_commit": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
+          "path": "docs/evidence/v240-jpn-block/after-browser/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-jpn-lamellar/REPORT.md"
+        "docs/evidence/v240-jpn-block/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -62,8 +44,8 @@
         "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
       ],
       "next_steps": [
-        "修復既有批准的 JPN 格擋來源判定，驗證普通近戰、投射物、Boss 與存檔隔離；不得冒稱已修復",
-        "Fix the existing approved JPN block identity path and verify ordinary melee, projectiles, Boss and save isolation; do not claim already fixed"
+        "直接接續 SPA 村民暈擊來源判定與冷卻存讀，不等待額外指令",
+        "Directly continue SPA villager stun identity and saved cooldown without another prompt"
       ],
       "permissions": [
         "Independent development tests normal push",
