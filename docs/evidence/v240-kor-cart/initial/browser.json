@@ -1,0 +1,235 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_FIXTURE_NOT_NATURAL_PLAY",
+  "source_commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
+  "seed": "KOREAN-PATROL-CART",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed payload verified",
+      "pass": true,
+      "detail": {
+        "id": "v240-kor-cart",
+        "commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T15:41:40.212783+00:00",
+        "resourceVerification": "SHA256_MATCH_55_FILES"
+      }
+    },
+    {
+      "name": "production Korean three-completed-tower fixture grants a real bonus cart",
+      "pass": false,
+      "detail": {
+        "before": 0,
+        "afterTwo": 1,
+        "afterThree": 1,
+        "bonusId": 22,
+        "every": 3
+      }
+    },
+    {
+      "name": "native Korean workshop training pays all production costs",
+      "pass": true,
+      "detail": {
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "wood": 65,
+            "gold": 45
+          },
+          "time": 0.2165999999999999
+        },
+        "after": {
+          "food": 300,
+          "wood": 235,
+          "gold": 75,
+          "stone": 100
+        },
+        "queue": [
+          {
+            "type": "patrol_cart",
+            "remaining": 16
+          }
+        ]
+      }
+    },
+    {
+      "name": "production simulation completes ordinary patrol_cart training",
+      "pass": true,
+      "detail": {
+        "id": 25,
+        "elapsed": 16.031200000000002,
+        "queue": 0,
+        "civ": "KOR"
+      }
+    },
+    {
+      "name": "all patrol_cart frames have visible artwork and no edge clipping",
+      "pass": true,
+      "detail": [
+        {
+          "type": "patrol_cart",
+          "width": 2816,
+          "height": 1760,
+          "failures": []
+        }
+      ]
+    },
+    {
+      "name": "patrol_cart: production movement and walk presentation",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.95993503846876,
+          "y": 33.47996751923438
+        },
+        "seen": {
+          "idle": 122,
+          "walk": 215
+        }
+      }
+    },
+    {
+      "name": "production patrol cart fires actual arrows",
+      "pass": true,
+      "detail": {
+        "shots": 3,
+        "enemyHP": 129.40000000000003,
+        "startHP": 145
+      }
+    },
+    {
+      "name": "patrol_cart: production combat and four attack frames",
+      "pass": true,
+      "detail": {
+        "hp": 63,
+        "enemyHP": 129.40000000000003,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 217,
+          "walk": 216,
+          "hit": 52,
+          "attack": 9
+        },
+        "time": 21.030700000000007
+      }
+    },
+    {
+      "name": "patrol_cart: production hit presentation",
+      "pass": true
+    },
+    {
+      "name": "patrol_cart: production death presentation",
+      "pass": true
+    },
+    {
+      "name": "patrol_cart: missing asset permits procedural fallback",
+      "pass": true
+    },
+    {
+      "name": "100-unit static renderer JS budget and paired medians",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "fallback",
+          "mean": 3.60625,
+          "p50": 2.400000002235174,
+          "p95": 5.699999999254942
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.500000000046566,
+          "p50": 1.1000000014901161,
+          "p95": 3.300000000745058
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.8475000000558794,
+          "p50": 1.300000000745058,
+          "p95": 4.200000002980232
+        },
+        {
+          "repeat": 1,
+          "mode": "fallback",
+          "mean": 2.7887500000186263,
+          "p50": 2,
+          "p95": 5.800000000745058
+        },
+        {
+          "repeat": 2,
+          "mode": "fallback",
+          "mean": 2.466250000009313,
+          "p50": 2.100000001490116,
+          "p95": 4.5
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.1799999999813735,
+          "p50": 1,
+          "p95": 2.199999999254942
+        }
+      ]
+    },
+    {
+      "name": "native Teuton game retains procedural patrol cart, not Korean kit",
+      "pass": true,
+      "detail": {
+        "civ": "TEU",
+        "key": "patrol_cart",
+        "variant": false
+      }
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "snapshots": [
+    {
+      "type": "patrol_cart",
+      "combat": {
+        "hp": 63,
+        "enemyHP": 129.40000000000003,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 217,
+          "walk": 216,
+          "hit": 52,
+          "attack": 9
+        },
+        "time": 21.030700000000007
+      }
+    }
+  ],
+  "pass": false
+}

@@ -1,0 +1,572 @@
+{
+  "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+  "mode": "RECOVERED_ORIGINAL_WIP_LOCAL_CONTROLLED_NATIVE_COMBAT_AND_MUTE",
+  "audio_scope": "tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance",
+  "checks": [
+    {
+      "name": "elephant: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "elephant: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "elephant: native combat routes the recovered unit cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "rms": 0.0009615825314427198,
+        "peak": 0.014791188761591911,
+        "events": [
+          {
+            "method": "attack",
+            "type": "elephant",
+            "at": 1.3206349206349206
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.3206349206349206
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.16,
+              0.065,
+              240
+            ],
+            "at": 1.3206349206349206
+          },
+          {
+            "kind": "tone",
+            "args": [
+              78,
+              0.2,
+              "sine",
+              0.065,
+              35
+            ],
+            "at": 1.3322448979591837
+          },
+          {
+            "kind": "tone",
+            "args": [
+              160,
+              0.05,
+              "triangle",
+              0.02,
+              90,
+              0.015
+            ],
+            "at": 1.3322448979591837
+          }
+        ],
+        "hp": 126.6,
+        "startHP": 145,
+        "shots": 0
+      }
+    },
+    {
+      "name": "elephant: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "elephant: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "elephant: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "patrol_cart: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "patrol_cart: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "patrol_cart: native combat routes the recovered unit cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "rms": 0.0008860562708574342,
+        "peak": 0.017334267497062683,
+        "events": [
+          {
+            "method": "arrow",
+            "type": "patrol_cart",
+            "at": 1.2016326530612245
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.1900226757369614
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.1,
+              0.035,
+              1300,
+              0,
+              "bandpass"
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "tone",
+            "args": [
+              320,
+              0.1,
+              "triangle",
+              0.035,
+              110
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "tone",
+            "args": [
+              880,
+              0.045,
+              "sine",
+              0.015,
+              500,
+              0.012
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.07,
+              0.04,
+              950,
+              0,
+              "bandpass"
+            ],
+            "at": 1.3612698412698412
+          }
+        ],
+        "hp": 140.6,
+        "startHP": 145,
+        "shots": 1
+      }
+    },
+    {
+      "name": "patrol_cart: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "patrol_cart: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "patrol_cart: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "horse_archer: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "horse_archer: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "horse_archer: native combat routes the recovered unit cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "rms": 0.0009549608853420769,
+        "peak": 0.021836331114172935,
+        "events": [
+          {
+            "method": "arrow",
+            "type": "horse_archer",
+            "at": 1.2219501133786848
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.2103401360544217
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.1,
+              0.025,
+              2800,
+              0,
+              "highpass"
+            ],
+            "at": 1.2219501133786848
+          },
+          {
+            "kind": "tone",
+            "args": [
+              460,
+              0.08,
+              "triangle",
+              0.025,
+              250
+            ],
+            "at": 1.2219501133786848
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.07,
+              0.04,
+              950,
+              0,
+              "bandpass"
+            ],
+            "at": 1.3728798185941042
+          }
+        ],
+        "hp": 140.6,
+        "startHP": 145,
+        "shots": 1
+      }
+    },
+    {
+      "name": "horse_archer: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "horse_archer: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 2
+      }
+    },
+    {
+      "name": "horse_archer: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "recordings": [
+    {
+      "type": "elephant",
+      "audible": {
+        "rms": 0.0009615825314427198,
+        "peak": 0.014791188761591911,
+        "events": [
+          {
+            "method": "attack",
+            "type": "elephant",
+            "at": 1.3206349206349206
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.3206349206349206
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.16,
+              0.065,
+              240
+            ],
+            "at": 1.3206349206349206
+          },
+          {
+            "kind": "tone",
+            "args": [
+              78,
+              0.2,
+              "sine",
+              0.065,
+              35
+            ],
+            "at": 1.3322448979591837
+          },
+          {
+            "kind": "tone",
+            "args": [
+              160,
+              0.05,
+              "triangle",
+              0.02,
+              90,
+              0.015
+            ],
+            "at": 1.3322448979591837
+          }
+        ],
+        "hp": 126.6,
+        "startHP": 145,
+        "shots": 0
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "elephant-sfx.wav"
+    },
+    {
+      "type": "patrol_cart",
+      "audible": {
+        "rms": 0.0008860562708574342,
+        "peak": 0.017334267497062683,
+        "events": [
+          {
+            "method": "arrow",
+            "type": "patrol_cart",
+            "at": 1.2016326530612245
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.1900226757369614
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.1,
+              0.035,
+              1300,
+              0,
+              "bandpass"
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "tone",
+            "args": [
+              320,
+              0.1,
+              "triangle",
+              0.035,
+              110
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "tone",
+            "args": [
+              880,
+              0.045,
+              "sine",
+              0.015,
+              500,
+              0.012
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.07,
+              0.04,
+              950,
+              0,
+              "bandpass"
+            ],
+            "at": 1.3612698412698412
+          }
+        ],
+        "hp": 140.6,
+        "startHP": 145,
+        "shots": 1
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "patrol_cart-sfx.wav"
+    },
+    {
+      "type": "horse_archer",
+      "audible": {
+        "rms": 0.0009549608853420769,
+        "peak": 0.021836331114172935,
+        "events": [
+          {
+            "method": "arrow",
+            "type": "horse_archer",
+            "at": 1.2219501133786848
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.2103401360544217
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.1,
+              0.025,
+              2800,
+              0,
+              "highpass"
+            ],
+            "at": 1.2219501133786848
+          },
+          {
+            "kind": "tone",
+            "args": [
+              460,
+              0.08,
+              "triangle",
+              0.025,
+              250
+            ],
+            "at": 1.2219501133786848
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.07,
+              0.04,
+              950,
+              0,
+              "bandpass"
+            ],
+            "at": 1.3728798185941042
+          }
+        ],
+        "hp": 140.6,
+        "startHP": 145,
+        "shots": 1
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 2
+      },
+      "sample": "horse_archer-sfx.wav"
+    }
+  ],
+  "errors": [],
+  "pass": true
+}
