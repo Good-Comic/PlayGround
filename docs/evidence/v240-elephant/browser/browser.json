@@ -1,0 +1,215 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_FIXTURE_NOT_NATURAL_PLAY",
+  "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+  "seed": "PERSIAN-ELEPHANT",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed payload verified",
+      "pass": true,
+      "detail": {
+        "id": "v240-elephant",
+        "commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T12:50:30.240199+00:00",
+        "resourceVerification": "SHA256_MATCH_51_FILES"
+      }
+    },
+    {
+      "name": "native Persian stable training pays real food/gold cost",
+      "pass": true,
+      "detail": {
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "food": 150,
+            "gold": 80
+          },
+          "time": 0.16669999999999982
+        },
+        "after": {
+          "food": 150,
+          "wood": 300,
+          "gold": 40,
+          "stone": 100
+        },
+        "queue": [
+          {
+            "type": "elephant",
+            "remaining": 25
+          }
+        ]
+      }
+    },
+    {
+      "name": "production simulation completes ordinary elephant training",
+      "pass": true,
+      "detail": {
+        "id": 23,
+        "elapsed": 25.014100000000074,
+        "queue": 0,
+        "civ": "PER"
+      }
+    },
+    {
+      "name": "all elephant frames have visible artwork and no edge clipping",
+      "pass": true,
+      "detail": [
+        {
+          "type": "elephant",
+          "width": 2816,
+          "height": 1760,
+          "failures": []
+        }
+      ]
+    },
+    {
+      "name": "elephant: production movement and walk presentation",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.93909488491845,
+          "y": 33.46954744245924
+        },
+        "seen": {
+          "idle": 127,
+          "walk": 231
+        }
+      }
+    },
+    {
+      "name": "actual Persian secondary trample damage",
+      "pass": true,
+      "detail": {
+        "before": 58,
+        "after": 49.5,
+        "perk": 0.25
+      }
+    },
+    {
+      "name": "elephant: production combat and four attack frames",
+      "pass": true,
+      "detail": {
+        "hp": 374,
+        "enemyHP": 103.80000000000001,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 207,
+          "walk": 234,
+          "attack": 10,
+          "hit": 37
+        },
+        "time": 29.08070000000004
+      }
+    },
+    {
+      "name": "elephant: production hit presentation",
+      "pass": true
+    },
+    {
+      "name": "elephant: production death presentation",
+      "pass": true
+    },
+    {
+      "name": "elephant: missing asset permits procedural fallback",
+      "pass": true
+    },
+    {
+      "name": "100-unit static renderer JS budget and paired medians",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "fallback",
+          "mean": 3.20875000001397,
+          "p50": 2.699999999254942,
+          "p95": 7.200000001117587
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.2112500000046567,
+          "p50": 1,
+          "p95": 2.099999999627471
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.2149999999674037,
+          "p50": 1,
+          "p95": 2
+        },
+        {
+          "repeat": 1,
+          "mode": "fallback",
+          "mean": 3.17750000001397,
+          "p50": 2.5,
+          "p95": 5.400000000372529
+        },
+        {
+          "repeat": 2,
+          "mode": "fallback",
+          "mean": 2.4487499999813735,
+          "p50": 2.300000000745058,
+          "p95": 3.5
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.19749999998603,
+          "p50": 1,
+          "p95": 2.399999998509884
+        }
+      ]
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "snapshots": [
+    {
+      "type": "elephant",
+      "combat": {
+        "hp": 374,
+        "enemyHP": 103.80000000000001,
+        "enemyStartHP": 145,
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "seen": {
+          "idle": 207,
+          "walk": 234,
+          "attack": 10,
+          "hit": 37
+        },
+        "time": 29.08070000000004
+      }
+    }
+  ],
+  "pass": true
+}

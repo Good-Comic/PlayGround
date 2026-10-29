@@ -1,60 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "英雄特殊單位與Boss視覺 / Hero support and Boss visuals",
+  "name": "PER戰象與文明單位辨識 / PER elephant and civilization unit identity",
   "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
   "priority": "P1",
   "agent": "Codex",
   "environment": "New independent Linux Chromium workspace; local software rendering",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-  "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
-  "application_source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+  "base_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+  "latest_pushed_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+  "application_source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
   "completed": [
-    "Four independent original eight-direction five-state atlases integrated",
-    "18 focused Node and24 local Chromium checks pass",
-    "Clipping and relative renderer regression fixed; both initialFAIL preserved",
-    "Hero casting and persistent Mark/Aegis feedback;18Node/12Chromium PASS",
-    "Both Boss production warnings/impacts and native player escape verified",
-    "Corrected visible Boss footprint without changing damage/range/timing",
-    "Final6fae8aa integrated Champion regression:24Chromium PASS, all672frames and bounded drawA/B"
+    "Original160-frame PER elephant atlas integrated",
+    "7Node/12localChromium PASS including native payment/training and actual trample"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Champion Node",
-      "result": "18 PASS",
-      "path": "docs/evidence/v240-champions/focused-node.txt",
-      "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
+      "name": "Elephant Node",
+      "result": "7 PASS",
+      "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+      "path": "docs/evidence/v240-elephant/focused-node.txt"
     },
     {
-      "name": "Champion Chromium",
-      "result": "24 PASS LOCAL CONTROLLED",
-      "path": "docs/evidence/v240-champions/atlas-cached/browser.json",
-      "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
-    },
-    {
-      "name": "Champion skill Node",
-      "result": "18 PASS",
-      "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-      "path": "docs/evidence/v240-champion-skills/focused-node.txt"
-    },
-    {
-      "name": "Champion skill Chromium",
-      "result": "12 PASS LOCAL CONTROLLED; not natural campaign",
-      "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-      "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
-    },
-    {
-      "name": "Final integrated Champion Chromium",
-      "result": "24 PASS LOCAL CONTROLLED",
-      "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-      "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
+      "name": "Elephant Chromium",
+      "result": "12 PASS CONTROLLED_FIXTURE",
+      "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+      "path": "docs/evidence/v240-elephant/browser/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-champions/REPORT.md",
-    "docs/evidence/v240-champion-skills/REPORT.md"
+    "docs/evidence/v240-elephant/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -65,15 +41,13 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "Prioritize the next civilization-specific existing unit, e.g. PER war-elephant identity, with legal original assets and real Chromium interaction",
-    "Extend battle feedback/audio from production events without shared RNG",
-    "Natural campaigns remain periodic integration after material gameplay changes; preserve FAIL"
+    "MNG horse-archer civilization equipment variant; no balance/exclusivity change"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "CHECKPOINTED",
+  "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
   "updated_at": "2026-10-29",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
