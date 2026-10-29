@@ -1,3 +1,3 @@
-繁體中文：PREPARED_NOT_APPLIED_TO_SCHEDULER。8 項定向 Python PASS，替換文字與 Git SHA256 已核對；線上排程未讀取／修改／回讀。Task 6ade57ccd4f48191b827a443fd53f567 未被啟用／重建，暫停狀態來自使用者提供。送達與防重複已有觀察；閒置恢復 NOT_TESTED。本次為一次事件式 Feed 保存，未建立每小時監督或任何排程，未公開發布。
+繁體中文：TEU 板甲長盾盾衛已驗收，直接接續 AZT 黑曜石步兵。定向 Node 9／真實 Chromium 13 通過，圖片已人工檢視；未改平衡或公開部署。
 
-English: PREPARED_NOT_APPLIED_TO_SCHEDULER. Eight focused Python checks PASS and replacement text/Git SHA256 are verified; online schedule was not read/updated/read back. Task 6ade57ccd4f48191b827a443fd53f567 was not enabled/recreated; paused state is user-reported. Delivery/deduplication have observations; idle recovery is NOT_TESTED. This is one event-based Feed save, without hourly supervision or any new schedule/public deployment.
+English: TEU plate/tower-shield guard accepted; directly continuing AZT obsidian infantry. 9 focused Node/13 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.

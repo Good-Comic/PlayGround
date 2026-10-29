@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T18:36:26.224792+00:00",
+  "updated_at": "2026-10-29T18:55:10.505095+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -491,18 +491,10 @@
     },
     {
       "id": "HISTORICAL-GAPS",
-      "requires_user_decision": false,
       "severity": "WARNING",
-      "source_commit": "2b0d548a33c2370bbc85e45fbc1f4d8b35211b58",
-      "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u5efa\u7bc9\u6027\u80fd\u3001Rift\u3001\u786c\u9ad4\u7f3a\u53e3\u8207\u539f\u59cb FAIL \u4fdd\u7559\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, building performance, Rift, hardware gaps and original failures remain.",
-      "task_id": "V240-SPECIAL-ATLAS"
-    },
-    {
-      "id": "SCHEDULER-UNVERIFIED",
+      "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
+      "source_commit": "951a4845e5dc12ae20a4c9b4182c3b21891673f6",
       "requires_user_decision": false,
-      "severity": "WARNING",
-      "source_commit": "2b0d548a33c2370bbc85e45fbc1f4d8b35211b58",
-      "summary": "\u57f7\u884c\u4e2d\u53e6\u4e00\u59d4\u6d3e\u559a\u9192\u70ba RESUME_SKIPPED_ACTIVE_TASK\uff1b310 \u5206\u9418\u91cd\u7d81\u8207\u8de8\u8f2a\u81ea\u52d5\u7e8c\u8dd1\u672a\u9a57\u8b49\u3002 / Duplicate delegated wake during execution was RESUME_SKIPPED_ACTIVE_TASK; 310-minute rebinding and cross-turn auto-resume remain unverified.",
       "task_id": "V240-SPECIAL-ATLAS"
     },
     {
@@ -627,10 +619,10 @@
     },
     {
       "id": "SCHEDULER-CAPABILITY-UNAVAILABLE",
-      "severity": "BLOCKED",
-      "summary": "\u7121\u6392\u7a0b\u8b80\u5beb\u4ecb\u9762\uff0c\u7121\u6cd5\u6838\u5c0d\u5be6\u969b 310 \u5206\u9418 Prompt\uff0f\u4fdd\u5b58\u7d50\u679c\u6216\u7368\u7acb\u78ba\u8a8d\u66ab\u505c\u72c0\u614b\uff1b\u4e0d\u5047\u7a31\u5df2\u5957\u7528\u3002 / No scheduler read/write interface to verify actual 310-minute prompt/save or independently inspect paused status; no application claimed.",
-      "source_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
       "requires_user_decision": false,
+      "severity": "BLOCKED",
+      "source_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
+      "summary": "\u7121\u6392\u7a0b\u8b80\u5beb\u4ecb\u9762\uff0c\u7121\u6cd5\u6838\u5c0d\u5be6\u969b 310 \u5206\u9418 Prompt\uff0f\u4fdd\u5b58\u7d50\u679c\u6216\u7368\u7acb\u78ba\u8a8d\u66ab\u505c\u72c0\u614b\uff1b\u4e0d\u5047\u7a31\u5df2\u5957\u7528\u3002 / No scheduler read/write interface to verify actual 310-minute prompt/save or independently inspect paused status; no application claimed.",
       "task_id": "V240-SCHEDULER-POLICY"
     }
   ]
