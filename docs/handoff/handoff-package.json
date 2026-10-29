@@ -1,43 +1,33 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T07:43:07.566550+00:00",
+  "generated_at": "2026-10-29T13:03:00.154741+00:00",
   "framework_status": "HANDOFF_FRAMEWORK_READY",
   "cross_agent_status": "NOT_TESTED",
   "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
   "trigger": {
     "kind": "MANUAL_HANDOFF",
     "confidence": "CONFIRMED",
-    "evidence": "CONTENT_FIRST_ACCEPTED_CHECKPOINT"
+    "evidence": "VERIFIED_PER_MNG_CONTENT_CHECKPOINT"
   },
   "active_task": {
     "task_id": "V240-SPECIAL-ATLAS",
-    "name": "\u82f1\u96c4\u7279\u6b8a\u55ae\u4f4d\u8207Boss\u8996\u89ba / Hero support and Boss visuals",
+    "name": "PER\u8207MNG\u6587\u660e\u55ae\u4f4d\u8fa8\u8b58 / PER and MNG civilization unit identity",
     "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
     "priority": "P1",
     "agent": "Codex",
-    "environment": "New independent Linux Chromium workspace; local software rendering",
+    "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
     "branch": "codex/riftwatch-v240-game-first",
-    "base_commit": "e6214c95caea6844f41c49c396fb165e965b1acf",
-    "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
-    "application_source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+    "base_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
+    "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
+    "application_source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
     "completed": [
-      "Four independent original eight-direction five-state atlases integrated",
-      "18 focused Node and24 local Chromium checks pass",
-      "Clipping and relative renderer regression fixed; both initialFAIL preserved",
-      "Hero casting and persistent Mark/Aegis feedback;18Node/12Chromium PASS",
-      "Both Boss production warnings/impacts and native player escape verified",
-      "Corrected visible Boss footprint without changing damage/range/timing",
-      "Final6fae8aa integrated Champion regression:24Chromium PASS, all672frames and bounded drawA/B"
+      "Original160-frame PER elephant atlas integrated",
+      "7Node/12localChromium PASS including native payment/training and actual trample",
+      "Original MNG-only160-frame horse-archer kit integrated, other civs/enemies unchanged",
+      "10Node/13localChromium PASS including paid14-second training and real arrows",
+      "Both content slices normally pushed and exact remote SHA verified; duplicate wake did not launch another writer"
     ],
     "uncommitted": [
-      {
-        "status": " M",
-        "path": "docs/evidence/v240-champion-skills/REPORT.md"
-      },
-      {
-        "status": " M",
-        "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-      },
       {
         "status": " M",
         "path": "docs/handoff/ACTIVE-TASK.json"
@@ -63,74 +53,44 @@
         "path": "docs/recovery/worktree-recovery.json"
       },
       {
-        "status": " M",
-        "path": "tools/qa/v240_champion_browser.mjs"
+        "status": "??",
+        "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
       },
       {
         "status": "??",
-        "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-      },
-      {
-        "status": "??",
-        "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+        "path": "docs/recovery/active-task-resume-event.json"
       }
     ],
     "unpushed": [],
     "tests": [
       {
-        "name": "Champion Node",
-        "result": "18 PASS",
-        "path": "docs/evidence/v240-champions/focused-node.txt",
-        "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
+        "name": "Elephant Node",
+        "result": "7 PASS",
+        "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+        "path": "docs/evidence/v240-elephant/focused-node.txt"
       },
       {
-        "name": "Champion Chromium",
-        "result": "24 PASS LOCAL CONTROLLED",
-        "path": "docs/evidence/v240-champions/atlas-cached/browser.json",
-        "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
+        "name": "Elephant Chromium",
+        "result": "12 PASS CONTROLLED_FIXTURE",
+        "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+        "path": "docs/evidence/v240-elephant/browser/browser.json"
       },
       {
-        "name": "Champion skill Node",
-        "result": "18 PASS",
-        "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-        "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+        "name": "MNG variant Node",
+        "result": "10 PASS",
+        "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+        "path": "docs/evidence/v240-mng-horse-archer/focused-node.txt"
       },
       {
-        "name": "Champion skill Chromium",
-        "result": "12 PASS LOCAL CONTROLLED; not natural campaign",
-        "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-        "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
-      },
-      {
-        "name": "Final integrated Champion Chromium",
-        "result": "24 PASS LOCAL CONTROLLED",
-        "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-        "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
+        "name": "MNG variant Chromium",
+        "result": "13 PASS CONTROLLED_FIXTURE",
+        "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+        "path": "docs/evidence/v240-mng-horse-archer/browser/browser.json"
       }
     ],
     "evidence": [
-      "docs/evidence/v240-champions/REPORT.md",
-      "docs/evidence/v240-champion-skills/REPORT.md"
+      "docs/evidence/v240-elephant/REPORT.md",
+      "docs/evidence/v240-mng-horse-archer/REPORT.md"
     ],
     "failures": [
       "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -141,17 +101,17 @@
       "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
     ],
     "next_steps": [
-      "Prioritize the next civilization-specific existing unit, e.g. PER war-elephant identity, with legal original assets and real Chromium interaction",
-      "Extend battle feedback/audio from production events without shared RNG",
-      "Natural campaigns remain periodic integration after material gameplay changes; preserve FAIL"
+      "Continue another approved existing civilization unit, e.g. KOR patrol-cart visual identity, using civilization-scoped atlases where appropriate",
+      "Improve production-event battlefield sound without using simulation RNG",
+      "Periodically integrate natural campaigns after material gameplay changes; preserve all FAIL"
     ],
     "permissions": [
       "Independent development tests normal push",
       "No main Force Push Checkpoints Pages or OmGitHub publication"
     ],
     "status": "CHECKPOINTED",
-    "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-    "updated_at": "2026-10-29T07:43:07.000385+00:00",
+    "quota_status": "QUOTA_PERCENT_UNKNOWN",
+    "updated_at": "2026-10-29T13:02:59.622393+00:00",
     "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
     "ownership_at_snapshot": {
       "task": "V240-SPECIAL-ATLAS",
@@ -169,7 +129,10 @@
       "artifact": "/tmp/riftwatch-spear"
     },
     "scheduler_status": "UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL",
-    "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959"
+    "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
+    "execution_state": "CHECKPOINTED_NO_SECOND_WRITER",
+    "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK",
+    "latest_feed_commit": "3f802fa6d2c963d973d7eafe185f4efee9bfaace"
   },
   "next_tasks": {
     "schema_version": 1,
@@ -177,25 +140,17 @@
     "tasks": [
       {
         "task_id": "V240-CONTENT-CONTINUATION",
-        "name": "\u6587\u660e\u7279\u6b8a\u55ae\u4f4d\u8207\u6230\u5834\u56de\u994b\u63a5\u7e8c / Civilization-specific units and battlefield feedback",
+        "name": "\u5176\u4ed6\u6587\u660e\u65e2\u6709\u55ae\u4f4d\u8207\u6230\u5834\u97f3\u6548 / Other civilization units and battlefield sound",
         "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
         "priority": "P1",
         "agent": "Codex",
         "environment": "New independent Linux Chromium workspace; local software rendering",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
-        "application_source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+        "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
+        "application_source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
         "completed": [],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -221,74 +176,44 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tools/qa/v240_champion_browser.mjs"
+            "status": "??",
+            "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+            "path": "docs/recovery/active-task-resume-event.json"
           }
         ],
         "unpushed": [],
         "tests": [
           {
-            "name": "Champion Node",
-            "result": "18 PASS",
-            "path": "docs/evidence/v240-champions/focused-node.txt",
-            "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
+            "name": "Elephant Node",
+            "result": "7 PASS",
+            "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+            "path": "docs/evidence/v240-elephant/focused-node.txt"
           },
           {
-            "name": "Champion Chromium",
-            "result": "24 PASS LOCAL CONTROLLED",
-            "path": "docs/evidence/v240-champions/atlas-cached/browser.json",
-            "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
+            "name": "Elephant Chromium",
+            "result": "12 PASS CONTROLLED_FIXTURE",
+            "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+            "path": "docs/evidence/v240-elephant/browser/browser.json"
           },
           {
-            "name": "Champion skill Node",
-            "result": "18 PASS",
-            "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-            "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+            "name": "MNG variant Node",
+            "result": "10 PASS",
+            "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+            "path": "docs/evidence/v240-mng-horse-archer/focused-node.txt"
           },
           {
-            "name": "Champion skill Chromium",
-            "result": "12 PASS LOCAL CONTROLLED; not natural campaign",
-            "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-            "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
-          },
-          {
-            "name": "Final integrated Champion Chromium",
-            "result": "24 PASS LOCAL CONTROLLED",
-            "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
+            "name": "MNG variant Chromium",
+            "result": "13 PASS CONTROLLED_FIXTURE",
+            "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+            "path": "docs/evidence/v240-mng-horse-archer/browser/browser.json"
           }
         ],
         "evidence": [
-          "docs/evidence/v240-champions/REPORT.md",
-          "docs/evidence/v240-champion-skills/REPORT.md"
+          "docs/evidence/v240-elephant/REPORT.md",
+          "docs/evidence/v240-mng-horse-archer/REPORT.md"
         ],
         "failures": [
           "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -299,9 +224,9 @@
           "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
         ],
         "next_steps": [
-          "Prioritize the next civilization-specific existing unit, e.g. PER war-elephant identity, with legal original assets and real Chromium interaction",
-          "Extend battle feedback/audio from production events without shared RNG",
-          "Natural campaigns remain periodic integration after material gameplay changes; preserve FAIL"
+          "Continue another approved existing civilization unit, e.g. KOR patrol-cart visual identity, using civilization-scoped atlases where appropriate",
+          "Improve production-event battlefield sound without using simulation RNG",
+          "Periodically integrate natural campaigns after material gameplay changes; preserve all FAIL"
         ],
         "permissions": [
           "Independent development tests normal push",
@@ -309,7 +234,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T07:43:06.456651+00:00",
+        "updated_at": "2026-10-29T13:02:59.010746+00:00",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
           "task": "V240-SPECIAL-ATLAS",
@@ -337,7 +262,7 @@
         "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
         "completed": [
           "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53c3\u6578\u751f\u6548 / Easy defeat5and valid Normal defeat4; parameters verified",
@@ -345,14 +270,6 @@
           "\u4fee\u5fa9\u539f\u751fSave Pause\u526f\u4f5c\u7528\u6062\u5fa9\uff0c\u7121\u5e73\u8861\u4fee\u6539 / Fixed native Save Pause side-effect recovery without balance changes"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -378,36 +295,12 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tools/qa/v240_champion_browser.mjs"
+            "status": "??",
+            "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+            "path": "docs/recovery/active-task-resume-event.json"
           }
         ],
         "unpushed": [],
@@ -450,7 +343,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T07:43:06.456651+00:00",
+        "updated_at": "2026-10-29T13:02:59.010746+00:00",
         "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
@@ -469,7 +362,7 @@
         "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
-        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
         "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
         "completed": [
@@ -480,14 +373,6 @@
           "Rejected and normally reverted ineffective cache experiment"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -513,36 +398,12 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tools/qa/v240_champion_browser.mjs"
+            "status": "??",
+            "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+            "path": "docs/recovery/active-task-resume-event.json"
           }
         ],
         "unpushed": [],
@@ -588,7 +449,7 @@
         "status": "CHECKPOINTED",
         "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T07:43:06.456651+00:00"
+        "updated_at": "2026-10-29T13:02:59.010746+00:00"
       },
       {
         "task_id": "V240-SPRITE-ATLAS",
@@ -599,7 +460,7 @@
         "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
-        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
         "completed": [
           "Recovered from remotely saved atlas implementation after prior worktree loss",
@@ -608,14 +469,6 @@
           "Applied user override revoking all quota-percentage stop thresholds"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -641,36 +494,12 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tools/qa/v240_champion_browser.mjs"
+            "status": "??",
+            "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+            "path": "docs/recovery/active-task-resume-event.json"
           }
         ],
         "unpushed": [],
@@ -718,7 +547,7 @@
         ],
         "status": "CHECKPOINTED",
         "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T07:43:06.456651+00:00",
+        "updated_at": "2026-10-29T13:02:59.010746+00:00",
         "acceptance": "LOCAL_VERIFIED"
       },
       {
@@ -730,7 +559,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
         "completed": [
           "Added eight-direction isometric facing derived from real movement and live attack targets",
@@ -740,14 +569,6 @@
           "Verified militia archer and light cavalry through real Chromium after the real Start flow"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -773,36 +594,12 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tools/qa/v240_champion_browser.mjs"
+            "status": "??",
+            "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+            "path": "docs/recovery/active-task-resume-event.json"
           }
         ],
         "unpushed": [],
@@ -849,7 +646,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T07:43:06.456651+00:00"
+        "updated_at": "2026-10-29T13:02:59.010746+00:00"
       },
       {
         "task_id": "V240-CIV-VISUAL-FAMILIES",
@@ -860,7 +657,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
-        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
         "completed": [
           "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
@@ -870,14 +667,6 @@
           "Verified five representative families in a real exact-artifact Chromium gallery with video and zero browser errors"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -903,36 +692,12 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tools/qa/v240_champion_browser.mjs"
+            "status": "??",
+            "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+            "path": "docs/recovery/active-task-resume-event.json"
           }
         ],
         "unpushed": [],
@@ -979,7 +744,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T07:43:06.456651+00:00"
+        "updated_at": "2026-10-29T13:02:59.010746+00:00"
       },
       {
         "task_id": "V240-SEED-SETUP",
@@ -990,7 +755,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "application_source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
         "completed": [
           "Prefilled each new-game menu with a visible shareable RW Seed",
@@ -1000,14 +765,6 @@
           "Saved real Chromium screenshots, WebM, timeline and raw results and verified the remote branch SHA"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -1033,36 +790,12 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tools/qa/v240_champion_browser.mjs"
+            "status": "??",
+            "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+            "path": "docs/recovery/active-task-resume-event.json"
           }
         ],
         "unpushed": [],
@@ -1114,7 +847,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T07:43:06.456651+00:00"
+        "updated_at": "2026-10-29T13:02:59.010746+00:00"
       },
       {
         "task_id": "V240-GAME-FIRST-BUILDINGS",
@@ -1125,7 +858,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-        "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
         "completed": [
           "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
@@ -1136,14 +869,6 @@
           "Pushed source and evidence commits and verified the remote branch SHA"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -1169,36 +894,12 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tools/qa/v240_champion_browser.mjs"
+            "status": "??",
+            "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+            "path": "docs/recovery/active-task-resume-event.json"
           }
         ],
         "unpushed": [],
@@ -1244,7 +945,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T07:43:06.456651+00:00"
+        "updated_at": "2026-10-29T13:02:59.010746+00:00"
       },
       {
         "task_id": "V234-CANDIDATE",
@@ -2081,14 +1782,14 @@
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-29T07:43:06.456651+00:00",
+    "captured_at_utc": "2026-10-29T13:02:59.010746+00:00",
     "trigger": "RECOVERY_RESUME",
-    "collector_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+    "collector_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
     "collector_dirty": true,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-29T07:43:06.456651+00:00"
+      "queried_at": "2026-10-29T13:02:59.010746+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -2112,7 +1813,7 @@
       "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
       "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
       "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-      "codex/riftwatch-progress-feed": "9fdbe1ce1bc239c5563b1b32e9b41bca59c456f4",
+      "codex/riftwatch-progress-feed": "3f802fa6d2c963d973d7eafe185f4efee9bfaace",
       "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
       "codex/riftwatch-task-ownership": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
       "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
@@ -2144,7 +1845,7 @@
       "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
       "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
       "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-      "codex/riftwatch-v240-game-first": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+      "codex/riftwatch-v240-game-first": "3004d884990630a90bfe7d27965cb8dd991c74f6",
       "main": "e35a73329ee7942627496e55b844d02b2501e685",
       "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
       "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -2174,8 +1875,8 @@
     "local_branches": [
       {
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
-        "remote_head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "head": "3004d884990630a90bfe7d27965cb8dd991c74f6",
+        "remote_head": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "status": "REMOTE_SAVED"
       }
     ],
@@ -2183,7 +1884,7 @@
       {
         "path": "/workspace/riftwatch-v240-takeover",
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "head": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "locked": false,
         "task_id": "V240-V5-PLAYABILITY",
         "last_validation": [
@@ -2225,17 +1926,9 @@
           "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
         ],
         "remote_status": "REMOTE_SAVED",
-        "remote_head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
+        "remote_head": "3004d884990630a90bfe7d27965cb8dd991c74f6",
         "unpushed_commits": [],
         "changed_files": [
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/REPORT.md"
-          },
-          {
-            "status": " M",
-            "path": "docs/evidence/v240-champion-skills/source-provenance.json"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -2261,36 +1954,12 @@
             "path": "docs/recovery/worktree-recovery.json"
           },
           {
-            "status": " M",
-            "path": "tools/qa/v240_champion_browser.mjs"
+            "status": "??",
+            "path": "docs/evidence/v240-mng-horse-archer/publication-receipt.json"
           },
           {
             "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/browser.webm"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/commander-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/recruiter-zoom-1.4.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/render-samples.json"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord-combat.png"
-          },
-          {
-            "status": "??",
-            "path": "docs/evidence/v240-champion-skills/integrated-final/warlord2-combat.png"
+            "path": "docs/recovery/active-task-resume-event.json"
           }
         ],
         "dirty": true,
@@ -2301,10 +1970,11 @@
       {
         "path": "/workspace/riftwatch-v240-takeover",
         "changed_fields": [
+          "dirty",
           "changed_files"
         ],
-        "previous_head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
-        "actual_head": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61"
+        "previous_head": "3004d884990630a90bfe7d27965cb8dd991c74f6",
+        "actual_head": "3004d884990630a90bfe7d27965cb8dd991c74f6"
       }
     ],
     "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."

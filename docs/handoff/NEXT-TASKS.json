@@ -4,53 +4,47 @@
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "文明特殊單位與戰場回饋接續 / Civilization-specific units and battlefield feedback",
+      "name": "其他文明既有單位與戰場音效 / Other civilization units and battlefield sound",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "cf9ca2be253afd49b0a321c00c3bda5d42d98c61",
-      "application_source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
+      "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
+      "application_source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
       "completed": [],
       "uncommitted": [],
       "unpushed": [],
       "tests": [
         {
-          "name": "Champion Node",
-          "result": "18 PASS",
-          "path": "docs/evidence/v240-champions/focused-node.txt",
-          "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
+          "name": "Elephant Node",
+          "result": "7 PASS",
+          "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+          "path": "docs/evidence/v240-elephant/focused-node.txt"
         },
         {
-          "name": "Champion Chromium",
-          "result": "24 PASS LOCAL CONTROLLED",
-          "path": "docs/evidence/v240-champions/atlas-cached/browser.json",
-          "source_commit": "d5d75c4c760b1462969b8772e505d4841f394573"
+          "name": "Elephant Chromium",
+          "result": "12 PASS CONTROLLED_FIXTURE",
+          "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
+          "path": "docs/evidence/v240-elephant/browser/browser.json"
         },
         {
-          "name": "Champion skill Node",
-          "result": "18 PASS",
-          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "path": "docs/evidence/v240-champion-skills/focused-node.txt"
+          "name": "MNG variant Node",
+          "result": "10 PASS",
+          "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+          "path": "docs/evidence/v240-mng-horse-archer/focused-node.txt"
         },
         {
-          "name": "Champion skill Chromium",
-          "result": "12 PASS LOCAL CONTROLLED; not natural campaign",
-          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "path": "docs/evidence/v240-champion-skills/skills-final/browser.json"
-        },
-        {
-          "name": "Final integrated Champion Chromium",
-          "result": "24 PASS LOCAL CONTROLLED",
-          "source_commit": "6fae8aa71f24acc3e0a695218f3fd05009afc771",
-          "path": "docs/evidence/v240-champion-skills/integrated-final/browser.json"
+          "name": "MNG variant Chromium",
+          "result": "13 PASS CONTROLLED_FIXTURE",
+          "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+          "path": "docs/evidence/v240-mng-horse-archer/browser/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-champions/REPORT.md",
-        "docs/evidence/v240-champion-skills/REPORT.md"
+        "docs/evidence/v240-elephant/REPORT.md",
+        "docs/evidence/v240-mng-horse-archer/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -61,9 +55,9 @@
         "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
       ],
       "next_steps": [
-        "Prioritize the next civilization-specific existing unit, e.g. PER war-elephant identity, with legal original assets and real Chromium interaction",
-        "Extend battle feedback/audio from production events without shared RNG",
-        "Natural campaigns remain periodic integration after material gameplay changes; preserve FAIL"
+        "Continue another approved existing civilization unit, e.g. KOR patrol-cart visual identity, using civilization-scoped atlases where appropriate",
+        "Improve production-event battlefield sound without using simulation RNG",
+        "Periodically integrate natural campaigns after material gameplay changes; preserve all FAIL"
       ],
       "permissions": [
         "Independent development tests normal push",

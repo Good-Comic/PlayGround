@@ -1,3 +1,18 @@
+# PER／MNG 文明單位接續 / PER/MNG civilization-unit continuation
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+繁體中文：實際遠端ceebfee接續後，PER戰象9b216cdbd63521458222489b40dbb788cb4b5e4b通過7 Node／12 Chromium，含原生150F／80G付費及25秒訓練、正式移動／攻擊及真正次要踐踏。隨後MNG騎射外觀來源f5ed73b887a85e881de74fc0f46783f5e0e615e0通過10 Node／13 Chromium，含原生35F／25W／40G付費14秒訓練及箭矢傷害，TEU新局仍使用舊外觀。兩者各160原創影格，均有三縮放、回退、真實WebM及100人靜態繪製JS比較；非自然戰役／硬體PASS。程式、素材及證據已正常保存至3004d884990630a90bfe7d27965cb8dd991c74f6，Feed為3f802fa6d2c963d973d7eafe185f4efee9bfaace。本段為自身發布前快照，最新SHA仍須現查。
+
+English: Continued from actual remote ceebfee. PER elephant source9b216cdbd63521458222489b40dbb788cb4b5e4b passes7Node/12Chromium, including native150F/80Gpayment,25-second training, production movement/combat and actual secondary trample. Following MNG appearance sourcef5ed73b887a85e881de74fc0f46783f5e0e615e0 passes10Node/13Chromium, including native35F/25W/40Gpayment,14-second training and arrow damage; a new TEU run keeps its old appearance. Each has160original frames, three zooms, fallback, actualWebM and100-unit static draw-JS comparisons, not natural-campaign/hardware acceptance. Code/assets/evidence are normally saved at3004d884990630a90bfe7d27965cb8dd991c74f6; Feed3f802fa6d2c963d973d7eafe185f4efee9bfaace. This describes refs before its own publication; requery actual latestSHA.
+
+繁體中文：主控codex-migration-20261029持有主線及Feed所有權，沒有第二寫入者。執行期間另一排程喚醒送達，記錄RESUME_SKIPPED_ACTIVE_TASK且未另啟重複工作；原任務已正常保存。訊息送達不證明310分鐘排程設定已切換，仍UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL。額度百分比未知；無正式數據，不虛構。後續接續KOR巡防車等已存在文明單位外觀或正式事件音效，不重做移轉、既有Atlas、水岸或英雄／Boss成果。自然十波／NG+及全部歷史FAIL保留；原環境只作獨立復原，不改main、Pages、OmGitHub、不公開部署。以下歷史段落不覆蓋本段。
+
+English: Primary codex-migration-20261029 holds development/Feed ownership; no second writer was started. Another scheduled wake arrived during execution and is recorded RESUME_SKIPPED_ACTIVE_TASK without duplicate work; the original task is safely saved. Delivery does not verify rebinding of the310-minute schedule, which remains UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL. Quota percentage is unknown; no formal value is invented. Next continue existing civilization units such as KOR patrol-cart visuals or production-event audio, without repeating migration, accepted atlases, shorelines or hero/Boss work. Preserve natural ten-wave/NG+ and all historicalFAIL. Original environment is only an isolated recovery source; no main,Pages,OmGitHub or public-deployment changes. Historical notes below do not override this paragraph.
+
+---
+
 # 英雄與 Boss 內容接續 / Hero and Boss content continuation
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

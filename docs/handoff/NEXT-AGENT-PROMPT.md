@@ -1,3 +1,11 @@
+# 最新切片接續 / Latest slice continuation
+
+繁體中文：PER戰象與MNG騎射文明外觀已完成，分別7 Node／12 Chromium及10 Node／13 Chromium通過，詳見當前ACTIVE-TASK、Handoff與docs/evidence/v240-elephant、v240-mng-horse-archer。不要重做已完成移轉、Atlas、水岸與英雄／Boss。先核對最新遠端及所有權，接續KOR巡防車等既有文明單位或正式事件音效。重複排程喚醒必須檢查目前執行是否仍在進行，不另啟相同分支寫入者；本輪已記錄RESUME_SKIPPED_ACTIVE_TASK。此訊息並不代表排程設定已切換；現況及未知百分比必須如實回報。
+
+English: PER elephant and MNG horse-archer civilization appearance are complete with7Node/12Chromium and10Node/13Chromium passes. See current ACTIVE-TASK, Handoff and docs/evidence/v240-elephant/v240-mng-horse-archer. Do not redo migration, accepted atlases, shorelines or hero/Boss work. Query current remote and ownership, then continue existing civilization units such as KOR patrol cart or production-event audio. On duplicate wakes, check whether execution is already running and do not start another writer on the same branch; this turn recorded RESUME_SKIPPED_ACTIVE_TASK. Delivery does not prove scheduler rebinding; report actual status and unknown quota percentage honestly.
+
+---
+
 # 最新內容接續 / Latest content continuation
 
 繁體中文：移轉、長矛／盾衛與水岸已完成，不重做。英雄、招募使及雙Boss新Atlas已完成；英雄施法、標記／護盾、真正Boss落點預警／傷害與原生移動閃避均已驗收。最新應用來源6fae8aa71f24acc3e0a695218f3fd05009afc771，相關18 Node、12技能Chromium及24整合Champion Chromium通過。優先查最新Git遠端與Ownership，再開發文明特定既有單位（例如PER戰象），不把自然戰役當內容前置。詳讀當前ACTIVE-TASK與Handoff，以下為仍適用的共用規則及歷史切片資訊。
