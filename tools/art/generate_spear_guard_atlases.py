@@ -4,7 +4,7 @@ import math
 from pathlib import Path
 
 STATES = ['idle', 'walk', 'attack', 'hit', 'death']
-WIDTH, HEIGHT = 128, 112
+WIDTH, HEIGHT = 128, 160
 
 
 def cell(kind, direction, state, frame):
@@ -59,7 +59,7 @@ def build(kind):
         for direction in range(8):
             for frame in range(4):
                 cells.append(f'<g transform="translate({(direction*4+frame)*WIDTH} {row*HEIGHT})">{cell(kind,direction,state,frame)}</g>')
-    return f'<svg xmlns="http://www.w3.org/2000/svg" width="4096" height="560" viewBox="0 0 4096 560"><title>Riftwatch original {kind} migration-era atlas</title>{"".join(cells)}</svg>\n'
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="4096" height="800" viewBox="0 0 4096 800"><title>Riftwatch original {kind} migration-era atlas</title>{"".join(cells)}</svg>\n'
 
 
 if __name__ == '__main__':

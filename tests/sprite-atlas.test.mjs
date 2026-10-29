@@ -9,7 +9,7 @@ test('new spear and shield atlases have complete independent four-frame actions 
     const png = readFileSync(new URL('../' + atlas.src, import.meta.url));
     assert.equal(png.subarray(1, 4).toString(), 'PNG');
     const width = png.readUInt32BE(16), height = png.readUInt32BE(20);
-    assert.equal(width, 4096); assert.equal(height, 560);
+    assert.equal(width, 4096); assert.equal(height, 800);
     assert.notEqual(atlas.src, UNIT_SPRITE_ATLASES.militia.src);
     for (const direction of Object.keys(atlas.directions)) for (const state of Object.keys(atlas.states)) {
       const frames = [0, .26, .51, .99].map(progress => {
