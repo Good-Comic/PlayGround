@@ -4,47 +4,54 @@
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "其他文明既有單位與戰場音效 / Other civilization units and battlefield sound",
+      "name": "P0保存後的未來接續 / Future continuation after P0 saving",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
-      "application_source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+      "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+      "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
       "completed": [],
       "uncommitted": [],
       "unpushed": [],
       "tests": [
         {
-          "name": "Elephant Node",
-          "result": "7 PASS",
-          "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
-          "path": "docs/evidence/v240-elephant/focused-node.txt"
+          "name": "Recovered original KOR Node, not rerun",
+          "result": "4 ORIGINAL PASS REUSED",
+          "source_commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
+          "path": "docs/evidence/v240-kor-cart/focused-node.txt"
         },
         {
-          "name": "Elephant Chromium",
-          "result": "12 PASS CONTROLLED_FIXTURE",
-          "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
-          "path": "docs/evidence/v240-elephant/browser/browser.json"
+          "name": "Recovered original KOR Chromium, not rerun",
+          "result": "14 ORIGINAL PASS REUSED",
+          "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
+          "path": "docs/evidence/v240-kor-cart/fixed/browser.json"
         },
         {
-          "name": "MNG variant Node",
-          "result": "10 PASS",
-          "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
-          "path": "docs/evidence/v240-mng-horse-archer/focused-node.txt"
+          "name": "KOR original image review this turn",
+          "result": "PASS representative images",
+          "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
+          "path": "docs/evidence/v240-kor-cart/recovery-visual-review.json"
         },
         {
-          "name": "MNG variant Chromium",
-          "result": "13 PASS CONTROLLED_FIXTURE",
-          "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
-          "path": "docs/evidence/v240-mng-horse-archer/browser/browser.json"
+          "name": "Sound Node actually rerun after recovery",
+          "result": "4 PASS",
+          "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+          "path": "docs/evidence/v240-unit-sounds/recovery-node.txt"
+        },
+        {
+          "name": "Sound Chromium after recovery",
+          "result": "19 PASS LOCAL CONTROLLED",
+          "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+          "path": "docs/evidence/v240-unit-sounds/browser/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-elephant/REPORT.md",
-        "docs/evidence/v240-mng-horse-archer/REPORT.md"
+        "docs/evidence/p0-envlost-recovery/STATUS.md",
+        "docs/evidence/v240-kor-cart/REPORT.md",
+        "docs/evidence/v240-unit-sounds/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -55,9 +62,8 @@
         "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
       ],
       "next_steps": [
-        "Continue another approved existing civilization unit, e.g. KOR patrol-cart visual identity, using civilization-scoped atlases where appropriate",
-        "Improve production-event battlefield sound without using simulation RNG",
-        "Periodically integrate natural campaigns after material gameplay changes; preserve all FAIL"
+        "Verify latest remote and final Handoff/Feed receipt on resume; do not recreate recovered work",
+        "Only future continuation may resume new content; this turn was P0 recovery only"
       ],
       "permissions": [
         "Independent development tests normal push",

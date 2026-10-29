@@ -1,3 +1,18 @@
+# P0 原成果已安全保存 / P0 original work safely saved
+
+ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+繁體中文：本輪找回原7f8a739與bcd03b0，保留原SHA／父鏈／Diff，沒有重製素材。原音效WIP三檔逐位元組保留，提交為77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f。原KOR4 Node／14 Chromium是恢復的舊證據；本輪補完7張圖片直接檢視，沒有假稱重跑。音效本輪實跑4 Node／19 Chromium PASS，含真實攻擊、WebAudio錄音、原生靜音／取消靜音與共用節流。來源及所有圖片、錄音、影片、報告已普通Push至09b3d3904755dddf84a2faf692f34d4858de9b14。詳見docs/evidence/p0-envlost-recovery及兩份切片報告；本段描述自身發布前來源，最終HEAD／Feed須現查。
+
+English: Recovered original7f8a739 and bcd03b0 with unchanged SHAs, parents and diffs, without recreating artwork. All3 original sound WIP files retain identical bytes and are committed as77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f. KOR4Node/14Chromium are recovered old evidence; this turn added direct review of7images without claiming reruns. Sound actually passes4Node/19Chromium this turn, including real attacks, WebAudio recordings, native mute/unmute and shared throttling. Source and all images/audio/video/reports are normally pushed through09b3d3904755dddf84a2faf692f34d4858de9b14. See docs/evidence/p0-envlost-recovery and both slice reports. This describes source before its own publication; query final HEAD/Feed.
+
+繁體中文：只處理此次ENVIRONMENT_LOST，不開始下一兵種。更早9a0f19e仍獨立UNPUSHED_WORK_RECOVERY_PENDING；自然十波／NG+及全部歷史FAIL保留，排程未確認切換。codex-migration-20261029仍持有主線／Feed所有權，不另啟寫入者。未改main、Pages、OmGitHub，未公開部署。以下歷史紀錄不覆蓋本段。
+
+English: This turn only handled this ENVIRONMENT_LOST recovery, without starting another unit. Older9a0f19e remains separately UNPUSHED_WORK_RECOVERY_PENDING. Natural ten-wave/NG+ and historical FAIL remain; scheduler rebinding is unverified. codex-migration-20261029 retains development/Feed ownership without another writer. No main, Pages, OmGitHub or public deployment. Historical entries below do not override this paragraph.
+
+---
+
 # PER／MNG 文明單位接續 / PER/MNG civilization-unit continuation
 
 ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md

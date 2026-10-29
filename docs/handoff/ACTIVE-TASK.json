@@ -1,52 +1,59 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "PER與MNG文明單位辨識 / PER and MNG civilization unit identity",
-  "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
-  "priority": "P1",
+  "name": "P0原成果復原與安全保存 / P0 original-work recovery and safe saving",
+  "requirement_source": "Latest explicit user P0 ENVIRONMENT_LOST recovery instruction",
+  "priority": "P0",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "ceebfee27c58e50860a40d12e94d3497fb26a393",
-  "latest_pushed_commit": "3004d884990630a90bfe7d27965cb8dd991c74f6",
-  "application_source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
+  "base_commit": "8f22a395e420a852b8632e0d843651d023d367e7",
+  "latest_pushed_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+  "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
   "completed": [
-    "Original160-frame PER elephant atlas integrated",
-    "7Node/12localChromium PASS including native payment/training and actual trample",
-    "Original MNG-only160-frame horse-archer kit integrated, other civs/enemies unchanged",
-    "10Node/13localChromium PASS including paid14-second training and real arrows",
-    "Both content slices normally pushed and exact remote SHA verified; duplicate wake did not launch another writer"
+    "Original7f8a739andbcd03b0recovered with unchanged parent chain and diffs",
+    "Original audio WIP bytes preserved, committed and normally pushed",
+    "7original KOR images reviewed; old4Node/14Chromium preserved, not claimed rerun",
+    "Actually reran4soundNode and completed19newChromium checks with real audio/video",
+    "Original commits, source and all evidence now remote-saved"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Elephant Node",
-      "result": "7 PASS",
-      "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
-      "path": "docs/evidence/v240-elephant/focused-node.txt"
+      "name": "Recovered original KOR Node, not rerun",
+      "result": "4 ORIGINAL PASS REUSED",
+      "source_commit": "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
+      "path": "docs/evidence/v240-kor-cart/focused-node.txt"
     },
     {
-      "name": "Elephant Chromium",
-      "result": "12 PASS CONTROLLED_FIXTURE",
-      "source_commit": "9b216cdbd63521458222489b40dbb788cb4b5e4b",
-      "path": "docs/evidence/v240-elephant/browser/browser.json"
+      "name": "Recovered original KOR Chromium, not rerun",
+      "result": "14 ORIGINAL PASS REUSED",
+      "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
+      "path": "docs/evidence/v240-kor-cart/fixed/browser.json"
     },
     {
-      "name": "MNG variant Node",
-      "result": "10 PASS",
-      "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
-      "path": "docs/evidence/v240-mng-horse-archer/focused-node.txt"
+      "name": "KOR original image review this turn",
+      "result": "PASS representative images",
+      "source_commit": "bcd03b0c8334aa224ae07d724bcf1028292700c3",
+      "path": "docs/evidence/v240-kor-cart/recovery-visual-review.json"
     },
     {
-      "name": "MNG variant Chromium",
-      "result": "13 PASS CONTROLLED_FIXTURE",
-      "source_commit": "f5ed73b887a85e881de74fc0f46783f5e0e615e0",
-      "path": "docs/evidence/v240-mng-horse-archer/browser/browser.json"
+      "name": "Sound Node actually rerun after recovery",
+      "result": "4 PASS",
+      "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+      "path": "docs/evidence/v240-unit-sounds/recovery-node.txt"
+    },
+    {
+      "name": "Sound Chromium after recovery",
+      "result": "19 PASS LOCAL CONTROLLED",
+      "source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
+      "path": "docs/evidence/v240-unit-sounds/browser/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-elephant/REPORT.md",
-    "docs/evidence/v240-mng-horse-archer/REPORT.md"
+    "docs/evidence/p0-envlost-recovery/STATUS.md",
+    "docs/evidence/v240-kor-cart/REPORT.md",
+    "docs/evidence/v240-unit-sounds/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -57,9 +64,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "Continue another approved existing civilization unit, e.g. KOR patrol-cart visual identity, using civilization-scoped atlases where appropriate",
-    "Improve production-event battlefield sound without using simulation RNG",
-    "Periodically integrate natural campaigns after material gameplay changes; preserve all FAIL"
+    "Verify latest remote and final Handoff/Feed receipt on resume; do not recreate recovered work",
+    "Only future continuation may resume new content; this turn was P0 recovery only"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -86,7 +92,18 @@
   },
   "scheduler_status": "UNVERIFIED_NOT_REBOUND_NO_MANAGEMENT_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "CHECKPOINTED_NO_SECOND_WRITER",
+  "execution_state": "P0_RECOVERED_AND_REMOTE_SAVED",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK",
-  "latest_feed_commit": "3f802fa6d2c963d973d7eafe185f4efee9bfaace"
+  "latest_feed_commit": "3f802fa6d2c963d973d7eafe185f4efee9bfaace",
+  "current_envlost_recovery": {
+    "status": "RECOVERED_ORIGINAL_WORK_REMOTE_SAVED",
+    "original_commits": [
+      "7f8a739cc713bba08d970c0fb0b2bac7a474c0e7",
+      "bcd03b0c8334aa224ae07d724bcf1028292700c3"
+    ],
+    "audio_wip_bytes_preserved": true,
+    "evidence_commit": "09b3d3904755dddf84a2faf692f34d4858de9b14",
+    "art_recreated": false,
+    "older_9a0f19e_still_separately_pending": true
+  }
 }

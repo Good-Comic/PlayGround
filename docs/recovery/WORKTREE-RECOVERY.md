@@ -1,8 +1,7 @@
-# PER／MNG 安全接續快照 / PER/MNG safe continuation snapshot
+# P0 原成果恢復 / P0 original-work recovery
 
-ACTIVE STRATEGY = docs/STRATEGY-V2.4-GAME-FIRST.md
+繁體中文：相鄰JSON為09b3d3904755dddf84a2faf692f34d4858de9b14已遠端保存後的盤點，不遞迴提交自身SHA。原7f8a739、bcd03b0及音效WIP均恢復，來源／證據／報告已保存。原KOR測試與本輪音效4 Node／19 Chromium分開記錄。詳見docs/evidence/p0-envlost-recovery/STATUS.md。最終乾淨快照在/workspace/diagnostics/riftwatch/p0-envlost-recovery-20261029/final。更早9a0f19e仍獨立待復原；本輪沒有新兵種或公開部署，歷史FAIL及排程未確認狀態保留。
+
+English: Adjacent JSON inventories remotely saved09b3d3904755dddf84a2faf692f34d4858de9b14 without recursively committing its own SHA. Original7f8a739,bcd03b0 and sound WIP are recovered with source/evidence/reports saved. Original KOR tests are separate from this turn's4Node/19Chromium sound results. See docs/evidence/p0-envlost-recovery/STATUS.md. Final clean snapshot: /workspace/diagnostics/riftwatch/p0-envlost-recovery-20261029/final. Older9a0f19e remains separately pending. No new unit or public deployment this turn; historicalFAIL and unverified scheduler status remain.
+
 BILINGUAL_DOCUMENTATION_REQUIRED = true
-
-繁體中文：相鄰worktree-recovery.json為3004d884990630a90bfe7d27965cb8dd991c74f6已推送、乾淨工作區的真實盤點，描述自身發布之前的狀態。PER與MNG來源／Build／測試與真正影片分別保存在雙語報告；沒有用舊測試冒充新成果。重複排程事件見active-task-resume-event.json，只跳過重複喚醒，不丟棄原任務成果。最終Push後的乾淨盤點保留於/workspace/diagnostics/riftwatch/v240-mng-horse-archer/final；不遞迴提交自身SHA。原9a0f19e／QA獨立待復原，排程設定未核對切換，自然戰役與歷史FAIL保留。
-
-English: Adjacent worktree-recovery.json is an actual clean, remotely saved inventory at3004d884990630a90bfe7d27965cb8dd991c74f6 before its own publication. Separate bilingual reports preserve PER/MNG source,Build,tests and actual video; old tests are not substituted for new work. active-task-resume-event.json records the duplicate wake, skipping duplicate execution without dropping the original task's work. Final post-push clean inventory remains at/workspace/diagnostics/riftwatch/v240-mng-horse-archer/final without recursively committing its ownSHA. Original9a0f19e/QAremain isolated for recovery, scheduler rebinding is unverified, and natural-campaign/historicalFAILremain.

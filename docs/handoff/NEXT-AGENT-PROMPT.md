@@ -1,3 +1,11 @@
+# P0 復原已安全保存 / P0 recovery safely saved
+
+繁體中文：原始 7f8a739、bcd03b0 與原音效 WIP 已恢復，未重製素材。應用來源 77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f，證據提交 09b3d3904755dddf84a2faf692f34d4858de9b14 已推送。KOR 原 4 Node／14 Chromium 為復用歷史證據，本輪完成原圖檢視；音效本輪 4 Node／19 Chromium 通過。先核對最新遠端與所有權，勿重做此切片。更早的 9a0f19e 復原仍獨立待處理；排程切換未確認。
+
+English: Original commits 7f8a739/bcd03b0 and the original audio WIP were recovered without recreating assets. Application source 77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f and evidence commit 09b3d3904755dddf84a2faf692f34d4858de9b14 are remote-saved. The original KOR 4 Node/14 Chromium results are reused historical evidence; original images were reviewed this turn. Audio passed 4 Node/19 Chromium checks this turn. Check current remote and ownership before continuing; do not redo this slice. Older 9a0f19e recovery remains separately pending; scheduler rebinding is unconfirmed.
+
+---
+
 # 最新切片接續 / Latest slice continuation
 
 繁體中文：PER戰象與MNG騎射文明外觀已完成，分別7 Node／12 Chromium及10 Node／13 Chromium通過，詳見當前ACTIVE-TASK、Handoff與docs/evidence/v240-elephant、v240-mng-horse-archer。不要重做已完成移轉、Atlas、水岸與英雄／Boss。先核對最新遠端及所有權，接續KOR巡防車等既有文明單位或正式事件音效。重複排程喚醒必須檢查目前執行是否仍在進行，不另啟相同分支寫入者；本輪已記錄RESUME_SKIPPED_ACTIVE_TASK。此訊息並不代表排程設定已切換；現況及未知百分比必須如實回報。
