@@ -1,3 +1,9 @@
+# 最新操作改善 / Latest input improvement
+
+英雄／招募使／雙 Boss 頭部選取修復，9 Node／15 Chromium PASS；保留原始四個 FAIL。 / Hero/recruiter/two-Boss head picking fixed, nine Node/15 Chromium PASS; original four failures preserved. Source `4e6d62ece169a34d98f8b9beced063172daba02b`; docs/evidence/v240-champion-picking/REPORT.md. 下一項 TEU 文明英雄／Next TEU civilization hero.
+
+---
+
 # 最新載入改善 / Latest loading improvement
 
 只解碼當前文明，切換釋放舊影像／裁格引用；15 Node／15 Chromium PASS。 / Decode current civilization only and release old image/crop references on switches; 15 Node/15 Chromium PASS. Source `4c5ae01fb886067443aa5bc51204f4e2e6b78ec9`; docs/evidence/v240-atlas-loading/REPORT.md. 接續英雄／Boss 原生頭部點選／Continue native hero/Boss head picking.

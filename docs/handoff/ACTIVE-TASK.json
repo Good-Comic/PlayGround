@@ -1,34 +1,34 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "文明圖集按需解碼與舊引用釋放 / Active-civ decoding and stale-reference release",
+  "name": "英雄與 Boss 頭部選取及命令已修復 / Hero/Boss head selection and orders fixed",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P0",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
-  "application_source_commit": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+  "latest_pushed_commit": "4e6d62ece169a34d98f8b9beced063172daba02b",
+  "application_source_commit": "4e6d62ece169a34d98f8b9beced063172daba02b",
   "completed": [
-    "只解碼當前文明、切換釋放舊裁格與影像引用",
-    "Decode only current civ; release stale image/crop references"
+    "英雄與 Boss 原生頭部選取、Aegis 與指定攻擊驗收",
+    "Native hero/Boss head picking, Aegis and targeted-attack acceptance"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Node",
-      "result": "15 PASS",
-      "path": "docs/evidence/v240-atlas-loading/focused-node.txt"
+      "result": "9 PASS",
+      "path": "docs/evidence/v240-champion-picking/focused-node.txt"
     },
     {
       "name": "Chromium",
       "result": "15 PASS",
-      "path": "docs/evidence/v240-atlas-loading/after-browser/browser.json"
+      "path": "docs/evidence/v240-champion-picking/after-browser/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-atlas-loading/REPORT.md"
+    "docs/evidence/v240-champion-picking/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -41,8 +41,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "檢查英雄與 Boss 的可見頭部原生點選，再接續文明英雄與戰術內容",
-    "Inspect native visible-head picking on hero/Bosses, then civilization heroes and tactics"
+    "TEU 文明英雄獨立裝備與既有技能視覺；先核對最新來源與所有權",
+    "TEU civilization hero equipment and existing-skill visuals; recheck current source and ownership first"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -50,7 +50,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T20:00:02.724009+00:00",
+  "updated_at": "2026-10-29T20:07:32.578942+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -167,6 +167,13 @@
       "node": 15,
       "chromium": 15,
       "report": "docs/evidence/v240-atlas-loading/REPORT.md"
+    },
+    {
+      "slice": "v240-champion-picking",
+      "source": "4e6d62ece169a34d98f8b9beced063172daba02b",
+      "node": 9,
+      "chromium": 15,
+      "report": "docs/evidence/v240-champion-picking/REPORT.md"
     }
   ],
   "continuity_policy": {
