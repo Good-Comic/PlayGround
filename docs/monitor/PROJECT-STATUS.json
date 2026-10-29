@@ -2,18 +2,18 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-29T19:45:49.330849+00:00",
+  "updated_at": "2026-10-29T19:49:44.093848+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "06bc8954867570b59ec6709b6018f96b1373f725",
-    "build_sha": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
-    "summary": "FRK \u982d\u76d4\u9ede\u9078\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557\u4e14\u672a\u91cd\u88fd\u7d20\u6750 / FRK helmet picking and movement fixed; original failure retained without remaking art",
+    "commit": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
+    "build_sha": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+    "summary": "SAR \u7e8f\u5dfe\u5f4e\u5200\u76fe\u885b\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536 / SAR turban curved-blade guard passed native training combat and visual acceptance",
     "code_changes": [
-      "FRK \u982d\u76d4\u9ede\u9078\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557\u4e14\u672a\u91cd\u88fd\u7d20\u6750",
-      "FRK helmet picking and movement fixed; original failure retained without remaking art"
+      "SAR \u7e8f\u5dfe\u5f4e\u5200\u76fe\u885b\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536",
+      "SAR turban curved-blade guard passed native training combat and visual acceptance"
     ],
     "next_steps": [
       "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -21,21 +21,21 @@
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "9 focused Node PASS",
+        "name": "6 focused Node PASS",
         "status": "PASS",
-        "source_commit": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
-        "evidence": "docs/evidence/v240-frk-picking/focused-node.txt",
-        "evidence_commit": "06bc8954867570b59ec6709b6018f96b1373f725",
-        "evidence_blob": "7d279906d47fb7e7233c953bee9d66b83979a979",
+        "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+        "evidence": "docs/evidence/v240-sar-guard/focused-node.txt",
+        "evidence_commit": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
+        "evidence_blob": "07e201874882129ce401d6f6fbf3e2b610a64613",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "6 actual Chromium PASS",
+        "name": "14 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
-        "evidence": "docs/evidence/v240-frk-picking/after-browser/browser.json",
-        "evidence_commit": "06bc8954867570b59ec6709b6018f96b1373f725",
-        "evidence_blob": "d7b64872ac4fabb95d83e5c1f2886457890def1e",
+        "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+        "evidence": "docs/evidence/v240-sar-guard/verified/browser.json",
+        "evidence_commit": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
+        "evidence_blob": "3a3244d54281b12c7476f2cc43aa093d99115ed7",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -44,16 +44,16 @@
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
         "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u5b58\u8b80\u3001\u4f4e FPS\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, save/load, low-FPS, performance and hardware gaps remain.",
-        "source_commit": "06bc8954867570b59ec6709b6018f96b1373f725",
+        "source_commit": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aFRK \u982d\u76d4\u9ede\u9078\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557\u4e14\u672a\u91cd\u88fd\u7d20\u6750\u3002\u5b9a\u5411 Node 9\uff0f\u771f\u5be6 Chromium 6 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: FRK helmet picking and movement fixed; original failure retained without remaking art. 9 focused Node/6 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "053991c818f564520ff36812b47a9dfa87f2104c1f3c2f95efe5532884f15955",
-    "remote_head": "06bc8954867570b59ec6709b6018f96b1373f725",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aSAR \u7e8f\u5dfe\u5f4e\u5200\u76fe\u885b\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536\u3002\u5b9a\u5411 Node 6\uff0f\u771f\u5be6 Chromium 14 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: SAR turban curved-blade guard passed native training combat and visual acceptance. 6 focused Node/14 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "36d1e58570c1a3cec262c4b2b1abbee460f03f782c7971feff68b253ca3b432f",
+    "remote_head": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-29T19:45:49.330849+00:00",
+    "recorded_at": "2026-10-29T19:49:44.093848+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3006,12 +3006,12 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "06bc8954867570b59ec6709b6018f96b1373f725",
-      "build_sha": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
-      "summary": "FRK \u982d\u76d4\u9ede\u9078\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557\u4e14\u672a\u91cd\u88fd\u7d20\u6750 / FRK helmet picking and movement fixed; original failure retained without remaking art",
+      "commit": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
+      "build_sha": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+      "summary": "SAR \u7e8f\u5dfe\u5f4e\u5200\u76fe\u885b\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536 / SAR turban curved-blade guard passed native training combat and visual acceptance",
       "code_changes": [
-        "FRK \u982d\u76d4\u9ede\u9078\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557\u4e14\u672a\u91cd\u88fd\u7d20\u6750",
-        "FRK helmet picking and movement fixed; original failure retained without remaking art"
+        "SAR \u7e8f\u5dfe\u5f4e\u5200\u76fe\u885b\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536",
+        "SAR turban curved-blade guard passed native training combat and visual acceptance"
       ],
       "next_steps": [
         "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -3019,21 +3019,21 @@
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "9 focused Node PASS",
+          "name": "6 focused Node PASS",
           "status": "PASS",
-          "source_commit": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
-          "evidence": "docs/evidence/v240-frk-picking/focused-node.txt",
-          "evidence_commit": "06bc8954867570b59ec6709b6018f96b1373f725",
-          "evidence_blob": "7d279906d47fb7e7233c953bee9d66b83979a979",
+          "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+          "evidence": "docs/evidence/v240-sar-guard/focused-node.txt",
+          "evidence_commit": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
+          "evidence_blob": "07e201874882129ce401d6f6fbf3e2b610a64613",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "6 actual Chromium PASS",
+          "name": "14 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
-          "evidence": "docs/evidence/v240-frk-picking/after-browser/browser.json",
-          "evidence_commit": "06bc8954867570b59ec6709b6018f96b1373f725",
-          "evidence_blob": "d7b64872ac4fabb95d83e5c1f2886457890def1e",
+          "source_commit": "73ce3c06db0645fe3475f37e1135ccfffe4aca77",
+          "evidence": "docs/evidence/v240-sar-guard/verified/browser.json",
+          "evidence_commit": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
+          "evidence_blob": "3a3244d54281b12c7476f2cc43aa093d99115ed7",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3042,16 +3042,16 @@
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
           "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u5b58\u8b80\u3001\u4f4e FPS\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, save/load, low-FPS, performance and hardware gaps remain.",
-          "source_commit": "06bc8954867570b59ec6709b6018f96b1373f725",
+          "source_commit": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aFRK \u982d\u76d4\u9ede\u9078\u8207\u79fb\u52d5\u5df2\u4fee\u5fa9\uff0c\u4fdd\u7559\u539f\u59cb\u5931\u6557\u4e14\u672a\u91cd\u88fd\u7d20\u6750\u3002\u5b9a\u5411 Node 9\uff0f\u771f\u5be6 Chromium 6 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: FRK helmet picking and movement fixed; original failure retained without remaking art. 9 focused Node/6 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "053991c818f564520ff36812b47a9dfa87f2104c1f3c2f95efe5532884f15955",
-      "remote_head": "06bc8954867570b59ec6709b6018f96b1373f725",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aSAR \u7e8f\u5dfe\u5f4e\u5200\u76fe\u885b\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u6230\u9b25\u8207\u8996\u89ba\u9a57\u6536\u3002\u5b9a\u5411 Node 6\uff0f\u771f\u5be6 Chromium 14 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: SAR turban curved-blade guard passed native training combat and visual acceptance. 6 focused Node/14 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "36d1e58570c1a3cec262c4b2b1abbee460f03f782c7971feff68b253ca3b432f",
+      "remote_head": "5067123cd2399fb2dab79b9b4976a9000e0c71e1",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-29T19:45:49.330849+00:00",
+      "recorded_at": "2026-10-29T19:49:44.093848+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
