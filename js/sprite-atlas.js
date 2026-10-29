@@ -63,6 +63,12 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
 });
 
 export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
+  'TEU:guard': Object.freeze({
+    id: 'teu-guard-v1', src: 'assets/sprites/teu-guard-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 60,
+    states: UNIT_SPRITE_ATLASES.elephant.states,
+  }),
   'FRK:light_cavalry': Object.freeze({
     id: 'frk-cavalry-v1', src: 'assets/sprites/frk-cavalry-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,

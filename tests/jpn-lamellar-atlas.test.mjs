@@ -7,7 +7,7 @@ const {Game} = await import('../js/game.js');
 
 test('JPN lamellar appearance is isolated from other civilizations and enemies', () => {
   for (const civ of ['JPN','VIK','BRI','TEU','CHN']) for (const team of ['player','enemy'])
-    assert.equal(unitSpriteAtlasKey({type:'guard',team},civ),team==='player'&&['VIK','JPN'].includes(civ)?`${civ}:guard`:'guard');
+    assert.equal(unitSpriteAtlasKey({type:'guard',team},civ),team==='player'&&['VIK','JPN','TEU'].includes(civ)?`${civ}:guard`:'guard');
 });
 
 test('every lamellar direction and animation frame fits the actual PNG', () => {

@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+"""原創文明步兵姿勢，單次只生成指定切片。 / Original civ infantry poses; generate only the requested slice."""
+import argparse
+import math
+from pathlib import Path
+
+STATES = ['idle', 'walk', 'attack', 'hit', 'death']
+VARIANTS = {'teu-guard': 'TEU', 'azt-militia': 'AZT', 'byz-spearman': 'BYZ'}
+
+
+def equipment(civ, dx, dy, state, frame):
+    back = dy < -.3
+    swing = [-18, -58, 42, 2][frame] if state == 'attack' else -12
+    handx, handy = 12*dx, -35+4*dy
+    side = 1 if dx >= 0 else -1
+    if civ == 'TEU':
+        shield = '''<g transform="translate(-10 -29)"><path d="M-10-20L9-21L12 12L0 24L-11 13Z" fill="url(#enamel)" stroke="#d0c9ad" stroke-width="2"/>
+          <path d="M-8-17L6-18L8 10L0 19L-7 11Z" fill="#d7d5bd"/><path d="M-2-15V15M-7-5H7" stroke="#343e43" stroke-width="4"/>
+          <path d="M-10-20L-7 11L0 21" fill="none" stroke="#f3e7bd" stroke-width="1"/><circle cy="-4" r="2" fill="#8b9b9b"/></g>'''
+        weapon = f'''<g transform="translate({handx:.2f} {handy:.2f}) rotate({swing*side}) scale({side} 1)">
+          <path d="M0 5L-2-27L1-39L5-27L4 5Z" fill="url(#steel)" stroke="#34484e" stroke-width="1"/>
+          <path d="M1-32L2 4" stroke="#e9eee2" stroke-width="1"/><path d="M-6 5H10M2 6V15" stroke="#bba674" stroke-width="3"/>
+          <path d="M0 8H4M0 11H4" stroke="#4b3d2c" stroke-width="1"/></g>'''
+        head = f'''<path d="M-10-60L8-62L10-43L2-38L-9-43Z" fill="url(#steel)" stroke="#d7d2b5" stroke-width="1.3"/>
+          <path d="M{-6+dx*3:.2f}-53H{5+dx*3:.2f}M0-60V-42" stroke="#34474e" stroke-width="2"/>
+          <path d="M-7-48h2m2 0h2m2 0h2M-7-45h2m2 0h2m2 0h2" stroke="#44545a" stroke-width="1"/>
+          <path d="M-8-59L4-60" stroke="#f5f0d0" stroke-width="1"/>'''
+        torso = '''<path d="M-14-41L-9-45L8-45L14-39L11-11L0-5L-12-12Z" fill="url(#steel)" stroke="#364a51" stroke-width="1.5"/>
+          <path d="M-9-39L0-34L9-40M0-34V-14M-9-27L0-23L9-28" fill="none" stroke="#d0d6c8" stroke-width="1.3"/>
+          <path d="M-8-26L-1-23L6-26L8-7L2-2L-3-7L-9-3Z" fill="#c8c6ad" stroke="#707b72"/>
+          <path d="M-2-22V-7M-7-16H4" stroke="#36474b" stroke-width="2.7"/>
+          <path d="M-16-40L-8-43L-6-34L-15-31ZM8-43L17-38L16-30L7-34Z" fill="url(#steel)" stroke="#d0c8a8" stroke-width="1.2"/>'''
+    elif civ == 'AZT':
+        shield = '''<g transform="translate(-10 -24)"><circle r="16" fill="#3d685a" stroke="#d6bc76" stroke-width="2"/>
+          <circle r="12" fill="#ac9360" stroke="#304e43" stroke-width="1.5"/>
+          <path d="M-8 5V-3H-3V-8H3V-3H8V5H3V8H-3V5Z" fill="#315e51" stroke="#e7d49e" stroke-width="1"/>
+          <path d="M-10 13L-11 20M-4 15V23M4 15V23M10 13L11 20" stroke="#bc9160" stroke-width="2"/></g>'''
+        teeth = ''.join(f'<path d="M-4 {y}l-4 1l1 5l4 1ZM5 {y}l4 1l-1 5l-4 1Z" fill="#243b3d" stroke="#758b80" stroke-width=".6"/>' for y in [-32,-25,-18])
+        weapon = f'''<g transform="translate({handx:.2f} {handy:.2f}) rotate({swing*side}) scale({side} 1)">
+          <path d="M-4-35Q0-40 5-35L5-10L2-7L2 13H-1V-7L-4-10Z" fill="#8d6941" stroke="#d1b274" stroke-width="1.2"/>{teeth}
+          <path d="M-1-32V-11M-1 4H2M-1 7H2" stroke="#d6bd87" stroke-width="1"/></g>'''
+        feathers = ''.join(f'<path d="M{x} -53Q{x-5} {y-4} {x} {y}Q{x+6} {y+2} {x+3} -52Z" fill="{color}" stroke="#b8c19a" stroke-width=".8"/>' for x,y,color in [(-12,-70,'#326c62'),(-6,-80,'#438d73'),(1,-85,'#315f58'),(8,-77,'#568978'),(14,-67,'#b39054')])
+        head = f'''{feathers}<ellipse cx="{dx*2:.2f}" cy="-48" rx="7" ry="8" fill="{'#695b43' if back else '#b18b62'}" stroke="#73593e"/>
+          <path d="M-9-52H9L8-46H-8Z" fill="#a78b52" stroke="#dbcc99"/><path d="M-6-50H-2M2-50H6" stroke="#3a6b5a" stroke-width="2"/>'''
+        torso = '''<path d="M-12-39Q0-47 12-39L10-12L0-5L-10-12Z" fill="url(#cotton)" stroke="#776b4a" stroke-width="1.4"/>
+          <path d="M-9-35L8-18M-9-27L4-14M-5-39L10-24M8-36L-9-19M10-29L-3-15M2-40L-10-27" stroke="#aa9c73" stroke-width="1.2"/>
+          <path d="M-10-11L0-7L10-11L10-2L4 1L0-3L-5 1L-10-3Z" fill="#5b7c62" stroke="#d0bc7f"/>
+          <path d="M-12-36L-15-22M12-36L15-22" stroke="#ad8a61" stroke-width="5"/>'''
+    else:
+        shield = '''<g transform="translate(-10 -27)"><ellipse rx="14" ry="18" fill="url(#bronze)" stroke="#e2c992" stroke-width="2"/>
+          <ellipse rx="10" ry="14" fill="#536a78" stroke="#b7a873"/><path d="M0-11L3-3L9 0L3 3L0 11L-3 3L-9 0L-3-3Z" fill="#d6bf82"/>
+          <ellipse rx="3" ry="4" fill="#9e8554" stroke="#efe0ad"/></g>'''
+        thrust = [0,-3,10,1][frame] if state == 'attack' else 0
+        endx, endy = dx*(39+thrust), (-25+dy*12 if state == 'death' else -45+dy*15)
+        weapon = f'''<g transform="translate({handx:.2f} {handy:.2f})">
+          <path d="M{-dx*18:.2f} 25L{endx:.2f} {endy:.2f}" stroke="#493d2c" stroke-width="3.5"/>
+          <path d="M{-dx*18:.2f} 25L{endx:.2f} {endy:.2f}" stroke="#c1a474" stroke-width="1.4"/>
+          <path d="M{endx-3:.2f} {endy+5:.2f}L{endx+dx*4:.2f} {endy-9:.2f}L{endx+4:.2f} {endy+4:.2f}Z" fill="url(#steel)" stroke="#54666a" stroke-width=".8"/>
+          </g>'''
+        head = f'''<path d="M-8-53Q0-68 8-53L7-43H-7Z" fill="url(#bronze)" stroke="#e0c18a"/>
+          <path d="M-9-49L-11-37L-5-34L0-40L5-34L11-37L9-49" fill="#646f70" stroke="#c0b28b"/>
+          <ellipse cx="{dx*2:.2f}" cy="-47" rx="4.5" ry="5" fill="{'#657575' if back else '#c0a07d'}"/>
+          <path d="M-2-61Q-3-79 9-73L10-65L4-65L3-58Z" fill="#865748" stroke="#d5bb7c"/>'''
+        rows = ''.join(f'<path d="M-10 {y}L0 {y+3}L10 {y}M-5 {y}v5M1 {y+2}v4M6 {y+1}v4" stroke="#c8aa76" stroke-width="1" fill="none"/>' for y in [-36,-30,-24,-18])
+        torso = f'''<path d="M-13-40Q0-46 13-40L12-12L5-3L0-8L-5-3L-12-12Z" fill="url(#bronze)" stroke="#5d5d4c" stroke-width="1.4"/>{rows}
+          <path d="M-11-13L-12-4M-6-12L-7-2M0-12V-3M6-12L7-2M11-13L12-4" stroke="#5a6978" stroke-width="3"/>'''
+    return torso, head, shield, weapon
+
+
+def cell(civ, direction, state, frame):
+    angle = direction*math.pi/4
+    dx, dy = math.cos(angle), math.sin(angle)
+    back = dy < -.3
+    stride = [-4,0,4,0][frame] if state == 'walk' else 0
+    bob = [0,-1.5,0,-.5][frame] if state == 'walk' else [0,-.5,0,.5][frame] if state == 'idle' else 0
+    fall = [5,24,53,82][frame] if state == 'death' else 0
+    recoil = [-2,-4,-1,0][frame] if state == 'hit' else 0
+    torso, head, shield, weapon = equipment(civ, dx, dy, state, frame)
+    legs = f'''<path d="M-6-10L{-7+stride} 4L{-9+stride} 8M6-10L{7-stride} 4L{10-stride} 8" stroke="{'#886b46' if civ=='AZT' else '#40515a'}" stroke-width="5" stroke-linecap="round"/>
+      <path d="M{-9+stride} 7h-4M{10-stride} 7h4" stroke="#373a30" stroke-width="3"/>
+      <path d="M-7-8L{-6+stride} 2M6-8L{7-stride} 2" stroke="{'#c9ad7d' if civ=='AZT' else '#b4c0b8'}" stroke-width="2"/>'''
+    return f'''<g transform="translate(96 112)"><ellipse cy="5" rx="18" ry="5" fill="#182826" opacity=".25"/>
+      <g transform="translate({recoil} {bob}) rotate({fall})" opacity="{1-frame*.12 if state=='death' else 1}">
+      {legs}{shield if back else weapon}{torso}
+      <path d="M-10-34L-13-25L-10-20M10-34L{12*dx:.2f} {-35+4*dy:.2f}" stroke="{'#aa845d' if civ=='AZT' else '#8d9e98'}" stroke-width="4" stroke-linecap="round"/>
+      {head}{weapon if back else shield}</g></g>'''
+
+
+def build(variant):
+    civ = VARIANTS[variant]
+    defs = '''<defs><linearGradient id="steel" x2="1" y2=".7"><stop stop-color="#d1d9d1"/><stop offset=".38" stop-color="#8fa09d"/><stop offset=".6" stop-color="#c4cdc1"/><stop offset="1" stop-color="#495f67"/></linearGradient>
+      <linearGradient id="enamel" x2="1" y2=".4"><stop stop-color="#364e57"/><stop offset=".45" stop-color="#617673"/><stop offset="1" stop-color="#293e48"/></linearGradient>
+      <linearGradient id="cotton" x2="1" y2=".8"><stop stop-color="#e5dec0"/><stop offset=".45" stop-color="#c6b98d"/><stop offset="1" stop-color="#8d835e"/></linearGradient>
+      <linearGradient id="bronze" x2="1" y2=".7"><stop stop-color="#d4bc83"/><stop offset=".4" stop-color="#a58c5b"/><stop offset=".65" stop-color="#c5a977"/><stop offset="1" stop-color="#6d6b56"/></linearGradient></defs>'''
+    cells = [f'<g transform="translate({((d%4)*4+f)*192} {(row*2+d//4)*192})">{cell(civ,d,s,f)}</g>' for row,s in enumerate(STATES) for d in range(8) for f in range(4)]
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="3072" height="1920" viewBox="0 0 3072 1920"><title>Riftwatch original '+variant+' directional infantry</title>'+defs+''.join(cells)+'</svg>\n'
+
+
+if __name__ == '__main__':
+    p = argparse.ArgumentParser();p.add_argument('variant',choices=VARIANTS);a=p.parse_args()
+    target=Path(__file__).resolve().parents[2]/'assets/sprites'/f'{a.variant}-atlas.svg'
+    target.write_text(build(a.variant));print(target)

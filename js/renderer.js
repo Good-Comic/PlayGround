@@ -1369,7 +1369,7 @@ export class Renderer {
       if (u.selected || u.hp < u.maxHp) {
         const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
         const w = (wide ? 40 : 24) * scale;
-        const high = u.type === 'elephant' && bakedPose ? 78 : ['knight', 'light_cavalry', 'horse_archer'].includes(u.type) ? 48 : wide ? 62 : bakedPose ? 54 : 38;
+        const high = entry?.descriptor.healthBarHeight ?? (u.type === 'elephant' && bakedPose ? 78 : ['knight', 'light_cavalry', 'horse_archer'].includes(u.type) ? 48 : wide ? 62 : bakedPose ? 54 : 38);
         const y = p.y - high * scale;
         this.healthBar(p.x - w / 2, y, w, 3.6 * scale, Math.max(0, u.hp / u.maxHp), u.team === 'player' ? '#78a95b' : '#b25046');
       }
