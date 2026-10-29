@@ -11,7 +11,7 @@ English: This records actual progress against the existing sixteen civilizations
 | GOT | 堡壘 / Fortress | 家族層；步兵外觀待擴充 / Family layer; infantry appearance pending |
 | FRK | 堡壘 / Fortress | 披掛／長盾／騎槍輕騎已驗收 / Caparison/shield/lance light-cavalry atlas accepted; v240-frk-cavalry |
 | SAR | 沙漠 / Desert | 家族層；既有單位外觀待擴充 / Family layer; existing-unit appearance pending |
-| AZT | 中美洲 / Mesoamerican | 家族層；步兵外觀待擴充 / Family layer; infantry appearance pending |
+| AZT | 中美洲 / Mesoamerican | 黑曜石武器民兵本地驗收，推送遭認證阻擋 / Obsidian militia locally accepted; push authentication-blocked; v240-azt-militia |
 | BRI | 堡壘 / Fortress | 長弓 archer 已驗收 / Longbow archer accepted; v240-bri-longbow |
 | CHN | 東方 / Eastern | 諸葛弩已驗收 / Repeating-crossbow atlas accepted; v240-special-atlas |
 | PER | 沙漠 / Desert | 戰象已驗收 / Elephant atlas accepted; v240-elephant |
@@ -23,8 +23,8 @@ English: This records actual progress against the existing sixteen civilizations
 | MAG | 草原 / Steppe | 家族層；輕騎外觀待擴充 / Family layer; light-cavalry appearance pending |
 | JPN | 東方 / Eastern | 札甲外觀已保存；格擋修復限定驗收 / Lamellar appearance saved; scoped block fix accepted; v240-jpn-lamellar, v240-jpn-block |
 
-繁體中文：英雄／招募使／雙 Boss 的共用 Atlas 與技能表現沿用 v240-champions 相關證據，不因矩陣未列而重做。下一項獨立核對 JPN 格擋缺口與已批准規則；先核對最新遠端及所有權。自然戰役、低 FPS、嚴格 Save/Load、性能與硬體缺口不在此表宣告通過。
+繁體中文：英雄／招募使／雙 Boss 的共用 Atlas 與技能表現沿用 v240-champions 相關證據，不因矩陣未列而重做。JPN／SPA／RNG／FRK 已驗收，不重做。認證恢復後先保存 AZT，再接續 BYZ 既有槍兵；先核對最新遠端及所有權。自然戰役、低 FPS、嚴格 Save/Load、性能與硬體缺口不在此表宣告通過。
 
-English: Retain existing shared hero/recruiter/two-Boss atlases and skill evidence; omission from this civilization table does not request recreation. Next independently reconcile the JPN block gap with approved rules after checking current remote and ownership. This table does not clear natural-campaign, low-FPS, strict Save/Load, performance or hardware gaps.
+English: Retain existing shared hero/recruiter/two-Boss atlases and skill evidence; omission from this civilization table does not request recreation. JPN/SPA/RNG/FRK are accepted and must not be repeated. After authentication recovery, save AZT then continue BYZ existing spearmen, checking current remote and ownership first. This table does not clear natural-campaign, low-FPS, strict Save/Load, performance or hardware gaps.
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true
