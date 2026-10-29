@@ -1,38 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "AZT 黑曜石步兵已遠端保存，接續 BYZ / AZT obsidian infantry remotely saved, continuing BYZ",
+  "name": "BYZ 札甲圓盾槍兵八方向動作已整合 / BYZ lamellar round-shield spearman directional actions integrated",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "a1fa940d926a467f2d231232eff39a0f0bcf4d10",
-  "application_source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
+  "latest_pushed_commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
+  "application_source_commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
   "completed": [
-    "TEU9 Node/13 Chromium accepted and remote saved",
-    "AZT3 Node/13 Chromium accepted, images reviewed and remote saved after transient auth recovery"
+    "BYZ 札甲圓盾槍兵八方向動作已整合",
+    "BYZ lamellar round-shield spearman directional actions integrated"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "AZT focused Node",
+      "name": "Focused Node",
       "result": "3 PASS",
-      "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
-      "path": "docs/evidence/v240-azt-militia/focused-node.txt"
+      "source_commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
+      "path": "docs/evidence/v240-byz-spearman/focused-node.txt"
     },
     {
-      "name": "AZT actual Chromium",
+      "name": "Actual Chromium",
       "result": "13 PASS",
-      "source_commit": "a7900ce7b833f65720206c3f611e0180a29e024d",
-      "path": "docs/evidence/v240-azt-militia/verified/browser.json"
+      "source_commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
+      "path": "docs/evidence/v240-byz-spearman/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-azt-militia/REPORT.md",
-    "docs/evidence/v240-azt-militia/auth-blocker.json",
-    "docs/handoff/QA-CIV-INFANTRY.md"
+    "docs/evidence/v240-byz-spearman/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -45,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "直接接續 BYZ 既有槍兵的札甲／圓盾／長矛外觀，不改平衡",
-    "Directly continue BYZ existing-spearman lamellar/round-shield/spear appearance without balance changes"
+    "以真實左鍵檢查新步兵頭部選取，若有缺陷先修復輸入再接續文明內容",
+    "Check native head clicks on new infantry; fix any input defect before further civilization content"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -54,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T19:06:17.701091+00:00",
+  "updated_at": "2026-10-29T19:12:04.663025+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -73,7 +71,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "CONTINUING_AFTER_TRANSIENT_AUTH_RECOVERY",
+  "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -101,6 +99,13 @@
       "node": 3,
       "chromium": 13,
       "status": "REMOTE_SAVED_AFTER_TRANSIENT_AUTH_RECOVERY"
+    },
+    {
+      "slice": "v240-byz-spearman",
+      "source": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
+      "node": 3,
+      "chromium": 13,
+      "report": "docs/evidence/v240-byz-spearman/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -114,7 +119,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "BYZ existing spearman visual atlas"
+    "NEXT_AUTHORIZED_TASK": "Check native head clicks on new infantry; fix any input defect before further civilization content"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

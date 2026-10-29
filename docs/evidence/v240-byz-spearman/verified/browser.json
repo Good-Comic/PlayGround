@@ -1,0 +1,215 @@
+{
+  "source_commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
+  "civ": "BYZ",
+  "type": "spearman",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "c8c4ec1444e5b84cba935bff70dd06897fd6a982",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T19:09:08.008273+00:00",
+        "resourceVerification": "SHA256_MATCH_69_FILES"
+      }
+    },
+    {
+      "name": "native barracks pays exact production costs",
+      "pass": true,
+      "detail": {
+        "queued": true,
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "food": 30,
+            "wood": 13
+          },
+          "ids": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "after": {
+          "food": 270,
+          "wood": 287,
+          "gold": 120,
+          "stone": 100
+        }
+      }
+    },
+    {
+      "name": "actual trained unit uses civilization atlas",
+      "pass": true,
+      "detail": {
+        "id": 20,
+        "civ": "BYZ",
+        "key": "BYZ:spearman",
+        "hp": 55,
+        "radius": 0.26
+      }
+    },
+    {
+      "name": "all 160 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": true,
+      "detail": {
+        "width": 3072,
+        "height": 1920,
+        "touchedFrameEdges": 0
+      }
+    },
+    {
+      "name": "native right-click moves the trained actor",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.948683298050526,
+          "y": 33.31622776601682
+        },
+        "seen": {
+          "idle": 111,
+          "walk": 289
+        }
+      }
+    },
+    {
+      "name": "production melee damage and four-frame attack",
+      "pass": true,
+      "detail": {
+        "before": 145,
+        "after": 142,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production attack sound dispatch",
+      "pass": true,
+      "detail": [
+        "spearman"
+      ]
+    },
+    {
+      "name": "production damage renders hit animation",
+      "pass": true,
+      "detail": {
+        "flash": 1,
+        "seen": {
+          "idle": 152,
+          "walk": 318,
+          "attack": 41,
+          "hit": 3
+        }
+      }
+    },
+    {
+      "name": "production death plays all four frames",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "enemy and other civilization retain generic atlas",
+      "pass": true,
+      "detail": {
+        "enemy": "spearman",
+        "other": "spearman"
+      }
+    },
+    {
+      "name": "asset failure retains renderer fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "100-unit static draw JS budget and <=20% paired median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 1.922499999962747,
+          "p50": 1.7000000029802322,
+          "p95": 3.100000001490116
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.5174999999813736,
+          "p50": 1.5,
+          "p95": 2.2999999970197678
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.1187499999068677,
+          "p50": 1,
+          "p95": 1.6000000014901161
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 0.9787499999627471,
+          "p50": 0.8999999985098839,
+          "p95": 1.3999999985098839
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 1.2487499999813736,
+          "p50": 0.8999999985098839,
+          "p95": 2.2000000029802322
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 0.9637500000186264,
+          "p50": 0.8999999985098839,
+          "p95": 1.3999999985098839
+        }
+      ]
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}

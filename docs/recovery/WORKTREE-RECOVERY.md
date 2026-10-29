@@ -1,7 +1,11 @@
-繁體中文：更新：Git 讀取與正常 Push 已恢復；來源與證據已隨 `a1fa940d926a467f2d231232eff39a0f0bcf4d10` 推送並核對。先前 401／無效認證為保留的歷史執行錯誤，未再阻擋本輪；原停止準備取消，直接接續 BYZ。不宣稱未重測的 GitHub API／gh 狀態全部恢復。
+# GAME FIRST 最新內容 / Latest GAME FIRST content
 
-English: Update: Git reads and a normal push recovered; source/evidence are pushed and verified through `a1fa940d926a467f2d231232eff39a0f0bcf4d10`. Prior401/invalid-auth observations remain historical execution evidence, no longer blocking this turn. The provisional stop was cancelled and BYZ work directly continues. Untested GitHub API/gh status is not claimed recovered.
+繁體中文：BYZ 札甲圓盾槍兵八方向動作已整合；來源 `c8c4ec1444e5b84cba935bff70dd06897fd6a982`，3 Node／13 Chromium PASS，報告 docs/evidence/v240-byz-spearman/REPORT.md。以真實左鍵檢查新步兵頭部選取，若有缺陷先修復輸入再接續文明內容。本次只做遊戲內容；不重做既有成果、不處理排程，安全保存後直接繼續。歷史自然戰役、嚴格存讀、低 FPS、性能與硬體缺口保留，未公開發布。
+
+English: BYZ lamellar round-shield spearman directional actions integrated; source `c8c4ec1444e5b84cba935bff70dd06897fd6a982`, 3 Node/13 Chromium PASS; report docs/evidence/v240-byz-spearman/REPORT.md. Check native head clicks on new infantry; fix any input defect before further civilization content. Gameplay content only: no recreation/scheduler work; continue after checkpoints. Historical campaign/strict save/low-FPS/performance/hardware gaps remain; nothing publicly deployed.
 
 ---
+
+觀察的已推送來源／Observed pushed source: `c8c4ec1444e5b84cba935bff70dd06897fd6a982`. Snapshot: `2b551235469ef6af09aac180f9ad4900aa758b94d350c15c2d973b95e9961d95`.
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true

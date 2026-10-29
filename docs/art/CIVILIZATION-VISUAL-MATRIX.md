@@ -18,7 +18,7 @@ English: This records actual progress against the existing sixteen civilizations
 | KOR | 東方 / Eastern | 巡防車已復原驗收 / Patrol-cart atlas recovered and accepted; v240-kor-cart |
 | SPA | 堡壘 / Fortress | 家族層；村民原生暈擊已修復，外觀待擴充 / Family layer; native villager stun fixed, appearance pending; v240-spa-stun |
 | TUR | 沙漠 / Desert | 家族層；既有單位外觀待擴充 / Family layer; existing-unit appearance pending |
-| BYZ | 沙漠 / Desert | 家族層；反制步兵外觀待擴充 / Family layer; counter-infantry appearance pending |
+| BYZ | 沙漠 / Desert | 札甲圓盾 spearman 已驗收 / Lamellar/round-shield spearman accepted; v240-byz-spearman |
 | VIK | 堡壘 / Fortress | 圓盾 guard 已驗收 / Round-shield guard accepted; v240-vik-roundshield |
 | MAG | 草原 / Steppe | 家族層；輕騎外觀待擴充 / Family layer; light-cavalry appearance pending |
 | JPN | 東方 / Eastern | 札甲外觀已保存；格擋修復限定驗收 / Lamellar appearance saved; scoped block fix accepted; v240-jpn-lamellar, v240-jpn-block |
