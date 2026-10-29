@@ -9,7 +9,7 @@ English: This records actual progress against the existing sixteen civilizations
 | MNG | 草原 / Steppe | 騎射 Atlas 已驗收 / Mounted-archer atlas accepted; v240-mng-horse-archer |
 | TEU | 堡壘 / Fortress | 家族層；盾衛外觀待擴充 / Family layer; guard appearance pending |
 | GOT | 堡壘 / Fortress | 家族層；步兵外觀待擴充 / Family layer; infantry appearance pending |
-| FRK | 堡壘 / Fortress | 家族層；騎兵外觀待擴充 / Family layer; cavalry appearance pending |
+| FRK | 堡壘 / Fortress | 披掛／長盾／騎槍輕騎已驗收 / Caparison/shield/lance light-cavalry atlas accepted; v240-frk-cavalry |
 | SAR | 沙漠 / Desert | 家族層；既有單位外觀待擴充 / Family layer; existing-unit appearance pending |
 | AZT | 中美洲 / Mesoamerican | 家族層；步兵外觀待擴充 / Family layer; infantry appearance pending |
 | BRI | 堡壘 / Fortress | 長弓 archer 已驗收 / Longbow archer accepted; v240-bri-longbow |

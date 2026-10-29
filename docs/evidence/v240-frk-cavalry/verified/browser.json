@@ -1,0 +1,213 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_VISUAL_SCENE_NOT_NATURAL_PLAY",
+  "source_commit": "8774db51cafa8bdcdbc1fead7f82188070f3d050",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed artifact",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "8774db51cafa8bdcdbc1fead7f82188070f3d050",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T17:58:47.299828+00:00",
+        "resourceVerification": "SHA256_MATCH_63_FILES"
+      }
+    },
+    {
+      "name": "native stable cavalry training pays exact costs",
+      "pass": true,
+      "detail": {
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "food": 65,
+            "gold": 20
+          },
+          "ids": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "after": {
+          "food": 235,
+          "wood": 300,
+          "gold": 100,
+          "stone": 100
+        },
+        "queued": true
+      }
+    },
+    {
+      "name": "production queue spawns the civilization cavalry",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "independent external cavalry loaded",
+      "pass": true,
+      "detail": {
+        "width": 2816,
+        "height": 1760,
+        "src": "assets/sprites/frk-cavalry-atlas.png"
+      }
+    },
+    {
+      "name": "production move command advances cavalry",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.044765861256494,
+          "y": 33.26119146531413
+        },
+        "state": "move"
+      }
+    },
+    {
+      "name": "production cavalry uses existing melee sound",
+      "pass": true,
+      "detail": [
+        "light_cavalry"
+      ]
+    },
+    {
+      "name": "production melee attack and live state synchronization",
+      "pass": true,
+      "detail": {
+        "enemyHP": 135.7,
+        "startHP": 145,
+        "actorState": "attack",
+        "shots": 0,
+        "seen": {
+          "idle": 218,
+          "walk": 365,
+          "attack": 6
+        },
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production damage displays hit animation",
+      "pass": true,
+      "detail": {
+        "hitFlash": 1,
+        "seen": {
+          "idle": 219,
+          "walk": 365,
+          "attack": 6,
+          "hit": 27
+        }
+      }
+    },
+    {
+      "name": "production death displays terminal atlas",
+      "pass": true,
+      "detail": {
+        "idle": 219,
+        "walk": 365,
+        "attack": 6,
+        "hit": 28,
+        "death": 46
+      }
+    },
+    {
+      "name": "civilization and enemy isolation",
+      "pass": true,
+      "detail": {
+        "other": "light_cavalry",
+        "enemy": "light_cavalry"
+      }
+    },
+    {
+      "name": "failed asset retains procedural fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "bounded 100-unit renderer JS within budget and no >20% median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 8.91999999997206,
+          "p50": 8.399999998509884,
+          "p95": 12.5
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.1549999999813736,
+          "p50": 1,
+          "p95": 1.9000000022351742
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.1137500000186265,
+          "p50": 1,
+          "p95": 1.800000000745058
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 8.711250000074505,
+          "p50": 7.899999998509884,
+          "p95": 10
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 8.70124999997206,
+          "p50": 8.399999998509884,
+          "p95": 11.100000001490116
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.1662499999627471,
+          "p50": 0.9000000022351742,
+          "p95": 2.300000000745058
+        }
+      ]
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}
