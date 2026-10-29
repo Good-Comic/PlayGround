@@ -1,42 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "SPA 村民可原生操作暈擊、完整暈眩與同頁 Continue 修復已驗收 / Playable native SPA villager stun, full stun and same-page Continue fixes accepted",
+  "name": "戰鬥、採集與施工特效 RNG 已隔離並完成實際交戰驗收 / Combat, gather and construction visual RNG isolated with actual combat acceptance",
   "requirement_source": "Latest explicit GAME FIRST content continuation; existing civilization matrix",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "14602521a23e3281f413a1119d80548067e38284",
-  "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
-  "application_source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+  "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
+  "application_source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
   "completed": [
-    "SPA 村民可原生操作暈擊、完整暈眩與同頁 Continue 修復已驗收",
-    "Playable native SPA villager stun, full stun and same-page Continue fixes accepted"
+    "戰鬥、採集與施工特效 RNG 已隔離並完成實際交戰驗收",
+    "Combat, gather and construction visual RNG isolated with actual combat acceptance"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Focused Node",
-      "result": "33 PASS",
-      "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-      "path": "docs/evidence/v240-spa-stun/focused-node.txt"
+      "result": "29 PASS",
+      "source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+      "path": "docs/evidence/v240-visual-rng/focused-node.txt"
     },
     {
       "name": "Actual Chromium",
-      "result": "9 PASS",
-      "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-      "path": "docs/evidence/v240-spa-stun/after-browser/browser.json"
-    },
-    {
-      "name": "Actual integrity-negative Chromium",
-      "result": "1 PASS",
-      "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-      "path": "docs/evidence/v240-spa-stun/integrity-browser/browser.json"
+      "result": "6 PASS",
+      "source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+      "path": "docs/evidence/v240-visual-rng/after-browser/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-spa-stun/REPORT.md"
+    "docs/evidence/v240-visual-rng/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -49,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "直接分離粒子與裝飾亂數，避免戰場特效消耗模擬 RNG",
-    "Directly separate particle and decorative randomness from simulation RNG"
+    "直接接續 FRK 既有輕騎獨立外觀與正式移動／近戰動畫，不改平衡",
+    "Directly continue FRK existing-light-cavalry identity and production movement/melee animation without balance changes"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -58,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T17:24:40.670305+00:00",
+  "updated_at": "2026-10-29T17:56:38.667061+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -105,6 +99,12 @@
       "node": 33,
       "chromium_gameplay": 9,
       "chromium_integrity": 1
+    },
+    {
+      "task": "VISUAL_RNG_ISOLATION",
+      "source": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+      "node": 29,
+      "chromium": 6
     }
   ],
   "continuity_policy": {
@@ -118,7 +118,7 @@
   "continuation_event": {
     "status": "CONTINUE_AUTHORIZED_TASK",
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Separate particle/decorative RNG from gameplay RNG",
+    "NEXT_AUTHORIZED_TASK": "FRK existing light cavalry visual atlas",
     "AUTO_RESUME_AVAILABLE": false
   }
 }

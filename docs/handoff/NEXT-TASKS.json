@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T17:24:40.670305+00:00",
+  "updated_at": "2026-10-29T17:56:38.667061+00:00",
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "直接分離粒子與裝飾亂數，避免戰場特效消耗模擬 RNG / Directly separate particle and decorative randomness from simulation RNG",
+      "name": "直接接續 FRK 既有輕騎獨立外觀與正式移動／近戰動畫，不改平衡 / Directly continue FRK existing-light-cavalry identity and production movement/melee animation without balance changes",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+      "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
       "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
       "completed": [],
       "uncommitted": [],
@@ -19,19 +19,19 @@
       "tests": [
         {
           "name": "Focused Node",
-          "result": "33 PASS",
-          "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-          "path": "docs/evidence/v240-spa-stun/focused-node.txt"
+          "result": "29 PASS",
+          "source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+          "path": "docs/evidence/v240-visual-rng/focused-node.txt"
         },
         {
           "name": "Actual Chromium",
-          "result": "9 PASS",
-          "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-          "path": "docs/evidence/v240-spa-stun/after-browser/browser.json"
+          "result": "6 PASS",
+          "source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+          "path": "docs/evidence/v240-visual-rng/after-browser/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-spa-stun/REPORT.md"
+        "docs/evidence/v240-visual-rng/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -44,8 +44,8 @@
         "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
       ],
       "next_steps": [
-        "直接分離粒子與裝飾亂數，避免戰場特效消耗模擬 RNG",
-        "Directly separate particle and decorative randomness from simulation RNG"
+        "直接接續 FRK 既有輕騎獨立外觀與正式移動／近戰動畫，不改平衡",
+        "Directly continue FRK existing-light-cavalry identity and production movement/melee animation without balance changes"
       ],
       "permissions": [
         "Independent development tests normal push",

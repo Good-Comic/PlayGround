@@ -1,34 +1,30 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T17:24:42.237680+00:00",
+  "generated_at": "2026-10-29T17:56:39.887980+00:00",
   "framework_status": "HANDOFF_FRAMEWORK_READY",
   "cross_agent_status": "NOT_TESTED",
   "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
   "trigger": {
     "kind": "MANUAL_HANDOFF",
     "confidence": "CONFIRMED",
-    "evidence": "SAFE_CHECKPOINT_CONTINUING_VISUAL_RNG"
+    "evidence": "SAFE_CHECKPOINT_CONTINUING_FRK_VISUALS"
   },
   "active_task": {
     "task_id": "V240-SPECIAL-ATLAS",
-    "name": "SPA \u6751\u6c11\u53ef\u539f\u751f\u64cd\u4f5c\u6688\u64ca\u3001\u5b8c\u6574\u6688\u7729\u8207\u540c\u9801 Continue \u4fee\u5fa9\u5df2\u9a57\u6536 / Playable native SPA villager stun, full stun and same-page Continue fixes accepted",
+    "name": "\u6230\u9b25\u3001\u63a1\u96c6\u8207\u65bd\u5de5\u7279\u6548 RNG \u5df2\u9694\u96e2\u4e26\u5b8c\u6210\u5be6\u969b\u4ea4\u6230\u9a57\u6536 / Combat, gather and construction visual RNG isolated with actual combat acceptance",
     "requirement_source": "Latest explicit GAME FIRST content continuation; existing civilization matrix",
     "priority": "P1",
     "agent": "Codex",
     "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
     "branch": "codex/riftwatch-v240-game-first",
     "base_commit": "14602521a23e3281f413a1119d80548067e38284",
-    "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
-    "application_source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+    "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
+    "application_source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
     "completed": [
-      "SPA \u6751\u6c11\u53ef\u539f\u751f\u64cd\u4f5c\u6688\u64ca\u3001\u5b8c\u6574\u6688\u7729\u8207\u540c\u9801 Continue \u4fee\u5fa9\u5df2\u9a57\u6536",
-      "Playable native SPA villager stun, full stun and same-page Continue fixes accepted"
+      "\u6230\u9b25\u3001\u63a1\u96c6\u8207\u65bd\u5de5\u7279\u6548 RNG \u5df2\u9694\u96e2\u4e26\u5b8c\u6210\u5be6\u969b\u4ea4\u6230\u9a57\u6536",
+      "Combat, gather and construction visual RNG isolated with actual combat acceptance"
     ],
     "uncommitted": [
-      {
-        "status": " M",
-        "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-      },
       {
         "status": " M",
         "path": "docs/handoff/ACTIVE-TASK.json"
@@ -58,25 +54,19 @@
     "tests": [
       {
         "name": "Focused Node",
-        "result": "33 PASS",
-        "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-        "path": "docs/evidence/v240-spa-stun/focused-node.txt"
+        "result": "29 PASS",
+        "source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+        "path": "docs/evidence/v240-visual-rng/focused-node.txt"
       },
       {
         "name": "Actual Chromium",
-        "result": "9 PASS",
-        "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-        "path": "docs/evidence/v240-spa-stun/after-browser/browser.json"
-      },
-      {
-        "name": "Actual integrity-negative Chromium",
-        "result": "1 PASS",
-        "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-        "path": "docs/evidence/v240-spa-stun/integrity-browser/browser.json"
+        "result": "6 PASS",
+        "source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+        "path": "docs/evidence/v240-visual-rng/after-browser/browser.json"
       }
     ],
     "evidence": [
-      "docs/evidence/v240-spa-stun/REPORT.md"
+      "docs/evidence/v240-visual-rng/REPORT.md"
     ],
     "failures": [
       "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -89,8 +79,8 @@
       "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
     ],
     "next_steps": [
-      "\u76f4\u63a5\u5206\u96e2\u7c92\u5b50\u8207\u88dd\u98fe\u4e82\u6578\uff0c\u907f\u514d\u6230\u5834\u7279\u6548\u6d88\u8017\u6a21\u64ec RNG",
-      "Directly separate particle and decorative randomness from simulation RNG"
+      "\u76f4\u63a5\u63a5\u7e8c FRK \u65e2\u6709\u8f15\u9a0e\u7368\u7acb\u5916\u89c0\u8207\u6b63\u5f0f\u79fb\u52d5\uff0f\u8fd1\u6230\u52d5\u756b\uff0c\u4e0d\u6539\u5e73\u8861",
+      "Directly continue FRK existing-light-cavalry identity and production movement/melee animation without balance changes"
     ],
     "permissions": [
       "Independent development tests normal push",
@@ -98,7 +88,7 @@
     ],
     "status": "IN_PROGRESS",
     "quota_status": "QUOTA_PERCENT_UNKNOWN",
-    "updated_at": "2026-10-29T17:24:41.761174+00:00",
+    "updated_at": "2026-10-29T17:56:39.439847+00:00",
     "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
     "ownership_at_snapshot": {
       "task": "V240-SPECIAL-ATLAS",
@@ -145,6 +135,12 @@
         "node": 33,
         "chromium_gameplay": 9,
         "chromium_integrity": 1
+      },
+      {
+        "task": "VISUAL_RNG_ISOLATION",
+        "source": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+        "node": 29,
+        "chromium": 6
       }
     ],
     "continuity_policy": {
@@ -158,31 +154,27 @@
     "continuation_event": {
       "status": "CONTINUE_AUTHORIZED_TASK",
       "STOP_REASON": "NOT_STOPPED",
-      "NEXT_AUTHORIZED_TASK": "Separate particle/decorative RNG from gameplay RNG",
+      "NEXT_AUTHORIZED_TASK": "FRK existing light cavalry visual atlas",
       "AUTO_RESUME_AVAILABLE": false
     }
   },
   "next_tasks": {
     "schema_version": 1,
-    "updated_at": "2026-10-29T17:24:40.670305+00:00",
+    "updated_at": "2026-10-29T17:56:38.667061+00:00",
     "tasks": [
       {
         "task_id": "V240-CONTENT-CONTINUATION",
-        "name": "\u76f4\u63a5\u5206\u96e2\u7c92\u5b50\u8207\u88dd\u98fe\u4e82\u6578\uff0c\u907f\u514d\u6230\u5834\u7279\u6548\u6d88\u8017\u6a21\u64ec RNG / Directly separate particle and decorative randomness from simulation RNG",
+        "name": "\u76f4\u63a5\u63a5\u7e8c FRK \u65e2\u6709\u8f15\u9a0e\u7368\u7acb\u5916\u89c0\u8207\u6b63\u5f0f\u79fb\u52d5\uff0f\u8fd1\u6230\u52d5\u756b\uff0c\u4e0d\u6539\u5e73\u8861 / Directly continue FRK existing-light-cavalry identity and production movement/melee animation without balance changes",
         "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
         "priority": "P1",
         "agent": "Codex",
         "environment": "New independent Linux Chromium workspace; local software rendering",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-        "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "application_source_commit": "77bd027f6f2b927ccd5fb8a16a3efa3cc9c53a6f",
         "completed": [],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -212,19 +204,19 @@
         "tests": [
           {
             "name": "Focused Node",
-            "result": "33 PASS",
-            "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-            "path": "docs/evidence/v240-spa-stun/focused-node.txt"
+            "result": "29 PASS",
+            "source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+            "path": "docs/evidence/v240-visual-rng/focused-node.txt"
           },
           {
             "name": "Actual Chromium",
-            "result": "9 PASS",
-            "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
-            "path": "docs/evidence/v240-spa-stun/after-browser/browser.json"
+            "result": "6 PASS",
+            "source_commit": "5ec12dde251220174c64248f01633da8f2c9a0a5",
+            "path": "docs/evidence/v240-visual-rng/after-browser/browser.json"
           }
         ],
         "evidence": [
-          "docs/evidence/v240-spa-stun/REPORT.md"
+          "docs/evidence/v240-visual-rng/REPORT.md"
         ],
         "failures": [
           "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -237,8 +229,8 @@
           "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
         ],
         "next_steps": [
-          "\u76f4\u63a5\u5206\u96e2\u7c92\u5b50\u8207\u88dd\u98fe\u4e82\u6578\uff0c\u907f\u514d\u6230\u5834\u7279\u6548\u6d88\u8017\u6a21\u64ec RNG",
-          "Directly separate particle and decorative randomness from simulation RNG"
+          "\u76f4\u63a5\u63a5\u7e8c FRK \u65e2\u6709\u8f15\u9a0e\u7368\u7acb\u5916\u89c0\u8207\u6b63\u5f0f\u79fb\u52d5\uff0f\u8fd1\u6230\u52d5\u756b\uff0c\u4e0d\u6539\u5e73\u8861",
+          "Directly continue FRK existing-light-cavalry identity and production movement/melee animation without balance changes"
         ],
         "permissions": [
           "Independent development tests normal push",
@@ -246,7 +238,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T17:24:40.799548+00:00",
+        "updated_at": "2026-10-29T17:56:38.829545+00:00",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
           "task": "V240-SPECIAL-ATLAS",
@@ -274,7 +266,7 @@
         "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-        "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
         "completed": [
           "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53c3\u6578\u751f\u6548 / Easy defeat5and valid Normal defeat4; parameters verified",
@@ -282,10 +274,6 @@
           "\u4fee\u5fa9\u539f\u751fSave Pause\u526f\u4f5c\u7528\u6062\u5fa9\uff0c\u7121\u5e73\u8861\u4fee\u6539 / Fixed native Save Pause side-effect recovery without balance changes"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -351,7 +339,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T17:24:40.799548+00:00",
+        "updated_at": "2026-10-29T17:56:38.829545+00:00",
         "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
@@ -370,7 +358,7 @@
         "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
-        "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
         "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
         "completed": [
@@ -381,10 +369,6 @@
           "Rejected and normally reverted ineffective cache experiment"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -453,7 +437,7 @@
         "status": "CHECKPOINTED",
         "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T17:24:40.799548+00:00"
+        "updated_at": "2026-10-29T17:56:38.829545+00:00"
       },
       {
         "task_id": "V240-SPRITE-ATLAS",
@@ -464,7 +448,7 @@
         "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
-        "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
         "completed": [
           "Recovered from remotely saved atlas implementation after prior worktree loss",
@@ -473,10 +457,6 @@
           "Applied user override revoking all quota-percentage stop thresholds"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -547,7 +527,7 @@
         ],
         "status": "CHECKPOINTED",
         "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-29T17:24:40.799548+00:00",
+        "updated_at": "2026-10-29T17:56:38.829545+00:00",
         "acceptance": "LOCAL_VERIFIED"
       },
       {
@@ -559,7 +539,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-        "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
         "completed": [
           "Added eight-direction isometric facing derived from real movement and live attack targets",
@@ -569,10 +549,6 @@
           "Verified militia archer and light cavalry through real Chromium after the real Start flow"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -642,7 +618,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T17:24:40.799548+00:00"
+        "updated_at": "2026-10-29T17:56:38.829545+00:00"
       },
       {
         "task_id": "V240-CIV-VISUAL-FAMILIES",
@@ -653,7 +629,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
-        "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
         "completed": [
           "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
@@ -663,10 +639,6 @@
           "Verified five representative families in a real exact-artifact Chromium gallery with video and zero browser errors"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -736,7 +708,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T17:24:40.799548+00:00"
+        "updated_at": "2026-10-29T17:56:38.829545+00:00"
       },
       {
         "task_id": "V240-SEED-SETUP",
@@ -747,7 +719,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-        "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "application_source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
         "completed": [
           "Prefilled each new-game menu with a visible shareable RW Seed",
@@ -757,10 +729,6 @@
           "Saved real Chromium screenshots, WebM, timeline and raw results and verified the remote branch SHA"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -835,7 +803,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T17:24:40.799548+00:00"
+        "updated_at": "2026-10-29T17:56:38.829545+00:00"
       },
       {
         "task_id": "V240-GAME-FIRST-BUILDINGS",
@@ -846,7 +814,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-        "latest_pushed_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "latest_pushed_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
         "completed": [
           "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
@@ -857,10 +825,6 @@
           "Pushed source and evidence commits and verified the remote branch SHA"
         ],
         "uncommitted": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -929,7 +893,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-29T17:24:40.799548+00:00"
+        "updated_at": "2026-10-29T17:56:38.829545+00:00"
       },
       {
         "task_id": "V234-CANDIDATE",
@@ -1766,14 +1730,14 @@
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-29T17:24:40.799548+00:00",
+    "captured_at_utc": "2026-10-29T17:56:38.829545+00:00",
     "trigger": "RECOVERY_RESUME",
-    "collector_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+    "collector_commit": "3d78b063cc02cdc3e17546748771ce836a5096ae",
     "collector_dirty": true,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-29T17:24:40.799548+00:00"
+      "queried_at": "2026-10-29T17:56:38.829545+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -1797,7 +1761,7 @@
       "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
       "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
       "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-      "codex/riftwatch-progress-feed": "39fdd949c2eb22d2ceaa1d953e3185b189b7604d",
+      "codex/riftwatch-progress-feed": "ebaca0bab9a65c6fd3fba8bb04eedddc90b1ac8d",
       "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
       "codex/riftwatch-task-ownership": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
       "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
@@ -1829,7 +1793,7 @@
       "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
       "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
       "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-      "codex/riftwatch-v240-game-first": "044e31793c3fffd7b651b47aea662e04ee394c93",
+      "codex/riftwatch-v240-game-first": "3d78b063cc02cdc3e17546748771ce836a5096ae",
       "main": "e35a73329ee7942627496e55b844d02b2501e685",
       "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
       "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -1859,8 +1823,8 @@
     "local_branches": [
       {
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "044e31793c3fffd7b651b47aea662e04ee394c93",
-        "remote_head": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "head": "3d78b063cc02cdc3e17546748771ce836a5096ae",
+        "remote_head": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "status": "REMOTE_SAVED"
       }
     ],
@@ -1868,7 +1832,7 @@
       {
         "path": "/workspace/riftwatch-v240-takeover",
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "head": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "locked": false,
         "task_id": "V240-V5-PLAYABILITY",
         "last_validation": [
@@ -1910,13 +1874,9 @@
           "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
         ],
         "remote_status": "REMOTE_SAVED",
-        "remote_head": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "remote_head": "3d78b063cc02cdc3e17546748771ce836a5096ae",
         "unpushed_commits": [],
         "changed_files": [
-          {
-            "status": " M",
-            "path": "docs/art/CIVILIZATION-VISUAL-MATRIX.md"
-          },
           {
             "status": " M",
             "path": "docs/handoff/ACTIVE-TASK.json"
@@ -1953,8 +1913,8 @@
           "dirty",
           "changed_files"
         ],
-        "previous_head": "044e31793c3fffd7b651b47aea662e04ee394c93",
-        "actual_head": "044e31793c3fffd7b651b47aea662e04ee394c93"
+        "previous_head": "3d78b063cc02cdc3e17546748771ce836a5096ae",
+        "actual_head": "3d78b063cc02cdc3e17546748771ce836a5096ae"
       }
     ],
     "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."

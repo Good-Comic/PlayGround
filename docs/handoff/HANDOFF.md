@@ -1,5 +1,13 @@
 # 最新內容切片 / Latest content slice
 
+繁體中文：戰鬥、採集與施工特效 RNG 已隔離並完成實際交戰驗收。來源 `5ec12dde251220174c64248f01633da8f2c9a0a5`，證據 `3d78b063cc02cdc3e17546748771ce836a5096ae`，29 Node／6 Chromium PASS。詳見 docs/evidence/v240-visual-rng/REPORT.md。直接接續 FRK 既有輕騎獨立外觀與正式移動／近戰動畫，不改平衡。既有恢復已完成，不重做；歷史自然戰役、嚴格 Save/Load、低 FPS、性能及硬體缺口保留，未公開發布，排程切換未確認。
+
+English: Combat, gather and construction visual RNG isolated with actual combat acceptance. Source `5ec12dde251220174c64248f01633da8f2c9a0a5`, evidence `3d78b063cc02cdc3e17546748771ce836a5096ae`, 29 Node/6 Chromium PASS. See docs/evidence/v240-visual-rng/REPORT.md. Directly continue FRK existing-light-cavalry identity and production movement/melee animation without balance changes. Recovery is complete and must not be repeated; historical natural campaign, strict Save/Load, low-FPS, performance and hardware gaps remain. Nothing publicly deployed; scheduler rebinding unconfirmed.
+
+---
+
+# 最新內容切片 / Latest content slice
+
 繁體中文：SPA 村民可原生操作暈擊、完整暈眩與同頁 Continue 修復已驗收。來源 `19b614e81337778931cce3a36bd11dcf841e1cf2`，證據 `044e31793c3fffd7b651b47aea662e04ee394c93`，33 Node／9 Chromium PASS。詳見 docs/evidence/v240-spa-stun/REPORT.md。直接分離粒子與裝飾亂數，避免戰場特效消耗模擬 RNG。既有恢復已完成，不重做；歷史自然戰役、嚴格 Save/Load、低 FPS、性能及硬體缺口保留，未公開發布，排程切換未確認。
 
 English: Playable native SPA villager stun, full stun and same-page Continue fixes accepted. Source `19b614e81337778931cce3a36bd11dcf841e1cf2`, evidence `044e31793c3fffd7b651b47aea662e04ee394c93`, 33 Node/9 Chromium PASS. See docs/evidence/v240-spa-stun/REPORT.md. Directly separate particle and decorative randomness from simulation RNG. Recovery is complete and must not be repeated; historical natural campaign, strict Save/Load, low-FPS, performance and hardware gaps remain. Nothing publicly deployed; scheduler rebinding unconfirmed.
