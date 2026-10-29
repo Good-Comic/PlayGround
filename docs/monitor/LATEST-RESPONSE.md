@@ -1,3 +1,3 @@
-繁體中文：原創諸葛弩外部Atlas已整合，12項Node與9項真實本地Chromium通過；保留原始失敗與錄影。未公開部署，接續已授權內容。
+繁體中文：新主線22項Node與14項真實本地Chromium通過，長矛／盾衛新素材與原始失敗已正常推送。原未推送工作獨立待復原，不冒用舊13項測試。接續水岸視覺，無公開發布；排程切換需使用者於介面核對。
 
-English: Original crossbow atlas integrated;12Node and9actual local Chromium checks pass, with failures and recording retained. No public deployment; continuing authorized content.
+English: New development passes22Nodeand14actual localChromiumchecks; new spear/shield artwork and initial failures are normally pushed. Original unpushed work remains isolated for recovery; old13tests are not reused. Continuing shoreline visuals without public release; scheduler rebinding requires userUIverification.

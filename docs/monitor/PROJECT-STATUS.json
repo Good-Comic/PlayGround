@@ -2,58 +2,72 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-28T18:20:29.172391+00:00",
+  "updated_at": "2026-10-29T06:54:10.719535+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "463c9d863b45af5be1e934499a61634921e19d65",
-    "build_sha": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1",
-    "summary": "\u7368\u7acb\u8af8\u845b\u5f29Atlas\u8207\u64ad\u653e\u6642\u5e8f\u4fee\u5fa9\u5df2\u4fdd\u5b58 / Independent crossbow atlas and playback repair saved",
+    "commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+    "build_sha": "dc88fd96a810936f99919b57d27804a682185d2d",
+    "summary": "\u65b0\u74b0\u5883\u9577\u77db\uff0f\u76fe\u885bAtlas\u901a\u904e\u9a57\u6536\u4e26\u4fdd\u5b58 / New-workspace spear/shield atlases accepted and saved",
     "code_changes": [
-      "\u516b\u65b9\u5411\u56db\u5f71\u683c\u539f\u5275\u6b66\u5668\u53ca\u5c64\u7532 / Original eight-direction four-frame weapon and lamellar kit",
-      "SVG\u8f49PNG\u6d88\u9664\u5df2\u91cf\u6e2c\u9000\u6b65 / Prerasterized SVG removes measured regression"
+      "\u65b0\u516b\u65b9\u5411\u4e94\u72c0\u614b\u56db\u5f71\u683c\u7d20\u6750\uff0c\u975e\u539f\u672a\u63a8\u9001Commit / New eight-direction five-state four-frame assets, not the original unpushed commit",
+      "\u4fee\u5fa9\u6b7b\u4ea1\u5f71\u683c\u88c1\u5207\u4e26\u4fdd\u7559\u521d\u6b21FAIL / Fixed death-frame clipping and retained initial FAIL"
     ],
     "next_steps": [
-      "\u63a5\u7e8c\u9577\u5175\u5668\uff0f\u76fe\u724c\u8fa8\u8b58\u5207\u7247 / Continue long-weapon and shield identity slice"
+      "\u63a5\u7e8c\u6c34\u5cb8\u8996\u89ba\u5207\u7247 / Continue shoreline visual slice"
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "\u5b9a\u5411\u6e2c\u8a66 / Focused tests",
+        "name": "22 focused Node",
         "status": "PASS",
-        "source_commit": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1",
-        "evidence": "docs/evidence/v240-special-atlas/focused-node.txt",
-        "evidence_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-        "evidence_blob": "1d14725cb420a6fef8f7e50d6cc3ca3aa72e46fa",
+        "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
+        "evidence": "docs/evidence/v240-migration/focused-node.txt",
+        "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+        "evidence_blob": "eaaf0319ef6a013db5d681b2fdc232b94d21ffc1",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "\u771f\u5be6\u672c\u5730Chromium / Actual local Chromium",
+        "name": "14 local controlled Chromium",
         "status": "PASS",
-        "source_commit": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1",
-        "evidence": "docs/evidence/v240-special-atlas/final/browser.json",
-        "evidence_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-        "evidence_blob": "32f99581630f516c5d67593e94bbb11667a8de99",
+        "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
+        "evidence": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
+        "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+        "evidence_blob": "acb556edf5edc9b4d7334b4d7a86f243d5e3261a",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
+        "id": "UNPUSHED_WORK_RECOVERY_PENDING",
+        "severity": "WARNING",
+        "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u5f85\u7368\u7acb\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u958b\u767c / Original9a0f19eanduncommittedQAawait isolated recovery, not blocking development",
+        "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+        "requires_user_decision": false
+      },
+      {
+        "id": "SCHEDULER_REBIND_NOT_VERIFIED",
+        "severity": "ACTION_REQUIRED",
+        "summary": "\u7121\u6392\u7a0b\u7ba1\u7406\u5de5\u5177\uff1b\u82e5310\u5206\u9418\u6392\u7a0b\u4ecd\u6307\u539f\u5c0d\u8a71\uff0c\u4f7f\u7528\u8005\u9700\u6539\u6307\u65b0\u5c0d\u8a71 / No scheduler tool; user must retarget any310-minute schedule still pointing to the old conversation",
+        "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+        "requires_user_decision": false
+      },
+      {
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
-        "summary": "\u81ea\u7136\u5341\u6ce2\u672a\u901a\u904e\u3001\u81ea\u7136NG+\u672a\u6e2c\uff1b\u4fdd\u7559\u4f4eFPS\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3 / Natural ten waves unpassed, natural NG+untested; retain low-FPS/save/performance/hardware gaps",
-        "source_commit": "463c9d863b45af5be1e934499a61634921e19d65",
+        "summary": "\u4fdd\u7559\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3 / Retain natural-campaign, clock, save, performance, Rift and hardware gaps",
+        "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u539f\u5275\u8af8\u845b\u5f29\u5916\u90e8Atlas\u5df2\u6574\u5408\uff0c12\u9805Node\u82079\u9805\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff1b\u4fdd\u7559\u539f\u59cb\u5931\u6557\u8207\u9304\u5f71\u3002\u672a\u516c\u958b\u90e8\u7f72\uff0c\u63a5\u7e8c\u5df2\u6388\u6b0a\u5167\u5bb9\u3002\n\nEnglish: Original crossbow atlas integrated;12Node and9actual local Chromium checks pass, with failures and recording retained. No public deployment; continuing authorized content.",
-    "event_id": "e3852b94b487d70b111cc23739a4ce2eadfef9c42b776421b3cd35dcc610928c",
-    "remote_head": "463c9d863b45af5be1e934499a61634921e19d65",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u65b0\u4e3b\u7dda22\u9805Node\u820714\u9805\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff0c\u9577\u77db\uff0f\u76fe\u885b\u65b0\u7d20\u6750\u8207\u539f\u59cb\u5931\u6557\u5df2\u6b63\u5e38\u63a8\u9001\u3002\u539f\u672a\u63a8\u9001\u5de5\u4f5c\u7368\u7acb\u5f85\u5fa9\u539f\uff0c\u4e0d\u5192\u7528\u820a13\u9805\u6e2c\u8a66\u3002\u63a5\u7e8c\u6c34\u5cb8\u8996\u89ba\uff0c\u7121\u516c\u958b\u767c\u5e03\uff1b\u6392\u7a0b\u5207\u63db\u9700\u4f7f\u7528\u8005\u65bc\u4ecb\u9762\u6838\u5c0d\u3002\n\nEnglish: New development passes22Nodeand14actual localChromiumchecks; new spear/shield artwork and initial failures are normally pushed. Original unpushed work remains isolated for recovery; old13tests are not reused. Continuing shoreline visuals without public release; scheduler rebinding requires userUIverification.",
+    "event_id": "5c824e605576c6be9f62d2bf45198301f520e228d8af3458f664a0c0c46fd39f",
+    "remote_head": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-28T18:20:29.172391+00:00",
+    "recorded_at": "2026-10-29T06:54:10.719535+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3006,52 +3020,66 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "build_sha": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1",
-      "summary": "\u7368\u7acb\u8af8\u845b\u5f29Atlas\u8207\u64ad\u653e\u6642\u5e8f\u4fee\u5fa9\u5df2\u4fdd\u5b58 / Independent crossbow atlas and playback repair saved",
+      "commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+      "build_sha": "dc88fd96a810936f99919b57d27804a682185d2d",
+      "summary": "\u65b0\u74b0\u5883\u9577\u77db\uff0f\u76fe\u885bAtlas\u901a\u904e\u9a57\u6536\u4e26\u4fdd\u5b58 / New-workspace spear/shield atlases accepted and saved",
       "code_changes": [
-        "\u516b\u65b9\u5411\u56db\u5f71\u683c\u539f\u5275\u6b66\u5668\u53ca\u5c64\u7532 / Original eight-direction four-frame weapon and lamellar kit",
-        "SVG\u8f49PNG\u6d88\u9664\u5df2\u91cf\u6e2c\u9000\u6b65 / Prerasterized SVG removes measured regression"
+        "\u65b0\u516b\u65b9\u5411\u4e94\u72c0\u614b\u56db\u5f71\u683c\u7d20\u6750\uff0c\u975e\u539f\u672a\u63a8\u9001Commit / New eight-direction five-state four-frame assets, not the original unpushed commit",
+        "\u4fee\u5fa9\u6b7b\u4ea1\u5f71\u683c\u88c1\u5207\u4e26\u4fdd\u7559\u521d\u6b21FAIL / Fixed death-frame clipping and retained initial FAIL"
       ],
       "next_steps": [
-        "\u63a5\u7e8c\u9577\u5175\u5668\uff0f\u76fe\u724c\u8fa8\u8b58\u5207\u7247 / Continue long-weapon and shield identity slice"
+        "\u63a5\u7e8c\u6c34\u5cb8\u8996\u89ba\u5207\u7247 / Continue shoreline visual slice"
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "\u5b9a\u5411\u6e2c\u8a66 / Focused tests",
+          "name": "22 focused Node",
           "status": "PASS",
-          "source_commit": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1",
-          "evidence": "docs/evidence/v240-special-atlas/focused-node.txt",
-          "evidence_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-          "evidence_blob": "1d14725cb420a6fef8f7e50d6cc3ca3aa72e46fa",
+          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
+          "evidence": "docs/evidence/v240-migration/focused-node.txt",
+          "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+          "evidence_blob": "eaaf0319ef6a013db5d681b2fdc232b94d21ffc1",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "\u771f\u5be6\u672c\u5730Chromium / Actual local Chromium",
+          "name": "14 local controlled Chromium",
           "status": "PASS",
-          "source_commit": "b9893ac1319f033a8ef0db0b98ed9fc183dde3f1",
-          "evidence": "docs/evidence/v240-special-atlas/final/browser.json",
-          "evidence_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-          "evidence_blob": "32f99581630f516c5d67593e94bbb11667a8de99",
+          "source_commit": "dc88fd96a810936f99919b57d27804a682185d2d",
+          "evidence": "docs/evidence/v240-migration/spear-guard-fixed/browser.json",
+          "evidence_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+          "evidence_blob": "acb556edf5edc9b4d7334b4d7a86f243d5e3261a",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
       "blockers": [
         {
+          "id": "UNPUSHED_WORK_RECOVERY_PENDING",
+          "severity": "WARNING",
+          "summary": "\u539f9a0f19e\u8207\u672a\u63d0\u4ea4QA\u5f85\u7368\u7acb\u6062\u5fa9\uff0c\u4e0d\u963b\u585e\u65b0\u958b\u767c / Original9a0f19eanduncommittedQAawait isolated recovery, not blocking development",
+          "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+          "requires_user_decision": false
+        },
+        {
+          "id": "SCHEDULER_REBIND_NOT_VERIFIED",
+          "severity": "ACTION_REQUIRED",
+          "summary": "\u7121\u6392\u7a0b\u7ba1\u7406\u5de5\u5177\uff1b\u82e5310\u5206\u9418\u6392\u7a0b\u4ecd\u6307\u539f\u5c0d\u8a71\uff0c\u4f7f\u7528\u8005\u9700\u6539\u6307\u65b0\u5c0d\u8a71 / No scheduler tool; user must retarget any310-minute schedule still pointing to the old conversation",
+          "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
+          "requires_user_decision": false
+        },
+        {
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
-          "summary": "\u81ea\u7136\u5341\u6ce2\u672a\u901a\u904e\u3001\u81ea\u7136NG+\u672a\u6e2c\uff1b\u4fdd\u7559\u4f4eFPS\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3 / Natural ten waves unpassed, natural NG+untested; retain low-FPS/save/performance/hardware gaps",
-          "source_commit": "463c9d863b45af5be1e934499a61634921e19d65",
+          "summary": "\u4fdd\u7559\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u5b58\u8b80\u3001\u6027\u80fd\u3001Rift\u8207\u786c\u9ad4\u7f3a\u53e3 / Retain natural-campaign, clock, save, performance, Rift and hardware gaps",
+          "source_commit": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u539f\u5275\u8af8\u845b\u5f29\u5916\u90e8Atlas\u5df2\u6574\u5408\uff0c12\u9805Node\u82079\u9805\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff1b\u4fdd\u7559\u539f\u59cb\u5931\u6557\u8207\u9304\u5f71\u3002\u672a\u516c\u958b\u90e8\u7f72\uff0c\u63a5\u7e8c\u5df2\u6388\u6b0a\u5167\u5bb9\u3002\n\nEnglish: Original crossbow atlas integrated;12Node and9actual local Chromium checks pass, with failures and recording retained. No public deployment; continuing authorized content.",
-      "event_id": "e3852b94b487d70b111cc23739a4ce2eadfef9c42b776421b3cd35dcc610928c",
-      "remote_head": "463c9d863b45af5be1e934499a61634921e19d65",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u65b0\u4e3b\u7dda22\u9805Node\u820714\u9805\u771f\u5be6\u672c\u5730Chromium\u901a\u904e\uff0c\u9577\u77db\uff0f\u76fe\u885b\u65b0\u7d20\u6750\u8207\u539f\u59cb\u5931\u6557\u5df2\u6b63\u5e38\u63a8\u9001\u3002\u539f\u672a\u63a8\u9001\u5de5\u4f5c\u7368\u7acb\u5f85\u5fa9\u539f\uff0c\u4e0d\u5192\u7528\u820a13\u9805\u6e2c\u8a66\u3002\u63a5\u7e8c\u6c34\u5cb8\u8996\u89ba\uff0c\u7121\u516c\u958b\u767c\u5e03\uff1b\u6392\u7a0b\u5207\u63db\u9700\u4f7f\u7528\u8005\u65bc\u4ecb\u9762\u6838\u5c0d\u3002\n\nEnglish: New development passes22Nodeand14actual localChromiumchecks; new spear/shield artwork and initial failures are normally pushed. Original unpushed work remains isolated for recovery; old13tests are not reused. Continuing shoreline visuals without public release; scheduler rebinding requires userUIverification.",
+      "event_id": "5c824e605576c6be9f62d2bf45198301f520e228d8af3458f664a0c0c46fd39f",
+      "remote_head": "878ec8f8cac6a06b0e80f420ac49e957820a65a2",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-28T18:20:29.172391+00:00",
+      "recorded_at": "2026-10-29T06:54:10.719535+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     }
   },
