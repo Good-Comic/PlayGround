@@ -5,7 +5,7 @@ import math
 from pathlib import Path
 
 STATES = ['idle', 'walk', 'attack', 'hit', 'death']
-VARIANTS = {'teu-guard': 'TEU', 'azt-militia': 'AZT', 'byz-spearman': 'BYZ', 'got-militia': 'GOT', 'spa-spearman': 'SPA', 'sar-guard': 'SAR'}
+VARIANTS = {'teu-guard': 'TEU', 'azt-militia': 'AZT', 'byz-spearman': 'BYZ', 'got-militia': 'GOT', 'spa-spearman': 'SPA', 'sar-guard': 'SAR', 'tur-archer': 'TUR'}
 
 
 def equipment(civ, dx, dy, state, frame):
@@ -77,12 +77,20 @@ def equipment(civ, dx, dy, state, frame):
         shield = '''<path d="M-12-37L-16-24L-9-19M9-38L13-27" stroke="#bbb29a" stroke-width="5" stroke-linecap="round"/><path d="M-14-29L-17-21L-11-17L-8-23Z" fill="#95684b" stroke="#dbc295"/>'''
         head = f'''<ellipse cx="{dx*2:.2f}" cy="-48" rx="6" ry="7" fill="{'#7b7868' if back else '#c09b72'}" stroke="#6d634d"/><path d="M-9-53Q-10-63 0-66Q9-63 9-53L14-56L15-51Q0-45-15-51L-14-56Z" fill="url(#steel)" stroke="#d8d6bb" stroke-width="1.2"/><path d="M-1-65Q2-60 1-52" fill="none" stroke="#d9d7ba" stroke-width="2"/><path d="M-6-44L-3-40H3L6-44" stroke="#6c5139" stroke-width="2" fill="none"/>'''
         torso = '''<path d="M-15-36L-15-45L-8-43L-4-36L-6-26L-17-27Z" fill="#ddd3b1" stroke="#9c805a"/><path d="M8-43L15-45L17-28L7-26L4-36Z" fill="#c4b993" stroke="#9c805a"/><path d="M-13-41L-10-30M-8-40L-6-31M9-40L7-30M13-41L15-31" stroke="#8e4939" stroke-width="2.5"/><path d="M-10-41L0-43L10-41L9-20L0-15L-9-20Z" fill="url(#steel)" stroke="#d2cbaa" stroke-width="1.2"/><path d="M-7-38L0-34L7-38M0-34V-20" fill="none" stroke="#dce1c9" stroke-width="1.3"/><path d="M-10-21L0-17L10-21L11-8L5-5L0-9L-5-5L-11-8Z" fill="#bdb18a" stroke="#796847"/><path d="M-7-17V-8M0-15V-10M7-17V-8" stroke="#8e4d3a" stroke-width="3"/><path d="M-8-9L-9 1M7-9L9 1" stroke="#a38d61" stroke-width="5"/>'''
-    else:
+    elif civ == 'SAR':
         shield = '''<g transform="translate(-12 -27)"><circle r="15" fill="#745d3b" stroke="#d4b77a" stroke-width="2"/><circle r="11.5" fill="#596955" stroke="#ae965f"/><path d="M0-10L3-3L10 0L3 3L0 10L-3 3L-10 0L-3-3Z" fill="#b79f65"/><circle r="3.5" fill="url(#bronze)" stroke="#e9d79c"/><path d="M-10-10L-8-8M10-10L8-8M10 10L8 8M-10 10L-8 8" stroke="#e6cd90" stroke-width="1.4"/></g>'''
         weapon = f'''<g transform="translate({handx:.2f} {handy:.2f}) rotate({swing*side}) scale({side} 1)"><path d="M0 4Q12-6 17-24Q19-32 16-41Q13-17-4 1Z" fill="url(#steel)" stroke="#425862" stroke-width="1"/><path d="M2-1Q13-15 16-34" stroke="#e2e6cc" fill="none"/><path d="M-7 5Q0 1 8 6M0 7L-2 15" stroke="#b69a5c" stroke-width="3"/><path d="M-4 16L1 16" stroke="#d4bd81" stroke-width="2"/></g>'''
         head = f'''<path d="M-7-54L-12-35L-6-32L0-40L6-33L12-36L7-54Z" fill="#c0b596" stroke="#897a59"/><ellipse cx="{dx*2:.2f}" cy="-48" rx="5.5" ry="7" fill="{'#807957' if back else '#ac845c'}" stroke="#705c41"/><path d="M-10-53Q-15-60-8-66Q0-73 9-66Q15-60 11-53Q0-49-10-53Z" fill="#d8d0b0" stroke="#9a8a62" stroke-width="1.2"/><path d="M-11-58Q0-63 11-59M-8-65Q-1-59 9-55M-7-53Q0-59 8-63" stroke="#a79c77" fill="none" stroke-width="1.5"/><path d="M-4-44L0-40L5-44" fill="#51442e"/>'''
         links = ''.join(f'<path d="M{x} {y}q-2 3 0 4q3 0 3-3" fill="none" stroke="#abb29c" stroke-width=".75"/>' for y in [-34,-29,-24] for x in [-7,-2,3,8])
         torso = f'''<path d="M-14-40L-8-44H8L14-40L12-17L15 1L5 4L0-6L-5 4L-15 1L-12-17Z" fill="#526852" stroke="#bcac77" stroke-width="1.2"/><path d="M-10-38L0-42L10-38L10-19L0-15L-10-19Z" fill="#59665c" stroke="#c0b588"/>{links}<path d="M-11-18L10-20" stroke="#624a30" stroke-width="3"/><path d="M-2-21H3V-17H-2Z" fill="#d2b775"/><path d="M-10-12L-11-1M9-13L11-1" stroke="#b6a576" stroke-width="1.5"/><path d="M-14-37L-17-22M14-37L17-24" stroke="#b7ab89" stroke-width="5"/>'''
+    else:
+        pull = [0,3,10,14][frame] if state == 'attack' else 10
+        arrow = f'<path d="M{-pull} 0H28M23-3L30 0L23 3" stroke="#d4c79b" stroke-width="1.2" fill="none"/>' if state != 'attack' or frame >= 2 else ''
+        weapon = f'''<g transform="translate({14*side} {-35+dy*4:.2f}) rotate({-dy*18*side:.2f}) scale({side} 1)"><path d="M2-24Q-6-16 6-10Q21 0 6 10Q-6 16 2 24" stroke="#57402b" stroke-width="4" fill="none"/><path d="M2-24Q-6-16 6-10Q21 0 6 10Q-6 16 2 24" stroke="#d7bb7a" stroke-width="1.5" fill="none"/><path d="M2-24L{-pull} 0L2 24" stroke="#d7d2ad" stroke-width=".9" fill="none"/>{arrow}</g>'''
+        shield = f'<path d="M-10-36L{-pull*.7:.2f} -35M9-36L{14*side} -35" stroke="#b9956a" stroke-width="3" stroke-linecap="round"/>'
+        head = f'''<path d="M-6-52L-9-35L-3-32L1-43Z" fill="#c6bea0" stroke="#96885d"/><ellipse cx="{dx*2:.2f}" cy="-47" rx="5.5" ry="7" fill="{'#766748' if back else '#bc976b'}" stroke="#775c3c"/><path d="M-7-56Q-8-68 0-73Q8-68 7-56Z" fill="#8b4e38" stroke="#c39b63"/><path d="M-11-56Q-9-63 0-63Q9-63 11-56L9-51Q0-48-9-51Z" fill="#d8cdae" stroke="#aa9468" stroke-width="1.1"/><path d="M-10-56Q0-54 9-59M-8-61L6-52" stroke="#b7a37b" fill="none" stroke-width="1.3"/>'''
+        arrows = ''.join(f'<path d="M{x}-37L{x-5}-58M{x-6}-60L{x-3}-57L{x-8}-57Z" stroke="#d3bc8e" stroke-width="1.1" fill="#bcb99d"/>' for x in [-10,-6,-2])
+        torso = f'''<path d="M-17-42L-8-40L-5-18L-13-17Z" fill="#725137" stroke="#b49965"/>{arrows}<path d="M-13-39L-7-43L0-40L7-43L13-39L10-17L13-5L5-2L0-8L-5-2L-13-5L-10-17Z" fill="#866043" stroke="#d0af79" stroke-width="1.2"/><path d="M-9-36L-5-26L-8-15M9-36L5-26L8-15M-7-39L0-27L7-39" stroke="#bba16a" fill="none" stroke-width="1.3"/><path d="M-10-20L10-18" stroke="#51442e" stroke-width="3"/><path d="M-2-21H3V-17H-2Z" fill="#d8bc79"/><path d="M-13-35L-16-24M13-35L16-24" stroke="#c9b797" stroke-width="5"/>'''
     return torso, head, shield, weapon
 
 

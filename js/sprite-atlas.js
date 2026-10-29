@@ -84,6 +84,13 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
     offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 60,
     states: UNIT_SPRITE_ATLASES.elephant.states,
   }),
+  'TUR:archer': Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -28, rx: 24, ry: 43 }),
+    id: 'tur-archer-v1', src: 'assets/sprites/tur-archer-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 65,
+    states: UNIT_SPRITE_ATLASES.elephant.states,
+  }),
   'SAR:guard': Object.freeze({
     pickBody: Object.freeze({ x: 0, y: -29, rx: 25, ry: 41 }),
     id: 'sar-guard-v1', src: 'assets/sprites/sar-guard-atlas.png', bakedPose: true, cacheFrames: true,
