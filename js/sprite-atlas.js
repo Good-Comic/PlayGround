@@ -64,18 +64,21 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
 
 export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
   'BYZ:spearman': Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -34, rx: 24, ry: 46 }),
     id: 'byz-spearman-v1', src: 'assets/sprites/byz-spearman-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 68,
     states: UNIT_SPRITE_ATLASES.elephant.states,
   }),
   'AZT:militia': Object.freeze({
+    pickBody: Object.freeze({ x: -2, y: -38, rx: 26, ry: 48 }),
     id: 'azt-militia-v1', src: 'assets/sprites/azt-militia-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 72,
     states: UNIT_SPRITE_ATLASES.elephant.states,
   }),
   'TEU:guard': Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -28, rx: 23, ry: 37 }),
     id: 'teu-guard-v1', src: 'assets/sprites/teu-guard-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 60,
@@ -122,6 +125,18 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
 export function unitSpriteAtlasKey(unit, civId) {
   const variant = `${civId}:${unit.type}`;
   return unit.team === 'player' && CIV_UNIT_SPRITE_ATLASES[variant] ? variant : unit.type;
+}
+
+// UI body picking only; never changes simulation radius, navigation or weapon range.
+export function atlasBodyContains(unit, civId, sx, sy, ground, scale = 1) {
+  const key = unitSpriteAtlasKey(unit, civId);
+  const atlas = CIV_UNIT_SPRITE_ATLASES[key] || UNIT_SPRITE_ATLASES[key];
+  const body = atlas?.pickBody;
+  if (!body || ![sx, sy, ground?.x, ground?.y, scale].every(Number.isFinite) || scale <= 0) return false;
+  const z = scale * atlas.scale;
+  const dx = (sx - ground.x - body.x * z) / (body.rx * z);
+  const dy = (sy - ground.y - body.y * z) / (body.ry * z);
+  return dx * dx + dy * dy <= 1;
 }
 
 export function atlasFrame(atlas, direction, state, elapsed = 0, progress = null) {
