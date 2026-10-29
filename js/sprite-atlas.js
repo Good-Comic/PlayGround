@@ -106,6 +106,8 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
     states: UNIT_SPRITE_ATLASES.elephant.states,
   }),
   'FRK:light_cavalry': Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -34, rx: 33, ry: 42 }),
+    healthBarHeight: 68,
     id: 'frk-cavalry-v1', src: 'assets/sprites/frk-cavalry-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: .88, directions: DIRECTION_MAP,
