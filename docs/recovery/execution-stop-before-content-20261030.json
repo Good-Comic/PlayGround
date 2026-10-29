@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "event": "stop",
+  "decision": "STOP_FOR_RECORDED_CONSTRAINT",
+  "STOP_REASON": "EXECUTION_BUDGET_BOUNDARY",
+  "EXECUTION_DURATION": {
+    "seconds": 3551.308,
+    "scope": "FIRST_JPN_TASK_SNAPSHOT_TO_FINAL_RECORD_PREPARATION_EXCLUDES_PREFLIGHT_AND_FINAL_PUBLICATION",
+    "start": "2026-10-29T17:03:57.391604+00:00",
+    "end": "2026-10-29T18:03:08.699536+00:00",
+    "status": "OBSERVED_INTERVAL_ONLY"
+  },
+  "NEXT_AUTHORIZED_TASK": "Distinct JPN block and SPA stun sound/status feedback using existing values",
+  "CHECKPOINT_SHA": "1d42dbf1f346a1ae1345aa2287f1ba6eca7e55b3",
+  "AUTO_RESUME_AVAILABLE": false,
+  "scheduler_status": "UNVERIFIED_NO_CONNECTED_SCHEDULER_ADAPTER",
+  "quota_status": "QUOTA_PERCENT_UNKNOWN",
+  "recorded_blocker": {
+    "reason": "EXECUTION_BUDGET_BOUNDARY",
+    "evidence_reference": "CURRENT_MODEL_TURN_EXECUTION_BUDGET",
+    "observation": "Current model-turn execution budget is near its boundary after actual continued development; this is not account-quota telemetry or an inferred wall-clock deadline."
+  },
+  "evidence_verification": "CALLER_RECORDED_NOT_INDEPENDENTLY_VERIFIED",
+  "explanation": "繁體中文：多次安全保存後已接續 JPN、SPA、Continue、RNG 與 FRK；本次因剩餘單輪執行預算不足以完成下一個含 Node／Chromium 的切片而保存。未觀測到正式額度拒絕、未主張固定分鐘限制，排程仍未驗證。 / English: Continued JPN, SPA, Continue, RNG and FRK work across safety checkpoints. Remaining model-turn budget cannot cover another Node/Chromium slice, so save at the execution-budget boundary. No official quota rejection or fixed-minute limit is claimed; scheduling remains unverified.",
+  "automatic_execution": false,
+  "enforcement_scope": "DECISION_AND_AUDIT_ONLY_NOT_A_PLATFORM_SESSION_CONTROLLER",
+  "recorded_at": "2026-10-29T18:03:08.699536+00:00",
+  "platform_forced_stop": false,
+  "quota_percent": null,
+  "full_turn_duration": "UNKNOWN_NO_PLATFORM_TURN_BOUNDARY_TELEMETRY",
+  "budget_evidence_scope": "MODEL_EXECUTION_BUDGET_NOT_PROVIDER_QUOTA_OR_FIXED_TIMER",
+  "previous_voluntary_stop": "docs/recovery/execution-stop-before-1460252.json"
+}

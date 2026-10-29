@@ -2,12 +2,12 @@
   "task_id": "V240-SPECIAL-ATLAS",
   "name": "英雄與 Boss 頭部選取及命令已修復 / Hero/Boss head selection and orders fixed",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
-  "priority": "P0",
+  "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "4e6d62ece169a34d98f8b9beced063172daba02b",
+  "latest_pushed_commit": "01c2b60e633d1ddce0cca74dbedb73a234a987f5",
   "application_source_commit": "4e6d62ece169a34d98f8b9beced063172daba02b",
   "completed": [
     "英雄與 Boss 原生頭部選取、Aegis 與指定攻擊驗收",
@@ -48,9 +48,9 @@
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "IN_PROGRESS",
+  "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T20:07:32.578942+00:00",
+  "updated_at": "2026-10-29T20:09:03.955894+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -69,7 +69,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
+  "execution_state": "PAUSED_EXECUTION_BUDGET_SAFE_STOP_NOT_TASK_COMPLETE",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -186,8 +186,17 @@
     "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
   },
   "continuation_event": {
-    "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Inspect native visible-head picking on hero/Bosses, then civilization heroes and tactics"
+    "STOP_REASON": "EXECUTION_BUDGET_BOUNDARY",
+    "EXECUTION_DURATION": {
+      "seconds": 4718.916,
+      "scope": "FIRST_CONTENT_COMMIT_TO_STOP_PREPARATION_ONLY_SESSION_START_UNKNOWN_EXCLUDES_FINAL_PUSH",
+      "start": "2026-10-29T18:50:25+00:00",
+      "end": "2026-10-29T20:09:03.916099+00:00",
+      "status": "OBSERVED_INTERVAL_ONLY"
+    },
+    "NEXT_AUTHORIZED_TASK": "TEU civilization hero independent equipment and existing-skill visuals; revalidate latest source/ownership first",
+    "CHECKPOINT_SHA": "01c2b60e633d1ddce0cca74dbedb73a234a987f5",
+    "AUTO_RESUME_AVAILABLE": "UNVERIFIED"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
