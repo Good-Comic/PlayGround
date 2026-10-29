@@ -1,3 +1,3 @@
-繁體中文：PER戰象7Node／12Chromium、MNG騎射兵10Node／13Chromium通過，包含原生付費訓練、移動、真正傷害／箭矢及文明外觀隔離。均為本地受控驗收，非自然戰役或硬體PASS。重複排程喚醒記錄RESUME_SKIPPED_ACTIVE_TASK，未另啟寫入者；沒有排程切換或公開部署宣稱。
+繁體中文：P0 原成果復原完成。KOR 原圖檢視完成，原 4 Node／14 Chromium 為歷史證據；音效本輪 4 Node／19 Chromium 通過，附實際畫面及音訊。未開發下一兵種或公開部署。
 
-English: PER elephant passes7Node/12Chromium and MNG horse archer10Node/13Chromium, including native paid training, movement, actual damage/arrows and civilization appearance isolation. These are scoped local controlled checks, not natural campaigns or hardware PASS. Duplicate wake recorded RESUME_SKIPPED_ACTIVE_TASK without another writer; no scheduler rebinding or public deployment claimed.
+English: P0 original-work recovery is complete. KOR original images were reviewed; its original 4 Node/14 Chromium results remain historical evidence. Audio passed 4 Node/19 Chromium checks this turn with actual screenshots and audio. No next-unit development or public deployment.
