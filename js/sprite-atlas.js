@@ -11,7 +11,7 @@ const DIRECTION_MAP = Object.freeze(Object.fromEntries(DIRECTIONS.map((direction
 export const UNIT_SPRITE_ATLASES = Object.freeze({
   ...Object.fromEntries(['commander', 'recruiter', 'warlord', 'warlord2'].map(type => [type, Object.freeze({
     id: `${type}-v1`, src: `assets/sprites/${type}-atlas.png`, bakedPose: true,
-    frame: Object.freeze({ width: 160, height: 160 }), anchor: Object.freeze({ x: 80, y: 88 }),
+    frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: 0.78, directions: DIRECTION_MAP,
     states: Object.freeze(Object.fromEntries(Object.entries(STATES).map(([name, animation]) =>
       [name, Object.freeze({ ...animation, frames: 4, fps: animation.fps * 2 })]))),
@@ -58,9 +58,11 @@ export function atlasFrame(atlas, direction, state, elapsed = 0, progress = null
   if (!Number.isInteger(directionIndex) || !animation) return null;
   const raw = progress == null ? Math.floor(Math.max(0, elapsed) * animation.fps) : Math.floor(Math.max(0, Math.min(.9999, progress)) * animation.frames);
   const frame = animation.loop ? raw % animation.frames : Math.min(animation.frames - 1, raw);
+  const perRow = atlas.directionsPerRow || Object.keys(atlas.directions).length;
+  const directionRows = Math.ceil(Object.keys(atlas.directions).length / perRow);
   return {
-    sx: (directionIndex * animation.frames + frame) * atlas.frame.width,
-    sy: animation.row * atlas.frame.height,
+    sx: ((directionIndex % perRow) * animation.frames + frame) * atlas.frame.width,
+    sy: (animation.row * directionRows + Math.floor(directionIndex / perRow)) * atlas.frame.height,
     sw: atlas.frame.width,
     sh: atlas.frame.height,
     frame,

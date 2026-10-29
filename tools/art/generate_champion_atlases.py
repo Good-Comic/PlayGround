@@ -5,7 +5,7 @@ from pathlib import Path
 
 KINDS = ['commander', 'recruiter', 'warlord', 'warlord2']
 STATES = ['idle', 'walk', 'attack', 'hit', 'death']
-SIZE = 160
+SIZE = 176
 
 
 def cell(kind, direction, state, frame):
@@ -58,7 +58,7 @@ def cell(kind, direction, state, frame):
     torso = f'<path d="M-12-34L-10-9L0-4L10-9L12-34Z" fill="{metal}" stroke="#343e42" stroke-width="1.5"/><path d="M-10-28H10M-9-21H9M0-33V-9" stroke="{trim}" stroke-width="1"/>'
     if support:
         torso = f'<path d="M-8-38L-17-3Q0 6 17-3L8-38Z" fill="{cloth}" stroke="#8b7750" stroke-width="1.4"/><path d="M0-34V-1M-8-19H8" stroke="#b18c48" stroke-width="2"/>'
-    return f'''<g transform="translate(80 88)">
+    return f'''<g transform="translate(88 96)">
       <ellipse cy="3" rx="18" ry="5" fill="#131b20" opacity=".28"/>
       <g transform="translate({hit} {bob}) rotate({fall})" opacity="{1-frame*.13 if state=='death' else 1}">
       <path d="M-10-40L{-21+cape_shift}-1L-4-6L6 0L{21+cape_shift}-4L10-40Z" fill="{cloth}" stroke="#30313c" stroke-width="1.4"/>
@@ -80,8 +80,8 @@ def build(kind):
     for row, state in enumerate(STATES):
         for direction in range(8):
             for frame in range(4):
-                cells.append(f'<g transform="translate({(direction*4+frame)*SIZE} {row*SIZE})">{cell(kind,direction,state,frame)}</g>')
-    return f'<svg xmlns="http://www.w3.org/2000/svg" width="5120" height="800" viewBox="0 0 5120 800"><title>Riftwatch original {kind} animation atlas</title>{"".join(cells)}</svg>\n'
+                cells.append(f'<g transform="translate({((direction%4)*4+frame)*SIZE} {(row*2+direction//4)*SIZE})">{cell(kind,direction,state,frame)}</g>')
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="2816" height="1760" viewBox="0 0 2816 1760"><title>Riftwatch original {kind} animation atlas</title>{"".join(cells)}</svg>\n'
 
 
 if __name__ == '__main__':

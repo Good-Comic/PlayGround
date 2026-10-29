@@ -28,17 +28,17 @@ try {
     c.width = e.image.naturalWidth; c.height = e.image.naturalHeight;
     const ctx = c.getContext('2d', { willReadFrequently: true }); ctx.drawImage(e.image, 0, 0);
     const pixels = ctx.getImageData(0, 0, c.width, c.height).data, failures = [];
-    for (let row = 0; row < 5; row++) for (let col = 0; col < 32; col++) {
+    for (let row = 0; row < 10; row++) for (let col = 0; col < 16; col++) {
       let ink = 0, border = 0;
-      for (let y = 0; y < 160; y++) for (let x = 0; x < 160; x++) {
-        const a = pixels[((row * 160 + y) * c.width + col * 160 + x) * 4 + 3];
-        if (a) { ink++; if (x === 0 || x === 159 || y === 0 || y === 159) border++; }
+      for (let y = 0; y < 176; y++) for (let x = 0; x < 176; x++) {
+        const a = pixels[((row * 176 + y) * c.width + col * 176 + x) * 4 + 3];
+        if (a) { ink++; if (x === 0 || x === 175 || y === 0 || y === 175) border++; }
       }
       if (ink < 100 || border) failures.push({ row, col, ink, border });
     }
     return { type, width: c.width, height: c.height, failures };
   }));
-  check('640 decoded frames have visible artwork and no edge clipping', sheets.every(x => x.width === 5120 && x.height === 800 && !x.failures.length), sheets);
+  check('640 decoded frames have visible artwork and no edge clipping', sheets.every(x => x.width === 2816 && x.height === 1760 && !x.failures.length), sheets);
   for (const type of ['commander', 'recruiter', 'warlord', 'warlord2']) {
     await page.evaluate(type => {
       const g = ageOfAsh.game, r = ageOfAsh.renderer;
