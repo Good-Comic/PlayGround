@@ -1,0 +1,70 @@
+{
+  "source_commit": "bb0e43f8ff1cd2fb5e6691f1521115d4aa5efbcf",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_HEAD_SELECTION_AND_MOVE",
+  "checks": [
+    {
+      "name": "FRK: exact build",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "FRK: legacy foot click still selects",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "FRK: real helmet/headdress click selects actor",
+      "pass": true,
+      "detail": {
+        "points": {
+          "foot": {
+            "x": 720,
+            "y": 414
+          },
+          "head": {
+            "x": 720,
+            "y": 351.44
+          },
+          "ground": {
+            "x": 870,
+            "y": 530
+          }
+        },
+        "selected": {
+          "selected": [
+            {
+              "id": 20,
+              "type": "light_cavalry"
+            }
+          ],
+          "actor": 20,
+          "paused": false
+        }
+      }
+    },
+    {
+      "name": "FRK: head-selected actor accepts actual move order",
+      "pass": true,
+      "detail": {
+        "x": 40.56999999999999,
+        "y": 40,
+        "start": {
+          "x": 40,
+          "y": 40
+        }
+      }
+    },
+    {
+      "name": "FRK: empty ground remains deselectable",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "no browser/network errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

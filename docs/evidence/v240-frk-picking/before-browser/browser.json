@@ -1,0 +1,51 @@
+{
+  "source_commit": "35c54c55eddce7def1639ed12c40fc684a1aec6b",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_HEAD_SELECTION_AND_MOVE",
+  "checks": [
+    {
+      "name": "FRK: exact build",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "FRK: legacy foot click still selects",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "FRK: real helmet/headdress click selects actor",
+      "pass": false,
+      "detail": {
+        "points": {
+          "foot": {
+            "x": 720,
+            "y": 414
+          },
+          "head": {
+            "x": 720,
+            "y": 351.44
+          },
+          "ground": {
+            "x": 870,
+            "y": 530
+          }
+        },
+        "selected": {
+          "selected": [],
+          "actor": 20,
+          "paused": false
+        }
+      }
+    },
+    {
+      "name": "execution",
+      "pass": false,
+      "detail": {
+        "message": "FRK: real helmet/headdress click selects actor",
+        "stack": "Error: FRK: real helmet/headdress click selects actor\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/civ_unit_picking_browser.mjs:4:88)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/civ_unit_picking_browser.mjs:10:207"
+      }
+    }
+  ],
+  "errors": [],
+  "pass": false
+}
