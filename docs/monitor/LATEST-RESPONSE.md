@@ -1,3 +1,3 @@
-繁體中文：特效 RNG 已隔離，續做 FRK 輕騎辨識度。定向 Node 29／真實 Chromium 6 通過，圖片已人工檢視；未改平衡或公開部署。
+繁體中文：JPN 修復後直接接續 SPA、Continue、粒子 RNG 與 FRK，未把安全保存當成完成。各來源定向 Node 與真實 Chromium 通過；數字為各自測試群，非不重複總數。原失敗及全部歷史缺口保留。STOP_REASON=EXECUTION_BUDGET_BOUNDARY，非固定分鐘限制、正式額度拒絕或 Cloud 故障；完整平台計時及正式額度未知。AUTO_RESUME_AVAILABLE=false（未驗證）；無公開部署。
 
-English: Effect RNG isolated; continuing FRK cavalry identity. 29 focused Node/6 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.
+English: JPN completion directly led to SPA, Continue, particle RNG and FRK work across safety checkpoints. Source-specific Node and actual Chromium cohorts pass; counts are per cohort, not deduplicated totals. Original failures/historical gaps remain. STOP_REASON=EXECUTION_BUDGET_BOUNDARY, not a fixed-minute limit, official quota rejection or Cloud failure; full platform timing and official quota are unknown. AUTO_RESUME_AVAILABLE=false (unverified); nothing publicly deployed.
