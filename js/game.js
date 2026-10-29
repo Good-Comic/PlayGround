@@ -1906,7 +1906,7 @@ export class Game {
         const second = this.nearestEnemyAt(target.x, target.y, 4.5) || target;
         this.spawnProjectile(u.x, u.y - 0.45, second, damage * this.effects.extraArrowDamageMul, u.team, 0.85, u);
       }
-      this.sound?.arrow();
+      this.sound?.arrow(u.type);
     } else {
       this.applyDamage(target, damage, u);
       // Spanish villager stun: first hit every 8s stuns non-boss for 0.5s
@@ -1928,7 +1928,7 @@ export class Game {
           hit++;
         }
       }
-      this.sound?.attack();
+      this.sound?.attack(u.type);
       if (u.team === 'player' && this.selection.includes(u)) {
         this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'slash', 'rgba(244,226,178,ALPHA)', 1, 1, 0.35);
       }

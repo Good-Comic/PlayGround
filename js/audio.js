@@ -85,8 +85,28 @@ export class Sound {
     this.tone(1180, 0.1, 'sine', 0.025, 1100, 0.04);
   }
   chop() { if (this.throttle('chop', 180)) this.noise(0.08, 0.06, 700); }
-  attack() { if (this.throttle('attack', 55)) { this.noise(0.06, 0.055, 1900, 0, 'bandpass'); this.tone(110, 0.08, 'triangle', 0.04, 70); } }
-  arrow() { if (this.throttle('arrow', 65)) this.noise(0.13, 0.035, 2700, 0, 'highpass'); }
+  attack(unitType) {
+    if (!this.ctx || !this.enabled || !this.throttle('attack', 55)) return;
+    if (unitType === 'elephant') {
+      this.noise(.16, .065, 240);
+      this.tone(78, .2, 'sine', .065, 35);
+      this.tone(160, .05, 'triangle', .02, 90, .015);
+    } else {
+      this.noise(.06, .055, 1900, 0, 'bandpass');
+      this.tone(110, .08, 'triangle', .04, 70);
+    }
+  }
+  arrow(unitType) {
+    if (!this.ctx || !this.enabled || !this.throttle('arrow', 65)) return;
+    if (unitType === 'patrol_cart') {
+      this.noise(.1, .035, 1300, 0, 'bandpass');
+      this.tone(320, .1, 'triangle', .035, 110);
+      this.tone(880, .045, 'sine', .015, 500, .012);
+    } else if (unitType === 'horse_archer') {
+      this.noise(.1, .025, 2800, 0, 'highpass');
+      this.tone(460, .08, 'triangle', .025, 250);
+    } else this.noise(.13, .035, 2700, 0, 'highpass');
+  }
   hit() { if (this.throttle('hit', 70)) this.noise(0.07, 0.04, 950, 0, 'bandpass'); }
   build() { if (this.throttle('build', 380)) { this.tone(180, 0.05, 'square', 0.025, 120); this.noise(0.06, 0.03, 1500); } }
   complete() {
