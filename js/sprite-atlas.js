@@ -17,6 +17,7 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
       [name, Object.freeze({ ...animation, frames: 4, fps: animation.fps * 2 })]))),
   }),
   ...Object.fromEntries(['commander', 'recruiter', 'warlord', 'warlord2'].map(type => [type, Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -28, rx: type === 'recruiter' ? 23 : 29, ry: 39 }),
     id: `${type}-v1`, src: `assets/sprites/${type}-atlas.png`, bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: 0.78, directions: DIRECTION_MAP,
