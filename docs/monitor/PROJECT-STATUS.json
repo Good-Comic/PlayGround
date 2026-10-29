@@ -2,18 +2,18 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-29T17:09:12.044074+00:00",
+  "updated_at": "2026-10-29T17:24:44.654219+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "9d9f8d4e887e45b46dfcde08423641fa43a1dde4",
-    "build_sha": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
-    "summary": "JPN \u683c\u64cb\u5df2\u4fee\u5fa9\u9a57\u6536\uff0c\u76f4\u63a5\u63a5\u7e8c SPA \u6688\u64ca / JPN block fixed and accepted; directly continuing SPA stun",
+    "commit": "cffda2868cfc7b15621659225d314088b5f00d21",
+    "build_sha": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+    "summary": "SPA \u6688\u64ca\u8207\u539f\u751f Continue \u5df2\u4fee\u5fa9\uff0c\u7e8c\u505a\u7279\u6548 RNG \u9694\u96e2 / SPA stun and native Continue fixed; continuing effect RNG isolation",
     "code_changes": [
-      "JPN \u683c\u64cb\u5df2\u4fee\u5fa9\u9a57\u6536\uff0c\u76f4\u63a5\u63a5\u7e8c SPA \u6688\u64ca",
-      "JPN block fixed and accepted; directly continuing SPA stun"
+      "SPA \u6688\u64ca\u8207\u539f\u751f Continue \u5df2\u4fee\u5fa9\uff0c\u7e8c\u505a\u7279\u6548 RNG \u9694\u96e2",
+      "SPA stun and native Continue fixed; continuing effect RNG isolation"
     ],
     "next_steps": [
       "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -21,21 +21,30 @@
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "20 focused Node PASS",
+        "name": "33 focused Node PASS",
         "status": "PASS",
-        "source_commit": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
-        "evidence": "docs/evidence/v240-jpn-block/focused-node.txt",
-        "evidence_commit": "6efb89eab99aad8b77633f3e14c4e6ff1025052c",
-        "evidence_blob": "7ef6a4e1a87f486da352a63f1989c576c71adbb2",
+        "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+        "evidence": "docs/evidence/v240-spa-stun/focused-node.txt",
+        "evidence_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "evidence_blob": "c4505dc96a1091354a1814145505686c095ce9eb",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
         "name": "9 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
-        "evidence": "docs/evidence/v240-jpn-block/after-browser/browser.json",
-        "evidence_commit": "6efb89eab99aad8b77633f3e14c4e6ff1025052c",
-        "evidence_blob": "2f5a3c3bc79123e511b02fbcdb055d2744c8ab2f",
+        "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+        "evidence": "docs/evidence/v240-spa-stun/after-browser/browser.json",
+        "evidence_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "evidence_blob": "87e4ba277fa81030b45b066c869d7815d218d986",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "1 actual integrity-negative Chromium check",
+        "status": "PASS",
+        "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+        "evidence": "docs/evidence/v240-spa-stun/integrity-browser/browser.json",
+        "evidence_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+        "evidence_blob": "29924ff407fc4b362005db739df67dbe953dde23",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -44,16 +53,16 @@
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
         "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
-        "source_commit": "9d9f8d4e887e45b46dfcde08423641fa43a1dde4",
+        "source_commit": "cffda2868cfc7b15621659225d314088b5f00d21",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aJPN \u683c\u64cb\u5df2\u4fee\u5fa9\u9a57\u6536\uff0c\u76f4\u63a5\u63a5\u7e8c SPA \u6688\u64ca\u3002\u5b9a\u5411 Node 20\uff0f\u771f\u5be6 Chromium 9 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: JPN block fixed and accepted; directly continuing SPA stun. 20 focused Node/9 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "7b5d5fd3339e324a9f75ba708ef70aeed90f51a5d5e44476804558302c9392d7",
-    "remote_head": "9d9f8d4e887e45b46dfcde08423641fa43a1dde4",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aSPA \u6688\u64ca\u8207\u539f\u751f Continue \u5df2\u4fee\u5fa9\uff0c\u7e8c\u505a\u7279\u6548 RNG \u9694\u96e2\u3002\u5b9a\u5411 Node 33\uff0f\u771f\u5be6 Chromium 9 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: SPA stun and native Continue fixed; continuing effect RNG isolation. 33 focused Node/9 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "6c098682f8303e789248859d828046b8b5575aaf67c6b5743b172802ec78cab7",
+    "remote_head": "cffda2868cfc7b15621659225d314088b5f00d21",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-29T17:09:12.044074+00:00",
+    "recorded_at": "2026-10-29T17:24:44.654219+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3006,12 +3015,12 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "9d9f8d4e887e45b46dfcde08423641fa43a1dde4",
-      "build_sha": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
-      "summary": "JPN \u683c\u64cb\u5df2\u4fee\u5fa9\u9a57\u6536\uff0c\u76f4\u63a5\u63a5\u7e8c SPA \u6688\u64ca / JPN block fixed and accepted; directly continuing SPA stun",
+      "commit": "cffda2868cfc7b15621659225d314088b5f00d21",
+      "build_sha": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+      "summary": "SPA \u6688\u64ca\u8207\u539f\u751f Continue \u5df2\u4fee\u5fa9\uff0c\u7e8c\u505a\u7279\u6548 RNG \u9694\u96e2 / SPA stun and native Continue fixed; continuing effect RNG isolation",
       "code_changes": [
-        "JPN \u683c\u64cb\u5df2\u4fee\u5fa9\u9a57\u6536\uff0c\u76f4\u63a5\u63a5\u7e8c SPA \u6688\u64ca",
-        "JPN block fixed and accepted; directly continuing SPA stun"
+        "SPA \u6688\u64ca\u8207\u539f\u751f Continue \u5df2\u4fee\u5fa9\uff0c\u7e8c\u505a\u7279\u6548 RNG \u9694\u96e2",
+        "SPA stun and native Continue fixed; continuing effect RNG isolation"
       ],
       "next_steps": [
         "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -3019,21 +3028,30 @@
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "20 focused Node PASS",
+          "name": "33 focused Node PASS",
           "status": "PASS",
-          "source_commit": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
-          "evidence": "docs/evidence/v240-jpn-block/focused-node.txt",
-          "evidence_commit": "6efb89eab99aad8b77633f3e14c4e6ff1025052c",
-          "evidence_blob": "7ef6a4e1a87f486da352a63f1989c576c71adbb2",
+          "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+          "evidence": "docs/evidence/v240-spa-stun/focused-node.txt",
+          "evidence_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+          "evidence_blob": "c4505dc96a1091354a1814145505686c095ce9eb",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
           "name": "9 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "3a07094748122d9046f4e46b54b3cecd0fad2e3f",
-          "evidence": "docs/evidence/v240-jpn-block/after-browser/browser.json",
-          "evidence_commit": "6efb89eab99aad8b77633f3e14c4e6ff1025052c",
-          "evidence_blob": "2f5a3c3bc79123e511b02fbcdb055d2744c8ab2f",
+          "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+          "evidence": "docs/evidence/v240-spa-stun/after-browser/browser.json",
+          "evidence_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+          "evidence_blob": "87e4ba277fa81030b45b066c869d7815d218d986",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "1 actual integrity-negative Chromium check",
+          "status": "PASS",
+          "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+          "evidence": "docs/evidence/v240-spa-stun/integrity-browser/browser.json",
+          "evidence_commit": "044e31793c3fffd7b651b47aea662e04ee394c93",
+          "evidence_blob": "29924ff407fc4b362005db739df67dbe953dde23",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3042,16 +3060,16 @@
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
           "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
-          "source_commit": "9d9f8d4e887e45b46dfcde08423641fa43a1dde4",
+          "source_commit": "cffda2868cfc7b15621659225d314088b5f00d21",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aJPN \u683c\u64cb\u5df2\u4fee\u5fa9\u9a57\u6536\uff0c\u76f4\u63a5\u63a5\u7e8c SPA \u6688\u64ca\u3002\u5b9a\u5411 Node 20\uff0f\u771f\u5be6 Chromium 9 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: JPN block fixed and accepted; directly continuing SPA stun. 20 focused Node/9 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "7b5d5fd3339e324a9f75ba708ef70aeed90f51a5d5e44476804558302c9392d7",
-      "remote_head": "9d9f8d4e887e45b46dfcde08423641fa43a1dde4",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aSPA \u6688\u64ca\u8207\u539f\u751f Continue \u5df2\u4fee\u5fa9\uff0c\u7e8c\u505a\u7279\u6548 RNG \u9694\u96e2\u3002\u5b9a\u5411 Node 33\uff0f\u771f\u5be6 Chromium 9 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: SPA stun and native Continue fixed; continuing effect RNG isolation. 33 focused Node/9 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "6c098682f8303e789248859d828046b8b5575aaf67c6b5743b172802ec78cab7",
+      "remote_head": "cffda2868cfc7b15621659225d314088b5f00d21",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-29T17:09:12.044074+00:00",
+      "recorded_at": "2026-10-29T17:24:44.654219+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
