@@ -1,3 +1,3 @@
-繁體中文：PER戰象已正常保存，7項Node及12項真實本地Chromium通過，包含原生付費訓練25秒與真正次要踐踏傷害。已接續MNG騎射兵文明外觀，未公開部署。
+繁體中文：PER戰象7Node／12Chromium、MNG騎射兵10Node／13Chromium通過，包含原生付費訓練、移動、真正傷害／箭矢及文明外觀隔離。均為本地受控驗收，非自然戰役或硬體PASS。重複排程喚醒記錄RESUME_SKIPPED_ACTIVE_TASK，未另啟寫入者；沒有排程切換或公開部署宣稱。
 
-English: PER elephant is normally saved with7Nodeand12actual localChromiumchecks passed, including native paid25-secondtraining and actual secondary trample damage. Continuing MNG horse-archer identity without public deployment.
+English: PER elephant passes7Node/12Chromium and MNG horse archer10Node/13Chromium, including native paid training, movement, actual damage/arrows and civilization appearance isolation. These are scoped local controlled checks, not natural campaigns or hardware PASS. Duplicate wake recorded RESUME_SKIPPED_ACTIVE_TASK without another writer; no scheduler rebinding or public deployment claimed.
