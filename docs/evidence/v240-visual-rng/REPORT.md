@@ -1,0 +1,19 @@
+# 特效 RNG 隔離 / Visual RNG isolation
+
+繁體中文：來源／Build `5ec12dde251220174c64248f01633da8f2c9a0a5`，61 個 payload SHA256 相符。SPA／同頁 Continue 安全保存後直接接續。舊 source `19b614e` 的真正 addParticles 會推進 Game.rng；額外煙霧、選取斬擊、採集／施工火花或樹樁角度因此會改變後續遊戲隨機狀態。原始 Node／Chromium FAIL 保留，不把先前有聲／靜音回歸誤當粒子隔離已完成。
+
+English: Source/Build `5ec12dde251220174c64248f01633da8f2c9a0a5` verifies 61 payload hashes. Work directly followed saved SPA/same-page Continue acceptance. Old source `19b614e` production addParticles advances Game.rng, so extra smoke, selection-only slash effects, gather/build sparks and stump angles change subsequent gameplay randomness. Original Node/Chromium failures remain; earlier audible/silent regressions did not certify particle isolation.
+
+繁體中文：新增與模擬 RNG 獨立的固定種子 visualRng，供粒子本體、採集／施工視覺偏移與數量、樹樁裝飾角度使用。Map RNG、戰鬥／AI、波次、出生位置、卡牌與轉換判定的 rng 呼叫保留。NewRun 與 Restore 重設視覺串流，瞬時粒子本來不存檔；沒有加入遊戲規則欄位、改動機率、傷害或平衡數字。舊版因粒子耦合而消耗的 RNG 呼叫被移除，因此同 Seed 在新／舊版本的後續隨機結果可能不同，不宣稱舊版重播相同。
+
+English: A separately seeded visualRng supplies particle bodies, gather/build visual offsets/counts and decorative stump angles. Map RNG and gameplay/AI/wave/spawn-position/card/conversion RNG calls remain. NewRun/Restore reset the visual stream; transient particles were already unsaved. No gameplay-rule fields, probabilities, damage or balance values changed. Removing old cosmetic RNG draws can change later random outcomes between old/new versions for the same seed; old-version replay equivalence is not claimed.
+
+繁體中文：29 項定向 Node PASS，涵蓋六個新隔離案例及 JPN、SPA、暫態存檔、音效回歸。6 項真實 Chromium PASS：原生 Start、正式右鍵交戰造成真正傷害與可見粒子；監測每次正式粒子呼叫前後模擬 RNG 不變；三秒正式固定 tick 模擬比較「額外煙霧／選取斬擊」與普通組，HP、位置、狀態、冷卻、資源、統計與 RNG 一致；JSON Restore 後再產生粒子也不改保存的模擬 RNG。實際交戰畫面已人工檢視，錄影保存，沒有正向驗收瀏覽器／網路錯誤。這是明示 CONTROLLED_FIXTURE，不是自然戰役或完整嚴格 Save/Load 認證。
+
+English: 29 focused Node checks PASS, covering six new isolation cases plus JPN, SPA, transient-save and audio regressions. Six actual Chromium checks PASS: native Start, real right-click combat damage/visible particles, unchanged simulation RNG around every observed production particle call, and three seconds of production fixed-tick simulation with extra smoke/selection slash versus ordinary effects yielding identical HP/positions/states/cooldowns/resources/stats/RNG. JSON Restore followed by particles also preserves saved simulation RNG. Actual combat images were reviewed and video saved with no positive-test browser/network errors. Explicit controlled fixtures are not natural-campaign or complete strict Save/Load certification.
+
+繁體中文：第一次修復後瀏覽器請求在舊 localhost:8014 回傳 ERR_EMPTY_RESPONSE，curl 亦失敗；這是本地測試伺服器故障，不是遊戲缺陷或平台窗口限制。保留 local-server-fail，改用有檔案日誌的 localhost:8016 後同 Build 通過，未公開任何埠。Node 初次存讀比較也遇到同一 32-bit RNG 位元的 signed／unsigned 表示差異，測試以 >>>0 正規化並驗證下一個抽樣一致；不是修改遊戲 RNG 或掩蓋整體決定性問題。執行期間另一委派喚醒記為 RESUME_SKIPPED_ACTIVE_TASK，沒有第二寫入者，也不宣稱排程重綁。歷史自然十波／NG+、低 FPS、嚴格 Save/Load、建築性能、Rift 及硬體缺口全部保留；未發布。下一項依文明矩陣接續 FRK 既有輕騎的獨立外觀。
+
+English: The first post-fix browser attempt received ERR_EMPTY_RESPONSE from old localhost:8014, also reproduced by curl. This was a local QA server failure, not a game defect or platform-window limit. local-server-fail is retained; the same Build passed through a file-logged localhost:8016 server without exposing a public port. An initial Node restore comparison encountered signed/unsigned representations of the same 32-bit RNG bits; the test normalizes with >>>0 and verifies the next draw, without modifying gameplay RNG or claiming whole-game determinism. A delegated wake during execution is RESUME_SKIPPED_ACTIVE_TASK, with no second writer or scheduler rebinding claim. Historical natural campaign/NG+, low-FPS, strict Save/Load, building performance, Rift and hardware gaps remain; nothing publicly deployed. Next follows the civilization matrix with independent FRK existing-light-cavalry appearance.
+
+BILINGUAL_DOCUMENTATION_REQUIRED = true

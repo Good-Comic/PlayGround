@@ -1,0 +1,141 @@
+✖ all particle kinds remain visible without advancing simulation RNG (51.668433ms)
+✖ selected combat particles, disabled particles and extra cosmetic noise preserve identical combat RNG/results (61.670032ms)
+✖ real gathering particle offsets and counts do not consume simulation RNG (12.013369ms)
+✖ real construction spark offset and tree-stump decoration do not consume simulation RNG (11.932272ms)
+✖ visual RNG is seeded independently and transient reset after JSON restore cannot affect next gameplay draw (29.22209ms)
+✔ same seed produces reproducible visual particles without altering map generation (25.510213ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 1
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 438.502824
+
+✖ failing tests:
+
+test at tests/visual-rng.test.mjs:6:1
+✖ all particle kinds remain visible without advancing simulation RNG (51.668433ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + -1080490945
+  - -2073244897
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/visual-rng.test.mjs:6:276)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -1080490945,
+    expected: -2073244897,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/visual-rng.test.mjs:7:1
+✖ selected combat particles, disabled particles and extra cosmetic noise preserve identical combat RNG/results (61.670032ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      resources: {
+        food: 300,
+        gold: 120,
+        stone: 100,
+        wood: 300
+      },
+  +   rng: -1465052833,
+  -   rng: -2073244897,
+      stats: {
+        assists: 0,
+        gathered: 0,
+        kills: 0,
+        trained: 0,
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/visual-rng.test.mjs:7:412)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { rng: -1465052833, units: [ [Object], [Object] ], stats: { kills: 0, gathered: 0, trained: 0, waves: 0, assists: 0 }, resources: { food: 300, wood: 300, gold: 120, stone: 100 } },
+    expected: { rng: -2073244897, units: [ [Object], [Object] ], stats: { kills: 0, gathered: 0, trained: 0, waves: 0, assists: 0 }, resources: { food: 300, wood: 300, gold: 120, stone: 100 } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/visual-rng.test.mjs:8:1
+✖ real gathering particle offsets and counts do not consume simulation RNG (12.013369ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 574403877
+  - 958051059
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/visual-rng.test.mjs:8:428)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 574403877,
+    expected: 958051059,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/visual-rng.test.mjs:9:1
+✖ real construction spark offset and tree-stump decoration do not consume simulation RNG (11.932272ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + -433502675
+  - -1505350424
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/visual-rng.test.mjs:9:368)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -433502675,
+    expected: -1505350424,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/visual-rng.test.mjs:10:1
+✖ visual RNG is seeded independently and transient reset after JSON restore cannot affect next gameplay draw (29.22209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 1619277223
+  - -1576867921
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/visual-rng.test.mjs:10:350)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1619277223,
+    expected: -1576867921,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

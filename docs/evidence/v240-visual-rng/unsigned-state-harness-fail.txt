@@ -1,0 +1,62 @@
+✔ production-spawned JPN guard blocks first ordinary melee hit without a unit civ field (68.202889ms)
+✔ ordinary damage during cooldown keeps armor and block returns exactly at ten seconds (50.237823ms)
+✔ other civilizations, enemies, buildings and source-less damage do not acquire Japanese block (77.052537ms)
+✔ arrows, splash and environmental zones neither block nor consume block readiness (20.163692ms)
+✔ actual Boss warning zone and Boss strike remain damaging without spending block (9.40961ms)
+✔ shield absorbs first, remaining damage can block, and other defenses remain intact (7.96881ms)
+✔ JSON SaveLoad preserves per-unit block cooldown; legacy saves default to ready (37.992143ms)
+✔ block is per defender and consumes no simulation RNG (12.52096ms)
+✔ save mid-flight and during boss telegraph preserves remaining damage, timers and entity references (79.535398ms)
+✔ resolved zones do not damage twice and legacy saves remain loadable (56.683091ms)
+✔ SaveLoad preserves full stun and partial slow strength until their original expiry (70.647817ms)
+✔ native pause and card-choice overlays do not expire absolute-time combat statuses (40.58661ms)
+✔ production SPA villager applies approved half-second stun with eight-second per-attacker cooldown (64.997511ms)
+✔ cooldown follows each villager across targets while another villager has its own first hit (40.820794ms)
+✔ full stun prevents actual melee, ranged attack and AI action until exact expiry (60.060325ms)
+✔ partial slow does not suppress attacks and in-flight projectiles continue during stun (13.985567ms)
+✔ other civilizations, enemy villagers, non-villagers and Boss targets do not gain stun (59.395254ms)
+✔ JSON SaveLoad preserves source cooldown and target stun; legacy source defaults to ready (53.970722ms)
+✔ normal gather does not auto-attack; stun adds no RNG beyond existing attack damage effects (48.620235ms)
+✔ SPA native attack command interrupts gathering and reaches actual combat; other villagers stay excluded (28.138491ms)
+✔ production unit cues have distinct low impact, wooden launch and bow signatures; mute stops all voices (1.171785ms)
+✔ unit-specific motifs retain shared attack/arrow throttle groups instead of multiplying per-unit voices (1.223487ms)
+✔ real combat with audible noise keeps damage projectiles and simulation RNG identical to silent combat (125.160607ms)
+✔ all particle kinds remain visible without advancing simulation RNG (49.117977ms)
+✔ selected combat particles, disabled particles and extra cosmetic noise preserve identical combat RNG/results (52.976749ms)
+✔ real gathering particle offsets and counts do not consume simulation RNG (7.569934ms)
+✔ real construction spark offset and tree-stump decoration do not consume simulation RNG (8.154052ms)
+✖ visual RNG is seeded independently and transient reset after JSON restore cannot affect next gameplay draw (18.766042ms)
+✔ same seed produces reproducible visual particles without altering map generation (30.267315ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1085.57535
+
+✖ failing tests:
+
+test at tests/visual-rng.test.mjs:10:1
+✖ visual RNG is seeded independently and transient reset after JSON restore cannot affect next gameplay draw (18.766042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 2221722399
+  - -2073244897
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/visual-rng.test.mjs:10:350)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2221722399,
+    expected: -2073244897,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

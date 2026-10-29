@@ -1,0 +1,37 @@
+✔ production-spawned JPN guard blocks first ordinary melee hit without a unit civ field (42.519028ms)
+✔ ordinary damage during cooldown keeps armor and block returns exactly at ten seconds (20.781276ms)
+✔ other civilizations, enemies, buildings and source-less damage do not acquire Japanese block (74.751155ms)
+✔ arrows, splash and environmental zones neither block nor consume block readiness (9.822685ms)
+✔ actual Boss warning zone and Boss strike remain damaging without spending block (13.073103ms)
+✔ shield absorbs first, remaining damage can block, and other defenses remain intact (17.296792ms)
+✔ JSON SaveLoad preserves per-unit block cooldown; legacy saves default to ready (22.780626ms)
+✔ block is per defender and consumes no simulation RNG (4.611138ms)
+✔ save mid-flight and during boss telegraph preserves remaining damage, timers and entity references (576.822664ms)
+✔ resolved zones do not damage twice and legacy saves remain loadable (1241.40669ms)
+✔ SaveLoad preserves full stun and partial slow strength until their original expiry (38.496846ms)
+✔ native pause and card-choice overlays do not expire absolute-time combat statuses (182.947958ms)
+✔ production SPA villager applies approved half-second stun with eight-second per-attacker cooldown (433.31498ms)
+✔ cooldown follows each villager across targets while another villager has its own first hit (139.141321ms)
+✔ full stun prevents actual melee, ranged attack and AI action until exact expiry (1061.579274ms)
+✔ partial slow does not suppress attacks and in-flight projectiles continue during stun (219.053837ms)
+✔ other civilizations, enemy villagers, non-villagers and Boss targets do not gain stun (652.578772ms)
+✔ JSON SaveLoad preserves source cooldown and target stun; legacy source defaults to ready (193.254382ms)
+✔ normal gather does not auto-attack; stun adds no RNG beyond existing attack damage effects (1287.037936ms)
+✔ SPA native attack command interrupts gathering and reaches actual combat; other villagers stay excluded (875.150101ms)
+✔ production unit cues have distinct low impact, wooden launch and bow signatures; mute stops all voices (157.244651ms)
+✔ unit-specific motifs retain shared attack/arrow throttle groups instead of multiplying per-unit voices (4.753537ms)
+✔ real combat with audible noise keeps damage projectiles and simulation RNG identical to silent combat (2159.886497ms)
+✔ all particle kinds remain visible without advancing simulation RNG (111.475628ms)
+✔ selected combat particles, disabled particles and extra cosmetic noise preserve identical combat RNG/results (142.147898ms)
+✔ real gathering particle offsets and counts do not consume simulation RNG (9.63725ms)
+✔ real construction spark offset and tree-stump decoration do not consume simulation RNG (10.369608ms)
+✔ visual RNG is seeded independently and transient reset after JSON restore cannot affect next gameplay draw (18.539053ms)
+✔ same seed produces reproducible visual particles without altering map generation (26.814859ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8662.051292

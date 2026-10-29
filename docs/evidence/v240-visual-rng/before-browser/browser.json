@@ -1,0 +1,37 @@
+{
+  "source_commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_COMBAT_AND_FIXED_TICK_COMPARISON_NOT_STRICT_CAMPAIGN_SAVELOAD",
+  "checks": [
+    {
+      "name": "exact source artifact",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "19b614e81337778931cce3a36bd11dcf841e1cf2",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T17:20:05.483539+00:00",
+        "resourceVerification": "SHA256_MATCH_61_FILES"
+      }
+    },
+    {
+      "name": "real particle generation keeps simulation RNG unchanged",
+      "pass": false,
+      "detail": {
+        "before": 3473781191,
+        "after": 1164321799,
+        "particles": 40,
+        "fx": "undefined"
+      }
+    },
+    {
+      "name": "execution",
+      "pass": false,
+      "detail": {
+        "message": "real particle generation keeps simulation RNG unchanged",
+        "stack": "Error: real particle generation keeps simulation RNG unchanged\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/v240_visual_rng_browser.mjs:4:352)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/v240_visual_rng_browser.mjs:10:2"
+      }
+    }
+  ],
+  "errors": [],
+  "pass": false
+}
