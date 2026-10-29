@@ -1,0 +1,215 @@
+{
+  "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+  "civ": "MAG",
+  "type": "light_cavalry",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T19:28:01.157219+00:00",
+        "resourceVerification": "SHA256_MATCH_71_FILES"
+      }
+    },
+    {
+      "name": "native stable pays exact production costs",
+      "pass": true,
+      "detail": {
+        "queued": true,
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "food": 52,
+            "gold": 16
+          },
+          "ids": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "after": {
+          "food": 248,
+          "wood": 300,
+          "gold": 104,
+          "stone": 100
+        }
+      }
+    },
+    {
+      "name": "actual trained unit uses civilization atlas",
+      "pass": true,
+      "detail": {
+        "id": 21,
+        "civ": "MAG",
+        "key": "MAG:light_cavalry",
+        "hp": 99,
+        "radius": 0.32
+      }
+    },
+    {
+      "name": "all 160 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": true,
+      "detail": {
+        "width": 3072,
+        "height": 1920,
+        "touchedFrameEdges": 0
+      }
+    },
+    {
+      "name": "native right-click moves the trained actor",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.961092075589026,
+          "y": 33.32036402519634
+        },
+        "seen": {
+          "idle": 136,
+          "walk": 348
+        }
+      }
+    },
+    {
+      "name": "production melee damage and four-frame attack",
+      "pass": true,
+      "detail": {
+        "before": 145,
+        "after": 129.6,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production attack sound dispatch",
+      "pass": true,
+      "detail": [
+        "light_cavalry"
+      ]
+    },
+    {
+      "name": "production damage renders hit animation",
+      "pass": true,
+      "detail": {
+        "flash": 1,
+        "seen": {
+          "idle": 151,
+          "walk": 377,
+          "attack": 57,
+          "hit": 7
+        }
+      }
+    },
+    {
+      "name": "production death plays all four frames",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "enemy and other civilization retain generic atlas",
+      "pass": true,
+      "detail": {
+        "enemy": "light_cavalry",
+        "other": "light_cavalry"
+      }
+    },
+    {
+      "name": "asset failure retains renderer fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "100-unit static draw JS budget and <=20% paired median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 9.515000000037253,
+          "p50": 8.699999995529652,
+          "p95": 14.299999997019768
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 3.9800000000745057,
+          "p50": 1.3999999985098839,
+          "p95": 6.699999995529652
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.05,
+          "p50": 1,
+          "p95": 1.6000000014901161
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 9.169999999925494,
+          "p50": 8.799999997019768,
+          "p95": 11.800000004470348
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 8.90874999994412,
+          "p50": 8.5,
+          "p95": 11.699999995529652
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.2424999999813735,
+          "p50": 1.1000000014901161,
+          "p95": 2.100000001490116
+        }
+      ]
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}

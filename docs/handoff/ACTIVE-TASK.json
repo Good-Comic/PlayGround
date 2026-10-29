@@ -1,34 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "修復 TEU／AZT／BYZ 可見頭部與身體點選 / Fix visible-head and body selection for TEU/AZT/BYZ",
+  "name": "MAG 裸馬弧刀圓盾輕騎八方向動作已整合 / MAG unbarded sabre round-shield light cavalry integrated with directional actions",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "659b1b2ba472150da5abb75c22550ee86873b737",
-  "application_source_commit": "659b1b2ba472150da5abb75c22550ee86873b737",
+  "latest_pushed_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+  "application_source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
   "completed": [
-    "修復 TEU／AZT／BYZ 可見頭部與身體點選",
-    "Fix visible-head and body selection for TEU/AZT/BYZ"
+    "MAG 裸馬弧刀圓盾輕騎八方向動作已整合",
+    "MAG unbarded sabre round-shield light cavalry integrated with directional actions"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Node",
-      "result": "8 PASS",
-      "path": "docs/evidence/v240-infantry-picking/focused-node.txt"
+      "name": "Focused Node",
+      "result": "4 PASS",
+      "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+      "path": "docs/evidence/v240-mag-cavalry/focused-node.txt"
     },
     {
-      "name": "Chromium",
-      "result": "16 PASS",
-      "path": "docs/evidence/v240-infantry-picking/optimized-browser/browser.json"
+      "name": "Actual Chromium",
+      "result": "13 PASS",
+      "source_commit": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+      "path": "docs/evidence/v240-mag-cavalry/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-infantry-picking/REPORT.md"
+    "docs/evidence/v240-mag-cavalry/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -41,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "MAG 輕騎獨立外觀與原生命令驗收",
-    "MAG light-cavalry appearance and native-command acceptance"
+    "接續兵器近戰音效差異與真實瀏覽器混音驗收",
+    "Continue melee weapon sound differentiation and actual browser mix acceptance"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -50,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T19:25:55.047365+00:00",
+  "updated_at": "2026-10-29T19:29:15.079160+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -111,6 +113,13 @@
       "node": 8,
       "chromium": 16,
       "report": "docs/evidence/v240-infantry-picking/REPORT.md"
+    },
+    {
+      "slice": "v240-mag-cavalry",
+      "source": "4dfeb7d57512bcde07b9876d15b9a4a596b346d7",
+      "node": 4,
+      "chromium": 13,
+      "report": "docs/evidence/v240-mag-cavalry/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -124,7 +133,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "MAG light-cavalry appearance and native-command acceptance"
+    "NEXT_AUTHORIZED_TASK": "Continue melee weapon sound differentiation and actual browser mix acceptance"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
