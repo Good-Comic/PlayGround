@@ -62,6 +62,20 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
   }),
 });
 
+export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
+  'MNG:horse_archer': Object.freeze({
+    id: 'mng-horse-archer-v1', src: 'assets/sprites/mng-horse-archer-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .88, directions: DIRECTION_MAP,
+    states: UNIT_SPRITE_ATLASES.elephant.states,
+  }),
+});
+
+export function unitSpriteAtlasKey(unit, civId) {
+  const variant = `${civId}:${unit.type}`;
+  return unit.team === 'player' && CIV_UNIT_SPRITE_ATLASES[variant] ? variant : unit.type;
+}
+
 export function atlasFrame(atlas, direction, state, elapsed = 0, progress = null) {
   const directionIndex = atlas?.directions?.[direction];
   const animation = atlas?.states?.[state];
@@ -88,7 +102,7 @@ export function atlasActionProgress(unit, state) {
   return null;
 }
 
-export function loadUnitSpriteAtlases(descriptors = UNIT_SPRITE_ATLASES, ImageClass = globalThis.Image) {
+export function loadUnitSpriteAtlases(descriptors = { ...UNIT_SPRITE_ATLASES, ...CIV_UNIT_SPRITE_ATLASES }, ImageClass = globalThis.Image) {
   const loaded = new Map();
   if (typeof ImageClass !== 'function') return loaded;
   for (const [type, descriptor] of Object.entries(descriptors)) {

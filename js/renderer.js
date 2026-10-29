@@ -1,7 +1,7 @@
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.js';
-import { atlasFrame, atlasActionProgress, loadUnitSpriteAtlases } from './sprite-atlas.js';
+import { atlasFrame, atlasActionProgress, loadUnitSpriteAtlases, unitSpriteAtlasKey } from './sprite-atlas.js';
 import { heroCastVisual, bossStrikeVisual } from './hero-skills.js';
 
 const TERRAIN_COLORS = {
@@ -1326,7 +1326,8 @@ export class Renderer {
     ctxSave(this.ctx, () => {
       const ctx = this.ctx;
       const frame = directionalAnimationFrame(u);
-      const entry = this.unitSpriteAtlases?.get(u.type);
+      frame.atlasKey = unitSpriteAtlasKey(u, game.civ?.id);
+      const entry = this.unitSpriteAtlases?.get(frame.atlasKey);
       const bakedPose = entry?.descriptor.bakedPose && entry.ready && !entry.failed && entry.image?.naturalWidth;
       const casting = heroCastVisual(u);
       if (bakedPose && entry.descriptor.states.cast && casting && !['hit', 'death'].includes(frame.state)) {
@@ -1416,7 +1417,7 @@ export class Renderer {
   }
 
   drawSpriteAtlasUnit(u, p, scale, visual, time) {
-    const entry = this.unitSpriteAtlases?.get(u.type);
+    const entry = this.unitSpriteAtlases?.get(visual.atlasKey || u.type);
     if (!entry?.ready || entry.failed || !entry.image?.naturalWidth) return false;
     const descriptor = entry.descriptor;
     const progress = visual.progress ?? atlasActionProgress(u, visual.state);
