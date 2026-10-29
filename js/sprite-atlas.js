@@ -63,6 +63,12 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
 });
 
 export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
+  'BRI:archer': Object.freeze({
+    id: 'bri-longbow-v1', src: 'assets/sprites/bri-longbow-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 128, height: 128 }), anchor: Object.freeze({ x: 64, y: 88 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP,
+    states: UNIT_SPRITE_ATLASES.elephant.states,
+  }),
   'KOR:patrol_cart': Object.freeze({
     id: 'kor-patrol-cart-v1', src: 'assets/sprites/kor-patrol-cart-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 176, height: 176 }), anchor: Object.freeze({ x: 88, y: 96 }), directionsPerRow: 4,
