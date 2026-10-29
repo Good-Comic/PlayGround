@@ -1,0 +1,2025 @@
+{
+  "source_commit": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+  "mode": "optimized",
+  "scope": "CONTROLLED_DECODE_REFERENCES_NOT_NATIVE_RAM_GPU_OR_STRICT_SAVE_DETERMINISM",
+  "checks": [
+    {
+      "name": "exact artifact",
+      "pass": true,
+      "detail": {
+        "source": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9"
+      }
+    },
+    {
+      "name": "menu requests no civilization images",
+      "pass": true,
+      "detail": {
+        "civilizationImages": []
+      }
+    },
+    {
+      "name": "native start requests only TUR override",
+      "pass": true,
+      "detail": {
+        "civilizationImages": [
+          "TUR:archer"
+        ]
+      }
+    },
+    {
+      "name": "native archery payment and queue remain exact",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "actual trained archer remains natively selectable",
+      "pass": true,
+      "detail": {
+        "head": {
+          "x": 720,
+          "y": 359.52
+        }
+      }
+    },
+    {
+      "name": "deferred current atlas draws during actual projectile combat",
+      "pass": true,
+      "detail": {
+        "shots": 1,
+        "hp": 140.9,
+        "crops": 8
+      }
+    },
+    {
+      "name": "failed active asset still returns procedural fallback",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "civ switch releases old image and crop references",
+      "pass": true,
+      "detail": {
+        "civilizationImages": [
+          "TEU:guard"
+        ]
+      }
+    },
+    {
+      "name": "switched civilization keeps real movement and cached rendering",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "shared-unit civilization releases overrides and retains elephant",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "revisiting civilization reloads its image without retaining old overrides",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "snapshot civilization restore activates matching atlas only",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "menu cleanup releases civilization image and crop references",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "100-unit renderer-only JS remains inside existing absolute budget",
+      "pass": true,
+      "detail": [
+        {
+          "mean": 0.8674999999813735,
+          "p50": 0.7000000029802322,
+          "p95": 1.8999999985098839
+        },
+        {
+          "mean": 1.066249999962747,
+          "p50": 0.7000000029802322,
+          "p95": 2.2000000029802322
+        },
+        {
+          "mean": 0.715000000037253,
+          "p50": 0.6000000014901161,
+          "p95": 1.3000000044703484
+        }
+      ]
+    },
+    {
+      "name": "no browser resource or console errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "inventories": [
+    {
+      "label": "menu",
+      "entries": [
+        {
+          "key": "elephant",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "commander",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 2112,
+          "crops": 0
+        },
+        {
+          "key": "recruiter",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord2",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "spearman",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "guard",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "chu_ko_nu",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2560,
+          "height": 400,
+          "crops": 0
+        },
+        {
+          "key": "militia",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "archer",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "light_cavalry",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1280,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "BYZ:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "AZT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TEU:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TUR:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SAR:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SPA:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "GOT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MAG:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "FRK:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "JPN:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "VIK:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "BRI:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "KOR:patrol_cart",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MNG:horse_archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        }
+      ],
+      "civilizationImages": [],
+      "decodedRgbaProxyBytes": 137658368,
+      "civilizationRgbaProxyBytes": 0
+    },
+    {
+      "label": "native TUR start",
+      "entries": [
+        {
+          "key": "elephant",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "commander",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 2112,
+          "crops": 2
+        },
+        {
+          "key": "recruiter",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord2",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "spearman",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "guard",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "chu_ko_nu",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2560,
+          "height": 400,
+          "crops": 0
+        },
+        {
+          "key": "militia",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "archer",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "light_cavalry",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1280,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "BYZ:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "AZT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TEU:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TUR:archer",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 3072,
+          "height": 1920,
+          "crops": 2
+        },
+        {
+          "key": "SAR:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SPA:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "GOT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MAG:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "FRK:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "JPN:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "VIK:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "BRI:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "KOR:patrol_cart",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MNG:horse_archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        }
+      ],
+      "civilizationImages": [
+        "TUR:archer"
+      ],
+      "decodedRgbaProxyBytes": 161251328,
+      "civilizationRgbaProxyBytes": 23592960
+    },
+    {
+      "label": "same-renderer TEU switch",
+      "entries": [
+        {
+          "key": "elephant",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "commander",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 2112,
+          "crops": 4
+        },
+        {
+          "key": "recruiter",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord2",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "spearman",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "guard",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "chu_ko_nu",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2560,
+          "height": 400,
+          "crops": 0
+        },
+        {
+          "key": "militia",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "archer",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "light_cavalry",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1280,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "BYZ:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "AZT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TEU:guard",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 3072,
+          "height": 1920,
+          "crops": 0
+        },
+        {
+          "key": "TUR:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SAR:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SPA:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "GOT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MAG:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "FRK:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "JPN:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "VIK:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "BRI:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "KOR:patrol_cart",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MNG:horse_archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        }
+      ],
+      "civilizationImages": [
+        "TEU:guard"
+      ],
+      "decodedRgbaProxyBytes": 161251328,
+      "civilizationRgbaProxyBytes": 23592960
+    },
+    {
+      "label": "shared-only PER switch",
+      "entries": [
+        {
+          "key": "elephant",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 1
+        },
+        {
+          "key": "commander",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 2112,
+          "crops": 4
+        },
+        {
+          "key": "recruiter",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord2",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "spearman",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "guard",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "chu_ko_nu",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2560,
+          "height": 400,
+          "crops": 0
+        },
+        {
+          "key": "militia",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "archer",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "light_cavalry",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1280,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "BYZ:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "AZT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TEU:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TUR:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SAR:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SPA:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "GOT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MAG:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "FRK:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "JPN:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "VIK:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "BRI:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "KOR:patrol_cart",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MNG:horse_archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        }
+      ],
+      "civilizationImages": [],
+      "decodedRgbaProxyBytes": 137658368,
+      "civilizationRgbaProxyBytes": 0
+    },
+    {
+      "label": "TUR revisit",
+      "entries": [
+        {
+          "key": "elephant",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 1
+        },
+        {
+          "key": "commander",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 2112,
+          "crops": 4
+        },
+        {
+          "key": "recruiter",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord2",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "spearman",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "guard",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "chu_ko_nu",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2560,
+          "height": 400,
+          "crops": 0
+        },
+        {
+          "key": "militia",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "archer",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "light_cavalry",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1280,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "BYZ:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "AZT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TEU:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TUR:archer",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 3072,
+          "height": 1920,
+          "crops": 1
+        },
+        {
+          "key": "SAR:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SPA:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "GOT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MAG:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "FRK:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "JPN:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "VIK:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "BRI:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "KOR:patrol_cart",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MNG:horse_archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        }
+      ],
+      "civilizationImages": [
+        "TUR:archer"
+      ],
+      "decodedRgbaProxyBytes": 161251328,
+      "civilizationRgbaProxyBytes": 23592960
+    },
+    {
+      "label": "controlled TEU snapshot restore",
+      "entries": [
+        {
+          "key": "elephant",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 1
+        },
+        {
+          "key": "commander",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 2112,
+          "crops": 4
+        },
+        {
+          "key": "recruiter",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord2",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "spearman",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "guard",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "chu_ko_nu",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2560,
+          "height": 400,
+          "crops": 0
+        },
+        {
+          "key": "militia",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "archer",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "light_cavalry",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1280,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "BYZ:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "AZT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TEU:guard",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 3072,
+          "height": 1920,
+          "crops": 1
+        },
+        {
+          "key": "TUR:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SAR:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SPA:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "GOT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MAG:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "FRK:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "JPN:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "VIK:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "BRI:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "KOR:patrol_cart",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MNG:horse_archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        }
+      ],
+      "civilizationImages": [
+        "TEU:guard"
+      ],
+      "decodedRgbaProxyBytes": 161251328,
+      "civilizationRgbaProxyBytes": 23592960
+    },
+    {
+      "label": "controlled menu cleanup",
+      "entries": [
+        {
+          "key": "elephant",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 1
+        },
+        {
+          "key": "commander",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 2112,
+          "crops": 4
+        },
+        {
+          "key": "recruiter",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "warlord2",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2816,
+          "height": 1760,
+          "crops": 0
+        },
+        {
+          "key": "spearman",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "guard",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 4096,
+          "height": 800,
+          "crops": 0
+        },
+        {
+          "key": "chu_ko_nu",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 2560,
+          "height": 400,
+          "crops": 0
+        },
+        {
+          "key": "militia",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "archer",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1024,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "light_cavalry",
+          "ready": true,
+          "requested": true,
+          "image": true,
+          "width": 1280,
+          "height": 320,
+          "crops": 0
+        },
+        {
+          "key": "BYZ:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "AZT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TEU:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "TUR:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SAR:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "SPA:spearman",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "GOT:militia",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MAG:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "FRK:light_cavalry",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "JPN:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "VIK:guard",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "BRI:archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "KOR:patrol_cart",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        },
+        {
+          "key": "MNG:horse_archer",
+          "ready": false,
+          "requested": false,
+          "image": false,
+          "width": 0,
+          "height": 0,
+          "crops": 0
+        }
+      ],
+      "civilizationImages": [],
+      "decodedRgbaProxyBytes": 137658368,
+      "civilizationRgbaProxyBytes": 0
+    }
+  ],
+  "perf": [
+    {
+      "samples": [
+        0.3999999985098839,
+        0.3999999985098839,
+        0.3999999985098839,
+        0.3999999985098839,
+        0.3999999985098839,
+        0.3999999985098839,
+        0.3999999985098839,
+        0.4000000059604645,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5999999940395355,
+        0.5999999940395355,
+        0.5999999940395355,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.8000000044703484,
+        0.8000000044703484,
+        0.8000000044703484,
+        0.8000000044703484,
+        0.8000000044703484,
+        0.8999999985098839,
+        0.8999999985098839,
+        0.8999999985098839,
+        0.8999999985098839,
+        1,
+        1,
+        1,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1999999955296516,
+        1.2000000029802322,
+        1.2999999970197678,
+        1.2999999970197678,
+        1.3000000044703484,
+        1.3000000044703484,
+        1.3999999985098839,
+        1.4000000059604645,
+        1.6000000014901161,
+        1.6000000014901161,
+        1.7999999970197678,
+        1.8999999985098839,
+        2,
+        2,
+        2.2000000029802322,
+        3.2000000029802322
+      ],
+      "mean": 0.8674999999813735,
+      "p50": 0.7000000029802322,
+      "p95": 1.8999999985098839
+    },
+    {
+      "samples": [
+        0.3999999985098839,
+        0.3999999985098839,
+        0.3999999985098839,
+        0.4000000059604645,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5999999940395355,
+        0.5999999940395355,
+        0.5999999940395355,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.8999999985098839,
+        0.8999999985098839,
+        0.8999999985098839,
+        0.8999999985098839,
+        0.8999999985098839,
+        0.9000000059604645,
+        1,
+        1,
+        1,
+        1,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.2999999970197678,
+        1.2999999970197678,
+        1.3000000044703484,
+        1.3999999985098839,
+        1.3999999985098839,
+        1.3999999985098839,
+        1.5,
+        1.7000000029802322,
+        2,
+        2.2000000029802322,
+        2.2999999970197678,
+        2.5,
+        6.199999995529652,
+        11.399999998509884
+      ],
+      "mean": 1.066249999962747,
+      "p50": 0.7000000029802322,
+      "p95": 2.2000000029802322
+    },
+    {
+      "samples": [
+        0.3999999985098839,
+        0.3999999985098839,
+        0.3999999985098839,
+        0.3999999985098839,
+        0.3999999985098839,
+        0.4000000059604645,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5999999940395355,
+        0.5999999940395355,
+        0.5999999940395355,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6000000014901161,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.6999999955296516,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7000000029802322,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.7999999970197678,
+        0.8000000044703484,
+        0.8000000044703484,
+        0.8000000044703484,
+        0.8999999985098839,
+        0.8999999985098839,
+        0.8999999985098839,
+        0.8999999985098839,
+        0.9000000059604645,
+        0.9000000059604645,
+        1,
+        1,
+        1.1000000014901161,
+        1.1000000014901161,
+        1.1999999955296516,
+        1.2000000029802322,
+        1.3000000044703484,
+        1.3999999985098839,
+        1.3999999985098839,
+        1.5,
+        1.7999999970197678
+      ],
+      "mean": 0.715000000037253,
+      "p50": 0.6000000014901161,
+      "p95": 1.3000000044703484
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

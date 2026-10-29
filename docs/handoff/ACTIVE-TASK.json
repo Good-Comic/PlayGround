@@ -1,36 +1,34 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "TUR 反曲弓箭袋弓兵八方向射擊動作已整合 / TUR recurve bow quiver archer integrated with directional firing actions",
+  "name": "文明圖集按需解碼與舊引用釋放 / Active-civ decoding and stale-reference release",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
-  "priority": "P1",
+  "priority": "P0",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
-  "latest_pushed_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
-  "application_source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
+  "latest_pushed_commit": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+  "application_source_commit": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
   "completed": [
-    "TUR 反曲弓箭袋弓兵八方向射擊動作已整合",
-    "TUR recurve bow quiver archer integrated with directional firing actions"
+    "只解碼當前文明、切換釋放舊裁格與影像引用",
+    "Decode only current civ; release stale image/crop references"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Focused Node",
-      "result": "3 PASS",
-      "source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
-      "path": "docs/evidence/v240-tur-archer/focused-node.txt"
+      "name": "Node",
+      "result": "15 PASS",
+      "path": "docs/evidence/v240-atlas-loading/focused-node.txt"
     },
     {
-      "name": "Actual Chromium",
-      "result": "14 PASS",
-      "source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
-      "path": "docs/evidence/v240-tur-archer/verified/browser.json"
+      "name": "Chromium",
+      "result": "15 PASS",
+      "path": "docs/evidence/v240-atlas-loading/after-browser/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-tur-archer/REPORT.md"
+    "docs/evidence/v240-atlas-loading/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +41,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "檢查文明 Atlas 同時解碼的記憶體負擔並縮減不必要載入",
-    "Inspect simultaneous civilization-atlas decode footprint and reduce unnecessary loading"
+    "檢查英雄與 Boss 的可見頭部原生點選，再接續文明英雄與戰術內容",
+    "Inspect native visible-head picking on hero/Bosses, then civilization heroes and tactics"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +50,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T19:51:54.901867+00:00",
+  "updated_at": "2026-10-29T20:00:02.724009+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -162,6 +160,13 @@
       "node": 3,
       "chromium": 14,
       "report": "docs/evidence/v240-tur-archer/REPORT.md"
+    },
+    {
+      "slice": "v240-atlas-loading",
+      "source": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+      "node": 15,
+      "chromium": 15,
+      "report": "docs/evidence/v240-atlas-loading/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -175,7 +180,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Inspect simultaneous civilization-atlas decode footprint and reduce unnecessary loading"
+    "NEXT_AUTHORIZED_TASK": "Inspect native visible-head picking on hero/Bosses, then civilization heroes and tactics"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

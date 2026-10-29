@@ -1,3 +1,9 @@
+# 最新載入改善 / Latest loading improvement
+
+只解碼當前文明，切換釋放舊影像／裁格引用；15 Node／15 Chromium PASS。 / Decode current civilization only and release old image/crop references on switches; 15 Node/15 Chromium PASS. Source `4c5ae01fb886067443aa5bc51204f4e2e6b78ec9`; docs/evidence/v240-atlas-loading/REPORT.md. 接續英雄／Boss 原生頭部點選／Continue native hero/Boss head picking.
+
+---
+
 # GAME FIRST 最新內容 / Latest GAME FIRST content
 
 繁體中文：TUR 反曲弓箭袋弓兵八方向射擊動作已整合；來源 `ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda`，3 Node／14 Chromium PASS，報告 docs/evidence/v240-tur-archer/REPORT.md。檢查文明 Atlas 同時解碼的記憶體負擔並縮減不必要載入。本次只做遊戲內容；不重做既有成果、不處理排程，安全保存後直接繼續。歷史自然戰役、嚴格存讀、低 FPS、性能與硬體缺口保留，未公開發布。

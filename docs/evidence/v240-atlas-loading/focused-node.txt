@@ -1,0 +1,23 @@
+✔ deferred civilization images are not constructed until active, while generic fallback loads immediately (1.47332ms)
+✔ switching civilizations releases decoded-image and crop references; revisiting safely requests fresh entry (0.57091ms)
+✔ late asynchronous completion cannot reanimate a released or replaced civilization entry (0.283263ms)
+✔ failed current assets remain failed until a deliberate civ reload, and menu clears civilization references (0.356944ms)
+✔ hero support and bosses use independent complete decoded PNG sheets (10.867351ms)
+✔ champion frame cache reuses cropped pixels and stays bounded across action/direction changes (1.613014ms)
+✔ production renderer does not mirror or rotate an already-baked champion pose twice; fallback keeps transforms (1.736357ms)
+✔ Mongol equipment is player/civilization scoped without changing other roles or hostile visuals (3.177505ms)
+✔ Mongol mounted bow sheet has all160 independent animation frames within PNG bounds (3.297041ms)
+✔ new spear and shield atlases have complete independent four-frame actions and real PNG dimensions (3.768666ms)
+✔ militia atlas describes eight directions and all combat states (0.461276ms)
+✔ atlas loading exposes ready and failed states without blocking fallback (1.58679ms)
+✔ archer and cavalry use independent assets geometry and equipment scales (0.674517ms)
+✔ repeating crossbow has independent four-frame directional actions within sheet bounds (1.06486ms)
+✔ production normalized attack and hit amplitudes play all four frames without changing timers (0.32288ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 216.236633
