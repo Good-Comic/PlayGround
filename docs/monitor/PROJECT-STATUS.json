@@ -2,18 +2,18 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-29T16:31:53.777615+00:00",
+  "updated_at": "2026-10-29T16:36:04.287601+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
-    "build_sha": "c69bb252519fc1082166e0e37081685e98bcd568",
-    "summary": "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58 / BRI original eight-direction longbow animation and actual combat saved",
+    "commit": "55ef78365dae7ab79954ab75c992b063efe70df7",
+    "build_sha": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
+    "summary": "VIK \u5713\u76fe\u93c8\u7532\u76fe\u885b\u5df2\u9a57\u6536\u4fdd\u5b58\uff1b\u672c\u8f2a\u4ea6\u5b8c\u6210 BRI \u9577\u5f13\u5175 / VIK round-shield mail guard accepted and saved; BRI longbow also completed this session",
     "code_changes": [
-      "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58",
-      "BRI original eight-direction longbow animation and actual combat saved"
+      "VIK \u5713\u76fe\u93c8\u7532\u76fe\u885b\u5df2\u9a57\u6536\u4fdd\u5b58\uff1b\u672c\u8f2a\u4ea6\u5b8c\u6210 BRI \u9577\u5f13\u5175",
+      "VIK round-shield mail guard accepted and saved; BRI longbow also completed this session"
     ],
     "next_steps": [
       "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -21,21 +21,21 @@
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "11 focused Node PASS",
+        "name": "8 focused Node PASS",
         "status": "PASS",
-        "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
-        "evidence": "docs/evidence/v240-bri-longbow/focused-node.txt",
-        "evidence_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
-        "evidence_blob": "fca3b0c647c2aa71703f971f92a9eb5dc62b10bc",
+        "source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
+        "evidence": "docs/evidence/v240-vik-roundshield/focused-node.txt",
+        "evidence_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "evidence_blob": "d6c286a4d39d1a4161a5a731a998718dc3fd77e6",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "11 actual Chromium PASS",
+        "name": "13 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
-        "evidence": "docs/evidence/v240-bri-longbow/verified/browser.json",
-        "evidence_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
-        "evidence_blob": "b6d3b756d4e0c40eaa4f4f0359153c888030b40e",
+        "source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
+        "evidence": "docs/evidence/v240-vik-roundshield/verified/browser.json",
+        "evidence_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+        "evidence_blob": "556e2a353c38ee0c5a41d595d7c8860c035e9677",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -44,16 +44,16 @@
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
         "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
-        "source_commit": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
+        "source_commit": "55ef78365dae7ab79954ab75c992b063efe70df7",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aBRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58\u3002\u5b9a\u5411 Node 11\uff0f\u771f\u5be6 Chromium 11 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: BRI original eight-direction longbow animation and actual combat saved. 11 focused Node/11 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "b47824adf3252bfef0b2b25b1b8c4401b9a1dcbef72650d9c4ed729b10e7bca9",
-    "remote_head": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aVIK \u5713\u76fe\u93c8\u7532\u76fe\u885b\u5df2\u9a57\u6536\u4fdd\u5b58\uff1b\u672c\u8f2a\u4ea6\u5b8c\u6210 BRI \u9577\u5f13\u5175\u3002\u5b9a\u5411 Node 8\uff0f\u771f\u5be6 Chromium 13 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: VIK round-shield mail guard accepted and saved; BRI longbow also completed this session. 8 focused Node/13 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "ea10b82bb25f405f7d234f9378cbc95f7be09319247ded6fb8e6015302d3e9c3",
+    "remote_head": "55ef78365dae7ab79954ab75c992b063efe70df7",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-29T16:31:53.777615+00:00",
+    "recorded_at": "2026-10-29T16:36:04.287601+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3006,12 +3006,12 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
-      "build_sha": "c69bb252519fc1082166e0e37081685e98bcd568",
-      "summary": "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58 / BRI original eight-direction longbow animation and actual combat saved",
+      "commit": "55ef78365dae7ab79954ab75c992b063efe70df7",
+      "build_sha": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
+      "summary": "VIK \u5713\u76fe\u93c8\u7532\u76fe\u885b\u5df2\u9a57\u6536\u4fdd\u5b58\uff1b\u672c\u8f2a\u4ea6\u5b8c\u6210 BRI \u9577\u5f13\u5175 / VIK round-shield mail guard accepted and saved; BRI longbow also completed this session",
       "code_changes": [
-        "BRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58",
-        "BRI original eight-direction longbow animation and actual combat saved"
+        "VIK \u5713\u76fe\u93c8\u7532\u76fe\u885b\u5df2\u9a57\u6536\u4fdd\u5b58\uff1b\u672c\u8f2a\u4ea6\u5b8c\u6210 BRI \u9577\u5f13\u5175",
+        "VIK round-shield mail guard accepted and saved; BRI longbow also completed this session"
       ],
       "next_steps": [
         "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -3019,21 +3019,21 @@
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "11 focused Node PASS",
+          "name": "8 focused Node PASS",
           "status": "PASS",
-          "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
-          "evidence": "docs/evidence/v240-bri-longbow/focused-node.txt",
-          "evidence_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
-          "evidence_blob": "fca3b0c647c2aa71703f971f92a9eb5dc62b10bc",
+          "source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
+          "evidence": "docs/evidence/v240-vik-roundshield/focused-node.txt",
+          "evidence_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+          "evidence_blob": "d6c286a4d39d1a4161a5a731a998718dc3fd77e6",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "11 actual Chromium PASS",
+          "name": "13 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "c69bb252519fc1082166e0e37081685e98bcd568",
-          "evidence": "docs/evidence/v240-bri-longbow/verified/browser.json",
-          "evidence_commit": "e4865613d2a62cbc924716c52bd52d15ab8416d0",
-          "evidence_blob": "b6d3b756d4e0c40eaa4f4f0359153c888030b40e",
+          "source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
+          "evidence": "docs/evidence/v240-vik-roundshield/verified/browser.json",
+          "evidence_commit": "638acc1d2f9b3122edf3fce0c6ef2818896ebc23",
+          "evidence_blob": "556e2a353c38ee0c5a41d595d7c8860c035e9677",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3042,16 +3042,16 @@
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
           "summary": "\u81ea\u7136\u5341\u6ce2\uff0fNG+\u3001\u56b4\u683c Save/Load\u3001\u4f4e FPS\u3001\u6027\u80fd\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u6392\u7a0b\u5207\u63db\u672a\u78ba\u8a8d\u3002 / Natural campaign/NG+, strict Save/Load, low-FPS, performance and hardware gaps remain; scheduler rebinding unconfirmed.",
-          "source_commit": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
+          "source_commit": "55ef78365dae7ab79954ab75c992b063efe70df7",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aBRI \u9577\u5f13\u5175\u539f\u5275\u516b\u65b9\u5411\u52d5\u756b\u8207\u5be6\u969b\u6230\u9b25\u5df2\u4fdd\u5b58\u3002\u5b9a\u5411 Node 11\uff0f\u771f\u5be6 Chromium 11 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: BRI original eight-direction longbow animation and actual combat saved. 11 focused Node/11 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "b47824adf3252bfef0b2b25b1b8c4401b9a1dcbef72650d9c4ed729b10e7bca9",
-      "remote_head": "6f37f415df7819574375fe4e92c5c34c5786f3d9",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aVIK \u5713\u76fe\u93c8\u7532\u76fe\u885b\u5df2\u9a57\u6536\u4fdd\u5b58\uff1b\u672c\u8f2a\u4ea6\u5b8c\u6210 BRI \u9577\u5f13\u5175\u3002\u5b9a\u5411 Node 8\uff0f\u771f\u5be6 Chromium 13 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: VIK round-shield mail guard accepted and saved; BRI longbow also completed this session. 8 focused Node/13 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "ea10b82bb25f405f7d234f9378cbc95f7be09319247ded6fb8e6015302d3e9c3",
+      "remote_head": "55ef78365dae7ab79954ab75c992b063efe70df7",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-29T16:31:53.777615+00:00",
+      "recorded_at": "2026-10-29T16:36:04.287601+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
