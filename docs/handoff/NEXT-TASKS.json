@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T19:37:12.989421+00:00",
+  "updated_at": "2026-10-29T19:41:39.227367+00:00",
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "接續 SPA 長槍與 morion 頭盔代表性外觀 / Continue representative SPA pike and morion infantry appearance",
+      "name": "優先檢查 FRK 舊騎兵可見頭部的原生選取缺陷 / Prioritize checking native visible-head selection on existing FRK cavalry",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "897086d8eaf4360f660c83104ca411a602be6656",
+      "latest_pushed_commit": "35c54c55eddce7def1639ed12c40fc684a1aec6b",
       "application_source_commit": "897086d8eaf4360f660c83104ca411a602be6656",
       "completed": [],
       "uncommitted": [],
@@ -19,19 +19,19 @@
       "tests": [
         {
           "name": "Focused Node",
-          "result": "3 PASS",
-          "source_commit": "897086d8eaf4360f660c83104ca411a602be6656",
-          "path": "docs/evidence/v240-got-militia/focused-node.txt"
+          "result": "6 PASS",
+          "source_commit": "35c54c55eddce7def1639ed12c40fc684a1aec6b",
+          "path": "docs/evidence/v240-spa-spearman/focused-node.txt"
         },
         {
           "name": "Actual Chromium",
           "result": "14 PASS",
-          "source_commit": "897086d8eaf4360f660c83104ca411a602be6656",
-          "path": "docs/evidence/v240-got-militia/verified/browser.json"
+          "source_commit": "35c54c55eddce7def1639ed12c40fc684a1aec6b",
+          "path": "docs/evidence/v240-spa-spearman/verified/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-got-militia/REPORT.md"
+        "docs/evidence/v240-spa-spearman/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -42,8 +42,8 @@
       ],
       "blockers": [],
       "next_steps": [
-        "接續 SPA 長槍與 morion 頭盔代表性外觀",
-        "Continue representative SPA pike and morion infantry appearance"
+        "優先檢查 FRK 舊騎兵可見頭部的原生選取缺陷",
+        "Prioritize checking native visible-head selection on existing FRK cavalry"
       ],
       "permissions": [
         "Independent development tests normal push",

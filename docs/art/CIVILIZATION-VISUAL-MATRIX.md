@@ -16,7 +16,7 @@ English: This records actual progress against the existing sixteen civilizations
 | CHN | 東方 / Eastern | 諸葛弩已驗收 / Repeating-crossbow atlas accepted; v240-special-atlas |
 | PER | 沙漠 / Desert | 戰象已驗收 / Elephant atlas accepted; v240-elephant |
 | KOR | 東方 / Eastern | 巡防車已復原驗收 / Patrol-cart atlas recovered and accepted; v240-kor-cart |
-| SPA | 堡壘 / Fortress | 家族層；村民原生暈擊已修復，外觀待擴充 / Family layer; native villager stun fixed, appearance pending; v240-spa-stun |
+| SPA | 堡壘 / Fortress | morion 胸甲長槍兵已驗收；既有村民暈擊保留 / Morion/breastplate pike infantry accepted; native villager stun retained; v240-spa-spearman, v240-spa-stun |
 | TUR | 沙漠 / Desert | 家族層；既有單位外觀待擴充 / Family layer; existing-unit appearance pending |
 | BYZ | 沙漠 / Desert | 札甲圓盾 spearman 已驗收 / Lamellar/round-shield spearman accepted; v240-byz-spearman |
 | VIK | 堡壘 / Fortress | 圓盾 guard 已驗收 / Round-shield guard accepted; v240-vik-roundshield |

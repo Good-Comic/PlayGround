@@ -1,0 +1,97 @@
+{
+  "source_commit": "72b625642a45e716ebc37b3592b90db4bb73f196",
+  "civ": "SPA",
+  "type": "spearman",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "72b625642a45e716ebc37b3592b90db4bb73f196",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T19:38:40.989948+00:00",
+        "resourceVerification": "SHA256_MATCH_75_FILES"
+      }
+    },
+    {
+      "name": "native barracks pays exact production costs",
+      "pass": true,
+      "detail": {
+        "queued": true,
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "food": 35,
+            "wood": 15
+          },
+          "ids": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "after": {
+          "food": 265,
+          "wood": 285,
+          "gold": 120,
+          "stone": 100
+        }
+      }
+    },
+    {
+      "name": "actual trained unit uses civilization atlas",
+      "pass": true,
+      "detail": {
+        "id": 20,
+        "civ": "SPA",
+        "key": "SPA:spearman",
+        "hp": 55,
+        "radius": 0.26
+      }
+    },
+    {
+      "name": "all 160 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": false,
+      "detail": {
+        "width": 3072,
+        "height": 1920,
+        "touchedFrameEdges": 6
+      }
+    },
+    {
+      "name": "execution",
+      "pass": false,
+      "detail": {
+        "message": "all 160 decoded frame edges stay transparent without adjacent-frame bleed",
+        "stack": "Error: all 160 decoded frame edges stay transparent without adjacent-frame bleed\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/v240_civ_infantry_browser.mjs:6:88)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/v240_civ_infantry_browser.mjs:15:703",
+        "state": {
+          "actor": {
+            "id": 20,
+            "state": "idle",
+            "hp": 55
+          }
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": false
+}
