@@ -1300,15 +1300,21 @@ export class Renderer {
     ctxSave(this.ctx, () => {
       const ctx = this.ctx;
       const frame = directionalAnimationFrame(u);
-      ctx.translate(p.x, p.y);
-      ctx.scale(frame.mirror, frame.depthScale);
-      if (frame.state === 'hit') ctx.translate(-2.5 * scale, -1.5 * scale);
-      if (frame.state === 'death') {
-        const fall = 1 - clamp((u.deathAnim || 0) / 1.2, 0, 1);
-        ctx.rotate(frame.mirror * fall * 1.18);
-        ctx.globalAlpha = Math.max(0.16, 1 - fall * 0.72);
+      const entry = this.unitSpriteAtlases?.get(u.type);
+      const bakedPose = entry?.descriptor.bakedPose && entry.ready && !entry.failed && entry.image?.naturalWidth;
+      // New screen-space sheets already contain their directional and fallen poses.
+      // Preserve the historical procedural transform when loading fails.
+      if (!bakedPose) {
+        ctx.translate(p.x, p.y);
+        ctx.scale(frame.mirror, frame.depthScale);
+        if (frame.state === 'hit') ctx.translate(-2.5 * scale, -1.5 * scale);
+        if (frame.state === 'death') {
+          const fall = 1 - clamp((u.deathAnim || 0) / 1.2, 0, 1);
+          ctx.rotate(frame.mirror * fall * 1.18);
+          ctx.globalAlpha = Math.max(0.16, 1 - fall * 0.72);
+        }
+        ctx.translate(-p.x, -p.y);
       }
-      ctx.translate(-p.x, -p.y);
       ctx.fillStyle = 'rgba(7,9,5,0.34)';
       const big = ['knight', 'light_cavalry', 'horse_archer', 'elephant', 'ram', 'mangonel', 'patrol_cart', 'prototype'].includes(u.type) ? 19 : 12;
       this.drawUnitShadow(p.x+2*scale,p.y+1.5*scale,big*scale,(big===19?7:4.5)*scale);

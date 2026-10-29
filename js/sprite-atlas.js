@@ -9,6 +9,13 @@ const STATES = Object.freeze({
 const DIRECTION_MAP = Object.freeze(Object.fromEntries(DIRECTIONS.map((direction, index) => [direction, index])));
 
 export const UNIT_SPRITE_ATLASES = Object.freeze({
+  ...Object.fromEntries(['commander', 'recruiter', 'warlord', 'warlord2'].map(type => [type, Object.freeze({
+    id: `${type}-v1`, src: `assets/sprites/${type}-atlas.png`, bakedPose: true,
+    frame: Object.freeze({ width: 160, height: 160 }), anchor: Object.freeze({ x: 80, y: 88 }),
+    offset: Object.freeze({ x: 0, y: 0 }), scale: 0.78, directions: DIRECTION_MAP,
+    states: Object.freeze(Object.fromEntries(Object.entries(STATES).map(([name, animation]) =>
+      [name, Object.freeze({ ...animation, frames: 4, fps: animation.fps * 2 })]))),
+  })])),
   ...Object.fromEntries(['spearman', 'guard'].map(type => [type, Object.freeze({
     id: `${type}-migration-v1`, src: `assets/sprites/${type}-atlas.png`,
     frame: Object.freeze({ width: 128, height: 160 }), anchor: Object.freeze({ x: 64, y: 88 }),
