@@ -1,0 +1,213 @@
+{
+  "mode": "AFTER_LOCAL_CONTROLLED_VISUAL_SCENE_NOT_NATURAL_PLAY",
+  "source_commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
+  "browser": "Chromium",
+  "checks": [
+    {
+      "name": "exact committed artifact",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "8425aedfa6bb020ebaff9e909cc5e89f7337ba78",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-29T16:33:26.433647+00:00",
+        "resourceVerification": "SHA256_MATCH_59_FILES"
+      }
+    },
+    {
+      "name": "native barracks guard training pays exact costs",
+      "pass": true,
+      "detail": {
+        "before": {
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "cost": {
+            "food": 70,
+            "gold": 50
+          },
+          "ids": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "after": {
+          "food": 230,
+          "wood": 300,
+          "gold": 70,
+          "stone": 100
+        },
+        "queued": true
+      }
+    },
+    {
+      "name": "production queue spawns the civilization guard",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "independent external roundshield loaded",
+      "pass": true,
+      "detail": {
+        "width": 2048,
+        "height": 1280,
+        "src": "assets/sprites/vik-roundshield-atlas.png"
+      }
+    },
+    {
+      "name": "production move command advances roundshield",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.9846267276725,
+          "y": 33.24615668191813
+        },
+        "state": "move"
+      }
+    },
+    {
+      "name": "production roundshield uses existing melee sound",
+      "pass": true,
+      "detail": [
+        "guard"
+      ]
+    },
+    {
+      "name": "production melee attack and live state synchronization",
+      "pass": true,
+      "detail": {
+        "enemyHP": 131.29999999999998,
+        "startHP": 145,
+        "actorState": "attack",
+        "shots": 0,
+        "seen": {
+          "idle": 210,
+          "walk": 424,
+          "attack": 7
+        },
+        "attackFrames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production damage displays hit animation",
+      "pass": true,
+      "detail": {
+        "hitFlash": 1,
+        "seen": {
+          "idle": 210,
+          "walk": 424,
+          "attack": 7,
+          "hit": 52
+        }
+      }
+    },
+    {
+      "name": "production death displays terminal atlas",
+      "pass": true,
+      "detail": {
+        "idle": 210,
+        "walk": 424,
+        "attack": 7,
+        "hit": 52,
+        "death": 46
+      }
+    },
+    {
+      "name": "civilization and enemy isolation",
+      "pass": true,
+      "detail": {
+        "other": "guard",
+        "enemy": "guard"
+      }
+    },
+    {
+      "name": "failed asset retains procedural fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "bounded 100-unit renderer JS within budget and no >20% median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 1.2024999999906867,
+          "p50": 0.9000000022351742,
+          "p95": 2.5
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.1112500000279397,
+          "p50": 0.8999999985098839,
+          "p95": 2.2000000029802322
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.0475000000558794,
+          "p50": 0.9000000022351742,
+          "p95": 2
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 1.0724999999627471,
+          "p50": 0.9000000022351742,
+          "p95": 2
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 1.5912500000093133,
+          "p50": 1,
+          "p95": 4.5
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.3312500000931322,
+          "p50": 1,
+          "p95": 3
+        }
+      ]
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}
