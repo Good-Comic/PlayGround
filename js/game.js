@@ -206,7 +206,7 @@ export class Game {
       'eventRegen', 'buildingDamageMul', 'convertResist', 'eventRetreat', 'eventRetreatCd',
       'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'moraleUsed',
       'lureUsed', 'feintUsed', 'spawnGate', 'eventModsApplied', 'scale',
-      'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover', '_orderScanAt', '_blockCd',
+      'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover', '_orderScanAt', '_blockCd', '_stunCd',
     ];
     const buildingKeys = [
       'id', 'team', 'type', 'x', 'y', 'w', 'h', 'hp', 'maxHp', 'baseMaxHp', 'armor',
@@ -459,6 +459,7 @@ export class Game {
       unit.tacticalOrder = order&&['attackMove','guard','patrol'].includes(order.type)&&point(order.destination)&&point(order.origin)&&[0,1].includes(order.leg)&&(order.type!=='guard'||Number.isSafeInteger(order.protectedId)) ? JSON.parse(JSON.stringify(order)) : null;
       unit.typeDef = UNIT_TYPES[saved.type];
       unit._blockCd = Number.isFinite(saved._blockCd) && saved._blockCd >= 0 ? saved._blockCd : 0;
+      unit._stunCd = Number.isFinite(saved._stunCd) && saved._stunCd >= 0 ? saved._stunCd : 0;
       unit.selected = false;
     }
     const byKind = {
@@ -1112,6 +1113,7 @@ export class Game {
       if (u.team === 'player' && u.typeDef.category === 'infantry' && this.effects.infantryRegen > 0 && u.hp < u.maxHp && this.time - (u.combatAt || -99) > 5) {
         u.hp = Math.min(u.maxHp, u.hp + u.maxHp * this.effects.infantryRegen * dt);
       }
+      if (u.slowUntil > this.time && u.slowAmount >= 1) continue;
       if (u.hero && this.heroControl && u.team === 'player') {
         this.updateHeroDirect(u, dt);
         continue;
@@ -1884,6 +1886,7 @@ export class Game {
 
   attackUnit(u, target) {
     if (!target || !target.alive || u.typeDef.noAttack) return;
+    if (u.slowUntil > this.time && u.slowAmount >= 1) return;
     const def = u.typeDef;
     const newTarget = u.target !== target;
     u.combatAt = this.time;
@@ -1911,9 +1914,10 @@ export class Game {
     } else {
       this.applyDamage(target, damage, u, 'melee');
       // Spanish villager stun: first hit every 8s stuns non-boss for 0.5s
-      if (u.team === 'player' && u.civ?.id === 'SPA' && u.type === 'villager' && !target.typeDef?.boss) {
-        if (!target._stunCd || target._stunCd <= this.time) {
-          target._stunCd = this.time + 8;
+      if (u.team === 'player' && this.civ?.id === 'SPA' && u.type === 'villager' &&
+          target.team === 'enemy' && target.kind === 'unit' && !target.typeDef?.boss) {
+        if ((u._stunCd || 0) <= this.time) {
+          u._stunCd = this.time + 8;
           target.slowUntil = this.time + 0.5;
           target.slowAmount = 1; // Fully stunned (speed = 0)
           this.addFloating(target.x, target.y, t('toast.spanishStun'), 'rgba(255,200,100,ALPHA)');
