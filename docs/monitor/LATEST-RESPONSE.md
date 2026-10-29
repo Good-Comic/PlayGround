@@ -1,3 +1,3 @@
-繁體中文：診斷有證據區間約 471.894 秒，不是完整回合時長；未見平台強制停止證據，沒有固定 20／30 分鐘限制結論。6 項測試通過後直接接續 JPN。
+繁體中文：上一輪為 AGENT_EARLY_STOP，無固定 20／30 分鐘限制證據。6 項流程測試通過，直接接續 JPN 外觀（9 Node／13 Chromium 複查 PASS）；全部失敗保留。本次交付報告亦為主動停止，已記錄，不能宣稱連續性已徹底解決。310 分鐘喚醒未驗證，無公開發布。
 
-English: The evidenced interval is approximately 471.894 seconds, not full-turn duration. No forced platform stop evidence or fixed 20/30-minute limit is established. Six tests pass and JPN work directly continues.
+English: Previous stop was AGENT_EARLY_STOP, without evidence of a fixed 20/30-minute limit. Six workflow tests pass; JPN visual work directly followed with 9 Node/13 Chromium recheck passes and all failures retained. This report delivery is also a voluntary stop and is recorded; continuity is not claimed fully solved. The 310-minute wake is unverified; nothing publicly deployed.

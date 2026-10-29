@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T16:41:38.853489+00:00",
+  "updated_at": "2026-10-29T16:48:57.581808+00:00",
   "blockers": [
     {
       "id": "NATURAL_WAVE_OBSERVATION",
@@ -602,10 +602,18 @@
       "task_id": "V240-P0-ENVLOST-RECOVERY"
     },
     {
-      "id": "SCHEDULER-UNVERIFIED",
+      "id": "AUTO-RESUME-UNVERIFIED",
       "severity": "WARNING",
-      "summary": "310 \u5206\u9418\u65b0 Agent \u559a\u9192\u7121\u53ef\u67e5\u8a2d\u5b9a\uff0f\u5be6\u8dd1\u6536\u64da\uff0c\u4e0d\u5ba3\u7a31\u5207\u63db\uff1b\u7121\u6b63\u5f0f\u984d\u5ea6\u8cc7\u6599\u3002 / No queryable 310-minute configuration/current-Agent wake receipt; no rebinding claim or official quota telemetry.",
-      "source_commit": "d7ed2ce300acc13ca65c981c38ab767a9eee50cc",
+      "summary": "\u6c92\u6709\u9023\u7dda\u7684\u6392\u7a0b\u67e5\u8a62\uff0f\u91cd\u7d81\u5de5\u5177\u6216\u76ee\u524d Agent \u7684 310 \u5206\u9418\u57f7\u884c\u6536\u64da\uff0c\u4e0d\u5047\u7a31\u5df2\u5207\u63db\u3002 / No connected scheduler query/rebinding tool or current-Agent 310-minute execution receipt; no switch claimed.",
+      "source_commit": "14602521a23e3281f413a1119d80548067e38284",
+      "requires_user_decision": false,
+      "task_id": "V240-EXECUTION-CONTINUITY"
+    },
+    {
+      "id": "JPN-BLOCK-AND-PERF",
+      "severity": "WARNING",
+      "summary": "target.civ \u7f3a\u5931\u5c0e\u81f4\u683c\u64cb\u672a\u751f\u6548\uff1b\u9996\u8f2a renderer \u6bd4\u8f03 FAIL\u3001\u540c\u4f86\u6e90\u8907\u67e5 PASS\uff0c\u539f\u56e0\u672a\u5b9a\u3002 / Missing target.civ prevents block; initial renderer FAIL and same-source recheck PASS, cause undetermined.",
+      "source_commit": "14602521a23e3281f413a1119d80548067e38284",
       "requires_user_decision": false,
       "task_id": "V240-EXECUTION-CONTINUITY"
     }
