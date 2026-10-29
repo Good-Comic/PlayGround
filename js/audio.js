@@ -85,12 +85,30 @@ export class Sound {
     this.tone(1180, 0.1, 'sine', 0.025, 1100, 0.04);
   }
   chop() { if (this.throttle('chop', 180)) this.noise(0.08, 0.06, 700); }
-  attack(unitType) {
+  attack(unitType, civId) {
     if (!this.ctx || !this.enabled || !this.throttle('attack', 55)) return;
     if (unitType === 'elephant') {
       this.noise(.16, .065, 240);
       this.tone(78, .2, 'sine', .065, 35);
       this.tone(160, .05, 'triangle', .02, 90, .015);
+    } else if (unitType === 'light_cavalry' && civId === 'MAG') {
+      this.noise(.1, .033, 3000, 0, 'highpass');
+      this.tone(720, .075, 'triangle', .024, 290, .012);
+      this.tone(145, .065, 'sine', .028, 80, .025);
+    } else if (unitType === 'light_cavalry' && civId === 'FRK') {
+      this.noise(.065, .04, 750, 0, 'bandpass');
+      this.tone(185, .09, 'triangle', .035, 85);
+      this.tone(980, .04, 'sine', .012, 600, .02);
+    } else if (unitType === 'guard') {
+      this.noise(.055, .034, 2200, 0, 'bandpass');
+      this.tone(1180, .075, 'sine', .02, 720);
+      this.tone(2360, .045, 'sine', .009, 1440, .008);
+    } else if (unitType === 'spearman') {
+      this.noise(.07, .03, 1250, 0, 'bandpass');
+      this.tone(340, .07, 'triangle', .028, 160);
+    } else if (unitType === 'militia' && civId === 'AZT') {
+      this.noise(.085, .043, 900, 0, 'bandpass');
+      this.tone(210, .07, 'triangle', .027, 95);
     } else {
       this.noise(.06, .055, 1900, 0, 'bandpass');
       this.tone(110, .08, 'triangle', .04, 70);

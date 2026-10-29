@@ -1936,7 +1936,7 @@ export class Game {
           hit++;
         }
       }
-      this.sound?.attack(u.type);
+      this.sound?.attack(u.type, u.team === 'player' ? this.civ?.id : undefined);
       if (u.team === 'player' && this.selection.includes(u)) {
         this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'slash', 'rgba(244,226,178,ALPHA)', 1, 1, 0.35);
       }
