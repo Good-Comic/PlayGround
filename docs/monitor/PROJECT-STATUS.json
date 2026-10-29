@@ -2,18 +2,18 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-29T20:03:22.299842+00:00",
+  "updated_at": "2026-10-29T20:03:25.562134+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
     "commit": "bbdcc0b7c13da9d03409972cc19cd71808986814",
-    "build_sha": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
-    "summary": "TUR \u53cd\u66f2\u5f13\u5f13\u5175\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u7bad\u77e2\u547d\u4e2d\u8207\u8996\u89ba\u9a57\u6536 / TUR recurve-bow archer passed native training projectile hits and visual acceptance",
+    "build_sha": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+    "summary": "\u6587\u660e\u5716\u96c6\u6539\u70ba\u7576\u524d\u6587\u660e\u89e3\u78bc\uff0c\u5207\u63db\u91cb\u653e\u820a\u5f71\u50cf\u8207\u88c1\u683c\u5f15\u7528 / Civilization atlases decode only for the active civ and release stale image and crop references",
     "code_changes": [
-      "TUR \u53cd\u66f2\u5f13\u5f13\u5175\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u7bad\u77e2\u547d\u4e2d\u8207\u8996\u89ba\u9a57\u6536",
-      "TUR recurve-bow archer passed native training projectile hits and visual acceptance"
+      "\u6587\u660e\u5716\u96c6\u6539\u70ba\u7576\u524d\u6587\u660e\u89e3\u78bc\uff0c\u5207\u63db\u91cb\u653e\u820a\u5f71\u50cf\u8207\u88c1\u683c\u5f15\u7528",
+      "Civilization atlases decode only for the active civ and release stale image and crop references"
     ],
     "next_steps": [
       "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -21,21 +21,21 @@
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "3 focused Node PASS",
+        "name": "15 focused Node PASS",
         "status": "PASS",
-        "source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
-        "evidence": "docs/evidence/v240-tur-archer/focused-node.txt",
-        "evidence_commit": "a078a8d2360abcf36488829f3a9c61b59c07a437",
-        "evidence_blob": "f16dcbaf0bd9e09d22090b2ebd52996c463a5ea5",
+        "source_commit": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+        "evidence": "docs/evidence/v240-atlas-loading/focused-node.txt",
+        "evidence_commit": "bbdcc0b7c13da9d03409972cc19cd71808986814",
+        "evidence_blob": "6260002d42c8d96d0bd4992369677e422c2327c9",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "14 actual Chromium PASS",
+        "name": "15 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
-        "evidence": "docs/evidence/v240-tur-archer/verified/browser.json",
-        "evidence_commit": "a078a8d2360abcf36488829f3a9c61b59c07a437",
-        "evidence_blob": "80cd2e9212cd80036486cb43155ce3a0eef1d73f",
+        "source_commit": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+        "evidence": "docs/evidence/v240-atlas-loading/after-browser/browser.json",
+        "evidence_commit": "bbdcc0b7c13da9d03409972cc19cd71808986814",
+        "evidence_blob": "ca9fe103ccd1af2a432c7f21939a78c831474875",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -48,12 +48,12 @@
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aTUR \u53cd\u66f2\u5f13\u5f13\u5175\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u7bad\u77e2\u547d\u4e2d\u8207\u8996\u89ba\u9a57\u6536\u3002\u5b9a\u5411 Node 3\uff0f\u771f\u5be6 Chromium 14 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: TUR recurve-bow archer passed native training projectile hits and visual acceptance. 3 focused Node/14 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "423962f92ddd865549dd3f1d44ffdfe5dec9db0a509d2051bfb7f44b47980f70",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6587\u660e\u5716\u96c6\u6539\u70ba\u7576\u524d\u6587\u660e\u89e3\u78bc\uff0c\u5207\u63db\u91cb\u653e\u820a\u5f71\u50cf\u8207\u88c1\u683c\u5f15\u7528\u3002\u5b9a\u5411 Node 15\uff0f\u771f\u5be6 Chromium 15 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Civilization atlases decode only for the active civ and release stale image and crop references. 15 focused Node/15 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "69f7b0c32e47268facde2fa5516a5b129c47a86020a9b217049fafda813286d4",
     "remote_head": "bbdcc0b7c13da9d03409972cc19cd71808986814",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-29T20:03:22.299842+00:00",
+    "recorded_at": "2026-10-29T20:03:25.562134+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3007,11 +3007,11 @@
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
       "commit": "bbdcc0b7c13da9d03409972cc19cd71808986814",
-      "build_sha": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
-      "summary": "TUR \u53cd\u66f2\u5f13\u5f13\u5175\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u7bad\u77e2\u547d\u4e2d\u8207\u8996\u89ba\u9a57\u6536 / TUR recurve-bow archer passed native training projectile hits and visual acceptance",
+      "build_sha": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+      "summary": "\u6587\u660e\u5716\u96c6\u6539\u70ba\u7576\u524d\u6587\u660e\u89e3\u78bc\uff0c\u5207\u63db\u91cb\u653e\u820a\u5f71\u50cf\u8207\u88c1\u683c\u5f15\u7528 / Civilization atlases decode only for the active civ and release stale image and crop references",
       "code_changes": [
-        "TUR \u53cd\u66f2\u5f13\u5f13\u5175\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u7bad\u77e2\u547d\u4e2d\u8207\u8996\u89ba\u9a57\u6536",
-        "TUR recurve-bow archer passed native training projectile hits and visual acceptance"
+        "\u6587\u660e\u5716\u96c6\u6539\u70ba\u7576\u524d\u6587\u660e\u89e3\u78bc\uff0c\u5207\u63db\u91cb\u653e\u820a\u5f71\u50cf\u8207\u88c1\u683c\u5f15\u7528",
+        "Civilization atlases decode only for the active civ and release stale image and crop references"
       ],
       "next_steps": [
         "\u6838\u5c0d\u6240\u6709\u6b0a\u4e26\u63a5\u7e8c\u65e2\u6709\u6587\u660e\u5167\u5bb9\u3002 / Revalidate ownership and continue existing civilization content."
@@ -3019,21 +3019,21 @@
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "3 focused Node PASS",
+          "name": "15 focused Node PASS",
           "status": "PASS",
-          "source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
-          "evidence": "docs/evidence/v240-tur-archer/focused-node.txt",
-          "evidence_commit": "a078a8d2360abcf36488829f3a9c61b59c07a437",
-          "evidence_blob": "f16dcbaf0bd9e09d22090b2ebd52996c463a5ea5",
+          "source_commit": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+          "evidence": "docs/evidence/v240-atlas-loading/focused-node.txt",
+          "evidence_commit": "bbdcc0b7c13da9d03409972cc19cd71808986814",
+          "evidence_blob": "6260002d42c8d96d0bd4992369677e422c2327c9",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "14 actual Chromium PASS",
+          "name": "15 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "ce26f7f405e1cdb1d5a46cc51b4c25bbcad79dda",
-          "evidence": "docs/evidence/v240-tur-archer/verified/browser.json",
-          "evidence_commit": "a078a8d2360abcf36488829f3a9c61b59c07a437",
-          "evidence_blob": "80cd2e9212cd80036486cb43155ce3a0eef1d73f",
+          "source_commit": "4c5ae01fb886067443aa5bc51204f4e2e6b78ec9",
+          "evidence": "docs/evidence/v240-atlas-loading/after-browser/browser.json",
+          "evidence_commit": "bbdcc0b7c13da9d03409972cc19cd71808986814",
+          "evidence_blob": "ca9fe103ccd1af2a432c7f21939a78c831474875",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3046,12 +3046,12 @@
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aTUR \u53cd\u66f2\u5f13\u5f13\u5175\u5b8c\u6210\u539f\u751f\u8a13\u7df4\u7bad\u77e2\u547d\u4e2d\u8207\u8996\u89ba\u9a57\u6536\u3002\u5b9a\u5411 Node 3\uff0f\u771f\u5be6 Chromium 14 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: TUR recurve-bow archer passed native training projectile hits and visual acceptance. 3 focused Node/14 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "423962f92ddd865549dd3f1d44ffdfe5dec9db0a509d2051bfb7f44b47980f70",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6587\u660e\u5716\u96c6\u6539\u70ba\u7576\u524d\u6587\u660e\u89e3\u78bc\uff0c\u5207\u63db\u91cb\u653e\u820a\u5f71\u50cf\u8207\u88c1\u683c\u5f15\u7528\u3002\u5b9a\u5411 Node 15\uff0f\u771f\u5be6 Chromium 15 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Civilization atlases decode only for the active civ and release stale image and crop references. 15 focused Node/15 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "69f7b0c32e47268facde2fa5516a5b129c47a86020a9b217049fafda813286d4",
       "remote_head": "bbdcc0b7c13da9d03409972cc19cd71808986814",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-29T20:03:22.299842+00:00",
+      "recorded_at": "2026-10-29T20:03:25.562134+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
