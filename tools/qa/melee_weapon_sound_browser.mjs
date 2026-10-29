@@ -36,14 +36,14 @@ try {
       window.actor = g.spawnUnit(type, 29, 33); window.enemy = g.spawnUnit('brute', 30.3, 33, 'enemy');
       enemy.hp = enemy.maxHp = 2000; enemy.cooldown = 999; actor.cooldown = 0; g.hero = null; g.setSelection([actor]);
       g.focusAt(29.5, 33); g.camera.x = g.camera.targetX; g.camera.y = g.camera.targetY; g.camera.zoom = g.camera.targetZoom = 1.7;
-      window.initialHP = enemy.hp; window.soundEvents = []; window.voices = [];
+      window.sfxActiveUntil = 0; window.initialHP = enemy.hp; window.soundEvents = []; window.voices = [];
       // Tap only tone/noise SFX; ambience/music remain on their original buses.
       const tap = ctx.createGain(), media = ctx.createMediaStreamDestination(), analyser = ctx.createAnalyser();
       tap.gain.value = 1; tap.connect(sound.master); tap.connect(media); tap.connect(analyser); analyser.fftSize = 2048;
       for (const key of ['tone', 'noise']) {
         const original = sound[key].bind(sound);
         sound[key] = (...args) => {
-          if (sound.enabled) voices.push({ kind: key, args, at: ctx.currentTime });
+          if (sound.enabled) { voices.push({ kind: key, args, at: ctx.currentTime }); sfxActiveUntil = ctx.currentTime + .2; }
           const master = sound.master; sound.master = tap;
           try { return original(...args); } finally { sound.master = master; }
         };
@@ -54,6 +54,7 @@ try {
       }
       window.signal = { sum: 0, count: 0, peak: 0 };
       window.signalTimer = setInterval(() => {
+        if (ctx.currentTime > sfxActiveUntil) return;
         const data = new Float32Array(analyser.fftSize); analyser.getFloatTimeDomainData(data);
         for (const value of data) { signal.sum += value * value; signal.count++; signal.peak = Math.max(signal.peak, Math.abs(value)); }
       }, 20);
@@ -71,7 +72,7 @@ try {
     check(`${label}: native combat routes the weapon cue and records non-silent unclipped SFX`, audible.events.some(e => e.type === type && e.method === method && e.civ === civ) && audible.voices.some(v => v.kind === 'tone' && v.args[0] === frequency) && audible.rms > .0001 && audible.peak < .98 && audible.hp < audible.startHP, audible);
     await page.locator('#btn-sound').click();
     await page.waitForTimeout(400);
-    await page.evaluate(() => { window.mutedVoiceCount = voices.length; window.mutedEventCount = soundEvents.length; signal = { sum: 0, count: 0, peak: 0 }; actor.cooldown = 0; ageOfAsh.game.paused = false; });
+    await page.evaluate(() => { window.mutedVoiceCount = voices.length; window.mutedEventCount = soundEvents.length; signal = { sum: 0, count: 0, peak: 0 }; sfxActiveUntil = ageOfAsh.game.sound.ctx.currentTime + 10; actor.cooldown = 0; ageOfAsh.game.paused = false; });
     await page.waitForFunction(() => soundEvents.length > mutedEventCount, null, { timeout: 5000 });
     await page.waitForTimeout(350);
     await page.evaluate(() => { ageOfAsh.game.paused = true; });
@@ -102,7 +103,7 @@ try {
   checks.push({ name: 'browser execution', pass: false, detail: { message: e.message, stack: e.stack } });
   await page?.screenshot({ path: `${out}/failure.png` }).catch(() => {});
 } finally { await context.close(); await browser.close(); }
-const result = { source_commit: source, mode: 'NEW_MELEE_CUES_LOCAL_CONTROLLED_2000HP_TARGET_NATIVE_COMBAT_AND_MUTE', audio_scope: 'tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance', checks, recordings, errors, pass: checks.length > 0 && checks.every(c => c.pass) };
+const result = { source_commit: source, mode: 'NEW_MELEE_CUES_LOCAL_CONTROLLED_2000HP_TARGET_NATIVE_COMBAT_AND_MUTE', signal_scope: 'RMS sampled within200ms of each synthesized SFX; muted silence window explicitly open; pre-contact walking silence excluded', audio_scope: 'tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance', checks, recordings, errors, pass: checks.length > 0 && checks.every(c => c.pass) };
 writeFileSync(`${out}/browser.json`, JSON.stringify(result, null, 2));
 console.log(JSON.stringify({ pass: result.pass, checks: checks.map(({ name, pass }) => ({ name, pass })) }));
 if (!result.pass) process.exitCode = 1;
