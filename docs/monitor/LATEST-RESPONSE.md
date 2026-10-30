@@ -1,3 +1,3 @@
-繁體中文：波斯英雄已整合實際操作、技能與瓣錘音效，接續原生持久化驗收。定向 Node 18／真實 Chromium 17 通過，圖片已人工檢視；未改平衡或公開部署。
+繁體中文：CHN19 Node／17遊戲＋7音訊Chromium通過。原生付費訓練、完整程序關閉重開及Continue13項通過；生命週期22項通過。程序RSS成長主要可由顯式瀏覽器壓力診斷回收，但長期洩漏仍INCONCLUSIVE，GPU顯存NOT_TESTED。保持嚴格存讀及其他歷史FAIL。
 
-English: Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance. 18 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.
+English: CHN19 Node/17 gameplay+7 audio Chromium pass. Native paid training/full-process reopen/Continue13 checks pass; lifecycle22 checks pass. Most process RSS growth is reclaimable under explicit browser-pressure diagnostics, while long-run leaks remain INCONCLUSIVE and GPU memory NOT_TESTED. Strict-save and other historical FAIL remain.

@@ -2,67 +2,76 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-30T05:57:44.386002+00:00",
+  "updated_at": "2026-10-30T06:18:26.884906+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
-    "build_sha": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-    "summary": "\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536 / Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance",
+    "commit": "320c069fdb67b42be921862561d3d26b9f7335ef",
+    "build_sha": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+    "summary": "CHN\u82f1\u96c4\uff0f\u97f3\u6548\u9a57\u6536\u3001\u539f\u751f\u4ed8\u8cbb\u751f\u7522\u5f8c\u8de8\u7a0b\u5e8fSave/Continue\u3001\u5be6\u969b\u8a18\u61b6\u9ad4\u7d00\u9304\u4fdd\u5b58\uff1b\u7e7c\u7e8cGOT / CHN hero/audio, native production Save/Continue and actual memory saved; continuing GOT",
     "code_changes": [
-      "\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536",
-      "Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance"
+      "\u4e2d\u570b\u82f1\u96c4\u5043\u6708\u5200\uff0f\u7d05\u7e93\uff0f\u672d\u7532\u53ca\u8072\u97f3 / Chinese guandao/red-plume/lamellar hero and cue",
+      "\u53ea\u8b80\u539f\u751f\u6301\u4e45\u5316\u8207Heap/RSS/PSS\u9a57\u6536\u5de5\u5177 / Read-only native persistence and heap/RSS/PSS checks"
     ],
     "next_steps": [
-      "\u539f\u751f\u8de8\u7a0b\u5e8f Save/Continue \u8207\u4e0b\u4e00\u9805 CHI \u82f1\u96c4\u3002 / Native cross-process Save/Continue and next CHI hero."
+      "GOT\u54e5\u5fb7\u82f1\u96c4\u5de8\u528d\u8207\u6bdb\u76ae\u9396\u7532\u5be6\u969b\u9a57\u6536\u4e2d\u3002 / GOT greatsword/fur-mail hero undergoing actual acceptance."
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "18 focused Node PASS",
+        "name": "CHN17 actual gameplay",
         "status": "PASS",
-        "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-        "evidence": "docs/evidence/v240-per-hero/focused-node.txt",
-        "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
-        "evidence_blob": "70dea11890cedbead5c74c51ae68a9b23deff2fa",
+        "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+        "evidence": "docs/evidence/v240-chn-hero/verified/browser.json",
+        "evidence_commit": "d768d8d19a23b39e3f4f75d42847be66f6712d57",
+        "evidence_blob": "464308da4c3b699a89a6a0026f425803231515f0",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "17 actual Chromium PASS",
+        "name": "CHN7 actual audio",
         "status": "PASS",
-        "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-        "evidence": "docs/evidence/v240-per-hero/verified/browser.json",
-        "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
-        "evidence_blob": "158fff7cada511f199719ac4586b543fee021443",
+        "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+        "evidence": "docs/evidence/v240-chn-hero/audio-browser/browser.json",
+        "evidence_commit": "d768d8d19a23b39e3f4f75d42847be66f6712d57",
+        "evidence_blob": "1f32c00cf3a699cd2d119cc9ab1549555c23d93d",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "7 actual PER WebAudio checks",
+        "name": "13 native paid-production process-reopen Continue",
         "status": "PASS",
         "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-        "evidence": "docs/evidence/v240-per-hero/audio-browser/browser.json",
-        "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
-        "evidence_blob": "6beec44e8cb859bcae953936b34f0ce255ea3486",
+        "evidence": "docs/evidence/v240-native-persistent-continue/verified/browser.json",
+        "evidence_commit": "9a31d5cf63fa9eba0c132a027d8ebee74c986990",
+        "evidence_blob": "60613295e596454c4368a116691258bece5459da",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "22 native atlas lifecycle checks; NOT memory leak PASS",
+        "status": "PASS",
+        "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+        "evidence": "docs/evidence/v240-atlas-native-memory/verified/browser.json",
+        "evidence_commit": "320c069fdb67b42be921862561d3d26b9f7335ef",
+        "evidence_blob": "dff1f103578dd6ba10421cc8402d1f729389f6ae",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
     "blockers": [
       {
-        "id": "HISTORICAL-GAPS",
-        "severity": "WARNING",
-        "summary": "SAR \u6027\u80fd\u5fa9\u9a57 INCONCLUSIVE\uff0c\u4fdd\u7559\u539f\u59cb FAIL\uff1b\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / SAR performance review INCONCLUSIVE with raw FAIL retained; historical campaign, clock, strict-save and hardware gaps remain.",
-        "source_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+        "id": "SAR-PERF-INCONCLUSIVE",
+        "severity": "PROGRESS",
+        "summary": "SAR\u5b9a\u5411\u5fa9\u9a57\u4fdd\u7559\u4e00\u7d44+66.7% FAIL\uff0c\u672a\u8b49\u660e\u7a69\u5b9a\u9000\u6b65\u3002 / SAR review retains one+66.7% FAIL; stable regression unproven.",
+        "source_commit": "320c069fdb67b42be921862561d3d26b9f7335ef",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536\u3002\u5b9a\u5411 Node 18\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance. 18 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "43e680e09b7ab6509f782d9e9b9a7d1fd5e9af56ca9561ffb9592ed043044c78",
-    "remote_head": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aCHN19 Node\uff0f17\u904a\u6232\uff0b7\u97f3\u8a0aChromium\u901a\u904e\u3002\u539f\u751f\u4ed8\u8cbb\u8a13\u7df4\u3001\u5b8c\u6574\u7a0b\u5e8f\u95dc\u9589\u91cd\u958b\u53caContinue13\u9805\u901a\u904e\uff1b\u751f\u547d\u9031\u671f22\u9805\u901a\u904e\u3002\u7a0b\u5e8fRSS\u6210\u9577\u4e3b\u8981\u53ef\u7531\u986f\u5f0f\u700f\u89bd\u5668\u58d3\u529b\u8a3a\u65b7\u56de\u6536\uff0c\u4f46\u9577\u671f\u6d29\u6f0f\u4ecdINCONCLUSIVE\uff0cGPU\u986f\u5b58NOT_TESTED\u3002\u4fdd\u6301\u56b4\u683c\u5b58\u8b80\u53ca\u5176\u4ed6\u6b77\u53f2FAIL\u3002\n\nEnglish: CHN19 Node/17 gameplay+7 audio Chromium pass. Native paid training/full-process reopen/Continue13 checks pass; lifecycle22 checks pass. Most process RSS growth is reclaimable under explicit browser-pressure diagnostics, while long-run leaks remain INCONCLUSIVE and GPU memory NOT_TESTED. Strict-save and other historical FAIL remain.",
+    "event_id": "bd54980722adeff72fa01aad801d79f96bad636fa607950ddc1623c93d97efd4",
+    "remote_head": "320c069fdb67b42be921862561d3d26b9f7335ef",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-30T05:57:44.386002+00:00",
+    "recorded_at": "2026-10-30T06:18:26.884906+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3015,61 +3024,70 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
-      "build_sha": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-      "summary": "\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536 / Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance",
+      "commit": "320c069fdb67b42be921862561d3d26b9f7335ef",
+      "build_sha": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+      "summary": "CHN\u82f1\u96c4\uff0f\u97f3\u6548\u9a57\u6536\u3001\u539f\u751f\u4ed8\u8cbb\u751f\u7522\u5f8c\u8de8\u7a0b\u5e8fSave/Continue\u3001\u5be6\u969b\u8a18\u61b6\u9ad4\u7d00\u9304\u4fdd\u5b58\uff1b\u7e7c\u7e8cGOT / CHN hero/audio, native production Save/Continue and actual memory saved; continuing GOT",
       "code_changes": [
-        "\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536",
-        "Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance"
+        "\u4e2d\u570b\u82f1\u96c4\u5043\u6708\u5200\uff0f\u7d05\u7e93\uff0f\u672d\u7532\u53ca\u8072\u97f3 / Chinese guandao/red-plume/lamellar hero and cue",
+        "\u53ea\u8b80\u539f\u751f\u6301\u4e45\u5316\u8207Heap/RSS/PSS\u9a57\u6536\u5de5\u5177 / Read-only native persistence and heap/RSS/PSS checks"
       ],
       "next_steps": [
-        "\u539f\u751f\u8de8\u7a0b\u5e8f Save/Continue \u8207\u4e0b\u4e00\u9805 CHI \u82f1\u96c4\u3002 / Native cross-process Save/Continue and next CHI hero."
+        "GOT\u54e5\u5fb7\u82f1\u96c4\u5de8\u528d\u8207\u6bdb\u76ae\u9396\u7532\u5be6\u969b\u9a57\u6536\u4e2d\u3002 / GOT greatsword/fur-mail hero undergoing actual acceptance."
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "18 focused Node PASS",
+          "name": "CHN17 actual gameplay",
           "status": "PASS",
-          "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-          "evidence": "docs/evidence/v240-per-hero/focused-node.txt",
-          "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
-          "evidence_blob": "70dea11890cedbead5c74c51ae68a9b23deff2fa",
+          "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+          "evidence": "docs/evidence/v240-chn-hero/verified/browser.json",
+          "evidence_commit": "d768d8d19a23b39e3f4f75d42847be66f6712d57",
+          "evidence_blob": "464308da4c3b699a89a6a0026f425803231515f0",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "17 actual Chromium PASS",
+          "name": "CHN7 actual audio",
           "status": "PASS",
-          "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-          "evidence": "docs/evidence/v240-per-hero/verified/browser.json",
-          "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
-          "evidence_blob": "158fff7cada511f199719ac4586b543fee021443",
+          "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+          "evidence": "docs/evidence/v240-chn-hero/audio-browser/browser.json",
+          "evidence_commit": "d768d8d19a23b39e3f4f75d42847be66f6712d57",
+          "evidence_blob": "1f32c00cf3a699cd2d119cc9ab1549555c23d93d",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "7 actual PER WebAudio checks",
+          "name": "13 native paid-production process-reopen Continue",
           "status": "PASS",
           "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-          "evidence": "docs/evidence/v240-per-hero/audio-browser/browser.json",
-          "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
-          "evidence_blob": "6beec44e8cb859bcae953936b34f0ce255ea3486",
+          "evidence": "docs/evidence/v240-native-persistent-continue/verified/browser.json",
+          "evidence_commit": "9a31d5cf63fa9eba0c132a027d8ebee74c986990",
+          "evidence_blob": "60613295e596454c4368a116691258bece5459da",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "22 native atlas lifecycle checks; NOT memory leak PASS",
+          "status": "PASS",
+          "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+          "evidence": "docs/evidence/v240-atlas-native-memory/verified/browser.json",
+          "evidence_commit": "320c069fdb67b42be921862561d3d26b9f7335ef",
+          "evidence_blob": "dff1f103578dd6ba10421cc8402d1f729389f6ae",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
       "blockers": [
         {
-          "id": "HISTORICAL-GAPS",
-          "severity": "WARNING",
-          "summary": "SAR \u6027\u80fd\u5fa9\u9a57 INCONCLUSIVE\uff0c\u4fdd\u7559\u539f\u59cb FAIL\uff1b\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / SAR performance review INCONCLUSIVE with raw FAIL retained; historical campaign, clock, strict-save and hardware gaps remain.",
-          "source_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+          "id": "SAR-PERF-INCONCLUSIVE",
+          "severity": "PROGRESS",
+          "summary": "SAR\u5b9a\u5411\u5fa9\u9a57\u4fdd\u7559\u4e00\u7d44+66.7% FAIL\uff0c\u672a\u8b49\u660e\u7a69\u5b9a\u9000\u6b65\u3002 / SAR review retains one+66.7% FAIL; stable regression unproven.",
+          "source_commit": "320c069fdb67b42be921862561d3d26b9f7335ef",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536\u3002\u5b9a\u5411 Node 18\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance. 18 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "43e680e09b7ab6509f782d9e9b9a7d1fd5e9af56ca9561ffb9592ed043044c78",
-      "remote_head": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aCHN19 Node\uff0f17\u904a\u6232\uff0b7\u97f3\u8a0aChromium\u901a\u904e\u3002\u539f\u751f\u4ed8\u8cbb\u8a13\u7df4\u3001\u5b8c\u6574\u7a0b\u5e8f\u95dc\u9589\u91cd\u958b\u53caContinue13\u9805\u901a\u904e\uff1b\u751f\u547d\u9031\u671f22\u9805\u901a\u904e\u3002\u7a0b\u5e8fRSS\u6210\u9577\u4e3b\u8981\u53ef\u7531\u986f\u5f0f\u700f\u89bd\u5668\u58d3\u529b\u8a3a\u65b7\u56de\u6536\uff0c\u4f46\u9577\u671f\u6d29\u6f0f\u4ecdINCONCLUSIVE\uff0cGPU\u986f\u5b58NOT_TESTED\u3002\u4fdd\u6301\u56b4\u683c\u5b58\u8b80\u53ca\u5176\u4ed6\u6b77\u53f2FAIL\u3002\n\nEnglish: CHN19 Node/17 gameplay+7 audio Chromium pass. Native paid training/full-process reopen/Continue13 checks pass; lifecycle22 checks pass. Most process RSS growth is reclaimable under explicit browser-pressure diagnostics, while long-run leaks remain INCONCLUSIVE and GPU memory NOT_TESTED. Strict-save and other historical FAIL remain.",
+      "event_id": "bd54980722adeff72fa01aad801d79f96bad636fa607950ddc1623c93d97efd4",
+      "remote_head": "320c069fdb67b42be921862561d3d26b9f7335ef",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-30T05:57:44.386002+00:00",
+      "recorded_at": "2026-10-30T06:18:26.884906+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
