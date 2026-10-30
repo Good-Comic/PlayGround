@@ -1,3 +1,4 @@
+import { FRAME_CROPS as MAG_HERO_CROPS } from '../assets/sprites/mag-hero-crops.js';
 import { FRAME_CROPS as BRI_HERO_CROPS } from '../assets/sprites/bri-hero-crops.js';
 import { FRAME_CROPS as MNG_HERO_CROPS } from '../assets/sprites/mng-hero-crops.js';
 import { FRAME_CROPS as TUR_HERO_CROPS } from '../assets/sprites/tur-hero-crops.js';
@@ -141,6 +142,13 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
     frame: Object.freeze({ width: 208, height: 208 }), anchor: Object.freeze({ x: 104, y: 120 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: .82, directions: DIRECTION_MAP, healthBarHeight: 108,
     heroEmblem: 'BRI', frameCrops: BRI_HERO_CROPS, states: UNIT_SPRITE_ATLASES.commander.states,
+  }),
+  'MAG:commander': Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -40, rx: 32, ry: 56 }),
+    id: 'mag-hero-v1', src: 'assets/sprites/mag-hero-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 208, height: 208 }), anchor: Object.freeze({ x: 104, y: 120 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .82, directions: DIRECTION_MAP, healthBarHeight: 108,
+    heroEmblem: 'MAG', frameCrops: MAG_HERO_CROPS, states: UNIT_SPRITE_ATLASES.commander.states,
   }),
   'GOT:commander': Object.freeze({
     pickBody: Object.freeze({ x: 0, y: -36, rx: 31, ry: 47 }),
