@@ -1,0 +1,20 @@
+/workspace/riftwatch-v240-takeover/assets/sprites/kor-hero-atlas.svg
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: InvalidCharacterError: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range.
+    at eval (eval at evaluate (:311:30), <anonymous>:1:76)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at /workspace/riftwatch-v240-takeover/tools/art/rasterize_atlas.mjs:8:23 {
+  log: []
+}
+
+Node.js v24.19.0
+Traceback (most recent call last):
+  File "/tmp/prepare_remaining.py", line 12, in <module>
+    subprocess.run(['node','tools/art/rasterize_atlas.mjs',f'assets/sprites/{low}-hero-atlas.svg',f'assets/sprites/{low}-hero-atlas.png'],check=True)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['node', 'tools/art/rasterize_atlas.mjs', 'assets/sprites/kor-hero-atlas.svg', 'assets/sprites/kor-hero-atlas.png']' returned non-zero exit status 1.
