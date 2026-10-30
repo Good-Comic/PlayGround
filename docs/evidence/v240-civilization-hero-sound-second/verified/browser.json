@@ -1,0 +1,593 @@
+{
+  "source_commit": "5303128b924a4eb960e5768b140c1975541db5ee",
+  "mode": "NEW_CIVILIZATION_HERO_CUES_LOCAL_CONTROLLED_2000HP_TARGET_NATIVE_COMBAT_AND_MUTE",
+  "signal_scope": "AudioWorklet sample-level energy and peak; RMS over nonzero samples (>1e-8); full sample counts retained; muted window resets meter epoch",
+  "audio_scope": "tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance",
+  "checks": [
+    {
+      "name": "vik-axe: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "vik-axe: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "vik-axe: native combat routes the weapon cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "totalSamples": 57344,
+        "activeSamples": 6920,
+        "rms": 0.00977488532173889,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "VIK",
+            "at": 2.3626303854875284
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 2.330702947845805
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.11,
+              0.04,
+              1100,
+              0,
+              "bandpass"
+            ],
+            "at": 2.3626303854875284
+          },
+          {
+            "kind": "tone",
+            "args": [
+              230,
+              0.105,
+              "triangle",
+              0.034,
+              85
+            ],
+            "at": 2.3626303854875284
+          },
+          {
+            "kind": "tone",
+            "args": [
+              1250,
+              0.035,
+              "sine",
+              0.012,
+              650,
+              0.018
+            ],
+            "at": 2.3626303854875284
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      }
+    },
+    {
+      "name": "vik-axe: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 24576,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "vik-axe: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "vik-axe: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "frk-sword: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "frk-sword: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "frk-sword: native combat routes the weapon cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "totalSamples": 59392,
+        "activeSamples": 6421,
+        "rms": 0.011867277275308957,
+        "peak": 0.05488702282309532,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "FRK",
+            "at": 1.291609977324263
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.2509750566893425
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.075,
+              0.032,
+              2200,
+              0,
+              "highpass"
+            ],
+            "at": 1.291609977324263
+          },
+          {
+            "kind": "tone",
+            "args": [
+              690,
+              0.085,
+              "triangle",
+              0.024,
+              250
+            ],
+            "at": 1.291609977324263
+          },
+          {
+            "kind": "tone",
+            "args": [
+              1200,
+              0.045,
+              "sine",
+              0.012,
+              540,
+              0.02
+            ],
+            "at": 1.291609977324263
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      }
+    },
+    {
+      "name": "frk-sword: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 20480,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "frk-sword: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "frk-sword: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "sar-sweep: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "sar-sweep: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "sar-sweep: native combat routes the weapon cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "totalSamples": 59392,
+        "activeSamples": 5997,
+        "rms": 0.013703890968363427,
+        "peak": 0.06833826750516891,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "SAR",
+            "at": 1.0710204081632653
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.050702947845805
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.115,
+              0.033,
+              3800,
+              0,
+              "highpass"
+            ],
+            "at": 1.0710204081632653
+          },
+          {
+            "kind": "tone",
+            "args": [
+              920,
+              0.09,
+              "triangle",
+              0.021,
+              390
+            ],
+            "at": 1.0710204081632653
+          },
+          {
+            "kind": "tone",
+            "args": [
+              275,
+              0.04,
+              "sine",
+              0.016,
+              130,
+              0.025
+            ],
+            "at": 1.0710204081632653
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      }
+    },
+    {
+      "name": "sar-sweep: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 16384,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "sar-sweep: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "sar-sweep: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "recordings": [
+    {
+      "label": "vik-axe",
+      "type": "commander",
+      "civ": "VIK",
+      "audible": {
+        "totalSamples": 57344,
+        "activeSamples": 6920,
+        "rms": 0.00977488532173889,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "VIK",
+            "at": 2.3626303854875284
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 2.330702947845805
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.11,
+              0.04,
+              1100,
+              0,
+              "bandpass"
+            ],
+            "at": 2.3626303854875284
+          },
+          {
+            "kind": "tone",
+            "args": [
+              230,
+              0.105,
+              "triangle",
+              0.034,
+              85
+            ],
+            "at": 2.3626303854875284
+          },
+          {
+            "kind": "tone",
+            "args": [
+              1250,
+              0.035,
+              "sine",
+              0.012,
+              650,
+              0.018
+            ],
+            "at": 2.3626303854875284
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 24576,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "vik-axe-sfx.wav"
+    },
+    {
+      "label": "frk-sword",
+      "type": "commander",
+      "civ": "FRK",
+      "audible": {
+        "totalSamples": 59392,
+        "activeSamples": 6421,
+        "rms": 0.011867277275308957,
+        "peak": 0.05488702282309532,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "FRK",
+            "at": 1.291609977324263
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.2509750566893425
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.075,
+              0.032,
+              2200,
+              0,
+              "highpass"
+            ],
+            "at": 1.291609977324263
+          },
+          {
+            "kind": "tone",
+            "args": [
+              690,
+              0.085,
+              "triangle",
+              0.024,
+              250
+            ],
+            "at": 1.291609977324263
+          },
+          {
+            "kind": "tone",
+            "args": [
+              1200,
+              0.045,
+              "sine",
+              0.012,
+              540,
+              0.02
+            ],
+            "at": 1.291609977324263
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 20480,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "frk-sword-sfx.wav"
+    },
+    {
+      "label": "sar-sweep",
+      "type": "commander",
+      "civ": "SAR",
+      "audible": {
+        "totalSamples": 59392,
+        "activeSamples": 5997,
+        "rms": 0.013703890968363427,
+        "peak": 0.06833826750516891,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "SAR",
+            "at": 1.0710204081632653
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.050702947845805
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.115,
+              0.033,
+              3800,
+              0,
+              "highpass"
+            ],
+            "at": 1.0710204081632653
+          },
+          {
+            "kind": "tone",
+            "args": [
+              920,
+              0.09,
+              "triangle",
+              0.021,
+              390
+            ],
+            "at": 1.0710204081632653
+          },
+          {
+            "kind": "tone",
+            "args": [
+              275,
+              0.04,
+              "sine",
+              0.016,
+              130,
+              0.025
+            ],
+            "at": 1.0710204081632653
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 16384,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "sar-sweep-sfx.wav"
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

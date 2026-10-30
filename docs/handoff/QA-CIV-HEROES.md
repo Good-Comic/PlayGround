@@ -35,3 +35,9 @@ BILINGUAL_DOCUMENTATION_REQUIRED = true
 ## VIK／FRK 後續 / Subsequent VIK/FRK
 
 來源／Source `97b11b64ce4c13772318e9ddda7387297650d9e1`: 28 affected Node PASS,17 Chromium per civilization PASS. 原生開始後選取英雄，八向移動、近戰及 Q/E 技能；對照圓盾兵／一般盾衛、肩側符文／百合標記和選取肖像。 / Native start, hero selection, eight-direction movement, melee and Q/E skills; compare round-shield/generic guards, shoulder rune/fleur-de-lis feedback and selection portraits. 每文明原始畫面、影片、失敗及性能樣本依各 evidence 目錄保留。 / Raw images, videos, failures and performance samples remain in each evidence folder. 未啟動獨立 QA。 / Independent QA not launched.
+
+## SAR 與第二組聲音 / SAR and second audio group
+
+SAR art source `c578426100ed6c2927cdcf3382faa1ffc606f337`:33 affected Node /17 Chromium PASS. 選取、八向移動、近戰、受擊、死亡及 Q/E；原數值不變。 / Selection, eight-facing movement, melee, hit/death and Q/E, retaining original rules.
+
+Audio source `5303128b924a4eb960e5768b140c1975541db5ee`:7 Node /19 Chromium PASS. VIK/FRK/SAR 原生開始後右鍵攻擊、靜音及恢復；實際 WAV 為 SFX 分流，非硬體或人工聽感驗收。 / VIK/FRK/SAR native start, right-click attacks, mute/unmute; WAV taps SFX and does not establish hardware/human-listening acceptance. 六文明英雄肖像重用圖集的 Node 檢查已擴充。 / Loaded-atlas portrait Node coverage now includes all six heroes.
