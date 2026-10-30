@@ -131,6 +131,8 @@ export class Sound {
       this.noise(.045,.025,4200,0,'highpass');this.tone(1080,.045,'sine',.02,620);this.tone(1570,.025,'sine',.012,900,.015);
     } else if (unitType === 'commander' && civId === 'TUR') {
       this.noise(.13,.035,2200,0,'bandpass');this.tone(870,.1,'triangle',.025,310);this.tone(180,.045,'sine',.018,80,.02);
+    } else if (unitType === 'commander' && civId === 'MNG') {
+      this.noise(.105,.032,2800,0,'highpass');this.tone(650,.09,'triangle',.022,230);this.tone(205,.05,'sine',.018,95,.02);
     } else if (unitType === 'elephant') {
       this.noise(.16, .065, 240);
       this.tone(78, .2, 'sine', .065, 35);
