@@ -1,3 +1,4 @@
+import { FRAME_CROPS as JPN_HERO_CROPS } from '../assets/sprites/jpn-hero-crops.js';
 import { FRAME_CROPS as TEU_HERO_CROPS } from '../assets/sprites/teu-hero-crops.js';
 const DIRECTIONS = ['E', 'SE', 'S', 'SW', 'W', 'NW', 'N', 'NE'];
 const STATES = Object.freeze({
@@ -85,6 +86,13 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
     frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 60,
     states: UNIT_SPRITE_ATLASES.elephant.states,
+  }),
+  'JPN:commander': Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -33, rx: 30, ry: 47 }),
+    id: 'jpn-hero-v1', src: 'assets/sprites/jpn-hero-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 208, height: 208 }), anchor: Object.freeze({ x: 104, y: 120 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .82, directions: DIRECTION_MAP, healthBarHeight: 80,
+    heroEmblem: 'samurai', frameCrops: JPN_HERO_CROPS, states: UNIT_SPRITE_ATLASES.commander.states,
   }),
   'TEU:commander': Object.freeze({
     pickBody: Object.freeze({ x: 0, y: -36, rx: 32, ry: 48 }),
