@@ -18,7 +18,11 @@ export function heroCastVisual(unit) {
 export function bossStrikeVisual(zone) {
   if (zone?.kind !== 'boss' || !Number.isFinite(zone.delay) || zone.delay <= 0 || !Number.isFinite(zone.elapsed) || !Number.isFinite(zone.r) || zone.r < 0) return null;
   const marshal = zone.source?.type === 'warlord2';
+  // 只讀模擬倒數；毫秒取樣供顯示，不更動傷害時間。 / Read simulation countdown; millisecond display sampling never changes strike timing.
+  const remaining = zone.done ? 0 : Math.max(0, Math.min(zone.delay, zone.delay - zone.elapsed));
+  const countdownText = zone.done ? null : `${(remaining > 0 ? Math.max(1, Math.ceil(Math.round(remaining * 1000) / 100)) / 10 : 0).toFixed(1)}s`;
   return {
+    remaining, countdownText, urgent: !zone.done && remaining > 0 && remaining <= .5,
     progress: Math.max(0, Math.min(1, zone.elapsed / zone.delay)),
     fade: zone.done ? Math.max(0, 1 - (zone.elapsed - zone.delay) / .9) : 1,
     tint: marshal ? '176,123,226' : '235,126,62',

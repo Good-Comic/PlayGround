@@ -539,6 +539,12 @@ export class Renderer {
     ctx.lineTo(p.x, cy + width); ctx.lineTo(p.x - width * .7, cy); ctx.closePath(); ctx.fill(); ctx.stroke();
     if (!zone.done) {
       ctx.beginPath(); ctx.ellipse(p.x, p.y, rx * .7, ry * .7, 0, -Math.PI / 2, -Math.PI / 2 + visual.progress * Math.PI * 2); ctx.stroke();
+      // 倒數置於符印側邊，避免壓住受威脅單位的頭部。 / Countdown beside the sigil leaves threatened unit heads readable.
+      const fontSize = Math.max(11, Math.min(18, 12 * z)), width = Math.max(44, fontSize * visual.countdownText.length * .65) + 10;
+      const x = Math.max(width / 2 + 4, Math.min(this.w - width / 2 - 4, p.x + 48 * z)), y = cy - 10 * z;
+      ctx.fillStyle = 'rgba(18,17,16,.9)'; ctx.fillRect(x - width / 2, y - fontSize * .7, width, fontSize * 1.4);
+      ctx.font = `600 ${fontSize}px Lato, sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = visual.urgent ? '#ffe0c2' : '#f3d49b'; ctx.fillText(visual.countdownText, x, y);
     }
   }
 
