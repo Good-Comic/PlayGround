@@ -1,36 +1,38 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "阿茲特克美洲虎面具／棉甲／黑曜石英雄 / Aztec jaguar-mask/cotton/obsidian hero",
+  "name": "三個文明英雄兵器音效 / Three civilization hero weapon cues",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "9561ffc883f59afd5c9fda883c7b54eb771f7ec5",
-  "latest_pushed_commit": "0333583ff5db69404272f20d058518eef9a10443",
-  "application_source_commit": "0333583ff5db69404272f20d058518eef9a10443",
+  "latest_pushed_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
+  "application_source_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
   "completed": [
-    "阿茲特克美洲虎面具／棉甲／黑曜石英雄",
-    "Aztec jaguar-mask/cotton/obsidian hero"
+    "TEU／JPN／AZT 英雄兵器聲音",
+    "TEU/JPN/AZT hero weapon cues"
   ],
-  "uncommitted": [],
+  "uncommitted": [
+    "js/main.js",
+    "js/ui.js",
+    "tests/civilization-hero-portrait.test.mjs"
+  ],
   "unpushed": [],
   "tests": [
     {
       "name": "Node",
-      "result": "8 PASS",
-      "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
-      "path": "docs/evidence/v240-azt-hero/focused-node.txt"
+      "result": "7 PASS",
+      "path": "docs/evidence/v240-civilization-hero-sound/focused-node.txt"
     },
     {
       "name": "Chromium",
-      "result": "16 PASS",
-      "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
-      "path": "docs/evidence/v240-azt-hero/verified/browser.json"
+      "result": "19 PASS",
+      "path": "docs/evidence/v240-civilization-hero-sound/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-azt-hero/REPORT.md"
+    "docs/evidence/v240-civilization-hero-sound/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +45,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "接續 TEU／JPN／AZT 英雄戰鎚、刀刃與黑曜石兵器音效",
-    "Continue TEU/JPN/AZT hero hammer blade and obsidian-weapon sound differentiation"
+    "重用既有文明英雄圖集改善選取面板肖像",
+    "Reuse existing civilization hero atlases for selection-panel portraits"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +54,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T01:05:39.385784+00:00",
+  "updated_at": "2026-10-30T01:15:39.086874+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -106,6 +108,13 @@
       "node": 8,
       "chromium": 16,
       "report": "docs/evidence/v240-azt-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-civilization-hero-sound",
+      "source": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
+      "node": 7,
+      "chromium": 19,
+      "report": "docs/evidence/v240-civilization-hero-sound/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -119,7 +128,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Continue TEU/JPN/AZT hero hammer blade and obsidian-weapon sound differentiation"
+    "NEXT_AUTHORIZED_TASK": "Reuse existing civilization hero atlases for selection-panel portraits"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

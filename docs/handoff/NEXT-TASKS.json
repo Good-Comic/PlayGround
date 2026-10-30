@@ -4,34 +4,32 @@
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "接續 TEU／JPN／AZT 英雄戰鎚、刀刃與黑曜石兵器音效 / Continue TEU/JPN/AZT hero hammer blade and obsidian-weapon sound differentiation",
+      "name": "重用既有文明英雄圖集改善選取面板肖像 / Reuse existing civilization hero atlases for selection-panel portraits",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "0333583ff5db69404272f20d058518eef9a10443",
-      "application_source_commit": "0333583ff5db69404272f20d058518eef9a10443",
+      "latest_pushed_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
+      "application_source_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
       "completed": [],
       "uncommitted": [],
       "unpushed": [],
       "tests": [
         {
           "name": "Node",
-          "result": "8 PASS",
-          "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
-          "path": "docs/evidence/v240-azt-hero/focused-node.txt"
+          "result": "7 PASS",
+          "path": "docs/evidence/v240-civilization-hero-sound/focused-node.txt"
         },
         {
           "name": "Chromium",
-          "result": "16 PASS",
-          "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
-          "path": "docs/evidence/v240-azt-hero/verified/browser.json"
+          "result": "19 PASS",
+          "path": "docs/evidence/v240-civilization-hero-sound/verified/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-azt-hero/REPORT.md"
+        "docs/evidence/v240-civilization-hero-sound/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -42,8 +40,8 @@
       ],
       "blockers": [],
       "next_steps": [
-        "接續 TEU／JPN／AZT 英雄戰鎚、刀刃與黑曜石兵器音效",
-        "Continue TEU/JPN/AZT hero hammer blade and obsidian-weapon sound differentiation"
+        "重用既有文明英雄圖集改善選取面板肖像",
+        "Reuse existing civilization hero atlases for selection-panel portraits"
       ],
       "permissions": [
         "Independent development tests normal push",

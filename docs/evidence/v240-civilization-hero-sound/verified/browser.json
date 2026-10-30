@@ -1,0 +1,593 @@
+{
+  "source_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
+  "mode": "NEW_CIVILIZATION_HERO_CUES_LOCAL_CONTROLLED_2000HP_TARGET_NATIVE_COMBAT_AND_MUTE",
+  "signal_scope": "AudioWorklet sample-level energy and peak; RMS over nonzero samples (>1e-8); full sample counts retained; muted window resets meter epoch",
+  "audio_scope": "tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance",
+  "checks": [
+    {
+      "name": "teu-hammer: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "teu-hammer: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "teu-hammer: native combat routes the weapon cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "totalSamples": 71680,
+        "activeSamples": 7965,
+        "rms": 0.009189821857480658,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "TEU",
+            "at": 1.401904761904762
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.3612698412698412
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.085,
+              0.04,
+              650,
+              0,
+              "bandpass"
+            ],
+            "at": 1.401904761904762
+          },
+          {
+            "kind": "tone",
+            "args": [
+              140,
+              0.12,
+              "triangle",
+              0.035,
+              60
+            ],
+            "at": 1.401904761904762
+          },
+          {
+            "kind": "tone",
+            "args": [
+              950,
+              0.04,
+              "sine",
+              0.012,
+              520,
+              0.02
+            ],
+            "at": 1.401904761904762
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      }
+    },
+    {
+      "name": "teu-hammer: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 16384,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "teu-hammer: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "teu-hammer: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "jpn-blade: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "jpn-blade: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "jpn-blade: native combat routes the weapon cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "totalSamples": 63488,
+        "activeSamples": 5732,
+        "rms": 0.013132087528690294,
+        "peak": 0.06203219294548035,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "JPN",
+            "at": 1.3815873015873017
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.352562358276644
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.09,
+              0.033,
+              3200,
+              0,
+              "highpass"
+            ],
+            "at": 1.3815873015873017
+          },
+          {
+            "kind": "tone",
+            "args": [
+              820,
+              0.07,
+              "triangle",
+              0.022,
+              340
+            ],
+            "at": 1.3815873015873017
+          },
+          {
+            "kind": "tone",
+            "args": [
+              160,
+              0.045,
+              "sine",
+              0.018,
+              90,
+              0.02
+            ],
+            "at": 1.3815873015873017
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      }
+    },
+    {
+      "name": "jpn-blade: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 18432,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "jpn-blade: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "jpn-blade: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "azt-obsidian: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "azt-obsidian: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "azt-obsidian: native combat routes the weapon cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "totalSamples": 63488,
+        "activeSamples": 6642,
+        "rms": 0.009613703575044243,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "AZT",
+            "at": 1.2625850340136053
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.2219501133786848
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.1,
+              0.04,
+              850,
+              0,
+              "bandpass"
+            ],
+            "at": 1.2625850340136053
+          },
+          {
+            "kind": "tone",
+            "args": [
+              195,
+              0.09,
+              "triangle",
+              0.032,
+              75
+            ],
+            "at": 1.2625850340136053
+          },
+          {
+            "kind": "tone",
+            "args": [
+              410,
+              0.035,
+              "triangle",
+              0.012,
+              170,
+              0.015
+            ],
+            "at": 1.2625850340136053
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      }
+    },
+    {
+      "name": "azt-obsidian: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 18432,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "azt-obsidian: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "azt-obsidian: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "recordings": [
+    {
+      "label": "teu-hammer",
+      "type": "commander",
+      "civ": "TEU",
+      "audible": {
+        "totalSamples": 71680,
+        "activeSamples": 7965,
+        "rms": 0.009189821857480658,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "TEU",
+            "at": 1.401904761904762
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.3612698412698412
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.085,
+              0.04,
+              650,
+              0,
+              "bandpass"
+            ],
+            "at": 1.401904761904762
+          },
+          {
+            "kind": "tone",
+            "args": [
+              140,
+              0.12,
+              "triangle",
+              0.035,
+              60
+            ],
+            "at": 1.401904761904762
+          },
+          {
+            "kind": "tone",
+            "args": [
+              950,
+              0.04,
+              "sine",
+              0.012,
+              520,
+              0.02
+            ],
+            "at": 1.401904761904762
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 16384,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "teu-hammer-sfx.wav"
+    },
+    {
+      "label": "jpn-blade",
+      "type": "commander",
+      "civ": "JPN",
+      "audible": {
+        "totalSamples": 63488,
+        "activeSamples": 5732,
+        "rms": 0.013132087528690294,
+        "peak": 0.06203219294548035,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "JPN",
+            "at": 1.3815873015873017
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.352562358276644
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.09,
+              0.033,
+              3200,
+              0,
+              "highpass"
+            ],
+            "at": 1.3815873015873017
+          },
+          {
+            "kind": "tone",
+            "args": [
+              820,
+              0.07,
+              "triangle",
+              0.022,
+              340
+            ],
+            "at": 1.3815873015873017
+          },
+          {
+            "kind": "tone",
+            "args": [
+              160,
+              0.045,
+              "sine",
+              0.018,
+              90,
+              0.02
+            ],
+            "at": 1.3815873015873017
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 18432,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "jpn-blade-sfx.wav"
+    },
+    {
+      "label": "azt-obsidian",
+      "type": "commander",
+      "civ": "AZT",
+      "audible": {
+        "totalSamples": 63488,
+        "activeSamples": 6642,
+        "rms": 0.009613703575044243,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "AZT",
+            "at": 1.2625850340136053
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.2219501133786848
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.1,
+              0.04,
+              850,
+              0,
+              "bandpass"
+            ],
+            "at": 1.2625850340136053
+          },
+          {
+            "kind": "tone",
+            "args": [
+              195,
+              0.09,
+              "triangle",
+              0.032,
+              75
+            ],
+            "at": 1.2625850340136053
+          },
+          {
+            "kind": "tone",
+            "args": [
+              410,
+              0.035,
+              "triangle",
+              0.012,
+              170,
+              0.015
+            ],
+            "at": 1.2625850340136053
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 18432,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "azt-obsidian-sfx.wav"
+    }
+  ],
+  "errors": [],
+  "pass": true
+}
