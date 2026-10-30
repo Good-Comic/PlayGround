@@ -87,7 +87,19 @@ export class Sound {
   chop() { if (this.throttle('chop', 180)) this.noise(0.08, 0.06, 700); }
   attack(unitType, civId) {
     if (!this.ctx || !this.enabled || !this.throttle('attack', 55)) return;
-    if (unitType === 'elephant') {
+    if (unitType === 'commander' && civId === 'TEU') {
+      this.noise(.085, .04, 650, 0, 'bandpass');
+      this.tone(140, .12, 'triangle', .035, 60);
+      this.tone(950, .04, 'sine', .012, 520, .02);
+    } else if (unitType === 'commander' && civId === 'JPN') {
+      this.noise(.09, .033, 3200, 0, 'highpass');
+      this.tone(820, .07, 'triangle', .022, 340);
+      this.tone(160, .045, 'sine', .018, 90, .02);
+    } else if (unitType === 'commander' && civId === 'AZT') {
+      this.noise(.1, .04, 850, 0, 'bandpass');
+      this.tone(195, .09, 'triangle', .032, 75);
+      this.tone(410, .035, 'triangle', .012, 170, .015);
+    } else if (unitType === 'elephant') {
       this.noise(.16, .065, 240);
       this.tone(78, .2, 'sine', .065, 35);
       this.tone(160, .05, 'triangle', .02, 90, .015);
