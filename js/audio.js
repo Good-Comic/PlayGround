@@ -115,6 +115,10 @@ export class Sound {
       this.noise(.09, .035, 1450, 0, 'bandpass');
       this.tone(310, .095, 'triangle', .027, 115);
       this.tone(1450, .045, 'sine', .012, 680, .02);
+    } else if (unitType === 'commander' && civId === 'CHN') {
+      this.noise(.12, .035, 2700, 0, 'highpass');
+      this.tone(540, .11, 'triangle', .026, 185);
+      this.tone(1120, .04, 'sine', .012, 470, .02);
     } else if (unitType === 'elephant') {
       this.noise(.16, .065, 240);
       this.tone(78, .2, 'sine', .065, 35);
