@@ -10,6 +10,9 @@ English: Sources pinned below, primary-developer scoped acceptance; independent 
 | v240-kor-hero | 8876dbe683afe886d969502c21296486e978387f | docs/evidence/v240-kor-hero/REPORT.md |
 | v240-spa-hero | fda334715531e0ade9ff9c463612cfb7cf94d4e3 | docs/evidence/v240-spa-hero/REPORT.md |
 | v240-tur-hero | 5035fa17ce9b315444bdbed2635e7af2ed111dc2 | docs/evidence/v240-tur-hero/REPORT.md |
+| v240-mng-hero | d3ad78c2f719dff27b70f8f033dfdfff72f69c4c | docs/evidence/v240-mng-hero/REPORT.md |
+| v240-bri-hero | 8a714c2f42eabffb789fa147078e2a2c1b541ad9 | docs/evidence/v240-bri-hero/REPORT.md |
+| v240-mag-hero | a6d44602c2fe49937b46eeb70be893673ff2e53d | docs/evidence/v240-mag-hero/REPORT.md |
 
 繁體中文：逐文明原生Start，頭部／身體選取、右鍵移動與近戰、Tab直接控制、Q/E；以正常縮放檢視輪廓、兵器、血條與技能遮擋，再看攻擊／施法／死亡影片。敵軍與100英雄為受控fixture，不代表自然戰役；音訊WAV含指令SFX，不代表人工聽感。12 Node／17遊戲檢查／7音訊檢查各自來源固定。SPA跨量測性能INCONCLUSIVE：先前相對20%門檻FAIL保留，即使工具修訂後複測當次門檻通過，也不抹除或宣稱性能修復。其他條件列以完整矩陣為準。
 
