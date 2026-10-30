@@ -1,12 +1,12 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "英雄與 Boss 頭部選取及命令已修復 / Hero/Boss head selection and orders fixed",
+  "name": "TEU 文明英雄戰鎚／翼冠獨立視覺 / TEU hammer/winged-helm civilization hero",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "61a852bcbe5c81481f360a9993a128f9adac5d34",
+  "base_commit": "9561ffc883f59afd5c9fda883c7b54eb771f7ec5",
   "latest_pushed_commit": "01c2b60e633d1ddce0cca74dbedb73a234a987f5",
   "application_source_commit": "4e6d62ece169a34d98f8b9beced063172daba02b",
   "completed": [
@@ -48,9 +48,9 @@
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "CHECKPOINTED",
+  "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-29T20:09:03.955894+00:00",
+  "updated_at": "2026-10-30T00:29:50.705512+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -69,7 +69,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "PAUSED_EXECUTION_BUDGET_SAFE_STOP_NOT_TASK_COMPLETE",
+  "execution_state": "ACTIVE_GAMEPLAY_DEVELOPMENT",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -83,7 +83,51 @@
     "art_recreated": false,
     "older_9a0f19e_still_separately_pending": true
   },
-  "current_session_slices": [
+  "current_session_slices": [],
+  "continuity_policy": {
+    "checkpoint_is_stop": false,
+    "stop_record_required": true,
+    "previous_stop": "docs/recovery/execution-stop-55ef783.json",
+    "AUTO_RESUME_AVAILABLE": false,
+    "scheduler_status": "UNVERIFIED_NO_CONNECTED_SCHEDULER_ADAPTER",
+    "current_stop_record": "docs/recovery/execution-stop-current.json",
+    "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
+  },
+  "continuation_event": {
+    "STOP_REASON": "NOT_STOPPED",
+    "NEXT_AUTHORIZED_TASK": "TEU civilization hero native art and skill-readability acceptance"
+  },
+  "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
+  "hourly_supervision_policy": {
+    "task_id": "6ade57ccd4f48191b827a443fd53f567",
+    "state": "KEEP_PAUSED_USER_REPORTED",
+    "remote_verified": false,
+    "resume_requires": "Release phase and separate explicit user confirmation",
+    "replacement_polling": "PROHIBITED"
+  },
+  "scheduler_policy_checkpoint": {
+    "repository_prompt_status": "REMOTE_SAVED_AND_GIT_BLOB_VERIFIED",
+    "source_commit": "46c4c3cbf6d30b3649b8b830a0eaa2a6d01f9509",
+    "prompt_sha256": "ca6cfd3919b82d99681123de4b2c1cfbd4caad584b7212ad2c5410298e282eb5",
+    "actual_scheduler_prompt_read": false,
+    "actual_scheduler_prompt_saved": false,
+    "status": "PREPARED_NOT_APPLIED_TO_SCHEDULER",
+    "hourly_supervision_mutated": false
+  },
+  "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json",
+  "session_id": "teu-civilization-hero-20261030",
+  "remote_query_status": "REMOTE_HEAD_VERIFIED_AFTER_NORMAL_PUSH",
+  "current_stop_record": "docs/recovery/game-first-auth-stop.json",
+  "resolved_execution_blockers": [
+    {
+      "failure": "Git/API authentication401 and invalid gh auth observation",
+      "git_recovery": "Normal branch push and exact ls-remote succeeded",
+      "verified_commit": "a1fa940d926a467f2d231232eff39a0f0bcf4d10",
+      "observed_at": "2026-10-29T19:06:17.701091+00:00",
+      "stop_cancelled": true
+    }
+  ],
+  "prior_content_session_slices": [
     {
       "slice": "v240-teu-guard",
       "source": "6079cd8b4c53b0afbb811aa29f47a9f482f28621",
@@ -174,58 +218,6 @@
       "node": 9,
       "chromium": 15,
       "report": "docs/evidence/v240-champion-picking/REPORT.md"
-    }
-  ],
-  "continuity_policy": {
-    "checkpoint_is_stop": false,
-    "stop_record_required": true,
-    "previous_stop": "docs/recovery/execution-stop-55ef783.json",
-    "AUTO_RESUME_AVAILABLE": false,
-    "scheduler_status": "UNVERIFIED_NO_CONNECTED_SCHEDULER_ADAPTER",
-    "current_stop_record": "docs/recovery/execution-stop-current.json",
-    "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
-  },
-  "continuation_event": {
-    "STOP_REASON": "EXECUTION_BUDGET_BOUNDARY",
-    "EXECUTION_DURATION": {
-      "seconds": 4718.916,
-      "scope": "FIRST_CONTENT_COMMIT_TO_STOP_PREPARATION_ONLY_SESSION_START_UNKNOWN_EXCLUDES_FINAL_PUSH",
-      "start": "2026-10-29T18:50:25+00:00",
-      "end": "2026-10-29T20:09:03.916099+00:00",
-      "status": "OBSERVED_INTERVAL_ONLY"
-    },
-    "NEXT_AUTHORIZED_TASK": "TEU civilization hero independent equipment and existing-skill visuals; revalidate latest source/ownership first",
-    "CHECKPOINT_SHA": "01c2b60e633d1ddce0cca74dbedb73a234a987f5",
-    "AUTO_RESUME_AVAILABLE": "UNVERIFIED"
-  },
-  "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
-  "hourly_supervision_policy": {
-    "task_id": "6ade57ccd4f48191b827a443fd53f567",
-    "state": "KEEP_PAUSED_USER_REPORTED",
-    "remote_verified": false,
-    "resume_requires": "Release phase and separate explicit user confirmation",
-    "replacement_polling": "PROHIBITED"
-  },
-  "scheduler_policy_checkpoint": {
-    "repository_prompt_status": "REMOTE_SAVED_AND_GIT_BLOB_VERIFIED",
-    "source_commit": "46c4c3cbf6d30b3649b8b830a0eaa2a6d01f9509",
-    "prompt_sha256": "ca6cfd3919b82d99681123de4b2c1cfbd4caad584b7212ad2c5410298e282eb5",
-    "actual_scheduler_prompt_read": false,
-    "actual_scheduler_prompt_saved": false,
-    "status": "PREPARED_NOT_APPLIED_TO_SCHEDULER",
-    "hourly_supervision_mutated": false
-  },
-  "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json",
-  "session_id": "game-first-civ-expansion-20261030",
-  "remote_query_status": "REMOTE_HEAD_VERIFIED_AFTER_NORMAL_PUSH",
-  "current_stop_record": "docs/recovery/game-first-auth-stop.json",
-  "resolved_execution_blockers": [
-    {
-      "failure": "Git/API authentication401 and invalid gh auth observation",
-      "git_recovery": "Normal branch push and exact ls-remote succeeded",
-      "verified_commit": "a1fa940d926a467f2d231232eff39a0f0bcf4d10",
-      "observed_at": "2026-10-29T19:06:17.701091+00:00",
-      "stop_cancelled": true
     }
   ]
 }

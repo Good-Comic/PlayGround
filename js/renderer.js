@@ -1376,7 +1376,7 @@ export class Renderer {
       else if (['brute', 'warlord', 'warlord2'].includes(u.type)) this.drawBruteUnit(p, u, scale, team, walk, time, bob);
       else this.drawInfantryUnit(p, u, scale, team, walk, time, bob);
       if (!atlasDrawn && u.team === 'player' && u.type !== 'villager') this.drawCivilizationUnitAccent(u, game, p, scale, bob);
-      this.drawChampionFeedback(u, p, scale, time, casting);
+      this.drawChampionFeedback(u, p, scale, time, casting, entry?.descriptor.heroEmblem);
       if (u.type === 'elephant') this.drawElephantTrample(u, game);
       if (u.selected || u.hp < u.maxHp) {
         const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
@@ -1403,7 +1403,7 @@ export class Renderer {
     });
   }
 
-  drawChampionFeedback(u, p, s, time, casting) {
+  drawChampionFeedback(u, p, s, time, casting, emblem) {
     if (!u.alive) return;
     const ctx = this.ctx;
     if (u.marked > 0) {
@@ -1425,6 +1425,21 @@ export class Renderer {
       ctx.beginPath(); ctx.ellipse(p.x, p.y - 27 * s, r, r * .7, 0, 0, Math.PI * 2); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(p.x - r * .4, p.y - 27 * s); ctx.lineTo(p.x, p.y - (casting.id === 'aegis' ? 38 : 34) * s);
       ctx.lineTo(p.x + r * .4, p.y - 27 * s); ctx.stroke(); ctx.restore();
+      // 條頓施法徽記置於肩側，不遮住英雄臉部。 / Teuton skill emblem sits beside the shoulder, leaving the face readable.
+      if (emblem === 'teutonic') {
+        ctx.save(); ctx.translate(p.x + 32 * s, p.y - 64 * s); ctx.scale(s, s);
+        ctx.strokeStyle = casting.id === 'aegis' ? '#b6e4f4' : '#ebc678';
+        ctx.fillStyle = 'rgba(25,37,41,.85)'; ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        if (casting.id === 'aegis') {
+          ctx.moveTo(-8,-9); ctx.lineTo(8,-9); ctx.lineTo(7,3); ctx.lineTo(0,10); ctx.lineTo(-7,3); ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(0,-6); ctx.lineTo(0,5); ctx.moveTo(-5,-1); ctx.lineTo(5,-1); ctx.stroke();
+        } else {
+          ctx.arc(0,0,7,0,Math.PI*2); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(-11,0); ctx.lineTo(11,0); ctx.moveTo(0,-11); ctx.lineTo(0,11); ctx.stroke();
+        }
+        ctx.restore();
+      }
     }
   }
 

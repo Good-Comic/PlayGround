@@ -85,6 +85,13 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
     offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 60,
     states: UNIT_SPRITE_ATLASES.elephant.states,
   }),
+  'TEU:commander': Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -36, rx: 32, ry: 48 }),
+    id: 'teu-hero-v1', src: 'assets/sprites/teu-hero-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 208, height: 208 }), anchor: Object.freeze({ x: 104, y: 120 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .82, directions: DIRECTION_MAP, healthBarHeight: 80,
+    heroEmblem: 'teutonic', states: UNIT_SPRITE_ATLASES.commander.states,
+  }),
   'TUR:archer': Object.freeze({
     pickBody: Object.freeze({ x: 0, y: -28, rx: 24, ry: 43 }),
     id: 'tur-archer-v1', src: 'assets/sprites/tur-archer-atlas.png', bakedPose: true, cacheFrames: true,
