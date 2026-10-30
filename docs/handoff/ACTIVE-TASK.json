@@ -1,36 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "條頓戰鎚／翼冠／白披風英雄 / Teutonic hammer/winged-helm/white-mantle hero",
+  "name": "日本雙手刀／大袖札甲／背旗英雄 / Japanese two-handed sword/lamellar pauldrons/back-banner hero",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "9561ffc883f59afd5c9fda883c7b54eb771f7ec5",
-  "latest_pushed_commit": "e5ccf8d1042aefed8cbd240045b3995c6ae86341",
-  "application_source_commit": "e5ccf8d1042aefed8cbd240045b3995c6ae86341",
+  "latest_pushed_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
+  "application_source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
   "completed": [
-    "條頓戰鎚／翼冠／白披風英雄",
-    "Teutonic hammer/winged-helm/white-mantle hero"
+    "日本雙手刀／大袖札甲／背旗英雄",
+    "Japanese two-handed sword/lamellar pauldrons/back-banner hero"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Node",
-      "result": "8 PASS",
-      "source_commit": "e5ccf8d1042aefed8cbd240045b3995c6ae86341",
-      "path": "docs/evidence/v240-teu-hero/focused-node.txt"
+      "result": "5 PASS",
+      "source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
+      "path": "docs/evidence/v240-jpn-hero/focused-node.txt"
     },
     {
       "name": "Chromium",
-      "result": "16 PASS",
-      "source_commit": "e5ccf8d1042aefed8cbd240045b3995c6ae86341",
-      "path": "docs/evidence/v240-teu-hero/verified/browser.json"
+      "result": "17 PASS",
+      "source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
+      "path": "docs/evidence/v240-jpn-hero/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-teu-hero/REPORT.md"
+    "docs/evidence/v240-jpn-hero/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "接續 JPN 日本文明英雄雙手刀與背旗外觀",
-    "Continue JPN Japanese hero two-handed sword and back-banner appearance"
+    "接續 AZT 美洲虎面具與黑曜石雙手武器英雄",
+    "Continue AZT jaguar-mask and two-handed obsidian-weapon hero"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T00:41:09.805664+00:00",
+  "updated_at": "2026-10-30T00:47:58.766312+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -92,6 +92,13 @@
       "node": 8,
       "chromium": 16,
       "report": "docs/evidence/v240-teu-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-jpn-hero",
+      "source": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
+      "node": 5,
+      "chromium": 17,
+      "report": "docs/evidence/v240-jpn-hero/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -105,7 +112,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Continue JPN Japanese hero two-handed sword and back-banner appearance"
+    "NEXT_AUTHORIZED_TASK": "Continue AZT jaguar-mask and two-handed obsidian-weapon hero"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

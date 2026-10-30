@@ -21,7 +21,7 @@ English: This records actual progress against the existing sixteen civilizations
 | BYZ | 沙漠 / Desert | 札甲圓盾 spearman 已驗收 / Lamellar/round-shield spearman accepted; v240-byz-spearman |
 | VIK | 堡壘 / Fortress | 圓盾 guard 已驗收 / Round-shield guard accepted; v240-vik-roundshield |
 | MAG | 草原 / Steppe | 裸馬弧刀圓盾輕騎已驗收 / Unbarded sabre/round-shield light cavalry accepted; v240-mag-cavalry |
-| JPN | 東方 / Eastern | 札甲外觀已保存；格擋修復限定驗收 / Lamellar appearance saved; scoped block fix accepted; v240-jpn-lamellar, v240-jpn-block |
+| JPN | 東方 / Eastern | 札甲外觀已保存；格擋修復限定驗收 / Lamellar appearance saved; scoped block fix accepted; v240-jpn-lamellar, v240-jpn-block；雙手刀背旗英雄限定驗收 / sword/banner hero scoped acceptance; v240-jpn-hero |
 
 繁體中文：英雄／招募使／雙 Boss 的共用 Atlas 與技能表現沿用 v240-champions 相關證據，不因矩陣未列而重做。JPN／SPA／RNG／FRK 已驗收，不重做。AZT／BYZ／MAG 已遠端保存；近戰聲音與 GOT 已保存，接續 SPA 長槍外觀，先核對最新遠端及所有權。自然戰役、低 FPS、嚴格 Save/Load、性能與硬體缺口不在此表宣告通過。
 
