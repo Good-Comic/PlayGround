@@ -7,7 +7,7 @@
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "9561ffc883f59afd5c9fda883c7b54eb771f7ec5",
-  "latest_pushed_commit": "5303128b924a4eb960e5768b140c1975541db5ee",
+  "latest_pushed_commit": "d44a911b5d8dd507acc53bb4a56fbb888d403039",
   "application_source_commit": "5303128b924a4eb960e5768b140c1975541db5ee",
   "completed": [
     "VIK／FRK／SAR 英雄兵器聲音 / VIK/FRK/SAR hero weapon cues"
@@ -47,9 +47,9 @@
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "IN_PROGRESS",
+  "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T05:08:30.804728+00:00",
+  "updated_at": "2026-10-30T05:09:25.018388+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -68,7 +68,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
+  "execution_state": "PAUSED_EXECUTION_BUDGET",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -158,8 +158,20 @@
     "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
   },
   "continuation_event": {
-    "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Continue VIK/FRK/SAR hero weapon sounds"
+    "STOP_REASON": "EXECUTION_BUDGET_BOUNDARY",
+    "EXECUTION_DURATION": {
+      "seconds": 16624.018,
+      "scope": "FIRST_CURRENT_SESSION_CONTENT_COMMIT_TO_STOP_PREPARATION_ONLY_SESSION_START_UNKNOWN_INCLUDES_GAPS_EXCLUDES_FINAL_PUSH",
+      "start": "2026-10-30T00:32:21+00:00",
+      "end": "2026-10-30T05:09:25.018388+00:00",
+      "status": "OBSERVED_WALL_INTERVAL_NOT_ACTIVE_CPU_TIME",
+      "client_timezone": "Asia/Taipei",
+      "client_start": "2026-10-30T08:32:21+08:00",
+      "client_end": "2026-10-30T13:09:25.018388+08:00"
+    },
+    "NEXT_AUTHORIZED_TASK": "PER Persian hero distinct silhouette, animation and existing-skill readability; validate latest source and ownership first",
+    "CHECKPOINT_SHA": "d44a911b5d8dd507acc53bb4a56fbb888d403039",
+    "AUTO_RESUME_AVAILABLE": "DELIVERY_OBSERVED_IDLE_WAKE_UNVERIFIED"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
