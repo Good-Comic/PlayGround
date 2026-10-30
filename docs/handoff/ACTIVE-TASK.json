@@ -7,7 +7,7 @@
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "417d54fb90ec1678e45b1eac15c86147c8c91652",
-  "latest_pushed_commit": "e4644e80d2537f157fd0a60163449040f6a6f238",
+  "latest_pushed_commit": "3d2219ea4fa229e49ac9a132ff5884ac7373c5a6",
   "application_source_commit": "e4644e80d2537f157fd0a60163449040f6a6f238",
   "completed": [
     "剩餘七英雄與兵器音效，全部16文明功能整合；三項性能條件保留",
@@ -55,9 +55,9 @@
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "IN_PROGRESS",
+  "status": "CHECKPOINTED",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T08:05:11.756217+00:00",
+  "updated_at": "2026-10-30T08:12:34.584268+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -76,7 +76,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
+  "execution_state": "PAUSED_EXECUTION_BUDGET",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -165,8 +165,19 @@
     "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
   },
   "continuation_event": {
-    "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Distinct Mark/Aegis skill audio with existing rules/RNG isolation"
+    "STOP_REASON": "EXECUTION_BUDGET_BOUNDARY",
+    "EXECUTION_DURATION": {
+      "seconds": 5274.585,
+      "scope": "TASK_START_SNAPSHOT_TO_STOP_PREPARATION_WALL_INTERVAL_EXCLUDES_INITIAL_READS_AND_FINAL_PUSH_NOT_ACTIVE_CPU_TIME",
+      "start": "2026-10-30T06:44:39.999176+00:00",
+      "end": "2026-10-30T08:12:34.584268+00:00",
+      "client_timezone": "Asia/Taipei",
+      "client_start": "2026-10-30T14:44:39.999176+08:00",
+      "client_end": "2026-10-30T16:12:34.584268+08:00"
+    },
+    "NEXT_AUTHORIZED_TASK": "Distinct Mark/Aegis skill audio on successful casts, retaining rules mute throttle and simulation RNG isolation",
+    "CHECKPOINT_SHA": "3d2219ea4fa229e49ac9a132ff5884ac7373c5a6",
+    "AUTO_RESUME_AVAILABLE": "DELIVERY_OBSERVED_IDLE_WAKE_UNVERIFIED"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
