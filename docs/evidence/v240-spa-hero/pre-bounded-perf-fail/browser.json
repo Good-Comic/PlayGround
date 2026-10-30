@@ -1,0 +1,472 @@
+{
+  "source_commit": "8804ceb3fba7dcfffdf9bbfb948e493917a221ee",
+  "civ": "SPA",
+  "type": "commander",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "8804ceb3fba7dcfffdf9bbfb948e493917a221ee",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-30T07:13:41.973361+00:00",
+        "resourceVerification": "SHA256_MATCH_115_FILES"
+      }
+    },
+    {
+      "name": "decoded idle silhouettes distinguish all eight facings",
+      "pass": true,
+      "detail": {
+        "directions": 8,
+        "distinct": 8
+      }
+    },
+    {
+      "name": "native Start creates actual playable civilization hero with independent atlas",
+      "pass": true,
+      "detail": {
+        "id": 19,
+        "civ": "SPA",
+        "key": "SPA:commander",
+        "hp": 520,
+        "radius": 0.32
+      }
+    },
+    {
+      "name": "all 192 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": true,
+      "detail": {
+        "width": 3328,
+        "height": 2496,
+        "touchedFrameEdges": 0
+      }
+    },
+    {
+      "name": "native helmet click selects the actual trained actor",
+      "pass": true,
+      "detail": {
+        "point": {
+          "x": 720,
+          "y": 343.4
+        }
+      }
+    },
+    {
+      "name": "native right-click moves the trained actor",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.007572813777003,
+          "y": 33.33585760459231
+        },
+        "seen": {
+          "idle": 210,
+          "walk": 381
+        }
+      }
+    },
+    {
+      "name": "production melee damage and four-frame attack",
+      "pass": true,
+      "detail": {
+        "before": 500,
+        "after": 485.6,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production attack sound dispatch",
+      "pass": true,
+      "detail": [
+        "commander"
+      ]
+    },
+    {
+      "name": "production damage renders hit animation",
+      "pass": true,
+      "detail": {
+        "flash": 1,
+        "seen": {
+          "idle": 213,
+          "walk": 427,
+          "attack": 43,
+          "hit": 4
+        }
+      }
+    },
+    {
+      "name": "native mark retains effect and shows four cast frames with civilization emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          },
+          {
+            "id": "mark",
+            "emblem": "SPA"
+          }
+        ],
+        "cooldown": 29.06680000000002,
+        "marked": 5.066799999999994,
+        "shield": 0,
+        "effect": {
+          "time": 2.616500000000001,
+          "cooldown": 30,
+          "shield": 0,
+          "shieldTime": 0,
+          "marked": 6
+        },
+        "time": 3.5496999999999965
+      }
+    },
+    {
+      "name": "native aegis retains effect and shows four cast frames with civilization emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          },
+          {
+            "id": "aegis",
+            "emblem": "SPA"
+          }
+        ],
+        "cooldown": 59.083299999999966,
+        "marked": 3.9001999999999866,
+        "shield": 60,
+        "effect": {
+          "time": 3.7995999999999976,
+          "cooldown": 60,
+          "shield": 60,
+          "shieldTime": 5,
+          "marked": 4.8168999999999915
+        },
+        "time": 4.716300000000004
+      }
+    },
+    {
+      "name": "production death plays all four frames",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "enemy stays generic and Teuton retains its independent atlas",
+      "pass": true,
+      "detail": {
+        "enemy": "commander",
+        "other": "TEU:commander"
+      }
+    },
+    {
+      "name": "asset failure retains renderer fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "100-unit static draw JS budget and <=20% paired median regression",
+      "pass": false,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 1.1950000001117587,
+          "p50": 0.9000000059604645,
+          "p95": 2.4000000059604645
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 2.0275000000372527,
+          "p50": 1.1000000089406967,
+          "p95": 8.5
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.2299999998882414,
+          "p50": 1.0999999940395355,
+          "p95": 2
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 1.2049999997019767,
+          "p50": 1.0999999940395355,
+          "p95": 2.2000000029802322
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 1.2575000001117587,
+          "p50": 1.0999999940395355,
+          "p95": 2.0999999940395355
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.5324999999254942,
+          "p50": 1.2999999970197678,
+          "p95": 2.7999999970197678
+        }
+      ]
+    },
+    {
+      "name": "execution",
+      "pass": false,
+      "detail": {
+        "message": "100-unit static draw JS budget and <=20% paired median regression",
+        "stack": "Error: 100-unit static draw JS budget and <=20% paired median regression\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/remaining_hero_browser.mjs:6:88)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/remaining_hero_browser.mjs:31:921",
+        "state": {
+          "actor": {
+            "id": 19,
+            "state": "idle",
+            "hp": 519
+          },
+          "seen": {
+            "idle": 264,
+            "walk": 427,
+            "attack": 43,
+            "hit": 44,
+            "cast": 48,
+            "death": 92
+          },
+          "frames": {
+            "attack": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "death": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": false
+}

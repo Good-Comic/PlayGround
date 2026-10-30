@@ -1,0 +1,209 @@
+{
+  "source_commit": "fda334715531e0ade9ff9c463612cfb7cf94d4e3",
+  "mode": "NEW_CIVILIZATION_HERO_CUES_LOCAL_CONTROLLED_2000HP_TARGET_NATIVE_COMBAT_AND_MUTE",
+  "signal_scope": "AudioWorklet sample-level energy and peak; RMS over nonzero samples (>1e-8); full sample counts retained; muted window resets meter epoch",
+  "audio_scope": "tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance",
+  "checks": [
+    {
+      "name": "spa-hero: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "spa-hero: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "spa-hero: native combat routes the weapon cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "totalSamples": 65536,
+        "activeSamples": 5732,
+        "rms": 0.010480321052420374,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "SPA",
+            "at": 1.3119274376417234
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.28
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.045,
+              0.025,
+              4200,
+              0,
+              "highpass"
+            ],
+            "at": 1.3119274376417234
+          },
+          {
+            "kind": "tone",
+            "args": [
+              1080,
+              0.045,
+              "sine",
+              0.02,
+              620
+            ],
+            "at": 1.3119274376417234
+          },
+          {
+            "kind": "tone",
+            "args": [
+              1570,
+              0.025,
+              "sine",
+              0.012,
+              900,
+              0.015
+            ],
+            "at": 1.3119274376417234
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      }
+    },
+    {
+      "name": "spa-hero: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 16384,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "spa-hero: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "spa-hero: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "recordings": [
+    {
+      "label": "spa-hero",
+      "type": "commander",
+      "civ": "SPA",
+      "audible": {
+        "totalSamples": 65536,
+        "activeSamples": 5732,
+        "rms": 0.010480321052420374,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "SPA",
+            "at": 1.3119274376417234
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.28
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.045,
+              0.025,
+              4200,
+              0,
+              "highpass"
+            ],
+            "at": 1.3119274376417234
+          },
+          {
+            "kind": "tone",
+            "args": [
+              1080,
+              0.045,
+              "sine",
+              0.02,
+              620
+            ],
+            "at": 1.3119274376417234
+          },
+          {
+            "kind": "tone",
+            "args": [
+              1570,
+              0.025,
+              "sine",
+              0.012,
+              900,
+              0.015
+            ],
+            "at": 1.3119274376417234
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 16384,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "spa-hero-sfx.wav"
+    }
+  ],
+  "errors": [],
+  "pass": true
+}
