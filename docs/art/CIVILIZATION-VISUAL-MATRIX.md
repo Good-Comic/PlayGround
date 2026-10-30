@@ -57,13 +57,13 @@ GOT 英雄：鋸背巨劍、寬肩毛皮鎖甲及裸首束髮；八向六狀態1
 
 ## 英雄完成矩陣 / Hero completion matrix
 
-繁體中文：13/16限定驗收。來源、遊戲／音效證據及代表圖見CIVILIZATION-HERO-MATRIX.json；條件驗收列明性能INCONCLUSIVE，不表示全數性能PASS；格數與文件存在本身不構成完成。保留歷史FAIL、主觀流暢度／聽感與硬體缺口。
+繁體中文：14/16限定驗收。來源、遊戲／音效證據及代表圖見CIVILIZATION-HERO-MATRIX.json；條件驗收列明性能INCONCLUSIVE，不表示全數性能PASS；格數與文件存在本身不構成完成。保留歷史FAIL、主觀流暢度／聽感與硬體缺口。
 
-English: 13/16 scoped acceptance. Sources, gameplay/audio evidence and representative images: CIVILIZATION-HERO-MATRIX.json. Conditional rows retain performance INCONCLUSIVE and are not all-performance PASS. Cell counts/file existence alone do not establish completion. Historical FAIL, subjective smoothness/listening and hardware gaps remain.
+English: 14/16 scoped acceptance. Sources, gameplay/audio evidence and representative images: CIVILIZATION-HERO-MATRIX.json. Conditional rows retain performance INCONCLUSIVE and are not all-performance PASS. Cell counts/file existence alone do not establish completion. Historical FAIL, subjective smoothness/listening and hardware gaps remain.
 
 | Civ | Status | Art source | Actual gameplay evidence |
 | --- | --- | --- | --- |
-| MNG | TODO | — | — |
+| MNG | SCOPED_ACCEPTED_PERF_INCONCLUSIVE | d3ad78c2f719dff27b70f8f033dfdfff72f69c4c | docs/evidence/v240-mng-hero/verified/browser.json |
 | TEU | SCOPED_ACCEPTED | e5ccf8d1042aefed8cbd240045b3995c6ae86341 | docs/evidence/v240-teu-hero/verified/browser.json |
 | GOT | SCOPED_ACCEPTED | 32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a | docs/evidence/v240-got-hero/verified/browser.json |
 | FRK | SCOPED_ACCEPTED | 97b11b64ce4c13772318e9ddda7387297650d9e1 | docs/evidence/v240-frk-hero/verified/browser.json |
