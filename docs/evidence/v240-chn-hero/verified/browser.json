@@ -1,0 +1,504 @@
+{
+  "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+  "civ": "CHN",
+  "type": "commander",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-30T06:01:36.525305+00:00",
+        "resourceVerification": "SHA256_MATCH_103_FILES"
+      }
+    },
+    {
+      "name": "decoded idle silhouettes distinguish all eight facings",
+      "pass": true,
+      "detail": {
+        "directions": 8,
+        "distinct": 8
+      }
+    },
+    {
+      "name": "native Start creates actual playable CHN hero with independent atlas",
+      "pass": true,
+      "detail": {
+        "id": 19,
+        "civ": "CHN",
+        "key": "CHN:commander",
+        "hp": 520,
+        "radius": 0.32
+      }
+    },
+    {
+      "name": "all 192 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": true,
+      "detail": {
+        "width": 3328,
+        "height": 2496,
+        "touchedFrameEdges": 0
+      }
+    },
+    {
+      "name": "native helmet click selects the actual trained actor",
+      "pass": true,
+      "detail": {
+        "point": {
+          "x": 720,
+          "y": 343.4
+        }
+      }
+    },
+    {
+      "name": "native right-click moves the trained actor",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.007814728017987,
+          "y": 33.335938242672626
+        },
+        "seen": {
+          "idle": 197,
+          "walk": 371
+        }
+      }
+    },
+    {
+      "name": "production melee damage and four-frame attack",
+      "pass": true,
+      "detail": {
+        "before": 500,
+        "after": 485.6,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production attack sound dispatch",
+      "pass": true,
+      "detail": [
+        "commander"
+      ]
+    },
+    {
+      "name": "production damage renders hit animation",
+      "pass": true,
+      "detail": {
+        "flash": 1,
+        "seen": {
+          "idle": 197,
+          "walk": 408,
+          "attack": 43,
+          "hit": 6
+        }
+      }
+    },
+    {
+      "name": "native mark retains effect and shows four cast frames with CHN emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          },
+          {
+            "id": "mark",
+            "emblem": "guandao"
+          }
+        ],
+        "cooldown": 29.100100000000012,
+        "marked": 5.100099999999991,
+        "shield": 0,
+        "effect": {
+          "time": 2.283300000000001,
+          "cooldown": 30,
+          "shield": 0,
+          "shieldTime": 0,
+          "marked": 6
+        },
+        "time": 3.1831999999999985
+      }
+    },
+    {
+      "name": "native aegis retains effect and shows four cast frames with CHN emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          },
+          {
+            "id": "aegis",
+            "emblem": "guandao"
+          }
+        ],
+        "cooldown": 59.200100000000035,
+        "marked": 4.216799999999983,
+        "shield": 60,
+        "effect": {
+          "time": 3.2666,
+          "cooldown": 60,
+          "shield": 60,
+          "shieldTime": 5,
+          "marked": 5.0166999999999895
+        },
+        "time": 4.066499999999997
+      }
+    },
+    {
+      "name": "production death plays all four frames",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "enemy and other civilization retain shared hero atlas",
+      "pass": true,
+      "detail": {
+        "enemy": "commander",
+        "other": "commander"
+      }
+    },
+    {
+      "name": "asset failure retains renderer fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "100-unit static draw JS budget and <=20% paired median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 1.2412500001490117,
+          "p50": 0.9000000059604645,
+          "p95": 2.0999999940395355
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.4012500001117587,
+          "p50": 1,
+          "p95": 3.0999999940395355
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 0.9849999999627471,
+          "p50": 0.8999999910593033,
+          "p95": 1.5999999940395355
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 0.95,
+          "p50": 0.9000000059604645,
+          "p95": 1.2999999970197678
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 1.1412500001490116,
+          "p50": 1,
+          "p95": 1.8999999910593033
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 0.9262500001117587,
+          "p50": 0.800000011920929,
+          "p95": 1.3999999910593033
+        }
+      ]
+    },
+    {
+      "name": "all192 cropped/full render frames retain identical anchored pixels at unit draw scale",
+      "pass": true,
+      "detail": {
+        "frames": 192,
+        "maxDifference": 0,
+        "differingChannels": 0
+      }
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}

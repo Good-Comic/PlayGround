@@ -1,38 +1,39 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "波斯翼飾脊盔／瓣錘／日輪橢圓盾英雄 / Persian winged-ridge-helm/flanged-mace/sun-oval-shield hero",
+  "name": "中國偃月刀／紅纓／札甲長鬚英雄 / Chinese guandao/red-plume/lamellar/bearded hero",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
-  "latest_pushed_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-  "application_source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+  "latest_pushed_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+  "application_source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
   "completed": [
-    "波斯翼飾脊盔／瓣錘／日輪橢圓盾英雄",
-    "Persian winged-ridge-helm/flanged-mace/sun-oval-shield hero"
+    "中國偃月刀／紅纓／札甲長鬚英雄",
+    "Chinese guandao/red-plume/lamellar/bearded hero"
   ],
   "uncommitted": [
-    "tools/qa/native_persistent_continue_browser.mjs"
+    "tools/qa/native_persistent_continue_browser.mjs",
+    "tools/qa/atlas_native_memory_browser.mjs"
   ],
   "unpushed": [],
   "tests": [
     {
       "name": "Node",
-      "result": "18 PASS",
-      "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-      "path": "docs/evidence/v240-per-hero/focused-node.txt"
+      "result": "19 PASS",
+      "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+      "path": "docs/evidence/v240-chn-hero/focused-node.txt"
     },
     {
       "name": "Chromium",
       "result": "17 PASS",
-      "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-      "path": "docs/evidence/v240-per-hero/verified/browser.json"
+      "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+      "path": "docs/evidence/v240-chn-hero/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-per-hero/REPORT.md"
+    "docs/evidence/v240-chn-hero/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -45,8 +46,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "接續原生跨瀏覽器程序 Save/Continue 及文明圖集生命週期驗收",
-    "Continue native cross-browser-process Save/Continue and civilization atlas lifecycle validation"
+    "接續原生持久化與實際圖集記憶體整合檢查",
+    "Continue native persistence and actual atlas memory integration checks"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -54,7 +55,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T05:55:43.741613+00:00",
+  "updated_at": "2026-10-30T06:06:16.714377+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -94,6 +95,13 @@
       "node": 18,
       "chromium": 17,
       "report": "docs/evidence/v240-per-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-chn-hero",
+      "source": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+      "node": 19,
+      "chromium": 17,
+      "report": "docs/evidence/v240-chn-hero/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -107,7 +115,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Continue native cross-browser-process Save/Continue and civilization atlas lifecycle validation"
+    "NEXT_AUTHORIZED_TASK": "Continue native persistence and actual atlas memory integration checks"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
