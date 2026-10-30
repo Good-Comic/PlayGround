@@ -2,40 +2,40 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-30T05:00:36.366023+00:00",
+  "updated_at": "2026-10-30T05:05:13.657919+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
-    "build_sha": "c7f8374cb00dd196abc8360e5f960b038ceda611",
-    "summary": "\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408 / Viking long-axe hero and rune feedback integrated into gameplay",
+    "commit": "ba19e115643084ab0b454c651f1987f6c0c55621",
+    "build_sha": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+    "summary": "\u6cd5\u862d\u514b\u82f1\u96c4\u8207\u7dad\u4eac\u65b9\u5411\u6295\u5f71\u5df2\u9a57\u6536\uff0c\u63a5\u7e8c\u6492\u62c9\u68ee\u82f1\u96c4 / Frankish hero and Viking facing projection accepted; continuing Saracen hero",
     "code_changes": [
-      "\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408",
-      "Viking long-axe hero and rune feedback integrated into gameplay"
+      "\u6cd5\u862d\u514b\u82f1\u96c4\u8207\u7dad\u4eac\u65b9\u5411\u6295\u5f71\u5df2\u9a57\u6536\uff0c\u63a5\u7e8c\u6492\u62c9\u68ee\u82f1\u96c4",
+      "Frankish hero and Viking facing projection accepted; continuing Saracen hero"
     ],
     "next_steps": [
-      "\u5df2\u63a5\u7e8c FRK \u82f1\u96c4\u3002 / FRK hero work has begun."
+      "SAR \u82f1\u96c4\u700f\u89bd\u5668\u9a57\u6536\u9032\u884c\u4e2d\u3002 / SAR hero browser acceptance in progress."
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "20 focused Node PASS",
+        "name": "28 focused Node PASS",
         "status": "PASS",
-        "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
-        "evidence": "docs/evidence/v240-vik-hero/focused-node.txt",
-        "evidence_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
-        "evidence_blob": "ff81b57e710d3f71babd982e23fa038012c2cad1",
+        "source_commit": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+        "evidence": "docs/evidence/v240-frk-hero/focused-node.txt",
+        "evidence_commit": "ba19e115643084ab0b454c651f1987f6c0c55621",
+        "evidence_blob": "69bd90b18c9b21177f9d14d924d41076bfa65c6a",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "16 actual Chromium PASS",
+        "name": "17 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
-        "evidence": "docs/evidence/v240-vik-hero/verified/browser.json",
-        "evidence_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
-        "evidence_blob": "07c8ec346e59556cbdd0676756b155c26502a733",
+        "source_commit": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+        "evidence": "docs/evidence/v240-frk-hero/verified/browser.json",
+        "evidence_commit": "ba19e115643084ab0b454c651f1987f6c0c55621",
+        "evidence_blob": "48065c25288d5908df21a6fd9355bdc6ab4ed226",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -43,17 +43,17 @@
       {
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
-        "summary": "\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
-        "source_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+        "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
+        "source_commit": "ba19e115643084ab0b454c651f1987f6c0c55621",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408\u3002\u5b9a\u5411 Node 20\uff0f\u771f\u5be6 Chromium 16 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Viking long-axe hero and rune feedback integrated into gameplay. 20 focused Node/16 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "84f3547c6e79a4b7cdc34c875c141d2d1d03704d2bc1b0fa521a6ca03ca3edb2",
-    "remote_head": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6cd5\u862d\u514b\u82f1\u96c4\u8207\u7dad\u4eac\u65b9\u5411\u6295\u5f71\u5df2\u9a57\u6536\uff0c\u63a5\u7e8c\u6492\u62c9\u68ee\u82f1\u96c4\u3002\u5b9a\u5411 Node 28\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Frankish hero and Viking facing projection accepted; continuing Saracen hero. 28 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "23b987a6ad5a8cbf075385a0762963c78c8f443fabbdaf7d03d5637fb616c63d",
+    "remote_head": "ba19e115643084ab0b454c651f1987f6c0c55621",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-30T05:00:36.366023+00:00",
+    "recorded_at": "2026-10-30T05:05:13.657919+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3006,34 +3006,34 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
-      "build_sha": "c7f8374cb00dd196abc8360e5f960b038ceda611",
-      "summary": "\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408 / Viking long-axe hero and rune feedback integrated into gameplay",
+      "commit": "ba19e115643084ab0b454c651f1987f6c0c55621",
+      "build_sha": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+      "summary": "\u6cd5\u862d\u514b\u82f1\u96c4\u8207\u7dad\u4eac\u65b9\u5411\u6295\u5f71\u5df2\u9a57\u6536\uff0c\u63a5\u7e8c\u6492\u62c9\u68ee\u82f1\u96c4 / Frankish hero and Viking facing projection accepted; continuing Saracen hero",
       "code_changes": [
-        "\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408",
-        "Viking long-axe hero and rune feedback integrated into gameplay"
+        "\u6cd5\u862d\u514b\u82f1\u96c4\u8207\u7dad\u4eac\u65b9\u5411\u6295\u5f71\u5df2\u9a57\u6536\uff0c\u63a5\u7e8c\u6492\u62c9\u68ee\u82f1\u96c4",
+        "Frankish hero and Viking facing projection accepted; continuing Saracen hero"
       ],
       "next_steps": [
-        "\u5df2\u63a5\u7e8c FRK \u82f1\u96c4\u3002 / FRK hero work has begun."
+        "SAR \u82f1\u96c4\u700f\u89bd\u5668\u9a57\u6536\u9032\u884c\u4e2d\u3002 / SAR hero browser acceptance in progress."
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "20 focused Node PASS",
+          "name": "28 focused Node PASS",
           "status": "PASS",
-          "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
-          "evidence": "docs/evidence/v240-vik-hero/focused-node.txt",
-          "evidence_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
-          "evidence_blob": "ff81b57e710d3f71babd982e23fa038012c2cad1",
+          "source_commit": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+          "evidence": "docs/evidence/v240-frk-hero/focused-node.txt",
+          "evidence_commit": "ba19e115643084ab0b454c651f1987f6c0c55621",
+          "evidence_blob": "69bd90b18c9b21177f9d14d924d41076bfa65c6a",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "16 actual Chromium PASS",
+          "name": "17 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
-          "evidence": "docs/evidence/v240-vik-hero/verified/browser.json",
-          "evidence_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
-          "evidence_blob": "07c8ec346e59556cbdd0676756b155c26502a733",
+          "source_commit": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+          "evidence": "docs/evidence/v240-frk-hero/verified/browser.json",
+          "evidence_commit": "ba19e115643084ab0b454c651f1987f6c0c55621",
+          "evidence_blob": "48065c25288d5908df21a6fd9355bdc6ab4ed226",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3041,17 +3041,17 @@
         {
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
-          "summary": "\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
-          "source_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+          "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
+          "source_commit": "ba19e115643084ab0b454c651f1987f6c0c55621",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408\u3002\u5b9a\u5411 Node 20\uff0f\u771f\u5be6 Chromium 16 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Viking long-axe hero and rune feedback integrated into gameplay. 20 focused Node/16 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "84f3547c6e79a4b7cdc34c875c141d2d1d03704d2bc1b0fa521a6ca03ca3edb2",
-      "remote_head": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6cd5\u862d\u514b\u82f1\u96c4\u8207\u7dad\u4eac\u65b9\u5411\u6295\u5f71\u5df2\u9a57\u6536\uff0c\u63a5\u7e8c\u6492\u62c9\u68ee\u82f1\u96c4\u3002\u5b9a\u5411 Node 28\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Frankish hero and Viking facing projection accepted; continuing Saracen hero. 28 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "23b987a6ad5a8cbf075385a0762963c78c8f443fabbdaf7d03d5637fb616c63d",
+      "remote_head": "ba19e115643084ab0b454c651f1987f6c0c55621",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-30T05:00:36.366023+00:00",
+      "recorded_at": "2026-10-30T05:05:13.657919+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
