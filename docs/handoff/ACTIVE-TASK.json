@@ -1,12 +1,12 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "第二組英雄兵器聲音 / Second hero weapon cues",
+  "name": "SAR 定向性能復驗與 PER 英雄 / SAR focused performance review and PER hero",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "9561ffc883f59afd5c9fda883c7b54eb771f7ec5",
+  "base_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
   "latest_pushed_commit": "d44a911b5d8dd507acc53bb4a56fbb888d403039",
   "application_source_commit": "5303128b924a4eb960e5768b140c1975541db5ee",
   "completed": [
@@ -40,14 +40,14 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "PER 波斯英雄獨立視覺、動畫與技能可讀性",
-    "PER Persian hero distinct appearance, animation and skill readability"
+    "PER 波斯英雄獨立外觀、動畫與技能可讀性",
+    "PER Persian hero independent visuals, animation and skill readability"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "CHECKPOINTED",
+  "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
   "updated_at": "2026-10-30T05:09:25.018388+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
@@ -68,7 +68,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "PAUSED_EXECUTION_BUDGET",
+  "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -82,72 +82,7 @@
     "art_recreated": false,
     "older_9a0f19e_still_separately_pending": true
   },
-  "current_session_slices": [
-    {
-      "slice": "v240-teu-hero",
-      "source": "e5ccf8d1042aefed8cbd240045b3995c6ae86341",
-      "node": 8,
-      "chromium": 16,
-      "report": "docs/evidence/v240-teu-hero/REPORT.md"
-    },
-    {
-      "slice": "v240-jpn-hero",
-      "source": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-      "node": 5,
-      "chromium": 17,
-      "report": "docs/evidence/v240-jpn-hero/REPORT.md"
-    },
-    {
-      "slice": "v240-azt-hero",
-      "source": "0333583ff5db69404272f20d058518eef9a10443",
-      "node": 8,
-      "chromium": 16,
-      "report": "docs/evidence/v240-azt-hero/REPORT.md"
-    },
-    {
-      "slice": "v240-civilization-hero-sound",
-      "source": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
-      "node": 7,
-      "chromium": 19,
-      "report": "docs/evidence/v240-civilization-hero-sound/REPORT.md"
-    },
-    {
-      "slice": "v240-civilization-hero-portrait",
-      "source": "296772b1709df5370c58c36e9ea3aee83c0bc446",
-      "node": 4,
-      "chromium": 32,
-      "report": "docs/evidence/v240-civilization-hero-portrait/REPORT.md"
-    },
-    {
-      "slice": "v240-vik-hero",
-      "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
-      "node": 20,
-      "chromium": 17,
-      "report": "docs/evidence/v240-vik-hero/REPORT.md",
-      "subsequent_node_regressions": 28
-    },
-    {
-      "slice": "v240-frk-hero",
-      "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
-      "node": 28,
-      "chromium": 17,
-      "report": "docs/evidence/v240-frk-hero/REPORT.md"
-    },
-    {
-      "slice": "v240-sar-hero",
-      "source": "c578426100ed6c2927cdcf3382faa1ffc606f337",
-      "node": 33,
-      "chromium": 17,
-      "report": "docs/evidence/v240-sar-hero/REPORT.md"
-    },
-    {
-      "slice": "v240-civilization-hero-sound-second",
-      "source": "5303128b924a4eb960e5768b140c1975541db5ee",
-      "node": 7,
-      "chromium": 19,
-      "report": "docs/evidence/v240-civilization-hero-sound-second/REPORT.md"
-    }
-  ],
+  "current_session_slices": [],
   "continuity_policy": {
     "checkpoint_is_stop": false,
     "stop_record_required": true,
@@ -158,20 +93,8 @@
     "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
   },
   "continuation_event": {
-    "STOP_REASON": "EXECUTION_BUDGET_BOUNDARY",
-    "EXECUTION_DURATION": {
-      "seconds": 16624.018,
-      "scope": "FIRST_CURRENT_SESSION_CONTENT_COMMIT_TO_STOP_PREPARATION_ONLY_SESSION_START_UNKNOWN_INCLUDES_GAPS_EXCLUDES_FINAL_PUSH",
-      "start": "2026-10-30T00:32:21+00:00",
-      "end": "2026-10-30T05:09:25.018388+00:00",
-      "status": "OBSERVED_WALL_INTERVAL_NOT_ACTIVE_CPU_TIME",
-      "client_timezone": "Asia/Taipei",
-      "client_start": "2026-10-30T08:32:21+08:00",
-      "client_end": "2026-10-30T13:09:25.018388+08:00"
-    },
-    "NEXT_AUTHORIZED_TASK": "PER Persian hero distinct silhouette, animation and existing-skill readability; validate latest source and ownership first",
-    "CHECKPOINT_SHA": "d44a911b5d8dd507acc53bb4a56fbb888d403039",
-    "AUTO_RESUME_AVAILABLE": "DELIVERY_OBSERVED_IDLE_WAKE_UNVERIFIED"
+    "STOP_REASON": "NOT_STOPPED",
+    "NEXT_AUTHORIZED_TASK": "PER hero after SAR narrow review"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
@@ -191,7 +114,7 @@
     "hourly_supervision_mutated": false
   },
   "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json",
-  "session_id": "teu-civilization-hero-20261030",
+  "session_id": "sar-per-native-persistence-20261030",
   "remote_query_status": "REMOTE_HEAD_VERIFIED_AFTER_NORMAL_PUSH",
   "current_stop_record": "docs/recovery/game-first-auth-stop.json",
   "resolved_execution_blockers": [
@@ -294,6 +217,78 @@
       "node": 9,
       "chromium": 15,
       "report": "docs/evidence/v240-champion-picking/REPORT.md"
+    },
+    {
+      "slice": "v240-teu-hero",
+      "source": "e5ccf8d1042aefed8cbd240045b3995c6ae86341",
+      "node": 8,
+      "chromium": 16,
+      "report": "docs/evidence/v240-teu-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-jpn-hero",
+      "source": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
+      "node": 5,
+      "chromium": 17,
+      "report": "docs/evidence/v240-jpn-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-azt-hero",
+      "source": "0333583ff5db69404272f20d058518eef9a10443",
+      "node": 8,
+      "chromium": 16,
+      "report": "docs/evidence/v240-azt-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-civilization-hero-sound",
+      "source": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
+      "node": 7,
+      "chromium": 19,
+      "report": "docs/evidence/v240-civilization-hero-sound/REPORT.md"
+    },
+    {
+      "slice": "v240-civilization-hero-portrait",
+      "source": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+      "node": 4,
+      "chromium": 32,
+      "report": "docs/evidence/v240-civilization-hero-portrait/REPORT.md"
+    },
+    {
+      "slice": "v240-vik-hero",
+      "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+      "node": 20,
+      "chromium": 17,
+      "report": "docs/evidence/v240-vik-hero/REPORT.md",
+      "subsequent_node_regressions": 28
+    },
+    {
+      "slice": "v240-frk-hero",
+      "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+      "node": 28,
+      "chromium": 17,
+      "report": "docs/evidence/v240-frk-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-sar-hero",
+      "source": "c578426100ed6c2927cdcf3382faa1ffc606f337",
+      "node": 33,
+      "chromium": 17,
+      "report": "docs/evidence/v240-sar-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-civilization-hero-sound-second",
+      "source": "5303128b924a4eb960e5768b140c1975541db5ee",
+      "node": 7,
+      "chromium": 19,
+      "report": "docs/evidence/v240-civilization-hero-sound-second/REPORT.md"
+    }
+  ],
+  "current_session_reviews": [
+    {
+      "name": "SAR100 guard relative performance",
+      "status": "INCONCLUSIVE",
+      "source": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
+      "report": "docs/evidence/v240-sar-perf-review/REPORT.md"
     }
   ]
 }
