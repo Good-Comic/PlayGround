@@ -1453,9 +1453,11 @@ export class Renderer {
     const frame = atlasFrame(descriptor, visual.direction, visual.state, time, progress);
     if (!frame) return false;
     const drawScale = scale * descriptor.scale;
-    const crop = descriptor.cacheFrames && descriptor.frameCrops?.[(frame.sy / frame.sh) * (entry.image.naturalWidth / frame.sw) + frame.sx / frame.sw];
-    const [cx, cy, cw, ch] = crop || [0, 0, frame.sw, frame.sh];
     const image = descriptor.cacheFrames ? this.spriteFrameImage(entry, frame) : entry.image;
+    // 命中快取後直接使用裁格矩形，避免每單位讀取 DOM 圖片尺寸／重新索引。 / Reuse cached crop rectangles, avoiding per-unit DOM image-size reads/indexing.
+    const crop = descriptor.cacheFrames ? image.atlasFrameCrop : null;
+    const cx = crop ? crop[0] : 0, cy = crop ? crop[1] : 0;
+    const cw = crop ? crop[2] : frame.sw, ch = crop ? crop[3] : frame.sh;
     this.ctx.drawImage(image, descriptor.cacheFrames ? 0 : frame.sx, descriptor.cacheFrames ? 0 : frame.sy, cw, ch,
       p.x + (descriptor.offset.x - descriptor.anchor.x + cx) * drawScale,
       p.y + (descriptor.offset.y - descriptor.anchor.y + cy) * drawScale,
@@ -1485,6 +1487,7 @@ export class Renderer {
     const crop = entry.descriptor?.frameCrops?.[(frame.sy / frame.sh) * (entry.image.naturalWidth / frame.sw) + frame.sx / frame.sw];
     const [cx, cy, cw, ch] = crop || [0, 0, frame.sw, frame.sh];
     canvas.width = cw; canvas.height = ch;
+    canvas.atlasFrameCrop = crop || [0, 0, frame.sw, frame.sh];
     canvas.getContext('2d').drawImage(entry.image, frame.sx + cx, frame.sy + cy, cw, ch, 0, 0, cw, ch);
     if (cache.size >= 64) cache.delete(cache.keys().next().value);
     cache.set(key, canvas);
