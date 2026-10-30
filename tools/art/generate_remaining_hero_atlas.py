@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+"""七文明原創奇幻英雄；共用動畫骨架，各自裝備造型，非歷史復原。 / Seven original civilization-inspired fantasy heroes; shared rig, individual equipment, not historical reconstruction."""
+import math,argparse
+from pathlib import Path
+STATES=['idle','walk','attack','hit','death','cast']
+PROFILES={
+'BYZ':dict(title='Byzantine lamellar paramerion almond shield',cloth='#675374',metal='#9aa28b',trim='#dfc791',
+ head='<path d="M-11-55L-10-68L0-78L11-68L12-55L9-43H-8Z" fill="#9da693"/><path d="M0-76V-57M-8-65L-6-56M8-65L6-56" stroke="#d8c58b" stroke-width="2"/><path d="M-10-55L-12-36L0-31L12-36L11-55" fill="#798475" stroke="#c2bc95"/><path d="M-7-55H8V-45L1-42L-6-46Z" fill="#b08b64"/><path d="M-5-51H-1M3-51H7" stroke="#35463e" stroke-width="1.5"/><path d="M-11-58H12" stroke="#d9c38e" stroke-width="3"/>',
+ body='<path d="M-18-45L0-49L18-45L16-13L0-5L-16-13Z" fill="#879783"/><path d="M-14-38L0-33L14-38M-14-30L0-25L14-30M-14-22L0-17L14-22" stroke="#e0c793" stroke-width="2"/><path d="M-9-46L0-36L10-46L6-7L-3-9Z" fill="#7b576c" stroke="#d5bf85"/><path d="M-15-13L15-13L19 5L11 10L6 2L0 9L-6 2L-12 10L-19 5Z" fill="#8a7b5c"/><path d="M-22-43L-14-47L-9-39L-12-28L-24-31ZM14-47L24-43L25-31L12-28L9-39Z" fill="#aaa886"/>',
+ weapon='<path d="M-3 0Q-3-28 4-53Q2-26 5-2L2 2H-2Z" fill="#bdc9ba"/><path d="M-10 3L0 0L10 3" fill="none" stroke="#dfc791" stroke-width="3"/><path d="M0 4V20" stroke="#6c4c3b" stroke-width="4"/>',
+ shield='<path d="M0-24Q-18-20-15-3L0 23L15-3Q18-20 0-24Z" fill="#724f68"/><path d="M0-17V15M-8-7H8M-6 2H6" stroke="#e4cc8e" stroke-width="2.5"/>'),
+'KOR':dict(title='Korean broad brim hwandо sword brigandine',cloth='#435f73',metal='#8d9e9a',trim='#d7bd8c',
+ head='<path d="M-9-56V-70Q0-78 10-70V-56Z" fill="#455958"/><path d="M-23-57Q0-68 24-57L20-53H-20Z" fill="#384949"/><path d="M-17-58H17" stroke="#c7b681" stroke-width="2"/><path d="M0-72Q5-91 10-91L7-77L3-71" fill="#b35c4d"/><path d="M-7-53H7V-44L0-39L-6-44Z" fill="#b9966c"/><path d="M-5-50H-1M2-50H6" stroke="#384a43" stroke-width="1.5"/><path d="M-5-43L-4-35L0-32L5-37L6-44Z" fill="#454b40"/>',
+ body='<path d="M-17-44L0-49L17-44L19-12L13 10L0 6L-13 10L-19-12Z" fill="#557083"/><path d="M-10-41V5M0-44V4M10-41V5M-15-31H15M-16-20H16M-16-8H16" stroke="#b6af84" stroke-width="2"/><path d="M-22-42L-16-47L-10-40L-13-24L-24-28ZM16-47L24-42L24-28L13-24L10-40Z" fill="#8e9b8e"/><path d="M-14-17H14" stroke="#b55344" stroke-width="4"/>',
+ weapon='<path d="M-2 0V-52L2-57L4-51V0Z" fill="#c3d0c3"/><path d="M-7 2H8" stroke="#d4b87e" stroke-width="3"/><path d="M0 4V17" stroke="#73523e" stroke-width="4"/><circle cy="21" r="4" fill="none" stroke="#d4b87e" stroke-width="2"/><path d="M2 24L7 38L3 35L0 25" fill="#ae5548"/>',
+ shield='<path d="M-2 12V-13L2-23L4-13V12Z" fill="#afc1b5"/><path d="M-7 13H8M0 14V24" stroke="#bfa779" stroke-width="3"/>'),
+'SPA':dict(title='Spanish morion rapier main gauche cuirass',cloth='#6e4d47',metal='#a5aaa1',trim='#dfca91',
+ head='<path d="M-12-57L-10-68Q0-76 11-68L14-57Z" fill="#9daaa5"/><path d="M-20-55L-14-60H14L21-55Q0-49-20-55Z" fill="#c0c2a9"/><path d="M0-73L2-85L8-83L5-72Z" fill="#aa9370"/><path d="M-7-52H8V-43L0-39L-7-44Z" fill="#b39268"/><path d="M-5-49H-1M3-49H6" stroke="#35453f" stroke-width="1.4"/><path d="M-5-44L0-46L6-44M-2-41L0-36L3-41" stroke="#514a37" stroke-width="2"/><path d="M-10-37L-6-41L-2-37L2-41L6-37L10-40" stroke="#dedac0" stroke-width="4"/>',
+ body='<path d="M-16-36L0-41L16-36L13-14L0-8L-13-14Z" fill="#a0aea5"/><path d="M0-39V-13M-12-31L-10-18M12-31L10-18" stroke="#e0d1a4" stroke-width="1.6"/><path d="M-14-12Q-20 0-11 7L0 0L11 7Q20 0 14-12Z" fill="#967754"/><path d="M-10-9L-11 3M-4-9L-3 2M4-9L3 2M10-9L11 3" stroke="#cfb982" stroke-width="2"/><path d="M-22-34L-16-39L-10-33L-14-24L-23-26ZM16-39L23-34L23-26L14-24L10-33Z" fill="#a2aaa0"/>',
+ weapon='<path d="M0 0L1-61L3-2Z" fill="#d7dcc5"/><path d="M-8 1H10M-8 2Q-9 14 1 17Q12 14 9 2" fill="none" stroke="#d2ba81" stroke-width="2"/><ellipse cy="3" rx="7" ry="4" fill="#adab90"/><path d="M1 6V21" stroke="#60493a" stroke-width="3"/>',
+ shield='<path d="M0 4L-1-21L2-29L4-21L3 4Z" fill="#cbd2bd"/><path d="M-8 6H10M1 7V20" stroke="#bda574" stroke-width="2.5"/>'),
+'TUR':dict(title='Turkish kilij mirror armour tall turban',cloth='#557061',metal='#a2a88b',trim='#dac692',
+ head='<path d="M-8-65L-4-82L0-89L6-81L10-65Z" fill="#afa98b"/><path d="M-12-63Q-16-74 0-75Q17-73 13-62L11-54H-10Z" fill="#ded8b8"/><path d="M-12-66Q0-69 13-65M-10-60Q0-64 11-60" stroke="#a9ab8a" fill="none" stroke-width="1.5"/><path d="M-7-53H7V-43L0-39L-6-44Z" fill="#b18e62"/><path d="M-6-49H-1M2-49H6" stroke="#384a3e" stroke-width="1.5"/><path d="M-7-44L-5-33L0-29L5-34L7-44Z" fill="#4e5340"/>',
+ body='<path d="M-17-43L0-48L17-43L16-11L22 9L7 7L0 1L-7 7L-22 9L-16-11Z" fill="#5a7663"/><path d="M-9-41L-7 5M9-41L7 5" stroke="#a6ab7c" stroke-width="2"/><circle cy="-29" r="11" fill="#b6b793"/><circle cy="-29" r="7" fill="none" stroke="#e1cf97"/><path d="M-14-13L14-18" stroke="#bf9d67" stroke-width="5"/><path d="M-20-42L-14-46L-9-37L-14-25L-24-29ZM14-46L23-42L24-29L14-25L9-37Z" fill="#839579"/>',
+ weapon='<path d="M-3 0Q-11-29 1-55Q0-34 12-24L7-16L3-2Z" fill="#c1cdb5"/><path d="M-9 2L0-1L10 2" fill="none" stroke="#d3bc80" stroke-width="3"/><path d="M0 3V18" stroke="#7a543b" stroke-width="4"/>',
+ shield='<circle r="12" fill="#667b5c"/><circle r="8" fill="none" stroke="#d5c58d"/><circle r="3.5" fill="#d2c08a"/>'),
+'MNG':dict(title='Mongol fur cone hat sabre bowcase lamellar',cloth='#856348',metal='#9c9b78',trim='#e1c794',
+ head='<path d="M-11-59L-5-77L1-83L8-76L13-59Z" fill="#8f6548"/><path d="M-12-64L-15-54L-10-52L-8-57L-3-53L2-56L8-52L14-55L12-64Z" fill="#aa9e7e"/><path d="M0-79L2-94L7-90L5-78" fill="#ddd3ad"/><path d="M-7-52H8V-43L0-38L-7-44Z" fill="#b69568"/><path d="M-6-49H-1M2-49H7" stroke="#39483a" stroke-width="1.7"/><path d="M-5-43L-3-37L1-34L6-39L7-45" fill="#4e4e38"/>',
+ body='<path d="M-18-43L0-49L18-43L16-12L22 5L10 10L1 2L-9 10L-22 5L-16-12Z" fill="#987653"/><path d="M-12-40L2-13L12-40" fill="#8d9679"/><path d="M-9-35L1-30L9-35M-6-27L1-22L6-27" stroke="#d3c18d" stroke-width="1.8"/><path d="M-15-14H15" stroke="#694b36" stroke-width="5"/><circle cy="-14" r="3.5" fill="#ddc492"/><path d="M-23-41L-17-47L-8-40L-13-29L-26-31ZM17-47L25-41L26-31L13-29L8-40Z" fill="#b1a383"/>',
+ weapon='<path d="M-3 0Q-8-27 2-51Q-1-27 5-2L2 2Z" fill="#c8d0b5"/><path d="M-8 2H9" stroke="#cdb27c" stroke-width="3"/><path d="M0 4V20L5 23" stroke="#765039" stroke-width="4"/>',
+ shield='<path d="M-8-25L2-36L8-30L4 17L-5 20Z" fill="#775d41"/><path d="M-1-30L1-46M4-31L7-46M-5-27L-7-43" stroke="#cfb67e" stroke-width="2"/><path d="M1-46L-4-52M7-46L3-52M-7-43L-12-49" stroke="#c3c7a2" stroke-width="3"/>'),
+'BRI':dict(title='Briton billhook kettle helm padded lion coat',cloth='#48604b',metal='#a1b3a4',trim='#d8c18d',
+ head='<path d="M-11-58L-9-70Q0-76 10-70L12-58Z" fill="#9eada1"/><path d="M-23-57Q0-64 24-57L20-52H-20Z" fill="#aeb8a5"/><path d="M-8-52H8V-43L0-39L-7-44Z" fill="#b79870"/><path d="M-6-49H-1M2-49H6" stroke="#374a3e" stroke-width="1.5"/><path d="M-10-52L-12-33L0-27L12-33L10-52L7-42L0-39L-7-42Z" fill="#758574" stroke="#bcb78c"/>',
+ body='<path d="M-17-43L0-48L17-43L16-15L20 7L8 11L0 5L-9 11L-20 7L-16-15Z" fill="#526b50"/><path d="M-12-37L11-14M-11-13L11-36M-12-28L9-6M-11-6L12-28" stroke="#9da47b" fill="none" stroke-width="1.5"/><path d="M-14-15H14M-11-45L12-15" stroke="#92704c" stroke-width="4"/><path d="M-23-40L-16-46L-10-39L-14-28L-25-31ZM16-46L24-40L25-31L14-28L10-39Z" fill="#a5ad90"/><path d="M-4-33L0-39L5-35L1-29L5-25L0-21L-5-25L-2-29Z" fill="#d3b97c"/>',
+ weapon='<path d="M0 29V-49" stroke="#86643f" stroke-width="5"/><path d="M-2-47L0-58L4-47L17-43Q24-29 13-23L10-28Q18-30 12-37L4-36V-22H-2Z" fill="#a5b9ab"/><path d="M-5-28H5M-3 3H3M-3 9H3" stroke="#dac494" stroke-width="2"/>',
+ shield=''),
+'MAG':dict(title='Magyar feather cap sabre teardrop shield braided mantle',cloth='#785447',metal='#9c9e7d',trim='#d8bc84',
+ head='<path d="M-10-58L-9-72Q0-79 10-70L12-58Z" fill="#5e5a44"/><path d="M-12-64L-14-55L-7-52L0-55L8-52L14-56L12-64Z" fill="#a29572"/><path d="M5-73Q12-92 17-92L14-78L9-70" fill="#d2d1a8"/><path d="M-7-52H8V-43L0-40L-7-44Z" fill="#b79468"/><path d="M-6-49H-1M2-49H7" stroke="#35473b" stroke-width="1.5"/><path d="M-6-44L0-46L7-44" stroke="#544b36" stroke-width="2"/><path d="M-9-53L-11-33M10-53L12-33" stroke="#625038" stroke-width="3"/>',
+ body='<path d="M-17-43L0-49L17-43L16-13L22 7L10 10L0 2L-10 10L-22 7L-16-13Z" fill="#875c4b"/><path d="M-10-40L1-17L12-40" fill="#9c9f79"/><path d="M-7-35L1-30L8-35M-5-28L1-23L6-28" stroke="#dac48a" stroke-width="2"/><path d="M-15-15L15-18" stroke="#bda36d" stroke-width="5"/><path d="M-12-14L-15 11L-8 7L-6-14" fill="#bda36d"/><path d="M-24-42L-18-49L-9-43L-13-29L-26-32ZM17-49L25-42L26-32L13-29L8-43Z" fill="#a99b78"/>',
+ weapon='<path d="M-3 0Q-8-29 4-52Q-1-25 6-3L2 1Z" fill="#cbd3b5"/><path d="M-10 3Q0-3 11 3" fill="none" stroke="#ddbf84" stroke-width="3"/><path d="M0 5V18L5 21" stroke="#79513b" stroke-width="4"/>',
+ shield='<path d="M0-22Q-18-17-13 1L0 22L13 1Q18-17 0-22Z" fill="#775044"/><path d="M-9-11L0-16L9-11L0 3Z" fill="#a2a480"/><path d="M0-14V14M-7-5H7" stroke="#d4bc83" stroke-width="2"/>')}
+def cell(civ,d,state,f):
+ p=PROFILES[civ];dx,dy=math.cos(d*math.pi/4),math.sin(d*math.pi/4);side=1 if dx>=0 else -1;back=dy<-.3
+ step=[-4,0,4,0][f] if state=='walk' else 0;bob=[0,-1,0,1][f] if state in ['idle','walk'] else 0;fall=[0,22,52,82][f] if state=='death' else 0;recoil=[-2,-4,-1,0][f] if state=='hit' else 0
+ hx=22*side;hy=-35-([0,7,13,3][f] if state=='cast' else 0);swing=[8,-42,48,6][f] if state=='attack' else [6,-2,-12,6][f] if state=='cast' else 6
+ weapon=f'<g transform="translate({hx} {hy}) rotate({swing*side}) scale({side} 1)" stroke="{p["trim"]}" stroke-width="1.2" stroke-linejoin="round">{p["weapon"]}</g>'
+ shield=f'<g transform="translate({-20*side} -23) rotate({-8*side})" stroke="{p["trim"]}" stroke-width="1.5">{p["shield"]}</g>'
+ mantle=f'<path d="M-16-44L-26 4L-12 9L0 2L13 9L27 4L16-44Z" fill="{p["cloth"]}" stroke="{p["trim"]}" stroke-width="1.2"/>'
+ face=p['head'] if not back else p['head'].split('<path d="M-7-52')[0]+'<path d="M-8-56L-9-38L0-32L9-38L8-56Z" fill="'+p['metal']+'"/>'
+ # 背向使用後腦／護頸，不畫正面五官。 / Back facings use the nape/neck guard rather than front facial features.
+ if back:face=f'<g>{p["head"]}</g><path d="M-9-56H9L10-39L0-33L-10-39Z" fill="{p["metal"]}" stroke="{p["trim"]}"/>'
+ arms=f'<path d="M-17-34L-20-24L{-20*side} -20M17-34L21-25L{hx} {hy+9}" stroke="{p["metal"]}" stroke-width="6" fill="none" stroke-linecap="round"/>'
+ legs=f'<path d="M-7-6L{-8+step} 8M7-6L{8-step} 8" stroke="#5d5b47" stroke-width="6"/><path d="M{-9+step} 8h-5M{9-step} 8h5" stroke="#384b43" stroke-width="3"/>'
+ halo=f'<circle cx="{hx}" cy="{hy}" r="{[3,6,10,4][f]}" stroke="#ead59f" stroke-width="1.5" fill="none"/>' if state=='cast' else ''
+ return f'<g transform="translate(104 120)"><ellipse cy="5" rx="24" ry="6" fill="#182722" opacity=".28"/><g transform="translate({recoil} {bob}) rotate({fall}) scale({.72+.28*abs(dy):.3f} 1)" opacity="{1-f*.13 if state=="death" else 1}">{mantle}{legs}{weapon if back else ""}<g stroke="{p["trim"]}" stroke-width="1.2" stroke-linejoin="round">{p["body"]}</g>{arms}{shield if not back or civ=="MNG" else ""}<g transform="translate({dx*1.5:.2f} 0)" stroke="{p["trim"]}" stroke-width="1" stroke-linejoin="round">{face}</g>{"" if back else weapon}{halo}</g></g>'
+def build(civ):
+ cells=''.join(f'<g transform="translate({((d%4)*4+f)*208} {(r*2+d//4)*208})">{cell(civ,d,s,f)}</g>' for r,s in enumerate(STATES) for d in range(8) for f in range(4))
+ return '<svg xmlns="http://www.w3.org/2000/svg" width="3328" height="2496" viewBox="0 0 3328 2496"><title>Riftwatch original '+PROFILES[civ]['title']+' hero</title>'+cells+'</svg>\n'
+if __name__=='__main__':
+ a=argparse.ArgumentParser();a.add_argument('civ',choices=list(PROFILES));c=a.parse_args().civ;p=Path(__file__).resolve().parents[2]/f'assets/sprites/{c.lower()}-hero-atlas.svg';p.write_text(build(c));print(p)

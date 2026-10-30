@@ -52,3 +52,30 @@ PER 英雄：翼飾脊盔、瓣錘、日輪橢圓盾、層甲及紫色分岔披�
 CHN 英雄：長柄偃月刀、紅纓、札甲長袍及長鬚，無盾輪廓，八向六狀態192格；19 Node／17遊戲Chromium／7音訊Chromium限定通過，來源 `0bd29b4c59c2a6acbca47fd029bbbeea22932666`。原近戰及Mark/Aegis規則不變。 / CHN hero: long guandao, red plume, lamellar robe and long beard, shield-free silhouette,192 cells; scoped19 Node/17 gameplay Chromium/7 audio Chromium PASS at the stated source. Existing melee/Mark/Aegis rules unchanged.
 
 GOT 英雄：鋸背巨劍、寬肩毛皮鎖甲及裸首束髮；八向六狀態192格，待機劍避開臉、血條上移。12 Node／17遊戲Chromium通過，來源 `32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a`；7音訊Chromium來源 `b214462f89cda620d7cc1ade53a84352042e25c4`，聲音邏輯後續未變。 / GOT hero: sawback greatsword, broad fur/mail shoulders and bare-head topknot;192 frames, idle blade clear of face and raised health bar.12 Node/17 gameplay checks pass at the stated art source; seven audio checks are pinned to the separate source with unchanged audio thereafter.
+
+<!-- HERO-MATRIX-START -->
+
+## 英雄完成矩陣 / Hero completion matrix
+
+繁體中文：9/16限定驗收。來源、遊戲／音效證據及代表圖見CIVILIZATION-HERO-MATRIX.json；格數與文件存在本身不構成完成。保留歷史FAIL、主觀流暢度／聽感與硬體缺口。
+
+English: 9/16 scoped acceptance. Sources, gameplay/audio evidence and representative images: CIVILIZATION-HERO-MATRIX.json. Cell counts/file existence alone do not establish completion. Historical FAIL, subjective smoothness/listening and hardware gaps remain.
+
+| Civ | Status | Art source | Actual gameplay evidence |
+| --- | --- | --- | --- |
+| MNG | TODO | — | — |
+| TEU | SCOPED_ACCEPTED | e5ccf8d1042aefed8cbd240045b3995c6ae86341 | docs/evidence/v240-teu-hero/verified/browser.json |
+| GOT | SCOPED_ACCEPTED | 32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a | docs/evidence/v240-got-hero/verified/browser.json |
+| FRK | SCOPED_ACCEPTED | 97b11b64ce4c13772318e9ddda7387297650d9e1 | docs/evidence/v240-frk-hero/verified/browser.json |
+| SAR | SCOPED_ACCEPTED | c578426100ed6c2927cdcf3382faa1ffc606f337 | docs/evidence/v240-sar-hero/verified/browser.json |
+| AZT | SCOPED_ACCEPTED | 0333583ff5db69404272f20d058518eef9a10443 | docs/evidence/v240-azt-hero/verified/browser.json |
+| BRI | TODO | — | — |
+| CHN | SCOPED_ACCEPTED | 0bd29b4c59c2a6acbca47fd029bbbeea22932666 | docs/evidence/v240-chn-hero/verified/browser.json |
+| PER | SCOPED_ACCEPTED | 5ef184234f7edf2490978e096ce5e704ed1b08b5 | docs/evidence/v240-per-hero/verified/browser.json |
+| KOR | TODO | — | — |
+| SPA | TODO | — | — |
+| TUR | TODO | — | — |
+| BYZ | TODO | — | — |
+| VIK | SCOPED_ACCEPTED | 97b11b64ce4c13772318e9ddda7387297650d9e1 | docs/evidence/v240-vik-hero/verified/browser.json |
+| MAG | TODO | — | — |
+| JPN | SCOPED_ACCEPTED | 9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a | docs/evidence/v240-jpn-hero/verified/browser.json |

@@ -6,7 +6,7 @@
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
-  "base_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
+  "base_commit": "417d54fb90ec1678e45b1eac15c86147c8c91652",
   "latest_pushed_commit": "fc6819b8a96055c4f5095f06f63bcdef945fee0c",
   "application_source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
   "completed": [
@@ -43,14 +43,14 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "接續 BYZ 拜占庭英雄獨立裝備、輪廓與技能表現",
-    "Continue BYZ Byzantine hero independent equipment, silhouette and skill feedback"
+    "BYZ→KOR→SPA→TUR→MNG→BRI→MAG，全數已授權",
+    "BYZ→KOR→SPA→TUR→MNG→BRI→MAG, all authorized"
   ],
   "permissions": [
     "Independent development tests normal push",
     "No main Force Push Checkpoints Pages or OmGitHub publication"
   ],
-  "status": "CHECKPOINTED",
+  "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
   "updated_at": "2026-10-30T06:24:58.219144+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
@@ -71,7 +71,7 @@
   },
   "scheduler_status": "PREPARED_NOT_APPLIED_TO_SCHEDULER_NO_READ_WRITE_TOOL",
   "completion_feed_commit": "1a09e26665506018c8f04f2404550af3293e8959",
-  "execution_state": "PAUSED_EXECUTION_BUDGET",
+  "execution_state": "CONTINUING_AFTER_SAFE_CHECKPOINT",
   "duplicate_resume_status": "RESUME_SKIPPED_ACTIVE_TASK_EXISTING_EXECUTION_CONTINUED",
   "latest_feed_commit": "abc98ccd12f2eac42070a10b853c3203710529e4",
   "current_envlost_recovery": {
@@ -85,29 +85,7 @@
     "art_recreated": false,
     "older_9a0f19e_still_separately_pending": true
   },
-  "current_session_slices": [
-    {
-      "slice": "v240-per-hero",
-      "source": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
-      "node": 18,
-      "chromium": 17,
-      "report": "docs/evidence/v240-per-hero/REPORT.md"
-    },
-    {
-      "slice": "v240-chn-hero",
-      "source": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
-      "node": 19,
-      "chromium": 17,
-      "report": "docs/evidence/v240-chn-hero/REPORT.md"
-    },
-    {
-      "slice": "v240-got-hero",
-      "source": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
-      "node": 12,
-      "chromium": 17,
-      "report": "docs/evidence/v240-got-hero/REPORT.md"
-    }
-  ],
+  "current_session_slices": [],
   "continuity_policy": {
     "checkpoint_is_stop": false,
     "stop_record_required": true,
@@ -118,19 +96,8 @@
     "previous_stop_record": "docs/recovery/execution-stop-before-1460252.json"
   },
   "continuation_event": {
-    "STOP_REASON": "EXECUTION_BUDGET_BOUNDARY",
-    "EXECUTION_DURATION": {
-      "seconds": 2314.673,
-      "scope": "TASK_START_SNAPSHOT_TO_STOP_PREPARATION_WALL_INTERVAL_EXCLUDES_INITIAL_READS_AND_FINAL_PUSH_NOT_ACTIVE_CPU_TIME",
-      "start": "2026-10-30T05:46:23.546394+00:00",
-      "end": "2026-10-30T06:24:58.219144+00:00",
-      "client_timezone": "Asia/Taipei",
-      "client_start": "2026-10-30T13:46:23.546394+08:00",
-      "client_end": "2026-10-30T14:24:58.219144+08:00"
-    },
-    "NEXT_AUTHORIZED_TASK": "BYZ Byzantine hero independent equipment, silhouette, animation and existing-skill feedback; verify latest source/ownership first",
-    "CHECKPOINT_SHA": "fc6819b8a96055c4f5095f06f63bcdef945fee0c",
-    "AUTO_RESUME_AVAILABLE": "DELIVERY_OBSERVED_IDLE_WAKE_UNVERIFIED"
+    "STOP_REASON": "NOT_STOPPED",
+    "NEXT_AUTHORIZED_TASK": "BYZ→KOR→SPA→TUR→MNG→BRI→MAG, all authorized"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
@@ -150,7 +117,7 @@
     "hourly_supervision_mutated": false
   },
   "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json",
-  "session_id": "sar-per-native-persistence-20261030",
+  "session_id": "all-sixteen-heroes-20261030",
   "remote_query_status": "REMOTE_HEAD_VERIFIED_AFTER_NORMAL_PUSH",
   "current_stop_record": "docs/recovery/game-first-auth-stop.json",
   "resolved_execution_blockers": [
@@ -317,6 +284,27 @@
       "node": 7,
       "chromium": 19,
       "report": "docs/evidence/v240-civilization-hero-sound-second/REPORT.md"
+    },
+    {
+      "slice": "v240-per-hero",
+      "source": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+      "node": 18,
+      "chromium": 17,
+      "report": "docs/evidence/v240-per-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-chn-hero",
+      "source": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+      "node": 19,
+      "chromium": 17,
+      "report": "docs/evidence/v240-chn-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-got-hero",
+      "source": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+      "node": 12,
+      "chromium": 17,
+      "report": "docs/evidence/v240-got-hero/REPORT.md"
     }
   ],
   "current_session_reviews": [
