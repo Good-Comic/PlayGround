@@ -31,3 +31,7 @@ BILINGUAL_DOCUMENTATION_REQUIRED = true
 肖像來源／Portrait source `296772b1709df5370c58c36e9ea3aee83c0bc446`: 4 Node /32 Chromium PASS. 選取 TEU/JPN/AZT 英雄並對照世界外觀；FRK、村民維持程序肖像。受控載入旗標不是 HTTP 驗收。 / Select TEU/JPN/AZT heroes and compare with world appearance; FRK/villagers retain procedural portraits. Controlled loading flags are not HTTP acceptance.
 
 五個相關切片已備妥獨立 QA 資料，未啟動第二位 Agent。 / Five related slices prepared for independent QA; no second agent launched.
+
+## VIK／FRK 後續 / Subsequent VIK/FRK
+
+來源／Source `97b11b64ce4c13772318e9ddda7387297650d9e1`: 28 affected Node PASS,17 Chromium per civilization PASS. 原生開始後選取英雄，八向移動、近戰及 Q/E 技能；對照圓盾兵／一般盾衛、肩側符文／百合標記和選取肖像。 / Native start, hero selection, eight-direction movement, melee and Q/E skills; compare round-shield/generic guards, shoulder rune/fleur-de-lis feedback and selection portraits. 每文明原始畫面、影片、失敗及性能樣本依各 evidence 目錄保留。 / Raw images, videos, failures and performance samples remain in each evidence folder. 未啟動獨立 QA。 / Independent QA not launched.

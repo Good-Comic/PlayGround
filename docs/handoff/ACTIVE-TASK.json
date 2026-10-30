@@ -1,36 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "維京長斧／毛皮肩披／眼罩盔英雄 / Viking long-axe/fur-mantle/spectacle-helm hero",
+  "name": "法蘭克長劍／鳶盾／百合披袍英雄 / Frankish long-sword/kite-shield/fleur-de-lis hero",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "9561ffc883f59afd5c9fda883c7b54eb771f7ec5",
-  "latest_pushed_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
-  "application_source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+  "latest_pushed_commit": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+  "application_source_commit": "97b11b64ce4c13772318e9ddda7387297650d9e1",
   "completed": [
-    "維京長斧／毛皮肩披／眼罩盔英雄",
-    "Viking long-axe/fur-mantle/spectacle-helm hero"
+    "法蘭克長劍／鳶盾／百合披袍英雄",
+    "Frankish long-sword/kite-shield/fleur-de-lis hero"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Node",
-      "result": "20 PASS",
-      "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
-      "path": "docs/evidence/v240-vik-hero/focused-node.txt"
+      "result": "28 PASS",
+      "source_commit": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+      "path": "docs/evidence/v240-frk-hero/focused-node.txt"
     },
     {
       "name": "Chromium",
-      "result": "16 PASS",
-      "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
-      "path": "docs/evidence/v240-vik-hero/verified/browser.json"
+      "result": "17 PASS",
+      "source_commit": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+      "path": "docs/evidence/v240-frk-hero/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-vik-hero/REPORT.md"
+    "docs/evidence/v240-frk-hero/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "接續 FRK 法蘭克英雄獨立視覺",
-    "Continue distinct FRK Frankish hero visuals"
+    "接續 SAR 撒拉森英雄獨立視覺",
+    "Continue distinct SAR Saracen hero visuals"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T04:58:54.932090+00:00",
+  "updated_at": "2026-10-30T05:03:33.867562+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -123,10 +123,18 @@
     },
     {
       "slice": "v240-vik-hero",
-      "source": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+      "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
       "node": 20,
-      "chromium": 16,
-      "report": "docs/evidence/v240-vik-hero/REPORT.md"
+      "chromium": 17,
+      "report": "docs/evidence/v240-vik-hero/REPORT.md",
+      "subsequent_node_regressions": 28
+    },
+    {
+      "slice": "v240-frk-hero",
+      "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+      "node": 28,
+      "chromium": 17,
+      "report": "docs/evidence/v240-frk-hero/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -140,7 +148,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Continue distinct FRK Frankish hero visuals"
+    "NEXT_AUTHORIZED_TASK": "Continue distinct SAR Saracen hero visuals"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

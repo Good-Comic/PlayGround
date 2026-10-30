@@ -23,3 +23,7 @@ BILINGUAL_DOCUMENTATION_REQUIRED = true
 繁體中文：20項 Node 包含 VIK 新增5項及 TEU/JPN/AZT 受影響回歸15項，並非20項全新測試。早期 fixture 錯把已有的 VIK 圓盾兵路由當作 generic；已修正斷言，遊戲路由未被改掉。VIK 選取肖像自動沿用既有載入圖集功能。
 
 English: The20 Node checks comprise five new VIK checks and15 affected TEU/JPN/AZT regressions. An early fixture incorrectly expected the existing VIK round-shield troop to use generic routing; the assertion was corrected without changing troop routing. VIK selection portraits automatically reuse the existing loaded-atlas feature.
+
+繁體中文：後續方向投影來源 `97b11b64ce4c13772318e9ddda7387297650d9e1`；VIK／FRK 各17 Chromium PASS，新增解碼圖像八方向全部不同的檢查，方向／技能畫面已人工檢視。28 Node 為五文明英雄及肖像受影響檢查合計，不是28項全新測試。原始投影前的16項 Chromium結果保留於 pre-projection-browser。
+
+English: Subsequent facing-projection source `97b11b64ce4c13772318e9ddda7387297650d9e1`; VIK/FRK each pass17 Chromium checks including eight distinct decoded idle directions. Direction/skill images manually reviewed. The28 Node checks cover five civilization heroes and affected portraits, not28 newly added tests. Original16-check pre-projection results remain in pre-projection-browser.
