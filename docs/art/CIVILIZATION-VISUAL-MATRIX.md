@@ -11,7 +11,7 @@ English: This records actual progress against the existing sixteen civilizations
 | GOT | 堡壘 / Fortress | 鎖子甲毛領長盾民兵已驗收 / Mail/fur-collar/oval-shield militia accepted; v240-got-militia |
 | FRK | 堡壘 / Fortress | 披掛／長盾／騎槍輕騎已驗收 / Caparison/shield/lance light-cavalry atlas accepted; v240-frk-cavalry |
 | SAR | 沙漠 / Desert | 纏巾鎖甲彎刀盾衛已驗收 / Turban/mail/curved-blade guard accepted; v240-sar-guard |
-| AZT | 中美洲 / Mesoamerican | 黑曜石武器民兵已驗收及遠端保存 / Obsidian militia accepted and remotely saved; v240-azt-militia |
+| AZT | 中美洲 / Mesoamerican | 黑曜石武器民兵已驗收及遠端保存 / Obsidian militia accepted and remotely saved; v240-azt-militia；美洲虎英雄限定驗收 / jaguar hero scoped acceptance; v240-azt-hero |
 | BRI | 堡壘 / Fortress | 長弓 archer 已驗收 / Longbow archer accepted; v240-bri-longbow |
 | CHN | 東方 / Eastern | 諸葛弩已驗收 / Repeating-crossbow atlas accepted; v240-special-atlas |
 | PER | 沙漠 / Desert | 戰象已驗收 / Elephant atlas accepted; v240-elephant |
@@ -36,3 +36,7 @@ English: All sixteen civilizations now have at least one representative slice li
 繁體中文：TEU 既有英雄已新增獨立戰鎚／翼冠／披風與六種動作及技能徽記；接續 JPN 文明英雄，不重做原有 JPN 盾衛或格擋。
 
 English: TEU existing hero now has independent hammer/winged helm/mantle, six actions and skill emblems. Continue JPN civilization hero without remaking its guard/block feature.
+
+繁體中文：TEU／JPN／AZT 三個文明英雄已有獨立裝備與六種動作的限定驗收，其他文明英雄仍逐步擴充；接續三者的兵器音效。
+
+English: TEU/JPN/AZT heroes now have scoped acceptance for independent kit and six actions; other civilization heroes remain incremental work. Continue differentiated weapon sound for these three.

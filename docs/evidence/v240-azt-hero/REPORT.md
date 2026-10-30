@@ -1,0 +1,25 @@
+# 阿茲特克美洲虎面具／棉甲／黑曜石英雄 / Aztec jaguar-mask/cotton/obsidian hero
+
+來源／Source: `0333583ff5db69404272f20d058518eef9a10443`. SCOPED_ACCEPTANCE_PASS; not formal independent QA/release acceptance.
+
+繁體中文：首頁原生選 AZT／Start 的既有英雄現在使用獨立原創 SVG／PNG 與生成器；不是普通盾衛換色，其他文明英雄／敵軍／一般兵種隔離。Canvas 2D 架構與原有英雄、成本、碰撞、導航、HP、攻擊、技能範圍／數值及冷卻未改。八方向、待機／移動／攻擊／受擊／死亡／施法，各四格共 192 格。施法徽記讓金色 Mark 與藍色 Aegis 易於辨識，沿用既有效果。
+
+English: Native AZT selection/Start now gives the existing hero an independent original SVG/PNG and reproducible generator, beyond recoloring ordinary guards. Other heroes/enemies/troops remain isolated. Canvas 2D and existing hero identity/cost/collision/navigation/HP/attack/skill range/values/cooldowns are unchanged. Eight directions and idle/walk/attack/hit/death/cast each have four frames, totaling 192. Skill emblems distinguish gold Mark from blue Aegis while retaining existing effects.
+
+繁體中文：8 Node／16 真實 Chromium PASS。使用原生 Start 的同一英雄，實際左鍵頭部選取、右鍵移動與攻擊；兩個技能由原生命令按鈕施放。觀察實際攻擊、死亡及每個技能各四格播放；施放瞬間 Mark CD30／標記6秒、Aegis CD60／60護盾／5秒保留，之後按遊戲經過時間核對 CD。受控清場、500 HP 敵軍與準備240秒皆為 QA fixture，不是自然戰役。全部192格邊界透明，資產失敗回退與其他文明隔離通過，無頁面／Console／資源錯誤。代表方向、縮放、戰鬥／技能與死亡圖片已人工檢視；完整影片與原始樣本保留。
+
+English: 8 Node/16 actual Chromium checks PASS. The same native-Start hero accepts real head selection, right-click movement/combat, and native buttons for both skills. Actual attack/death and each skill play four frames. Cast-time values remain Mark CD30/mark6s and Aegis CD60/shield60/duration5s; subsequent cooldown checks account for elapsed game time. Cleared scene/500-HP target/240s preparation are explicit QA fixtures, not natural-campaign acceptance. All 192 borders are transparent, failed-asset fallback and civilization isolation pass, with no page/console/resource errors. Representative direction/zoom/combat/skill/death images were reviewed; full video and raw samples remain.
+
+繁體中文：離線透明邊界資訊保留一像素邊緣；renderer 只縮小繪製矩形並補回原落腳點。192格在單位繪製倍率下，裁格與未裁格的 RGBA 像素完全相同；不是重做圖檔。100英雄三組交錯 renderer-only 比較通過既有平均33.3ms／p95 50ms及配對p50退步不超過20%的門檻。資料不代表 FPS、GPU 或實體 RAM，來源 PNG 解碼尺寸未縮小；各姿勢裁格像素合計也不等於實際快取記憶體（裁格快取仍上限64）。
+
+English: Offline alpha bounds retain a one-pixel gutter. Renderer only shrinks draw rectangles and restores original ground anchors. All 192 frames render identical RGBA pixels at unit draw scale with/without cropping; images are not remade. Three alternating 100-hero renderer-only pairs pass existing mean33.3ms/p95 50ms and <=20% paired-p50 regression gates. These are not FPS/GPU/native-RAM measurements; source PNG decode dimensions are unchanged. Summed pose crop pixels are not actual cache memory (cache remains capped at64).
+
+繁體中文：歷史自然十波／NG+、模擬時鐘、嚴格 Save/Load、渲染性能、Rift 與硬體缺口保留。未公開部署。接續 TEU／JPN／AZT 英雄戰鎚、刀刃與黑曜石兵器音效。
+
+English: Historical natural ten-wave/NG+, simulation-clock, strict Save/Load, render-performance, Rift and hardware gaps remain. Nothing publicly deployed. Continue TEU/JPN/AZT hero hammer blade and obsidian-weapon sound differentiation.
+
+BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+繁體中文：pre-isolation-browser 保存首組 p50 +30% FAIL（4c86db1），isolated-performance-fail 保存把像素對照移到性能量測後仍失敗的來源 8e127fd。未降低門檻或只重跑直到通過；之後修改實際 renderer，把命中裁格的矩形也存入快取，移除每單位 DOM 圖片尺寸讀取／索引。最終 0333583 通過原門檻，另有 TEU／JPN 裁格座標 2 項 Node PASS。原變異及失敗不抹除，不能推論整體硬體性能問題已解決。
+
+English: pre-isolation-browser retains first-pair p50 +30% FAIL (4c86db1); isolated-performance-fail retains source8e127fd, which still failed after moving pixel comparison after performance measurement. No gate reduction or retry-until-pass: actual renderer code then caches crop rectangles, removing per-unit DOM image-size reads/indexing. Final0333583 passes the original gate, with two additional TEU/JPN crop-coordinate Node checks. Original variability/failures remain, without claiming hardware-wide performance fixes.

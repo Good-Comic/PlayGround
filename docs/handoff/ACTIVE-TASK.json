@@ -1,36 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "日本雙手刀／大袖札甲／背旗英雄 / Japanese two-handed sword/lamellar pauldrons/back-banner hero",
+  "name": "阿茲特克美洲虎面具／棉甲／黑曜石英雄 / Aztec jaguar-mask/cotton/obsidian hero",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "9561ffc883f59afd5c9fda883c7b54eb771f7ec5",
-  "latest_pushed_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-  "application_source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
+  "latest_pushed_commit": "0333583ff5db69404272f20d058518eef9a10443",
+  "application_source_commit": "0333583ff5db69404272f20d058518eef9a10443",
   "completed": [
-    "日本雙手刀／大袖札甲／背旗英雄",
-    "Japanese two-handed sword/lamellar pauldrons/back-banner hero"
+    "阿茲特克美洲虎面具／棉甲／黑曜石英雄",
+    "Aztec jaguar-mask/cotton/obsidian hero"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Node",
-      "result": "5 PASS",
-      "source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-      "path": "docs/evidence/v240-jpn-hero/focused-node.txt"
+      "result": "8 PASS",
+      "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
+      "path": "docs/evidence/v240-azt-hero/focused-node.txt"
     },
     {
       "name": "Chromium",
-      "result": "17 PASS",
-      "source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-      "path": "docs/evidence/v240-jpn-hero/verified/browser.json"
+      "result": "16 PASS",
+      "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
+      "path": "docs/evidence/v240-azt-hero/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-jpn-hero/REPORT.md"
+    "docs/evidence/v240-azt-hero/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "接續 AZT 美洲虎面具與黑曜石雙手武器英雄",
-    "Continue AZT jaguar-mask and two-handed obsidian-weapon hero"
+    "接續 TEU／JPN／AZT 英雄戰鎚、刀刃與黑曜石兵器音效",
+    "Continue TEU/JPN/AZT hero hammer blade and obsidian-weapon sound differentiation"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T00:47:58.766312+00:00",
+  "updated_at": "2026-10-30T01:05:39.385784+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -99,6 +99,13 @@
       "node": 5,
       "chromium": 17,
       "report": "docs/evidence/v240-jpn-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-azt-hero",
+      "source": "0333583ff5db69404272f20d058518eef9a10443",
+      "node": 8,
+      "chromium": 16,
+      "report": "docs/evidence/v240-azt-hero/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -112,7 +119,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Continue AZT jaguar-mask and two-handed obsidian-weapon hero"
+    "NEXT_AUTHORIZED_TASK": "Continue TEU/JPN/AZT hero hammer blade and obsidian-weapon sound differentiation"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
