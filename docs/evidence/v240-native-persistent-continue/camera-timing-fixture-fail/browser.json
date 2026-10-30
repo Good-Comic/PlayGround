@@ -1,0 +1,47 @@
+{
+  "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+  "mode": "NATIVE_START_CONTROL_MOVE_AEGIS_SAVE_FULL_CHROMIUM_PROCESS_CLOSE_REOPEN_SAME_PROFILE_CONTINUE",
+  "storage": "REAL_DISK_PROFILE_NO_STORAGESTATE_NO_SETITEM_NO_SNAPSHOT_INJECTION",
+  "strict_determinism": "NOT_TESTED_HISTORICAL_GAP_RETAINED",
+  "checks": [
+    {
+      "name": "exact artifact on browser process launch",
+      "pass": true
+    },
+    {
+      "name": "fresh disk profile has no native Continue save",
+      "pass": true
+    },
+    {
+      "name": "native direct control moved actual hero and cast Aegis before pause",
+      "pass": true,
+      "detail": {
+        "time": 2.432899999999999,
+        "hero": {
+          "x": 26.451400608480185,
+          "y": 22.248599391519814,
+          "shield": 60,
+          "aegisCd": 59.400000000000034
+        }
+      }
+    },
+    {
+      "name": "native Save wrote current complete snapshot to disk-backed localStorage",
+      "pass": false,
+      "detail": {
+        "bytes": 26073,
+        "version": 1
+      }
+    },
+    {
+      "name": "execution",
+      "pass": false,
+      "detail": {
+        "message": "native Save wrote current complete snapshot to disk-backed localStorage",
+        "stack": "Error: native Save wrote current complete snapshot to disk-backed localStorage\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/native_persistent_continue_browser.mjs:3:404)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/native_persistent_continue_browser.mjs:5:1256"
+      }
+    }
+  ],
+  "errors": [],
+  "pass": false
+}
