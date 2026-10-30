@@ -1,3 +1,4 @@
+import { FRAME_CROPS as GOT_HERO_CROPS } from '../assets/sprites/got-hero-crops.js';
 import { FRAME_CROPS as CHN_HERO_CROPS } from '../assets/sprites/chn-hero-crops.js';
 import { FRAME_CROPS as PER_HERO_CROPS } from '../assets/sprites/per-hero-crops.js';
 import { FRAME_CROPS as SAR_HERO_CROPS } from '../assets/sprites/sar-hero-crops.js';
@@ -92,6 +93,13 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
     frame: Object.freeze({ width: 192, height: 192 }), anchor: Object.freeze({ x: 96, y: 112 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: .78, directions: DIRECTION_MAP, healthBarHeight: 60,
     states: UNIT_SPRITE_ATLASES.elephant.states,
+  }),
+  'GOT:commander': Object.freeze({
+    pickBody: Object.freeze({ x: 0, y: -36, rx: 31, ry: 47 }),
+    id: 'got-hero-v1', src: 'assets/sprites/got-hero-atlas.png', bakedPose: true, cacheFrames: true,
+    frame: Object.freeze({ width: 208, height: 208 }), anchor: Object.freeze({ x: 104, y: 120 }), directionsPerRow: 4,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .82, directions: DIRECTION_MAP, healthBarHeight: 82,
+    heroEmblem: 'gothic', frameCrops: GOT_HERO_CROPS, states: UNIT_SPRITE_ATLASES.commander.states,
   }),
   'CHN:commander': Object.freeze({
     pickBody: Object.freeze({ x: 0, y: -36, rx: 31, ry: 47 }),
