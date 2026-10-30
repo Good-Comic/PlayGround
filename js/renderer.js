@@ -1482,11 +1482,14 @@ export class Renderer {
   spriteFrameImage(entry, frame) {
     // Keep repeated CPU canvas draws on small bitmaps rather than four large sheets.
     // Lazily crop real decoded pixels; at most64frames per asset are retained.
-    const cache = entry.frameImages ||= new Map();
-    const key = `${frame.sx}:${frame.sy}`;
-    if (cache.has(key)) return cache.get(key);
+    // 暖快取使用數字鍵與一次查表；只在建立快取時讀取圖片寬度。 / Numeric warm-cache keys, one lookup; read decoded width only when creating the cache.
+    let cache = entry.frameImages;
+    if (!cache) { cache = entry.frameImages = new Map(); cache.atlasRowStride = entry.image.naturalWidth; }
+    const key = frame.sy * cache.atlasRowStride + frame.sx;
+    const cached = cache.get(key);
+    if (cached) return cached;
     const canvas = document.createElement('canvas');
-    const crop = entry.descriptor?.frameCrops?.[(frame.sy / frame.sh) * (entry.image.naturalWidth / frame.sw) + frame.sx / frame.sw];
+    const crop = entry.descriptor?.frameCrops?.[(frame.sy / frame.sh) * (cache.atlasRowStride / frame.sw) + frame.sx / frame.sw];
     const [cx, cy, cw, ch] = crop || [0, 0, frame.sw, frame.sh];
     canvas.width = cw; canvas.height = ch;
     canvas.atlasFrameCrop = crop || [0, 0, frame.sw, frame.sh];
