@@ -44,3 +44,5 @@ English: TEU/JPN/AZT heroes now have scoped acceptance for independent kit and s
 VIK 英雄：長斧、毛皮肩披、眼罩盔、鬍辮，八方向六狀態192格；原生可選取、移動、戰鬥及雙技能符文標記。20 Node／16 Chromium 限定通過，來源 `c7f8374cb00dd196abc8360e5f960b038ceda611`。 / VIK hero: long axe, fur mantle, spectacle helm and braided beard;192 cells across eight directions/six states, native selection/movement/combat and skill rune feedback. Scoped20 Node/16 Chromium PASS at the stated source.
 
 FRK 英雄：長劍、鳶盾、冠盔及百合披袍；八方向六狀態192格。VIK／FRK 方向投影追加驗收各17 Chromium通過，來源 `97b11b64ce4c13772318e9ddda7387297650d9e1`。 / FRK hero: long sword, kite shield, crowned helm and fleur-de-lis surcoat;192 frames across eight directions/six states. VIK/FRK facing projection each passes17 Chromium checks at the stated source.
+
+SAR 英雄：彎刀、小圓盾、纏巾盔及鱗甲；八向六狀態192格，17 Chromium PASS，33項受影響 Node PASS。來源 `c578426100ed6c2927cdcf3382faa1ffc606f337`；技能及數值不變。 / SAR hero: curved sword, small round shield, wrapped helm and scale armour;192 cells,17 Chromium PASS and33 affected Node PASS at the stated source; skills and stats unchanged.
