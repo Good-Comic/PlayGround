@@ -1,3 +1,3 @@
-繁體中文：單次計時一組0.9→1.5ms FAIL，其餘通過；批次差約−0.03～+0.05ms。原始20%與絕對門檻保留；不是浮點epsilon可解釋，未證明穩定退步，結果INCONCLUSIVE。
+繁體中文：波斯英雄已整合實際操作、技能與瓣錘音效，接續原生持久化驗收。定向 Node 18／真實 Chromium 17 通過，圖片已人工檢視；未改平衡或公開部署。
 
-English: One single-draw0.9→1.5ms pair FAIL, others pass; batched deltas about−0.03 to+0.05ms. Original20percent and absolute gates retained. Machine epsilon does not explain the failure; stable regression remains unproven, hence INCONCLUSIVE.
+English: Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance. 18 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.

@@ -2,49 +2,67 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-30T05:52:09.421919+00:00",
+  "updated_at": "2026-10-30T05:57:44.386002+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "4195ed60c8f3244684e30eb8d308f435461e160e",
-    "build_sha": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
-    "summary": "SAR 100\u76fe\u885b\u5b9a\u5411\u5fa9\u9a57 INCONCLUSIVE\uff1b\u4fdd\u7559\u4e00\u7d44+66.7% FAIL\uff0c\u7e7c\u7e8cPER\u82f1\u96c4 / SAR100 guard review INCONCLUSIVE; retain one+66.7% FAIL and continue PER hero",
+    "commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+    "build_sha": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+    "summary": "\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536 / Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance",
     "code_changes": [
-      "\u65b0\u589e\u7a84\u7bc4\u570d\u8a08\u6642\u8207\u539f\u59cb\u6a23\u672c / Add narrow timing diagnostics and raw samples"
+      "\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536",
+      "Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance"
     ],
     "next_steps": [
-      "PER \u6ce2\u65af\u82f1\u96c4\u958b\u767c\u4e2d\uff0c\u4e0d\u4ee5S3\u6027\u80fd\u7591\u616e\u963b\u585e\u3002 / PER hero in development, not blocked by S3 performance uncertainty."
+      "\u539f\u751f\u8de8\u7a0b\u5e8f Save/Continue \u8207\u4e0b\u4e00\u9805 CHI \u82f1\u96c4\u3002 / Native cross-process Save/Continue and next CHI hero."
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "single-draw original20percent gate:1/6 FAIL",
-        "status": "FAIL",
-        "source_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
-        "evidence": "docs/evidence/v240-sar-perf-review/browser/browser.json",
-        "evidence_commit": "4195ed60c8f3244684e30eb8d308f435461e160e",
-        "evidence_blob": "0c709b251cd72eed13827c48ee9db1b1cf9de990",
+        "name": "18 focused Node PASS",
+        "status": "PASS",
+        "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+        "evidence": "docs/evidence/v240-per-hero/focused-node.txt",
+        "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+        "evidence_blob": "70dea11890cedbead5c74c51ae68a9b23deff2fa",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "diagnostic ten-draw batch:6/6 within original gate",
+        "name": "17 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
-        "evidence": "docs/evidence/v240-sar-perf-review/browser/browser.json",
-        "evidence_commit": "4195ed60c8f3244684e30eb8d308f435461e160e",
-        "evidence_blob": "0c709b251cd72eed13827c48ee9db1b1cf9de990",
+        "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+        "evidence": "docs/evidence/v240-per-hero/verified/browser.json",
+        "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+        "evidence_blob": "158fff7cada511f199719ac4586b543fee021443",
+        "evidence_status": "GIT_BLOB_VERIFIED"
+      },
+      {
+        "name": "7 actual PER WebAudio checks",
+        "status": "PASS",
+        "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+        "evidence": "docs/evidence/v240-per-hero/audio-browser/browser.json",
+        "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+        "evidence_blob": "6beec44e8cb859bcae953936b34f0ce255ea3486",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
-    "blockers": [],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u55ae\u6b21\u8a08\u6642\u4e00\u7d440.9\u21921.5ms FAIL\uff0c\u5176\u9918\u901a\u904e\uff1b\u6279\u6b21\u5dee\u7d04\u22120.03\uff5e+0.05ms\u3002\u539f\u59cb20%\u8207\u7d55\u5c0d\u9580\u6abb\u4fdd\u7559\uff1b\u4e0d\u662f\u6d6e\u9edeepsilon\u53ef\u89e3\u91cb\uff0c\u672a\u8b49\u660e\u7a69\u5b9a\u9000\u6b65\uff0c\u7d50\u679cINCONCLUSIVE\u3002\n\nEnglish: One single-draw0.9\u21921.5ms pair FAIL, others pass; batched deltas about\u22120.03 to+0.05ms. Original20percent and absolute gates retained. Machine epsilon does not explain the failure; stable regression remains unproven, hence INCONCLUSIVE.",
-    "event_id": "f87fce982cd27217d0f6155ce890eb97a1827bb341825d6a76fdfbf12a722f23",
-    "remote_head": "4195ed60c8f3244684e30eb8d308f435461e160e",
+    "blockers": [
+      {
+        "id": "HISTORICAL-GAPS",
+        "severity": "WARNING",
+        "summary": "SAR \u6027\u80fd\u5fa9\u9a57 INCONCLUSIVE\uff0c\u4fdd\u7559\u539f\u59cb FAIL\uff1b\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / SAR performance review INCONCLUSIVE with raw FAIL retained; historical campaign, clock, strict-save and hardware gaps remain.",
+        "source_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+        "requires_user_decision": false
+      }
+    ],
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536\u3002\u5b9a\u5411 Node 18\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance. 18 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "43e680e09b7ab6509f782d9e9b9a7d1fd5e9af56ca9561ffb9592ed043044c78",
+    "remote_head": "6a51657cba1781f0407902e417bb1cbaf56c3419",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-30T05:52:09.421919+00:00",
+    "recorded_at": "2026-10-30T05:57:44.386002+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -2997,43 +3015,61 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "4195ed60c8f3244684e30eb8d308f435461e160e",
-      "build_sha": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
-      "summary": "SAR 100\u76fe\u885b\u5b9a\u5411\u5fa9\u9a57 INCONCLUSIVE\uff1b\u4fdd\u7559\u4e00\u7d44+66.7% FAIL\uff0c\u7e7c\u7e8cPER\u82f1\u96c4 / SAR100 guard review INCONCLUSIVE; retain one+66.7% FAIL and continue PER hero",
+      "commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+      "build_sha": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+      "summary": "\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536 / Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance",
       "code_changes": [
-        "\u65b0\u589e\u7a84\u7bc4\u570d\u8a08\u6642\u8207\u539f\u59cb\u6a23\u672c / Add narrow timing diagnostics and raw samples"
+        "\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536",
+        "Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance"
       ],
       "next_steps": [
-        "PER \u6ce2\u65af\u82f1\u96c4\u958b\u767c\u4e2d\uff0c\u4e0d\u4ee5S3\u6027\u80fd\u7591\u616e\u963b\u585e\u3002 / PER hero in development, not blocked by S3 performance uncertainty."
+        "\u539f\u751f\u8de8\u7a0b\u5e8f Save/Continue \u8207\u4e0b\u4e00\u9805 CHI \u82f1\u96c4\u3002 / Native cross-process Save/Continue and next CHI hero."
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "single-draw original20percent gate:1/6 FAIL",
-          "status": "FAIL",
-          "source_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
-          "evidence": "docs/evidence/v240-sar-perf-review/browser/browser.json",
-          "evidence_commit": "4195ed60c8f3244684e30eb8d308f435461e160e",
-          "evidence_blob": "0c709b251cd72eed13827c48ee9db1b1cf9de990",
+          "name": "18 focused Node PASS",
+          "status": "PASS",
+          "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+          "evidence": "docs/evidence/v240-per-hero/focused-node.txt",
+          "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+          "evidence_blob": "70dea11890cedbead5c74c51ae68a9b23deff2fa",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "diagnostic ten-draw batch:6/6 within original gate",
+          "name": "17 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
-          "evidence": "docs/evidence/v240-sar-perf-review/browser/browser.json",
-          "evidence_commit": "4195ed60c8f3244684e30eb8d308f435461e160e",
-          "evidence_blob": "0c709b251cd72eed13827c48ee9db1b1cf9de990",
+          "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+          "evidence": "docs/evidence/v240-per-hero/verified/browser.json",
+          "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+          "evidence_blob": "158fff7cada511f199719ac4586b543fee021443",
+          "evidence_status": "GIT_BLOB_VERIFIED"
+        },
+        {
+          "name": "7 actual PER WebAudio checks",
+          "status": "PASS",
+          "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+          "evidence": "docs/evidence/v240-per-hero/audio-browser/browser.json",
+          "evidence_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+          "evidence_blob": "6beec44e8cb859bcae953936b34f0ce255ea3486",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
-      "blockers": [],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u55ae\u6b21\u8a08\u6642\u4e00\u7d440.9\u21921.5ms FAIL\uff0c\u5176\u9918\u901a\u904e\uff1b\u6279\u6b21\u5dee\u7d04\u22120.03\uff5e+0.05ms\u3002\u539f\u59cb20%\u8207\u7d55\u5c0d\u9580\u6abb\u4fdd\u7559\uff1b\u4e0d\u662f\u6d6e\u9edeepsilon\u53ef\u89e3\u91cb\uff0c\u672a\u8b49\u660e\u7a69\u5b9a\u9000\u6b65\uff0c\u7d50\u679cINCONCLUSIVE\u3002\n\nEnglish: One single-draw0.9\u21921.5ms pair FAIL, others pass; batched deltas about\u22120.03 to+0.05ms. Original20percent and absolute gates retained. Machine epsilon does not explain the failure; stable regression remains unproven, hence INCONCLUSIVE.",
-      "event_id": "f87fce982cd27217d0f6155ce890eb97a1827bb341825d6a76fdfbf12a722f23",
-      "remote_head": "4195ed60c8f3244684e30eb8d308f435461e160e",
+      "blockers": [
+        {
+          "id": "HISTORICAL-GAPS",
+          "severity": "WARNING",
+          "summary": "SAR \u6027\u80fd\u5fa9\u9a57 INCONCLUSIVE\uff0c\u4fdd\u7559\u539f\u59cb FAIL\uff1b\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u53ca\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / SAR performance review INCONCLUSIVE with raw FAIL retained; historical campaign, clock, strict-save and hardware gaps remain.",
+          "source_commit": "6a51657cba1781f0407902e417bb1cbaf56c3419",
+          "requires_user_decision": false
+        }
+      ],
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6ce2\u65af\u82f1\u96c4\u5df2\u6574\u5408\u5be6\u969b\u64cd\u4f5c\u3001\u6280\u80fd\u8207\u74e3\u9318\u97f3\u6548\uff0c\u63a5\u7e8c\u539f\u751f\u6301\u4e45\u5316\u9a57\u6536\u3002\u5b9a\u5411 Node 18\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Persian hero integrated into controls skills and mace audio; continuing native persistence acceptance. 18 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "43e680e09b7ab6509f782d9e9b9a7d1fd5e9af56ca9561ffb9592ed043044c78",
+      "remote_head": "6a51657cba1781f0407902e417bb1cbaf56c3419",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-30T05:52:09.421919+00:00",
+      "recorded_at": "2026-10-30T05:57:44.386002+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
