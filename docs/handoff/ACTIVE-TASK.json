@@ -1,36 +1,36 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "中國偃月刀／紅纓／札甲長鬚英雄 / Chinese guandao/red-plume/lamellar/bearded hero",
+  "name": "哥德巨劍／毛皮鎖甲／束髮英雄 / Gothic greatsword/fur-mail/topknot hero",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
-  "latest_pushed_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
-  "application_source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+  "latest_pushed_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+  "application_source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
   "completed": [
-    "中國偃月刀／紅纓／札甲長鬚英雄",
-    "Chinese guandao/red-plume/lamellar/bearded hero"
+    "哥德巨劍／毛皮鎖甲／束髮英雄",
+    "Gothic greatsword/fur-mail/topknot hero"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Node",
-      "result": "19 PASS",
-      "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
-      "path": "docs/evidence/v240-chn-hero/focused-node.txt"
+      "result": "12 PASS",
+      "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+      "path": "docs/evidence/v240-got-hero/focused-node.txt"
     },
     {
       "name": "Chromium",
       "result": "17 PASS",
-      "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
-      "path": "docs/evidence/v240-chn-hero/verified/browser.json"
+      "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+      "path": "docs/evidence/v240-got-hero/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-chn-hero/REPORT.md"
+    "docs/evidence/v240-got-hero/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +43,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "GOT 哥德英雄巨劍／毛皮／鎖甲獨立輪廓與戰鬥表現",
-    "GOT Gothic hero greatsword/fur/mail silhouette and combat feedback"
+    "接續 BYZ 拜占庭英雄獨立裝備、輪廓與技能表現",
+    "Continue BYZ Byzantine hero independent equipment, silhouette and skill feedback"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +52,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T06:06:16.714377+00:00",
+  "updated_at": "2026-10-30T06:23:16.129586+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -99,6 +99,13 @@
       "node": 19,
       "chromium": 17,
       "report": "docs/evidence/v240-chn-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-got-hero",
+      "source": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+      "node": 12,
+      "chromium": 17,
+      "report": "docs/evidence/v240-got-hero/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -112,7 +119,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Continue native persistence and actual atlas memory integration checks"
+    "NEXT_AUTHORIZED_TASK": "Continue BYZ Byzantine hero independent equipment, silhouette and skill feedback"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

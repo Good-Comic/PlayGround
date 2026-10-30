@@ -1,0 +1,496 @@
+{
+  "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+  "civ": "GOT",
+  "type": "commander",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-30T06:21:09.943304+00:00",
+        "resourceVerification": "SHA256_MATCH_106_FILES"
+      }
+    },
+    {
+      "name": "decoded idle silhouettes distinguish all eight facings",
+      "pass": true,
+      "detail": {
+        "directions": 8,
+        "distinct": 8
+      }
+    },
+    {
+      "name": "native Start creates actual playable GOT hero with independent atlas",
+      "pass": true,
+      "detail": {
+        "id": 19,
+        "civ": "GOT",
+        "key": "GOT:commander",
+        "hp": 520,
+        "radius": 0.32
+      }
+    },
+    {
+      "name": "all 192 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": true,
+      "detail": {
+        "width": 3328,
+        "height": 2496,
+        "touchedFrameEdges": 0
+      }
+    },
+    {
+      "name": "native helmet click selects the actual trained actor",
+      "pass": true,
+      "detail": {
+        "point": {
+          "x": 720,
+          "y": 343.4
+        }
+      }
+    },
+    {
+      "name": "native right-click moves the trained actor",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.12901376276045,
+          "y": 33.376337920920136
+        },
+        "seen": {
+          "idle": 200,
+          "walk": 370
+        }
+      }
+    },
+    {
+      "name": "production melee damage and four-frame attack",
+      "pass": true,
+      "detail": {
+        "before": 500,
+        "after": 485.6,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production attack sound dispatch",
+      "pass": true,
+      "detail": [
+        "commander"
+      ]
+    },
+    {
+      "name": "production damage renders hit animation",
+      "pass": true,
+      "detail": {
+        "flash": 1,
+        "seen": {
+          "idle": 200,
+          "walk": 380,
+          "attack": 44,
+          "hit": 6
+        }
+      }
+    },
+    {
+      "name": "native mark retains effect and shows four cast frames with GOT emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          },
+          {
+            "id": "mark",
+            "emblem": "gothic"
+          }
+        ],
+        "cooldown": 29.183600000000002,
+        "marked": 5.18359999999999,
+        "shield": 0,
+        "effect": {
+          "time": 2.183300000000002,
+          "cooldown": 30,
+          "shield": 0,
+          "shieldTime": 0,
+          "marked": 6
+        },
+        "time": 2.9997000000000007
+      }
+    },
+    {
+      "name": "native aegis retains effect and shows four cast frames with GOT emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "gothic"
+          }
+        ],
+        "cooldown": 59.233300000000014,
+        "marked": 4.333599999999984,
+        "shield": 60,
+        "effect": {
+          "time": 3.0829999999999997,
+          "cooldown": 60,
+          "shield": 60,
+          "shieldTime": 5,
+          "marked": 5.100299999999991
+        },
+        "time": 3.849699999999999
+      }
+    },
+    {
+      "name": "production death plays all four frames",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "enemy and other civilization retain shared hero atlas",
+      "pass": true,
+      "detail": {
+        "enemy": "commander",
+        "other": "commander"
+      }
+    },
+    {
+      "name": "asset failure retains renderer fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "100-unit static draw JS budget and <=20% paired median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 1.1275000000372528,
+          "p50": 1,
+          "p95": 1.9000000059604645
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.5549999998882413,
+          "p50": 1.0999999940395355,
+          "p95": 3.7000000029802322
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.1625,
+          "p50": 0.9000000059604645,
+          "p95": 2.2000000029802322
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 1.458749999664724,
+          "p50": 1.2999999970197678,
+          "p95": 2.7999999970197678
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 1.0700000001117587,
+          "p50": 1,
+          "p95": 1.5999999940395355
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.1225000001490115,
+          "p50": 0.9000000059604645,
+          "p95": 1.7999999970197678
+        }
+      ]
+    },
+    {
+      "name": "all192 cropped/full render frames retain identical anchored pixels at unit draw scale",
+      "pass": true,
+      "detail": {
+        "frames": 192,
+        "maxDifference": 0,
+        "differingChannels": 0
+      }
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}
