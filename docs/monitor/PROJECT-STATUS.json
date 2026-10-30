@@ -2,49 +2,49 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-30T07:29:33.629252+00:00",
+  "updated_at": "2026-10-30T07:34:00.616275+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
-    "build_sha": "d3ad78c2f719dff27b70f8f033dfdfff72f69c4c",
-    "summary": "MNG\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c14/16\uff0c\u63a5\u7e8cBRI hero / MNG hero gameplay/audio accepted,14/16; continuing BRI hero; performance INCONCLUSIVE with raw FAIL retained",
+    "commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
+    "build_sha": "8a714c2f42eabffb789fa147078e2a2c1b541ad9",
+    "summary": "BRI\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c15/16\uff0c\u63a5\u7e8cMAG hero / BRI hero gameplay/audio accepted,15/16; continuing MAG hero",
     "code_changes": [
-      "MNG\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c14/16\uff0c\u63a5\u7e8cBRI hero",
-      "MNG hero gameplay/audio accepted,14/16; continuing BRI hero"
+      "BRI\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c15/16\uff0c\u63a5\u7e8cMAG hero",
+      "BRI hero gameplay/audio accepted,15/16; continuing MAG hero"
     ],
     "next_steps": [
-      "BRI hero"
+      "MAG hero"
     ],
     "requires_user_decision": false,
     "tests": [
       {
         "name": "12 focused Node PASS",
         "status": "PASS",
-        "source_commit": "d3ad78c2f719dff27b70f8f033dfdfff72f69c4c",
-        "evidence": "docs/evidence/v240-mng-hero/focused-node.txt",
-        "evidence_commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
-        "evidence_blob": "0aff2bce8285d1520a7f71b2fadb7fe6989014d9",
+        "source_commit": "8a714c2f42eabffb789fa147078e2a2c1b541ad9",
+        "evidence": "docs/evidence/v240-bri-hero/focused-node.txt",
+        "evidence_commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
+        "evidence_blob": "b88ad87b9ec55694893ca0d401023f7c0060ff8d",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "Current17 gameplay checks; cross-run performance INCONCLUSIVE",
-        "status": "FAIL",
-        "source_commit": "d3ad78c2f719dff27b70f8f033dfdfff72f69c4c",
-        "evidence": "docs/evidence/v240-mng-hero/verified/browser.json",
-        "evidence_commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
-        "evidence_blob": "608fe379c092efda658e8ebbc3e76f260cc9d866",
+        "name": "17 actual Chromium PASS",
+        "status": "PASS",
+        "source_commit": "8a714c2f42eabffb789fa147078e2a2c1b541ad9",
+        "evidence": "docs/evidence/v240-bri-hero/verified/browser.json",
+        "evidence_commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
+        "evidence_blob": "51c1b77b049be4c9575870f29f2484ee2825b218",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
         "name": "7 actual weapon-audio Chromium checks",
         "status": "PASS",
-        "source_commit": "d3ad78c2f719dff27b70f8f033dfdfff72f69c4c",
-        "evidence": "docs/evidence/v240-mng-hero/audio-browser/browser.json",
-        "evidence_commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
-        "evidence_blob": "d2b979426cb1736c5ab261a950b334bd1a619364",
+        "source_commit": "8a714c2f42eabffb789fa147078e2a2c1b541ad9",
+        "evidence": "docs/evidence/v240-bri-hero/audio-browser/browser.json",
+        "evidence_commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
+        "evidence_blob": "727c7ba8562bd37bc3f20fd8ade303cb7553a881",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -53,16 +53,16 @@
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
         "summary": "SAR\u53ca\u9577\u671f\u6d29\u6f0fINCONCLUSIVE\u3001\u56b4\u683c\u5b58\u8b80\uff0f\u81ea\u7136\u6230\u5f79\uff0fGPU\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / SAR and long-run leakage INCONCLUSIVE; strict saves/natural campaigns/GPU hardware gaps remain.",
-        "source_commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
+        "source_commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aMNG\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c14/16\uff0c\u63a5\u7e8cBRI hero\u3002\u5b9a\u5411 Node 12\uff0f\u771f\u5be6 Chromium\u529f\u80fd\u901a\u904e\uff0f\u6027\u80fdINCONCLUSIVE\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: MNG hero gameplay/audio accepted,14/16; continuing BRI hero. 12 focused Node/functional Chromium checks pass; raw relative performance FAIL retained asINCONCLUSIVE and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "f71db02cff909f518a8bd73804a317c57cfff3e87fc99eb1f9ece6f71d5d78fe",
-    "remote_head": "eb642d064990d95544606b5fd35f8ddc8ca20274",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aBRI\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c15/16\uff0c\u63a5\u7e8cMAG hero\u3002\u5b9a\u5411 Node 12\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: BRI hero gameplay/audio accepted,15/16; continuing MAG hero. 12 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "99c51306702e03d6230aca65604b3ac8f623b96ded5542e1279d917c4c989e53",
+    "remote_head": "5150230442c10430c28100ae81b6ecbc222c1ede",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-30T07:29:33.629252+00:00",
+    "recorded_at": "2026-10-30T07:34:00.616275+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3015,43 +3015,43 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
-      "build_sha": "d3ad78c2f719dff27b70f8f033dfdfff72f69c4c",
-      "summary": "MNG\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c14/16\uff0c\u63a5\u7e8cBRI hero / MNG hero gameplay/audio accepted,14/16; continuing BRI hero; performance INCONCLUSIVE with raw FAIL retained",
+      "commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
+      "build_sha": "8a714c2f42eabffb789fa147078e2a2c1b541ad9",
+      "summary": "BRI\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c15/16\uff0c\u63a5\u7e8cMAG hero / BRI hero gameplay/audio accepted,15/16; continuing MAG hero",
       "code_changes": [
-        "MNG\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c14/16\uff0c\u63a5\u7e8cBRI hero",
-        "MNG hero gameplay/audio accepted,14/16; continuing BRI hero"
+        "BRI\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c15/16\uff0c\u63a5\u7e8cMAG hero",
+        "BRI hero gameplay/audio accepted,15/16; continuing MAG hero"
       ],
       "next_steps": [
-        "BRI hero"
+        "MAG hero"
       ],
       "requires_user_decision": false,
       "tests": [
         {
           "name": "12 focused Node PASS",
           "status": "PASS",
-          "source_commit": "d3ad78c2f719dff27b70f8f033dfdfff72f69c4c",
-          "evidence": "docs/evidence/v240-mng-hero/focused-node.txt",
-          "evidence_commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
-          "evidence_blob": "0aff2bce8285d1520a7f71b2fadb7fe6989014d9",
+          "source_commit": "8a714c2f42eabffb789fa147078e2a2c1b541ad9",
+          "evidence": "docs/evidence/v240-bri-hero/focused-node.txt",
+          "evidence_commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
+          "evidence_blob": "b88ad87b9ec55694893ca0d401023f7c0060ff8d",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "Current17 gameplay checks; cross-run performance INCONCLUSIVE",
-          "status": "FAIL",
-          "source_commit": "d3ad78c2f719dff27b70f8f033dfdfff72f69c4c",
-          "evidence": "docs/evidence/v240-mng-hero/verified/browser.json",
-          "evidence_commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
-          "evidence_blob": "608fe379c092efda658e8ebbc3e76f260cc9d866",
+          "name": "17 actual Chromium PASS",
+          "status": "PASS",
+          "source_commit": "8a714c2f42eabffb789fa147078e2a2c1b541ad9",
+          "evidence": "docs/evidence/v240-bri-hero/verified/browser.json",
+          "evidence_commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
+          "evidence_blob": "51c1b77b049be4c9575870f29f2484ee2825b218",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
           "name": "7 actual weapon-audio Chromium checks",
           "status": "PASS",
-          "source_commit": "d3ad78c2f719dff27b70f8f033dfdfff72f69c4c",
-          "evidence": "docs/evidence/v240-mng-hero/audio-browser/browser.json",
-          "evidence_commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
-          "evidence_blob": "d2b979426cb1736c5ab261a950b334bd1a619364",
+          "source_commit": "8a714c2f42eabffb789fa147078e2a2c1b541ad9",
+          "evidence": "docs/evidence/v240-bri-hero/audio-browser/browser.json",
+          "evidence_commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
+          "evidence_blob": "727c7ba8562bd37bc3f20fd8ade303cb7553a881",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3060,16 +3060,16 @@
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
           "summary": "SAR\u53ca\u9577\u671f\u6d29\u6f0fINCONCLUSIVE\u3001\u56b4\u683c\u5b58\u8b80\uff0f\u81ea\u7136\u6230\u5f79\uff0fGPU\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / SAR and long-run leakage INCONCLUSIVE; strict saves/natural campaigns/GPU hardware gaps remain.",
-          "source_commit": "eb642d064990d95544606b5fd35f8ddc8ca20274",
+          "source_commit": "5150230442c10430c28100ae81b6ecbc222c1ede",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aMNG\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c14/16\uff0c\u63a5\u7e8cBRI hero\u3002\u5b9a\u5411 Node 12\uff0f\u771f\u5be6 Chromium\u529f\u80fd\u901a\u904e\uff0f\u6027\u80fdINCONCLUSIVE\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: MNG hero gameplay/audio accepted,14/16; continuing BRI hero. 12 focused Node/functional Chromium checks pass; raw relative performance FAIL retained asINCONCLUSIVE and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "f71db02cff909f518a8bd73804a317c57cfff3e87fc99eb1f9ece6f71d5d78fe",
-      "remote_head": "eb642d064990d95544606b5fd35f8ddc8ca20274",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aBRI\u82f1\u96c4\u5be6\u969b\u64cd\u4f5c\u8207\u97f3\u6548\u9a57\u6536\uff0c15/16\uff0c\u63a5\u7e8cMAG hero\u3002\u5b9a\u5411 Node 12\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: BRI hero gameplay/audio accepted,15/16; continuing MAG hero. 12 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "99c51306702e03d6230aca65604b3ac8f623b96ded5542e1279d917c4c989e53",
+      "remote_head": "5150230442c10430c28100ae81b6ecbc222c1ede",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-30T07:29:33.629252+00:00",
+      "recorded_at": "2026-10-30T07:34:00.616275+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
