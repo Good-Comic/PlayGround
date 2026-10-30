@@ -1,3 +1,3 @@
-繁體中文：法蘭克英雄與維京方向投影已驗收，接續撒拉森英雄。定向 Node 28／真實 Chromium 17 通過，圖片已人工檢視；未改平衡或公開部署。
+繁體中文：撒拉森英雄已整合實際戰鬥與技能；接續兵器聲音。定向 Node 33／真實 Chromium 17 通過，圖片已人工檢視；未改平衡或公開部署。
 
-English: Frankish hero and Viking facing projection accepted; continuing Saracen hero. 28 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.
+English: Saracen hero integrated into combat and skills; continuing weapon cues. 33 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.
