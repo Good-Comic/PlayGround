@@ -1,33 +1,38 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "SAR 定向性能復驗與 PER 英雄 / SAR focused performance review and PER hero",
+  "name": "波斯翼飾脊盔／瓣錘／日輪橢圓盾英雄 / Persian winged-ridge-helm/flanged-mace/sun-oval-shield hero",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
-  "latest_pushed_commit": "d44a911b5d8dd507acc53bb4a56fbb888d403039",
-  "application_source_commit": "5303128b924a4eb960e5768b140c1975541db5ee",
+  "latest_pushed_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+  "application_source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
   "completed": [
-    "VIK／FRK／SAR 英雄兵器聲音 / VIK/FRK/SAR hero weapon cues"
+    "波斯翼飾脊盔／瓣錘／日輪橢圓盾英雄",
+    "Persian winged-ridge-helm/flanged-mace/sun-oval-shield hero"
   ],
-  "uncommitted": [],
+  "uncommitted": [
+    "tools/qa/native_persistent_continue_browser.mjs"
+  ],
   "unpushed": [],
   "tests": [
     {
       "name": "Node",
-      "result": "7 PASS",
-      "path": "docs/evidence/v240-civilization-hero-sound-second/focused-node.txt"
+      "result": "18 PASS",
+      "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+      "path": "docs/evidence/v240-per-hero/focused-node.txt"
     },
     {
       "name": "Chromium",
-      "result": "19 PASS",
-      "path": "docs/evidence/v240-civilization-hero-sound-second/verified/browser.json"
+      "result": "17 PASS",
+      "source_commit": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+      "path": "docs/evidence/v240-per-hero/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-civilization-hero-sound-second/REPORT.md"
+    "docs/evidence/v240-per-hero/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -40,8 +45,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "PER 波斯英雄獨立外觀、動畫與技能可讀性",
-    "PER Persian hero independent visuals, animation and skill readability"
+    "接續原生跨瀏覽器程序 Save/Continue 及文明圖集生命週期驗收",
+    "Continue native cross-browser-process Save/Continue and civilization atlas lifecycle validation"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -49,7 +54,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T05:09:25.018388+00:00",
+  "updated_at": "2026-10-30T05:55:43.741613+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -82,7 +87,15 @@
     "art_recreated": false,
     "older_9a0f19e_still_separately_pending": true
   },
-  "current_session_slices": [],
+  "current_session_slices": [
+    {
+      "slice": "v240-per-hero",
+      "source": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+      "node": 18,
+      "chromium": 17,
+      "report": "docs/evidence/v240-per-hero/REPORT.md"
+    }
+  ],
   "continuity_policy": {
     "checkpoint_is_stop": false,
     "stop_record_required": true,
@@ -94,7 +107,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "PER hero after SAR narrow review"
+    "NEXT_AUTHORIZED_TASK": "Continue native cross-browser-process Save/Continue and civilization atlas lifecycle validation"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

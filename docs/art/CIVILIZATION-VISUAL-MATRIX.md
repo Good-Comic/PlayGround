@@ -46,3 +46,5 @@ VIK 英雄：長斧、毛皮肩披、眼罩盔、鬍辮，八方向六狀態192�
 FRK 英雄：長劍、鳶盾、冠盔及百合披袍；八方向六狀態192格。VIK／FRK 方向投影追加驗收各17 Chromium通過，來源 `97b11b64ce4c13772318e9ddda7387297650d9e1`。 / FRK hero: long sword, kite shield, crowned helm and fleur-de-lis surcoat;192 frames across eight directions/six states. VIK/FRK facing projection each passes17 Chromium checks at the stated source.
 
 SAR 英雄：彎刀、小圓盾、纏巾盔及鱗甲；八向六狀態192格，17 Chromium PASS，33項受影響 Node PASS。來源 `c578426100ed6c2927cdcf3382faa1ffc606f337`；技能及數值不變。 / SAR hero: curved sword, small round shield, wrapped helm and scale armour;192 cells,17 Chromium PASS and33 affected Node PASS at the stated source; skills and stats unchanged.
+
+PER 英雄：翼飾脊盔、瓣錘、日輪橢圓盾、層甲及紫色分岔披風，八方向六狀態192格；18 Node／17遊戲Chromium／7音訊Chromium限定通過，來源 `5ef184234f7edf2490978e096ce5e704ed1b08b5`。與戰象圖集及規則隔離，保留原技能數值；非歷史精確復原。 / PER hero: winged ridge helm, flanged mace, sun oval shield, lamellar armour and split purple cloak;192 cells, scoped18 Node/17 gameplay Chromium/7 audio Chromium PASS at the stated source. Isolated from elephant atlas/rules, retaining existing skill values; not a historical reconstruction.
