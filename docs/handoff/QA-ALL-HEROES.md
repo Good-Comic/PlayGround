@@ -21,3 +21,9 @@ English: NativeStart for each civilization, head/body selection, right-click mov
 繁體中文：SAR性能INCONCLUSIVE、原生Save/Continue13項限定PASS不等於嚴格確定性、生命週期22項限定PASS／長期洩漏INCONCLUSIVE、GPU顯存／自然NG+／硬體NOT_TESTED及自然十波／低FPS歷史缺口保留。完成16文明後另附同來源原生整合與16張實際遊戲代表圖；不得只看檔案與測試數量宣稱完成。
 
 English: Retain SAR performanceINCONCLUSIVE, native Save/Continue13 scopedPASS without strict determinism, lifecycle22 scopedPASS/long-run leakINCONCLUSIVE, GPU memory/naturalNG+/hardwareNOT_TESTED and natural-campaign/low-FPS historical gaps. After16 civilizations, attach native integration and16 real gameplay images at one source; file/test counts alone do not establish completion.
+
+## 全16文明整合 / All16 integration
+
+來源／Source `5ff70ccc99555b1c22e6ecbf47a6386de0f4ef10`:20 focused/affected Node,66 Chromium PASS.16 native gameplay/skill images,16 native portraits and16 real videos: docs/evidence/v240-all-heroes-integration/REPORT.md; docs/evidence/v240-all-heroes-integration/GALLERY.html.
+
+繁體中文：16功能實裝，SPA／MNG／MAG性能條件驗收，非16性能全PASS；各文明完整來源與音訊證據在docs/art/CIVILIZATION-HERO-MATRIX.json。未啟動獨立QA，等待與否不阻塞後續Boss可讀性開發。 / English:16 functionally implemented; SPA/MNG/MAG have conditional performance acceptance, not16 unconditional performancePASS. All art/audio sources are in docs/art/CIVILIZATION-HERO-MATRIX.json. Independent QA not launched or required before further Boss readability work.
