@@ -2,6 +2,7 @@ import { BUILDING_TYPES, UNIT_TYPES, BUILD_OPTIONS, BOONS, WAVES, CIVILIZATIONS,
 import { difficultyId, DIFFICULTIES } from './campaign.js';
 import { formatNumber, formatTime, roman, clamp, createSeedText } from './utils.js';
 import { applyStaticTranslations, getLocale, localeOptions, setLocale as setAppLocale, t } from './i18n.js';
+import { atlasFrame } from './sprite-atlas.js';
 import { applySettings, loadSettings, resetSettings, saveSettings } from './settings.js';
 
 const ICON_FOR = {
@@ -700,7 +701,9 @@ export class UI {
     const game = this.game;
     const sig = this.selectionSignature(game);
     const cmdSig = this.commandSignature(game);
-    if (force || sig !== this.lastSignature || cmdSig !== this.lastCommandSignature) {
+    const portraitKey = this.civilizationHeroAtlas(game.selection.length === 1 ? game.selection[0] : null)?.descriptor.id || 'procedural';
+    if (force || sig !== this.lastSignature || cmdSig !== this.lastCommandSignature || portraitKey !== this.lastPortraitAtlas) {
+      this.lastPortraitAtlas = portraitKey;
       this.lastSignature = sig;
       this.lastCommandSignature = cmdSig;
       this.renderSelection(game);
@@ -996,9 +999,25 @@ export class UI {
     this.drawPortraitUnit(ctx, entity);
   }
 
+  // 共用 renderer 已載入圖片，不建立第二份 Image 或更動選取。 / Reuse renderer's loaded image without another Image or selection changes.
+  civilizationHeroAtlas(u) {
+    if (u?.type !== 'commander' || u.team !== 'player') return null;
+    const entry = this.callbacks?.unitAtlas?.(u);
+    return entry?.descriptor.heroEmblem && entry.ready && !entry.failed && entry.image?.naturalWidth ? entry : null;
+  }
+
   drawPortraitUnit(ctx, u) {
     const def = UNIT_TYPES[u.type];
     const team = u.team === 'player' ? PLAYER_COLORS : ENEMY_COLORS;
+    const entry = this.civilizationHeroAtlas(u);
+    if (entry) {
+      const a = entry.descriptor, frame = atlasFrame(a, 'S', 'idle', 0, 0);
+      const crop = a.frameCrops?.[(frame.sy / frame.sh) * (entry.image.naturalWidth / frame.sw) + frame.sx / frame.sw] || [0, 0, frame.sw, frame.sh];
+      const [x, y, w, h] = crop, fit = Math.min(132 / w, 136 / h);
+      ctx.drawImage(entry.image, frame.sx + x, frame.sy + y, w, h, 90 - w * fit / 2, 12 + (136 - h * fit) / 2, w * fit, h * fit);
+      this.portraitCaption(ctx, t(`unit.${u.type}.role`), team.primary);
+      return;
+    }
     ctx.save();
     ctx.translate(90, 96);
     ctx.scale(2.9, 2.9);

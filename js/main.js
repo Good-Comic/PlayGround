@@ -4,6 +4,7 @@ import { Sound } from './audio.js';
 import { Game } from './game.js';
 import { Renderer } from './renderer.js';
 import { UI } from './ui.js';
+import { unitSpriteAtlasKey } from './sprite-atlas.js';
 import { t } from './i18n.js';
 import { clamp, seedFromDate, seedFromString } from './utils.js';
 import { clearSavedRun, hasSavedRun, loadRun, saveRun } from './save.js';
@@ -138,6 +139,7 @@ function resumeGame() {
 
 ui = new UI(game, {
   sound,
+  unitAtlas: unit => renderer.unitSpriteAtlases.get(unitSpriteAtlasKey(unit, game.civ?.id)),
   start: startGame,
   restart: restartRun,
   nextCycle,
