@@ -99,6 +99,18 @@ export class Sound {
       this.noise(.1, .04, 850, 0, 'bandpass');
       this.tone(195, .09, 'triangle', .032, 75);
       this.tone(410, .035, 'triangle', .012, 170, .015);
+    } else if (unitType === 'commander' && civId === 'VIK') {
+      this.noise(.11, .04, 1100, 0, 'bandpass');
+      this.tone(230, .105, 'triangle', .034, 85);
+      this.tone(1250, .035, 'sine', .012, 650, .018);
+    } else if (unitType === 'commander' && civId === 'FRK') {
+      this.noise(.075, .032, 2200, 0, 'highpass');
+      this.tone(690, .085, 'triangle', .024, 250);
+      this.tone(1200, .045, 'sine', .012, 540, .02);
+    } else if (unitType === 'commander' && civId === 'SAR') {
+      this.noise(.115, .033, 3800, 0, 'highpass');
+      this.tone(920, .09, 'triangle', .021, 390);
+      this.tone(275, .04, 'sine', .016, 130, .025);
     } else if (unitType === 'elephant') {
       this.noise(.16, .065, 240);
       this.tone(78, .2, 'sine', .065, 35);
