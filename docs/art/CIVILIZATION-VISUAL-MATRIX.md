@@ -57,9 +57,9 @@ GOT 英雄：鋸背巨劍、寬肩毛皮鎖甲及裸首束髮；八向六狀態1
 
 ## 英雄完成矩陣 / Hero completion matrix
 
-繁體中文：14/16限定驗收。來源、遊戲／音效證據及代表圖見CIVILIZATION-HERO-MATRIX.json；條件驗收列明性能INCONCLUSIVE，不表示全數性能PASS；格數與文件存在本身不構成完成。保留歷史FAIL、主觀流暢度／聽感與硬體缺口。
+繁體中文：15/16限定驗收。來源、遊戲／音效證據及代表圖見CIVILIZATION-HERO-MATRIX.json；條件驗收列明性能INCONCLUSIVE，不表示全數性能PASS；格數與文件存在本身不構成完成。保留歷史FAIL、主觀流暢度／聽感與硬體缺口。
 
-English: 14/16 scoped acceptance. Sources, gameplay/audio evidence and representative images: CIVILIZATION-HERO-MATRIX.json. Conditional rows retain performance INCONCLUSIVE and are not all-performance PASS. Cell counts/file existence alone do not establish completion. Historical FAIL, subjective smoothness/listening and hardware gaps remain.
+English: 15/16 scoped acceptance. Sources, gameplay/audio evidence and representative images: CIVILIZATION-HERO-MATRIX.json. Conditional rows retain performance INCONCLUSIVE and are not all-performance PASS. Cell counts/file existence alone do not establish completion. Historical FAIL, subjective smoothness/listening and hardware gaps remain.
 
 | Civ | Status | Art source | Actual gameplay evidence |
 | --- | --- | --- | --- |
@@ -69,7 +69,7 @@ English: 14/16 scoped acceptance. Sources, gameplay/audio evidence and represent
 | FRK | SCOPED_ACCEPTED | 97b11b64ce4c13772318e9ddda7387297650d9e1 | docs/evidence/v240-frk-hero/verified/browser.json |
 | SAR | SCOPED_ACCEPTED | c578426100ed6c2927cdcf3382faa1ffc606f337 | docs/evidence/v240-sar-hero/verified/browser.json |
 | AZT | SCOPED_ACCEPTED | 0333583ff5db69404272f20d058518eef9a10443 | docs/evidence/v240-azt-hero/verified/browser.json |
-| BRI | TODO | — | — |
+| BRI | SCOPED_ACCEPTED | 8a714c2f42eabffb789fa147078e2a2c1b541ad9 | docs/evidence/v240-bri-hero/verified/browser.json |
 | CHN | SCOPED_ACCEPTED | 0bd29b4c59c2a6acbca47fd029bbbeea22932666 | docs/evidence/v240-chn-hero/verified/browser.json |
 | PER | SCOPED_ACCEPTED | 5ef184234f7edf2490978e096ce5e704ed1b08b5 | docs/evidence/v240-per-hero/verified/browser.json |
 | KOR | SCOPED_ACCEPTED | 8876dbe683afe886d969502c21296486e978387f | docs/evidence/v240-kor-hero/verified/browser.json |
