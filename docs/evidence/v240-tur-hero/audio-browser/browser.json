@@ -1,0 +1,209 @@
+{
+  "source_commit": "5035fa17ce9b315444bdbed2635e7af2ed111dc2",
+  "mode": "NEW_CIVILIZATION_HERO_CUES_LOCAL_CONTROLLED_2000HP_TARGET_NATIVE_COMBAT_AND_MUTE",
+  "signal_scope": "AudioWorklet sample-level energy and peak; RMS over nonzero samples (>1e-8); full sample counts retained; muted window resets meter epoch",
+  "audio_scope": "tone/noise SFX tap before master gain; no ambience/music in recordings; software Chromium, not physical speaker acceptance",
+  "checks": [
+    {
+      "name": "tur-hero: exact artifact",
+      "pass": true
+    },
+    {
+      "name": "tur-hero: native gesture resumes actual AudioContext",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "rate": 44100,
+        "enabled": true
+      }
+    },
+    {
+      "name": "tur-hero: native combat routes the weapon cue and records non-silent unclipped SFX",
+      "pass": true,
+      "detail": {
+        "totalSamples": 57344,
+        "activeSamples": 8079,
+        "rms": 0.009058235151363623,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "TUR",
+            "at": 1.2016326530612245
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.1522902494331067
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.13,
+              0.035,
+              2200,
+              0,
+              "bandpass"
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "tone",
+            "args": [
+              870,
+              0.1,
+              "triangle",
+              0.025,
+              310
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "tone",
+            "args": [
+              180,
+              0.045,
+              "sine",
+              0.018,
+              80,
+              0.02
+            ],
+            "at": 1.2016326530612245
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      }
+    },
+    {
+      "name": "tur-hero: native mute suppresses voices during real combat",
+      "pass": true,
+      "detail": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 18432,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "tur-hero: shared throttle bounds a100-request burst and native unmute restores sound",
+      "pass": true,
+      "detail": {
+        "enabled": true,
+        "voices": 3
+      }
+    },
+    {
+      "name": "tur-hero: actual browser SFX recording exports playable PCM",
+      "pass": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "recordings": [
+    {
+      "label": "tur-hero",
+      "type": "commander",
+      "civ": "TUR",
+      "audible": {
+        "totalSamples": 57344,
+        "activeSamples": 8079,
+        "rms": 0.009058235151363623,
+        "peak": 0.054948482662439346,
+        "events": [
+          {
+            "method": "attack",
+            "type": "commander",
+            "civ": "TUR",
+            "at": 1.2016326530612245
+          }
+        ],
+        "voices": [
+          {
+            "kind": "tone",
+            "args": [
+              240,
+              0.11,
+              "triangle",
+              0.06,
+              340
+            ],
+            "at": 1.1522902494331067
+          },
+          {
+            "kind": "noise",
+            "args": [
+              0.13,
+              0.035,
+              2200,
+              0,
+              "bandpass"
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "tone",
+            "args": [
+              870,
+              0.1,
+              "triangle",
+              0.025,
+              310
+            ],
+            "at": 1.2016326530612245
+          },
+          {
+            "kind": "tone",
+            "args": [
+              180,
+              0.045,
+              "sine",
+              0.018,
+              80,
+              0.02
+            ],
+            "at": 1.2016326530612245
+          }
+        ],
+        "hp": 1985.6,
+        "startHP": 2000,
+        "shots": 0
+      },
+      "muted": {
+        "enabled": false,
+        "voices": 0,
+        "requests": 1,
+        "totalSamples": 18432,
+        "activeSamples": 0,
+        "rms": 0,
+        "peak": 0
+      },
+      "throttle": {
+        "enabled": true,
+        "voices": 3
+      },
+      "sample": "tur-hero-sfx.wav"
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

@@ -57,9 +57,9 @@ GOT 英雄：鋸背巨劍、寬肩毛皮鎖甲及裸首束髮；八向六狀態1
 
 ## 英雄完成矩陣 / Hero completion matrix
 
-繁體中文：12/16限定驗收。來源、遊戲／音效證據及代表圖見CIVILIZATION-HERO-MATRIX.json；條件驗收列明性能INCONCLUSIVE，不表示全數性能PASS；格數與文件存在本身不構成完成。保留歷史FAIL、主觀流暢度／聽感與硬體缺口。
+繁體中文：13/16限定驗收。來源、遊戲／音效證據及代表圖見CIVILIZATION-HERO-MATRIX.json；條件驗收列明性能INCONCLUSIVE，不表示全數性能PASS；格數與文件存在本身不構成完成。保留歷史FAIL、主觀流暢度／聽感與硬體缺口。
 
-English: 12/16 scoped acceptance. Sources, gameplay/audio evidence and representative images: CIVILIZATION-HERO-MATRIX.json. Conditional rows retain performance INCONCLUSIVE and are not all-performance PASS. Cell counts/file existence alone do not establish completion. Historical FAIL, subjective smoothness/listening and hardware gaps remain.
+English: 13/16 scoped acceptance. Sources, gameplay/audio evidence and representative images: CIVILIZATION-HERO-MATRIX.json. Conditional rows retain performance INCONCLUSIVE and are not all-performance PASS. Cell counts/file existence alone do not establish completion. Historical FAIL, subjective smoothness/listening and hardware gaps remain.
 
 | Civ | Status | Art source | Actual gameplay evidence |
 | --- | --- | --- | --- |
@@ -74,7 +74,7 @@ English: 12/16 scoped acceptance. Sources, gameplay/audio evidence and represent
 | PER | SCOPED_ACCEPTED | 5ef184234f7edf2490978e096ce5e704ed1b08b5 | docs/evidence/v240-per-hero/verified/browser.json |
 | KOR | SCOPED_ACCEPTED | 8876dbe683afe886d969502c21296486e978387f | docs/evidence/v240-kor-hero/verified/browser.json |
 | SPA | SCOPED_ACCEPTED_PERF_INCONCLUSIVE | fda334715531e0ade9ff9c463612cfb7cf94d4e3 | docs/evidence/v240-spa-hero/verified/browser.json |
-| TUR | TODO | — | — |
+| TUR | SCOPED_ACCEPTED | 5035fa17ce9b315444bdbed2635e7af2ed111dc2 | docs/evidence/v240-tur-hero/verified/browser.json |
 | BYZ | SCOPED_ACCEPTED | fba75c2a09bc19a8a1c15291cde043b6fbf2f764 | docs/evidence/v240-byz-hero/verified/browser.json |
 | VIK | SCOPED_ACCEPTED | 97b11b64ce4c13772318e9ddda7387297650d9e1 | docs/evidence/v240-vik-hero/verified/browser.json |
 | MAG | TODO | — | — |
