@@ -2,40 +2,40 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-30T00:54:20.275595+00:00",
+  "updated_at": "2026-10-30T01:08:24.625827+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "647340912e038c924324284db5e25d44069eb7b7",
-    "build_sha": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-    "summary": "JPN \u96d9\u624b\u5200\u80cc\u65d7\u82f1\u96c4\u5b8c\u6210\u539f\u751f\u6280\u80fd\u53ca\u8996\u89ba\u9a57\u6536\uff0c\u666e\u901a\u8fd1\u6230\u683c\u64cb\u4fdd\u7559 / JPN two-handed sword banner hero passed native skills and visual acceptance; ordinary melee block preserved",
+    "commit": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
+    "build_sha": "0333583ff5db69404272f20d058518eef9a10443",
+    "summary": "AZT \u7f8e\u6d32\u864e\u82f1\u96c4\u901a\u904e\u539f\u751f\u6280\u80fd\u8207\u8996\u89ba\u9a57\u6536\uff0c\u539f\u6027\u80fd FAIL \u4fdd\u7559\u4e14\u5feb\u53d6\u71b1\u8def\u5f91\u6539\u5584 / AZT jaguar hero passed native skills and visuals; original performance failures retained with cache hot-path improvement",
     "code_changes": [
-      "JPN \u96d9\u624b\u5200\u80cc\u65d7\u82f1\u96c4\u5b8c\u6210\u539f\u751f\u6280\u80fd\u53ca\u8996\u89ba\u9a57\u6536\uff0c\u666e\u901a\u8fd1\u6230\u683c\u64cb\u4fdd\u7559",
-      "JPN two-handed sword banner hero passed native skills and visual acceptance; ordinary melee block preserved"
+      "AZT \u7f8e\u6d32\u864e\u82f1\u96c4\u901a\u904e\u539f\u751f\u6280\u80fd\u8207\u8996\u89ba\u9a57\u6536\uff0c\u539f\u6027\u80fd FAIL \u4fdd\u7559\u4e14\u5feb\u53d6\u71b1\u8def\u5f91\u6539\u5584",
+      "AZT jaguar hero passed native skills and visuals; original performance failures retained with cache hot-path improvement"
     ],
     "next_steps": [
-      "\u5df2\u76f4\u63a5\u63a5\u7e8c AZT \u7f8e\u6d32\u864e\u9762\u5177\u82f1\u96c4\u3002 / Directly continuing AZT jaguar-mask hero."
+      "\u5df2\u76f4\u63a5\u63a5\u7e8c\u4e09\u500b\u6587\u660e\u82f1\u96c4\u7684\u5175\u5668\u97f3\u6548\u9a57\u6536\u3002 / Directly continuing weapon-sound acceptance for the three civilization heroes."
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "5 focused Node PASS",
+        "name": "8 focused Node PASS",
         "status": "PASS",
-        "source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-        "evidence": "docs/evidence/v240-jpn-hero/focused-node.txt",
-        "evidence_commit": "647340912e038c924324284db5e25d44069eb7b7",
-        "evidence_blob": "256e7398906784d2860d9afb855500c319d5eb81",
+        "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
+        "evidence": "docs/evidence/v240-azt-hero/focused-node.txt",
+        "evidence_commit": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
+        "evidence_blob": "085b714696496a01d9a5177e7b28facb2686b37b",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "17 actual Chromium PASS",
+        "name": "16 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-        "evidence": "docs/evidence/v240-jpn-hero/verified/browser.json",
-        "evidence_commit": "647340912e038c924324284db5e25d44069eb7b7",
-        "evidence_blob": "2c46885f502a9db4209fbfe8e7ba7f32b9b4797c",
+        "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
+        "evidence": "docs/evidence/v240-azt-hero/verified/browser.json",
+        "evidence_commit": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
+        "evidence_blob": "d687c2fef776692be7726f645a2329d20825b6e2",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -43,17 +43,17 @@
       {
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
-        "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u5b58\u8b80\u3001\u6642\u9418\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, save/load, clock, performance and hardware gaps remain.",
-        "source_commit": "647340912e038c924324284db5e25d44069eb7b7",
+        "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u5b58\u8b80\u3001\u6642\u9418\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u65e2\u5b58 GDD\uff0f\u5be6\u4f5c Aegis \u7bc4\u570d\u5dee\u7570\u672a\u6539\u3002 / Historical campaign, saves, clock, performance/hardware gaps and inherited GDD/runtime Aegis radius discrepancy remain.",
+        "source_commit": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aJPN \u96d9\u624b\u5200\u80cc\u65d7\u82f1\u96c4\u5b8c\u6210\u539f\u751f\u6280\u80fd\u53ca\u8996\u89ba\u9a57\u6536\uff0c\u666e\u901a\u8fd1\u6230\u683c\u64cb\u4fdd\u7559\u3002\u5b9a\u5411 Node 5\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: JPN two-handed sword banner hero passed native skills and visual acceptance; ordinary melee block preserved. 5 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "5134461539c698408b0ac93acc76dea49572b2c17c052858afd73b3e5692918e",
-    "remote_head": "647340912e038c924324284db5e25d44069eb7b7",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aAZT \u7f8e\u6d32\u864e\u82f1\u96c4\u901a\u904e\u539f\u751f\u6280\u80fd\u8207\u8996\u89ba\u9a57\u6536\uff0c\u539f\u6027\u80fd FAIL \u4fdd\u7559\u4e14\u5feb\u53d6\u71b1\u8def\u5f91\u6539\u5584\u3002\u5b9a\u5411 Node 8\uff0f\u771f\u5be6 Chromium 16 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: AZT jaguar hero passed native skills and visuals; original performance failures retained with cache hot-path improvement. 8 focused Node/16 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "0ca8bbfac046c058311878a20c250199372c04c26f9d96670d521b5d9eba452a",
+    "remote_head": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-30T00:54:20.275595+00:00",
+    "recorded_at": "2026-10-30T01:08:24.625827+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3006,34 +3006,34 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "647340912e038c924324284db5e25d44069eb7b7",
-      "build_sha": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-      "summary": "JPN \u96d9\u624b\u5200\u80cc\u65d7\u82f1\u96c4\u5b8c\u6210\u539f\u751f\u6280\u80fd\u53ca\u8996\u89ba\u9a57\u6536\uff0c\u666e\u901a\u8fd1\u6230\u683c\u64cb\u4fdd\u7559 / JPN two-handed sword banner hero passed native skills and visual acceptance; ordinary melee block preserved",
+      "commit": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
+      "build_sha": "0333583ff5db69404272f20d058518eef9a10443",
+      "summary": "AZT \u7f8e\u6d32\u864e\u82f1\u96c4\u901a\u904e\u539f\u751f\u6280\u80fd\u8207\u8996\u89ba\u9a57\u6536\uff0c\u539f\u6027\u80fd FAIL \u4fdd\u7559\u4e14\u5feb\u53d6\u71b1\u8def\u5f91\u6539\u5584 / AZT jaguar hero passed native skills and visuals; original performance failures retained with cache hot-path improvement",
       "code_changes": [
-        "JPN \u96d9\u624b\u5200\u80cc\u65d7\u82f1\u96c4\u5b8c\u6210\u539f\u751f\u6280\u80fd\u53ca\u8996\u89ba\u9a57\u6536\uff0c\u666e\u901a\u8fd1\u6230\u683c\u64cb\u4fdd\u7559",
-        "JPN two-handed sword banner hero passed native skills and visual acceptance; ordinary melee block preserved"
+        "AZT \u7f8e\u6d32\u864e\u82f1\u96c4\u901a\u904e\u539f\u751f\u6280\u80fd\u8207\u8996\u89ba\u9a57\u6536\uff0c\u539f\u6027\u80fd FAIL \u4fdd\u7559\u4e14\u5feb\u53d6\u71b1\u8def\u5f91\u6539\u5584",
+        "AZT jaguar hero passed native skills and visuals; original performance failures retained with cache hot-path improvement"
       ],
       "next_steps": [
-        "\u5df2\u76f4\u63a5\u63a5\u7e8c AZT \u7f8e\u6d32\u864e\u9762\u5177\u82f1\u96c4\u3002 / Directly continuing AZT jaguar-mask hero."
+        "\u5df2\u76f4\u63a5\u63a5\u7e8c\u4e09\u500b\u6587\u660e\u82f1\u96c4\u7684\u5175\u5668\u97f3\u6548\u9a57\u6536\u3002 / Directly continuing weapon-sound acceptance for the three civilization heroes."
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "5 focused Node PASS",
+          "name": "8 focused Node PASS",
           "status": "PASS",
-          "source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-          "evidence": "docs/evidence/v240-jpn-hero/focused-node.txt",
-          "evidence_commit": "647340912e038c924324284db5e25d44069eb7b7",
-          "evidence_blob": "256e7398906784d2860d9afb855500c319d5eb81",
+          "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
+          "evidence": "docs/evidence/v240-azt-hero/focused-node.txt",
+          "evidence_commit": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
+          "evidence_blob": "085b714696496a01d9a5177e7b28facb2686b37b",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "17 actual Chromium PASS",
+          "name": "16 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-          "evidence": "docs/evidence/v240-jpn-hero/verified/browser.json",
-          "evidence_commit": "647340912e038c924324284db5e25d44069eb7b7",
-          "evidence_blob": "2c46885f502a9db4209fbfe8e7ba7f32b9b4797c",
+          "source_commit": "0333583ff5db69404272f20d058518eef9a10443",
+          "evidence": "docs/evidence/v240-azt-hero/verified/browser.json",
+          "evidence_commit": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
+          "evidence_blob": "d687c2fef776692be7726f645a2329d20825b6e2",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3041,17 +3041,17 @@
         {
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
-          "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u5b58\u8b80\u3001\u6642\u9418\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, save/load, clock, performance and hardware gaps remain.",
-          "source_commit": "647340912e038c924324284db5e25d44069eb7b7",
+          "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u5b58\u8b80\u3001\u6642\u9418\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\uff1b\u65e2\u5b58 GDD\uff0f\u5be6\u4f5c Aegis \u7bc4\u570d\u5dee\u7570\u672a\u6539\u3002 / Historical campaign, saves, clock, performance/hardware gaps and inherited GDD/runtime Aegis radius discrepancy remain.",
+          "source_commit": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aJPN \u96d9\u624b\u5200\u80cc\u65d7\u82f1\u96c4\u5b8c\u6210\u539f\u751f\u6280\u80fd\u53ca\u8996\u89ba\u9a57\u6536\uff0c\u666e\u901a\u8fd1\u6230\u683c\u64cb\u4fdd\u7559\u3002\u5b9a\u5411 Node 5\uff0f\u771f\u5be6 Chromium 17 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: JPN two-handed sword banner hero passed native skills and visual acceptance; ordinary melee block preserved. 5 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "5134461539c698408b0ac93acc76dea49572b2c17c052858afd73b3e5692918e",
-      "remote_head": "647340912e038c924324284db5e25d44069eb7b7",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1aAZT \u7f8e\u6d32\u864e\u82f1\u96c4\u901a\u904e\u539f\u751f\u6280\u80fd\u8207\u8996\u89ba\u9a57\u6536\uff0c\u539f\u6027\u80fd FAIL \u4fdd\u7559\u4e14\u5feb\u53d6\u71b1\u8def\u5f91\u6539\u5584\u3002\u5b9a\u5411 Node 8\uff0f\u771f\u5be6 Chromium 16 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: AZT jaguar hero passed native skills and visuals; original performance failures retained with cache hot-path improvement. 8 focused Node/16 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "0ca8bbfac046c058311878a20c250199372c04c26f9d96670d521b5d9eba452a",
+      "remote_head": "b9f69fbf07cb6acd8368663525c6660c88e40adb",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-30T00:54:20.275595+00:00",
+      "recorded_at": "2026-10-30T01:08:24.625827+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
