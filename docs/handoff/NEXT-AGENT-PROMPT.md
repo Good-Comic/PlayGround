@@ -1,3 +1,11 @@
+# 最新肖像切片 / Latest portrait slice
+
+來源／Source `296772b1709df5370c58c36e9ea3aee83c0bc446`. 4 Node / 32 Chromium PASS. docs/evidence/v240-civilization-hero-portrait/REPORT.md
+
+下一項 VIK 英雄；主開發持續中。 / Next VIK hero; main development continues.
+
+---
+
 # 最新英雄聲音 / Latest hero sound
 
 三文明英雄兵器音效／Three civilization hero weapon cues: `3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58`. 7 Node / 19 Chromium PASS. 接續選取肖像，現有主線仍開發中／Continuing selected-unit portraits; main development remains active. docs/evidence/v240-civilization-hero-sound/REPORT.md

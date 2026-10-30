@@ -1,38 +1,33 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "三個文明英雄兵器音效 / Three civilization hero weapon cues",
+  "name": "文明英雄選取肖像 / Civilization hero selection portraits",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "9561ffc883f59afd5c9fda883c7b54eb771f7ec5",
-  "latest_pushed_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
-  "application_source_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
+  "latest_pushed_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+  "application_source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
   "completed": [
-    "TEU／JPN／AZT 英雄兵器聲音",
-    "TEU/JPN/AZT hero weapon cues"
+    "英雄肖像與世界外觀一致 / Hero portraits match world appearance"
   ],
-  "uncommitted": [
-    "js/main.js",
-    "js/ui.js",
-    "tests/civilization-hero-portrait.test.mjs"
-  ],
+  "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
       "name": "Node",
-      "result": "7 PASS",
-      "path": "docs/evidence/v240-civilization-hero-sound/focused-node.txt"
+      "result": "4 PASS",
+      "path": "docs/evidence/v240-civilization-hero-portrait/focused-node.txt"
     },
     {
       "name": "Chromium",
-      "result": "19 PASS",
-      "path": "docs/evidence/v240-civilization-hero-sound/verified/browser.json"
+      "result": "32 PASS",
+      "path": "docs/evidence/v240-civilization-hero-portrait/verified/browser.json"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-civilization-hero-sound/REPORT.md"
+    "docs/evidence/v240-civilization-hero-portrait/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -45,8 +40,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "重用既有文明英雄圖集改善選取面板肖像",
-    "Reuse existing civilization hero atlases for selection-panel portraits"
+    "VIK 維京英雄獨立輪廓、動畫與技能可讀性",
+    "VIK hero distinct silhouette, animation and skill readability"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -54,7 +49,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T01:15:39.086874+00:00",
+  "updated_at": "2026-10-30T04:55:48.997895+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -115,6 +110,13 @@
       "node": 7,
       "chromium": 19,
       "report": "docs/evidence/v240-civilization-hero-sound/REPORT.md"
+    },
+    {
+      "slice": "v240-civilization-hero-portrait",
+      "source": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+      "node": 4,
+      "chromium": 32,
+      "report": "docs/evidence/v240-civilization-hero-portrait/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -128,7 +130,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "Reuse existing civilization hero atlases for selection-panel portraits"
+    "NEXT_AUTHORIZED_TASK": "VIK hero distinct silhouette, animation and skill readability"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {

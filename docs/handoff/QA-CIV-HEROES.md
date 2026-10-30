@@ -23,3 +23,11 @@ English: Preserve TEU timing-assumption/pre-crop performance FAIL, JPN fixture d
 English: Legacy GDD Aegis radius4 differs from existing hero-skills.js radius5; this inherited discrepancy remains under the instruction to retain current skill rules. Historical natural ten-wave/NG+, clock, strict saves, rendering, Rift/hardware gaps remain. No second Agent launched/waited for, no QA-branch writes or public deployment. Main development continues hero weapon sound.
 
 BILINGUAL_DOCUMENTATION_REQUIRED = true
+
+## 聲音與肖像 / Audio and portraits
+
+聲音來源／Audio source `3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58`: 7 Node /19 Chromium PASS. 原生開始後右鍵攻擊、靜音及恢復；檢查文明來源與共用節流。 / Native start, right-click attacks, mute/unmute; inspect civilization routing and shared throttling. WAV 為 SFX 分流，不是人工聽感或硬體驗收。 / WAV taps SFX; no human listening or hardware acceptance claim.
+
+肖像來源／Portrait source `296772b1709df5370c58c36e9ea3aee83c0bc446`: 4 Node /32 Chromium PASS. 選取 TEU/JPN/AZT 英雄並對照世界外觀；FRK、村民維持程序肖像。受控載入旗標不是 HTTP 驗收。 / Select TEU/JPN/AZT heroes and compare with world appearance; FRK/villagers retain procedural portraits. Controlled loading flags are not HTTP acceptance.
+
+五個相關切片已備妥獨立 QA 資料，未啟動第二位 Agent。 / Five related slices prepared for independent QA; no second agent launched.

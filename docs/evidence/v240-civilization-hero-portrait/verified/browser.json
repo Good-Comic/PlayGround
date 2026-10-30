@@ -1,0 +1,539 @@
+{
+  "source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+  "scope": "NATIVE_SELECTION_AND_LOADED_IMAGE_REUSE_WITH_CONTROLLED_READINESS_FLAGS_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "TEU: exact build",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "TEU: actual native hero selection",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "TEU: portrait source is the existing renderer image or unchanged generic fallback",
+      "pass": true,
+      "detail": {
+        "hash": "af85405e",
+        "calls": [
+          {
+            "sameImage": true,
+            "src": "http://127.0.0.1:8016/v240-civilization-hero-portrait/assets/sprites/teu-hero-atlas.png"
+          },
+          {
+            "sameImage": true,
+            "src": "http://127.0.0.1:8016/v240-civilization-hero-portrait/assets/sprites/teu-hero-atlas.png"
+          }
+        ],
+        "unit": "commander",
+        "caption": "Riftwarden"
+      }
+    },
+    {
+      "name": "TEU: controlled loading state shows procedural fallback without changing selection",
+      "pass": true,
+      "detail": {
+        "hash": "a9863607",
+        "selection": 19
+      }
+    },
+    {
+      "name": "TEU: asynchronous-ready transition refreshes portrait without reselection",
+      "pass": true,
+      "detail": {
+        "hash": "af85405e"
+      }
+    },
+    {
+      "name": "TEU: controlled failed state retains procedural portrait",
+      "pass": true,
+      "detail": {
+        "hash": "a9863607"
+      }
+    },
+    {
+      "name": "TEU: unchanged selection and asset state avoids redundant portrait redraws",
+      "pass": true,
+      "detail": {
+        "redraws": 0
+      }
+    },
+    {
+      "name": "TEU: selected portrait redraw stays below local5ms mean10ms p95 budget",
+      "pass": true,
+      "detail": {
+        "samples": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0.09999999403953552,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.19999999552965164,
+          0.20000000298023224,
+          0.29999999701976776,
+          0.30000000447034836
+        ],
+        "mean": 0.025,
+        "p95": 0.19999999552965164
+      }
+    },
+    {
+      "name": "native villager selection keeps original procedural portrait",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "JPN: exact build",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "JPN: actual native hero selection",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "JPN: portrait source is the existing renderer image or unchanged generic fallback",
+      "pass": true,
+      "detail": {
+        "hash": "e25bf57c",
+        "calls": [
+          {
+            "sameImage": true,
+            "src": "http://127.0.0.1:8016/v240-civilization-hero-portrait/assets/sprites/jpn-hero-atlas.png"
+          },
+          {
+            "sameImage": true,
+            "src": "http://127.0.0.1:8016/v240-civilization-hero-portrait/assets/sprites/jpn-hero-atlas.png"
+          }
+        ],
+        "unit": "commander",
+        "caption": "Riftwarden"
+      }
+    },
+    {
+      "name": "JPN: controlled loading state shows procedural fallback without changing selection",
+      "pass": true,
+      "detail": {
+        "hash": "a9863607",
+        "selection": 19
+      }
+    },
+    {
+      "name": "JPN: asynchronous-ready transition refreshes portrait without reselection",
+      "pass": true,
+      "detail": {
+        "hash": "e25bf57c"
+      }
+    },
+    {
+      "name": "JPN: controlled failed state retains procedural portrait",
+      "pass": true,
+      "detail": {
+        "hash": "a9863607"
+      }
+    },
+    {
+      "name": "JPN: unchanged selection and asset state avoids redundant portrait redraws",
+      "pass": true,
+      "detail": {
+        "redraws": 0
+      }
+    },
+    {
+      "name": "JPN: selected portrait redraw stays below local5ms mean10ms p95 budget",
+      "pass": true,
+      "detail": {
+        "samples": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0.09999999403953552,
+          0.09999999403953552,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.29999999701976776
+        ],
+        "mean": 0.02833333338300387,
+        "p95": 0.10000000149011612
+      }
+    },
+    {
+      "name": "AZT: exact build",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "AZT: actual native hero selection",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "AZT: portrait source is the existing renderer image or unchanged generic fallback",
+      "pass": true,
+      "detail": {
+        "hash": "8c230e66",
+        "calls": [
+          {
+            "sameImage": true,
+            "src": "http://127.0.0.1:8016/v240-civilization-hero-portrait/assets/sprites/azt-hero-atlas.png"
+          },
+          {
+            "sameImage": true,
+            "src": "http://127.0.0.1:8016/v240-civilization-hero-portrait/assets/sprites/azt-hero-atlas.png"
+          }
+        ],
+        "unit": "commander",
+        "caption": "Riftwarden"
+      }
+    },
+    {
+      "name": "AZT: controlled loading state shows procedural fallback without changing selection",
+      "pass": true,
+      "detail": {
+        "hash": "a9863607",
+        "selection": 18
+      }
+    },
+    {
+      "name": "AZT: asynchronous-ready transition refreshes portrait without reselection",
+      "pass": true,
+      "detail": {
+        "hash": "8c230e66"
+      }
+    },
+    {
+      "name": "AZT: controlled failed state retains procedural portrait",
+      "pass": true,
+      "detail": {
+        "hash": "a9863607"
+      }
+    },
+    {
+      "name": "AZT: unchanged selection and asset state avoids redundant portrait redraws",
+      "pass": true,
+      "detail": {
+        "redraws": 0
+      }
+    },
+    {
+      "name": "AZT: selected portrait redraw stays below local5ms mean10ms p95 budget",
+      "pass": true,
+      "detail": {
+        "samples": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0.09999999403953552,
+          0.09999999403953552,
+          0.09999999403953552,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.19999999552965164,
+          0.20000000298023224
+        ],
+        "mean": 0.02666666656732559,
+        "p95": 0.10000000149011612
+      }
+    },
+    {
+      "name": "FRK: exact build",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "FRK: actual native hero selection",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "FRK: portrait source is the existing renderer image or unchanged generic fallback",
+      "pass": true,
+      "detail": {
+        "hash": "a9863607",
+        "calls": [],
+        "unit": "commander",
+        "caption": "Riftwarden"
+      }
+    },
+    {
+      "name": "FRK: unchanged selection and asset state avoids redundant portrait redraws",
+      "pass": true,
+      "detail": {
+        "redraws": 0
+      }
+    },
+    {
+      "name": "FRK: selected portrait redraw stays below local5ms mean10ms p95 budget",
+      "pass": true,
+      "detail": {
+        "samples": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0.09999999403953552,
+          0.09999999403953552,
+          0.09999999403953552,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.30000000447034836
+        ],
+        "mean": 0.02833333338300387,
+        "p95": 0.10000000149011612
+      }
+    },
+    {
+      "name": "three civilization hero portraits are visibly distinct pixel images",
+      "pass": true,
+      "detail": [
+        {
+          "civ": "TEU",
+          "hash": "af85405e"
+        },
+        {
+          "civ": "JPN",
+          "hash": "e25bf57c"
+        },
+        {
+          "civ": "AZT",
+          "hash": "8c230e66"
+        },
+        {
+          "civ": "FRK",
+          "hash": "a9863607"
+        }
+      ]
+    },
+    {
+      "name": "no page console or resource errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "portraits": [
+    {
+      "civ": "TEU",
+      "hash": "af85405e"
+    },
+    {
+      "civ": "JPN",
+      "hash": "e25bf57c"
+    },
+    {
+      "civ": "AZT",
+      "hash": "8c230e66"
+    },
+    {
+      "civ": "FRK",
+      "hash": "a9863607"
+    }
+  ],
+  "errors": [],
+  "pass": true
+}
