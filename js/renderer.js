@@ -1426,7 +1426,7 @@ export class Renderer {
       ctx.beginPath(); ctx.moveTo(p.x - r * .4, p.y - 27 * s); ctx.lineTo(p.x, p.y - (casting.id === 'aegis' ? 38 : 34) * s);
       ctx.lineTo(p.x + r * .4, p.y - 27 * s); ctx.stroke(); ctx.restore();
       // 文明施法徽記置於肩側，不遮住英雄臉部。 / Civilization skill emblems sit beside the shoulder, leaving the face readable.
-      if (emblem === 'teutonic' || emblem === 'samurai' || emblem === 'jaguar' || emblem === 'norse' || emblem === 'frankish') {
+      if (emblem === 'teutonic' || emblem === 'samurai' || emblem === 'jaguar' || emblem === 'norse' || emblem === 'frankish' || emblem === 'saracen') {
         ctx.save(); ctx.translate(p.x + 32 * s, p.y - 64 * s); ctx.scale(s, s);
         ctx.strokeStyle = casting.id === 'aegis' ? '#b6e4f4' : '#ebc678';
         ctx.fillStyle = 'rgba(25,37,41,.85)'; ctx.lineWidth = 1.5;
@@ -1435,7 +1435,7 @@ export class Renderer {
         ctx.beginPath();
         if (casting.id === 'aegis') {
           ctx.moveTo(-8,-9); ctx.lineTo(8,-9); ctx.lineTo(7,3); ctx.lineTo(0,10); ctx.lineTo(-7,3); ctx.closePath(); ctx.fill(); ctx.stroke();
-          if (emblem === 'frankish') { ctx.beginPath(); ctx.moveTo(0,6); ctx.lineTo(0,-6); ctx.bezierCurveTo(-6,-9,-5,-1,0,1); ctx.bezierCurveTo(5,-1,6,-9,0,-6); ctx.moveTo(-5,3); ctx.lineTo(5,3); ctx.stroke(); } else if (emblem === 'norse') { ctx.beginPath(); ctx.moveTo(0,7); ctx.lineTo(0,-7); ctx.lineTo(6,-2); ctx.lineTo(0,2); ctx.moveTo(0,-1); ctx.lineTo(-5,-5); ctx.stroke(); } else if (emblem === 'jaguar') { ctx.beginPath(); ctx.moveTo(0,-6); ctx.lineTo(5,0); ctx.lineTo(0,6); ctx.lineTo(-5,0); ctx.closePath(); ctx.stroke(); } else { ctx.beginPath(); ctx.moveTo(0,-6); ctx.lineTo(0,5); ctx.moveTo(-5,-1); ctx.lineTo(5,-1); ctx.stroke(); }
+          if (emblem === 'saracen') { ctx.beginPath(); ctx.moveTo(0,-6); ctx.lineTo(5,-1); ctx.lineTo(0,5); ctx.lineTo(-5,-1); ctx.closePath(); ctx.stroke(); } else if (emblem === 'frankish') { ctx.beginPath(); ctx.moveTo(0,6); ctx.lineTo(0,-6); ctx.bezierCurveTo(-6,-9,-5,-1,0,1); ctx.bezierCurveTo(5,-1,6,-9,0,-6); ctx.moveTo(-5,3); ctx.lineTo(5,3); ctx.stroke(); } else if (emblem === 'norse') { ctx.beginPath(); ctx.moveTo(0,7); ctx.lineTo(0,-7); ctx.lineTo(6,-2); ctx.lineTo(0,2); ctx.moveTo(0,-1); ctx.lineTo(-5,-5); ctx.stroke(); } else if (emblem === 'jaguar') { ctx.beginPath(); ctx.moveTo(0,-6); ctx.lineTo(5,0); ctx.lineTo(0,6); ctx.lineTo(-5,0); ctx.closePath(); ctx.stroke(); } else { ctx.beginPath(); ctx.moveTo(0,-6); ctx.lineTo(0,5); ctx.moveTo(-5,-1); ctx.lineTo(5,-1); ctx.stroke(); }
         } else {
           ctx.arc(0,0,7,0,Math.PI*2); ctx.fill(); ctx.stroke();
           ctx.beginPath(); ctx.moveTo(-11,0); ctx.lineTo(11,0); ctx.moveTo(0,-11); ctx.lineTo(0,11); ctx.stroke();
