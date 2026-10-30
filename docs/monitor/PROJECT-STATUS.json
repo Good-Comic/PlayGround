@@ -2,40 +2,40 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-30T01:19:41.321571+00:00",
+  "updated_at": "2026-10-30T04:57:48.763190+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "6552fa6bd169bd58d51169a60f914793de0931d9",
-    "build_sha": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
-    "summary": "\u4e09\u6587\u660e\u82f1\u96c4\u5175\u5668\u97f3\u6548\u901a\u904e\u771f\u5be6\u97f3\u8a0a\u8207\u975c\u97f3\u9a57\u6536 / Three civilization hero weapon cues passed actual audio and mute acceptance",
+    "commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
+    "build_sha": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+    "summary": "\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4 / Civilization hero portraits match world appearance",
     "code_changes": [
-      "\u4e09\u6587\u660e\u82f1\u96c4\u5175\u5668\u97f3\u6548\u901a\u904e\u771f\u5be6\u97f3\u8a0a\u8207\u975c\u97f3\u9a57\u6536",
-      "Three civilization hero weapon cues passed actual audio and mute acceptance"
+      "\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4",
+      "Civilization hero portraits match world appearance"
     ],
     "next_steps": [
-      "\u5df2\u63a5\u7e8c\u4f7f\u7528\u73fe\u6709\u5716\u96c6\u7684\u6587\u660e\u82f1\u96c4\u9078\u53d6\u8096\u50cf\u3002 / Continuing selected civilization hero portraits from existing atlases."
+      "\u5df2\u63a5\u7e8c VIK \u82f1\u96c4\u958b\u767c\u3002 / VIK hero development has begun."
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "7 focused Node PASS",
+        "name": "4 focused Node PASS",
         "status": "PASS",
-        "source_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
-        "evidence": "docs/evidence/v240-civilization-hero-sound/focused-node.txt",
-        "evidence_commit": "6552fa6bd169bd58d51169a60f914793de0931d9",
-        "evidence_blob": "7d2ce04382814cdcd78201229bff8422e2776a14",
+        "source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+        "evidence": "docs/evidence/v240-civilization-hero-portrait/focused-node.txt",
+        "evidence_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
+        "evidence_blob": "55e3b4529698b7413a72d9a418cf4e5a2e612412",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "19 actual Chromium PASS",
+        "name": "32 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
-        "evidence": "docs/evidence/v240-civilization-hero-sound/verified/browser.json",
-        "evidence_commit": "6552fa6bd169bd58d51169a60f914793de0931d9",
-        "evidence_blob": "1daabfcd4836e077f1a872faa382533f988224e8",
+        "source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+        "evidence": "docs/evidence/v240-civilization-hero-portrait/verified/browser.json",
+        "evidence_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
+        "evidence_blob": "7405c0a1613d3ae403305ba06194a431b233cab7",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -43,17 +43,17 @@
       {
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
-        "summary": "\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict saves, performance and hardware gaps remain.",
-        "source_commit": "6552fa6bd169bd58d51169a60f914793de0931d9",
+        "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
+        "source_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u4e09\u6587\u660e\u82f1\u96c4\u5175\u5668\u97f3\u6548\u901a\u904e\u771f\u5be6\u97f3\u8a0a\u8207\u975c\u97f3\u9a57\u6536\u3002\u5b9a\u5411 Node 7\uff0f\u771f\u5be6 Chromium 19 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Three civilization hero weapon cues passed actual audio and mute acceptance. 7 focused Node/19 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "4497d46a386a2d4d38d9239dd5f1d52b7cb80d87df47854c2681e135659a9b3a",
-    "remote_head": "6552fa6bd169bd58d51169a60f914793de0931d9",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4\u3002\u5b9a\u5411 Node 4\uff0f\u771f\u5be6 Chromium 32 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Civilization hero portraits match world appearance. 4 focused Node/32 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "66495c1bdb50c906dad5271e3f1dedf4704e0c18c442e913cabc31c3e0f724d5",
+    "remote_head": "15c863bb9e3f2f7b817da81810f03464c4169565",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-30T01:19:41.321571+00:00",
+    "recorded_at": "2026-10-30T04:57:48.763190+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3006,34 +3006,34 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "6552fa6bd169bd58d51169a60f914793de0931d9",
-      "build_sha": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
-      "summary": "\u4e09\u6587\u660e\u82f1\u96c4\u5175\u5668\u97f3\u6548\u901a\u904e\u771f\u5be6\u97f3\u8a0a\u8207\u975c\u97f3\u9a57\u6536 / Three civilization hero weapon cues passed actual audio and mute acceptance",
+      "commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
+      "build_sha": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+      "summary": "\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4 / Civilization hero portraits match world appearance",
       "code_changes": [
-        "\u4e09\u6587\u660e\u82f1\u96c4\u5175\u5668\u97f3\u6548\u901a\u904e\u771f\u5be6\u97f3\u8a0a\u8207\u975c\u97f3\u9a57\u6536",
-        "Three civilization hero weapon cues passed actual audio and mute acceptance"
+        "\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4",
+        "Civilization hero portraits match world appearance"
       ],
       "next_steps": [
-        "\u5df2\u63a5\u7e8c\u4f7f\u7528\u73fe\u6709\u5716\u96c6\u7684\u6587\u660e\u82f1\u96c4\u9078\u53d6\u8096\u50cf\u3002 / Continuing selected civilization hero portraits from existing atlases."
+        "\u5df2\u63a5\u7e8c VIK \u82f1\u96c4\u958b\u767c\u3002 / VIK hero development has begun."
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "7 focused Node PASS",
+          "name": "4 focused Node PASS",
           "status": "PASS",
-          "source_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
-          "evidence": "docs/evidence/v240-civilization-hero-sound/focused-node.txt",
-          "evidence_commit": "6552fa6bd169bd58d51169a60f914793de0931d9",
-          "evidence_blob": "7d2ce04382814cdcd78201229bff8422e2776a14",
+          "source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+          "evidence": "docs/evidence/v240-civilization-hero-portrait/focused-node.txt",
+          "evidence_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
+          "evidence_blob": "55e3b4529698b7413a72d9a418cf4e5a2e612412",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "19 actual Chromium PASS",
+          "name": "32 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
-          "evidence": "docs/evidence/v240-civilization-hero-sound/verified/browser.json",
-          "evidence_commit": "6552fa6bd169bd58d51169a60f914793de0931d9",
-          "evidence_blob": "1daabfcd4836e077f1a872faa382533f988224e8",
+          "source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+          "evidence": "docs/evidence/v240-civilization-hero-portrait/verified/browser.json",
+          "evidence_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
+          "evidence_blob": "7405c0a1613d3ae403305ba06194a431b233cab7",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3041,17 +3041,17 @@
         {
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
-          "summary": "\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict saves, performance and hardware gaps remain.",
-          "source_commit": "6552fa6bd169bd58d51169a60f914793de0931d9",
+          "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
+          "source_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u4e09\u6587\u660e\u82f1\u96c4\u5175\u5668\u97f3\u6548\u901a\u904e\u771f\u5be6\u97f3\u8a0a\u8207\u975c\u97f3\u9a57\u6536\u3002\u5b9a\u5411 Node 7\uff0f\u771f\u5be6 Chromium 19 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Three civilization hero weapon cues passed actual audio and mute acceptance. 7 focused Node/19 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "4497d46a386a2d4d38d9239dd5f1d52b7cb80d87df47854c2681e135659a9b3a",
-      "remote_head": "6552fa6bd169bd58d51169a60f914793de0931d9",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4\u3002\u5b9a\u5411 Node 4\uff0f\u771f\u5be6 Chromium 32 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Civilization hero portraits match world appearance. 4 focused Node/32 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "66495c1bdb50c906dad5271e3f1dedf4704e0c18c442e913cabc31c3e0f724d5",
+      "remote_head": "15c863bb9e3f2f7b817da81810f03464c4169565",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-30T01:19:41.321571+00:00",
+      "recorded_at": "2026-10-30T04:57:48.763190+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
