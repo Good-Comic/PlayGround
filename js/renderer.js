@@ -1451,12 +1451,13 @@ export class Renderer {
     const frame = atlasFrame(descriptor, visual.direction, visual.state, time, progress);
     if (!frame) return false;
     const drawScale = scale * descriptor.scale;
-    const width = frame.sw * drawScale, height = frame.sh * drawScale;
+    const crop = descriptor.cacheFrames && descriptor.frameCrops?.[(frame.sy / frame.sh) * (entry.image.naturalWidth / frame.sw) + frame.sx / frame.sw];
+    const [cx, cy, cw, ch] = crop || [0, 0, frame.sw, frame.sh];
     const image = descriptor.cacheFrames ? this.spriteFrameImage(entry, frame) : entry.image;
-    this.ctx.drawImage(image, descriptor.cacheFrames ? 0 : frame.sx, descriptor.cacheFrames ? 0 : frame.sy, frame.sw, frame.sh,
-      p.x + descriptor.offset.x * drawScale - descriptor.anchor.x * drawScale,
-      p.y + descriptor.offset.y * drawScale - descriptor.anchor.y * drawScale,
-      width, height);
+    this.ctx.drawImage(image, descriptor.cacheFrames ? 0 : frame.sx, descriptor.cacheFrames ? 0 : frame.sy, cw, ch,
+      p.x + (descriptor.offset.x - descriptor.anchor.x + cx) * drawScale,
+      p.y + (descriptor.offset.y - descriptor.anchor.y + cy) * drawScale,
+      cw * drawScale, ch * drawScale);
     return true;
   }
 
@@ -1479,8 +1480,10 @@ export class Renderer {
     const key = `${frame.sx}:${frame.sy}`;
     if (cache.has(key)) return cache.get(key);
     const canvas = document.createElement('canvas');
-    canvas.width = frame.sw; canvas.height = frame.sh;
-    canvas.getContext('2d').drawImage(entry.image, frame.sx, frame.sy, frame.sw, frame.sh, 0, 0, frame.sw, frame.sh);
+    const crop = entry.descriptor?.frameCrops?.[(frame.sy / frame.sh) * (entry.image.naturalWidth / frame.sw) + frame.sx / frame.sw];
+    const [cx, cy, cw, ch] = crop || [0, 0, frame.sw, frame.sh];
+    canvas.width = cw; canvas.height = ch;
+    canvas.getContext('2d').drawImage(entry.image, frame.sx + cx, frame.sy + cy, cw, ch, 0, 0, cw, ch);
     if (cache.size >= 64) cache.delete(cache.keys().next().value);
     cache.set(key, canvas);
     return canvas;

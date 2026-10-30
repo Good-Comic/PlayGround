@@ -1,3 +1,4 @@
+import { FRAME_CROPS as TEU_HERO_CROPS } from '../assets/sprites/teu-hero-crops.js';
 const DIRECTIONS = ['E', 'SE', 'S', 'SW', 'W', 'NW', 'N', 'NE'];
 const STATES = Object.freeze({
   idle: Object.freeze({ row: 0, frames: 2, fps: 2, loop: true }),
@@ -90,7 +91,7 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
     id: 'teu-hero-v1', src: 'assets/sprites/teu-hero-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 208, height: 208 }), anchor: Object.freeze({ x: 104, y: 120 }), directionsPerRow: 4,
     offset: Object.freeze({ x: 0, y: 0 }), scale: .82, directions: DIRECTION_MAP, healthBarHeight: 80,
-    heroEmblem: 'teutonic', states: UNIT_SPRITE_ATLASES.commander.states,
+    heroEmblem: 'teutonic', frameCrops: TEU_HERO_CROPS, states: UNIT_SPRITE_ATLASES.commander.states,
   }),
   'TUR:archer': Object.freeze({
     pickBody: Object.freeze({ x: 0, y: -28, rx: 24, ry: 43 }),
