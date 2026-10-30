@@ -11,4 +11,3 @@ Verified content/evidence checkpoint: `fc6819b8a96055c4f5095f06f63bcdef945fee0c`
 English: Next BYZ Byzantine hero silhouette/equipment/animation/skill feedback. Pause at agent-self-assessed turn context/response persistence budget boundary, not platform-enforcement evidence. Scheduling unchanged; idle automatic wake remains unverified. BILINGUAL_DOCUMENTATION_REQUIRED=true; no public deployment.
 
 ---
-

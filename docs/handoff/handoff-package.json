@@ -1,44 +1,47 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T05:09:43.564007+00:00",
+  "generated_at": "2026-10-30T06:25:01.798308+00:00",
   "framework_status": "HANDOFF_FRAMEWORK_READY",
   "cross_agent_status": "NOT_TESTED",
   "write_eligibility": "REVALIDATE_REMOTE_OWNERSHIP_AND_HEAD_BEFORE_WRITING",
   "trigger": {
     "kind": "MANUAL_HANDOFF",
     "confidence": "CONFIRMED",
-    "evidence": "Nine accepted GAME FIRST slices; agent self-reported turn response budget boundary, no platform refusal or quota threshold."
+    "evidence": "Agent self-assessed remaining turn context-response budget; no platform rejection or weekly-quota stop claim."
   },
   "active_task": {
     "task_id": "V240-SPECIAL-ATLAS",
-    "name": "\u7b2c\u4e8c\u7d44\u82f1\u96c4\u5175\u5668\u8072\u97f3 / Second hero weapon cues",
+    "name": "\u54e5\u5fb7\u5de8\u528d\uff0f\u6bdb\u76ae\u9396\u7532\uff0f\u675f\u9aee\u82f1\u96c4 / Gothic greatsword/fur-mail/topknot hero",
     "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
     "priority": "P1",
     "agent": "Codex",
     "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
     "branch": "codex/riftwatch-v240-game-first",
-    "base_commit": "9561ffc883f59afd5c9fda883c7b54eb771f7ec5",
-    "latest_pushed_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
-    "application_source_commit": "5303128b924a4eb960e5768b140c1975541db5ee",
+    "base_commit": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
+    "latest_pushed_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
+    "application_source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
     "completed": [
-      "VIK\uff0fFRK\uff0fSAR \u82f1\u96c4\u5175\u5668\u8072\u97f3 / VIK/FRK/SAR hero weapon cues"
+      "\u54e5\u5fb7\u5de8\u528d\uff0f\u6bdb\u76ae\u9396\u7532\uff0f\u675f\u9aee\u82f1\u96c4",
+      "Gothic greatsword/fur-mail/topknot hero"
     ],
     "uncommitted": [],
     "unpushed": [],
     "tests": [
       {
         "name": "Node",
-        "result": "7 PASS",
-        "path": "docs/evidence/v240-civilization-hero-sound-second/focused-node.txt"
+        "result": "12 PASS",
+        "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+        "path": "docs/evidence/v240-got-hero/focused-node.txt"
       },
       {
         "name": "Chromium",
-        "result": "19 PASS",
-        "path": "docs/evidence/v240-civilization-hero-sound-second/verified/browser.json"
+        "result": "17 PASS",
+        "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+        "path": "docs/evidence/v240-got-hero/verified/browser.json"
       }
     ],
     "evidence": [
-      "docs/evidence/v240-civilization-hero-sound-second/REPORT.md"
+      "docs/evidence/v240-got-hero/REPORT.md"
     ],
     "failures": [
       "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -51,8 +54,8 @@
       "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
     ],
     "next_steps": [
-      "PER \u6ce2\u65af\u82f1\u96c4\u7368\u7acb\u8996\u89ba\u3001\u52d5\u756b\u8207\u6280\u80fd\u53ef\u8b80\u6027",
-      "PER Persian hero distinct appearance, animation and skill readability"
+      "\u63a5\u7e8c BYZ \u62dc\u5360\u5ead\u82f1\u96c4\u7368\u7acb\u88dd\u5099\u3001\u8f2a\u5ed3\u8207\u6280\u80fd\u8868\u73fe",
+      "Continue BYZ Byzantine hero independent equipment, silhouette and skill feedback"
     ],
     "permissions": [
       "Independent development tests normal push",
@@ -60,7 +63,7 @@
     ],
     "status": "CHECKPOINTED",
     "quota_status": "QUOTA_PERCENT_UNKNOWN",
-    "updated_at": "2026-10-30T05:09:43.282101+00:00",
+    "updated_at": "2026-10-30T06:25:01.369382+00:00",
     "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
     "ownership_at_snapshot": {
       "task": "V240-SPECIAL-ATLAS",
@@ -95,68 +98,25 @@
     },
     "current_session_slices": [
       {
-        "slice": "v240-teu-hero",
-        "source": "e5ccf8d1042aefed8cbd240045b3995c6ae86341",
-        "node": 8,
-        "chromium": 16,
-        "report": "docs/evidence/v240-teu-hero/REPORT.md"
-      },
-      {
-        "slice": "v240-jpn-hero",
-        "source": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
-        "node": 5,
+        "slice": "v240-per-hero",
+        "source": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+        "node": 18,
         "chromium": 17,
-        "report": "docs/evidence/v240-jpn-hero/REPORT.md"
+        "report": "docs/evidence/v240-per-hero/REPORT.md"
       },
       {
-        "slice": "v240-azt-hero",
-        "source": "0333583ff5db69404272f20d058518eef9a10443",
-        "node": 8,
-        "chromium": 16,
-        "report": "docs/evidence/v240-azt-hero/REPORT.md"
-      },
-      {
-        "slice": "v240-civilization-hero-sound",
-        "source": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
-        "node": 7,
-        "chromium": 19,
-        "report": "docs/evidence/v240-civilization-hero-sound/REPORT.md"
-      },
-      {
-        "slice": "v240-civilization-hero-portrait",
-        "source": "296772b1709df5370c58c36e9ea3aee83c0bc446",
-        "node": 4,
-        "chromium": 32,
-        "report": "docs/evidence/v240-civilization-hero-portrait/REPORT.md"
-      },
-      {
-        "slice": "v240-vik-hero",
-        "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
-        "node": 20,
+        "slice": "v240-chn-hero",
+        "source": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+        "node": 19,
         "chromium": 17,
-        "report": "docs/evidence/v240-vik-hero/REPORT.md",
-        "subsequent_node_regressions": 28
+        "report": "docs/evidence/v240-chn-hero/REPORT.md"
       },
       {
-        "slice": "v240-frk-hero",
-        "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
-        "node": 28,
+        "slice": "v240-got-hero",
+        "source": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+        "node": 12,
         "chromium": 17,
-        "report": "docs/evidence/v240-frk-hero/REPORT.md"
-      },
-      {
-        "slice": "v240-sar-hero",
-        "source": "c578426100ed6c2927cdcf3382faa1ffc606f337",
-        "node": 33,
-        "chromium": 17,
-        "report": "docs/evidence/v240-sar-hero/REPORT.md"
-      },
-      {
-        "slice": "v240-civilization-hero-sound-second",
-        "source": "5303128b924a4eb960e5768b140c1975541db5ee",
-        "node": 7,
-        "chromium": 19,
-        "report": "docs/evidence/v240-civilization-hero-sound-second/REPORT.md"
+        "report": "docs/evidence/v240-got-hero/REPORT.md"
       }
     ],
     "continuity_policy": {
@@ -171,17 +131,16 @@
     "continuation_event": {
       "STOP_REASON": "EXECUTION_BUDGET_BOUNDARY",
       "EXECUTION_DURATION": {
-        "seconds": 16624.018,
-        "scope": "FIRST_CURRENT_SESSION_CONTENT_COMMIT_TO_STOP_PREPARATION_ONLY_SESSION_START_UNKNOWN_INCLUDES_GAPS_EXCLUDES_FINAL_PUSH",
-        "start": "2026-10-30T00:32:21+00:00",
-        "end": "2026-10-30T05:09:25.018388+00:00",
-        "status": "OBSERVED_WALL_INTERVAL_NOT_ACTIVE_CPU_TIME",
+        "seconds": 2314.673,
+        "scope": "TASK_START_SNAPSHOT_TO_STOP_PREPARATION_WALL_INTERVAL_EXCLUDES_INITIAL_READS_AND_FINAL_PUSH_NOT_ACTIVE_CPU_TIME",
+        "start": "2026-10-30T05:46:23.546394+00:00",
+        "end": "2026-10-30T06:24:58.219144+00:00",
         "client_timezone": "Asia/Taipei",
-        "client_start": "2026-10-30T08:32:21+08:00",
-        "client_end": "2026-10-30T13:09:25.018388+08:00"
+        "client_start": "2026-10-30T13:46:23.546394+08:00",
+        "client_end": "2026-10-30T14:24:58.219144+08:00"
       },
-      "NEXT_AUTHORIZED_TASK": "PER Persian hero distinct silhouette, animation and existing-skill readability; validate latest source and ownership first",
-      "CHECKPOINT_SHA": "d44a911b5d8dd507acc53bb4a56fbb888d403039",
+      "NEXT_AUTHORIZED_TASK": "BYZ Byzantine hero independent equipment, silhouette, animation and existing-skill feedback; verify latest source/ownership first",
+      "CHECKPOINT_SHA": "fc6819b8a96055c4f5095f06f63bcdef945fee0c",
       "AUTO_RESUME_AVAILABLE": "DELIVERY_OBSERVED_IDLE_WAKE_UNVERIFIED"
     },
     "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
@@ -202,7 +161,7 @@
       "hourly_supervision_mutated": false
     },
     "scheduler_policy_stop_record": "docs/recovery/scheduler-policy-stop.json",
-    "session_id": "teu-civilization-hero-20261030",
+    "session_id": "sar-per-native-persistence-20261030",
     "remote_query_status": "REMOTE_HEAD_VERIFIED_AFTER_NORMAL_PUSH",
     "current_stop_record": "docs/recovery/game-first-auth-stop.json",
     "resolved_execution_blockers": [
@@ -305,41 +264,129 @@
         "node": 9,
         "chromium": 15,
         "report": "docs/evidence/v240-champion-picking/REPORT.md"
+      },
+      {
+        "slice": "v240-teu-hero",
+        "source": "e5ccf8d1042aefed8cbd240045b3995c6ae86341",
+        "node": 8,
+        "chromium": 16,
+        "report": "docs/evidence/v240-teu-hero/REPORT.md"
+      },
+      {
+        "slice": "v240-jpn-hero",
+        "source": "9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a",
+        "node": 5,
+        "chromium": 17,
+        "report": "docs/evidence/v240-jpn-hero/REPORT.md"
+      },
+      {
+        "slice": "v240-azt-hero",
+        "source": "0333583ff5db69404272f20d058518eef9a10443",
+        "node": 8,
+        "chromium": 16,
+        "report": "docs/evidence/v240-azt-hero/REPORT.md"
+      },
+      {
+        "slice": "v240-civilization-hero-sound",
+        "source": "3c8a493d32b8fee6ed9e1bb18cc8b756677b4f58",
+        "node": 7,
+        "chromium": 19,
+        "report": "docs/evidence/v240-civilization-hero-sound/REPORT.md"
+      },
+      {
+        "slice": "v240-civilization-hero-portrait",
+        "source": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+        "node": 4,
+        "chromium": 32,
+        "report": "docs/evidence/v240-civilization-hero-portrait/REPORT.md"
+      },
+      {
+        "slice": "v240-vik-hero",
+        "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+        "node": 20,
+        "chromium": 17,
+        "report": "docs/evidence/v240-vik-hero/REPORT.md",
+        "subsequent_node_regressions": 28
+      },
+      {
+        "slice": "v240-frk-hero",
+        "source": "97b11b64ce4c13772318e9ddda7387297650d9e1",
+        "node": 28,
+        "chromium": 17,
+        "report": "docs/evidence/v240-frk-hero/REPORT.md"
+      },
+      {
+        "slice": "v240-sar-hero",
+        "source": "c578426100ed6c2927cdcf3382faa1ffc606f337",
+        "node": 33,
+        "chromium": 17,
+        "report": "docs/evidence/v240-sar-hero/REPORT.md"
+      },
+      {
+        "slice": "v240-civilization-hero-sound-second",
+        "source": "5303128b924a4eb960e5768b140c1975541db5ee",
+        "node": 7,
+        "chromium": 19,
+        "report": "docs/evidence/v240-civilization-hero-sound-second/REPORT.md"
+      }
+    ],
+    "current_session_reviews": [
+      {
+        "name": "SAR100 guard relative performance",
+        "status": "INCONCLUSIVE",
+        "source": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
+        "report": "docs/evidence/v240-sar-perf-review/REPORT.md"
+      },
+      {
+        "name": "native disk-backed process reopen Continue with actual training",
+        "status": "SCOPED_NATIVE_PERSISTENCE_PASS",
+        "source": "5ef184234f7edf2490978e096ce5e704ed1b08b5",
+        "chromium": 13,
+        "report": "docs/evidence/v240-native-persistent-continue/REPORT.md"
+      },
+      {
+        "name": "native atlas lifecycle and actual memory",
+        "status": "LIFECYCLE_SCOPED_PASS_LONG_DURATION_INCONCLUSIVE",
+        "source": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+        "chromium": 22,
+        "report": "docs/evidence/v240-atlas-native-memory/REPORT.md"
       }
     ]
   },
   "next_tasks": {
     "schema_version": 1,
-    "updated_at": "2026-10-30T05:06:28.733621+00:00",
+    "updated_at": "2026-10-30T06:23:16.129586+00:00",
     "tasks": [
       {
         "task_id": "V240-CONTENT-CONTINUATION",
-        "name": "PER \u6ce2\u65af\u82f1\u96c4\u7368\u7acb\u8996\u89ba\u3001\u52d5\u756b\u8207\u6280\u80fd\u53ef\u8b80\u6027 / PER Persian hero distinct appearance, animation and skill readability",
+        "name": "\u63a5\u7e8c BYZ \u62dc\u5360\u5ead\u82f1\u96c4\u7368\u7acb\u88dd\u5099\u3001\u8f2a\u5ed3\u8207\u6280\u80fd\u8868\u73fe / Continue BYZ Byzantine hero independent equipment, silhouette and skill feedback",
         "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
         "priority": "P1",
         "agent": "Codex",
         "environment": "New independent Linux Chromium workspace; local software rendering",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-        "latest_pushed_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
-        "application_source_commit": "5303128b924a4eb960e5768b140c1975541db5ee",
+        "latest_pushed_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
+        "application_source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
         "completed": [],
         "uncommitted": [],
         "unpushed": [],
         "tests": [
           {
             "name": "Node",
-            "result": "7 PASS",
-            "path": "docs/evidence/v240-civilization-hero-sound-second/focused-node.txt"
+            "result": "12 PASS",
+            "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+            "path": "docs/evidence/v240-got-hero/focused-node.txt"
           },
           {
             "name": "Chromium",
-            "result": "19 PASS",
-            "path": "docs/evidence/v240-civilization-hero-sound-second/verified/browser.json"
+            "result": "17 PASS",
+            "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+            "path": "docs/evidence/v240-got-hero/verified/browser.json"
           }
         ],
         "evidence": [
-          "docs/evidence/v240-civilization-hero-sound-second/REPORT.md"
+          "docs/evidence/v240-got-hero/REPORT.md"
         ],
         "failures": [
           "V5.4\u7b2c\u56db\u6ce2\u6230\u6557\uff0c\u98df\u72692.17\uff0f\u6728\u6750740.76\uff0f\u9ec3\u91d1227.22\uff1b\u975e Normal \u4e0d\u53ef\u80fd\u901a\u95dc\u8b49\u64da / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -350,8 +397,8 @@
         ],
         "blockers": [],
         "next_steps": [
-          "PER \u6ce2\u65af\u82f1\u96c4\u7368\u7acb\u8996\u89ba\u3001\u52d5\u756b\u8207\u6280\u80fd\u53ef\u8b80\u6027",
-          "PER Persian hero distinct appearance, animation and skill readability"
+          "\u63a5\u7e8c BYZ \u62dc\u5360\u5ead\u82f1\u96c4\u7368\u7acb\u88dd\u5099\u3001\u8f2a\u5ed3\u8207\u6280\u80fd\u8868\u73fe",
+          "Continue BYZ Byzantine hero independent equipment, silhouette and skill feedback"
         ],
         "permissions": [
           "Independent development tests normal push",
@@ -359,7 +406,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-30T05:09:42.787552+00:00",
+        "updated_at": "2026-10-30T06:25:00.806759+00:00",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
           "task": "V240-SPECIAL-ATLAS",
@@ -387,7 +434,7 @@
         "environment": "Linux Chromium154 software rendering; no shared live session or physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa",
-        "latest_pushed_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "latest_pushed_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
         "application_source_commit": "798bcffdfe8e97bdd4e8abe6c67f18223b540877",
         "completed": [
           "Easy\u81ea\u7136\u7b2c\u4e94\u6ce2\u3001Normal\u6709\u6548\u88dc\u6e2c\u7b2c\u56db\u6ce2\u6230\u6557\uff1b\u53c3\u6578\u751f\u6548 / Easy defeat5and valid Normal defeat4; parameters verified",
@@ -435,7 +482,7 @@
         ],
         "status": "READY",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-30T05:09:42.787552+00:00",
+        "updated_at": "2026-10-30T06:25:00.806759+00:00",
         "stop_reason": "EXECUTION_WINDOW_EXHAUSTED",
         "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
         "ownership_at_snapshot": {
@@ -454,7 +501,7 @@
         "environment": "Linux Chromium154 ANGLE SwiftShader 1920x1080 DPR1; not physical hardware",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "ffc201ee65fe8251dcd431c2860c1d13defa4d33",
-        "latest_pushed_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "latest_pushed_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
         "application_source_commit": "9fc6db69227432b162651017819e23cbd4b9153f",
         "tested_equivalent_source_commit": "d07e4f1634d730a163f607800d1ed9a305ebedef",
         "completed": [
@@ -508,7 +555,7 @@
         "status": "CHECKPOINTED",
         "acceptance": "VISUAL_LOCAL_VERIFIED_PERFORMANCE_FAIL",
         "quota_status": "QUOTA_PERCENT_UNKNOWN_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-30T05:09:42.787552+00:00"
+        "updated_at": "2026-10-30T06:25:00.806759+00:00"
       },
       {
         "task_id": "V240-SPRITE-ATLAS",
@@ -519,7 +566,7 @@
         "environment": "Recovered managed Linux environment; Chromium; exact 31-file artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "18d9947a14ab5aa4eaf6a023545df29bee4a7bcf",
-        "latest_pushed_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "latest_pushed_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
         "application_source_commit": "39767c4b58a37353b4f51bea13bd451a614fb2fc",
         "completed": [
           "Recovered from remotely saved atlas implementation after prior worktree loss",
@@ -573,7 +620,7 @@
         ],
         "status": "CHECKPOINTED",
         "quota_status": "QUOTA_PERCENT_INFORMATIONAL_ONLY",
-        "updated_at": "2026-10-30T05:09:42.787552+00:00",
+        "updated_at": "2026-10-30T06:25:00.806759+00:00",
         "acceptance": "LOCAL_VERIFIED"
       },
       {
@@ -585,7 +632,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "d01e51c7f8d9e6b6f78bbfa2bf7fe692a4ddd357",
-        "latest_pushed_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "latest_pushed_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
         "application_source_commit": "8e8fd67712431cf46cbcd2bae3f7285d33384e1a",
         "completed": [
           "Added eight-direction isometric facing derived from real movement and live attack targets",
@@ -639,7 +686,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-30T05:09:42.787552+00:00"
+        "updated_at": "2026-10-30T06:25:00.806759+00:00"
       },
       {
         "task_id": "V240-CIV-VISUAL-FAMILIES",
@@ -650,7 +697,7 @@
         "environment": "Managed Linux; Chromium 154; exact 29-file local Playtest artifact",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "72050c77c377cace5516fb0e69a0adc686720180",
-        "latest_pushed_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "latest_pushed_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
         "application_source_commit": "2a6dc068c3ee3fc59912cd7e76fb095a615e01f0",
         "completed": [
           "Added a reusable five-family civilization visual profile module covering all sixteen civilizations",
@@ -704,7 +751,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-30T05:09:42.787552+00:00"
+        "updated_at": "2026-10-30T06:25:00.806759+00:00"
       },
       {
         "task_id": "V240-SEED-SETUP",
@@ -715,7 +762,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "1d46c7e6ea90d1998ed1156029d5cfc526126ef4",
-        "latest_pushed_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "latest_pushed_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
         "application_source_commit": "5cbd58fbf4048c06ce964c44aa973bff2d5e23e0",
         "completed": [
           "Prefilled each new-game menu with a visible shareable RW Seed",
@@ -774,7 +821,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-30T05:09:42.787552+00:00"
+        "updated_at": "2026-10-30T06:25:00.806759+00:00"
       },
       {
         "task_id": "V240-GAME-FIRST-BUILDINGS",
@@ -785,7 +832,7 @@
         "environment": "Managed Linux; Chromium 154; exact 28-file local Playtest artifact; SwiftShader/cloud environment",
         "branch": "codex/riftwatch-v240-game-first",
         "base_commit": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-        "latest_pushed_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "latest_pushed_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
         "application_source_commit": "fe7a54be7f362327da054c468f27366ac6f3fb2d",
         "completed": [
           "Adopted docs/STRATEGY-V2.4-GAME-FIRST.md as the single active strategy without replacing newer v234 gameplay or evidence",
@@ -839,7 +886,7 @@
         "status": "VERIFIED",
         "quota_status": "QUOTA_PERCENT_UNKNOWN",
         "resume_status": "SCHEDULED_RESUME_EXECUTED",
-        "updated_at": "2026-10-30T05:09:42.787552+00:00"
+        "updated_at": "2026-10-30T06:25:00.806759+00:00"
       },
       {
         "task_id": "V234-CANDIDATE",
@@ -1676,14 +1723,14 @@
   },
   "recovery": {
     "schema_version": 1,
-    "captured_at_utc": "2026-10-30T05:09:42.787552+00:00",
+    "captured_at_utc": "2026-10-30T06:25:00.806759+00:00",
     "trigger": "RECOVERY_RESUME",
-    "collector_commit": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+    "collector_commit": "a3a4ec4c37058effd23800443a295af1572014bb",
     "collector_dirty": false,
     "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
     "remote_query": {
       "status": "REMOTE_QUERIED",
-      "queried_at": "2026-10-30T05:09:42.787552+00:00"
+      "queried_at": "2026-10-30T06:25:00.806759+00:00"
     },
     "remote_heads": {
       "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
@@ -1707,7 +1754,7 @@
       "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
       "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
       "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
-      "codex/riftwatch-progress-feed": "bf5e4fd94a2ca88b3b084e2b883ead4e9ba0d5c4",
+      "codex/riftwatch-progress-feed": "a1f82bd44fc3d4f98996e982152496e0be52d279",
       "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
       "codex/riftwatch-task-ownership": "e4187e5579f8489a5682706b82e8d3b1ffa74422",
       "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
@@ -1739,7 +1786,7 @@
       "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
       "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
       "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
-      "codex/riftwatch-v240-game-first": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+      "codex/riftwatch-v240-game-first": "a3a4ec4c37058effd23800443a295af1572014bb",
       "main": "e35a73329ee7942627496e55b844d02b2501e685",
       "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
       "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
@@ -1769,8 +1816,8 @@
     "local_branches": [
       {
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "1871c00809dbcf064e7b856eab34398d3215ce3a",
-        "remote_head": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "head": "a3a4ec4c37058effd23800443a295af1572014bb",
+        "remote_head": "a3a4ec4c37058effd23800443a295af1572014bb",
         "status": "REMOTE_SAVED"
       }
     ],
@@ -1778,7 +1825,7 @@
       {
         "path": "/workspace/riftwatch-v240-takeover",
         "branch": "codex/riftwatch-v240-game-first",
-        "head": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "head": "a3a4ec4c37058effd23800443a295af1572014bb",
         "locked": false,
         "task_id": "V240-V5-PLAYABILITY",
         "last_validation": [
@@ -1820,7 +1867,7 @@
           "\u4e0d\u5f9e\u5df2\u6230\u6557Easy\uff0fNormal\u5feb\u7167\u5192\u5145\u5b58\u6d3b\u63a5\u7e8c\uff1b\u81ea\u7136NG+\u4ecd\u672a\u6e2c / Do not resume defeated Easy/Normal saves as living runs; natural NG+untested"
         ],
         "remote_status": "REMOTE_SAVED",
-        "remote_head": "1871c00809dbcf064e7b856eab34398d3215ce3a",
+        "remote_head": "a3a4ec4c37058effd23800443a295af1572014bb",
         "unpushed_commits": [],
         "changed_files": [],
         "dirty": false,
@@ -1834,8 +1881,8 @@
           "head",
           "remote_head"
         ],
-        "previous_head": "5303128b924a4eb960e5768b140c1975541db5ee",
-        "actual_head": "1871c00809dbcf064e7b856eab34398d3215ce3a"
+        "previous_head": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
+        "actual_head": "a3a4ec4c37058effd23800443a295af1572014bb"
       }
     ],
     "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved."
