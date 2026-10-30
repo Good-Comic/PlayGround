@@ -49,7 +49,8 @@ def cell(civ,d,state,f):
  face=p['head'] if not back else p['head'].split('<path d="M-7-52')[0]+'<path d="M-8-56L-9-38L0-32L9-38L8-56Z" fill="'+p['metal']+'"/>'
  # 背向使用後腦／護頸，不畫正面五官。 / Back facings use the nape/neck guard rather than front facial features.
  if back:face=f'<g>{p["head"]}</g><path d="M-9-56H9L10-39L0-33L-10-39Z" fill="{p["metal"]}" stroke="{p["trim"]}"/>'
- arms=f'<path d="M-17-34L-20-24L{-20*side} -20M17-34L21-25L{hx} {hy+9}" stroke="{p["metal"]}" stroke-width="6" fill="none" stroke-linecap="round"/>'
+ lx,ly=(hx-4,hy+16) if civ=="BRI" else (-20*side,-20)
+ arms=f'<path d="M-17-34L-20-24L{lx} {ly}M17-34L21-25L{hx} {hy+9}" stroke="{p["metal"]}" stroke-width="6" fill="none" stroke-linecap="round"/>'
  legs=f'<path d="M-7-6L{-8+step} 8M7-6L{8-step} 8" stroke="#5d5b47" stroke-width="6"/><path d="M{-9+step} 8h-5M{9-step} 8h5" stroke="#384b43" stroke-width="3"/>'
  halo=f'<circle cx="{hx}" cy="{hy}" r="{[3,6,10,4][f]}" stroke="#ead59f" stroke-width="1.5" fill="none"/>' if state=='cast' else ''
  return f'<g transform="translate(104 120)"><ellipse cy="5" rx="24" ry="6" fill="#182722" opacity=".28"/><g transform="translate({recoil} {bob}) rotate({fall}) scale({.72+.28*abs(dy):.3f} 1)" opacity="{1-f*.13 if state=="death" else 1}">{mantle}{legs}{weapon if back else ""}<g stroke="{p["trim"]}" stroke-width="1.2" stroke-linejoin="round">{p["body"]}</g>{arms}{shield if not back or civ=="MNG" else ""}<g transform="translate({dx*1.5:.2f} 0)" stroke="{p["trim"]}" stroke-width="1" stroke-linejoin="round">{face}</g>{"" if back else weapon}{halo}</g></g>'
