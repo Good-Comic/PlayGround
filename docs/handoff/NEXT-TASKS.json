@@ -1,35 +1,37 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-30T01:05:39.385784+00:00",
+  "updated_at": "2026-10-30T04:58:54.932090+00:00",
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "VIK 維京英雄獨立輪廓、動畫與技能可讀性 / VIK hero distinct silhouette, animation and skill readability",
+      "name": "接續 FRK 法蘭克英雄獨立視覺 / Continue distinct FRK Frankish hero visuals",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
-      "application_source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
+      "latest_pushed_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+      "application_source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
       "completed": [],
       "uncommitted": [],
       "unpushed": [],
       "tests": [
         {
           "name": "Node",
-          "result": "4 PASS",
-          "path": "docs/evidence/v240-civilization-hero-portrait/focused-node.txt"
+          "result": "20 PASS",
+          "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+          "path": "docs/evidence/v240-vik-hero/focused-node.txt"
         },
         {
           "name": "Chromium",
-          "result": "32 PASS",
-          "path": "docs/evidence/v240-civilization-hero-portrait/verified/browser.json"
+          "result": "16 PASS",
+          "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+          "path": "docs/evidence/v240-vik-hero/verified/browser.json"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-civilization-hero-portrait/REPORT.md"
+        "docs/evidence/v240-vik-hero/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -40,8 +42,8 @@
       ],
       "blockers": [],
       "next_steps": [
-        "VIK 維京英雄獨立輪廓、動畫與技能可讀性",
-        "VIK hero distinct silhouette, animation and skill readability"
+        "接續 FRK 法蘭克英雄獨立視覺",
+        "Continue distinct FRK Frankish hero visuals"
       ],
       "permissions": [
         "Independent development tests normal push",

@@ -40,3 +40,5 @@ English: TEU existing hero now has independent hammer/winged helm/mantle, six ac
 繁體中文：TEU／JPN／AZT 三個文明英雄已有獨立裝備與六種動作的限定驗收，其他文明英雄仍逐步擴充；接續三者的兵器音效。
 
 English: TEU/JPN/AZT heroes now have scoped acceptance for independent kit and six actions; other civilization heroes remain incremental work. Continue differentiated weapon sound for these three.
+
+VIK 英雄：長斧、毛皮肩披、眼罩盔、鬍辮，八方向六狀態192格；原生可選取、移動、戰鬥及雙技能符文標記。20 Node／16 Chromium 限定通過，來源 `c7f8374cb00dd196abc8360e5f960b038ceda611`。 / VIK hero: long axe, fur mantle, spectacle helm and braided beard;192 cells across eight directions/six states, native selection/movement/combat and skill rune feedback. Scoped20 Node/16 Chromium PASS at the stated source.

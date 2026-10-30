@@ -1,0 +1,51 @@
+✔ AZT hero routing isolates other heroes enemies and ordinary guards (2.503331ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (16.097995ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (75.288351ms)
+✔ AZT Mark and Aegis renderer emblems differ without altering other hero feedback (1.964627ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (1.158585ms)
+✔ JPN hero routing isolates other heroes enemies and ordinary guards (1.729872ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (15.450895ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (77.30492ms)
+✔ JPN Mark and Aegis renderer emblems differ without altering other hero feedback (1.411711ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (1.425299ms)
+✔ TEU hero routing isolates other heroes enemies and ordinary guards (1.285234ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (10.791623ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (56.348682ms)
+✔ TEU Mark and Aegis renderer emblems differ without altering other hero feedback (1.576983ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (1.403368ms)
+✖ VIK hero routing isolates other heroes enemies and ordinary guards (2.342172ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (6.146379ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (57.62539ms)
+✔ VIK Mark and Aegis renderer emblems differ without altering other hero feedback (1.639329ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (1.181723ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 782.26285
+
+✖ failing tests:
+
+test at tests/vik-hero-atlas.test.mjs:2:1
+✖ VIK hero routing isolates other heroes enemies and ordinary guards (2.342172ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'VIK:guard'
+  - 'guard'
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/vik-hero-atlas.test.mjs:2:385)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'VIK:guard',
+    expected: 'guard',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

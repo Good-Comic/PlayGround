@@ -1,0 +1,492 @@
+{
+  "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+  "civ": "VIK",
+  "type": "commander",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-30T04:57:36.428525+00:00",
+        "resourceVerification": "SHA256_MATCH_91_FILES"
+      }
+    },
+    {
+      "name": "native Start creates actual playable VIK hero with independent atlas",
+      "pass": true,
+      "detail": {
+        "id": 19,
+        "civ": "VIK",
+        "key": "VIK:commander",
+        "hp": 520,
+        "radius": 0.32
+      }
+    },
+    {
+      "name": "all 192 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": true,
+      "detail": {
+        "width": 3328,
+        "height": 2496,
+        "touchedFrameEdges": 0
+      }
+    },
+    {
+      "name": "native helmet click selects the actual trained actor",
+      "pass": true,
+      "detail": {
+        "point": {
+          "x": 720,
+          "y": 343.4
+        }
+      }
+    },
+    {
+      "name": "native right-click moves the trained actor",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.048698234747487,
+          "y": 33.34956607824913
+        },
+        "seen": {
+          "idle": 211,
+          "walk": 380
+        }
+      }
+    },
+    {
+      "name": "production melee damage and four-frame attack",
+      "pass": true,
+      "detail": {
+        "before": 500,
+        "after": 485.6,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production attack sound dispatch",
+      "pass": true,
+      "detail": [
+        "commander"
+      ]
+    },
+    {
+      "name": "production damage renders hit animation",
+      "pass": true,
+      "detail": {
+        "flash": 1,
+        "seen": {
+          "idle": 211,
+          "walk": 423,
+          "attack": 42,
+          "hit": 6
+        }
+      }
+    },
+    {
+      "name": "native mark retains effect and shows four cast frames with VIK emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          },
+          {
+            "id": "mark",
+            "emblem": "norse"
+          }
+        ],
+        "cooldown": 29.20010000000001,
+        "marked": 5.200099999999994,
+        "shield": 0,
+        "effect": {
+          "time": 2.5667000000000026,
+          "cooldown": 30,
+          "shield": 0,
+          "shieldTime": 0,
+          "marked": 6
+        },
+        "time": 3.3665999999999987
+      }
+    },
+    {
+      "name": "native aegis retains effect and shows four cast frames with VIK emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          },
+          {
+            "id": "aegis",
+            "emblem": "norse"
+          }
+        ],
+        "cooldown": 59.21669999999999,
+        "marked": 4.316799999999984,
+        "shield": 60,
+        "effect": {
+          "time": 3.4665999999999983,
+          "cooldown": 60,
+          "shield": 60,
+          "shieldTime": 5,
+          "marked": 5.100099999999992
+        },
+        "time": 4.249900000000002
+      }
+    },
+    {
+      "name": "production death plays all four frames",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "enemy and other civilization retain shared hero atlas",
+      "pass": true,
+      "detail": {
+        "enemy": "commander",
+        "other": "commander"
+      }
+    },
+    {
+      "name": "asset failure retains renderer fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "100-unit static draw JS budget and <=20% paired median regression",
+      "pass": true,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 2.1599999999627473,
+          "p50": 1.7999999970197678,
+          "p95": 3.3999999910593033
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.327500000037253,
+          "p50": 1,
+          "p95": 3
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.1250000001862646,
+          "p50": 1.0999999940395355,
+          "p95": 1.7000000029802322
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 1.2599999999627471,
+          "p50": 1,
+          "p95": 2.5
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 1.0800000000745058,
+          "p50": 1,
+          "p95": 1.6000000089406967
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.147499999962747,
+          "p50": 1,
+          "p95": 2
+        }
+      ]
+    },
+    {
+      "name": "all192 cropped/full render frames retain identical anchored pixels at unit draw scale",
+      "pass": true,
+      "detail": {
+        "frames": 192,
+        "maxDifference": 0,
+        "differingChannels": 0
+      }
+    },
+    {
+      "name": "no browser or network errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "network": []
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": true
+}
