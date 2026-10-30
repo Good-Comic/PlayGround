@@ -1,36 +1,41 @@
 {
   "task_id": "V240-SPECIAL-ATLAS",
-  "name": "哥德巨劍／毛皮鎖甲／束髮英雄 / Gothic greatsword/fur-mail/topknot hero",
+  "name": "全16文明英雄與Boss倒數回饋 / All16 heroes and Boss countdown feedback",
   "requirement_source": "Latest explicit GAME FIRST content directive; existing civilization matrix/GDD",
   "priority": "P1",
   "agent": "Codex",
   "environment": "Managed Linux Chromium; resumed workspace; software rendering, no shared live/hardware claim",
   "branch": "codex/riftwatch-v240-game-first",
   "base_commit": "417d54fb90ec1678e45b1eac15c86147c8c91652",
-  "latest_pushed_commit": "5ff70ccc99555b1c22e6ecbf47a6386de0f4ef10",
-  "application_source_commit": "5ff70ccc99555b1c22e6ecbf47a6386de0f4ef10",
+  "latest_pushed_commit": "e4644e80d2537f157fd0a60163449040f6a6f238",
+  "application_source_commit": "e4644e80d2537f157fd0a60163449040f6a6f238",
   "completed": [
-    "哥德巨劍／毛皮鎖甲／束髮英雄",
-    "Gothic greatsword/fur-mail/topknot hero"
+    "剩餘七英雄與兵器音效，全部16文明功能整合；三項性能條件保留",
+    "Seven remaining heroes/cues, all16 functional integration; three performance conditions retained",
+    "Boss倒數與原生閃避驗收 / Boss countdown and native dodge acceptance"
   ],
   "uncommitted": [],
   "unpushed": [],
   "tests": [
     {
-      "name": "Node",
-      "result": "12 PASS",
-      "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
-      "path": "docs/evidence/v240-got-hero/focused-node.txt"
+      "name": "all16 integration Node",
+      "result": "11+9 PASS",
+      "source_commit": "5ff70ccc99555b1c22e6ecbf47a6386de0f4ef10"
     },
     {
-      "name": "Chromium",
-      "result": "17 PASS",
-      "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
-      "path": "docs/evidence/v240-got-hero/verified/browser.json"
+      "name": "all16 native Chromium",
+      "result": "66 PASS",
+      "source_commit": "5ff70ccc99555b1c22e6ecbf47a6386de0f4ef10"
+    },
+    {
+      "name": "Boss countdown",
+      "result": "4 Node /8 Chromium PASS",
+      "source_commit": "e4644e80d2537f157fd0a60163449040f6a6f238"
     }
   ],
   "evidence": [
-    "docs/evidence/v240-got-hero/REPORT.md"
+    "docs/evidence/v240-all-heroes-integration/REPORT.md",
+    "docs/evidence/v240-boss-countdown/REPORT.md"
   ],
   "failures": [
     "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -43,8 +48,8 @@
     "HARDWARE_TEST_PENDING; CROSS_THREAD_HANDOFF_UNAVAILABLE; public deployment not authorized"
   ],
   "next_steps": [
-    "Boss預警倒數可讀性，保留既有規則",
-    "Boss warning countdown readability with unchanged rules"
+    "Mark／Aegis獨立技能音效，保留現有規則與RNG隔離",
+    "Distinct Mark/Aegis skill audio with existing rules/RNG isolation"
   ],
   "permissions": [
     "Independent development tests normal push",
@@ -52,7 +57,7 @@
   ],
   "status": "IN_PROGRESS",
   "quota_status": "QUOTA_PERCENT_UNKNOWN",
-  "updated_at": "2026-10-30T07:49:22.817075+00:00",
+  "updated_at": "2026-10-30T08:05:11.756217+00:00",
   "cross_thread_handoff": "CROSS_THREAD_HANDOFF_UNAVAILABLE; HANDOFF_PERSISTED_DELIVERY_PENDING",
   "ownership_at_snapshot": {
     "task": "V240-SPECIAL-ATLAS",
@@ -141,6 +146,13 @@
       "chromium": 17,
       "audio_chromium": 7,
       "report": "docs/evidence/v240-mag-hero/REPORT.md"
+    },
+    {
+      "slice": "v240-boss-countdown",
+      "source": "e4644e80d2537f157fd0a60163449040f6a6f238",
+      "node": 4,
+      "chromium": 8,
+      "report": "docs/evidence/v240-boss-countdown/REPORT.md"
     }
   ],
   "continuity_policy": {
@@ -154,7 +166,7 @@
   },
   "continuation_event": {
     "STOP_REASON": "NOT_STOPPED",
-    "NEXT_AUTHORIZED_TASK": "16-hero native integration and Boss telegraph readability with unchanged rules"
+    "NEXT_AUTHORIZED_TASK": "Distinct Mark/Aegis skill audio with existing rules/RNG isolation"
   },
   "scheduler_policy_manifest": "docs/automation/scheduler-status.json",
   "hourly_supervision_policy": {
@@ -366,6 +378,16 @@
   ],
   "current_session_reviews": [
     {
+      "name": "all16 native integration",
+      "source": "5ff70ccc99555b1c22e6ecbf47a6386de0f4ef10",
+      "node": 20,
+      "chromium": 66,
+      "status": "FUNCTIONAL_PASS_PERFORMANCE_CONDITIONS_RETAINED",
+      "report": "docs/evidence/v240-all-heroes-integration/REPORT.md"
+    }
+  ],
+  "prior_session_reviews": [
+    {
       "name": "SAR100 guard relative performance",
       "status": "INCONCLUSIVE",
       "source": "255f32dee9b0eb07815e2fd7c1d29837eb3407a4",
@@ -384,14 +406,6 @@
       "source": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
       "chromium": 22,
       "report": "docs/evidence/v240-atlas-native-memory/REPORT.md"
-    },
-    {
-      "name": "all16 native integration",
-      "source": "5ff70ccc99555b1c22e6ecbf47a6386de0f4ef10",
-      "node": 20,
-      "chromium": 66,
-      "status": "FUNCTIONAL_PASS_PERFORMANCE_CONDITIONS_RETAINED",
-      "report": "docs/evidence/v240-all-heroes-integration/REPORT.md"
     }
   ]
 }

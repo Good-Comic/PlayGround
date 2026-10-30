@@ -4,34 +4,38 @@
   "tasks": [
     {
       "task_id": "V240-CONTENT-CONTINUATION",
-      "name": "接續 16-hero native integration and Boss telegraph readability with unchanged rules / Continue 16-hero native integration and Boss telegraph readability with unchanged rules",
+      "name": "Mark／Aegis獨立技能音效，保留現有規則與RNG隔離 / Distinct Mark/Aegis skill audio with existing rules/RNG isolation",
       "requirement_source": "Latest Continuous Milestone Execution v2.4.0 and approved conservative rules",
       "priority": "P1",
       "agent": "Codex",
       "environment": "New independent Linux Chromium workspace; local software rendering",
       "branch": "codex/riftwatch-v240-game-first",
       "base_commit": "463c9d863b45af5be1e934499a61634921e19d65",
-      "latest_pushed_commit": "a6d44602c2fe49937b46eeb70be893673ff2e53d",
-      "application_source_commit": "a6d44602c2fe49937b46eeb70be893673ff2e53d",
+      "latest_pushed_commit": "e4644e80d2537f157fd0a60163449040f6a6f238",
+      "application_source_commit": "e4644e80d2537f157fd0a60163449040f6a6f238",
       "completed": [],
       "uncommitted": [],
       "unpushed": [],
       "tests": [
         {
-          "name": "Node",
-          "result": "12 PASS",
-          "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
-          "path": "docs/evidence/v240-got-hero/focused-node.txt"
+          "name": "all16 integration Node",
+          "result": "11+9 PASS",
+          "source_commit": "5ff70ccc99555b1c22e6ecbf47a6386de0f4ef10"
         },
         {
-          "name": "Chromium",
-          "result": "17 PASS",
-          "source_commit": "32f5e7f226ab4b323f9db5dc1ef5ca3fbe4f856a",
-          "path": "docs/evidence/v240-got-hero/verified/browser.json"
+          "name": "all16 native Chromium",
+          "result": "66 PASS",
+          "source_commit": "5ff70ccc99555b1c22e6ecbf47a6386de0f4ef10"
+        },
+        {
+          "name": "Boss countdown",
+          "result": "4 Node /8 Chromium PASS",
+          "source_commit": "e4644e80d2537f157fd0a60163449040f6a6f238"
         }
       ],
       "evidence": [
-        "docs/evidence/v240-mag-hero/REPORT.md"
+        "docs/evidence/v240-all-heroes-integration/REPORT.md",
+        "docs/evidence/v240-boss-countdown/REPORT.md"
       ],
       "failures": [
         "V5.4第四波戰敗，食物2.17／木材740.76／黃金227.22；非 Normal 不可能通關證據 / V5.4 defeat4, food2.17/wood740.76/gold227.22; not proof Normal impossible",
@@ -42,8 +46,8 @@
       ],
       "blockers": [],
       "next_steps": [
-        "接續 16-hero native integration and Boss telegraph readability with unchanged rules",
-        "Continue 16-hero native integration and Boss telegraph readability with unchanged rules"
+        "Mark／Aegis獨立技能音效，保留現有規則與RNG隔離",
+        "Distinct Mark/Aegis skill audio with existing rules/RNG isolation"
       ],
       "permissions": [
         "Independent development tests normal push",
