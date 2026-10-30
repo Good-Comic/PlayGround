@@ -7,10 +7,10 @@ def cell(d,state,f):
     dx,dy=math.cos(d*math.pi/4),math.sin(d*math.pi/4);back=dy<-.3;side=1 if dx>=0 else -1
     step=[-4,0,4,0][f] if state=='walk' else 0
     bob=[0,-1.5,0,1][f] if state in ['idle','walk'] else 0
-    swing=[-12,-48,42,4][f] if state=='attack' else [0,-12,-18,0][f] if state=='cast' else -12
+    swing=[-12,-48,42,4][f] if state=='attack' else [0,-12,-18,0][f] if state=='cast' else 6
     fall=[0,22,52,82][f] if state=='death' else 0
     recoil=[-2,-4,-1,0][f] if state=='hit' else 0
-    handx=12*side;handy=-37-([0,8,13,3][f] if state=='cast' else 0)
+    handx=22*side;handy=-37-([0,8,13,3][f] if state=='cast' else 0)
     hammer=f'''<g transform="translate({handx} {handy}) rotate({swing*side}) scale({side} 1)"><path d="M-4-4L-6-43L0-59L6-43L5-5L2 0H-2Z" fill="#a6b3aa" stroke="#e0d8b1" stroke-width="1.5"/><path d="M-5-39L-9-35L-5-32L-9-28L-5-25L-9-21L-5-18" fill="#879a92" stroke="#e0d8b1" stroke-width="1.2"/><path d="M0-52V-6" stroke="#536d6d" stroke-width="1.5"/><path d="M-12 0L-9-4L0-1L9-4L12 0" fill="none" stroke="#c8ae75" stroke-width="3"/><path d="M0 2V19" stroke="#5e4434" stroke-width="5"/><path d="M-3 6H3M-3 10H3M-3 14H3" stroke="#bc9d6b"/><circle cy="21" r="3" fill="#b7b596"/></g>'''
     lily='<path d="M0-16L6-10L0-4L-6-10Z" fill="#bda36b" stroke="#e6d5a2"/><path d="M0-14V-6M-4-10H4" stroke="#6b7558"/>'
     cloak='<path d="M-20-43L-31-2L-22 1L-19 8L-10 2L-3 7L4 2L12 7L20 2L29 5L31-3L20-43Z" fill="#685a47" stroke="#a99672" stroke-width="1.5"/><path d="M-23-29L-24-1M22-30L24-1" stroke="#91816a"/>'

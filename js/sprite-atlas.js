@@ -98,7 +98,7 @@ export const CIV_UNIT_SPRITE_ATLASES = Object.freeze({
     pickBody: Object.freeze({ x: 0, y: -36, rx: 31, ry: 47 }),
     id: 'got-hero-v1', src: 'assets/sprites/got-hero-atlas.png', bakedPose: true, cacheFrames: true,
     frame: Object.freeze({ width: 208, height: 208 }), anchor: Object.freeze({ x: 104, y: 120 }), directionsPerRow: 4,
-    offset: Object.freeze({ x: 0, y: 0 }), scale: .82, directions: DIRECTION_MAP, healthBarHeight: 82,
+    offset: Object.freeze({ x: 0, y: 0 }), scale: .82, directions: DIRECTION_MAP, healthBarHeight: 104,
     heroEmblem: 'gothic', frameCrops: GOT_HERO_CROPS, states: UNIT_SPRITE_ATLASES.commander.states,
   }),
   'CHN:commander': Object.freeze({
