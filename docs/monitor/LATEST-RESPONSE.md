@@ -1,3 +1,3 @@
-繁體中文：BRI英雄實際操作與音效驗收，15/16，接續MAG hero。定向 Node 12／真實 Chromium 17 通過，圖片已人工檢視；未改平衡或公開部署。
+繁體中文：MAG英雄實際操作與音效驗收，16/16，接續16-hero native integration and Boss telegraph readability with unchanged rules。定向 Node 12／真實 Chromium功能通過／性能INCONCLUSIVE，圖片已人工檢視；未改平衡或公開部署。
 
-English: BRI hero gameplay/audio accepted,15/16; continuing MAG hero. 12 focused Node/17 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.
+English: MAG hero gameplay/audio accepted,16/16; continuing 16-hero native integration and Boss telegraph readability with unchanged rules. 12 focused Node/functional Chromium checks pass; raw relative performance FAIL retained asINCONCLUSIVE and representative images were reviewed; no balance changes or public deployment.
