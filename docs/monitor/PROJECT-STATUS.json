@@ -2,40 +2,40 @@
   "schema_version": 1,
   "capability": "GITHUB_PROGRESS_SYNC_READY",
   "channel": "GitHub atomic snapshots; LIVE_CODEX_STREAM_VERIFIED is NOT claimed",
-  "updated_at": "2026-10-30T04:57:48.763190+00:00",
+  "updated_at": "2026-10-30T05:00:36.366023+00:00",
   "latest_event": {
     "task_id": "V240-SPECIAL-ATLAS",
     "agent": "Codex",
     "severity": "PROGRESS",
     "branch": "codex/riftwatch-v240-game-first",
-    "commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
-    "build_sha": "296772b1709df5370c58c36e9ea3aee83c0bc446",
-    "summary": "\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4 / Civilization hero portraits match world appearance",
+    "commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+    "build_sha": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+    "summary": "\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408 / Viking long-axe hero and rune feedback integrated into gameplay",
     "code_changes": [
-      "\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4",
-      "Civilization hero portraits match world appearance"
+      "\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408",
+      "Viking long-axe hero and rune feedback integrated into gameplay"
     ],
     "next_steps": [
-      "\u5df2\u63a5\u7e8c VIK \u82f1\u96c4\u958b\u767c\u3002 / VIK hero development has begun."
+      "\u5df2\u63a5\u7e8c FRK \u82f1\u96c4\u3002 / FRK hero work has begun."
     ],
     "requires_user_decision": false,
     "tests": [
       {
-        "name": "4 focused Node PASS",
+        "name": "20 focused Node PASS",
         "status": "PASS",
-        "source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
-        "evidence": "docs/evidence/v240-civilization-hero-portrait/focused-node.txt",
-        "evidence_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
-        "evidence_blob": "55e3b4529698b7413a72d9a418cf4e5a2e612412",
+        "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+        "evidence": "docs/evidence/v240-vik-hero/focused-node.txt",
+        "evidence_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+        "evidence_blob": "ff81b57e710d3f71babd982e23fa038012c2cad1",
         "evidence_status": "GIT_BLOB_VERIFIED"
       },
       {
-        "name": "32 actual Chromium PASS",
+        "name": "16 actual Chromium PASS",
         "status": "PASS",
-        "source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
-        "evidence": "docs/evidence/v240-civilization-hero-portrait/verified/browser.json",
-        "evidence_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
-        "evidence_blob": "7405c0a1613d3ae403305ba06194a431b233cab7",
+        "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+        "evidence": "docs/evidence/v240-vik-hero/verified/browser.json",
+        "evidence_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+        "evidence_blob": "07c8ec346e59556cbdd0676756b155c26502a733",
         "evidence_status": "GIT_BLOB_VERIFIED"
       }
     ],
@@ -43,17 +43,17 @@
       {
         "id": "HISTORICAL-GAPS",
         "severity": "WARNING",
-        "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
-        "source_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
+        "summary": "\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
+        "source_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
         "requires_user_decision": false
       }
     ],
-    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4\u3002\u5b9a\u5411 Node 4\uff0f\u771f\u5be6 Chromium 32 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Civilization hero portraits match world appearance. 4 focused Node/32 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-    "event_id": "66495c1bdb50c906dad5271e3f1dedf4704e0c18c442e913cabc31c3e0f724d5",
-    "remote_head": "15c863bb9e3f2f7b817da81810f03464c4169565",
+    "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408\u3002\u5b9a\u5411 Node 20\uff0f\u771f\u5be6 Chromium 16 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Viking long-axe hero and rune feedback integrated into gameplay. 20 focused Node/16 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+    "event_id": "84f3547c6e79a4b7cdc34c875c141d2d1d03704d2bc1b0fa521a6ca03ca3edb2",
+    "remote_head": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
     "pushed": true,
     "remote_query": "VERIFIED",
-    "recorded_at": "2026-10-30T04:57:48.763190+00:00",
+    "recorded_at": "2026-10-30T05:00:36.366023+00:00",
     "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
   },
   "workstreams": {
@@ -3006,34 +3006,34 @@
       "agent": "Codex",
       "severity": "PROGRESS",
       "branch": "codex/riftwatch-v240-game-first",
-      "commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
-      "build_sha": "296772b1709df5370c58c36e9ea3aee83c0bc446",
-      "summary": "\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4 / Civilization hero portraits match world appearance",
+      "commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+      "build_sha": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+      "summary": "\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408 / Viking long-axe hero and rune feedback integrated into gameplay",
       "code_changes": [
-        "\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4",
-        "Civilization hero portraits match world appearance"
+        "\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408",
+        "Viking long-axe hero and rune feedback integrated into gameplay"
       ],
       "next_steps": [
-        "\u5df2\u63a5\u7e8c VIK \u82f1\u96c4\u958b\u767c\u3002 / VIK hero development has begun."
+        "\u5df2\u63a5\u7e8c FRK \u82f1\u96c4\u3002 / FRK hero work has begun."
       ],
       "requires_user_decision": false,
       "tests": [
         {
-          "name": "4 focused Node PASS",
+          "name": "20 focused Node PASS",
           "status": "PASS",
-          "source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
-          "evidence": "docs/evidence/v240-civilization-hero-portrait/focused-node.txt",
-          "evidence_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
-          "evidence_blob": "55e3b4529698b7413a72d9a418cf4e5a2e612412",
+          "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+          "evidence": "docs/evidence/v240-vik-hero/focused-node.txt",
+          "evidence_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+          "evidence_blob": "ff81b57e710d3f71babd982e23fa038012c2cad1",
           "evidence_status": "GIT_BLOB_VERIFIED"
         },
         {
-          "name": "32 actual Chromium PASS",
+          "name": "16 actual Chromium PASS",
           "status": "PASS",
-          "source_commit": "296772b1709df5370c58c36e9ea3aee83c0bc446",
-          "evidence": "docs/evidence/v240-civilization-hero-portrait/verified/browser.json",
-          "evidence_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
-          "evidence_blob": "7405c0a1613d3ae403305ba06194a431b233cab7",
+          "source_commit": "c7f8374cb00dd196abc8360e5f960b038ceda611",
+          "evidence": "docs/evidence/v240-vik-hero/verified/browser.json",
+          "evidence_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
+          "evidence_blob": "07c8ec346e59556cbdd0676756b155c26502a733",
           "evidence_status": "GIT_BLOB_VERIFIED"
         }
       ],
@@ -3041,17 +3041,17 @@
         {
           "id": "HISTORICAL-GAPS",
           "severity": "WARNING",
-          "summary": "\u6b77\u53f2\u81ea\u7136\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
-          "source_commit": "15c863bb9e3f2f7b817da81810f03464c4169565",
+          "summary": "\u6b77\u53f2\u6230\u5f79\u3001\u6642\u9418\u3001\u56b4\u683c\u5b58\u8b80\u3001\u6027\u80fd\u8207\u786c\u9ad4\u7f3a\u53e3\u4fdd\u7559\u3002 / Historical campaign, clock, strict-save, performance and hardware gaps remain.",
+          "source_commit": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
           "requires_user_decision": false
         }
       ],
-      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u6587\u660e\u82f1\u96c4\u8096\u50cf\u8207\u4e16\u754c\u5916\u89c0\u4e00\u81f4\u3002\u5b9a\u5411 Node 4\uff0f\u771f\u5be6 Chromium 32 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Civilization hero portraits match world appearance. 4 focused Node/32 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
-      "event_id": "66495c1bdb50c906dad5271e3f1dedf4704e0c18c442e913cabc31c3e0f724d5",
-      "remote_head": "15c863bb9e3f2f7b817da81810f03464c4169565",
+      "response": "\u7e41\u9ad4\u4e2d\u6587\uff1a\u7dad\u4eac\u82f1\u96c4\u9577\u65a7\u8207\u7b26\u6587\u6280\u80fd\u5df2\u5be6\u969b\u6574\u5408\u3002\u5b9a\u5411 Node 20\uff0f\u771f\u5be6 Chromium 16 \u901a\u904e\uff0c\u5716\u7247\u5df2\u4eba\u5de5\u6aa2\u8996\uff1b\u672a\u6539\u5e73\u8861\u6216\u516c\u958b\u90e8\u7f72\u3002\n\nEnglish: Viking long-axe hero and rune feedback integrated into gameplay. 20 focused Node/16 actual Chromium checks passed and representative images were reviewed; no balance changes or public deployment.",
+      "event_id": "84f3547c6e79a4b7cdc34c875c141d2d1d03704d2bc1b0fa521a6ca03ca3edb2",
+      "remote_head": "2e57ab1c7d05e6beeefa98fd04661158a913647a",
       "pushed": true,
       "remote_query": "VERIFIED",
-      "recorded_at": "2026-10-30T04:57:48.763190+00:00",
+      "recorded_at": "2026-10-30T05:00:36.366023+00:00",
       "confidence": "AGENT_REPORTED_TEST_RESULTS_WITH_GIT_PROVENANCE"
     },
     "V240-PRIMARY-MIGRATION": {
