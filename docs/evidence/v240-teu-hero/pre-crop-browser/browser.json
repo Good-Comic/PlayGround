@@ -1,0 +1,480 @@
+{
+  "source_commit": "aba531bad5330b337394e520539b99c0660b78e2",
+  "civ": "TEU",
+  "type": "commander",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "aba531bad5330b337394e520539b99c0660b78e2",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-30T00:34:17.732264+00:00",
+        "resourceVerification": "SHA256_MATCH_81_FILES"
+      }
+    },
+    {
+      "name": "native Start creates actual playable TEU hero with independent atlas",
+      "pass": true,
+      "detail": {
+        "id": 19,
+        "civ": "TEU",
+        "key": "TEU:commander",
+        "hp": 520,
+        "radius": 0.32
+      }
+    },
+    {
+      "name": "all 192 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": true,
+      "detail": {
+        "width": 3328,
+        "height": 2496,
+        "touchedFrameEdges": 0
+      }
+    },
+    {
+      "name": "native helmet click selects the actual trained actor",
+      "pass": true,
+      "detail": {
+        "point": {
+          "x": 720,
+          "y": 343.4
+        }
+      }
+    },
+    {
+      "name": "native right-click moves the trained actor",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 29.967656964011518,
+          "y": 33.32255232133715
+        },
+        "seen": {
+          "idle": 223,
+          "walk": 393
+        }
+      }
+    },
+    {
+      "name": "production melee damage and four-frame attack",
+      "pass": true,
+      "detail": {
+        "before": 500,
+        "after": 485.6,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production attack sound dispatch",
+      "pass": true,
+      "detail": [
+        "commander"
+      ]
+    },
+    {
+      "name": "production damage renders hit animation",
+      "pass": true,
+      "detail": {
+        "flash": 1,
+        "seen": {
+          "idle": 223,
+          "walk": 424,
+          "attack": 61,
+          "hit": 6
+        }
+      }
+    },
+    {
+      "name": "native mark retains effect and shows four cast frames with TEU emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          }
+        ],
+        "cooldown": 29.250100000000007,
+        "marked": 5.250099999999994,
+        "shield": 0,
+        "effect": {
+          "time": 2.566500000000002,
+          "cooldown": 30,
+          "shield": 0,
+          "shieldTime": 0,
+          "marked": 6
+        },
+        "time": 3.3163999999999976
+      }
+    },
+    {
+      "name": "native aegis retains effect and shows four cast frames with TEU emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          }
+        ],
+        "cooldown": 58.900100000000066,
+        "marked": 4.033499999999986,
+        "shield": 60,
+        "effect": {
+          "time": 3.4330999999999987,
+          "cooldown": 60,
+          "shield": 60,
+          "shieldTime": 5,
+          "marked": 5.133399999999994
+        },
+        "time": 4.533000000000003
+      }
+    },
+    {
+      "name": "production death plays all four frames",
+      "pass": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "enemy and other civilization retain shared hero atlas",
+      "pass": true,
+      "detail": {
+        "enemy": "commander",
+        "other": "commander"
+      }
+    },
+    {
+      "name": "asset failure retains renderer fallback",
+      "pass": true,
+      "detail": {
+        "used": false
+      }
+    },
+    {
+      "name": "100-unit static draw JS budget and <=20% paired median regression",
+      "pass": false,
+      "detail": [
+        {
+          "repeat": 0,
+          "mode": "baseline",
+          "mean": 1.2625000000931323,
+          "p50": 1.1999999955296516,
+          "p95": 2.100000001490116
+        },
+        {
+          "repeat": 0,
+          "mode": "atlas",
+          "mean": 1.7475000000558794,
+          "p50": 1.1000000014901161,
+          "p95": 4.399999998509884
+        },
+        {
+          "repeat": 1,
+          "mode": "atlas",
+          "mean": 1.7,
+          "p50": 1.6000000014901161,
+          "p95": 3.5
+        },
+        {
+          "repeat": 1,
+          "mode": "baseline",
+          "mean": 1.3162500000558794,
+          "p50": 1.0999999940395355,
+          "p95": 2.7999999970197678
+        },
+        {
+          "repeat": 2,
+          "mode": "baseline",
+          "mean": 1.3312499999068677,
+          "p50": 1.2000000029802322,
+          "p95": 2.399999998509884
+        },
+        {
+          "repeat": 2,
+          "mode": "atlas",
+          "mean": 1.3762499999254942,
+          "p50": 1.1000000014901161,
+          "p95": 2.5
+        }
+      ]
+    },
+    {
+      "name": "execution",
+      "pass": false,
+      "detail": {
+        "message": "100-unit static draw JS budget and <=20% paired median regression",
+        "stack": "Error: 100-unit static draw JS budget and <=20% paired median regression\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/v240_teu_hero_browser.mjs:6:88)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/v240_teu_hero_browser.mjs:30:921",
+        "state": {
+          "actor": {
+            "id": 19,
+            "state": "idle",
+            "hp": 519
+          },
+          "seen": {
+            "idle": 267,
+            "walk": 424,
+            "attack": 61,
+            "hit": 60,
+            "cast": 51,
+            "death": 90
+          },
+          "frames": {
+            "attack": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "death": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": false
+}

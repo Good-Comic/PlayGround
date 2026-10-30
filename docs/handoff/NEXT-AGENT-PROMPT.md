@@ -1,3 +1,13 @@
+# 最新文明英雄 / Latest civilization hero
+
+繁體中文：條頓戰鎚／翼冠／白披風英雄；來源 `e5ccf8d1042aefed8cbd240045b3995c6ae86341`；8 Node／16 Chromium 限定通過。接續 JPN 日本文明英雄雙手刀與背旗外觀，保存後直接繼續；歷史 FAIL 保留。
+
+English: Teutonic hammer/winged-helm/white-mantle hero; source `e5ccf8d1042aefed8cbd240045b3995c6ae86341`; 8 Node/16 Chromium scoped PASS. Continue JPN Japanese hero two-handed sword and back-banner appearance; continue after saving. Historical FAIL remains.
+
+Report: docs/evidence/v240-teu-hero/REPORT.md
+
+---
+
 # 本輪安全保存 / Turn safety checkpoint
 
 繁體中文：十三個連續遊戲切片已驗收並遠端保存，最後遊戲來源 `4e6d62ece169a34d98f8b9beced063172daba02b`，含證據的安全 Checkpoint `01c2b60e633d1ddce0cca74dbedb73a234a987f5`。本輪狀態 PAUSED_EXECUTION_BUDGET，沒有將 GAME FIRST 全部任務宣告完成；下一項為 TEU 文明英雄裝備與既有技能視覺。停止原因是模型單輪執行預算邊界的 Agent 自報，非平台強制限制／固定分鐘時限／正式額度拒絕。時間只量測首個內容 Commit 至停止準備，實際起始時間未知。排程可用性仍未驗證，未研究／修改排程。所有歷史 FAIL 保留，未公開部署。

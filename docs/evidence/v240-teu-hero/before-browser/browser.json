@@ -1,0 +1,369 @@
+{
+  "source_commit": "83bbf9d49cd2503d130a9f387fc220934a36c71a",
+  "civ": "TEU",
+  "type": "commander",
+  "mode": "CONTROLLED_FIXTURE_NATIVE_TRAINING_INPUT_COMBAT_NOT_NATURAL_CAMPAIGN",
+  "checks": [
+    {
+      "name": "exact committed payload identity",
+      "pass": true,
+      "detail": {
+        "id": "riftwatch-playtest-v1",
+        "commit": "83bbf9d49cd2503d130a9f387fc220934a36c71a",
+        "status": "PLAYTEST-EXPERIMENTAL",
+        "builtAt": "2026-10-30T00:32:21.553617+00:00",
+        "resourceVerification": "SHA256_MATCH_81_FILES"
+      }
+    },
+    {
+      "name": "native Start creates actual playable TEU hero with independent atlas",
+      "pass": true,
+      "detail": {
+        "id": 19,
+        "civ": "TEU",
+        "key": "TEU:commander",
+        "hp": 520,
+        "radius": 0.32
+      }
+    },
+    {
+      "name": "all 192 decoded frame edges stay transparent without adjacent-frame bleed",
+      "pass": true,
+      "detail": {
+        "width": 3328,
+        "height": 2496,
+        "touchedFrameEdges": 0
+      }
+    },
+    {
+      "name": "native helmet click selects the actual trained actor",
+      "pass": true,
+      "detail": {
+        "point": {
+          "x": 720,
+          "y": 343.4
+        }
+      }
+    },
+    {
+      "name": "native right-click moves the trained actor",
+      "pass": true,
+      "detail": {
+        "start": {
+          "x": 29,
+          "y": 33
+        },
+        "end": {
+          "x": 30.008298556500005,
+          "y": 33.336099518833336
+        },
+        "seen": {
+          "idle": 208,
+          "walk": 344
+        }
+      }
+    },
+    {
+      "name": "production melee damage and four-frame attack",
+      "pass": true,
+      "detail": {
+        "before": 500,
+        "after": 485.6,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "production attack sound dispatch",
+      "pass": true,
+      "detail": [
+        "commander"
+      ]
+    },
+    {
+      "name": "production damage renders hit animation",
+      "pass": true,
+      "detail": {
+        "flash": 1,
+        "seen": {
+          "idle": 208,
+          "walk": 385,
+          "attack": 46,
+          "hit": 6
+        }
+      }
+    },
+    {
+      "name": "native mark retains effect and shows four cast frames with TEU emblem",
+      "pass": true,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "mark",
+            "emblem": "teutonic"
+          }
+        ],
+        "cooldown": 29.233399999999993,
+        "marked": 5.233399999999992,
+        "shield": 0
+      }
+    },
+    {
+      "name": "native aegis retains effect and shows four cast frames with TEU emblem",
+      "pass": false,
+      "detail": {
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "emblems": [
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          },
+          {
+            "id": "aegis",
+            "emblem": "teutonic"
+          }
+        ],
+        "cooldown": 58.96670000000001,
+        "marked": 4.100199999999985,
+        "shield": 60
+      }
+    },
+    {
+      "name": "execution",
+      "pass": false,
+      "detail": {
+        "message": "native aegis retains effect and shows four cast frames with TEU emblem",
+        "stack": "Error: native aegis retains effect and shows four cast frames with TEU emblem\n    at check (file:///workspace/riftwatch-v240-takeover/tools/qa/v240_teu_hero_browser.mjs:6:88)\n    at file:///workspace/riftwatch-v240-takeover/tools/qa/v240_teu_hero_browser.mjs:25:500",
+        "state": {
+          "actor": {
+            "id": 19,
+            "state": "idle",
+            "hp": 519
+          },
+          "seen": {
+            "idle": 249,
+            "walk": 385,
+            "attack": 46,
+            "hit": 63,
+            "cast": 49
+          },
+          "frames": {
+            "attack": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "death": []
+          }
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "pass": false
+}

@@ -1,0 +1,59 @@
+✔ hero support and bosses use independent complete decoded PNG sheets (8.192053ms)
+✖ champion frame cache reuses cropped pixels and stays bounded across action/direction changes (1.188971ms)
+✔ production renderer does not mirror or rotate an already-baked champion pose twice; fallback keeps transforms (1.283349ms)
+✔ TEU hero routing isolates other heroes enemies and ordinary guards (0.880305ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (4.979119ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (69.214572ms)
+✔ TEU Mark and Aegis renderer emblems differ without altering other hero feedback (2.184181ms)
+✖ offline alpha crops stay within every cell and cached draw preserves original ground anchor (5.032032ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 6
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 423.479176
+
+✖ failing tests:
+
+test at tests/champion-atlas.test.mjs:29:1
+✖ champion frame cache reuses cropped pixels and stays bounded across action/direction changes (1.188971ms)
+  TypeError: Cannot read properties of undefined (reading 'frameCrops')
+      at Renderer.spriteFrameImage (file:///workspace/riftwatch-v240-takeover/js/renderer.js:1483:35)
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/champion-atlas.test.mjs:32:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/teu-hero-atlas.test.mjs:6:1
+✖ offline alpha crops stay within every cell and cached draw preserves original ground anchor (5.032032ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      269,
+      216,
+  +   61.99999999999999,
+  +   95.99999999999999
+  -   62,
+  -   96
+    ]
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-v240-takeover/tests/teu-hero-atlas.test.mjs:6:927)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 269, 216, 61.99999999999999, 95.99999999999999 ],
+    expected: [ 269, 216, 62, 96 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

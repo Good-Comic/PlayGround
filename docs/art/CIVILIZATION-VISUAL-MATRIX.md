@@ -7,7 +7,7 @@ English: This records actual progress against the existing sixteen civilizations
 | 文明 / Civ | 家族 / Family | 獨立切片現況 / Independent slice status |
 |---|---|---|
 | MNG | 草原 / Steppe | 騎射 Atlas 已驗收 / Mounted-archer atlas accepted; v240-mng-horse-archer |
-| TEU | 堡壘 / Fortress | 厚板甲長盾 guard 已驗收 / Plate/tower-shield guard accepted; v240-teu-guard |
+| TEU | 堡壘 / Fortress | 厚板甲長盾 guard 已驗收 / Plate/tower-shield guard accepted; v240-teu-guard；戰鎚翼冠英雄限定驗收 / hammer/winged-helm hero scoped acceptance; v240-teu-hero |
 | GOT | 堡壘 / Fortress | 鎖子甲毛領長盾民兵已驗收 / Mail/fur-collar/oval-shield militia accepted; v240-got-militia |
 | FRK | 堡壘 / Fortress | 披掛／長盾／騎槍輕騎已驗收 / Caparison/shield/lance light-cavalry atlas accepted; v240-frk-cavalry |
 | SAR | 沙漠 / Desert | 纏巾鎖甲彎刀盾衛已驗收 / Turban/mail/curved-blade guard accepted; v240-sar-guard |
@@ -32,3 +32,7 @@ BILINGUAL_DOCUMENTATION_REQUIRED = true
 繁體中文：十六文明目前各有至少一項表中代表性切片；這不代表所有兵種、建築、文明英雄或動畫品質全面完成。接續先處理隨大型圖集增長的載入／解碼負擔，再擴充玩法與文明英雄。
 
 English: All sixteen civilizations now have at least one representative slice listed here; this does not establish complete unit/building/civilization-hero or animation-quality coverage. Next address loading/decode footprint as large atlases grow, then expand gameplay and civilization heroes.
+
+繁體中文：TEU 既有英雄已新增獨立戰鎚／翼冠／披風與六種動作及技能徽記；接續 JPN 文明英雄，不重做原有 JPN 盾衛或格擋。
+
+English: TEU existing hero now has independent hammer/winged helm/mantle, six actions and skill emblems. Continue JPN civilization hero without remaking its guard/block feature.
