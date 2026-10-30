@@ -1,0 +1,1839 @@
+{
+  "source_commit": "0bd29b4c59c2a6acbca47fd029bbbeea22932666",
+  "mode": "NATIVE_CONTINUE_EXISTING_DISK_SAVE_AND_NINE_START_QUIT_CYCLES_NO_STATE_INJECTION",
+  "pressureDiagnostic": {
+    "status": "REQUESTED_DIAGNOSTIC_ONLY",
+    "method": "Memory.simulatePressureNotification critical; not normal gameplay, no host/GPU memory claim"
+  },
+  "restoredPageCount": 2,
+  "measuredPageCount": 1,
+  "measurements": "Actual CDP heap before/after explicitly forced GC; per-process Linux RSS/PSS where accessible. RSS totals are not unique RAM; forced GC is diagnostic, not normal player behavior.",
+  "gpu_memory": "NOT_TESTED",
+  "long_duration_leak_status": "INCONCLUSIVE_BOUNDED_SAME_BROWSER_OBSERVATIONS",
+  "historical_rgba_proxy": "Decoded RGBA estimates are not actual RAM/GPU measurements; no matched398to154MiB savings claim.",
+  "checks": [
+    {
+      "name": "exact latest source",
+      "pass": true
+    },
+    {
+      "name": "existing disk-native save offers enabled Continue",
+      "pass": true
+    },
+    {
+      "name": "native saved PER game loads current hero atlas",
+      "pass": true
+    },
+    {
+      "name": "menu releases civilization image/frame references 0-PER",
+      "pass": true,
+      "detail": {
+        "civ": "PER",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "only current civilization images and correct hero 0-PER",
+      "pass": true,
+      "detail": {
+        "civ": "PER",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "PER:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "menu releases civilization image/frame references 0-CHN",
+      "pass": true,
+      "detail": {
+        "civ": "PER",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "only current civilization images and correct hero 0-CHN",
+      "pass": true,
+      "detail": {
+        "civ": "CHN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "CHN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "menu releases civilization image/frame references 0-JPN",
+      "pass": true,
+      "detail": {
+        "civ": "CHN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "only current civilization images and correct hero 0-JPN",
+      "pass": true,
+      "detail": {
+        "civ": "JPN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "JPN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          },
+          {
+            "key": "JPN:guard",
+            "ready": true,
+            "failed": false,
+            "frames": 0
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "menu releases civilization image/frame references 1-PER",
+      "pass": true,
+      "detail": {
+        "civ": "JPN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "only current civilization images and correct hero 1-PER",
+      "pass": true,
+      "detail": {
+        "civ": "PER",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "PER:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 2
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "menu releases civilization image/frame references 1-CHN",
+      "pass": true,
+      "detail": {
+        "civ": "PER",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "only current civilization images and correct hero 1-CHN",
+      "pass": true,
+      "detail": {
+        "civ": "CHN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "CHN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 2
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "menu releases civilization image/frame references 1-JPN",
+      "pass": true,
+      "detail": {
+        "civ": "CHN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "only current civilization images and correct hero 1-JPN",
+      "pass": true,
+      "detail": {
+        "civ": "JPN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "JPN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          },
+          {
+            "key": "JPN:guard",
+            "ready": true,
+            "failed": false,
+            "frames": 0
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "menu releases civilization image/frame references 2-PER",
+      "pass": true,
+      "detail": {
+        "civ": "JPN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "only current civilization images and correct hero 2-PER",
+      "pass": true,
+      "detail": {
+        "civ": "PER",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "PER:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 2
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "menu releases civilization image/frame references 2-CHN",
+      "pass": true,
+      "detail": {
+        "civ": "PER",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "only current civilization images and correct hero 2-CHN",
+      "pass": true,
+      "detail": {
+        "civ": "CHN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "CHN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "menu releases civilization image/frame references 2-JPN",
+      "pass": true,
+      "detail": {
+        "civ": "CHN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "only current civilization images and correct hero 2-JPN",
+      "pass": true,
+      "detail": {
+        "civ": "JPN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "JPN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          },
+          {
+            "key": "JPN:guard",
+            "ready": true,
+            "failed": false,
+            "frames": 0
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "name": "no browser errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "samples": [
+    {
+      "label": "native-continued-PER",
+      "heap_before_gc": {
+        "usedSize": 8014860,
+        "totalSize": 16105472,
+        "embedderHeapUsedSize": 23380064,
+        "backingStorageSize": 1836477
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5286860,
+        "totalSize": 7192576,
+        "embedderHeapUsedSize": 8361608,
+        "backingStorageSize": 1337353
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 136388,
+          "pss_kib": 94502
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34480,
+          "pss_kib": 11909
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 273820,
+          "pss_kib": 213791
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 91732,
+          "pss_kib": 56427
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 91232,
+          "pss_kib": 52233
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63668,
+          "pss_kib": 29341
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21928,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54920,
+          "pss_kib": 23412
+        }
+      ],
+      "atlas": {
+        "civ": "PER",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "PER:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 4
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "menu-0-PER",
+      "heap_before_gc": {
+        "usedSize": 5257136,
+        "totalSize": 10600448,
+        "embedderHeapUsedSize": 7444288,
+        "backingStorageSize": 1348748
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 4970396,
+        "totalSize": 5881856,
+        "embedderHeapUsedSize": 7748440,
+        "backingStorageSize": 1320505
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135844,
+          "pss_kib": 94072
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34480,
+          "pss_kib": 11909
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 274052,
+          "pss_kib": 213502
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 91732,
+          "pss_kib": 56421
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 101340,
+          "pss_kib": 61915
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63668,
+          "pss_kib": 29341
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21928,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54932,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "PER",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "play-0-PER",
+      "heap_before_gc": {
+        "usedSize": 6531492,
+        "totalSize": 8765440,
+        "embedderHeapUsedSize": 13064680,
+        "backingStorageSize": 1766816
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5344968,
+        "totalSize": 7454720,
+        "embedderHeapUsedSize": 8347920,
+        "backingStorageSize": 1323201
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135700,
+          "pss_kib": 93828
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11536
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 313856,
+          "pss_kib": 251189
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90132,
+          "pss_kib": 54734
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 94084,
+          "pss_kib": 52695
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29342
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54932,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "PER",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "PER:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "menu-0-CHN",
+      "heap_before_gc": {
+        "usedSize": 7202828,
+        "totalSize": 10338304,
+        "embedderHeapUsedSize": 15413064,
+        "backingStorageSize": 1373570
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5112208,
+        "totalSize": 6406144,
+        "embedderHeapUsedSize": 7774624,
+        "backingStorageSize": 1320767
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135700,
+          "pss_kib": 93826
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11536
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 322168,
+          "pss_kib": 253793
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54736
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 111052,
+          "pss_kib": 63957
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29340
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54932,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "PER",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "play-0-CHN",
+      "heap_before_gc": {
+        "usedSize": 5952728,
+        "totalSize": 9289728,
+        "embedderHeapUsedSize": 12310168,
+        "backingStorageSize": 1762650
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5411288,
+        "totalSize": 6930432,
+        "embedderHeapUsedSize": 8345136,
+        "backingStorageSize": 1323557
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135708,
+          "pss_kib": 93832
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11536
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 353584,
+          "pss_kib": 286865
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54734
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 102120,
+          "pss_kib": 56685
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29340
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54932,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "CHN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "CHN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "menu-0-JPN",
+      "heap_before_gc": {
+        "usedSize": 6764636,
+        "totalSize": 9814016,
+        "embedderHeapUsedSize": 16254312,
+        "backingStorageSize": 1373987
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5226528,
+        "totalSize": 6144000,
+        "embedderHeapUsedSize": 7624232,
+        "backingStorageSize": 1321046
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135712,
+          "pss_kib": 93836
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11536
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 353536,
+          "pss_kib": 286819
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54732
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 107688,
+          "pss_kib": 62257
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29340
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54936,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "CHN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "play-0-JPN",
+      "heap_before_gc": {
+        "usedSize": 6532900,
+        "totalSize": 9027584,
+        "embedderHeapUsedSize": 13540000,
+        "backingStorageSize": 1769854
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5542176,
+        "totalSize": 7192576,
+        "embedderHeapUsedSize": 8237504,
+        "backingStorageSize": 1323780
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135724,
+          "pss_kib": 93846
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11536
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 386920,
+          "pss_kib": 321681
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54732
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 99156,
+          "pss_kib": 55205
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29340
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54936,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "JPN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "JPN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          },
+          {
+            "key": "JPN:guard",
+            "ready": true,
+            "failed": false,
+            "frames": 0
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "menu-1-PER",
+      "heap_before_gc": {
+        "usedSize": 7299228,
+        "totalSize": 10338304,
+        "embedderHeapUsedSize": 15805816,
+        "backingStorageSize": 1514364
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5266028,
+        "totalSize": 5881856,
+        "embedderHeapUsedSize": 7461648,
+        "backingStorageSize": 1321253
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135740,
+          "pss_kib": 93862
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11536
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 386504,
+          "pss_kib": 321257
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54730
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 128832,
+          "pss_kib": 85691
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29340
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54936,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "JPN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "play-1-PER",
+      "heap_before_gc": {
+        "usedSize": 6098800,
+        "totalSize": 8765440,
+        "embedderHeapUsedSize": 11144672,
+        "backingStorageSize": 1896153
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5591828,
+        "totalSize": 7192576,
+        "embedderHeapUsedSize": 8009176,
+        "backingStorageSize": 1323767
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135744,
+          "pss_kib": 93864
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11536
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 423588,
+          "pss_kib": 357913
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54730
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 100052,
+          "pss_kib": 55669
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29340
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54936,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "PER",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "PER:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 2
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "menu-1-CHN",
+      "heap_before_gc": {
+        "usedSize": 7178352,
+        "totalSize": 10338304,
+        "embedderHeapUsedSize": 14500064,
+        "backingStorageSize": 1374407
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5368188,
+        "totalSize": 6144000,
+        "embedderHeapUsedSize": 7733576,
+        "backingStorageSize": 1321250
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135748,
+          "pss_kib": 93868
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11536
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 422920,
+          "pss_kib": 357245
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54730
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 129056,
+          "pss_kib": 85093
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29340
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54936,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "PER",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "play-1-CHN",
+      "heap_before_gc": {
+        "usedSize": 6328144,
+        "totalSize": 9027584,
+        "embedderHeapUsedSize": 11185248,
+        "backingStorageSize": 1896158
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5629684,
+        "totalSize": 7192576,
+        "embedderHeapUsedSize": 8303888,
+        "backingStorageSize": 1323768
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135752,
+          "pss_kib": 93870
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11536
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 457028,
+          "pss_kib": 391371
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54730
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 100056,
+          "pss_kib": 55641
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29340
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54936,
+          "pss_kib": 23419
+        }
+      ],
+      "atlas": {
+        "civ": "CHN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "CHN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 2
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "menu-1-JPN",
+      "heap_before_gc": {
+        "usedSize": 5725440,
+        "totalSize": 11386880,
+        "embedderHeapUsedSize": 7475384,
+        "backingStorageSize": 1321274
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5374864,
+        "totalSize": 6144000,
+        "embedderHeapUsedSize": 7963272,
+        "backingStorageSize": 1321255
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135760,
+          "pss_kib": 93870
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11535
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 454964,
+          "pss_kib": 390229
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54727
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 106560,
+          "pss_kib": 62995
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63676,
+          "pss_kib": 29339
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54992,
+          "pss_kib": 23455
+        }
+      ],
+      "atlas": {
+        "civ": "CHN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "play-1-JPN",
+      "heap_before_gc": {
+        "usedSize": 6687848,
+        "totalSize": 9289728,
+        "embedderHeapUsedSize": 13109288,
+        "backingStorageSize": 1907640
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5674344,
+        "totalSize": 7454720,
+        "embedderHeapUsedSize": 8248592,
+        "backingStorageSize": 1323773
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135776,
+          "pss_kib": 93884
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11535
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 488976,
+          "pss_kib": 423639
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54727
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 99308,
+          "pss_kib": 55267
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63680,
+          "pss_kib": 29343
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54992,
+          "pss_kib": 23455
+        }
+      ],
+      "atlas": {
+        "civ": "JPN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "JPN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          },
+          {
+            "key": "JPN:guard",
+            "ready": true,
+            "failed": false,
+            "frames": 0
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "menu-2-PER",
+      "heap_before_gc": {
+        "usedSize": 6112112,
+        "totalSize": 11386880,
+        "embedderHeapUsedSize": 14371176,
+        "backingStorageSize": 1374256
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5408264,
+        "totalSize": 6144000,
+        "embedderHeapUsedSize": 7747040,
+        "backingStorageSize": 1321253
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135776,
+          "pss_kib": 93884
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11535
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 488140,
+          "pss_kib": 422803
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54727
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 104896,
+          "pss_kib": 60855
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63680,
+          "pss_kib": 29343
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54992,
+          "pss_kib": 23455
+        }
+      ],
+      "atlas": {
+        "civ": "JPN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "play-2-PER",
+      "heap_before_gc": {
+        "usedSize": 6396768,
+        "totalSize": 9289728,
+        "embedderHeapUsedSize": 11027352,
+        "backingStorageSize": 1896176
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5673740,
+        "totalSize": 7192576,
+        "embedderHeapUsedSize": 8224080,
+        "backingStorageSize": 1323766
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 135780,
+          "pss_kib": 93886
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11535
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 524640,
+          "pss_kib": 459087
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54727
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 99864,
+          "pss_kib": 55561
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63680,
+          "pss_kib": 29343
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54992,
+          "pss_kib": 23455
+        }
+      ],
+      "atlas": {
+        "civ": "PER",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "PER:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 2
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "menu-2-CHN",
+      "heap_before_gc": {
+        "usedSize": 7390700,
+        "totalSize": 11911168,
+        "embedderHeapUsedSize": 13402464,
+        "backingStorageSize": 1365430
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5422108,
+        "totalSize": 6406144,
+        "embedderHeapUsedSize": 7785720,
+        "backingStorageSize": 1321250
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 137088,
+          "pss_kib": 95194
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11535
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 523544,
+          "pss_kib": 457943
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54727
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 108756,
+          "pss_kib": 65137
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63680,
+          "pss_kib": 29343
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54996,
+          "pss_kib": 23456
+        }
+      ],
+      "atlas": {
+        "civ": "PER",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "play-2-CHN",
+      "heap_before_gc": {
+        "usedSize": 6255460,
+        "totalSize": 9027584,
+        "embedderHeapUsedSize": 12969536,
+        "backingStorageSize": 1765215
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5696324,
+        "totalSize": 7192576,
+        "embedderHeapUsedSize": 8329880,
+        "backingStorageSize": 1323773
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 136392,
+          "pss_kib": 94479
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11533
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 560044,
+          "pss_kib": 494452
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54724
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 99800,
+          "pss_kib": 55502
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63680,
+          "pss_kib": 29337
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5654
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54996,
+          "pss_kib": 23446
+        }
+      ],
+      "atlas": {
+        "civ": "CHN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "CHN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "menu-2-JPN",
+      "heap_before_gc": {
+        "usedSize": 7399572,
+        "totalSize": 12058624,
+        "embedderHeapUsedSize": 12554944,
+        "backingStorageSize": 1364775
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 5509036,
+        "totalSize": 6291456,
+        "embedderHeapUsedSize": 7749112,
+        "backingStorageSize": 1321255
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 137200,
+          "pss_kib": 95304
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11535
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 557184,
+          "pss_kib": 491915
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54723
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 132696,
+          "pss_kib": 89391
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63680,
+          "pss_kib": 29343
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54996,
+          "pss_kib": 23456
+        }
+      ],
+      "atlas": {
+        "civ": "CHN",
+        "inMenu": true,
+        "loaded": [],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "play-2-JPN",
+      "heap_before_gc": {
+        "usedSize": 6534420,
+        "totalSize": 11534336,
+        "embedderHeapUsedSize": 12888000,
+        "backingStorageSize": 1775370
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 6673548,
+        "totalSize": 7077888,
+        "embedderHeapUsedSize": 8375712,
+        "backingStorageSize": 1323775
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 136684,
+          "pss_kib": 94786
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11535
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 598140,
+          "pss_kib": 530055
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 90136,
+          "pss_kib": 54723
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 104784,
+          "pss_kib": 58005
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63680,
+          "pss_kib": 29343
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5656
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54996,
+          "pss_kib": 23456
+        }
+      ],
+      "atlas": {
+        "civ": "JPN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "JPN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 3
+          },
+          {
+            "key": "JPN:guard",
+            "ready": true,
+            "failed": false,
+            "frames": 0
+          }
+        ],
+        "dormantClean": true
+      }
+    },
+    {
+      "label": "after-explicit-browser-cache-pressure",
+      "heap_before_gc": {
+        "usedSize": 7276688,
+        "totalSize": 9699328,
+        "embedderHeapUsedSize": 15755944,
+        "backingStorageSize": 1511353
+      },
+      "heap_after_forced_gc": {
+        "usedSize": 6570432,
+        "totalSize": 8388608,
+        "embedderHeapUsedSize": 8282928,
+        "backingStorageSize": 1463776
+      },
+      "processStatus": "AVAILABLE",
+      "processes": [
+        {
+          "pid": 88654,
+          "type": "browser",
+          "rss_kib": 136304,
+          "pss_kib": 94405
+        },
+        {
+          "pid": 88747,
+          "type": "renderer",
+          "rss_kib": 34116,
+          "pss_kib": 11535
+        },
+        {
+          "pid": 88745,
+          "type": "renderer",
+          "rss_kib": 272464,
+          "pss_kib": 203873
+        },
+        {
+          "pid": 88734,
+          "type": "renderer",
+          "rss_kib": 83596,
+          "pss_kib": 47613
+        },
+        {
+          "pid": 88691,
+          "type": "GPU",
+          "rss_kib": 104804,
+          "pss_kib": 58031
+        },
+        {
+          "pid": 88698,
+          "type": "network.mojom.NetworkService",
+          "rss_kib": 63716,
+          "pss_kib": 29352
+        },
+        {
+          "pid": 88709,
+          "type": "storage.mojom.StorageService",
+          "rss_kib": 21932,
+          "pss_kib": 5655
+        },
+        {
+          "pid": 88936,
+          "type": "audio.mojom.AudioService",
+          "rss_kib": 54996,
+          "pss_kib": 23455
+        }
+      ],
+      "atlas": {
+        "civ": "JPN",
+        "inMenu": false,
+        "loaded": [
+          {
+            "key": "JPN:commander",
+            "ready": true,
+            "failed": false,
+            "frames": 4
+          },
+          {
+            "key": "JPN:guard",
+            "ready": true,
+            "failed": false,
+            "frames": 0
+          }
+        ],
+        "dormantClean": true
+      }
+    }
+  ],
+  "errors": [],
+  "pass": true
+}
