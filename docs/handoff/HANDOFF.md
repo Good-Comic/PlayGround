@@ -1,3 +1,15 @@
+# 最新16文明英雄進度 / Latest16-hero progress
+
+繁體中文：BYZ已限定驗收，10/16；12 Node／17遊戲Chromium／7音訊Chromium。來源 `fba75c2a09bc19a8a1c15291cde043b6fbf2f764`。下一項 KOR hero，保存後直接繼續。完整隊列一次授權；歷史FAIL保留，不公開部署。
+
+English: BYZ scoped accepted,10/16;12 Node/17 gameplay/seven audio Chromium. Source `fba75c2a09bc19a8a1c15291cde043b6fbf2f764`. Next KOR hero; continue after saving under the fully authorized queue. HistoricalFAIL retained, no public deployment.
+
+Evidence: docs/evidence/v240-byz-hero/REPORT.md. Matrix: docs/art/CIVILIZATION-HERO-MATRIX.json. BILINGUAL_DOCUMENTATION_REQUIRED=true.
+
+---
+
+<!-- CURRENT-HERO-SESSION-END -->
+
 # 最新內容與接續 / Latest content and continuation
 
 繁體中文：PER、CHN、GOT三英雄及兵器聲音已保存；GOT待機劍遮臉／血條位置已修正。SAR來源255f32d復驗保留一組相對+66.7%FAIL，總結INCONCLUSIVE。正常付費訓練後跨Chromium程序原生Save/Continue13項限定通過；圖集生命週期22項通過，實際程序記憶體成長主要可被明示瀏覽器壓力診斷回收，長期洩漏仍INCONCLUSIVE／GPU顯存NOT_TESTED。嚴格存讀與其他歷史FAIL保留。

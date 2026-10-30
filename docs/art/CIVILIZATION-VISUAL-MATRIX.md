@@ -57,9 +57,9 @@ GOT 英雄：鋸背巨劍、寬肩毛皮鎖甲及裸首束髮；八向六狀態1
 
 ## 英雄完成矩陣 / Hero completion matrix
 
-繁體中文：9/16限定驗收。來源、遊戲／音效證據及代表圖見CIVILIZATION-HERO-MATRIX.json；格數與文件存在本身不構成完成。保留歷史FAIL、主觀流暢度／聽感與硬體缺口。
+繁體中文：10/16限定驗收。來源、遊戲／音效證據及代表圖見CIVILIZATION-HERO-MATRIX.json；格數與文件存在本身不構成完成。保留歷史FAIL、主觀流暢度／聽感與硬體缺口。
 
-English: 9/16 scoped acceptance. Sources, gameplay/audio evidence and representative images: CIVILIZATION-HERO-MATRIX.json. Cell counts/file existence alone do not establish completion. Historical FAIL, subjective smoothness/listening and hardware gaps remain.
+English: 10/16 scoped acceptance. Sources, gameplay/audio evidence and representative images: CIVILIZATION-HERO-MATRIX.json. Cell counts/file existence alone do not establish completion. Historical FAIL, subjective smoothness/listening and hardware gaps remain.
 
 | Civ | Status | Art source | Actual gameplay evidence |
 | --- | --- | --- | --- |
@@ -75,7 +75,7 @@ English: 9/16 scoped acceptance. Sources, gameplay/audio evidence and representa
 | KOR | TODO | — | — |
 | SPA | TODO | — | — |
 | TUR | TODO | — | — |
-| BYZ | TODO | — | — |
+| BYZ | SCOPED_ACCEPTED | fba75c2a09bc19a8a1c15291cde043b6fbf2f764 | docs/evidence/v240-byz-hero/verified/browser.json |
 | VIK | SCOPED_ACCEPTED | 97b11b64ce4c13772318e9ddda7387297650d9e1 | docs/evidence/v240-vik-hero/verified/browser.json |
 | MAG | TODO | — | — |
 | JPN | SCOPED_ACCEPTED | 9d8a9f9710a1b1701b36c17e6d32bb15d05cdc3a | docs/evidence/v240-jpn-hero/verified/browser.json |
