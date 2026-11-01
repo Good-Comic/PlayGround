@@ -2068,7 +2068,7 @@ export class Game {
     if (target.team === 'enemy' && source?.team === 'player') this.director.recordDamage(source, damage);
     if (target.team === 'enemy' && !target.w && source?.team === 'player' && source.typeDef && this.selection.includes(source) && (damageKind === 'melee' || damageKind === 'projectile')) {
       const advantage = this.counterMultiplier(source, target);
-      if (advantage > 1) this.addFloating(target.x, target.y, `×${advantage}`, 'rgba(179,231,143,ALPHA)');
+      if (advantage > 1) this.addFloating(target.x, target.y, `×${advantage}`, 'rgba(179,231,143,ALPHA)', 13);
     }
     if (this.waveEventActive && source?.team === 'enemy' && target.team === 'player' && target.alive && source.eventFlags?.includes('fire') && source.typeDef.category === 'ranged' && (source.eventFireCd || 0) <= 0) {
       source.eventFireCd = 3;
@@ -3475,8 +3475,8 @@ export class Game {
     }
   }
 
-  addFloating(x, y, text, color) {
-    this.particles.push({ kind: 'text', x, y, z: 26, life: 1.4, maxLife: 1.4, text, color, size: 9, vx: 0, vy: 0, vz: 10 });
+  addFloating(x, y, text, color, size = 9) {
+    this.particles.push({ kind: 'text', x, y, z: 26, life: 1.4, maxLife: 1.4, text, color, size, vx: 0, vy: 0, vz: 10 });
   }
 
   togglePause() {

@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{STRINGS}from'../js/locales.js';
+test('counter advice and boon history exist in every supported language',()=>{for(const [locale,dict] of Object.entries(STRINGS)){for(const key of ['selection.counter.P','selection.counter.K','selection.counter.C','boon.ownedNone','boon.ownedSummary'])assert.ok(dict[key],`${locale}: ${key}`);for(const v of ['count','max','names'])assert.ok(dict['boon.ownedSummary'].includes(`{${v}}`),`${locale}: ${v}`)}});
