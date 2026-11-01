@@ -89,6 +89,13 @@ export function waterBankEdges(world, x, y) {
   });
 }
 
+// Presentation-only stages derived from the saved node quantity.
+export function resourceVisualStage(node) {
+  if (!(node?.maxAmount > 0) || !Number.isFinite(node.amount)) return 'rich';
+  const remaining = node.amount / node.maxAmount;
+  return remaining <= .2 ? 'scarce' : remaining <= .5 ? 'low' : 'rich';
+}
+
 // Visual roles are deliberately independent from combat stats.  Keeping this
 // small vocabulary explicit lets the renderer make silhouettes readable at
 // normal zoom without changing unit balance or simulation state.
@@ -672,12 +679,12 @@ export class Renderer {
       ctx.beginPath(); ctx.ellipse(p.x + (ox - 2) * s, p.y + (oy - 2) * s, rw * 0.62 * s, rh * 0.55 * s, -0.15, 0, 6.3); ctx.fill();
     }
     const veins = [[-13, -4], [-7, -8], [2, -7], [8, -4], [13, 0], [-3, -1], [6, -9], [1, -11]];
-    for (let i = 0; i < veins.length; i++) {
+    const visibleVeins = { rich: 8, low: 4, scarce: 2 }[resourceVisualStage(n)];
+    for (let i = 0; i < visibleVeins; i++) {
       const [vx, vy] = veins[i];
       ctx.fillStyle = i % 3 === 0 ? `rgba(255,217,99,${glint})` : '#c49a3e';
       ctx.beginPath(); ctx.arc(p.x + vx * s, p.y + vy * s, (1.2 + (i % 2)) * s, 0, 6.3); ctx.fill();
     }
-    if (n.amount <= 0) { ctx.globalAlpha = 0.4; }
     ctx.restore();
   }
 
@@ -695,6 +702,13 @@ export class Renderer {
       ctx.fillStyle = 'rgba(197,193,170,0.35)';
       ctx.beginPath(); ctx.arc(p.x + (ox - r * 0.35) * s, p.y + (oy - r * 0.45) * s, r * 0.23 * s, 0, 6.3); ctx.fill();
     }
+    if (resourceVisualStage(n) !== 'rich') {
+      // Chiseled facets identify a worked quarry even at a distance.
+      ctx.strokeStyle = 'rgba(38,38,32,0.8)'; ctx.lineWidth = Math.max(1, 1.2 * s);
+      ctx.beginPath(); ctx.moveTo(p.x - 12 * s, p.y - 5 * s); ctx.lineTo(p.x - 6 * s, p.y - 2 * s);
+      ctx.lineTo(p.x - 9 * s, p.y + 2 * s); ctx.moveTo(p.x + 3 * s, p.y - 10 * s);
+      ctx.lineTo(p.x + 7 * s, p.y - 6 * s); ctx.lineTo(p.x + 4 * s, p.y - 3 * s); ctx.stroke();
+    }
     ctx.restore();
   }
 
@@ -710,7 +724,8 @@ export class Renderer {
       ctx.fillStyle = '#597d37';
       ctx.beginPath(); ctx.arc(p.x + (ox - 1) * s, p.y + (oy - 2) * s, r * 0.7 * s, 0, 6.3); ctx.fill();
     }
-    for (let i = 0; i < 11; i++) {
+    const visibleBerries = { rich: 11, low: 6, scarce: 2 }[resourceVisualStage(n)];
+    for (let i = 0; i < visibleBerries; i++) {
       const a = hash2(n.id, i, 4) * 6.28, r = (4 + hash2(n.id, i, 6) * 11) * s;
       ctx.fillStyle = i % 3 === 0 ? '#d06856' : '#a83c36';
       ctx.beginPath(); ctx.arc(p.x + Math.cos(a) * r, p.y - 10 * s + Math.sin(a) * r * 0.55, 1.6 * s, 0, 6.3); ctx.fill();
