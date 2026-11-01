@@ -187,6 +187,11 @@ export class Sound {
     } else this.noise(.13, .035, 2700, 0, 'highpass');
   }
   hit() { if (this.throttle('hit', 70)) this.noise(0.07, 0.04, 950, 0, 'bandpass'); }
+  bossImpact() {
+    if (!this.ctx || !this.enabled || !this.throttle('boss-impact', 180)) return;
+    this.tone(145, .28, 'triangle', .055, 48);
+    this.tone(420, .12, 'sine', .025, 160, .015);
+  }
   build() { if (this.throttle('build', 380)) { this.tone(180, 0.05, 'square', 0.025, 120); this.noise(0.06, 0.03, 1500); } }
   complete() {
     [523, 659, 784].forEach((f, i) => this.tone(f, 0.28, 'triangle', 0.045, f, i * 0.07));

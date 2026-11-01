@@ -2021,7 +2021,8 @@ export class Game {
         }
         this.addParticles(zone.x, zone.y, 'ring', 'rgba(229,92,68,ALPHA)', 2.2, 12, 0.8);
         this.addParticles(zone.x, zone.y, 'smoke', 'rgba(80,35,29,ALPHA)', 5, 12, 1.1);
-        this.sound?.hit();
+        if (zone.kind === 'boss') this.sound?.bossImpact?.();
+        else this.sound?.hit();
       }
     }
     this.zones = this.zones.filter(z => z.persist ? z.elapsed < (z.duration || 60) : z.elapsed < z.delay + 0.9);
