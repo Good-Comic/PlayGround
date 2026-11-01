@@ -13,3 +13,12 @@ test('boss countdown remains inside viewport at upper and lower edges across zoo
   assert.equal(label[1],'1.2s'); assert.ok(Number.isFinite(label[3]));
  }
 });
+
+test('fully offscreen strike does not pin a misleading countdown to the viewport',()=>{
+ for(const p of [{x:-500,y:450},{x:2000,y:450},{x:500,y:-500},{x:500,y:1500}]) {
+  const calls=[]; const ctx=new Proxy({}, {get:(_,key)=>(...args)=>calls.push([key,...args]),set:()=>true});
+  const zone={kind:'boss',source:{type:'warlord'},r:2.8,delay:2.4,elapsed:1.2,done:false};
+  Renderer.prototype.drawBossStrike.call({ctx,w:1440,h:900},zone,bossStrikeVisual(zone),p,1);
+  assert.ok(!calls.some(c=>c[0]==='fillText'),JSON.stringify(p));
+ }
+});
