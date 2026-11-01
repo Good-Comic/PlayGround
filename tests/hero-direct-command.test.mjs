@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+globalThis.document={documentElement:{dataset:{}},dispatchEvent(){}};globalThis.window={innerWidth:1440,innerHeight:900};const{Game}=await import('../js/game.js');
+function fixture(){const g=new Game();g.newRun(42,{civ:'TEU'});g.heroControl=true;g.setSelection([g.hero]);return g;}
+test('right-click ground exits direct control and preserves hero move through update',()=>{const g=fixture(),h=g.hero;g.pickAt=()=>null;g.worldAt=()=>({x:h.x+4,y:h.y});g.issueCommand(0,0);assert.equal(g.heroControl,false);g.updateUnits(.05);assert.equal(h.state,'move');assert.ok(h.targetPos)});
+test('right-click enemy exits direct control and keeps explicit attack',()=>{const g=fixture(),h=g.hero,e=g.spawnUnit('brute',h.x+4,h.y,'enemy');g.pickAt=()=>e;g.issueCommand(0,0);assert.equal(g.heroControl,false);g.updateUnits(.05);assert.equal(h.target,e);assert.equal(h.manualAttack,true)});
+test('villager-only command or mixed gathering does not exit unassigned hero direct control',()=>{for(const mixed of [false,true]){const g=fixture(),h=g.hero,v=g.units.find(u=>u.type==='villager'),node=g.world.resources.find(n=>n.alive);g.setSelection(mixed?[h,v]:[v]);g.pickAt=()=>node;g.issueCommand(0,0);assert.equal(v.gatherTarget,node);assert.equal(g.heroControl,true)}});

@@ -3250,6 +3250,7 @@ export class Game {
         for (const u of units) {
           if (u.type === 'villager' && this.civ?.id !== 'SPA') continue;
           assigned++;
+          if (u.hero) this.heroControl = false;
           u.tacticalOrder = null;
           if (u.type === 'villager') { u.gatherTarget = null; u.buildTarget = null; }
           u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1; u.manualAttack = true; u.blockedTargets = {}; u.orderFailure = null; u._progress=null; u._nav=null;
@@ -3302,6 +3303,7 @@ export class Game {
       }
     }
     const wp = this.worldAt(sx, sy);
+    if (units.some(u => u.hero)) this.heroControl = false;
     this.commandMove(units, wp.x, wp.y);
     this.sound?.command();
     this.addCommandMarker(wp.x, wp.y, false);
