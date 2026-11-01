@@ -3339,7 +3339,11 @@ export class Game {
     const mode=this.orderMode,units=this.selection.filter(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager');
     if(!mode||!units.length)return false;
     const hit=this.pickAt(sx,sy),point=this.worldAt(sx,sy);
-    if(mode==='guard'&&(!hit||hit.team!=='player'||units.includes(hit)))return false;
+    if(mode==='guard'&&(!hit||hit.team!=='player'||units.includes(hit))) {
+      this.sound?.error();
+      this.toast(t('toast.guardInvalid'), 'bad', 2200);
+      return false;
+    }
     const starts=units.map(u=>({x:u.x,y:u.y}));
     this.commandMove(units,point.x,point.y);
     units.forEach((u,i)=>{u.tacticalOrder={type:mode,destination:{...u.targetPos},origin:starts[i],leg:1,protectedId:mode==='guard'?hit.id:null};u._orderScanAt=0;});
