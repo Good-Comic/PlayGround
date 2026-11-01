@@ -3243,12 +3243,12 @@ export class Game {
       if(changed){this.sound?.command();this.addCommandMarker(x,y,false);}else this.toast(t('rally.invalid'),'bad',2200);
       return;
     }
-    for(const u of units)u.tacticalOrder=null;
     const hit = this.pickAt(sx, sy);
     if (hit) {
       if (hit.team === 'enemy') {
         for (const u of units) {
           if (u.type === 'villager' && this.civ?.id !== 'SPA') continue;
+          u.tacticalOrder = null;
           if (u.type === 'villager') { u.gatherTarget = null; u.buildTarget = null; }
           u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1; u.manualAttack = true; u.blockedTargets = {}; u.orderFailure = null; u._progress=null; u._nav=null;
           u.hold = false;
@@ -3261,6 +3261,7 @@ export class Game {
         let gathered = 0;
         for (const u of units) {
           if (u.type !== 'villager') continue;
+          u.tacticalOrder = null;
           this.orderGather(u, hit);
           gathered++;
         }
@@ -3274,6 +3275,7 @@ export class Game {
         let handled = false;
         for (const u of units) {
           if (u.type === 'villager') {
+            u.tacticalOrder = null;
             u.state = 'return'; u.dropTarget = hit;
             const pos = this.findDropoffPosition(hit);
             if (pos) {
