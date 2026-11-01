@@ -318,6 +318,7 @@ export const ui = {
   "toast.heroMissing": "裂界守望者不在场上。",
   "toast.markCooldown": "标记将于 {seconds} 秒后就绪。",
   "toast.noMarkTarget": "标记范围内没有掠袭者。",
+  "toast.noEligibleAttackers": "所选单位无法攻击该目标。",
   "toast.marked": "{name}已被标记。士兵对其伤害 +10%，持续 6 秒。",
   "toast.aegisCooldown": "神盾将于 {seconds} 秒后就绪。",
   "toast.aegisShields": "神盾为 {count} 名士兵提供 60 点护盾，持续 5 秒。",

@@ -318,6 +318,7 @@ export const ui = {
   'toast.heroMissing': 'リフトウォーデンは戦場にいない。',
   'toast.markCooldown': '標的は{seconds}秒後に再使用可能。',
   'toast.noMarkTarget': '標的の届く範囲に略奪者はいない。',
+  'toast.noEligibleAttackers': '選択したユニットはその対象を攻撃できません。',
   'toast.marked': '{name}を標的にした。兵士のダメージ +10%、6秒間。',
   'toast.aegisCooldown': 'イージスは{seconds}秒後に再使用可能。',
   'toast.aegisShields': 'イージスが{count}人の兵士に60の盾を5秒間与えた。',

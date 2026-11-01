@@ -3246,12 +3246,19 @@ export class Game {
     const hit = this.pickAt(sx, sy);
     if (hit) {
       if (hit.team === 'enemy') {
+        let assigned = 0;
         for (const u of units) {
           if (u.type === 'villager' && this.civ?.id !== 'SPA') continue;
+          assigned++;
           u.tacticalOrder = null;
           if (u.type === 'villager') { u.gatherTarget = null; u.buildTarget = null; }
           u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1; u.manualAttack = true; u.blockedTargets = {}; u.orderFailure = null; u._progress=null; u._nav=null;
           u.hold = false;
+        }
+        if (!assigned) {
+          this.sound?.error();
+          this.toast(t('toast.noEligibleAttackers'), 'bad', 2200);
+          return;
         }
         this.sound?.command();
         this.addCommandMarker(hit.x + (hit.w ? hit.w / 2 : 0), hit.y + (hit.h ? hit.h / 2 : 0), true);

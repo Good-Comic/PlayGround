@@ -380,6 +380,7 @@ const EN_UI = {
   'toast.heroMissing': 'The Riftwarden is not on the field.',
   'toast.markCooldown': 'Mark is ready in {seconds}s.',
   'toast.noMarkTarget': 'No raider within reach of the mark.',
+  'toast.noEligibleAttackers': 'The selected units cannot attack that target.',
   'toast.marked': '{name} marked. Your soldiers deal 10% more damage to it for 6s.',
   'toast.aegisCooldown': 'Aegis is ready in {seconds}s.',
   'toast.aegisShields': 'Aegis shields {count} soldiers for 60 for 5s.',
