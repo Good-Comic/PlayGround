@@ -3348,7 +3348,11 @@ export class Game {
     this.commandMove(units,point.x,point.y);
     units.forEach((u,i)=>{u.tacticalOrder={type:mode,destination:{...u.targetPos},origin:starts[i],leg:1,protectedId:mode==='guard'?hit.id:null};u._orderScanAt=0;});
     if(units.some(u=>u.hero))this.heroControl=false;
-    this.orderMode=null;this.addCommandMarker(point.x,point.y,true);this.sound?.command();this.hooks.selectionChanged?.();return true;
+    this.orderMode=null;this.addCommandMarker(point.x,point.y,true);this.sound?.command();this.hooks.selectionChanged?.();
+    if (mode === 'guard' && this.selection.some(u => u.alive && u.team === 'player' && !u.w && u.type === 'villager')) {
+      this.toast(t('toast.guardPartial'), '', 2200);
+    }
+    return true;
   }
 
   updateTacticalOrder(u,dt) {

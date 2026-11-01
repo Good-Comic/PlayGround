@@ -320,6 +320,7 @@ export const ui = {
   'toast.noMarkTarget': '標的の届く範囲に略奪者はいない。',
   'toast.noEligibleAttackers': '選択したユニットはその対象を攻撃できません。',
   'toast.guardInvalid': '護衛する別の味方ユニットか建物を選択してください。',
+  'toast.guardPartial': '村人は護衛できないため、元の命令を続けます。',
   'toast.marked': '{name}を標的にした。兵士のダメージ +10%、6秒間。',
   'toast.aegisCooldown': 'イージスは{seconds}秒後に再使用可能。',
   'toast.aegisShields': 'イージスが{count}人の兵士に60の盾を5秒間与えた。',
