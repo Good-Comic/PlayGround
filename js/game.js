@@ -1305,7 +1305,9 @@ export class Game {
       u._lastTargetDist = currDist;
     }
 
-    const targetValid = u.target && u.target.alive;
+    const huntCavalry = flags.includes('hunt') && !flags.includes('breach') && u.typeDef.family === 'P';
+    const beyondHuntRange = huntCavalry && u.target?.team === 'player' && u.target.typeDef?.category === 'cavalry' && dist2(u.x, u.y, u.target.x, u.target.y) > 36;
+    const targetValid = u.target && u.target.alive && !beyondHuntRange;
     if (!targetValid || u.retargetTimer <= 0) {
       u.retargetTimer = 0.9 + this.rng() * 0.5;
       const tc = this.getTownCenter();
@@ -1321,17 +1323,18 @@ export class Game {
           .map(o => ({ o, d: dist2(u.x, u.y, o.x + o.w / 2, o.y + o.h / 2) }))
           .filter(entry => entry.d < 64)
           .sort((a, b) => a.d - b.d)[0]?.o || null;
-      } else if (flags.includes('hunt') && u.typeDef.family === 'P') {
+      } else if (huntCavalry) {
         priority = playerUnits
           .filter(o => o.typeDef.category === 'cavalry')
           .map(o => ({ o, d: dist2(u.x, u.y, o.x, o.y) }))
-          .filter(entry => entry.d < 36)
+          .filter(entry => entry.d <= 36)
           .sort((a, b) => a.d - b.d)[0]?.o || null;
       }
       let best = priority, bestD = priority ? dist2(u.x, u.y, priority.x + (priority.w ? priority.w / 2 : 0), priority.y + (priority.h ? priority.h / 2 : 0)) : Infinity;
       if (!best) {
         for (const o of playerUnits) {
           const d = dist2(u.x, u.y, o.x, o.y);
+          if (huntCavalry && o.typeDef.category === 'cavalry' && d > 36) continue;
           if (d < bestD && d < 49) { best = o; bestD = d; }
         }
       }
