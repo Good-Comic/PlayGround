@@ -7,3 +7,7 @@
 **English:** Task `V240-MARK-AEGIS-AUDIO-V3` was developed on independent branch `codex/riftwatch-v240-recovery-v3`. `codex-riftwatch-v3-20261101-a` is a project identifier suggested by the user and self-declared by this executor for this session; it is not a platform-authenticated identity. A later executor must follow the ownership handoff protocol. Remote ownership version 204 was verified, with the prior task unchanged. The base is `1e87c18a42fb0b7c8d6a77e465e52eba243a54cb`.
 
 Successful Mark casts use two tones and Aegis uses three; failed-cast feedback and game rules remain unchanged, and sound does not use simulation RNG. Five focused Node test files passed. Real Linux Chromium verified a running AudioContext, both cues, mute and unchanged RNG in a controlled game state. This is not a human listening or physical GPU validation. Next: review the sound and integrate through the project process, retaining existing performance and hardware limitations.
+
+**恢復紀錄 / Recovery:** 應用程式與本交接的已驗證遠端提交為 `0e5bd34b6755f0f200b8dc2b212c0faec3df6f63`；本紀錄提交在其後。稀疏檢出省略 `docs/evidence/`，歷史證據仍在基底提交中。所有權仍為 OWNED；接續前重新核對遠端並依協議交接。
+
+The verified remote application and initial handoff commit is `0e5bd34b6755f0f200b8dc2b212c0faec3df6f63`; this recovery record follows it. The sparse checkout omits `docs/evidence/`; historical evidence remains in the base commit. Ownership remains OWNED; recheck the remote and follow the handoff protocol before continuation.
