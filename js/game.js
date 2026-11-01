@@ -3047,7 +3047,7 @@ export class Game {
     hero.markCd = skill.cooldown;
     this.addCommandMarker(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), true);
     this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'ring', `rgba(${skill.rangeColor},ALPHA)`, 1.4, 6, 0.6);
-    this.sound?.command();
+    this.sound?.heroMark();
     this.toast(t('toast.marked', { name: t(`unit.${target.type}.name`) }), 'good', 2600);
   }
 
@@ -3066,7 +3066,7 @@ export class Game {
     }
     hero.aegisCd = skill.cooldown;
     this.addParticles(hero.x, hero.y, 'ring', `rgba(${skill.rangeColor},ALPHA)`, 2.5, 12, 0.8);
-    this.sound?.boon();
+    this.sound?.heroAegis();
     this.toast(t('toast.aegisShields', { count }), 'good', 2600);
   }
 

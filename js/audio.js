@@ -77,6 +77,17 @@ export class Sound {
   click() { this.tone(460, 0.06, 'triangle', 0.045, 300); }
   select() { this.tone(320, 0.08, 'triangle', 0.055, 420); }
   command() { this.tone(240, 0.11, 'triangle', 0.06, 340); }
+  heroMark() {
+    if (!this.ctx || !this.enabled || !this.throttle('hero-mark', 180)) return;
+    this.tone(740, 0.11, 'triangle', 0.04, 1180);
+    this.tone(1480, 0.09, 'sine', 0.025, 1100, 0.07);
+  }
+  heroAegis() {
+    if (!this.ctx || !this.enabled || !this.throttle('hero-aegis', 180)) return;
+    this.tone(220, 0.3, 'sine', 0.045, 330);
+    this.tone(440, 0.32, 'triangle', 0.025, 660, 0.04);
+    this.tone(660, 0.24, 'sine', 0.02, 880, 0.1);
+  }
   error() { this.tone(120, 0.18, 'sawtooth', 0.045, 90); }
   gather() { if (this.throttle('gather', 120)) this.tone(660 + Math.random() * 140, 0.055, 'triangle', 0.025, 520); }
   deposit() {
