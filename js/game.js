@@ -1388,6 +1388,7 @@ export class Game {
       u.attack *= 1.12;
       u.bossSkillTimer = Math.min(u.bossSkillTimer, 2.5);
       this.toast(t('toast.bossPhase', { name: t(`unit.${u.type}.name`), stage: stage + 1 }), 'bad', 2800);
+      this.sound?.bossPhase?.();
       const adds = u.type === 'warlord2' ? 4 : 3;
       for (let i = 0; i < adds; i++) {
         const a = this.rng() * Math.PI * 2;
