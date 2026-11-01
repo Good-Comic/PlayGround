@@ -758,6 +758,7 @@ export class Renderer {
     if (b.team === 'player' && !['farm', 'wall', 'gate'].includes(b.type)) this.drawCivilizationBuildingAccent(b, game, time);
     this.drawBuildingDamageState(b, game, time);
     this.drawBuildingBar(b, game);
+    this.drawProductionIndicator(b, game);
   }
 
   drawBuildingDamageState(b, game, time) {
@@ -1307,6 +1308,35 @@ export class Renderer {
   drawDamageSmoke(f, z, time, amount) {
     if (amount <= 0.2 || Math.sin(time * 1.7 + f.cx) < 0.2) return;
     this.smokePlume(f.cx + 12 * z, f.cy - 35 * z, z, time, 0.8);
+  }
+
+  // A battlefield cue uses the existing queue only: it never changes training.
+  drawProductionIndicator(b, game) {
+    if (b.team !== 'player' || !b.alive || b.construction < 1 || !b.queue?.length) return;
+    const item = b.queue[0];
+    if (!(item.total > 0) || !Number.isFinite(item.remaining)) return;
+    const p = this.screen(game, b.x + b.w / 2, b.y + b.h / 2);
+    const z = game.camera.zoom, width = 36 * z;
+    const y = p.y - (b.type === 'core' ? 143 : b.type === 'tower' ? 119 : 69) * z;
+    const blocked = item.remaining <= 0;
+    const progress = clamp(1 - item.remaining / item.total, 0, 1);
+    const ctx = this.ctx;
+    ctx.save();
+    ctx.fillStyle = 'rgba(8,8,5,0.85)';
+    ctx.fillRect(p.x - width / 2 - z, y - z, width + 2 * z, 6 * z);
+    ctx.fillStyle = blocked ? '#df6857' : '#e4c879';
+    ctx.fillRect(p.x - width / 2, y, width * progress, 4 * z);
+    // Individual ticks show how many paid items remain, including the first.
+    ctx.fillStyle = '#f7e8bc';
+    for (let i = 0; i < Math.min(b.queue.length, 5); i++) {
+      ctx.fillRect(p.x - width / 2 + i * 5 * z, y - 4 * z, 3 * z, 2 * z);
+    }
+    if (blocked) {
+      ctx.strokeStyle = '#fff1dc'; ctx.lineWidth = Math.max(1, z);
+      ctx.beginPath(); ctx.moveTo(p.x - 3 * z, y); ctx.lineTo(p.x + 3 * z, y + 4 * z);
+      ctx.moveTo(p.x + 3 * z, y); ctx.lineTo(p.x - 3 * z, y + 4 * z); ctx.stroke();
+    }
+    ctx.restore();
   }
 
   drawBuildingBar(b, game) {
