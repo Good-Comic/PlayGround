@@ -1,0 +1,13 @@
+# 混選戰術命令回饋 / Mixed tactical-order feedback
+
+**繁體中文：** 本執行者無法證明與前 Owner 為同一實例，使用本階段自聲明專案身份 `codex-tactical-0c92f30d1fc1` 認領獨立任務 `V240-TACTICAL-PARTIAL-0C92F30D1FC1`，遠端所有權版本 212 已核對；此標識不是平台認證。分支 `codex/riftwatch-tactical-0c92f30d1fc1` 基於 `2d226a694c40b42af1210703720c28b113a0ab2d`，未接管舊工作。
+
+**REAL_GAMEPLAY_DEFECT：** 混選村民與軍隊執行巡邏或攻擊移動時，軍隊接收命令、村民保留工作，卻只顯示一般成功反饋。現在保留成功音與標記，並以繁體中文、簡體中文、英文或日文說明村民不執行此戰術命令且繼續原命令；既有護衛提示、單位能力與西班牙村民規則不變。修正前 Node 案例因缺少部分執行提示而 FAIL；修正後兩項定向案例及五個相關測試檔通過。
+
+應用提交 `cc2170f731310bc8a434b4ffc4459084e2b66397` 以正式工具產生新本地構建，真實 Chromium 驗證 127 個資源哈希。受控場景使用原生 P、Shift+A 和滑鼠，兩種命令均使軍隊接收正確路線、村民繼續採集、顯示部分執行提示並各有一次標記及成功音。首次瀏覽器檢查的第二輪因測試儀器重複包裝標記計數器而 FAIL；已保留記錄，修正計數器後重跑通過。結果、截圖與失敗記錄存於 `tactical-0c92-evidence/`。此為受控操作而非自然完整戰役或真人聽感驗收。實體 GPU、自然十波及歷史 FAIL 保留待測；Progress Feed 由其他 Owner 持有，待合法同步。
+
+**English:** This executor cannot prove it is the prior owner. Session-scoped self-declared project identity `codex-tactical-0c92f30d1fc1` claimed independent task `V240-TACTICAL-PARTIAL-0C92F30D1FC1` at verified remote ownership version 212; it is not platform authenticated. Branch `codex/riftwatch-tactical-0c92f30d1fc1` is based on `2d226a694c40b42af1210703720c28b113a0ab2d`, without taking over previous work.
+
+**REAL_GAMEPLAY_DEFECT:** When villagers and military were selected together for patrol or attack-move, the military received the order and villagers retained their work, but the player saw only general success feedback. The game now retains the normal success sound and marker and explains in Traditional Chinese, Simplified Chinese, English or Japanese that villagers cannot follow the tactical order and continue their current work. Existing guard messaging, unit capabilities and Spanish villager rules are unchanged. Before the fix the Node case failed because partial-assignment feedback was absent; afterward two focused cases and five related test files passed.
+
+The official tool generated a new local artifact from application commit `cc2170f731310bc8a434b4ffc4459084e2b66397`, and real Chromium verified 127 resource hashes. In a controlled fixture using native P, Shift+A and mouse input, both orders gave military the correct route, retained villager gathering and displayed partial feedback with one marker and one success sound each. The first browser attempt failed its second check because the test wrapped its marker counter twice; that result is retained and the corrected counter passed on rerun. Results, screenshots and failure records are in `tactical-0c92-evidence/`. This is controlled interaction, not natural full-campaign or human listening acceptance. Physical GPU, natural ten waves and historical failures remain outstanding; Progress Feed belongs to another owner and awaits authorized synchronization.
