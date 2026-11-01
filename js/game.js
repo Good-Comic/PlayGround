@@ -3248,7 +3248,7 @@ export class Game {
       if (hit.team === 'enemy') {
         let assigned = 0;
         for (const u of units) {
-          if (u.type === 'villager' && this.civ?.id !== 'SPA') continue;
+          if (u.typeDef?.noAttack || (u.type === 'villager' && this.civ?.id !== 'SPA')) continue;
           assigned++;
           if (u.hero) this.heroControl = false;
           u.tacticalOrder = null;
