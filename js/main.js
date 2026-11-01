@@ -6,7 +6,7 @@ import { Renderer } from './renderer.js';
 import { UI } from './ui.js';
 import { unitSpriteAtlasKey } from './sprite-atlas.js';
 import { t } from './i18n.js';
-import { clamp, seedFromDate, seedFromString } from './utils.js';
+import { clamp, seedFromDate, seedFromString, selectionDragRect } from './utils.js';
 import { clearSavedRun, hasSavedRun, loadRun, saveRun } from './save.js';
 
 const canvas = document.getElementById('game');
@@ -284,11 +284,9 @@ canvas.addEventListener('pointermove', e => {
   const pos = localPos(e);
   game.mouse.x = pos.x; game.mouse.y = pos.y; game.mouse.dirty = true;
   if (game.dragBox) {
-    game.dragBox.w = pos.x - game.dragBox.startX;
-    game.dragBox.h = pos.y - game.dragBox.startY;
-    if (Math.abs(game.dragBox.w) > 5 || Math.abs(game.dragBox.h) > 5) game.dragBox.moved = true;
-    if (game.dragBox.w < 0) { game.dragBox.x = pos.x; game.dragBox.w = -game.dragBox.w; }
-    if (game.dragBox.h < 0) { game.dragBox.y = pos.y; game.dragBox.h = -game.dragBox.h; }
+    const rect = selectionDragRect(game.dragBox.startX, game.dragBox.startY, pos.x, pos.y);
+    if (rect.w > 5 || rect.h > 5) game.dragBox.moved = true;
+    Object.assign(game.dragBox, rect);
   }
   if (game.panning) {
     const dx = pos.x - game.panning.x, dy = pos.y - game.panning.y;

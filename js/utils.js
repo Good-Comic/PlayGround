@@ -8,6 +8,9 @@ export const lerp = (a, b, t) => a + (b - a) * t;
 export const dist = (ax, ay, bx, by) => Math.hypot(ax - bx, ay - by);
 export const dist2 = (ax, ay, bx, by) => (ax - bx) ** 2 + (ay - by) ** 2;
 export const easeOut = t => 1 - (1 - t) ** 3;
+export function selectionDragRect(startX, startY, x, y) {
+  return { x: Math.min(startX, x), y: Math.min(startY, y), w: Math.abs(x - startX), h: Math.abs(y - startY) };
+}
 export const easeInOut = t => t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
 
 export function mulberry32(seed) {
