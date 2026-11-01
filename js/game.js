@@ -1411,7 +1411,7 @@ export class Game {
   }
 
   acquireTarget(u, radius = (u.typeDef.sight || 6)*.72) {
-    if (u.stance === 'passive' || u.type === 'villager') return null;
+    if (u.stance === 'passive' || u.type === 'villager' || u.typeDef?.noAttack) return null;
     let best=null, bestD=radius*radius;
     const candidates = this.crowd ? this.crowd.nearby(u, Math.ceil(radius/2)+1) : this.units;
     for (const e of [...candidates, ...this.buildings]) {
@@ -2066,7 +2066,7 @@ export class Game {
       source.eventFireCd = 3;
       this.zones.push({ x: target.x, y: target.y, r: 1.7, delay: .45, damage: 8, source, kind: 'fire', elapsed: 0, done: false });
     }
-    if (target.team === 'player' && !target.w && target.type !== 'villager' && source?.team === 'enemy' && source.alive && !target.manualAttack && ['idle', 'hold'].includes(target.state) && target.stance !== 'passive') {
+    if (target.team === 'player' && !target.w && target.type !== 'villager' && !target.typeDef?.noAttack && source?.team === 'enemy' && source.alive && !target.manualAttack && ['idle', 'hold'].includes(target.state) && target.stance !== 'passive') {
       const canReach = !target.hold && target.stance !== 'hold' || this.distanceTo(target, source) <= this.unitRange(target);
       const insideGuard = target.stance !== 'defensive' || !target.guardOrigin || this.distanceTo(target.guardOrigin, source) <= 8;
       if (canReach && insideGuard) { target.target = source; target.state = 'attack'; }
