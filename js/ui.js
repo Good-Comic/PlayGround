@@ -1,4 +1,4 @@
-import { BUILDING_TYPES, UNIT_TYPES, BUILD_OPTIONS, BOONS, WAVES, CIVILIZATIONS, BIOMES, PLAYER_COLORS, ENEMY_COLORS } from './data.js';
+import { BUILDING_TYPES, UNIT_TYPES, BUILD_OPTIONS, BOONS, MAX_BOONS, WAVES, CIVILIZATIONS, BIOMES, PLAYER_COLORS, ENEMY_COLORS } from './data.js';
 import { difficultyId, DIFFICULTIES } from './campaign.js';
 import { formatNumber, formatTime, roman, clamp, createSeedText } from './utils.js';
 import { applyStaticTranslations, getLocale, localeOptions, setLocale as setAppLocale, t } from './i18n.js';
@@ -474,6 +474,12 @@ export class UI {
     this.onBoonChoose = onChoose;
     this.el.claim.disabled = true;
     this.el.boon.hidden = false;
+    const history = this.$('boon-history');
+    if (history) {
+      const owned = this.game.boons || [];
+      const names = owned.map(card => t(`boon.${card.id}.name`)).join(' · ') || t('boon.ownedNone');
+      history.textContent = t('boon.ownedSummary', { count: owned.length, max: MAX_BOONS, names });
+    }
     if (this.el.boonHint) this.el.boonHint.textContent = t('boon.hint', { keys: '1 / 2 / 3' });
     this.el.boonGrid.innerHTML = '';
     this.updateReroll();
@@ -799,6 +805,9 @@ export class UI {
         : e.type === 'commander'
           ? t('selection.hintHero')
           : t('selection.hintUnit');
+      if (e.team === 'player' && ['P', 'K', 'C'].includes(def.family)) {
+        el.panelHint.textContent += ` · ${t(`selection.counter.${def.family}`)}`;
+      }
       this.drawPortrait(e);
     }
     el.selectionPanel.classList.toggle('is-villager', e.type === 'villager');

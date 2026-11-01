@@ -1412,15 +1412,19 @@ export class Game {
 
   acquireTarget(u, radius = (u.typeDef.sight || 6)*.72) {
     if (u.stance === 'passive' || u.type === 'villager' || u.typeDef?.noAttack) return null;
-    let best=null, bestD=radius*radius;
+    let best=null, bestD=radius*radius, counter=null, counterD=Infinity;
+    const counterReach = ['P', 'K', 'C'].includes(u.typeDef.family) ? this.unitRange(u) : 0;
     const candidates = this.crowd ? this.crowd.nearby(u, Math.ceil(radius/2)+1) : this.units;
     for (const e of [...candidates, ...this.buildings]) {
       if (!e.alive || e.team !== 'enemy' || (u.blockedTargets?.[e.id]||0)>this.time) continue;
       if(u.stance==='defensive' && u.guardOrigin && this.distanceTo(u.guardOrigin,e)>8)continue;
       const d=this.distanceTo(u,e)**2;
+      if (counterReach && !e.w && d < radius*radius && d <= (counterReach + (e.typeDef.radius || 0.2)) ** 2 && this.counterMultiplier(u,e) > 1 && d < counterD) {
+        counter=e; counterD=d;
+      }
       if(d<bestD){best=e;bestD=d;}
     }
-    return best;
+    return counter || best;
   }
 
   updatePlayerUnit(u, dt) {
@@ -2062,6 +2066,10 @@ export class Game {
       }
     }
     if (target.team === 'enemy' && source?.team === 'player') this.director.recordDamage(source, damage);
+    if (target.team === 'enemy' && !target.w && source?.team === 'player' && source.typeDef && this.selection.includes(source) && (damageKind === 'melee' || damageKind === 'projectile')) {
+      const advantage = this.counterMultiplier(source, target);
+      if (advantage > 1) this.addFloating(target.x, target.y, `×${advantage}`, 'rgba(179,231,143,ALPHA)');
+    }
     if (this.waveEventActive && source?.team === 'enemy' && target.team === 'player' && target.alive && source.eventFlags?.includes('fire') && source.typeDef.category === 'ranged' && (source.eventFireCd || 0) <= 0) {
       source.eventFireCd = 3;
       this.zones.push({ x: target.x, y: target.y, r: 1.7, delay: .45, damage: 8, source, kind: 'fire', elapsed: 0, done: false });
