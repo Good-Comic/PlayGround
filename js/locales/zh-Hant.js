@@ -320,6 +320,7 @@ export const ui = {
   'toast.noEligibleAttackers': '所選單位無法攻擊該目標。',
   'toast.guardInvalid': '請選擇另一個友方單位或建築作為護衛目標。',
   'toast.guardPartial': '村民無法護衛，會繼續原有命令。',
+  'toast.tacticalPartial': '村民無法執行此戰術命令，會繼續原有命令。',
   'toast.marked': '{name}已被標記。士兵對其傷害 +10%，持續 6 秒。',
   'toast.aegisCooldown': '神盾將於 {seconds} 秒後就緒。',
   'toast.aegisShields': '神盾為 {count} 名士兵提供 60 點護盾，持續 5 秒。',

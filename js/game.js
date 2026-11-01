@@ -3349,8 +3349,8 @@ export class Game {
     units.forEach((u,i)=>{u.tacticalOrder={type:mode,destination:{...u.targetPos},origin:starts[i],leg:1,protectedId:mode==='guard'?hit.id:null};u._orderScanAt=0;});
     if(units.some(u=>u.hero))this.heroControl=false;
     this.orderMode=null;this.addCommandMarker(point.x,point.y,true);this.sound?.command();this.hooks.selectionChanged?.();
-    if (mode === 'guard' && this.selection.some(u => u.alive && u.team === 'player' && !u.w && u.type === 'villager')) {
-      this.toast(t('toast.guardPartial'), '', 2200);
+    if (this.selection.some(u => u.alive && u.team === 'player' && !u.w && u.type === 'villager')) {
+      this.toast(t(mode === 'guard' ? 'toast.guardPartial' : 'toast.tacticalPartial'), '', 2200);
     }
     return true;
   }
