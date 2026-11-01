@@ -27,7 +27,7 @@ test('hero support and bosses use independent complete decoded PNG sheets', () =
 });
 
 test('champion frame cache reuses cropped pixels and stays bounded across action/direction changes', () => {
-  const r = Object.create(Renderer.prototype), entry = { image: {} }, atlas = UNIT_SPRITE_ATLASES.commander;
+  const r = Object.create(Renderer.prototype), entry = { image: { naturalWidth: 2816 } }, atlas = UNIT_SPRITE_ATLASES.commander;
   const frame = atlasFrame(atlas, 'E', 'idle', 0);
   const before = crops, first = r.spriteFrameImage(entry, frame);
   assert.equal(r.spriteFrameImage(entry, frame), first); assert.equal(crops - before, 1);
