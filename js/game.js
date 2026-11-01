@@ -1468,7 +1468,7 @@ export class Game {
   }
 
   updateAttack(u, dt) {
-    if (u.typeDef.noAttack) { u.state = u.hold ? 'hold' : 'idle'; return; }
+    if (u.typeDef.noAttack) { u.target = null; u.manualAttack = false; u.state = u.hold ? 'hold' : 'idle'; return; }
     const target = u.target;
     if (!target || !target.alive) { u.state = u.hold ? 'hold' : 'idle'; u.target = null; return; }
     if (!u.manualAttack && (u.stance === 'passive' || (u.stance === 'defensive' && u.guardOrigin && this.distanceTo({ x: u.guardOrigin.x, y: u.guardOrigin.y }, target) > 8))) {
