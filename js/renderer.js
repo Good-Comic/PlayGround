@@ -2041,6 +2041,20 @@ export class Renderer {
       ctx.save();
       ctx.translate(pos.x, pos.y - zOff);
       ctx.rotate(angle);
+      if (p.source?.typeDef?.family === 'S') {
+        // Draw the same in-flight simulation projectile as an identifiable stone.
+        ctx.fillStyle = 'rgba(30,26,23,0.45)';
+        ctx.beginPath(); ctx.ellipse(-3 * z, 4 * z, 8 * z, 3 * z, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#4d4940'; ctx.beginPath();
+        ctx.moveTo(-7 * z, -2 * z); ctx.lineTo(-4 * z, -7 * z); ctx.lineTo(3 * z, -8 * z);
+        ctx.lineTo(8 * z, -3 * z); ctx.lineTo(6 * z, 4 * z); ctx.lineTo(-1 * z, 7 * z);
+        ctx.lineTo(-7 * z, 3 * z); ctx.closePath(); ctx.fill();
+        ctx.fillStyle = '#aaa28c'; ctx.beginPath();
+        ctx.moveTo(-4 * z, -4 * z); ctx.lineTo(2 * z, -6 * z); ctx.lineTo(5 * z, -2 * z);
+        ctx.lineTo(-1 * z, 0); ctx.closePath(); ctx.fill();
+        ctx.restore();
+        continue;
+      }
       ctx.strokeStyle = '#3b2b19'; ctx.lineWidth = 1.2 * z;
       ctx.beginPath(); ctx.moveTo(-10 * z, 0); ctx.lineTo(6 * z, 0); ctx.stroke();
       ctx.fillStyle = '#d5cba9';
