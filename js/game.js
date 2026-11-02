@@ -3156,8 +3156,10 @@ export class Game {
   selectIdleVillager() {
     const idle = this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager' && (u.state === 'idle' || u.state === 'hold'));
     if (!idle.length) { this.sound?.error(); this.toast(t('toast.noIdle'), '', 1800); return; }
-    this.setSelection([idle[0]]);
-    this.focusAt(idle[0].x, idle[0].y);
+    const current = this.selection.length === 1 ? idle.indexOf(this.selection[0]) : -1;
+    const next = idle[(current + 1) % idle.length];
+    this.setSelection([next]);
+    this.focusAt(next.x, next.y);
     this.sound?.select();
   }
 
