@@ -1987,7 +1987,8 @@ export class Game {
           for (const e of this.units) {
             if (e === target || !e.alive || e.team === source.team) continue;
             if (dist(e.x, e.y, target.x, target.y) > 1.5) continue;
-            this.applyDamage(e, p.damage * 0.5, source, 'splash');
+            const splashRatio = source.team === 'player' ? Math.max(0.5, this.effects.siegeSplash || 0) : 0.5;
+            this.applyDamage(e, p.damage * splashRatio, source, 'splash');
             if (++hits >= 7) break;
           }
           this.addParticles(p.tx, p.ty, 'ring', 'rgba(227,166,85,ALPHA)', 1.8, 9, 0.55);
