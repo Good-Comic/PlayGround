@@ -9,7 +9,7 @@ import {
 import { createWorld } from './world.js';
 import { NemesisDirector, unitThreat } from './director.js';
 import { t } from './i18n.js';
-import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, rand, randInt, seedFromDate, formatNumber } from './utils.js';
+import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, pointSegmentDist, rand, randInt, seedFromDate, formatNumber } from './utils.js';
 import { visualDirectionFromVector } from './visuals.js';
 import { atlasBodyContains } from './sprite-atlas.js';
 import { HERO_SKILLS } from './hero-skills.js';
@@ -300,6 +300,7 @@ export class Game {
       selection: this.selection.map(ref),
       worldResources: this.world.resources.map(node => ({
         id: node.id, alive: node.alive, amount: node.amount, hitFlash: node.hitFlash || 0,
+        ...(Number.isFinite(node.regrowAt) ? { regrowAt: node.regrowAt } : {}),
       })),
       units: this.units.map(unit => ({
         ...pick(unit, unitKeys),
@@ -349,6 +350,10 @@ export class Game {
       node.alive = saved.alive;
       node.amount = saved.amount;
       node.hitFlash = saved.hitFlash || 0;
+      if (!node.alive && Number.isFinite(saved.regrowAt) && saved.regrowAt >= 0 && this.biome.id === 'forest') {
+        node.regrowAt = saved.regrowAt;
+        this.world.props.push({ kind: 'stump', x: node.x, y: node.y, angle: 0, nodeId: node.id });
+      }
     }
     this.resources = { ...snapshot.resources };
     this.effects = { ...snapshot.effects };
@@ -928,6 +933,7 @@ export class Game {
     this.updateHeroLife(dt);
     this.updateBuildings(dt);
     this.updateUnits(dt);
+    this.updateForestRegrowth();
     this.updateProjectiles(dt);
     this.updateZones(dt);
     this.updateParticles(dt);
@@ -1719,9 +1725,35 @@ export class Game {
     node.alive = false;
     node.amount = 0;
     if (node.kind === 'oak' || node.kind === 'pine') {
-      this.world.props.push({ kind: 'stump', x: node.x, y: node.y, angle: this.visualRng() * 6 });
+      if (this.biome?.id === 'forest') node.regrowAt = this.time + 120;
+      this.world.props.push({ kind: 'stump', x: node.x, y: node.y, angle: this.visualRng() * 6, nodeId: node.id });
     }
     this.addParticles(node.x, node.y, 'spark', 'rgba(208,190,145,ALPHA)', 1.2, 8, 0.7);
+  }
+
+  updateForestRegrowth() {
+    if (this.biome?.id !== 'forest' || !this.world?.base) return;
+    const { resources, camps, base } = this.world;
+    for (const node of resources) {
+      if (node.alive || !Number.isFinite(node.regrowAt) || this.time < node.regrowAt) continue;
+      if (!['oak', 'pine'].includes(node.kind) || !(node.maxAmount > 0)) continue;
+      const clearance = 2 + (node.radius || 0);
+      // The generated reserved lane has a 1.8-tile half-width; keep the
+      // specified two-tile buffer outside that corridor as well.
+      const laneClearance = 1.8 + clearance;
+      if ((camps || []).some(c => pointSegmentDist(node.x, node.y, c.x, c.y, base.x, base.y) < laneClearance)) continue;
+      if (!this.world.tile(node.x, node.y) || this.world.tile(node.x, node.y).terrain === 'water') continue;
+      if (this.units.some(u => u.alive && dist(node.x, node.y, u.x, u.y) < clearance + (u.typeDef?.radius || 0))) continue;
+      if (this.buildings.some(b => {
+        if (!b.alive) return false;
+        const dx = Math.max(b.x - node.x, 0, node.x - (b.x + b.w));
+        const dy = Math.max(b.y - node.y, 0, node.y - (b.y + b.h));
+        return Math.hypot(dx, dy) < clearance;
+      })) continue;
+      if (resources.some(other => other !== node && other.alive && dist(node.x, node.y, other.x, other.y) < (node.radius || 0) + (other.radius || 0))) continue;
+      node.alive = true; node.amount = node.maxAmount; delete node.regrowAt; node.hitFlash = 0;
+      this.world.props = this.world.props.filter(p => !(p.kind === 'stump' && p.nodeId === node.id));
+    }
   }
 
   moveAlong(u, dt) {
