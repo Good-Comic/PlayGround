@@ -1,0 +1,13 @@
+# KITE 撤退方向 / KITE retreat direction
+
+**繁體中文：** 獨立任務 `V240-KITE-DIRECTION-DD660613E049` 的 Ownership 版本 223 已遠端核對；`codex-kite-dd660613e049` 為本次執行自聲明的專案身份，並非平台認證。分支基於 `2382ffa065b3f2725dada695c525339ad5d9c979`，範圍限於 KITE 遠程兵撤退方向；沒有接管原 HUNT、Atlas 或其他 Owner。
+
+KITE 原本在近戰威脅靠近時朝出生營地退卻；若敵方營地在威脅後方，遠程兵反而走向威脅。現在初始撤退目的地選在遠離該近戰單位的方向，目標距離採 GDD 的四格並限制於地圖邊界，沿用既有導航、1.6 秒撤退、冷卻及兩次上限。目的地保存在快照，以維持中途讀檔時的方向；舊存檔缺少目的地時保留原營地後備行為。不宣稱已完成 GDD 所有 KITE 規則：實際可行走距離、全類型近戰威脅及每隊退兩次後停射三秒仍待處理。
+
+應用提交 `faac478265ae3e511fa18dda5a8f89ef01d7868f` 及基底的正式本機建置在 Chromium 均通過 127 資源雜湊。固定種子受控戰鬥中，玩家原生選取近戰兵，營地在其後方；0.7 秒後舊版弓兵由 x=35 移至約 33.60，新版移至約 36.79。截圖和 JSON 在 `kite-dd66-evidence/`。Node 方向測試在基底失敗，修正後四項通過，包括中途存檔和非 KITE 撤退；HUNT、目標、戰鬥、恩賜存檔和 RNG 相關回歸通過。此為受控場景，非自然波次、十波戰役或實體 GPU 驗收；歷史 FAIL／INCONCLUSIVE 保留。Progress Feed 屬其他 Owner，待合法同步。
+
+**English:** Independent task `V240-KITE-DIRECTION-DD660613E049` has verified remote ownership version 223. `codex-kite-dd660613e049` is the self-declared project identity for this execution, not platform authenticated. The branch starts from `2382ffa065b3f2725dada695c525339ad5d9c979`; its scope is KITE ranged-unit retreat direction, without taking over HUNT, Atlas or other owners.
+
+KITE previously retreated toward the spawn camp when melee approached. If that camp lay behind the threat, ranged enemies moved toward the attacker. The initial retreat destination now points away from that melee unit, using the GDD's four-tile target and map bounds while retaining existing navigation, 1.6-second retreat, cooldown and two-retreat cap. The destination is saved to preserve direction on reload; older saves without it keep the original camp fallback. Full GDD KITE compliance is not claimed: actual traversable distance, all melee threat types and the three-second firing pause after two squad retreats remain open.
+
+The official local builds for application commit `faac478265ae3e511fa18dda5a8f89ef01d7868f` and baseline verified all 127 resources in Chromium. In a fixed-seed controlled fight, the player natively selected a melee unit with the camp behind it; after 0.7 seconds the baseline archer moved from x=35 to about 33.60, and the new archer moved to about 36.79. Screenshots and JSON are in `kite-dd66-evidence/`. The Node direction case failed on baseline; four cases passed after the fix, including mid-retreat save and non-KITE retreat. HUNT, targeting, combat, boon-save and RNG regressions passed. This is a controlled scenario, not natural-wave, ten-wave or physical GPU acceptance; historical FAIL/INCONCLUSIVE remain. Progress Feed belongs to another owner and awaits authorized synchronization.
