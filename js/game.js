@@ -2103,7 +2103,7 @@ export class Game {
     target.hp -= damage;
     target.hitFlash = 1;
     this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'spark', 'rgba(178,64,49,ALPHA)', 1, 4, 0.5);
-    if (source?.team === 'player' && source.alive && this.effects.lifesteal > 0) {
+    if (source?.team === 'player' && source.kind === 'unit' && source.typeDef?.category !== 'villager' && source.alive && this.effects.lifesteal > 0) {
       source.hp = Math.min(source.maxHp, source.hp + damage * this.effects.lifesteal);
     }
     if (target.team === 'player' && target.w && this.effects.thorns > 0 && source?.team === 'enemy' && !source.typeDef?.projectile) {
