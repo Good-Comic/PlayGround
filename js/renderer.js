@@ -691,9 +691,20 @@ export class Renderer {
         ctx.beginPath(); ctx.arc(p.x + (ox - r * 0.3 + sway * 0.6) * s, p.y + (oy - r * 0.35) * s, r * 0.33 * s, 0, Math.PI * 2); ctx.fill();
       }
     }
-    if (n.amount < n.maxAmount * 0.5) {
-      ctx.fillStyle = 'rgba(20,24,13,0.5)';
-      ctx.beginPath(); ctx.ellipse(p.x - 8 * s, p.y - 27 * s, 6 * s, 2 * s, -0.4, 0, 6.3); ctx.fill();
+    const woodStage = resourceVisualStage(n);
+    if (woodStage !== 'rich') {
+      // A fresh wedge and chips show a worked tree without changing its collision.
+      ctx.fillStyle = '#d1a066'; ctx.strokeStyle = '#55351d'; ctx.lineWidth = Math.max(1, s);
+      ctx.beginPath(); ctx.moveTo(p.x - 5 * s, p.y - 12 * s); ctx.lineTo(p.x + 4 * s, p.y - 9 * s);
+      ctx.lineTo(p.x - 5 * s, p.y - 5 * s); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#d3ad72';
+      for (const [x,y] of [[-11,1],[-6,4],[7,3]]) {
+        ctx.beginPath(); ctx.ellipse(p.x + x * s, p.y + y * s, 2 * s, .7 * s, -.2, 0, 6.3); ctx.fill();
+      }
+      if (woodStage === 'scarce') {
+        ctx.strokeStyle = '#f0c98b'; ctx.lineWidth = Math.max(1, s);
+        ctx.beginPath(); ctx.moveTo(p.x - 4 * s, p.y - 9 * s); ctx.lineTo(p.x + 2 * s, p.y - 9 * s); ctx.stroke();
+      }
     }
     ctx.restore();
   }
