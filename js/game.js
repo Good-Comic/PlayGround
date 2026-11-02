@@ -1978,6 +1978,7 @@ export class Game {
   }
 
   updateProjectiles(dt) {
+    const windFor = Math.min(dt, Math.max(0, this.effects.sidewind || 0));
     for (const p of this.projectiles) {
       if (!p.alive) continue;
       const target = p.target;
@@ -2030,9 +2031,12 @@ export class Game {
         this.addParticles(p.tx, p.ty, 'spark', 'rgba(230,213,171,ALPHA)', 1, 4, 0.7);
         continue;
       }
-      const step = Math.min(d, p.speed * dt);
+      const arrow = p.source?.typeDef?.projectile === 'arrow' || p.source?.kind === 'building';
+      const travelTime = dt - (arrow ? windFor * 0.15 : 0);
+      const step = Math.min(d, p.speed * travelTime);
       p.x += dx / d * step; p.y += dy / d * step;
     }
+    if (this.effects.sidewind > 0) this.effects.sidewind = Math.max(0, this.effects.sidewind - dt);
     this.projectiles = this.projectiles.filter(p => p.alive);
   }
 
@@ -2529,7 +2533,7 @@ export class Game {
     // Crosswind: arrow speed -15% for 12s
     this.effects.sidewind = 12;
     this.toast(t('biomeEvent.sidewind'), 'bad', 4000);
-    setTimeout(() => { this.effects.sidewind = 0; }, 12000);
+
   }
 
   executeRegrowth() {
