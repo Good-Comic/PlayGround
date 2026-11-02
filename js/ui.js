@@ -709,8 +709,10 @@ export class UI {
     const cmdSig = this.commandSignature(game);
     const portraitKey = this.civilizationHeroAtlas(game.selection.length === 1 ? game.selection[0] : null)?.descriptor.id || 'procedural';
     const unit = game.selection.length === 1 ? game.selection[0] : null;
-    const detailSig = unit && !unit.w && !unit.resource
-      ? `${unit.id}:${unit.state}:${unit.gatherTarget?.resource}:${unit.buildTarget?.type}:${unit.carryType}:${Math.round(unit.carry || 0)}:${unit.armor}:${game.unitAttack?.(unit)}:${game.unitRange?.(unit)}` : '';
+    const detailSig = unit?.w && unit.construction < 1
+      ? `building:${unit.id}:${Math.round(unit.construction * 100)}`
+      : unit && !unit.w && !unit.resource
+        ? `${unit.id}:${unit.state}:${unit.gatherTarget?.resource}:${unit.buildTarget?.type}:${unit.carryType}:${Math.round(unit.carry || 0)}:${unit.armor}:${game.unitAttack?.(unit)}:${game.unitRange?.(unit)}` : '';
     const detailsChanged = this.lastSelectionDetailSignature !== undefined && detailSig !== this.lastSelectionDetailSignature;
     this.lastSelectionDetailSignature = detailSig;
     if (force || sig !== this.lastSignature || cmdSig !== this.lastCommandSignature || portraitKey !== this.lastPortraitAtlas) {
