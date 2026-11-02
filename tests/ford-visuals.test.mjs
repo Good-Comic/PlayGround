@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {fordWaterEdges} from '../js/renderer.js';
+test('ford edging identifies only water-adjacent cobble edges without altering terrain',()=>{const world={size:3,tiles:['grass','water','grass','water','cobble','dirt','grass','water','water'].map(terrain=>({terrain}))};const before=JSON.stringify(world);assert.deepEqual(fordWaterEdges(world,1,1),[0,2,3]);assert.deepEqual(fordWaterEdges(world,0,0),[]);assert.equal(JSON.stringify(world),before)});

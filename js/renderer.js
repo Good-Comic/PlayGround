@@ -96,6 +96,16 @@ export function resourceVisualStage(node) {
   return remaining <= .2 ? 'scarce' : remaining <= .5 ? 'low' : 'rich';
 }
 
+// Decorative edging stays inside a walkable cobble tile and never changes terrain.
+export function fordWaterEdges(world, x, y) {
+  if (world.tiles[y * world.size + x]?.terrain !== 'cobble') return [];
+  return [[0, -1], [1, 0], [0, 1], [-1, 0]].flatMap(([dx, dy], edge) => {
+    const nx = x + dx, ny = y + dy;
+    return nx >= 0 && ny >= 0 && nx < world.size && ny < world.size &&
+      world.tiles[ny * world.size + nx]?.terrain === 'water' ? [edge] : [];
+  });
+}
+
 // Visual roles are deliberately independent from combat stats.  Keeping this
 // small vocabulary explicit lets the renderer make silhouettes readable at
 // normal zoom without changing unit balance or simulation state.
@@ -367,6 +377,7 @@ export class Renderer {
           const sprite = this.tileSprites.get(`${game.world.biome || 'ash'}:${tile.terrain}-${tile.variant}`);
           if (sprite) lctx.drawImage(sprite, p.x - tw / 2, p.y - th / 2, tw, th);
           if (tile.terrain === 'water') this.drawWaterBanks(game.world, x, y, lctx, p, z);
+          else if (tile.terrain === 'cobble') this.drawFordEdges(game.world, x, y, lctx, p, z);
         }
       }
       // Lighting is invariant until the terrain/camera/viewport key changes.
@@ -399,6 +410,29 @@ export class Renderer {
       ctx.beginPath(); ctx.moveTo(a[0] * .87, a[1] * .87);
       ctx.lineTo(b[0] * .87, b[1] * .87); ctx.strokeStyle = colors[1]; ctx.globalAlpha = .55;
       ctx.lineWidth = .65; ctx.stroke(); ctx.globalAlpha = 1;
+    }
+    ctx.restore();
+  }
+
+  drawFordEdges(world, x, y, ctx, p, z) {
+    const edges = fordWaterEdges(world, x, y);
+    if (!edges.length) return;
+    const corners = [[0, -HALF_H], [HALF_W, 0], [0, HALF_H], [-HALF_W, 0]];
+    ctx.save(); ctx.translate(p.x, p.y); ctx.scale(z, z);
+    for (const edge of edges) {
+      const a = corners[edge], b = corners[(edge + 1) % 4];
+      // Recessed stone coping makes the water's impassable edge legible.
+      ctx.beginPath(); ctx.moveTo(...a); ctx.lineTo(...b);
+      ctx.lineTo(b[0] * .78, b[1] * .78); ctx.lineTo(a[0] * .78, a[1] * .78);
+      ctx.closePath(); ctx.fillStyle = '#524b3e'; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(a[0] * .82, a[1] * .82);
+      ctx.lineTo(b[0] * .82, b[1] * .82); ctx.strokeStyle = '#d5c7a3';
+      ctx.lineWidth = 1.2; ctx.stroke();
+      for (const t of [.25, .5, .75]) {
+        const ax = a[0] + (b[0] - a[0]) * t, ay = a[1] + (b[1] - a[1]) * t;
+        ctx.beginPath(); ctx.moveTo(ax * .82, ay * .82); ctx.lineTo(ax * .96, ay * .96);
+        ctx.strokeStyle = '#82765e'; ctx.lineWidth = .8; ctx.stroke();
+      }
     }
     ctx.restore();
   }
