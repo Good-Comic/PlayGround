@@ -27,6 +27,8 @@ test('opposing units pass a narrow building corridor by yielding, without overla
 test('unreachable manual combat target is abandoned and reachable enemy acquired',()=>{
  const g=arena();g.world.tile=(x,y)=>({terrain:x>=14&&x<16?'water':'grass'});
  const u=g.spawnUnit('militia',10,10),unreachable=g.spawnUnit('militia',20,10,'enemy'),other=g.spawnUnit('militia',11,12,'enemy');
+ // 對岸觀察者保留導航測試的可見目標前提。 / A far-bank observer preserves this navigation test’s visible-target premise.
+ g.spawnUnit('villager',18,10);
  u.state='attack';u.target=unreachable;u.manualAttack=true;unreachable.stance='passive';other.stance='passive';
  for(let i=0;i<100&&!u.orderFailure;i++){g.time+=.05;g.navigationBudget=2;g.updatePlayerUnit(u,.05);}
  report('unreachable-combat','failure recorded <=5s, target replaced, no water crossing',{time:g.time,failure:u.orderFailure,target:u.target?.id,x:u.x});
