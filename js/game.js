@@ -300,7 +300,7 @@ export class Game {
       selection: this.selection.map(ref),
       worldResources: this.world.resources.map(node => ({
         id: node.id, alive: node.alive, amount: node.amount, hitFlash: node.hitFlash || 0,
-        ...(Number.isFinite(node.regrowAt) ? { regrowAt: node.regrowAt } : {}),
+        ...(Number.isFinite(node.regrowAt) ? { regrowAt: node.regrowAt, stumpAngle: node.stumpAngle } : {}),
       })),
       units: this.units.map(unit => ({
         ...pick(unit, unitKeys),
@@ -352,7 +352,8 @@ export class Game {
       node.hitFlash = saved.hitFlash || 0;
       if (!node.alive && Number.isFinite(saved.regrowAt) && saved.regrowAt >= 0 && this.biome.id === 'forest') {
         node.regrowAt = saved.regrowAt;
-        this.world.props.push({ kind: 'stump', x: node.x, y: node.y, angle: 0, nodeId: node.id });
+        node.stumpAngle = Number.isFinite(saved.stumpAngle) ? saved.stumpAngle : 0;
+        this.world.props.push({ kind: 'stump', x: node.x, y: node.y, angle: node.stumpAngle, nodeId: node.id });
       }
     }
     this.resources = { ...snapshot.resources };
@@ -1725,8 +1726,9 @@ export class Game {
     node.alive = false;
     node.amount = 0;
     if (node.kind === 'oak' || node.kind === 'pine') {
-      if (this.biome?.id === 'forest') node.regrowAt = this.time + 120;
-      this.world.props.push({ kind: 'stump', x: node.x, y: node.y, angle: this.visualRng() * 6, nodeId: node.id });
+      const stumpAngle = this.visualRng() * 6;
+      if (this.biome?.id === 'forest') { node.regrowAt = this.time + 120; node.stumpAngle = stumpAngle; }
+      this.world.props.push({ kind: 'stump', x: node.x, y: node.y, angle: stumpAngle, nodeId: node.id });
     }
     this.addParticles(node.x, node.y, 'spark', 'rgba(208,190,145,ALPHA)', 1.2, 8, 0.7);
   }
@@ -1751,7 +1753,7 @@ export class Game {
         return Math.hypot(dx, dy) < clearance;
       })) continue;
       if (resources.some(other => other !== node && other.alive && dist(node.x, node.y, other.x, other.y) < (node.radius || 0) + (other.radius || 0))) continue;
-      node.alive = true; node.amount = node.maxAmount; delete node.regrowAt; node.hitFlash = 0;
+      node.alive = true; node.amount = node.maxAmount; delete node.regrowAt; delete node.stumpAngle; node.hitFlash = 0;
       this.world.props = this.world.props.filter(p => !(p.kind === 'stump' && p.nodeId === node.id));
     }
   }
