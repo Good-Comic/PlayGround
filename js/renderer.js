@@ -1445,10 +1445,7 @@ export class Renderer {
         this.ctx.lineWidth = 1.4 * scale;
         this.ctx.beginPath(); this.ctx.ellipse(p.x, p.y - 16 * scale, 14 * scale, 18 * scale, 0, 0, 6.3); this.ctx.stroke();
       }
-      if (u.carry > 0 && u.type === 'villager') {
-        this.ctx.fillStyle = u.carryType === 'gold' ? '#b28b3e' : u.carryType === 'stone' ? '#7f7c70' : u.carryType === 'wood' ? '#6a4829' : '#a27a45';
-        this.ctx.fillRect(p.x - 6 * scale, p.y - 24 * scale + bob * scale, 5 * scale, 7 * scale);
-      }
+      if (u.carry > 0 && u.type === 'villager') this.drawVillagerCargo(u, p, scale, bob);
       if (u.hitFlash > 0) {
         this.ctx.globalAlpha = u.hitFlash * 0.35;
         this.ctx.fillStyle = '#ffb3a0';
@@ -1456,6 +1453,34 @@ export class Renderer {
         this.ctx.globalAlpha = 1;
       }
     });
+  }
+
+  // Cargo silhouettes use the existing carried resource and never affect gathering.
+  drawVillagerCargo(u, p, s, bob) {
+    const ctx = this.ctx;
+    ctx.save(); ctx.translate(p.x - 4 * s, p.y - 21 * s + bob * s); ctx.scale(s, s);
+    ctx.lineWidth = 1; ctx.strokeStyle = '#30251c';
+    if (u.carryType === 'wood') {
+      ctx.fillStyle = '#845d35';
+      for (const y of [-4, -1, 2]) { ctx.beginPath(); ctx.roundRect(-7, y, 12, 3, 1.5); ctx.fill(); ctx.stroke(); }
+      ctx.strokeStyle = '#e0c28b'; ctx.beginPath(); ctx.moveTo(-2, -4); ctx.lineTo(-2, 5); ctx.stroke();
+    } else if (u.carryType === 'stone') {
+      ctx.fillStyle = '#99988a'; ctx.beginPath(); ctx.moveTo(-7, 3); ctx.lineTo(-6, -3);
+      ctx.lineTo(-2, -6); ctx.lineTo(4, -4); ctx.lineTo(6, 2); ctx.lineTo(2, 5);
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = '#e1ded1'; ctx.beginPath(); ctx.moveTo(-4, -2); ctx.lineTo(-1, -4); ctx.lineTo(2, -3); ctx.stroke();
+    } else if (u.carryType === 'gold') {
+      ctx.fillStyle = '#cfa649'; ctx.beginPath(); ctx.moveTo(-6, 3); ctx.lineTo(-4, -3);
+      ctx.lineTo(0, -6); ctx.lineTo(5, -3); ctx.lineTo(7, 3); ctx.lineTo(3, 5);
+      ctx.lineTo(-4, 5); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#fff1aa'; ctx.fillRect(-2, -3, 3, 2);
+    } else {
+      ctx.fillStyle = '#c49862'; ctx.beginPath(); ctx.moveTo(-4, -4); ctx.lineTo(-2, -6);
+      ctx.lineTo(3, -6); ctx.lineTo(4, -4); ctx.lineTo(6, 3); ctx.lineTo(3, 6);
+      ctx.lineTo(-4, 6); ctx.lineTo(-6, 3); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = '#f1d3a1'; ctx.beginPath(); ctx.moveTo(-4, -3); ctx.lineTo(4, -3); ctx.stroke();
+    }
+    ctx.restore();
   }
 
   drawChampionFeedback(u, p, s, time, casting, emblem) {
