@@ -919,6 +919,7 @@ export class Game {
     if (this.phase === 'victory' || this.phase === 'defeat') { this.updateParticles(baseDt); return; }
     dt = baseDt * (this.speed || 1);
     this.time += dt;
+    if (this.effects.sandstorm > 0) this.effects.sandstorm = Math.max(0, this.effects.sandstorm - dt);
     this.updateAgeResearch(dt);
 
     if (this.phase === 'prep') {
@@ -2579,7 +2580,6 @@ export class Game {
     // Sandstorm: vision -20% for 20s
     this.effects.sandstorm = 20;
     this.toast(t('biomeEvent.sandstorm'), 'bad', 4000);
-    setTimeout(() => { this.effects.sandstorm = 0; }, 20000);
   }
 
   executeFlood() {
