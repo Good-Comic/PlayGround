@@ -1,3 +1,4 @@
+import { CombatVfx } from './vfx-adapter.js';
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.js';
@@ -152,6 +153,7 @@ export class Renderer {
     }));
     this.birds = Array.from({ length: 5 }, (_, i) => ({ o: hash2(i, 1, 7), speed: 0.012 + hash2(i, 3, 2) * 0.01, y: 0.12 + hash2(i, 5, 8) * 0.2, size: 7 + hash2(i, 7, 2) * 6 }));
     this.corpses = [];
+    this.vfx = new CombatVfx();
     this.resize();
   }
 
@@ -330,6 +332,7 @@ export class Renderer {
     for (const w of game.world.wildlife) {
       drawables.push({ kind: 'wildlife', obj: w, depth: w.x + w.y });
     }
+    this.vfx?.draw(ctx,game,(x,y)=>this.screen(game,x,y),this.w,this.h,'back');
     drawables.sort((a, b) => a.depth - b.depth);
     for (const d of drawables) {
       if (d.kind === 'building') this.drawBuilding(d.obj, game, time);
@@ -340,6 +343,7 @@ export class Renderer {
       else this.drawWildlife(d.obj, game, time);
     }
 
+    this.vfx?.draw(ctx,game,(x,y)=>this.screen(game,x,y),this.w,this.h,'front');
     this.drawProjectiles(game, time);
     this.drawParticles(game, time);
     this.drawBuildGhost(game, time);

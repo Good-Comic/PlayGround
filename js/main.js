@@ -165,6 +165,7 @@ ui = new UI(game, {
   },
 });
 
+game.hook('combatVfx', event => renderer.vfx.emit(event, game));
 game.hook('toast', (text, type, duration) => ui.toast(text, type, duration));
 game.hook('boons', (choices, choose) => ui.showBoons(choices, choose));
 game.hook('end', (victory, stats) => {
