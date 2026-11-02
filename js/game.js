@@ -206,7 +206,7 @@ export class Game {
       'marked', 'slowUntil', 'slowAmount', 'shots', 'rescueUsed', 'expireIn', 'bossSkillTimer', 'rageStage',
       'summoned', 'markCd', 'aegisCd', 'eventFlags', 'eventSpeedMul', 'eventAttackSpeedMul',
       'eventRegen', 'buildingDamageMul', 'convertResist', 'eventRetreat', 'eventRetreatCd',
-      'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'moraleUsed',
+      'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'kiteRetreatX', 'kiteRetreatY', 'moraleUsed',
       'lureUsed', 'feintUsed', 'spawnGate', 'eventModsApplied', 'scale',
       'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover', '_orderScanAt', '_blockCd', '_stunCd',
     ];
@@ -1258,15 +1258,26 @@ export class Game {
     if (u.waveWithdrawal) return this.updateWaveWithdrawal(u, dt);
     if (u.typeDef.boss) this.updateBoss(u, dt);
     const flags = this.waveEventActive ? (u.eventFlags || []) : [];
-    if (u.eventRetreat > 0) {
+    const retreat = () => {
+      const kiteTarget = flags.includes('kite') && Number.isFinite(u.kiteRetreatX) && Number.isFinite(u.kiteRetreatY)
+        && u.kiteRetreatX >= 0 && u.kiteRetreatY >= 0 && u.kiteRetreatX < this.world.size && u.kiteRetreatY < this.world.size;
       const camp = this.world.camps[(u.spawnGate || 0) % this.world.camps.length];
-      if (camp) this.stepToward(u, camp.x, camp.y, dt);
+      const destination = kiteTarget ? { x: u.kiteRetreatX, y: u.kiteRetreatY } : camp;
+      if (destination) this.stepToward(u, destination.x, destination.y, dt);
       u.state = 'move';
-      return;
-    }
+    };
+    if (u.eventRetreat > 0) { retreat(); return; }
+    u.kiteRetreatX = u.kiteRetreatY = undefined;
     if (flags.includes('kite') && u.typeDef.category === 'ranged' && u.eventRetreatCd <= 0 && (u.kiteCount || 0) < 2) {
       const threat = this.units.find(o => o.alive && o.team === 'player' && o.typeDef.category === 'infantry' && dist(o.x, o.y, u.x, u.y) < 2);
-      if (threat) { u.eventRetreat = 1.6; u.eventRetreatCd = 4.2; u.kiteCount = (u.kiteCount || 0) + 1; }
+      if (threat) {
+        const dx = u.x - threat.x, dy = u.y - threat.y, length = Math.hypot(dx, dy);
+        const awayX = length > 0 ? dx / length : 1, awayY = length > 0 ? dy / length : 0;
+        u.kiteRetreatX = clamp(u.x + awayX * 4, .6, this.world.size - .6);
+        u.kiteRetreatY = clamp(u.y + awayY * 4, .6, this.world.size - .6);
+        u.eventRetreat = 1.6; u.eventRetreatCd = 4.2; u.kiteCount = (u.kiteCount || 0) + 1;
+        retreat(); return;
+      }
     }
     if (flags.includes('morale') && !u.moraleUsed && u.hp / u.maxHp < .3) {
       u.moraleUsed = true;
