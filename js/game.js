@@ -1344,7 +1344,7 @@ export class Game {
       if (flags.includes('breach')) {
         priority = this.buildings
           .filter(b => b.alive && b.team === 'player' && this.canSee(u,b))
-          .sort((a, b) => a.hp - b.hp)[0] || null;
+          .sort((a, b) => a.hp - b.hp)[0] || tc || null;
       } else if (raidCavalry && this.waveClock - this.waveEventAt <= 20) {
         priority = this.buildings
           .filter(b => b.alive && b.team === 'player' && b.type === 'camp' && this.canSee(u,b))
@@ -1466,7 +1466,7 @@ export class Game {
   }
 
   updatePlayerUnit(u, dt) {
-    if(u.target?.team==='enemy'&&!this.isVisible(u.target)){u.target=null;u.manualAttack=false;u.targetPos=u.stance==='defensive'?{...u.guardOrigin}:null;u.state=u.targetPos?'move':'idle';u._nav=null;}
+    if(u.target?.alive&&u.target.team==='enemy'&&!this.isVisible(u.target)){u.target=null;u.manualAttack=false;u.targetPos=u.stance==='defensive'&&u.guardOrigin?{...u.guardOrigin}:null;u.state=u.targetPos?'move':'idle';u._nav=null;return;}
     if (u.tacticalOrder && this.updateTacticalOrder(u,dt)) return;
     if (u.state === 'gather') return this.updateGather(u, dt);
     if (u.state === 'return') return this.updateReturn(u, dt);

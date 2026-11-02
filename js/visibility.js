@@ -10,7 +10,7 @@ export function sightRadius(game, entity) {
 export function position(entity) { return {x:entity.x+(entity.w||0)/2,y:entity.y+(entity.h||0)/2}; }
 export function canSee(game, observer, target) {
   if (!observer?.alive || !target?.alive) return false;
-  const a=position(observer),b=position(target),r=sightRadius(game,observer);
+  const a=position(observer),b=target.w?{x:Math.max(target.x,Math.min(a.x,target.x+target.w)),y:Math.max(target.y,Math.min(a.y,target.y+target.h))}:position(target),r=sightRadius(game,observer);
   return (a.x-b.x)**2+(a.y-b.y)**2<=r*r;
 }
 export function teamSees(game, team, target) {
