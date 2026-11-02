@@ -1318,7 +1318,11 @@ export class Game {
 
     const huntCavalry = flags.includes('hunt') && !flags.includes('breach') && u.typeDef.family === 'P';
     const beyondHuntRange = huntCavalry && u.target?.team === 'player' && u.target.typeDef?.category === 'cavalry' && dist2(u.x, u.y, u.target.x, u.target.y) > 36;
-    const targetValid = u.target && u.target.alive && !beyondHuntRange;
+    const raidCavalry = flags.includes('raid') && !flags.includes('breach') && u.typeDef.category === 'cavalry';
+    const campTarget = raidCavalry && u.target?.team === 'player' && u.target.type === 'camp';
+    const raidExpired = campTarget && (this.waveClock - this.waveEventAt > 20 ||
+      dist2(u.x, u.y, u.target.x + u.target.w / 2, u.target.y + u.target.h / 2) > 64);
+    const targetValid = u.target && u.target.alive && !beyondHuntRange && !raidExpired;
     if (!targetValid || u.retargetTimer <= 0) {
       u.retargetTimer = 0.9 + this.rng() * 0.5;
       const tc = this.getTownCenter();
@@ -1328,11 +1332,11 @@ export class Game {
         priority = this.buildings
           .filter(b => b.alive && b.team === 'player')
           .sort((a, b) => a.hp - b.hp)[0] || null;
-      } else if (flags.includes('raid') && u.typeDef.category === 'cavalry' && this.waveClock - this.waveEventAt <= 20) {
+      } else if (raidCavalry && this.waveClock - this.waveEventAt <= 20) {
         priority = this.buildings
           .filter(b => b.alive && b.team === 'player' && b.type === 'camp')
           .map(o => ({ o, d: dist2(u.x, u.y, o.x + o.w / 2, o.y + o.h / 2) }))
-          .filter(entry => entry.d < 64)
+          .filter(entry => entry.d <= 64)
           .sort((a, b) => a.d - b.d)[0]?.o || null;
       } else if (huntCavalry) {
         priority = playerUnits
