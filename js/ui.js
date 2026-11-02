@@ -1195,6 +1195,7 @@ export class UI {
 
     const toMap = (x, y) => ({ x: x / game.world.size * W, y: y / game.world.size * H });
     for (const b of game.buildings) {
+      if(b.team==='enemy'&&!game.isVisible(b))continue;
       if (!b.alive) continue;
       const p = toMap(b.x + b.w / 2, b.y + b.h / 2);
       ctx.fillStyle = b.team === 'player' ? '#7fb3c2' : '#a63f35';
@@ -1203,6 +1204,7 @@ export class UI {
       if (b.selected) { ctx.strokeStyle = '#f1d28c'; ctx.lineWidth = 1.5; ctx.strokeRect(p.x - s / 2 - 1, p.y - s / 2 - 1, s + 2, s + 2); }
     }
     for (const u of game.units) {
+      if(u.team==='enemy'&&!game.isVisible(u))continue;
       if (!u.alive) continue;
       const p = toMap(u.x, u.y);
       ctx.fillStyle = u.team === 'player' ? '#a1d2db' : '#dd6b5a';
@@ -1210,10 +1212,15 @@ export class UI {
       if (u.selected) { ctx.strokeStyle = '#f6dfa3'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(p.x, p.y, 3.2, 0, 6.3); ctx.stroke(); }
     }
     for (const camp of game.world.camps) {
+      if(!game.isVisible({...camp,alive:true}))continue;
       const p = toMap(camp.x, camp.y);
       ctx.fillStyle = '#c14d3e';
       ctx.beginPath(); ctx.moveTo(p.x, p.y - 4); ctx.lineTo(p.x + 4, p.y + 3); ctx.lineTo(p.x - 4, p.y + 3); ctx.closePath(); ctx.fill();
     }
+    const fog=this.minimapFog||(this.minimapFog=document.createElement('canvas'));
+    fog.width=W;fog.height=H;const fc=fog.getContext('2d');fc.fillStyle='#10150e';fc.fillRect(0,0,W,H);fc.globalCompositeOperation='destination-out';
+    for(const e of [...game.units,...game.buildings])if(e.alive&&e.team==='player'){const p=toMap(e.x+(e.w||0)/2,e.y+(e.h||0)/2),r=game.sightRadius(e);fc.beginPath();fc.ellipse(p.x,p.y,r/game.world.size*W,r/game.world.size*H,0,0,Math.PI*2);fc.fill();}
+    ctx.drawImage(fog,0,0);
     const corners = [
       this.screenToWorld(game, 0, 64), this.screenToWorld(game, this.el.minimap.ownerDocument.defaultView.innerWidth, 64),
       this.screenToWorld(game, this.el.minimap.ownerDocument.defaultView.innerWidth, this.el.minimap.ownerDocument.defaultView.innerHeight - 200),

@@ -311,10 +311,12 @@ export class Renderer {
 
     const drawables = [];
     for (const b of game.buildings) {
+      if (b.team==='enemy' && !game.isVisible(b)) continue;
       if (!b.alive && (b.construction || 0) < 0.15) continue;
       drawables.push({ kind: b.alive ? 'building' : 'ruin', obj: b, depth: b.x + b.y + b.w * 0.4 + b.h * 0.4 });
     }
     for (const u of game.units) {
+      if (u.team==='enemy' && !game.isVisible(u)) continue;
       if (!u.alive && !(u.deathAnim > 0)) continue;
       drawables.push({ kind: 'unit', obj: u, depth: u.x + u.y + 0.1 });
     }
@@ -342,7 +344,22 @@ export class Renderer {
     this.drawParticles(game, time);
     this.drawBuildGhost(game, time);
     this.drawAtmosphere(game, time);
+    this.drawVisibility(game);
     this.drawSelectionBox(game);
+  }
+
+  drawVisibility(game) {
+    if(game.inMenu)return;
+    const layer=this.visionLayer||(this.visionLayer=document.createElement('canvas'));
+    if(layer.width!==this.w||layer.height!==this.h){layer.width=this.w;layer.height=this.h;}
+    const c=layer.getContext('2d');c.clearRect(0,0,this.w,this.h);
+    c.globalCompositeOperation='source-over';c.fillStyle='#10150e';c.fillRect(0,0,this.w,this.h);
+    c.globalCompositeOperation='destination-out';
+    for(const e of [...game.units,...game.buildings])if(e.alive&&e.team==='player'){
+      const p=this.screen(game,e.x+(e.w||0)/2,e.y+(e.h||0)/2),r=game.sightRadius(e)*game.camera.zoom;
+      c.beginPath();c.ellipse(p.x,p.y,r*Math.SQRT2*HALF_W,r*Math.SQRT2*HALF_H,0,0,Math.PI*2);c.fill();
+    }
+    c.globalCompositeOperation='source-over';this.ctx.drawImage(layer,0,0);
   }
 
   visibleBounds(game) {

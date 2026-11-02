@@ -1,3 +1,4 @@
+import { sightRadius, canSee, teamSees } from './visibility.js';
 import { difficultyId, preparationSeconds, applyDifficulty, applyCycle } from './campaign.js';
 import { Crowd } from './crowd.js';
 import { findPath, segmentClear, crossesRect } from './navigation.js';
@@ -1334,19 +1335,19 @@ export class Game {
     const campTarget = raidCavalry && u.target?.team === 'player' && u.target.type === 'camp';
     const raidExpired = campTarget && (this.waveClock - this.waveEventAt > 20 ||
       dist2(u.x, u.y, u.target.x + u.target.w / 2, u.target.y + u.target.h / 2) > 64);
-    const targetValid = u.target && u.target.alive && !beyondHuntRange && !raidExpired;
+    const targetValid = u.target && u.target.alive && this.canSee(u,u.target) && !beyondHuntRange && !raidExpired;
     if (!targetValid || u.retargetTimer <= 0) {
       u.retargetTimer = 0.9 + this.rng() * 0.5;
       const tc = this.getTownCenter();
-      const playerUnits = this.units.filter(o => o.alive && o.team === 'player');
+      const playerUnits = this.units.filter(o => o.alive && o.team === 'player' && this.canSee(u,o));
       let priority = null;
       if (flags.includes('breach')) {
         priority = this.buildings
-          .filter(b => b.alive && b.team === 'player')
+          .filter(b => b.alive && b.team === 'player' && this.canSee(u,b))
           .sort((a, b) => a.hp - b.hp)[0] || null;
       } else if (raidCavalry && this.waveClock - this.waveEventAt <= 20) {
         priority = this.buildings
-          .filter(b => b.alive && b.team === 'player' && b.type === 'camp')
+          .filter(b => b.alive && b.team === 'player' && b.type === 'camp' && this.canSee(u,b))
           .map(o => ({ o, d: dist2(u.x, u.y, o.x + o.w / 2, o.y + o.h / 2) }))
           .filter(entry => entry.d <= 64)
           .sort((a, b) => a.d - b.d)[0]?.o || null;
@@ -1366,11 +1367,13 @@ export class Game {
         }
       }
       if (best) u.target = best;
-      else if (tc) u.target = tc;
+      else if (tc && this.canSee(u,tc)) u.target = tc;
       else u.target = null;
     }
     if (!u.target) {
-      // No core or nearby player: stop advertising an obsolete movement order.
+      // 沿既有進攻方向行軍，不把未見城心當可攻擊目標。 / March toward the known objective without acquiring an unseen core.
+      const core=this.getTownCenter();
+      if(core){u.state='move';this.stepToward(u,core.x+core.w/2,core.y+core.h/2,dt,.35,core);return;}
       u.state='idle';u._nav=null;
       return;
     }
@@ -1392,7 +1395,8 @@ export class Game {
     if (u.bossSkillTimer <= 0) {
       u.bossSkillTimer = u.type === 'warlord2' ? 7.5 : 9;
       const tc = this.getTownCenter();
-      const targets = this.units.filter(o => o.alive && o.team === 'player');
+      const targets = this.units.filter(o => o.alive && o.team === 'player' && this.canSee(u,o));
+      if(!targets.length && (!tc || !this.canSee(u,tc)))return;
       let tx = tc ? tc.x + tc.w / 2 : this.world.base.x;
       let ty = tc ? tc.y + tc.h / 2 : this.world.base.y;
       if (targets.length) {
@@ -1440,13 +1444,17 @@ export class Game {
     }
   }
 
+  isVisible(entity, team = 'player') { return teamSees(this, team, entity); }
+  canSee(observer, target) { return canSee(this, observer, target); }
+  sightRadius(entity) { return sightRadius(this, entity); }
+
   acquireTarget(u, radius = (u.typeDef.sight || 6)*.72) {
     if (u.stance === 'passive' || u.type === 'villager' || u.typeDef?.noAttack) return null;
     let best=null, bestD=radius*radius, counter=null, counterD=Infinity;
     const counterReach = ['P', 'K', 'C'].includes(u.typeDef.family) ? this.unitRange(u) : 0;
     const candidates = this.crowd ? this.crowd.nearby(u, Math.ceil(radius/2)+1) : this.units;
     for (const e of [...candidates, ...this.buildings]) {
-      if (!e.alive || e.team !== 'enemy' || (u.blockedTargets?.[e.id]||0)>this.time) continue;
+      if (!e.alive || !this.canSee(u,e) || e.team !== 'enemy' || (u.blockedTargets?.[e.id]||0)>this.time) continue;
       if(u.stance==='defensive' && u.guardOrigin && this.distanceTo(u.guardOrigin,e)>8)continue;
       const d=this.distanceTo(u,e)**2;
       if (counterReach && !e.w && d < radius*radius && d <= (counterReach + (e.typeDef.radius || 0.2)) ** 2 && this.counterMultiplier(u,e) > 1 && d < counterD) {
@@ -1458,6 +1466,7 @@ export class Game {
   }
 
   updatePlayerUnit(u, dt) {
+    if(u.target?.team==='enemy'&&!this.isVisible(u.target)){u.target=null;u.manualAttack=false;u.state='idle';u._nav=null;}
     if (u.tacticalOrder && this.updateTacticalOrder(u,dt)) return;
     if (u.state === 'gather') return this.updateGather(u, dt);
     if (u.state === 'return') return this.updateReturn(u, dt);
@@ -1906,13 +1915,13 @@ export class Game {
   nearestEnemyAt(x, y, range) {
     let best = null, bestD = range * range;
     for (const e of this.units) {
-      if (!e.alive || e.team !== 'enemy') continue;
+      if (!e.alive || e.team !== 'enemy' || !this.isVisible(e)) continue;
       const d = dist2(e.x, e.y, x, y);
       if (d < bestD) { bestD = d; best = e; }
     }
     if (!best) {
       for (const b of this.buildings) {
-        if (!b.alive || b.team !== 'enemy') continue;
+        if (!b.alive || b.team !== 'enemy' || !this.isVisible(b)) continue;
         const dx = Math.max(b.x - x, 0, x - (b.x + b.w));
         const dy = Math.max(b.y - y, 0, y - (b.y + b.h));
         const d = dx * dx + dy * dy;
@@ -1992,7 +2001,7 @@ export class Game {
         let hit = 0;
         for (const e of this.units) {
           if (hit >= this.effects.elephantTrampleTargets) break;
-          if (!e.alive || e.team !== 'enemy' || e === target) continue;
+          if (!e.alive || !this.canSee(u,e) || e.team !== 'enemy' || e === target) continue;
           if (dist(e.x, e.y, target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0)) > 1.5) continue;
           this.applyDamage(e, damage * this.effects.elephantTrample, u, 'splash');
           hit++;
@@ -3261,7 +3270,7 @@ export class Game {
     const z = this.camera.zoom;
     let best = null, bestScore = Infinity;
     for (const u of this.units) {
-      if (!u.alive) continue;
+      if (!u.alive || !this.isVisible(u)) continue;
       const p = this.screenPos(u.x, u.y);
       const dx = p.x - sx, dy = (p.y - 18 * z) - sy;
       const d = Math.hypot(dx, dy);
@@ -3269,7 +3278,7 @@ export class Game {
     }
     if (best) return best;
     for (const b of this.buildings) {
-      if (!b.alive) continue;
+      if (!b.alive || !this.isVisible(b)) continue;
       const p = this.screenPos(b.x + b.w / 2, b.y + b.h / 2);
       const width = (b.w + b.h) * 16 * z + 8;
       const height = (b.w + b.h) * 12 * z + (b.type === 'core' ? 112 : b.type === 'tower' ? 92 : 54) * z;

@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{sightRadius,canSee,teamSees}from'../js/visibility.js';
+const unit=(team,x,sight=10)=>({alive:true,team,x,y:0,typeDef:{sight,category:'ranged'}});
+test('雙方實際視野半徑減少20% / both teams lose20% sight',()=>{const p=unit('player',0),e=unit('enemy',9),g={effects:{},units:[p,e],buildings:[]};assert.ok(canSee(g,p,e)&&canSee(g,e,p));g.effects.sandstorm=20;assert.equal(sightRadius(g,p),8);assert.equal(sightRadius(g,e),8);assert.equal(teamSees(g,'player',e),false);assert.equal(teamSees(g,'enemy',p),false);g.effects.sandstorm=0;assert.ok(teamSees(g,'player',e))});
+test('文明視野加成先套用，建築預設6，不改射程 / bonuses before multiplier; building default6; no range mutation',()=>{const p=unit('player',0),g={effects:{archerSight:1,sandstorm:20}};assert.equal(sightRadius(g,p),8.8);assert.ok(Math.abs(sightRadius(g,{w:2,team:'player',typeDef:{}})-4.8)<1e-12);assert.equal(p.typeDef.sight,10)});
