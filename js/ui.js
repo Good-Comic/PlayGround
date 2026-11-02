@@ -708,6 +708,11 @@ export class UI {
     const sig = this.selectionSignature(game);
     const cmdSig = this.commandSignature(game);
     const portraitKey = this.civilizationHeroAtlas(game.selection.length === 1 ? game.selection[0] : null)?.descriptor.id || 'procedural';
+    const unit = game.selection.length === 1 ? game.selection[0] : null;
+    const detailSig = unit && !unit.w && !unit.resource
+      ? `${unit.id}:${unit.state}:${unit.gatherTarget?.resource}:${unit.buildTarget?.type}:${unit.carryType}:${Math.round(unit.carry || 0)}:${unit.armor}:${game.unitAttack?.(unit)}:${game.unitRange?.(unit)}` : '';
+    const detailsChanged = this.lastSelectionDetailSignature !== undefined && detailSig !== this.lastSelectionDetailSignature;
+    this.lastSelectionDetailSignature = detailSig;
     if (force || sig !== this.lastSignature || cmdSig !== this.lastCommandSignature || portraitKey !== this.lastPortraitAtlas) {
       this.lastPortraitAtlas = portraitKey;
       this.lastSignature = sig;
@@ -716,7 +721,13 @@ export class UI {
       this.renderCommands(game);
     } else {
       const one = game.selection[0];
-      if (one?.resource) {
+      if (game.selection.length > 1) {
+        const units = game.selection.filter(e => e.team === 'player');
+        const hp = units.reduce((sum, e) => sum + Math.max(0, e.hp), 0);
+        const maxHp = units.reduce((sum, e) => sum + e.maxHp, 0) || 1;
+        this.el.selectionHp.style.width = `${clamp(hp / maxHp, 0, 1) * 100}%`;
+        this.el.selectionHpText.textContent = `${Math.round(hp)} / ${Math.round(maxHp)}`;
+      } else if (one?.resource || detailsChanged) {
         this.renderSelection(game);
       } else if (one) {
         const ratio = clamp(one.hp / one.maxHp, 0, 1);
@@ -751,6 +762,7 @@ export class UI {
       const hp = units.reduce((s, u) => s + Math.max(0, u.hp), 0);
       const max = units.reduce((s, u) => s + u.maxHp, 0) || 1;
       el.selectionHp.style.width = `${clamp(hp / max, 0, 1) * 100}%`;
+      el.selectionHp.style.background = 'linear-gradient(90deg,#3f7145,#79a45d)';
       el.selectionHpText.textContent = `${Math.round(hp)} / ${Math.round(max)}`;
       el.selectionStats.innerHTML = `<span><b>${units.length}</b> ${t('selection.groupUnderArms')}</span><span><b>${units.filter(u => u.type === 'villager').length}</b> ${t('selection.groupVillagers')}</span>`;
       el.selectionCount.hidden = false;
@@ -799,7 +811,7 @@ export class UI {
       const atk = e.team === 'player' ? game.unitAttack(e) : def.attack;
       const range = e.team === 'player' ? game.unitRange(e) : def.range;
       const carryType = t(`selection.carryType.${e.carryType}`);
-      el.selectionStats.innerHTML = `<span><b>${Math.round(atk)}</b> ${t('selection.atk')}</span><span><b>${range > 2 ? range.toFixed(1) : t('selection.melee')}</b> ${t('selection.range')}</span><span><b>${def.armor || 0}</b> ${t('selection.armor')}</span>${e.carry > 0 ? `<span><b>${Math.round(e.carry)}</b> ${carryType}</span>` : ''}`;
+      el.selectionStats.innerHTML = `<span><b>${Math.round(atk)}</b> ${t('selection.atk')}</span><span><b>${range > 2 ? range.toFixed(1) : t('selection.melee')}</b> ${t('selection.range')}</span><span><b>${e.armor ?? def.armor ?? 0}</b> ${t('selection.armor')}</span>${e.carry > 0 ? `<span><b>${Math.round(e.carry)}</b> ${carryType}</span>` : ''}`;
       el.panelHint.textContent = e.type === 'villager'
         ? t('selection.hintVillager')
         : e.type === 'commander'
