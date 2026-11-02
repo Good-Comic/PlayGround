@@ -1,0 +1,13 @@
+# 遠程恩賜與攻城單位 / Ranged boons and siege units
+
+**繁體中文：** 獨立任務 `V240-RANGED-BOON-758BF25C0246` 的遠端 Ownership 版本 225 已核對；`codex-kite-dd660613e049` 是本連續執行的自聲明專案身份，不是平台認證。分支基於 `e2c8f345da1bb25e36be31985e08ad2102cd12f5`，未接管其他 Owner。
+
+「連弩架」及「共鳴弦」描述均為遠程攻擊效果，原實作卻把投石機石彈也視作箭矢：選連弩架後每第三次攻城攻擊多發一枚石彈，共鳴弦亦可在攻城濺射上額外施加連鎖。現在這兩項效果排除攻城類別；步弓、騎射兵及中國連弩兵原有效果保留。既有卡牌數值、卡牌抽取、普通攻城濺射和破片彈不變。共鳴弦目前依既有射擊計數觸發，與卡牌「命中」描述的一致性仍待獨立分析；本切片不宣稱修正該時間問題。
+
+正式本機應用構建 `cc056d4c6d11aa211eec8ad7795e9ba34479b2b5` 及基底在 Chromium 均通過 127 項資源雜湊。固定種子受控場景由玩家在實際介面選擇連弩架，再以原生右鍵命令投石機攻擊；追蹤既有投射物函式，三次攻擊舊版發射 4 枚，新版發射 3 枚。截圖和 JSON 在 `ranged-758-evidence/`。Node 測試在基底重現兩種攻城錯誤，新版通過，並確認步弓／騎射兵效果、中國連弩兵、破片彈、恩賜存檔和戰鬥回歸。共鳴弦的瀏覽器自然戰鬥尚未驗證；自然十波、實體 GPU、真人聽感及歷史 FAIL／INCONCLUSIVE 保留。Progress Feed 屬其他 Owner，待合法同步。
+
+**English:** Independent task `V240-RANGED-BOON-758BF25C0246` has verified remote ownership version 225. `codex-kite-dd660613e049` is the self-declared project identity of this continuous execution, not platform authenticated. The branch is based on `e2c8f345da1bb25e36be31985e08ad2102cd12f5`, without taking over other owners.
+
+Linked Bolt Rack and Resonant Strings describe ranged attack effects, yet the original code also treated mangonel boulders as arrows: Linked Bolt produced an extra boulder every third siege attack, and Resonant Strings could add chaining on top of siege splash. Both effects now exclude the siege category; existing effects for foot and mounted archers and Chinese repeating crossbows remain. Existing card numbers, draws, ordinary siege splash and Fragment Shells are unchanged. Resonant Strings still uses the existing shot counter, whose relationship to the card's “hit” description needs independent analysis; this slice does not claim to fix timing.
+
+The official local application build `cc056d4c6d11aa211eec8ad7795e9ba34479b2b5` and baseline each verified 127 resource hashes in Chromium. In a fixed-seed controlled scene the player selected Linked Bolt Rack in the actual interface and used native right-click to command a mangonel; instrumentation observed the existing projectile function. Three attacks produced four projectiles on baseline and three after the fix. Screenshots and JSON are in `ranged-758-evidence/`. Node tests reproduced both siege errors on baseline and passed after the fix, including foot/mounted archer behavior, Chinese repeating crossbow, Fragment Shells, boon-save and combat regressions. Resonant Strings remains unverified in natural browser combat; natural ten-wave, physical GPU, human listening and historical FAIL/INCONCLUSIVE remain. Progress Feed belongs to another owner and awaits authorized synchronization.
