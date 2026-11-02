@@ -1928,7 +1928,7 @@ export class Game {
     if (def.projectile) {
       this.spawnProjectile(u.x, u.y - 0.4, target, damage, u.team, 1, u);
       u.shots++;
-      if (u.team === 'player' && this.effects.extraArrowEvery && u.shots % this.effects.extraArrowEvery === 0) {
+      if (u.team === 'player' && u.typeDef.category !== 'siege' && this.effects.extraArrowEvery && u.shots % this.effects.extraArrowEvery === 0) {
         const second = this.nearestEnemyAt(target.x, target.y, 4.5) || target;
         this.spawnProjectile(u.x, u.y - 0.45, second, damage * this.effects.extraArrowDamageMul, u.team, 0.85, u);
       }
@@ -2005,7 +2005,7 @@ export class Game {
             }
             this.addParticles(target.x, target.y, 'ring', 'rgba(227,134,65,ALPHA)', 1, 4, 0.4);
           }
-          if (this.effects.chainEvery && source.shots % this.effects.chainEvery === 0) {
+          if (source.typeDef?.category !== 'siege' && this.effects.chainEvery && source.shots % this.effects.chainEvery === 0) {
             const chained = this.units
               .filter(e => e.alive && e.team === 'enemy' && e !== target && dist(e.x, e.y, target.x, target.y) <= 4)
               .slice(0, 2);
