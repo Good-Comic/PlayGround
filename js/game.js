@@ -1367,7 +1367,7 @@ export class Game {
         }
       }
       if (best) u.target = best;
-      else if (tc && this.canSee(u,tc)) u.target = tc;
+      else if (tc) u.target = tc;
       else u.target = null;
     }
     if (!u.target) {
@@ -1466,7 +1466,7 @@ export class Game {
   }
 
   updatePlayerUnit(u, dt) {
-    if(u.target?.team==='enemy'&&!this.isVisible(u.target)){u.target=null;u.manualAttack=false;u.state='idle';u._nav=null;}
+    if(u.target?.team==='enemy'&&!this.isVisible(u.target)){u.target=null;u.manualAttack=false;u.targetPos=u.stance==='defensive'?{...u.guardOrigin}:null;u.state=u.targetPos?'move':'idle';u._nav=null;}
     if (u.tacticalOrder && this.updateTacticalOrder(u,dt)) return;
     if (u.state === 'gather') return this.updateGather(u, dt);
     if (u.state === 'return') return this.updateReturn(u, dt);
