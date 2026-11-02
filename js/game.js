@@ -206,7 +206,7 @@ export class Game {
       'marked', 'slowUntil', 'slowAmount', 'shots', 'rescueUsed', 'expireIn', 'bossSkillTimer', 'rageStage',
       'summoned', 'markCd', 'aegisCd', 'eventFlags', 'eventSpeedMul', 'eventAttackSpeedMul',
       'eventRegen', 'buildingDamageMul', 'convertResist', 'eventRetreat', 'eventRetreatCd',
-      'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'kiteRetreatX', 'kiteRetreatY', 'moraleUsed',
+      'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'kiteRetreatX', 'kiteRetreatY', 'chainHits', 'moraleUsed',
       'lureUsed', 'feintUsed', 'spawnGate', 'eventModsApplied', 'scale',
       'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover', '_orderScanAt', '_blockCd', '_stunCd',
     ];
@@ -2005,12 +2005,17 @@ export class Game {
             }
             this.addParticles(target.x, target.y, 'ring', 'rgba(227,134,65,ALPHA)', 1, 4, 0.4);
           }
-          if (source.typeDef?.category !== 'siege' && this.effects.chainEvery && source.shots % this.effects.chainEvery === 0) {
-            const chained = this.units
-              .filter(e => e.alive && e.team === 'enemy' && e !== target && dist(e.x, e.y, target.x, target.y) <= 4)
-              .slice(0, 2);
-            for (const e of chained) this.applyDamage(e, p.damage * 0.55, source, 'splash');
-            this.addParticles(target.x, target.y, 'ring', 'rgba(137,190,222,ALPHA)', 1, 3, 0.35);
+          if (source.typeDef?.projectile && source.typeDef.category !== 'siege' && this.effects.chainEvery) {
+            // Count actual projectile impacts, including bonus arrows, rather than
+            // the attack counter, which can advance while shots are in flight.
+            source.chainHits = (Number.isSafeInteger(source.chainHits) && source.chainHits >= 0 ? source.chainHits : 0) + 1;
+            if (source.chainHits % this.effects.chainEvery === 0) {
+              const chained = this.units
+                .filter(e => e.alive && e.team === 'enemy' && e !== target && dist(e.x, e.y, target.x, target.y) <= 4)
+                .slice(0, 2);
+              for (const e of chained) this.applyDamage(e, p.damage * 0.55, source, 'splash');
+              this.addParticles(target.x, target.y, 'ring', 'rgba(137,190,222,ALPHA)', 1, 3, 0.35);
+            }
           }
         }
         this.sound?.hit();
