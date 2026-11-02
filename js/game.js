@@ -212,7 +212,7 @@ export class Game {
     ];
     const buildingKeys = [
       'id', 'team', 'type', 'x', 'y', 'w', 'h', 'hp', 'maxHp', 'baseMaxHp', 'armor',
-      'construction', 'alive', 'cooldown', 'queue', 'rally', 'hitFlash', 'foodStore', 'goldStore',
+      'construction', 'alive', 'cooldown', 'queue', 'rally', 'hitFlash', 'foodStore', 'goldStore', 'flooded',
     ];
     const pick = (source, keys) => {
       const out = {};
@@ -446,6 +446,7 @@ export class Game {
         alive: saved.alive !== false, selected: false, queue: (saved.queue || []).map(item => ({ ...item })),
         cooldown: saved.cooldown || 0, rally: saved.rally && Number.isFinite(saved.rally.x) && Number.isFinite(saved.rally.y) && saved.rally.x>=0 && saved.rally.y>=0 && saved.rally.x<this.world.size && saved.rally.y<this.world.size ? {...saved.rally} : null, hitFlash: saved.hitFlash || 0,
         foodStore: saved.foodStore || 0, goldStore: saved.goldStore || 0,
+        flooded: Number.isFinite(saved.flooded) ? Math.max(0, saved.flooded) : 0,
       };
     }).filter(Boolean);
     for (const saved of snapshot.units || []) {
@@ -965,19 +966,22 @@ export class Game {
   }
 
   updateBuildings(dt) {
+    if (this.effects.flood > 0) this.effects.flood = Math.max(0, this.effects.flood - dt);
     const tc = this.getTownCenter();
     if (tc && this.effects.tcRegen > 0 && tc.hp < tc.maxHp) {
       tc.hp = Math.min(tc.maxHp, tc.hp + this.effects.tcRegen * dt);
     }
     for (const b of this.buildings) {
       if (!b.alive) continue;
+      const floodedFor = b.type === 'farm' ? Math.min(dt, Math.max(0, b.flooded || 0)) : 0;
+      if (floodedFor > 0) b.flooded = Math.max(0, b.flooded - dt);
       if (b.construction < 1) {
         b.hp = Math.min(b.maxHp, b.hp + b.maxHp * dt * 0.05);
         continue;
       }
       if (b.type === 'farm' && b.team === 'player') {
-        b.foodStore = (b.foodStore || 0) + this.effects.farmMul * this.effects.foodMul * (b.typeDef.foodRate || 0.16) * dt;
-        if (b.foodStore > 1) {
+        b.foodStore = (b.foodStore || 0) + this.effects.farmMul * this.effects.foodMul * (b.typeDef.foodRate || 0.16) * (dt - floodedFor);
+        if (dt > floodedFor && b.foodStore > 1) {
           const gain = b.foodStore;
           b.foodStore -= gain;
           this.resources.food += gain;
@@ -2551,10 +2555,6 @@ export class Game {
         if (isLowland) b.flooded = 15;
       }
     }
-    setTimeout(() => {
-      this.effects.flood = 0;
-      for (const b of this.buildings) b.flooded = 0;
-    }, 15000);
   }
 
   executeIceCrack() {

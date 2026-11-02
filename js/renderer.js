@@ -1248,6 +1248,20 @@ export class Renderer {
       ctx.lineWidth = 1 * z;
       ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + sway, y - 4 * z); ctx.stroke();
     }
+    if (b.flooded > 0) {
+      // A translucent water sheet exposes the temporary production pause.
+      ctx.save(); ctx.fillStyle = 'rgba(65,150,173,0.48)';
+      ctx.beginPath(); ctx.moveTo(f.A.x, f.A.y); ctx.lineTo(f.B.x, f.B.y);
+      ctx.lineTo(f.C.x, f.C.y); ctx.lineTo(f.D.x, f.D.y); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = 'rgba(190,233,227,0.85)'; ctx.lineWidth = Math.max(1, z);
+      for (const t of [.25, .5, .75]) {
+        const x1 = lerp(f.A.x, f.D.x, t), y1 = lerp(f.A.y, f.D.y, t);
+        const x2 = lerp(f.B.x, f.C.x, t), y2 = lerp(f.B.y, f.C.y, t);
+        ctx.beginPath(); ctx.moveTo(lerp(x1,x2,.2),lerp(y1,y2,.2));
+        ctx.lineTo(lerp(x1,x2,.7),lerp(y1,y2,.7)); ctx.stroke();
+      }
+      ctx.restore();
+    }
     for (let i = 0; i <= 3; i++) {
       const t = i / 3;
       const x1 = lerp(f.A.x, f.D.x, t), y1 = lerp(f.A.y, f.D.y, t);
