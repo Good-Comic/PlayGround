@@ -1,0 +1,932 @@
+✔ all16 real civilization identifiers create exactly one live hero with isolated player atlas routing (135.84486ms)
+✔ all16 independently sourced atlases have192 valid cropped cells six states and unique image bytes/emblems (45.595448ms)
+✔ warm cached pixels use one numeric-key lookup without further decoded image width reads (0.976405ms)
+✔ numeric keys separate rows and preserve the64-frame FIFO bound (0.448588ms)
+✔ deferred civilization images are not constructed until active, while generic fallback loads immediately (1.320636ms)
+✔ switching civilizations releases decoded-image and crop references; revisiting safely requests fresh entry (0.399624ms)
+✔ late asynchronous completion cannot reanimate a released or replaced civilization entry (0.257219ms)
+✔ failed current assets remain failed until a deliberate civ reload, and menu clears civilization references (0.192271ms)
+✔ adaptive score changes mode and produces bounded notes without changing gameplay state (0.956095ms)
+✔ AZT hero routing isolates other heroes enemies and ordinary guards (1.048384ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (4.334171ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (55.248618ms)
+✔ AZT Mark and Aegis renderer emblems differ without altering other hero feedback (0.935114ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (7.680449ms)
+✔ battlefield care heals a soldier by its existing 8% effect (45.982573ms)
+✔ battlefield care does not heal towers, town centers or civilian villagers (27.360084ms)
+✔ pending reward preserves offered order, paid reroll count, RNG and next reroll (36.780334ms)
+✔ claim after restored pending choice advances exactly once without replaying wave rewards (18.143384ms)
+✔ unrecoverable legacy pending choices fail before mutating a live game; normal legacy saves still load (24.054068ms)
+✔ both Boss countdowns clamp display and urgency without mutating production damage geometry (0.987613ms)
+✔ renderer paints readable live countdown beside the sigil and removes it after actual strike completion (0.436139ms)
+✔ Boss impact cue occurs once at actual strike while other zones keep generic hit (29.157006ms)
+✔ Boss cue is bounded, respects mute and throttle, and consumes no simulation RNG (24.058093ms)
+✔ phase cues follow real Boss transitions once without changing existing thresholds or reinforcements (31.45915ms)
+✔ phase sound is bounded and respects mute and throttle (0.316659ms)
+BOSS_SPAWN [{"id":22,"x":27,"y":20,"type":"militia","target":20,"hp":73},{"id":23,"x":24,"y":23,"type":"militia","target":20,"hp":73},{"id":24,"x":21,"y":20,"type":"militia","target":20,"hp":73},{"id":25,"x":24,"y":17,"type":"militia","target":20,"hp":73}]
+✔ A3-BOSS-ID-01 creates4 registered M infantry with valid hostile orders and ordinary stats (29.299125ms)
+✔ extension generates4 at150/180/210 only, caps at3 rounds and does not double spawn per tick (15.630595ms)
+✔ starting wave10 clears wave5 extension counters; warning and each round can occur again (9.599039ms)
+✔ Save/Load preserves an already consumed round and seeded later reinforcement spawns (33.44965ms)
+✔ no living Boss cannot create reinforcement units (8.648792ms)
+✔ boss countdown remains inside viewport at upper and lower edges across zoom levels (2.310883ms)
+✔ fully offscreen strike does not pin a misleading countdown to the viewport (0.500517ms)
+✔ BRI longbow appearance is isolated from other civilizations and enemies (1.014163ms)
+✔ every longbow direction and animation frame fits the actual PNG (1.764227ms)
+✔ existing British range, first-shot penalty, cost and snapshot identity remain production rules (40.895734ms)
+✔ Normal is exactly the existing director plan across all ten waves and three Seeds (208.726806ms)
+✔ Easy and Hard round aggregate ordinary counts, preserve Boss and actual total/intel (129.713342ms)
+✔ difficulty SaveLoad preserves queued plan without scaling it twice; legacy defaults Normal (37.530457ms)
+✔ v227 writes and clears its own save/settings without reading or changing D6 keys (0.977347ms)
+✔ playtest integrity guard uses the shared validated save API, never a duplicate hardcoded storage key (1.537274ms)
+✔ hero support and bosses use independent complete decoded PNG sheets (4.026747ms)
+✔ champion frame cache reuses cropped pixels and stays bounded across action/direction changes (0.874302ms)
+✔ production renderer does not mirror or rotate an already-baked champion pose twice; fallback keeps transforms (1.101305ms)
+✔ cast frames follow actual cooldowns and ignore unavailable dead or expired actions (0.904327ms)
+✔ boss presentation follows the production warning window and leaves zone damage radius and delay untouched (0.341837ms)
+✔ real hero recruiter and both scaled enemy Boss heads are pickable while foot targets and physical radii persist (87.588129ms)
+✔ generic atlas body excludes staff tips horns health bars and distant ground (0.204069ms)
+✔ TEU hero pick body includes its helmet while its actual health bar remains outside (0.108895ms)
+✔ selected scaled Boss remains real attack target while hero Aegis retains its existing shield and cooldown (6.454556ms)
+✔ CHN hero routing isolates other heroes enemies and ordinary guards (2.521191ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (3.954828ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (53.51279ms)
+✔ CHN Mark and Aegis renderer emblems differ without altering other hero feedback (0.91961ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (0.818036ms)
+✔ TEU guard uses only its own player atlas and retains enemy/generic routing (1.262438ms)
+✔ TEU PNG and all directional animation cells fit; independent original equipment differs from generic sheet (2.138933ms)
+✔ TEU production cost, radius and snapshot identity remain unchanged by appearance (31.468911ms)
+✔ AZT militia uses only its own player atlas and retains enemy/generic routing (0.226883ms)
+✔ AZT PNG and all directional animation cells fit; independent original equipment differs from generic sheet (1.427698ms)
+✔ AZT production cost, radius and snapshot identity remain unchanged by appearance (33.384435ms)
+✔ BYZ spearman uses only its own player atlas and retains enemy/generic routing (0.13903ms)
+✔ BYZ PNG and all directional animation cells fit; independent original equipment differs from generic sheet (1.341377ms)
+✔ BYZ production cost, radius and snapshot identity remain unchanged by appearance (23.957071ms)
+✔ GOT militia uses only its own player atlas and retains enemy/generic routing (0.367736ms)
+✔ GOT PNG and all directional animation cells fit; independent original equipment differs from generic sheet (1.873011ms)
+✔ GOT production cost, radius and snapshot identity remain unchanged by appearance (23.980978ms)
+✔ SPA spearman uses only its own player atlas and retains enemy/generic routing (0.0792ms)
+✔ SPA PNG and all directional animation cells fit; independent original equipment differs from generic sheet (0.993802ms)
+✔ SPA production cost, radius and snapshot identity remain unchanged by appearance (16.971072ms)
+✔ SAR guard uses only its own player atlas and retains enemy/generic routing (0.140192ms)
+✔ SAR PNG and all directional animation cells fit; independent original equipment differs from generic sheet (1.645267ms)
+✔ SAR production cost, radius and snapshot identity remain unchanged by appearance (20.229487ms)
+✔ TUR archer uses only its own player atlas and retains enemy/generic routing (0.122515ms)
+✔ TUR PNG and all directional animation cells fit; independent original equipment differs from generic sheet (1.336971ms)
+✔ TUR production cost, radius and snapshot identity remain unchanged by appearance (31.569698ms)
+✔ Mongol equipment is player/civilization scoped without changing other roles or hostile visuals (0.94591ms)
+✔ Mongol mounted bow sheet has all160 independent animation frames within PNG bounds (1.731587ms)
+CIV_MATRIX [{"civ":"MNG","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"TEU","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"GOT","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"FRK","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"SAR","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":["militia","spearman","archer","skirmisher","light_cavalry","horse_archer","guard","mangonel","ram","recruiter","patrol_cart"]},{"civ":"AZT","range":["archer","skirmisher"],"stable":[],"market":[]},{"civ":"BRI","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"CHN","range":["archer","skirmisher","chu_ko_nu"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"PER","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer","elephant"],"market":[]},{"civ":"KOR","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"SPA","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"TUR","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"BYZ","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"VIK","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"MAG","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]},{"civ":"JPN","range":["archer","skirmisher"],"stable":["light_cavalry","horse_archer"],"market":[]}]
+✔ B2-CIV-ENTRY-01 sixteen-civ matrix exposes only legal training entries (111.708877ms)
+✔ Chu Ko Nu age/owner/building gates, payment, training and Save/Load (21.583003ms)
+✔ Chinese repeating-crossbow uses actual third-shot bonus projectile without a duplicate extra-bolt rule (7.118349ms)
+✔ non-Persian legitimate elephant boon unlock preserved, SAR paginates without population-rule changes (12.206361ms)
+✔ Issue8 §3 unique uses exact §5 R stats, +15% price/threat, no second bespoke combat bonus (18.301332ms)
+✔ hero portrait uses the renderer-owned image and correct S-idle crop for each civilization (2.046663ms)
+✔ unready failed generic and hostile hero entries retain procedural fallback without new image allocation (0.180122ms)
+✔ asynchronous ready or failure change refreshes selected hero portrait even when selection and cooldown signatures stay unchanged (0.37671ms)
+✔ integrated civilization hero weapon motifs are distinct bounded voices and native mute suppresses every profile (1.211351ms)
+✔ all melee profiles share the existing attack throttle rather than adding civilization voice budgets (1.871439ms)
+✔ actual production attacks supply player civilization while enemy attacks retain neutral routing (157.988384ms)
+✔ audible weapon synthesis never consumes game simulation RNG or changes combat outcomes (189.876269ms)
+✔ all sixteen civilizations resolve to a deliberate non-color visual family (1.11178ms)
+✔ representative civilizations use distinct architectural and military silhouettes (0.217238ms)
+✔ directional animation resolves eight isometric facings and visible action states (0.33706ms)
+✔ dead attack target is replaced on the next player update (19.334534ms)
+✔ dead target with no replacement returns to idle (7.838138ms)
+✔ manual move and attack take precedence over automatic acquisition (7.981614ms)
+✔ passive never acquires or retaliates automatically (6.076484ms)
+✔ hold position can attack in range without pursuing (8.609683ms)
+✔ defensive units return to guard origin after leash is exceeded (5.461275ms)
+✔ idle defensive unit retaliates; moving unit keeps manual order (4.741127ms)
+✔ enemy opportunistic attack cannot target itself or friendly units (4.398889ms)
+✔ stances persist in snapshots and old saves default to defensive (15.491796ms)
+✔ single stance command cycles through all four stances, including for heroes (4.309824ms)
+✔ unselected hero cooldown cannot invalidate worker and production-building command buttons (21.515696ms)
+✔ selected hero countdown and worker build page still invalidate the command view (9.407069ms)
+✔ selected construction refreshes when the visible percentage changes without rebuilding commands (1.136638ms)
+✔ counter advice and boon history exist in every supported language (0.74103ms)
+✔ same-page first save enables Continue on menu return only after integrity readiness (0.785017ms)
+✔ group badges count unique living friendly members and selection, never dead/enemy/stale IDs (1.254736ms)
+✔ empty or mixed groups retain stable view without altering save state (0.174905ms)
+✔ spearman prefers a cavalry counter already in striking reach over a nearer infantry (28.571566ms)
+✖ skirmisher prefers a ranged counter in range and retains nearest otherwise (12.718104ms)
+✔ passive, blocked and manually ordered attacks retain existing behavior (6.476029ms)
+✔ selected counter impacts show the existing multiplier without altering combat or simulation RNG (12.586544ms)
+✔ idle and held noncombat decoys do not auto-acquire enemy targets (39.061061ms)
+✔ damage does not make a decoy attempt retaliation but still hurts it (14.028444ms)
+✔ ordinary stationary military still acquires and retaliates (7.977347ms)
+✔ legacy decoy attack state clears stale target and manual flag (6.553777ms)
+✔ restored legacy noncombat attack state is cleared without changing health (12.226701ms)
+✔ movement and combat update visual direction without changing gameplay radii (54.172302ms)
+✔ death presentation persists briefly and survives a snapshot without reviving the unit (54.155046ms)
+✔ war elephant has complete independent directional PNG frames within its decoded dimensions (2.117531ms)
+✔ Persian elephant production combat still tramples at most four nearby secondary enemies (19.829823ms)
+✖ HUNT spear chooses nearby cavalry then immediately stops following when it leaves six tiles (26.349237ms)
+✖ HUNT fallback does not reacquire cavalry outside six tiles (13.903215ms)
+✔ non-HUNT enemy pursuit keeps existing seven-tile behavior (6.432503ms)
+✔ six-tile boundary remains eligible and higher-priority breach is preserved (6.10004ms)
+✖ repeated seeded HUNT boundary transitions are deterministic (6.457562ms)
+✔ kite retreats away from nearby melee even when the spawn camp is behind the attacker (29.659171ms)
+✔ non-kite event retreat retains its existing camp target (13.508648ms)
+✔ in-flight retreat destination survives save and reload (14.180063ms)
+✔ coincident threat has finite bounded destination and no additional simulation draw (8.621842ms)
+✖ RAID drops camp target immediately after twenty seconds (26.144528ms)
+✖ RAID drops camp target immediately beyond eight tiles (10.074848ms)
+✔ non-RAID and higher-priority BREACH retain their existing target behavior (9.310203ms)
+✔ eight-tile and twenty-second boundaries remain eligible (5.680687ms)
+✖ same seed and same raid expiry are reproducible (7.176217ms)
+CLOCK {"fixed10fps":10.000000000000076,"fixed60fps":10.000000000000076,"legacy10fps":4.99999999999999,"seed":3215474622}
+CLOCK_SAVE_LOAD {"determinism_equal":false,"note":"transient paths/spawn reconstruction change resumed RNG/motion; not a deterministic Save/Load certification","time":11.000000000000126}
+CLOCK_GAMEPLAY {"fixed10fps":{"attacks":49,"wave":20.000000000000146,"gathered":53.00000000000002,"bossHp":1793},"legacy10fps":{"attacks":26,"wave":10.000000000000007,"gathered":1.0000000000000007,"bossHp":1957},"scope":"real headless Game update with Boss, native AI/economy/status; not rendered FPS or full-campaign/wall-timeout certification"}
+✔ prototype preserves simulation time and seeded Game state at10/20/60 render FPS (449.166595ms)
+✔ long stall debt retained and drained with bounded update work; clock Save/Load (0.791306ms)
+✔ game Save/Load resumes clock; strict state determinism is separately reported (137.010435ms)
+✔ fixed-step combat, economy, cooldown, status and boss-wave clocks match at10/60FPS (477.090493ms)
+✔ ford edging identifies only water-adjacent cobble edges without altering terrain (1.639739ms)
+✔ felled forest trees regrow after 120 simulation seconds without changing simulation RNG (22.150321ms)
+✔ a nearby living unit postpones regrowth until the area is clear (11.923913ms)
+✔ building and reserved road safety prevent regrowth (6.177757ms)
+✔ regrowth deadline survives save/load and other biomes do not regrow (18.179439ms)
+✔ paused simulation does not advance regrowth and the stump is removed on revival (3.601093ms)
+✔ old saves with no regrowth deadline do not revive historically felled trees (7.723635ms)
+✔ the two-tile buffer extends outside the generated reserved corridor (3.136181ms)
+✔ pending tree and stump appearance survive a save and restore (12.790964ms)
+✔ fragment shells applies its described 60% to allied siege splash (32.295706ms)
+✔ player boon does not boost hostile siege splash (16.871171ms)
+✔ claimed fragment effect survives save/load without adding to existing splash twice (15.44156ms)
+✔ FRK cavalry appearance is isolated from other civilizations and enemies (0.700179ms)
+✔ every cavalry direction and animation frame fits the actual PNG (1.351864ms)
+✔ Frankish cavalry HP and cost still use approved production bonuses and saved identity (35.626891ms)
+✔ FRK hero routing isolates other heroes enemies and ordinary guards (1.043978ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (4.753575ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (46.428388ms)
+✔ FRK Mark and Aegis renderer emblems differ without altering other hero feedback (0.941463ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (0.841411ms)
+✔ FRK real helmet and legacy foot points select across zooms without changing cavalry radius (39.66214ms)
+✔ FRK lance tip and relocated health bar stay outside body selection (2.094075ms)
+✔ FRK body extension does not apply to generic or enemy cavalry and preserves snapshot identity (15.541922ms)
+✔ GOT hero routing isolates other heroes enemies and ordinary guards (0.808472ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (3.446079ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (43.55204ms)
+✔ GOT Mark and Aegis renderer emblems differ without altering other hero feedback (0.596872ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (0.823395ms)
+✔ clear removes only group binding, preserves units selection and orders, survives SaveLoad (44.13399ms)
+✔ invalid group identifiers cannot clear another slot or inherited property (3.45983ms)
+✔ invalid guard targets give rejection feedback while preserving mode and prior order (51.482357ms)
+✔ valid allied guard still confirms and assigns the ally (8.275008ms)
+✔ mixed guard selection reports partial assignment and preserves the excluded villager order (9.71192ms)
+✔ right-click ground exits direct control and preserves hero move through update (60.804888ms)
+✔ right-click enemy exits direct control and keeps explicit attack (24.778554ms)
+✔ villager-only command or mixed gathering does not exit unassigned hero direct control (19.789482ms)
+✔ mixed hero, melee, ranged and villager attack assigns eligible units and preserves villager work (8.272033ms)
+✔ successful casts route distinct cues; rejected casts only report errors (23.759603ms)
+✔ cues are distinct, muted and throttled without consuming simulation RNG (27.346294ms)
+✔ hero skills expose the production radii used by their effects (0.672116ms)
+✔ skill preview requires a living hero and reports render metadata (13.498514ms)
+✔ mark applies inside the previewed range and rejects targets outside it (10.826424ms)
+✔ aegis shields allies inside the previewed range only (6.407235ms)
+HOSTILE_PURSUIT {"foeHp":0,"actorX":28.755000000000003,"penetration":0}
+✔ hostile melee pursuit at60Hz reaches native damage instead of yielding away as traffic (50.474995ms)
+✔ 存活與死亡動畫分流，八方向不取死亡列 / living and dead poses use separate rows across8directions (1.433457ms)
+✔ 舊圖集修正根本的身體旋轉，保留死亡旋轉 / generated bodies do not rotate by direction but retain death rotation (0.451052ms)
+✔ 跨文明陣營顏色及形狀不同 / factions differ by both color and shape (0.168634ms)
+✔ repeated idle selection advances and wraps through eligible villagers (1.220505ms)
+✔ selection changes and departures do not leave a stale index (0.163077ms)
+✔ new visible helmet/head points hit at all accepted zoom levels (1.125942ms)
+✔ weapon tips, health-bar space and distant empty ground are outside body shapes (0.246863ms)
+✔ other civilization, enemies and invalid projection do not gain new body selection (0.175065ms)
+✔ production pickAt handles real head and legacy foot points, excludes death and preserves physical radii (46.735992ms)
+✔ existing nearest-body preference and resource selection stay available beside tall infantry (7.982787ms)
+✔ production-spawned JPN guard blocks first ordinary melee hit without a unit civ field (19.557201ms)
+✔ ordinary damage during cooldown keeps armor and block returns exactly at ten seconds (12.337719ms)
+✔ other civilizations, enemies, buildings and source-less damage do not acquire Japanese block (40.860542ms)
+✔ arrows, splash and environmental zones neither block nor consume block readiness (13.148855ms)
+✔ actual Boss warning zone and Boss strike remain damaging without spending block (11.439902ms)
+✔ shield absorbs first, remaining damage can block, and other defenses remain intact (9.503845ms)
+✔ JSON SaveLoad preserves per-unit block cooldown; legacy saves default to ready (25.876994ms)
+✔ block is per defender and consumes no simulation RNG (15.749045ms)
+✔ JPN hero routing isolates other heroes enemies and ordinary guards (0.973181ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (3.49969ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (54.709269ms)
+✔ JPN Mark and Aegis renderer emblems differ without altering other hero feedback (0.725396ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (0.565084ms)
+✔ JPN lamellar appearance is isolated from other civilizations and enemies (0.748862ms)
+✔ every lamellar direction and animation frame fits the actual PNG (1.308147ms)
+✔ Japanese infantry speed, cost, snapshot identity and recovered block stay integrated (30.550378ms)
+✔ KOR cart is a complete civilization-scoped sheet without affecting other players or enemies (2.44139ms)
+✔ existing Korean tower registration bonus caps at four carts and survives SaveLoad (31.998236ms)
+✔ MAG sabre horse isolates appearance from Frankish lancers, other civilizations and enemies (0.702472ms)
+✔ MAG all eight directions and five four-frame actions fit decoded dimensions and distinct original equipment (2.875677ms)
+✔ MAG discounted production, first-hit bonus and saved identity retain existing approved rules (34.350342ms)
+✔ MAG visible helmet is selectable at all supported zooms without extending distant ground (0.295827ms)
+✔ version-1 generator exactly preserves all historical world signatures (69.330194ms)
+✔ version-2 Seed changes real water layout, camp locations and resource positions reproducibly (75.360018ms)
+✔ both map generations survive SaveLoad with resource identity and terrain intact (42.822488ms)
+✔ food patch regression: the nearest food is not inside an initial house (8.312774ms)
+✔ five weapon motifs are distinct bounded voices and native mute suppresses every profile (1.016387ms)
+✔ all melee profiles share the existing attack throttle rather than adding civilization voice budgets (1.221897ms)
+✔ actual production attacks supply player civilization while enemy attacks retain neutral routing (73.5025ms)
+✔ audible weapon synthesis never consumes game simulation RNG or changes combat outcomes (51.74867ms)
+✔ mixed selection resource command leaves military patrol intact (22.339887ms)
+✔ mixed selection dropoff command leaves military patrol intact (13.248255ms)
+✔ explicit enemy attack replaces military tactical order and leaves ineligible villagers gathering (8.500789ms)
+✔ ineligible villagers get an error instead of false attack confirmation (9.868596ms)
+✔ eligible mixed units and Spanish villagers still receive attack confirmation (19.368145ms)
+REPLAY_NATIVE {"arrived":8,"maxPositionError":1.2879803416965745,"units":[{"id":22,"state":"idle","distance":0.0406399999999536},{"id":23,"state":"idle","distance":0.06929063945675584},{"id":24,"state":"idle","distance":0.040639999999942944},{"id":25,"state":"idle","distance":0.07135553700764077},{"id":26,"state":"idle","distance":0.04063999999993584},{"id":27,"state":"idle","distance":0.06306529459772661},{"id":28,"state":"idle","distance":0.040639999999932286},{"id":29,"state":"idle","distance":0.04339100955325575}]}
+✔ recorded Chromium per-update input converges all eight exact formation destinations (951.844484ms)
+✔ already-delivered native pause is resumed once and verified, unpaused state is untouched (1.294207ms)
+✔ unrecoverable pause surfaces a blocker rather than silently spinning for the campaign duration (0.647929ms)
+✔ A* routes around a wall through its only gap without cutting corners (5.265359ms)
+✔ blocked endpoint projects onto a legal destination (1.228837ms)
+✔ water-separated destination is unreachable, never teleported to (2.416503ms)
+✔ all unit classes navigate around a building and finish a blocked-endpoint move (54.815384ms)
+✔ moving around trees and water preserves collision clearance (20.645036ms)
+✔ four resources complete at least three capacity/deposit/restart cycles each (96.892415ms)
+✔ depleted resource delivers remainder, switching resource cannot change carried type (5.734028ms)
+✔ unreachable gathering target is replaced without losing carried cargo (19.466163ms)
+✔ destroyed dropoff reassigns to a surviving camp without duplicate credit (4.165847ms)
+✔ save/load restores an in-flight return and continues economic work (35.284163ms)
+✔ old saves without stances migrate safely (18.609779ms)
+✔ LIVE seed regression: food workers reach the sub-grid building edge and deposit (287.68301ms)
+✔ a newly placed building invalidates an old route without clipping through it (18.020869ms)
+✔ NG+ is gated behind completed victory and validates owned unique maximum-three cards before mutation (27.891448ms)
+✔ NG+ resets economy entities technology and stats, applies only selected cards once and announces flank (22.218504ms)
+✔ NG+ frontier and RNG are repeatable; SaveLoad does not reapply inherited effects or alter plan (28.867494ms)
+✔ inherited immediate Prototype card uses its real effect; no prior entities are carried (9.760803ms)
+✔ legacy SaveLoad defaults cycle one and no inherited cards, leaving Boss stats unchanged (14.591455ms)
+✔ every shipped card can be inherited once on a fresh frontier and restored without effect duplication (450.72491ms)
+✔ noncombat decoy rejects attack without overwriting patrol or displaying success (20.859088ms)
+✔ mixed group assigns eligible attackers while preserving decoy patrol (15.343883ms)
+✔ PER hero routing isolates other heroes enemies and ordinary guards (0.752388ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (3.590548ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (41.445235ms)
+✔ PER Mark and Aegis renderer emblems differ without altering other hero feedback (0.784977ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (0.766619ms)
+✔ late warmup cannot shorten the full measurement window (1.056407ms)
+OBSERVATION {"name":"crowd-24","threshold":"24/24 arrive within 70s; penetration <= .025; static clips 0","observed":{"arrived":24,"penetration":0,"clipped":0}}
+OBSERVATION {"name":"narrow-opposing","threshold":"both arrive <=60s, penetration <=.025, no static clipping","observed":{"a":{"x":18,"y":9.5,"state":"idle"},"b":{"x":6.0199942307239045,"y":9.499481071667935,"state":"idle"},"penetration":0,"clipped":0}}
+OBSERVATION {"name":"unreachable-combat","threshold":"failure recorded <=5s, target replaced, no water crossing","observed":{"time":0.05,"failure":"unreachable","target":22,"x":10}}
+OBSERVATION {"name":"continuous-retarget","threshold":"zero dead references immediately after each of 3 kills","observed":[{"dead":21,"target":22,"state":"attack"},{"dead":22,"target":23,"state":"attack"},{"dead":23,"state":"idle"}]}
+OBSERVATION {"name":"stances","threshold":"all four stance contracts match; explicit move never stolen","observed":[{"stance":"aggressive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"defensive","acquired":true,"retaliates":true,"manualMove":true},{"stance":"hold","acquired":false,"retaliates":false,"manualMove":true},{"stance":"passive","acquired":false,"retaliates":false,"manualMove":true}]}
+OBSERVATION {"name":"economy-competition-food","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"economy-competition-wood","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[24,26,24,25,24,26,23,25,23,26,25,27],"credited":2980,"carried":46.48749999999997,"error":2.003403665185033e-9,"penetration":0.014977406250572867}}
+OBSERVATION {"name":"economy-competition-gold","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"economy-competition-stone","threshold":"300s, each worker >=3 unloads, conservation error <1e-6, penetration <=.025","observed":{"cycles":[22,26,24,24,23,25,24,27,23,26,24,26],"credited":2940,"carried":50.0625,"error":0,"penetration":0.014977923554061634}}
+OBSERVATION {"name":"save-load","threshold":"move completes, cargo credited once, no dead attack references","observed":{"moveState":"idle","goldDelta":47,"deadRefs":0}}
+OBSERVATION {"name":"narrow-queues-8","threshold":"8/8 within80s, penetration<=.025, static clips0","observed":{"arrived":8,"maxPenetration":0.014853785277115894,"clipped":0,"crossed":8}}
+OBSERVATION {"name":"fair-queue-100","threshold":"all100 move within4.8s; <=2 searches/update","observed":{"moved":100,"maxSearches":2,"searches":182}}
+OBSERVATION {"name":"passive-direct-hero","threshold":"no damage or autonomous target while passive","observed":{"enemyHp":60,"initialHp":60}}
+OBSERVATION {"name":"move-failure-vs-arrival","threshold":"unreachable result reported; new valid order reaches actual destination","observed":{"failurePreserved":true,"newX":12,"newY":10}}
+OBSERVATION {"name":"direct-route-1000","threshold":"1000/1000 move in first update; unchanged speed cap; A*0","observed":{"moved":1000,"searches":0,"directRoutes":1000}}
+✔ 24-unit crowd reaches separate formation slots without overlap or static clipping (173.207457ms)
+✔ opposing units pass a narrow building corridor by yielding, without overlap (34.146013ms)
+✔ unreachable manual combat target is abandoned and reachable enemy acquired (23.541173ms)
+✔ continuous combat clears death references in the same kill event and acquires next (3.306508ms)
+✔ all stances obey acquire, chase, retaliation and manual priority contracts (16.56612ms)
+✔ 12 villagers competing for food complete long-run cycles with conservation (551.101372ms)
+✔ 12 villagers competing for wood complete long-run cycles with conservation (433.485393ms)
+✔ 12 villagers competing for gold complete long-run cycles with conservation (445.040849ms)
+✔ 12 villagers competing for stone complete long-run cycles with conservation (424.123462ms)
+✔ save/load resumes move, gather, return and valid attack orders without path-cache dependence (244.18421ms)
+✔ eight units in opposing queues pass the one-tile corridor (73.741502ms)
+✔ fair search queue starts all 100 units despite continuous low-ID demand (1215.141464ms)
+✔ directly controlled passive hero does not auto-attack (1.948375ms)
+✔ an unreachable move is a reported failure, not arrival, and a new move clears it (5.196074ms)
+✔ legal direct routes start 1000 units without bypassing speed or collision (40.319174ms)
+✔ negative startup delta cannot reverse game time or break smoke geometry (6.451171ms)
+✔ 純視覺佇列受限且暫停取幀不變 / bounded visual queue freezes with simulation (1.538085ms)
+✔ 離屏與迷霧剔除 / offscreen and fog culling (0.228666ms)
+✔ 正式傷害事件加開特效不改snapshot或RNG / production effects preserve snapshot and RNG (43.424508ms)
+✔ 重要事件取代普通效果且仍受上限 / critical effects evict ordinary within cap (0.867361ms)
+✔ 同落點普通特效限密度，重要事件可保留 / density limits ordinary hits but admits critical (0.227754ms)
+✔ 護盾替代圈不入模擬狀態，保留英雄預算 / shield rendering reserves hero and does not alter model (3.932424ms)
+✔ report uses allowlisted state and never copies storage/credentials/URL/raw error (1.599328ms)
+✔ errors are categorised and arbitrary details never exported (0.175966ms)
+✔ state export is bounded and invalid IDs/nonfinite numbers are discarded (0.383529ms)
+✖ integrity verifier blocks payload mismatch and external/path traversal manifests (1.489261ms)
+✔ verified artifact identity replaces stale v1 label and rejects arbitrary identifying text (0.375217ms)
+POP {"military":19,"militaryCap":20,"economy":60,"economicCap":60,"total":79}
+✔ A3-POP-01 all HUD population fields are finite and economy is independent (23.526511ms)
+✔ two barracks reserve the final military slot globally without spending twice (10.03001ms)
+✔ two town centers reserve economy slot60 globally and military queue does not consume it (5.228383ms)
+✔ Franks cap40 includes reservations across buildings but excludes villagers (4.94904ms)
+✔ incomplete/dead/enemy housing and enemy queues cannot add or reserve player capacity (6.088122ms)
+✔ Save/Load recomputes category reservations and finite derived caps without schema changes (11.201792ms)
+✔ GDD opening military40 derives from core20 and two houses10; economy remains60 (5.009261ms)
+✔ production cue reads progress and queue count without mutating simulation (2.285936ms)
+✔ blocked cue appears only for player completed buildings with paid production (0.652517ms)
+✔ B1-RALLY-01 only complete allied production buildings accept finite legal rally (15.628773ms)
+✔ trained soldier uses rally; old villagers retain automatic wood order without rally (9.69906ms)
+✔ trained unit exits on the rally-facing side instead of first walking away (4.675337ms)
+✔ villager resource rally gathers; depleted resource falls back to move; clear preserves legacy behavior (3.852574ms)
+✔ full spawn region keeps paid queue item and training statistics until spawn succeeds (6.84795ms)
+✔ rally survives real Game snapshot/restore and older saves without a rally remain valid (27.317982ms)
+✔ unreachable rally is reported without crossing water or dropping orders silently (43.838853ms)
+✔ rally clear does not consume a training shortcut or hide an existing market entry (10.262281ms)
+ENDPOINT {"x":22.245,"y":16,"status":"arrived","distance":0.245000000000001}
+✔ 60Hz range approach retains last waypoint until inside actual tolerance (16.848577ms)
+✔ linked bolt remains effective for archers and mounted archers but does not duplicate siege boulders (46.741611ms)
+✔ resonant chain does not augment siege splash but still affects archers (23.169661ms)
+✔ five actual ranged impacts, not current shot count, cause one chain (20.460867ms)
+✔ counter survives save/load so the next impact remains the fifth (21.374218ms)
+✔ a projectile whose target died does not count as a hit (6.786147ms)
+✔ resource selection renders remaining amount instead of reading undefined unit combat data (34.811028ms)
+✔ node stages derive from remaining stock without changing it (1.162117ms)
+✔ worked mines and bushes visibly differ by stock without touching gameplay (1.266594ms)
+✔ Rift Prototype spawns alive on a walkable free tile and plays its awakening cue once (20.137568ms)
+✔ flood stops low farms while high farms continue and resumes after 15 simulation seconds (22.338725ms)
+✔ flooded farm remaining duration survives save/load (21.080634ms)
+✔ pause does not advance flood duration and stored food is not paid during flooding (5.731934ms)
+✔ legacy saves without flooded fields load with unflooded farms (15.817138ms)
+✔ double-click helper selects only visible allied units of the clicked type (14.486116ms)
+✔ same-type selection can add visible units without removing an existing selection (11.632413ms)
+✔ 沙暴使用模擬時間並結束 / sandstorm expires on simulation time (151.830725ms)
+✔ 暫停與選卡不減少剩餘時間 / pause and boon freeze remaining time (32.815492ms)
+✔ 讀檔延續剩餘時間 / save load preserves remaining time (56.751861ms)
+✔ 重複事件沒有過期現實計時器 / repeated events have no stale wall timer (95.058854ms)
+✔ 觸發不消耗RNG且不改其他事件 / trigger preserves RNG and other effects (13.858838ms)
+✔ SAR hero routing isolates other heroes enemies and ordinary guards (0.849704ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (3.091533ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (44.728739ms)
+✔ SAR Mark and Aegis renderer emblems differ without altering other hero feedback (0.657443ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (0.857386ms)
+✔ save mid-flight and during boss telegraph preserves remaining damage, timers and entity references (60.353075ms)
+✔ resolved zones do not damage twice and legacy saves remain loadable (24.381794ms)
+✔ SaveLoad preserves full stun and partial slow strength until their original expiry (30.405469ms)
+✔ native pause and card-choice overlays do not expire absolute-time combat statuses (34.947935ms)
+✔ shareable setup seeds have a stable bounded format and normalization version (0.930356ms)
+✔ same seed biome and map generation version reproduce the same frontier (19.786487ms)
+✔ Save Load records map generation compatibility without invalidating older saves (32.497701ms)
+✔ selection rectangle follows pointer across both sides of its fixed origin (1.146373ms)
+✔ group health stays aggregated during subsequent UI refreshes (1.216749ms)
+✔ worker changes in status, cargo and armor refresh details without rebuilding commands (0.239322ms)
+✔ pre-game rules agree with actual population rules without mutating a run (35.3817ms)
+✔ standard campaign preview accurately states ten waves and Boss waves five and ten (0.663342ms)
+✔ shorelines follow dry neighbors, skip map boundaries and preserve source tiles (1.259664ms)
+✔ sidewind slows player, enemy and tower arrows by the existing 15% for 12 simulation seconds (45.151868ms)
+✔ sidewind does not slow boulders or javelins (11.995271ms)
+✔ partial expiry uses wind only for remaining time and pause does not advance (5.597741ms)
+✔ sidewind and projectile retain remaining state across save/load (12.992528ms)
+✔ siege shot uses stone geometry while ordinary arrows retain their shape (1.530192ms)
+✔ production SPA villager applies approved half-second stun with eight-second per-attacker cooldown (24.757742ms)
+✔ cooldown follows each villager across targets while another villager has its own first hit (13.420656ms)
+✔ full stun prevents actual melee, ranged attack and AI action until exact expiry (7.569191ms)
+✔ partial slow does not suppress attacks and in-flight projectiles continue during stun (6.678655ms)
+✔ other civilizations, enemy villagers, non-villagers and Boss targets do not gain stun (22.442342ms)
+✔ JSON SaveLoad preserves source cooldown and target stun; legacy source defaults to ready (22.79121ms)
+✔ normal gather does not auto-attack; stun adds no RNG beyond existing attack damage effects (33.053621ms)
+✔ SPA native attack command interrupts gathering and reaches actual combat; other villagers stay excluded (12.300473ms)
+✔ new spear and shield atlases have complete independent four-frame actions and real PNG dimensions (3.573922ms)
+✔ militia atlas describes eight directions and all combat states (0.336128ms)
+✔ atlas loading exposes ready and failed states without blocking fallback (0.605545ms)
+✔ archer and cavalry use independent assets geometry and equipment scales (0.305371ms)
+✔ repeating crossbow has independent four-frame directional actions within sheet bounds (0.653538ms)
+✔ production normalized attack and hit amplitudes play all four frames without changing timers (0.52285ms)
+✔ 採集逐人重新計算比例，手動工人與搬運不被覆蓋 / distribute idle workers with cargo and manual priority (34.31672ms)
+✔ 升級預留不阻擋手動支出，自動等待與正常研究 / age reserve, ask and ordinary research (17.281381ms)
+✔ SaveLoad 保留設定、鎖定、手動佇列及 RNG 位元 / persist plans locks manual queues and RNG bits (19.065658ms)
+✔ 逐建築目標上限、合法兵種與手動佇列 / legal military targets and manual queue priority (5.942723ms)
+✔ 自動建築包含施工數量且不打斷手動放置 / construction count and manual placement precedence (5.107921ms)
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (36.343545ms)
+✔ Patrol completes both legs using native navigation (13.606847ms)
+✔ Guard follows a living ally then recovers when ally dies (10.233989ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (17.661065ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (4.537449ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (11.952476ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (13.424792ms)
+✔ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (25.496128ms)
+✔ mixed patrol and attack-move announce partial assignment and preserve gathering (45.092578ms)
+✔ all-military tactical commands do not warn (13.373345ms)
+✔ A3-STATE-01 dead target with no core/player clears obsolete move and route (21.095467ms)
+✔ idle enemy reacquires a new nearby player on the very next update (8.827253ms)
+✖ living town center keeps ordinary pursuit when no nearby player exists (15.537986ms)
+✔ 騎兵優先弓兵、槍兵優先騎兵，雙方共享評分 / cavalry prefers archers and spear prefers cavalry (29.350393ms)
+✔ 不追逐遠方或未見目標，手動目標與防禦範圍優先 / range visibility manual priority and guard leash (11.376766ms)
+✔ TEU hero routing isolates other heroes enemies and ordinary guards (0.89343ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (3.405498ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (37.630139ms)
+✔ TEU Mark and Aegis renderer emblems differ without altering other hero feedback (0.735873ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (0.868733ms)
+✔ old saves and invalid UI scale migrate safely without changing game speed (0.700188ms)
+✔ UI text scale persists independently, applies CSS variable and resets (0.227404ms)
+✔ production unit cues have distinct low impact, wooden launch and bow signatures; mute stops all voices (1.123809ms)
+✔ unit-specific motifs retain shared attack/arrow throttle groups instead of multiplying per-unit voices (0.772468ms)
+✔ real combat with audible noise keeps damage projectiles and simulation RNG identical to silent combat (55.413269ms)
+✔ battlefield roles expose stable, balance-neutral visual signatures (0.749043ms)
+✔ ranged and mounted battlefield roles produce distinct rendered geometry (1.364332ms)
+✔ building visuals expose construction damage and persistent ruin states without simulation timers (0.20546ms)
+✔ landmark material clips to both house and barracks isometric wall planes (2.069108ms)
+✔ zero-worker recovery buys real workers before military and does not overspend or duplicate queued workers (0.953391ms)
+✔ manual economy avoids the recorded gold starvation while maintaining wood and food workers (1.09775ms)
+✔ wave economy grows within existing steward target and prioritizes food over surplus wood (0.257199ms)
+✔ age2 reinforcements are not blocked by premature age3 reserve while actual age1 research remains prioritized (0.215345ms)
+✔ resource escorts react to actual worker targeting and food production instead of guarding only the core (0.951338ms)
+✔ critical food deficit is addressed before already-stocked wood and gold (0.113161ms)
+✔ labor allocation never demands more villagers than exist, including depleted workforces (0.329498ms)
+✔ opening housing preserves army wood while still respecting queued military population and civilization ceilings (0.184769ms)
+✔ worker retreat follows actual weapon reach and direct targeting instead of idling an entire base within eight tiles (0.387516ms)
+✔ economy opening preserves early army investment instead of buying a small age bonus before fielding twelve military population (0.255185ms)
+✔ observed wood/gold surplus reallocates workers to food and releases them when military buffers run down (1.143028ms)
+✔ single-escort defense assigns one infantry to exposed food workers while keeping hero and archers at the core (0.438673ms)
+✔ single escort can replace a prior siege focus instead of silently leaving every infantry on the ram (0.179712ms)
+✔ VIK hero routing isolates other heroes enemies and ordinary guards (0.756113ms)
+✔ 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring (2.916268ms)
+✔ production hero rules snapshots and visible-head selection remain unchanged (33.24492ms)
+✔ VIK Mark and Aegis renderer emblems differ without altering other hero feedback (0.69517ms)
+✔ offline alpha crops stay within every cell and cached draw preserves original ground anchor (0.604845ms)
+✔ VIK roundshield appearance is isolated from other civilizations and enemies (0.751967ms)
+✔ every roundshield direction and animation frame fits the actual PNG (1.244741ms)
+✔ existing Viking regeneration, cost and snapshot identity remain production rules (36.628946ms)
+✔ four cargo types have distinct outlines and drawing does not mutate resource state (1.001954ms)
+✔ 雙方實際視野半徑減少20% / both teams lose20% sight (0.951889ms)
+✔ 文明視野加成先套用，建築預設6，不改射程 / bonuses before multiplier; building default6; no range mutation (29.652862ms)
+✔ 敵軍失去視野不追蹤單位並可重新獲取 / enemy loses hidden unit and reacquires after storm (19.961722ms)
+✔ 讀檔視野與RNG不變 / restored sight and RNG remain unchanged (21.093784ms)
+✔ all particle kinds remain visible without advancing simulation RNG (26.524543ms)
+✔ selected combat particles, disabled particles and extra cosmetic noise preserve identical combat RNG/results (16.530035ms)
+✔ real gathering particle offsets and counts do not consume simulation RNG (5.267982ms)
+✔ real construction spark offset and tree-stump decoration do not consume simulation RNG (8.780402ms)
+✔ visual RNG is seeded independently and transient reset after JSON restore cannot affect next gameplay draw (11.556999ms)
+✔ same seed produces reproducible visual particles without altering map generation (11.423146ms)
+✔ 120s cleanup completes with a living legal carryover instead of waiting forever (21.252964ms)
+✔ 110s wave withdrawal remains active beyond temporary tactical-retreat timeout (9.924241ms)
+✔ carryover cap uses ORIGINAL wave threat, not only surviving units (12.742631ms)
+✔ actual arrival at exit withdraws without kill credit or loot (5.502647ms)
+✔ 5percent original-threat hold requires continuous3seconds and pending spawns prevent early settlement (20.36982ms)
+✔ new wave resets cleanup flags; SaveLoad preserves withdrawal and original threat (19.300353ms)
+✔ Boss still blocks120s cleanup; destroyed core wins over cleanup (20.597534ms)
+✔ boon reading freezes remaining-enemy combat and economy without erasing carryover (5.91504ms)
+✔ worked oak and pine show cut marks and chips without mutating resources (2.065302ms)
+✔ observer forwards damage once, preserves return and state, captures actual guard distance and death (1.249269ms)
+✔ throwing observation sink cannot alter combat result; non-worker hits are not reported (0.272973ms)
+ℹ tests 438
+ℹ suites 0
+ℹ pass 429
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9881.336448
+
+✖ failing tests:
+
+test at tests/counter-target-priority.test.mjs:5:1
+✖ skirmisher prefers a ranged counter in range and retains nearest otherwise (12.718104ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be reference-equal to "expected":
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      aegisCd: 0,
+      alive: true,
+  +   armor: 0,
+  +   attack: 7,
+  -   armor: 6,
+  -   attack: 16,
+      attackAnim: 0,
+  +   baseMaxHp: 35,
+  -   baseMaxHp: 145,
+      bossSkillTimer: 0,
+      buildTarget: null,
+      buildingDamageMul: 1,
+      buildingHint: null,
+      carry: 0,
+  ...
+      convertResist: false,
+  +   cooldown: 0.19885514369234444,
+  -   cooldown: 0.04078065939247608,
+      deathAnim: 0,
+      duel: false,
+      eventAttackSpeedMul: 1,
+      eventFireCd: 0,
+      eventFlags: [],
+  ...
+      guardOrigin: {
+  +     x: 23,
+  -     x: 21,
+        y: 20
+      },
+      hero: false,
+      hitFlash: 0,
+      hold: false,
+  +   hp: 35,
+  +   id: 22,
+  +   idleTimer: 0.4051477978937328,
+  -   hp: 145,
+  -   id: 21,
+  -   idleTimer: 0.8997230397071689,
+      kind: 'unit',
+      manualAttack: false,
+      markCd: 0,
+      marked: 0,
+  +   maxHp: 35,
+  +   pop: 1,
+  -   maxHp: 145,
+  -   pop: 0,
+      rageStage: 0,
+      rescueUsed: false,
+  +   retargetTimer: 0.19928398933261635,
+  -   retargetTimer: 0.2618013255298138,
+      selected: false,
+      shield: 0,
+      shieldTime: 0,
+      shots: 0,
+      slowUntil: 0,
+  ...
+      team: 'enemy',
+  +   type: 'archer',
+  -   type: 'brute',
+      typeDef: {
+  +     armor: 0,
+  +     attack: 7,
+  +     category: 'ranged',
+  +     cooldown: 1.8,
+  +     cost: {
+  +       gold: 25,
+  +       wood: 35
+  +     },
+  +     desc: 'Massed arrows from the treeline. Fragile if caught alone.',
+  +     family: 'R',
+  +     hp: 35,
+  +     icon: 'bow',
+  +     name: 'Archer',
+  +     pop: 1,
+  +     projectile: 'arrow',
+  +     radius: 0.24,
+  +     range: 5,
+  +     role: 'Archer',
+  +     sight: 7.5,
+  +     speed: 2.5,
+  +     threat: 1.5,
+  +     trainTime: 10
+  -     armor: 6,
+  -     attack: 16,
+  -     bounty: 9,
+  -     category: 'infantry',
+  -     cooldown: 1.5,
+  -     enemy: true,
+  -     hp: 145,
+  -     icon: 'hammer',
+  -     name: 'Ashen Brute',
+  -     radius: 0.36,
+  -     range: 0.8,
+  -     role: 'Heavy',
+  -     scale: 1.18,
+  -     sight: 6.5,
+  -     speed: 1.55
+      },
+      visualDirection: 'SE',
+  +   walkPhase: 5.806734021594748,
+  +   x: 25.5,
+  -   walkPhase: 5.528120238184929,
+  -   x: 21,
+      y: 20
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/counter-target-priority.test.mjs:5:268)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { id: 22, kind: 'unit', team: 'enemy', type: 'archer', typeDef: { name: 'Archer', role: 'Archer', icon: 'bow', category: 'ranged', family: 'R', hp: 35, attack: 7, range: 5, speed: 2.5, cooldown: 1.8, armor: 0, radius: 0.24, sight: 7.5, projectile: 'arrow', cost: [Object], trainTime: 10, pop: 1, threat: 1.5, desc: 'Massed arrows from the treeline. Fragile if caught alone.' }, combatAt: -99, x: 25.5, y: 20, hp: 35, maxHp: 35, baseMaxHp: 35, pop: 1, armor: 0, attack: 7, state: 'idle', target: null, targetPos: null, gatherTarget: null, buildTarget: null, carry: 0, carryType: null, cooldown: 0.19885514369234444, attackAnim: 0, walkPhase: 5.806734021594748, facing: 1, visualDirection: 'SE', deathAnim: 0, selected: false, hitFlash: 0, alive: true, retargetTimer: 0.19928398933261635, hold: false, stance: 'defensive', guardOrigin: { x: 23, y: 20 }, manualAttack: false, idleTimer: 0.4051477978937328, buildingHint: null, hero: false, shield: 0, shieldTime: 0, marked: 0, slowUntil: 0, shots: 0, rescueUsed: false, expireIn: 0, bossSkillTimer: 0, rageStage: 0, summoned: false, markCd: 0, aegisCd: 0, eventFlags: [], eventSpeedMul: 1, eventAttackSpeedMul: 1, eventRegen: 0, buildingDamageMul: 1, convertResist: false, eventRetreat: 0, eventRetreatCd: 0, eventFireCd: 0, duel: false, chargeReady: true, chargeCd: 0 },
+    expected: { id: 21, kind: 'unit', team: 'enemy', type: 'brute', typeDef: { name: 'Ashen Brute', role: 'Heavy', icon: 'hammer', category: 'infantry', enemy: true, hp: 145, attack: 16, range: 0.8, speed: 1.55, cooldown: 1.5, armor: 6, radius: 0.36, sight: 6.5, bounty: 9, scale: 1.18 }, combatAt: -99, x: 21, y: 20, hp: 145, maxHp: 145, baseMaxHp: 145, pop: 0, armor: 6, attack: 16, state: 'idle', target: null, targetPos: null, gatherTarget: null, buildTarget: null, carry: 0, carryType: null, cooldown: 0.04078065939247608, attackAnim: 0, walkPhase: 5.528120238184929, facing: 1, visualDirection: 'SE', deathAnim: 0, selected: false, hitFlash: 0, alive: true, retargetTimer: 0.2618013255298138, hold: false, stance: 'defensive', guardOrigin: { x: 21, y: 20 }, manualAttack: false, idleTimer: 0.8997230397071689, buildingHint: null, hero: false, shield: 0, shieldTime: 0, marked: 0, slowUntil: 0, shots: 0, rescueUsed: false, expireIn: 0, bossSkillTimer: 0, rageStage: 0, summoned: false, markCd: 0, aegisCd: 0, eventFlags: [], eventSpeedMul: 1, eventAttackSpeedMul: 1, eventRegen: 0, buildingDamageMul: 1, convertResist: false, eventRetreat: 0, eventRetreatCd: 0, eventFireCd: 0, duel: false, chargeReady: true, chargeCd: 0 },
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/enemy-hunt-range.test.mjs:4:1
+✖ HUNT spear chooses nearby cavalry then immediately stops following when it leaves six tiles (26.349237ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - {
+  -   alive: true,
+  -   armor: 8,
+  -   baseMaxHp: 3000,
+  -   construction: 1,
+  -   cooldown: 0.4814650311600417,
+  -   h: 4,
+  -   hitFlash: 0,
+  -   hp: 3000,
+  -   id: 20,
+  -   kind: 'building',
+  -   maxHp: 3000,
+  -   queue: [],
+  -   rally: null,
+  -   selected: false,
+  -   team: 'player',
+  -   type: 'core',
+  -   typeDef: {
+  -     armor: 8,
+  -     attack: 6,
+  -     buildTime: 60,
+  -     cooldown: 2,
+  -     cost: {},
+  -     desc: 'Heart of the realm. Trains villagers and advances the ages.',
+  -     dropoff: true,
+  -     h: 4,
+  -     hp: 3000,
+  -     icon: 'crown',
+  -     name: 'Town Center',
+  -     pop: 20,
+  -     range: 6,
+  -     w: 4
+  -   },
+  -   w: 4,
+  -   x: 32,
+  -   y: 20
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/enemy-hunt-range.test.mjs:4:261)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { id: 20, kind: 'building', team: 'player', type: 'core', typeDef: { name: 'Town Center', icon: 'crown', w: 4, h: 4, hp: 3000, armor: 8, cost: {}, buildTime: 60, pop: 20, dropoff: true, attack: 6, range: 6, cooldown: 2, desc: 'Heart of the realm. Trains villagers and advances the ages.' }, x: 32, y: 20, w: 4, h: 4, hp: 3000, maxHp: 3000, baseMaxHp: 3000, armor: 8, construction: 1, alive: true, selected: false, queue: [], cooldown: 0.4814650311600417, rally: null, hitFlash: 0 },
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/enemy-hunt-range.test.mjs:5:1
+✖ HUNT fallback does not reacquire cavalry outside six tiles (13.903215ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - {
+  -   alive: true,
+  -   armor: 8,
+  -   baseMaxHp: 3000,
+  -   construction: 1,
+  -   cooldown: 0.4814650311600417,
+  -   h: 4,
+  -   hitFlash: 0,
+  -   hp: 3000,
+  -   id: 20,
+  -   kind: 'building',
+  -   maxHp: 3000,
+  -   queue: [],
+  -   rally: null,
+  -   selected: false,
+  -   team: 'player',
+  -   type: 'core',
+  -   typeDef: {
+  -     armor: 8,
+  -     attack: 6,
+  -     buildTime: 60,
+  -     cooldown: 2,
+  -     cost: {},
+  -     desc: 'Heart of the realm. Trains villagers and advances the ages.',
+  -     dropoff: true,
+  -     h: 4,
+  -     hp: 3000,
+  -     icon: 'crown',
+  -     name: 'Town Center',
+  -     pop: 20,
+  -     range: 6,
+  -     w: 4
+  -   },
+  -   w: 4,
+  -   x: 32,
+  -   y: 20
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/enemy-hunt-range.test.mjs:5:147)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { id: 20, kind: 'building', team: 'player', type: 'core', typeDef: { name: 'Town Center', icon: 'crown', w: 4, h: 4, hp: 3000, armor: 8, cost: {}, buildTime: 60, pop: 20, dropoff: true, attack: 6, range: 6, cooldown: 2, desc: 'Heart of the realm. Trains villagers and advances the ages.' }, x: 32, y: 20, w: 4, h: 4, hp: 3000, maxHp: 3000, baseMaxHp: 3000, armor: 8, construction: 1, alive: true, selected: false, queue: [], cooldown: 0.4814650311600417, rally: null, hitFlash: 0 },
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/enemy-hunt-range.test.mjs:8:1
+✖ repeated seeded HUNT boundary transitions are deterministic (6.457562ms)
+  TypeError: Cannot read properties of null (reading 'type')
+      at run (file:///workspace/PlayGround/tests/enemy-hunt-range.test.mjs:8:228)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/enemy-hunt-range.test.mjs:8:268)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/enemy-raid-leash.test.mjs:3:1
+✖ RAID drops camp target immediately after twenty seconds (26.144528ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - {
+  -   alive: true,
+  -   armor: 8,
+  -   baseMaxHp: 3000,
+  -   construction: 1,
+  -   cooldown: 0.4814650311600417,
+  -   h: 4,
+  -   hitFlash: 0,
+  -   hp: 3000,
+  -   id: 20,
+  -   kind: 'building',
+  -   maxHp: 3000,
+  -   queue: [],
+  -   rally: null,
+  -   selected: false,
+  -   team: 'player',
+  -   type: 'core',
+  -   typeDef: {
+  -     armor: 8,
+  -     attack: 6,
+  -     buildTime: 60,
+  -     cooldown: 2,
+  -     cost: {},
+  -     desc: 'Heart of the realm. Trains villagers and advances the ages.',
+  -     dropoff: true,
+  -     h: 4,
+  -     hp: 3000,
+  -     icon: 'crown',
+  -     name: 'Town Center',
+  -     pop: 20,
+  -     range: 6,
+  -     w: 4
+  -   },
+  -   w: 4,
+  -   x: 35,
+  -   y: 30
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/enemy-raid-leash.test.mjs:3:234)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { id: 20, kind: 'building', team: 'player', type: 'core', typeDef: { name: 'Town Center', icon: 'crown', w: 4, h: 4, hp: 3000, armor: 8, cost: {}, buildTime: 60, pop: 20, dropoff: true, attack: 6, range: 6, cooldown: 2, desc: 'Heart of the realm. Trains villagers and advances the ages.' }, x: 35, y: 30, w: 4, h: 4, hp: 3000, maxHp: 3000, baseMaxHp: 3000, armor: 8, construction: 1, alive: true, selected: false, queue: [], cooldown: 0.4814650311600417, rally: null, hitFlash: 0 },
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/enemy-raid-leash.test.mjs:4:1
+✖ RAID drops camp target immediately beyond eight tiles (10.074848ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - {
+  -   alive: true,
+  -   armor: 8,
+  -   baseMaxHp: 3000,
+  -   construction: 1,
+  -   cooldown: 0.4814650311600417,
+  -   h: 4,
+  -   hitFlash: 0,
+  -   hp: 3000,
+  -   id: 20,
+  -   kind: 'building',
+  -   maxHp: 3000,
+  -   queue: [],
+  -   rally: null,
+  -   selected: false,
+  -   team: 'player',
+  -   type: 'core',
+  -   typeDef: {
+  -     armor: 8,
+  -     attack: 6,
+  -     buildTime: 60,
+  -     cooldown: 2,
+  -     cost: {},
+  -     desc: 'Heart of the realm. Trains villagers and advances the ages.',
+  -     dropoff: true,
+  -     h: 4,
+  -     hp: 3000,
+  -     icon: 'crown',
+  -     name: 'Town Center',
+  -     pop: 20,
+  -     range: 6,
+  -     w: 4
+  -   },
+  -   w: 4,
+  -   x: 35,
+  -   y: 30
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/enemy-raid-leash.test.mjs:4:228)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { id: 20, kind: 'building', team: 'player', type: 'core', typeDef: { name: 'Town Center', icon: 'crown', w: 4, h: 4, hp: 3000, armor: 8, cost: {}, buildTime: 60, pop: 20, dropoff: true, attack: 6, range: 6, cooldown: 2, desc: 'Heart of the realm. Trains villagers and advances the ages.' }, x: 35, y: 30, w: 4, h: 4, hp: 3000, maxHp: 3000, baseMaxHp: 3000, armor: 8, construction: 1, alive: true, selected: false, queue: [], cooldown: 0.4814650311600417, rally: null, hitFlash: 0 },
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/enemy-raid-leash.test.mjs:7:1
+✖ same seed and same raid expiry are reproducible (7.176217ms)
+  TypeError: Cannot read properties of null (reading 'type')
+      at run (file:///workspace/PlayGround/tests/enemy-raid-leash.test.mjs:7:195)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/enemy-raid-leash.test.mjs:7:235)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/playtest-report.test.mjs:5:1
+✖ integrity verifier blocks payload mismatch and external/path traversal manifests (1.489261ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/playtest-report.test.mjs:5:464)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/target-state.test.mjs:6:1
+✖ living town center keeps ordinary pursuit when no nearby player exists (15.537986ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - {
+  -   alive: true,
+  -   armor: 8,
+  -   baseMaxHp: 3000,
+  -   construction: 1,
+  -   cooldown: 0.4454482957953587,
+  -   h: 4,
+  -   hitFlash: 0,
+  -   hp: 3000,
+  -   id: 21,
+  -   kind: 'building',
+  -   maxHp: 3000,
+  -   queue: [],
+  -   rally: null,
+  -   selected: false,
+  -   team: 'player',
+  -   type: 'core',
+  -   typeDef: {
+  -     armor: 8,
+  -     attack: 6,
+  -     buildTime: 60,
+  -     cooldown: 2,
+  -     cost: {},
+  -     desc: 'Heart of the realm. Trains villagers and advances the ages.',
+  -     dropoff: true,
+  -     h: 4,
+  -     hp: 3000,
+  -     icon: 'crown',
+  -     name: 'Town Center',
+  -     pop: 20,
+  -     range: 6,
+  -     w: 4
+  -   },
+  -   w: 4,
+  -   x: 25,
+  -   y: 25
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/target-state.test.mjs:6:178)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { id: 21, kind: 'building', team: 'player', type: 'core', typeDef: { name: 'Town Center', icon: 'crown', w: 4, h: 4, hp: 3000, armor: 8, cost: {}, buildTime: 60, pop: 20, dropoff: true, attack: 6, range: 6, cooldown: 2, desc: 'Heart of the realm. Trains villagers and advances the ages.' }, x: 25, y: 25, w: 4, h: 4, hp: 3000, maxHp: 3000, baseMaxHp: 3000, armor: 8, construction: 1, alive: true, selected: false, queue: [], cooldown: 0.4454482957953587, rally: null, hitFlash: 0 },
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
