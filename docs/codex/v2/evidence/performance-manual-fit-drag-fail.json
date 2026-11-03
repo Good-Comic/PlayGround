@@ -1,0 +1,163 @@
+{
+  "source": "14159de03f3d86b3e8521e717b6844d0c21885be",
+  "baseline": "f56929a1c4836fae8de620fe43f96c7bfe5d24ac",
+  "browser": "154.0.8037.57",
+  "viewport": "1440x900",
+  "classification": "STATIC_UNIT_RENDER_FIXTURE; simulation paused, shared cloud CPU/software renderer; no long-term or physical GPU claim",
+  "rows": [
+    {
+      "name": "before",
+      "n": 100,
+      "closed": {
+        "state": "closed",
+        "samples": 80,
+        "p50": 18,
+        "p95": 18.90000000037253,
+        "heapStart": 10776571,
+        "heapEnd": 10833915,
+        "units": 100,
+        "rng": -1358984633,
+        "time": 0
+      }
+    },
+    {
+      "name": "after",
+      "n": 100,
+      "closed": {
+        "state": "closed",
+        "samples": 80,
+        "p50": 18.100000000558794,
+        "p95": 19.299999999813735,
+        "heapStart": 10965337,
+        "heapEnd": 11635328,
+        "units": 100,
+        "rng": -1358984633,
+        "time": 0
+      },
+      "openLatency": {
+        "samples": 8,
+        "p50": 47.700000000186265,
+        "p95": 58.299999999813735
+      },
+      "open": {
+        "state": "open",
+        "samples": 80,
+        "p50": 17.700000000186265,
+        "p95": 19.199999999254942,
+        "heapStart": 10911695,
+        "heapEnd": 11504433,
+        "units": 100,
+        "rng": -1358984633,
+        "time": 0
+      },
+      "afterClose": {
+        "state": "afterClose",
+        "samples": 80,
+        "p50": 18,
+        "p95": 19,
+        "heapStart": 9366720,
+        "heapEnd": 10543535,
+        "units": 100,
+        "rng": -1358984633,
+        "time": 0
+      }
+    },
+    {
+      "name": "before",
+      "n": 200,
+      "closed": {
+        "state": "closed",
+        "samples": 80,
+        "p50": 33.40000000037253,
+        "p95": 36,
+        "heapStart": 7542336,
+        "heapEnd": 8128617,
+        "units": 200,
+        "rng": 1122900247,
+        "time": 0
+      }
+    },
+    {
+      "name": "after",
+      "n": 200,
+      "closed": {
+        "state": "closed",
+        "samples": 80,
+        "p50": 33.700000000186265,
+        "p95": 36.700000000186265,
+        "heapStart": 8148823,
+        "heapEnd": 10509646,
+        "units": 200,
+        "rng": 1122900247,
+        "time": 0
+      },
+      "openLatency": {
+        "samples": 8,
+        "p50": 63.59999999962747,
+        "p95": 75.09999999962747
+      },
+      "open": {
+        "state": "open",
+        "samples": 80,
+        "p50": 33.799999999813735,
+        "p95": 35.80000000074506,
+        "heapStart": 11866615,
+        "heapEnd": 9194829,
+        "units": 200,
+        "rng": 1122900247,
+        "time": 0
+      },
+      "afterClose": {
+        "state": "afterClose",
+        "samples": 80,
+        "p50": 33.799999999813735,
+        "p95": 37.09999999962747,
+        "heapStart": 11292428,
+        "heapEnd": 9385231,
+        "units": 200,
+        "rng": 1122900247,
+        "time": 0
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "cached-nodes-100",
+      "pass": true,
+      "childChanges": 0,
+      "nodes": 32
+    },
+    {
+      "name": "pan-close-input-100",
+      "pass": false,
+      "pan": 0,
+      "open": false,
+      "capture": false,
+      "paused": true,
+      "active": "btn-codex"
+    },
+    {
+      "name": "open-close-model-invariance-100",
+      "pass": true
+    },
+    {
+      "name": "cached-nodes-200",
+      "pass": true,
+      "childChanges": 0,
+      "nodes": 32
+    },
+    {
+      "name": "pan-close-input-200",
+      "pass": false,
+      "pan": 0,
+      "open": false,
+      "capture": false,
+      "paused": true,
+      "active": "btn-codex"
+    },
+    {
+      "name": "open-close-model-invariance-200",
+      "pass": true
+    }
+  ]
+}

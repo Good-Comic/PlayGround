@@ -1,0 +1,12 @@
+locator.click: Error: strict mode violation: locator('#boon-overlay [data-boon-id="citizen_arms"]') resolved to 2 elements:
+    1) <button data-index="1" aria-pressed="false" data-boon-id="citizen_arms" class="boon-card rarity-common">…</button> aka getByRole('button', { name: '普通 公民武備 村民生命 +30、攻擊 +3。 按鍵 2' })
+    2) <button type="button" data-offer="2" aria-label="② · 公民武備" data-boon-id="citizen_arms" class="codex-node is-offered">…</button> aka getByRole('button', { name: '② · 公民武備' })
+
+Call log:
+[2m  - waiting for locator('#boon-overlay [data-boon-id="citizen_arms"]')[22m
+
+    at /tmp/tech-boon-acceptance.cjs:5:771 {
+  log: [
+    `  - waiting for locator('#boon-overlay [data-boon-id="citizen_arms"]')`
+  ]
+}
