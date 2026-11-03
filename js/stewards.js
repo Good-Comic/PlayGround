@@ -87,7 +87,11 @@ export function updatePlans(g) {
   s.status='idle';
   if(s.pending?.kind==='age' && (s.age!=='ask' || g.ageResearch || g.ageLevel>=3 || !g.getTownCenter() || !g.canAfford(g.ageCost())))s.pending=null;
   if(s.age!=='manual' && g.ageLevel<3 && !g.ageResearch && g.getTownCenter() && g.canAfford(g.ageCost())){
-    if(s.age==='auto'){g.advanceAge();s.pending=null;}else{if(s.pending?.kind!=='age')g.toast(t('steward.title')+': '+t('steward.confirm')+' — '+t('steward.age'),'',5000);s.pending={kind:'age'};s.status='confirm';}
+    if(s.age==='auto'){
+      const cost=g.ageCost();
+      if(RESOURCES.every((r,i)=>(g.resources[r]||0)-(cost[r]||0)>=s.reserve[i])){g.advanceAge();s.pending=null;}
+      else s.status='budget';
+    }else{if(s.pending?.kind!=='age')g.toast(t('steward.title')+': '+t('steward.confirm')+' — '+t('steward.age'),'',5000);s.pending={kind:'age'};s.status='confirm';}
   }
   const workers=g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager').length;
   for(const [type,p]of Object.entries(s.buildings).sort((a,b)=>(b[1].priority||0)-(a[1].priority||0))){
