@@ -544,4 +544,6 @@ const STEWARD_TEXT={"en": ["Steward plans", "Manual orders take priority. Change
 const STEWARD_KEYS=["title", "help", "reserve", "idle", "confirm", "budget", "building", "blocked", "training", "population", "economy", "gather", "balanced", "food", "wood", "gold", "stone", "custom", "villagers", "age", "manual", "ask", "auto", "release", "buildings", "buildHelp", "type", "mode", "max", "priority", "workers", "off", "military", "army", "counter", "defense", "milHelp", "queue", "confirmHelp", "apply", "close"];
 for(const [locale,values]of Object.entries(STEWARD_TEXT))STEWARD_KEYS.forEach((key,i)=>STRINGS[locale]["steward."+key]=values[i]);
 
+for(const [locale,label]of Object.entries({en:'Assign workers; configure building and age plans in Steward plans.', 'zh-Hant':'分派村民；於總管規劃設定建築與時代升級。','zh-Hans':'分派村民；在总管规划设置建筑与时代升级。',ja:'村人を配置。執事の計画で建設と時代進化を設定。'}))STRINGS[locale]['pause.econDesc']=label;
+
 export const EN_KEYS = Object.keys(STRINGS.en);
