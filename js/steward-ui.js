@@ -5,6 +5,7 @@ import { RESOURCES, restoreStewards, reserveCost, confirmPlan } from './stewards
 export function installStewardUI(game) {
   const button=document.createElement('button');button.id='btn-stewards';button.className='secondary-button small';
   document.querySelector('.pause-actions').prepend(button);
+  const hudButton=button.cloneNode();hudButton.id='btn-stewards-hud';document.querySelector('.top-actions').prepend(hudButton);
   const dialog=document.createElement('dialog');dialog.id='steward-dialog';dialog.className='steward-dialog';document.body.append(dialog);
   let wasPaused=false;
   const tr=k=>t('steward.'+k);
@@ -44,8 +45,8 @@ export function installStewardUI(game) {
     dialog.querySelector('#steward-release').onclick=()=>{for(const u of game.units)if(u.alive&&u.team==='player'&&u.type==='villager'&&u.state==='idle')u.manualEconomy=false;};
     dialog.querySelector('#steward-confirm').onclick=()=>{confirmPlan(game);render();};
   }
-  button.onclick=()=>{if(game.inMenu)return;wasPaused=game.paused;game.paused=true;render();dialog.showModal();};
+  button.onclick=hudButton.onclick=()=>{if(game.inMenu)return;wasPaused=game.paused;game.paused=true;render();dialog.showModal();};
   dialog.addEventListener('cancel',e=>{e.preventDefault();close();});
-  document.addEventListener('localechange',()=>{button.textContent=tr('title');if(dialog.open)render();});
-  button.textContent=tr('title');
+  document.addEventListener('localechange',()=>{button.textContent=hudButton.textContent=tr('title');if(dialog.open)render();});
+  button.textContent=hudButton.textContent=tr('title');
 }

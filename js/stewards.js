@@ -1,3 +1,4 @@
+import { t } from './i18n.js';
 import { findPath } from './navigation.js';
 import { pointSegmentDist } from './utils.js';
 import { BUILD_OPTIONS, UNIT_TYPES, BUILDING_TYPES } from './data.js';
@@ -85,7 +86,7 @@ export function updatePlans(g) {
   s.nextPlanAt=g.time+3;
   s.status='idle';
   if(s.age!=='manual' && g.ageLevel<3 && !g.ageResearch && g.getTownCenter() && g.canAfford(g.ageCost())){
-    if(s.age==='auto'){g.advanceAge();s.pending=null;}else{s.pending={kind:'age'};s.status='confirm';}
+    if(s.age==='auto'){g.advanceAge();s.pending=null;}else{if(s.pending?.kind!=='age')g.toast(t('steward.title')+': '+t('steward.confirm')+' — '+t('steward.age'),'',5000);s.pending={kind:'age'};s.status='confirm';}
   }
   const workers=g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager').length;
   for(const [type,p]of Object.entries(s.buildings).sort((a,b)=>(b[1].priority||0)-(a[1].priority||0))){
@@ -93,7 +94,7 @@ export function updatePlans(g) {
     const count=g.buildings.filter(b=>b.alive&&b.team==='player'&&b.type===type).length;
     if(count>=Math.min(20,Math.max(0,p.max||0)))continue;
     if(!canSpend(g,g.buildingCost(type))){s.status='budget';continue;}
-    if(p.mode==='ask'){if(!s.pending)s.pending={kind:'building',type};s.status='confirm';continue;}
+    if(p.mode==='ask'){if(!s.pending){s.pending={kind:'building',type};g.toast(t('steward.title')+': '+t('steward.confirm')+' — '+t('building.'+type+'.name'),'',5000);}s.status='confirm';continue;}
     s.status=planBuilding(g,type)?'building':'blocked';return;
   }
 }
