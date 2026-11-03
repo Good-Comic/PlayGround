@@ -157,3 +157,25 @@ export function trainArmy(g) {
     s.status=g.militaryPopulation>=g.militaryPopCap?'population':'blocked';
   }
 }
+
+// Read-only explanation for the same production gates used by trainArmy.
+// Called when opening the planning UI, never during Canvas rendering.
+export function productionStatus(g,b) {
+  const p=g.stewards.military[b.id];
+  if(!g.autoMilitary || p?.enabled===false)return 'off';
+  if(!b.alive || b.construction<1)return 'unavailable';
+  if((b.manualProductionUntil||0)>g.time || b.queue.some(q=>q.manual))return 'manual';
+  if(b.queue.length>=Math.max(1,Math.min(5,p?.queue||1)))return 'queue';
+  const legal=g.trainableFor(b);
+  let choices=(p?.units?.length?p.units:legal.filter(t=>!UNIT_TYPES[t].noAttack)).filter(t=>legal.includes(t));
+  if(!choices.length)return 'unavailable';
+  const counts={};
+  for(const u of g.units)if(u.alive&&u.team==='player')counts[u.type]=(counts[u.type]||0)+1;
+  for(const producer of g.buildings)if(producer.alive&&producer.team==='player')for(const q of producer.queue)counts[q.type]=(counts[q.type]||0)+1;
+  choices=choices.filter(t=>!p?.targets?.[t] || (counts[t]||0)<p.targets[t].count);
+  if(!choices.length)return 'target';
+  const available=choices.filter(t=>g.canTrainNow(t));
+  if(!available.length)return choices.some(t=>!g.hasPopulationRoom(t))?'population':'unavailable';
+  const extra=Object.fromEntries(RESOURCES.map((r,i)=>[r,Number(p?.budget?.[i])||0]));
+  return available.some(t=>canSpend(g,g.unitCost(t),extra))?'ready':'budget';
+}

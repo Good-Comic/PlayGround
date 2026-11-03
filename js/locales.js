@@ -555,3 +555,11 @@ for(const [locale,labels]of Object.entries(CODEX_EXTRA))Object.assign(STRINGS[lo
 for(const [locale,label]of Object.entries({en:'No cards match this filter. Current reward candidates remain visible.', 'zh-Hant':'沒有符合篩選的卡牌；本次獎勵候選仍會保留。','zh-Hans':'没有符合筛选的卡牌；本次奖励候选仍会保留。',ja:'条件に合うカードはありません。今回の報酬候補は表示を維持します。'}))STRINGS[locale]['codex.noMatches']=label;
 
 export const EN_KEYS = Object.keys(STRINGS.en);
+
+const PRODUCER_STATUS_TEXT={
+  'zh-Hant':['自動生產狀態','已停用','手動生產優先','已達自動佇列上限','已達兵種目標（含佇列）','人口不足（含佇列）','等待資源／保留預算','等待下一次自動生產檢查','建築或所選兵種尚不可用'],
+  'zh-Hans':['自动生产状态','已停用','手动生产优先','已达自动队列上限','已达兵种目标（含队列）','人口不足（含队列）','等待资源／保留预算','等待下一次自动生产检查','建筑或所选兵种尚不可用'],
+  en:['Auto production','Disabled','Manual production has priority','Automatic queue limit reached','Unit targets met (including queues)','Population full (including queues)','Waiting for resources / reserved budget','Waiting for the next automatic production check','Building or selected units unavailable'],
+  ja:['自動生産の状態','無効','手動生産を優先','自動キューの上限','兵種の目標数に到達（キュー含む）','人口上限（キュー含む）','資源・確保予算を待機','次の自動生産チェックを待機','建物または選択兵種が利用不可']
+};
+for(const [locale,labels] of Object.entries(PRODUCER_STATUS_TEXT))['label','off','manual','queue','target','population','budget','ready','unavailable'].forEach((key,i)=>STRINGS[locale]['steward.producer.'+key]=labels[i]);
