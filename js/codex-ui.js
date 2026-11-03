@@ -41,7 +41,7 @@ export class CardTree {
     root.querySelector('[data-fit]').onclick=()=>this.fitOffers();root.querySelector('[data-all]').onclick=()=>this.fitAll();
     root.querySelector('[data-minus]').onclick=()=>this.setZoom(this.zoom-.15);root.querySelector('[data-plus]').onclick=()=>this.setZoom(this.zoom+.15);
     this.scroll.addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();this.setZoom(this.zoom+(e.deltaY<0?.1:-.1));},{passive:false});
-    this.scroll.addEventListener('pointerdown',e=>{if(e.button!==0||e.target.closest('button'))return;this.drag={x:e.clientX,y:e.clientY,left:this.scroll.scrollLeft,top:this.scroll.scrollTop};this.scroll.setPointerCapture(e.pointerId);});
+    this.scroll.addEventListener('pointerdown',e=>{if(e.button!==0||e.target.closest('button'))return;this.drag={pointer:e.pointerId,x:e.clientX,y:e.clientY,left:this.scroll.scrollLeft,top:this.scroll.scrollTop};this.scroll.setPointerCapture(e.pointerId);});
     this.scroll.addEventListener('pointermove',e=>{if(this.drag){this.scroll.scrollLeft=this.drag.left+this.drag.x-e.clientX;this.scroll.scrollTop=this.drag.top+this.drag.y-e.clientY;}});
     this.scroll.addEventListener('pointerup',()=>{this.drag=null;});this.scroll.addEventListener('pointercancel',()=>{this.drag=null;});
     this.resize=new ResizeObserver(()=>{if(this.scroll.clientWidth)this.fitMode==='offers'?this.fitOffers():this.fitAll();});this.resize.observe(this.scroll);
@@ -76,8 +76,8 @@ export class CardTree {
   fit(ids,mode){this.fitMode=mode;if(!this.scroll.clientWidth)return;this.setZoom(1);const r=this.bounds(ids);if(!r)return;this.setZoom(Math.min((this.scroll.clientWidth-24)/(r.w+24),(this.scroll.clientHeight-24)/(r.h+24),1.2));this.scroll.scrollLeft=Math.max(0,r.x*this.zoom-12);this.scroll.scrollTop=Math.max(0,r.y*this.zoom-12);}
   fitOffers(){const ids=this.rows.filter(c=>c.offer).map(c=>c.id);this.fit(ids.length?ids:this.rows.map(c=>c.id),'offers');}
   fitAll(){this.fit(this.rows.filter(c=>!this.nodes.get(c.id).hidden).map(c=>c.id),'all');}
-  suspend(){this.drag=null;}
-  destroy(){this.resize.disconnect();this.root.replaceChildren();}
+  suspend(){if(this.drag&&this.scroll.hasPointerCapture(this.drag.pointer))this.scroll.releasePointerCapture(this.drag.pointer);this.drag=null;}
+  destroy(){this.suspend();this.resize.disconnect();this.root.replaceChildren();}
 }
 
 export function installCodex(game,ui){

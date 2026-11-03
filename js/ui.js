@@ -523,6 +523,7 @@ export class UI {
     if (this.boonSelection == null || !this.boonsOpen || this.game.phase!=='boon') return;
     if(!this.game.boonChoices.some(c=>c.id===this.boonChoices[this.boonSelection]?.id)||this.game.boons.length>=MAX_BOONS)return;
     const choice = this.boonChoices[this.boonSelection];
+    this.codex?.rewardTree.suspend();
     this.boonsOpen = false;
     this.el.boon.hidden = true;
     this.sound?.boon();
