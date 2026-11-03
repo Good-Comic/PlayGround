@@ -1,0 +1,60 @@
+TAP version 13
+# Subtest: 自然存檔有安全可達整數格時，規劃不可永久漏掉射箭場 / planner finds safe reachable grid sites missed by sparse rings in native save
+not ok 1 - 自然存檔有安全可達整數格時，規劃不可永久漏掉射箭場 / planner finds safe reachable grid sites missed by sparse rings in native save
+  ---
+  duration_ms: 42.824057
+  type: 'test'
+  location: '/workspace/PlayGround/tests/planner-grid-recovery.test.mjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    native snapshot has safe reachable placement near19,23
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/planner-grid-recovery.test.mjs:5:268)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 續查存讀檔可恢復，未放置時不花資源、不消耗RNG / resumable search survives save/load without spending or RNG until placement
+not ok 2 - 續查存讀檔可恢復，未放置時不花資源、不消耗RNG / resumable search survives save/load without spending or RNG until placement
+  ---
+  duration_ms: 34.692692
+  type: 'test'
+  location: '/workspace/PlayGround/tests/planner-grid-recovery.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/planner-grid-recovery.test.mjs:6:531)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 239.139697
