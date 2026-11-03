@@ -22,3 +22,17 @@ English: The natural harness only uses native UI configuration and reward claimi
 繁體中文：本次安全保存後繼續驗證，不以Push為結束。歷史低FPS時鐘、嚴格SaveLoad、自然RiftPrototype與長期性能狀態保留。未改main、Pages、既有RC、公開部署、Issues、其他Owner Feed或排程。
 
 English: Validation continues after this safety push; pushing is not an ending condition. Historical low-FPS timing,strictSaveLoad,naturalRiftPrototype and long-term performance states remain. No main,Pages,existingRC,public deployment,Issues,other-ownerFeed or scheduling changes.
+
+## 續行發現的真實缺陷 / Actual defect found during continuation
+
+繁體中文：自然續行存檔發現自動施工村民變成idle/manual=true；updateBuild每次近身施工都覆寫manualEconomy=true，抵消planBuilding指定的false。修正該更新，不動手動放置／指令入口既有鎖定。Node先重現自動完工與讀檔後施工兩項FAIL；第一版存檔測試忘記離開主選單，補正並加時間必須推進的斷言，原結果保留。修復後54/54相關測試PASS。正式最終來源bb5d7fe0b79adb8df0edeb5d537c608392d96b0e，150/150資源雜湊一致。
+
+English: Natural continuation saves exposed automatic builders becoming idle/manual=true. Every nearby updateBuild tick overwrote manualEconomy=true, cancelling planBuilding's false authority. Removed that overwrite while retaining existing manual placement/order locks. Node first reproduced failures after automatic completion and restored construction. The initial restore fixture omitted leaving the menu; it was corrected with an explicit advancing-time assertion and its original output retained. Related tests then pass54/54. Final official source bb5d7fe0b79adb8df0edeb5d537c608392d96b0e,150/150resource hashes match.
+
+繁體中文：真正Chromium正常設定、相同AUTO-BUILDER種子743745780、原生自動建第三屋：兩版均由村民10於約16模擬秒完工，約22秒觀察時舊版idle/manual=true，新版gather/manual=false且已採得資源；無pageerror。完整短影片與前後截圖在evidence/builder。這是自動工人流失缺陷，不宣稱它獨自造成所有戰敗。舊存檔已存在的manual=true無法安全區分玩家命令，沒有自動批次解除；玩家可明確使用既有交還閒置村民功能。
+
+English: Actual Chromium uses ordinary settings, identical AUTO-BUILDER seed743745780 and native third-house planning. Villager10 finishes around16simulation seconds in both builds. Around22seconds, old is idle/manual=true; fixed is gather/manual=false and carrying gathered resources, without pageerrors. Short full recordings and screenshots are in evidence/builder. This is an automatic-worker attrition defect, not proof it alone caused every defeat. Existing manual=true workers in old saves cannot safely be distinguished from player orders; no bulk automatic unlock was added. Players may explicitly use the existing idle-worker release control.
+
+繁體中文：第一場自然戰役於502.48模擬秒／約518.88現實秒第四波戰敗，前三波實際完成；原敗局不改寫。第二場從第三波存檔、以正常UI改食物優先／解除食物預留／擴建房屋及農田、採防禦軍隊方案，仍在第四波約505秒戰敗。兩者均在工人修復前。最終構建現正從原生第三波存檔續行，不把先前結果冒稱最終修復驗收。
+
+English: The first natural campaign loses in wave4 at502.48simulation/~518.88wall seconds after clearing3waves; its original defeat is retained. A second native wave3 continuation uses normalUI food priority, releases the food floor, plans houses/farms and a defense army, but still loses in wave4 around505seconds. Both precede the builder fix. Final-build native wave3 continuation is now running; earlier outcomes are not represented as final-fix acceptance.
