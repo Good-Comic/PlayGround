@@ -85,7 +85,7 @@ export function updatePlans(g) {
   s.nextPlanAt=g.time+3;
   s.status='idle';
   if(s.age!=='manual' && g.ageLevel<3 && !g.ageResearch && g.getTownCenter() && g.canAfford(g.ageCost())){
-    if(s.age==='auto'){g.advanceAge();s.pending=null;}else{s.pending={kind:'age'};s.status='confirm';return;}
+    if(s.age==='auto'){g.advanceAge();s.pending=null;}else{s.pending={kind:'age'};s.status='confirm';}
   }
   const workers=g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager').length;
   for(const [type,p]of Object.entries(s.buildings).sort((a,b)=>(b[1].priority||0)-(a[1].priority||0))){
@@ -93,7 +93,7 @@ export function updatePlans(g) {
     const count=g.buildings.filter(b=>b.alive&&b.team==='player'&&b.type===type).length;
     if(count>=Math.min(20,Math.max(0,p.max||0)))continue;
     if(!canSpend(g,g.buildingCost(type))){s.status='budget';continue;}
-    if(p.mode==='ask'){s.pending={kind:'building',type};s.status='confirm';return;}
+    if(p.mode==='ask'){if(!s.pending)s.pending={kind:'building',type};s.status='confirm';continue;}
     s.status=planBuilding(g,type)?'building':'blocked';return;
   }
 }
