@@ -251,6 +251,7 @@ export class UI {
   }
 
   startWithSetup() {
+    if(this.playtestReady===false){this.toast(t('playtest.verifying',{done:0,total:'…'}),'',1500);return false;}
     this.ensureSetupSeed();
     const seed = this.el.seedInput?.value.trim();
     const setup = {

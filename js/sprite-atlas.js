@@ -44,20 +44,21 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
     }),
   })])),
   ...Object.fromEntries(['spearman', 'guard'].map(type => [type, Object.freeze({
-    id: `${type}-migration-v1`, src: `assets/sprites/${type}-atlas.png`,
+    bakedPose: true, id: `${type}-migration-v1`, src: `assets/sprites/${type}-atlas.png`,
     frame: Object.freeze({ width: 128, height: 160 }), anchor: Object.freeze({ x: 64, y: 88 }),
     offset: Object.freeze({ x: 0, y: 0 }), scale: 0.78, directions: DIRECTION_MAP,
     states: Object.freeze(Object.fromEntries(Object.entries(STATES).map(([name, animation]) =>
       [name, Object.freeze({ ...animation, frames: 4, fps: animation.fps * 2 })]))),
   })])),
   chu_ko_nu: Object.freeze({
-    id: 'chu-ko-nu-v1', src: 'assets/sprites/chu-ko-nu-atlas.png',
+    bakedPose: true, id: 'chu-ko-nu-v1', src: 'assets/sprites/chu-ko-nu-atlas.png',
     frame: Object.freeze({ width: 80, height: 80 }), anchor: Object.freeze({ x: 40, y: 64 }),
     offset: Object.freeze({ x: 0, y: 0 }), scale: 0.78, directions: DIRECTION_MAP,
     states: Object.freeze(Object.fromEntries(Object.entries(STATES).map(([name, animation]) =>
       [name, Object.freeze({ ...animation, frames: 4, fps: animation.fps * 2 })]))),
   }),
   militia: Object.freeze({
+    bakedPose: true,
     id: 'militia-v1',
     src: 'assets/sprites/militia-atlas.svg',
     frame: Object.freeze({ width: 64, height: 64 }),
@@ -68,11 +69,13 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
     states: STATES,
   }),
   archer: Object.freeze({
+    bakedPose: true,
     id: 'archer-v1', src: 'assets/sprites/archer-atlas.svg',
     frame: Object.freeze({ width: 64, height: 64 }), anchor: Object.freeze({ x: 32, y: 54 }),
     offset: Object.freeze({ x: 0, y: 0 }), scale: 0.76, directions: DIRECTION_MAP, states: STATES,
   }),
   light_cavalry: Object.freeze({
+    bakedPose: true,
     id: 'light-cavalry-v1', src: 'assets/sprites/light-cavalry-atlas.svg',
     frame: Object.freeze({ width: 80, height: 64 }), anchor: Object.freeze({ x: 40, y: 54 }),
     offset: Object.freeze({ x: 0, y: 0 }), scale: 0.88, directions: DIRECTION_MAP, states: STATES,

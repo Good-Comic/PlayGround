@@ -27,16 +27,19 @@ export function makeBugReport(game,settings,build,errors=[],browser={}) {
     privacy:'No cookies, storage dump, account/name, URL/referrer, raw console/stack, save file or free-text included. Review this JSON before sharing.'
   };
 }
-export async function verifyBuild(meta,fetcher=fetch) {
+export async function verifyBuild(meta,fetcher=fetch,onProgress=()=>{}) {
   if(!/^[a-f0-9]{40}$/.test(meta.commit)||meta.status!=='PLAYTEST-EXPERIMENTAL'||typeof meta.builtAt!=='string')throw Error('Invalid candidate metadata');
   const entries=Object.entries(meta.files||{});
   if(!entries.some(([p])=>p==='js/main.js')||!entries.some(([p])=>p==='index.html'))throw Error('Incomplete candidate manifest');
-  for(const [path,expected] of entries){
+  let next=0,completed=0;
+  const worker=async()=>{while(next<entries.length){const [path,expected]=entries[next++];
     if(!/^[a-zA-Z0-9_./-]+$/.test(path)||path.includes('..')||path.startsWith('/')||!/^[a-f0-9]{64}$/.test(expected))throw Error('Invalid candidate resource path');
     const response=await fetcher(new URL('../'+path,import.meta.url),{cache:'no-store'});if(!response.ok)throw Error('Candidate resource missing');
     const digest=await crypto.subtle.digest('SHA-256',await response.arrayBuffer());const actual=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
     if(actual!==expected)throw Error('Candidate resource integrity mismatch');
-  }
+    onProgress(++completed,entries.length);
+  }};
+  await Promise.all(Array.from({length:Math.min(4,entries.length)},worker));
   return entries.length;
 }
 // Use verified artifact identity rather than the historical hard-coded v1 label.
@@ -48,6 +51,8 @@ export async function installPlaytest({game,ui}) {
   ui.playtestReady=false;
   const start=document.getElementById('btn-start'),cont=document.getElementById('btn-continue');
   const setDisabled=value=>{start.disabled=value;cont.disabled=value||!hasSavedRun();};setDisabled(true);
+  let verified=0,total=0,blocked=false;
+  const readiness=()=>{start.setAttribute('aria-busy',String(!ui.playtestReady));const label=start.querySelector('[data-i18n="menu.start"]');if(label)label.textContent=blocked?t('playtest.blocked'):ui.playtestReady?t('menu.start'):t('playtest.verifying',{done:verified,total:total||'…'});};readiness();document.addEventListener('localechange',readiness);
   const errors=[];addEventListener('error',e=>errors.push(safeError(e.error||{})));addEventListener('unhandledrejection',e=>errors.push(safeError(e.reason||{})));
   const root=document.createElement('aside');root.id='playtest-tools';
   const toggle=document.createElement('button');toggle.id='playtest-info-toggle';toggle.textContent='PLAYTEST · Loading…';root.append(toggle);
@@ -58,10 +63,10 @@ export async function installPlaytest({game,ui}) {
   toggle.addEventListener('click',()=>dialog.showModal());close.addEventListener('click',()=>dialog.close());
   try{
     const response=await fetch(new URL('../build-metadata.json',import.meta.url),{cache:'no-store'});if(!response.ok)throw Error('Candidate metadata missing');const meta=await response.json();
-    const count=await verifyBuild(meta);const build=buildIdentity(meta,count);
+    const count=await verifyBuild(meta,fetch,(done,n)=>{verified=done;total=n;readiness();});const build=buildIdentity(meta,count);
     const sourceLabel=document.getElementById('build-version');if(sourceLabel)sourceLabel.textContent=build.id;document.documentElement.dataset.buildId=build.id;
     window.ageOfAsh.playtestBuild=build;toggle.textContent='PLAYTEST · '+build.commit.slice(0,7);version.textContent=`${build.id}\n${build.status}\n${build.commit}\n${build.builtAt}\n${build.resourceVerification}`;document.documentElement.dataset.playtestSha=build.commit;
     download.addEventListener('click',()=>{const report=makeBugReport(game,{...ui.settings,locale:getLocale()},build,errors,{userAgent:navigator.userAgent,width:innerWidth,height:innerHeight,dpr:devicePixelRatio});const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`riftwatch-bug-${build.commit.slice(0,7)}-${game.seed||'menu'}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
-    ui.playtestReady=true;setDisabled(false);
-  }catch(error){version.textContent='BUILD_INTEGRITY_BLOCKED: '+safeError(error).message;toggle.textContent='PLAYTEST · BUILD BLOCKED';download.disabled=true;window.ageOfAsh.playtestBlocked=true;}
+    ui.playtestReady=true;setDisabled(false);readiness();
+  }catch(error){blocked=true;readiness();version.textContent='BUILD_INTEGRITY_BLOCKED: '+safeError(error).message;toggle.textContent='PLAYTEST · BUILD BLOCKED';download.disabled=true;window.ageOfAsh.playtestBlocked=true;}
 }

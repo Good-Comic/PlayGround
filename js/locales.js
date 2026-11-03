@@ -537,4 +537,7 @@ for(const [locale,label] of Object.entries({en:'Waiting for clear ground to depl
 const PLAYTEST_TEXT={en:['Playtest build','Known issues','Download Bug JSON','Close','Review exported diagnostics before sharing. No automatic upload.'],'zh-Hant':['測試版本','已知問題','下載 Bug JSON','關閉','分享前請檢查匯出資料；不會自動上傳。'],'zh-Hans':['测试版本','已知问题','下载 Bug JSON','关闭','分享前请检查导出数据；不会自动上传。'],ja:['テスト版','既知の問題','Bug JSONを保存','閉じる','共有前に診断情報を確認してください。自動送信しません。']};
 for(const [locale,labels] of Object.entries(PLAYTEST_TEXT))['title','known','export','close','privacy'].forEach((key,i)=>STRINGS[locale]['playtest.'+key]=labels[i]);
 
+const READINESS={en:['Verifying {done}/{total}…','Build verification failed'],'zh-Hant':['校驗資源 {done}/{total}…','版本校驗失敗'],'zh-Hans':['校验资源 {done}/{total}…','版本校验失败'],ja:['検証中 {done}/{total}…','ビルド検証に失敗']};
+for(const [locale,v]of Object.entries(READINESS)){STRINGS[locale]['playtest.verifying']=v[0];STRINGS[locale]['playtest.blocked']=v[1];}
+
 export const EN_KEYS = Object.keys(STRINGS.en);

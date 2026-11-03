@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Generate the repository-owned eight-direction militia SVG atlas."""
 from pathlib import Path
+import math
 
 DIRECTIONS = ['E', 'SE', 'S', 'SW', 'W', 'NW', 'N', 'NE']
 ANGLES = [-90, -45, 0, 45, 90, 135, 180, -135]
 STATES = ['idle', 'walk', 'attack', 'hit', 'death']
 
 def frame(x, y, angle, state, phase):
+    dx,dy=math.cos(math.radians(angle+90)),math.sin(math.radians(angle+90))
+    side=-1 if dx<-.1 else 1
+    body_width=.78+.22*abs(dx)
     bob = -1 if phase else 0
     stride = (3 if phase else -3) if state == 'walk' else 0
     sword = 18 if state == 'attack' and phase else 0
@@ -15,7 +19,7 @@ def frame(x, y, angle, state, phase):
     opacity = .62 if state == 'death' and phase else 1
     return f'''<g transform="translate({x+32} {y+50}) rotate({fall}) translate({recoil} {bob})" opacity="{opacity}">
       <ellipse cx="0" cy="3" rx="13" ry="4" fill="#14150f" opacity=".34"/>
-      <g transform="rotate({angle})">
+      <g transform="scale({side*body_width:.3f} 1)">
         <path d="M{-4+stride} 0 L{-6+stride} 8 M{4-stride} 0 L{6-stride} 8" stroke="#32251b" stroke-width="4" stroke-linecap="round"/>
         <path d="M-8 -18 Q0 -25 8 -18 L6 1 Q0 5 -6 1Z" fill="#a63f35" stroke="#ead49b" stroke-width="1.5"/>
         <circle cx="0" cy="-27" r="7" fill="#d8aa72" stroke="#5d3c26" stroke-width="1.5"/>

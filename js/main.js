@@ -18,6 +18,7 @@ let ui;
 let currentSetup = { civ: 'TEU', biome: 'ash' };
 
 function startGame(setup = {}) {
+  if(ui.playtestReady===false||window.ageOfAsh?.playtestBlocked)return false;
   currentSetup = { civ: setup.civ || 'TEU', biome: setup.biome || 'ash', difficulty: setup.difficulty || 'normal' };
   const seed = setup.seed ? seedFromString(setup.seed) : seedFromDate();
   game.newRun(seed, currentSetup);

@@ -1,3 +1,4 @@
+import { factionMark } from './factions.js';
 import { CombatVfx } from './vfx-adapter.js';
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
@@ -336,7 +337,7 @@ export class Renderer {
     this.vfx?.draw(ctx,game,(x,y)=>this.screen(game,x,y),this.w,this.h,'back');
     drawables.sort((a, b) => a.depth - b.depth);
     for (const d of drawables) {
-      if (d.kind === 'building') this.drawBuilding(d.obj, game, time);
+      if (d.kind === 'building') {this.drawBuilding(d.obj, game, time);this.drawFactionMarker(d.obj,this.screen(game,d.obj.x+d.obj.w/2,d.obj.y+d.obj.h),game.camera.zoom,true);}
       else if (d.kind === 'ruin') this.drawBuildingRuin(d.obj, game, time);
       else if (d.kind === 'unit') this.drawUnit(d.obj, game, time);
       else if (d.kind === 'resource') this.drawResource(d.obj, game, time);
@@ -1462,6 +1463,17 @@ export class Renderer {
     this.ctx.drawImage(this.shadowSprite,x-rx*4/3,y-ry*4/3,rx*8/3,ry*8/3);
   }
 
+  drawFactionMarker(entity,p,scale,building=false){
+    if(!entity.alive)return;
+    const ctx=this.ctx,{color,shape}=factionMark(entity.team),r=(building?13:10)*scale;
+    ctx.save();ctx.strokeStyle='#111b21';ctx.lineWidth=4*scale;ctx.beginPath();
+    if(shape==='circle')ctx.ellipse(p.x,p.y+2*scale,r,r*.42,0,0,Math.PI*2);
+    else if(shape==='diamond'){ctx.moveTo(p.x,p.y-r*.48);ctx.lineTo(p.x+r,p.y);ctx.lineTo(p.x,p.y+r*.48);ctx.lineTo(p.x-r,p.y);ctx.closePath();}
+    else ctx.rect(p.x-r,p.y-r*.4,r*2,r*.8);
+    ctx.stroke();ctx.strokeStyle=color;ctx.lineWidth=1.7*scale;ctx.stroke();
+    ctx.fillStyle=color;ctx.fillRect(p.x-r-3*scale,p.y-4*scale,3*scale,8*scale);ctx.restore();
+  }
+
   drawUnit(u, game, time) {
     const p = this.screen(game, u.x, u.y);
     if (p.x < -80 || p.x > this.w + 80 || p.y < -80 || p.y > this.h + 100) return;
@@ -1497,6 +1509,7 @@ export class Renderer {
       ctx.fillStyle = 'rgba(7,9,5,0.34)';
       const big = ['knight', 'light_cavalry', 'horse_archer', 'elephant', 'ram', 'mangonel', 'patrol_cart', 'prototype'].includes(u.type) ? 19 : 12;
       this.drawUnitShadow(p.x+2*scale,p.y+1.5*scale,big*scale,(big===19?7:4.5)*scale);
+      this.drawFactionMarker(u,p,scale);
       const atlasDrawn = this.drawSpriteAtlasUnit(u, p, scale, frame, time);
       if (atlasDrawn) { /* external atlas replaces this unit's procedural body */ }
       else if (['knight', 'light_cavalry', 'horse_archer'].includes(u.type)) this.drawKnightUnit(p, u, scale, team, walk, time, bob);
