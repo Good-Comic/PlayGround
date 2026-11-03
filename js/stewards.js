@@ -27,7 +27,7 @@ export function reserveCost(g) {
 }
 export function canSpend(g,cost,extra={}) {
   const floor=reserveCost(g);
-  return RESOURCES.every(r=>(g.resources[r]||0)-(cost[r]||0)>=Math.max(floor[r]||0,extra[r]||0));
+  return RESOURCES.every(r=>!(cost[r]>0) || (g.resources[r]||0)-cost[r]>=Math.max(floor[r]||0,extra[r]||0));
 }
 export function assignWorkers(g) {
   const workers=g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager');
@@ -85,6 +85,7 @@ export function updatePlans(g) {
   if(g.time<s.nextPlanAt)return;
   s.nextPlanAt=g.time+3;
   s.status='idle';
+  if(s.pending?.kind==='age' && (s.age!=='ask' || g.ageResearch || g.ageLevel>=3 || !g.getTownCenter() || !g.canAfford(g.ageCost())))s.pending=null;
   if(s.age!=='manual' && g.ageLevel<3 && !g.ageResearch && g.getTownCenter() && g.canAfford(g.ageCost())){
     if(s.age==='auto'){g.advanceAge();s.pending=null;}else{if(s.pending?.kind!=='age')g.toast(t('steward.title')+': '+t('steward.confirm')+' — '+t('steward.age'),'',5000);s.pending={kind:'age'};s.status='confirm';}
   }
@@ -101,7 +102,10 @@ export function updatePlans(g) {
 export function confirmPlan(g) {
   const p=g.stewards.pending;if(!p)return false;
   g.stewards.pending=null;
-  if(p.kind==='age'){g.advanceAge();return !!g.ageResearch;}
+  if(p.kind==='age'){
+    if(g.stewards.age!=='ask' || g.ageResearch || g.ageLevel>=3 || !g.getTownCenter() || !g.canAfford(g.ageCost()))return false;
+    g.advanceAge();return !!g.ageResearch;
+  }
   const setting=g.stewards.buildings[p.type];
   if(!setting || g.buildings.filter(b=>b.alive&&b.team==='player'&&b.type===p.type).length>=setting.max)return false;
   return planBuilding(g,p.type);

@@ -1,0 +1,35 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+globalThis.document={documentElement:{dataset:{}},dispatchEvent(){}};
+const {Game}=await import('../js/game.js');
+const {canSpend,updatePlans,confirmPlan,trainArmy}=await import('../js/stewards.js');
+function fresh(){const g=new Game();g.newRun(42,{civ:'CHN'});return g;}
+
+test('升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced',()=>{
+ const g=fresh();g.stewards.age='ask';g.resources={food:0,wood:100,gold:0,stone:0};
+ assert.equal(canSpend(g,g.buildingCost('house')),true);
+ assert.equal(canSpend(g,{food:1}),false);
+ g.stewards.reserve=[0,60,0,999];assert.equal(canSpend(g,{wood:60}),false);
+ g.resources.wood=120;assert.equal(canSpend(g,{wood:60}),true);
+ assert.equal(canSpend(g,{wood:60},{wood:80}),false);
+});
+test('資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction',()=>{
+ const g=fresh();g.stewards.age='ask';g.stewards.buildings.house={mode:'auto',max:3,age:1};g.resources={food:0,wood:0,gold:0,stone:0};updatePlans(g);
+ assert.equal(g.buildings.filter(b=>b.type==='house').length,2);
+ g.resources.wood=120;g.time=3;g.placement={type:'house',x:1,y:1};updatePlans(g);assert.equal(g.buildings.filter(b=>b.type==='house').length,2);
+ g.placement=null;g.time=6;updatePlans(g);assert.equal(g.buildings.filter(b=>b.type==='house').length,3);
+ g.time=9;updatePlans(g);assert.equal(g.buildings.filter(b=>b.type==='house').length,3);assert.equal(g.resources.wood,60);
+});
+test('手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals',()=>{
+ for(const mode of['research','manual','shortfall']){const g=fresh();g.resources={food:5000,wood:5000,gold:5000,stone:5000};g.stewards.age='ask';updatePlans(g);assert.equal(g.stewards.pending.kind,'age');
+ if(mode==='research')g.advanceAge();if(mode==='manual')g.stewards.age='manual';if(mode==='shortfall')g.resources.food=0;
+ g.time=3;updatePlans(g);assert.equal(g.stewards.pending,null,mode);}
+});
+test('過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success',()=>{
+ const g=fresh();g.resources={food:5000,wood:5000,gold:5000,stone:5000};g.stewards.age='ask';updatePlans(g);g.advanceAge();const research={...g.ageResearch},resources={...g.resources};
+ assert.equal(confirmPlan(g),false);assert.deepEqual(g.ageResearch,research);assert.deepEqual(g.resources,resources);
+});
+test('無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative',()=>{
+ const g=fresh();g.resources={food:5000,wood:5000,gold:5000,stone:0};g.stewards.reserve=[0,0,0,500];const b=g.buildings.find(b=>b.type==='barracks');g.stewards.military[b.id]={enabled:true,units:['militia'],targets:{militia:{count:10,priority:1}},queue:3};
+ trainArmy(g);assert.equal(b.queue.length,1);b.queue=[];g.trainUnit(b,'militia');const n=b.queue.length;trainArmy(g);assert.equal(b.queue.length,n);
+});
