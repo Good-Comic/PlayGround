@@ -61,8 +61,8 @@ export class CardTree {
     for(const branch of this.graph.children)branch.hidden=![...branch.querySelectorAll('.codex-node')].some(n=>!n.hidden);
     const pins=this.root.querySelector('.codex-offer-pins');pins.replaceChildren();
     for(const row of this.rows.filter(c=>c.offer).sort((a,b)=>a.offer-b.offer)){const b=document.createElement('button');b.type='button';b.textContent=symbols[row.offer-1]+' '+t('boon.'+row.id+'.name');b.dataset.pin=row.id;b.onclick=()=>{this.chooseNode(row.id);this.focus(row.id,true);};pins.append(b);}
-    if(!this.focused||!this.rows.some(c=>c.id===this.focused))this.focused=this.rows.find(c=>c.offer)?.id||this.rows.find(c=>c.owned)?.id||this.rows[0]?.id;
-    this.focus(this.focused,false);
+    if(!this.focused||this.nodes.get(this.focused)?.hidden)this.focused=this.rows.find(c=>!this.nodes.get(c.id).hidden)?.id||null;
+    if(this.focused)this.focus(this.focused,false);else{for(const b of this.nodes.values())b.classList.remove('is-focused');this.detail.textContent=tr('noMatches');}
   }
   focus(id,scroll=true){
     this.focused=id;for(const [key,b]of this.nodes)b.classList.toggle('is-focused',key===id);

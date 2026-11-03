@@ -552,4 +552,6 @@ for(const [locale,labels]of Object.entries(CODEX_TEXT))Object.assign(STRINGS[loc
 const CODEX_EXTRA={en:{'codex.claimNamed':'Claim: {name}','codex.producerStatus':'Completed producers: {count}. Legal unit list:'},'zh-Hant':{'codex.claimNamed':'領取：{name}','codex.producerStatus':'已完成生產建築：{count}。正式兵種：'},'zh-Hans':{'codex.claimNamed':'领取：{name}','codex.producerStatus':'已完成生产建筑：{count}。正式兵种：'},ja:{'codex.claimNamed':'受領：{name}','codex.producerStatus':'完成した生産施設：{count}。正式兵種：'}};
 for(const [locale,labels]of Object.entries(CODEX_EXTRA))Object.assign(STRINGS[locale],labels);
 
+for(const [locale,label]of Object.entries({en:'No cards match this filter. Current reward candidates remain visible.', 'zh-Hant':'沒有符合篩選的卡牌；本次獎勵候選仍會保留。','zh-Hans':'没有符合筛选的卡牌；本次奖励候选仍会保留。',ja:'条件に合うカードはありません。今回の報酬候補は表示を維持します。'}))STRINGS[locale]['codex.noMatches']=label;
+
 export const EN_KEYS = Object.keys(STRINGS.en);
