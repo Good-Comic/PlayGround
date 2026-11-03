@@ -120,6 +120,15 @@ export function installCodex(game,ui){
   ui.showBoons=(choices,onChoose)=>{oldShow(choices,onChoose);rewardTree.viewCiv=game.civ.id;rewardTree.focused=choices[0]?.id;rewardTree.refresh();ui.el.claim.querySelector('span').textContent=t('boon.claim');if(ui.el.boonHint)ui.el.boonHint.textContent=tr('keys');for(let i=0;i<ui.el.boonGrid.children.length;i++){const b=ui.el.boonGrid.children[i],card=choices[i];b.dataset.boonId=card.id;const p=document.createElement('p');p.className='boon-civ-advice';p.textContent=tr('advice.'+adviceKind(card,game.civ.id));b.append(p);b.setAttribute('aria-pressed','false');}requestAnimationFrame(()=>rewardTree.fitOffers());};
   ui.selectBoon=index=>{oldSelect(index);const card=ui.boonChoices?.[index];if(card){const selected=ui.el.boonGrid.children[index],pane=ui.el.boonGrid.parentElement,r=selected.getBoundingClientRect(),box=pane.getBoundingClientRect();if(r.top<box.top)pane.scrollTop+=r.top-box.top-4;else if(r.bottom>box.bottom)pane.scrollTop+=r.bottom-box.bottom+4;ui.el.claim.querySelector('span').textContent=tr('claimNamed',{name:t('boon.'+card.id+'.name')});rewardTree.focus(card.id,true);for(let i=0;i<ui.el.boonGrid.children.length;i++)ui.el.boonGrid.children[i].setAttribute('aria-pressed',String(i===index));}};
   ui.hideBoons=()=>{rewardTree.suspend();oldHide();};
-  document.addEventListener('localechange',()=>{const selected=ui.boonSelection,focused=rewardTree.focused,viewCiv=rewardTree.viewCiv;for(const b of buttons)b.textContent=tr('entry');rewardTree.destroy();rewardTree=new CardTree(right,game,{reward:true,onCandidate:index=>ui.selectBoon(index)});if(ui.boonsOpen){ui.showBoons(game.boonChoices,ui.onBoonChoose);if(selected!=null)ui.selectBoon(selected);}rewardTree.viewCiv=viewCiv;rewardTree.refresh();if(focused)rewardTree.focus(focused,false);if(dialog.open)renderDialog();});
+  const viewState=tree=>tree?{civ:tree.viewCiv,focus:tree.focused,filters:{...tree.filters}}:null;
+  const restoreView=(tree,state)=>{if(!tree||!state)return;tree.viewCiv=state.civ;for(const [key,value]of Object.entries(state.filters)){tree.filters[key]=value;tree.root.querySelector(`[data-filter="${key}"]`).value=value;}tree.refresh();if(state.focus)tree.focus(state.focus,false);};
+  document.addEventListener('localechange',()=>{
+    const selected=ui.boonSelection,rewardState=viewState(rewardTree),libraryState=viewState(libraryTree);
+    for(const b of buttons)b.textContent=tr('entry');
+    rewardTree.destroy();rewardTree=new CardTree(right,game,{reward:true,onCandidate:index=>ui.selectBoon(index)});
+    if(ui.boonsOpen){ui.showBoons(game.boonChoices,ui.onBoonChoose);if(selected!=null)ui.selectBoon(selected);}
+    restoreView(rewardTree,rewardState);
+    if(dialog.open){renderDialog();restoreView(libraryTree,libraryState);}
+  });
   return {open,close,dialog,get rewardTree(){return rewardTree;}};
 }
