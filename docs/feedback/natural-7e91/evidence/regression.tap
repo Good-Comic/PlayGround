@@ -1,0 +1,317 @@
+TAP version 13
+# Subtest: 32張真實卡與16文明完整映射，關聯不建立卡池限制 / all32 cards and16 civilizations mapped without pool restrictions
+ok 1 - 32張真實卡與16文明完整映射，關聯不建立卡池限制 / all32 cards and16 civilizations mapped without pool restrictions
+  ---
+  duration_ms: 3.327467
+  type: 'test'
+  ...
+# Subtest: 圖鑑狀態讀取實際候選及持有，不消耗RNG或改變效果 / codex derives offers and owned state without RNG or effect changes
+ok 2 - 圖鑑狀態讀取實際候選及持有，不消耗RNG或改變效果 / codex derives offers and owned state without RNG or effect changes
+  ---
+  duration_ms: 37.952644
+  type: 'test'
+  ...
+# Subtest: 閱讀圖鑑不影響下一次重抽或費用 / browsing does not change next reroll or its fee
+ok 3 - 閱讀圖鑑不影響下一次重抽或費用 / browsing does not change next reroll or its fee
+  ---
+  duration_ms: 59.884804
+  type: 'test'
+  ...
+# Subtest: 正式時代沿用費用、前置及研究狀態，示意科技不可研究 / native age costs prerequisites and research states; prototype nodes have no research API
+ok 4 - 正式時代沿用費用、前置及研究狀態，示意科技不可研究 / native age costs prerequisites and research states; prototype nodes have no research API
+  ---
+  duration_ms: 9.33872
+  type: 'test'
+  ...
+# Subtest: UI明確領取只呼叫正式流程一次；過期候選不得領取 / explicit UI claim invokes native flow once and rejects stale offers
+ok 5 - UI明確領取只呼叫正式流程一次；過期候選不得領取 / explicit UI claim invokes native flow once and rejects stale offers
+  ---
+  duration_ms: 22.095972
+  type: 'test'
+  ...
+# Subtest: counter advice and boon history exist in every supported language
+ok 6 - counter advice and boon history exist in every supported language
+  ---
+  duration_ms: 0.73618
+  type: 'test'
+  ...
+# Subtest: already-delivered native pause is resumed once and verified, unpaused state is untouched
+ok 7 - already-delivered native pause is resumed once and verified, unpaused state is untouched
+  ---
+  duration_ms: 0.779194
+  type: 'test'
+  ...
+# Subtest: unrecoverable pause surfaces a blocker rather than silently spinning for the campaign duration
+ok 8 - unrecoverable pause surfaces a blocker rather than silently spinning for the campaign duration
+  ---
+  duration_ms: 2.160199
+  type: 'test'
+  ...
+# Subtest: A* routes around a wall through its only gap without cutting corners
+ok 9 - A* routes around a wall through its only gap without cutting corners
+  ---
+  duration_ms: 4.763494
+  type: 'test'
+  ...
+# Subtest: blocked endpoint projects onto a legal destination
+ok 10 - blocked endpoint projects onto a legal destination
+  ---
+  duration_ms: 8.455311
+  type: 'test'
+  ...
+# Subtest: water-separated destination is unreachable, never teleported to
+ok 11 - water-separated destination is unreachable, never teleported to
+  ---
+  duration_ms: 2.431151
+  type: 'test'
+  ...
+# Subtest: all unit classes navigate around a building and finish a blocked-endpoint move
+ok 12 - all unit classes navigate around a building and finish a blocked-endpoint move
+  ---
+  duration_ms: 157.24153
+  type: 'test'
+  ...
+# Subtest: moving around trees and water preserves collision clearance
+ok 13 - moving around trees and water preserves collision clearance
+  ---
+  duration_ms: 38.018832
+  type: 'test'
+  ...
+# Subtest: four resources complete at least three capacity/deposit/restart cycles each
+ok 14 - four resources complete at least three capacity/deposit/restart cycles each
+  ---
+  duration_ms: 148.521457
+  type: 'test'
+  ...
+# Subtest: depleted resource delivers remainder, switching resource cannot change carried type
+ok 15 - depleted resource delivers remainder, switching resource cannot change carried type
+  ---
+  duration_ms: 15.079391
+  type: 'test'
+  ...
+# Subtest: unreachable gathering target is replaced without losing carried cargo
+ok 16 - unreachable gathering target is replaced without losing carried cargo
+  ---
+  duration_ms: 30.453499
+  type: 'test'
+  ...
+# Subtest: destroyed dropoff reassigns to a surviving camp without duplicate credit
+ok 17 - destroyed dropoff reassigns to a surviving camp without duplicate credit
+  ---
+  duration_ms: 6.548998
+  type: 'test'
+  ...
+# Subtest: save/load restores an in-flight return and continues economic work
+ok 18 - save/load restores an in-flight return and continues economic work
+  ---
+  duration_ms: 65.498427
+  type: 'test'
+  ...
+# Subtest: old saves without stances migrate safely
+ok 19 - old saves without stances migrate safely
+  ---
+  duration_ms: 13.032891
+  type: 'test'
+  ...
+# Subtest: LIVE seed regression: food workers reach the sub-grid building edge and deposit
+ok 20 - LIVE seed regression: food workers reach the sub-grid building edge and deposit
+  ---
+  duration_ms: 282.784088
+  type: 'test'
+  ...
+# Subtest: a newly placed building invalidates an old route without clipping through it
+ok 21 - a newly placed building invalidates an old route without clipping through it
+  ---
+  duration_ms: 3.847238
+  type: 'test'
+  ...
+# POP {"military":19,"militaryCap":20,"economy":60,"economicCap":60,"total":79}
+# Subtest: A3-POP-01 all HUD population fields are finite and economy is independent
+ok 22 - A3-POP-01 all HUD population fields are finite and economy is independent
+  ---
+  duration_ms: 64.969213
+  type: 'test'
+  ...
+# Subtest: two barracks reserve the final military slot globally without spending twice
+ok 23 - two barracks reserve the final military slot globally without spending twice
+  ---
+  duration_ms: 13.068514
+  type: 'test'
+  ...
+# Subtest: two town centers reserve economy slot60 globally and military queue does not consume it
+ok 24 - two town centers reserve economy slot60 globally and military queue does not consume it
+  ---
+  duration_ms: 8.862344
+  type: 'test'
+  ...
+# Subtest: Franks cap40 includes reservations across buildings but excludes villagers
+ok 25 - Franks cap40 includes reservations across buildings but excludes villagers
+  ---
+  duration_ms: 6.711049
+  type: 'test'
+  ...
+# Subtest: incomplete/dead/enemy housing and enemy queues cannot add or reserve player capacity
+ok 26 - incomplete/dead/enemy housing and enemy queues cannot add or reserve player capacity
+  ---
+  duration_ms: 6.355642
+  type: 'test'
+  ...
+# Subtest: Save/Load recomputes category reservations and finite derived caps without schema changes
+ok 27 - Save/Load recomputes category reservations and finite derived caps without schema changes
+  ---
+  duration_ms: 11.66848
+  type: 'test'
+  ...
+# Subtest: GDD opening military40 derives from core20 and two houses10; economy remains60
+ok 28 - GDD opening military40 derives from core20 and two houses10; economy remains60
+  ---
+  duration_ms: 14.188281
+  type: 'test'
+  ...
+# Subtest: 生產狀態遵守預算與手動優先，不改支出或規則 / status reflects reserves and manual priority without changing spending rules
+ok 29 - 生產狀態遵守預算與手動優先，不改支出或規則 / status reflects reserves and manual priority without changing spending rules
+  ---
+  duration_ms: 43.582872
+  type: 'test'
+  ...
+# Subtest: 解除預留後按原生流程續產，佇列上限如實顯示 / production resumes after releasing reserves and reports queue limit
+ok 30 - 解除預留後按原生流程續產，佇列上限如實顯示 / production resumes after releasing reserves and reports queue limit
+  ---
+  duration_ms: 21.307785
+  type: 'test'
+  ...
+# Subtest: 目標數包含其他建築佇列，不能誤報可生產 / targets include other producer queues
+ok 31 - 目標數包含其他建築佇列，不能誤報可生產 / targets include other producer queues
+  ---
+  duration_ms: 41.760002
+  type: 'test'
+  ...
+# Subtest: 停用、施工及人口阻塞可區分，解除人口後恢復 / distinguish disabled construction and population gates
+ok 32 - 停用、施工及人口阻塞可區分，解除人口後恢復 / distinguish disabled construction and population gates
+  ---
+  duration_ms: 16.513986
+  type: 'test'
+  ...
+# Subtest: 讀取狀態不改存檔、時間或RNG；讀檔後一致 / status reads preserve snapshot time and RNG and survive save/load
+ok 33 - 讀取狀態不改存檔、時間或RNG；讀檔後一致 / status reads preserve snapshot time and RNG and survive save/load
+  ---
+  duration_ms: 32.59512
+  type: 'test'
+  ...
+# Subtest: 升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced
+ok 34 - 升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced
+  ---
+  duration_ms: 50.636388
+  type: 'test'
+  ...
+# Subtest: 資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction
+ok 35 - 資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction
+  ---
+  duration_ms: 49.424033
+  type: 'test'
+  ...
+# Subtest: 手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals
+ok 36 - 手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals
+  ---
+  duration_ms: 25.971762
+  type: 'test'
+  ...
+# Subtest: 過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success
+ok 37 - 過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success
+  ---
+  duration_ms: 5.475779
+  type: 'test'
+  ...
+# Subtest: 無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative
+ok 38 - 無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative
+  ---
+  duration_ms: 17.818528
+  type: 'test'
+  ...
+# Subtest: 自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available
+ok 39 - 自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available
+  ---
+  duration_ms: 23.412342
+  type: 'test'
+  ...
+# Subtest: 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research
+ok 40 - 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research
+  ---
+  duration_ms: 28.703017
+  type: 'test'
+  ...
+# Subtest: 首名工人受困時其他可達工人接手 / another reachable worker builds when the first is trapped
+ok 41 - 首名工人受困時其他可達工人接手 / another reachable worker builds when the first is trapped
+  ---
+  duration_ms: 7.004412
+  type: 'test'
+  ...
+# Subtest: 全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal
+ok 42 - 全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal
+  ---
+  duration_ms: 64.6493
+  type: 'test'
+  ...
+# Subtest: 受阻續查與預留在存讀檔、暫停中保留 / blocked search cursor and reserves survive save/load and pause
+ok 43 - 受阻續查與預留在存讀檔、暫停中保留 / blocked search cursor and reserves survive save/load and pause
+  ---
+  duration_ms: 41.741415
+  type: 'test'
+  ...
+# Subtest: 採集逐人重新計算比例，手動工人與搬運不被覆蓋 / distribute idle workers with cargo and manual priority
+ok 44 - 採集逐人重新計算比例，手動工人與搬運不被覆蓋 / distribute idle workers with cargo and manual priority
+  ---
+  duration_ms: 23.608082
+  type: 'test'
+  ...
+# Subtest: 升級預留不阻擋手動支出，自動等待與正常研究 / age reserve, ask and ordinary research
+ok 45 - 升級預留不阻擋手動支出，自動等待與正常研究 / age reserve, ask and ordinary research
+  ---
+  duration_ms: 18.270958
+  type: 'test'
+  ...
+# Subtest: SaveLoad 保留設定、鎖定、手動佇列及 RNG 位元 / persist plans locks manual queues and RNG bits
+ok 46 - SaveLoad 保留設定、鎖定、手動佇列及 RNG 位元 / persist plans locks manual queues and RNG bits
+  ---
+  duration_ms: 15.914388
+  type: 'test'
+  ...
+# Subtest: 逐建築目標上限、合法兵種與手動佇列 / legal military targets and manual queue priority
+ok 47 - 逐建築目標上限、合法兵種與手動佇列 / legal military targets and manual queue priority
+  ---
+  duration_ms: 7.473248
+  type: 'test'
+  ...
+# Subtest: 自動建築包含施工數量且不打斷手動放置 / construction count and manual placement precedence
+ok 48 - 自動建築包含施工數量且不打斷手動放置 / construction count and manual placement precedence
+  ---
+  duration_ms: 6.091421
+  type: 'test'
+  ...
+# Subtest: 安全建築使用真實施工流程，暫停不推進計畫 / safe placement uses normal construction and pause freezes plans
+ok 49 - 安全建築使用真實施工流程，暫停不推進計畫 / safe placement uses normal construction and pause freezes plans
+  ---
+  duration_ms: 244.200589
+  type: 'test'
+  ...
+# Subtest: 相同規劃與輸入維持模擬確定性 / same plans and inputs produce deterministic simulation
+ok 50 - 相同規劃與輸入維持模擬確定性 / same plans and inputs produce deterministic simulation
+  ---
+  duration_ms: 152.977756
+  type: 'test'
+  ...
+# Subtest: 等待升級確認不阻擋可負擔的自動建築 / pending age confirmation does not block affordable independent buildings
+ok 51 - 等待升級確認不阻擋可負擔的自動建築 / pending age confirmation does not block affordable independent buildings
+  ---
+  duration_ms: 5.065572
+  type: 'test'
+  ...
+1..51
+# tests 51
+# suites 0
+# pass 51
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4939.241827
