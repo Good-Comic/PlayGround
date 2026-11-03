@@ -18,6 +18,17 @@ English: Addresses two human playtests using China. The player supplied the URL 
 | 克制索敵 / Tactical targeting | 共用確定性評分：既有傷害克制、距離、威脅、殘血、冷卻、黏著；另加騎兵追弓兵偏好，不改傷害。保留手動目標、視野、距離、防禦範圍、既有不可達標記與 HUNT/RAID 優先規則。/ Shared deterministic scoring uses existing damage counters, distance, threat, health, cooldown and stickiness; cavalry preference for archers changes no damage. Manual targets, sight, range, defensive leash, recorded path failures and HUNT/RAID priorities remain. | 雙方騎兵追弓兵／槍反騎及遠距反例 PASS；四個Chromium場景實際接近並攻擊優先目標；既有戰術回歸 PASS。/ Both-team cavalry/archer and spear/cavalry cases, range counterexamples and existing tactical regressions PASS; four Chromium scenes move toward and attack preferred targets. |
 | 敵我辨識 / Faction readability | 友軍青色圓環、敵軍橙色菱形、中立象牙色方形；深色外框，單位及建築共用，大型披風、坐騎、Boss另在血條旁增加徽記，不染改文明服飾或模型。/ Cyan circle for allies, orange diamond for enemies, ivory square for neutrals, dark outlines, shared by units/buildings, plus badges beside health-bar anchors for large cloaks, mounts and bosses, without recoloring civilization outfits or models. | Renderer 前後及密集戰鬥截圖；真人色弱辨識 NOT_TESTED。/ Before/after and dense combat captures; human color-vision accessibility NOT_TESTED. |
 
+## 主要修改位置 / Main changed files
+
+| 功能 / Feature | 檔案 / Files |
+|---|---|
+| 直立姿態與圖集 / Upright poses and atlases | `tools/art/generate_militia_atlas.py`, `tools/art/generate_archer_cavalry_atlases.py`, `assets/sprites/{militia,archer,light-cavalry}-atlas.svg`, `js/sprite-atlas.js` |
+| 完整性啟動與四語進度 / Verified startup and localized progress | `js/playtest.js`, `js/main.js`, `js/ui.js`, `js/locales.js` |
+| 陣營與遮擋 / Factions and occlusion | `js/factions.js`, `js/renderer.js` |
+| 總管、保存與介面 / Stewards, persistence and UI | `js/stewards.js`, `js/steward-ui.js`, `js/game.js`, `styles.css` |
+| 共用索敵 / Shared targeting | `js/targeting.js`, `js/game.js` |
+| 回歸 / Regressions | `tests/human-p0.test.mjs`, `tests/stewards.test.mjs`, `tests/targeting.test.mjs` |
+
 ## 操作與相容規則 / Controls and compatibility rules
 
 繁體中文：戰場按鈕或暫停選單 →「總管規劃」；儲存後再繼續。關閉不儲存會捨棄設定輸入。「將閒置村民交還總管」是立即明確命令，只解除閒置村民的手動鎖定。建築預設關閉、升級預設手動，保留既有採集比例 34/32/22/12；使用者的 40/30/20/10 只作驗證範例。資源預留是自動支出後的最低庫存，不限制玩家手動花費。時代詢問／自動模式另預留正式升級費用，不改費用、研究時間或兵種門檻。建築 GDD／手動 API 沒有額外時代鎖定，採一致預設時代 1，加上玩家可提高的規劃門檻；不另發明科技樹。施工位置沿用正常地形／碰撞驗證，避開已知進軍路、營地與可見近敵，使用同一尋路器檢查施工接近距離。手動放置中不自動建築，失敗等待後重試，不排無限佇列。
@@ -36,16 +47,16 @@ English: 441/441 Node tests plus 35/35 across seven parameterized hero suites PA
 
 | 雲端 Chromium 154，1440×900 / Cloud Chromium154, 1440×900 | 原版 / Before | 本輪 / After |
 |---|---:|---:|
-| 固定100單位繪製 P50/P95，120次 / Frozen100 draw P50/P95,120 samples | 17.8/21.3 ms | 17.0/23.8 ms |
-| 固定200單位繪製 P50/P95，120次 / Frozen200 draw P50/P95,120 samples | 33.3/37.0 ms | 31.5/36.3 ms |
+| 固定100單位繪製 P50/P95，120次 / Frozen100 draw P50/P95,120 samples | 16.5/17.8 ms | 16.9/20.8 ms |
+| 固定200單位繪製 P50/P95，120次 / Frozen200 draw P50/P95,120 samples | 31.1/34.2 ms | 30.6/33.6 ms |
 | 實戰100單位起始 RAF P50/P95，300幀 / Combat100 initial RAF P50/P95,300 frames | 33.4/66.7 ms | 33.4/66.7 ms |
-| 實戰200單位起始 RAF P50/P95，300幀 / Combat200 initial RAF P50/P95,300 frames | 66.7/100.0 ms | 66.6/100.0 ms |
-| 實戰100 / Combat100 FPS | 22.91 | 22.31 |
-| 實戰200 / Combat200 FPS | 14.90 | 14.89 |
+| 實戰200單位起始 RAF P50/P95，300幀 / Combat200 initial RAF P50/P95,300 frames | 66.6/83.4 ms | 66.7/100.0 ms |
+| 實戰100 / Combat100 FPS | 24.24 | 24.07 |
+| 實戰200 / Combat200 FPS | 15.21 | 14.31 |
 
-繁體中文：硬體為共享 AMD EPYC 9V74、可見5 CPU；Headless Chromium，無實體 GPU 認證。最終繪製100單位P95增加約2.5ms、P50降低；200單位兩者降低，不能標為全面性能PASS。實戰前後陣亡不同（100場73/67存活、200場129/117存活），順序樣本且約13–20秒，不能把 FPS 差直接歸因或宣稱長期效能通過。固定200場 JS heap 原版9.72→7.50MB、新版8.94→9.95MB，受 GC 影響；長時間記憶體穩定性 INCONCLUSIVE。200單位雲端流暢度仍有限。最終效能證據已在e615e6e重新測量；早期57142b4的樣本另保留，不覆寫。
+繁體中文：硬體為共享 AMD EPYC 9V74、可見5 CPU、cgroup配額4 CPU；Headless Chromium，無實體 GPU 認證。最後清理發現兩個本輪早期失敗夾具遺留瀏覽器（PID105624、105991），已正常終止，只關閉已確認屬於本任務的程序。先前數據完整保留為background-load及早期樣本；上表是清理後重新量測，不把不同負載的數據混成A/B。固定100單位P95增加約3ms、P50增加0.4ms，200單位兩者降低，整體性能仍INCONCLUSIVE。實戰前後陣亡不同（100場74/67存活、200場128/116存活），順序樣本僅約12–20秒，不能宣稱長期性能通過。固定200場 JS heap 原版7.66→9.65MB、新版9.28→7.71MB，受GC影響；長時間穩定性未認證。最終性能來源均為e615e6e。
 
-English: Shared AMD EPYC 9V74 with five visible CPUs, headless Chromium, no physical GPU certification. Final frozen100 draw P95 rises about2.5ms while P50 falls; both decrease at200. This is not an overall performance PASS. Combat casualties differ (73/67 survivors at100;129/117 at200); sequential samples last roughly13–20 seconds, so FPS differences cannot establish causality or sustained performance. Frozen200 JS heap goes9.72→7.50MB before and8.94→9.95MB after, subject to GC; long-term memory stability is INCONCLUSIVE. Cloud200-unit smoothness remains limited. Final performance was remeasured at e615e6e; earlier57142b4 samples remain preserved.
+English: Shared AMD EPYC9V74, five visible CPUs with a four-CPU cgroup quota, headless Chromium, no physical GPU certification. Final cleanup found two browsers left by this task's earlier failed fixtures (PIDs105624/105991); these confirmed task-owned processes were normally terminated. Previous measurements remain as background-load and earlier samples; the table was remeasured after cleanup without mixing different load states in an A/B. Frozen100 P95 rises about3ms and P50 by0.4ms; both decrease at200, so overall performance remains INCONCLUSIVE. Combat casualties differ (74/67 survivors at100;128/116 at200); sequential samples last only about12–20 seconds and do not certify sustained performance. Frozen200 JS heap is7.66→9.65MB before and9.28→7.71MB after, affected by GC; long-term stability is unverified. All final performance sources aree615e6e.
 
 ## 自然樣本與後續修復 / Natural sample and follow-up fix
 
