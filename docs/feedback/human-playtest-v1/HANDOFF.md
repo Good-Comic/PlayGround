@@ -1,0 +1,15 @@
+# 真人回饋交接 / Human-feedback handoff
+
+繁體中文：此分支從 `904c70e7e5b7230f0f40f3f303668e90be3c89e1` 完整繼承 PixelFX Phase 2，未整合回 RC 或部署。執行識別是本專案自聲明 `codex-human-feedback-518be895-a`，不是平台認證身分；任務 `HUMAN-PLAYTEST-SYSTEMS-518BE895`，分支 `codex/riftwatch-human-feedback-518be895`。所有權分支已乾跑、以預期234正常發布成235，確認 OWNED，發布記錄 `9842115002580af33a2c478a12e2e22dde79ff67`；無 prior-stopped、無接管舊 Owner。
+
+English: This branch fully inherits PixelFX Phase 2 from `904c70e7e5b7230f0f40f3f303668e90be3c89e1`; it is neither merged into the RC nor deployed. Execution `codex-human-feedback-518be895-a` is a project self-declaration, not platform-authenticated identity. Task is `HUMAN-PLAYTEST-SYSTEMS-518BE895` on `codex/riftwatch-human-feedback-518be895`. Ownership was dry-run, normally published with expected234→235 and confirmed OWNED at `9842115002580af33a2c478a12e2e22dde79ff67`; no prior-stopped or old-owner takeover.
+
+繁體中文：已完成三項 P0 和四組系統的實作／限定驗證；詳細根因、規則、性能、失敗與限制見 REPORT.md。遊戲提交依序為 `4f81b0d19801877b120d5affa3018d33e5582342`（姿態／入口／陣營）、`57142b4a9cf331805ed73553a0b426d5462a26a9`（總管／索敵）、`3736731cc6e4e63560e6370a36944a6270c1e596`（手動停止／分配顯示／確定性）、`2c13aa14a6cf421ac7732846af65c5b7f84d4e7e`（自然樣本發現的待確認升級阻擋建築修復）。再以 `7c4b7840da3135afec4efb72446a6a8dda6e69f7` 加入可見提案提示／戰場入口，並以 `63a42dfa3d5caac3b74f2420afc94d38f96dddf3` 完成四語說明；再以`e615e6e95156587dc18b135b553d65774e8fa299`改善大型單位陣營徽記，該提交為最新正式本機構建來源，前者147項資源構建已保存，不覆蓋。
+
+English: All three P0 and four system groups have implementation and bounded verification; REPORT.md contains causes, rules, performance, failures and limits. Gameplay commits are `4f81b0d19801877b120d5affa3018d33e5582342` (poses/start/factions), `57142b4a9cf331805ed73553a0b426d5462a26a9` (stewards/targeting), `3736731cc6e4e63560e6370a36944a6270c1e596` (manual stop/allocation display/determinism), and `2c13aa14a6cf421ac7732846af65c5b7f84d4e7e` (natural-sample fix allowing buildings while age confirmation waits). Follow-up `7c4b7840da3135afec4efb72446a6a8dda6e69f7` adds visible proposal notifications/battlefield access, and `63a42dfa3d5caac3b74f2420afc94d38f96dddf3` aligns four-language descriptions;final `e615e6e95156587dc18b135b553d65774e8fa299` improves faction badges on large units and is the latest official local build source; the earlier147-payload build remains preserved.
+
+繁體中文：接續前重新核對遠端所有權與真實執行資格；同一對話不等於繼承此識別。不要重做沙暴、Wave10場景分類、受控結算或NG+成果。不要修改原 Owner 的 Progress Feed。這份交接與自己的 NEXT-TASKS 保存新的合法接續點；未發布、未操作排程。
+
+English: Before resuming, recheck remote ownership and real execution qualification; the same conversation does not confer this identity. Do not redo sandstorm, Wave10 scenario classification, controlled settlement or NG+ work. Do not edit another owner's Progress Feed. This handoff and its own NEXT-TASKS preserve the new legal continuation point. No deployment or scheduler changes occurred.
+
+繁體中文：本輪交付後可依正常CAS釋放此任務；235是認領觀察，接續時以遠端實際狀態為準，禁止因本文件而假定仍有寫入權。English: This task may be released through normal CAS after delivery.235 is the claim observation; use actual remote status on resume and never infer ongoing write permission from this document.
