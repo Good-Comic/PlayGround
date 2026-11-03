@@ -1,0 +1,94 @@
+/* 同屏獎勵與資料圖鑑；不使用戰鬥Canvas。 / Same-screen rewards and data codex, independent of combat Canvas. */
+.boon-dual { align-items:stretch;justify-content:flex-start;padding:12px;gap:8px;overflow:hidden;background:radial-gradient(ellipse at top,#4d3826,#19130e 70%); }
+.boon-dual .boon-head { flex:none;animation:none; }
+.boon-dual .boon-head h2 { font-size:25px;margin:2px 0; }
+.boon-dual .boon-head .modal-kicker {font-size:9px;}
+.boon-dual .boon-head p {font-size:13px;}
+.boon-dual-layout { display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:12px;min-height:0;flex:1; }
+.boon-offer-panel,.boon-tree-side,.game-codex { background:linear-gradient(115deg,#4a311d,#261b12 65%,#46311d);border:4px ridge #ac8c54;border-radius:10px;box-shadow:0 6px 20px #0008;color:#f0dfbd;min-width:0;min-height:0; }
+.boon-offer-panel { display:flex;flex-direction:column;padding:8px; }
+.boon-dual .boon-history {font-size:11px;margin:0 0 6px;text-align:left;max-width:none;max-height:48px;overflow:auto;flex:none;}
+.boon-offers-scroll {flex:1;min-height:0;overflow:auto;}
+.boon-dual .boon-grid {display:flex;flex-direction:column;gap:10px;margin:0;padding:5px;perspective:none;max-height:none;overflow:visible;}
+.boon-dual .boon-card {width:100%;min-height:112px;padding:10px 14px;display:grid;grid-template-columns:38px minmax(0,1fr);column-gap:12px;align-content:start;text-align:left;clip-path:none;border-radius:7px;border:2px solid #608763;animation:none;transform:none;}
+.boon-dual .boon-card:hover,.boon-dual .boon-card.selected {transform:none;}
+.boon-dual .boon-card.selected {outline:2px solid #fff0b3;outline-offset:1px;}
+.boon-dual .boon-card.selected::after {content:none;}
+.boon-dual .boon-medallion {grid-row:1 / span 3;width:36px;height:36px;margin:8px 0 0;padding:4px;}
+.boon-dual .boon-medallion svg {width:25px;height:25px;}
+.boon-dual .boon-rarity {grid-column:2;font-size:9px;letter-spacing:1px;}
+.boon-dual .boon-name {grid-column:2;font-size:17px;margin:3px 18px 4px 0;}
+.boon-dual .boon-divider {display:none;}
+.boon-dual .boon-card p {grid-column:2;font-size:13px;line-height:1.4;margin:0;}
+.boon-dual .boon-key {position:absolute;right:9px;top:7px;bottom:auto;margin:0;font-size:13px;}
+.boon-dual .boon-card .boon-civ-advice {grid-column:1 / -1;font-size:11px;margin-top:7px;padding-top:5px;border-top:1px solid #83683a66;}
+.boon-actions {display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px 4px 0;flex:none;}
+.boon-dual .boon-claim {grid-column:1 / -1;width:100%;margin:0;padding:10px;min-height:39px;font-size:14px;}
+.boon-dual .boon-reroll {width:100%;margin:0;padding:8px;min-height:34px;}
+.boon-dual .boon-hint {grid-column:1 / -1;position:static;font-size:10px;padding:0;margin:0;text-align:center;}
+.card-tree-panel {display:flex;flex-direction:column;min-height:0;min-width:0;padding:8px;gap:6px;}
+.codex-civ {display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:center;font-size:11px;flex:none;}
+.codex-civ label {display:flex;align-items:center;gap:5px;}
+.codex-civ select {max-width:175px;}
+.card-tree-panel select,.card-tree-panel button,.game-codex button {font:inherit;}
+.card-tree-panel select {background:#241b13;color:#f2dfb6;border:1px solid #a78b56;padding:4px;border-radius:3px;}
+.codex-toolbar {display:flex;flex-wrap:wrap;gap:5px;align-items:center;flex:none;font-size:10px;}
+.codex-toolbar label {display:flex;align-items:center;gap:3px;}
+.codex-toolbar select {max-width:115px;}
+.codex-toolbar button,.codex-offer-pins button,.codex-dialog-head button,.tech-detail button {border:1px solid #aa8b50;color:#f6e1b5;background:linear-gradient(#71502d,#3b2918);padding:5px 7px;border-radius:4px;cursor:pointer;}
+.codex-toolbar output {min-width:36px;text-align:center;}
+.codex-offer-pins {display:flex;gap:5px;flex:none;min-height:0;}
+.codex-offer-pins button {flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;border-color:#70b586;}
+.codex-legend {font-size:10px;line-height:1.35;margin:0;color:#d5c19a;flex:none;}
+.codex-scroll {position:relative;flex:1;min-height:110px;overflow:auto;overscroll-behavior:contain;touch-action:pan-x pan-y;background:#17150fc2;border:1px inset #8c7041;border-radius:5px;scrollbar-color:#9b7c45 #21180f;}
+.codex-extent {position:relative;min-width:1px;min-height:1px;}
+.codex-graph {position:absolute;left:0;top:0;display:grid;grid-template-columns:repeat(6,130px);gap:10px;width:840px;padding:8px;align-items:start;transform-origin:top left;}
+.codex-branch {display:flex;flex-direction:column;gap:8px;min-width:0;background-image:repeating-linear-gradient(to bottom,#9f8a5c 0 5px,transparent 5px 10px);background-size:1px 10px;background-repeat:repeat-y;background-position:center;}
+.codex-branch h4 {font-size:12px;margin:0 0 2px;min-height:29px;text-align:center;background:#2b2416;color:#e4c786;}
+.card-tree-panel .codex-node {position:relative;display:grid;grid-template-columns:17px minmax(0,1fr);align-items:center;gap:4px;min-height:60px;width:130px;padding:7px 5px;border:2px solid #847450;border-radius:5px;background:linear-gradient(140deg,#bda77d,#89744f);color:#2c2315;text-align:left;cursor:pointer;opacity:.77;}
+.codex-node-icon svg {width:15px;height:15px;}
+.codex-node-name {font-size:12px;font-weight:700;line-height:1.15;}
+.codex-node small {grid-column:1 / -1;font-size:9px;line-height:1.1;}
+.codex-node.is-offered {opacity:1;border-color:#75d496;background:linear-gradient(135deg,#d0dfac,#87af75);box-shadow:0 0 0 1px #193e25;}
+.codex-node.is-owned {opacity:1;border-color:#f4cd65;background:linear-gradient(135deg,#f1d89a,#bd9451);}
+.codex-node.is-recommended {border-left-width:5px;border-left-color:#a4c8ec;}
+.codex-node.is-focused {outline:2px solid #fff8df;outline-offset:2px;}
+.codex-offer-number {position:absolute;top:-7px;right:-5px;background:#244f32;color:#d6ffcf;border:1px solid #9be7a9;border-radius:50%;font-size:17px;line-height:20px;min-width:20px;text-align:center;}
+.codex-offer-number:empty {display:none;}
+.codex-owned-mark {display:none;position:absolute;bottom:1px;right:2px;font-size:12px;color:#42300a;}
+.is-owned .codex-owned-mark {display:inline;}
+.codex-detail,.tech-detail {flex:none;background:#241c12e8;border:1px solid #8c7346;border-radius:5px;padding:8px;min-height:102px;max-height:155px;overflow:auto;font-size:12px;line-height:1.4;}
+.codex-detail h3,.tech-detail h3 {font-size:15px;margin:0 0 4px;color:#f3d894;}
+.codex-detail h3 small {font-size:10px;color:#d0bc96;}
+.codex-detail p,.tech-detail p {margin:4px 0;}
+.codex-advice {color:#c1d4dc;font-size:11px;}
+.game-codex {width:min(1230px,96vw);height:min(880px,94vh);max-width:96vw;max-height:94vh;padding:12px;overflow:hidden;}
+.game-codex::backdrop {background:#000b;}
+.codex-dialog-head {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;}
+.codex-dialog-head h2 {font-family:var(--serif);font-size:23px;margin:0;}
+.codex-dialog-head nav {display:flex;flex-wrap:wrap;gap:5px;}
+.codex-dialog-head [aria-pressed=true] {outline:2px solid #ecd48b;}
+.game-codex [data-library],.game-codex [data-tech] {height:calc(100% - 44px);min-height:0;}
+.game-codex [data-tech] {display:flex;flex-direction:column;gap:8px;}
+.game-codex [hidden] {display:none!important;}
+.codex-tech-note {font-size:11px;margin:0;}
+.tech-age-chain {display:flex;align-items:center;justify-content:center;gap:15px;flex:none;}
+.tech-age {display:grid;grid-template-columns:20px 1fr;gap:4px;min-width:150px;padding:7px!important;}
+.tech-age svg {width:18px;height:18px;grid-row:span 2;}
+.tech-age small {font-size:10px;}
+.tech-age.researched {border-color:#dfb94c;background:#735b26;}
+.tech-age.researching,.tech-age.available {border-color:#70b78a;}
+.tech-age.locked {opacity:.6;}
+.tech-system-scroll {overflow:auto;min-height:0;flex:1;}
+.tech-system h3 {font-size:15px;margin:6px 0 5px;color:#e9c67d;}
+.tech-era-grid {display:grid;grid-template-columns:repeat(4,minmax(170px,1fr));gap:10px;min-width:750px;}
+.tech-era {border:1px solid #8c744a66;padding:5px;background:linear-gradient(#39291a88,#17150e88);}
+.tech-era h4 {margin:0 0 4px;font-size:11px;text-align:center;color:#c3ad80;}
+.game-codex .tech-node {width:100%;display:grid;grid-template-columns:22px 1fr;align-items:center;gap:3px;padding:5px;margin:4px 0;text-align:left;color:#342617;background:linear-gradient(#e3d0a7,#ac8b55);border:2px solid #a9854b;border-radius:4px;min-height:44px;}
+.tech-node svg {width:19px;height:19px;grid-row:span 2;}
+.tech-node b {font-size:12px;}
+.tech-node small {font-size:9px;}
+.game-codex .tech-node.is-prototype {opacity:.6;border-style:dashed;background:#a19478;}
+.tech-detail button:disabled {opacity:.5;cursor:default;}
+@media(max-width:1050px){.codex-civ{grid-template-columns:1fr}.codex-civ [data-civ-trait]{max-height:42px;overflow:auto}.boon-dual .boon-card p{font-size:12px}.boon-dual .boon-name{font-size:15px}.codex-entry{font-size:10px!important;padding:4px!important}}
+@media(max-width:800px){.boon-dual{padding:5px;gap:4px}.boon-dual .boon-head h2{font-size:20px}.boon-dual .boon-head p,.boon-dual .boon-head .modal-kicker{display:none}.boon-dual-layout{grid-template-columns:1fr;grid-template-rows:minmax(190px,.85fr) minmax(260px,1.15fr);gap:6px}.boon-offer-panel{padding:4px}.boon-dual .boon-history{max-height:26px;font-size:10px}.boon-actions{grid-template-columns:1fr 1fr 1fr;padding:4px;gap:4px}.boon-dual .boon-claim{grid-column:auto}.boon-dual .boon-hint{grid-column:1/-1}.boon-dual .boon-card{min-height:86px;padding:6px}.boon-dual .boon-card .boon-civ-advice{margin-top:3px;padding-top:2px}.card-tree-panel{padding:5px;gap:4px}.codex-civ{grid-template-columns:auto 1fr;font-size:9px}.codex-civ select{max-width:110px}.codex-toolbar{font-size:9px;gap:3px}.codex-toolbar select{max-width:85px;padding:2px}.codex-legend{font-size:8px}.codex-detail{min-height:68px;max-height:90px;font-size:10px;padding:4px}.codex-detail h3{font-size:12px}.codex-advice{font-size:9px}.codex-scroll{min-height:70px}.game-codex{padding:7px}.codex-dialog-head{align-items:flex-start}.codex-dialog-head h2{font-size:17px}.codex-dialog-head button{font-size:11px}.tech-age-chain{gap:5px;overflow:auto;justify-content:flex-start}.tech-age{min-width:110px}.tech-detail{font-size:11px;max-height:170px}}

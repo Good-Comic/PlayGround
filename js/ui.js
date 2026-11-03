@@ -188,6 +188,8 @@ export class UI {
       this.sound?.command();
     });
     window.addEventListener('keydown', e => {
+      if(this.codex?.dialog.open || e.target?.closest?.('input,select,textarea,[contenteditable=true]'))return;
+      if(this.boonsOpen && (e.ctrlKey||e.metaKey) && e.key==='Enter'){e.preventDefault();this.claimBoon();return;}
       if (this.boonsOpen && ['1', '2', '3'].includes(e.key)) {
         e.preventDefault();
         this.selectBoon(Number(e.key) - 1);
@@ -510,7 +512,7 @@ export class UI {
   }
 
   selectBoon(index) {
-    if (!this.boonsOpen) return;
+    if (!this.boonsOpen || !Number.isInteger(index) || !this.boonChoices[index]) return;
     this.boonSelection = index;
     [...this.el.boonGrid.children].forEach((c, i) => c.classList.toggle('selected', i === index));
     this.el.claim.disabled = index == null;
@@ -518,7 +520,8 @@ export class UI {
   }
 
   claimBoon() {
-    if (this.boonSelection == null || !this.boonsOpen) return;
+    if (this.boonSelection == null || !this.boonsOpen || this.game.phase!=='boon') return;
+    if(!this.game.boonChoices.some(c=>c.id===this.boonChoices[this.boonSelection]?.id)||this.game.boons.length>=MAX_BOONS)return;
     const choice = this.boonChoices[this.boonSelection];
     this.boonsOpen = false;
     this.el.boon.hidden = true;
