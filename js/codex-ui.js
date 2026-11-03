@@ -41,7 +41,7 @@ export class CardTree {
     root.querySelector('[data-fit]').onclick=()=>this.fitOffers();root.querySelector('[data-all]').onclick=()=>this.fitAll();
     root.querySelector('[data-minus]').onclick=()=>this.setZoom(this.zoom-.15);root.querySelector('[data-plus]').onclick=()=>this.setZoom(this.zoom+.15);
     this.scroll.addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();this.setZoom(this.zoom+(e.deltaY<0?.1:-.1));},{passive:false});
-    this.scroll.addEventListener('pointerdown',e=>{if(e.button!==0||e.target.closest('button'))return;this.drag={pointer:e.pointerId,x:e.clientX,y:e.clientY,left:this.scroll.scrollLeft,top:this.scroll.scrollTop};this.scroll.setPointerCapture(e.pointerId);});
+    this.scroll.addEventListener('pointerdown',e=>{if(e.button!==0||e.target.closest('button'))return;e.preventDefault();this.scroll.focus({preventScroll:true});this.drag={pointer:e.pointerId,x:e.clientX,y:e.clientY,left:this.scroll.scrollLeft,top:this.scroll.scrollTop};this.scroll.setPointerCapture(e.pointerId);});
     this.scroll.addEventListener('pointermove',e=>{if(this.drag){this.scroll.scrollLeft=this.drag.left+this.drag.x-e.clientX;this.scroll.scrollTop=this.drag.top+this.drag.y-e.clientY;}});
     this.scroll.addEventListener('pointerup',()=>{this.drag=null;});this.scroll.addEventListener('pointercancel',()=>{this.drag=null;});
     this.resize=new ResizeObserver(()=>{const r=this.scroll.getBoundingClientRect();if(!r.width||this.lastSize&&Math.abs(r.width-this.lastSize.w)<.5&&Math.abs(r.height-this.lastSize.h)<.5)return;this.lastSize={w:r.width,h:r.height};if(this.fitMode==='offers')this.fitOffers();else if(this.fitMode==='all')this.fitAll();else this.setZoom(this.zoom,false);});this.resize.observe(this.scroll);
