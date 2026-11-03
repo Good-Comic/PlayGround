@@ -1657,7 +1657,9 @@ export class Game {
       this.stepToward(u, cx, cy, dt, 1.15, b);
       return;
     }
-    u.manualEconomy = true; u.state = 'build';
+    // Keep the authority assigned by the issuing order: automatic builders
+    // must return to the steward; manual placement/orders already lock workers.
+    u.state = 'build';
     const buildTime = b.typeDef.buildTime * (b.type === 'core' ? 0.7 : 1);
     b.construction = Math.min(1, b.construction + dt * this.effects.buildSpeedMul / Math.max(2, buildTime));
     b.hp = Math.min(b.maxHp, b.maxHp * (0.14 + b.construction * 0.86));
