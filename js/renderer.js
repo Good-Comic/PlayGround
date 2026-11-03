@@ -299,6 +299,7 @@ export class Renderer {
   }
 
   draw(game, time) {
+    this.vfx?.beginFrame();
     this.setSpriteAtlasCivilization(game.inMenu ? null : game.civ?.id);
     const ctx = this.ctx;
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
@@ -1520,7 +1521,7 @@ export class Renderer {
         const y = p.y - high * scale;
         this.healthBar(p.x - w / 2, y, w, 3.6 * scale, Math.max(0, u.hp / u.maxHp), u.team === 'player' ? '#78a95b' : '#b25046');
       }
-      if (u.shield > 0) {
+      if (u.shield > 0 && !this.vfx?.drawShield(this.ctx,game,u,p,scale)) {
         this.ctx.strokeStyle = 'rgba(147,197,220,0.72)';
         this.ctx.lineWidth = 1.4 * scale;
         this.ctx.beginPath(); this.ctx.ellipse(p.x, p.y - 16 * scale, 14 * scale, 18 * scale, 0, 0, 6.3); this.ctx.stroke();

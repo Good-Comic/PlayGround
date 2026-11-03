@@ -20,6 +20,19 @@ export class CombatVfx {
     }
     this.events.push({...event,priority,time:game.time});this.stats.emitted++;
   }
+  beginFrame(){this.shieldDraws=0;}
+  drawShield(ctx,game,u,p,scale){
+    const d=VFX_ATLASES['divine-shield'],i=this.images['divine-shield'];
+    if(!this.enabled||!u.alive||!(u.shield>0)||!i?.complete||!i.naturalWidth)return false;
+    const reserve=game.hero?.alive&&game.hero.shield>0?1:0;
+    if(u!==game.hero&&(this.shieldDraws||0)>=16-reserve)return false;
+    if((this.shieldDraws||0)>=16)return false;
+    const f=d.frames[Math.floor(game.time*d.fps)%d.frames.length],s=scale*.7;
+    ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=.7;
+    ctx.drawImage(i,f.x,f.y,f.w,f.h,Math.round(p.x-d.pivot[0]*s),Math.round(p.y-d.pivot[1]*s),f.w*s,f.h*s);ctx.restore();
+    this.shieldDraws=(this.shieldDraws||0)+1;return true;
+  }
+
   draw(ctx,game,screen,w,h,layer){
     if(game.time<this.lastTime)this.reset();this.lastTime=game.time;
     if(!this.enabled)return;
