@@ -1512,7 +1512,8 @@ export class Renderer {
       else if (['brute', 'warlord', 'warlord2'].includes(u.type)) this.drawBruteUnit(p, u, scale, team, walk, time, bob);
       else this.drawInfantryUnit(p, u, scale, team, walk, time, bob);
       if (!atlasDrawn && u.team === 'player' && u.type !== 'villager') this.drawCivilizationUnitAccent(u, game, p, scale, bob);
-      this.drawChampionFeedback(u, p, scale, time, casting, entry?.descriptor.heroEmblem);
+      const atlasShield=u.shield>0&&this.vfx?.drawShield(this.ctx,game,u,p,scale);
+      this.drawChampionFeedback(u, p, scale, time, casting, entry?.descriptor.heroEmblem, atlasShield);
       if (u.type === 'elephant') this.drawElephantTrample(u, game);
       if (u.selected || u.hp < u.maxHp) {
         const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
@@ -1521,7 +1522,7 @@ export class Renderer {
         const y = p.y - high * scale;
         this.healthBar(p.x - w / 2, y, w, 3.6 * scale, Math.max(0, u.hp / u.maxHp), u.team === 'player' ? '#78a95b' : '#b25046');
       }
-      if (u.shield > 0 && !this.vfx?.drawShield(this.ctx,game,u,p,scale)) {
+      if (u.shield > 0 && !atlasShield) {
         this.ctx.strokeStyle = 'rgba(147,197,220,0.72)';
         this.ctx.lineWidth = 1.4 * scale;
         this.ctx.beginPath(); this.ctx.ellipse(p.x, p.y - 16 * scale, 14 * scale, 18 * scale, 0, 0, 6.3); this.ctx.stroke();
@@ -1564,7 +1565,7 @@ export class Renderer {
     ctx.restore();
   }
 
-  drawChampionFeedback(u, p, s, time, casting, emblem) {
+  drawChampionFeedback(u, p, s, time, casting, emblem, shieldAtlas = false) {
     if (!u.alive) return;
     const ctx = this.ctx;
     if (u.marked > 0) {
@@ -1574,7 +1575,7 @@ export class Renderer {
       ctx.beginPath(); ctx.moveTo(p.x - r * 1.5, y); ctx.lineTo(p.x + r * 1.5, y);
       ctx.moveTo(p.x, y - r * 1.5); ctx.lineTo(p.x, y + r * 1.5); ctx.stroke(); ctx.restore();
     }
-    if (u.shield > 0) {
+    if (u.shield > 0 && !shieldAtlas) {
       ctx.save(); ctx.strokeStyle = 'rgba(160,221,246,.75)'; ctx.fillStyle = 'rgba(125,191,228,.08)'; ctx.lineWidth = 1.1 * s;
       ctx.beginPath(); ctx.moveTo(p.x, p.y - 45 * s); ctx.lineTo(p.x + 16 * s, p.y - 32 * s);
       ctx.lineTo(p.x + 11 * s, p.y - 6 * s); ctx.lineTo(p.x, p.y + 2 * s);
