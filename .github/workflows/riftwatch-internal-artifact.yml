@@ -1,0 +1,50 @@
+name: Riftwatch內部ZIP交付 / Internal ZIP delivery
+run-name: 內部试玩ZIP / Internal playtest ZIP / fixed 563f107
+on:
+  push:
+    branches:
+      - codex/riftwatch-zip-delivery-518be895
+    paths:
+      - .github/workflows/riftwatch-internal-artifact.yml
+      - tools/delivery/**
+permissions:
+  contents: read
+concurrency:
+  group: riftwatch-internal-zip-delivery
+  cancel-in-progress: false
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout delivery helpers / 取得交付工具
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 1
+          sparse-checkout: tools/delivery
+          persist-credentials: false
+      - name: Fetch fixed game source / 取得固定遊戲來源
+        run: git fetch --no-tags --depth=1 --filter=blob:none origin 563f107dc77bc88d2a267cc180b0aac50ed72c8a
+      - name: Official build, 128 hashes and original ZIP / 正式構建與原包驗證
+        run: python3 tools/delivery/rebuild.py --repo "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/riftwatch-delivery"
+      - name: Upload internal artifact / 上傳內部交付物
+        id: upload
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: riftwatch-internal-playtest-563f107-${{ github.run_id }}
+          path: ${{ runner.temp }}/riftwatch-delivery/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
+      - name: Delivery summary / 交付摘要
+        env:
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          r=json.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'riftwatch-delivery/DELIVERY.json').read_text())
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('內部试玩下載／Internal playtest download: '+os.environ['ARTIFACT_URL']+'\n\n')
+              f.write('僅Artifact，未部署／Artifact only, not deployed. Retention requested: 30 days.\n\n')
+              f.write('```json\n'+json.dumps(r,indent=2)+'\n```\n')
+          PY
