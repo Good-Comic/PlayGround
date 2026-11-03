@@ -1,6 +1,6 @@
-import { BOONS, CIVILIZATIONS } from './data.js';
+import { BOONS, CIVILIZATIONS, MAX_BOONS } from './data.js';
 import { t } from './i18n.js';
-import { codexCards, boonTheme, adviceKind, TECH_BRANCHES, TECH_NODES, ageView } from './codex-data.js';
+import { BOON_THEMES, codexCards, boonTheme, adviceKind, TECH_BRANCHES, TECH_NODES, ageView } from './codex-data.js';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tr=(key,vars)=>t('codex.'+key,vars);
@@ -15,13 +15,13 @@ export class CardTree {
     root.innerHTML=`<div class="codex-civ"><label>${tr('viewCiv')} <select data-civ aria-label="${tr('viewCiv')}"></select></label><div data-civ-trait></div></div>
       <div class="codex-toolbar"><label>${tr('theme')} <select data-filter="theme"></select></label><label>${tr('rarity')} <select data-filter="rarity"></select></label><label>${tr('state')} <select data-filter="state"></select></label>
       <button type="button" data-fit>${tr('overview')}</button><button type="button" data-all>${tr('allCards')}</button><button type="button" data-minus aria-label="${tr('zoomOut')}">−</button><output data-zoom>100%</output><button type="button" data-plus aria-label="${tr('zoomIn')}">＋</button></div>
-      <nav class="codex-offer-pins" aria-label="${tr('offered')}"></nav><p class="codex-legend">${tr('legend')}</p>
+      <p class="codex-build-summary" data-build></p><nav class="codex-offer-pins" aria-label="${tr('offered')}"></nav><p class="codex-legend">${tr('legend')}</p>
       <div class="codex-scroll" tabindex="0" aria-label="${tr('panHelp')}"><div class="codex-extent"><div class="codex-graph"></div></div></div>
       <article class="codex-detail" aria-live="polite"></article>`;
     this.scroll=root.querySelector('.codex-scroll');this.graph=root.querySelector('.codex-graph');this.extent=root.querySelector('.codex-extent');this.detail=root.querySelector('.codex-detail');
     const civSelect=root.querySelector('[data-civ]');civSelect.innerHTML=CIVILIZATIONS.map(c=>`<option value="${c.id}">${esc(t('civ.'+c.id+'.name'))} · ${c.id}</option>`).join('');
     civSelect.onchange=()=>{this.viewCiv=civSelect.value;this.refresh();};
-    const themes=[...new Set(BOONS.map(c=>boonTheme(c.id)))];
+    const themes=Object.keys(BOON_THEMES);
     for(const key of Object.keys(this.filters)){
       const list=key==='theme'?themes:key==='rarity'?[...new Set(BOONS.map(c=>c.rarity))]:['owned','offered','recommended'];
       const select=root.querySelector(`[data-filter="${key}"]`);
@@ -51,6 +51,7 @@ export class CardTree {
   refresh(){
     const g=this.game;this.rows=codexCards(g,this.viewCiv);this.root.querySelector('[data-civ]').value=this.viewCiv||g.civ.id;
     const civ=this.viewCiv||g.civ.id;
+    this.root.querySelector('[data-build]').textContent=t('boon.ownedSummary',{count:g.boons.length,max:MAX_BOONS,names:g.boons.map(c=>t('boon.'+c.id+'.name')).join(' · ')||t('boon.ownedNone')});
     this.root.querySelector('[data-civ-trait]').textContent=tr('currentCiv',{name:t('civ.'+g.civ.id+'.name')})+' · '+t('civ.'+civ+'.trait');
     for(const row of this.rows){const b=this.nodes.get(row.id),match=(this.filters.theme==='all'||row.theme===this.filters.theme)&&(this.filters.rarity==='all'||row.rarity===this.filters.rarity)&&(this.filters.state==='all'||row[this.filters.state==='offered'?'offer':this.filters.state]);
       b.hidden=!match&&!row.offer;b.classList.toggle('is-offered',!!row.offer);b.classList.toggle('is-owned',row.owned);b.classList.toggle('is-recommended',row.recommended);b.classList.toggle('is-focused',row.id===this.focused);
@@ -94,7 +95,9 @@ export function installCodex(game,ui){
     techSelection=id;const target=dialog.querySelector('.tech-detail');if(!target)return;
     if(id.startsWith('age-')){const level=Number(id.slice(4)),a=ageView(game,level);target.innerHTML=`<h3>${esc(t('age.'+level))} · ${esc(tr(a.status))}</h3><p>${esc(tr('ageDetail',{age:level>1?t('age.'+(level-1)):tr('none'),seconds:a.seconds}))}</p><p>${tr('cost')}: ${esc(costText(a.cost))}</p><button type="button" data-research ${a.status==='available'?'':'disabled'}>${tr('researchAge')}</button>`;target.querySelector('[data-research]').onclick=()=>{if(ageView(game,level).status!=='available')return;game.advanceAge();renderTech();};return;}
     const n=TECH_NODES.find(n=>n.id===id);if(!n)return;
-    target.innerHTML=`<h3>${esc(tr('tech.'+id))} · ${esc(tr(n.prototype?'prototype':'control'))}</h3><p>${esc(tr('desc.'+id))}</p><p>${tr('era')}: ${esc(n.tier===0?tr('darkReference'):t('age.'+n.tier))} · ${tr('cost')}: ${esc(tr(n.prototype?'undecided':'free'))}</p><p>${esc(tr(n.prototype?'prototypeHelp':'controlHelp'))}</p>${!n.prototype&&n.branch!=='tactics'?`<button type="button" data-plans>${tr('openPlans')}</button>`:''}`;
+    const producer=['barracks','range','stable'].includes(id)?`<p>${esc(tr('producerStatus',{count:game.buildings.filter(b=>b.alive&&b.team==='player'&&b.type===id&&b.construction>=1).length}))} ${esc(game.trainableFor({type:id}).map(type=>t('unit.'+type+'.name')+(game.trainingRestriction(type)?' ('+tr('locked')+')':'')).join(' · '))}</p>`:'';
+    const restriction=game.effects.noCavalry&&['stable','counter','army','cavalrycounter'].includes(id)?tr('advice.cavalryLimit'):t('civ.'+game.civ.id+'.trait');
+    target.innerHTML=`<h3>${esc(tr('tech.'+id))} · ${esc(tr(n.prototype?'prototype':'control'))}</h3><p>${esc(tr('desc.'+id))}</p><p>${tr('era')}: ${esc(n.tier===0?tr('darkReference'):t('age.'+n.tier))} · ${tr('cost')}: ${esc(tr(n.prototype?'undecided':'free'))}</p><p>${esc(tr(n.prototype?'prototypeHelp':'controlHelp'))}</p><p>${esc(tr('currentCiv',{name:t('civ.'+game.civ.id+'.name')}))}: ${esc(restriction)}</p>${producer}${!n.prototype&&n.branch!=='tactics'?`<button type="button" data-plans>${tr('openPlans')}</button>`:''}`;
     target.querySelector('[data-plans]')?.addEventListener('click',()=>{close();document.getElementById('btn-stewards-hud')?.click();});
   }
   function renderTech(){
@@ -114,9 +117,9 @@ export function installCodex(game,ui){
   dialog.addEventListener('cancel',e=>{e.preventDefault();close();});
   const buttons=[];for(const parent of[document.querySelector('.top-actions'),document.querySelector('.pause-actions')]){const b=document.createElement('button');b.type='button';b.className='secondary-button small codex-entry';b.textContent=tr('entry');b.id=buttons.length?'btn-codex-pause':'btn-codex';b.onclick=()=>open();parent.append(b);buttons.push(b);}
   const oldShow=ui.showBoons.bind(ui),oldSelect=ui.selectBoon.bind(ui),oldHide=ui.hideBoons.bind(ui);
-  ui.showBoons=(choices,onChoose)=>{oldShow(choices,onChoose);rewardTree.viewCiv=game.civ.id;rewardTree.refresh();if(ui.el.boonHint)ui.el.boonHint.textContent=tr('keys');for(let i=0;i<ui.el.boonGrid.children.length;i++){const b=ui.el.boonGrid.children[i],card=choices[i];b.dataset.boonId=card.id;const p=document.createElement('p');p.className='boon-civ-advice';p.textContent=tr('advice.'+adviceKind(card,game.civ.id));b.append(p);b.setAttribute('aria-pressed','false');}requestAnimationFrame(()=>rewardTree.fitOffers());};
-  ui.selectBoon=index=>{oldSelect(index);const card=ui.boonChoices?.[index];if(card){rewardTree.focus(card.id,true);for(let i=0;i<ui.el.boonGrid.children.length;i++)ui.el.boonGrid.children[i].setAttribute('aria-pressed',String(i===index));}};
+  ui.showBoons=(choices,onChoose)=>{oldShow(choices,onChoose);rewardTree.viewCiv=game.civ.id;rewardTree.refresh();ui.el.claim.querySelector('span').textContent=t('boon.claim');if(ui.el.boonHint)ui.el.boonHint.textContent=tr('keys');for(let i=0;i<ui.el.boonGrid.children.length;i++){const b=ui.el.boonGrid.children[i],card=choices[i];b.dataset.boonId=card.id;const p=document.createElement('p');p.className='boon-civ-advice';p.textContent=tr('advice.'+adviceKind(card,game.civ.id));b.append(p);b.setAttribute('aria-pressed','false');}requestAnimationFrame(()=>rewardTree.fitOffers());};
+  ui.selectBoon=index=>{oldSelect(index);const card=ui.boonChoices?.[index];if(card){ui.el.claim.querySelector('span').textContent=tr('claimNamed',{name:t('boon.'+card.id+'.name')});rewardTree.focus(card.id,true);for(let i=0;i<ui.el.boonGrid.children.length;i++)ui.el.boonGrid.children[i].setAttribute('aria-pressed',String(i===index));}};
   ui.hideBoons=()=>{rewardTree.suspend();oldHide();};
-  document.addEventListener('localechange',()=>{for(const b of buttons)b.textContent=tr('entry');rewardTree.destroy();const replacement=new CardTree(right,game,{reward:true,onCandidate:index=>ui.selectBoon(index)});rewardTree=replacement;if(ui.boonsOpen)ui.showBoons(game.boonChoices,ui.onBoonChoose);if(dialog.open)renderDialog();});
+  document.addEventListener('localechange',()=>{const selected=ui.boonSelection,focused=rewardTree.focused,viewCiv=rewardTree.viewCiv;for(const b of buttons)b.textContent=tr('entry');rewardTree.destroy();rewardTree=new CardTree(right,game,{reward:true,onCandidate:index=>ui.selectBoon(index)});if(ui.boonsOpen){ui.showBoons(game.boonChoices,ui.onBoonChoose);if(selected!=null)ui.selectBoon(selected);}rewardTree.viewCiv=viewCiv;rewardTree.refresh();if(focused)rewardTree.focus(focused,false);if(dialog.open)renderDialog();});
   return {open,close,dialog,get rewardTree(){return rewardTree;}};
 }
