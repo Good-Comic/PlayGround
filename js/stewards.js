@@ -89,7 +89,7 @@ export function updatePlans(g) {
   if(s.age!=='manual' && g.ageLevel<3 && !g.ageResearch && g.getTownCenter() && g.canAfford(g.ageCost())){
     if(s.age==='auto'){
       const cost=g.ageCost();
-      if(RESOURCES.every((r,i)=>(g.resources[r]||0)-(cost[r]||0)>=s.reserve[i])){g.advanceAge();s.pending=null;}
+      if(RESOURCES.every((r,i)=>!(cost[r]>0) || (g.resources[r]||0)-cost[r]>=s.reserve[i])){g.advanceAge();s.pending=null;}
       else s.status='budget';
     }else{if(s.pending?.kind!=='age')g.toast(t('steward.title')+': '+t('steward.confirm')+' — '+t('steward.age'),'',5000);s.pending={kind:'age'};s.status='confirm';}
   }

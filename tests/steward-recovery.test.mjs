@@ -34,7 +34,7 @@ test('無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 /
  trainArmy(g);assert.equal(b.queue.length,1);b.queue=[];g.trainUnit(b,'militia');const n=b.queue.length;trainArmy(g);assert.equal(b.queue.length,n);
 });
 test('自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available',()=>{
- const g=fresh();g.stewards.age='auto';g.stewards.reserve=[100,0,0,0];g.resources={food:200,wood:500,gold:100,stone:0};updatePlans(g);assert.equal(g.ageResearch,null);
+ const g=fresh();g.stewards.age='auto';g.stewards.reserve=[100,0,0,500];g.resources={food:200,wood:500,gold:100,stone:0};updatePlans(g);assert.equal(g.ageResearch,null);
  g.resources.food=300;g.time=3;updatePlans(g);assert.ok(g.ageResearch);assert.equal(g.resources.food,130);
  const h=fresh();h.stewards.age='auto';h.stewards.reserve=[100,0,0,0];h.resources={food:200,wood:500,gold:100,stone:0};h.advanceAge();assert.ok(h.ageResearch);
 });
