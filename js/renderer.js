@@ -1474,6 +1474,17 @@ export class Renderer {
     ctx.fillStyle=color;ctx.fillRect(p.x-r-3*scale,p.y-4*scale,3*scale,8*scale);ctx.restore();
   }
 
+  // 大型披風或坐騎會遮住腳環；在既有血條位置補上陣營徽記。 / Large cloaks or mounts hide foot rings; add a badge beside the existing health-bar anchor.
+  drawFactionBadge(entity,p,scale,high) {
+    if(!entity.alive)return;
+    const ctx=this.ctx,{color,shape}=factionMark(entity.team),r=Math.max(2.2,3.2*scale),x=p.x+17*scale,y=p.y-high*scale+2*scale;
+    ctx.save();ctx.beginPath();
+    if(shape==='circle')ctx.arc(x,y,r,0,Math.PI*2);
+    else if(shape==='diamond'){ctx.moveTo(x,y-r);ctx.lineTo(x+r,y);ctx.lineTo(x,y+r);ctx.lineTo(x-r,y);ctx.closePath();}
+    else ctx.rect(x-r,y-r,2*r,2*r);
+    ctx.fillStyle=color;ctx.strokeStyle='#111b21';ctx.lineWidth=Math.max(1.2,1.5*scale);ctx.fill();ctx.stroke();ctx.restore();
+  }
+
   drawUnit(u, game, time) {
     const p = this.screen(game, u.x, u.y);
     if (p.x < -80 || p.x > this.w + 80 || p.y < -80 || p.y > this.h + 100) return;
@@ -1528,10 +1539,11 @@ export class Renderer {
       const atlasShield=u.shield>0&&this.vfx?.drawShield(this.ctx,game,u,p,scale);
       this.drawChampionFeedback(u, p, scale, time, casting, entry?.descriptor.heroEmblem, atlasShield);
       if (u.type === 'elephant') this.drawElephantTrample(u, game);
+      const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
+      const high = entry?.descriptor.healthBarHeight ?? (u.type === 'elephant' && bakedPose ? 78 : ['knight', 'light_cavalry', 'horse_archer'].includes(u.type) ? 48 : wide ? 62 : bakedPose ? 54 : 38);
+      if(u.hero || u.typeDef.boss || ['cavalry','siege'].includes(u.typeDef.category))this.drawFactionBadge(u,p,scale,high);
       if (u.selected || u.hp < u.maxHp) {
-        const wide = ['warlord', 'warlord2', 'elephant', 'prototype', 'ram', 'mangonel'].includes(u.type);
         const w = (wide ? 40 : 24) * scale;
-        const high = entry?.descriptor.healthBarHeight ?? (u.type === 'elephant' && bakedPose ? 78 : ['knight', 'light_cavalry', 'horse_archer'].includes(u.type) ? 48 : wide ? 62 : bakedPose ? 54 : 38);
         const y = p.y - high * scale;
         this.healthBar(p.x - w / 2, y, w, 3.6 * scale, Math.max(0, u.hp / u.maxHp), u.team === 'player' ? '#78a95b' : '#b25046');
       }
