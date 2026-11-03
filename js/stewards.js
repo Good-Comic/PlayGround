@@ -7,7 +7,7 @@ export const RESOURCES = ['food', 'wood', 'gold', 'stone'];
 const weights = { balanced:[34,32,22,12], food:[64,16,12,8], wood:[20,56,16,8], gold:[24,20,48,8], stone:[24,24,16,36] };
 export function defaultStewards() {
   return { gather:'balanced', ratios:[34,32,22,12], reserve:[0,0,0,0], villagers:22, age:'manual',
-    buildings:{}, military:{}, army:'balanced', nextPlanAt:0, pending:null, status:'idle' };
+    buildings:{}, military:{}, lastMilitaryProducerId:null, army:'balanced', nextPlanAt:0, pending:null, status:'idle' };
 }
 export function restoreStewards(saved) {
   const s = { ...defaultStewards(), ...structuredClone(saved || {}) };
@@ -143,7 +143,12 @@ export function trainArmy(g) {
   const counts={};for(const u of g.units)if(u.alive&&u.team==='player')counts[u.type]=(counts[u.type]||0)+1;
   for(const b of g.buildings)if(b.alive&&b.team==='player')for(const q of b.queue)counts[q.type]=(counts[q.type]||0)+1;
   const visible=g.units.filter(u=>u.alive&&u.team==='enemy'&&g.isVisible(u));
-  for(const b of g.buildings){
+  // 成功後從下一座接續，保留原本每輪一筆訂單。 / Resume after the last
+  // successful producer, retaining the existing one-order-per-cycle limit.
+  const buildings=g.buildings,previous=buildings.findIndex(b=>b.id===s.lastMilitaryProducerId);
+  const first=previous<0?0:(previous+1)%buildings.length;
+  for(let offset=0;offset<buildings.length;offset++){
+    const b=buildings[(first+offset)%buildings.length];
     if(!b.alive||b.team!=='player'||b.construction<1||b.type==='core'||b.type==='market')continue;
     const p=s.military[b.id];
     if(p?.enabled===false || (b.manualProductionUntil||0)>g.time || b.queue.some(q=>q.manual))continue;
@@ -162,7 +167,7 @@ export function trainArmy(g) {
     for(const type of choices){if(!Number.isFinite(score(type)))continue;
       const extra=Object.fromEntries(RESOURCES.map((r,i)=>[r,Number(p?.budget?.[i])||0]));
       if(!canSpend(g,g.unitCost(type),extra)){s.status='budget';continue;}
-      const before=b.queue.length;g.trainUnit(b,type,true);if(b.queue.length>before){s.status='training';return;}
+      const before=b.queue.length;g.trainUnit(b,type,true);if(b.queue.length>before){s.lastMilitaryProducerId=b.id;s.status='training';return;}
     }
     s.status=g.militaryPopulation>=g.militaryPopCap?'population':'blocked';
   }
