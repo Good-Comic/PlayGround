@@ -1977,7 +1977,7 @@ export class Game {
       u.chargeReady = false;
       u.chargeCd = 10;
     }
-    if (!def.projectile && ['militia','guard','commander','knight'].includes(u.type)) this.hooks.combatVfx?.({kind:'sword-slash',x:u.x,y:u.y,angle:Math.atan2(((target.x-u.x)+(target.y-u.y))*16,((target.x-u.x)-(target.y-u.y))*32),scale:.55*(def.scale||1),layer:'front'});
+    if (!def.projectile && ['militia','guard','commander','knight'].includes(u.type)) this.hooks.combatVfx?.({kind:'sword-slash',x:u.x,y:u.y,angle:Math.atan2(((target.x-u.x)+(target.y-u.y))*16,((target.x-u.x)-(target.y-u.y))*32),scale:.5*(def.scale||1),layer:'front',priority:u===this.hero?4:1,opacity:.9});
     if (def.projectile) {
       this.spawnProjectile(u.x, u.y - 0.4, target, damage, u.team, 1, u);
       u.shots++;
@@ -2159,7 +2159,7 @@ export class Game {
     target.combatAt = this.time;
     target.hp -= damage;
     target.hitFlash = 1;
-    if(source && (source.typeDef?.category==='siege'||source.typeDef?.boss||['brute','elephant'].includes(source.type))) this.hooks.combatVfx?.({kind:'blunt-hit',x:target.x+(target.w||0)/2,y:target.y+(target.h||0)/2,angle:0,scale:.65*(source.typeDef.scale||1),layer:'back'});
+    if(source && (source.typeDef?.category==='siege'||source.typeDef?.boss||['brute','elephant'].includes(source.type))) this.hooks.combatVfx?.({kind:'blunt-hit',x:target.x+(target.w||0)/2,y:target.y+(target.h||0)/2,angle:0,scale:.6*Math.min(1.5,target.typeDef?.scale||1),layer:'front',priority:source.typeDef?.boss||target===this.hero?4:2,opacity:.82});
     this.addParticles(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0), 'spark', 'rgba(178,64,49,ALPHA)', 1, 4, 0.5);
     if (source?.team === 'player' && source.kind === 'unit' && source.typeDef?.category !== 'villager' && source.alive && this.effects.lifesteal > 0) {
       source.hp = Math.min(source.maxHp, source.hp + damage * this.effects.lifesteal);
