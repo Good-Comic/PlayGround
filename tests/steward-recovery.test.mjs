@@ -38,3 +38,8 @@ test('自動升級不得花掉玩家預留，手動升級仍可決定支出 / au
  g.resources.food=300;g.time=3;updatePlans(g);assert.ok(g.ageResearch);assert.equal(g.resources.food,130);
  const h=fresh();h.stewards.age='auto';h.stewards.reserve=[100,0,0,0];h.resources={food:200,wood:500,gold:100,stone:0};h.advanceAge();assert.ok(h.ageResearch);
 });
+test('自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research',()=>{
+ const g=fresh();g.stewards.age='auto';g.stewards.reserve=[100,0,0,500];g.resources={food:260,wood:500,gold:120,stone:0};updatePlans(g);assert.equal(g.ageResearch,null);
+ assert.equal(canSpend(g,g.unitCost('villager')),false);
+ g.resources.food=270;g.time=3;updatePlans(g);assert.ok(g.ageResearch);assert.equal(g.resources.food,100);
+});

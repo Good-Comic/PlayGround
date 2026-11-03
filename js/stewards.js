@@ -22,7 +22,7 @@ export function gatherWeights(s) {
 }
 export function reserveCost(g) {
   const s=g.stewards, result=Object.fromEntries(RESOURCES.map((r,i)=>[r,s.reserve[i]]));
-  if (s.age!=='manual' && g.ageLevel<3 && !g.ageResearch) for (const [r,v] of Object.entries(g.ageCost())) result[r]=Math.max(result[r]||0,v);
+  if (s.age!=='manual' && g.ageLevel<3 && !g.ageResearch) for (const [r,v] of Object.entries(g.ageCost())) result[r]=s.age==='auto'?(result[r]||0)+v:Math.max(result[r]||0,v);
   return result;
 }
 export function canSpend(g,cost,extra={}) {
