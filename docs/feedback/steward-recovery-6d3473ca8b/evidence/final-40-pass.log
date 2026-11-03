@@ -1,0 +1,49 @@
+✔ already-delivered native pause is resumed once and verified, unpaused state is untouched (0.862768ms)
+✔ unrecoverable pause surfaces a blocker rather than silently spinning for the campaign duration (0.464518ms)
+✔ A* routes around a wall through its only gap without cutting corners (4.103097ms)
+✔ blocked endpoint projects onto a legal destination (1.227528ms)
+✔ water-separated destination is unreachable, never teleported to (2.605599ms)
+✔ all unit classes navigate around a building and finish a blocked-endpoint move (56.954749ms)
+✔ moving around trees and water preserves collision clearance (34.314375ms)
+✔ four resources complete at least three capacity/deposit/restart cycles each (89.806357ms)
+✔ depleted resource delivers remainder, switching resource cannot change carried type (7.613357ms)
+✔ unreachable gathering target is replaced without losing carried cargo (24.309646ms)
+✔ destroyed dropoff reassigns to a surviving camp without duplicate credit (15.158852ms)
+✔ save/load restores an in-flight return and continues economic work (36.245665ms)
+✔ old saves without stances migrate safely (8.322817ms)
+✔ LIVE seed regression: food workers reach the sub-grid building edge and deposit (164.131123ms)
+✔ a newly placed building invalidates an old route without clipping through it (3.152319ms)
+POP {"military":19,"militaryCap":20,"economy":60,"economicCap":60,"total":79}
+✔ A3-POP-01 all HUD population fields are finite and economy is independent (22.260011ms)
+✔ two barracks reserve the final military slot globally without spending twice (15.16408ms)
+✔ two town centers reserve economy slot60 globally and military queue does not consume it (5.56983ms)
+✔ Franks cap40 includes reservations across buildings but excludes villagers (4.883343ms)
+✔ incomplete/dead/enemy housing and enemy queues cannot add or reserve player capacity (5.533946ms)
+✔ Save/Load recomputes category reservations and finite derived caps without schema changes (10.719748ms)
+✔ GDD opening military40 derives from core20 and two houses10; economy remains60 (5.042799ms)
+✔ 升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced (19.554183ms)
+✔ 資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction (21.704627ms)
+✔ 手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals (23.979778ms)
+✔ 過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success (4.619091ms)
+✔ 無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative (3.985784ms)
+✔ 自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available (5.717158ms)
+✔ 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research (8.423587ms)
+✔ 首名工人受困時其他可達工人接手 / another reachable worker builds when the first is trapped (5.8878ms)
+✔ 全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal (27.43775ms)
+✔ 受阻續查與預留在存讀檔、暫停中保留 / blocked search cursor and reserves survive save/load and pause (30.084019ms)
+✔ 採集逐人重新計算比例，手動工人與搬運不被覆蓋 / distribute idle workers with cargo and manual priority (23.349845ms)
+✔ 升級預留不阻擋手動支出，自動等待與正常研究 / age reserve, ask and ordinary research (14.886909ms)
+✔ SaveLoad 保留設定、鎖定、手動佇列及 RNG 位元 / persist plans locks manual queues and RNG bits (15.392738ms)
+✔ 逐建築目標上限、合法兵種與手動佇列 / legal military targets and manual queue priority (9.351571ms)
+✔ 自動建築包含施工數量且不打斷手動放置 / construction count and manual placement precedence (5.25966ms)
+✔ 安全建築使用真實施工流程，暫停不推進計畫 / safe placement uses normal construction and pause freezes plans (116.042356ms)
+✔ 相同規劃與輸入維持模擬確定性 / same plans and inputs produce deterministic simulation (99.953646ms)
+✔ 等待升級確認不阻擋可負擔的自動建築 / pending age confirmation does not block affordable independent buildings (4.177207ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3992.553619

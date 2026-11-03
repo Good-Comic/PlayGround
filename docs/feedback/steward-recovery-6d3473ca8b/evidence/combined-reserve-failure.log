@@ -1,0 +1,38 @@
+✔ 升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced (18.082382ms)
+✔ 資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction (16.420418ms)
+✔ 手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals (18.22892ms)
+✔ 過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success (6.183515ms)
+✔ 無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative (5.467033ms)
+✔ 自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available (10.935439ms)
+✖ 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research (5.905173ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 91.914908
+
+✖ failing tests:
+
+test at tests/steward-recovery.test.mjs:41:1
+✖ 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research (5.905173ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/steward-recovery.test.mjs:43:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

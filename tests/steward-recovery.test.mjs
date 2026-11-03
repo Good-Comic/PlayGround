@@ -50,3 +50,6 @@ test('首名工人受困時其他可達工人接手 / another reachable worker b
 test('全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal',()=>{
  const g=fresh();g.resources={food:5000,wood:5000,gold:5000,stone:5000};const{walls}=cageWorkers(g,true),before={...g.resources};assert.equal(planBuilding(g,'house'),false);assert.deepEqual(g.resources,before);for(const w of walls)w.alive=false;let placed=false;for(let i=0;i<8&&!placed;i++)placed=planBuilding(g,'house');assert.equal(placed,true);assert.equal(g.resources.wood,before.wood-60);
 });
+test('受阻續查與預留在存讀檔、暫停中保留 / blocked search cursor and reserves survive save/load and pause',()=>{
+ const g=fresh();g.resources={food:5000,wood:5000,gold:5000,stone:5000};g.stewards.reserve=[100,0,0,500];cageWorkers(g,true);assert.equal(planBuilding(g,'house'),false);const snap=JSON.parse(JSON.stringify(g.snapshot())),h=new Game();h.restore(snap);assert.deepEqual(h.stewards,g.stewards);h.start();h.paused=true;const before=JSON.stringify(h.stewards);h.update(5);assert.equal(JSON.stringify(h.stewards),before);assert.equal(h.rng.state>>>0,g.rng.state>>>0);
+});
