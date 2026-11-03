@@ -1,0 +1,108 @@
+TAP version 13
+# Subtest: 原生13秒生產週期不讓先建軍營永久霸佔 / native13-second production cycles do not starve later producers
+not ok 1 - 原生13秒生產週期不讓先建軍營永久霸佔 / native13-second production cycles do not starve later producers
+  ---
+  duration_ms: 376.879791
+  type: 'test'
+  location: '/workspace/PlayGround/tests/military-rotation.test.mjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        2,
+    -   20,
+        2,
+    +   2,
+    +   2
+    -   20
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 2
+    1: 20
+    2: 2
+    3: 20
+  actual:
+    0: 2
+    1: 2
+    2: 2
+    3: 2
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/military-rotation.test.mjs:5:484)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 讀檔後沿用下一座建築，未找到原建築時安全回到既有順序 / cursor survives save/load and safely falls back if prior producer is gone
+not ok 2 - 讀檔後沿用下一座建築，未找到原建築時安全回到既有順序 / cursor survives save/load and safely falls back if prior producer is gone
+  ---
+  duration_ms: 16.426564
+  type: 'test'
+  location: '/workspace/PlayGround/tests/military-rotation.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/military-rotation.test.mjs:6:283)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: 手動佇列、停用及預算阻塞會跳過，恢復後可再輪到 / manual disabled and budget gates are skipped without losing eventual recovery
+not ok 3 - 手動佇列、停用及預算阻塞會跳過，恢復後可再輪到 / manual disabled and budget gates are skipped without losing eventual recovery
+  ---
+  duration_ms: 6.255513
+  type: 'test'
+  location: '/workspace/PlayGround/tests/military-rotation.test.mjs:7:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/military-rotation.test.mjs:7:605)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 無可生產時不動游標、費用或RNG；舊存檔可恢復 / no eligible producer preserves cursor costs and RNG; legacy saves restore
+ok 4 - 無可生產時不動游標、費用或RNG；舊存檔可恢復 / no eligible producer preserves cursor costs and RNG; legacy saves restore
+  ---
+  duration_ms: 11.962723
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 1
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3497.104992
