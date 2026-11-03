@@ -64,6 +64,14 @@ export function planBuilding(g,type) {
     const a=i*Math.PI/8;
     sites.push({x:Math.round(base.x+Math.cos(a)*radius),y:Math.round(base.y+Math.sin(a)*radius)});
   }
+  // Keep existing ring placements first, then cover gaps on the same local grid.
+  // Dense map obstacles must not make a safe reachable site invisible forever.
+  const known=new Set(sites.map(p=>`${p.x},${p.y}`)),fallback=[];
+  for(let y=Math.floor(base.y)-14;y<=Math.ceil(base.y)+14;y++)for(let x=Math.floor(base.x)-14;x<=Math.ceil(base.x)+14;x++){
+    if(Math.hypot(x-base.x,y-base.y)<=14&&!known.has(`${x},${y}`))fallback.push({x,y});
+  }
+  fallback.sort((a,b)=>Math.hypot(a.x-base.x,a.y-base.y)-Math.hypot(b.x-base.x,b.y-base.y)||a.y-b.y||a.x-b.x);
+  sites.push(...fallback);
   const cursors=g.stewards.placementCursor ||= {};
   const total=sites.length*workers.length,offset=(cursors[type]||0)%total,checked=new Map();
   let searches=0;
@@ -73,6 +81,8 @@ export function planBuilding(g,type) {
       const {x,y}=sites[siteIndex],destination={x:x+def.w/2,y:y+def.h/2};
       g.placement={type,x,y,valid:false};
       if(!checked.has(siteIndex)){
+        // Bound collision/safety probes as well as the existing12 path searches.
+        if(checked.size>=64){cursors[type]=index;return false;}
         g.updatePlacementValidity();
         const safe=g.placement.valid
           && !g.world.camps.some(c=>Math.hypot(c.x-x,c.y-y)<9)
