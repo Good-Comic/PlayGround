@@ -18,7 +18,7 @@ export function installStewardUI(game) {
     button.textContent=tr('title');
     dialog.innerHTML=`<form method="dialog"><h2>${tr('title')}</h2><p>${tr('help')}</p>
     <p>${tr('reserve')}: ${RESOURCES.map(r=>`${t('resourceType.'+r)} ${Math.floor(floor[r])}`).join(' · ')} | ${tr(s.status||'idle')}</p>
-    <fieldset><legend>${tr('economy')}</legend>
+    <fieldset><legend>${tr('economy')}</legend><p>${RESOURCES.map(r=>`${t('resourceType.'+r)}: ${game.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager'&&(u.gatherTarget?.resource===r||u.carryType===r)).length}`).join(' · ')}</p>
     ${label('gather',select('gather',s.gather,options(['balanced','food','wood','gold','stone','custom'])))}
     <div class="steward-grid">${RESOURCES.map((r,i)=>`<label>${t('resourceType.'+r)} % ${number('ratio'+i,s.ratios[i],0,100)}</label><label>${tr('reserve')} ${t('resourceType.'+r)} ${number('reserve'+i,s.reserve[i])}</label>`).join('')}</div>
     ${label('villagers',number('villagers',s.villagers,0,200))}

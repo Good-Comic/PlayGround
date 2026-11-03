@@ -2945,6 +2945,7 @@ export class Game {
       this.hooks.selectionChanged?.();
     } else if (id === 'stop') {
       for (const u of units) {
+        if(u.type==='villager')u.manualEconomy=true;
         u.state = 'idle'; u.target = null; u.targetPos = null; u.gatherTarget = null; u.buildTarget = null; u.hold = false; u.manualAttack = false; u.guardOrigin = {x:u.x,y:u.y}; u._nav = null;
       }
       this.sound?.command();
