@@ -36,6 +36,31 @@ jobs:
           if-no-files-found: error
           retention-days: 30
           compression-level: 0
+      - name: Download uploaded artifact / 回讀已上傳交付物
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: riftwatch-internal-playtest-563f107-${{ github.run_id }}
+          path: ${{ runner.temp }}/riftwatch-roundtrip
+      - name: Verify downloaded ZIP and 128 resources / 驗證下載ZIP與128資源
+        run: |
+          python3 - <<'PYVERIFY'
+          import hashlib,json,os,pathlib,zipfile
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'riftwatch-roundtrip/riftwatch-internal-playtest-final.zip'
+          digest=hashlib.sha256(p.read_bytes()).hexdigest()
+          assert digest=='ba0e9000b4aae8c67d80f434d38ee53d3d9261057f18ec548925c8f134fcf26a'
+          assert p.stat().st_size==22797219
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              m=json.loads(z.read('build-metadata.json'))
+              assert m['commit']=='563f107dc77bc88d2a267cc180b0aac50ed72c8a'
+              assert len(m['files'])==128
+              assert all(hashlib.sha256(z.read(n)).hexdigest()==h for n,h in m['files'].items())
+          result={'artifact_download_verified':True,'zip_bytes':p.stat().st_size,'zip_sha256':digest,'resource_count':128,'resource_mismatches':0}
+          print(json.dumps(result))
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('實際Artifact下載及雜湊驗證通過／Actual artifact download and hashes verified.\n\n')
+              f.write('```json\n'+json.dumps(result,indent=2)+'\n```\n')
+          PYVERIFY
       - name: Delivery summary / 交付摘要
         env:
           ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
