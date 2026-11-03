@@ -1,3 +1,4 @@
+import { installStewardUI } from './steward-ui.js';
 import { installPlaytest } from './playtest.js';
 import { BUILD_INFO } from './build-info.js';
 import { Sound } from './audio.js';
@@ -184,6 +185,7 @@ ui.setSound(true);
 const movementKeys = new Set(['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright']);
 
 window.addEventListener('keydown', e => {
+  if (document.querySelector('#steward-dialog')?.open) return;
   if (ui.$('setup-rules-dialog')?.open) return;
   if (!ui.el.howto.hidden) {
     if (e.key === 'Escape') ui.closeHowTo();
@@ -373,3 +375,4 @@ window.addEventListener('error', e => {
 });
 
 installPlaytest({game,ui});
+installStewardUI(game);

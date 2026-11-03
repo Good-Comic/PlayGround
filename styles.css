@@ -811,3 +811,13 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 #next-cycle-cards label { display: flex; gap: .4rem; align-items: center; font-size: .85rem; }
 /* Keep the complete victory/NG+ controls reachable at 720p and enlarged text. */
 .end-overlay .end-card { max-height: calc(100dvh - 24px); overflow-y: auto; }
+
+.steward-dialog { color: #eee4d0; background: #181e23; border: 1px solid #aa9564; max-width: 960px; width: min(94vw, 960px); max-height: 88vh; overflow: auto; padding: 22px; }
+.steward-dialog::backdrop { background: #000b; }
+.steward-dialog fieldset { margin: 14px 0; padding: 12px; }
+.steward-dialog label { display: inline-block; margin: 5px; }
+.steward-dialog input[type=number] { width: 74px; }
+.steward-dialog select, .steward-dialog input, .steward-dialog button { font: inherit; padding: 5px; }
+.steward-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.steward-scroll { overflow-x: auto; }
+.steward-dialog td, .steward-dialog th { padding: 5px; text-align: start; }

@@ -1,3 +1,5 @@
+import { scoredTarget } from './targeting.js';
+import { defaultStewards, restoreStewards, assignWorkers, updatePlans, trainArmy, canSpend } from './stewards.js';
 import { sightRadius, canSee, teamSees } from './visibility.js';
 import { difficultyId, preparationSeconds, applyDifficulty, applyCycle } from './campaign.js';
 import { Crowd } from './crowd.js';
@@ -153,6 +155,7 @@ export class Game {
     this.autoEconomy = true;
     this.autoMilitary = true;
     this.autoTimers = { gather: 0, villager: 0, military: 0 };
+    this.stewards = defaultStewards();
     this.speed = this.speed || 1;
     this.retreatUsed = false;
     this.killFoodEarned = 0;
@@ -177,6 +180,7 @@ export class Game {
     if (cards.some(b => !b)) return false;
     const nextCycle = this.cycle + 1;
     const options = { ...this.runConfig };
+    const stewardPreferences=restoreStewards(this.stewards);stewardPreferences.military={};stewardPreferences.pending=null;stewardPreferences.nextPlanAt=0;
     const speed = this.speed, autoEconomy = this.autoEconomy, autoMilitary = this.autoMilitary;
     // A new, reproducible frontier; no old economy, research or entities carry.
     const seed = (this.seed ^ Math.imul(nextCycle, 0x9e3779b9)) >>> 0;
@@ -185,6 +189,7 @@ export class Game {
     this.inheritedBoons = [...cardIds];
     for (const card of cards) { card.apply(this); this.boons.push(card); }
     this.refreshPlayerStats(); this.refreshBuildingStats();
+    this.stewards=stewardPreferences;
     this.speed = speed; this.autoEconomy = autoEconomy; this.autoMilitary = autoMilitary;
     // newRun already consumed the first director plan; start the fresh director
     // again so cycle-one and later cycles share the same deterministic stream.
@@ -209,11 +214,11 @@ export class Game {
       'eventRegen', 'buildingDamageMul', 'convertResist', 'eventRetreat', 'eventRetreatCd',
       'eventFireCd', 'duel', 'chargeReady', 'chargeCd', 'combatAt', 'kiteCount', 'kiteRetreatX', 'kiteRetreatY', 'chainHits', 'moraleUsed',
       'lureUsed', 'feintUsed', 'spawnGate', 'eventModsApplied', 'scale',
-      'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover', '_orderScanAt', '_blockCd', '_stunCd',
+      'autoAssignedAt', 'manualEconomy', 'stance', 'guardOrigin', 'manualAttack', 'waveWithdrawal', 'withdrawn', 'withdrawalBlocked', 'retreatGate', 'carryover', '_orderScanAt', '_blockCd', '_stunCd',
     ];
     const buildingKeys = [
       'id', 'team', 'type', 'x', 'y', 'w', 'h', 'hp', 'maxHp', 'baseMaxHp', 'armor',
-      'construction', 'alive', 'cooldown', 'queue', 'rally', 'hitFlash', 'foodStore', 'goldStore', 'flooded',
+      'manualProductionUntil', 'construction', 'alive', 'cooldown', 'queue', 'rally', 'hitFlash', 'foodStore', 'goldStore', 'flooded',
     ];
     const pick = (source, keys) => {
       const out = {};
@@ -253,6 +258,7 @@ export class Game {
       autoEconomy: this.autoEconomy,
       autoMilitary: this.autoMilitary,
       autoTimers: { ...this.autoTimers },
+      stewards: structuredClone(this.stewards),
       heroControl: this.heroControl,
       heroReviveTimer: this.heroReviveTimer,
       retreatUsed: this.retreatUsed,
@@ -394,6 +400,7 @@ export class Game {
     this.autoEconomy = snapshot.autoEconomy;
     this.autoMilitary = snapshot.autoMilitary;
     this.autoTimers = { ...snapshot.autoTimers };
+    this.stewards = restoreStewards(snapshot.stewards);
     this.heroControl = !!snapshot.heroControl;
     this.heroReviveTimer = snapshot.heroReviveTimer || 0;
     this.heroSkillPreview = null;
@@ -1193,6 +1200,7 @@ export class Game {
   updateAutoAids(dt) {
     const timers = this.autoTimers;
     if (this.autoEconomy) {
+      updatePlans(this);
       timers.gather += dt;
       timers.villager += dt;
       if (timers.gather >= 2.4) {
@@ -1203,7 +1211,7 @@ export class Game {
         timers.villager = 0;
         const tc = this.getTownCenter();
         const villagers = this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager').length;
-        if (tc && !tc.queue.length && villagers < 22 && this.hasPopulationRoom('villager') && this.resources.food >= 70) {
+        if (tc && !tc.queue.length && villagers < this.stewards.villagers && this.hasPopulationRoom('villager') && this.resources.food >= 70 && canSpend(this,this.unitCost('villager'))) {
           this.trainUnit(tc, 'villager', true);
         }
       }
@@ -1217,55 +1225,9 @@ export class Game {
     }
   }
 
-  autoAssignVillagers() {
-    const idle = this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager' && u.state === 'idle');
-    if (!idle.length) return;
-    const counts = { food: 0, wood: 0, gold: 0, stone: 0 };
-    for (const u of this.units) {
-      if (!u.alive || u.team !== 'player' || u.type !== 'villager' || u.state === 'idle') continue;
-      const type = u.gatherTarget?.resource || u.carryType || (u.dropTarget ? 'food' : null);
-      if (type) counts[type] = (counts[type] || 0) + 1;
-    }
-    const order = ['food', 'wood', 'gold', 'stone'];
-    const target = { food: 0.34, wood: 0.32, gold: 0.22, stone: 0.12 };
-    let pickType = null, best = -1;
-    for (const type of order) {
-      const ratio = counts[type] / Math.max(1, Object.values(counts).reduce((a, b) => a + b, 0));
-      if (target[type] - ratio > best && this.findResource(type, this.world.base.x, this.world.base.y)) {
-        best = target[type] - ratio;
-        pickType = type;
-      }
-    }
-    if (!pickType) pickType = 'wood';
-    for (const u of idle) {
-      if(u.carry>0) {this.beginReturn(u);continue;}
-      const node = this.findReachableResource(u, pickType) || this.findReachableResource(u, 'wood') || this.findReachableResource(u, 'food');
-      if (node) this.orderGather(u, node);
-    }
-  }
+  autoAssignVillagers() { assignWorkers(this); }
 
-  autoTrainSoldier() {
-    const options = [
-      ['barracks', 'spearman'], ['range', 'archer'], ['stable', 'light_cavalry'],
-      ['barracks', 'militia'], ['range', 'skirmisher'], ['stable', 'horse_archer'],
-      ['workshop', 'ram'], ['barracks', 'guard'],
-    ];
-    const enemies = this.units.filter(u => u.alive && u.team === 'enemy');
-    const cavalry = enemies.filter(u => u.typeDef.category === 'cavalry').length;
-    if (cavalry > 2) options.unshift(['barracks', 'spearman'], ['barracks', 'spearman']);
-    for (const [type, unitType] of options) {
-      if (unitType === 'elephant' && !this.effects.elephantUnlocked) continue;
-      const b = this.buildings.find(x => x.alive && x.team === 'player' && x.type === type && x.construction >= 1 && !x.queue.length);
-      if (!b) continue;
-      const def = UNIT_TYPES[unitType];
-      if (this.effects.noCavalry && def.category === 'cavalry') continue;
-      if (def.category !== 'villager' && this.effects.militaryPopCap > 0 && this.militaryPopulation + this.computeUnitPop(def) > this.effects.militaryPopCap) continue;
-      if (!this.hasPopulationRoom(unitType)) continue;
-      if (!this.canAfford(this.unitCost(unitType))) continue;
-      this.trainUnit(b, unitType, true);
-      return;
-    }
-  }
+  autoTrainSoldier() { trainArmy(this); }
 
   updateEnemy(u, dt) {
     if (u.waveWithdrawal) return this.updateWaveWithdrawal(u, dt);
@@ -1360,11 +1322,7 @@ export class Game {
       }
       let best = priority, bestD = priority ? dist2(u.x, u.y, priority.x + (priority.w ? priority.w / 2 : 0), priority.y + (priority.h ? priority.h / 2 : 0)) : Infinity;
       if (!best) {
-        for (const o of playerUnits) {
-          const d = dist2(u.x, u.y, o.x, o.y);
-          if (huntCavalry && o.typeDef.category === 'cavalry' && d > 36) continue;
-          if (d < bestD && d < 49) { best = o; bestD = d; }
-        }
+        best=scoredTarget(this,u,playerUnits.filter(o=>!huntCavalry||o.typeDef.category!=='cavalry'||dist2(u.x,u.y,o.x,o.y)<=36),7);
       }
       if (best) u.target = best;
       else if (tc) u.target = tc;
@@ -1450,19 +1408,8 @@ export class Game {
 
   acquireTarget(u, radius = (u.typeDef.sight || 6)*.72) {
     if (u.stance === 'passive' || u.type === 'villager' || u.typeDef?.noAttack) return null;
-    let best=null, bestD=radius*radius, counter=null, counterD=Infinity;
-    const counterReach = ['P', 'K', 'C'].includes(u.typeDef.family) ? this.unitRange(u) : 0;
     const candidates = this.crowd ? this.crowd.nearby(u, Math.ceil(radius/2)+1) : this.units;
-    for (const e of [...candidates, ...this.buildings]) {
-      if (!e.alive || !this.canSee(u,e) || e.team !== 'enemy' || (u.blockedTargets?.[e.id]||0)>this.time) continue;
-      if(u.stance==='defensive' && u.guardOrigin && this.distanceTo(u.guardOrigin,e)>8)continue;
-      const d=this.distanceTo(u,e)**2;
-      if (counterReach && !e.w && d < radius*radius && d <= (counterReach + (e.typeDef.radius || 0.2)) ** 2 && this.counterMultiplier(u,e) > 1 && d < counterD) {
-        counter=e; counterD=d;
-      }
-      if(d<bestD){best=e;bestD=d;}
-    }
-    return counter || best;
+    return scoredTarget(this,u,[...candidates,...this.buildings],radius);
   }
 
   updatePlayerUnit(u, dt) {
@@ -1710,7 +1657,7 @@ export class Game {
       this.stepToward(u, cx, cy, dt, 1.15, b);
       return;
     }
-    u.state = 'build';
+    u.manualEconomy = true; u.state = 'build';
     const buildTime = b.typeDef.buildTime * (b.type === 'core' ? 0.7 : 1);
     b.construction = Math.min(1, b.construction + dt * this.effects.buildSpeedMul / Math.max(2, buildTime));
     b.hp = Math.min(b.maxHp, b.maxHp * (0.14 + b.construction * 0.86));
@@ -2941,7 +2888,7 @@ export class Game {
     const builders = this.selection.filter(e => e.alive && e.team === 'player' && e.type === 'villager');
     for (const v of builders) {
       v.buildTarget = b;
-      v.state = 'build';
+      v.manualEconomy = true; v.state = 'build';
       v.target = null;
       v.gatherTarget = null;
       v.targetPos = { x: b.x + b.w / 2, y: b.y + b.h / 2 };
@@ -3209,7 +3156,8 @@ export class Game {
     }
     this.pay(cost);
     const time = def.trainTime / (this.effects.trainSpeedMul * (type === 'recruiter' ? this.effects.recruiterTrainMul : 1));
-    building.queue.push({ type, total: time, remaining: time });
+    building.queue.push({ type, total: time, remaining: time, manual:!silent });
+    if(!silent)building.manualProductionUntil=this.time+13;
     if (!silent) this.sound?.train();
     this.hooks.selectionChanged?.();
   }
@@ -3318,6 +3266,7 @@ export class Game {
   issueCommand(sx, sy) {
     if (this.placement) { this.cancelPlacement(); return; }
     const units = this.selection.filter(e => e.team === 'player' && !e.w).filter(e => e.alive);
+    for(const u of units)if(u.type==='villager')u.manualEconomy=true;
     if(!units.length){
       const producers=this.selection.filter(b=>this.canSetRally(b));if(!producers.length)return;
       const hit=this.pickAt(sx,sy),wp=this.worldAt(sx,sy),resource=hit?.resource?hit:null;

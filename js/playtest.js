@@ -31,9 +31,9 @@ export async function verifyBuild(meta,fetcher=fetch,onProgress=()=>{}) {
   if(!/^[a-f0-9]{40}$/.test(meta.commit)||meta.status!=='PLAYTEST-EXPERIMENTAL'||typeof meta.builtAt!=='string')throw Error('Invalid candidate metadata');
   const entries=Object.entries(meta.files||{});
   if(!entries.some(([p])=>p==='js/main.js')||!entries.some(([p])=>p==='index.html'))throw Error('Incomplete candidate manifest');
+  for(const [path,expected]of entries){if(!/^[a-zA-Z0-9_./-]+$/.test(path)||path.includes('..')||path.startsWith('/')||!/^[a-f0-9]{64}$/.test(expected))throw Error('Invalid candidate resource path');}
   let next=0,completed=0;
   const worker=async()=>{while(next<entries.length){const [path,expected]=entries[next++];
-    if(!/^[a-zA-Z0-9_./-]+$/.test(path)||path.includes('..')||path.startsWith('/')||!/^[a-f0-9]{64}$/.test(expected))throw Error('Invalid candidate resource path');
     const response=await fetcher(new URL('../'+path,import.meta.url),{cache:'no-store'});if(!response.ok)throw Error('Candidate resource missing');
     const digest=await crypto.subtle.digest('SHA-256',await response.arrayBuffer());const actual=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
     if(actual!==expected)throw Error('Candidate resource integrity mismatch');
