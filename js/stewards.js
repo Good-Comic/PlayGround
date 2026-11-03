@@ -56,28 +56,42 @@ export function assignWorkers(g) {
 }
 export function planBuilding(g,type) {
   if(g.placement || !BUILD_OPTIONS.includes(type) || !canSpend(g,g.buildingCost(type)))return false;
-  const worker=g.units.find(u=>u.alive&&u.team==='player'&&u.type==='villager'&&!u.manualEconomy&&!u.carry&&['idle','gather'].includes(u.state));
-  if(!worker)return false;
+  const workers=g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager'&&!u.manualEconomy&&!u.carry&&['idle','gather'].includes(u.state));
+  if(!workers.length)return false;
   const oldPlacement=g.placement, oldSelection=g.selection;
+  const base=g.world.base,def=BUILDING_TYPES[type],sites=[];
+  for(let radius=5;radius<=14;radius+=3)for(let i=0;i<16;i++){
+    const a=i*Math.PI/8;
+    sites.push({x:Math.round(base.x+Math.cos(a)*radius),y:Math.round(base.y+Math.sin(a)*radius)});
+  }
+  const cursors=g.stewards.placementCursor ||= {};
+  const total=sites.length*workers.length,offset=(cursors[type]||0)%total,checked=new Map();
+  let searches=0;
   try {
-    const base=g.world.base;
-    for(let radius=5;radius<=14;radius+=3)for(let i=0;i<16;i++){
-      const a=i*Math.PI/8, x=Math.round(base.x+Math.cos(a)*radius),y=Math.round(base.y+Math.sin(a)*radius);
-      g.placement={type,x,y,valid:false};g.updatePlacementValidity();
-      if(!g.placement.valid)continue;
-      if(g.world.camps.some(c=>Math.hypot(c.x-x,c.y-y)<9))continue;
-      if(g.units.some(e=>e.alive&&e.team==='enemy'&&g.isVisible(e)&&Math.hypot(e.x-x,e.y-y)<9))continue;
-      // The same navigation planner used by manual builders must reach the footprint.
-      const probe={...worker,_nav:null,targetPos:null};
-      const def=BUILDING_TYPES[type],destination={x:x+def.w/2,y:y+def.h/2};
-      if(g.world.camps.some(c=>pointSegmentDist(destination.x,destination.y,c.x,c.y,base.x,base.y)<1.8+Math.hypot(def.w,def.h)/2))continue;
+    for(let step=0;step<total;step++){
+      const index=(offset+step)%total,siteIndex=Math.floor(index/workers.length),rank=index%workers.length;
+      const {x,y}=sites[siteIndex],destination={x:x+def.w/2,y:y+def.h/2};
+      g.placement={type,x,y,valid:false};
+      if(!checked.has(siteIndex)){
+        g.updatePlacementValidity();
+        const safe=g.placement.valid
+          && !g.world.camps.some(c=>Math.hypot(c.x-x,c.y-y)<9)
+          && !g.units.some(e=>e.alive&&e.team==='enemy'&&g.isVisible(e)&&Math.hypot(e.x-x,e.y-y)<9)
+          && !g.world.camps.some(c=>pointSegmentDist(destination.x,destination.y,c.x,c.y,base.x,base.y)<1.8+Math.hypot(def.w,def.h)/2);
+        checked.set(siteIndex,safe?workers.slice().sort((a,b)=>Math.hypot(a.x-destination.x,a.y-destination.y)-Math.hypot(b.x-destination.x,b.y-destination.y)):null);
+      }
+      const ordered=checked.get(siteIndex);if(!ordered)continue;
+      // 每次最多12次尋路，保存續查位置；不消耗模擬RNG。 / At most12 path searches per call; persist the cursor without consuming simulation RNG.
+      if(searches>=12){cursors[type]=index;return false;}
+      searches++;
+      const worker=ordered[rank],probe={...worker,_nav:null,targetPos:null};
       const walk=(px,py)=>g.isWalkable(px,py,probe);walk.segment=(a,b)=>g.segmentWalkable(a,b,probe);
       const path=findPath(probe,destination,walk,g.world.size,{range:Math.hypot(def.w,def.h)/2+1.8});
       if(path.status!=='ready'&&path.status!=='arrived')continue;
-      g.selection=[worker];
-      if(g.placeCurrent()){worker.manualEconomy=false;return true;}
+      g.placement.valid=true;g.selection=[worker];
+      if(g.placeCurrent()){worker.manualEconomy=false;delete cursors[type];return true;}
     }
-    return false;
+    delete cursors[type];return false;
   } finally {g.selection=oldSelection;g.placement=oldPlacement;g.hooks.placement?.(oldPlacement);}
 }
 export function updatePlans(g) {

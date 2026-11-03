@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 globalThis.document={documentElement:{dataset:{}},dispatchEvent(){}};
 const {Game}=await import('../js/game.js');
-const {canSpend,updatePlans,confirmPlan,trainArmy}=await import('../js/stewards.js');
+const {canSpend,updatePlans,confirmPlan,trainArmy,planBuilding}=await import('../js/stewards.js');
 function fresh(){const g=new Game();g.newRun(42,{civ:'CHN'});return g;}
 
 test('升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced',()=>{
@@ -42,4 +42,11 @@ test('自動升級預留包含費用加玩家底線，防止訓練吃掉可用�
  const g=fresh();g.stewards.age='auto';g.stewards.reserve=[100,0,0,500];g.resources={food:260,wood:500,gold:120,stone:0};updatePlans(g);assert.equal(g.ageResearch,null);
  assert.equal(canSpend(g,g.unitCost('villager')),false);
  g.resources.food=270;g.time=3;updatePlans(g);assert.ok(g.ageResearch);assert.equal(g.resources.food,100);
+});
+function cageWorkers(g,all=false){const workers=g.units.filter(u=>u.type==='villager');for(const u of all?workers:[workers[0]]){u.x=12;u.y=12;}const walls=[];for(let i=10;i<=14;i++){walls.push(g.addBuilding('wall',i,10,true),g.addBuilding('wall',i,14,true));if(i>10&&i<14)walls.push(g.addBuilding('wall',10,i,true),g.addBuilding('wall',14,i,true));}return{workers,walls};}
+test('首名工人受困時其他可達工人接手 / another reachable worker builds when the first is trapped',()=>{
+ const g=fresh();g.resources={food:5000,wood:5000,gold:5000,stone:5000};const{workers}=cageWorkers(g);assert.equal(planBuilding(g,'house'),true);const house=g.buildings.at(-1);assert.equal(house.type,'house');assert.notEqual(g.units.find(u=>u.buildTarget===house)?.id,workers[0].id);
+});
+test('全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal',()=>{
+ const g=fresh();g.resources={food:5000,wood:5000,gold:5000,stone:5000};const{walls}=cageWorkers(g,true),before={...g.resources};assert.equal(planBuilding(g,'house'),false);assert.deepEqual(g.resources,before);for(const w of walls)w.alive=false;let placed=false;for(let i=0;i<8&&!placed;i++)placed=planBuilding(g,'house');assert.equal(placed,true);assert.equal(g.resources.wood,before.wood-60);
 });
