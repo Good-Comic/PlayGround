@@ -571,3 +571,10 @@ const CAPACITY_PLAN_TEXT={
  ja:['軍事余裕 ≤','予測軍事人口の空き','訓練待ち兵と建設中の人口供給を含み、文明の上限は維持。空欄は制限なし。経済人口は別枠です。','指定なし','人口条件を待機']
 };
 for(const[locale,labels]of Object.entries(CAPACITY_PLAN_TEXT))['room','roomNow','roomHelp','unlimited','capacity'].forEach((key,i)=>STRINGS[locale]['steward.'+key]=labels[i]);
+
+for(const[locale,text]of Object.entries({
+ 'zh-Hant':'計畫條件已變更，已取消過期提案。請檢查村民、時代、人口與預留後重試。',
+ 'zh-Hans':'计划条件已变更，已取消过期提案。请检查村民、时代、人口与预留后重试。',
+ en:'Plan conditions changed. The stale proposal was cancelled. Check workers, age, population and reserves before retrying.',
+ ja:'計画条件が変わったため、古い提案を取り消しました。村人・時代・人口・確保資源を確認して再試行してください。'
+}))STRINGS[locale]['steward.stalePlan']=text;

@@ -113,13 +113,23 @@ export function planningMilitaryRoom(g) {
 function militaryRoomAllows(g,p) {
   return !Number.isFinite(p?.militaryRoom)||p.militaryRoom<0||planningMilitaryRoom(g)<=p.militaryRoom;
 }
+// 確認與撤回使用相同的現行條件。 / Validate current conditions before
+// confirmation or keeping an outstanding proposal.
+function buildingProposalValid(g,type,p) {
+  if(!BUILD_OPTIONS.includes(type)||p?.mode!=='ask'||g.ageLevel<(p.age||1))return false;
+  const workers=g.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager').length;
+  if(workers<(p.workers||0))return false;
+  const count=g.buildings.filter(b=>b.alive&&b.team==='player'&&b.type===type).length;
+  const max=Math.min(20,Math.max(0,Number(p.max)||0));
+  return count<max&&militaryRoomAllows(g,p)&&canSpend(g,g.buildingCost(type));
+}
 export function updatePlans(g) {
   const s=g.stewards;
   if(g.time<s.nextPlanAt)return;
   s.nextPlanAt=g.time+3;
   s.status='idle';
   if(s.pending?.kind==='age' && (s.age!=='ask' || g.ageResearch || g.ageLevel>=3 || !g.getTownCenter() || !g.canAfford(g.ageCost())))s.pending=null;
-  if(s.pending?.kind==='building'&&!militaryRoomAllows(g,s.buildings[s.pending.type]))s.pending=null;
+  if(s.pending?.kind==='building'&&!buildingProposalValid(g,s.pending.type,s.buildings[s.pending.type]))s.pending=null;
   if(s.age!=='manual' && g.ageLevel<3 && !g.ageResearch && g.getTownCenter() && g.canAfford(g.ageCost())){
     if(s.age==='auto'){
       const cost=g.ageCost();
@@ -146,7 +156,7 @@ export function confirmPlan(g) {
     g.advanceAge();return !!g.ageResearch;
   }
   const setting=g.stewards.buildings[p.type];
-  if(!setting || !militaryRoomAllows(g,setting) || g.buildings.filter(b=>b.alive&&b.team==='player'&&b.type===p.type).length>=setting.max)return false;
+  if(!buildingProposalValid(g,p.type,setting))return false;
   return planBuilding(g,p.type);
 }
 export function trainArmy(g) {

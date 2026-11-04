@@ -7,7 +7,7 @@ export function installStewardUI(game) {
   document.querySelector('.pause-actions').prepend(button);
   const hudButton=button.cloneNode();hudButton.id='btn-stewards-hud';document.querySelector('.top-actions').prepend(hudButton);
   const dialog=document.createElement('dialog');dialog.id='steward-dialog';dialog.className='steward-dialog';document.body.append(dialog);
-  let wasPaused=false;
+  let wasPaused=false,notice=false;
   const tr=k=>t('steward.'+k);
   const label=(key,input)=>`<label>${tr(key)} ${input}</label>`;
   const number=(name,v,min=0,max=100000)=>`<input type="number" name="${name}" value="${v}" min="${min}" max="${max}" step="1">`;
@@ -32,7 +32,8 @@ export function installStewardUI(game) {
     <p>${tr('milHelp')}</p>${game.buildings.filter(b=>b.alive&&b.team==='player'&&b.type!=='core'&&b.type!=='market'&&game.trainableFor(b).length).map(b=>{const p=s.military[b.id]||{};return `<details data-producer="${b.id}"><summary>${t('building.'+b.type+'.name')} #${b.id} (${b.queue.length}/5)</summary><p class="producer-status" data-production-status="${productionStatus(game,b)}">${tr('producer.label')}: ${tr('producer.'+productionStatus(game,b))}</p><label><input type="checkbox" name="enabled${b.id}" ${p.enabled!==false?'checked':''}>${tr('auto')}</label> ${label('queue',number('queue'+b.id,p.queue||1,1,5))}
     <div>${RESOURCES.map((r,i)=>`<label>${tr('reserve')} ${t('resourceType.'+r)} ${number('budget'+b.id+'_'+i,p.budget?.[i]||0)}</label>`).join('')}</div>
     ${game.trainableFor(b).map(type=>{const e=p.targets?.[type];return `<div data-unit="${type}"><label><input type="checkbox" name="unit${b.id}_${type}" ${(!p.units||p.units.includes(type))?'checked':''}>${t('unit.'+type+'.name')}</label> ${tr('max')} ${number('target'+b.id+'_'+type,e?.count??200,0,200)} ${tr('priority')} ${number('weight'+b.id+'_'+type,e?.priority||1,1,100)} ${game.trainingRestriction(type)?t('training.ageRequired',{age:t('age.'+(UNIT_TYPES[type]?.minAge||3))}):''}</div>`}).join('')}</details>`}).join('')}
-    </fieldset><p>${tr('confirmHelp')}</p><button type="button" id="steward-confirm" ${s.pending?'':'disabled'}>${tr('confirm')} ${s.pending?.kind==='building'?t('building.'+s.pending.type+'.name'):s.pending?tr('age'):''}</button>
+    </fieldset><p>${tr('confirmHelp')}</p><p id="steward-notice" class="steward-notice" role="alert" ${notice?'':'hidden'}>${notice?tr('stalePlan'):''}</p>
+    <button type="button" id="steward-confirm" ${s.pending?'':'disabled'}>${tr('confirm')} ${s.pending?.kind==='building'?t('building.'+s.pending.type+'.name'):s.pending?tr('age'):''}</button>
     <button type="submit" id="steward-apply">${tr('apply')}</button><button type="button" id="steward-close">${tr('close')}</button></form>`;
     const form=dialog.querySelector('form');
     const save=()=>{const f=new FormData(form), n=k=>Math.max(0,Number(f.get(k))||0);const next=restoreStewards(s);
@@ -44,9 +45,9 @@ export function installStewardUI(game) {
     form.addEventListener('submit',e=>{e.preventDefault();save();close();});
     dialog.querySelector('#steward-close').onclick=close;
     dialog.querySelector('#steward-release').onclick=()=>{for(const u of game.units)if(u.alive&&u.team==='player'&&u.type==='villager'&&u.state==='idle')u.manualEconomy=false;};
-    dialog.querySelector('#steward-confirm').onclick=()=>{confirmPlan(game);render();};
+    dialog.querySelector('#steward-confirm').onclick=()=>{notice=!confirmPlan(game);render();if(notice){dialog.querySelector('#steward-notice').scrollIntoView({block:'nearest'});dialog.querySelector('#steward-close').focus({preventScroll:true});}};
   }
-  button.onclick=hudButton.onclick=()=>{if(game.inMenu)return;wasPaused=game.paused;game.paused=true;render();dialog.showModal();};
+  button.onclick=hudButton.onclick=()=>{if(game.inMenu)return;wasPaused=game.paused;notice=false;game.paused=true;render();dialog.showModal();};
   dialog.addEventListener('cancel',e=>{e.preventDefault();close();});
   document.addEventListener('localechange',()=>{button.textContent=hudButton.textContent=tr('title');if(dialog.open)render();});
   button.textContent=hudButton.textContent=tr('title');
