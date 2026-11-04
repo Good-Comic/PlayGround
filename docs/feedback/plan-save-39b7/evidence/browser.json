@@ -1,0 +1,98 @@
+{
+  "source": "35e60bebb9e82bbdc619188b6a36ec47fbab819b",
+  "scope": "Fresh CHN NORMAL native input plan/save/reload/continue/execute. Controlled storage failure only; no injected units/resources/time/phase.",
+  "rows": [
+    {
+      "name": "native-plan-has-two-groups-and-skill",
+      "pass": true
+    },
+    {
+      "name": "save-stores-optional-plan-and-no-cast",
+      "pass": true
+    },
+    {
+      "name": "controlled-storage-failure-preserves-plan-and-old-save",
+      "pass": true
+    },
+    {
+      "name": "load-stays-paused-with-same-time-rng-stock-and-plan",
+      "pass": true,
+      "time": 0.11670000000000005,
+      "rng": 368431148,
+      "resources": {
+        "food": 260,
+        "wood": 300,
+        "gold": 120,
+        "stone": 100
+      },
+      "paused": true,
+      "cd": 0,
+      "orders": [
+        {
+          "type": "move",
+          "ids": [
+            15,
+            16
+          ],
+          "point": {
+            "x": 24.950698046787082,
+            "y": 20.519576292922842
+          },
+          "targetId": 3
+        },
+        {
+          "type": "attackMove",
+          "ids": [
+            18
+          ],
+          "point": {
+            "x": 25.950874821847485,
+            "y": 21.51703317674537
+          },
+          "targetId": 3
+        },
+        {
+          "type": "aegis",
+          "targetId": null
+        }
+      ]
+    },
+    {
+      "name": "restored-plan-does-not-auto-execute",
+      "pass": true
+    },
+    {
+      "name": "explicit-execute-uses-native-orders-and-cooldown-once",
+      "pass": true
+    },
+    {
+      "name": "ordinary-save-has-no-stale-plan",
+      "pass": true
+    },
+    {
+      "name": "ordinary-load-retains-native-unpaused-flow",
+      "pass": true
+    },
+    {
+      "name": "loaded-plan-can-finish-native-first-wave",
+      "pass": true,
+      "phase": "boon",
+      "time": 81.44670000000403,
+      "waves": 1,
+      "kills": 16,
+      "core": 3000
+    },
+    {
+      "name": "no-page-errors",
+      "pass": true
+    },
+    {
+      "name": "only-controlled-storage-error",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [
+    "Unable to save run QuotaExceededError: Controlled test: storage full"
+  ]
+}
