@@ -15,7 +15,7 @@ export function battleCanAct(game,blocked=false) {
 }
 export function battleAction(game,action,blocked=false) {
   if(!battleCanAct(game,blocked))return false;
-  if(action==='hero'){if(!game.hero?.alive)return false;game.toggleHeroControl();return true;}
+  if(action==='hero'){if(!game.hero?.alive)return false;game.orderMode=null;game.toggleHeroControl();return true;}
   if(action==='mark'||action==='aegis') {
     if(!game.hero?.alive||game.hero[action+'Cd']>0)return false;
     if(action==='mark'&&!battleSkillContext(game).markTarget)return false;
