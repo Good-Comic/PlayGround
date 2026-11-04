@@ -32,7 +32,7 @@ export function battleAction(game,action,blocked=false) {
 export function installBattleActions(game,ui) {
   const root=document.createElement('section');root.id='battle-actions';root.hidden=true;
   root.innerHTML='<div class="battle-caption"></div><div class="battle-buttons"></div><p class="battle-hint" aria-live="polite"></p>';
-  const center=document.querySelector('.center-controls');center.prepend(root);
+  const center=document.querySelector('.center-controls');document.body.append(root);
   const text=(node,value)=>{if(node.textContent!==value)node.textContent=value;};
   const actions=['army','advance','guard','hero','mark','aegis'],buttons=new Map();
   for(const [i,action]of actions.entries()){
