@@ -1,0 +1,37 @@
+POP {"military":19,"militaryCap":20,"economy":60,"economicCap":60,"total":79}
+✔ 全軍排除村民、英雄、敵軍與死亡單位 / army excludes workers hero enemies and dead units (19.970023ms)
+✔ 推進與護衛沿用原生命令且不搶村民 / advance and guard reuse native commands without worker orders (25.641451ms)
+✔ 暫停、選卡、結算、對話框與施工不下令 / pause rewards terminal modal and placement prevent commands (54.468376ms)
+✔ 英雄護盾使用正式冷卻與效果，重按不重複 / hero shield uses native effects and cooldown without double casting (5.071531ms)
+✔ 選軍不花費、未知命令與無軍隊保持狀態 / selection costs nothing and empty or unknown actions preserve state (5.31559ms)
+✔ 選軍經原生切換離開英雄直控 / selecting army exits hero direct control through native toggle (7.085879ms)
+✔ 快捷入口切換原生英雄直控，F2路徑切回軍隊 / hero shortcut toggles native direct control and army action returns (6.634582ms)
+✔ 技能預覽使用正式範圍與可見性，無目標不施放 / context uses native range/visibility and no-target casts do nothing (8.207738ms)
+✔ 英雄接管取消尚未落點的軍隊命令 / hero takeover cancels pending army targeting (3.138441ms)
+✔ 救援點可達、穩定且不消耗RNG (12.526775ms)
+✔ 抵達才獲得兩名工人且不能重複領取 (8.185284ms)
+✔ 人口滿時保留救援，空出名額後接續 (7.234519ms)
+✔ 暫停與存讀檔維持進度，新局重設 (19.882963ms)
+✔ 出征使用原生移動，暫停與完成狀態拒絕下令 (11.658942ms)
+✔ 只剩一個人口時分批救援，讀檔後不重複第一名 (12.100785ms)
+✔ A3-POP-01 all HUD population fields are finite and economy is independent (4.829542ms)
+✔ two barracks reserve the final military slot globally without spending twice (8.27679ms)
+✔ two town centers reserve economy slot60 globally and military queue does not consume it (7.613439ms)
+✔ Franks cap40 includes reservations across buildings but excludes villagers (5.895519ms)
+✔ incomplete/dead/enemy housing and enemy queues cannot add or reserve player capacity (4.633793ms)
+✔ Save/Load recomputes category reservations and finite derived caps without schema changes (7.184245ms)
+✔ GDD opening military40 derives from core20 and two houses10; economy remains60 (2.71183ms)
+✔ 獨立可達工坊不消耗RNG、不覆蓋救援 (10.111834ms)
+✔ 抵達才可花80木借用一次30秒單位 (15.759977ms)
+✔ 資源、人口、暫停、選卡、放置狀態不扣款 (29.159783ms)
+✔ 存讀檔保留一次性、剩餘時間，原生到期離隊 (168.491827ms)
+✔ 試用投石車使用原生彈道造成傷害 (27.030074ms)
+✔ 借用後由英雄直控轉為操控攻城單位，取消舊落點 (8.349968ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3874.944661
