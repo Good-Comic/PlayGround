@@ -864,3 +864,17 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 #early-raid [hidden] { display: none; }
 @media (min-width: 761px) and (max-width: 1250px) { #early-raid { width: 290px; } }
 @media (max-width: 760px) { #early-raid { top: 265px; left: 8px; transform: none; width: 180px; font-size: 11px; padding: 6px; } }
+
+.planning-mode .bottom-hud,.planning-mode .tactical-bar,.planning-mode #battle-actions,.planning-mode #rescue-expedition,.planning-mode #early-raid,.planning-mode .intel-card,.planning-mode .objective-card { visibility: hidden; }
+#tactical-planner { position:fixed; z-index:21; left:50%; bottom:16px; transform:translateX(-50%); width:min(740px,calc(100vw - 24px)); padding:12px; border:2px solid #96ced2; background:#17282aef; color:#e0f5ef; font-size:12px; }
+#tactical-planner strong { font-size:16px; color:#c9fbfa; }
+#tactical-planner p { margin:6px 0; line-height:1.4; }
+.plan-tools { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; }
+#tactical-planner button { font:inherit; padding:8px 5px; border:1px solid #86babd; background:#263e3f; color:#e9fcf6; cursor:pointer; }
+#tactical-planner button[aria-pressed=true] { outline:2px solid #ffe7a3; background:#4d563d; }
+#tactical-planner button:focus-visible { outline:2px solid white; }
+#tactical-planner button:disabled { opacity:.45; cursor:default; }
+.plan-footer { display:flex; gap:6px; }
+.plan-footer button { flex:1; }
+#tactical-planner [data-plan=resume] { background:#68582d; color:#fff0b9; }
+@media(max-width:760px){#tactical-planner{bottom:8px;padding:8px;max-height:43vh;overflow:auto;font-size:11px;} .plan-tools{grid-template-columns:repeat(3,minmax(0,1fr));} #tactical-planner button{padding:6px 4px;} #tactical-planner .plan-help{font-size:10px;}}
