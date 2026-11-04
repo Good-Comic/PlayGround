@@ -1,12 +1,13 @@
 import { findPath } from './navigation.js';
 import { t } from './i18n.js';
 
-export function createRescue(g) {
+export function createRescue(g,offset=0,avoid=null) {
   const h=g.hero;if(!h)return null;
   const base=g.world.base, walk=(x,y)=>g.isWalkable(x,y,h);
   walk.segment=(a,b)=>g.segmentWalkable(a,b,h);
   for(const r of [12,14,16])for(let i=0;i<16;i++){
-    const a=((i+(g.seed>>>0)%16)%16)*Math.PI/8,x=Math.round(base.x+Math.cos(a)*r),y=Math.round(base.y+Math.sin(a)*r);
+    const a=((i+((g.seed>>>0)+offset)%16)%16)*Math.PI/8,x=Math.round(base.x+Math.cos(a)*r),y=Math.round(base.y+Math.sin(a)*r);
+    if(avoid&&Math.hypot(x-avoid.x,y-avoid.y)<6)continue;
     if(x<2||y<2||x>g.world.size-3||y>g.world.size-3||!walk(x,y)||g.world.camps.some(c=>Math.hypot(c.x-x,c.y-y)<9))continue;
     const path=findPath({...h,_nav:null,targetPos:null},{x,y},walk,g.world.size,{range:1});
     if(path.status==='ready'||path.status==='arrived')return {x,y,rescued:0};

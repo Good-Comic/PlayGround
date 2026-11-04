@@ -1,3 +1,4 @@
+import { installWorkshopUI } from './workshop-expedition.js';
 import { installExpeditionUI } from './expeditions.js';
 import { installBattleActions } from './battle-actions.js';
 import { installCodex } from './codex-ui.js';
@@ -383,3 +384,5 @@ ui.codex=installCodex(game,ui);
 ui.battleActions=installBattleActions(game,ui);
 
 installExpeditionUI(game,ui);
+
+installWorkshopUI(game,ui);

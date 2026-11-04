@@ -1,3 +1,4 @@
+import { updateWorkshop } from './workshop-expedition.js';
 import { updateRescue } from './expeditions.js';
 import { scoredTarget } from './targeting.js';
 import { defaultStewards, restoreStewards, assignWorkers, updatePlans, trainArmy, canSpend } from './stewards.js';
@@ -144,6 +145,7 @@ export class Game {
     this.runTime = 0;
     this.orderMode=null; this.controlGroups={};
     this.expedition=null;this.expeditionInitialized=false;
+    this.workshop=null;this.workshopInitialized=false;
     this.paused = false;
     this.nextId = 1;
     this.lastWaveAnnounce = -1;
@@ -262,6 +264,7 @@ export class Game {
       autoTimers: { ...this.autoTimers },
       stewards: structuredClone(this.stewards),
       expedition: this.expedition?{...this.expedition}:null, expeditionInitialized:!!this.expeditionInitialized,
+      workshop:this.workshop?{...this.workshop}:null,workshopInitialized:!!this.workshopInitialized,
       heroControl: this.heroControl,
       heroReviveTimer: this.heroReviveTimer,
       retreatUsed: this.retreatUsed,
@@ -407,6 +410,9 @@ export class Game {
     const ep=snapshot.expedition;
     this.expedition=ep&&Number.isFinite(ep.x)&&Number.isFinite(ep.y)&&ep.x>=2&&ep.y>=2&&ep.x<this.world.size-2&&ep.y<this.world.size-2?{x:ep.x,y:ep.y,rescued:Math.max(0,Math.min(2,Math.floor(ep.rescued)||0))}:null;
     this.expeditionInitialized=!!snapshot.expeditionInitialized;
+    const wp=snapshot.workshop;
+    this.workshop=wp&&Number.isFinite(wp.x)&&Number.isFinite(wp.y)&&wp.x>=2&&wp.y>=2&&wp.x<this.world.size-2&&wp.y<this.world.size-2?{x:wp.x,y:wp.y,used:!!wp.used,unitId:Number.isSafeInteger(wp.unitId)?wp.unitId:null,unitType:["ram","mangonel"].includes(wp.unitType)?wp.unitType:null}:null;
+    this.workshopInitialized=!!snapshot.workshopInitialized;
     this.heroControl = !!snapshot.heroControl;
     this.heroReviveTimer = snapshot.heroReviveTimer || 0;
     this.heroSkillPreview = null;
@@ -946,6 +952,7 @@ export class Game {
     }
 
     updateRescue(this);
+    updateWorkshop(this);
     this.updateAutoAids(dt);
     this.updateHeroLife(dt);
     this.updateBuildings(dt);

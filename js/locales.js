@@ -621,3 +621,10 @@ for(const[l,a]of Object.entries({
  en:['Expedition: Rescue workers','Rescued {count}/2. Leave the defense line and reach the signal with your hero. Workers join and head home. The signal reveals no enemies or terrain.','Send hero','Both workers rescued!','Population including queues is full. The rescue waits for room.','Worker rescued! {count}/2 joined.'],
  ja:['遠征：村人の救出','救出 {count}/2。英雄で信号へ向かうと村人が加入し城へ戻ります。信号は敵や地形を明かしません。','英雄を派遣','2人を救出しました！','人口・訓練待ちが上限。空きができるまで救出を保持します。','村人を救出！ {count}/2。']
 }))['title','help','go','done','cap','joined'].forEach((k,i)=>STRINGS[l]['rescue.'+k]=a[i]);
+
+for(const[l,a]of Object.entries({
+ 'zh-Hant':['廢工坊：80木／30秒','英雄抵達後可擇一借用攻城單位；支付80木材、領取即起算30模擬秒，每局一次。仍占軍事人口。','80木：借用{unit}','支援剩餘 {seconds} 秒','本局支援已使用','{unit}已加入，30秒後離隊。'],
+ 'zh-Hans':['废工坊：80木／30秒','英雄抵达后可择一借用攻城单位；支付80木材、领取即起算30模拟秒，每局一次。仍占军事人口。','80木：借用{unit}','支援剩余 {seconds} 秒','本局支援已使用','{unit}已加入，30秒后离队。'],
+ en:['Workshop:80 wood /30s','Reach it with your hero, then borrow one siege unit for80 wood.30 simulation seconds from collection, once per run. Uses military population.','80 wood: Borrow {unit}','Support: {seconds}s left','Support used this run','{unit} joined for30 seconds.'],
+ ja:['廃工房：木80／30秒','英雄で到着後、攻城兵器を1台借用。木80、受取から30シミュレーション秒、1回限り。軍事人口を使用。','木80：{unit}を借用','支援の残り {seconds}秒','支援は使用済み','{unit}が30秒間加入しました。']
+}))['title','help','borrow','remaining','done','started'].forEach((k,i)=>STRINGS[l]['workshop.'+k]=a[i]);

@@ -1,3 +1,4 @@
+import { drawWorkshop } from './workshop-expedition.js';
 import { drawRescue } from './expeditions.js';
 import { factionMark } from './factions.js';
 import { CombatVfx } from './vfx-adapter.js';
@@ -353,6 +354,7 @@ export class Renderer {
     this.drawAtmosphere(game, time);
     this.drawVisibility(game);
     drawRescue(ctx,game,(x,y)=>this.screen(game,x,y));
+    drawWorkshop(ctx,game,(x,y)=>this.screen(game,x,y));
     this.drawSelectionBox(game);
   }
 
