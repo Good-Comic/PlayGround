@@ -1,3 +1,4 @@
+import { drawRescue } from './expeditions.js';
 import { factionMark } from './factions.js';
 import { CombatVfx } from './vfx-adapter.js';
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
@@ -346,6 +347,7 @@ export class Renderer {
     }
 
     this.vfx?.draw(ctx,game,(x,y)=>this.screen(game,x,y),this.w,this.h,'front');
+    drawRescue(ctx,game,(x,y)=>this.screen(game,x,y));
     this.drawProjectiles(game, time);
     this.drawParticles(game, time);
     this.drawBuildGhost(game, time);

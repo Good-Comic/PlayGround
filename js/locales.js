@@ -614,3 +614,10 @@ for(const[locale,labels]of Object.entries({
  'zh-Hant':['等待目標','可護 {count} 人'], 'zh-Hans':['等待目标','可护 {count} 人'],
  en:['No target','Shield {count}'], ja:['対象なし','{count}人を保護']
 }))['noTarget','shieldCount'].forEach((key,i)=>STRINGS[locale]['battle.'+key]=labels[i]);
+
+for(const[l,a]of Object.entries({
+ 'zh-Hant':['遠征：救援工人','已救援 {count}/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。','派英雄前往','兩名工人已獲救！','人口含佇列已滿；救援保留，騰出空間後再接應。','救出工人！本次已救援 {count}/2。'],
+ 'zh-Hans':['远征：救援工人','已救援 {count}/2。离开防线寻找信号，英雄抵达后工人加入并返回城心。信号不揭露敌军或地形。','派英雄前往','两名工人已获救！','人口含队列已满；救援保留，腾出空间后再接应。','救出工人！本次已救援 {count}/2。'],
+ en:['Expedition: Rescue workers','Rescued {count}/2. Leave the defense line and reach the signal with your hero. Workers join and head home. The signal reveals no enemies or terrain.','Send hero','Both workers rescued!','Population including queues is full. The rescue waits for room.','Worker rescued! {count}/2 joined.'],
+ ja:['遠征：村人の救出','救出 {count}/2。英雄で信号へ向かうと村人が加入し城へ戻ります。信号は敵や地形を明かしません。','英雄を派遣','2人を救出しました！','人口・訓練待ちが上限。空きができるまで救出を保持します。','村人を救出！ {count}/2。']
+}))['title','help','go','done','cap','joined'].forEach((k,i)=>STRINGS[l]['rescue.'+k]=a[i]);

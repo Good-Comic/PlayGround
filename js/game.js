@@ -1,3 +1,4 @@
+import { updateRescue } from './expeditions.js';
 import { scoredTarget } from './targeting.js';
 import { defaultStewards, restoreStewards, assignWorkers, updatePlans, trainArmy, canSpend } from './stewards.js';
 import { sightRadius, canSee, teamSees } from './visibility.js';
@@ -142,6 +143,7 @@ export class Game {
     this.time = 0;
     this.runTime = 0;
     this.orderMode=null; this.controlGroups={};
+    this.expedition=null;this.expeditionInitialized=false;
     this.paused = false;
     this.nextId = 1;
     this.lastWaveAnnounce = -1;
@@ -259,6 +261,7 @@ export class Game {
       autoMilitary: this.autoMilitary,
       autoTimers: { ...this.autoTimers },
       stewards: structuredClone(this.stewards),
+      expedition: this.expedition?{...this.expedition}:null, expeditionInitialized:!!this.expeditionInitialized,
       heroControl: this.heroControl,
       heroReviveTimer: this.heroReviveTimer,
       retreatUsed: this.retreatUsed,
@@ -401,6 +404,9 @@ export class Game {
     this.autoMilitary = snapshot.autoMilitary;
     this.autoTimers = { ...snapshot.autoTimers };
     this.stewards = restoreStewards(snapshot.stewards);
+    const ep=snapshot.expedition;
+    this.expedition=ep&&Number.isFinite(ep.x)&&Number.isFinite(ep.y)&&ep.x>=2&&ep.y>=2&&ep.x<this.world.size-2&&ep.y<this.world.size-2?{x:ep.x,y:ep.y,rescued:Math.max(0,Math.min(2,Math.floor(ep.rescued)||0))}:null;
+    this.expeditionInitialized=!!snapshot.expeditionInitialized;
     this.heroControl = !!snapshot.heroControl;
     this.heroReviveTimer = snapshot.heroReviveTimer || 0;
     this.heroSkillPreview = null;
@@ -939,6 +945,7 @@ export class Game {
       this.updateWave(dt);
     }
 
+    updateRescue(this);
     this.updateAutoAids(dt);
     this.updateHeroLife(dt);
     this.updateBuildings(dt);

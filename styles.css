@@ -842,3 +842,7 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 @media(max-width:1250px) { #battle-actions { bottom:230px; left:auto; right:12px; transform:none; width:min(440px,calc(100vw - 24px)); } .center-controls.battle-active {left:50%;} }
 
 @media(max-width:760px) { #battle-actions { bottom:334px; left:50%; right:auto; transform:translateX(-50%); } .center-controls.battle-active {left:auto;} }
+
+#rescue-expedition {position:fixed;right:16px;top:155px;width:230px;padding:10px;background:#25251cea;border:1px solid #c1a564;color:#f4e5b6;z-index:5;font-size:12px;}
+#rescue-expedition[hidden]{display:none!important;}#rescue-expedition p{margin:6px 0;line-height:1.4;}#rescue-expedition button{padding:7px;width:100%;background:#453d29;color:#fff0c9;border:1px solid #c1a564;cursor:pointer;}#rescue-expedition button:disabled{opacity:.5;cursor:default;}
+@media(max-width:760px){#rescue-expedition{top:245px;right:8px;width:180px;font-size:11px;}}
