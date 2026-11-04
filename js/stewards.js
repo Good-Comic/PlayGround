@@ -23,12 +23,12 @@ export function gatherWeights(s) {
 // 唯讀面板統計：每人只歸屬一種資源，現有貨物優先。 / Read-only
 // panel counts: one resource bucket per worker, with existing cargo first.
 export function workerAllocation(g) {
-  const result={total:0,manual:0,unlocked:0,carrying:0,idle:0,other:0,resources:Object.fromEntries(RESOURCES.map(r=>[r,0]))};
+  const result={total:0,manual:0,unlocked:0,carrying:0,idle:0,idleManual:0,other:0,resources:Object.fromEntries(RESOURCES.map(r=>[r,0]))};
   for(const u of g.units){
     if(!u.alive||u.team!=='player'||u.type!=='villager')continue;
     result.total++;result[u.manualEconomy?'manual':'unlocked']++;
     if(u.carry>0)result.carrying++;
-    if(u.state==='idle')result.idle++;
+    if(u.state==='idle'){result.idle++;if(u.manualEconomy)result.idleManual++;}
     const resource=u.carry>0&&RESOURCES.includes(u.carryType)?u.carryType:
       ['gather','return'].includes(u.state)&&u.gatherTarget?.alive?u.gatherTarget.resource:null;
     if(RESOURCES.includes(resource))result.resources[resource]++;else result.other++;

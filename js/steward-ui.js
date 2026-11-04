@@ -39,6 +39,8 @@ export function installStewardUI(game) {
     const form=dialog.querySelector('form');
     const renderWorkforce=()=>{
       const view=workerAllocation(game);
+      const release=dialog.querySelector('#steward-release');
+      release.disabled=view.idleManual===0;release.textContent=tr('release')+' ('+view.idleManual+')';
       dialog.querySelector('#steward-workforce').innerHTML=`<p>${tr('allocation')}: ${RESOURCES.map(r=>`<span data-worker-resource="${r}" data-count="${view.resources[r]}">${t('resourceType.'+r)}: ${view.resources[r]}</span>`).join(' · ')} · <span data-worker-other data-count="${view.other}">${tr('workerOther')}: ${view.other}</span></p>
       <p>${['total','manual','unlocked','carrying','idle'].map(k=>`<span data-worker-status="${k}" data-count="${view[k]}">${tr('worker.'+k)}: ${view[k]}</span>`).join(' · ')}</p><p>${tr('allocationHelp')}</p>`;
     };
