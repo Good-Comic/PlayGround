@@ -35,9 +35,9 @@ export function installBattleActions(game,ui) {
   const blocked=()=>ui.settingsOpen||ui.gmOpen||ui.boonsOpen||ui.pauseOpen||!ui.el.howto.hidden||!!document.querySelector('dialog[open]');
   const clearPreview=()=>{if(previewing){game.clearHeroSkillPreview();previewing=false;}};
   const update=(force=false)=>{
-    const now=performance.now();if(!force&&now-lastPaint<90)return;lastPaint=now;
     const hidden=game.inMenu||ui.menuVisible||['boon','victory','defeat'].includes(game.phase)||blocked();
-    root.hidden=!!hidden;if(hidden){clearPreview();signature='';return;}
+    if(root.hidden!==!!hidden)root.hidden=!!hidden;if(hidden){clearPreview();signature='';return;}
+    const now=performance.now();if(!force&&now-lastPaint<90)return;lastPaint=now;
     const army=battleArmy(game),h=game.hero,active=battleCanAct(game),mode=game.orderMode;
     const state=[document.documentElement.lang,army.length,active,h?.alive,Math.ceil(h?.markCd||0),Math.ceil(h?.aegisCd||0),mode].join('|');
     if(state===signature)return;signature=state;
@@ -46,7 +46,7 @@ export function installBattleActions(game,ui) {
       const b=buttons.get(action),skill=action==='mark'||action==='aegis',cd=Math.ceil(h?.[action+'Cd']||0);
       b.disabled=!active||(skill?(!h?.alive||cd>0):!army.length);
       const label=skill?t('command.'+action):t('battle.'+action);
-      const detail=skill?(cd>0?cd+'s':t('battle.ready')):action==='army'?String(army.length)+' · F2':action==='advance'?'Shift+A':'G';
+      const detail=skill?((action==='mark'?'Q':'E')+' · '+(cd>0?cd+'s':t('battle.ready'))):action==='army'?String(army.length)+' · F2':action==='advance'?'Shift+A':'G';
       b.querySelector('.battle-label').textContent=label;b.querySelector('small').textContent=detail;
       b.title=skill?t('command.'+action+'Tooltip'):t('battle.'+action+'Help');
       b.setAttribute('aria-label',label+' — '+detail);
