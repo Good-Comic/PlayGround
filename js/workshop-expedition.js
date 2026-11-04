@@ -12,7 +12,7 @@ export function buyWorkshop(g,type){
   const spot=[[1.2,0],[-1.2,0],[0,1.2],[0,-1.2],[1.2,1.2],[-1.2,-1.2]].find(([x,y])=>g.isWalkable(p.x+x,p.y+y,probe)&&!g.units.some(u=>u.alive&&Math.hypot(u.x-p.x-x,u.y-p.y-y)<(u.typeDef.radius||.25)+def.radius));
   if(!spot)return false;
   const u=g.spawnUnit(type,p.x+spot[0],p.y+spot[1],'player',{expireIn:30});if(!u)return false;
-  g.pay({wood:80});p.used=true;p.unitId=u.id;p.unitType=type;g.setSelection([u]);g.sound?.complete?.();g.toast(t('workshop.started',{unit:t('unit.'+type+'.name')}),'good',4000);return true;
+  g.pay({wood:80});p.used=true;p.unitId=u.id;p.unitType=type;if(g.heroControl)g.toggleHeroControl();g.orderMode=null;g.setSelection([u]);g.sound?.complete?.();g.toast(t('workshop.started',{unit:t('unit.'+type+'.name')}),'good',4000);return true;
 }
 export function drawWorkshop(ctx,g,project){const p=g.workshop;if(!p||p.used)return;const s=project(p.x,p.y),z=g.camera.zoom;ctx.save();ctx.translate(s.x,s.y);ctx.strokeStyle='#9bdaec';ctx.fillStyle='#192b31';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(0,0,22*z,11*z,0,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillRect(-22*z,-44*z,44*z,26*z);ctx.strokeRect(-22*z,-44*z,44*z,26*z);ctx.fillStyle='#e6fbff';ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.fillText('30s',0,-27*z);ctx.restore();}
 export function installWorkshopUI(g,ui){
