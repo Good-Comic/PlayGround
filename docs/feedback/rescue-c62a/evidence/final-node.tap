@@ -1,0 +1,37 @@
+POP {"military":19,"militaryCap":20,"economy":60,"economicCap":60,"total":79}
+✔ 全軍排除村民、英雄、敵軍與死亡單位 / army excludes workers hero enemies and dead units (22.590844ms)
+✔ 推進與護衛沿用原生命令且不搶村民 / advance and guard reuse native commands without worker orders (15.715573ms)
+✔ 暫停、選卡、結算、對話框與施工不下令 / pause rewards terminal modal and placement prevent commands (41.510592ms)
+✔ 英雄護盾使用正式冷卻與效果，重按不重複 / hero shield uses native effects and cooldown without double casting (5.212743ms)
+✔ 選軍不花費、未知命令與無軍隊保持狀態 / selection costs nothing and empty or unknown actions preserve state (5.699532ms)
+✔ 選軍經原生切換離開英雄直控 / selecting army exits hero direct control through native toggle (6.668004ms)
+✔ 快捷入口切換原生英雄直控，F2路徑切回軍隊 / hero shortcut toggles native direct control and army action returns (6.614014ms)
+✔ 技能預覽使用正式範圍與可見性，無目標不施放 / context uses native range/visibility and no-target casts do nothing (8.213557ms)
+✔ 英雄接管取消尚未落點的軍隊命令 / hero takeover cancels pending army targeting (7.681622ms)
+✔ 救援點可達、穩定且不消耗RNG (24.100218ms)
+✔ 抵達才獲得兩名工人且不能重複領取 (7.682974ms)
+✔ 人口滿時保留救援，空出名額後接續 (11.51066ms)
+✔ 暫停與存讀檔維持進度，新局重設 (17.619057ms)
+✔ 出征使用原生移動，暫停與完成狀態拒絕下令 (7.91121ms)
+✔ 只剩一個人口時分批救援，讀檔後不重複第一名 (9.428623ms)
+✔ A3-POP-01 all HUD population fields are finite and economy is independent (5.608088ms)
+✔ two barracks reserve the final military slot globally without spending twice (8.128372ms)
+✔ two town centers reserve economy slot60 globally and military queue does not consume it (5.723077ms)
+✔ Franks cap40 includes reservations across buildings but excludes villagers (2.877612ms)
+✔ incomplete/dead/enemy housing and enemy queues cannot add or reserve player capacity (2.617788ms)
+✔ Save/Load recomputes category reservations and finite derived caps without schema changes (5.568458ms)
+✔ GDD opening military40 derives from core20 and two houses10; economy remains60 (2.798756ms)
+✔ 自動補員可用正式費用，不額外要求未設定庫存 / automatic workers use native cost without an unconfigured stock threshold (3.253438ms)
+✔ 明確預留仍阻擋並在足額後恢復 / explicit reserve blocks and resumes at cost plus reserve (3.359124ms)
+✔ 升級預留仍優先 / age research reserve retains priority (5.605603ms)
+✔ 不足費用與停用自動經濟不生產 / insufficient cost and disabled economy never produce (6.739319ms)
+✔ 手動佇列與村民目標優先 / existing manual queue and worker target retain priority (5.550943ms)
+✔ 暫停與存讀檔不繞過計時或預留 / pause and save load retain timers and reserve (6.058483ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3630.395485
