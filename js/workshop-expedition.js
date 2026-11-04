@@ -21,7 +21,7 @@ export function installWorkshopUI(g,ui){
   let last=0;const old=ui.update.bind(ui);ui.update=(...a)=>{old(...a);const p=g.workshop;box.hidden=!p;if(!p||performance.now()-last<100)return;last=performance.now();
     const unit=g.units.find(u=>u.id===p.unitId&&u.alive),remaining=unit?Math.max(0,Math.ceil(unit.expireIn)):0;
     const set=(e,v)=>{if(e.textContent!==v)e.textContent=v;};set(box.querySelector('summary'),t('workshop.title'));
-    set(box.querySelector('p'),p.used?(remaining?t('workshop.remaining',{seconds:remaining}):t('workshop.done')):t('workshop.help'));
+    set(box.querySelector('p'),p.used?(remaining?t('workshop.remaining',{seconds:remaining}):t('workshop.done')):t('workshop.help')+(g.phase==='prep'?' '+t('workshop.prepWarning'):''));
     for(const b of box.querySelectorAll('button')){const kind=b.dataset.workshop;set(b,kind==='go'?t('rescue.go'):t('workshop.borrow',{unit:t('unit.'+kind+'.name')}));b.disabled=kind==='go'?p.used||g.inMenu||g.paused||!!g.placement||!g.hero?.alive:!workshopReady(g)||!g.canAfford({wood:80})||!g.hasPopulationRoom(kind);}
   };
 }

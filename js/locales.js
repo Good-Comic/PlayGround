@@ -628,3 +628,5 @@ for(const[l,a]of Object.entries({
  en:['Workshop:80 wood /30s','Reach it with your hero, then borrow one siege unit for80 wood.30 simulation seconds from collection, once per run. Uses military population.','80 wood: Borrow {unit}','Support: {seconds}s left','Support used this run','{unit} joined for30 seconds.'],
  ja:['廃工房：木80／30秒','英雄で到着後、攻城兵器を1台借用。木80、受取から30シミュレーション秒、1回限り。軍事人口を使用。','木80：{unit}を借用','支援の残り {seconds}秒','支援は使用済み','{unit}が30秒間加入しました。']
 }))['title','help','borrow','remaining','done','started'].forEach((k,i)=>STRINGS[l]['workshop.'+k]=a[i]);
+
+for(const[l,v]of Object.entries({'zh-Hant':'備戰中：領取就開始倒數，可先抵達工坊、等交戰前夕再付款。','zh-Hans':'备战中：领取就开始倒计时，可先抵达工坊、等交战前夕再付款。',en:'Preparation: collection starts the timer. Reach the workshop now and pay nearer combat.',ja:'準備中：受取と同時に残り時間が減ります。先に到着し、交戦前に購入できます。'}))STRINGS[l]['workshop.prepWarning']=v;
