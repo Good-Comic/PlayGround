@@ -1,6 +1,6 @@
 import { t } from './i18n.js';
 import { BUILD_OPTIONS, UNIT_TYPES } from './data.js';
-import { RESOURCES, restoreStewards, reserveCost, confirmPlan, productionStatus, planningMilitaryRoom } from './stewards.js';
+import { RESOURCES, restoreStewards, reserveCost, confirmPlan, productionStatus, planningMilitaryRoom, gatherWeights } from './stewards.js';
 
 export function installStewardUI(game) {
   const button=document.createElement('button');button.id='btn-stewards';button.className='secondary-button small';
@@ -23,6 +23,7 @@ export function installStewardUI(game) {
     <fieldset><legend>${tr('economy')}</legend><p>${RESOURCES.map(r=>`${t('resourceType.'+r)}: ${game.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager'&&(u.gatherTarget?.resource===r||u.carryType===r)).length}`).join(' · ')}</p>
     ${label('gather',select('gather',s.gather,options(['balanced','food','wood','gold','stone','custom'])))}
     <div class="steward-grid">${RESOURCES.map((r,i)=>`<label>${t('resourceType.'+r)} % ${number('ratio'+i,s.ratios[i],0,100)}</label><label>${tr('reserve')} ${t('resourceType.'+r)} ${number('reserve'+i,s.reserve[i])}</label>`).join('')}</div>
+    <p id="steward-gather-preview" role="status" aria-live="polite"></p><p>${tr('gatherPreviewHelp')}</p>
     ${label('villagers',number('villagers',s.villagers,0,200))}
     ${label('age',select('age',s.age,options(['manual','ask','auto'])))}
     <button type="button" id="steward-release">${tr('release')}</button></fieldset>
@@ -36,6 +37,14 @@ export function installStewardUI(game) {
     <button type="button" id="steward-confirm" ${s.pending?'':'disabled'}>${tr('confirm')} ${s.pending?.kind==='building'?t('building.'+s.pending.type+'.name'):s.pending?tr('age'):''}</button>
     <button type="submit" id="steward-apply">${tr('apply')}</button><button type="button" id="steward-close">${tr('close')}</button></form>`;
     const form=dialog.querySelector('form');
+    const preview=()=>{
+      const ratios=RESOURCES.map((_,i)=>Math.max(0,Number(form.elements['ratio'+i].value)||0));
+      const shares=gatherWeights({gather:form.elements.gather.value,ratios});
+      const output=dialog.querySelector('#steward-gather-preview');
+      output.textContent=tr('gatherPreview')+': '+RESOURCES.map((r,i)=>t('resourceType.'+r)+' '+(shares[i]*100).toFixed(1)+'%').join(' · ');
+      output.dataset.shares=JSON.stringify(shares);
+    };
+    form.addEventListener('input',preview);form.addEventListener('change',preview);preview();
     const save=()=>{const f=new FormData(form), n=k=>Math.max(0,Number(f.get(k))||0);const next=restoreStewards(s);
       next.gather=f.get('gather');next.ratios=RESOURCES.map((_,i)=>n('ratio'+i));next.reserve=RESOURCES.map((_,i)=>n('reserve'+i));next.villagers=Math.min(200,n('villagers'));next.age=f.get('age');next.army=f.get('army');next.pending=null;next.nextPlanAt=game.time;
       for(const type of BUILD_OPTIONS)next.buildings[type]={mode:f.get(type+'mode'),max:Math.min(20,n(type+'max')),priority:n(type+'priority'),workers:n(type+'workers'),age:Math.max(1,Math.min(3,n(type+'age'))),militaryRoom:f.get(type+'room')===''?null:Math.min(100000,n(type+'room'))};
