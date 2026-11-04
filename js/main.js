@@ -1,3 +1,4 @@
+import { installBattleActions } from './battle-actions.js';
 import { installCodex } from './codex-ui.js';
 import { installStewardUI } from './steward-ui.js';
 import { installPlaytest } from './playtest.js';
@@ -378,3 +379,4 @@ window.addEventListener('error', e => {
 installPlaytest({game,ui});
 installStewardUI(game);
 ui.codex=installCodex(game,ui);
+ui.battleActions=installBattleActions(game,ui);

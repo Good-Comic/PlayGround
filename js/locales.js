@@ -594,3 +594,11 @@ const WORKER_ALLOCATION_TEXT={
  ja:['採集・運搬の配分','その他の作業・未割当','村人の総数','手動ロック','ロックなし','資源を運搬中','待機中','各村人は資源かその他に一度だけ計上。次の採集先より運搬中の資源を優先します。状態の人数は重複し、ロックなしは自動経済が有効という意味ではありません。']
 };
 for(const[locale,labels]of Object.entries(WORKER_ALLOCATION_TEXT))['allocation','workerOther','worker.total','worker.manual','worker.unlocked','worker.carrying','worker.idle','allocationHelp'].forEach((key,i)=>STRINGS[locale]['steward.'+key]=labels[i]);
+
+const BATTLE_ACTION_TEXT={
+ 'zh-Hant':['作戰指揮','全軍','推進','護衛','可施放','選軍後右鍵移動；推進會沿途接敵。','選取所有戰鬥部隊；不含村民、英雄及非戰鬥單位。','已選全軍：點擊戰場指定攻擊前進位置；Esc 取消。','已選全軍：點擊友軍單位或建築指定護衛對象；Esc 取消。','暫停中／目前無法下令'],
+ 'zh-Hans':['作战指挥','全军','推进','护卫','可施放','选军后右键移动；推进会沿途接敌。','选择所有战斗部队；不含村民、英雄及非战斗单位。','已选全军：点击战场指定攻击前进位置；Esc 取消。','已选全军：点击友军单位或建筑指定护卫对象；Esc 取消。','暂停中／当前无法下令'],
+ en:['Battle command','Army','Advance','Guard','Ready','Select army, then right-click to move. Advance engages enemies en route.','Select combat troops, excluding workers, the hero and noncombat units.','Army selected: click the battlefield to attack-move. Esc cancels.','Army selected: click a friendly unit or building to guard. Esc cancels.','Paused / orders unavailable'],
+ ja:['戦闘指揮','全軍','進撃','護衛','使用可能','軍を選び右クリックで移動。進撃は途中の敵と交戦します。','村人・英雄・非戦闘ユニットを除く戦闘部隊を選択。','全軍を選択中：戦場をクリックして攻撃移動。Escで取消。','全軍を選択中：味方ユニットか建物をクリックして護衛。Escで取消。','一時停止中・命令不可']
+};
+for(const[locale,labels]of Object.entries(BATTLE_ACTION_TEXT))['title','army','advance','guard','ready','hint','armyHelp','advanceHelp','guardHelp','paused'].forEach((key,i)=>STRINGS[locale]['battle.'+key]=labels[i]);
