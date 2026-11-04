@@ -5,15 +5,21 @@ const livePhase = g => !g.inMenu && ['prep', 'wave'].includes(g.phase) && !g.pla
 const military = u => u.alive && u.team === 'player' && !u.w && u.type !== 'villager' && !u.typeDef?.noAttack;
 
 // 暫停期間只存意圖；恢復時才經原生指令入口執行。每單位保留最後一項布令。
+export function planningGroup(g,category='all') {
+  return category==='all'?battleArmy(g):['infantry','cavalry','ranged','siege'].includes(category)?battleArmy(g).filter(u=>u.typeDef.category===category):[];
+}
+
 export function createTacticalPlan(g) {
-  let stamp = null, orders = [];
+  let stamp = null, orders = [], history = [];
+  const remember = () => { history.push(orders); if(history.length>32)history.shift(); };
   const valid = () => stamp && g.paused && livePhase(g) && stamp.world === g.world && stamp.wave === g.waveIndex && stamp.phase === g.phase;
-  const reset = () => { stamp = null; orders = []; };
+  const reset = () => { stamp = null; orders = []; history = []; };
   return {
-    begin() { if (!g.paused || !livePhase(g)) return false; stamp = { world: g.world, wave: g.waveIndex, phase: g.phase }; orders = []; return true; },
+    begin() { if (!g.paused || !livePhase(g)) return false; stamp = { world: g.world, wave: g.waveIndex, phase: g.phase }; orders = []; history = []; return true; },
     active() { if (!valid()) reset(); return !!stamp; },
     list() { return valid() ? orders.map(o => ({ ...o, ids: o.ids?.slice(), point: o.point && { ...o.point } })) : []; },
-    clear() { orders = []; },
+    clear() { if(orders.length){remember();orders = [];} },
+    undo() { if(!valid()||!history.length)return false;orders=history.pop();return true; },
     cancel: reset,
     stage(type, selection, point, target = null) {
       if (!valid() || !['move', 'attackMove', 'attack', 'guard'].includes(type)) return false;
@@ -21,6 +27,7 @@ export function createTacticalPlan(g) {
       if (!ids.length || !point || !Number.isFinite(point.x) || !Number.isFinite(point.y) || point.x < 0 || point.y < 0 || point.x >= g.world.size || point.y >= g.world.size) return false;
       if (type === 'attack' && (!target?.alive || target.team !== 'enemy' || !g.isVisible(target))) return false;
       if (type === 'guard' && (!target?.alive || target.team !== 'player' || ids.includes(target.id) || ![...g.units, ...g.buildings].includes(target))) return false;
+      remember();
       orders = orders.map(o => o.ids ? { ...o, ids: o.ids.filter(id => !ids.includes(id)) } : o).filter(o => !o.ids || o.ids.length);
       orders.push({ type, ids, point: { ...point }, targetId: target?.id ?? null });
       return true;
@@ -28,6 +35,7 @@ export function createTacticalPlan(g) {
     skill(type) {
       if (!valid() || !['mark', 'aegis'].includes(type) || !g.hero?.alive || g.hero[type + 'Cd'] > 0) return false;
       if (type === 'mark' && !battleSkillContext(g).markTarget) return false;
+      remember();
       orders = orders.filter(o => o.type !== type);
       orders.push({ type, targetId: type === 'mark' ? battleSkillContext(g).markTarget.id : null }); return true;
     },
@@ -64,15 +72,19 @@ export function createTacticalPlan(g) {
 export function installTacticalPlanner(g, ui, renderer, canvas) {
   const plan = createTacticalPlan(g);
   const root = document.createElement('section'); root.id = 'tactical-planner'; root.hidden = true;
-  root.innerHTML = '<strong></strong><p class="plan-help"></p><p class="plan-summary"></p><div class="plan-tools"></div><p class="plan-status" aria-live="polite"></p><div class="plan-footer"></div>';
+  root.innerHTML = '<strong></strong><p class="plan-help"></p><label class="plan-group-label"><span></span> <select id="plan-group"></select></label><p class="plan-summary"></p><div class="plan-tools"></div><p class="plan-status" aria-live="polite"></p><div class="plan-footer"></div>';
   const toolActions = ['army', 'hero', 'select', 'move', 'attackMove', 'attack', 'guard', 'mark', 'aegis'];
-  const footerActions = ['clear', 'cancel', 'resume'];
+  const footerActions = ['undo', 'clear', 'cancel', 'resume'];
   const buttons = {};
   for (const action of [...toolActions, ...footerActions]) {
     const b = document.createElement('button'); b.type = 'button'; b.dataset.plan = action;
     b.addEventListener('keydown', e => { if ([' ', 'Enter', 'Tab'].includes(e.key)) { e.stopPropagation(); if (e.repeat && e.key !== 'Tab') e.preventDefault(); } });
     root.querySelector(footerActions.includes(action) ? '.plan-footer' : '.plan-tools').append(b); buttons[action] = b;
   }
+  const group = root.querySelector('#plan-group');
+  for(const name of ['all','infantry','cavalry','ranged','siege']){const option=document.createElement('option');option.value=name;group.append(option);}
+  group.addEventListener('keydown',e=>e.stopPropagation());
+  group.onchange=()=>{if(plan.active()&&!blocked()){g.setSelection(planningGroup(g,group.value));mode='select';update(true);}};
   document.body.append(root);
   const launch = document.createElement('button'); launch.type = 'button'; launch.id = 'btn-tactical-plan'; launch.className = 'icon-button';
   launch.innerHTML = '<svg aria-hidden="true"><use href="#i-banner"/></svg>';
@@ -97,10 +109,11 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
     if (!plan.active() || blocked()) return;
     if (action === 'resume') return finish(true);
     if (action === 'cancel') return finish(false);
-    if (action === 'clear') { plan.clear(); message = ''; }
+    if (action === 'undo') { plan.undo(); message = ''; }
+    else if (action === 'clear') { plan.clear(); message = ''; }
     else if (action === 'army' || action === 'hero') {
       const units = action === 'army' ? battleArmy(g) : g.hero?.alive ? [g.hero] : [];
-      g.setSelection(units); mode = 'select';
+      g.setSelection(units); if(action==='army')group.value='all'; mode = 'select';
     } else if (action === 'mark' || action === 'aegis') {
       message = t(plan.skill(action) ? 'plan.skillStaged' : 'plan.unavailable');
     } else { mode = action; message = ''; }
@@ -121,6 +134,8 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
     launch.title = launch.ariaLabel = t('plan.launch'); launch.disabled = !livePhase(g) || !!blocked();
     pauseLaunch.textContent = t('plan.title'); pauseLaunch.disabled = !livePhase(g);
     if (!active) return;
+    root.querySelector('.plan-group-label span').textContent=t('plan.group');
+    for(const option of group.options){const count=planningGroup(g,option.value).length;option.textContent=t('plan.group.'+option.value)+' ('+count+')';option.disabled=!count;}
     root.querySelector('strong').textContent = t('plan.title'); root.querySelector('.plan-help').textContent = t('plan.help');
     root.querySelector('.plan-summary').textContent = orders.map((o,i)=>{const target=g.units.find(u=>u.id===o.targetId);return (i+1)+'. '+t('plan.'+o.type)+(o.ids?' ×'+o.ids.length:'')+(o.type==='mark'&&target?' → '+t('unit.'+target.type+'.name'):'');}).join(' · ');
     root.querySelector('.plan-status').textContent = t('plan.status', { units: selected.length, orders: orders.length, mode: t('plan.' + mode) }) + (message ? ' · ' + message : '');
