@@ -74,6 +74,7 @@ export function installBattleActions(game,ui) {
     }
   }
   window.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){update(true);return;}
     if(e.key!=='F2'||e.repeat||e.ctrlKey||e.altKey||e.metaKey||e.target?.closest?.('input,select,textarea,[contenteditable=true]')||!battleCanAct(game,blocked()))return;
     e.preventDefault();battleAction(game,'army');update(true);
   });
