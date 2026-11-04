@@ -347,12 +347,12 @@ export class Renderer {
     }
 
     this.vfx?.draw(ctx,game,(x,y)=>this.screen(game,x,y),this.w,this.h,'front');
-    drawRescue(ctx,game,(x,y)=>this.screen(game,x,y));
     this.drawProjectiles(game, time);
     this.drawParticles(game, time);
     this.drawBuildGhost(game, time);
     this.drawAtmosphere(game, time);
     this.drawVisibility(game);
+    drawRescue(ctx,game,(x,y)=>this.screen(game,x,y));
     this.drawSelectionBox(game);
   }
 
