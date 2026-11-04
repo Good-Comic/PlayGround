@@ -40,9 +40,9 @@ export function installEarlyRaid(game, ui) {
   const setText = (node, value) => { if (node.textContent !== value) node.textContent = value; };
   let last = 0, signature = '';
   function update(force = false) {
-    const hidden = !canCallWave(game, blocked());
+    const hidden = !canCallWave(game) || blocked();
     if (hidden) control.cancel();
-    root.hidden = hidden;
+    if (root.hidden !== hidden) root.hidden = hidden;
     if (hidden) { signature = ''; return; }
     const armed = control.isArmed();
     const now = performance.now();
@@ -59,7 +59,10 @@ export function installEarlyRaid(game, ui) {
     root.classList.toggle('is-armed', armed);
   }
   for (const [action, b] of Object.entries(buttons)) {
-    b.addEventListener('keydown', e => { if (e.repeat && ['Enter', ' '].includes(e.key)) e.preventDefault(); });
+    b.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') e.stopPropagation();
+      if (e.repeat && ['Enter', ' '].includes(e.key)) e.preventDefault();
+    });
     b.onclick = () => {
       if (action === 'cancel') control.cancel();
       else if (action === 'arm') control.arm();
