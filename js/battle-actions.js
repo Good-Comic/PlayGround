@@ -32,7 +32,8 @@ export function battleAction(game,action,blocked=false) {
 export function installBattleActions(game,ui) {
   const root=document.createElement('section');root.id='battle-actions';root.hidden=true;
   root.innerHTML='<div class="battle-caption"></div><div class="battle-buttons"></div><p class="battle-hint" aria-live="polite"></p>';
-  document.querySelector('.center-controls').prepend(root);
+  const center=document.querySelector('.center-controls');center.prepend(root);
+  const text=(node,value)=>{if(node.textContent!==value)node.textContent=value;};
   const actions=['army','advance','guard','hero','mark','aegis'],buttons=new Map();
   for(const [i,action]of actions.entries()){
     const b=document.createElement('button');b.type='button';b.dataset.battleAction=action;
@@ -44,24 +45,24 @@ export function installBattleActions(game,ui) {
   const clearPreview=()=>{if(previewing){game.clearHeroSkillPreview();previewing=false;}};
   const update=(force=false)=>{
     const hidden=game.inMenu||ui.menuVisible||['boon','victory','defeat'].includes(game.phase)||blocked();
-    if(root.hidden!==!!hidden)root.hidden=!!hidden;if(hidden){clearPreview();signature='';return;}
+    if(root.hidden!==!!hidden){root.hidden=!!hidden;center.classList.toggle('battle-active',!hidden);}if(hidden){clearPreview();signature='';return;}
     const now=performance.now();if(!force&&now-lastPaint<90)return;lastPaint=now;
     const context=battleSkillContext(game),army=battleArmy(game),h=game.hero,active=battleCanAct(game),mode=game.orderMode;
-    const state=[document.documentElement.lang,army.length,active,h?.alive,Math.ceil(h?.markCd||0),Math.ceil(h?.aegisCd||0),game.heroControl,context.markTarget?.id,context.shieldCount,mode].join('|');
+    const state=[document.documentElement.lang,army.length,active,h?.alive,Math.ceil(h?.markCd||0),Math.ceil(h?.aegisCd||0),game.heroControl,!!context.markTarget,context.shieldCount,mode].join('|');
     if(state===signature)return;signature=state;
-    root.setAttribute('aria-label',t('battle.title'));root.querySelector('.battle-caption').textContent=t('battle.title');
+    if(root.getAttribute('aria-label')!==t('battle.title'))root.setAttribute('aria-label',t('battle.title'));text(root.querySelector('.battle-caption'),t('battle.title'));
     for(const action of actions){
       const b=buttons.get(action),skill=action==='mark'||action==='aegis',cd=Math.ceil(h?.[action+'Cd']||0);
-      b.disabled=!active||(action==='hero'?!h?.alive:skill?(!h?.alive||cd>0||(action==='mark'&&!context.markTarget)):!army.length);
+      const disabled=!active||(action==='hero'?!h?.alive:skill?(!h?.alive||cd>0||(action==='mark'&&!context.markTarget)):!army.length);if(b.disabled!==disabled)b.disabled=disabled;
       const label=skill?t('command.'+action):t('battle.'+action);
       const detail=skill?((action==='mark'?'Q':'E')+' · '+(cd>0?cd+'s':action==='mark'&&!context.markTarget?t('battle.noTarget'):action==='aegis'?t('battle.shieldCount',{count:context.shieldCount}):t('battle.ready'))):action==='hero'?(game.heroControl?t('battle.direct'):'Tab'):action==='army'?String(army.length)+' · F2':action==='advance'?'Shift+A':'G';
-      b.querySelector('.battle-label').textContent=label;b.querySelector('small').textContent=detail;
-      b.title=skill?t('command.'+action+'Tooltip'):t('battle.'+action+'Help');
-      b.setAttribute('aria-label',label+' — '+detail);
+      text(b.querySelector('.battle-label'),label);text(b.querySelector('small'),detail);
+      const title=skill?t('command.'+action+'Tooltip'):t('battle.'+action+'Help');if(b.title!==title)b.title=title;
+      const aria=label+' — '+detail;if(b.getAttribute('aria-label')!==aria)b.setAttribute('aria-label',aria);
       b.classList.toggle('is-ready',skill&&active&&h?.alive&&cd<=0&&(action!=='mark'||!!context.markTarget));
       b.classList.toggle('is-active',action==='advance'&&mode==='attackMove'||action==='guard'&&mode==='guard'||action==='hero'&&game.heroControl);
     }
-    root.querySelector('.battle-hint').textContent=!active?t('battle.paused'):mode==='attackMove'?t('battle.advanceHelp'):mode==='guard'?t('battle.guardHelp'):game.heroControl?t('battle.heroHelp'):t('battle.hint');
+    text(root.querySelector('.battle-hint'),!active?t('battle.paused'):mode==='attackMove'?t('battle.advanceHelp'):mode==='guard'?t('battle.guardHelp'):game.heroControl?t('battle.heroHelp'):t('battle.hint'));
   };
   for(const action of actions){
     const b=buttons.get(action);
