@@ -45,7 +45,7 @@ export function installStewardUI(game) {
     form.addEventListener('submit',e=>{e.preventDefault();save();close();});
     dialog.querySelector('#steward-close').onclick=close;
     dialog.querySelector('#steward-release').onclick=()=>{for(const u of game.units)if(u.alive&&u.team==='player'&&u.type==='villager'&&u.state==='idle')u.manualEconomy=false;};
-    dialog.querySelector('#steward-confirm').onclick=()=>{notice=!confirmPlan(game);render();if(notice){dialog.querySelector('#steward-notice').scrollIntoView({block:'nearest'});dialog.querySelector('#steward-close').focus({preventScroll:true});}};
+    dialog.querySelector('#steward-confirm').onclick=()=>{notice=!confirmPlan(game);render();if(notice){dialog.querySelector('#steward-notice').scrollIntoView({block:'nearest'});dialog.querySelector('#steward-close').focus();}};
   }
   button.onclick=hudButton.onclick=()=>{if(game.inMenu)return;wasPaused=game.paused;notice=false;game.paused=true;render();dialog.showModal();};
   dialog.addEventListener('cancel',e=>{e.preventDefault();close();});
