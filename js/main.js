@@ -102,6 +102,7 @@ function continueRun() {
   ui.setPlacement(null);
   game.inMenu = false;
   game.paused = false;
+  ui.tacticalPlanner?.restorePending();
   game.speed = ui.settings.gameSpeed;
   game.lastSignature = '';
   ui.lastSignature = '';

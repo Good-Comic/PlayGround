@@ -645,3 +645,12 @@ for(const [locale,note] of Object.entries({'zh-Hant':'標記沿用原生最近�
 for(const [locale,values] of Object.entries({"zh-Hant": ["復原上一步", "選取兵種", "全部戰士", "步兵", "騎兵", "遠程", "攻城"], "zh-Hans": ["撤销上一步", "选取兵种", "全部战士", "步兵", "骑兵", "远程", "攻城"], "en": ["Undo last", "Select troop group", "All fighters", "Infantry", "Cavalry", "Ranged", "Siege"], "ja": ["一つ戻す", "兵種を選択", "全兵士", "歩兵", "騎兵", "遠隔", "攻城"]})) ["undo","group","group.all","group.infantry","group.cavalry","group.ranged","group.siege"].forEach((key,i)=>STRINGS[locale]["plan."+key]=values[i]);
 
 for(const [locale,note] of Object.entries({'zh-Hant':'中鍵拖移鏡頭、滾輪縮放；英雄直控時鏡頭仍跟隨英雄。','zh-Hans':'中键拖移镜头、滚轮缩放；英雄直控时镜头仍跟随英雄。',en:'Middle-drag to pan, wheel to zoom. Hero direct control retains its follow camera.',ja:'中ボタンドラッグで移動、ホイールで拡縮。英雄直接操作中は従来の追従カメラです。'})) STRINGS[locale]['plan.help']+=' '+note;
+
+for(const [locale,values] of Object.entries({"zh-Hant": ["儲存計畫", "計畫與遊戲已儲存；保持暫停，尚未執行。", "儲存失敗；計畫仍保留，請勿關閉。", "已恢復 {restored} 項計畫、略過 {skipped} 項失效資料；保持暫停，請確認後執行。"], "zh-Hans": ["保存计划", "计划与游戏已保存；保持暂停，尚未执行。", "保存失败；计划仍保留，请勿关闭。", "已恢复 {restored} 项计划、略过 {skipped} 项失效数据；保持暂停，请确认后执行。"], "en": ["Save plan", "Plan and run saved. Still paused; no orders executed.", "Save failed. Your plan remains here; keep this window open.", "Restored {restored} planned orders; skipped {skipped} invalid entries. Still paused: review before executing."], "ja": ["計画を保存", "計画とゲームを保存しました。停止中、まだ未実行です。", "保存失敗。計画は保持中です。この画面を閉じないでください。", "計画 {restored} 件を復元、無効な {skipped} 件を省略。停止中です。確認して実行してください。"]})) ["save","saved","saveFailed","restored"].forEach((key,i)=>STRINGS[locale]["plan."+key]=values[i]);
+
+for(const [locale,from,to] of [
+ ['zh-Hant','取消／讀檔捨棄未執行計畫。','取消捨棄計畫；儲存計畫後，讀檔會停下來等待確認。'],
+ ['zh-Hans','取消／读档丢弃未执行计划。','取消丢弃计划；保存计划后，读档会停下来等待确认。'],
+ ['en','Cancel/load discards unissued plans.','Cancel discards plans. Save plan restores paused for review.'],
+ ['ja','取消・読込で未実行の計画を破棄。','取消で計画を破棄。保存した計画は読込後、停止して確認を待ちます。']
+]) STRINGS[locale]['plan.help']=STRINGS[locale]['plan.help'].replace(from,to);

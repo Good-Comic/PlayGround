@@ -1,3 +1,4 @@
+import { installPlanPersistence } from './tactical-plan-save.js';
 import { clamp } from './utils.js';
 import { t } from './i18n.js';
 import { battleArmy, battleSkillContext } from './battle-actions.js';
@@ -72,10 +73,11 @@ export function createTacticalPlan(g) {
 
 export function installTacticalPlanner(g, ui, renderer, canvas) {
   const plan = createTacticalPlan(g);
+  const persistence = installPlanPersistence(g, plan);
   const root = document.createElement('section'); root.id = 'tactical-planner'; root.hidden = true;
   root.innerHTML = '<strong></strong><p class="plan-help"></p><label class="plan-group-label"><span></span> <select id="plan-group"></select></label><p class="plan-summary"></p><div class="plan-tools"></div><p class="plan-status" aria-live="polite"></p><div class="plan-footer"></div>';
   const toolActions = ['army', 'hero', 'select', 'move', 'attackMove', 'attack', 'guard', 'mark', 'aegis'];
-  const footerActions = ['undo', 'clear', 'cancel', 'resume'];
+  const footerActions = ['undo', 'clear', 'save', 'cancel', 'resume'];
   const buttons = {};
   for (const action of [...toolActions, ...footerActions]) {
     const b = document.createElement('button'); b.type = 'button'; b.dataset.plan = action;
@@ -109,6 +111,7 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
   }
   function act(action) {
     if (!plan.active() || blocked()) return;
+    if (action === 'save') { message=t(ui.callbacks.save?.()?'plan.saved':'plan.saveFailed');update(true);return; }
     if (action === 'resume') return finish(true);
     if (action === 'cancel') return finish(false);
     if (action === 'undo') { plan.undo(); message = ''; }
@@ -201,5 +204,5 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
   canvas.addEventListener('pointercancel',()=>{drag=null;});
   window.addEventListener('blur',()=>{drag=null;});
   document.addEventListener('localechange', () => update(true)); update(true);
-  return { plan, begin, update };
+  return { plan, begin, update, restorePending() { const result=persistence.restorePending();if(result){mode='select';drag=null;message=t('plan.restored',result);ui.showPause(false);update(true);}return result; } };
 }
