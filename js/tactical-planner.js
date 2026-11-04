@@ -29,7 +29,7 @@ export function createTacticalPlan(g) {
       if (!valid() || !['mark', 'aegis'].includes(type) || !g.hero?.alive || g.hero[type + 'Cd'] > 0) return false;
       if (type === 'mark' && !battleSkillContext(g).markTarget) return false;
       orders = orders.filter(o => o.type !== type);
-      orders.push({ type }); return true;
+      orders.push({ type, targetId: type === 'mark' ? battleSkillContext(g).markTarget.id : null }); return true;
     },
     commit() {
       if (!valid()) { reset(); return null; }
@@ -64,7 +64,7 @@ export function createTacticalPlan(g) {
 export function installTacticalPlanner(g, ui, renderer, canvas) {
   const plan = createTacticalPlan(g);
   const root = document.createElement('section'); root.id = 'tactical-planner'; root.hidden = true;
-  root.innerHTML = '<strong></strong><p class="plan-help"></p><div class="plan-tools"></div><p class="plan-status" aria-live="polite"></p><div class="plan-footer"></div>';
+  root.innerHTML = '<strong></strong><p class="plan-help"></p><p class="plan-summary"></p><div class="plan-tools"></div><p class="plan-status" aria-live="polite"></p><div class="plan-footer"></div>';
   const toolActions = ['army', 'hero', 'select', 'move', 'attackMove', 'attack', 'guard', 'mark', 'aegis'];
   const footerActions = ['clear', 'cancel', 'resume'];
   const buttons = {};
@@ -75,7 +75,7 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
   }
   document.body.append(root);
   const launch = document.createElement('button'); launch.type = 'button'; launch.id = 'btn-tactical-plan'; launch.className = 'icon-button';
-  launch.innerHTML = '<svg aria-hidden="true"><use href="#i-flag"/></svg>';
+  launch.innerHTML = '<svg aria-hidden="true"><use href="#i-banner"/></svg>';
   ui.$('btn-pause').after(launch);
   const pauseLaunch = document.createElement('button'); pauseLaunch.type = 'button'; pauseLaunch.id = 'btn-pause-plan'; pauseLaunch.className = 'secondary-button small'; ui.$('btn-resume').after(pauseLaunch);
   let mode = 'select', drag = null, message = '', signature = '', last = 0;
@@ -116,12 +116,13 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
     if (!active) drag = null;
     const now = performance.now(); if (!force && now - last < 100) return; last = now;
     const selected = g.selection.filter(military), orders = plan.list();
-    const state = [document.documentElement.lang, active, mode, orders.length, selected.map(u=>u.id).join(','), Math.ceil(g.hero?.markCd||0), Math.ceil(g.hero?.aegisCd||0), message, livePhase(g), g.paused].join('|');
+    const state = [document.documentElement.lang, active, mode, orders.length, selected.map(u=>u.id).join(','), Math.ceil(g.hero?.markCd||0), Math.ceil(g.hero?.aegisCd||0), orders.map(o=>o.type+':'+o.targetId+':'+o.ids?.join(',')).join('|'), message, livePhase(g), g.paused].join('|');
     if (state === signature) return; signature = state;
     launch.title = launch.ariaLabel = t('plan.launch'); launch.disabled = !livePhase(g) || !!blocked();
     pauseLaunch.textContent = t('plan.title'); pauseLaunch.disabled = !livePhase(g);
     if (!active) return;
     root.querySelector('strong').textContent = t('plan.title'); root.querySelector('.plan-help').textContent = t('plan.help');
+    root.querySelector('.plan-summary').textContent = orders.map((o,i)=>{const target=g.units.find(u=>u.id===o.targetId);return (i+1)+'. '+t('plan.'+o.type)+(o.ids?' ×'+o.ids.length:'')+(o.type==='mark'&&target?' → '+t('unit.'+target.type+'.name'):'');}).join(' · ');
     root.querySelector('.plan-status').textContent = t('plan.status', { units: selected.length, orders: orders.length, mode: t('plan.' + mode) }) + (message ? ' · ' + message : '');
     for (const [action, b] of Object.entries(buttons)) {
       b.textContent = t('plan.' + action); b.setAttribute('aria-pressed', String(mode === action && !footerActions.includes(action)));
@@ -155,7 +156,7 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
       if (e.code==='Space' && e.shiftKey && !e.repeat && !e.ctrlKey && !e.altKey && !e.metaKey && !editable && !blocked() && livePhase(g)) { e.preventDefault(); e.stopImmediatePropagation(); begin(); }
       return;
     }
-    if (editable || (e.target?.closest?.('button') && [' ','Enter','Tab'].includes(e.key))) return;
+    if (e.ctrlKey || e.metaKey || e.altKey || editable || (e.target?.closest?.('button') && [' ','Enter','Tab'].includes(e.key))) return;
     e.preventDefault(); e.stopImmediatePropagation(); if (e.repeat) return;
     if (e.key==='Escape') finish(false);
     else if (e.code==='Space') finish(true);
@@ -169,13 +170,16 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
     const ctx=renderer.ctx; ctx.save(); ctx.strokeStyle='#92e4eb';ctx.fillStyle='#e8fcff';ctx.lineWidth=2;ctx.setLineDash([6,5]);ctx.font='bold 13px sans-serif';
     for(const [i,order] of plan.list().entries()) {
       const h=order.ids ? g.units.filter(u=>order.ids.includes(u.id)&&u.alive) : [g.hero].filter(Boolean);
-      const end=order.point ? g.screenPos(order.point.x,order.point.y) : h[0]&&g.screenPos(h[0].x,h[0].y);if(!end)continue;
+      const target=order.type==='mark'&&g.units.find(u=>u.id===order.targetId&&u.alive&&g.isVisible(u));
+      const end=order.point ? g.screenPos(order.point.x,order.point.y) : target ? g.screenPos(target.x,target.y) : h[0]&&g.screenPos(h[0].x,h[0].y);if(!end)continue;
       for(const u of h){const start=g.screenPos(u.x,u.y);ctx.beginPath();ctx.moveTo(start.x,start.y);ctx.lineTo(end.x,end.y);ctx.stroke();}
       ctx.beginPath();ctx.arc(end.x,end.y,12,0,Math.PI*2);ctx.stroke();ctx.fillText(String(i+1),end.x+15,end.y-4);
     }
     if(drag){const x=g.mouse.x,y=g.mouse.y;ctx.strokeRect(drag.x,drag.y,x-drag.x,y-drag.y);}
     ctx.restore();
   };
+  canvas.addEventListener('pointercancel',()=>{drag=null;});
+  window.addEventListener('blur',()=>{drag=null;});
   document.addEventListener('localechange', () => update(true)); update(true);
   return { plan, begin, update };
 }
