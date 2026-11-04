@@ -9,3 +9,5 @@ test('英雄護盾使用正式冷卻與效果，重按不重複 / hero shield us
 test('選軍不花費、未知命令與無軍隊保持狀態 / selection costs nothing and empty or unknown actions preserve state',()=>{const g=fresh();assert.equal(battleAction(g,'army'),true);assert.deepEqual(g.selection,battleArmy(g));const prior=g.selection;assert.equal(battleAction(g,'bad'),false);assert.equal(g.selection,prior);g.units=g.units.filter(u=>u.type==='villager'||u.hero);assert.equal(battleAction(g,'advance'),false);});
 
 test('選軍經原生切換離開英雄直控 / selecting army exits hero direct control through native toggle',()=>{const g=fresh();g.toggleHeroControl();assert.equal(g.heroControl,true);assert.equal(battleAction(g,'army'),true);assert.equal(g.heroControl,false);assert.ok(g.selection.every(u=>!u.hero));});
+
+test('快捷入口切換原生英雄直控，F2路徑切回軍隊 / hero shortcut toggles native direct control and army action returns',()=>{const g=fresh(),rng=g.rng.state;assert.equal(battleAction(g,'hero'),true);assert.equal(g.heroControl,true);assert.deepEqual(g.selection,[g.hero]);assert.equal(battleAction(g,'army'),true);assert.equal(g.heroControl,false);assert.equal(g.rng.state,rng);});

@@ -602,3 +602,10 @@ const BATTLE_ACTION_TEXT={
  ja:['戦闘指揮','全軍','進撃','護衛','使用可能','軍を選び右クリックで移動。進撃は途中の敵と交戦します。','村人・英雄・非戦闘ユニットを除く戦闘部隊を選択。','全軍を選択中：戦場をクリックして攻撃移動。Escで取消。','全軍を選択中：味方ユニットか建物をクリックして護衛。Escで取消。','一時停止中・命令不可']
 };
 for(const[locale,labels]of Object.entries(BATTLE_ACTION_TEXT))['title','army','advance','guard','ready','hint','armyHelp','advanceHelp','guardHelp','paused'].forEach((key,i)=>STRINGS[locale]['battle.'+key]=labels[i]);
+
+for(const[locale,labels]of Object.entries({
+ 'zh-Hant':['英雄','直控中','切換英雄直控：WASD 移動、Q 標記、E 神盾；F2 切回全軍指揮。'],
+ 'zh-Hans':['英雄','直控中','切换英雄直控：WASD 移动、Q 标记、E 神盾；F2 切回全军指挥。'],
+ en:['Hero','Direct','Toggle hero control: WASD moves, Q marks, E shields. F2 returns to army command.'],
+ ja:['英雄','直接操作','英雄操作を切替：WASD移動、Q標的、Eイージス。F2で軍の指揮に戻ります。']
+}))['hero','direct','heroHelp'].forEach((key,i)=>STRINGS[locale]['battle.'+key]=labels[i]);

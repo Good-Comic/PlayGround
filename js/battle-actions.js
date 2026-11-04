@@ -9,6 +9,7 @@ export function battleCanAct(game,blocked=false) {
 }
 export function battleAction(game,action,blocked=false) {
   if(!battleCanAct(game,blocked))return false;
+  if(action==='hero'){if(!game.hero?.alive)return false;game.toggleHeroControl();return true;}
   if(action==='mark'||action==='aegis') {
     if(!game.hero?.alive||game.hero[action+'Cd']>0)return false;
     game.command('hero:'+action);return true;
@@ -25,10 +26,10 @@ export function installBattleActions(game,ui) {
   const root=document.createElement('section');root.id='battle-actions';root.hidden=true;
   root.innerHTML='<div class="battle-caption"></div><div class="battle-buttons"></div><p class="battle-hint" aria-live="polite"></p>';
   document.querySelector('.center-controls').prepend(root);
-  const actions=['army','advance','guard','mark','aegis'],buttons=new Map();
+  const actions=['army','advance','guard','hero','mark','aegis'],buttons=new Map();
   for(const [i,action]of actions.entries()){
     const b=document.createElement('button');b.type='button';b.dataset.battleAction=action;
-    b.innerHTML=`<svg aria-hidden="true"><use href="#i-${['sword','flag','shield','flame','shield'][i]}"></use></svg><span class="battle-label"></span><small></small>`;
+    b.innerHTML=`<svg aria-hidden="true"><use href="#i-${['sword','flag','shield','speed','flame','shield'][i]}"></use></svg><span class="battle-label"></span><small></small>`;
     root.querySelector('.battle-buttons').append(b);buttons.set(action,b);
   }
   let signature='',lastPaint=0,previewing=false;
@@ -39,21 +40,21 @@ export function installBattleActions(game,ui) {
     if(root.hidden!==!!hidden)root.hidden=!!hidden;if(hidden){clearPreview();signature='';return;}
     const now=performance.now();if(!force&&now-lastPaint<90)return;lastPaint=now;
     const army=battleArmy(game),h=game.hero,active=battleCanAct(game),mode=game.orderMode;
-    const state=[document.documentElement.lang,army.length,active,h?.alive,Math.ceil(h?.markCd||0),Math.ceil(h?.aegisCd||0),mode].join('|');
+    const state=[document.documentElement.lang,army.length,active,h?.alive,Math.ceil(h?.markCd||0),Math.ceil(h?.aegisCd||0),game.heroControl,mode].join('|');
     if(state===signature)return;signature=state;
     root.setAttribute('aria-label',t('battle.title'));root.querySelector('.battle-caption').textContent=t('battle.title');
     for(const action of actions){
       const b=buttons.get(action),skill=action==='mark'||action==='aegis',cd=Math.ceil(h?.[action+'Cd']||0);
-      b.disabled=!active||(skill?(!h?.alive||cd>0):!army.length);
+      b.disabled=!active||(action==='hero'?!h?.alive:skill?(!h?.alive||cd>0):!army.length);
       const label=skill?t('command.'+action):t('battle.'+action);
-      const detail=skill?((action==='mark'?'Q':'E')+' · '+(cd>0?cd+'s':t('battle.ready'))):action==='army'?String(army.length)+' · F2':action==='advance'?'Shift+A':'G';
+      const detail=skill?((action==='mark'?'Q':'E')+' · '+(cd>0?cd+'s':t('battle.ready'))):action==='hero'?(game.heroControl?t('battle.direct'):'Tab'):action==='army'?String(army.length)+' · F2':action==='advance'?'Shift+A':'G';
       b.querySelector('.battle-label').textContent=label;b.querySelector('small').textContent=detail;
       b.title=skill?t('command.'+action+'Tooltip'):t('battle.'+action+'Help');
       b.setAttribute('aria-label',label+' — '+detail);
       b.classList.toggle('is-ready',skill&&active&&h?.alive&&cd<=0);
-      b.classList.toggle('is-active',action==='advance'&&mode==='attackMove'||action==='guard'&&mode==='guard');
+      b.classList.toggle('is-active',action==='advance'&&mode==='attackMove'||action==='guard'&&mode==='guard'||action==='hero'&&game.heroControl);
     }
-    root.querySelector('.battle-hint').textContent=!active?t('battle.paused'):mode==='attackMove'?t('battle.advanceHelp'):mode==='guard'?t('battle.guardHelp'):t('battle.hint');
+    root.querySelector('.battle-hint').textContent=!active?t('battle.paused'):mode==='attackMove'?t('battle.advanceHelp'):mode==='guard'?t('battle.guardHelp'):game.heroControl?t('battle.heroHelp'):t('battle.hint');
   };
   for(const action of actions){
     const b=buttons.get(action);

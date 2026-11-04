@@ -825,11 +825,11 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 .steward-dialog .steward-notice { border-inline-start: 3px solid #d5ad61; padding: 8px; color: #ffe0ad; }
 
 /* 作戰快捷列 / Battle action strip */
-#battle-actions { width: 410px; max-width: calc(100vw - 24px); padding: 7px; border: 1px solid #ad8b4d; background: linear-gradient(135deg,#262a2ded,#171917f5); box-shadow: 0 4px 22px #0009; color:#f1dfb9; }
+#battle-actions { width: 480px; max-width: calc(100vw - 24px); padding: 7px; border: 1px solid #ad8b4d; background: linear-gradient(135deg,#262a2ded,#171917f5); box-shadow: 0 4px 22px #0009; color:#f1dfb9; }
 #battle-actions[hidden] { display:none !important; }
 .center-controls:has(#battle-actions:not([hidden])) { left:calc(50% + 65px); }
 .battle-caption { font: 10px var(--serif); letter-spacing:1px; margin-bottom:5px; }
-.battle-buttons { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; }
+.battle-buttons { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:5px; }
 .battle-buttons button { display:flex; align-items:center; flex-direction:column; gap:3px; min-height:62px; padding:5px 2px; border:1px solid #796443; background:#25221d; color:#eed7a6; cursor:pointer; }
 .battle-buttons button:hover:not(:disabled),.battle-buttons button:focus-visible { border-color:#ffe1a2; background:#4a3d28; outline:2px solid #b8dce4; outline-offset:1px; }
 .battle-buttons button svg { width:18px;height:18px; }
@@ -839,4 +839,4 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 .battle-buttons .is-active { border-color:#f2cf77; background:#53452b; }
 .battle-buttons button:disabled { opacity:.48; cursor:default; }
 .battle-hint { margin:5px 0 0; font-size:10px; line-height:1.25; min-height:13px; }
-@media(max-width:1150px) { #battle-actions { position:fixed; bottom:220px; left:50%; transform:translateX(-50%); width:min(410px,calc(100vw - 24px)); } .center-controls:has(#battle-actions:not([hidden])) {left:50%;} }
+@media(max-width:1150px) { #battle-actions { position:fixed; bottom:220px; left:50%; transform:translateX(-50%); width:min(480px,calc(100vw - 24px)); } .center-controls:has(#battle-actions:not([hidden])) {left:50%;} }
