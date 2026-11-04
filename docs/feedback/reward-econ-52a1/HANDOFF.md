@@ -49,6 +49,10 @@ Automatic worker training previously required both native affordability and food
 
 Waves two and three clear at239.2739 and375.4858 simulation seconds. Native claims select war_banner, citizen_arms and deflecting_shields. This is a segmented cross-version continuation of the prior native wave-one save, not one uninterrupted fresh campaign. Wave-four defeat is retained without clearing enemies, skipping waves, resource injection or difficulty changes. Completed browser runs report no page errors.
 
+原始 villager-before.tap 以無損 .tap.gz 保存，解壓 SHA 見 raw-log-provenance.json，避免原始日誌空白觸發程式碼格式檢查。
+
+The original villager-before.tap is preserved losslessly as .tap.gz; raw-log-provenance.json records the decompressed hash, avoiding raw-log whitespace warnings in source checks.
+
 保留三類測試自身的失敗：新增 Node 測試首次漏設 DOM 夾具、QA 腳本語法錯誤；精確50食物假設漏算原生農田收入；第四波斷言誤以為持牌讀檔會保留取得順序。診斷證明原有 restore 按目錄排序已持牌，但候選順序與鍵盤領取正常；以卡牌集合驗證修正夾具，沒有修改遊戲來讓測試變綠。這不構成完整 Save/Load 嚴格等價 PASS。
 
 Fixture/tool failures remain: missing DOM initialization and QA script syntax, an exact-food assertion that overlooked native farm income, and a claim assertion assuming acquisition-order preservation on load. Diagnosis shows existing restore catalogs owned cards while preserving offers and native keyboard claims. The assertion now checks card membership; the game was not changed to satisfy it. This does not certify strict full-state Save/Load equivalence.
