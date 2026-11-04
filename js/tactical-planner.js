@@ -89,11 +89,12 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
   document.body.append(root);
   const launch = document.createElement('button'); launch.type = 'button'; launch.id = 'btn-tactical-plan'; launch.className = 'icon-button';
   launch.innerHTML = '<svg aria-hidden="true"><use href="#i-banner"/></svg>';
-  ui.$('wave-clock').after(launch);
+  ui.$('wave-kicker').closest('.wave-copy').before(launch);
   const pauseLaunch = document.createElement('button'); pauseLaunch.type = 'button'; pauseLaunch.id = 'btn-pause-plan'; pauseLaunch.className = 'secondary-button small'; ui.$('btn-resume').after(pauseLaunch);
   let mode = 'select', drag = null, message = '', signature = '', last = 0;
   const blocked = () => ui.settingsOpen || ui.gmOpen || ui.boonsOpen || ui.menuVisible || !ui.el.howto.hidden || !!document.querySelector('dialog[open]');
   function begin() {
+    if (plan.active()) return;
     if (blocked() || !livePhase(g)) return;
     if (!g.paused) g.togglePause();
     if (!plan.begin()) return;
