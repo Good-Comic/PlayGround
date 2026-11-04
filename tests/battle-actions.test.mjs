@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 globalThis.document={documentElement:{dataset:{}},dispatchEvent(){}};
-const{Game}=await import('../js/game.js');const{battleArmy,battleAction}=await import('../js/battle-actions.js');
+const{Game}=await import('../js/game.js');const{battleArmy,battleAction,battleSkillContext}=await import('../js/battle-actions.js');
 const fresh=()=>{const g=new Game();g.newRun(42,{civ:'CHN'});g.start();return g;};
 test('全軍排除村民、英雄、敵軍與死亡單位 / army excludes workers hero enemies and dead units',()=>{const g=fresh(),army=battleArmy(g);assert.ok(army.length);assert.ok(army.every(u=>u.team==='player'&&u.type!=='villager'&&!u.hero));const dead={...army[0],alive:false,id:999};g.units.push(dead);assert.ok(!battleArmy(g).includes(dead));});
 test('推進與護衛沿用原生命令且不搶村民 / advance and guard reuse native commands without worker orders',()=>{for(const [action,mode]of[['advance','attackMove'],['guard','guard']]){const g=fresh(),workers=g.units.filter(u=>u.type==='villager'),before=workers.map(u=>[u.state,u.gatherTarget,u.manualEconomy]),rng=g.rng.state,stock={...g.resources};assert.equal(battleAction(g,action),true);assert.equal(g.orderMode,mode);assert.deepEqual(workers.map(u=>[u.state,u.gatherTarget,u.manualEconomy]),before);assert.equal(g.rng.state,rng);assert.deepEqual(g.resources,stock);}});
@@ -11,3 +11,5 @@ test('選軍不花費、未知命令與無軍隊保持狀態 / selection costs n
 test('選軍經原生切換離開英雄直控 / selecting army exits hero direct control through native toggle',()=>{const g=fresh();g.toggleHeroControl();assert.equal(g.heroControl,true);assert.equal(battleAction(g,'army'),true);assert.equal(g.heroControl,false);assert.ok(g.selection.every(u=>!u.hero));});
 
 test('快捷入口切換原生英雄直控，F2路徑切回軍隊 / hero shortcut toggles native direct control and army action returns',()=>{const g=fresh(),rng=g.rng.state;assert.equal(battleAction(g,'hero'),true);assert.equal(g.heroControl,true);assert.deepEqual(g.selection,[g.hero]);assert.equal(battleAction(g,'army'),true);assert.equal(g.heroControl,false);assert.equal(g.rng.state,rng);});
+
+test('技能預覽使用正式範圍與可見性，無目標不施放 / context uses native range/visibility and no-target casts do nothing',()=>{const g=fresh(),rng=g.rng.state,context=battleSkillContext(g);assert.equal(context.markTarget,null);assert.ok(context.shieldCount>=1);assert.equal(battleAction(g,'mark'),false);assert.equal(g.hero.markCd,0);assert.equal(g.rng.state,rng);const enemy=g.spawnUnit('militia',g.hero.x+2,g.hero.y,'enemy');g.isVisible=()=>false;assert.equal(battleSkillContext(g).markTarget,null);g.isVisible=()=>true;assert.equal(battleSkillContext(g).markTarget,enemy);assert.equal(battleAction(g,'mark'),true);assert.ok(enemy.marked>0);});

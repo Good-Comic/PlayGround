@@ -609,3 +609,8 @@ for(const[locale,labels]of Object.entries({
  en:['Hero','Direct','Toggle hero control: WASD moves, Q marks, E shields. F2 returns to army command.'],
  ja:['英雄','直接操作','英雄操作を切替：WASD移動、Q標的、Eイージス。F2で軍の指揮に戻ります。']
 }))['hero','direct','heroHelp'].forEach((key,i)=>STRINGS[locale]['battle.'+key]=labels[i]);
+
+for(const[locale,labels]of Object.entries({
+ 'zh-Hant':['等待目標','可護 {count} 人'], 'zh-Hans':['等待目标','可护 {count} 人'],
+ en:['No target','Shield {count}'], ja:['対象なし','{count}人を保護']
+}))['noTarget','shieldCount'].forEach((key,i)=>STRINGS[locale]['battle.'+key]=labels[i]);
