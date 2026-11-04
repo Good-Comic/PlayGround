@@ -38,6 +38,8 @@ export function installBattleActions(game,ui) {
   for(const [i,action]of actions.entries()){
     const b=document.createElement('button');b.type='button';b.dataset.battleAction=action;
     b.innerHTML=`<svg aria-hidden="true"><use href="#i-${['sword','flag','shield','speed','flame','shield'][i]}"></use></svg><span class="battle-label"></span><small></small>`;
+    // 原生按鈕啟用與焦點移動優先，不讓 Space/Tab 被全域戰鬥快捷鍵攔截。
+    b.addEventListener('keydown',e=>{if([' ','Enter','Tab'].includes(e.key)){e.stopPropagation();if(e.repeat&&e.key!=='Tab')e.preventDefault();}});
     root.querySelector('.battle-buttons').append(b);buttons.set(action,b);
   }
   let signature='',lastPaint=0,previewing=false;
