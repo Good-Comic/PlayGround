@@ -1211,7 +1211,7 @@ export class Game {
         timers.villager = 0;
         const tc = this.getTownCenter();
         const villagers = this.units.filter(u => u.alive && u.team === 'player' && u.type === 'villager').length;
-        if (tc && !tc.queue.length && villagers < this.stewards.villagers && this.hasPopulationRoom('villager') && this.resources.food >= 70 && canSpend(this,this.unitCost('villager'))) {
+        if (tc && !tc.queue.length && villagers < this.stewards.villagers && this.hasPopulationRoom('villager') && canSpend(this,this.unitCost('villager'))) {
           this.trainUnit(tc, 'villager', true);
         }
       }
