@@ -1,3 +1,4 @@
+import { installEarlyRaid } from './early-raid.js';
 import { installWorkshopUI } from './workshop-expedition.js';
 import { installExpeditionUI } from './expeditions.js';
 import { installBattleActions } from './battle-actions.js';
@@ -386,3 +387,5 @@ ui.battleActions=installBattleActions(game,ui);
 installExpeditionUI(game,ui);
 
 installWorkshopUI(game,ui);
+
+ui.earlyRaid=installEarlyRaid(game,ui);

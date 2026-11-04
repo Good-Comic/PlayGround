@@ -854,3 +854,13 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 @media(min-width:761px){#rescue-expedition{max-height:calc(100vh - 380px);overflow:auto;}}
 
 @media(min-width:761px) and (max-width:1250px){#rescue-expedition{top:130px;max-height:calc(100vh - 510px);}}
+
+#early-raid { position: fixed; top: 136px; left: 50%; transform: translateX(-50%); width: 360px; padding: 8px 10px; background: #251e14f2; border: 1px solid #a98b55; color: #e9d5a6; z-index: 6; font-size: 12px; }
+#early-raid p { margin: 0 0 6px; line-height: 1.35; }
+#early-raid > div { display: flex; gap: 6px; }
+#early-raid button { flex: 1; padding: 6px; border: 1px solid #a98b55; background: #493b22; color: #ffe6b2; cursor: pointer; font: inherit; }
+#early-raid button:focus-visible { outline: 2px solid #fff1c7; outline-offset: 2px; }
+#early-raid [data-raid=confirm] { background: #733e28; border-color: #e8a76f; }
+#early-raid [hidden] { display: none; }
+@media (min-width: 761px) and (max-width: 1250px) { #early-raid { width: 290px; } }
+@media (max-width: 760px) { #early-raid { top: 265px; left: 8px; transform: none; width: 180px; font-size: 11px; padding: 6px; } }

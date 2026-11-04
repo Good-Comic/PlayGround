@@ -630,3 +630,10 @@ for(const[l,a]of Object.entries({
 }))['title','help','borrow','remaining','done','started'].forEach((k,i)=>STRINGS[l]['workshop.'+k]=a[i]);
 
 for(const[l,v]of Object.entries({'zh-Hant':'備戰中：領取就開始倒數，可先抵達工坊、等交戰前夕再付款。','zh-Hans':'备战中：领取就开始倒计时，可先抵达工坊、等交战前夕再付款。',en:'Preparation: collection starts the timer. Reach the workshop now and pay nearer combat.',ja:'準備中：受取と同時に残り時間が減ります。先に到着し、交戦前に購入できます。'}))STRINGS[l]['workshop.prepWarning']=v;
+
+for (const [locale, values] of Object.entries({
+  'zh-Hant': ['準備好了？由你決定何時迎戰。', '提前迎戰…', '繼續備戰', '確認迎戰', '放棄剩餘 {seconds} 秒備戰，現在開戰。敵軍、獎勵與波次規則不變；沒有額外獎勵。'],
+  'zh-Hans': ['准备好了？由你决定何时迎战。', '提前迎战…', '继续备战', '确认迎战', '放弃剩余 {seconds} 秒备战，现在开战。敌军、奖励与波次规则不变；没有额外奖励。'],
+  en: ['Ready? Choose when to face the raid.', 'Call raid early…', 'Keep preparing', 'Confirm raid', 'Give up {seconds}s of preparation and begin now. Same enemies, rewards and wave rules; no bonus.'],
+  ja: ['準備完了？開戦の時を選べます。', '早めに迎撃…', '準備を続ける', '迎撃を確定', '残り {seconds} 秒の準備を放棄して開戦。敵・報酬・襲撃ルールは同じで追加報酬はありません。'],
+})) ['help', 'arm', 'cancel', 'confirm', 'warning'].forEach((key, i) => STRINGS[locale]['raid.' + key] = values[i]);
