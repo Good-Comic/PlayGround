@@ -1,3 +1,4 @@
+import { clamp } from './utils.js';
 import { t } from './i18n.js';
 import { battleArmy, battleSkillContext } from './battle-actions.js';
 
@@ -150,13 +151,16 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
   }
   canvas.addEventListener('pointerdown', e => {
     if (!canvasEvent(e)) return;
+    if (e.button === 1) { drag={pan:true,x:e.clientX,y:e.clientY};canvas.setPointerCapture?.(e.pointerId);return; }
     if (e.button !== 0) { mode = 'select'; update(true); return; }
     const r = canvas.getBoundingClientRect(); drag = { x: e.clientX-r.left, y: e.clientY-r.top, shift: e.shiftKey };
     canvas.setPointerCapture?.(e.pointerId);
   }, true);
+  canvas.addEventListener('pointermove',e=>{if(!plan.active()||!drag?.pan||blocked())return;e.preventDefault();e.stopImmediatePropagation();const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag={pan:true,x:e.clientX,y:e.clientY};g.camera.targetX=clamp(g.camera.targetX-dx/g.camera.zoom,-g.world.size*12,g.world.size*12);g.camera.targetY=clamp(g.camera.targetY-dy/g.camera.zoom,-200,g.world.size*34);g.camera.x=g.camera.targetX;g.camera.y=g.camera.targetY;},true);
+  canvas.addEventListener('wheel',e=>{if(!plan.active()||blocked())return;e.preventDefault();e.stopImmediatePropagation();g.camera.targetZoom=clamp(g.camera.targetZoom*(e.deltaY>0?.92:1.08),.78,1.6);},{capture:true,passive:false});
   window.addEventListener('pointerup', e => {
     if (!drag || !canvasEvent(e)) return;
-    const from = drag; drag = null; const r = canvas.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top;
+    const from = drag; drag = null; if(from.pan)return; const r = canvas.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top;
     if (mode === 'select') {
       if (Math.hypot(x-from.x,y-from.y)>5) g.selectBox(Math.min(from.x,x),Math.min(from.y,y),Math.abs(x-from.x),Math.abs(y-from.y),from.shift);
       else g.selectAt(x,y,from.shift);
@@ -190,7 +194,7 @@ export function installTacticalPlanner(g, ui, renderer, canvas) {
       for(const u of h){const start=g.screenPos(u.x,u.y);ctx.beginPath();ctx.moveTo(start.x,start.y);ctx.lineTo(end.x,end.y);ctx.stroke();}
       ctx.beginPath();ctx.arc(end.x,end.y,12,0,Math.PI*2);ctx.stroke();ctx.fillText(String(i+1),end.x+15,end.y-4);
     }
-    if(drag){const x=g.mouse.x,y=g.mouse.y;ctx.strokeRect(drag.x,drag.y,x-drag.x,y-drag.y);}
+    if(drag&&!drag.pan){const x=g.mouse.x,y=g.mouse.y;ctx.strokeRect(drag.x,drag.y,x-drag.x,y-drag.y);}
     ctx.restore();
   };
   canvas.addEventListener('pointercancel',()=>{drag=null;});

@@ -643,3 +643,5 @@ for(const [locale,values] of Object.entries({"zh-Hant": ["戰術布令・時間�
 for(const [locale,note] of Object.entries({'zh-Hant':'標記沿用原生最近可見目標。','zh-Hans':'标记沿用原生最近可见目标。',en:'Mark uses the native nearest visible target.',ja:'標的は従来通り最も近い視認可能な敵です。'})) STRINGS[locale]['plan.help']+=' '+note;
 
 for(const [locale,values] of Object.entries({"zh-Hant": ["復原上一步", "選取兵種", "全部戰士", "步兵", "騎兵", "遠程", "攻城"], "zh-Hans": ["撤销上一步", "选取兵种", "全部战士", "步兵", "骑兵", "远程", "攻城"], "en": ["Undo last", "Select troop group", "All fighters", "Infantry", "Cavalry", "Ranged", "Siege"], "ja": ["一つ戻す", "兵種を選択", "全兵士", "歩兵", "騎兵", "遠隔", "攻城"]})) ["undo","group","group.all","group.infantry","group.cavalry","group.ranged","group.siege"].forEach((key,i)=>STRINGS[locale]["plan."+key]=values[i]);
+
+for(const [locale,note] of Object.entries({'zh-Hant':'中鍵拖移鏡頭、滾輪縮放；英雄直控時鏡頭仍跟隨英雄。','zh-Hans':'中键拖移镜头、滚轮缩放；英雄直控时镜头仍跟随英雄。',en:'Middle-drag to pan, wheel to zoom. Hero direct control retains its follow camera.',ja:'中ボタンドラッグで移動、ホイールで拡縮。英雄直接操作中は従来の追従カメラです。'})) STRINGS[locale]['plan.help']+=' '+note;
