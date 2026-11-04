@@ -1,0 +1,35 @@
+✖ 自動補員可用正式費用，不額外要求未設定庫存 / automatic workers use native cost without an unconfigured stock threshold (21.658421ms)
+✔ 明確預留仍阻擋並在足額後恢復 / explicit reserve blocks and resumes at cost plus reserve (10.372344ms)
+✔ 升級預留仍優先 / age research reserve retains priority (6.897421ms)
+✔ 不足費用與停用自動經濟不生產 / insufficient cost and disabled economy never produce (16.035567ms)
+✔ 手動佇列與村民目標優先 / existing manual queue and worker target retain priority (15.630238ms)
+✔ 暫停與存讀檔不繞過計時或預留 / pause and save load retain timers and reserve (13.933144ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3444.80224
+
+✖ failing tests:
+
+test at tests/villager-budget.test.mjs:5:1
+✖ 自動補員可用正式費用，不額外要求未設定庫存 / automatic workers use native cost without an unconfigured stock threshold (21.658421ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/villager-budget.test.mjs:5:200)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,15 @@
+/workspace/reward-econ-52a1/browser.cjs:4
+try{b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});c=await b.newContext({viewport:{width:1366,height:900},recordVideo:{dir:out,size:{width:684,height:450}}});p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto('http://127.0.0.1:8130');await p.waitForFunction(()=>window.ageOfAsh?.ui?.playtestReady);const save=JSON.parse(fs.readFileSync('/workspace/PlayGround/docs/feedback/confirm-83d4/evidence/native-wave1-pending.json'));await p.evaluate(save=>localStorage.setItem('riftwatch.playtest.v227.run.v1',JSON.stringify(save)),save);await p.reload();await p.waitForFunction(()=>window.ageOfAsh?.ui?.playtestReady);await p.locator('#btn-continue').click();record('native-load-reward',await p.evaluate(s=>JSON.stringify(ageOfAsh.game.boonChoices.map(x=>x.id))===JSON.stringify(s.boonChoices)&&(ageOfAsh.game.rng.state>>>0)===(s.rngState>>>0)),save));await p.locator('#boon-grid .boon-card').nth(0).click();await p.locator('#btn-claim').click();await p.keyboard.press('Escape');await p.locator('#btn-stewards').click();const model=()=>p.evaluate(()=>{const g=ageOfAsh.game;return JSON.stringify({time:g.time,rng:g.rng.state,stock:g.resources,prefs:g.stewards,owned:g.boons.map(x=>x.id)})});let before=await model();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+
+SyntaxError: Unexpected token ')'
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at Module._compile (node:internal/modules/cjs/loader:1846:20)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.19.0

@@ -1,0 +1,30 @@
+file:///workspace/PlayGround/js/i18n.js:41
+  document.documentElement.lang = next;
+  ^
+
+ReferenceError: document is not defined
+    at setLocale (file:///workspace/PlayGround/js/i18n.js:41:3)
+    at file:///workspace/PlayGround/js/i18n.js:80:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0
+✖ tests/gather-preview.test.mjs (156.996012ms)
+✔ tests/plan-confirmation.test.mjs (475.379825ms)
+✔ tests/steward-recovery.test.mjs (3700.587273ms)
+✔ tests/stewards.test.mjs (3859.999542ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4024.499681
+
+✖ failing tests:
+
+test at tests/gather-preview.test.mjs:1:1
+✖ tests/gather-preview.test.mjs (156.996012ms)
+  'test failed'
