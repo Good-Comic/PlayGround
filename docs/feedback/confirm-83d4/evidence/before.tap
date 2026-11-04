@@ -1,0 +1,131 @@
+TAP version 13
+# Subtest: 村民損失後確認不得繞過最低村民條件 / confirmation after a casualty must respect minimum worker condition
+not ok 1 - 村民損失後確認不得繞過最低村民條件 / confirmation after a casualty must respect minimum worker condition
+  ---
+  duration_ms: 34.591179
+  type: 'test'
+  location: '/workspace/PlayGround/tests/plan-confirmation.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/plan-confirmation.test.mjs:6:199)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 模擬更新撤回失效的村民、數量與預算提案 / simulation withdraws worker count and budget proposals that became invalid
+not ok 2 - 模擬更新撤回失效的村民、數量與預算提案 / simulation withdraws worker count and budget proposals that became invalid
+  ---
+  duration_ms: 13.841385
+  type: 'test'
+  location: '/workspace/PlayGround/tests/plan-confirmation.test.mjs:7:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    workers
+    + actual - expected
+    
+    + {
+    +   kind: 'building',
+    +   type: 'house'
+    + }
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    kind: 'building'
+    type: 'house'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/plan-confirmation.test.mjs:7:370)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: 停用或時代條件失效的舊提案不能直接執行 / legacy disabled or age-ineligible proposal cannot execute
+not ok 3 - 停用或時代條件失效的舊提案不能直接執行 / legacy disabled or age-ineligible proposal cannot execute
+  ---
+  duration_ms: 9.298906
+  type: 'test'
+  location: '/workspace/PlayGround/tests/plan-confirmation.test.mjs:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    off
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/plan-confirmation.test.mjs:8:271)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 補回村民後重新提出並正常付費，只建一次 / replacement workers allow a fresh proposal and native payment once
+ok 4 - 補回村民後重新提出並正常付費，只建一次 / replacement workers allow a fresh proposal and native payment once
+  ---
+  duration_ms: 8.410642
+  type: 'test'
+  ...
+# Subtest: 自動計畫門檻不鎖住手動建造 / automatic plan conditions do not gate manual construction
+ok 5 - 自動計畫門檻不鎖住手動建造 / automatic plan conditions do not gate manual construction
+  ---
+  duration_ms: 17.901582
+  type: 'test'
+  ...
+# Subtest: 過期提案讀檔後仍受驗證，暫停不自動執行 / restored stale proposals revalidate and pause never executes them
+not ok 6 - 過期提案讀檔後仍受驗證，暫停不自動執行 / restored stale proposals revalidate and pause never executes them
+  ---
+  duration_ms: 34.635035
+  type: 'test'
+  location: '/workspace/PlayGround/tests/plan-confirmation.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/plan-confirmation.test.mjs:11:363)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 2
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 287.909569

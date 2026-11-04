@@ -1,0 +1,341 @@
+TAP version 13
+# Subtest: 自動建築村民完工後仍屬總管並恢復採集 / auto builders remain under steward control after completing construction
+ok 1 - 自動建築村民完工後仍屬總管並恢復採集 / auto builders remain under steward control after completing construction
+  ---
+  duration_ms: 191.498097
+  type: 'test'
+  ...
+# Subtest: 玩家手動施工完成後保留手動優先，停止也不可被總管覆蓋 / manual construction and stop retain their manual priority
+ok 2 - 玩家手動施工完成後保留手動優先，停止也不可被總管覆蓋 / manual construction and stop retain their manual priority
+  ---
+  duration_ms: 125.289867
+  type: 'test'
+  ...
+# Subtest: 自動施工中存讀檔後不變手動鎖定，後續相同輸入可重現 / save/load retains automatic builder authority and same inputs remain reproducible
+ok 3 - 自動施工中存讀檔後不變手動鎖定，後續相同輸入可重現 / save/load retains automatic builder authority and same inputs remain reproducible
+  ---
+  duration_ms: 413.190332
+  type: 'test'
+  ...
+# Subtest: 條件未達先等待，手動佇列佔用人口後按原生流程建屋 / wait above threshold then build when native manual queues reserve room
+ok 4 - 條件未達先等待，手動佇列佔用人口後按原生流程建屋 / wait above threshold then build when native manual queues reserve room
+  ---
+  duration_ms: 33.060397
+  type: 'test'
+  ...
+# Subtest: 施工中的人口供給避免同條件重複排屋 / capacity already under construction prevents duplicate threshold-triggered houses
+ok 5 - 施工中的人口供給避免同條件重複排屋 / capacity already under construction prevents duplicate threshold-triggered houses
+  ---
+  duration_ms: 7.350074
+  type: 'test'
+  ...
+# Subtest: 確認前重查人口條件，人工建屋解除需求後不再誤建 / confirmation rechecks threshold after manual housing removes demand
+ok 6 - 確認前重查人口條件，人工建屋解除需求後不再誤建 / confirmation rechecks threshold after manual housing removes demand
+  ---
+  duration_ms: 7.769273
+  type: 'test'
+  ...
+# Subtest: 舊計畫與空白條件沿用原流程 / legacy and blank conditions preserve existing plans
+ok 7 - 舊計畫與空白條件沿用原流程 / legacy and blank conditions preserve existing plans
+  ---
+  duration_ms: 16.665225
+  type: 'test'
+  ...
+# Subtest: 預估套用真實文明規則，排除敵軍與已毀施工且不改實際人口 / forecast honors real civilization caps and excludes enemy/dead construction without changing actual cap
+ok 8 - 預估套用真實文明規則，排除敵軍與已毀施工且不改實際人口 / forecast honors real civilization caps and excludes enemy/dead construction without changing actual cap
+  ---
+  duration_ms: 11.031969
+  type: 'test'
+  ...
+# Subtest: 零門檻與存讀檔保留，暫停不執行新計畫 / zero threshold and save/load persist; pause does not run plans
+ok 9 - 零門檻與存讀檔保留，暫停不執行新計畫 / zero threshold and save/load persist; pause does not run plans
+  ---
+  duration_ms: 26.859435
+  type: 'test'
+  ...
+# Subtest: 哥德半格人口門檻按原生佇列觸發並保存 / Goth half-population threshold uses native queues and persists
+ok 10 - 哥德半格人口門檻按原生佇列觸發並保存 / Goth half-population threshold uses native queues and persists
+  ---
+  duration_ms: 17.418338
+  type: 'test'
+  ...
+# Subtest: 原生13秒生產週期不讓先建軍營永久霸佔 / native13-second production cycles do not starve later producers
+ok 11 - 原生13秒生產週期不讓先建軍營永久霸佔 / native13-second production cycles do not starve later producers
+  ---
+  duration_ms: 451.69244
+  type: 'test'
+  ...
+# Subtest: 讀檔後沿用下一座建築，未找到原建築時安全回到既有順序 / cursor survives save/load and safely falls back if prior producer is gone
+ok 12 - 讀檔後沿用下一座建築，未找到原建築時安全回到既有順序 / cursor survives save/load and safely falls back if prior producer is gone
+  ---
+  duration_ms: 15.377889
+  type: 'test'
+  ...
+# Subtest: 手動佇列、停用及預算阻塞會跳過，恢復後可再輪到 / manual disabled and budget gates are skipped without losing eventual recovery
+ok 13 - 手動佇列、停用及預算阻塞會跳過，恢復後可再輪到 / manual disabled and budget gates are skipped without losing eventual recovery
+  ---
+  duration_ms: 6.595888
+  type: 'test'
+  ...
+# Subtest: 無可生產時不動游標、費用或RNG；舊存檔可恢復 / no eligible producer preserves cursor costs and RNG; legacy saves restore
+ok 14 - 無可生產時不動游標、費用或RNG；舊存檔可恢復 / no eligible producer preserves cursor costs and RNG; legacy saves restore
+  ---
+  duration_ms: 11.292666
+  type: 'test'
+  ...
+# Subtest: already-delivered native pause is resumed once and verified, unpaused state is untouched
+ok 15 - already-delivered native pause is resumed once and verified, unpaused state is untouched
+  ---
+  duration_ms: 0.779623
+  type: 'test'
+  ...
+# Subtest: unrecoverable pause surfaces a blocker rather than silently spinning for the campaign duration
+ok 16 - unrecoverable pause surfaces a blocker rather than silently spinning for the campaign duration
+  ---
+  duration_ms: 0.508002
+  type: 'test'
+  ...
+# Subtest: 村民損失後確認不得繞過最低村民條件 / confirmation after a casualty must respect minimum worker condition
+ok 17 - 村民損失後確認不得繞過最低村民條件 / confirmation after a casualty must respect minimum worker condition
+  ---
+  duration_ms: 22.21951
+  type: 'test'
+  ...
+# Subtest: 模擬更新撤回失效的村民、數量與預算提案 / simulation withdraws worker count and budget proposals that became invalid
+ok 18 - 模擬更新撤回失效的村民、數量與預算提案 / simulation withdraws worker count and budget proposals that became invalid
+  ---
+  duration_ms: 21.527147
+  type: 'test'
+  ...
+# Subtest: 停用或時代條件失效的舊提案不能直接執行 / legacy disabled or age-ineligible proposal cannot execute
+ok 19 - 停用或時代條件失效的舊提案不能直接執行 / legacy disabled or age-ineligible proposal cannot execute
+  ---
+  duration_ms: 10.201361
+  type: 'test'
+  ...
+# Subtest: 補回村民後重新提出並正常付費，只建一次 / replacement workers allow a fresh proposal and native payment once
+ok 20 - 補回村民後重新提出並正常付費，只建一次 / replacement workers allow a fresh proposal and native payment once
+  ---
+  duration_ms: 12.832844
+  type: 'test'
+  ...
+# Subtest: 自動計畫門檻不鎖住手動建造 / automatic plan conditions do not gate manual construction
+ok 21 - 自動計畫門檻不鎖住手動建造 / automatic plan conditions do not gate manual construction
+  ---
+  duration_ms: 12.979836
+  type: 'test'
+  ...
+# Subtest: 過期提案讀檔後仍受驗證，暫停不自動執行 / restored stale proposals revalidate and pause never executes them
+ok 22 - 過期提案讀檔後仍受驗證，暫停不自動執行 / restored stale proposals revalidate and pause never executes them
+  ---
+  duration_ms: 13.963136
+  type: 'test'
+  ...
+# Subtest: 既有手動藍圖優先，確認失敗不覆寫位置或扣款 / an active manual blueprint keeps priority without auto-confirm spending or placement overwrite
+ok 23 - 既有手動藍圖優先，確認失敗不覆寫位置或扣款 / an active manual blueprint keeps priority without auto-confirm spending or placement overwrite
+  ---
+  duration_ms: 5.748433
+  type: 'test'
+  ...
+# Subtest: 自然存檔有安全可達整數格時，規劃不可永久漏掉射箭場 / planner finds safe reachable grid sites missed by sparse rings in native save
+ok 24 - 自然存檔有安全可達整數格時，規劃不可永久漏掉射箭場 / planner finds safe reachable grid sites missed by sparse rings in native save
+  ---
+  duration_ms: 241.69384
+  type: 'test'
+  ...
+# Subtest: 續查存讀檔可恢復，未放置時不花資源、不消耗RNG / resumable search survives save/load without spending or RNG until placement
+ok 25 - 續查存讀檔可恢復，未放置時不花資源、不消耗RNG / resumable search survives save/load without spending or RNG until placement
+  ---
+  duration_ms: 27.380785
+  type: 'test'
+  ...
+# POP {"military":19,"militaryCap":20,"economy":60,"economicCap":60,"total":79}
+# Subtest: A3-POP-01 all HUD population fields are finite and economy is independent
+ok 26 - A3-POP-01 all HUD population fields are finite and economy is independent
+  ---
+  duration_ms: 20.585032
+  type: 'test'
+  ...
+# Subtest: two barracks reserve the final military slot globally without spending twice
+ok 27 - two barracks reserve the final military slot globally without spending twice
+  ---
+  duration_ms: 10.38342
+  type: 'test'
+  ...
+# Subtest: two town centers reserve economy slot60 globally and military queue does not consume it
+ok 28 - two town centers reserve economy slot60 globally and military queue does not consume it
+  ---
+  duration_ms: 7.265548
+  type: 'test'
+  ...
+# Subtest: Franks cap40 includes reservations across buildings but excludes villagers
+ok 29 - Franks cap40 includes reservations across buildings but excludes villagers
+  ---
+  duration_ms: 5.339199
+  type: 'test'
+  ...
+# Subtest: incomplete/dead/enemy housing and enemy queues cannot add or reserve player capacity
+ok 30 - incomplete/dead/enemy housing and enemy queues cannot add or reserve player capacity
+  ---
+  duration_ms: 9.549888
+  type: 'test'
+  ...
+# Subtest: Save/Load recomputes category reservations and finite derived caps without schema changes
+ok 31 - Save/Load recomputes category reservations and finite derived caps without schema changes
+  ---
+  duration_ms: 13.434373
+  type: 'test'
+  ...
+# Subtest: GDD opening military40 derives from core20 and two houses10; economy remains60
+ok 32 - GDD opening military40 derives from core20 and two houses10; economy remains60
+  ---
+  duration_ms: 5.937244
+  type: 'test'
+  ...
+# Subtest: 生產狀態遵守預算與手動優先，不改支出或規則 / status reflects reserves and manual priority without changing spending rules
+ok 33 - 生產狀態遵守預算與手動優先，不改支出或規則 / status reflects reserves and manual priority without changing spending rules
+  ---
+  duration_ms: 19.549811
+  type: 'test'
+  ...
+# Subtest: 解除預留後按原生流程續產，佇列上限如實顯示 / production resumes after releasing reserves and reports queue limit
+ok 34 - 解除預留後按原生流程續產，佇列上限如實顯示 / production resumes after releasing reserves and reports queue limit
+  ---
+  duration_ms: 10.666259
+  type: 'test'
+  ...
+# Subtest: 目標數包含其他建築佇列，不能誤報可生產 / targets include other producer queues
+ok 35 - 目標數包含其他建築佇列，不能誤報可生產 / targets include other producer queues
+  ---
+  duration_ms: 6.411945
+  type: 'test'
+  ...
+# Subtest: 停用、施工及人口阻塞可區分，解除人口後恢復 / distinguish disabled construction and population gates
+ok 36 - 停用、施工及人口阻塞可區分，解除人口後恢復 / distinguish disabled construction and population gates
+  ---
+  duration_ms: 5.424455
+  type: 'test'
+  ...
+# Subtest: 讀取狀態不改存檔、時間或RNG；讀檔後一致 / status reads preserve snapshot time and RNG and survive save/load
+ok 37 - 讀取狀態不改存檔、時間或RNG；讀檔後一致 / status reads preserve snapshot time and RNG and survive save/load
+  ---
+  duration_ms: 19.349224
+  type: 'test'
+  ...
+# Subtest: 升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced
+ok 38 - 升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced
+  ---
+  duration_ms: 18.197641
+  type: 'test'
+  ...
+# Subtest: 資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction
+ok 39 - 資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction
+  ---
+  duration_ms: 15.265493
+  type: 'test'
+  ...
+# Subtest: 手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals
+ok 40 - 手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals
+  ---
+  duration_ms: 21.556229
+  type: 'test'
+  ...
+# Subtest: 過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success
+ok 41 - 過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success
+  ---
+  duration_ms: 5.909972
+  type: 'test'
+  ...
+# Subtest: 無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative
+ok 42 - 無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative
+  ---
+  duration_ms: 7.047005
+  type: 'test'
+  ...
+# Subtest: 自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available
+ok 43 - 自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available
+  ---
+  duration_ms: 13.756751
+  type: 'test'
+  ...
+# Subtest: 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research
+ok 44 - 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research
+  ---
+  duration_ms: 5.412357
+  type: 'test'
+  ...
+# Subtest: 首名工人受困時其他可達工人接手 / another reachable worker builds when the first is trapped
+ok 45 - 首名工人受困時其他可達工人接手 / another reachable worker builds when the first is trapped
+  ---
+  duration_ms: 8.230976
+  type: 'test'
+  ...
+# Subtest: 全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal
+ok 46 - 全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal
+  ---
+  duration_ms: 28.890349
+  type: 'test'
+  ...
+# Subtest: 受阻續查與預留在存讀檔、暫停中保留 / blocked search cursor and reserves survive save/load and pause
+ok 47 - 受阻續查與預留在存讀檔、暫停中保留 / blocked search cursor and reserves survive save/load and pause
+  ---
+  duration_ms: 23.629677
+  type: 'test'
+  ...
+# Subtest: 採集逐人重新計算比例，手動工人與搬運不被覆蓋 / distribute idle workers with cargo and manual priority
+ok 48 - 採集逐人重新計算比例，手動工人與搬運不被覆蓋 / distribute idle workers with cargo and manual priority
+  ---
+  duration_ms: 21.63811
+  type: 'test'
+  ...
+# Subtest: 升級預留不阻擋手動支出，自動等待與正常研究 / age reserve, ask and ordinary research
+ok 49 - 升級預留不阻擋手動支出，自動等待與正常研究 / age reserve, ask and ordinary research
+  ---
+  duration_ms: 10.839025
+  type: 'test'
+  ...
+# Subtest: SaveLoad 保留設定、鎖定、手動佇列及 RNG 位元 / persist plans locks manual queues and RNG bits
+ok 50 - SaveLoad 保留設定、鎖定、手動佇列及 RNG 位元 / persist plans locks manual queues and RNG bits
+  ---
+  duration_ms: 18.114288
+  type: 'test'
+  ...
+# Subtest: 逐建築目標上限、合法兵種與手動佇列 / legal military targets and manual queue priority
+ok 51 - 逐建築目標上限、合法兵種與手動佇列 / legal military targets and manual queue priority
+  ---
+  duration_ms: 9.827999
+  type: 'test'
+  ...
+# Subtest: 自動建築包含施工數量且不打斷手動放置 / construction count and manual placement precedence
+ok 52 - 自動建築包含施工數量且不打斷手動放置 / construction count and manual placement precedence
+  ---
+  duration_ms: 5.474308
+  type: 'test'
+  ...
+# Subtest: 安全建築使用真實施工流程，暫停不推進計畫 / safe placement uses normal construction and pause freezes plans
+ok 53 - 安全建築使用真實施工流程，暫停不推進計畫 / safe placement uses normal construction and pause freezes plans
+  ---
+  duration_ms: 118.327858
+  type: 'test'
+  ...
+# Subtest: 相同規劃與輸入維持模擬確定性 / same plans and inputs produce deterministic simulation
+ok 54 - 相同規劃與輸入維持模擬確定性 / same plans and inputs produce deterministic simulation
+  ---
+  duration_ms: 103.070177
+  type: 'test'
+  ...
+# Subtest: 等待升級確認不阻擋可負擔的自動建築 / pending age confirmation does not block affordable independent buildings
+ok 55 - 等待升級確認不阻擋可負擔的自動建築 / pending age confirmation does not block affordable independent buildings
+  ---
+  duration_ms: 5.119424
+  type: 'test'
+  ...
+1..55
+# tests 55
+# suites 0
+# pass 55
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7089.204248
