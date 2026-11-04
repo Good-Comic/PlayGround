@@ -39,10 +39,11 @@ export function drawRescue(ctx,g,project) {
 export function installExpeditionUI(g,ui) {
   const box=document.createElement('section');box.id='rescue-expedition';box.hidden=true;box.innerHTML='<strong></strong><p></p><button type="button"></button>';document.body.append(box);
   const button=box.querySelector('button');button.onclick=()=>sendRescue(g);
-  let key='';const old=ui.update.bind(ui);ui.update=(...a)=>{old(...a);const p=g.expedition;const hidden=g.inMenu||ui.menuVisible||ui.boonsOpen||ui.pauseOpen||ui.settingsOpen||ui.gmOpen||!!document.querySelector('dialog[open]')||['boon','victory','defeat'].includes(g.phase);box.hidden=hidden||!p;if(box.hidden)return;
+  let key='',last=0;const old=ui.update.bind(ui);ui.update=(...a)=>{old(...a);const p=g.expedition;const hidden=g.inMenu||ui.menuVisible||ui.boonsOpen||ui.pauseOpen||ui.settingsOpen||ui.gmOpen||!!document.querySelector('dialog[open]')||['boon','victory','defeat'].includes(g.phase);box.hidden=hidden||!p;if(box.hidden)return;
+    const now=performance.now();if(now-last<100)return;last=now;const room=p.rescued>=2||g.hasPopulationRoom('villager');
     const near=g.hero?.alive&&Math.hypot(g.hero.x-p.x,g.hero.y-p.y)<=2;
-    const state=[document.documentElement.lang,p.rescued,g.paused,g.hero?.alive,near,g.placement?.type].join('|');if(state===key)return;key=state;
-    box.querySelector('strong').textContent=t('rescue.title');box.querySelector('p').textContent=p.rescued>=2?t('rescue.done'):near&&!g.hasPopulationRoom('villager')?t('rescue.cap'):t('rescue.help',{count:p.rescued});box.querySelector('p').title=box.querySelector('p').textContent;button.textContent=t('rescue.go');button.disabled=g.paused||!!g.placement||!g.hero?.alive||p.rescued>=2;
+    const state=[document.documentElement.lang,p.rescued,g.paused,g.hero?.alive,near,room,g.placement?.type].join('|');if(state===key)return;key=state;
+    box.querySelector('strong').textContent=t('rescue.title');box.querySelector('p').textContent=p.rescued>=2?t('rescue.done'):near&&!room?t('rescue.cap'):t('rescue.help',{count:p.rescued});box.querySelector('p').title=box.querySelector('p').textContent;button.textContent=t('rescue.go');button.disabled=g.paused||!!g.placement||!g.hero?.alive||p.rescued>=2;
   };
-  document.addEventListener('localechange',()=>{key='';});
+  document.addEventListener('localechange',()=>{key='';last=0;});
 }
