@@ -1,0 +1,92 @@
+TAP version 13
+# Subtest: 條件未達先等待，手動佇列佔用人口後按原生流程建屋 / wait above threshold then build when native manual queues reserve room
+not ok 1 - 條件未達先等待，手動佇列佔用人口後按原生流程建屋 / wait above threshold then build when native manual queues reserve room
+  ---
+  duration_ms: 61.653414
+  type: 'test'
+  location: '/workspace/PlayGround/tests/capacity-plans.test.mjs:7:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    3 !== 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 3
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/capacity-plans.test.mjs:7:314)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 施工中的人口供給避免同條件重複排屋 / capacity already under construction prevents duplicate threshold-triggered houses
+not ok 2 - 施工中的人口供給避免同條件重複排屋 / capacity already under construction prevents duplicate threshold-triggered houses
+  ---
+  duration_ms: 17.707165
+  type: 'test'
+  location: '/workspace/PlayGround/tests/capacity-plans.test.mjs:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    4 !== 3
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 3
+  actual: 4
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/capacity-plans.test.mjs:8:271)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: 確認前重查人口條件，人工建屋解除需求後不再誤建 / confirmation rechecks threshold after manual housing removes demand
+not ok 3 - 確認前重查人口條件，人工建屋解除需求後不再誤建 / confirmation rechecks threshold after manual housing removes demand
+  ---
+  duration_ms: 7.267475
+  type: 'test'
+  location: '/workspace/PlayGround/tests/capacity-plans.test.mjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/PlayGround/tests/capacity-plans.test.mjs:9:326)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 舊計畫與空白條件沿用原流程 / legacy and blank conditions preserve existing plans
+ok 4 - 舊計畫與空白條件沿用原流程 / legacy and blank conditions preserve existing plans
+  ---
+  duration_ms: 13.884088
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 1
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 251.901027
