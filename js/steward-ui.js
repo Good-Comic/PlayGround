@@ -11,7 +11,7 @@ export function installStewardUI(game) {
   const tr=k=>t('steward.'+k);
   const label=(key,input)=>`<label>${tr(key)} ${input}</label>`;
   const number=(name,v,min=0,max=100000)=>`<input type="number" name="${name}" value="${v}" min="${min}" max="${max}" step="1">`;
-  const optionalNumber=(name,v)=>`<input type="number" name="${name}" value="${Number.isFinite(v)?v:''}" min="0" max="100000" step="1" placeholder="${tr('unlimited')}" aria-label="${tr('room')}">`;
+  const optionalNumber=(name,v)=>`<input type="number" name="${name}" value="${Number.isFinite(v)?v:''}" min="0" max="100000" step="0.5" placeholder="${tr('unlimited')}" aria-label="${tr('room')}">`;
   const select=(name,value,items)=>`<select name="${name}">${items.map(([v,text])=>`<option value="${v}" ${v===value?'selected':''}>${text}</option>`).join('')}</select>`;
   const options=keys=>keys.map(k=>[k,tr(k)]);
   const close=()=>{dialog.close();game.paused=wasPaused;};
