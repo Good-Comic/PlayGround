@@ -1,0 +1,43 @@
+✔ 全軍排除村民、英雄、敵軍與死亡單位 / army excludes workers hero enemies and dead units (18.272342ms)
+✔ 推進與護衛沿用原生命令且不搶村民 / advance and guard reuse native commands without worker orders (20.600459ms)
+✔ 暫停、選卡、結算、對話框與施工不下令 / pause rewards terminal modal and placement prevent commands (57.249678ms)
+✔ 英雄護盾使用正式冷卻與效果，重按不重複 / hero shield uses native effects and cooldown without double casting (9.616918ms)
+✔ 選軍不花費、未知命令與無軍隊保持狀態 / selection costs nothing and empty or unknown actions preserve state (9.60474ms)
+✔ 選軍經原生切換離開英雄直控 / selecting army exits hero direct control through native toggle (8.668894ms)
+✔ 快捷入口切換原生英雄直控，F2路徑切回軍隊 / hero shortcut toggles native direct control and army action returns (4.982707ms)
+✔ 技能預覽使用正式範圍與可見性，無目標不施放 / context uses native range/visibility and no-target casts do nothing (3.346885ms)
+✔ 英雄接管取消尚未落點的軍隊命令 / hero takeover cancels pending army targeting (3.131907ms)
+✔ invalid guard targets give rejection feedback while preserving mode and prior order (9.48331ms)
+✔ valid allied guard still confirms and assigns the ally (3.202632ms)
+✔ mixed guard selection reports partial assignment and preserves the excluded villager order (3.061442ms)
+✔ right-click ground exits direct control and preserves hero move through update (17.86317ms)
+✔ right-click enemy exits direct control and keeps explicit attack (15.90912ms)
+✔ villager-only command or mixed gathering does not exit unassigned hero direct control (5.587354ms)
+✔ mixed hero, melee, ranged and villager attack assigns eligible units and preserves villager work (2.919604ms)
+✔ successful casts route distinct cues; rejected casts only report errors (3.20063ms)
+✔ cues are distinct, muted and throttled without consuming simulation RNG (5.987777ms)
+✔ hero skills expose the production radii used by their effects (0.08761ms)
+✔ skill preview requires a living hero and reports render metadata (1.462857ms)
+✔ mark applies inside the previewed range and rejects targets outside it (2.828278ms)
+✔ aegis shields allies inside the previewed range only (1.453782ms)
+✔ mixed selection resource command leaves military patrol intact (2.738325ms)
+✔ mixed selection dropoff command leaves military patrol intact (2.809581ms)
+✔ explicit enemy attack replaces military tactical order and leaves ineligible villagers gathering (2.907786ms)
+✔ ineligible villagers get an error instead of false attack confirmation (3.048514ms)
+✔ eligible mixed units and Spanish villagers still receive attack confirmation (8.692011ms)
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (20.820792ms)
+✔ Patrol completes both legs using native navigation (22.257019ms)
+✔ Guard follows a living ally then recovers when ally dies (17.057178ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (33.334542ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (7.27304ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (12.718294ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (7.273501ms)
+✔ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (16.094393ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3501.388999
