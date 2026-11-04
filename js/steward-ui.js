@@ -1,6 +1,6 @@
 import { t } from './i18n.js';
 import { BUILD_OPTIONS, UNIT_TYPES } from './data.js';
-import { RESOURCES, restoreStewards, reserveCost, confirmPlan, productionStatus, planningMilitaryRoom, gatherWeights } from './stewards.js';
+import { RESOURCES, restoreStewards, reserveCost, confirmPlan, productionStatus, planningMilitaryRoom, gatherWeights, workerAllocation } from './stewards.js';
 
 export function installStewardUI(game) {
   const button=document.createElement('button');button.id='btn-stewards';button.className='secondary-button small';
@@ -20,7 +20,7 @@ export function installStewardUI(game) {
     button.textContent=tr('title');
     dialog.innerHTML=`<form method="dialog"><h2>${tr('title')}</h2><p>${tr('help')}</p>
     <p>${tr('reserve')}: ${RESOURCES.map(r=>`${t('resourceType.'+r)} ${Math.floor(floor[r])}`).join(' · ')} | ${tr(s.status||'idle')}</p>
-    <fieldset><legend>${tr('economy')}</legend><p>${RESOURCES.map(r=>`${t('resourceType.'+r)}: ${game.units.filter(u=>u.alive&&u.team==='player'&&u.type==='villager'&&(u.gatherTarget?.resource===r||u.carryType===r)).length}`).join(' · ')}</p>
+    <fieldset><legend>${tr('economy')}</legend><div id="steward-workforce"></div>
     ${label('gather',select('gather',s.gather,options(['balanced','food','wood','gold','stone','custom'])))}
     <div class="steward-grid">${RESOURCES.map((r,i)=>`<label>${t('resourceType.'+r)} % ${number('ratio'+i,s.ratios[i],0,100)}</label><label>${tr('reserve')} ${t('resourceType.'+r)} ${number('reserve'+i,s.reserve[i])}</label>`).join('')}</div>
     <p id="steward-gather-preview" role="status" aria-live="polite"></p><p>${tr('gatherPreviewHelp')}</p>
@@ -37,6 +37,12 @@ export function installStewardUI(game) {
     <button type="button" id="steward-confirm" ${s.pending?'':'disabled'}>${tr('confirm')} ${s.pending?.kind==='building'?t('building.'+s.pending.type+'.name'):s.pending?tr('age'):''}</button>
     <button type="submit" id="steward-apply">${tr('apply')}</button><button type="button" id="steward-close">${tr('close')}</button></form>`;
     const form=dialog.querySelector('form');
+    const renderWorkforce=()=>{
+      const view=workerAllocation(game);
+      dialog.querySelector('#steward-workforce').innerHTML=`<p>${tr('allocation')}: ${RESOURCES.map(r=>`<span data-worker-resource="${r}" data-count="${view.resources[r]}">${t('resourceType.'+r)}: ${view.resources[r]}</span>`).join(' · ')} · <span data-worker-other data-count="${view.other}">${tr('workerOther')}: ${view.other}</span></p>
+      <p>${['total','manual','unlocked','carrying','idle'].map(k=>`<span data-worker-status="${k}" data-count="${view[k]}">${tr('worker.'+k)}: ${view[k]}</span>`).join(' · ')}</p><p>${tr('allocationHelp')}</p>`;
+    };
+    renderWorkforce();
     const preview=()=>{
       const ratios=RESOURCES.map((_,i)=>Math.max(0,Number(form.elements['ratio'+i].value)||0));
       const shares=gatherWeights({gather:form.elements.gather.value,ratios});
@@ -53,7 +59,7 @@ export function installStewardUI(game) {
     };
     form.addEventListener('submit',e=>{e.preventDefault();save();close();});
     dialog.querySelector('#steward-close').onclick=close;
-    dialog.querySelector('#steward-release').onclick=()=>{for(const u of game.units)if(u.alive&&u.team==='player'&&u.type==='villager'&&u.state==='idle')u.manualEconomy=false;};
+    dialog.querySelector('#steward-release').onclick=()=>{for(const u of game.units)if(u.alive&&u.team==='player'&&u.type==='villager'&&u.state==='idle')u.manualEconomy=false;renderWorkforce();};
     dialog.querySelector('#steward-confirm').onclick=()=>{notice=!confirmPlan(game);render();if(notice){dialog.querySelector('#steward-notice').scrollIntoView({block:'nearest'});dialog.querySelector('#steward-close').focus();}};
   }
   button.onclick=hudButton.onclick=()=>{if(game.inMenu)return;wasPaused=game.paused;notice=false;game.paused=true;render();dialog.showModal();};

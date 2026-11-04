@@ -20,6 +20,21 @@ export function gatherWeights(s) {
   const sum = v.reduce((a,b)=>a+b,0);
   return RESOURCES.map((_,i)=>sum ? v[i]/sum : weights.balanced[i]/100);
 }
+// 唯讀面板統計：每人只歸屬一種資源，現有貨物優先。 / Read-only
+// panel counts: one resource bucket per worker, with existing cargo first.
+export function workerAllocation(g) {
+  const result={total:0,manual:0,unlocked:0,carrying:0,idle:0,other:0,resources:Object.fromEntries(RESOURCES.map(r=>[r,0]))};
+  for(const u of g.units){
+    if(!u.alive||u.team!=='player'||u.type!=='villager')continue;
+    result.total++;result[u.manualEconomy?'manual':'unlocked']++;
+    if(u.carry>0)result.carrying++;
+    if(u.state==='idle')result.idle++;
+    const resource=u.carry>0&&RESOURCES.includes(u.carryType)?u.carryType:
+      ['gather','return'].includes(u.state)&&u.gatherTarget?.alive?u.gatherTarget.resource:null;
+    if(RESOURCES.includes(resource))result.resources[resource]++;else result.other++;
+  }
+  return result;
+}
 export function reserveCost(g) {
   const s=g.stewards, result=Object.fromEntries(RESOURCES.map((r,i)=>[r,s.reserve[i]]));
   if (s.age!=='manual' && g.ageLevel<3 && !g.ageResearch) for (const [r,v] of Object.entries(g.ageCost())) result[r]=s.age==='auto'?(result[r]||0)+v:Math.max(result[r]||0,v);

@@ -586,3 +586,11 @@ const GATHER_PREVIEW_TEXT={
  ja:['適用後の目標配分プレビュー','合計で正規化し、すべてゼロならバランス設定の比率を使用。目標値であり即時の人数ではありません。手動作業・運搬・到達可能な資源を優先し、適用で保存します。']
 };
 for(const[locale,labels]of Object.entries(GATHER_PREVIEW_TEXT))['gatherPreview','gatherPreviewHelp'].forEach((key,i)=>STRINGS[locale]['steward.'+key]=labels[i]);
+
+const WORKER_ALLOCATION_TEXT={
+ 'zh-Hant':['採集／搬運歸屬','其他工作／未分配','村民總數','手動鎖定','未鎖定','攜帶資源','閒置','每人只計入一項資源或其他類；攜帶資源優先於下一個採集目標。下列狀態可重疊，未鎖定不代表自動經濟已啟用。'],
+ 'zh-Hans':['采集／搬运归属','其他工作／未分配','村民总数','手动锁定','未锁定','携带资源','闲置','每人只计入一项资源或其他类；携带资源优先于下一个采集目标。下列状态可重叠，未锁定不代表自动经济已启用。'],
+ en:['Gathering / cargo allocation','Other work / unassigned','Total workers','Manually locked','Unlocked','Carrying resources','Idle','Each worker counts once in a resource or Other; carried resources take precedence over the next gathering target. Status counts may overlap. Unlocked does not mean auto economy is enabled.'],
+ ja:['採集・運搬の配分','その他の作業・未割当','村人の総数','手動ロック','ロックなし','資源を運搬中','待機中','各村人は資源かその他に一度だけ計上。次の採集先より運搬中の資源を優先します。状態の人数は重複し、ロックなしは自動経済が有効という意味ではありません。']
+};
+for(const[locale,labels]of Object.entries(WORKER_ALLOCATION_TEXT))['allocation','workerOther','worker.total','worker.manual','worker.unlocked','worker.carrying','worker.idle','allocationHelp'].forEach((key,i)=>STRINGS[locale]['steward.'+key]=labels[i]);
