@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {gatherWeights,defaultStewards} from '../js/stewards.js';
+globalThis.document={documentElement:{dataset:{}},dispatchEvent(){}};
+const {gatherWeights,defaultStewards}=await import('../js/stewards.js');
 test('非百分之百總和沿用正式正規化，不改設定 / non-100 totals use native normalization without mutating preferences',()=>{
  const s={...defaultStewards(),gather:'custom',ratios:[40,40,40,40]},before=JSON.stringify(s);
  assert.deepEqual(gatherWeights(s),[.25,.25,.25,.25]);assert.equal(JSON.stringify(s),before);
