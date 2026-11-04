@@ -52,3 +52,14 @@ test('提前迎戰存讀檔保留原生波次、RNG與相對生成時刻，確�
   assert.equal(h.rng.state, g.rng.state); assert.equal(h.waveClock, 0);
   assert.equal(createEarlyRaidControl(h).confirm(), false);
 });
+
+test('16文明均沿用原生波次計畫、特性、傷害與RNG，不提供文明特惠', async () => {
+  const { CIVILIZATIONS } = await import('../js/data.js');
+  assert.equal(CIVILIZATIONS.length, 16);
+  for (const civ of CIVILIZATIONS) {
+    const g = new Game(), native = new Game();
+    for (const h of [g, native]) { h.newRun(42, { civ: civ.id }); h.start(); }
+    const c = createEarlyRaidControl(g); c.arm(); c.confirm(); native.startWave();
+    assert.deepEqual(snapshot(g), snapshot(native), civ.id);
+  }
+});

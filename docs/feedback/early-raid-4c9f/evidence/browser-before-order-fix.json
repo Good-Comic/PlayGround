@@ -1,0 +1,190 @@
+{
+  "source": "029333c68c9807f46b9ea0b65a84947cc1900168",
+  "scope": "PLAYER_EARLY_CALL: fresh CHN run; native mouse/keyboard/travel/payment/early raid/save/load. No injected resources/units/time; read-only startWave/damage instrumentation. Camera focus only uses native focusAt.",
+  "rows": [
+    {
+      "name": "arm-is-not-start",
+      "pass": true
+    },
+    {
+      "name": "cancel-keeps-preparation",
+      "pass": true
+    },
+    {
+      "name": "space-arms-not-pause",
+      "pass": true
+    },
+    {
+      "name": "repeat-enter-cancels-not-starts",
+      "pass": true
+    },
+    {
+      "name": "pause-hides-cancels-and-freezes",
+      "pass": true
+    },
+    {
+      "name": "resume-requires-new-confirmation",
+      "pass": true
+    },
+    {
+      "name": "native-workshop-purchase-before-raid",
+      "pass": true,
+      "time": 16.632499999999904,
+      "trial": 20,
+      "remaining": 29.9167,
+      "prepRemaining": 28.367500000000806
+    },
+    {
+      "name": "tab-focuses-confirm-not-hero",
+      "pass": true
+    },
+    {
+      "name": "confirm-starts-native-wave-once",
+      "pass": true,
+      "phase": "wave",
+      "time": 17.315799999999914,
+      "clock": 0.13330000000000292,
+      "calls": 1,
+      "call": {
+        "time": 17.18249999999991,
+        "remaining": 27.817500000000802,
+        "plan": {
+          "waveIndex": 0,
+          "waveName": "The First Raid",
+          "tactic": "ranged",
+          "tacticLabel": "掩護弓手",
+          "suppression": "ranged",
+          "intensity": "low",
+          "ratio": 0.15,
+          "baseThreat": 18,
+          "baseUnits": 16,
+          "totalUnits": 16,
+          "identityShare": 0.875,
+          "removedCount": 2,
+          "addedCount": 2,
+          "spawns": [
+            {
+              "at": 10,
+              "gate": 0,
+              "units": {
+                "militia": 7,
+                "archer": 1
+              },
+              "eventFlags": []
+            },
+            {
+              "at": 35,
+              "gate": 0,
+              "units": {
+                "militia": 7,
+                "archer": 1
+              },
+              "eventFlags": []
+            }
+          ],
+          "hazard": null,
+          "event": {
+            "id": "SCOUT",
+            "name": "Scouts",
+            "desc": "Enemy movement speed increases by 25%.",
+            "tags": [],
+            "mods": {
+              "speedMul": 1.25
+            }
+          },
+          "eventMods": {
+            "speedMul": 1.25
+          },
+          "eventZone": null,
+          "intel": {
+            "waveIndex": 0,
+            "prepSeconds": 45,
+            "units": [
+              "militia",
+              "archer"
+            ],
+            "entrances": [
+              {
+                "gate": 0,
+                "name": "北境火堆",
+                "certainty": "reported"
+              },
+              {
+                "gate": 1,
+                "name": "赤紅營地",
+                "certainty": "possible"
+              }
+            ],
+            "hazard": null,
+            "event": {
+              "id": "SCOUT",
+              "name": "Scouts",
+              "desc": "Enemy movement speed increases by 25%.",
+              "tags": [],
+              "mods": {
+                "speedMul": 1.25
+              }
+            },
+            "assist": null
+          }
+        }
+      },
+      "spawns": [
+        {
+          "at": 10,
+          "gate": 0,
+          "units": {
+            "militia": 7,
+            "archer": 1
+          },
+          "eventFlags": [],
+          "spawned": false
+        },
+        {
+          "at": 35,
+          "gate": 0,
+          "units": {
+            "militia": 7,
+            "archer": 1
+          },
+          "eventFlags": [],
+          "spawned": false
+        }
+      ]
+    },
+    {
+      "name": "native-spawn-plan-kept",
+      "pass": true
+    },
+    {
+      "name": "battle-hides-early-call",
+      "pass": true
+    },
+    {
+      "name": "native-enemies-arrive-during-trial",
+      "pass": true,
+      "time": 27.231999999999644,
+      "waveClock": 10.049500000000009,
+      "trialAlive": true,
+      "remaining": 19.31720000000026,
+      "enemies": 8
+    },
+    {
+      "name": "trial-observation-complete",
+      "pass": true,
+      "time": 46.56450000000038,
+      "hits": [],
+      "stats": {
+        "kills": 1,
+        "gathered": 257.018352,
+        "trained": 5,
+        "waves": 0,
+        "assists": 0
+      },
+      "core": 2906.8000000000056,
+      "classification": "INCONCLUSIVE_NO_TRIAL_DAMAGE",
+      "hadVisibleTarget": false
+    }
+  ],
+  "errors": []
+}
