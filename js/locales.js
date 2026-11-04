@@ -583,6 +583,6 @@ const GATHER_PREVIEW_TEXT={
  'zh-Hant':['套用後目標比例預覽','按總和換算；全零使用均衡比例。這是目標，不保證即時人數；手動任務、搬運與資源可達性仍優先。按套用才儲存。'],
  'zh-Hans':['应用后目标比例预览','按总和换算；全零使用均衡比例。这是目标，不保证即时人数；手动任务、搬运与资源可达性仍优先。点击应用才保存。'],
  en:['Target allocation after Apply','Normalized by the total; all zeros use balanced shares. Targets are not immediate headcounts: manual tasks, cargo and reachable resources retain priority. Apply saves changes.'],
- ja:['適用後の目標配分プレビュー','合計で正規化し、すべてゼロなら均等設定の比率を使用。目標値であり即時の人数ではありません。手動作業・運搬・到達可能な資源を優先し、適用で保存します。']
+ ja:['適用後の目標配分プレビュー','合計で正規化し、すべてゼロならバランス設定の比率を使用。目標値であり即時の人数ではありません。手動作業・運搬・到達可能な資源を優先し、適用で保存します。']
 };
 for(const[locale,labels]of Object.entries(GATHER_PREVIEW_TEXT))['gatherPreview','gatherPreviewHelp'].forEach((key,i)=>STRINGS[locale]['steward.'+key]=labels[i]);
