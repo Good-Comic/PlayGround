@@ -573,8 +573,8 @@ const CAPACITY_PLAN_TEXT={
 for(const[locale,labels]of Object.entries(CAPACITY_PLAN_TEXT))['room','roomNow','roomHelp','unlimited','capacity'].forEach((key,i)=>STRINGS[locale]['steward.'+key]=labels[i]);
 
 for(const[locale,text]of Object.entries({
- 'zh-Hant':'計畫條件已變更，已取消過期提案。請檢查村民、時代、人口與預留後重試。',
- 'zh-Hans':'计划条件已变更，已取消过期提案。请检查村民、时代、人口与预留后重试。',
- en:'Plan conditions changed. The stale proposal was cancelled. Check workers, age, population and reserves before retrying.',
- ja:'計画条件が変わったため、古い提案を取り消しました。村人・時代・人口・確保資源を確認して再試行してください。'
+ 'zh-Hant':'提案未能執行，已取消本次確認。請檢查村民、時代、人口、預留與施工位置後重試。',
+ 'zh-Hans':'提案未能执行，已取消本次确认。请检查村民、时代、人口、预留与施工位置后重试。',
+ en:'This proposal could not be executed and was cancelled. Check workers, age, population, reserves and build-site access before retrying.',
+ ja:'提案を実行できなかったため取り消しました。村人・時代・人口・確保資源・建設場所を確認して再試行してください。'
 }))STRINGS[locale]['steward.stalePlan']=text;
