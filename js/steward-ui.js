@@ -1,6 +1,6 @@
 import { t } from './i18n.js';
 import { BUILD_OPTIONS, UNIT_TYPES } from './data.js';
-import { RESOURCES, restoreStewards, reserveCost, confirmPlan, productionStatus } from './stewards.js';
+import { RESOURCES, restoreStewards, reserveCost, confirmPlan, productionStatus, planningMilitaryRoom } from './stewards.js';
 
 export function installStewardUI(game) {
   const button=document.createElement('button');button.id='btn-stewards';button.className='secondary-button small';
@@ -11,6 +11,7 @@ export function installStewardUI(game) {
   const tr=k=>t('steward.'+k);
   const label=(key,input)=>`<label>${tr(key)} ${input}</label>`;
   const number=(name,v,min=0,max=100000)=>`<input type="number" name="${name}" value="${v}" min="${min}" max="${max}" step="1">`;
+  const optionalNumber=(name,v)=>`<input type="number" name="${name}" value="${Number.isFinite(v)?v:''}" min="0" max="100000" step="1" placeholder="${tr('unlimited')}" aria-label="${tr('room')}">`;
   const select=(name,value,items)=>`<select name="${name}">${items.map(([v,text])=>`<option value="${v}" ${v===value?'selected':''}>${text}</option>`).join('')}</select>`;
   const options=keys=>keys.map(k=>[k,tr(k)]);
   const close=()=>{dialog.close();game.paused=wasPaused;};
@@ -25,7 +26,7 @@ export function installStewardUI(game) {
     ${label('villagers',number('villagers',s.villagers,0,200))}
     ${label('age',select('age',s.age,options(['manual','ask','auto'])))}
     <button type="button" id="steward-release">${tr('release')}</button></fieldset>
-    <fieldset><legend>${tr('buildings')}</legend><p>${tr('buildHelp')}</p><div class="steward-scroll"><table><thead><tr>${['type','mode','max','priority','workers','age'].map(k=>`<th>${tr(k)}</th>`).join('')}</tr></thead><tbody>${BUILD_OPTIONS.map(type=>{const p=s.buildings[type]||{};return `<tr data-build="${type}"><th>${t('building.'+type+'.name')}</th><td>${select(type+'mode',p.mode||'off',options(['off','ask','auto']))}</td><td>${number(type+'max',p.max||0,0,20)}</td><td>${number(type+'priority',p.priority||0,0,100)}</td><td>${number(type+'workers',p.workers||0,0,200)}</td><td>${number(type+'age',p.age||1,1,3)}</td></tr>`}).join('')}</tbody></table></div></fieldset>
+    <fieldset><legend>${tr('buildings')}</legend><p>${tr('buildHelp')}</p><p data-military-room>${tr('roomNow')}: ${planningMilitaryRoom(game)}. ${tr('roomHelp')}</p><div class="steward-scroll"><table><thead><tr>${['type','mode','max','priority','workers','age','room'].map(k=>`<th>${tr(k)}</th>`).join('')}</tr></thead><tbody>${BUILD_OPTIONS.map(type=>{const p=s.buildings[type]||{};return `<tr data-build="${type}"><th>${t('building.'+type+'.name')}</th><td>${select(type+'mode',p.mode||'off',options(['off','ask','auto']))}</td><td>${number(type+'max',p.max||0,0,20)}</td><td>${number(type+'priority',p.priority||0,0,100)}</td><td>${number(type+'workers',p.workers||0,0,200)}</td><td>${number(type+'age',p.age||1,1,3)}</td><td>${optionalNumber(type+'room',p.militaryRoom)}</td></tr>`}).join('')}</tbody></table></div></fieldset>
     <fieldset><legend>${tr('military')}</legend>
     ${label('army',select('army',s.army,options(['balanced','counter','defense','custom'])))}
     <p>${tr('milHelp')}</p>${game.buildings.filter(b=>b.alive&&b.team==='player'&&b.type!=='core'&&b.type!=='market'&&game.trainableFor(b).length).map(b=>{const p=s.military[b.id]||{};return `<details data-producer="${b.id}"><summary>${t('building.'+b.type+'.name')} #${b.id} (${b.queue.length}/5)</summary><p class="producer-status" data-production-status="${productionStatus(game,b)}">${tr('producer.label')}: ${tr('producer.'+productionStatus(game,b))}</p><label><input type="checkbox" name="enabled${b.id}" ${p.enabled!==false?'checked':''}>${tr('auto')}</label> ${label('queue',number('queue'+b.id,p.queue||1,1,5))}
@@ -36,7 +37,7 @@ export function installStewardUI(game) {
     const form=dialog.querySelector('form');
     const save=()=>{const f=new FormData(form), n=k=>Math.max(0,Number(f.get(k))||0);const next=restoreStewards(s);
       next.gather=f.get('gather');next.ratios=RESOURCES.map((_,i)=>n('ratio'+i));next.reserve=RESOURCES.map((_,i)=>n('reserve'+i));next.villagers=Math.min(200,n('villagers'));next.age=f.get('age');next.army=f.get('army');next.pending=null;next.nextPlanAt=game.time;
-      for(const type of BUILD_OPTIONS)next.buildings[type]={mode:f.get(type+'mode'),max:Math.min(20,n(type+'max')),priority:n(type+'priority'),workers:n(type+'workers'),age:Math.max(1,Math.min(3,n(type+'age')))};
+      for(const type of BUILD_OPTIONS)next.buildings[type]={mode:f.get(type+'mode'),max:Math.min(20,n(type+'max')),priority:n(type+'priority'),workers:n(type+'workers'),age:Math.max(1,Math.min(3,n(type+'age'))),militaryRoom:f.get(type+'room')===''?null:Math.min(100000,n(type+'room'))};
       for(const el of form.querySelectorAll('[data-producer]')){const b=game.buildings.find(b=>String(b.id)===el.dataset.producer);if(!b)continue;const units=game.trainableFor(b).filter(type=>f.has('unit'+b.id+'_'+type));next.military[b.id]={enabled:f.has('enabled'+b.id)&&units.length>0,queue:Math.max(1,Math.min(5,n('queue'+b.id))),budget:RESOURCES.map((_,i)=>n('budget'+b.id+'_'+i)),units,targets:Object.fromEntries(units.map(type=>[type,{count:Math.min(200,n('target'+b.id+'_'+type)),priority:Math.max(1,n('weight'+b.id+'_'+type))}]))};}
       game.stewards=next;
     };

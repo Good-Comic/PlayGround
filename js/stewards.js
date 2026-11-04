@@ -104,12 +104,22 @@ export function planBuilding(g,type) {
     delete cursors[type];return false;
   } finally {g.selection=oldSelection;g.placement=oldPlacement;g.hooks.placement?.(oldPlacement);}
 }
+// 規劃預估，不改實際人口上限。 / Planning forecast, not an actual cap change.
+export function planningMilitaryRoom(g) {
+  const pending=g.buildings.reduce((n,b)=>n+(b.alive&&b.team==='player'&&b.construction<1?(b.typeDef?.pop||0):0),0);
+  const cap=Math.min(g.popCap+pending,g.effects.militaryPopCap>0?g.effects.militaryPopCap:Infinity);
+  return Math.max(0,cap-g.militaryPopulation-g.queuedPopulation(false));
+}
+function militaryRoomAllows(g,p) {
+  return !Number.isFinite(p?.militaryRoom)||p.militaryRoom<0||planningMilitaryRoom(g)<=p.militaryRoom;
+}
 export function updatePlans(g) {
   const s=g.stewards;
   if(g.time<s.nextPlanAt)return;
   s.nextPlanAt=g.time+3;
   s.status='idle';
   if(s.pending?.kind==='age' && (s.age!=='ask' || g.ageResearch || g.ageLevel>=3 || !g.getTownCenter() || !g.canAfford(g.ageCost())))s.pending=null;
+  if(s.pending?.kind==='building'&&!militaryRoomAllows(g,s.buildings[s.pending.type]))s.pending=null;
   if(s.age!=='manual' && g.ageLevel<3 && !g.ageResearch && g.getTownCenter() && g.canAfford(g.ageCost())){
     if(s.age==='auto'){
       const cost=g.ageCost();
@@ -122,6 +132,7 @@ export function updatePlans(g) {
     if(!BUILD_OPTIONS.includes(type)||!['ask','auto'].includes(p.mode)||workers<(p.workers||0)||g.ageLevel<(p.age||1))continue;
     const count=g.buildings.filter(b=>b.alive&&b.team==='player'&&b.type===type).length;
     if(count>=Math.min(20,Math.max(0,p.max||0)))continue;
+    if(!militaryRoomAllows(g,p)){s.status='capacity';continue;}
     if(!canSpend(g,g.buildingCost(type))){s.status='budget';continue;}
     if(p.mode==='ask'){if(!s.pending){s.pending={kind:'building',type};g.toast(t('steward.title')+': '+t('steward.confirm')+' — '+t('building.'+type+'.name'),'',5000);}s.status='confirm';continue;}
     s.status=planBuilding(g,type)?'building':'blocked';return;
@@ -135,7 +146,7 @@ export function confirmPlan(g) {
     g.advanceAge();return !!g.ageResearch;
   }
   const setting=g.stewards.buildings[p.type];
-  if(!setting || g.buildings.filter(b=>b.alive&&b.team==='player'&&b.type===p.type).length>=setting.max)return false;
+  if(!setting || !militaryRoomAllows(g,setting) || g.buildings.filter(b=>b.alive&&b.team==='player'&&b.type===p.type).length>=setting.max)return false;
   return planBuilding(g,p.type);
 }
 export function trainArmy(g) {

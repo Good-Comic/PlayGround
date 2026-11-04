@@ -563,3 +563,11 @@ const PRODUCER_STATUS_TEXT={
   ja:['自動生産の状態','無効','手動生産を優先','自動キューの上限','兵種の目標数に到達（キュー含む）','人口上限（キュー含む）','資源・確保予算を待機','次の自動生産チェックを待機','建物または選択兵種が利用不可']
 };
 for(const [locale,labels] of Object.entries(PRODUCER_STATUS_TEXT))['label','off','manual','queue','target','population','budget','ready','unavailable'].forEach((key,i)=>STRINGS[locale]['steward.producer.'+key]=labels[i]);
+
+const CAPACITY_PLAN_TEXT={
+ 'zh-Hant':['軍事餘額≤','預估可用軍事人口','納入已排隊軍隊與施工中建築的人口供給，仍受文明上限限制。空白不限制；經濟人口另計。','不限','等待人口條件'],
+ 'zh-Hans':['军事余量≤','预计可用军事人口','计入已排队军队与施工中建筑的人口供给，仍受文明上限限制。空白不限制；经济人口独立计算。','不限','等待人口条件'],
+ en:['Military room ≤','Projected free military slots','Includes queued troops and capacity under construction, capped by civilization rules. Blank means unrestricted; economy population is separate.','Any','Waiting for population condition'],
+ ja:['軍事余裕 ≤','予測軍事人口の空き','訓練待ち兵と建設中の人口供給を含み、文明の上限は維持。空欄は制限なし。経済人口は別枠です。','指定なし','人口条件を待機']
+};
+for(const[locale,labels]of Object.entries(CAPACITY_PLAN_TEXT))['room','roomNow','roomHelp','unlimited','capacity'].forEach((key,i)=>STRINGS[locale]['steward.'+key]=labels[i]);
