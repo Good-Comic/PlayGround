@@ -33,8 +33,8 @@ export function productionReadback(game, building) {
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 const tr = (key, vars) => t('production.' + key, vars);
 
-// 摘要明示約數，展開表格保留原生 Number 的完整可回讀值；小正缺口不顯示成零。
-// Mark rounded summaries; expanded values round-trip native Numbers and never erase small shortfalls.
+// 玩家畫面明示約數；data-value保留正式計算值，小正缺口不顯示成零。
+// Display readable approximations while preserving native values in data attributes.
 export function productionNumber(value, compact = false) {
   if (!compact || !Number.isFinite(value)) return String(value);
   if (value > 0 && value < .01) return '<0.01';
@@ -64,7 +64,7 @@ export function productionReadbackHTML(view) {
         <div class="steward-scroll"><table class="production-resource-table"><caption>${escape(tr('rawHelp'))}</caption><thead><tr><th scope="col">${escape(tr('resource'))}</th>${columns.map(column => `<th scope="col">${escape(tr(column))}</th>`).join('')}</tr></thead><tbody>
         ${RESOURCES.map(resource => {
           const row = unit.resources[resource];
-          return `<tr data-resource="${resource}" data-checked="${row.checked}"><th scope="row">${escape(t('resourceType.' + resource))}</th>${columns.map(column => `<td data-value="${escape(productionNumber(row[column]))}" data-column="${column}">${escape(column === 'shortage' && !row.checked ? tr('unused') : productionNumber(row[column]))}</td>`).join('')}</tr>`;
+          return `<tr data-resource="${resource}" data-checked="${row.checked}"><th scope="row">${escape(t('resourceType.' + resource))}</th>${columns.map(column => `<td data-value="${escape(productionNumber(row[column]))}" data-column="${column}">${escape(column === 'shortage' && !row.checked ? tr('unused') : productionNumber(row[column], true))}</td>`).join('')}</tr>`;
         }).join('')}</tbody></table></div></details>`;
     }).join('') : `<p>${escape(tr('noUnits'))}</p>`}`;
 }

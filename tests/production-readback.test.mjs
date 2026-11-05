@@ -48,12 +48,13 @@ test('費用為零或未列入的資源低於兩層保留不產生假缺口', ()
   assert.equal(unit.resourceReady, true); assert.ok(productionReadbackHTML(productionReadback(f.g, f.b)).includes(STRINGS[getLocale()]['production.unused']));
 });
 
-test('微小正缺口仍由原生拒絕，摘要不顯零，展開保留可回讀的原始數字', () => {
+test('微小正缺口仍由原生拒絕，摘要與表格不顯零，資料保留原始精度', () => {
   const f = setup(), cost = f.g.unitCost('militia'); f.g.stewards.reserve[0] = 10; f.g.resources.food = cost.food + 10 - 1e-12;
   const unit = row(f), shortage = unit.resources.food.shortage;
   assert.ok(shortage > 0 && shortage < .01); assert.equal(unit.resourceReady, false); assert.equal(canSpend(f.g, unit.cost), false);
   assert.equal(productionNumber(shortage, true), '<0.01'); assert.equal(Number(productionNumber(shortage)), shortage);
   const html = productionReadbackHTML(productionReadback(f.g, f.b)); assert.ok(html.includes('&lt;0.01')); assert.ok(html.includes(`data-value="${String(shortage)}" data-column="shortage"`));
+  assert.ok(html.includes(`data-value="${String(shortage)}" data-column="shortage">&lt;0.01</td>`));
   f.g.resources.food = cost.food + 10; assert.equal(row(f).resourceReady, true); assert.equal(row(f).resources.food.shortage, 0);
 });
 
