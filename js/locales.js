@@ -677,8 +677,8 @@ for(const [locale,values] of Object.entries({
 }
 
 for(const [locale,values]of Object.entries({
- 'zh-Hant':['援護城心','選取全軍：優先集火已看見、正在攻擊城心的最近敵軍；否則護衛城心。英雄與村民不納入全軍，可再手動改令。','已令{count}名戰士集火攻城者：{name}。','已令{count}名戰士護衛城心。','目前無法援護城心。','目標被遮擋，請選軍後手動指定。'],
- 'zh-Hans':['援护城心','选择全军：优先集火已看见、正在攻击城心的最近敌军；否则护卫城心。英雄与村民不纳入全军，可再手动改令。','已令{count}名战士集火攻城者：{name}。','已令{count}名战士护卫城心。','当前无法援护城心。','目标被遮挡，请选军后手动指定。'],
- en:['Defend core','Select the army: focus the nearest visible unit actively attacking the Town Center, otherwise guard it. Excludes heroes and workers. Manual orders can replace this.','{count} fighters focus the attacker: {name}.','{count} fighters guard the Town Center.','Core defense is currently unavailable.','Target obscured. Select troops and order manually.'],
- ja:['町を防衛','全軍で町の中心を攻撃中の視認できる最寄りの敵を集中攻撃。該当する敵がいなければ護衛。英雄・村人は除外し、手動命令で上書きできます。','{count}人が攻撃者{name}を集中攻撃。','{count}人が町の中心を護衛。','現在、町の防衛命令は使えません。','対象が重なっています。兵士を選び手動で指定してください。']
+ 'zh-Hant':['援護城心','全軍優先集火已看見、正在攻擊城心的最近敵軍；否則護衛城心。英雄與村民不納入；英雄直控時保留鏡頭與原選取，可再手動改令。','已令{count}名戰士集火攻城者：{name}。','已令{count}名戰士護衛城心。','目前無法援護城心。','目標被遮擋，請選軍後手動指定。'],
+ 'zh-Hans':['援护城心','全军优先集火已看见、正在攻击城心的最近敌军；否则护卫城心。英雄与村民不纳入；英雄直控时保留镜头与原选择，可再手动改令。','已令{count}名战士集火攻城者：{name}。','已令{count}名战士护卫城心。','当前无法援护城心。','目标被遮挡，请选军后手动指定。'],
+ en:['Defend core','Army focuses the nearest visible unit attacking the Town Center, otherwise guards it. Excludes heroes and workers. Preserves direct hero control, its camera and selection. Manual orders can replace this.','{count} fighters focus the attacker: {name}.','{count} fighters guard the Town Center.','Core defense is currently unavailable.','Target obscured. Select troops and order manually.'],
+ ja:['町を防衛','全軍で町の中心を攻撃中の視認できる最寄りの敵を集中攻撃。いなければ護衛。英雄・村人は除外し、英雄の直接操作・カメラ・選択を維持。手動命令で上書きできます。','{count}人が攻撃者{name}を集中攻撃。','{count}人が町の中心を護衛。','現在、町の防衛命令は使えません。','対象が重なっています。兵士を選び手動で指定してください。']
 }))['launch','help','attack','guard','unavailable','noTarget'].forEach((key,i)=>STRINGS[locale]['defense.'+key]=values[i]);

@@ -19,12 +19,17 @@ export function defendCore(g, blocked = false) {
   for (const attacker of attackers) { const p = defenseClickPoint(g,attacker); if (p) { target = attacker; point = p; break; } }
   point ||= defenseClickPoint(g,core);
   if (!point) return { ok: false, reason: 'noTarget' };
-  if (g.heroControl) g.toggleHeroControl();
-  g.setSelection(army); g.orderMode = null;
+  const directHero = g.heroControl, previousSelection = [...g.selection];
   let ok;
-  if (target === core) { g.command('order:guard'); ok = g.issueTacticalCommand(point.x,point.y); }
-  else { g.issueCommand(point.x,point.y); ok = army.every(u => u.manualAttack && u.target === target); }
-  if (ok) g.focusAt(core.x + core.w/2,core.y + core.h/2);
+  try {
+    g.setSelection(army); g.orderMode = null;
+    if (target === core) { g.command('order:guard'); ok = g.issueTacticalCommand(point.x,point.y); }
+    else { g.issueCommand(point.x,point.y); ok = army.every(u => u.manualAttack && u.target === target); }
+  } finally {
+    g.orderMode = null;
+    if (directHero) g.setSelection(previousSelection.filter(u => u.alive));
+  }
+  if (ok && !directHero) g.focusAt(core.x + core.w/2,core.y + core.h/2);
   return { ok: !!ok, kind: target === core ? 'guard' : 'attack', count: army.length, targetId: target.id, protectedId: core.id, type: target.type };
 }
 
