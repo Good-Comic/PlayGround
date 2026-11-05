@@ -95,3 +95,38 @@ test('四語具名／未知來源及微量損失格式正確，不把箭頭當�
   for (const locale of ['zh-Hant', 'zh-Hans', 'en', 'ja']) { setLocale(locale); const text = coreDamageText(o.view()); assert.ok(text.includes('−')); assert.equal(text.includes('coreDamage.'), false); assert.ok(coreDamageText({ loss: .001, at: 61, name: null, direction: null }).includes('<0.01')); }
   setLocale('zh-Hant');
 });
+
+test('大傷後的小傷不蓋掉本波已記錄最大一擊，兩筆保留各自時間', () => {
+  const g = fresh(), e = enemy(g), o = observeCoreDamage(g), c = g.getTownCenter();
+  g.runTime = 10; const hp = c.hp; g.applyDamage(c, 100, e, 'melee'); const big = hp - c.hp;
+  g.runTime = 11; g.applyDamage(c, 20, e, 'melee'); const v = o.view();
+  assert.equal(v.peak.loss, big); assert.ok(v.peak.loss > v.loss); assert.equal(v.peak.at, 10); assert.equal(v.at, 11);
+  assert.ok(coreDamageText(v).includes('本波已記錄最大一擊')); assert.ok(coreDamageText(v).includes('\n'));
+  v.peak.loss = 99999; assert.equal(o.view().peak.loss, big);
+});
+test('未知來源大傷也計最大值，不因之後可見小傷而補猜歷史身分', () => {
+  const g = fresh(), e = enemy(g), o = observeCoreDamage(g), c = g.getTownCenter(), visible = g.isVisible.bind(g);
+  g.isVisible = () => false; g.applyDamage(c, 100, e, 'melee');
+  g.isVisible = visible; const other = enemy(g, 'archer'); g.applyDamage(c, 20, other, 'projectile');
+  const v = o.view(); assert.ok(v.peak.loss > v.loss); assert.equal(v.peak.sourceId, null); assert.equal(v.peak.name, null); assert.equal(v.peak.direction, null); assert.equal(v.sourceId, other.id);
+});
+test('last與max各自失視野去身分；不能用另一筆來源替代或重辨識', () => {
+  const g = fresh(), first = enemy(g), second = enemy(g, 'archer'), o = observeCoreDamage(g), c = g.getTownCenter();
+  g.applyDamage(c, 100, first, 'melee'); g.applyDamage(c, 20, second, 'projectile');
+  g.isVisible = u => u !== first; let v = o.view(); assert.equal(v.peak.name, null); assert.equal(v.sourceId, second.id);
+  g.isVisible = () => true; v = o.view(); assert.equal(v.peak.name, null); assert.equal(v.sourceId, second.id);
+  g.isVisible = () => false; v = o.view(); assert.equal(v.name, null); assert.equal(v.peak.name, null);
+});
+test('最大值以waveIndex分界；讀檔不猜未觀察到的本波歷史', () => {
+  const g = fresh(), e = enemy(g), o = observeCoreDamage(g), c = g.getTownCenter();
+  g.applyDamage(c, 100, e, 'melee'); const save = g.snapshot(); g.waveIndex++; assert.equal(o.view(), null);
+  g.applyDamage(c, 20, e, 'melee'); assert.ok(o.view().peak.loss < 20);
+  g.restore(save); g.start(); assert.equal(o.view(), null);
+  const current = g.units.find(u => u.id === e.id); g.applyDamage(g.getTownCenter(), 20, current, 'melee'); assert.ok(o.view().peak.loss < 20);
+});
+test('最大單次不是DPS或同來源加總，同值保留先記錄且UI不重複', () => {
+  const g = fresh(), e = enemy(g), o = observeCoreDamage(g), c = g.getTownCenter(), amount = c.armor * .6 + 32;
+  for (let i = 1; i <= 3; i++) { g.runTime = i; g.applyDamage(c, amount, e, 'melee'); }
+  const v = o.view(); assert.equal(v.loss, 32); assert.equal(v.peak.loss, 32); assert.equal(v.peak.at, 1); assert.equal(v.at, 3);
+  assert.equal(coreDamageText(v).includes('\n'), false);
+});

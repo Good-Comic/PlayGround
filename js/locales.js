@@ -698,8 +698,15 @@ for(const [locale,values]of Object.entries({
 }))['title','coverage','direct','none','move','guard','focus','attackMove','patrol','auto','idle','hold','unseen','more','ally','flag','target','help'].forEach((key,i)=>STRINGS[locale]['readback.'+key]=values[i]);
 
 for (const [locale, values] of Object.entries({
- 'zh-Hant':['城心上次實損 −{damage} HP · {source} · {time}','來源未確認','受傷時{arrow}','只顯示最近一次實際扣除的城心HP，並非總傷害或威脅排名。來源須於受傷與目前均存活可見；箭頭僅指受傷當時可見近戰攻擊者的畫面方位，不代表投射物來向或目前位置。讀檔後重新記錄。'],
- 'zh-Hans':['城心上次实损 −{damage} HP · {source} · {time}','来源未确认','受伤时{arrow}','只显示最近一次实际扣除的城心HP，并非总伤害或威胁排名。来源须在受伤与当前均存活可见；箭头只指受伤当时可见近战攻击者的画面方位，不代表投射物来向或当前位置。读档后重新记录。'],
- en:['Last core HP loss −{damage} · {source} · {time}','Source unconfirmed','At impact {arrow}','Last actual core HP loss, not total damage or a threat ranking. The source must be alive and visible at impact and now. The arrow is a visible melee attacker’s screen direction at impact, not projectile origin or current position. Records restart on load.'],
- ja:['町の直近HP損失 −{damage} · {source} · {time}','発生源未確認','被弾時{arrow}','町の直近の実HP損失のみ。総ダメージや脅威順位ではありません。発生源は被弾時と現在の両方で生存・視認が必要。矢印は被弾時に見えた近接攻撃者の画面方向で、弾の発射点や現在地ではありません。読込時に記録をリセット。']
+ 'zh-Hant':['城心上次實損 −{damage} HP · {source} · {time}','來源未確認','受傷時{arrow}','城心實損依真正扣除的HP計，並非原始攻擊力、總傷害或威脅排名。來源須於受傷與目前均存活可見；箭頭僅指受傷當時可見近戰攻擊者的畫面方位，不代表投射物來向或目前位置。讀檔後重新記錄。'],
+ 'zh-Hans':['城心上次实损 −{damage} HP · {source} · {time}','来源未确认','受伤时{arrow}','城心实损依真正扣除的HP计，并非原始攻击力、总伤害或威胁排名。来源须在受伤与当前均存活可见；箭头只指受伤当时可见近战攻击者的画面方位，不代表投射物来向或当前位置。读档后重新记录。'],
+ en:['Last core HP loss −{damage} · {source} · {time}','Source unconfirmed','At impact {arrow}','Core losses use actual deducted HP, not raw attack power, total damage or threat rankings. The source must be alive and visible at impact and now. The arrow is a visible melee attacker’s screen direction at impact, not projectile origin or current position. Records restart on load.'],
+ ja:['町の直近HP損失 −{damage} · {source} · {time}','発生源未確認','被弾時{arrow}','町の実際に減少したHPを表示。元の攻撃力・合計・脅威順位ではありません。発生源は被弾時と現在の両方で生存・視認が必要。矢印は被弾時に見えた近接攻撃者の画面方向で、弾の発射点や現在地ではありません。読込時に記録をリセット。']
 })) ['hit', 'unknown', 'direction', 'help'].forEach((key, i) => STRINGS[locale]['coreDamage.' + key] = values[i]);
+
+for (const [locale, values] of Object.entries({
+ 'zh-Hant':['本波已記錄最大一擊 −{damage} HP · {source} · {time}','最大一擊只計本次載入後、目前波次已觀察到的單次實際HP損失，並非整波歷史、總傷害、DPS或來源排名。相同數值保留較早紀錄，換波／讀檔清空；未知來源的大傷也會計入，但不猜身分。'],
+ 'zh-Hans':['本波已记录最大一击 −{damage} HP · {source} · {time}','最大一击只计本次载入后、当前波次已观察到的单次实际HP损失，并非整波历史、总伤害、DPS或来源排名。相同数值保留较早记录，换波／读档清空；未知来源的大伤也计入，但不猜身份。'],
+ en:['Recorded wave max hit −{damage} · {source} · {time}','Largest single observed HP loss in this wave since loading, not full wave history, total damage, DPS or a source ranking. Ties retain the earlier event. Wave changes and loading clear it. Unconfirmed large hits still count without identifying their source.'],
+ ja:['この襲撃で記録した最大一撃 −{damage} · {source} · {time}','読込後、この襲撃で観測した単発の実HP損失のみ。襲撃全履歴・合計・DPS・発生源の順位ではありません。同値は先の記録を維持し、次の襲撃・読込で消去。未確認の大きな損失も記録しますが発生源は推測しません。']
+})) ['peak', 'peakHelp'].forEach((key, i) => STRINGS[locale]['coreDamage.' + key] = values[i]);
