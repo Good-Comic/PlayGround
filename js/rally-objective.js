@@ -99,7 +99,7 @@ export function installRallyObjective(g, ui, renderer) {
   const button = panel.querySelector('button'); let signature = '', lastPaint = 0;
   const visibleCarrier = () => { const u = mechanic.carrier(); return u?.alive && u.team === 'enemy' && g.isVisible(u) ? u : null; };
   button.onclick = () => { const u = visibleCarrier(); if (u) g.focusAt(u.x, u.y); };
-  button.addEventListener('keydown', e => { if ([' ', 'Enter'].includes(e.key)) e.stopPropagation(); });
+  button.addEventListener('keydown', e => { if ([' ', 'Enter', 'Tab'].includes(e.key)) e.stopPropagation(); });
   const update = (force = false) => {
     const status = mechanic.status(), blocked = status === 'off' || g.inMenu || g.paused || ui.menuVisible || ui.settingsOpen || ui.gmOpen || ui.boonsOpen || ui.pauseOpen || !ui.el.howto.hidden || !!document.querySelector('dialog[open]');
     if (panel.hidden !== !!blocked) panel.hidden = !!blocked;
