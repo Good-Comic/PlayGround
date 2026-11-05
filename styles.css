@@ -814,11 +814,12 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 
 .steward-dialog { color: #eee4d0; background: #181e23; border: 1px solid #aa9564; max-width: 960px; width: min(94vw, 960px); max-height: 88vh; overflow: auto; padding: 22px; }
 .steward-dialog::backdrop { background: #000b; }
-.steward-dialog fieldset { margin: 14px 0; padding: 12px; }
+.steward-dialog fieldset { margin: 14px 0; padding: 12px; min-inline-size: 0; }
 .steward-dialog label { display: inline-block; margin: 5px; }
 .steward-dialog input[type=number] { width: 74px; }
 .steward-dialog select, .steward-dialog input, .steward-dialog button { font: inherit; padding: 5px; }
-.steward-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.steward-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.steward-grid > label { min-width: 0; overflow-wrap: anywhere; }
 .steward-scroll { overflow-x: auto; }
 .steward-dialog td, .steward-dialog th { padding: 5px; text-align: start; }
 
