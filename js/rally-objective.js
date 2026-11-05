@@ -124,7 +124,14 @@ export function installRallyObjective(g, ui, renderer) {
   const panel = document.createElement('section'); panel.id = 'rally-objective'; panel.hidden = true;
   panel.innerHTML = '<strong></strong><div class="rally-actions"><button type="button" class="rally-view"></button><button type="button" class="rally-attack"></button></div><p class="rally-status" aria-live="polite"></p><p class="rally-order-hint"></p><p class="rally-rule"></p>';
   document.body.append(panel);
-  const button = panel.querySelector('.rally-view'), attack = panel.querySelector('.rally-attack'); let signature = '', lastPaint = 0;
+  const button = panel.querySelector('.rally-view'), attack = panel.querySelector('.rally-attack'); let signature = '', lastPaint = 0, layoutDirty = true;
+  const battlePanel = document.querySelector('#battle-actions');
+  // Layout changes are event-driven. Do not force layout on every command poll.
+  if (typeof ResizeObserver !== 'undefined') {
+    const sizes = new ResizeObserver(() => { layoutDirty = true; });
+    sizes.observe(panel); if (battlePanel) sizes.observe(battlePanel);
+  }
+  window.addEventListener('resize', () => { layoutDirty = true; });
   const visibleCarrier = () => { const u = mechanic.carrier(); return u?.alive && u.team === 'enemy' && g.isVisible(u) ? u : null; };
   button.onclick = () => { const u = visibleCarrier(); if (u) g.focusAt(u.x, u.y); };
   const blockedInput = () => ui.menuVisible || ui.settingsOpen || ui.gmOpen || ui.boonsOpen || ui.pauseOpen || !ui.el.howto.hidden || !!document.querySelector('dialog[open]') || document.body.classList.contains('planning-mode') || document.body.classList.contains('lining-up');
@@ -142,11 +149,14 @@ export function installRallyObjective(g, ui, renderer) {
     if (panel.hidden !== !!blocked) panel.hidden = !!blocked;
     if (panel.hidden) return;
     if (!force && performance.now() - lastPaint < 100) return; lastPaint = performance.now();
-    const bounds = panel.getBoundingClientRect(), battle = document.querySelector('#battle-actions')?.getBoundingClientRect();
-    let available = renderer.h - bounds.top - 12;
-    if (battle && battle.left < bounds.right && battle.right > bounds.left && battle.top > bounds.top) available = Math.min(available, battle.top - bounds.top - 8);
-    const maxHeight = Math.max(64, Math.floor(available)) + 'px';
-    if (panel.style.maxHeight !== maxHeight) panel.style.maxHeight = maxHeight;
+    if (layoutDirty || force) {
+      const bounds = panel.getBoundingClientRect(), battle = battlePanel?.getBoundingClientRect();
+      let available = renderer.h - bounds.top - 12;
+      if (battle && battle.left < bounds.right && battle.right > bounds.left && battle.top > bounds.top) available = Math.min(available, battle.top - bounds.top - 8);
+      const maxHeight = Math.max(64, Math.floor(available)) + 'px';
+      if (panel.style.maxHeight !== maxHeight) panel.style.maxHeight = maxHeight;
+      layoutDirty = false;
+    }
     const state = mechanic.state(), u = visibleCarrier(), seconds = Math.max(0, Math.ceil((status === 'pending' ? state?.eventAt : state?.expiresAt) - g.waveClock));
     const context = rallyAttackContext(g, mechanic, options());
     const key = [document.documentElement.lang, status, seconds, u?.id, context.count, context.reason].join('|'); if (key === signature) return; signature = key;
