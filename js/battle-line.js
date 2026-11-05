@@ -118,7 +118,6 @@ export function installBattleLine(g,ui,renderer,canvas) {
     if(e.key==='Escape'&&active()){e.preventDefault();e.stopImmediatePropagation();cancel();return;}
     if(e.target?.closest?.('input,select,textarea,[contenteditable=true]')||e.ctrlKey||e.metaKey||e.altKey)return;
     if(e.key.toLowerCase()==='v'&&!e.repeat&&active()){e.preventDefault();e.stopImmediatePropagation();flip();return;}
-    if(e.key==='Escape'&&active()){e.preventDefault();e.stopImmediatePropagation();cancel();return;}
     if(e.key.toLowerCase()==='f'&&!e.shiftKey&&!e.repeat&&lineCanAct(g)&&!blocked()){e.preventDefault();e.stopImmediatePropagation();begin();}
   },true);
   canvas.addEventListener('pointerdown',e=>{

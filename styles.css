@@ -891,3 +891,9 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 @media(max-width:760px){#battle-line-panel{top:120px;max-height:27vh;overflow:auto;font-size:11px;padding:8px;}}
 
 .lining-up .hover-tooltip {visibility:hidden;} #battle-line-panel > div {flex-wrap:wrap;}
+
+#battle-line-panel {left:16px;transform:none;width:min(340px,calc(100vw - 32px));}
+#battle-line-panel .line-flip[aria-pressed=true]{background:#665632;outline:1px solid #ffe4a7;}
+.lining-up #battle-actions{background:transparent;border-color:transparent;pointer-events:none;}
+.lining-up #battle-actions .battle-head{pointer-events:auto;background:#1b2e2ee8;padding:2px;}
+.lining-up #battle-actions .battle-buttons,.lining-up #battle-actions .battle-hint{visibility:hidden;}
