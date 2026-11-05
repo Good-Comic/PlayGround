@@ -2,6 +2,8 @@
 
 依使用者最新語言指示，本回報使用臺灣正體中文。原始識別符、測試輸出與正式四語介面維持原文。
 
+操作證據：[戰線與撤回](../battle-line-61ac/evidence/battle-line-demo.webm) · [原生旗手戰鬥](../rally-carrier-61ac/evidence/rally-flow.webm) · [援護、讀檔與改令](evidence/core-defense-flow.webm) · [最後版英雄並行](evidence/hero-parallel-flow.webm) · [正常第5波敗北尾段](evidence/natural-rally-defeat-clip.webm)。每段的來源與限制如下，未混稱同一版本或自然通關。
+
 ## 真正新增的操作
 
 在作戰指揮列加入「援護城心」。玩家主動點擊時選取原有全軍，若有已看見、正在原生攻擊射程內攻擊城心的敵軍，就集火最近者；沒有合適攻城者時，沿用正式護衛指令保護城心。這是手動快捷操作，沒有增加自動回防政策、傷害、攻速、資源或新AI規則。
