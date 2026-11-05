@@ -1,3 +1,4 @@
+import { installBattleLine } from './battle-line.js';
 import { installTacticalPlanner } from './tactical-planner.js';
 import { installEarlyRaid } from './early-raid.js';
 import { installWorkshopUI } from './workshop-expedition.js';
@@ -393,3 +394,5 @@ installWorkshopUI(game,ui);
 ui.earlyRaid=installEarlyRaid(game,ui);
 
 ui.tacticalPlanner=installTacticalPlanner(game,ui,renderer,canvas);
+
+ui.battleLine=installBattleLine(game,ui,renderer,canvas);

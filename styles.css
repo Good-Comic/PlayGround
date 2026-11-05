@@ -882,3 +882,10 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 #tactical-planner .plan-group-label {display:flex;align-items:center;gap:8px;margin:6px 0;} #tactical-planner select {font:inherit;max-width:100%;background:#263e3f;color:#e9fcf6;border:1px solid #86babd;padding:5px;} .plan-footer {flex-wrap:wrap;} .plan-footer button {min-width:105px;}
 
 #wave-banner #btn-tactical-plan {flex:none;width:30px;height:30px;padding:5px;} @media(max-width:1250px){#wave-banner .wave-rule{display:none;}}
+
+.battle-head {display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:5px;min-height:20px;} .battle-head .battle-caption {margin:0;}
+.line-launch {font:inherit;font-size:11px;padding:3px 7px;border:1px solid #9ed9dc;color:#d9f7f0;background:#213537;cursor:pointer;} .line-launch:disabled {opacity:.45;cursor:default;} .line-launch[aria-pressed=true]{outline:2px solid #ffe1a2;}
+#battle-line-panel {position:fixed;left:50%;top:136px;transform:translateX(-50%);z-index:9;width:min(440px,calc(100vw - 24px));padding:10px;background:#172a2af2;border:1px solid #9ed9dc;color:#e4f4df;font-size:12px;}
+#battle-line-panel p{margin:6px 0;line-height:1.35;} #battle-line-panel > div{display:flex;justify-content:space-between;align-items:center;gap:6px;} #battle-line-panel select,#battle-line-panel button{font:inherit;background:#2d4140;color:#eef6d8;border:1px solid #b7cb9b;padding:5px;}
+.lining-up #early-raid,.lining-up #rescue-expedition,.lining-up .intel-card,.lining-up .objective-card {visibility:hidden;}
+@media(max-width:760px){#battle-line-panel{top:120px;max-height:27vh;overflow:auto;font-size:11px;padding:8px;}}

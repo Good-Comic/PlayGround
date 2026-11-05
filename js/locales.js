@@ -654,3 +654,12 @@ for(const [locale,from,to] of [
  ['en','Cancel/load discards unissued plans.','Cancel discards plans. Save plan restores paused for review.'],
  ['ja','取消・読込で未実行の計画を破棄。','取消で計画を破棄。保存した計画は読込後、停止して確認を待ちます。']
 ]) STRINGS[locale]['plan.help']=STRINGS[locale]['plan.help'].replace(from,to);
+
+for(const [locale,values] of Object.entries({"zh-Hant": ["戰線 F", "拖曳戰線", "戰鬥持續進行：拖曳決定戰線寬度，步兵在前、遠程／攻城在後、騎兵兩翼。點一下用預設寬度。落點仍受尋路與碰撞限制。", "接敵模式", "進攻：沿途接敵", "移動：前往落點", "取消 Esc／右鍵", "{count}名戰士。拖曳預覽，放開下令；不增加攻防數值。", "有{blocked}個已知受阻落點，請縮短或移動戰線。", "{unknown}個落點尚未看見；不透露障礙，路徑由原生尋路確認。", "請在開放戰場放開滑鼠。", "已向{count}名戰士下達戰線指令。"], "zh-Hans": ["战线 F", "拖曳战线", "战斗持续进行：拖曳决定战线宽度，步兵在前、远程／攻城在后、骑兵两翼。点一下用默认宽度。落点仍受寻路与碰撞限制。", "接敌模式", "进攻：沿途接敌", "移动：前往落点", "取消 Esc／右键", "{count}名战士。拖曳预览，松开下令；不增加攻防数值。", "有{blocked}个已知受阻落点，请缩短或移动战线。", "{unknown}个落点尚未看见；不透露障碍，路径由原生寻路确认。", "请在开放战场松开鼠标。", "已向{count}名战士下达战线指令。"], "en": ["Battle line F", "Drag a battle line", "Combat stays live. Drag frontage: infantry forward, ranged/siege behind, cavalry on flanks. Click for default width. Native pathfinding and collisions still apply.", "Orders", "Attack-move", "Move only", "Cancel Esc / right-click", "{count} fighters. Drag to preview, release to order. No combat bonuses.", "{blocked} known blocked slots. Shorten or move the line.", "{unknown} unseen slots. Obstacles remain hidden; native pathfinding determines routes.", "Release over the open battlefield.", "Battle-line orders issued to {count} fighters."], "ja": ["戦列 F", "戦列をドラッグ", "戦闘は進行中。幅をドラッグし歩兵は前、遠隔・攻城は後、騎兵は両翼へ。クリックは既定の幅。従来の経路探索と衝突判定を維持。", "指示", "攻撃移動", "移動のみ", "取消 Esc／右クリック", "兵士{count}人。ドラッグで確認、離して指示。戦闘能力の加算なし。", "既知の障害{blocked}地点。幅を縮めるか戦列を移動。", "未視認{unknown}地点。障害は明かさず従来の経路探索に従います。", "操作パネル以外の戦場で離してください。", "{count}人へ戦列指示を出しました。"]})) ["launch","title","help","mode","attackMove","move","cancel","ready","blocked","unknown","onField","issued"].forEach((key,i)=>STRINGS[locale]["line."+key]=values[i]);
+
+for(const [locale,label,note]of[
+ ['zh-Hant','翻轉前後 V','先選部隊再按F；沒有選戰士時使用全軍。V可翻轉前後，讓後撤的前排朝向敵軍。'],
+ ['zh-Hans','翻转前后 V','先选部队再按F；没有选战士时使用全军。V可翻转前后，让后撤的前排朝向敌军。'],
+ ['en','Flip ranks V','Select troops first; no selected fighters uses the army. V flips ranks to keep a retreat facing the enemy.'],
+ ['ja','前後反転 V','兵士を選んでF。未選択なら全軍。Vで前後を反転し、退却時も敵側に前衛を配置。']
+]){STRINGS[locale]['line.flip']=label;STRINGS[locale]['line.help']+=' '+note;}
