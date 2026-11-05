@@ -114,3 +114,9 @@ test('本波結束後存活殘兵不攜帶舊RALLY全域加成到下一波', () 
   g.waveIndex++;g.waveEvent=EVENT_MODULES.RAID;g.phase='prep';
   assert.equal(g.attackCooldown(flag),flag.typeDef.cooldown);
 });
+test('相同種子與固定輸入步長重播，旗手、原生戰鬥及RNG一致', () => {
+  const runs=[rally(),rally()];
+  for(const {g} of runs)for(let i=0;i<600;i++)g.update(.05);
+  const digest=({g,mechanic:m})=>({rng:g.rng.state,clock:g.waveClock,state:m.state(),resources:g.resources,stats:g.stats,units:g.units.map(u=>[u.id,u.x,u.y,u.hp,u.cooldown,u.target?.id])});
+  assert.deepEqual(digest(runs[0]),digest(runs[1]));
+});

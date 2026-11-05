@@ -13,6 +13,7 @@ export function rallyCarrierType(groups = []) {
 
 export function installRallyMechanic(g) {
   let state = null, cachedCarrier = null, resolvedId = null;
+  const cooldownViews = new WeakMap();
   const matches = () => g.waveEvent?.id === 'RALLY' && state?.waveIndex === g.waveIndex;
   const carrier = () => {
     if (!matches() || state.carrierId === null) return null;
@@ -65,7 +66,9 @@ export function installRallyMechanic(g) {
     if (!matches() || u.team !== 'enemy') return cooldown(u);
     // Override only the RALLY input, retaining the native cooldown floor, rage and
     // all other rules. The unit and its current countdown are never modified.
-    const view = Object.create(u); view.eventAttackSpeedMul = multiplier(u);
+    let view = cooldownViews.get(u);
+    if (!view) { view = Object.create(u); cooldownViews.set(u, view); }
+    view.eventAttackSpeedMul = multiplier(u);
     return cooldown(view);
   };
   const snapshot = g.snapshot.bind(g);
@@ -98,17 +101,18 @@ export function installRallyObjective(g, ui, renderer) {
   button.onclick = () => { const u = visibleCarrier(); if (u) g.focusAt(u.x, u.y); };
   button.addEventListener('keydown', e => { if ([' ', 'Enter'].includes(e.key)) e.stopPropagation(); });
   const update = (force = false) => {
-    const status = mechanic.status(), blocked = g.inMenu || g.paused || ui.menuVisible || ui.settingsOpen || ui.gmOpen || ui.boonsOpen || ui.pauseOpen || !ui.el.howto.hidden || !!document.querySelector('dialog[open]');
-    panel.hidden = status === 'off' || blocked;
+    const status = mechanic.status(), blocked = status === 'off' || g.inMenu || g.paused || ui.menuVisible || ui.settingsOpen || ui.gmOpen || ui.boonsOpen || ui.pauseOpen || !ui.el.howto.hidden || !!document.querySelector('dialog[open]');
+    if (panel.hidden !== !!blocked) panel.hidden = !!blocked;
     if (panel.hidden) return;
     if (!force && performance.now() - lastPaint < 100) return; lastPaint = performance.now();
     const state = mechanic.state(), u = visibleCarrier(), seconds = Math.max(0, Math.ceil((status === 'pending' ? state?.eventAt : state?.expiresAt) - g.waveClock));
     const key = [document.documentElement.lang, status, seconds, u?.id].join('|'); if (key === signature) return; signature = key;
-    panel.querySelector('strong').textContent = t('flag.title');
-    panel.querySelector('.rally-rule').textContent = t('flag.rule');
-    panel.querySelector('.rally-status').textContent = t('flag.' + status, { seconds }) + (['pending', 'active'].includes(status) && !u ? ' ' + t('flag.unseen') : '');
-    button.textContent = t('flag.focus'); button.disabled = !u || !['pending', 'active'].includes(status);
-    panel.dataset.status = status;
+    const text = (el, value) => { if (el.textContent !== value) el.textContent = value; };
+    text(panel.querySelector('strong'), t('flag.title'));
+    text(panel.querySelector('.rally-rule'), t('flag.rule'));
+    text(panel.querySelector('.rally-status'), t('flag.' + status, { seconds }) + (['pending', 'active'].includes(status) && !u ? ' ' + t('flag.unseen') : ''));
+    text(button, t('flag.focus')); button.disabled = !u || !['pending', 'active'].includes(status);
+    if (panel.dataset.status !== status) panel.dataset.status = status;
   };
   const oldUpdate = ui.update.bind(ui); ui.update = (...args) => { oldUpdate(...args); update(); };
   const drawUnit = renderer.drawUnit.bind(renderer);
