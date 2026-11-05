@@ -2,6 +2,7 @@ import { installBattleLine } from './battle-line.js';
 import { installRallyObjective } from './rally-objective.js';
 import { installCoreDefense } from './core-defense.js';
 import { installCommandReadback } from './command-readback.js';
+import { installCoreDamageReadback } from './core-damage-readback.js';
 import { installTacticalPlanner } from './tactical-planner.js';
 import { installEarlyRaid } from './early-raid.js';
 import { installWorkshopUI } from './workshop-expedition.js';
@@ -404,3 +405,4 @@ ui.rallyObjective=installRallyObjective(game,ui,renderer);
 
 ui.coreDefense=installCoreDefense(game,ui);
 ui.commandReadback=installCommandReadback(game,ui,renderer);
+ui.coreDamageReadback=installCoreDamageReadback(game,ui);
