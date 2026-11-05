@@ -106,7 +106,7 @@ export function installBattleLine(g,ui,renderer,canvas) {
     const disabled=!lineCanAct(g)||blocked()||!count;
     const key=[document.documentElement.lang,on,disabled,count,modeSelect.value,reversed,cached?.blocked,cached?.unknown,message].join('|');if(key===signature)return;signature=key;
     const set=(node,value)=>{if(node.textContent!==value)node.textContent=value;};
-    set(launch,t('line.launch'));launch.disabled=!!disabled;launch.setAttribute('aria-pressed',String(on));launch.title=t('line.help');
+    set(launch,t('line.launch'));launch.disabled=!!disabled;launch.setAttribute('aria-pressed',String(on));launch.title=t(g.heroControl?'line.heroHint':'line.help');
     set(panel.querySelector('strong'),t('line.title'));set(panel.querySelector('.line-help'),t('line.help'));
     set(panel.querySelector('label span'),t('line.mode'));set(modeSelect.options[0],t('line.attackMove'));set(modeSelect.options[1],t('line.move'));set(flipButton,t('line.flip'));flipButton.setAttribute('aria-pressed',String(reversed));set(cancelButton,t('line.cancel'));
     set(panel.querySelector('.line-status'),message||t(cached?.blocked?'line.blocked':cached?.unknown?'line.unknown':'line.ready',{count,blocked:cached?.blocked||0,unknown:cached?.unknown||0}));
@@ -115,6 +115,7 @@ export function installBattleLine(g,ui,renderer,canvas) {
   launch.onclick=begin;cancelButton.onclick=cancel;flipButton.onclick=flip;modeSelect.onchange=()=>update(true);
   for(const el of[launch,cancelButton,flipButton,modeSelect])el.addEventListener('keydown',e=>{if([' ','Enter','Tab'].includes(e.key)||el===modeSelect)e.stopPropagation();});
   window.addEventListener('keydown',e=>{
+    if(e.key==='Escape'&&active()){e.preventDefault();e.stopImmediatePropagation();cancel();return;}
     if(e.target?.closest?.('input,select,textarea,[contenteditable=true]')||e.ctrlKey||e.metaKey||e.altKey)return;
     if(e.key.toLowerCase()==='v'&&!e.repeat&&active()){e.preventDefault();e.stopImmediatePropagation();flip();return;}
     if(e.key==='Escape'&&active()){e.preventDefault();e.stopImmediatePropagation();cancel();return;}
@@ -148,7 +149,7 @@ export function installBattleLine(g,ui,renderer,canvas) {
       if(!p.valid){ctx.beginPath();ctx.moveTo(s.x-6,s.y-6);ctx.lineTo(s.x+6,s.y+6);ctx.moveTo(s.x+6,s.y-6);ctx.lineTo(s.x-6,s.y+6);ctx.stroke();}
       if(cached.pairs.length<=32){const u=g.screenPos(p.unit.x,p.unit.y);ctx.beginPath();ctx.moveTo(u.x,u.y);ctx.lineTo(s.x,s.y);ctx.stroke();}
     }
-    const mid=g.screenPos(cached.mid.x,cached.mid.y),front=g.screenPos(cached.mid.x+cached.normal.x,cached.mid.y+cached.normal.y);ctx.strokeStyle='#ffe2a2';ctx.beginPath();ctx.moveTo(mid.x,mid.y);ctx.lineTo(front.x,front.y);ctx.stroke();ctx.restore();
+    const mid=g.screenPos(cached.mid.x,cached.mid.y),front=g.screenPos(cached.mid.x+cached.normal.x,cached.mid.y+cached.normal.y);ctx.strokeStyle='#ffe2a2';ctx.fillStyle='#ffe2a2';ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(mid.x,mid.y);ctx.lineTo(front.x,front.y);ctx.stroke();const angle=Math.atan2(front.y-mid.y,front.x-mid.x);ctx.beginPath();ctx.moveTo(front.x,front.y);ctx.lineTo(front.x-8*Math.cos(angle-.5),front.y-8*Math.sin(angle-.5));ctx.lineTo(front.x-8*Math.cos(angle+.5),front.y-8*Math.sin(angle+.5));ctx.closePath();ctx.fill();ctx.font='12px sans-serif';ctx.fillText(t('line.front'),front.x+6,front.y-6);ctx.restore();
   };
   document.addEventListener('localechange',()=>update(true));update(true);
   return {begin,cancel,active,update};
