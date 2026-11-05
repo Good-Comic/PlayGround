@@ -1,0 +1,61 @@
+{
+  "player": "C",
+  "round": "after",
+  "language": "zh-Hant-TW",
+  "perspective": "AI完全新手／低熟練玩家模擬；非真人感受、APM或留存預測",
+  "scope": "原始未修改自然快照的正式Continue聚焦續玩，非新開十波",
+  "allowed_reading": ["players/C/PROFILE.md", "players/C/before/REPORT.md", "public/README.md"],
+  "visible_build": {"commit": "6075dba", "label": "fun-command-readback-281169b5"},
+  "scheduled_save_conditions": {"civilization": "FRK", "difficulty": "normal", "biome": "steppe", "seed": "FUN-LAB-BASE-281", "basis": "自己的before報告與續玩任務，未檢查快照；此次HUD直接確認草海平原與第五日"},
+  "result": {"status": "DEFEAT", "wave": 5, "raids_survived": 4, "total_raids": 10, "kills": 109, "gathered_resources": 7944, "reign_display": "11:35", "wall_seconds": 166.714, "elapsed_seconds": 143.260, "evidence": "screen-0013.png", "finish_called_after_result": true, "finish_ok": true},
+  "timing": {"origin": "Continue原生點擊", "origin_wall_seconds": 23.454, "basis": "真實經過時間，含閱讀、觀察與工具往返；不是內部遊戲時間", "effective_intents_including_continue": 7, "minimum_intent_interval_seconds": 14.992, "intents_per_real_minute": 2.93, "maximum_battle_observation_gap_seconds": 25.094, "manual_pause": false, "speed_change": false},
+  "observations": [
+    {"wall": 26.762, "elapsed": 3.308, "screen": "screen-0003.png", "visible": "第五波，4/10，城心100%，已得4恩賜；已選0／全軍28；旗手尚未看見，40秒後集結"},
+    {"wall": 42.085, "elapsed": 18.631, "screen": "screen-0005.png", "visible": "已選28／全軍28，28人護衛城鎮中心，城心100%，8敵；旗手尚未看見，24秒後集結"},
+    {"wall": 67.179, "elapsed": 43.725, "screen": "screen-0006.png", "visible": "城心95%，已選25／全軍27，23人護衛城心、2人自主接敵；軍閥2106/2124；旗手集結剩14秒"},
+    {"wall": 74.903, "elapsed": 51.449, "screen": "screen-0007.png", "visible": "查看旗手後軍閥2073/2124、紅旗與密集交戰；城心92%，已選19／全軍21，19人護衛城心；集結剩6秒"},
+    {"wall": 94.103, "elapsed": 70.649, "screen": "screen-0008.png", "visible": "已選10／全軍12，10人集火長槍兵；金環與長槍兵·10人集火；敵方61/61；集結已結束，城心80%"},
+    {"wall": 118.932, "elapsed": 95.478, "screen": "screen-0009.png", "visible": "已選3／全軍3，3人護衛城心，城心53%，17敵；軍閥1865/2124"},
+    {"wall": 138.144, "elapsed": 114.690, "screen": "screen-0010.png", "visible": "步弓兵已被標記，Q30秒；城心30%，精銳守衛43/143，已選1／全軍1，1人護衛城心"},
+    {"wall": 155.038, "elapsed": 131.584, "screen": "screen-0011.png", "visible": "神盾為1名士兵提供60護盾5秒；全軍0、未選戰士、城心10%，軍令停用；英雄按鈕仍可用"},
+    {"wall": 166.714, "elapsed": 143.260, "screen": "screen-0013.png", "visible": "正式城心失守，度過4波、109擊殺、7944採集、11:35統治時間"}
+  ],
+  "actions": [
+    {"wall": 23.454, "elapsed": 0, "input": "click #btn-continue", "intent": "依排程正常續玩", "goal": "接回自己的場次"},
+    {"wall": 38.446, "elapsed": 14.992, "input": "click #btn-core-defense", "intent": "用已理解的援護保護城心", "visible_result_at": 42.085},
+    {"wall": 74.053, "elapsed": 50.599, "input": "click @33 查看旗手", "intent": "依剛出現的集結提示找旗手", "visible_result_at": 74.903},
+    {"wall": 93.473, "elapsed": 70.019, "input": "right click x644,y394", "intent": "攻擊可見紅旗附近的旗手", "visible_result_at": 94.103, "actual_visible_target": "長槍兵", "deliberate_misclick": false},
+    {"wall": 118.126, "elapsed": 94.672, "input": "click #btn-core-defense", "intent": "旗手事件已結束且城心掉血，改回守城", "visible_result_at": 118.932},
+    {"wall": 137.529, "elapsed": 114.075, "input": "key q", "intent": "用可施放標記協助眼前戰鬥", "visible_result_at": 138.144},
+    {"wall": 154.387, "elapsed": 130.933, "input": "key e", "intent": "用仍可施放神盾保護剩餘士兵", "visible_result_at": 155.038}
+  ],
+  "command_readback": {
+    "evaluated": true,
+    "selection_command_target_example": {"wall": 42.085, "selected": 28, "army": 28, "command": "護衛", "target": "城鎮中心", "basis": "可見已選戰士與命令摘要"},
+    "natural_intent_mismatch": {"evaluated": true, "wanted": "旗手", "actual_command_target": "長槍兵", "selected": 10, "army": 12, "wall": 94.103, "screen": "screen-0008.png", "visible_evidence": ["10人集火長槍兵", "金環：長槍兵·10人集火", "敵方61/61生命"], "interpretation": "確認命令未指向想打的旗手；不確定是初始辨識錯、目標移動或兩者都有", "followup": "集結已結束且城心掉血，於wall118.126改援護城心", "manufactured": false},
+    "did_not_infer": ["已抵達", "已命中", "傷害", "旗手死因", "改善勝率"],
+    "assessment": "能確認選兵、命令與實際目標並自主改令；未能及時擊倒旗手，仍敗北"
+  },
+  "fun": [
+    {"elapsed": 18.631, "category": "控制回饋／確定感", "finding": "援護後28人護衛城心，一句摘要可理解按鈕結果", "evidence": ["screen-0005.png"]},
+    {"elapsed": 51.449, "category": "戲劇張力／威脅變化", "finding": "軍閥專名、大血條、紅旗與集結令眼前威脅有變化", "evidence": ["screen-0007.png"]},
+    {"elapsed": 70.649, "category": "學習／可理解的手動控制", "finding": "金環與長槍兵名稱令右鍵結果可確認，形成自主改回守城的下一步", "evidence": ["screen-0008.png", "screen-0009.png"]}
+  ],
+  "boring": [
+    {"elapsed_range": [3.308, 18.631], "category": "輕度等待／低決策密度", "finding": "從0敵與未選戰士重新找回既有守城操作；包含必要閱讀，未把整段都判為無聊", "evidence": ["screen-0003.png", "screen-0005.png"]},
+    {"elapsed_range": [131.584, 143.260], "category": "低能動感／收尾等待", "finding": "全軍0、城心10%、軍令停用、Q/E冷卻，找操作時就敗北；英雄仍可用，不宣稱完全不能操作", "evidence": ["screen-0011.png", "screen-0013.png"]}
+  ],
+  "boring_missing_third": "短暫聚焦續玩沒有第三項足夠證據，不沿用前場情境補數",
+  "frustrating": [
+    {"elapsed_range": [51.449, 70.649], "category": "限時事件／目標辨識／操作成本", "finding": "查看後剩6秒，密集兵群中右鍵結果為長槍兵；摘要可確認但來不及解決旗手", "evidence": ["screen-0007.png", "screen-0008.png"]},
+    {"elapsed_range": [95.478, 114.690], "category": "危機補救／失敗速度", "finding": "改援護時城心53%、選兵3，按Q後30%、選兵1，未形成能及時完成的補救目標", "evidence": ["screen-0009.png", "screen-0010.png"]},
+    {"elapsed": 131.584, "category": "技能時機／延遲回饋", "finding": "神盾加1人60護盾回饋與全軍0同次出現；不能確認士兵死時或護盾實際收益", "evidence": ["screen-0011.png"]}
+  ],
+  "improvements": [
+    {"proposal": "提高已看見旗手在重疊戰鬥中的名稱、輪廓與倒數辨識，維持人工下令", "gdd_compatibility": "待核實，未讀完整GDD", "risk": "洩漏未發現位置、降低尋找挑戰", "validation": "分開做同節奏AI新手與真人測試，記錄下令前辨識與誤點率，核對只標已看見目標"},
+    {"proposal": "保留簡潔摘要，在命令改變時短暫突出目標名稱與已選人數", "gdd_compatibility": "待核實", "risk": "閃動遮擋或分散注意力，可能把命令誤認為命中", "validation": "只依UI說出選兵、命令、目標，記錄讀取時間、是否誤認命中與是否自主改令"},
+    {"proposal": "兵力歸零與城心危急時，提供可略過的停用原因及仍可用控制說明", "gdd_compatibility": "待核實", "risk": "危機增加文案負擔，誤以為英雄必能救場", "validation": "檢查新手是否知道停用原因、可用控制並自行選下一步；維持數值與時限"}
+  ],
+  "replay_willingness": {"rating_out_of_5": 3, "willing": "有條件願意再玩", "reason": "能確認右鍵指向誰，想再試辨識旗手；快速潰敗與缺少可完成補救降低意願", "limitation": "僅AI新手模擬觀點，非真人意願或留存推估"},
+  "limitations": ["未讀快照核對內部狀態", "未直接重新驗證存檔文明、難度與種子", "圖片與文字擷取有時間差", "未確認抵達、命中、旗手倒下、個別死因或技能收益", "沒有新的選卡、經濟或招募評估", "無聊第三項證據不足", "僅一個AI新手聚焦續玩樣本，無真人因果或統計推論"]
+}

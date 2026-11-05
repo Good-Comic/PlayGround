@@ -47,6 +47,8 @@ def metrics(role,round):
  playedSim=end['sim']-initialSim
  out['initial_sim_seconds']=initialSim
  out['played_sim_seconds']=playedSim
+ out['simulation_to_wall_ratio']=playedSim/result['gameWallSeconds'] if result['gameWallSeconds'] else None
+ out['segment_waves_cleared']=end['stats']['waves']-((result.get('resume') or {}).get('initialStats') or {}).get('waves',0)
  out['segment_gathered_total']=end['stats']['gathered']-((result.get('resume') or {}).get('initialStats') or {}).get('gathered',0)
  out['stop_reason']=result.get('stopReason')
  out['clock_scope_limit']='續玩時計為累積值；played_sim_seconds扣除原始快照時鐘。抽樣與工具延遲使牆鐘比率僅供診斷。'

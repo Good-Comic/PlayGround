@@ -1,0 +1,2994 @@
+{
+  "matching": "同初始條件，行動與RNG流程會不同；非嚴格因果A/B，也非真人娛樂感受",
+  "results": [
+    {
+      "role": "A",
+      "round": "before",
+      "source": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+      "mode": "NATURAL_NATIVE_INPUT_ISOLATED_PLAYER_NO_STATE_INJECTION",
+      "result": "NATURAL_DEFEAT",
+      "wave_reached": 4,
+      "waves_cleared": 3,
+      "sim_seconds": 530.8378000000865,
+      "game_wall_seconds": 846.193,
+      "simulation_to_wall_ratio": 0.6273247356100636,
+      "sampled_paused_wall_seconds": 174.35800000000006,
+      "phase_wall_seconds_approx": {
+        "prep": 310.975,
+        "wave": 395.12799999999993,
+        "boon": 90.10499999999996,
+        "defeat": 49.256000000000085
+      },
+      "core": null,
+      "final_resources": {
+        "food": 41.78890051373644,
+        "wood": 1387.8609950982657,
+        "gold": 205.7301900079937,
+        "stone": 315.4545230977309
+      },
+      "gathered_total_native_stat": 3707.8346087177306,
+      "per_resource_sampled_positive_delta_LOWER_BOUND": {
+        "food": 1433.2310487054892,
+        "wood": 1501.8609950982657,
+        "gold": 607.0,
+        "stone": 435.4545230977309
+      },
+      "income_measurement_limit": "每5秒抽樣的正庫存變化下界；同期支出會遮蔽收入，不能當成完整四資源收入。原生 gathered 為全部實際交付總量。",
+      "final_soldiers": 19,
+      "final_workers": 16,
+      "units_ceased_alive_observed": 12,
+      "ceased_alive_ids": [
+        11,
+        12,
+        15,
+        17,
+        18,
+        24,
+        34,
+        35,
+        74,
+        75,
+        117,
+        118
+      ],
+      "loss_limit": "每5秒抽樣曾活著而最終不存活，包含期限到期；兩次樣本間出生又死亡可能漏計，不能全當戰鬥傷亡。",
+      "worker_productive_state_time_ratio": 0.963756315452221,
+      "worker_assignment_person_seconds": {
+        "wood": 1935.2632000003005,
+        "food": 1796.7369000002907,
+        "gold": 1013.6300000001611,
+        "stone": 521.1388000000854,
+        "building": 118.89260000001421,
+        "unassigned": 202.53690000003752
+      },
+      "army_attacking_state_time_ratio": 0.3054850225161574,
+      "army_idle_without_order_time_ratio": 0.2316038788679556,
+      "native_inputs_dispatched": 73,
+      "native_input_failures": 1,
+      "observed_order_change_inputs": 12,
+      "observed_skill_activations": {
+        "mark": 4,
+        "aegis": 3
+      },
+      "boon_claim_observations": [
+        {
+          "wallSeconds": 325.035,
+          "before": [],
+          "after": [
+            "bronze_oath"
+          ]
+        },
+        {
+          "wallSeconds": 576.011,
+          "before": [
+            "bronze_oath"
+          ],
+          "after": [
+            "bronze_oath",
+            "decoy_cart"
+          ]
+        },
+        {
+          "wallSeconds": 754.883,
+          "before": [
+            "bronze_oath",
+            "decoy_cart"
+          ],
+          "after": [
+            "bronze_oath",
+            "decoy_cart",
+            "butcher"
+          ]
+        }
+      ],
+      "boons": [
+        "bronze_oath",
+        "decoy_cart",
+        "butcher"
+      ],
+      "boon_combat_causal_contribution": "NOT_TESTED：套用效果可由獨立 snapshot 核對；本輪不以卡牌存在推論增加幾點傷害或通關貢獻。",
+      "tactical_input_counts": {
+        "#btn-howto": 1,
+        "#btn-howto-close": 1,
+        "#btn-start": 1,
+        "#btn-stewards-hud": 1,
+        "scroll": 7,
+        "select[name=\"army\"]": 2,
+        "select[name=\"age\"]": 1,
+        "select[name=\"stablemode\"]": 1,
+        "input[name=\"stablemax\"]": 1,
+        "select[name=\"towermode\"]": 1,
+        "input[name=\"towermax\"]": 1,
+        "#steward-apply": 2,
+        "click": 17,
+        "#btn-core-defense": 9,
+        "q": 4,
+        "e": 3,
+        "s": 2,
+        "3": 1,
+        "Control+Enter": 3,
+        "input[name=\"unit20_horse_archer\"]": 1,
+        "[data-command=\"train:light_cavalry\"]": 3,
+        "[data-command=\"train:villager\"]": 1,
+        "Tab": 1,
+        "2": 1,
+        "drag": 1,
+        "[data-command=\"build:page\"]": 1,
+        "[data-command=\"build:tower\"]": 2,
+        "#idle-button": 2,
+        "1": 1,
+        "F2": 1
+      },
+      "frame_observation": {
+        "scope": "整個工作階段的 requestAnimationFrame，包含選單及暫停；不能當持續戰鬥負載或實體GPU結果",
+        "n": 41353,
+        "duration_seconds": 903.1806,
+        "fps": 45.78597015923504,
+        "p50_ms": 16.70000000001164,
+        "p95_ms": 33.40000000002328,
+        "max_ms": 216.60000000000002
+      },
+      "heap_used_bytes": {
+        "peak": 47765771,
+        "median": 17437487,
+        "end": {
+          "used": 16933148,
+          "total": 82712824
+        }
+      },
+      "page_errors": [],
+      "core_failure_context_last_samples": [
+        {
+          "sim": 481.4912000000898,
+          "core": {
+            "id": 1,
+            "hp": 2233.624999999995,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 45.67722481595439,
+            "wood": 1209.462368096238,
+            "gold": 170.7301900079937,
+            "stone": 275.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "idle": 16,
+            "hold": 2
+          },
+          "order_failures": {
+            "congested": 7
+          }
+        },
+        {
+          "sim": 486.54110000009086,
+          "core": {
+            "id": 1,
+            "hp": 2233.624999999995,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 26.679848815954387,
+            "wood": 1219.462368096238,
+            "gold": 180.7301900079937,
+            "stone": 285.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 5,
+            "idle": 11,
+            "hold": 2
+          },
+          "order_failures": {
+            "congested": 7
+          }
+        },
+        {
+          "sim": 492.0905000000923,
+          "core": {
+            "id": 1,
+            "hp": 2209.0399999999954,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 69.68247281595438,
+            "wood": 1249.462368096238,
+            "gold": 190.7301900079937,
+            "stone": 285.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 5,
+            "move": 5,
+            "idle": 7,
+            "hold": 2
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 504.25570000009515,
+          "core": {
+            "id": 1,
+            "hp": 1677.2949999999958,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 134.6902008159544,
+            "wood": 1279.462368096238,
+            "gold": 190.7301900079937,
+            "stone": 295.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 7,
+            "idle": 6,
+            "move": 4,
+            "hold": 2
+          },
+          "order_failures": {
+            "congested": 4
+          }
+        },
+        {
+          "sim": 509.2555000000962,
+          "core": {
+            "id": 1,
+            "hp": 1421.6949999999958,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 22.695480815954397,
+            "wood": 1309.462368096238,
+            "gold": 155.7301900079937,
+            "stone": 295.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 16,
+            "idle": 2
+          },
+          "order_failures": {
+            "congested": 5
+          }
+        },
+        {
+          "sim": 514.3220000000955,
+          "core": {
+            "id": 1,
+            "hp": 1421.6949999999958,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 47.70077681595439,
+            "wood": 1339.462368096238,
+            "gold": 165.7301900079937,
+            "stone": 305.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 14,
+            "idle": 4
+          },
+          "order_failures": {
+            "congested": 8
+          }
+        },
+        {
+          "sim": 519.4050000000926,
+          "core": {
+            "id": 1,
+            "hp": 1038.294999999996,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 27.700776815954384,
+            "wood": 1349.462368096238,
+            "gold": 175.7301900079937,
+            "stone": 305.4545230977309
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "idle": 10,
+            "attack": 7,
+            "move": 1
+          },
+          "order_failures": {
+            "congested": 15
+          }
+        },
+        {
+          "sim": 526.0714000000884,
+          "core": {
+            "id": 1,
+            "hp": 399.29499999999615,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 28.703400815954367,
+            "wood": 1369.462368096238,
+            "gold": 195.7301900079937,
+            "stone": 315.4545230977309
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "attack": 14,
+            "move": 2,
+            "idle": 3
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 530.8378000000865,
+          "core": null,
+          "resources": {
+            "food": 41.78890051373644,
+            "wood": 1387.8609950982657,
+            "gold": 205.7301900079937,
+            "stone": 315.4545230977309
+          },
+          "alive_workers": 16,
+          "soldier_states": {
+            "attack": 16,
+            "idle": 3
+          },
+          "order_failures": {
+            "congested": 4
+          }
+        }
+      ],
+      "control_rejections_before_dispatch": 2,
+      "pre_failure_target_intentions": [
+        {
+          "sim": 432.4441000000786,
+          "core_hp": 1744.494999999995,
+          "enemy_targeting_core": {},
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 466.2919000000863,
+          "core_hp": 2239.494999999995,
+          "enemy_targeting_core": {},
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 471.3416000000874,
+          "core_hp": 2239.494999999995,
+          "enemy_targeting_core": {},
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 476.42470000008865,
+          "core_hp": 2239.494999999995,
+          "enemy_targeting_core": {
+            "militia": 6,
+            "archer": 6,
+            "ram": 2
+          },
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 481.4912000000898,
+          "core_hp": 2233.624999999995,
+          "enemy_targeting_core": {
+            "militia": 6,
+            "archer": 5,
+            "ram": 2
+          },
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 486.54110000009086,
+          "core_hp": 2233.624999999995,
+          "enemy_targeting_core": {
+            "militia": 6,
+            "archer": 5,
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "militia": 5
+          }
+        },
+        {
+          "sim": 492.0905000000923,
+          "core_hp": 2209.0399999999954,
+          "enemy_targeting_core": {
+            "militia": 4,
+            "archer": 3,
+            "ram": 1
+          },
+          "player_attack_target_types": {
+            "militia": 3,
+            "archer": 3
+          }
+        },
+        {
+          "sim": 504.25570000009515,
+          "core_hp": 1677.2949999999958,
+          "enemy_targeting_core": {
+            "militia": 1,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "ram": 5,
+            "militia": 3
+          }
+        },
+        {
+          "sim": 509.2555000000962,
+          "core_hp": 1421.6949999999958,
+          "enemy_targeting_core": {
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 5,
+            "ram": 12
+          }
+        },
+        {
+          "sim": 514.3220000000955,
+          "core_hp": 1421.6949999999958,
+          "enemy_targeting_core": {
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "ram": 15
+          }
+        },
+        {
+          "sim": 519.4050000000926,
+          "core_hp": 1038.294999999996,
+          "enemy_targeting_core": {
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "ram": 8
+          }
+        },
+        {
+          "sim": 526.0714000000884,
+          "core_hp": 399.29499999999615,
+          "enemy_targeting_core": {
+            "ram": 5,
+            "militia": 6,
+            "archer": 6
+          },
+          "player_attack_target_types": {
+            "ram": 15
+          }
+        }
+      ],
+      "target_intention_limit": "只代表原生目標參照與狀態；不把走向城心但未進射程的單位當成實際傷害來源。",
+      "initial_sim_seconds": 0,
+      "played_sim_seconds": 530.8378000000865,
+      "segment_waves_cleared": 3,
+      "segment_gathered_total": 3707.8346087177306,
+      "stop_reason": null,
+      "clock_scope_limit": "續玩時計為累積值；played_sim_seconds扣除原始快照時鐘。抽樣與工具延遲使牆鐘比率僅供診斷。",
+      "active_unpaused_wall_seconds_APPROX": 531.7449999999999,
+      "sim_to_active_wall_ratio_APPROX": 0.9982939190779164,
+      "native_dispatched_APM_whole_session": 4.847701381594894
+    },
+    {
+      "role": "A",
+      "round": "after",
+      "source": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+      "mode": "RESUMED_NATURAL_SAVE_FOCUSED_RETEST",
+      "result": "NATURAL_DEFEAT",
+      "wave_reached": 4,
+      "waves_cleared": 3,
+      "sim_seconds": 543.8870000000867,
+      "game_wall_seconds": 137.596,
+      "simulation_to_wall_ratio": 0.5638136283031514,
+      "sampled_paused_wall_seconds": 51.235,
+      "phase_wall_seconds_approx": {
+        "wave": 127.471,
+        "defeat": 9.596000000000004
+      },
+      "core": null,
+      "final_resources": {
+        "food": 6.056579513737304,
+        "wood": 1399.462368096238,
+        "gold": 251.7301900079937,
+        "stone": 385.4545230977309
+      },
+      "gathered_total_native_stat": 3764.703660715703,
+      "per_resource_sampled_positive_delta_LOWER_BOUND": {
+        "food": 190.35853869778293,
+        "wood": 210.0,
+        "gold": 100.0,
+        "stone": 60.0
+      },
+      "income_measurement_limit": "每5秒抽樣的正庫存變化下界；同期支出會遮蔽收入，不能當成完整四資源收入。原生 gathered 為全部實際交付總量。",
+      "final_soldiers": 19,
+      "final_workers": 15,
+      "units_ceased_alive_observed": 3,
+      "ceased_alive_ids": [
+        117,
+        118,
+        120
+      ],
+      "loss_limit": "每5秒抽樣曾活著而最終不存活，包含期限到期；兩次樣本間出生又死亡可能漏計，不能全當戰鬥傷亡。",
+      "worker_productive_state_time_ratio": 0.9488335290575967,
+      "worker_assignment_person_seconds": {
+        "gold": 150.65740000000017,
+        "wood": 356.5446999999988,
+        "food": 373.3945000000026,
+        "stone": 75.32870000000008,
+        "unassigned": 52.66329999999954,
+        "building": 20.665500000001543
+      },
+      "army_attacking_state_time_ratio": 0.3831021388348435,
+      "army_idle_without_order_time_ratio": 0.1026621708532439,
+      "native_inputs_dispatched": 15,
+      "native_input_failures": 0,
+      "observed_order_change_inputs": 5,
+      "observed_skill_activations": {
+        "aegis": 2
+      },
+      "boon_claim_observations": [
+        {
+          "wallSeconds": 56.342,
+          "before": [],
+          "after": [
+            "decoy_cart",
+            "butcher",
+            "bronze_oath"
+          ]
+        }
+      ],
+      "boons": [
+        "decoy_cart",
+        "butcher",
+        "bronze_oath"
+      ],
+      "boon_combat_causal_contribution": "NOT_TESTED：套用效果可由獨立 snapshot 核對；本輪不以卡牌存在推論增加幾點傷害或通關貢獻。",
+      "tactical_input_counts": {
+        "#btn-continue": 1,
+        "F2": 1,
+        "click": 2,
+        "#btn-core-defense": 2,
+        "#btn-stewards-hud": 1,
+        "select[name=\"gather\"]": 1,
+        "#steward-release": 1,
+        "scroll": 2,
+        "select[name=\"farmmode\"]": 1,
+        "input[name=\"farmmax\"]": 1,
+        "#steward-apply": 1,
+        "e": 1
+      },
+      "frame_observation": {
+        "scope": "整個工作階段的 requestAnimationFrame，包含選單及暫停；不能當持續戰鬥負載或實體GPU結果",
+        "n": 8330,
+        "duration_seconds": 194.3089,
+        "fps": 42.869883983698124,
+        "p50_ms": 16.700000000000728,
+        "p95_ms": 33.40000000000873,
+        "max_ms": 166.70000000000437
+      },
+      "heap_used_bytes": {
+        "peak": 32170418,
+        "median": 17828687,
+        "end": {
+          "used": 15297372,
+          "total": 48284228
+        }
+      },
+      "page_errors": [],
+      "core_failure_context_last_samples": [
+        {
+          "sim": 512.8218000000854,
+          "core": {
+            "id": 1,
+            "hp": 2025.7899999999972,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 61.695640815954384,
+            "wood": 1389.462368096238,
+            "gold": 200.7301900079937,
+            "stone": 365.4545230977309
+          },
+          "alive_workers": 13,
+          "soldier_states": {
+            "attack": 11,
+            "idle": 6,
+            "move": 1
+          },
+          "order_failures": {}
+        },
+        {
+          "sim": 512.8218000000854,
+          "core": {
+            "id": 1,
+            "hp": 2025.7899999999972,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 61.695640815954384,
+            "wood": 1389.462368096238,
+            "gold": 200.7301900079937,
+            "stone": 365.4545230977309
+          },
+          "alive_workers": 13,
+          "soldier_states": {
+            "attack": 11,
+            "idle": 6,
+            "move": 1
+          },
+          "order_failures": {}
+        },
+        {
+          "sim": 516.1384000000852,
+          "core": {
+            "id": 1,
+            "hp": 1871.9199999999976,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 18.698088815954378,
+            "wood": 1329.462368096238,
+            "gold": 200.7301900079937,
+            "stone": 365.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 14,
+            "idle": 4
+          },
+          "order_failures": {}
+        },
+        {
+          "sim": 521.1881000000855,
+          "core": {
+            "id": 1,
+            "hp": 1588.039999999998,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 19.700696815954373,
+            "wood": 1349.462368096238,
+            "gold": 220.7301900079937,
+            "stone": 365.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 14,
+            "idle": 4
+          },
+          "order_failures": {}
+        },
+        {
+          "sim": 526.2713000000864,
+          "core": {
+            "id": 1,
+            "hp": 1308.1999999999982,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 39.70069681595437,
+            "wood": 1369.462368096238,
+            "gold": 220.7301900079937,
+            "stone": 375.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 14,
+            "idle": 4
+          },
+          "order_failures": {
+            "congested": 5
+          }
+        },
+        {
+          "sim": 531.7542000000865,
+          "core": {
+            "id": 1,
+            "hp": 1002.6699999999989,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 1.7059448159543678,
+            "wood": 1369.462368096238,
+            "gold": 240.7301900079937,
+            "stone": 375.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 14,
+            "idle": 4
+          },
+          "order_failures": {}
+        },
+        {
+          "sim": 536.7873000000864,
+          "core": {
+            "id": 1,
+            "hp": 573.7599999999998,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 41.04873951373732,
+            "wood": 1379.462368096238,
+            "gold": 231.7301900079937,
+            "stone": 375.4545230977309
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 14,
+            "idle": 4
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 541.8704000000864,
+          "core": {
+            "id": 1,
+            "hp": 165.7749999999998,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 6.056579513737304,
+            "wood": 1399.462368096238,
+            "gold": 241.7301900079937,
+            "stone": 385.4545230977309
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "attack": 15,
+            "idle": 4
+          },
+          "order_failures": {
+            "congested": 3
+          }
+        },
+        {
+          "sim": 543.8870000000867,
+          "core": null,
+          "resources": {
+            "food": 6.056579513737304,
+            "wood": 1399.462368096238,
+            "gold": 251.7301900079937,
+            "stone": 385.4545230977309
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "attack": 13,
+            "idle": 6
+          },
+          "order_failures": {
+            "congested": 3
+          }
+        }
+      ],
+      "control_rejections_before_dispatch": 0,
+      "pre_failure_target_intentions": [
+        {
+          "sim": 512.8218000000854,
+          "core_hp": 2025.7899999999972,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "archer": 2,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 8,
+            "ram": 1,
+            "archer": 3
+          }
+        },
+        {
+          "sim": 512.8218000000854,
+          "core_hp": 2025.7899999999972,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "archer": 2,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 8,
+            "ram": 1,
+            "archer": 3
+          }
+        },
+        {
+          "sim": 512.8218000000854,
+          "core_hp": 2025.7899999999972,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "archer": 2,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 8,
+            "ram": 1,
+            "archer": 3
+          }
+        },
+        {
+          "sim": 512.8218000000854,
+          "core_hp": 2025.7899999999972,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "archer": 2,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 8,
+            "ram": 1,
+            "archer": 3
+          }
+        },
+        {
+          "sim": 512.8218000000854,
+          "core_hp": 2025.7899999999972,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "archer": 2,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 8,
+            "ram": 1,
+            "archer": 3
+          }
+        },
+        {
+          "sim": 512.8218000000854,
+          "core_hp": 2025.7899999999972,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "archer": 2,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 8,
+            "ram": 1,
+            "archer": 3
+          }
+        },
+        {
+          "sim": 516.1384000000852,
+          "core_hp": 1871.9199999999976,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "ram": 15
+          }
+        },
+        {
+          "sim": 521.1881000000855,
+          "core_hp": 1588.039999999998,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "ram": 15
+          }
+        },
+        {
+          "sim": 526.2713000000864,
+          "core_hp": 1308.1999999999982,
+          "enemy_targeting_core": {
+            "militia": 9,
+            "ram": 5,
+            "archer": 6
+          },
+          "player_attack_target_types": {
+            "ram": 12,
+            "militia": 3
+          }
+        },
+        {
+          "sim": 531.7542000000865,
+          "core_hp": 1002.6699999999989,
+          "enemy_targeting_core": {
+            "militia": 7,
+            "ram": 5,
+            "archer": 6
+          },
+          "player_attack_target_types": {
+            "militia": 3,
+            "ram": 7,
+            "archer": 5
+          }
+        },
+        {
+          "sim": 536.7873000000864,
+          "core_hp": 573.7599999999998,
+          "enemy_targeting_core": {
+            "ram": 5,
+            "militia": 4,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "militia": 4,
+            "ram": 7,
+            "archer": 4
+          }
+        },
+        {
+          "sim": 541.8704000000864,
+          "core_hp": 165.7749999999998,
+          "enemy_targeting_core": {
+            "militia": 6,
+            "ram": 5,
+            "archer": 1
+          },
+          "player_attack_target_types": {
+            "militia": 3,
+            "ram": 9,
+            "archer": 4
+          }
+        }
+      ],
+      "target_intention_limit": "只代表原生目標參照與狀態；不把走向城心但未進射程的單位當成實際傷害來源。",
+      "initial_sim_seconds": 466.30850000008627,
+      "played_sim_seconds": 77.57850000000042,
+      "segment_waves_cleared": 0,
+      "segment_gathered_total": 607.384618697783,
+      "stop_reason": "PLAYER_FINISHED",
+      "clock_scope_limit": "續玩時計為累積值；played_sim_seconds扣除原始快照時鐘。抽樣與工具延遲使牆鐘比率僅供診斷。",
+      "active_unpaused_wall_seconds_APPROX": 76.236,
+      "sim_to_active_wall_ratio_APPROX": 1.017609790650092,
+      "native_dispatched_APM_whole_session": 4.587646995855826
+    },
+    {
+      "role": "B",
+      "round": "before",
+      "source": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+      "mode": "NATURAL_NATIVE_INPUT_ISOLATED_PLAYER_NO_STATE_INJECTION",
+      "result": "NATURAL_DEFEAT",
+      "wave_reached": 4,
+      "waves_cleared": 3,
+      "sim_seconds": 537.4566000000857,
+      "game_wall_seconds": 829.411,
+      "simulation_to_wall_ratio": 0.6479979165939271,
+      "sampled_paused_wall_seconds": 170.43300000000005,
+      "phase_wall_seconds_approx": {
+        "prep": 295.32500000000005,
+        "wave": 411.616,
+        "boon": 102.707,
+        "defeat": 19.149
+      },
+      "core": null,
+      "final_resources": {
+        "food": 32.42764384044448,
+        "wood": 1556.534207433236,
+        "gold": 472.07744636526536,
+        "stone": 744.5518235303646
+      },
+      "gathered_total_native_stat": 4524.591121169308,
+      "per_resource_sampled_positive_delta_LOWER_BOUND": {
+        "food": 1215.7012402601893,
+        "wood": 1540.6110082732107,
+        "gold": 956.0774463652654,
+        "stone": 644.5518235303646
+      },
+      "income_measurement_limit": "每5秒抽樣的正庫存變化下界；同期支出會遮蔽收入，不能當成完整四資源收入。原生 gathered 為全部實際交付總量。",
+      "final_soldiers": 22,
+      "final_workers": 14,
+      "units_ceased_alive_observed": 8,
+      "ceased_alive_ids": [
+        10,
+        13,
+        15,
+        22,
+        23,
+        43,
+        44,
+        109
+      ],
+      "loss_limit": "每5秒抽樣曾活著而最終不存活，包含期限到期；兩次樣本間出生又死亡可能漏計，不能全當戰鬥傷亡。",
+      "worker_productive_state_time_ratio": 0.9872206199917983,
+      "worker_assignment_person_seconds": {
+        "wood": 2162.510200000351,
+        "food": 1978.7681000003145,
+        "gold": 1313.1171000002164,
+        "stone": 837.8582000001454,
+        "building": 35.681800000000806,
+        "unassigned": 81.91390000001837
+      },
+      "army_attacking_state_time_ratio": 0.21187810599445792,
+      "army_idle_without_order_time_ratio": 0.3982743357932883,
+      "native_inputs_dispatched": 49,
+      "native_input_failures": 1,
+      "observed_order_change_inputs": 9,
+      "observed_skill_activations": {
+        "mark": 2,
+        "aegis": 4
+      },
+      "boon_claim_observations": [
+        {
+          "wallSeconds": 316.792,
+          "before": [],
+          "after": [
+            "horse_armor"
+          ]
+        },
+        {
+          "wallSeconds": 532.374,
+          "before": [
+            "horse_armor"
+          ],
+          "after": [
+            "horse_armor",
+            "hooked_lines"
+          ]
+        },
+        {
+          "wallSeconds": 719.509,
+          "before": [
+            "horse_armor",
+            "hooked_lines"
+          ],
+          "after": [
+            "horse_armor",
+            "hooked_lines",
+            "siege_math"
+          ]
+        }
+      ],
+      "boons": [
+        "horse_armor",
+        "hooked_lines",
+        "siege_math"
+      ],
+      "boon_combat_causal_contribution": "NOT_TESTED：套用效果可由獨立 snapshot 核對；本輪不以卡牌存在推論增加幾點傷害或通關貢獻。",
+      "tactical_input_counts": {
+        "#btn-start": 1,
+        "#btn-stewards-hud": 3,
+        "select[name=\"age\"]": 1,
+        "scroll": 4,
+        "select[name=\"housemode\"]": 1,
+        "input[name=\"housemax\"]": 1,
+        "select[name=\"stablemode\"]": 1,
+        "input[name=\"stablemax\"]": 1,
+        "#steward-apply": 2,
+        "click": 9,
+        "[data-command=\"train:guard\"]": 1,
+        "#btn-core-defense": 6,
+        "q": 2,
+        "e": 4,
+        "2": 2,
+        "#btn-claim": 3,
+        "#steward-confirm": 2,
+        "#steward-close": 1,
+        "Shift+A": 1,
+        "F2": 1,
+        "[data-command=\"train:horse_archer\"]": 1,
+        "3": 1,
+        "select[name=\"gather\"]": 1
+      },
+      "frame_observation": {
+        "scope": "整個工作階段的 requestAnimationFrame，包含選單及暫停；不能當持續戰鬥負載或實體GPU結果",
+        "n": 41157,
+        "duration_seconds": 911.4635,
+        "fps": 45.154852607921214,
+        "p50_ms": 16.70000000001164,
+        "p95_ms": 33.40000000002328,
+        "max_ms": 300
+      },
+      "heap_used_bytes": {
+        "peak": 49340009,
+        "median": 19617134,
+        "end": {
+          "used": 16456816,
+          "total": 81663864
+        }
+      },
+      "page_errors": [],
+      "core_failure_context_last_samples": [
+        {
+          "sim": 496.042300000093,
+          "core": {
+            "id": 1,
+            "hp": 3177.075000000005,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 2.4093078404444475,
+            "wood": 1476.2061696129433,
+            "gold": 471.07744636526536,
+            "stone": 725.454523097735
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "idle": 10,
+            "attack": 11
+          },
+          "order_failures": {
+            "congested": 7
+          }
+        },
+        {
+          "sim": 501.1086000000942,
+          "core": {
+            "id": 1,
+            "hp": 2905.3150000000046,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 22.40930784044445,
+            "wood": 1506.2061696129433,
+            "gold": 481.07744636526536,
+            "stone": 725.454523097735
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "idle": 9,
+            "attack": 12
+          },
+          "order_failures": {
+            "congested": 8
+          }
+        },
+        {
+          "sim": 510.7247000000964,
+          "core": {
+            "id": 1,
+            "hp": 2242.075000000004,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 19.41455584044445,
+            "wood": 1491.2061696129433,
+            "gold": 461.07744636526536,
+            "stone": 735.454523097735
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "move": 11,
+            "attack": 8,
+            "idle": 3
+          },
+          "order_failures": {
+            "congested": 2
+          }
+        },
+        {
+          "sim": 515.7743000000949,
+          "core": {
+            "id": 1,
+            "hp": 1714.715000000004,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 30.417131840444465,
+            "wood": 1531.2061696129433,
+            "gold": 471.07744636526536,
+            "stone": 735.454523097735
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "attack": 10,
+            "move": 8,
+            "idle": 3
+          },
+          "order_failures": {
+            "congested": 2
+          }
+        },
+        {
+          "sim": 520.8241000000925,
+          "core": {
+            "id": 1,
+            "hp": 1191.3950000000043,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 41.41973984044448,
+            "wood": 1531.534207433236,
+            "gold": 491.07744636526536,
+            "stone": 735.454523097735
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "attack": 4,
+            "idle": 10,
+            "move": 6
+          },
+          "order_failures": {
+            "congested": 3
+          }
+        },
+        {
+          "sim": 525.89050000009,
+          "core": {
+            "id": 1,
+            "hp": 923.6750000000045,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 25.41973984044448,
+            "wood": 1531.534207433236,
+            "gold": 492.07744636526536,
+            "stone": 744.5518235303646
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 4,
+            "idle": 11,
+            "move": 6
+          },
+          "order_failures": {
+            "congested": 5
+          }
+        },
+        {
+          "sim": 532.1903000000872,
+          "core": {
+            "id": 1,
+            "hp": 268.51500000000465,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 46.42503584044447,
+            "wood": 1571.534207433236,
+            "gold": 502.07744636526536,
+            "stone": 744.5518235303646
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "move": 5,
+            "attack": 17
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 537.2066000000857,
+          "core": {
+            "id": 1,
+            "hp": 119.79000000000458,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 22.427643840444482,
+            "wood": 1556.534207433236,
+            "gold": 472.07744636526536,
+            "stone": 744.5518235303646
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 21,
+            "idle": 1
+          },
+          "order_failures": {
+            "congested": 6
+          }
+        },
+        {
+          "sim": 537.4566000000857,
+          "core": null,
+          "resources": {
+            "food": 32.42764384044448,
+            "wood": 1556.534207433236,
+            "gold": 472.07744636526536,
+            "stone": 744.5518235303646
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 18,
+            "idle": 4
+          },
+          "order_failures": {
+            "congested": 6
+          }
+        }
+      ],
+      "control_rejections_before_dispatch": 2,
+      "pre_failure_target_intentions": [
+        {
+          "sim": 471.4599000000875,
+          "core_hp": 3204.5950000000043,
+          "enemy_targeting_core": {
+            "militia": 5,
+            "archer": 6,
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "archer": 6,
+            "militia": 1
+          }
+        },
+        {
+          "sim": 476.50970000008857,
+          "core_hp": 3204.5950000000043,
+          "enemy_targeting_core": {
+            "militia": 4,
+            "archer": 5,
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "archer": 1
+          }
+        },
+        {
+          "sim": 485.9427000000907,
+          "core_hp": 3204.5950000000043,
+          "enemy_targeting_core": {
+            "militia": 2,
+            "archer": 3,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 1
+          }
+        },
+        {
+          "sim": 490.99240000009183,
+          "core_hp": 3186.9850000000047,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "archer": 2,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 4,
+            "archer": 4,
+            "ram": 1
+          }
+        },
+        {
+          "sim": 496.042300000093,
+          "core_hp": 3177.075000000005,
+          "enemy_targeting_core": {
+            "militia": 2,
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "militia": 7,
+            "ram": 5
+          }
+        },
+        {
+          "sim": 501.1086000000942,
+          "core_hp": 2905.3150000000046,
+          "enemy_targeting_core": {
+            "militia": 2,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 4,
+            "ram": 9
+          }
+        },
+        {
+          "sim": 510.7247000000964,
+          "core_hp": 2242.075000000004,
+          "enemy_targeting_core": {
+            "militia": 5,
+            "ram": 4,
+            "archer": 3
+          },
+          "player_attack_target_types": {
+            "ram": 2,
+            "militia": 5,
+            "archer": 2
+          }
+        },
+        {
+          "sim": 515.7743000000949,
+          "core_hp": 1714.715000000004,
+          "enemy_targeting_core": {
+            "militia": 4,
+            "ram": 4,
+            "archer": 2
+          },
+          "player_attack_target_types": {
+            "militia": 5,
+            "archer": 4,
+            "ram": 2
+          }
+        },
+        {
+          "sim": 520.8241000000925,
+          "core_hp": 1191.3950000000043,
+          "enemy_targeting_core": {
+            "militia": 1,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 2,
+            "ram": 3
+          }
+        },
+        {
+          "sim": 525.89050000009,
+          "core_hp": 923.6750000000045,
+          "enemy_targeting_core": {
+            "militia": 1,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "militia": 2,
+            "ram": 3
+          }
+        },
+        {
+          "sim": 532.1903000000872,
+          "core_hp": 268.51500000000465,
+          "enemy_targeting_core": {
+            "militia": 5,
+            "ram": 4,
+            "archer": 3
+          },
+          "player_attack_target_types": {
+            "militia": 5,
+            "ram": 13
+          }
+        },
+        {
+          "sim": 537.2066000000857,
+          "core_hp": 119.79000000000458,
+          "enemy_targeting_core": {
+            "ram": 4,
+            "archer": 2
+          },
+          "player_attack_target_types": {
+            "ram": 14,
+            "archer": 8
+          }
+        }
+      ],
+      "target_intention_limit": "只代表原生目標參照與狀態；不把走向城心但未進射程的單位當成實際傷害來源。",
+      "initial_sim_seconds": 0,
+      "played_sim_seconds": 537.4566000000857,
+      "segment_waves_cleared": 3,
+      "segment_gathered_total": 4524.591121169308,
+      "stop_reason": null,
+      "clock_scope_limit": "續玩時計為累積值；played_sim_seconds扣除原始快照時鐘。抽樣與工具延遲使牆鐘比率僅供診斷。",
+      "active_unpaused_wall_seconds_APPROX": 536.5079999999999,
+      "sim_to_active_wall_ratio_APPROX": 1.0017681003826333,
+      "native_dispatched_APM_whole_session": 3.2245575281902004
+    },
+    {
+      "role": "B",
+      "round": "after",
+      "source": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+      "mode": "RESUMED_NATURAL_SAVE_FOCUSED_RETEST",
+      "result": "NATURAL_DEFEAT",
+      "wave_reached": 4,
+      "waves_cleared": 3,
+      "sim_seconds": 546.2900000001179,
+      "game_wall_seconds": 102.368,
+      "simulation_to_wall_ratio": 0.9284717880591098,
+      "sampled_paused_wall_seconds": 0.0,
+      "phase_wall_seconds_approx": {
+        "wave": 95.752,
+        "defeat": 6.156999999999982
+      },
+      "core": null,
+      "final_resources": {
+        "food": 56.44895584044442,
+        "wood": 1530.5342074332368,
+        "gold": 452.07744636526536,
+        "stone": 725.454523097735
+      },
+      "gathered_total_native_stat": 4437.51513273668,
+      "per_resource_sampled_positive_delta_LOWER_BOUND": {
+        "food": 103.03164799999999,
+        "wood": 166.55447336752104,
+        "gold": 91.0,
+        "stone": 60.0
+      },
+      "income_measurement_limit": "每5秒抽樣的正庫存變化下界；同期支出會遮蔽收入，不能當成完整四資源收入。原生 gathered 為全部實際交付總量。",
+      "final_soldiers": 17,
+      "final_workers": 14,
+      "units_ceased_alive_observed": 7,
+      "ceased_alive_ids": [
+        17,
+        25,
+        44,
+        47,
+        74,
+        75,
+        89
+      ],
+      "loss_limit": "每5秒抽樣曾活著而最終不存活，包含期限到期；兩次樣本間出生又死亡可能漏計，不能全當戰鬥傷亡。",
+      "worker_productive_state_time_ratio": 0.9925849357664812,
+      "worker_assignment_person_seconds": {
+        "gold": 277.3374000001044,
+        "food": 462.22900000017404,
+        "stone": 179.82510000006516,
+        "wood": 432.5470000001519,
+        "unassigned": 10.099600000003818
+      },
+      "army_attacking_state_time_ratio": 0.6322358773640919,
+      "army_idle_without_order_time_ratio": 0.05490544525686782,
+      "native_inputs_dispatched": 5,
+      "native_input_failures": 0,
+      "observed_order_change_inputs": 3,
+      "observed_skill_activations": {
+        "aegis": 2
+      },
+      "boon_claim_observations": [
+        {
+          "wallSeconds": 25.518,
+          "before": [],
+          "after": [
+            "hooked_lines",
+            "horse_armor",
+            "siege_math"
+          ]
+        }
+      ],
+      "boons": [
+        "hooked_lines",
+        "horse_armor",
+        "siege_math"
+      ],
+      "boon_combat_causal_contribution": "NOT_TESTED：套用效果可由獨立 snapshot 核對；本輪不以卡牌存在推論增加幾點傷害或通關貢獻。",
+      "tactical_input_counts": {
+        "#btn-continue": 1,
+        "#btn-core-defense": 2,
+        "e": 1,
+        "click": 1
+      },
+      "frame_observation": {
+        "scope": "整個工作階段的 requestAnimationFrame，包含選單及暫停；不能當持續戰鬥負載或實體GPU結果",
+        "n": 5317,
+        "duration_seconds": 128.7115,
+        "fps": 41.30944010441957,
+        "p50_ms": 16.700000000004366,
+        "p95_ms": 33.40000000000873,
+        "max_ms": 166.59999999999854
+      },
+      "heap_used_bytes": {
+        "peak": 29713982,
+        "median": 19493446,
+        "end": {
+          "used": 21723998,
+          "total": 48808630
+        }
+      },
+      "page_errors": [],
+      "core_failure_context_last_samples": [
+        {
+          "sim": 500.9420000000867,
+          "core": {
+            "id": 1,
+            "hp": 2974.827000000007,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 4.414635840444435,
+            "wood": 1460.2061696129433,
+            "gold": 471.07744636526536,
+            "stone": 705.454523097735
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "idle": 5,
+            "attack": 12,
+            "move": 1
+          },
+          "order_failures": {
+            "congested": 4
+          }
+        },
+        {
+          "sim": 511.50820000008645,
+          "core": {
+            "id": 1,
+            "hp": 2970.787000000007,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 21.42255584044443,
+            "wood": 1455.5342074332368,
+            "gold": 451.07744636526536,
+            "stone": 705.454523097735
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "attack": 18,
+            "idle": 1
+          },
+          "order_failures": {
+            "congested": 4
+          }
+        },
+        {
+          "sim": 516.5580000000905,
+          "core": {
+            "id": 1,
+            "hp": 2933.3570000000077,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 22.42785184044443,
+            "wood": 1475.5342074332368,
+            "gold": 461.07744636526536,
+            "stone": 705.454523097735
+          },
+          "alive_workers": 15,
+          "soldier_states": {
+            "idle": 3,
+            "attack": 16
+          },
+          "order_failures": {
+            "congested": 6
+          }
+        },
+        {
+          "sim": 521.6411000000951,
+          "core": {
+            "id": 1,
+            "hp": 2477.6520000000082,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 7.433147840444427,
+            "wood": 1485.5342074332368,
+            "gold": 462.07744636526536,
+            "stone": 705.454523097735
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "idle": 3,
+            "attack": 15
+          },
+          "order_failures": {
+            "congested": 6
+          }
+        },
+        {
+          "sim": 526.7076000000995,
+          "core": {
+            "id": 1,
+            "hp": 1904.0570000000089,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 27.433147840444427,
+            "wood": 1505.5342074332368,
+            "gold": 462.07744636526536,
+            "stone": 705.454523097735
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 15,
+            "idle": 2
+          },
+          "order_failures": {
+            "congested": 6
+          }
+        },
+        {
+          "sim": 531.7907000001032,
+          "core": {
+            "id": 1,
+            "hp": 1463.7520000000097,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 38.438427840444426,
+            "wood": 1525.5342074332368,
+            "gold": 472.07744636526536,
+            "stone": 715.454523097735
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 14,
+            "idle": 3
+          },
+          "order_failures": {
+            "congested": 7
+          }
+        },
+        {
+          "sim": 539.457000000111,
+          "core": {
+            "id": 1,
+            "hp": 739.5670000000109,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 35.44633184044442,
+            "wood": 1520.5342074332368,
+            "gold": 452.07744636526536,
+            "stone": 725.454523097735
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 15,
+            "move": 2
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 544.4902000001158,
+          "core": {
+            "id": 1,
+            "hp": 189.07200000001092,
+            "maxHp": 3600
+          },
+          "resources": {
+            "food": 55.44633184044442,
+            "wood": 1530.5342074332368,
+            "gold": 452.07744636526536,
+            "stone": 725.454523097735
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 17
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 546.2900000001179,
+          "core": null,
+          "resources": {
+            "food": 56.44895584044442,
+            "wood": 1530.5342074332368,
+            "gold": 452.07744636526536,
+            "stone": 725.454523097735
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "attack": 12,
+            "idle": 5
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        }
+      ],
+      "control_rejections_before_dispatch": 0,
+      "pre_failure_target_intentions": [
+        {
+          "sim": 476.6931000000853,
+          "core_hp": 3081.697000000006,
+          "enemy_targeting_core": {
+            "militia": 5,
+            "archer": 1,
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "militia": 10,
+            "ram": 1,
+            "archer": 2
+          }
+        },
+        {
+          "sim": 481.726300000086,
+          "core_hp": 3035.4270000000065,
+          "enemy_targeting_core": {
+            "militia": 4,
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "ram": 4,
+            "militia": 9
+          }
+        },
+        {
+          "sim": 486.8094000000866,
+          "core_hp": 3015.2270000000067,
+          "enemy_targeting_core": {
+            "militia": 3,
+            "ram": 2
+          },
+          "player_attack_target_types": {
+            "ram": 6,
+            "militia": 8
+          }
+        },
+        {
+          "sim": 495.9255000000871,
+          "core_hp": 2986.947000000007,
+          "enemy_targeting_core": {
+            "militia": 2,
+            "ram": 1
+          },
+          "player_attack_target_types": {
+            "ram": 11,
+            "militia": 2
+          }
+        },
+        {
+          "sim": 500.9420000000867,
+          "core_hp": 2974.827000000007,
+          "enemy_targeting_core": {
+            "militia": 1,
+            "ram": 3
+          },
+          "player_attack_target_types": {
+            "ram": 11,
+            "militia": 2
+          }
+        },
+        {
+          "sim": 511.50820000008645,
+          "core_hp": 2970.787000000007,
+          "enemy_targeting_core": {
+            "ram": 4,
+            "militia": 6,
+            "archer": 6
+          },
+          "player_attack_target_types": {
+            "ram": 19
+          }
+        },
+        {
+          "sim": 516.5580000000905,
+          "core_hp": 2933.3570000000077,
+          "enemy_targeting_core": {
+            "ram": 5,
+            "militia": 4,
+            "archer": 6
+          },
+          "player_attack_target_types": {
+            "archer": 2,
+            "ram": 11,
+            "militia": 4
+          }
+        },
+        {
+          "sim": 521.6411000000951,
+          "core_hp": 2477.6520000000082,
+          "enemy_targeting_core": {
+            "ram": 5,
+            "militia": 6,
+            "archer": 6
+          },
+          "player_attack_target_types": {
+            "archer": 2,
+            "ram": 10,
+            "militia": 4
+          }
+        },
+        {
+          "sim": 526.7076000000995,
+          "core_hp": 1904.0570000000089,
+          "enemy_targeting_core": {
+            "ram": 3,
+            "militia": 5,
+            "archer": 3
+          },
+          "player_attack_target_types": {
+            "ram": 10,
+            "archer": 2,
+            "militia": 4
+          }
+        },
+        {
+          "sim": 531.7907000001032,
+          "core_hp": 1463.7520000000097,
+          "enemy_targeting_core": {
+            "ram": 5,
+            "militia": 3,
+            "archer": 2
+          },
+          "player_attack_target_types": {
+            "ram": 10,
+            "archer": 2,
+            "militia": 3
+          }
+        },
+        {
+          "sim": 539.457000000111,
+          "core_hp": 739.5670000000109,
+          "enemy_targeting_core": {
+            "ram": 5,
+            "militia": 4,
+            "archer": 1
+          },
+          "player_attack_target_types": {
+            "ram": 10,
+            "archer": 2,
+            "militia": 4
+          }
+        },
+        {
+          "sim": 544.4902000001158,
+          "core_hp": 189.07200000001092,
+          "enemy_targeting_core": {
+            "ram": 5,
+            "militia": 5
+          },
+          "player_attack_target_types": {
+            "ram": 13,
+            "militia": 5
+          }
+        }
+      ],
+      "target_intention_limit": "只代表原生目標參照與狀態；不把走向城心但未進射程的單位當成實際傷害來源。",
+      "initial_sim_seconds": 451.2442000000829,
+      "played_sim_seconds": 95.04580000003494,
+      "segment_waves_cleared": 0,
+      "segment_gathered_total": 700.0515188343356,
+      "stop_reason": "PLAYER_FINISHED",
+      "clock_scope_limit": "續玩時計為累積值；played_sim_seconds扣除原始快照時鐘。抽樣與工具延遲使牆鐘比率僅供診斷。",
+      "active_unpaused_wall_seconds_APPROX": 95.752,
+      "sim_to_active_wall_ratio_APPROX": 0.9926246971346285,
+      "native_dispatched_APM_whole_session": 2.3016195729728484
+    },
+    {
+      "role": "C",
+      "round": "before",
+      "source": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+      "mode": "NATURAL_NATIVE_INPUT_ISOLATED_PLAYER_NO_STATE_INJECTION",
+      "result": "NATURAL_DEFEAT",
+      "wave_reached": 5,
+      "waves_cleared": 4,
+      "sim_seconds": 723.9659999998903,
+      "game_wall_seconds": 982.662,
+      "simulation_to_wall_ratio": 0.7367395910291538,
+      "sampled_paused_wall_seconds": 82.93599999999998,
+      "phase_wall_seconds_approx": {
+        "prep": 242.50699999999995,
+        "wave": 564.0499999999998,
+        "boon": 165.32100000000014,
+        "defeat": 10.093000000000075
+      },
+      "core": null,
+      "final_resources": {
+        "food": 10.540033470852277,
+        "wood": 3022.611469255541,
+        "gold": 2346.14586574353,
+        "stone": 1831.935611143702
+      },
+      "gathered_total_native_stat": 8398.232979613626,
+      "per_resource_sampled_positive_delta_LOWER_BOUND": {
+        "food": 978.0339315048419,
+        "wood": 2736.611469255541,
+        "gold": 2391.14586574353,
+        "stone": 1731.935611143702
+      },
+      "income_measurement_limit": "每5秒抽樣的正庫存變化下界；同期支出會遮蔽收入，不能當成完整四資源收入。原生 gathered 為全部實際交付總量。",
+      "final_soldiers": 2,
+      "final_workers": 8,
+      "units_ceased_alive_observed": 57,
+      "ceased_alive_ids": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        21,
+        22,
+        23,
+        24,
+        34,
+        35,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        62,
+        63,
+        74,
+        75,
+        80,
+        81,
+        82,
+        85,
+        98,
+        100,
+        105,
+        106,
+        107,
+        120,
+        121,
+        123,
+        124,
+        125,
+        127,
+        143,
+        144,
+        146,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        180,
+        198
+      ],
+      "loss_limit": "每5秒抽樣曾活著而最終不存活，包含期限到期；兩次樣本間出生又死亡可能漏計，不能全當戰鬥傷亡。",
+      "worker_productive_state_time_ratio": 0.9760993046884694,
+      "worker_assignment_person_seconds": {
+        "wood": 3755.166999999317,
+        "food": 2960.6155000006274,
+        "gold": 2927.005199999029,
+        "stone": 2332.262799999207,
+        "unassigned": 293.2202000000333
+      },
+      "army_attacking_state_time_ratio": 0.2946935925514743,
+      "army_idle_without_order_time_ratio": 0.28322590269144693,
+      "native_inputs_dispatched": 44,
+      "native_input_failures": 0,
+      "observed_order_change_inputs": 12,
+      "observed_skill_activations": {
+        "aegis": 5,
+        "mark": 4
+      },
+      "boon_claim_observations": [
+        {
+          "wallSeconds": 310.366,
+          "before": [],
+          "after": [
+            "gold_teeth"
+          ]
+        },
+        {
+          "wallSeconds": 461.748,
+          "before": [
+            "gold_teeth"
+          ],
+          "after": [
+            "gold_teeth",
+            "bronze_oath"
+          ]
+        },
+        {
+          "wallSeconds": 721.37,
+          "before": [
+            "gold_teeth",
+            "bronze_oath"
+          ],
+          "after": [
+            "gold_teeth",
+            "bronze_oath",
+            "pack_mules"
+          ]
+        },
+        {
+          "wallSeconds": 896.022,
+          "before": [
+            "gold_teeth",
+            "bronze_oath",
+            "pack_mules"
+          ],
+          "after": [
+            "gold_teeth",
+            "bronze_oath",
+            "pack_mules",
+            "night_watch"
+          ]
+        }
+      ],
+      "boons": [
+        "gold_teeth",
+        "bronze_oath",
+        "pack_mules",
+        "night_watch"
+      ],
+      "boon_combat_causal_contribution": "NOT_TESTED：套用效果可由獨立 snapshot 核對；本輪不以卡牌存在推論增加幾點傷害或通關貢獻。",
+      "tactical_input_counts": {
+        "#btn-howto": 1,
+        "#btn-howto-play": 1,
+        "#btn-core-defense": 9,
+        "click": 11,
+        "[data-command=\"train:militia\"]": 2,
+        "e": 5,
+        "q": 4,
+        "#btn-claim": 4,
+        "3": 1,
+        "#btn-stewards-hud": 1,
+        "select[name=\"gather\"]": 1,
+        "scroll": 2,
+        "1": 1,
+        "2": 1
+      },
+      "frame_observation": {
+        "scope": "整個工作階段的 requestAnimationFrame，包含選單及暫停；不能當持續戰鬥負載或實體GPU結果",
+        "n": 47481,
+        "duration_seconds": 1117.9385,
+        "fps": 42.47192488674467,
+        "p50_ms": 16.70000000001164,
+        "p95_ms": 33.5,
+        "max_ms": 183.40000000000003
+      },
+      "heap_used_bytes": {
+        "peak": 48393624,
+        "median": 20258639,
+        "end": {
+          "used": 15598486,
+          "total": 82450310
+        }
+      },
+      "page_errors": [],
+      "core_failure_context_last_samples": [
+        {
+          "sim": 673.4184999999635,
+          "core": {
+            "id": 1,
+            "hp": 1705.94000000002,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 2.5191054708522613,
+            "wood": 2920.611469255541,
+            "gold": 2169.759543466405,
+            "stone": 1712.935611143702
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "idle": 7
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 678.4349999999533,
+          "core": {
+            "id": 1,
+            "hp": 1500.7400000000193,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 3.5217294708522866,
+            "wood": 2920.611469255541,
+            "gold": 2186.759543466405,
+            "stone": 1729.935611143702
+          },
+          "alive_workers": 14,
+          "soldier_states": {
+            "idle": 7
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 683.5679999999466,
+          "core": {
+            "id": 1,
+            "hp": 1310.5600000000186,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 4.524353470852272,
+            "wood": 2937.611469255541,
+            "gold": 2186.759543466405,
+            "stone": 1746.935611143702
+          },
+          "alive_workers": 13,
+          "soldier_states": {
+            "move": 7
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 693.8338999999371,
+          "core": {
+            "id": 1,
+            "hp": 1006.3000000000162,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 5.526913470852273,
+            "wood": 2954.611469255541,
+            "gold": 2244.14586574353,
+            "stone": 1763.935611143702
+          },
+          "alive_workers": 11,
+          "soldier_states": {
+            "attack": 4,
+            "idle": 3
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 698.9169999999298,
+          "core": {
+            "id": 1,
+            "hp": 820.7400000000171,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 6.52953747085226,
+            "wood": 2971.611469255541,
+            "gold": 2261.14586574353,
+            "stone": 1780.935611143702
+          },
+          "alive_workers": 10,
+          "soldier_states": {
+            "attack": 3,
+            "idle": 3
+          },
+          "order_failures": {
+            "congested": 2
+          }
+        },
+        {
+          "sim": 704.0000999999215,
+          "core": {
+            "id": 1,
+            "hp": 696.7200000000179,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 7.5321614708522455,
+            "wood": 2971.611469255541,
+            "gold": 2295.14586574353,
+            "stone": 1780.935611143702
+          },
+          "alive_workers": 10,
+          "soldier_states": {
+            "idle": 4,
+            "attack": 2
+          },
+          "order_failures": {
+            "congested": 4
+          }
+        },
+        {
+          "sim": 716.8829999999026,
+          "core": {
+            "id": 1,
+            "hp": 226.84000000001802,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 9.537409470852253,
+            "wood": 3005.611469255541,
+            "gold": 2329.14586574353,
+            "stone": 1831.935611143702
+          },
+          "alive_workers": 8,
+          "soldier_states": {
+            "attack": 4
+          },
+          "order_failures": {
+            "congested": 5
+          }
+        },
+        {
+          "sim": 721.9326999998931,
+          "core": {
+            "id": 1,
+            "hp": 70.54000000001797,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 10.540033470852277,
+            "wood": 3022.611469255541,
+            "gold": 2346.14586574353,
+            "stone": 1831.935611143702
+          },
+          "alive_workers": 8,
+          "soldier_states": {
+            "attack": 4
+          },
+          "order_failures": {
+            "congested": 5
+          }
+        },
+        {
+          "sim": 723.9659999998903,
+          "core": null,
+          "resources": {
+            "food": 10.540033470852277,
+            "wood": 3022.611469255541,
+            "gold": 2346.14586574353,
+            "stone": 1831.935611143702
+          },
+          "alive_workers": 8,
+          "soldier_states": {
+            "attack": 2
+          },
+          "order_failures": {
+            "congested": 3
+          }
+        }
+      ],
+      "control_rejections_before_dispatch": 0,
+      "pre_failure_target_intentions": [
+        {
+          "sim": 646.0529000000117,
+          "core_hp": 2529.740000000011,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 3,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "guard": 4,
+            "warlord": 2
+          }
+        },
+        {
+          "sim": 651.0859000000045,
+          "core_hp": 2412.380000000014,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 3,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "guard": 4,
+            "warlord": 2
+          }
+        },
+        {
+          "sim": 656.1524999999962,
+          "core_hp": 2261.0200000000173,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 2,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "guard": 4,
+            "warlord": 2
+          }
+        },
+        {
+          "sim": 661.218999999988,
+          "core_hp": 2114.4000000000196,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 2,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "guard": 4
+          }
+        },
+        {
+          "sim": 673.4184999999635,
+          "core_hp": 1705.94000000002,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "archer": 4
+          },
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 678.4349999999533,
+          "core_hp": 1500.7400000000193,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 1,
+            "archer": 4
+          },
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 683.5679999999466,
+          "core_hp": 1310.5600000000186,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 1,
+            "archer": 4
+          },
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 693.8338999999371,
+          "core_hp": 1006.3000000000162,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 1,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "guard": 4
+          }
+        },
+        {
+          "sim": 698.9169999999298,
+          "core_hp": 820.7400000000171,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 1,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "guard": 3
+          }
+        },
+        {
+          "sim": 704.0000999999215,
+          "core_hp": 696.7200000000179,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 1,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "guard": 2
+          }
+        },
+        {
+          "sim": 716.8829999999026,
+          "core_hp": 226.84000000001802,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 1,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "militia": 2,
+            "guard": 2
+          }
+        },
+        {
+          "sim": 721.9326999998931,
+          "core_hp": 70.54000000001797,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 1,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "militia": 2,
+            "guard": 2
+          }
+        }
+      ],
+      "target_intention_limit": "只代表原生目標參照與狀態；不把走向城心但未進射程的單位當成實際傷害來源。",
+      "initial_sim_seconds": 0,
+      "played_sim_seconds": 723.9659999998903,
+      "segment_waves_cleared": 4,
+      "segment_gathered_total": 8398.232979613626,
+      "stop_reason": null,
+      "clock_scope_limit": "續玩時計為累積值；played_sim_seconds扣除原始快照時鐘。抽樣與工具延遲使牆鐘比率僅供診斷。",
+      "active_unpaused_wall_seconds_APPROX": 723.6209999999999,
+      "sim_to_active_wall_ratio_APPROX": 1.0004767689161735,
+      "native_dispatched_APM_whole_session": 2.3608928825339532
+    },
+    {
+      "role": "C",
+      "round": "after",
+      "source": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+      "mode": "RESUMED_NATURAL_SAVE_FOCUSED_RETEST",
+      "result": "NATURAL_DEFEAT",
+      "wave_reached": 5,
+      "waves_cleared": 4,
+      "sim_seconds": 695.6165000001786,
+      "game_wall_seconds": 142.559,
+      "simulation_to_wall_ratio": 0.9732244193639518,
+      "sampled_paused_wall_seconds": 0.0,
+      "phase_wall_seconds_approx": {
+        "wave": 136.16400000000002,
+        "defeat": 5.900999999999982
+      },
+      "core": null,
+      "final_resources": {
+        "food": 5.5268174708522295,
+        "wood": 2817.593031601763,
+        "gold": 2169.759543466423,
+        "stone": 1763.9356111437073
+      },
+      "gathered_total_native_stat": 7943.81500368274,
+      "per_resource_sampled_positive_delta_LOWER_BOUND": {
+        "food": 18.06294399999998,
+        "wood": 430.4146609504278,
+        "gold": 596.7092979261699,
+        "stone": 477.27253833971145
+      },
+      "income_measurement_limit": "每5秒抽樣的正庫存變化下界；同期支出會遮蔽收入，不能當成完整四資源收入。原生 gathered 為全部實際交付總量。",
+      "final_soldiers": 0,
+      "final_workers": 11,
+      "units_ceased_alive_observed": 43,
+      "ceased_alive_ids": [
+        10,
+        11,
+        13,
+        15,
+        17,
+        18,
+        22,
+        24,
+        34,
+        35,
+        47,
+        48,
+        49,
+        50,
+        63,
+        80,
+        81,
+        82,
+        85,
+        98,
+        99,
+        105,
+        106,
+        107,
+        120,
+        121,
+        122,
+        123,
+        125,
+        127,
+        143,
+        144,
+        146,
+        161,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        178,
+        180,
+        198
+      ],
+      "loss_limit": "每5秒抽樣曾活著而最終不存活，包含期限到期；兩次樣本間出生又死亡可能漏計，不能全當戰鬥傷亡。",
+      "worker_productive_state_time_ratio": 0.9687106946614193,
+      "worker_assignment_person_seconds": {
+        "wood": 749.5031000005342,
+        "gold": 783.4024000005637,
+        "stone": 689.3736000004858,
+        "unassigned": 71.77950000004819
+      },
+      "army_attacking_state_time_ratio": 0.34864294903409354,
+      "army_idle_without_order_time_ratio": 0.08959455849873108,
+      "native_inputs_dispatched": 7,
+      "native_input_failures": 0,
+      "observed_order_change_inputs": 4,
+      "observed_skill_activations": {
+        "mark": 1,
+        "aegis": 1
+      },
+      "boon_claim_observations": [
+        {
+          "wallSeconds": 23.454,
+          "before": [],
+          "after": [
+            "pack_mules",
+            "night_watch",
+            "gold_teeth",
+            "bronze_oath"
+          ]
+        }
+      ],
+      "boons": [
+        "pack_mules",
+        "night_watch",
+        "gold_teeth",
+        "bronze_oath"
+      ],
+      "boon_combat_causal_contribution": "NOT_TESTED：套用效果可由獨立 snapshot 核對；本輪不以卡牌存在推論增加幾點傷害或通關貢獻。",
+      "tactical_input_counts": {
+        "#btn-continue": 1,
+        "#btn-core-defense": 2,
+        "@33": 1,
+        "click": 1,
+        "q": 1,
+        "e": 1
+      },
+      "frame_observation": {
+        "scope": "整個工作階段的 requestAnimationFrame，包含選單及暫停；不能當持續戰鬥負載或實體GPU結果",
+        "n": 7545,
+        "duration_seconds": 168.97660000000002,
+        "fps": 44.65115288152324,
+        "p50_ms": 16.700000000000728,
+        "p95_ms": 33.40000000000873,
+        "max_ms": 150.09999999999854
+      },
+      "heap_used_bytes": {
+        "peak": 35165641,
+        "median": 21511257,
+        "end": {
+          "used": 35165641,
+          "total": 78370705
+        }
+      },
+      "page_errors": [],
+      "core_failure_context_last_samples": [
+        {
+          "sim": 640.5523000001317,
+          "core": {
+            "id": 1,
+            "hp": 2243.720000000011,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 29.503169470852235,
+            "wood": 2692.2703089935385,
+            "gold": 1976.9056000784403,
+            "stone": 1661.9356111437073
+          },
+          "alive_workers": 13,
+          "soldier_states": {
+            "attack": 6,
+            "idle": 2
+          },
+          "order_failures": {
+            "congested": 4
+          }
+        },
+        {
+          "sim": 645.6187000001374,
+          "core": {
+            "id": 1,
+            "hp": 2057.4400000000123,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 29.503169470852235,
+            "wood": 2692.2703089935385,
+            "gold": 1976.9056000784403,
+            "stone": 1661.9356111437073
+          },
+          "alive_workers": 13,
+          "soldier_states": {
+            "attack": 4,
+            "idle": 2
+          },
+          "order_failures": {
+            "congested": 3
+          }
+        },
+        {
+          "sim": 650.6852000001433,
+          "core": {
+            "id": 1,
+            "hp": 1896.5200000000125,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 30.505793470852232,
+            "wood": 2709.2703089935385,
+            "gold": 1976.9056000784403,
+            "stone": 1661.9356111437073
+          },
+          "alive_workers": 12,
+          "soldier_states": {
+            "attack": 4,
+            "idle": 2
+          },
+          "order_failures": {
+            "congested": 3
+          }
+        },
+        {
+          "sim": 655.6849000001457,
+          "core": {
+            "id": 1,
+            "hp": 1653.3600000000122,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 31.51107347085223,
+            "wood": 2726.2703089935385,
+            "gold": 1993.9056000784403,
+            "stone": 1661.9356111437073
+          },
+          "alive_workers": 12,
+          "soldier_states": {
+            "attack": 3
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 670.7842000001606,
+          "core": {
+            "id": 1,
+            "hp": 1033.5400000000107,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 1.516305470852224,
+            "wood": 2746.2703089935385,
+            "gold": 2078.9056000784403,
+            "stone": 1712.9356111437073
+          },
+          "alive_workers": 12,
+          "soldier_states": {
+            "attack": 1
+          },
+          "order_failures": {
+            "congested": 2
+          }
+        },
+        {
+          "sim": 675.817300000164,
+          "core": {
+            "id": 1,
+            "hp": 843.4600000000114,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 2.5189454708522243,
+            "wood": 2763.2703089935385,
+            "gold": 2101.759543466423,
+            "stone": 1712.9356111437073
+          },
+          "alive_workers": 12,
+          "soldier_states": {
+            "attack": 1,
+            "idle": 1
+          },
+          "order_failures": {
+            "congested": 2
+          }
+        },
+        {
+          "sim": 687.5835000001725,
+          "core": {
+            "id": 1,
+            "hp": 383.8200000000125,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 4.524193470852229,
+            "wood": 2797.2703089935385,
+            "gold": 2135.759543466423,
+            "stone": 1763.9356111437073
+          },
+          "alive_workers": 11,
+          "soldier_states": {
+            "idle": 1
+          },
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 692.6166000001755,
+          "core": {
+            "id": 1,
+            "hp": 109.56000000001225,
+            "maxHp": 3300
+          },
+          "resources": {
+            "food": 5.5268174708522295,
+            "wood": 2817.593031601763,
+            "gold": 2169.759543466423,
+            "stone": 1763.9356111437073
+          },
+          "alive_workers": 11,
+          "soldier_states": {},
+          "order_failures": {
+            "congested": 1
+          }
+        },
+        {
+          "sim": 695.6165000001786,
+          "core": null,
+          "resources": {
+            "food": 5.5268174708522295,
+            "wood": 2817.593031601763,
+            "gold": 2169.759543466423,
+            "stone": 1763.9356111437073
+          },
+          "alive_workers": 11,
+          "soldier_states": {},
+          "order_failures": {
+            "congested": 1
+          }
+        }
+      ],
+      "control_rejections_before_dispatch": 0,
+      "pre_failure_target_intentions": [
+        {
+          "sim": 620.2364000001106,
+          "core_hp": 2899.2400000000066,
+          "enemy_targeting_core": {
+            "guard": 1,
+            "warlord": 1,
+            "spearman": 7
+          },
+          "player_attack_target_types": {
+            "guard": 3,
+            "spearman": 1
+          }
+        },
+        {
+          "sim": 625.3196000001161,
+          "core_hp": 2715.0000000000077,
+          "enemy_targeting_core": {
+            "guard": 2,
+            "warlord": 1,
+            "spearman": 7
+          },
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 630.3860000001213,
+          "core_hp": 2560.680000000009,
+          "enemy_targeting_core": {
+            "guard": 2,
+            "warlord": 1,
+            "spearman": 7
+          },
+          "player_attack_target_types": {
+            "spearman": 10
+          }
+        },
+        {
+          "sim": 635.452400000126,
+          "core_hp": 2363.2400000000102,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 8,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "warlord": 6,
+            "guard": 1
+          }
+        },
+        {
+          "sim": 640.5523000001317,
+          "core_hp": 2243.720000000011,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 7,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "warlord": 3,
+            "spearman": 3
+          }
+        },
+        {
+          "sim": 645.6187000001374,
+          "core_hp": 2057.4400000000123,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 7,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "warlord": 2,
+            "guard": 2
+          }
+        },
+        {
+          "sim": 650.6852000001433,
+          "core_hp": 1896.5200000000125,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 5,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "warlord": 2,
+            "spearman": 2
+          }
+        },
+        {
+          "sim": 655.6849000001457,
+          "core_hp": 1653.3600000000122,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 5,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "guard": 3
+          }
+        },
+        {
+          "sim": 670.7842000001606,
+          "core_hp": 1033.5400000000107,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 5,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "warlord": 1
+          }
+        },
+        {
+          "sim": 675.817300000164,
+          "core_hp": 843.4600000000114,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 5,
+            "archer": 4
+          },
+          "player_attack_target_types": {
+            "warlord": 1
+          }
+        },
+        {
+          "sim": 687.5835000001725,
+          "core_hp": 383.8200000000125,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 5,
+            "archer": 4
+          },
+          "player_attack_target_types": {}
+        },
+        {
+          "sim": 692.6166000001755,
+          "core_hp": 109.56000000001225,
+          "enemy_targeting_core": {
+            "guard": 5,
+            "warlord": 1,
+            "spearman": 5,
+            "archer": 4
+          },
+          "player_attack_target_types": {}
+        }
+      ],
+      "target_intention_limit": "只代表原生目標參照與狀態；不把走向城心但未進射程的單位當成實際傷害來源。",
+      "initial_sim_seconds": 556.874600000073,
+      "played_sim_seconds": 138.7419000001056,
+      "segment_waves_cleared": 0,
+      "segment_gathered_total": 1560.6570734663055,
+      "stop_reason": "PLAYER_FINISHED",
+      "clock_scope_limit": "續玩時計為累積值；played_sim_seconds扣除原始快照時鐘。抽樣與工具延遲使牆鐘比率僅供診斷。",
+      "active_unpaused_wall_seconds_APPROX": 136.16400000000002,
+      "sim_to_active_wall_ratio_APPROX": 1.0189323169127344,
+      "native_dispatched_APM_whole_session": 2.462086794421615
+    }
+  ]
+}

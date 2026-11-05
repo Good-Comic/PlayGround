@@ -1,0 +1,40 @@
+✔ 條件未達先等待，手動佇列佔用人口後按原生流程建屋 / wait above threshold then build when native manual queues reserve room (44.0835ms)
+✔ 施工中的人口供給避免同條件重複排屋 / capacity already under construction prevents duplicate threshold-triggered houses (13.502585ms)
+✔ 確認前重查人口條件，人工建屋解除需求後不再誤建 / confirmation rechecks threshold after manual housing removes demand (7.853479ms)
+✔ 舊計畫與空白條件沿用原流程 / legacy and blank conditions preserve existing plans (21.193655ms)
+✔ 預估套用真實文明規則，排除敵軍與已毀施工且不改實際人口 / forecast honors real civilization caps and excludes enemy/dead construction without changing actual cap (14.587942ms)
+✔ 零門檻與存讀檔保留，暫停不執行新計畫 / zero threshold and save/load persist; pause does not run plans (44.406088ms)
+✔ 哥德半格人口門檻按原生佇列觸發並保存 / Goth half-population threshold uses native queues and persists (27.521664ms)
+✔ 村民損失後確認不得繞過最低村民條件 / confirmation after a casualty must respect minimum worker condition (12.726746ms)
+✔ 模擬更新撤回失效的村民、數量與預算提案 / simulation withdraws worker count and budget proposals that became invalid (25.75587ms)
+✔ 停用或時代條件失效的舊提案不能直接執行 / legacy disabled or age-ineligible proposal cannot execute (9.678453ms)
+✔ 補回村民後重新提出並正常付費，只建一次 / replacement workers allow a fresh proposal and native payment once (9.369414ms)
+✔ 自動計畫門檻不鎖住手動建造 / automatic plan conditions do not gate manual construction (12.760696ms)
+✔ 過期提案讀檔後仍受驗證，暫停不自動執行 / restored stale proposals revalidate and pause never executes them (11.794906ms)
+✔ 既有手動藍圖優先，確認失敗不覆寫位置或扣款 / an active manual blueprint keeps priority without auto-confirm spending or placement overwrite (5.266149ms)
+✔ 升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced (4.854268ms)
+✔ 資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction (6.448929ms)
+✔ 手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals (17.094585ms)
+✔ 過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success (3.330702ms)
+✔ 無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative (3.685458ms)
+✔ 自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available (6.380298ms)
+✔ 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research (2.884501ms)
+✔ 首名工人受困時其他可達工人接手 / another reachable worker builds when the first is trapped (11.445288ms)
+✔ 全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal (18.775233ms)
+✔ 受阻續查與預留在存讀檔、暫停中保留 / blocked search cursor and reserves survive save/load and pause (18.225939ms)
+✔ 採集逐人重新計算比例，手動工人與搬運不被覆蓋 / distribute idle workers with cargo and manual priority (3.691977ms)
+✔ 升級預留不阻擋手動支出，自動等待與正常研究 / age reserve, ask and ordinary research (2.983678ms)
+✔ SaveLoad 保留設定、鎖定、手動佇列及 RNG 位元 / persist plans locks manual queues and RNG bits (6.63834ms)
+✔ 逐建築目標上限、合法兵種與手動佇列 / legal military targets and manual queue priority (3.021184ms)
+✔ 自動建築包含施工數量且不打斷手動放置 / construction count and manual placement precedence (2.744024ms)
+✔ 安全建築使用真實施工流程，暫停不推進計畫 / safe placement uses normal construction and pause freezes plans (110.297311ms)
+✔ 相同規劃與輸入維持模擬確定性 / same plans and inputs produce deterministic simulation (100.699518ms)
+✔ 等待升級確認不阻擋可負擔的自動建築 / pending age confirmation does not block affordable independent buildings (4.195012ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3928.774588

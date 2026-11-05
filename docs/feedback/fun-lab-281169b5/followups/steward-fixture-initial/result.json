@@ -1,0 +1,149 @@
+{
+  "scope": "正式構建原生Start／總管設定操作，非完整自然戰役；過期確認另標CONTROLLED_FIXTURE。",
+  "sources": {
+    "before": "2bac6e36172b82e7ca8c00c42473b5447dc5ba3e",
+    "after": "3237a7f109c3fdbc343ecb05336efb5660f863cf"
+  },
+  "checks": [
+    {
+      "name": "before正式來源及160資源",
+      "pass": true,
+      "verified": {
+        "source": "2bac6e36172b82e7ca8c00c42473b5447dc5ba3e",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    },
+    {
+      "name": "Before實際重現表單頂端看不到底部套用與關閉",
+      "pass": true,
+      "layout": {
+        "scrollTop": 0,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 1887.8125,
+            "bottom": 1921.8125,
+            "inside": false,
+            "surface": false
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 1887.8125,
+            "bottom": 1921.8125,
+            "inside": false,
+            "surface": false
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 1887.8125,
+            "bottom": 1921.8125,
+            "inside": false,
+            "surface": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "after正式來源及160資源",
+      "pass": true,
+      "verified": {
+        "source": "3237a7f109c3fdbc343ecb05336efb5660f863cf",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    },
+    {
+      "name": "After頂端零捲動即可套用／關閉／查看確認提案",
+      "pass": true,
+      "layout": {
+        "scrollTop": 0,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 797,
+            "bottom": 833,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "設定中模擬時間及兩個RNG保持暫停",
+      "pass": true,
+      "before": {
+        "sim": 0.3165999999999999,
+        "rng": -644641641,
+        "visual": 1932097315,
+        "paused": true
+      },
+      "after": {
+        "sim": 0.3165999999999999,
+        "rng": -644641641,
+        "visual": 1932097315,
+        "paused": true
+      }
+    },
+    {
+      "name": "原生套用只提交既有設定並恢復先前運行",
+      "pass": false,
+      "trace": {
+        "before": {
+          "rng": -644641641,
+          "visual": 1932097315,
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "sim": 0.3165999999999999
+        },
+        "after": {
+          "rng": -644641641,
+          "visual": 1932097315,
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "sim": 0.3165999999999999
+        },
+        "gather": "balanced",
+        "paused": true,
+        "closed": false
+      }
+    }
+  ],
+  "errors": [],
+  "status": "FAIL",
+  "failure": "Error: 原生套用只提交既有設定並恢復先前運行\n    at check (/workspace/riftwatch-fun-lab-281169b5/browser-steward.cjs:1:674)\n    at /workspace/riftwatch-fun-lab-281169b5/browser-steward.cjs:8:645"
+}

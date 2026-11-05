@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-11-05T17:44:55.978415+00:00",
+  "task": "FUN-LAB-281169B5",
+  "status": "FIRST_LOOP_EVIDENCE_COMPLETE_NEXT_MANUAL_SLICE_IMPLEMENTING",
+  "rootTaskComplete": false,
+  "rankingMethod": {
+    "zh-Hant": "直接性、可追溯重複證據、可驗證性與風險；不以多數票或三場敗北判平衡",
+    "en": "Directness, traceable repeated evidence, testability and risk; no majority vote or balance inference from three defeats"
+  },
+  "sources": [
+    "evidence/director/DECISIONS.json",
+    "evidence/director-after/POST-DECISIONS.json"
+  ],
+  "issues": [
+    {
+      "id": "FUN-LAB-COMMAND-READBACK",
+      "initialDirectorRank": 1,
+      "category": "A",
+      "status": "LIMITED_FEEDBACK_LOOP_ACCEPTED",
+      "title": {
+        "zh-Hant": "目前選兵與即時命令回讀＋可見人工目標標示",
+        "en": "Selected-soldier/current-order readback and visible manual-target marker"
+      },
+      "sourceSha": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+      "evidence": [
+        "evidence/A-after/screen-0006.png",
+        "evidence/B-after/screen-0009.png",
+        "evidence/C-after/screen-0008.png"
+      ],
+      "acceptedScope": {
+        "zh-Hant": "三角色語意理解、A/C自然錯令辨認與自主改護衛；C一個人工目標例證",
+        "en": "Three-role understanding, A/C natural mismatch detection and autonomous guard correction; one C manual-target example"
+      },
+      "unproven": {
+        "zh-Hant": "B誤令恢復、A/B人工標示、有效原目標攔截、整段負擔與整體樂趣/勝率",
+        "en": "B mismatch recovery, A/B marker use, effective original-target interception, total burden and overall fun/win rate"
+      }
+    },
+    {
+      "id": "FUN-LAB-VISIBLE-CARRIER-MANUAL-FOCUS",
+      "nextImplementationRank": 1,
+      "category": "A_EXISTING_MANUAL_INPUT_AFFORDANCE",
+      "status": "IMPLEMENTING_UNVALIDATED",
+      "title": {
+        "zh-Hant": "已見旗手的明確人工集火入口",
+        "en": "Explicit manual-focus entry for an already visible carrier"
+      },
+      "sourceSha": null,
+      "decision": "APPROVED_SCOPE_EXISTING_MANUAL_COMMAND_AFFORDANCE",
+      "basis": {
+        "zh-Hant": "C前後均想打旗手卻指到長槍兵；讀回解決事後確認，原意圖未完成",
+        "en": "C intended the carrier but targeted a spearman in both rounds; readback aids recognition, original goal unfinished"
+      },
+      "evidence": [
+        "evidence/C-before/screen-0058.png",
+        "evidence/C-after/screen-0007.png",
+        "evidence/C-after/screen-0008.png",
+        "evidence/director-after/POST-DECISIONS.json"
+      ],
+      "gddBasis": [
+        "GDD §2.2",
+        "GDD §6.1/RALLY",
+        "Strategy §6/§7"
+      ],
+      "risk": {
+        "zh-Hant": "慢速觀察與既有旗幟/查看是反證，未證明hitbox缺陷；新入口可能仍來不及，不能保證命中/擊殺",
+        "en": "Slow observation and existing flag/View cues are counterevidence to a hitbox defect. The entry may still be late and guarantees no hit/kill"
+      },
+      "requiredAcceptance": {
+        "zh-Hant": "當下可見可原生選取載體、目前已選戰士、一次明確啟動、無回退/重發、後令優先；Node/正式Chromium/C隔離續測分列",
+        "en": "Currently visible natively pickable carrier, selected soldiers, one deliberate activation, no fallback/resend and later-order priority; separate Node/formal Chromium/isolated C gates"
+      },
+      "validation": "PENDING"
+    },
+    {
+      "id": "FUN-LAB-ACTUAL-CORE-DAMAGE-SOURCES",
+      "nextCandidateRank": 2,
+      "category": "B",
+      "status": "PLANNED_UNIMPLEMENTED",
+      "title": {
+        "zh-Hant": "已發生城心傷害的可見來源/方向",
+        "en": "Visible sources/directions of actual core damage"
+      },
+      "basis": {
+        "zh-Hant": "A/B軍隊仍健康而城心失守，傷害因果難讀；不代表AI或平衡Bug",
+        "en": "A/B retain healthy troops while the core falls; damage causality is unclear, without proving AI/balance bugs"
+      },
+      "evidence": [
+        "evidence/A-after/REPORT.json",
+        "evidence/B-after/REPORT.json"
+      ],
+      "risk": {
+        "zh-Hant": "必須實際傷害事件歸因，target參照不是傷害；不能揭露迷霧或代選最佳目標",
+        "en": "Requires real damage events; target references are not damage. Preserve Fog and player target choice"
+      },
+      "validation": {
+        "zh-Hant": "核對真實傷害與當下公開視野，量辨認來源時間，不只輸贏",
+        "en": "Match real damage and current public visibility; measure source recognition, not only outcomes"
+      }
+    },
+    {
+      "id": "FUN-LAB-STEWARD-STICKY-ACTIONS",
+      "nextCandidateRank": 3,
+      "category": "A",
+      "status": "PLANNED_UNIMPLEMENTED",
+      "title": {
+        "zh-Hant": "總管固定儲存/關閉與既有確認入口",
+        "en": "Sticky steward save/close and existing confirmations"
+      },
+      "basis": {
+        "zh-Hant": "三baseline及A-after為簡單目標捲長表；面板原生暫停",
+        "en": "All baselines and A-after navigate long forms for simple goals; the panel natively pauses"
+      },
+      "evidence": [
+        "evidence/A-before/REPORT.json",
+        "evidence/B-before/REPORT.json",
+        "evidence/C-before/REPORT.json",
+        "evidence/A-after/screen-0009.png"
+      ],
+      "risk": {
+        "zh-Hant": "保留全部進階設定、原生暫停與成本；固定列不能遮內容或誤提交",
+        "en": "Keep all advanced settings, native pause and costs; avoid overlap or accidental submission"
+      },
+      "validation": {
+        "zh-Hant": "同目標比較意圖/捲動/設定正確性與小視口鍵盤",
+        "en": "Compare intents, scrolling, setting correctness and small-view keyboard behavior for the same task"
+      }
+    },
+    {
+      "id": "FUN-LAB-PRODUCTION-REASONS",
+      "nextCandidateRank": 4,
+      "category": "A",
+      "status": "PLANNED_UNIMPLEMENTED",
+      "title": {
+        "zh-Hant": "正式門檻的精確等待與已公開支出說明",
+        "en": "Precise wait reasons and public spending using formal gates"
+      },
+      "basis": {
+        "zh-Hant": "A通用等待、B升時代取捨、C食物支出不明；未證明自動化停擺",
+        "en": "A generic waiting, B age tradeoff and C unclear food spending; no automation stall proven"
+      },
+      "risk": {
+        "zh-Hant": "重用productionStatus/reserveCost；正庫存差僅收入下界；不改自動政策/預留/成本",
+        "en": "Reuse productionStatus/reserveCost; positive inventory deltas are lower bounds. No policy/reserve/cost changes"
+      },
+      "validation": {
+        "zh-Hant": "畫面理由與正式門檻一致；玩家能說明目前限制與可用控制",
+        "en": "Displayed reason must match formal gates; player can explain current constraints and controls"
+      }
+    },
+    {
+      "id": "FUN-LAB-READABILITY-HIERARCHY",
+      "nextCandidateRank": 5,
+      "category": "A_BOUNDED_PRESENTATION",
+      "status": "DEFERRED",
+      "title": {
+        "zh-Hant": "選兵與目標文字的溫和視覺層級",
+        "en": "Mild visual hierarchy for selection and target text"
+      },
+      "risk": {
+        "zh-Hant": "讀回已可懂，先處理意圖落地；不閃動遮擋，不折疊/隱藏/另開完整32卡樹",
+        "en": "Readback is understood, so prioritize intent execution. Avoid distraction/overlap and do not collapse/hide/relocate the32-card tree"
+      },
+      "validation": {
+        "zh-Hant": "另以未被告知用途的新玩家測發現性",
+        "en": "Assess discovery with separately uninformed new players"
+      }
+    },
+    {
+      "id": "FUN-LAB-AUTOMATION-OR-BALANCE-EXPANSION",
+      "category": "C",
+      "status": "SPEC_DECISION_REQUIRED_EXCLUDED_CURRENT_SLICE",
+      "title": {
+        "zh-Hant": "自動最佳選敵/持續改派/自動閃圈/時窗或數值政策變更",
+        "en": "Best-target automation, continuous reassignment, auto-dodge or timing/numeric policy changes"
+      },
+      "decision": {
+        "zh-Hant": "本輪不做，不作人工入口失敗的自動容錯；獨立合法工作繼續",
+        "en": "Excluded this round and not a fallback for manual-entry failure; independent authorized work continues"
+      }
+    }
+  ],
+  "preservedConstraints": [
+    "免費基礎控制",
+    "左三選一＋右完整32卡樹永久同屏",
+    "Fog/沙暴/人工命令優先",
+    "現有傷害/費用/卡池/RNG/時窗",
+    "未核准九科技/中國副箭/探索180估值不新增",
+    "不公開部署、不改main/RC/Pages、不修改其他角色/Ownership/Git"
+  ],
+  "preservedFailures": {
+    "strictRngSaveRestore": {
+      "status": "FAIL",
+      "before": -1129663591,
+      "after": 3165303705,
+      "strictStateEqual": false,
+      "fixedByThisSlice": false
+    },
+    "naturalTenWaves": "NOT_PASSED_FULL_CAMPAIGN",
+    "naturalNewGamePlus": "NOT_TESTED",
+    "longRunPerformance": "INCONCLUSIVE",
+    "physicalGpu": "HARDWARE_TEST_PENDING"
+  },
+  "comparisonLimits": {
+    "zh-Hant": [
+      "Before為獨立冷開自然敗北，After為各自原封自然存檔正常Continue，非新自然十波。",
+      "每角色N=1、知情續測、學習、行動、RNG消耗及恢復時序不同，非嚴格因果A/B。A-after為新實例，B/C讀自己的Before。",
+      "全場Before與短After總輸入不可當效率比較；送出不等於命令接受，結算後輸入不算有效作戰命令。",
+      "After累積時間/採集/擊殺帶入存檔前歷程；matchedWindows才界定本段增量，但仍不是因果效果。",
+      "每5秒正庫存差僅分項收入下界；存活轉變含到期及漏採樣，不是完整戰鬥死傷。target/attack參照不是傷害歸因；congested可能歷史殘留。",
+      "Restore帶入既有卡牌及冷卻；boon/技能變化不能直接當本段新領卡或施放。",
+      "整工作階段FPS含選單/暫停；100/200負載四案各30秒且有原生死亡，非持續固定100/200存活。",
+      "SwiftShader為CPU軟體繪圖，不是實體GPU。200 After heap較高，起終點不能證明有/無洩漏，長測未證明。",
+      "Strict RNG Save/Load -1129663591→3165303705仍FAIL；新UI不額外消耗RNG不等於修復嚴格重播。",
+      "自然十波未抵達、NG+未測；沒有真人聽感、樂趣、留存、平衡因果或勝率改善證據。",
+      "下一旗手人工入口正實作，尚無新來源/構建/測試，不能沿用第一切片PASS。"
+    ],
+    "en": [
+      "Before sessions are independent cold-start natural defeats; After sessions resume each unchanged natural save through normal Continue, not fresh ten-wave campaigns.",
+      "N=1 per role, informed retesting, learning, actions, RNG consumption and restore timing preclude strict causal A/B. A-after is a new instance; B/C read their own Before.",
+      "Whole Before and short After input totals are not efficiency comparisons. Dispatch is not semantic acceptance; post-terminal input is not an effective combat order.",
+      "After cumulative time/gathering/kills include pre-save history. Matched windows define segment deltas but do not establish causal effects.",
+      "Five-second positive inventory deltas are income lower bounds. Alive transitions include expiry and sampling gaps, not complete casualties. Target/attack references do not attribute damage; congested may be historical.",
+      "Restore carries existing cards and cooldowns. Boon/cooldown changes cannot all be counted as new claims/casts in this segment.",
+      "Whole-session FPS includes menus/pauses. Four initial-100/200 cases each last 30 seconds with native deaths, not sustained fixed survivor counts.",
+      "SwiftShader is CPU software rendering, not physical GPU hardware. The 200-unit After heap is higher; endpoints establish neither a leak nor no leak, and long runs remain unproven.",
+      "Strict RNG Save/Load -1129663591→3165303705 remains FAIL. Read-only UI consuming no additional RNG does not repair strict replay.",
+      "Natural ten waves were not reached and NG+ is untested. No human listening, fun, retention, balance causality or win-rate improvement is established.",
+      "The next carrier entry is being implemented without a new source/build/tests and cannot inherit the first-slice passes."
+    ]
+  },
+  "nextValidationDetails": "NEXT-FUN-IMPROVEMENTS.md"
+}
