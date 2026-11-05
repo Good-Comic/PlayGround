@@ -1,0 +1,109 @@
+{
+  "source": "5d67848db28716c1ced289eb9a12dcb420ca0559",
+  "scope": "CONTROLLED_RALLY_EVENT: native CHN first-wave plan with only its event replaced by RALLY before native early-wave confirmation. No extra units/resources/HP/time edits. Native mouse army/hero commands and damage. This is not a natural FRK wave5 or ten-wave campaign.",
+  "rows": [
+    {
+      "name": "event-fixture-retains-native-budget-and-rng",
+      "pass": true,
+      "fixture": {
+        "total": 16,
+        "spawns": [
+          {
+            "at": 10,
+            "gate": 0,
+            "units": {
+              "militia": 7,
+              "archer": 1
+            },
+            "eventFlags": []
+          },
+          {
+            "at": 35,
+            "gate": 0,
+            "units": {
+              "militia": 7,
+              "archer": 1
+            },
+            "eventFlags": []
+          }
+        ],
+        "unchangedRng": true,
+        "intercept": {
+          "x": 25.354526506341063,
+          "y": 18.622553202314304
+        }
+      }
+    },
+    {
+      "name": "native-shift-click-adds-hero-to-army",
+      "pass": true
+    },
+    {
+      "name": "native-timer-activates-bearer-aura",
+      "pass": true,
+      "active": {
+        "clock": 20.06569999999983,
+        "state": {
+          "version": 1,
+          "waveIndex": 0,
+          "eventAt": 20,
+          "expiresAt": 35,
+          "carrierType": "militia",
+          "carrierId": 20
+        },
+        "status": "active",
+        "flag": {
+          "id": 20,
+          "hp": 60,
+          "alive": true,
+          "visible": false,
+          "x": 26.1172666257232,
+          "y": 9.52239768363886
+        },
+        "enemyCount": 7,
+        "selected": [
+          "militia",
+          "militia",
+          "archer",
+          "light_cavalry",
+          "commander"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "flag-is-actually-visible",
+      "pass": false,
+      "active": {
+        "clock": 20.06569999999983,
+        "state": {
+          "version": 1,
+          "waveIndex": 0,
+          "eventAt": 20,
+          "expiresAt": 35,
+          "carrierType": "militia",
+          "carrierId": 20
+        },
+        "status": "active",
+        "flag": {
+          "id": 20,
+          "hp": 60,
+          "alive": true,
+          "visible": false,
+          "x": 26.1172666257232,
+          "y": 9.52239768363886
+        },
+        "enemyCount": 7,
+        "selected": [
+          "militia",
+          "militia",
+          "archer",
+          "light_cavalry",
+          "commander"
+        ],
+        "hits": []
+      }
+    }
+  ],
+  "errors": []
+}

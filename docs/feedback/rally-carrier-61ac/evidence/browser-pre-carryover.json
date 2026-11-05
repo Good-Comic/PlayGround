@@ -1,0 +1,474 @@
+{
+  "source": "5d67848db28716c1ced289eb9a12dcb420ca0559",
+  "scope": "CONTROLLED_RALLY_EVENT: native CHN first-wave plan with only its event replaced by RALLY before native early-wave confirmation. No extra units/resources/HP/time edits. Native mouse army/hero commands and damage. This is not a natural FRK wave5 or ten-wave campaign.",
+  "rows": [
+    {
+      "name": "event-fixture-retains-native-budget-and-rng",
+      "pass": true,
+      "fixture": {
+        "total": 16,
+        "spawns": [
+          {
+            "at": 10,
+            "gate": 0,
+            "units": {
+              "militia": 7,
+              "archer": 1
+            },
+            "eventFlags": []
+          },
+          {
+            "at": 35,
+            "gate": 0,
+            "units": {
+              "militia": 7,
+              "archer": 1
+            },
+            "eventFlags": []
+          }
+        ],
+        "unchangedRng": true,
+        "intercept": {
+          "x": 25.354526506341063,
+          "y": 18.622553202314304
+        }
+      }
+    },
+    {
+      "name": "native-shift-click-adds-hero-to-army",
+      "pass": true
+    },
+    {
+      "name": "native-timer-activates-bearer-aura",
+      "pass": true,
+      "active": {
+        "clock": 20.065499999999822,
+        "state": {
+          "version": 1,
+          "waveIndex": 0,
+          "eventAt": 20,
+          "expiresAt": 35,
+          "carrierType": "militia",
+          "carrierId": 20
+        },
+        "status": "active",
+        "flag": {
+          "id": 20,
+          "hp": 60,
+          "alive": true,
+          "visible": false,
+          "x": 26.125079398652282,
+          "y": 9.56289326341215
+        },
+        "enemyCount": 8,
+        "selected": [
+          "militia",
+          "militia",
+          "archer",
+          "light_cavalry",
+          "commander"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "fog-keeps-unseen-bearer-unfocusable",
+      "pass": true,
+      "clock": 20.065499999999822
+    },
+    {
+      "name": "native-approach-reveals-live-bearer",
+      "pass": true,
+      "observation": {
+        "clock": 20.248899999999825,
+        "hp": 60,
+        "army": [
+          {
+            "id": 15,
+            "x": 24.590483187746997,
+            "y": 18.167649999780263
+          },
+          {
+            "id": 16,
+            "x": 23.581278325849265,
+            "y": 17.472152323756713
+          },
+          {
+            "id": 17,
+            "x": 26.121088562268685,
+            "y": 18.17574457197476
+          },
+          {
+            "id": 18,
+            "x": 23.949307642020624,
+            "y": 18.236534258853133
+          },
+          {
+            "id": 19,
+            "x": 24.29280953940877,
+            "y": 18.81316426074377
+          }
+        ]
+      }
+    },
+    {
+      "name": "native-enemy-cooldowns-follow-radius",
+      "pass": true,
+      "aura": [
+        {
+          "id": 20,
+          "type": "militia",
+          "distance": 0,
+          "multiplier": 1.1,
+          "cooldown": 1.3636363636363635,
+          "base": 1.5
+        },
+        {
+          "id": 21,
+          "type": "militia",
+          "distance": 2.1682861856927858,
+          "multiplier": 1.1,
+          "cooldown": 1.3636363636363635,
+          "base": 1.5
+        },
+        {
+          "id": 22,
+          "type": "militia",
+          "distance": 2.536532163601697,
+          "multiplier": 1.1,
+          "cooldown": 1.3636363636363635,
+          "base": 1.5
+        },
+        {
+          "id": 23,
+          "type": "militia",
+          "distance": 1.8422980225385528,
+          "multiplier": 1.1,
+          "cooldown": 1.3636363636363635,
+          "base": 1.5
+        },
+        {
+          "id": 24,
+          "type": "militia",
+          "distance": 2.9023799629662097,
+          "multiplier": 1.1,
+          "cooldown": 1.3636363636363635,
+          "base": 1.5
+        },
+        {
+          "id": 25,
+          "type": "militia",
+          "distance": 8.854732106021089,
+          "multiplier": 1,
+          "cooldown": 1.5,
+          "base": 1.5
+        },
+        {
+          "id": 26,
+          "type": "militia",
+          "distance": 0.6636006644023075,
+          "multiplier": 1.1,
+          "cooldown": 1.3636363636363635,
+          "base": 1.5
+        },
+        {
+          "id": 27,
+          "type": "archer",
+          "distance": 2.4802897266680977,
+          "multiplier": 1.1,
+          "cooldown": 1.6363636363636362,
+          "base": 1.8
+        }
+      ]
+    },
+    {
+      "name": "real-pause-freezes-rally",
+      "pass": true
+    },
+    {
+      "name": "native-load-preserves-bearer-and-deadline",
+      "pass": true,
+      "paused": {
+        "clock": 21.248799999999825,
+        "state": {
+          "version": 1,
+          "waveIndex": 0,
+          "eventAt": 20,
+          "expiresAt": 35,
+          "carrierType": "militia",
+          "carrierId": 20
+        },
+        "rng": 145459735
+      }
+    },
+    {
+      "name": "visible-bearer-has-native-click-target",
+      "pass": true
+    },
+    {
+      "name": "real-right-click-orders-focus-fire",
+      "pass": true,
+      "orders": [
+        {
+          "id": 15,
+          "type": "militia",
+          "target": 20,
+          "manual": true,
+          "correct": true
+        },
+        {
+          "id": 16,
+          "type": "militia",
+          "target": 20,
+          "manual": true,
+          "correct": true
+        },
+        {
+          "id": 17,
+          "type": "archer",
+          "target": 20,
+          "manual": true,
+          "correct": true
+        },
+        {
+          "id": 18,
+          "type": "light_cavalry",
+          "target": 20,
+          "manual": true,
+          "correct": true
+        },
+        {
+          "id": 19,
+          "type": "commander",
+          "target": 20,
+          "manual": true,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "name": "native-attacks-break-banner-before-expiry",
+      "pass": true,
+      "result": {
+        "clock": 26.981799999999907,
+        "status": "broken",
+        "flag": {
+          "id": 20,
+          "hp": -4,
+          "alive": false
+        },
+        "hits": [
+          {
+            "time": 24.515199999999812,
+            "clock": 22.615299999999845,
+            "source": 17,
+            "team": "player",
+            "hpBefore": 60,
+            "hpAfter": 59,
+            "kind": "projectile",
+            "status": "active"
+          },
+          {
+            "time": 24.965199999999818,
+            "clock": 23.06529999999985,
+            "source": 18,
+            "team": "player",
+            "hpBefore": 59,
+            "hpAfter": 55,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 25.06509999999982,
+            "clock": 23.165199999999853,
+            "source": 16,
+            "team": "player",
+            "hpBefore": 55,
+            "hpAfter": 53,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 25.09849999999982,
+            "clock": 23.198599999999853,
+            "source": 15,
+            "team": "player",
+            "hpBefore": 53,
+            "hpAfter": 51,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 26.331799999999838,
+            "clock": 24.43189999999987,
+            "source": 17,
+            "team": "player",
+            "hpBefore": 51,
+            "hpAfter": 50,
+            "kind": "projectile",
+            "status": "active"
+          },
+          {
+            "time": 26.331799999999838,
+            "clock": 24.43189999999987,
+            "source": 17,
+            "team": "player",
+            "hpBefore": 50,
+            "hpAfter": 49,
+            "kind": "projectile",
+            "status": "active"
+          },
+          {
+            "time": 26.59849999999984,
+            "clock": 24.698599999999875,
+            "source": 15,
+            "team": "player",
+            "hpBefore": 49,
+            "hpAfter": 47,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 26.59849999999984,
+            "clock": 24.698599999999875,
+            "source": 16,
+            "team": "player",
+            "hpBefore": 47,
+            "hpAfter": 45,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 26.59849999999984,
+            "clock": 24.698599999999875,
+            "source": 18,
+            "team": "player",
+            "hpBefore": 45,
+            "hpAfter": 41,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 26.865099999999845,
+            "clock": 24.96519999999988,
+            "source": 19,
+            "team": "player",
+            "hpBefore": 41,
+            "hpAfter": 29,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 27.81509999999986,
+            "clock": 25.915199999999892,
+            "source": 19,
+            "team": "player",
+            "hpBefore": 29,
+            "hpAfter": 17,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 28.114999999999863,
+            "clock": 26.215099999999897,
+            "source": 15,
+            "team": "player",
+            "hpBefore": 17,
+            "hpAfter": 15,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 28.114999999999863,
+            "clock": 26.215099999999897,
+            "source": 16,
+            "team": "player",
+            "hpBefore": 15,
+            "hpAfter": 13,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 28.114999999999863,
+            "clock": 26.215099999999897,
+            "source": 17,
+            "team": "player",
+            "hpBefore": 13,
+            "hpAfter": 12,
+            "kind": "projectile",
+            "status": "active"
+          },
+          {
+            "time": 28.214999999999865,
+            "clock": 26.315099999999898,
+            "source": 18,
+            "team": "player",
+            "hpBefore": 12,
+            "hpAfter": 8,
+            "kind": "melee",
+            "status": "active"
+          },
+          {
+            "time": 28.781699999999873,
+            "clock": 26.881799999999906,
+            "source": 19,
+            "team": "player",
+            "hpBefore": 8,
+            "hpAfter": -4,
+            "kind": "melee",
+            "status": "broken"
+          }
+        ],
+        "remaining": [
+          {
+            "id": 21,
+            "multiplier": 1,
+            "cooldown": 1.5,
+            "base": 1.5
+          },
+          {
+            "id": 22,
+            "multiplier": 1,
+            "cooldown": 1.5,
+            "base": 1.5
+          },
+          {
+            "id": 23,
+            "multiplier": 1,
+            "cooldown": 1.5,
+            "base": 1.5
+          },
+          {
+            "id": 24,
+            "multiplier": 1,
+            "cooldown": 1.5,
+            "base": 1.5
+          },
+          {
+            "id": 26,
+            "multiplier": 1,
+            "cooldown": 1.5,
+            "base": 1.5
+          },
+          {
+            "id": 27,
+            "multiplier": 1,
+            "cooldown": 1.8,
+            "base": 1.8
+          }
+        ],
+        "core": 2993.6000000000004,
+        "hero": 520
+      }
+    },
+    {
+      "name": "bearer-death-removes-nearby-bonus",
+      "pass": true
+    },
+    {
+      "name": "no-page-errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

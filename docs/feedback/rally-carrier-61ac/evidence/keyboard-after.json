@@ -1,0 +1,40 @@
+{
+  "source": {
+    "id": "riftwatch-v240-development",
+    "baseCommit": "f206b210b8b3c0e08dc36ecaae8d01e4ed174faa"
+  },
+  "scope": "CONTROLLED_LOAD: native saved active RALLY restored through Continue, actual keyboard Tab/Shift+Tab/Space/Enter/Escape. No health/time or simulation-result edits.",
+  "rows": [
+    {
+      "name": "native-Tab-does-not-toggle-hero",
+      "pass": true,
+      "before": false,
+      "heroControl": false,
+      "stillFocused": false
+    },
+    {
+      "name": "native-Shift+Tab-does-not-toggle-hero",
+      "pass": true,
+      "before": false,
+      "heroControl": false,
+      "stillFocused": false
+    },
+    {
+      "name": "native-Space-focuses-without-pause",
+      "pass": true
+    },
+    {
+      "name": "native-Enter-focuses-without-pause",
+      "pass": true
+    },
+    {
+      "name": "native-escape-pauses",
+      "pass": true
+    },
+    {
+      "name": "no-page-errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

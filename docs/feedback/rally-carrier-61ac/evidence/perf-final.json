@@ -1,0 +1,168 @@
+{
+  "classification": "INCONCLUSIVE: serial CONTROLLED_PERFORMANCE fixture. Same seed42, native stats/AI/collision/damage/draw; 100/200 initial total, deaths retained. RALLY first group replaces its archer with a native guard (same count), waveClock20 initial fixture, native guard positioned on a legal battlefield tile equally in both versions. All injected enemies receive native applyEventMods and eventModsApplied, matching a normal active-event wave spawn. Earlier perf/perf-opt extra-spawn mod omission remains a fixture limitation; those observations are retained as INCONCLUSIVE. Auto production off equally. Warmup5 simulation seconds then8 wall seconds. Actual live/visible flag frames recorded; not constant units, not natural campaign or long-run hardware certification. Gameplay differs intentionally: old global vs new local aura.",
+  "browser": "154.0.8037.57",
+  "gpu": [
+    {
+      "vendorId": 65535,
+      "deviceId": 65535,
+      "vendorString": "Google Inc. (Google)",
+      "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+      "driverVendor": "SwANGLE",
+      "driverVersion": "5.0.0"
+    }
+  ],
+  "rows": [
+    {
+      "name": "before",
+      "source": "91b3b9193bc101ea361696143c4901ebfaf2af45",
+      "units": 100,
+      "initial": 100,
+      "seed": 42,
+      "flagId": 20,
+      "flagType": "guard",
+      "flagHp": 130,
+      "fixtureAt": 1077.699999988079,
+      "warmupWallMs": 6252.5999999940395,
+      "wallMs": 8040.199999988079,
+      "samples": 224,
+      "p50": 33.30000000000109,
+      "p95": 50,
+      "fps": 27.860003482541742,
+      "heapStart": 13908721,
+      "heapEnd": 15235530,
+      "initialAlive": 77,
+      "endAlive": 72,
+      "simStart": 5.199199999999992,
+      "simEnd": 13.231099999999998,
+      "waveClock": 33.23110000000018,
+      "flagStart": {
+        "alive": true,
+        "hp": 130,
+        "visible": true
+      },
+      "aliveFlagFrames": 224,
+      "visibleFlagFrames": 224,
+      "flagEnd": {
+        "alive": true,
+        "hp": 128,
+        "visible": true
+      },
+      "rallyStatus": "legacy-global",
+      "paused": false
+    },
+    {
+      "name": "before",
+      "source": "91b3b9193bc101ea361696143c4901ebfaf2af45",
+      "units": 200,
+      "initial": 200,
+      "seed": 42,
+      "flagId": 20,
+      "flagType": "guard",
+      "flagHp": 130,
+      "fixtureAt": 1028.0999999940395,
+      "warmupWallMs": 9480,
+      "wallMs": 8048.9000000059605,
+      "samples": 131,
+      "p50": 66.60000000000036,
+      "p95": 66.80000000000109,
+      "fps": 16.275515908994144,
+      "heapStart": 12681576,
+      "heapEnd": 11150112,
+      "initialAlive": 145,
+      "endAlive": 140,
+      "simStart": 5.1999999999999895,
+      "simEnd": 11.748800000000022,
+      "waveClock": 31.748800000000163,
+      "flagStart": {
+        "alive": true,
+        "hp": 126,
+        "visible": true
+      },
+      "aliveFlagFrames": 131,
+      "visibleFlagFrames": 131,
+      "flagEnd": {
+        "alive": true,
+        "hp": 122,
+        "visible": true
+      },
+      "rallyStatus": "legacy-global",
+      "paused": false
+    },
+    {
+      "name": "after",
+      "source": "ed9d8582769ddf68bd3a47beed88134d5f4eaf15",
+      "units": 100,
+      "initial": 100,
+      "seed": 42,
+      "flagId": 20,
+      "flagType": "guard",
+      "flagHp": 130,
+      "fixtureAt": 1101.5,
+      "warmupWallMs": 6341.199999988079,
+      "wallMs": 8042.9000000059605,
+      "samples": 221,
+      "p50": 33.30000000000109,
+      "p95": 50,
+      "fps": 27.477651095977347,
+      "heapStart": 12692301,
+      "heapEnd": 18865324,
+      "initialAlive": 79,
+      "endAlive": 71,
+      "simStart": 5.18269999999999,
+      "simEnd": 13.198900000000002,
+      "waveClock": 33.19890000000016,
+      "flagStart": {
+        "alive": true,
+        "hp": 130,
+        "visible": true
+      },
+      "aliveFlagFrames": 221,
+      "visibleFlagFrames": 221,
+      "flagEnd": {
+        "alive": true,
+        "hp": 129,
+        "visible": true
+      },
+      "rallyStatus": "active",
+      "paused": false
+    },
+    {
+      "name": "after",
+      "source": "ed9d8582769ddf68bd3a47beed88134d5f4eaf15",
+      "units": 200,
+      "initial": 200,
+      "seed": 42,
+      "flagId": 20,
+      "flagType": "guard",
+      "flagHp": 130,
+      "fixtureAt": 1006.2999999821186,
+      "warmupWallMs": 9711.600000023842,
+      "wallMs": 8049.200000017881,
+      "samples": 131,
+      "p50": 66.60000000000036,
+      "p95": 66.79999999999927,
+      "fps": 16.27490930772114,
+      "heapStart": 18040958,
+      "heapEnd": 15155085,
+      "initialAlive": 146,
+      "endAlive": 140,
+      "simStart": 5.18329999999999,
+      "simEnd": 11.73260000000003,
+      "waveClock": 31.732600000000158,
+      "flagStart": {
+        "alive": true,
+        "hp": 126,
+        "visible": true
+      },
+      "aliveFlagFrames": 131,
+      "visibleFlagFrames": 131,
+      "flagEnd": {
+        "alive": true,
+        "hp": 122,
+        "visible": true
+      },
+      "rallyStatus": "active",
+      "paused": false
+    }
+  ]
+}
