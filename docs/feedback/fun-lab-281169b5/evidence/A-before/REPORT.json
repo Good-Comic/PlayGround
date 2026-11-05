@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "sealed": true,
+  "player": "A",
+  "role": "Genius Strategic Player",
+  "phase": "before",
+  "perspective": "AI 模擬玩家觀點；非真人測試，非人類情緒或反應統計。",
+  "independence": {
+    "sources": [
+      "根代理提供的 public/README.md",
+      "本局正常可見畫面、HUD、工具提示與玩法說明",
+      "本人保存的可見觀察 JSON／截圖"
+    ],
+    "prohibitedSourcesUsed": false,
+    "otherPlayersConsulted": false,
+    "sourceCodeRead": false,
+    "hiddenStateRead": false,
+    "directGameFunctionsUsed": false
+  },
+  "settings": {
+    "buildLabel": "PLAYTEST · f6ae896",
+    "civ": "FRK",
+    "difficulty": "normal",
+    "biome": "steppe",
+    "seed": "FUN-LAB-BASE-281",
+    "speed": "正常 1 倍速",
+    "profile": "../PROFILE.md",
+    "nominalIntentLimitPerMinute": 24,
+    "minimumIntentIntervalSeconds": 2.5,
+    "profileChanged": false
+  },
+  "timeBasis": {
+    "primary": "session.wallSeconds：從本局瀏覽器時段開始計；精確到觀察工具回傳的秒數。",
+    "startButtonWallSeconds": 52.698,
+    "elapsedMeaning": "T+ 為正常按 Start 後的實際經過時間，包含面板暫停與工具往返；不可當成遊戲內統治時間。",
+    "endObservedWallSeconds": 866.698,
+    "elapsedAfterStartSeconds": 814,
+    "visibleInGameEndTime": "8:50",
+    "exactDamageAndDeathTimesKnown": false
+  },
+  "result": {
+    "status": "DEFEAT",
+    "completedWaves": 3,
+    "defeatedDuringWave": 4,
+    "kills": 75,
+    "gatheredResources": 3708,
+    "visibleReignTime": "8:50",
+    "sessionLimitReached": false,
+    "finishExecuted": true,
+    "evidence": "screen-0058.png"
+  },
+  "performanceLimits": {
+    "intentAccounting": "選取、鏡頭移動、開面板、捲動、設定、訓練、技能與卡牌確認各別計費；沒有巨集、加速或跳波。以公開介面的 2500 ms 限速及自然工具延遲執行。",
+    "reactionObservation": "反應比 PROFILE 的理想目標慢。827.147 秒觀測城心 51%，845.482 秒才發出下一個援護城心指令，間隔 18.335 秒；不能把這次執行當成真人高階玩家的反應能力。",
+    "inputFailures": [
+      "第一次以暫時性 @18 控制項標記派英雄失敗，之後根據新觀察改用可見座標成功；屬測試介面定位限制。",
+      "734.870 秒待命村民按鈕逾時，隨後畫面已是選卡；不能算成已選村民。",
+      "結算後最後一次援護城心回報控制項不可見／不可用，未算成挽救成功。"
+    ],
+    "ownMistakes": [
+      "270.477 秒按住 S 平移 900 ms 令城區離開主視野；之後以小地圖回城。",
+      "數次嘗試點選移動中的村民實際選到房屋、城心或空地；636.392 秒改用框選成功。",
+      "過度倚賴援護城心與塔防，沒有及時針對衝車建立並執行獨立攔截。",
+      "早期規劃面板與細節理解耗時，沒有充分預留對第四波攻城威脅的反應空間。"
+    ],
+    "causalityLimit": "未檢查內部傷害、路徑、佇列或自動化程式，不能據此認定遊戲有傷害或生產 bug。"
+  },
+  "strategy": [
+    {
+      "atWallSeconds": 63.408,
+      "decision": "先讀總管規劃；設定自動時代、馬廄目標 1、瞭望塔目標 3，起初全軍方案選反制已見敵軍。保留村民目標 22。",
+      "reason": "FRK 騎兵生命加成可見，先建經濟、補兵及近城火力。",
+      "evidence": [
+        "screen-0005.png",
+        "screen-0011.json",
+        "screen-0012.json"
+      ]
+    },
+    {
+      "atWallSeconds": 232.797,
+      "decision": "派英雄救援兩名工人，主軍留守城心；交戰後使用標記與神盾。",
+      "reason": "以早期有限離城風險換取經濟人口。",
+      "evidence": [
+        "screen-0015.json",
+        "screen-0016.json"
+      ]
+    },
+    {
+      "atWallSeconds": 325.751,
+      "decision": "第一張選青銅誓約。",
+      "reason": "當前混合部隊與塔防都受益，不因稀有度單獨選牌。",
+      "evidence": [
+        "screen-0020.png",
+        "screen-0021.json"
+      ]
+    },
+    {
+      "atWallSeconds": 372.981,
+      "decision": "檢查馬廄自動生產等待狀態；之後改全軍均衡，停用該馬廄弓騎兵，再手動排三名輕騎兵。",
+      "reason": "不把儲存設定當成已確認持續生產；輕騎兵的公開成本為 65 食／20 金。",
+      "evidence": [
+        "screen-0025.json",
+        "screen-0027.json",
+        "screen-0029.json"
+      ]
+    },
+    {
+      "atWallSeconds": 580.446,
+      "decision": "第二張選誘餌車；保留自動時代，觀察到正在研究帝國時代。",
+      "reason": "城心承壓，嘗試每波前新增誘餌來承擔威脅；實際仇恨與收益未單獨驗證。",
+      "evidence": [
+        "screen-0035.json",
+        "screen-0037.json"
+      ]
+    },
+    {
+      "atWallSeconds": 666.512,
+      "decision": "在東北側手動加建瞭望塔；移近英雄並施放技能；第四波前再於東側加塔。",
+      "reason": "依已見來襲方位補火力，保留全軍近城。",
+      "evidence": [
+        "screen-0044.json",
+        "screen-0046.json",
+        "screen-0054.json"
+      ]
+    },
+    {
+      "atWallSeconds": 759.197,
+      "decision": "第三張選屠夫之債。",
+      "reason": "公開食物存量低，立即 150 食與擊殺食物可支援持續補兵；放棄建築生命與遠程減速選項。",
+      "evidence": [
+        "screen-0049.json",
+        "screen-0051.json"
+      ]
+    },
+    {
+      "atWallSeconds": 852.795,
+      "decision": "第四波繼續援護城心、神盾與標記；標記回饋顯示衝車。",
+      "reason": "企圖用近城全軍消除攻城壓力，但未及時阻止失守。",
+      "evidence": [
+        "screen-0055.json",
+        "screen-0056.json",
+        "screen-0058.json"
+      ]
+    }
+  ],
+  "interesting": [
+    {
+      "id": "I1",
+      "atWallSeconds": 232.797,
+      "elapsedAfterStart": "03:00.099",
+      "category": "探索／經濟與防守取捨",
+      "observation": "可見『兩名工人已獲救』；城心同時已進第一波、99%。",
+      "simulatedResponse": "英雄離城有真實防守成本，成功把探索回報接回基地經濟，形成具體的小目標。",
+      "evidence": [
+        "screen-0015.png",
+        "screen-0015.json"
+      ]
+    },
+    {
+      "id": "I2",
+      "atWallSeconds": 735.522,
+      "elapsedAfterStart": "11:22.824",
+      "category": "卡牌／資源瓶頸",
+      "observation": "第三次三選一為屠夫之債、重箭頭、攻城數學；持有青銅誓約與誘餌車，食物 116。",
+      "simulatedResponse": "可以根據目前食物瓶頸選立即與後續收益，並清楚放棄防禦生命或減速，具備值得再嘗試的構築取捨。",
+      "evidence": [
+        "screen-0049.png",
+        "screen-0049.json",
+        "screen-0051.json"
+      ]
+    },
+    {
+      "id": "I3",
+      "atWallSeconds": 827.147,
+      "elapsedAfterStart": "12:54.449",
+      "category": "英雄／部隊密度與技能",
+      "observation": "679.848 秒神盾可護 2 人；移動後 691.688 秒可護 4 人；827.147 秒可護 10 人，之後實際施放。",
+      "simulatedResponse": "支援人數即時可見，英雄站位與全軍回防能改變技能價值，決策有可讀的回報。",
+      "evidence": [
+        "screen-0045.json",
+        "screen-0046.json",
+        "screen-0055.png",
+        "screen-0056.png"
+      ]
+    }
+  ],
+  "boring": [
+    {
+      "id": "B1",
+      "atWallSeconds": 63.408,
+      "endWallSeconds": 175.635,
+      "elapsedAfterStart": "00:10.710–02:02.937",
+      "category": "初次設定／介面閱讀",
+      "observation": "第一次總管面板含採集、預留、目標、建築多欄與逐建築生產，需要多次捲動；期間遊戲暫停。",
+      "simulatedResponse": "約 113 秒的實際時段主要在理解表格，戰場決策停住；這是本次模擬最明顯的低投入區段。",
+      "limitation": "包含模型與工具讀取成本，不可視為真人必需花 113 秒。",
+      "evidence": [
+        "screen-0005.png",
+        "screen-0006.png",
+        "screen-0007.png",
+        "screen-0011.json"
+      ]
+    },
+    {
+      "id": "B2",
+      "atWallSeconds": 298.478,
+      "endWallSeconds": 309.347,
+      "elapsedAfterStart": "04:05.780–04:16.649",
+      "category": "波尾／資訊不足的等待",
+      "observation": "第一波只剩 1 名敵人，約 10.9 秒後才觀測到選卡。",
+      "simulatedResponse": "當下沒有辨認出可追加的戰術選擇，主要等待結束；程度輕微。",
+      "limitation": "我先前的鏡頭偏移加重此感受；不能斷言敵人卡住或整段波尾設計冗長。",
+      "evidence": [
+        "screen-0018.json",
+        "screen-0020.json"
+      ]
+    },
+    {
+      "id": "B3",
+      "atWallSeconds": 309.347,
+      "elapsedAfterStart": "04:16.649",
+      "category": "選卡／資訊密度",
+      "observation": "左側三張候選與右側完整圖鑑、文明、篩選、縮放、主題關聯同時出現；第三次選卡仍保留同樣大面積圖鑑。",
+      "simulatedResponse": "本次只需比較三項時，視覺掃描被完整牌庫分散，讓簡單取捨多了一段閱讀負擔。",
+      "limitation": "這是初次模擬的輕度低投入評價，未證明熟悉玩家或真人會覺得無聊。",
+      "evidence": [
+        "screen-0020.png",
+        "screen-0035.png",
+        "screen-0049.png"
+      ]
+    }
+  ],
+  "frustrations": [
+    {
+      "id": "F1",
+      "atWallSeconds": 827.147,
+      "endWallSeconds": 866.698,
+      "elapsedAfterStart": "12:54.449–13:34.000",
+      "category": "攻城威脅／戰鬥可讀性",
+      "severity": "高",
+      "observation": "第四波斥候早已列出衝車；827.147 秒城心 51%、4 名敵人，852.795 秒城心 4%、17 名敵人且標記回饋為衝車，866.698 秒觀測到正式敗北。",
+      "simulatedResponse": "一批後續威脅抵達時，局面比既有近城防守的回饋更快崩潰；需要更容易辨認當前城心失血的來源與優先處理對象。",
+      "ownContribution": "我反應慢、沒有獨立攔截衝車，亦未預先驗證修復手段；不能把敗北歸咎於設計。",
+      "certainty": "失血與敗北為高可信觀測；傷害來源占比與平衡是否異常未知。",
+      "evidence": [
+        "screen-0051.json",
+        "screen-0055.json",
+        "screen-0056.png",
+        "screen-0058.png"
+      ]
+    },
+    {
+      "id": "F2",
+      "atWallSeconds": 372.981,
+      "elapsedAfterStart": "05:20.283",
+      "category": "總管／生產診斷",
+      "severity": "中",
+      "observation": "馬廄顯示自動啟用、佇列上限 1、預留為 0、單位目標 200，狀態卻為『等待資源／保留預算』；頂部為 350 食、447 木、170 金、110 石。之後馬廄正常顯示輕騎兵 65 食／20 金，手動排兵成功。",
+      "simulatedResponse": "無法僅憑通用等待文字判斷是全軍規劃、某個條件、重新儲存或資源時機在限制生產；需要反覆展開與比對。",
+      "certainty": "畫面與手動操作已證實；自動化內部原因未查，也不主張其停止或有 bug。",
+      "evidence": [
+        "screen-0025.json",
+        "screen-0027.json",
+        "screen-0029.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "atWallSeconds": 270.968,
+      "endWallSeconds": 637.117,
+      "elapsedAfterStart": "03:38.270；09:03–09:44 區間",
+      "category": "鏡頭／移動單位選取／工具延遲",
+      "severity": "中",
+      "observation": "一次 S 平移使城區離開主畫面；後續數次點村民實際選到房屋、城心或空地，框選才取得村民並正常建塔。",
+      "simulatedResponse": "有限操作預算被找回畫面與重新選取消耗，減少判斷敵軍與建造的注意力。",
+      "ownContribution": "我使用過長平移並依過期畫面點移動單位；原生選取是否有缺陷未證實。暫時性 @ 標記失效另屬測試介面限制。",
+      "evidence": [
+        "screen-0017.png",
+        "screen-0038.json",
+        "screen-0040.json",
+        "screen-0041.json",
+        "screen-0042.json"
+      ]
+    }
+  ],
+  "desiredImprovements": [
+    {
+      "priority": 1,
+      "title": "對已看見的攻城危機提供更明確的城心失血回饋",
+      "proposal": "城心快速失血時顯示可見攻擊來源、方位與最近傷害類型，讓玩家能原生選取已見衝車；保留玩家決定集火與調兵。先改善診斷，不依本次單局直接下修傷害。",
+      "gddCompatibility": "待核實：未獲准讀 GDD。從公開守城目標、斥候與既有援護城心看來方向可能相容，尚不能聲稱通過。",
+      "risks": [
+        "只能引用已見來源，避免揭露迷霧後敵軍。",
+        "警示過密可能掩蓋其他訊息；自動替玩家選最佳目標會削弱戰術。"
+      ],
+      "validation": "在相同設定的正常 1 倍速獨立重測，比較首次可見衝車、首次警示、首次正確選取／攻擊的時間；確認資訊來自公開視野，並觀察是否仍需分兵攔截。",
+      "supports": [
+        "F1"
+      ]
+    },
+    {
+      "priority": 2,
+      "title": "讓總管先呈現當前生效計畫與精確等待原因",
+      "proposal": "保留進階表格，先顯示採集／村民／兵種／建築的精簡摘要與儲存後預期動作；生產等待分清資源不足、預留、目標／佇列已滿、規劃限制或其他公開條件。候選三張選卡保持主視覺，完整牌庫可折疊。",
+      "gddCompatibility": "待核實：未讀 GDD；提案維持既有規劃與隨機選卡的決策權，不新增最佳建造順序。",
+      "risks": [
+        "摘要可能隱藏相互依賴的條件，必須能展開。",
+        "過度預設或全自動推薦可能讓經濟與構築選擇失去意義。"
+      ],
+      "validation": "用相同初始設定核對摘要、儲存設定與可見實際佇列是否一致；記錄面板時間、捲動與重開次數，再檢查是否能說明每一個等待狀態。三選一主畫面仍須能查看完整牌庫。",
+      "supports": [
+        "B1",
+        "B3",
+        "F2"
+      ]
+    },
+    {
+      "priority": 3,
+      "title": "降低回城鏡頭與重疊單位選取的操作成本",
+      "proposal": "提供清楚的回城心鏡頭入口，與既有援護城心軍令各自標示；在擁擠城區改善可見目標的滑鼠提示、選取循環或可選輪廓，尤其是村民與衝車被建築遮擋時。",
+      "gddCompatibility": "待核實：未讀 GDD；依公開 RTS 鏡頭、選取與英雄直控功能提出，不增加遠端情報。",
+      "risks": [
+        "擴大命中區可能增加誤選，應保留精確模式或循環。",
+        "回城心不得強制打斷英雄直控鏡頭，需清楚呈現效果。"
+      ],
+      "validation": "在正常速度比較靜止／移動村民、城心周邊混戰與英雄直控三種情境的首次正確選取率與回城操作數；使用原生 UI，不藉內部物件 ID 下令。",
+      "supports": [
+        "F3"
+      ]
+    }
+  ],
+  "replayIntent": {
+    "willing": true,
+    "simulatedScoreOutOf10": 7,
+    "reason": "願意再試一局，具體想驗證提早設置衝車攔截、把英雄留在主戰區，以及選建築生命或食物收益的取捨。前三波的卡牌、英雄與塔位已形成可改變的策略。",
+    "qualification": "這是角色假設下的 AI 模擬偏好，非真人留存率、滿意度或情緒。下一局仍需沿用固定 PROFILE，不會為提高勝率改成無限操作。"
+  },
+  "untested": [
+    "第五至第十波、Boss、完整通關與長期構築未體驗。",
+    "未完成科技／圖鑑研究、牆線、攻城工坊、市集或完整科技策略。",
+    "未驗證修復機制、誘餌仇恨規則、加成疊加公式、自動生產等待的內部原因。",
+    "單局敗北與有限實際反應速度不足以判定整體難度或文明平衡。"
+  ],
+  "evidenceArchive": {
+    "screens": "本目錄 screen-*.png",
+    "visibleObservations": "本人自 screen-0011 起另存的 screen-*.json；各檔僅為 client observe 回傳的可見資訊。",
+    "final": "screen-0058.png",
+    "recording": "campaign.webm",
+    "untouched": "未讀取 session.json、遊戲原始碼、旁觀者資料或其他玩家報告。",
+    "repositoryCommit": "由根代理處理，本玩家未提交。"
+  }
+}
