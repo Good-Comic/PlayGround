@@ -121,13 +121,13 @@ export function installBattleLine(g,ui,renderer,canvas) {
     if(e.key.toLowerCase()==='f'&&!e.shiftKey&&!e.repeat&&lineCanAct(g)&&!blocked()){e.preventDefault();e.stopImmediatePropagation();begin();}
   },true);
   canvas.addEventListener('pointerdown',e=>{
-    if(!active())return;e.preventDefault();e.stopImmediatePropagation();
+    if(!active())return;if(e.button===1)return;e.preventDefault();e.stopImmediatePropagation();
     if(e.button!==0){cancel();return;}
-    const r=canvas.getBoundingClientRect();drag={from:g.worldAt(e.clientX-r.left,e.clientY-r.top),sx:e.clientX,sy:e.clientY,x:e.clientX,y:e.clientY};canvas.setPointerCapture?.(e.pointerId);cached=recalc();update(true);
+    if(drag)return;const r=canvas.getBoundingClientRect();drag={pointerId:e.pointerId,from:g.worldAt(e.clientX-r.left,e.clientY-r.top),sx:e.clientX,sy:e.clientY,x:e.clientX,y:e.clientY};canvas.setPointerCapture?.(e.pointerId);cached=recalc();update(true);
   },true);
-  canvas.addEventListener('pointermove',e=>{if(!active()||!drag)return;drag.x=e.clientX;drag.y=e.clientY;},true);
+  canvas.addEventListener('pointermove',e=>{if(!active()||!drag||e.pointerId!==drag.pointerId)return;drag.x=e.clientX;drag.y=e.clientY;},true);
   window.addEventListener('pointerup',e=>{
-    if(!active()||!drag)return;e.preventDefault();e.stopImmediatePropagation();
+    if(!active()||e.button!==0||!drag||e.pointerId!==drag.pointerId)return;e.preventDefault();e.stopImmediatePropagation();
     drag.x=e.clientX;drag.y=e.clientY;
     if(document.elementFromPoint(e.clientX,e.clientY)!==canvas){drag=null;cached=null;message=t('line.onField');update(true);return;}
     const r=canvas.getBoundingClientRect(),end=g.worldAt(e.clientX-r.left,e.clientY-r.top),from=drag.from,short=Math.hypot(e.clientX-drag.sx,e.clientY-drag.sy)<8;
