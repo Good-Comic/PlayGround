@@ -827,6 +827,10 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 /* 作戰快捷列 / Battle action strip */
 #battle-actions { position:fixed; z-index:8; left:calc(50% + 85px); bottom:82px; transform:translateX(-50%); width: 440px; max-width: calc(100vw - 24px); padding: 7px; border: 1px solid #ad8b4d; background: linear-gradient(135deg,#262a2ded,#171917f5); box-shadow: 0 4px 22px #0009; color:#f1dfb9; }
 #battle-actions[hidden] { display:none !important; }
+#command-readback { border-top:1px solid #9e874b88; margin-top:5px; padding-top:4px; font-size:12px; line-height:1.45; color:#fff1ce; }
+#command-readback strong { font-size:12px; color:#c9edf0; }
+#command-readback p { margin:2px 0 0; overflow-wrap:anywhere; }
+.lining-up #command-readback { visibility:hidden; }
 .center-controls.battle-active { left:calc(50% + 85px); }
 .battle-caption { font: 10px var(--serif); letter-spacing:1px; margin-bottom:5px; }
 .battle-buttons { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:5px; }
