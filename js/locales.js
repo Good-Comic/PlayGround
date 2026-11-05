@@ -676,6 +676,13 @@ for(const [locale,values] of Object.entries({
  STRINGS[locale]['event.RALLY.desc']=values[1];
 }
 
+for (const [locale, values] of Object.entries({
+ 'zh-Hant':['以已選戰士集火旗手（{count}人）','只對目前已選戰士送出一次人工攻擊；不選兵、不追蹤霧中目標，也不保證抵達或命中。','請只選戰士；F2 可選全軍並退出英雄直控。英雄與村民不納入。','先查看旗手；目前畫面沒有可準確指定的原生點擊位置，尚未下令。','目前無法下令；須在有效集結期間、未暫停且關閉其他面板。','已令{count}名戰士集火旗手：{name}。可隨時手動改令。'],
+ 'zh-Hans':['以已选战士集火旗手（{count}人）','只对当前已选战士发出一次人工攻击；不选兵、不追踪雾中目标，也不保证抵达或命中。','请只选战士；F2可选全军并退出英雄直控。英雄与村民不纳入。','先查看旗手；当前画面没有可准确指定的原生点击位置，尚未下令。','当前无法下令；须在有效集结期间、未暂停且关闭其他面板。','已令{count}名战士集火旗手：{name}。可随时手动改令。'],
+ en:['Focus bearer with selected fighters ({count})','Issues one manual attack to selected fighters only. Does not select troops or track unseen targets, and does not confirm arrival or damage.','Select fighters only. F2 selects the army and exits hero control. Heroes and workers are excluded.','Find the bearer first. No precise native click point is available on this view; no order issued.','Order unavailable. Rally must be pending or active, with gameplay unpaused and other panels closed.','{count} fighters ordered to focus the bearer: {name}. Manual orders can replace this.'],
+ ja:['選択兵で旗手を集中攻撃（{count}人）','選択中の兵士だけに一度の手動攻撃命令。兵の自動選択や霧中の追跡はせず、到着・命中も保証しません。','兵士だけを選択してください。F2で全軍を選択し英雄直接操作を解除。英雄・村人は除外。','先に旗手を表示してください。現在の画面では正確に指定できず、命令していません。','現在命令できません。集結の待機・発動中で、一時停止と他のパネルを閉じる必要があります。','{count}人に旗手{name}への集中攻撃を命令。手動で変更できます。']
+})) ['attack','attackHelp','select','noPoint','orderUnavailable','issued'].forEach((key, i) => STRINGS[locale]['flag.' + key] = values[i]);
+
 for(const [locale,values]of Object.entries({
  'zh-Hant':['援護城心','全軍優先集火已看見、正在攻擊城心的最近敵軍；否則護衛城心。英雄與村民不納入；英雄直控時保留鏡頭與原選取，可再手動改令。','已令{count}名戰士集火攻城者：{name}。','已令{count}名戰士護衛城心。','目前無法援護城心。','目標被遮擋，請選軍後手動指定。'],
  'zh-Hans':['援护城心','全军优先集火已看见、正在攻击城心的最近敌军；否则护卫城心。英雄与村民不纳入；英雄直控时保留镜头与原选择，可再手动改令。','已令{count}名战士集火攻城者：{name}。','已令{count}名战士护卫城心。','当前无法援护城心。','目标被遮挡，请选军后手动指定。'],

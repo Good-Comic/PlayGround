@@ -1,6 +1,8 @@
 import { UNIT_TYPES } from './data.js';
 import { unitThreat } from './director.js';
 import { t } from './i18n.js';
+import { battleArmy, battleCanAct } from './battle-actions.js';
+import { defenseClickPoint } from './core-defense.js';
 
 // GDD §6.1: reuse an existing elite (lowest-threat infantry fallback), 4 tiles,
 // +10% attack speed for 15 simulation seconds; the bearer dying ends the aura.
@@ -91,27 +93,66 @@ export function installRallyMechanic(g) {
   return { state: () => matches() ? { ...state } : null, carrier, status, multiplier };
 }
 
+// A single explicit manual order, through the same visible pick and native
+// right-click path. Never select troops, substitute a target or retry for the player.
+export function rallyAttackContext(g, mechanic, { blocked = false, canPoint = () => true } = {}) {
+  const status = mechanic.status();
+  const army = new Set(battleArmy(g)), selected = [...new Set(g.selection)];
+  const count = selected.filter(u => army.has(u)).length;
+  if (!battleCanAct(g, blocked) || !['pending', 'active'].includes(status)) return { reason: 'orderUnavailable', count };
+  const target = mechanic.carrier();
+  if (!target?.alive || target.team !== 'enemy' || !g.units.includes(target) || !g.isVisible(target)) return { reason: 'unseen', count };
+  if (g.heroControl || !count || count !== selected.length) return { reason: 'select', count };
+  const point = defenseClickPoint(g, target);
+  if (!point || !canPoint(point)) return { reason: 'noPoint', count };
+  return { target, point, count };
+}
+export function attackRallyCarrier(g, mechanic, options) {
+  const context = rallyAttackContext(g, mechanic, options);
+  if (context.reason) return { ok: false, reason: context.reason, count: context.count };
+  const { target, point, count } = context;
+  // Recheck the exact native pick immediately before dispatch. No fallback move.
+  if (g.pickAt(point.x, point.y) !== target) return { ok: false, reason: 'noPoint', count };
+  g.orderMode = null;
+  g.issueCommand(point.x, point.y);
+  const ok = g.selection.every(u => u.manualAttack && u.target === target);
+  return { ok, reason: ok ? null : 'orderUnavailable', count, type: target.type, targetId: target.id };
+}
+
 export function installRallyObjective(g, ui, renderer) {
   const mechanic = installRallyMechanic(g);
   const panel = document.createElement('section'); panel.id = 'rally-objective'; panel.hidden = true;
-  panel.innerHTML = '<strong></strong><p class="rally-rule"></p><p class="rally-status" aria-live="polite"></p><button type="button"></button>';
+  panel.innerHTML = '<strong></strong><p class="rally-rule"></p><p class="rally-status" aria-live="polite"></p><div class="rally-actions"><button type="button" class="rally-view"></button><button type="button" class="rally-attack"></button></div><p class="rally-order-hint"></p>';
   document.body.append(panel);
-  const button = panel.querySelector('button'); let signature = '', lastPaint = 0;
+  const button = panel.querySelector('.rally-view'), attack = panel.querySelector('.rally-attack'); let signature = '', lastPaint = 0;
   const visibleCarrier = () => { const u = mechanic.carrier(); return u?.alive && u.team === 'enemy' && g.isVisible(u) ? u : null; };
   button.onclick = () => { const u = visibleCarrier(); if (u) g.focusAt(u.x, u.y); };
-  button.addEventListener('keydown', e => { if ([' ', 'Enter', 'Tab'].includes(e.key)) e.stopPropagation(); });
+  const blockedInput = () => ui.menuVisible || ui.settingsOpen || ui.gmOpen || ui.boonsOpen || ui.pauseOpen || !ui.el.howto.hidden || !!document.querySelector('dialog[open]') || document.body.classList.contains('planning-mode') || document.body.classList.contains('lining-up');
+  const options = () => ({ blocked: blockedInput(), canPoint: p => p.x > 0 && p.y > 0 && p.x < renderer.w && p.y < renderer.h && document.elementFromPoint(p.x, p.y) === renderer.canvas });
+  attack.onclick = () => {
+    const result = attackRallyCarrier(g, mechanic, options());
+    g.toast(t('flag.' + (result.ok ? 'issued' : result.reason), { count: result.count, name: result.type ? t('unit.' + result.type + '.name') : '' }), result.ok ? 'good' : 'bad', 2400);
+    update(true);
+  };
+  for (const control of [button, attack]) control.addEventListener('keydown', e => {
+    if ([' ', 'Enter', 'Tab'].includes(e.key)) { e.stopPropagation(); if (e.repeat && e.key !== 'Tab') e.preventDefault(); }
+  });
   const update = (force = false) => {
     const status = mechanic.status(), blocked = status === 'off' || g.inMenu || g.paused || ui.menuVisible || ui.settingsOpen || ui.gmOpen || ui.boonsOpen || ui.pauseOpen || !ui.el.howto.hidden || !!document.querySelector('dialog[open]');
     if (panel.hidden !== !!blocked) panel.hidden = !!blocked;
     if (panel.hidden) return;
     if (!force && performance.now() - lastPaint < 100) return; lastPaint = performance.now();
     const state = mechanic.state(), u = visibleCarrier(), seconds = Math.max(0, Math.ceil((status === 'pending' ? state?.eventAt : state?.expiresAt) - g.waveClock));
-    const key = [document.documentElement.lang, status, seconds, u?.id].join('|'); if (key === signature) return; signature = key;
+    const context = rallyAttackContext(g, mechanic, options());
+    const key = [document.documentElement.lang, status, seconds, u?.id, context.count, context.reason].join('|'); if (key === signature) return; signature = key;
     const text = (el, value) => { if (el.textContent !== value) el.textContent = value; };
     text(panel.querySelector('strong'), t('flag.title'));
     text(panel.querySelector('.rally-rule'), t('flag.rule'));
     text(panel.querySelector('.rally-status'), t('flag.' + status, { seconds }) + (['pending', 'active'].includes(status) && !u ? ' ' + t('flag.unseen') : ''));
     text(button, t('flag.focus')); button.disabled = !u || !['pending', 'active'].includes(status);
+    text(attack, t('flag.attack', { count: context.count })); attack.disabled = !!context.reason;
+    attack.title = t('flag.attackHelp');
+    text(panel.querySelector('.rally-order-hint'), t('flag.' + (context.reason || 'attackHelp')));
     if (panel.dataset.status !== status) panel.dataset.status = status;
   };
   const oldUpdate = ui.update.bind(ui); ui.update = (...args) => { oldUpdate(...args); update(); };
