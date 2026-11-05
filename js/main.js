@@ -216,6 +216,8 @@ window.addEventListener('keydown', e => {
     if (e.key === 'Enter') { e.preventDefault(); ui.startWithSetup(); }
     return;
   }
+  // 結算後不再接受戰場快捷鍵；原生結算按鈕仍可用 Enter 啟動。
+  if (game.phase === 'victory' || game.phase === 'defeat') return;
   if (e.key === 'Escape') {
     if(game.orderMode){game.orderMode=null;ui.updateSelection(true);return;}
     if (game.placement) { game.cancelPlacement(); return; }
@@ -275,6 +277,8 @@ canvas.addEventListener('contextmenu', e => e.preventDefault());
 
 canvas.addEventListener('pointerdown', e => {
   if (game.inMenu || game.paused || ui.boonsOpen) return;
+  // 保留中鍵檢視戰場，阻止結算後選兵、施工或軍令。
+  if ((game.phase === 'victory' || game.phase === 'defeat') && e.button !== 1) return;
   const pos = localPos(e);
   game.mouse.x = pos.x; game.mouse.y = pos.y; game.mouse.dirty = true;
   if (e.button === 0) {
@@ -312,7 +316,7 @@ canvas.addEventListener('pointermove', e => {
     game.camera.x = game.camera.targetX;
     game.camera.y = game.camera.targetY;
   }
-  if (game.placement) game.updatePlacementAtMouse();
+  if (game.placement && game.phase !== 'victory' && game.phase !== 'defeat') game.updatePlacementAtMouse();
 });
 
 canvas.addEventListener('pointerleave', () => {
@@ -323,7 +327,7 @@ canvas.addEventListener('pointerleave', () => {
 });
 
 canvas.addEventListener('dblclick', e => {
-  if (e.button !== 0 || game.inMenu || game.paused || ui.boonsOpen || game.placement || game.orderMode) return;
+  if (e.button !== 0 || game.inMenu || game.paused || ui.boonsOpen || game.placement || game.orderMode || game.phase === 'victory' || game.phase === 'defeat') return;
   e.preventDefault();
   const pos = localPos(e);
   game.selectSameTypeOnScreen(pos.x, pos.y, canvas.clientWidth, canvas.clientHeight, e.shiftKey);
@@ -334,8 +338,10 @@ window.addEventListener('pointerup', e => {
     const box = game.dragBox;
     game.dragBox = null;
     game.grabbing = false;
-    if (box.moved) game.selectBox(box.x, box.y, box.w, box.h, box.shift);
-    else game.selectAt(box.startX, box.startY, box.shift);
+    if (game.phase !== 'victory' && game.phase !== 'defeat') {
+      if (box.moved) game.selectBox(box.x, box.y, box.w, box.h, box.shift);
+      else game.selectAt(box.startX, box.startY, box.shift);
+    }
   }
   if (e.button === 1) game.panning = null;
 });

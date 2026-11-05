@@ -1,4 +1,4 @@
-import { t } from './i18n.js';
+import { t, getLocale } from './i18n.js';
 import { battleCanAct } from './battle-actions.js';
 import { selectedAttackers, attackSelectedVisibleTarget, focusVisibleTarget } from './manual-target.js';
 
@@ -88,14 +88,16 @@ export function observeCoreDamage(g) {
     if (!captured) return changed();
     const shown = view();
     const { kind, token, row, source, world, wave, core, selection, heroControl, orderMode, phase, action } = captured;
-    const count = selectedAttackers(g).length;
     if (rowFor(kind) !== row || records.get(token) !== row || row.source !== source || !source || kind === 'peak' && !showPeak(shown)
       || g.world !== world || g.waveIndex !== wave || g.getTownCenter() !== core
       || g.heroControl !== heroControl || g.orderMode !== orderMode || g.phase !== phase
       || g.selection.length !== selection.length || selection.some((u, i) => u !== g.selection[i])
-      || !battleCanAct(g, blocked) || g.heroControl
-      || action === 'attack' && (!count || count !== new Set(g.selection).size)) {
+      || !battleCanAct(g, blocked) || g.heroControl) {
       leases.delete(lease); return changed();
+    }
+    if (action === 'attack') {
+      const count = selectedAttackers(g).length;
+      if (!count || count !== new Set(g.selection).size) { leases.delete(lease); return changed(); }
     }
     return { ok: true };
   };
@@ -113,7 +115,7 @@ export function observeCoreDamage(g) {
 }
 
 const displayLoss = loss => loss < .01 ? '<0.01' : Number(loss.toFixed(2));
-const showPeak = view => view?.peak?.loss > view.loss && displayLoss(view.peak.loss) !== displayLoss(view.loss);
+const showPeak = view => !!view && view.peak?.loss > view.loss && displayLoss(view.peak.loss) !== displayLoss(view.loss);
 function rowText(row, key) {
   const damage = displayLoss(row.loss);
   const clock = Math.floor(row.at / 60) + ':' + String(Math.floor(row.at % 60)).padStart(2, '0');
@@ -136,7 +138,7 @@ export function installCoreDamageReadback(g, ui, renderer) {
   const canPoint = p => Number.isFinite(p.x) && Number.isFinite(p.y) && p.x >= 0 && p.y >= 0
     && p.x < window.innerWidth && p.y < window.innerHeight && !!renderer?.canvas && document.elementFromPoint(p.x, p.y) === renderer.canvas;
   const setText = (node, value) => { if (node.textContent !== value) node.textContent = value; };
-  let pending = null, heldKey = null, uiFaults = 0;
+  let pending = null, heldKey = null, uiFaults = 0, paintedState = null;
   const explain = reason => g.toast(t('coreDamage.' + (['select', 'unavailable', 'noPoint'].includes(reason) ? reason : 'changed')), 'bad', 2200);
   const cancel = (explainChange = false) => {
     if (!pending) return;
@@ -187,10 +189,16 @@ export function installCoreDamageReadback(g, ui, renderer) {
   });
   const paint = () => {
     const view = observer.view(), uiBlocked = blocked(), unavailable = !battleCanAct(g, uiBlocked) || g.heroControl;
-    const count = selectedAttackers(g).length, onlyFighters = count > 0 && count === new Set(g.selection).size;
     if (pending && !observer.validateAction(pending.lease, { blocked: uiBlocked }).ok) cancel(true);
+    const peakView = showPeak(view) ? view.peak : null, hasSource = !!(view?.name || peakView?.name);
+    const count = hasSource ? selectedAttackers(g).length : 0, onlyFighters = count > 0 && count === new Set(g.selection).size;
+    // 即時身分與憑證驗證在快取之前；此快取只省去不變文字／DOM 工作，不能授權發令。
+    // Always validate identities and leases first; this display cache never authorizes actions.
+    const state = [getLocale(), count, onlyFighters, unavailable];
+    for (const data of [view, peakView]) state.push(data?.token, data?.sourceId, data?.name, data?.direction, data?.loss, data?.at);
+    if (paintedState && state.every((value, i) => Object.is(value, paintedState[i]))) return;
     for (const row of rows) {
-      const data = row.kind === 'last' ? view : showPeak(view) ? view.peak : null;
+      const data = row.kind === 'last' ? view : peakView;
       row.token = data?.token ?? null;
       if (row.element.hidden !== !data) row.element.hidden = !data;
       const text = data ? rowText(data, row.kind === 'last' ? 'hit' : 'peak') : '';
@@ -211,10 +219,11 @@ export function installCoreDamageReadback(g, ui, renderer) {
     }
     if (note.hidden !== !view) note.hidden = !view;
     const title = t('coreDamage.help') + ' ' + t('coreDamage.peakHelp'); if (note.title !== title) note.title = title;
+    paintedState = state;
   };
   // UI 配置與觀察器失敗不截斷原生更新／致命傷害。明確啟用的原生例外不在此攔截。
   // Isolate optional rendering failures; explicit native action failures remain uncaught.
-  const update = () => { try { paint(); } catch { uiFaults++; cancel(); note.hidden = true; } };
+  const update = () => { try { paint(); } catch { paintedState = null; uiFaults++; cancel(); note.hidden = true; } };
   window.addEventListener('blur', () => { heldKey = null; cancel(true); });
   window.addEventListener('keydown', e => {
     // 來源消失使按鈕失焦時，尚未放開的重複鍵也不能變成全域暫停／英雄操作。

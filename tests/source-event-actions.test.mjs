@@ -7,7 +7,7 @@ const { Game } = await import('../js/game.js');
 const { observeCoreDamage, coreDamageText, installCoreDamageReadback } = await import('../js/core-damage-readback.js');
 const { battleArmy } = await import('../js/battle-actions.js');
 const { defenseClickPoint } = await import('../js/core-defense.js');
-const { setLocale } = await import('../js/i18n.js');
+const { setLocale, getLocale } = await import('../js/i18n.js');
 const { STRINGS } = await import('../js/locales.js');
 
 const snapshot = g => { const s = structuredClone(g.snapshot()); delete s.savedAt; return s; };
@@ -289,6 +289,104 @@ test('HUD固定節點、零選兵仍可查看，讀取／hover／focus及更新�
   assert.equal(m.pointChecks(), 0); assert.deepEqual(totals(), none); assert.equal(m.button('last', 'view'), view);
 }));
 
+test('HUD沒有紀錄或來源已未知時不掃軍隊；失視野仍立即取消未完成操作', () => usingMount(m => {
+  const filter = m.g.units.filter; let scans = 0;
+  m.g.units.filter = function (...args) { scans++; return filter.apply(this, args); };
+  try {
+    for (let i = 0; i < 20; i++) m.ui.update();
+    assert.equal(scans, 0); assert.equal(m.note.hidden, true); assert.equal(m.installed.diagnostics().uiFaults, 0);
+    mountHit(m); const attack = m.button('last', 'attack'), totals = counts(m.g);
+    attack.fire('pointerdown'); scans = 0; m.g.isVisible = () => false; m.ui.update();
+    assert.equal(scans, 0); assert.equal(attack.hidden, true); assert.equal(attack.title, '');
+    for (let i = 0; i < 20; i++) m.ui.update();
+    assert.equal(scans, 0); assert.equal(m.installed.diagnostics().uiFaults, 0); attack.fire('click'); assert.deepEqual(totals(), none);
+  } finally { delete m.g.units.filter; }
+}));
+
+test('HUD穩定顯示時仍查即時視野，但不反覆格式化操作提示或讀取控制內容', () => usingMount(m => {
+  mountHit(m, 100); mountHit(m, 20);
+  const strings = STRINGS[getLocale()], key = 'coreDamage.attackHelp', descriptor = Object.getOwnPropertyDescriptor(strings, key);
+  let templates = 0, controls = 0, sightings = 0;
+  const isVisible = m.g.isVisible.bind(m.g), before = snapshot(m.g), rng = m.g.rng.state, visual = m.g.visualRng.state;
+  Object.defineProperty(strings, key, { configurable: true, get() { templates++; return descriptor.value; } });
+  for (const kind of ['last', 'peak']) for (const action of ['view', 'attack']) {
+    const button = m.button(kind, action), getAttribute = button.getAttribute;
+    button.getAttribute = function (...args) { controls++; return getAttribute.apply(this, args); };
+  }
+  m.g.isVisible = u => { sightings++; return isVisible(u); };
+  m.g.pickAt = () => { throw Error('穩定呈現不可做native pick'); };
+  try {
+    for (let i = 0; i < 20; i++) m.ui.update();
+    assert.ok(sightings >= 20); assert.equal(templates, 0); assert.equal(controls, 0); assert.equal(m.pointChecks(), 0);
+    assert.deepEqual(snapshot(m.g), before); assert.equal(m.g.rng.state, rng); assert.equal(m.g.visualRng.state, visual);
+    assert.equal(m.installed.diagnostics().uiFaults, 0);
+  } finally { Object.defineProperty(strings, key, descriptor); }
+}));
+
+test('HUD同人數換實體、換軍令或prep到wave仍立即取消，不能沿用不變文字的操作', () => {
+  for (const change of ['units', 'order', 'phase']) usingMount(m => {
+    mountHit(m); const attack = m.button('last', 'attack'), selection = m.g.selection, text = m.note.textContent, totals = counts(m.g);
+    attack.fire('pointerdown');
+    if (change === 'units') {
+      const replacement = battleArmy(m.g).find(u => !selection.includes(u)); assert.ok(replacement);
+      m.g.selection = [replacement, selection[1]];
+    }
+    if (change === 'order') m.g.orderMode = 'guard';
+    if (change === 'phase') m.g.phase = 'wave';
+    m.ui.update(); assert.equal(m.note.textContent, text); assert.equal(m.button('last', 'attack'), attack);
+    m.g.selection = selection; m.g.orderMode = null; m.g.phase = 'prep'; m.ui.update();
+    attack.fire('click'); assert.deepEqual(totals(), none);
+    attack.fire('pointerdown'); attack.fire('click'); assert.equal(totals().commands, 1);
+  });
+});
+
+test('HUD最大來源失視野即去身分，最近同名來源與其控制保持可用', () => usingMount(m => {
+  mountHit(m, 100); const second = m.g.spawnUnit('militia', m.source.x + 3, m.source.y, 'enemy'); mountHit(m, 20, second);
+  const peak = m.button('peak', 'attack'), last = m.button('last', 'attack'), isVisible = m.g.isVisible.bind(m.g), totals = counts(m.g);
+  peak.fire('pointerdown'); m.g.isVisible = u => u !== m.source && isVisible(u); m.ui.update();
+  assert.equal(peak.hidden, true); assert.equal(peak.title, ''); assert.equal(peak.getAttribute('aria-label'), '');
+  assert.equal(last.hidden, false); assert.equal(last.disabled, false); peak.fire('click'); assert.deepEqual(totals(), none);
+  last.fire('pointerdown'); last.fire('click'); assert.equal(totals().commands, 1);
+  for (const u of m.g.selection) assert.equal(u.target, second);
+}));
+
+test('HUD已選人數相同但加入村民會立即停用；戰士死亡與暫停後也立即刷新並能恢復', () => usingMount(m => {
+  mountHit(m); const attack = m.button('last', 'attack'), selection = [...m.g.selection];
+  m.g.selection.push(m.g.units.find(u => u.type === 'villager')); m.ui.update();
+  assert.ok(attack.textContent.includes('2')); assert.equal(attack.disabled, true);
+  m.g.selection = selection; m.ui.update(); assert.equal(attack.disabled, false);
+  selection[0].alive = false; m.ui.update(); assert.ok(attack.textContent.includes('1')); assert.equal(attack.disabled, true);
+  selection[0].alive = true; m.g.paused = true; m.ui.update(); assert.equal(attack.disabled, true);
+  m.g.paused = false; m.ui.update(); assert.equal(attack.disabled, false); assert.ok(attack.textContent.includes('2'));
+}));
+
+test('HUD呈現暫時失敗後，相同或回復先前狀態的下次更新都能修復內容與可見性', () => {
+  for (const restoreSelection of [false, true]) usingMount(m => {
+    mountHit(m); const attack = m.button('last', 'attack'), selection = m.g.selection, setAttribute = attack.setAttribute; let failOnce = true;
+    attack.setAttribute = function (key, value) {
+      if (failOnce && key === 'aria-label') { failOnce = false; throw Error('DOM暫時失敗'); }
+      return setAttribute.call(this, key, value);
+    };
+    m.g.selection = selection.slice(0, 1); m.ui.update(); assert.equal(m.note.hidden, true); assert.equal(m.installed.diagnostics().uiFaults, 1);
+    if (restoreSelection) m.g.selection = selection;
+    m.ui.update(); const count = restoreSelection ? 2 : 1;
+    assert.equal(m.note.hidden, false); assert.equal(attack.disabled, false); assert.ok(attack.textContent.includes(String(count)));
+    assert.ok(attack.getAttribute('aria-label').includes(attack.textContent)); assert.equal(m.button('last', 'attack'), attack);
+  });
+});
+
+test('HUD清除與restore後不保留舊呈現或操作，新的相同文字事件仍可正常啟用', () => usingMount(m => {
+  mountHit(m); const attack = m.button('last', 'attack'), oldToken = m.installed.view().token, totals = counts(m.g), saved = snapshot(m.g);
+  attack.fire('pointerdown'); m.installed.clear(); m.ui.update(); assert.equal(m.note.hidden, true);
+  mountHit(m); assert.equal(m.note.hidden, false); assert.notEqual(m.installed.view().token, oldToken);
+  attack.fire('click'); assert.deepEqual(totals(), none);
+  m.g.restore(saved); m.g.start(); m.ui.update(); assert.equal(m.note.hidden, true);
+  const source = m.g.units.find(u => u.id === m.source.id); m.g.setSelection(battleArmy(m.g).slice(0, 2));
+  m.g.applyDamage(m.g.getTownCenter(), 20, source, 'melee'); m.ui.update(); assert.equal(m.note.hidden, false);
+  attack.fire('pointerdown'); attack.fire('click'); assert.equal(totals().commands, 1);
+  for (const u of m.g.selection) assert.equal(u.target, source);
+}));
+
 test('HUD按下後新傷到達取消，按下前顯示舊事件亦拒絕；不偷偷換最新行', () => usingMount(m => {
   mountHit(m, 100); const attack = m.button('last', 'attack'), totals = counts(m.g);
   attack.fire('pointerdown'); m.g.applyDamage(m.core, 20, m.source, 'melee'); attack.fire('click');
@@ -358,6 +456,7 @@ test('HUD原生例外傳出且不可重送，額外DOM呈現失敗不攔截後�
   m.g.issueCommand = () => { commands++; throw nativeError; };
   attack.fire('pointerdown'); assert.throws(() => attack.fire('click'), e => e === nativeError); attack.fire('click'); assert.equal(commands, 1);
   Object.defineProperty(m.note, 'title', { get() { return ''; }, set() { throw Error('DOM配置失敗'); } });
+  m.g.selection = m.g.selection.slice(0, 1);
   assert.doesNotThrow(() => m.ui.update()); assert.ok(m.installed.diagnostics().uiFaults > 0); assert.equal(m.note.hidden, true);
   assert.doesNotThrow(() => m.g.applyDamage(m.core, 10000, m.source, 'melee')); assert.equal(m.g.phase, 'defeat');
 }));
@@ -386,7 +485,7 @@ test('HUD同顯示精度peak隱藏無入口；新事件與選兵人數同步且�
 test('四語提供完整入口、失效原因、實際人數、事件局內時間與tooltip', () => usingMount(m => {
   m.g.runTime = 510; mountHit(m);
   for (const locale of ['zh-Hant', 'zh-Hans', 'en', 'ja']) {
-    setLocale(locale); m.installed.update(true);
+    setLocale(locale); m.ui.update();
     for (const key of ['time', 'view', 'viewHelp', 'attack', 'attackHelp', 'changed', 'select', 'unavailable', 'noPoint', 'viewed', 'issued']) assert.ok(STRINGS[locale]['coreDamage.' + key], locale + ':' + key);
     for (const action of ['view', 'attack']) { const b = m.button('last', action); assert.ok(b.title); assert.ok(b.getAttribute('aria-label')); assert.equal(b.textContent.includes('coreDamage.'), false); }
     assert.ok(m.note.textContent.includes('8:30')); assert.equal(m.note.textContent.includes('coreDamage.'), false);

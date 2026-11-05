@@ -2925,6 +2925,7 @@ export class Game {
   }
 
   command(id) {
+    if (this.phase === 'victory' || this.phase === 'defeat') return;
     if(id.startsWith('order:')) {const mode=id.slice(6);if(['attackMove','guard','patrol'].includes(mode)&&this.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager')) {this.orderMode=mode;this.hooks.selectionChanged?.();}return;}
     if(id==='stop'||id==='hold'||id.startsWith('stance:')){this.orderMode=null;for(const u of this.selection)u.tacticalOrder=null;this.hooks.selectionChanged?.();}
     if(id==='train:page'){const b=this.selection[0];if(b?.w&&b.alive&&b.team==='player')b.trainingPage=((b.trainingPage||0)+1)%Math.max(1,Math.ceil(this.trainableFor(b).length/4));this.hooks.selectionChanged?.();return;}
@@ -3084,6 +3085,7 @@ export class Game {
   }
 
   heroMark() {
+    if (this.phase === 'victory' || this.phase === 'defeat') return;
     const hero = this.hero;
     const skill = HERO_SKILLS.mark;
     if (!hero?.alive) { this.sound?.error(); this.toast(t('toast.heroMissing'), 'bad', 2200); return; }
@@ -3099,6 +3101,7 @@ export class Game {
   }
 
   heroAegis() {
+    if (this.phase === 'victory' || this.phase === 'defeat') return;
     const hero = this.hero;
     const skill = HERO_SKILLS.aegis;
     if (!hero?.alive) { this.sound?.error(); this.toast(t('toast.heroMissing'), 'bad', 2200); return; }
