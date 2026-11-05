@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "player": "B",
+  "round": "after",
+  "test": "SOURCE ACTION 查看與反擊聚焦續玩",
+  "language": "zh-TW",
+  "perspective": "AI 模擬一般休閒 RTS 玩家，非人類實測",
+  "mode": {
+    "normalContinue": true,
+    "sameOwnUnmodifiedNaturalSnapshot": true,
+    "freshTenWaveCampaign": false,
+    "blindTest": false,
+    "ownPriorMemoryRetained": true,
+    "oldSealedReportsReadOrModified": false,
+    "snapshotOrHiddenStateRead": false
+  },
+  "sources": ["本輪public/README.md", "自己的players/B/PROFILE.md", "公開client可見UI、提示、控制項及截圖"],
+  "visibleConditions": {"version": "1710938", "biome": "草海平原", "age": "帝國時代", "day": "IV", "speed": "依公開協議正常1倍速"},
+  "result": {
+    "status": "DEFEAT",
+    "wavesSurvived": 3,
+    "totalWaves": 10,
+    "defeatWave": 4,
+    "kills": 74,
+    "resourcesGathered": 4314,
+    "cumulativeGameTime": "8:51",
+    "continueWallSeconds": 39.209,
+    "resultObservedWallSeconds": 129.923,
+    "continueToResultWallSeconds": 90.714,
+    "wallTimeIsGameTime": false,
+    "evidence": "screen-0009.png",
+    "finishAfterObservedResultBeforeReport": true,
+    "finishResponse": {"ok": true}
+  },
+  "inputDiscipline": {
+    "maximumIntentRatePerMinute": 12,
+    "minimumRequiredSpacingSeconds": 5,
+    "minimumObservedSpacingSeconds": 23.315,
+    "inputs": [
+      {"wallSeconds": 39.209, "intent": "正常Continue"},
+      {"wallSeconds": 77.342, "intent": "查看紀錄來源", "x": 926, "y": 722, "cost": 1},
+      {"wallSeconds": 105.978, "intent": "反擊衝車來源", "x": 981, "y": 728, "cost": 1},
+      {"wallSeconds": 129.293, "intent": "E神盾"}
+    ],
+    "viewToCounterWallSeconds": 28.636,
+    "maximumObservationGapDuringPlaySeconds": 28.701,
+    "nativeInputOnly": true,
+    "rapidMicroOrMacros": false,
+    "deliberatelyArrangedDamageOrSuccess": false,
+    "visibleSafetyPauseObserved": false,
+    "timingLimit": "閱讀、模型與工具延遲均照實計入，不能當人類平均成本或反應時間"
+  },
+  "timeline": [
+    {"wallSeconds": 39.953, "sinceContinueSeconds": 0.744, "corePercent": 89, "enemies": 0, "selectedSoldiers": 18, "allSoldiers": 18, "command": "18人護衛城鎮中心", "visibleTarget": "中央己方城鎮中心", "evidence": "screen-0003.png"},
+    {"wallSeconds": 56.797, "sinceContinueSeconds": 17.588, "corePercentText": 87, "corePercentScreenshotApproximate": 88, "enemies": 10, "selectedSoldiers": 18, "allSoldiers": 19, "command": "18人護衛城鎮中心", "latestDamageScreenshot": {"hp": 2.93, "source": "步弓兵", "eventTimeLabel": "局內7:48"}, "maximumDamageScreenshot": {"hp": 4.04, "source": "刀盾兵", "historicalDirection": "↗", "eventTimeLabel": "局內7:47"}, "visibleActions": "兩列各有查看及反擊18人", "evidence": "screen-0005.png"},
+    {"wallSeconds": 78.044, "sinceContinueSeconds": 38.835, "corePercent": 78, "enemies": 5, "selectedSoldiers": 16, "allSoldiers": 17, "command": "16人護衛城鎮中心", "latestDamage": {"hp": 127.8, "source": "衝車", "historicalDirection": "↗", "eventTimeLabel": "局內8:08"}, "feedback": "已查看來源的目前位置；尚未下令", "cameraMovementVisible": true, "evidence": "screen-0006.png"},
+    {"wallSeconds": 106.745, "sinceContinueSeconds": 67.536, "corePercent": 38, "enemies": 16, "selectedSoldiers": 16, "allSoldiers": 19, "command": "16人集火衝車", "feedback": "已令16名已選戰士反擊這筆來源；可手動改令", "manualFocusMarker": "衝車・16人集火", "latestDamageScreenshot": {"hp": 127.8, "source": "衝車", "historicalDirection": "↗", "eventTimeLabel": "局內8:38"}, "latestDamageText": {"hp": 2.93, "source": "步弓兵", "eventTimeLabel": "局內8:38"}, "maximumDamageText": {"hp": 127.8, "source": "衝車", "historicalDirection": "↗", "eventTimeLabel": "局內8:06"}, "evidence": "screen-0007.png"},
+    {"wallSeconds": 129.923, "sinceContinueSeconds": 90.714, "event": "正式戰敗結算", "selectedSoldiers": 15, "selectedHealth": "1440/1674", "visibleAbilityFeedback": "神盾為14名士兵提供60點護盾，持續5秒", "abilityEffectInLiveBattleConfirmed": false, "evidence": "screen-0009.png"}
+  ],
+  "recordUnderstanding": {
+    "latestVersusMaximum": {"status": "EVALUATED", "understanding": "最近與最大為不同紀錄，衝車127.8HP大單次促使優先反擊；不是DPS、總傷害或來源排名", "historyScope": "本次載入及本波已觀察單次HP損失，不是完整戰役歷史", "evidence": ["screen-0005.png", "screen-0006.png", "screen-0007.png"]},
+    "time": {"status": "EVALUATED_AT_LABEL_LEVEL", "understanding": "局內7:47及8:08是事件時刻，不是多久以前", "limit": "沒有常駐總時鐘供逐次核對，沒有精算距今秒數"},
+    "historicalDirection": {"status": "EVALUATED", "understanding": "受傷時箭頭不是來源目前位置；查看才針對目前可確認位置"},
+    "exactHistoricalSourceIdentity": {"status": "NOT_EVALUATED", "reason": "紀錄及列數在閱讀到操作期間更新，無法獨立確認最初刀盾兵、查看與反擊所屬的每筆個體；不用內部ID補足"},
+    "sourceUnconfirmedBranch": {"status": "NOT_EVALUATED", "reason": "本輪操作時來源可確認且按鈕可用，未自然看到該分支"},
+    "captureTiming": "文字與截圖不是同一瞬間，最近一擊可在擷取間更新，不能拼成同一事件"
+  },
+  "sourceActionAssessment": {
+    "view": {
+      "status": "EVALUATED",
+      "intentCost": 1,
+      "inputWallSeconds": 77.342,
+      "visibleOutcome": "鏡頭移動、已查看來源目前位置且尚未下令，摘要仍護衛城心",
+      "didNotCommandEvidence": "UI明示尚未下令，未見新的攻擊摘要",
+      "selectionProofLimit": "交戰中選兵18到16的原因未核實，不用此差值推論查看是否改選取",
+      "recordBindingLimit": "原本看見小額最大紀錄，實際操作前紀錄已更新，不能聲稱精準查看最初那筆刀盾兵",
+      "evidence": ["screen-0005.png", "screen-0006.png"]
+    },
+    "counter": {
+      "status": "EVALUATED",
+      "intentCost": 1,
+      "inputWallSeconds": 105.978,
+      "selectedSoldiers": 16,
+      "allSoldiers": 19,
+      "visibleOutcome": "已令16名已選戰士反擊、16人集火衝車、衝車16人集火環標",
+      "matchesIntentAtVisibleTypeLevel": true,
+      "exactOriginalSourceIndividualConfirmed": false,
+      "hitOrKillConfirmed": false,
+      "automaticallySelectedAllArmyClaim": false,
+      "evidence": ["screen-0007.png"]
+    },
+    "cancellation": {"status": "NOT_EVALUATED", "reason": "沒有看到取消訊息，未刻意改來源或選兵製造失敗", "cost": null},
+    "manualArmyOrderAfterCounter": {"status": "NOT_EVALUATED", "reason": "未再給軍隊其他命令，只按英雄E後看到結算；可手動改令只是讀到的提示"},
+    "notUsingF2Reason": "沿用當前選兵、注意力集中來源與反擊，沒有另花一步選全軍，因此未涵蓋其餘3人",
+    "excludedUnitTypes": {"understoodFromTooltip": "正式戰士，不含英雄、村民與非戰鬥單位", "independentlyCompared": false},
+    "successGuaranteeClaim": false
+  },
+  "funMoments": [
+    {"wallSecondsStart": 77.342, "wallSecondsEnd": 78.044, "category": ["探索", "掌控感", "操作語意"], "observation": "查看移動鏡頭且明示尚未下令，讓看與派令有清楚分界；屋頂與聚團仍難精辨個體", "evidence": ["screen-0006.png"]},
+    {"wallSecondsStart": 105.978, "wallSecondsEnd": 106.745, "category": ["指揮回饋", "可讀性"], "observation": "16/19、16人集火衝車與環標一致，能對照選兵及命令；不是命中或獲勝證明", "evidence": ["screen-0007.png"]}
+  ],
+  "boringMoments": [
+    {"wallSeconds": 39.953, "category": ["短暫等待", "節奏"], "observation": "開場18人滿血護城且零敵，主要觀察等候；下一次已有敵人，不能說全段始終零敵", "evidence": ["screen-0003.png", "screen-0005.png"]}
+  ],
+  "frustratingMoments": [
+    {"wallSecondsStart": 56.797, "wallSecondsEnd": 106.745, "category": ["動態資訊", "目標對照", "閱讀與操作延遲"], "observation": "紀錄與一列兩列布局更新，難核對操作仍對應最初哪一筆；不能據此判取消保護故障", "evidence": ["screen-0005.png", "screen-0006.png", "screen-0007.png"]},
+    {"wallSecondsStart": 78.044, "wallSecondsEnd": 129.923, "category": ["注意力", "危機節奏", "玩家執行"], "observation": "城心78%到38%再失守，讀取和處理單一來源太慢，未兼顧全軍與其他壓力；不能全歸因兩步介面或難度", "evidence": ["screen-0006.png", "screen-0007.png", "screen-0009.png"]}
+  ],
+  "momentEvidenceLimit": "約91秒片段只支持有趣2、淡場1、挫折2項；不足三項者保留缺額，不重用舊事件或虛構真人感受",
+  "improvements": [
+    {"proposal": "最近與最大列及按鈕位置更穩定，紀錄變更時提示目前來源與時刻", "gddCompatibility": "待根代理核實", "risk": "固定行高佔空間、提示頻繁", "validation": "正常戰鬥與至少5秒意圖間隔下，測玩家指出所按列、來源及時刻，記錄自然誤認與取消；不安排挨打"},
+    {"proposal": "反擊成功提示加簡短來源類型與該筆局內時刻，不宣稱命中", "gddCompatibility": "待核實", "risk": "文字過長、誤認歷史紀錄持續追蹤", "validation": "來源正常更新時測能否指出已下令的是哪筆並區分命令、目前目標與歷史方位，只用可見資訊"},
+    {"proposal": "查看後試驗短暫可見來源描邊，外觀與集火環標清楚區分", "gddCompatibility": "待核實", "risk": "誤認已下令、標記雜亂或霧中資訊外洩", "validation": "測查看後是否理解尚未派令、來源在哪、是否重複查看或誤點；不可額外揭露不可見來源"}
+  ],
+  "purposeAndLimits": {
+    "supported": "查看與反擊可分開理解，反擊形成明確當前選兵集火命令",
+    "unresolved": "紀錄快速變更時的精確來源對照",
+    "notSupported": ["取消分支成功", "手動後令成功", "精確命中或擊殺", "勝率改善", "最佳策略", "新十波通關", "長期平衡", "真人留存"],
+    "oldSealedChanged": false
+  },
+  "replayWillingness": {"decision": "有條件願意再玩，立即重開意願仍偏低", "reason": "更能確認反擊變成攻擊命令，但還沒取得守住一波的新回饋就失守", "nextPlayThought": "正常遊玩中縮短查找與決策拖延，非已驗證打法", "humanRetentionEvidence": false}
+}

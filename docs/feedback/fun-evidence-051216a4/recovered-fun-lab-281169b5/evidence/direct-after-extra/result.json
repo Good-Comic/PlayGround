@@ -1,0 +1,175 @@
+{
+  "source": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+  "scope": "原生Start／滑鼠鍵盤移動護衛；人工目標及Fog案例另標CONTROLLED_FIXTURE。非自然戰役或實體GPU驗收。",
+  "checks": [
+    {
+      "name": "正式來源及160資源瀏覽器校驗",
+      "pass": true,
+      "verification": {
+        "source": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    },
+    {
+      "name": "CONTROLLED_FIXTURE原生刀盾兵建立且未改生命",
+      "pass": true,
+      "fixture": {
+        "id": 20,
+        "hp": 60
+      }
+    },
+    {
+      "name": "夾具目標有正式可見且不被UI遮擋的原生點擊位置",
+      "pass": true,
+      "id": 20,
+      "point": {
+        "x": 984.0934974519151,
+        "y": 406.6313128446247
+      }
+    },
+    {
+      "name": "人工目標在摘要中具名",
+      "pass": true
+    },
+    {
+      "name": "換成英雄選取立即移除舊軍隊目標名稱",
+      "pass": true,
+      "state": {
+        "sim": 0.9833000000000006,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": true,
+        "keys": [],
+        "hero": {
+          "x": 26.21452002285754,
+          "y": 22.840716765395094
+        },
+        "selection": [
+          {
+            "id": 19,
+            "hero": true,
+            "state": "hold",
+            "manual": false,
+            "target": 20
+          }
+        ],
+        "markers": 1,
+        "text": "英雄直控 · 已選戰士 0／全軍 4\n\n未選戰士；F2 可選全軍。",
+        "heroId": 19
+      }
+    },
+    {
+      "name": "原生戰鬥擊倒目標後不留舊名稱",
+      "pass": true,
+      "state": {
+        "sim": 4.299599999999997,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": false,
+        "keys": [],
+        "hero": {
+          "x": 26.21452002285754,
+          "y": 22.840716765395094
+        },
+        "selection": [
+          {
+            "id": 15,
+            "hero": false,
+            "state": "idle",
+            "manual": false
+          },
+          {
+            "id": 16,
+            "hero": false,
+            "state": "idle",
+            "manual": false
+          },
+          {
+            "id": 17,
+            "hero": false,
+            "state": "idle",
+            "manual": false
+          },
+          {
+            "id": 18,
+            "hero": false,
+            "state": "idle",
+            "manual": false
+          }
+        ],
+        "markers": 0,
+        "text": "已選戰士 4／全軍 4\n\n4 人待命",
+        "heroId": 19
+      },
+      "death": {
+        "alive": false,
+        "hp": -4
+      }
+    },
+    {
+      "name": "正式來源及160資源瀏覽器校驗",
+      "pass": true,
+      "verification": {
+        "source": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    },
+    {
+      "name": "原始待選三張正確恢復且未重抽",
+      "pass": true,
+      "reward": {
+        "phase": "boon",
+        "choices": [
+          "wartime_rotation",
+          "deflecting_shields",
+          "fire_oil"
+        ],
+        "tree": 32,
+        "sideBySide": true,
+        "leftVisible": true,
+        "rightVisible": true,
+        "readbackHidden": true,
+        "rng": 3165303705
+      }
+    },
+    {
+      "name": "左右三選一與32卡樹永久同屏且指令摘要不遮蓋",
+      "pass": true,
+      "reward": {
+        "phase": "boon",
+        "choices": [
+          "wartime_rotation",
+          "deflecting_shields",
+          "fire_oil"
+        ],
+        "tree": 32,
+        "sideBySide": true,
+        "leftVisible": true,
+        "rightVisible": true,
+        "readbackHidden": true,
+        "rng": 3165303705
+      }
+    },
+    {
+      "name": "獎勵期間回讀不消耗遊戲RNG",
+      "pass": true
+    },
+    {
+      "name": "零瀏覽器程式錯誤",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "rewardSave": {
+    "source": "/workspace/riftwatch-fun-lab-281169b5/private-observer/B/before-interrupted-quota/snapshot-31-3-boon.json",
+    "sha256": "059e882d1d75d9972007969ece81b3873af4139c3df8ad8cde9d4037f8afa3de",
+    "mode": "AUTHENTIC_INTERRUPTED_REWARD_SAVE_UI_REGRESSION_NOT_PLAYER_COHORT"
+  },
+  "rewardRng": {
+    "rawBefore": -1129663591,
+    "rawAfter": 3165303705,
+    "strictStateEqual": false,
+    "note": "原生Save/Load嚴格狀態結果獨立記錄，不把本次UI回讀通過當成整個存檔確定性已修復。"
+  },
+  "status": "PASS_WITH_CONTROLLED_AND_AUTHENTIC_SAVE_LIMITS"
+}

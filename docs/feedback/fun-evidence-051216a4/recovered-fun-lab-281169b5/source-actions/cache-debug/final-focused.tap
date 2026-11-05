@@ -1,0 +1,676 @@
+TAP version 13
+# Subtest: 真實近戰鏈的護甲後HP差、RNG及整份snapshot與未裝版相同
+ok 1 - 真實近戰鏈的護甲後HP差、RNG及整份snapshot與未裝版相同
+  ---
+  duration_ms: 33.512495
+  type: 'test'
+  ...
+# Subtest: 完全護盾不誤報、部分護盾只算實際HP而非輸入amount
+ok 2 - 完全護盾不誤報、部分護盾只算實際HP而非輸入amount
+  ---
+  duration_ms: 6.69535
+  type: 'test'
+  ...
+# Subtest: 投射物抵達才記錄，絕不把射手現在位置當發射來向
+ok 3 - 投射物抵達才記錄，絕不把射手現在位置當發射來向
+  ---
+  duration_ms: 6.436207
+  type: 'test'
+  ...
+# Subtest: 原生zone傷害只記真實城心失血，不推測火焰方向
+ok 4 - 原生zone傷害只記真實城心失血，不推測火焰方向
+  ---
+  duration_ms: 7.696363
+  type: 'test'
+  ...
+# Subtest: 過量致命傷只記剩餘HP，死亡／敗北原流程完全不變
+ok 5 - 過量致命傷只記剩餘HP，死亡／敗北原流程完全不變
+  ---
+  duration_ms: 15.510559
+  type: 'test'
+  ...
+# Subtest: source在受傷當時已死／未見／不在世界時只顯自己的HP損失
+ok 6 - source在受傷當時已死／未見／不在世界時只顯自己的HP損失
+  ---
+  duration_ms: 24.066252
+  type: 'test'
+  ...
+# Subtest: 受傷後死亡或失視野立即去掉身分／方向，再看見也不重建追蹤
+ok 7 - 受傷後死亡或失視野立即去掉身分／方向，再看見也不重建追蹤
+  ---
+  duration_ms: 18.363982
+  type: 'test'
+  ...
+# Subtest: 只是瞄準／攻擊意圖、修復或其他單位受傷不假造城心傷害
+ok 8 - 只是瞄準／攻擊意圖、修復或其他單位受傷不假造城心傷害
+  ---
+  duration_ms: 4.045968
+  type: 'test'
+  ...
+# Subtest: 反覆查看與暫停不改任何模擬狀態或額外消耗兩種RNG
+ok 9 - 反覆查看與暫停不改任何模擬狀態或額外消耗兩種RNG
+  ---
+  duration_ms: 11.298585
+  type: 'test'
+  ...
+# Subtest: Save/Load、新局、換world及獎勵結算清除舊UI，不改存檔schema
+ok 10 - Save/Load、新局、換world及獎勵結算清除舊UI，不改存檔schema
+  ---
+  duration_ms: 29.351917
+  type: 'test'
+  ...
+# Subtest: 觀察失敗不攔截致命原生傷害，原生命令異常仍原樣拋出
+ok 11 - 觀察失敗不攔截致命原生傷害，原生命令異常仍原樣拋出
+  ---
+  duration_ms: 8.051587
+  type: 'test'
+  ...
+# Subtest: 四語具名／未知來源及微量損失格式正確，不把箭頭當投射方向
+ok 12 - 四語具名／未知來源及微量損失格式正確，不把箭頭當投射方向
+  ---
+  duration_ms: 3.239084
+  type: 'test'
+  ...
+# Subtest: 大傷後的小傷不蓋掉本波已記錄最大一擊，兩筆保留各自時間
+ok 13 - 大傷後的小傷不蓋掉本波已記錄最大一擊，兩筆保留各自時間
+  ---
+  duration_ms: 3.418389
+  type: 'test'
+  ...
+# Subtest: 未知來源大傷也計最大值，不因之後可見小傷而補猜歷史身分
+ok 14 - 未知來源大傷也計最大值，不因之後可見小傷而補猜歷史身分
+  ---
+  duration_ms: 3.908755
+  type: 'test'
+  ...
+# Subtest: last與max各自失視野去身分；不能用另一筆來源替代或重辨識
+ok 15 - last與max各自失視野去身分；不能用另一筆來源替代或重辨識
+  ---
+  duration_ms: 3.811031
+  type: 'test'
+  ...
+# Subtest: 最大值以waveIndex分界；讀檔不猜未觀察到的本波歷史
+ok 16 - 最大值以waveIndex分界；讀檔不猜未觀察到的本波歷史
+  ---
+  duration_ms: 4.954843
+  type: 'test'
+  ...
+# Subtest: 最大單次不是DPS或同來源加總，同值保留先記錄且UI不重複
+ok 17 - 最大單次不是DPS或同來源加總，同值保留先記錄且UI不重複
+  ---
+  duration_ms: 2.967092
+  type: 'test'
+  ...
+# Subtest: 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入
+ok 18 - 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入
+  ---
+  duration_ms: 4.600169
+  type: 'test'
+  ...
+# Subtest: 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照
+ok 19 - 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照
+  ---
+  duration_ms: 5.85
+  type: 'test'
+  ...
+# Subtest: 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致
+ok 20 - 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致
+  ---
+  duration_ms: 7.891551
+  type: 'test'
+  ...
+# Subtest: 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵
+ok 21 - 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵
+  ---
+  duration_ms: 3.792964
+  type: 'test'
+  ...
+# Subtest: 重複選取同戰士只計一個實體，仍只發送一次原生命令
+ok 22 - 重複選取同戰士只計一個實體，仍只發送一次原生命令
+  ---
+  duration_ms: 2.844952
+  type: 'test'
+  ...
+# Subtest: 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍
+ok 23 - 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍
+  ---
+  duration_ms: 33.788173
+  type: 'test'
+  ...
+# Subtest: 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士
+ok 24 - 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士
+  ---
+  duration_ms: 4.652547
+  type: 'test'
+  ...
+# Subtest: 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野
+ok 25 - 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野
+  ---
+  duration_ms: 30.314391
+  type: 'test'
+  ...
+# Subtest: 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機
+ok 26 - 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機
+  ---
+  duration_ms: 23.012167
+  type: 'test'
+  ...
+# Subtest: 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令
+ok 27 - 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令
+  ---
+  duration_ms: 5.392743
+  type: 'test'
+  ...
+# Subtest: 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定
+ok 28 - 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定
+  ---
+  duration_ms: 3.95901
+  type: 'test'
+  ...
+# Subtest: 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照
+ok 29 - 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照
+  ---
+  duration_ms: 3.723391
+  type: 'test'
+  ...
+# Subtest: 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動
+ok 30 - 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動
+  ---
+  duration_ms: 3.873714
+  type: 'test'
+  ...
+# Subtest: 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動
+ok 31 - 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動
+  ---
+  duration_ms: 3.948615
+  type: 'test'
+  ...
+# Subtest: 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令
+ok 32 - 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令
+  ---
+  duration_ms: 3.230732
+  type: 'test'
+  ...
+# Subtest: 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令
+ok 33 - 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令
+  ---
+  duration_ms: 4.93888
+  type: 'test'
+  ...
+# Subtest: 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標
+ok 34 - 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標
+  ---
+  duration_ms: 6.891461
+  type: 'test'
+  ...
+# Subtest: 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看
+ok 35 - 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看
+  ---
+  duration_ms: 8.201515
+  type: 'test'
+  ...
+# Subtest: 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心
+ok 36 - 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心
+  ---
+  duration_ms: 3.896376
+  type: 'test'
+  ...
+# Subtest: 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義
+ok 37 - 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義
+  ---
+  duration_ms: 4.343559
+  type: 'test'
+  ...
+# Subtest: 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放
+ok 38 - 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放
+  ---
+  duration_ms: 8.152397
+  type: 'test'
+  ...
+# Subtest: 窄窗尚在縮小時以最終targetZoom偏移，保留原生兩軸與縮放緩動
+ok 39 - 窄窗尚在縮小時以最終targetZoom偏移，保留原生兩軸與縮放緩動
+  ---
+  duration_ms: 4.189792
+  type: 'test'
+  ...
+# Subtest: 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點
+ok 40 - 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點
+  ---
+  duration_ms: 2.919501
+  type: 'test'
+  ...
+# Subtest: 查看找不到free spot完全不動相機、不下命令、不清armed模式
+ok 41 - 查看找不到free spot完全不動相機、不下命令、不清armed模式
+  ---
+  duration_ms: 3.912421
+  type: 'test'
+  ...
+# Subtest: 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置
+ok 42 - 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置
+  ---
+  duration_ms: 3.885601
+  type: 'test'
+  ...
+# Subtest: 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode
+ok 43 - 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode
+  ---
+  duration_ms: 7.834106
+  type: 'test'
+  ...
+# Subtest: 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG
+ok 44 - 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG
+  ---
+  duration_ms: 5.414214
+  type: 'test'
+  ...
+# Subtest: 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機
+ok 45 - 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機
+  ---
+  duration_ms: 17.694771
+  type: 'test'
+  ...
+# Subtest: 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位
+ok 46 - 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位
+  ---
+  duration_ms: 3.874795
+  type: 'test'
+  ...
+# Subtest: 原生focusAt例外傳出，不發令或建立持續相機工作
+ok 47 - 原生focusAt例外傳出，不發令或建立持續相機工作
+  ---
+  duration_ms: 8.109905
+  type: 'test'
+  ...
+# Subtest: 同tick同來源同值的每次真正扣血都有不同、不透明且不可改的事件身分
+ok 48 - 同tick同來源同值的每次真正扣血都有不同、不透明且不可改的事件身分
+  ---
+  duration_ms: 3.29666
+  type: 'test'
+  ...
+# Subtest: last與peak各綁各自事件及同名實體；原生完整命令只送向所選行一次
+ok 49 - last與peak各綁各自事件及同名實體；原生完整命令只送向所選行一次
+  ---
+  duration_ms: 6.345142
+  type: 'test'
+  ...
+# Subtest: 過期last即使保留為peak也不能悄改行別；偽造token與action一律拒絕
+ok 50 - 過期last即使保留為peak也不能悄改行別；偽造token與action一律拒絕
+  ---
+  duration_ms: 5.758303
+  type: 'test'
+  ...
+# Subtest: 新的last不取代仍顯示的peak；同值隱藏peak則取消該行操作
+ok 51 - 新的last不取代仍顯示的peak；同值隱藏peak則取消該行操作
+  ---
+  duration_ms: 3.138316
+  type: 'test'
+  ...
+# Subtest: 憑證只可用一次，偽造、取消、重複啟用都不能重送或退回移動
+ok 52 - 憑證只可用一次，偽造、取消、重複啟用都不能重送或退回移動
+  ---
+  duration_ms: 3.988454
+  type: 'test'
+  ...
+# Subtest: 啟用前same-source-hit改變即取消，不下錯令且不動快照與兩種RNG
+ok 53 - 啟用前same-source-hit改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 4.136844
+  type: 'test'
+  ...
+# Subtest: 啟用前same-name-hit改變即取消，不下錯令且不動快照與兩種RNG
+ok 54 - 啟用前same-name-hit改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 4.983036
+  type: 'test'
+  ...
+# Subtest: 啟用前world改變即取消，不下錯令且不動快照與兩種RNG
+ok 55 - 啟用前world改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 4.06703
+  type: 'test'
+  ...
+# Subtest: 啟用前wave改變即取消，不下錯令且不動快照與兩種RNG
+ok 56 - 啟用前wave改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 4.087009
+  type: 'test'
+  ...
+# Subtest: 啟用前restore改變即取消，不下錯令且不動快照與兩種RNG
+ok 57 - 啟用前restore改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 6.067521
+  type: 'test'
+  ...
+# Subtest: 啟用前newRun改變即取消，不下錯令且不動快照與兩種RNG
+ok 58 - 啟用前newRun改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 5.578317
+  type: 'test'
+  ...
+# Subtest: 啟用前selection-count改變即取消，不下錯令且不動快照與兩種RNG
+ok 59 - 啟用前selection-count改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 4.413132
+  type: 'test'
+  ...
+# Subtest: 啟用前selection-entity改變即取消，不下錯令且不動快照與兩種RNG
+ok 60 - 啟用前selection-entity改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 5.792875
+  type: 'test'
+  ...
+# Subtest: 啟用前selection-order改變即取消，不下錯令且不動快照與兩種RNG
+ok 61 - 啟用前selection-order改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 4.225194
+  type: 'test'
+  ...
+# Subtest: 啟用前hero改變即取消，不下錯令且不動快照與兩種RNG
+ok 62 - 啟用前hero改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 3.942125
+  type: 'test'
+  ...
+# Subtest: 啟用前order改變即取消，不下錯令且不動快照與兩種RNG
+ok 63 - 啟用前order改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 3.906222
+  type: 'test'
+  ...
+# Subtest: 啟用前phase改變即取消，不下錯令且不動快照與兩種RNG
+ok 64 - 啟用前phase改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 3.71585
+  type: 'test'
+  ...
+# Subtest: 啟用前pause改變即取消，不下錯令且不動快照與兩種RNG
+ok 65 - 啟用前pause改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 3.639357
+  type: 'test'
+  ...
+# Subtest: 啟用前blocked改變即取消，不下錯令且不動快照與兩種RNG
+ok 66 - 啟用前blocked改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 3.676022
+  type: 'test'
+  ...
+# Subtest: 啟用前placement改變即取消，不下錯令且不動快照與兩種RNG
+ok 67 - 啟用前placement改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 4.770551
+  type: 'test'
+  ...
+# Subtest: 啟用前menu改變即取消，不下錯令且不動快照與兩種RNG
+ok 68 - 啟用前menu改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 4.183863
+  type: 'test'
+  ...
+# Subtest: 啟用前dead改變即取消，不下錯令且不動快照與兩種RNG
+ok 69 - 啟用前dead改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 3.72981
+  type: 'test'
+  ...
+# Subtest: 啟用前unseen改變即取消，不下錯令且不動快照與兩種RNG
+ok 70 - 啟用前unseen改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 3.913423
+  type: 'test'
+  ...
+# Subtest: 啟用前same-id-replacement改變即取消，不下錯令且不動快照與兩種RNG
+ok 71 - 啟用前same-id-replacement改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 3.74304
+  type: 'test'
+  ...
+# Subtest: 啟用前core-replacement改變即取消，不下錯令且不動快照與兩種RNG
+ok 72 - 啟用前core-replacement改變即取消，不下錯令且不動快照與兩種RNG
+  ---
+  duration_ms: 4.078737
+  type: 'test'
+  ...
+# Subtest: 驗證發現中途改變後永久取消，改回相同選兵也不能復活舊憑證
+ok 73 - 驗證發現中途改變後永久取消，改回相同選兵也不能復活舊憑證
+  ---
+  duration_ms: 4.434304
+  type: 'test'
+  ...
+# Subtest: 已失視野事件永久去身分，後來再見或同名新敵都不能重新辨認
+ok 74 - 已失視野事件永久去身分，後來再見或同名新敵都不能重新辨認
+  ---
+  duration_ms: 2.815057
+  type: 'test'
+  ...
+# Subtest: 本來未知的來源不建立入口，微量與同顯示精度最大值仍只顯一行
+ok 75 - 本來未知的來源不建立入口，微量與同顯示精度最大值仍只顯一行
+  ---
+  duration_ms: 3.865512
+  type: 'test'
+  ...
+# Subtest: 空選能查看，混選／英雄直控／非正式戰士不能反擊；查看不偷切模式
+ok 76 - 空選能查看，混選／英雄直控／非正式戰士不能反擊；查看不偷切模式
+  ---
+  duration_ms: 26.279368
+  type: 'test'
+  ...
+# Subtest: 大量view與capture／validate／cancel完全不查原生pick、Canvas，不動快照及兩種RNG
+ok 77 - 大量view與capture／validate／cancel完全不查原生pick、Canvas，不動快照及兩種RNG
+  ---
+  duration_ms: 6.291583
+  type: 'test'
+  ...
+# Subtest: 無Canvas可用點或無原生命中點均不發令、不清原模式；第一點被擋可查後續合法點
+ok 78 - 無Canvas可用點或無原生命中點均不發令、不清原模式；第一點被擋可查後續合法點
+  ---
+  duration_ms: 10.863991
+  type: 'test'
+  ...
+# Subtest: 啟用時最後一次native pick換成另一同名敵人也拒絕，不送move或替代攻擊
+ok 79 - 啟用時最後一次native pick換成另一同名敵人也拒絕，不送move或替代攻擊
+  ---
+  duration_ms: 3.738253
+  type: 'test'
+  ...
+# Subtest: 查看沒有任何可用Canvas位置時也不改相機或原軍令
+ok 80 - 查看沒有任何可用Canvas位置時也不改相機或原軍令
+  ---
+  duration_ms: 3.77028
+  type: 'test'
+  ...
+# Subtest: 合法反擊與同點原生右鍵的完整快照及全部命令欄位相同
+ok 81 - 合法反擊與同點原生右鍵的完整快照及全部命令欄位相同
+  ---
+  duration_ms: 6.709291
+  type: 'test'
+  ...
+# Subtest: 反擊沒有持續工作，後續原生移動、停止、護衛立即覆蓋而不重送
+ok 82 - 反擊沒有持續工作，後續原生移動、停止、護衛立即覆蓋而不重送
+  ---
+  duration_ms: 13.064108
+  type: 'test'
+  ...
+# Subtest: 查看只動原生相機目標，沒有兵、按鍵、命令、HP、資源或兩種RNG副作用
+ok 83 - 查看只動原生相機目標，沒有兵、按鍵、命令、HP、資源或兩種RNG副作用
+  ---
+  duration_ms: 3.703432
+  type: 'test'
+  ...
+# Subtest: 原生攻擊與相機異常原樣傳出，憑證已消耗；UI失敗不攔截致命傷害
+ok 84 - 原生攻擊與相機異常原樣傳出，憑證已消耗；UI失敗不攔截致命傷害
+  ---
+  duration_ms: 8.610295
+  type: 'test'
+  ...
+# Subtest: 事件token配置失敗仍保留原生致命傷害、敗北與兩種RNG結果
+ok 85 - 事件token配置失敗仍保留原生致命傷害、敗北與兩種RNG結果
+  ---
+  duration_ms: 6.77556
+  type: 'test'
+  ...
+# Subtest: HUD固定節點、零選兵仍可查看，讀取／hover／focus及更新不做pick或Canvas查詢
+ok 86 - HUD固定節點、零選兵仍可查看，讀取／hover／focus及更新不做pick或Canvas查詢
+  ---
+  duration_ms: 5.649573
+  type: 'test'
+  ...
+# Subtest: HUD沒有紀錄或來源已未知時不掃軍隊；失視野仍立即取消未完成操作
+ok 87 - HUD沒有紀錄或來源已未知時不掃軍隊；失視野仍立即取消未完成操作
+  ---
+  duration_ms: 3.512258
+  type: 'test'
+  ...
+# Subtest: HUD穩定顯示時仍查即時視野，但不反覆格式化操作提示或讀取控制內容
+ok 88 - HUD穩定顯示時仍查即時視野，但不反覆格式化操作提示或讀取控制內容
+  ---
+  duration_ms: 4.417618
+  type: 'test'
+  ...
+# Subtest: HUD同人數換實體、換軍令或prep到wave仍立即取消，不能沿用不變文字的操作
+ok 89 - HUD同人數換實體、換軍令或prep到wave仍立即取消，不能沿用不變文字的操作
+  ---
+  duration_ms: 8.890019
+  type: 'test'
+  ...
+# Subtest: HUD最大來源失視野即去身分，最近同名來源與其控制保持可用
+ok 90 - HUD最大來源失視野即去身分，最近同名來源與其控制保持可用
+  ---
+  duration_ms: 3.430608
+  type: 'test'
+  ...
+# Subtest: HUD已選人數相同但加入村民會立即停用；戰士死亡與暫停後也立即刷新並能恢復
+ok 91 - HUD已選人數相同但加入村民會立即停用；戰士死亡與暫停後也立即刷新並能恢復
+  ---
+  duration_ms: 3.093018
+  type: 'test'
+  ...
+# Subtest: HUD呈現暫時失敗後，相同或回復先前狀態的下次更新都能修復內容與可見性
+ok 92 - HUD呈現暫時失敗後，相同或回復先前狀態的下次更新都能修復內容與可見性
+  ---
+  duration_ms: 7.092698
+  type: 'test'
+  ...
+# Subtest: HUD清除與restore後不保留舊呈現或操作，新的相同文字事件仍可正常啟用
+ok 93 - HUD清除與restore後不保留舊呈現或操作，新的相同文字事件仍可正常啟用
+  ---
+  duration_ms: 5.524998
+  type: 'test'
+  ...
+# Subtest: HUD按下後新傷到達取消，按下前顯示舊事件亦拒絕；不偷偷換最新行
+ok 94 - HUD按下後新傷到達取消，按下前顯示舊事件亦拒絕；不偷偷換最新行
+  ---
+  duration_ms: 3.380744
+  type: 'test'
+  ...
+# Subtest: HUD來源失效不受節流，立即移除名稱、方向、按鈕身份與完整tooltip
+ok 95 - HUD來源失效不受節流，立即移除名稱、方向、按鈕身份與完整tooltip
+  ---
+  duration_ms: 3.251393
+  type: 'test'
+  ...
+# Subtest: HUD Enter與Space保留native啟用，repeat不再發令，Tab保留導航並阻擋全域hero快捷鍵
+ok 96 - HUD Enter與Space保留native啟用，repeat不再發令，Tab保留導航並阻擋全域hero快捷鍵
+  ---
+  duration_ms: 3.2293
+  type: 'test'
+  ...
+# Subtest: HUD未完成操作遇到blur即取消，改回亦不自動重送
+ok 97 - HUD未完成操作遇到blur即取消，改回亦不自動重送
+  ---
+  duration_ms: 3.359233
+  type: 'test'
+  ...
+# Subtest: HUD未完成操作遇到pointercancel即取消，改回亦不自動重送
+ok 98 - HUD未完成操作遇到pointercancel即取消，改回亦不自動重送
+  ---
+  duration_ms: 2.997156
+  type: 'test'
+  ...
+# Subtest: HUD未完成操作遇到window-blur即取消，改回亦不自動重送
+ok 99 - HUD未完成操作遇到window-blur即取消，改回亦不自動重送
+  ---
+  duration_ms: 3.046209
+  type: 'test'
+  ...
+# Subtest: HUD未完成操作遇到military-key即取消，改回亦不自動重送
+ok 100 - HUD未完成操作遇到military-key即取消，改回亦不自動重送
+  ---
+  duration_ms: 3.077095
+  type: 'test'
+  ...
+# Subtest: HUD未完成操作遇到outside-pointerup即取消，改回亦不自動重送
+ok 101 - HUD未完成操作遇到outside-pointerup即取消，改回亦不自動重送
+  ---
+  duration_ms: 2.997827
+  type: 'test'
+  ...
+# Subtest: HUD未完成操作遇到selection-change即取消，改回亦不自動重送
+ok 102 - HUD未完成操作遇到selection-change即取消，改回亦不自動重送
+  ---
+  duration_ms: 3.090465
+  type: 'test'
+  ...
+# Subtest: HUD未完成操作遇到phase-change即取消，改回亦不自動重送
+ok 103 - HUD未完成操作遇到phase-change即取消，改回亦不自動重送
+  ---
+  duration_ms: 2.848707
+  type: 'test'
+  ...
+# Subtest: HUD未完成操作遇到blocked即取消，改回亦不自動重送
+ok 104 - HUD未完成操作遇到blocked即取消，改回亦不自動重送
+  ---
+  duration_ms: 3.062904
+  type: 'test'
+  ...
+# Subtest: HUD未完成操作遇到line-panel即取消，改回亦不自動重送
+ok 105 - HUD未完成操作遇到line-panel即取消，改回亦不自動重送
+  ---
+  duration_ms: 2.919952
+  type: 'test'
+  ...
+# Subtest: HUD相同顯示文字仍更新事件身分，repeat與殘留click不啟用新事件
+ok 106 - HUD相同顯示文字仍更新事件身分，repeat與殘留click不啟用新事件
+  ---
+  duration_ms: 2.937588
+  type: 'test'
+  ...
+# Subtest: HUD來源消失失焦後，仍按住的Space重複鍵也不洩漏成全域暫停
+ok 107 - HUD來源消失失焦後，仍按住的Space重複鍵也不洩漏成全域暫停
+  ---
+  duration_ms: 3.274036
+  type: 'test'
+  ...
+# Subtest: HUD原生例外傳出且不可重送，額外DOM呈現失敗不攔截後續原生更新與敗北
+ok 108 - HUD原生例外傳出且不可重送，額外DOM呈現失敗不攔截後續原生更新與敗北
+  ---
+  duration_ms: 9.699807
+  type: 'test'
+  ...
+# Subtest: HUD canPoint限CSS視口及renderer.canvas；UI全擋不fallback，第一點被擋可用後續點
+ok 109 - HUD canPoint限CSS視口及renderer.canvas；UI全擋不fallback，第一點被擋可用後續點
+  ---
+  duration_ms: 11.661531
+  type: 'test'
+  ...
+# Subtest: HUD同顯示精度peak隱藏無入口；新事件與選兵人數同步且固定focus節點
+ok 110 - HUD同顯示精度peak隱藏無入口；新事件與選兵人數同步且固定focus節點
+  ---
+  duration_ms: 4.781708
+  type: 'test'
+  ...
+# Subtest: 四語提供完整入口、失效原因、實際人數、事件局內時間與tooltip
+ok 111 - 四語提供完整入口、失效原因、實際人數、事件局內時間與tooltip
+  ---
+  duration_ms: 3.535573
+  type: 'test'
+  ...
+1..111
+# tests 111
+# suites 0
+# pass 111
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4123.311339

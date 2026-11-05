@@ -1,0 +1,17 @@
+{
+  "created_at_utc": "2026-11-05T21:02:45.970839+00:00",
+  "source": {
+    "path": "/workspace/riftwatch-fun-lab-281169b5/source-player/players/B/after/campaign.webm",
+    "bytes": 12506556,
+    "sha256": "b2699e3ac9f511aabcbcd518ce2c0a3f2967a97b371f1fca01b75581f40aeec2"
+  },
+  "clip": {
+    "repo_path": "/workspace/PlayGround/docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/continuous-view-retaliate-defeat.webm",
+    "local_derivative_copy": "/workspace/riftwatch-fun-lab-281169b5/source-actions-clips/continuous-view-retaliate-defeat.webm",
+    "bytes": 7105131,
+    "sha256": "fd264a6e2f0c3ee9c9698fbf724c5e7fb6146f6d3298c3469d222abdbd240771"
+  },
+  "command": "ffmpeg -nostdin -v error -ss 70 -i campaign.webm -t 65 -map 0:v:0 -c copy continuous-view-retaliate-defeat.webm",
+  "scope": "原錄影連續串流擷取，無拼接。ss70/t65為請求值，stream-copy關鍵幀可能使實際起點不同；未校準影片時間與玩家wallSeconds，不能以片段秒數代入玩家時刻。",
+  "provenance_note": "原片段先直接產生於repo evidence路徑；本local_derivative_copy為本次事後保存，不冒稱原先已有獨立來源檔。"
+}

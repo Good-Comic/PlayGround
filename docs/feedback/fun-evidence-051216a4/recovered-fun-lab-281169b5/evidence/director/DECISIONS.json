@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 1,
+  "role": "Game Director & Fun Evolution Architect",
+  "language": "臺灣正體中文",
+  "createdAtUtc": "2026-11-05T10:47:57.787903+00:00",
+  "status": "REVIEW_COMPLETE_IMPLEMENTATION_AND_AFTER_RETEST_PENDING",
+  "sourceCommit": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+  "reviewSha256": "f4c3473dec2697bd5cf8e641e8f9d9dac457292bcaf0d81953b5e23d33213e06",
+  "seals": {
+    "status": "ALL_SIX_MATCH",
+    "verification": "SEAL-VERIFICATION.json",
+    "reviewBeganAfterVerification": true,
+    "interruptedBExcluded": true
+  },
+  "scenario": {
+    "civilization": "FRK",
+    "difficulty": "normal",
+    "biome": "steppe",
+    "seed": 1116648138,
+    "seedInputFromSessions": "FUN-LAB-BASE-281169B5",
+    "reportSeedAbbreviation": "FUN-LAB-BASE-281",
+    "generationVersion": 2,
+    "allThreeSourceVerification": "SHA256_MATCH_159_FILES",
+    "note": "數值seed為同情境依據；簡寫與完整文字不可混用重開。"
+  },
+  "reviewMethod": {
+    "fullRequiredReportsAndMetricsRead": true,
+    "strategyAndBothGddSnapshotsRead": true,
+    "rawActionsAndScreensInspected": true,
+    "relevantCodeMatchesFormalBuild": true,
+    "sourceAudit": "SOURCE-AUDIT.json",
+    "noOtherDirectoriesModified": true
+  },
+  "limits": [
+    "每角色N=1；不多數決，不依能力標籤推勝負排序",
+    "行動、卡牌與RNG消耗不同，不推統計平衡",
+    "輸入送出成功不等於語意接受",
+    "目標參照不是實際傷害；congested可為歷史殘留",
+    "每5秒正庫存差僅收入下界；gathered為原生交付總量",
+    "整段FPS含選單暫停；SwiftShader不是實體GPU，不推長測",
+    "內部狀態僅供Director診斷，不交給隔離玩家"
+  ],
+  "topThreeProblems": [
+    {
+      "id": "P1",
+      "rank": 1,
+      "title": "戰術意圖與實際命令缺少持續可讀的回饋",
+      "classification": "A",
+      "evidenceLevel": "已重現介面缺口；操作Bug尚未證實",
+      "evidenceByRole": [
+        {
+          "role": "A",
+          "wallSeconds": [
+            814.316,
+            845.482
+          ],
+          "finding": "援護後分別17／18名戰士guard，並非人工集火；不能將輸入ok當指定打衝車。",
+          "sources": [
+            "private-observer/A/before/action-observer.jsonl",
+            "players/A/before/screen-0055.png",
+            "players/A/before/screen-0056.png"
+          ]
+        },
+        {
+          "role": "B",
+          "wallSeconds": [
+            850.996
+          ],
+          "finding": "想打北側衝車的右鍵實際使18人全部move，沒有manualAttack。",
+          "sources": [
+            "private-observer/B/before/action-observer.jsonl",
+            "players/B/before/screen-0045.png",
+            "players/B/before/screen-0046.png"
+          ]
+        },
+        {
+          "role": "C",
+          "wallSeconds": [
+            978.23,
+            979.104,
+            1002.475,
+            1013.548
+          ],
+          "finding": "查看旗手後對旗附近右鍵，12人manualAttack實際指向id186長槍兵，不能說打中旗手。",
+          "sources": [
+            "private-observer/C/before/action-observer.jsonl",
+            "players/C/before/screen-0058.png",
+            "players/C/before/screen-0059.png"
+          ]
+        }
+      ],
+      "gddCompatibility": [
+        "issue-8 §1 清楚因果",
+        "issue-8 §2.2 人工命令優先、自動與接管流動",
+        "Strategy §4／6／7 操作回饋與可靠控制"
+      ],
+      "risks": [
+        "自動接敵誤稱人工集火",
+        "attack狀態誤稱命中",
+        "死者／未見目標殘留",
+        "英雄與全軍軍令混淆"
+      ],
+      "counterEvidence": [
+        "已有0.8秒標記、命令音與2600ms援護Toast",
+        "過期畫面／座標／移動目標可解釋誤點，不能判hitbox Bug",
+        "角色實際工具延遲大於理想意圖間隔"
+      ]
+    },
+    {
+      "id": "P2",
+      "rank": 2,
+      "title": "總管簡單規劃被長表單與底部確認拖慢",
+      "classification": "A",
+      "upgradeClassification": "B",
+      "evidenceByRole": [
+        {
+          "role": "A",
+          "wallSeconds": [
+            63.408,
+            175.635
+          ],
+          "finding": "約112.227秒用於開局設定／讀表／捲動。",
+          "sources": [
+            "players/A/before/screen-0005.png",
+            "players/A/before/screen-0011.json"
+          ]
+        },
+        {
+          "role": "B",
+          "wallSeconds": [
+            94.402,
+            191.736,
+            333.509
+          ],
+          "finding": "約97.334秒完成簡單目標，升時代確認又需捲到底。",
+          "sources": [
+            "players/B/before/screen-0004.png",
+            "players/B/before/screen-0006.png",
+            "players/B/before/screen-0017.png",
+            "players/B/before/screen-0019.png"
+          ]
+        },
+        {
+          "role": "C",
+          "wallSeconds": [
+            479.954,
+            500.173,
+            510.294,
+            529.768,
+            554.81
+          ],
+          "finding": "只改食物優先，約74.856秒、5意圖，兩次捲動找儲存。",
+          "sources": [
+            "players/C/before/screen-0028.png",
+            "players/C/before/screen-0029.png",
+            "players/C/before/screen-0030.png",
+            "players/C/before/screen-0031.png",
+            "players/C/before/screen-0032.png"
+          ]
+        }
+      ],
+      "gddCompatibility": [
+        "issue-8 §2.1 不以多表單阻礙開局",
+        "issue-8 §2.2 自動化可控可接管"
+      ],
+      "risks": [
+        "固定工具列遮內容",
+        "誤提交／取消",
+        "刪掉完整設定冒充簡化"
+      ],
+      "counterEvidence": [
+        "面板原生暫停，牆鐘不等於戰場流失",
+        "內容有策略價值",
+        "所測含模型與工具成本，非人類平均時間"
+      ]
+    },
+    {
+      "id": "P3",
+      "rank": 3,
+      "title": "自動生產與資源支出的因果／等待條件難以理解",
+      "classification": "A",
+      "upgradeClassification": "B",
+      "policyChangeClassification": "C",
+      "evidenceByRole": [
+        {
+          "role": "A",
+          "wallSeconds": [
+            372.981
+          ],
+          "finding": "馬廄等待理由過於通用；不同時間的資源與手動成功不證明自動化Bug。",
+          "sources": [
+            "players/A/before/screen-0025.json",
+            "players/A/before/screen-0027.json",
+            "players/A/before/screen-0029.json"
+          ]
+        },
+        {
+          "role": "B",
+          "wallSeconds": [
+            333.509
+          ],
+          "finding": "預留可見但升時代與補兵取捨分散；後續確認升級曾剩12食物。",
+          "sources": [
+            "players/B/before/screen-0017.png",
+            "players/B/before/screen-0019.png",
+            "players/B/before/screen-0040.png",
+            "players/B/before/screen-0042.png"
+          ]
+        },
+        {
+          "role": "C",
+          "wallSeconds": [
+            480.485,
+            921.942
+          ],
+          "finding": "20F／1280W時不知道自動補兵支出；後續113F不足升級200F。",
+          "sources": [
+            "players/C/before/screen-0028.png",
+            "players/C/before/screen-0054.png"
+          ]
+        }
+      ],
+      "gddCompatibility": [
+        "issue-8 §2.2 自動化可查可控",
+        "issue-8 §2.3 四資源成本不同",
+        "Strategy §6 禁用理由與規則查詢"
+      ],
+      "risks": [
+        "抽樣正庫存差誤作完整收入",
+        "另造理由與正式門檻不同步",
+        "說明改成規則／成本變更"
+      ],
+      "counterEvidence": [
+        "無自動化停擺證據",
+        "現有productionStatus／reserveCost可重用",
+        "多資源高庫存不能直接換成食物"
+      ]
+    }
+  ],
+  "categories": {
+    "A_立即可修": [
+      "優先：持續命令摘要＋已見人工集火目標標示",
+      "後續：總管固定儲存／關閉／既有確認入口",
+      "後續：依正式門檻精確說明等待／已公開支出"
+    ],
+    "B_既有批准玩法升級": [
+      "實際城心受傷的可見來源／方向",
+      "已見旗手聚焦後的輪廓／名稱",
+      "既有Boss倒數遮擋改善；不重複算既有功能為新交付"
+    ],
+    "C_需使用者決策且本輪不做": [
+      "持續自動選最佳目標或自動閃圈",
+      "自動補兵／採集政策、預留等規則改變",
+      "任何未核准數值／科技變更"
+    ],
+    "rejectedByExplicitConstraint": [
+      "折疊、隱藏或另開完整32卡樹；保留左三選一＋右完整卡樹永久同屏"
+    ]
+  },
+  "selectedSlice": {
+    "id": "FUN-LAB-COMMAND-READBACK",
+    "title": "目前選兵的持續命令摘要＋已見人工集火目標標示",
+    "classification": "A",
+    "decisionBasis": [
+      "最直接回應被動／難控制需求",
+      "B與C有真實意圖／語意落差，A能辨識護衛與集火差別",
+      "正式Chromium已重現介面缺口",
+      "只讀取與顯示，不改命令、AI或數值"
+    ],
+    "minimumBehavior": [
+      "顯示已選正式戰士X／全軍Y；不計英雄、工人、敵軍、死者或無攻擊單位",
+      "依即時manualAttack／target／tacticalOrder／state區分移動、護衛、人工集火、推進／巡邏、自動接敵／待命與混合",
+      "護衛中自動打敵人仍以護衛為主；attack狀態不叫已命中",
+      "人工集火只顯示活著且目前可見的目標名稱；載體身分吻合才標旗手",
+      "僅標示目前選兵的可見人工目標，不自動聚焦、選軍或下令",
+      "死亡、隱藏、換選取、新局／讀檔／結算後立即依現況更新，不留舊目標與成功字樣"
+    ],
+    "heroAndFogBounds": [
+      "英雄直控援護保留英雄選取：顯示英雄直控、已選戰士0／全軍Y，不暗示英雄收到軍令",
+      "最小範圍毋須全軍戰術分布；若顯示須明標全軍、另行計算",
+      "未見或離開視野的敵人，不洩漏即時種類、名稱、HP、旗手身分或位置；本輪不必顯示敵方HP"
+    ],
+    "implementationLocations": [
+      {
+        "file": "js/battle-actions.js",
+        "line": 32,
+        "use": "作戰列建立與純讀摘要；可獨立新helper"
+      },
+      {
+        "file": "js/battle-actions.js",
+        "line": 48,
+        "use": "更新signature須包含即時命令與目標變化"
+      },
+      {
+        "file": "js/game.js",
+        "line": 3283,
+        "use": "讀取issueCommand後manualAttack／target，不修改派送"
+      },
+      {
+        "file": "js/game.js",
+        "line": 3361,
+        "use": "commandMove為移動基準，不改實作"
+      },
+      {
+        "file": "js/game.js",
+        "line": 3387,
+        "use": "issueTacticalCommand／tacticalOrder為語意基準，不改實作"
+      },
+      {
+        "file": "js/core-defense.js",
+        "line": 22,
+        "use": "保留英雄直控選取，不能把軍令套到英雄"
+      },
+      {
+        "file": "js/core-defense.js",
+        "line": 41,
+        "use": "既有援護入口與Toast，不另造AI"
+      },
+      {
+        "file": "js/renderer.js",
+        "line": 304,
+        "use": "可見人工目標提示放適當前景層"
+      },
+      {
+        "file": "js/renderer.js",
+        "line": 623,
+        "use": "現有地面標記短暫且先於屋頂，不只延長旗標"
+      },
+      {
+        "file": "js/rally-objective.js",
+        "line": 94,
+        "use": "既有載體查詢與正式可見性"
+      },
+      {
+        "file": "styles.css",
+        "line": 828,
+        "use": "作戰列可讀排版及小視窗"
+      },
+      {
+        "file": "js/locales.js",
+        "use": "四語玩家文字"
+      }
+    ],
+    "forbiddenExpansion": [
+      "不修改Game原生命令、索敵、尋路、defendCore或命中區",
+      "不重送、不自動閃避／瞄準、不持續改令",
+      "不改傷害、HP、成本、卡池、RNG、冷卻／事件時間窗、資源政策",
+      "不改未核准九科技、中國副箭、探索180估值",
+      "不移除既有玩法、不折疊卡樹",
+      "基礎總管／戰術控制免費"
+    ],
+    "nodeGates": [
+      "純讀helper測各模式、混合群、已選／全軍涵蓋",
+      "換目標、死者、隱藏／沙暴、空選／英雄／工人／建築／敵軍不殘留",
+      "可見性通過前不讀隱藏名稱、類型、HP或位置作摘要",
+      "讀取／繪製前後snapshot／RNG／資源／HP／冷卻／命令不變",
+      "英雄直控援護保留原選取／按鍵／鏡頭，已選戰士0；混合選取不計英雄",
+      "後續人工令覆蓋舊令，不以舊orderFailure斷言卡死",
+      "相關battle-actions／core-defense／tactical-orders／tactical-partial-feedback／visibility／rally-objective回歸"
+    ],
+    "chromiumGates": [
+      "AFTER實際構建標來源SHA與資源驗證",
+      "正常Start／F2／原生空地右鍵與援護後1.3秒／3秒摘要仍符合當下語意",
+      "可見敵人原生右鍵後摘要對應immediate after，標示同實體；改移動即清除集火",
+      "死亡、失去視野／沙暴與換選取不洩漏或殘留；fixture另標CONTROLLED_FIXTURE",
+      "Pause／卡牌／對話框／結算不誤發令；英雄直控語意保留",
+      "1440x900與至少一個小視窗、四語不遮按鈕或raw key；保留左右卡牌永久同屏"
+    ],
+    "threeRoleRetest": {
+      "classification": "RESUMED_NATURAL_SAVE_FOCUSED_RETEST",
+      "freshTenWaves": false,
+      "snapshots": [
+        {
+          "role": "A",
+          "path": "/workspace/riftwatch-fun-lab-281169b5/private-observer/A/before/snapshot-52-4-wave.json",
+          "sha256": "1d35c76c1b35c5b4e901019dec95c02426114b582b32a3b91b5d29202f5462e4",
+          "simulationSeconds": 466.30850000008627,
+          "waveClock": 3.7665000000000073,
+          "waveNumber": 4,
+          "coreHp": 2239.494999999995,
+          "coreMaxHp": 3300
+        },
+        {
+          "role": "B",
+          "path": "/workspace/riftwatch-fun-lab-281169b5/private-observer/B/before/snapshot-43-4-wave.json",
+          "sha256": "c55c9d9f2bc782bbcb841897d00303be3502e0660464ccf71a34b47a224f1fe6",
+          "simulationSeconds": 451.2442000000829,
+          "waveClock": 5.033099999999979,
+          "waveNumber": 4,
+          "coreHp": 3207.5300000000043,
+          "coreMaxHp": 3600
+        },
+        {
+          "role": "C",
+          "path": "/workspace/riftwatch-fun-lab-281169b5/private-observer/C/before/snapshot-54-5-wave.json",
+          "sha256": "9cb994e88d356f44ab902bb1e29c3538525dcfcc299b26ab6d89e54f589aa21a",
+          "simulationSeconds": 556.874600000073,
+          "waveClock": 2.566600000000093,
+          "waveNumber": 5,
+          "coreHp": 3300,
+          "coreMaxHp": 3300
+        }
+      ],
+      "serial": true,
+      "unchangedProfiles": true,
+      "speed": 1,
+      "stateInjection": false,
+      "restoreMethod": "各自原封自然快照放入獨立原生存檔槽，按正式Continue；玩家不讀快照／內部欄位。",
+      "roleFocus": {
+        "A": "辨識援護是護衛或人工集火、選軍涵蓋",
+        "B": "從UI辨識右鍵實際是移動或攻擊，可自行修正",
+        "C": "辨識人工目標是旗手或普通兵，不預告位置／最佳解"
+      },
+      "primaryMetrics": [
+        "由UI正確讀回目前命令與目標／護衛對象",
+        "意圖落差的發現與修正時間／意圖數",
+        "已選／全軍差距理解",
+        "額外操作／面板成本"
+      ],
+      "hardPass": [
+        "摘要與當下命令一致",
+        "人工目標零錯標",
+        "Fog／沙暴零即時情報外洩",
+        "人工新令優先、英雄直控無回歸"
+      ],
+      "secondaryMetrics": [
+        "正式勝敗",
+        "城心／部隊損失",
+        "到達／完成波次",
+        "模擬／牆鐘分開時間"
+      ],
+      "reporting": [
+        "每角色至少一次自然命令讀回；沒出現的模式標未評估",
+        "不故意誤點湊案例",
+        "各自比自身BEFORE，不合併投票",
+        "沒有可見用途不能宣稱更好玩；單次勝利不宣稱平衡",
+        "保留錄影／同步輸入與狀態；中斷不能混入完成樣本",
+        "嚴格Save/Load歷史FAIL保留，續玩不保證決定性重播"
+      ]
+    }
+  },
+  "directChromiumBefore": {
+    "status": "UI_GAP_REPRODUCED_NO_GAMEPLAY_BUG_CLAIM",
+    "actualExecuted": true,
+    "formalSource": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+    "buildVerification": "SHA256_MATCH_159_FILES",
+    "browser": "154.0.8037.57",
+    "viewport": [
+      1440,
+      900
+    ],
+    "checksPassed": 6,
+    "scenarios": 2,
+    "pageErrors": 0,
+    "nativeInputOnlyForGameplay": true,
+    "stateInjection": false,
+    "transport": "離線route回應未修改正式payload；無公開端口",
+    "command": "node /workspace/riftwatch-fun-lab-281169b5/director/repro-before.cjs",
+    "evidence": [
+      "DIRECT-CHROMIUM-BEFORE.json",
+      "direct-move-after-1.3s.png",
+      "direct-guard-after-3s.png"
+    ],
+    "retainedEnvironmentFailure": "DIRECT-CHROMIUM-SANDBOX-ERROR.json",
+    "environmentNote": "限制內本機socket／Chromium曾EPERM；核准環境外執行成功，環境錯誤不列遊戲Bug。"
+  },
+  "suspectedInputBugProtocol": "直接正式Chromium原生Continue／滑鼠鍵盤；保存當下可見目標、座標、pickAt與before/after。歷史座標不可代替當下畫面，partial action state不可冒充完整快照，不用內部ID下令。可重現前只列觀察／待重現。",
+  "nativeEvidenceExtract": "NATIVE-INTENT-EVIDENCE.json",
+  "preservedLimits": [
+    "不公開部署；不改main／RC／Pages／舊Issues／不可變build",
+    "Fog／沙暴／人工命令優先",
+    "自然完整十波／NG+、嚴格Save/Load、低FPS時鐘、歷史效能／硬體缺口保持原狀"
+  ],
+  "continuity": {
+    "STOP_REASON": "ASSIGNED_DIRECTOR_REVIEW_COMPLETED_HANDOFF_TO_ROOT",
+    "EXECUTION_DURATION": {
+      "measuredSeconds": 772.788,
+      "scope": "首次clock觀察2026-11-05T10:35:05Z至此檔生成；不含更早讀取，Director全程時長未知",
+      "startUtc": "2026-11-05T10:35:05+00:00",
+      "endUtc": "2026-11-05T10:47:57.787903+00:00",
+      "totalDirectorDuration": "UNKNOWN"
+    },
+    "NEXT_AUTHORIZED_TASK": "根代理實作優先切片、正式構建並序列完成三角色續玩比較",
+    "CHECKPOINT_SHA": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+    "checkpointMeaning": "評審來源，非新Git提交",
+    "AUTO_RESUME_AVAILABLE": false,
+    "note": "Director只讀評審指定任務完成；未獲其他路徑實作授權，整項使用者任務由根代理繼續。"
+  }
+}

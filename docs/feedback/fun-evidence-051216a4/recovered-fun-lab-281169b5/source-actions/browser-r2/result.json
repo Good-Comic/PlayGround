@@ -1,0 +1,673 @@
+{
+  "source": "35dedfe6ee203a4d9689290dc466484c39557cf8",
+  "scope": "原封B自然快照Continue、先記自然首擊。其後CONTROLLED_BROWSER_NO_SIM_TICK：原生spawn/applyDamage建立雙來源，僅測手勢與UI，不是自然戰役或攻擊數值驗收。",
+  "resumeSha256": "c55c9d9f2bc782bbcb841897d00303be3502e0660464ccf71a34b47a224f1fe6",
+  "checks": [
+    {
+      "name": "正式來源與全部實際資源SHA",
+      "pass": true,
+      "verified": {
+        "commit": "35dedfe6ee203a4d9689290dc466484c39557cf8",
+        "resourceVerification": "SHA256_MATCH_162_FILES"
+      }
+    },
+    {
+      "name": "正常Continue原生首擊實損與畫面紀錄相符",
+      "pass": true,
+      "natural": {
+        "before": 3207.5300000000043,
+        "after": 3204.5950000000043,
+        "loss": 2.9349999999999454,
+        "view": {
+          "loss": 2.9349999999999454,
+          "at": 463.16030000008226,
+          "sourceId": null,
+          "name": null,
+          "direction": null,
+          "token": {},
+          "peak": {
+            "loss": 2.9349999999999454,
+            "at": 463.16030000008226,
+            "sourceId": null,
+            "name": null,
+            "direction": null,
+            "token": {}
+          }
+        }
+      }
+    },
+    {
+      "name": "受控雙行有獨立查看及反擊按鈕",
+      "pass": true,
+      "fixture": {
+        "peak": 116,
+        "last": 117,
+        "view": {
+          "loss": 15.199999999999818,
+          "at": 451.2442000000829,
+          "sourceId": 117,
+          "name": "步弓兵",
+          "direction": null,
+          "token": {},
+          "peak": {
+            "loss": 175.19999999999982,
+            "at": 451.2442000000829,
+            "sourceId": 116,
+            "name": "衝車",
+            "direction": "↘",
+            "token": {}
+          }
+        }
+      }
+    },
+    {
+      "name": "原生滑鼠查看僅移相機、不選兵或派令",
+      "pass": true,
+      "before": {
+        "rng": -848236508,
+        "visual": -1106774941,
+        "camera": {
+          "x": -63.99999999999999,
+          "y": 832.0000000000001,
+          "targetX": -64,
+          "targetY": 832,
+          "zoom": 1.1199999999999999,
+          "targetZoom": 1.12
+        },
+        "selected": [
+          16,
+          17,
+          18,
+          24,
+          25,
+          34,
+          44,
+          47,
+          75,
+          88,
+          89,
+          94,
+          95,
+          108,
+          109,
+          110,
+          111,
+          114
+        ],
+        "commands": 0
+      },
+      "after": {
+        "rng": -848236508,
+        "visual": -1106774941,
+        "camera": {
+          "x": 47.5538118595613,
+          "y": 887.7769059297807,
+          "targetX": 48,
+          "targetY": 888,
+          "zoom": 1.1199999999999999,
+          "targetZoom": 1.12
+        },
+        "selected": [
+          16,
+          17,
+          18,
+          24,
+          25,
+          34,
+          44,
+          47,
+          75,
+          88,
+          89,
+          94,
+          95,
+          108,
+          109,
+          110,
+          111,
+          114
+        ],
+        "commands": 0
+      }
+    },
+    {
+      "name": "原生鼠標反擊一次且正式戰士對準該筆同一來源",
+      "pass": true,
+      "commands": [
+        {
+          "targetId": 116,
+          "point": [
+            720.4997307172913,
+            430.0898653586456
+          ],
+          "selected": [
+            {
+              "id": 16,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 17,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 18,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 24,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 25,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 34,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 44,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 47,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 75,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 88,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 89,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 94,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 95,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 108,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 109,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 110,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 111,
+              "targetId": 116,
+              "manualAttack": true
+            },
+            {
+              "id": 114,
+              "targetId": 116,
+              "manualAttack": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "後續原生停止可以覆蓋人工反擊",
+      "pass": true
+    },
+    {
+      "name": "原生鍵盤Space長按只送一次且不誤開暫停",
+      "pass": true,
+      "commands": [
+        {
+          "targetId": 117,
+          "point": [
+            721.7064330571554,
+            431.2620275476296
+          ],
+          "selected": [
+            {
+              "id": 16,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 17,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 18,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 24,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 25,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 34,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 44,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 47,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 75,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 88,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 89,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 94,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 95,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 108,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 109,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 110,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 111,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 114,
+              "targetId": 117,
+              "manualAttack": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "原生鍵盤Enter長按只送一次且不誤開暫停",
+      "pass": true,
+      "commands": [
+        {
+          "targetId": 117,
+          "point": [
+            721.9124463280203,
+            431.43370527335037
+          ],
+          "selected": [
+            {
+              "id": 16,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 17,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 18,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 24,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 25,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 34,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 44,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 47,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 75,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 88,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 89,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 94,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 95,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 108,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 109,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 110,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 111,
+              "targetId": 117,
+              "manualAttack": true
+            },
+            {
+              "id": 114,
+              "targetId": 117,
+              "manualAttack": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "按下後同來源同時刻同傷新事件取消、不偷換新紀錄",
+      "pass": true,
+      "commands": [],
+      "toast": "",
+      "phase": "wave"
+    },
+    {
+      "name": "按下後同名不同來源取消、不轉打近鄰",
+      "pass": true,
+      "commands": [],
+      "toast": "",
+      "phase": "wave"
+    },
+    {
+      "name": "按下後選兵改變取消",
+      "pass": true,
+      "commands": [],
+      "toast": "",
+      "phase": "wave"
+    },
+    {
+      "name": "按下後來源死亡取消",
+      "pass": true,
+      "commands": [],
+      "toast": "",
+      "phase": "wave"
+    },
+    {
+      "name": "按下後暫停取消",
+      "pass": true,
+      "commands": [],
+      "toast": "",
+      "phase": "wave"
+    },
+    {
+      "name": "按下後更換波次取消",
+      "pass": true,
+      "commands": [],
+      "toast": "",
+      "phase": "wave"
+    },
+    {
+      "name": "按下後原生還原同快照取消舊實體",
+      "pass": true,
+      "commands": [],
+      "toast": "",
+      "phase": "wave"
+    },
+    {
+      "name": "純回讀不改完整快照與兩種RNG、也不派令",
+      "pass": true
+    },
+    {
+      "name": "純更新不搜尋原生命中點且保留原生按鈕節點",
+      "pass": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-zh-Hant-1440",
+      "pass": true,
+      "text": "城心上次實損 −15.2 HP · 步弓兵 · 局內7:31\n查看\n反擊 18人\n本波已記錄最大一擊 −175.2 HP · 衝車 · 受傷時↘ · 局內7:31\n查看\n反擊 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-zh-Hant-1024",
+      "pass": true,
+      "text": "城心上次實損 −15.2 HP · 步弓兵 · 局內7:31\n查看\n反擊 18人\n本波已記錄最大一擊 −175.2 HP · 衝車 · 受傷時↘ · 局內7:31\n查看\n反擊 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-zh-Hant-800",
+      "pass": true,
+      "text": "城心上次實損 −15.2 HP · 步弓兵 · 局內7:31\n查看\n反擊 18人\n本波已記錄最大一擊 −175.2 HP · 衝車 · 受傷時↘ · 局內7:31\n查看\n反擊 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-zh-Hant-390",
+      "pass": true,
+      "text": "城心上次實損 −15.2 HP · 步弓兵 · 局內7:31\n查看\n反擊 18人\n本波已記錄最大一擊 −175.2 HP · 衝車 · 受傷時↘ · 局內7:31\n查看\n反擊 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-zh-Hans-1440",
+      "pass": true,
+      "text": "城心上次实损 −15.2 HP · 步弓兵 · 局内7:31\n查看\n反击 18人\n本波已记录最大一击 −175.2 HP · 冲车 · 受伤时↘ · 局内7:31\n查看\n反击 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-zh-Hans-1024",
+      "pass": true,
+      "text": "城心上次实损 −15.2 HP · 步弓兵 · 局内7:31\n查看\n反击 18人\n本波已记录最大一击 −175.2 HP · 冲车 · 受伤时↘ · 局内7:31\n查看\n反击 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-zh-Hans-800",
+      "pass": true,
+      "text": "城心上次实损 −15.2 HP · 步弓兵 · 局内7:31\n查看\n反击 18人\n本波已记录最大一击 −175.2 HP · 冲车 · 受伤时↘ · 局内7:31\n查看\n反击 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-zh-Hans-390",
+      "pass": true,
+      "text": "城心上次实损 −15.2 HP · 步弓兵 · 局内7:31\n查看\n反击 18人\n本波已记录最大一击 −175.2 HP · 冲车 · 受伤时↘ · 局内7:31\n查看\n反击 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-en-1440",
+      "pass": true,
+      "text": "Last core HP loss −15.2 · Archer · Game 7:31\nView\nAttack 18\nRecorded wave max hit −175.2 · Battering Ram · At impact ↘ · Game 7:31\nView\nAttack 18",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-en-1024",
+      "pass": true,
+      "text": "Last core HP loss −15.2 · Archer · Game 7:31\nView\nAttack 18\nRecorded wave max hit −175.2 · Battering Ram · At impact ↘ · Game 7:31\nView\nAttack 18",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-en-800",
+      "pass": true,
+      "text": "Last core HP loss −15.2 · Archer · Game 7:31\nView\nAttack 18\nRecorded wave max hit −175.2 · Battering Ram · At impact ↘ · Game 7:31\nView\nAttack 18",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-en-390",
+      "pass": true,
+      "text": "Last core HP loss −15.2 · Archer · Game 7:31\nView\nAttack 18\nRecorded wave max hit −175.2 · Battering Ram · At impact ↘ · Game 7:31\nView\nAttack 18",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-ja-1440",
+      "pass": true,
+      "text": "町の直近HP損失 −15.2 · 歩弓兵 · 経過7:31\n見る\n反撃 18人\nこの襲撃で記録した最大一撃 −175.2 · 破城槌 · 被弾時↘ · 経過7:31\n見る\n反撃 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-ja-1024",
+      "pass": true,
+      "text": "町の直近HP損失 −15.2 · 歩弓兵 · 経過7:31\n見る\n反撃 18人\nこの襲撃で記録した最大一撃 −175.2 · 破城槌 · 被弾時↘ · 経過7:31\n見る\n反撃 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-ja-800",
+      "pass": true,
+      "text": "町の直近HP損失 −15.2 · 歩弓兵 · 経過7:31\n見る\n反撃 18人\nこの襲撃で記録した最大一撃 −175.2 · 破城槌 · 被弾時↘ · 経過7:31\n見る\n反撃 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "四語視口來源操作及既有命令可見可點-ja-390",
+      "pass": true,
+      "text": "町の直近HP損失 −15.2 · 歩弓兵 · 経過7:31\n見る\n反撃 18人\nこの襲撃で記録した最大一撃 −175.2 · 破城槌 · 被弾時↘ · 経過7:31\n見る\n反撃 18人",
+      "inside": true,
+      "buttons": true,
+      "battleButtons": true
+    },
+    {
+      "name": "失視野即移除來源與停用其操作、另一筆保留",
+      "pass": true
+    },
+    {
+      "name": "本輪初始無紀錄、清空與各手勢均零額外HUD例外",
+      "pass": true,
+      "diagnosticsBeforeLoad": {
+        "events": 27,
+        "faults": 0,
+        "lastLoss": 15.199999999999818,
+        "uiFaults": 0
+      }
+    },
+    {
+      "name": "原生儲存與重新載入不重播舊來源或留下舊操作",
+      "pass": true
+    },
+    {
+      "name": "重新載入無紀錄狀態維持零額外HUD例外",
+      "pass": true,
+      "diagnosticsAfterLoad": {
+        "events": 0,
+        "faults": 0,
+        "lastLoss": null,
+        "uiFaults": 0
+      }
+    },
+    {
+      "name": "零瀏覽器程式錯誤",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "status": "PASS_NATIVE_INPUT_AND_CONTROLLED_GESTURE_BOUNDARIES"
+}

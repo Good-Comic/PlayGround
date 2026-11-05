@@ -1,0 +1,302 @@
+{
+  "source": "1456591db51ee4fb0cf6714ccb5dc6b645a33625",
+  "scope": "正常Continue原封A自然存檔先觀察真實命中，再明標CONTROLLED_FIXTURE直接原生500／20傷害與新增小來源以檢驗最大值／版面；不是玩家流程、攻擊距離／命中規則或勝敗驗收。",
+  "resumeSha256": "1d35c76c1b35c5b4e901019dec95c02426114b582b32a3b91b5d29202f5462e4",
+  "checks": [
+    {
+      "name": "before正式來源與完整資源雜湊",
+      "pass": true,
+      "verified": {
+        "commit": "955fceaadb781d9128a857636c0f20a4830ccc12",
+        "hash": "SHA256_MATCH_161_FILES"
+      }
+    },
+    {
+      "name": "before受控大傷後小傷夾具成立",
+      "pass": true,
+      "fixture": {
+        "classification": "CONTROLLED_NATIVE_DAMAGE_LARGE_THEN_SMALL_NOT_PLAYER_RESULT",
+        "bigLoss": 495.20000000000005,
+        "bigId": 130,
+        "smallId": 136,
+        "view": {
+          "loss": 15.200000000000045,
+          "at": 487.6406000000862,
+          "sourceId": 136,
+          "name": "長槍兵",
+          "direction": "↘"
+        }
+      }
+    },
+    {
+      "name": "Before只有最近小傷，未保留本波最大值",
+      "pass": true,
+      "hits": [
+        {
+          "before": 2239.494999999995,
+          "after": 2236.559999999995,
+          "loss": 2.9349999999999454,
+          "kind": "projectile",
+          "view": {
+            "loss": 2.9349999999999454,
+            "at": 487.6073000000862,
+            "sourceId": 130,
+            "name": "步弓兵",
+            "direction": null
+          }
+        },
+        {
+          "before": 2236.559999999995,
+          "after": 1741.359999999995,
+          "loss": 495.20000000000005,
+          "kind": "projectile",
+          "view": {
+            "loss": 495.20000000000005,
+            "at": 487.6406000000862,
+            "sourceId": 130,
+            "name": "步弓兵",
+            "direction": null
+          }
+        },
+        {
+          "before": 1741.359999999995,
+          "after": 1726.1599999999949,
+          "loss": 15.200000000000045,
+          "kind": "melee",
+          "view": {
+            "loss": 15.200000000000045,
+            "at": 487.6406000000862,
+            "sourceId": 136,
+            "name": "長槍兵",
+            "direction": "↘"
+          }
+        }
+      ]
+    },
+    {
+      "name": "after正式來源與完整資源雜湊",
+      "pass": true,
+      "verified": {
+        "commit": "1456591db51ee4fb0cf6714ccb5dc6b645a33625",
+        "hash": "SHA256_MATCH_161_FILES"
+      }
+    },
+    {
+      "name": "after受控大傷後小傷夾具成立",
+      "pass": true,
+      "fixture": {
+        "classification": "CONTROLLED_NATIVE_DAMAGE_LARGE_THEN_SMALL_NOT_PLAYER_RESULT",
+        "bigLoss": 495.20000000000005,
+        "bigId": 130,
+        "smallId": 136,
+        "view": {
+          "loss": 15.200000000000045,
+          "at": 487.5731000000857,
+          "sourceId": 136,
+          "name": "長槍兵",
+          "direction": "↘",
+          "peak": {
+            "loss": 495.20000000000005,
+            "at": 487.5731000000857,
+            "sourceId": 130,
+            "name": "步弓兵",
+            "direction": null
+          }
+        }
+      }
+    },
+    {
+      "name": "CONTROLLED_FIXTURE最近實損與最大一擊各自正確",
+      "pass": true,
+      "hit": {
+        "before": 1741.359999999995,
+        "after": 1726.1599999999949,
+        "loss": 15.200000000000045,
+        "kind": "melee",
+        "view": {
+          "loss": 15.200000000000045,
+          "at": 487.5731000000857,
+          "sourceId": 136,
+          "name": "長槍兵",
+          "direction": "↘",
+          "peak": {
+            "loss": 495.20000000000005,
+            "at": 487.5731000000857,
+            "sourceId": 130,
+            "name": "步弓兵",
+            "direction": null
+          }
+        }
+      },
+      "view": {
+        "loss": 15.200000000000045,
+        "at": 487.5731000000857,
+        "sourceId": 136,
+        "name": "長槍兵",
+        "direction": "↘",
+        "peak": {
+          "loss": 495.20000000000005,
+          "at": 487.5731000000857,
+          "sourceId": 130,
+          "name": "步弓兵",
+          "direction": null
+        }
+      }
+    },
+    {
+      "name": "正式畫面雙行區分最近與本波已記錄最高",
+      "pass": true,
+      "text": "城心上次實損 −15.2 HP · 長槍兵 · 受傷時↘ · 8:07\n本波已記錄最大一擊 −495.2 HP · 步弓兵 · 8:07"
+    },
+    {
+      "name": "CONTROLLED_FIXTURE凍結HUD查看不改模擬或RNG",
+      "pass": true,
+      "pure": {
+        "snapshot": true,
+        "rng": true,
+        "visual": true
+      }
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hant-1440",
+      "pass": true,
+      "text": "城心上次實損 −15.2 HP · 長槍兵 · 受傷時↘ · 8:07\n本波已記錄最大一擊 −495.2 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hant-1024",
+      "pass": true,
+      "text": "城心上次實損 −15.2 HP · 長槍兵 · 受傷時↘ · 8:07\n本波已記錄最大一擊 −495.2 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hant-800",
+      "pass": true,
+      "text": "城心上次實損 −15.2 HP · 長槍兵 · 受傷時↘ · 8:07\n本波已記錄最大一擊 −495.2 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hant-390",
+      "pass": true,
+      "text": "城心上次實損 −15.2 HP · 長槍兵 · 受傷時↘ · 8:07\n本波已記錄最大一擊 −495.2 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hans-1440",
+      "pass": true,
+      "text": "城心上次实损 −15.2 HP · 长枪兵 · 受伤时↘ · 8:07\n本波已记录最大一击 −495.2 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hans-1024",
+      "pass": true,
+      "text": "城心上次实损 −15.2 HP · 长枪兵 · 受伤时↘ · 8:07\n本波已记录最大一击 −495.2 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hans-800",
+      "pass": true,
+      "text": "城心上次实损 −15.2 HP · 长枪兵 · 受伤时↘ · 8:07\n本波已记录最大一击 −495.2 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hans-390",
+      "pass": true,
+      "text": "城心上次实损 −15.2 HP · 长枪兵 · 受伤时↘ · 8:07\n本波已记录最大一击 −495.2 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-en-1440",
+      "pass": true,
+      "text": "Last core HP loss −15.2 · Spearman · At impact ↘ · 8:07\nRecorded wave max hit −495.2 · Archer · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-en-1024",
+      "pass": true,
+      "text": "Last core HP loss −15.2 · Spearman · At impact ↘ · 8:07\nRecorded wave max hit −495.2 · Archer · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-en-800",
+      "pass": true,
+      "text": "Last core HP loss −15.2 · Spearman · At impact ↘ · 8:07\nRecorded wave max hit −495.2 · Archer · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-en-390",
+      "pass": true,
+      "text": "Last core HP loss −15.2 · Spearman · At impact ↘ · 8:07\nRecorded wave max hit −495.2 · Archer · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-ja-1440",
+      "pass": true,
+      "text": "町の直近HP損失 −15.2 · 槍兵 · 被弾時↘ · 8:07\nこの襲撃で記録した最大一撃 −495.2 · 歩弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-ja-1024",
+      "pass": true,
+      "text": "町の直近HP損失 −15.2 · 槍兵 · 被弾時↘ · 8:07\nこの襲撃で記録した最大一撃 −495.2 · 歩弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-ja-800",
+      "pass": true,
+      "text": "町の直近HP損失 −15.2 · 槍兵 · 被弾時↘ · 8:07\nこの襲撃で記録した最大一撃 −495.2 · 歩弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-ja-390",
+      "pass": true,
+      "text": "町の直近HP損失 −15.2 · 槍兵 · 被弾時↘ · 8:07\nこの襲撃で記録した最大一撃 −495.2 · 歩弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "CONTROLLED_FIXTURE最大來源失視野即清除，不影響另筆最新來源也不重追蹤",
+      "pass": true,
+      "independent": {
+        "lastId": 136,
+        "peakId": null,
+        "afterPeakId": null,
+        "expectedLast": 136
+      }
+    },
+    {
+      "name": "CONTROLLED_FIXTURE失去視野同一UI更新即移除身分／方向且不重追蹤",
+      "pass": true,
+      "hidden": {
+        "before": "城心上次實損 −15.2 HP · 長槍兵 · 受傷時↘ · 8:07\n本波已記錄最大一擊 −495.2 HP · 來源未確認 · 8:07",
+        "after": "城心上次實損 −15.2 HP · 來源未確認 · 8:07\n本波已記錄最大一擊 −495.2 HP · 來源未確認 · 8:07",
+        "restored": "城心上次實損 −15.2 HP · 來源未確認 · 8:07\n本波已記錄最大一擊 −495.2 HP · 來源未確認 · 8:07"
+      }
+    },
+    {
+      "name": "原生Save／Continue不重播舊受傷情報",
+      "pass": true
+    },
+    {
+      "name": "零瀏覽器程式錯誤",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "status": "PASS_NATIVE_HP_LOSS_AND_CONTROLLED_UI_BOUNDARIES"
+}

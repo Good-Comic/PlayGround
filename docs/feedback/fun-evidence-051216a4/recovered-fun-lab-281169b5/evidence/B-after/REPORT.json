@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "player": "B",
+  "round": "after",
+  "language": "zh-TW",
+  "perspective": "AI 模擬的一般休閒 RTS 玩家；非人類實測",
+  "mode": "透過正式 Continue 接續自己的自然快照，非全新十波",
+  "conditions": {
+    "fromOwnBeforeReport": {"civilization": "FRK", "difficulty": "Normal", "biome": "steppe", "seed": "FUN-LAB-BASE-281"},
+    "visibleAfter": {"biome": "草海平原", "age": "帝國時代", "day": "IV", "version": "6075dba"},
+    "modifiedSnapshot": false,
+    "informationSources": ["自己的 PROFILE.md", "自己的 before/REPORT.md", "public/README.md", "正常可見 UI、工具提示及截圖"],
+    "readHiddenState": false
+  },
+  "result": {
+    "status": "DEFEAT",
+    "wavesSurvived": 3,
+    "wavesTotal": 10,
+    "defeatWave": 4,
+    "kills": 80,
+    "resourcesGathered": 4438,
+    "cumulativeGameTime": "9:06",
+    "continueWallSeconds": 25.518,
+    "resultObservedWallSeconds": 126.009,
+    "continueToResultWallSeconds": 100.491,
+    "wallTimeIsGameTime": false,
+    "evidence": "screen-0012.png",
+    "finishExecutedBeforeReport": true,
+    "finishResponse": "ok: true"
+  },
+  "inputDiscipline": {
+    "maximumIntentRatePerMinute": 12,
+    "minimumRequiredSpacingSeconds": 5,
+    "minimumObservedSpacingSeconds": 15.712,
+    "inputs": [
+      {"wallSeconds": 25.518, "action": "按正常 Continue"},
+      {"wallSeconds": 63.607, "action": "按援護城心"},
+      {"wallSeconds": 79.319, "action": "按 E 神盾"},
+      {"wallSeconds": 107.170, "action": "按援護城心"},
+      {"wallSeconds": 125.344, "action": "右鍵最近所見東側衝車位置", "x": 883, "y": 405, "combatCommandEffectConfirmed": false}
+    ],
+    "microStyle": "整隊與簡單援護，偶爾英雄技能；沒有逐個拉扯、連點或巨集",
+    "maximumObservationGapDuringPlaySeconds": 28.009
+  },
+  "timeline": [
+    {"wallSeconds": 28.844, "sinceContinueSeconds": 3.326, "wave": 4, "corePercentText": 89, "enemies": 0, "selectedSoldiers": 18, "allSoldiers": 18, "commandSummary": "18 人護衛城鎮中心", "visibleTarget": "己方城鎮中心", "evidence": "screen-0006.png"},
+    {"wallSeconds": 51.405, "sinceContinueSeconds": 25.887, "wave": 4, "corePercentText": 85, "enemies": 8, "selectedSoldiers": 17, "allSoldiers": 18, "commandSummary": "17 人護衛城鎮中心", "visibleThreat": "城心東側兩輛衝車及敵軍", "evidence": "screen-0007.png"},
+    {"wallSeconds": 70.719, "sinceContinueSeconds": 45.201, "wave": 4, "corePercentText": 83, "enemies": 4, "selectedSoldiers": 17, "allSoldiers": 18, "commandSummary": "17 人護衛城鎮中心", "evidence": "screen-0008.png"},
+    {"wallSeconds": 86.259, "sinceContinueSeconds": 60.741, "wave": 4, "corePercentText": 83, "enemies": 17, "selectedSoldiers": 17, "allSoldiers": 19, "commandSummary": "13 人護衛城鎮中心 · 4 人自主接敵", "visibleThreat": "城心東、南側衝車與密集單位", "evidence": "screen-0009.png"},
+    {"wallSeconds": 114.268, "sinceContinueSeconds": 88.750, "wave": 4, "corePercentText": 17, "corePercentScreenshotApproximate": 21, "enemies": 12, "selectedSoldiers": 17, "allSoldiers": 17, "selectedHealthText": "1791/1896", "commandSummary": "17 人護衛城鎮中心", "visibleThreat": "城心東側衝車及城心受擊", "captureTimingNote": "同次可見文字與圖片擷取有短暫時間差", "evidence": "screen-0010.png"},
+    {"wallSeconds": 126.009, "sinceContinueSeconds": 100.491, "event": "正式戰敗結算", "evidence": "screen-0012.png"}
+  ],
+  "newInterfaceAssessment": {
+    "selectionCoverage": {"evaluated": true, "observation": "17/18 與 17/19 直接說明目前選取未涵蓋全軍", "evidence": ["screen-0007.png", "screen-0009.png"]},
+    "currentCommandAndVisibleTarget": {"evaluated": true, "observation": "18/18 時為 18 人護衛城鎮中心；之後可分辨 13 人護衛與 4 人自主接敵。城心是可見己方目標。", "evidence": ["screen-0006.png", "screen-0009.png"]},
+    "intentMismatch": {"status": "未評估", "reason": "沒有故意誤點；最後右鍵後已結算，未取得新攻擊摘要。援護後延後觀察到護衛，不足以判中間命令故障。"},
+    "manualFocusMarker": {"status": "未評估", "reason": "沒有在存活戰局中確認人工集火標示；原生輸入成功回應不代表遊戲攻擊命令、命中或勝利。"},
+    "automationClaim": false,
+    "successGuaranteeClaim": false
+  },
+  "funMoments": [
+    {"wallSeconds": 28.844, "category": ["指揮回饋", "可讀性"], "observation": "18/18 與護衛城心讓我容易對照整隊正在做什麼，有掌控感；不是戰術效果證明。", "evidence": ["screen-0006.png"]},
+    {"wallSecondsStart": 51.405, "wallSecondsEnd": 70.719, "category": ["短期戰鬥回饋"], "observation": "敵數 8 到 4、城心約 85% 到 83%，一度感到壓力減輕；不能全歸因於援護。", "evidence": ["screen-0007.png", "screen-0008.png"]}
+  ],
+  "boringMoments": [
+    {"wallSeconds": 28.844, "category": ["短暫等待", "節奏"], "observation": "初次續玩畫面零敵、滿血軍隊護城，暫時以觀察等待為主；不能說到下一觀察前都零敵。", "evidence": ["screen-0006.png", "screen-0007.png"]}
+  ],
+  "frustratingMoments": [
+    {"wallSeconds": 86.259, "category": ["戰鬥可讀性", "目標關係"], "observation": "摘要能區分護衛與自主接敵，但屋頂及兩側聚團仍使我難快速說出誰在打哪輛衝車；未判尋路或攻擊故障。", "evidence": ["screen-0009.png"]},
+    {"wallSecondsStart": 86.259, "wallSecondsEnd": 126.009, "category": ["威脅辨識", "注意力", "玩家補救延遲"], "observation": "城心 83% 快速跌到約兩成再失守，17 名已選士兵仍大多健康；我手動處理太晚，沒有刷新先前不完整的選取。", "evidence": ["screen-0009.png", "screen-0010.png", "screen-0012.png"]}
+  ],
+  "momentEvidenceLimit": "續玩約 100 秒，僅有趣 2 項、淡場 1 項、挫折 2 項有獨立依據；不足三項者保留缺額，未重算 before 事件。",
+  "improvements": [
+    {"proposal": "保留選取/全軍格式，數量不同時試用溫和色差", "gddCompatibility": "待根代理核實", "risk": "補兵頻繁時提示閃動並吸走注意力", "validation": "相同可見補兵情境，測選取覆蓋理解、是否誤認分母全收到同命令及提示忽略率；不自動選兵"},
+    {"proposal": "護衛/自主接敵摘要旁補簡短可見交戰目標資訊；先核對目前人工集火功能", "gddCompatibility": "待核實", "risk": "擁擠、目標頻繁變動或霧中資訊洩漏", "validation": "只用可見目標，讓玩家對照哪組護衛、哪組接敵與實際目標；不可在無可見目標時列隱藏敵軍"},
+    {"proposal": "加強城心已發生傷害的方向及可見攻城威脅提示", "gddCompatibility": "待核實", "risk": "多路攻擊告警過量或忽略其他敵人", "validation": "相同可見情境比較辨識傷害來源時間、受攻方向與下一命令理解；不以輸贏單獨判成功"}
+  ],
+  "beforeAfterUse": {
+    "before": "完整開局至第四波戰敗，3/10；前報告提到選12/全軍17卻忘記重選",
+    "after": "自然快照聚焦續玩至第四波戰敗，3/10；新摘要更直接顯示17/18、17/19與當前命令",
+    "causalConclusion": "不能宣稱改善勝率；起點、記憶、注意力與操作不同，8:57與9:06不可當因果改善秒數"
+  },
+  "replayWillingness": {
+    "decision": "有條件願意再玩，立即重開意願偏低",
+    "positive": "摘要提高掌控感",
+    "negative": "本輪未取得守住一波的新回饋，健康軍隊與城心失守的落差仍挫折",
+    "unverifiedNextPlayThought": "更早處理已看見的衝車，不是已驗證最佳打法",
+    "humanRetentionEvidence": false
+  },
+  "limitations": [
+    "只觀察約100秒第四波片段，未評估後六波與長期構築",
+    "未確認人工集火標示與明確誤點恢復",
+    "控制器恢復前兩次observe逾時，當時尚未Continue，不列遊戲失敗",
+    "工具往返、閱讀與至少5秒意圖間隔影響反應",
+    "沒有真人資料，不能下平衡或留存結論"
+  ]
+}

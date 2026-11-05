@@ -1,0 +1,677 @@
+✖ 同tick同來源同值的每次真正扣血都有不同、不透明且不可改的事件身分 (25.66851ms)
+✖ last與peak各綁各自事件及同名實體；原生完整命令只送向所選行一次 (10.883412ms)
+✖ 過期last即使保留為peak也不能悄改行別；偽造token與action一律拒絕 (7.518601ms)
+✖ 憑證只可用一次，偽造、取消、重複啟用都不能重送或退回移動 (5.908697ms)
+✖ 啟用前same-source-hit改變即取消，不下錯令且不動快照與兩種RNG (7.32827ms)
+✖ 啟用前same-name-hit改變即取消，不下錯令且不動快照與兩種RNG (6.635724ms)
+✖ 啟用前world改變即取消，不下錯令且不動快照與兩種RNG (6.66665ms)
+✖ 啟用前wave改變即取消，不下錯令且不動快照與兩種RNG (7.556587ms)
+✖ 啟用前restore改變即取消，不下錯令且不動快照與兩種RNG (7.17288ms)
+✖ 啟用前newRun改變即取消，不下錯令且不動快照與兩種RNG (6.42398ms)
+✖ 啟用前selection-count改變即取消，不下錯令且不動快照與兩種RNG (4.783231ms)
+✖ 啟用前selection-entity改變即取消，不下錯令且不動快照與兩種RNG (6.007854ms)
+✖ 啟用前selection-order改變即取消，不下錯令且不動快照與兩種RNG (7.037278ms)
+✖ 啟用前hero改變即取消，不下錯令且不動快照與兩種RNG (11.567545ms)
+✖ 啟用前order改變即取消，不下錯令且不動快照與兩種RNG (6.300748ms)
+✖ 啟用前phase改變即取消，不下錯令且不動快照與兩種RNG (4.662933ms)
+✖ 啟用前pause改變即取消，不下錯令且不動快照與兩種RNG (3.916157ms)
+✖ 啟用前blocked改變即取消，不下錯令且不動快照與兩種RNG (2.793736ms)
+✖ 啟用前placement改變即取消，不下錯令且不動快照與兩種RNG (3.180999ms)
+✖ 啟用前menu改變即取消，不下錯令且不動快照與兩種RNG (2.896107ms)
+✖ 啟用前dead改變即取消，不下錯令且不動快照與兩種RNG (4.651497ms)
+✖ 啟用前unseen改變即取消，不下錯令且不動快照與兩種RNG (2.871351ms)
+✖ 啟用前same-id-replacement改變即取消，不下錯令且不動快照與兩種RNG (2.887574ms)
+✖ 啟用前core-replacement改變即取消，不下錯令且不動快照與兩種RNG (5.301007ms)
+✖ 驗證發現中途改變後永久取消，改回相同選兵也不能復活舊憑證 (6.650185ms)
+✖ 已失視野事件永久去身分，後來再見或同名新敵都不能重新辨認 (4.034513ms)
+✖ 本來未知的來源不建立入口，微量與同顯示精度最大值仍只顯一行 (3.64044ms)
+✖ 空選能查看，混選／英雄直控／非正式戰士不能反擊；查看不偷切模式 (4.519991ms)
+✖ 大量view與capture／validate／cancel完全不查原生pick、Canvas，不動快照及兩種RNG (3.221499ms)
+✖ 無Canvas可用點或無原生命中點均不發令、不清原模式；第一點被擋可查後續合法點 (2.991819ms)
+✖ 合法反擊與同點原生右鍵的完整快照及全部命令欄位相同 (6.326957ms)
+✖ 反擊沒有持續工作，後續原生移動、停止、護衛立即覆蓋而不重送 (2.867815ms)
+✖ 查看只動原生相機目標，沒有兵、按鍵、命令、HP、資源或兩種RNG副作用 (3.059049ms)
+✖ 原生攻擊與相機異常原樣傳出，憑證已消耗；UI失敗不攔截致命傷害 (2.827997ms)
+✖ HUD固定節點、零選兵仍可查看，讀取／hover／focus及更新不做pick或Canvas查詢 (4.245916ms)
+✖ HUD按下後新傷到達取消，按下前顯示舊事件亦拒絕；不偷偷換最新行 (2.996205ms)
+✖ HUD來源失效不受節流，立即移除名稱、方向、按鈕身份與完整tooltip (2.845642ms)
+✖ HUD Enter與Space保留native啟用，repeat不再發令，Tab保留導航並阻擋全域hero快捷鍵 (3.825564ms)
+✖ HUD未完成操作遇到blur即取消，改回亦不自動重送 (2.855507ms)
+✖ HUD未完成操作遇到pointercancel即取消，改回亦不自動重送 (2.652026ms)
+✖ HUD未完成操作遇到window-blur即取消，改回亦不自動重送 (2.615852ms)
+✖ HUD未完成操作遇到military-key即取消，改回亦不自動重送 (2.663002ms)
+✖ HUD未完成操作遇到selection-change即取消，改回亦不自動重送 (3.204053ms)
+✖ HUD未完成操作遇到phase-change即取消，改回亦不自動重送 (3.067291ms)
+✖ HUD未完成操作遇到blocked即取消，改回亦不自動重送 (3.513171ms)
+✖ HUD canPoint限CSS視口及renderer.canvas；UI全擋不fallback，第一點被擋可用後續點 (2.736321ms)
+✖ HUD同顯示精度peak隱藏無入口；新事件與選兵人數同步且固定focus節點 (3.028454ms)
+✖ 四語提供完整入口、失效原因、實際人數、事件局內時間與tooltip (3.141832ms)
+ℹ tests 48
+ℹ suites 0
+ℹ pass 0
+ℹ fail 48
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3614.058657
+
+✖ failing tests:
+
+test at tests/source-event-actions.test.mjs:39:1
+✖ 同tick同來源同值的每次真正扣血都有不同、不透明且不可改的事件身分 (25.66851ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(first.token)
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:42:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/source-event-actions.test.mjs:48:1
+✖ last與peak各綁各自事件及同名實體；原生完整命令只送向所選行一次 (10.883412ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to:
+  
+  undefined
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:52:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/source-event-actions.test.mjs:61:1
+✖ 過期last即使保留為peak也不能悄改行別；偽造token與action一律拒絕 (7.518601ms)
+  TypeError: f.observer.captureAction is not a function
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:64:55)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:70:1
+✖ 憑證只可用一次，偽造、取消、重複啟用都不能重送或退回移動 (5.908697ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:71:68)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前same-source-hit改變即取消，不下錯令且不動快照與兩種RNG (7.32827ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前same-name-hit改變即取消，不下錯令且不動快照與兩種RNG (6.635724ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前world改變即取消，不下錯令且不動快照與兩種RNG (6.66665ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前wave改變即取消，不下錯令且不動快照與兩種RNG (7.556587ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前restore改變即取消，不下錯令且不動快照與兩種RNG (7.17288ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前newRun改變即取消，不下錯令且不動快照與兩種RNG (6.42398ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前selection-count改變即取消，不下錯令且不動快照與兩種RNG (4.783231ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前selection-entity改變即取消，不下錯令且不動快照與兩種RNG (6.007854ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前selection-order改變即取消，不下錯令且不動快照與兩種RNG (7.037278ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前hero改變即取消，不下錯令且不動快照與兩種RNG (11.567545ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前order改變即取消，不下錯令且不動快照與兩種RNG (6.300748ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前phase改變即取消，不下錯令且不動快照與兩種RNG (4.662933ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前pause改變即取消，不下錯令且不動快照與兩種RNG (3.916157ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前blocked改變即取消，不下錯令且不動快照與兩種RNG (2.793736ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前placement改變即取消，不下錯令且不動快照與兩種RNG (3.180999ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前menu改變即取消，不下錯令且不動快照與兩種RNG (2.896107ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前dead改變即取消，不下錯令且不動快照與兩種RNG (4.651497ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前unseen改變即取消，不下錯令且不動快照與兩種RNG (2.871351ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前same-id-replacement改變即取消，不下錯令且不動快照與兩種RNG (2.887574ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:81:3
+✖ 啟用前core-replacement改變即取消，不下錯令且不動快照與兩種RNG (5.301007ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:82:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:110:1
+✖ 驗證發現中途改變後永久取消，改回相同選兵也不能復活舊憑證 (6.650185ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:111:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:116:1
+✖ 已失視野事件永久去身分，後來再見或同名新敵都不能重新辨認 (4.034513ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:117:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:126:1
+✖ 本來未知的來源不建立入口，微量與同顯示精度最大值仍只顯一行 (3.64044ms)
+  TypeError: f.observer.captureAction is not a function
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:128:55)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:133:1
+✖ 空選能查看，混選／英雄直控／非正式戰士不能反擊；查看不偷切模式 (4.519991ms)
+  TypeError: f.observer.captureAction is not a function
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:143:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:153:1
+✖ 大量view與capture／validate／cancel完全不查原生pick、Canvas，不動快照及兩種RNG (3.221499ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:157:19)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:164:1
+✖ 無Canvas可用點或無原生命中點均不發令、不清原模式；第一點被擋可查後續合法點 (2.991819ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:168:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:174:1
+✖ 合法反擊與同點原生右鍵的完整快照及全部命令欄位相同 (6.326957ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:182:42)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:187:1
+✖ 反擊沒有持續工作，後續原生移動、停止、護衛立即覆蓋而不重送 (2.867815ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:189:73)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:199:1
+✖ 查看只動原生相機目標，沒有兵、按鍵、命令、HP、資源或兩種RNG副作用 (3.059049ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:202:44)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:207:1
+✖ 原生攻擊與相機異常原樣傳出，憑證已消耗；UI失敗不攔截致命傷害 (2.827997ms)
+  TypeError: f.observer.captureAction is not a function
+      at capture (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:26:29)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:209:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:251:1
+✖ HUD固定節點、零選兵仍可查看，讀取／hover／focus及更新不做pick或Canvas查詢 (4.245916ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(view)
+  
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:253:10
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:251:64)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/source-event-actions.test.mjs:260:1
+✖ HUD按下後新傷到達取消，按下前顯示舊事件亦拒絕；不偷偷換最新行 (2.996205ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:262:10
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:260:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:270:1
+✖ HUD來源失效不受節流，立即移除名稱、方向、按鈕身份與完整tooltip (2.845642ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:272:10
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:270:52)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:278:1
+✖ HUD Enter與Space保留native啟用，repeat不再發令，Tab保留導航並阻擋全域hero快捷鍵 (3.825564ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:281:25
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:278:72)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:292:3
+✖ HUD未完成操作遇到blur即取消，改回亦不自動重送 (2.855507ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:294:12
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:292:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:292:3
+✖ HUD未完成操作遇到pointercancel即取消，改回亦不自動重送 (2.652026ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:294:12
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:292:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:292:3
+✖ HUD未完成操作遇到window-blur即取消，改回亦不自動重送 (2.615852ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:294:12
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:292:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:292:3
+✖ HUD未完成操作遇到military-key即取消，改回亦不自動重送 (2.663002ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:294:12
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:292:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:292:3
+✖ HUD未完成操作遇到selection-change即取消，改回亦不自動重送 (3.204053ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:294:12
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:292:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:292:3
+✖ HUD未完成操作遇到phase-change即取消，改回亦不自動重送 (3.067291ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:294:12
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:292:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:292:3
+✖ HUD未完成操作遇到blocked即取消，改回亦不自動重送 (3.513171ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:294:12
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:292:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:305:1
+✖ HUD canPoint限CSS視口及renderer.canvas；UI全擋不fallback，第一點被擋可用後續點 (2.736321ms)
+  TypeError: Cannot read properties of undefined (reading 'fire')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:311:12
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:306:55)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:318:1
+✖ HUD同顯示精度peak隱藏無入口；新事件與選兵人數同步且固定focus節點 (3.028454ms)
+  TypeError: Cannot read properties of undefined (reading 'hidden')
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:320:97
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:318:54)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/source-event-actions.test.mjs:326:1
+✖ 四語提供完整入口、失效原因、實際人數、事件局內時間與tooltip (3.141832ms)
+  AssertionError [ERR_ASSERTION]: zh-Hant:time
+      at file:///workspace/PlayGround/tests/source-event-actions.test.mjs:330:151
+      at usingMount (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:248:59)
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/source-event-actions.test.mjs:326:49)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,116 @@
+來源：先前工具回傳逐字轉存；初次直接執行沒有直接導向檔案。
+Provenance: copied verbatim from the earlier tool response; the initial direct run was not redirected to a file.
+COMMAND: node tests/manual-target.test.mjs
+EXIT_CODE: 1
+
+✔ 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入 (22.164277ms)
+✔ 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照 (11.807793ms)
+✔ 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致 (15.36509ms)
+✔ 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵 (6.42974ms)
+✔ 重複選取同戰士只計一個實體，仍只發送一次原生命令 (4.947325ms)
+✔ 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍 (65.113669ms)
+✔ 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士 (4.070637ms)
+✔ 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野 (29.155558ms)
+✔ 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機 (23.416441ms)
+✔ 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令 (3.584122ms)
+✔ 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定 (3.371572ms)
+✔ 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照 (4.145949ms)
+✖ 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動 (4.712257ms)
+✔ 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動 (3.844983ms)
+✔ 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令 (3.101202ms)
+✔ 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令 (3.131347ms)
+✔ 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標 (5.657807ms)
+✔ 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看 (7.81478ms)
+✔ 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心 (3.880495ms)
+✔ 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義 (2.911651ms)
+✔ 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放 (5.684577ms)
+✔ 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點 (3.040241ms)
+✔ 查看找不到free spot完全不動相機、不下命令、不清armed模式 (3.789592ms)
+✔ 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置 (4.077908ms)
+✔ 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode (7.165068ms)
+✔ 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG (3.859515ms)
+✔ 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機 (23.73279ms)
+✔ 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位 (7.14577ms)
+✔ 原生focusAt例外傳出，不發令或建立持續相機工作 (5.076346ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3597.717587
+
+✖ failing tests:
+
+test at tests/manual-target.test.mjs:206:1
+✖ 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動 (4.712257ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be reference-equal to "expected":
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      aegisCd: 0,
+      alive: true,
+      armor: 10,
+      attack: 8,
+  ...
+      convertResist: false,
+  +   cooldown: 0.3851720249280334,
+  -   cooldown: 0.04078065939247608,
+      deathAnim: 0,
+      duel: false,
+      eventAttackSpeedMul: 1,
+      eventFireCd: 0,
+      eventFlags: [],
+  ...
+      guardOrigin: {
+  +     x: 27.4,
+  -     x: 28.4,
+        y: 25.3
+      },
+      hero: false,
+      hitFlash: 0,
+      hold: false,
+      hp: 60,
+  +   id: 20,
+  +   idleTimer: 0.3875502021983266,
+  -   id: 21,
+  -   idleTimer: 0.8997230397071689,
+      kind: 'unit',
+      manualAttack: false,
+      markCd: 0,
+      marked: 0,
+      maxHp: 60,
+  ...
+      rescueUsed: false,
+  +   retargetTimer: 0.2513521034270525,
+  -   retargetTimer: 0.2618013255298138,
+      selected: false,
+      shield: 0,
+      shieldTime: 0,
+      shots: 0,
+      slowUntil: 0,
+  ...
+      visualDirection: 'SE',
+  +   walkPhase: 0.07589233523234726,
+  +   x: 27.4,
+  -   walkPhase: 5.528120238184929,
+  -   x: 28.4,
+      y: 25.3
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/manual-target.test.mjs:209:53)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

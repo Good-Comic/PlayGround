@@ -1,0 +1,1729 @@
+✖ 原生defeat後直接技能不再施放、消耗冷卻或發出成功聲光 (42.906981ms)
+✖ 原生defeat後既有命令介面不改盾、標記、軍令或預留資源 (23.025557ms)
+✖ 原生defeat後軍事生產不新增佇列或支付費用 (12.022112ms)
+✖ 原生victory後直接技能不再施放、消耗冷卻或發出成功聲光 (18.208738ms)
+✖ 原生victory後既有命令介面不改盾、標記、軍令或預留資源 (15.731142ms)
+✖ 原生victory後軍事生產不新增佇列或支付費用 (9.756689ms)
+✔ prep與wave仍沿原生神盾、標記及正式冷卻，未改任何技能數值 (12.661719ms)
+✔ 正常新局及正式NG+初始化後仍能主動使用技能，結算防線不永久鎖住控制 (15.907202ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 2
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3516.692499
+
+✖ failing tests:
+
+test at tests/terminal-orders.test.mjs:30:3
+✖ 原生defeat後直接技能不再施放、消耗冷卻或發出成功聲光 (42.906981ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      events: [
+        {
+          args: [],
+          sound: 'defeat'
+        },
+  +     {
+  +       args: [],
+  +       sound: 'heroAegis'
+  +     },
+  +     {
+  +       args: [],
+  +       sound: 'heroMark'
+  +     }
+      ],
+      heroControl: false,
+  +   markers: [
+  +     {
+  +       hostile: true,
+  +       life: 0.8,
+  +       maxLife: 0.8,
+  +       x: 27.4,
+  +       y: 23.3
+  +     }
+  +   ],
+  -   markers: [],
+      orderMode: null,
+      particles: [
+        {
+          color: 'rgba(178,64,49,ALPHA)',
+          kind: 'spark',
+  ...
+        },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7044159773364664,
+  +       maxLife: 0.8,
+  +       size: 2.3715482022380456,
+  +       vx: 0.6034708171149588,
+  +       vy: -0.3748325807798044,
+  +       vz: -0.8443712750449777,
+  +       x: 25.41453130338341,
+  +       y: 23.28681882750243,
+  +       z: 16.51617484819144
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.9636973783746363,
+  +       maxLife: 0.8,
+  +       size: 3.39583711582236,
+  +       vx: -0.6345421625814756,
+  +       vy: -0.8305820134931493,
+  +       vz: -7.424211665522307,
+  +       x: 25.38933221590705,
+  +       y: 23.227940353238957,
+  +       z: 10.182675852440298
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7630922181159259,
+  +       maxLife: 0.8,
+  +       size: 2.549487634387333,
+  +       vx: 1.6131528530365788,
+  +       vy: -0.05699239618631429,
+  +       vz: 11.808352535124868,
+  +       x: 25.368270322540774,
+  +       y: 23.270793460309505,
+  +       z: 15.812241352163255
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 1.0262584286555647,
+  +       maxLife: 0.8,
+  +       size: 1.8211605343385597,
+  +       vx: 1.0079093105632018,
+  +       vy: 0.495054229956159,
+  +       vz: -5.470763911027461,
+  +       x: 25.442774982843545,
+  +       y: 23.200212390627712,
+  +       z: 10.599506748840213
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.9124862924590706,
+  +       maxLife: 0.8,
+  +       size: 1.7558882150333375,
+  +       vx: 0.28708733542939197,
+  +       vy: 0.431783900058593,
+  +       vz: 7.201910588890314,
+  +       x: 25.426009896397588,
+  +       y: 23.33471463536844,
+  +       z: 13.828121235594153
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7509164671972395,
+  +       maxLife: 0.8,
+  +       size: 1.9918928717379458,
+  +       vx: -0.05047526571225377,
+  +       vy: 0.5107224413818793,
+  +       vz: 11.705356030259281,
+  +       x: 25.33754919497296,
+  +       y: 23.37521401708946,
+  +       z: 9.225306478329003
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7240027457475663,
+  +       maxLife: 0.8,
+  +       size: 1.782662682235241,
+  +       vx: -0.014903461539855015,
+  +       vy: -1.6699804942483205,
+  +       vz: -10.149065526667982,
+  +       x: 25.4685425165575,
+  +       y: 23.27258481839672,
+  +       z: 8.295816426165402
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 1.0382453455775977,
+  +       maxLife: 0.8,
+  +       size: 3.4829904523212463,
+  +       vx: -0.031107882116154985,
+  +       vy: -0.5842029246330351,
+  +       vz: -8.019849688746035,
+  +       x: 25.466138724377377,
+  +       y: 23.222553638974205,
+  +       z: 10.366676189936697
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7492453289404511,
+  +       maxLife: 0.8,
+  +       size: 2.414614664390683,
+  +       vx: 0.2518480100142711,
+  +       vy: 0.36305451060047383,
+  +       vz: -5.76320970710367,
+  +       x: 25.370999309932813,
+  +       y: 23.219409987377002,
+  +       z: 9.280699176713824
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6799730073660613,
+  +       maxLife: 0.8,
+  +       size: 2.0209418689482845,
+  +       vx: 0.5684540821506581,
+  +       vy: -0.25240371037658593,
+  +       vz: 12.328788437414914,
+  +       x: 25.339835275243967,
+  +       y: 23.277025652071462,
+  +       z: 17.25947315338999
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.984201372638345,
+  +       maxLife: 0.8,
+  +       size: 2.711399924592115,
+  +       vx: -0.5838055462799097,
+  +       vy: -0.17241185976431192,
+  +       vz: -1.7067602793686092,
+  +       x: 25.410355762531978,
+  +       y: 23.21847206950188,
+  +       z: 18.836401257663965
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.766751764304936,
+  +       maxLife: 0.8,
+  +       size: 2.0910628778510727,
+  +       vx: -0.20896173291876718,
+  +       vy: -0.9982227679387232,
+  +       vz: -9.50989523716271,
+  +       x: 25.422011136962098,
+  +       y: 23.224903462687507,
+  +       z: 19.367431153543293
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6225690585002304,
+  +       maxLife: 0.6,
+  +       size: 1.4658138526044784,
+  +       vx: 0.7641982452609167,
+  +       vy: -0.805467504893438,
+  +       vz: 6.763715894892812,
+  +       x: 27.315520741371436,
+  +       y: 23.303884777706116,
+  +       z: 8.672286754474044
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6891360133700072,
+  +       maxLife: 0.6,
+  +       size: 1.892455599857494,
+  +       vx: 0.9901964782214977,
+  +       vy: -0.7716255147311771,
+  +       vz: 4.208510147407651,
+  +       x: 27.386079792678355,
+  +       y: 23.346510108653458,
+  +       z: 19.968327428214252
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.5290597353503108,
+  +       maxLife: 0.6,
+  +       size: 1.1818411750532685,
+  +       vx: -0.9858824041096852,
+  +       vy: -1.236562101864388,
+  +       vz: -3.644709741231054,
+  +       x: 27.36187595874071,
+  +       y: 23.223059914074838,
+  +       z: 8.10717657674104
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7691658118832856,
+  +       maxLife: 0.6,
+  +       size: 1.8158591021550818,
+  +       vx: -0.44322280259145275,
+  +       vy: 0.4932787346008854,
+  +       vz: 16.245507082901895,
+  +       x: 27.38614831538871,
+  +       y: 23.288051784504205,
+  +       z: 17.42229305859655
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6194172311481089,
+  +       maxLife: 0.6,
+  +       size: 1.7293321534711865,
+  +       vx: -0.48076988668870213,
+  +       vy: -0.9285266216439167,
+  +       vz: 0.5627981987781823,
+  +       x: 27.306618020823223,
+  +       y: 23.25795564837754,
+  +       z: 12.164339794777334
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7762595417629927,
+  +       maxLife: 0.6,
+  +       size: 1.2933211049996316,
+  +       vx: 0.7536418869726905,
+  +       vy: 0.4452729035089625,
+  +       vz: -6.277985512744635,
+  +       x: 27.43929004129022,
+  +       y: 23.24152644434944,
+  +       z: 16.58069682493806
+  +     }
+      ],
+      selection: [
+        15
+      ],
+      snapshot: {
+  ...
+            retargetTimer: 0.007161294668912888,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.20385914444923403,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.22003318555653095,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.5046410601586103,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+          {
+  +         aegisCd: 60,
+  -         aegisCd: 0,
+            alive: true,
+            armor: 8,
+            attack: 18,
+            attackAnim: 0,
+            baseMaxHp: 520,
+  ...
+            manualAttack: false,
+  +         markCd: 30,
+  -         markCd: 0,
+            marked: 0,
+            maxHp: 520,
+            pop: 0,
+            rageStage: 0,
+            rescueUsed: false,
+            retargetTimer: 0.5713459122925997,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            markCd: 0,
+  +         marked: 6,
+  -         marked: 0,
+            maxHp: 60,
+            pop: 1,
+            rageStage: 0,
+            rescueUsed: false,
+            retargetTimer: 0.2513521034270525,
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/terminal-orders.test.mjs:33:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/terminal-orders.test.mjs:36:3
+✖ 原生defeat後既有命令介面不改盾、標記、軍令或預留資源 (23.025557ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      events: [
+        {
+          args: [],
+          sound: 'defeat'
+        },
+  +     {
+  +       args: [],
+  +       sound: 'heroAegis'
+  +     },
+  +     {
+  +       args: [],
+  +       sound: 'heroMark'
+  +     },
+  +     {
+  +       args: [],
+  +       sound: 'command'
+  +     },
+  +     {
+  +       args: [],
+  +       sound: 'command'
+  +     }
+      ],
+  +   heroControl: true,
+  +   markers: [
+  +     {
+  +       hostile: true,
+  +       life: 0.8,
+  +       maxLife: 0.8,
+  +       x: 27.4,
+  +       y: 23.3
+  +     }
+  +   ],
+  -   heroControl: false,
+  -   markers: [],
+      orderMode: null,
+      particles: [
+        {
+          color: 'rgba(178,64,49,ALPHA)',
+          kind: 'spark',
+  ...
+        },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7044159773364664,
+  +       maxLife: 0.8,
+  +       size: 2.3715482022380456,
+  +       vx: 0.6034708171149588,
+  +       vy: -0.3748325807798044,
+  +       vz: -0.8443712750449777,
+  +       x: 25.41453130338341,
+  +       y: 23.28681882750243,
+  +       z: 16.51617484819144
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.9636973783746363,
+  +       maxLife: 0.8,
+  +       size: 3.39583711582236,
+  +       vx: -0.6345421625814756,
+  +       vy: -0.8305820134931493,
+  +       vz: -7.424211665522307,
+  +       x: 25.38933221590705,
+  +       y: 23.227940353238957,
+  +       z: 10.182675852440298
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7630922181159259,
+  +       maxLife: 0.8,
+  +       size: 2.549487634387333,
+  +       vx: 1.6131528530365788,
+  +       vy: -0.05699239618631429,
+  +       vz: 11.808352535124868,
+  +       x: 25.368270322540774,
+  +       y: 23.270793460309505,
+  +       z: 15.812241352163255
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 1.0262584286555647,
+  +       maxLife: 0.8,
+  +       size: 1.8211605343385597,
+  +       vx: 1.0079093105632018,
+  +       vy: 0.495054229956159,
+  +       vz: -5.470763911027461,
+  +       x: 25.442774982843545,
+  +       y: 23.200212390627712,
+  +       z: 10.599506748840213
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.9124862924590706,
+  +       maxLife: 0.8,
+  +       size: 1.7558882150333375,
+  +       vx: 0.28708733542939197,
+  +       vy: 0.431783900058593,
+  +       vz: 7.201910588890314,
+  +       x: 25.426009896397588,
+  +       y: 23.33471463536844,
+  +       z: 13.828121235594153
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7509164671972395,
+  +       maxLife: 0.8,
+  +       size: 1.9918928717379458,
+  +       vx: -0.05047526571225377,
+  +       vy: 0.5107224413818793,
+  +       vz: 11.705356030259281,
+  +       x: 25.33754919497296,
+  +       y: 23.37521401708946,
+  +       z: 9.225306478329003
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7240027457475663,
+  +       maxLife: 0.8,
+  +       size: 1.782662682235241,
+  +       vx: -0.014903461539855015,
+  +       vy: -1.6699804942483205,
+  +       vz: -10.149065526667982,
+  +       x: 25.4685425165575,
+  +       y: 23.27258481839672,
+  +       z: 8.295816426165402
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 1.0382453455775977,
+  +       maxLife: 0.8,
+  +       size: 3.4829904523212463,
+  +       vx: -0.031107882116154985,
+  +       vy: -0.5842029246330351,
+  +       vz: -8.019849688746035,
+  +       x: 25.466138724377377,
+  +       y: 23.222553638974205,
+  +       z: 10.366676189936697
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7492453289404511,
+  +       maxLife: 0.8,
+  +       size: 2.414614664390683,
+  +       vx: 0.2518480100142711,
+  +       vy: 0.36305451060047383,
+  +       vz: -5.76320970710367,
+  +       x: 25.370999309932813,
+  +       y: 23.219409987377002,
+  +       z: 9.280699176713824
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6799730073660613,
+  +       maxLife: 0.8,
+  +       size: 2.0209418689482845,
+  +       vx: 0.5684540821506581,
+  +       vy: -0.25240371037658593,
+  +       vz: 12.328788437414914,
+  +       x: 25.339835275243967,
+  +       y: 23.277025652071462,
+  +       z: 17.25947315338999
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.984201372638345,
+  +       maxLife: 0.8,
+  +       size: 2.711399924592115,
+  +       vx: -0.5838055462799097,
+  +       vy: -0.17241185976431192,
+  +       vz: -1.7067602793686092,
+  +       x: 25.410355762531978,
+  +       y: 23.21847206950188,
+  +       z: 18.836401257663965
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.766751764304936,
+  +       maxLife: 0.8,
+  +       size: 2.0910628778510727,
+  +       vx: -0.20896173291876718,
+  +       vy: -0.9982227679387232,
+  +       vz: -9.50989523716271,
+  +       x: 25.422011136962098,
+  +       y: 23.224903462687507,
+  +       z: 19.367431153543293
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6225690585002304,
+  +       maxLife: 0.6,
+  +       size: 1.4658138526044784,
+  +       vx: 0.7641982452609167,
+  +       vy: -0.805467504893438,
+  +       vz: 6.763715894892812,
+  +       x: 27.315520741371436,
+  +       y: 23.303884777706116,
+  +       z: 8.672286754474044
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6891360133700072,
+  +       maxLife: 0.6,
+  +       size: 1.892455599857494,
+  +       vx: 0.9901964782214977,
+  +       vy: -0.7716255147311771,
+  +       vz: 4.208510147407651,
+  +       x: 27.386079792678355,
+  +       y: 23.346510108653458,
+  +       z: 19.968327428214252
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.5290597353503108,
+  +       maxLife: 0.6,
+  +       size: 1.1818411750532685,
+  +       vx: -0.9858824041096852,
+  +       vy: -1.236562101864388,
+  +       vz: -3.644709741231054,
+  +       x: 27.36187595874071,
+  +       y: 23.223059914074838,
+  +       z: 8.10717657674104
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7691658118832856,
+  +       maxLife: 0.6,
+  +       size: 1.8158591021550818,
+  +       vx: -0.44322280259145275,
+  +       vy: 0.4932787346008854,
+  +       vz: 16.245507082901895,
+  +       x: 27.38614831538871,
+  +       y: 23.288051784504205,
+  +       z: 17.42229305859655
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6194172311481089,
+  +       maxLife: 0.6,
+  +       size: 1.7293321534711865,
+  +       vx: -0.48076988668870213,
+  +       vy: -0.9285266216439167,
+  +       vz: 0.5627981987781823,
+  +       x: 27.306618020823223,
+  +       y: 23.25795564837754,
+  +       z: 12.164339794777334
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7762595417629927,
+  +       maxLife: 0.6,
+  +       size: 1.2933211049996316,
+  +       vx: 0.7536418869726905,
+  +       vy: 0.4452729035089625,
+  +       vz: -6.277985512744635,
+  +       x: 27.43929004129022,
+  +       y: 23.24152644434944,
+  +       z: 16.58069682493806
+  +     }
+      ],
+      selection: [
+  +     19
+  -     15
+      ],
+      snapshot: {
+        ageLevel: 1,
+        ageResearch: null,
+        assistActive: false,
+  ...
+        camera: {
+  +       targetX: 67.19999999999993,
+  +       targetY: 779.2,
+  -       targetX: -64,
+  -       targetY: 816,
+          targetZoom: 1.12,
+          x: -64,
+          y: 816,
+          zoom: 1
+        },
+  ...
+        expeditionInitialized: false,
+  +     heroControl: true,
+  -     heroControl: false,
+        heroId: 19,
+        heroReviveTimer: 0,
+        infantryRefunded: 0,
+        inheritedBoons: [],
+        intel: {
+  ...
+          {
+  +         id: 19,
+  -         id: 15,
+            kind: 'unit'
+          }
+        ],
+        stats: {
+          assists: 0,
+  ...
+            retargetTimer: 0.007161294668912888,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.20385914444923403,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.22003318555653095,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.5046410601586103,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+          {
+  +         aegisCd: 60,
+  -         aegisCd: 0,
+            alive: true,
+            armor: 8,
+            attack: 18,
+            attackAnim: 0,
+            baseMaxHp: 520,
+  ...
+            hitFlash: 0,
+  +         hold: true,
+  -         hold: false,
+            hp: 520,
+            id: 19,
+            idleTimer: 0.35887390468269587,
+            manualAttack: false,
+  +         markCd: 30,
+  -         markCd: 0,
+            marked: 0,
+            maxHp: 520,
+            pop: 0,
+            rageStage: 0,
+            rescueUsed: false,
+            retargetTimer: 0.5713459122925997,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+  +         stance: 'hold',
+  +         state: 'hold',
+  -         stance: 'defensive',
+  -         state: 'idle',
+            summoned: false,
+            tacticalOrder: null,
+            target: null,
+            targetPos: null,
+            team: 'player',
+  ...
+            markCd: 0,
+  +         marked: 6,
+  -         marked: 0,
+            maxHp: 60,
+            pop: 1,
+            rageStage: 0,
+            rescueUsed: false,
+            retargetTimer: 0.2513521034270525,
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/terminal-orders.test.mjs:39:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/terminal-orders.test.mjs:42:3
+✖ 原生defeat後軍事生產不新增佇列或支付費用 (12.022112ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      events: [
+        {
+          args: [],
+          sound: 'defeat'
+        },
+  +     {
+  +       args: [],
+  +       sound: 'train'
+  +     }
+      ],
+      heroControl: false,
+      markers: [],
+      orderMode: null,
+      particles: [
+  ...
+            id: 2,
+  +         manualProductionUntil: 13,
+            maxHp: 600,
+            queue: [
+              {
+                manual: true,
+                remaining: 8,
+  ...
+        resources: {
+  +       food: 264,
+  +       gold: 111,
+  -       food: 300,
+  -       gold: 120,
+          stone: 100,
+          wood: 300
+        },
+        retreatUsed: false,
+        rngState: -809573557,
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/terminal-orders.test.mjs:45:42)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/terminal-orders.test.mjs:30:3
+✖ 原生victory後直接技能不再施放、消耗冷卻或發出成功聲光 (18.208738ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      events: [
+        {
+          args: [],
+          sound: 'victory'
+        },
+  +     {
+  +       args: [],
+  +       sound: 'heroAegis'
+  +     },
+  +     {
+  +       args: [],
+  +       sound: 'heroMark'
+  +     }
+      ],
+      heroControl: false,
+  +   markers: [
+  +     {
+  +       hostile: true,
+  +       life: 0.8,
+  +       maxLife: 0.8,
+  +       x: 27.4,
+  +       y: 23.3
+  +     }
+  +   ],
+  -   markers: [],
+      orderMode: null,
+  +   particles: [
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.5877232759445906,
+  +       maxLife: 0.8,
+  +       size: 3.2557743996148925,
+  +       vx: -0.5249629285365487,
+  +       vy: -0.48762446538848797,
+  +       vz: 5.646762973163277,
+  +       x: 25.438821216439827,
+  +       y: 23.342758511705323,
+  +       z: 8.961673338897526
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8544047965481877,
+  +       maxLife: 0.8,
+  +       size: 2.652551581093576,
+  +       vx: 0.9845058795442009,
+  +       vy: 0.9626534770601578,
+  +       vz: 13.67416537553072,
+  +       x: 25.376136472541837,
+  +       y: 23.328417380014436,
+  +       z: 17.885792911052704
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8145334843918681,
+  +       maxLife: 0.8,
+  +       size: 2.519490440026857,
+  +       vx: -0.7172948143693649,
+  +       vy: -0.259153231099036,
+  +       vz: 10.928652917034924,
+  +       x: 25.38778036441654,
+  +       y: 23.37038552784361,
+  +       z: 8.616787262260914
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8364423229545356,
+  +       maxLife: 0.8,
+  +       size: 3.4822481887531467,
+  +       vx: 0.879084067792755,
+  +       vy: 1.4385248002782893,
+  +       vz: 11.058423504699022,
+  +       x: 25.478640546370297,
+  +       y: 23.23232951760292,
+  +       z: 9.725572138093412
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 1.0226253633573652,
+  +       maxLife: 0.8,
+  +       size: 2.695447153528221,
+  +       vx: 1.1000956383190412,
+  +       vy: -0.5176482840225809,
+  +       vz: 15.059089341200888,
+  +       x: 25.48124466999434,
+  +       y: 23.26210963721387,
+  +       z: 15.407905615866184
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.9276442778110504,
+  +       maxLife: 0.8,
+  +       size: 3.1586709648836404,
+  +       vx: -0.6918696754812684,
+  +       vy: -0.3770763088462618,
+  +       vz: 0.6021644286811352,
+  +       x: 25.46578609617427,
+  +       y: 23.20169458631426,
+  +       z: 19.327787704765797
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8063269410282374,
+  +       maxLife: 0.8,
+  +       size: 2.3840463137603365,
+  +       vx: 0.6978630353090001,
+  +       vy: 1.1547580629792207,
+  +       vz: -6.708260663319379,
+  +       x: 25.387391355726866,
+  +       y: 23.299812355125322,
+  +       z: 9.769121293909848
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7437214378267527,
+  +       maxLife: 0.8,
+  +       size: 3.080944228975568,
+  +       vx: 1.3097028033470122,
+  +       vy: 0.47876651317875063,
+  +       vz: -1.2522522155195475,
+  +       x: 25.360254758177323,
+  +       y: 23.30751635618508,
+  +       z: 13.276845414191484
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.683513642847538,
+  +       maxLife: 0.8,
+  +       size: 3.356917215918656,
+  +       vx: 0.23984057273733736,
+  +       vy: -0.39536378839363123,
+  +       vz: -6.449870637618005,
+  +       x: 25.484730415139346,
+  +       y: 23.212165199685842,
+  +       z: 15.734772919677198
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.9020976174995303,
+  +       maxLife: 0.8,
+  +       size: 3.4224842741386965,
+  +       vx: 0.9716070009362225,
+  +       vy: -1.0987200601125198,
+  +       vz: 17.20439137145877,
+  +       x: 25.351698653632774,
+  +       y: 23.224628508323804,
+  +       z: 15.821236092597246
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8262416699528695,
+  +       maxLife: 0.8,
+  +       size: 2.189223329187371,
+  +       vx: 0.9287404799776957,
+  +       vy: 0.7239746992997921,
+  +       vz: -7.52002179203555,
+  +       x: 25.373794769635424,
+  +       y: 23.228522546216848,
+  +       z: 8.851524692960083
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8009955604374408,
+  +       maxLife: 0.8,
+  +       size: 3.094006993807852,
+  +       vx: -0.8050884928666239,
+  +       vy: -1.2696019103114262,
+  +       vz: 0.754681957885623,
+  +       x: 25.492932029720393,
+  +       y: 23.256798544107006,
+  +       z: 19.297087875194848
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6550978929083794,
+  +       maxLife: 0.6,
+  +       size: 1.741990662291646,
+  +       vx: -0.8750854831534698,
+  +       vy: -0.16645186614164248,
+  +       vz: 2.4281866843812168,
+  +       x: 27.37627467382699,
+  +       y: 23.21942444765009,
+  +       z: 19.08062016312033
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.5124401548225432,
+  +       maxLife: 0.6,
+  +       size: 1.6942178230267018,
+  +       vx: 0.798303817547941,
+  +       vy: -0.24107409200233626,
+  +       vz: 16.30385706620291,
+  +       x: 27.425668036891146,
+  +       y: 23.338649490941318,
+  +       z: 15.434600901789963
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6975301634240896,
+  +       maxLife: 0.6,
+  +       size: 1.6083766189916056,
+  +       vx: 0.0008256027944740587,
+  +       vy: -1.2405768992824506,
+  +       vz: 7.948850499931723,
+  +       x: 27.308314557978882,
+  +       y: 23.307120286673307,
+  +       z: 10.478107566013932
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.5333738254755735,
+  +       maxLife: 0.6,
+  +       size: 1.4314997759461399,
+  +       vx: -0.23842500635150077,
+  +       vy: -1.623089819863291,
+  +       vz: -4.51218626042828,
+  +       x: 27.471266900468617,
+  +       y: 23.346827731374653,
+  +       z: 15.33595138322562
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.4667078591231256,
+  +       maxLife: 0.6,
+  +       size: 1.0415659518959,
+  +       vx: 1.4113321712462268,
+  +       vy: 0.5377678037065577,
+  +       vz: 5.998430365696549,
+  +       x: 27.323891954310238,
+  +       y: 23.243665658123792,
+  +       z: 8.380368603393435
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6123606801219285,
+  +       maxLife: 0.6,
+  +       size: 1.3488090195832771,
+  +       vx: -1.0288772632450487,
+  +       vy: 0.5414309515494555,
+  +       vz: -6.388753431849182,
+  +       x: 27.486291105905547,
+  +       y: 23.324770312244073,
+  +       z: 19.764084020629525
+  +     }
+  +   ],
+  -   particles: [],
+      selection: [
+        15
+      ],
+      snapshot: {
+        ageLevel: 1,
+  ...
+            retargetTimer: 0.007161294668912888,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.20385914444923403,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.22003318555653095,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.5046410601586103,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+          {
+  +         aegisCd: 60,
+  -         aegisCd: 0,
+            alive: true,
+            armor: 8,
+            attack: 18,
+            attackAnim: 0,
+            baseMaxHp: 520,
+  ...
+            manualAttack: false,
+  +         markCd: 30,
+  -         markCd: 0,
+            marked: 0,
+            maxHp: 520,
+            pop: 0,
+            rageStage: 0,
+            rescueUsed: false,
+            retargetTimer: 0.5713459122925997,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            markCd: 0,
+  +         marked: 6,
+  -         marked: 0,
+            maxHp: 60,
+            pop: 1,
+            rageStage: 0,
+            rescueUsed: false,
+            retargetTimer: 0.2513521034270525,
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/terminal-orders.test.mjs:33:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/terminal-orders.test.mjs:36:3
+✖ 原生victory後既有命令介面不改盾、標記、軍令或預留資源 (15.731142ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      events: [
+        {
+          args: [],
+          sound: 'victory'
+        },
+  +     {
+  +       args: [],
+  +       sound: 'heroAegis'
+  +     },
+  +     {
+  +       args: [],
+  +       sound: 'heroMark'
+  +     },
+  +     {
+  +       args: [],
+  +       sound: 'command'
+  +     },
+  +     {
+  +       args: [],
+  +       sound: 'command'
+  +     }
+      ],
+  +   heroControl: true,
+  +   markers: [
+  +     {
+  +       hostile: true,
+  +       life: 0.8,
+  +       maxLife: 0.8,
+  +       x: 27.4,
+  +       y: 23.3
+  +     }
+  +   ],
+  -   heroControl: false,
+  -   markers: [],
+      orderMode: null,
+  +   particles: [
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.5877232759445906,
+  +       maxLife: 0.8,
+  +       size: 3.2557743996148925,
+  +       vx: -0.5249629285365487,
+  +       vy: -0.48762446538848797,
+  +       vz: 5.646762973163277,
+  +       x: 25.438821216439827,
+  +       y: 23.342758511705323,
+  +       z: 8.961673338897526
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8544047965481877,
+  +       maxLife: 0.8,
+  +       size: 2.652551581093576,
+  +       vx: 0.9845058795442009,
+  +       vy: 0.9626534770601578,
+  +       vz: 13.67416537553072,
+  +       x: 25.376136472541837,
+  +       y: 23.328417380014436,
+  +       z: 17.885792911052704
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8145334843918681,
+  +       maxLife: 0.8,
+  +       size: 2.519490440026857,
+  +       vx: -0.7172948143693649,
+  +       vy: -0.259153231099036,
+  +       vz: 10.928652917034924,
+  +       x: 25.38778036441654,
+  +       y: 23.37038552784361,
+  +       z: 8.616787262260914
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8364423229545356,
+  +       maxLife: 0.8,
+  +       size: 3.4822481887531467,
+  +       vx: 0.879084067792755,
+  +       vy: 1.4385248002782893,
+  +       vz: 11.058423504699022,
+  +       x: 25.478640546370297,
+  +       y: 23.23232951760292,
+  +       z: 9.725572138093412
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 1.0226253633573652,
+  +       maxLife: 0.8,
+  +       size: 2.695447153528221,
+  +       vx: 1.1000956383190412,
+  +       vy: -0.5176482840225809,
+  +       vz: 15.059089341200888,
+  +       x: 25.48124466999434,
+  +       y: 23.26210963721387,
+  +       z: 15.407905615866184
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.9276442778110504,
+  +       maxLife: 0.8,
+  +       size: 3.1586709648836404,
+  +       vx: -0.6918696754812684,
+  +       vy: -0.3770763088462618,
+  +       vz: 0.6021644286811352,
+  +       x: 25.46578609617427,
+  +       y: 23.20169458631426,
+  +       z: 19.327787704765797
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8063269410282374,
+  +       maxLife: 0.8,
+  +       size: 2.3840463137603365,
+  +       vx: 0.6978630353090001,
+  +       vy: 1.1547580629792207,
+  +       vz: -6.708260663319379,
+  +       x: 25.387391355726866,
+  +       y: 23.299812355125322,
+  +       z: 9.769121293909848
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.7437214378267527,
+  +       maxLife: 0.8,
+  +       size: 3.080944228975568,
+  +       vx: 1.3097028033470122,
+  +       vy: 0.47876651317875063,
+  +       vz: -1.2522522155195475,
+  +       x: 25.360254758177323,
+  +       y: 23.30751635618508,
+  +       z: 13.276845414191484
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.683513642847538,
+  +       maxLife: 0.8,
+  +       size: 3.356917215918656,
+  +       vx: 0.23984057273733736,
+  +       vy: -0.39536378839363123,
+  +       vz: -6.449870637618005,
+  +       x: 25.484730415139346,
+  +       y: 23.212165199685842,
+  +       z: 15.734772919677198
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.9020976174995303,
+  +       maxLife: 0.8,
+  +       size: 3.4224842741386965,
+  +       vx: 0.9716070009362225,
+  +       vy: -1.0987200601125198,
+  +       vz: 17.20439137145877,
+  +       x: 25.351698653632774,
+  +       y: 23.224628508323804,
+  +       z: 15.821236092597246
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8262416699528695,
+  +       maxLife: 0.8,
+  +       size: 2.189223329187371,
+  +       vx: 0.9287404799776957,
+  +       vy: 0.7239746992997921,
+  +       vz: -7.52002179203555,
+  +       x: 25.373794769635424,
+  +       y: 23.228522546216848,
+  +       z: 8.851524692960083
+  +     },
+  +     {
+  +       color: 'rgba(147,197,220,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.8009955604374408,
+  +       maxLife: 0.8,
+  +       size: 3.094006993807852,
+  +       vx: -0.8050884928666239,
+  +       vy: -1.2696019103114262,
+  +       vz: 0.754681957885623,
+  +       x: 25.492932029720393,
+  +       y: 23.256798544107006,
+  +       z: 19.297087875194848
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6550978929083794,
+  +       maxLife: 0.6,
+  +       size: 1.741990662291646,
+  +       vx: -0.8750854831534698,
+  +       vy: -0.16645186614164248,
+  +       vz: 2.4281866843812168,
+  +       x: 27.37627467382699,
+  +       y: 23.21942444765009,
+  +       z: 19.08062016312033
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.5124401548225432,
+  +       maxLife: 0.6,
+  +       size: 1.6942178230267018,
+  +       vx: 0.798303817547941,
+  +       vy: -0.24107409200233626,
+  +       vz: 16.30385706620291,
+  +       x: 27.425668036891146,
+  +       y: 23.338649490941318,
+  +       z: 15.434600901789963
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6975301634240896,
+  +       maxLife: 0.6,
+  +       size: 1.6083766189916056,
+  +       vx: 0.0008256027944740587,
+  +       vy: -1.2405768992824506,
+  +       vz: 7.948850499931723,
+  +       x: 27.308314557978882,
+  +       y: 23.307120286673307,
+  +       z: 10.478107566013932
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.5333738254755735,
+  +       maxLife: 0.6,
+  +       size: 1.4314997759461399,
+  +       vx: -0.23842500635150077,
+  +       vy: -1.623089819863291,
+  +       vz: -4.51218626042828,
+  +       x: 27.471266900468617,
+  +       y: 23.346827731374653,
+  +       z: 15.33595138322562
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.4667078591231256,
+  +       maxLife: 0.6,
+  +       size: 1.0415659518959,
+  +       vx: 1.4113321712462268,
+  +       vy: 0.5377678037065577,
+  +       vz: 5.998430365696549,
+  +       x: 27.323891954310238,
+  +       y: 23.243665658123792,
+  +       z: 8.380368603393435
+  +     },
+  +     {
+  +       color: 'rgba(229,160,74,ALPHA)',
+  +       kind: 'ring',
+  +       life: 0.6123606801219285,
+  +       maxLife: 0.6,
+  +       size: 1.3488090195832771,
+  +       vx: -1.0288772632450487,
+  +       vy: 0.5414309515494555,
+  +       vz: -6.388753431849182,
+  +       x: 27.486291105905547,
+  +       y: 23.324770312244073,
+  +       z: 19.764084020629525
+  +     }
+  +   ],
+  -   particles: [],
+      selection: [
+  +     19
+  -     15
+      ],
+      snapshot: {
+        ageLevel: 1,
+        ageResearch: null,
+        assistActive: false,
+  ...
+        camera: {
+  +       targetX: 67.19999999999993,
+  +       targetY: 779.2,
+  -       targetX: -64,
+  -       targetY: 816,
+          targetZoom: 1.12,
+          x: -64,
+          y: 816,
+          zoom: 1
+        },
+  ...
+        expeditionInitialized: false,
+  +     heroControl: true,
+  -     heroControl: false,
+        heroId: 19,
+        heroReviveTimer: 0,
+        infantryRefunded: 0,
+        inheritedBoons: [],
+        intel: {
+  ...
+          {
+  +         id: 19,
+  -         id: 15,
+            kind: 'unit'
+          }
+        ],
+        stats: {
+          assists: 0,
+  ...
+            retargetTimer: 0.007161294668912888,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.20385914444923403,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.22003318555653095,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+            retargetTimer: 0.5046410601586103,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+            stance: 'defensive',
+            state: 'idle',
+            summoned: false,
+  ...
+          {
+  +         aegisCd: 60,
+  -         aegisCd: 0,
+            alive: true,
+            armor: 8,
+            attack: 18,
+            attackAnim: 0,
+            baseMaxHp: 520,
+  ...
+            hitFlash: 0,
+  +         hold: true,
+  -         hold: false,
+            hp: 520,
+            id: 19,
+            idleTimer: 0.35887390468269587,
+            manualAttack: false,
+  +         markCd: 30,
+  -         markCd: 0,
+            marked: 0,
+            maxHp: 520,
+            pop: 0,
+            rageStage: 0,
+            rescueUsed: false,
+            retargetTimer: 0.5713459122925997,
+  +         shield: 60,
+  +         shieldTime: 5,
+  -         shield: 0,
+  -         shieldTime: 0,
+            shots: 0,
+            slowUntil: 0,
+  +         stance: 'hold',
+  +         state: 'hold',
+  -         stance: 'defensive',
+  -         state: 'idle',
+            summoned: false,
+            tacticalOrder: null,
+            target: null,
+            targetPos: null,
+            team: 'player',
+  ...
+            markCd: 0,
+  +         marked: 6,
+  -         marked: 0,
+            maxHp: 60,
+            pop: 1,
+            rageStage: 0,
+            rescueUsed: false,
+            retargetTimer: 0.2513521034270525,
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/terminal-orders.test.mjs:39:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/terminal-orders.test.mjs:42:3
+✖ 原生victory後軍事生產不新增佇列或支付費用 (9.756689ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      events: [
+        {
+          args: [],
+          sound: 'victory'
+        },
+  +     {
+  +       args: [],
+  +       sound: 'train'
+  +     }
+      ],
+      heroControl: false,
+      markers: [],
+      orderMode: null,
+      particles: [],
+  ...
+            id: 2,
+  +         manualProductionUntil: 13,
+            maxHp: 600,
+            queue: [
+              {
+                manual: true,
+                remaining: 8,
+  ...
+        resources: {
+  +       food: 264,
+  +       gold: 111,
+  -       food: 300,
+  -       gold: 120,
+          stone: 100,
+          wood: 300
+        },
+        retreatUsed: false,
+        rngState: -809573557,
+  
+      at TestContext.<anonymous> (file:///workspace/PlayGround/tests/terminal-orders.test.mjs:45:42)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

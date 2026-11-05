@@ -1,0 +1,35 @@
+✔ 全軍排除村民、英雄、敵軍與死亡單位 / army excludes workers hero enemies and dead units (18.175197ms)
+✔ 推進與護衛沿用原生命令且不搶村民 / advance and guard reuse native commands without worker orders (15.554849ms)
+✔ 暫停、選卡、結算、對話框與施工不下令 / pause rewards terminal modal and placement prevent commands (44.805784ms)
+✔ 英雄護盾使用正式冷卻與效果，重按不重複 / hero shield uses native effects and cooldown without double casting (5.204612ms)
+✔ 選軍不花費、未知命令與無軍隊保持狀態 / selection costs nothing and empty or unknown actions preserve state (5.653957ms)
+✔ 選軍經原生切換離開英雄直控 / selecting army exits hero direct control through native toggle (6.658724ms)
+✔ 快捷入口切換原生英雄直控，F2路徑切回軍隊 / hero shortcut toggles native direct control and army action returns (6.825421ms)
+✔ 技能預覽使用正式範圍與可見性，無目標不施放 / context uses native range/visibility and no-target casts do nothing (8.565355ms)
+✔ 英雄接管取消尚未落點的軍隊命令 / hero takeover cancels pending army targeting (5.88563ms)
+✔ right-click ground exits direct control and preserves hero move through update (25.082649ms)
+✔ right-click enemy exits direct control and keeps explicit attack (19.106465ms)
+✔ villager-only command or mixed gathering does not exit unassigned hero direct control (9.906671ms)
+✔ mixed hero, melee, ranged and villager attack assigns eligible units and preserves villager work (4.352702ms)
+✔ successful casts route distinct cues; rejected casts only report errors (5.148729ms)
+✔ cues are distinct, muted and throttled without consuming simulation RNG (10.057414ms)
+✔ hero skills expose the production radii used by their effects (0.165846ms)
+✔ skill preview requires a living hero and reports render metadata (1.828416ms)
+✔ mark applies inside the previewed range and rejects targets outside it (3.630523ms)
+✔ aegis shields allies inside the previewed range only (1.714507ms)
+✔ 原生defeat後直接技能不再施放、消耗冷卻或發出成功聲光 (5.236179ms)
+✔ 原生defeat後既有命令介面不改盾、標記、軍令或預留資源 (3.977997ms)
+✔ 原生defeat後軍事生產不新增佇列或支付費用 (3.761757ms)
+✔ 原生victory後直接技能不再施放、消耗冷卻或發出成功聲光 (3.862166ms)
+✔ 原生victory後既有命令介面不改盾、標記、軍令或預留資源 (3.205774ms)
+✔ 原生victory後軍事生產不新增佇列或支付費用 (3.118745ms)
+✔ prep與wave仍沿原生神盾、標記及正式冷卻，未改任何技能數值 (5.390247ms)
+✔ 正常新局及正式NG+初始化後仍能主動使用技能，結算防線不永久鎖住控制 (8.866812ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3603.999029

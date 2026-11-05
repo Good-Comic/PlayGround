@@ -1,0 +1,52 @@
+{
+  "task": "FUN-LAB-281169B5",
+  "execution": "codex-fun-lab-281169b5-20261105",
+  "role": "manual_target_adapter",
+  "status": "四個API與原生Node驗證完成，交回Root整合",
+  "repo_files_written": [
+    "/workspace/PlayGround/js/manual-target.js",
+    "/workspace/PlayGround/tests/manual-target.test.mjs"
+  ],
+  "sha256": {
+    "js/manual-target.js": "152cccfb35afefe6ce94e70cf10def1d260a9c453ca7b22e28cb3bf2b098e7e5",
+    "tests/manual-target.test.mjs": "8d8cf109a832940cf5a7b88868db5c9f0b9d9937e2138b5ca310174a3bbd6112"
+  },
+  "node": "v24.19.0",
+  "test_command": "node --test --test-isolation=none tests/manual-target.test.mjs",
+  "tests": { "total": 30, "pass": 30, "fail": 0, "exit_code": 0, "duration_ms": 3663.243736 },
+  "test_log": "04-final-legal-wheel-retest.log",
+  "initial_failures": [
+    {
+      "status": "保留",
+      "log": "01-default-reporter-initial-fail.log",
+      "description": "預設隔離reporter只輸出整檔FAIL，沒有個別斷言；未將其誤報為PASS"
+    },
+    {
+      "status": "受控fixture修正後重測PASS，歷史FAIL保留",
+      "log": "02-initial-direct-28-of-29-fail.log",
+      "description": "29例中28PASS／1FAIL；原生spawnUnit避開重疊，第二單位被移至x+1；測試明確把遮擋單位擺回同位置。正式spawn、pick、命令均未改，非遊戲回歸修復"
+    }
+  ],
+  "intermediate_retest_log": "03-final-retest.log",
+  "camera_zoom_validation": {
+    "native_start": { "zoom": 1, "targetZoom": 1.12 },
+    "controlled_native_wheel_minimum": { "zoom": 1.35, "targetZoom": 0.78 },
+    "method": "真實Game.updateCamera緩動後以原生screenPos核對free spot；不改原生easing、不瞬移相機"
+  },
+  "whitespace_and_conflict_check": "PASS，僅讀兩個委派repo檔；未執行Git",
+  "limitations": [
+    "Node受控Canvas可點擊callback，沒有瀏覽器真DOM驗收；Root另行整合正式Canvas命中檢查",
+    "事件opaque token、一次性lease與最新受傷來源一致性由Root整合；通用helper只驗證當下世界可見敵軍與當下selection",
+    "查看只改camera.targetX/Y；原生持續按鍵或後續縮放可以繼續移動相機，不建立追蹤或每幀校正",
+    "沒有執行Git、Push、瀏覽器、外網、效能測試；沒有讀取玩家目錄或private-observer"
+  ],
+  "continuity": {
+    "STOP_REASON": "委派兩檔與Node驗證完成，交回Root繼續UI與Chromium整合",
+    "EXECUTION_DURATION": { "active_seconds": "UNKNOWN", "scope": "本角色完整主動時長未量測；最終Node程序另有3663.243736ms實測" },
+    "NEXT_AUTHORIZED_TASK": "Root整合事件lease、UI與完整Chromium；本角色可依具體回報修正兩個委派檔",
+    "CHECKPOINT_SHA": "1456591db51ee4fb0cf6714ccb5dc6b645a33625",
+    "checkpoint_scope": "Root委派時提供的起始HEAD；本角色未查Git，兩檔仍由Root負責保存與推送",
+    "AUTO_RESUME_AVAILABLE": false,
+    "root_task_complete": false
+  }
+}

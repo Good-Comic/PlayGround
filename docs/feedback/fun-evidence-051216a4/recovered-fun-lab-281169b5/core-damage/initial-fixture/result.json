@@ -1,0 +1,18 @@
+{
+  "source": "955fceaadb781d9128a857636c0f20a4830ccc12",
+  "scope": "正常Continue原封A自然存檔，原生軍令後觀察實際城心命中。凍結HUD／失視野等負面條件另標CONTROLLED_FIXTURE；非AI玩家／完整自然十波。",
+  "resumeSha256": "1d35c76c1b35c5b4e901019dec95c02426114b582b32a3b91b5d29202f5462e4",
+  "checks": [
+    {
+      "name": "before正式來源與完整資源雜湊",
+      "pass": true,
+      "verified": {
+        "commit": "6a9cde03141c6800be6da28ada0e9b0dc1145be4",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    }
+  ],
+  "errors": [],
+  "status": "FAIL",
+  "failure": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'hoveredResource')\n    at UI.updateHover (http://127.0.0.1:28126/js/ui.js:684:25)\n    at UI.update (http://127.0.0.1:28126/js/ui.js:581:10)\n    at ui.update (http://127.0.0.1:28126/js/battle-actions.js:83:59)\n    at ui.update (http://127.0.0.1:28126/js/expeditions.js:43:69)\n    at ui.update (http://127.0.0.1:28126/js/workshop-expedition.js:21:62)\n    at ui.update (http://127.0.0.1:28126/js/early-raid.js:76:30)\n    at ui.update (http://127.0.0.1:28126/js/tactical-planner.js:190:65)\n    at ui.update (http://127.0.0.1:28126/js/battle-line.js:139:60)\n    at ui.update (http://127.0.0.1:28126/js/rally-objective.js:173:68)\n    at ui.update (http://127.0.0.1:28126/js/core-defense.js:57:68)\n    at boot (/workspace/riftwatch-fun-lab-281169b5/browser-core-damage.cjs:2:2116)\n    at async /workspace/riftwatch-fun-lab-281169b5/browser-core-damage.cjs:4:120"
+}

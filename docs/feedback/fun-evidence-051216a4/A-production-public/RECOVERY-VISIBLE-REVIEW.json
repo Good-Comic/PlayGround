@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "artifact_type": "新的復核者依公開介面紀錄重建事實",
+  "language": "zh-TW",
+  "task_id": "FUN-EVIDENCE-051216A4",
+  "execution_id": "codex-fun-evidence-051216a4-20261105",
+  "owner": 274,
+  "reviewed_at_utc": "2026-11-05T21:25:35.468558+00:00",
+  "review_status": "COMPLETE_PUBLIC_VISIBLE_REVIEW",
+  "original_report_status": "UNSEALED_ORIGINAL_REPORT",
+  "original_agent_sealed_report": false,
+  "reviewer": {
+    "identity": "新的唯讀公開證據復核者；不是原玩家A",
+    "original_player": false,
+    "game_restarted": false,
+    "game_evidence_scope": "/workspace/riftwatch-fun-evidence-051216a4/worktree/docs/feedback/fun-evidence-051216a4/A-production-public",
+    "method": [
+      "閱讀同一獲准公開資料夾的PROFILE、PUBLIC-PROTOCOL、session、actions、原狀態訊息與visible-ui-responses。",
+      "以view_image實際逐張檢視19張既有PNG；原回應的舊截圖路徑只依basename映射到本資料夾副本。",
+      "以本機Python核對18筆actions與公開原生回應一致；未啟動Browser、Node、perf或Git。"
+    ],
+    "no_gameplay_advice_sent": true
+  },
+  "original_status_message": {
+    "path": "ORIGINAL-A-STATUS-MESSAGE.json",
+    "recorded_at_utc": "2026-11-05T21:17:38.259726+00:00",
+    "original_received_at_utc": "UNKNOWN",
+    "sender": "/root/player_a_resume_check",
+    "is_sealed_report": false,
+    "role": "待核對來源陳述；不作為新復核者的原玩家記憶或主觀評分"
+  },
+  "session_as_recorded": {
+    "role": "A",
+    "round": "after",
+    "started_at_utc": "2026-11-05T21:03:23.198Z",
+    "source_commit": "6852cf85acca5c08923e0191a1e0703189f4d3e6",
+    "verified_metadata": {
+      "commit": "6852cf85acca5c08923e0191a1e0703189f4d3e6",
+      "hash": "SHA256_MATCH_163_FILES"
+    },
+    "civ": "FRK",
+    "difficulty": "normal",
+    "biome": "steppe",
+    "seed": "FUN-LAB-BASE-281169B5",
+    "resume_sha256": "1d35c76c1b35c5b4e901019dec95c02426114b582b32a3b91b5d29202f5462e4",
+    "resume_method": "UNCHANGED_OBSERVED_NATIVE_SNAPSHOT_THROUGH_NATIVE_CONTINUE",
+    "resume_simulation_seconds": 466.30850000008627,
+    "resume_wave": 4,
+    "snapshot_independently_rehashed_by_reviewer": false,
+    "note": "以上版本與快照完整性僅屬來源元資料記錄；本復核沒有讀取快照或遊戲原始碼。"
+  },
+  "time_basis": {
+    "wall_seconds": "原公開client的相對牆鐘秒；不是局內時鐘。",
+    "continue_wall_seconds": 42.123,
+    "defeat_observe_wall_seconds": 233.652,
+    "continue_to_defeat_observe_wall_seconds": 191.529,
+    "steward_open_action_wall_seconds": 64.337,
+    "steward_save_action_wall_seconds": 172.757,
+    "panel_open_to_save_wall_seconds": 108.42,
+    "panel_interval_interpretation": "UI明示開啟總管暫停模擬；108.420是開啟操作至儲存操作的牆鐘差，包含閱讀、定位失敗、編輯與工具延遲，並非獨立逐幀停表量測，也不能全部歸因於新功能閱讀成本。",
+    "finish_wall_seconds": null,
+    "finish_time_status": "UNKNOWN",
+    "settlement_cumulative_game_time": "8:56"
+  },
+  "source_inventory": {
+    "root_text_files": [
+      "PROFILE.md",
+      "PUBLIC-PROTOCOL.md",
+      "ORIGINAL-A-STATUS-MESSAGE.json",
+      "session.json",
+      "actions.jsonl"
+    ],
+    "images_viewed_with_view_image": [
+      "event-1-true-1-prep.png",
+      "event-17-false-4-defeat.png",
+      "event-4-false-4-wave.png",
+      "final.png",
+      "screen-0002.png",
+      "screen-0003.png",
+      "screen-0005.png",
+      "screen-0006.png",
+      "screen-0007.png",
+      "screen-0008.png",
+      "screen-0009.png",
+      "screen-0010.png",
+      "screen-0011.png",
+      "screen-0012.png",
+      "screen-0013.png",
+      "screen-0014.png",
+      "screen-0015.png",
+      "screen-0016.png",
+      "screen-0018.png"
+    ],
+    "image_count": 19,
+    "native_request_response_pairs": 38,
+    "public_response_count": 38,
+    "processed_request_count": 38,
+    "request_operations": {
+      "scroll": 3,
+      "click": 10,
+      "select": 1,
+      "key": 3,
+      "fill": 1,
+      "wait": 4,
+      "observe": 15,
+      "finish": 1
+    },
+    "observations": [
+      {
+        "wall_seconds": 36.629,
+        "screenshot": "screen-0002.png",
+        "public_response": "visible-ui-responses/ca7972038dd44655883020ad5cd2179a.response.json",
+        "public_request": "visible-ui-responses/ca7972038dd44655883020ad5cd2179a.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 42.833,
+        "screenshot": "screen-0003.png",
+        "public_response": "visible-ui-responses/25bf395f2b8c40edaac8d4114e8e46a2.response.json",
+        "public_request": "visible-ui-responses/25bf395f2b8c40edaac8d4114e8e46a2.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 57.829,
+        "screenshot": "screen-0005.png",
+        "public_response": "visible-ui-responses/5829ccb438f74772916292ae51e018d6.response.json",
+        "public_request": "visible-ui-responses/5829ccb438f74772916292ae51e018d6.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 64.915,
+        "screenshot": "screen-0006.png",
+        "public_response": "visible-ui-responses/87db641b080643fb9053cdc9c2f59457.response.json",
+        "public_request": "visible-ui-responses/87db641b080643fb9053cdc9c2f59457.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 74.551,
+        "screenshot": "screen-0007.png",
+        "public_response": "visible-ui-responses/2fd9cf8829aa4fe9a73742d20b2abe24.response.json",
+        "public_request": "visible-ui-responses/2fd9cf8829aa4fe9a73742d20b2abe24.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 83.713,
+        "screenshot": "screen-0008.png",
+        "public_response": "visible-ui-responses/4368f8aa114b409ea1076c611813469e.response.json",
+        "public_request": "visible-ui-responses/4368f8aa114b409ea1076c611813469e.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 92.669,
+        "screenshot": "screen-0009.png",
+        "public_response": "visible-ui-responses/a0476a519a044067a53ff9e3f4a058ca.response.json",
+        "public_request": "visible-ui-responses/a0476a519a044067a53ff9e3f4a058ca.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 104.479,
+        "screenshot": "screen-0010.png",
+        "public_response": "visible-ui-responses/1f40844ee2074cec91210e11cc2bbe59.response.json",
+        "public_request": "visible-ui-responses/1f40844ee2074cec91210e11cc2bbe59.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 137.81,
+        "screenshot": "screen-0011.png",
+        "public_response": "visible-ui-responses/e5f4b7a3689b433f9f42de9d2873c5fe.response.json",
+        "public_request": "visible-ui-responses/e5f4b7a3689b433f9f42de9d2873c5fe.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 152.34,
+        "screenshot": "screen-0012.png",
+        "public_response": "visible-ui-responses/ac0a7c6b4c434121a2a107036cac0697.response.json",
+        "public_request": "visible-ui-responses/ac0a7c6b4c434121a2a107036cac0697.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 161.661,
+        "screenshot": "screen-0013.png",
+        "public_response": "visible-ui-responses/8874e9d7bdd24ac08d1a8649f7660354.response.json",
+        "public_request": "visible-ui-responses/8874e9d7bdd24ac08d1a8649f7660354.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 173.547,
+        "screenshot": "screen-0014.png",
+        "public_response": "visible-ui-responses/ca71d53ca24e401e98bd6b9ea6a68d50.response.json",
+        "public_request": "visible-ui-responses/ca71d53ca24e401e98bd6b9ea6a68d50.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 189.314,
+        "screenshot": "screen-0015.png",
+        "public_response": "visible-ui-responses/3f425762d3834f9aab2d0e09f7c37b3c.response.json",
+        "public_request": "visible-ui-responses/3f425762d3834f9aab2d0e09f7c37b3c.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 220.072,
+        "screenshot": "screen-0016.png",
+        "public_response": "visible-ui-responses/13501ea744c2493fa8200709e28c20f0.response.json",
+        "public_request": "visible-ui-responses/13501ea744c2493fa8200709e28c20f0.processed.json",
+        "session_limit_reached": false
+      },
+      {
+        "wall_seconds": 233.652,
+        "screenshot": "screen-0018.png",
+        "public_response": "visible-ui-responses/c9cb1e6d4c3b461b85306dcab7c8ae71.response.json",
+        "public_request": "visible-ui-responses/c9cb1e6d4c3b461b85306dcab7c8ae71.processed.json",
+        "session_limit_reached": false
+      }
+    ],
+    "all_18_action_entries_match_native_responses": true,
+    "all_15_observation_screenshots_present_in_allowed_copy": true,
+    "all_15_observations_session_limit_reached_false": true,
+    "source_file_count": 100
+  },
+  "findings": [
+    {
+      "id": "原封續玩",
+      "status": "原生Continue已確認；原封性限來源元資料聲明",
+      "confirmed": [
+        "36.629秒公開控制項列有可用的#btn-continue「繼續遠征」。42.123秒以該selector原生點擊，回應ok。42.833秒畫面顯示「遠征已載入」、挺過襲擊3/10、城鎮中心68%、帝國時代。",
+        "session.json的resume記錄原封原生快照續玩方法、來源SHA256與局內466.30850000008627秒／第4波。"
+      ],
+      "not_established": [
+        "本次沒有讀取或重算原快照，也沒有審核載入實作；不能把來源聲明寫成本復核者獨立證實全部狀態未改。",
+        "初始選單的預設文明／地貌／種子不作為續玩存檔設定的證據；FRK、Normal、steppe與種子只依session.json記載。"
+      ],
+      "sources": [
+        "session.json",
+        "PUBLIC-PROTOCOL.md",
+        "actions.jsonl",
+        "visible-ui-responses/ca7972038dd44655883020ad5cd2179a.response.json",
+        "visible-ui-responses/25bf395f2b8c40edaac8d4114e8e46a2.response.json",
+        "screen-0003.png"
+      ]
+    },
+    {
+      "id": "自然敗北結算",
+      "status": "公開畫面與原生紀錄已確認",
+      "confirmed": [
+        "220.072秒觀察顯示城鎮中心2%、局內8:55的衝車實損紀錄及19人集火衝車。233.652秒觀察為正式敗北結算，文字為「城鎮中心已然陷落」。",
+        "結算顯示度過襲擊3、擊殺掠襲者74、採集資源3,679、統治時間8:56；這些是整局累計，不能當成本次續玩新增值。",
+        "15筆公開observe的sessionLimitReached均為false；現存原生輸入沒有重開遊戲或修改狀態操作。"
+      ],
+      "not_established": [
+        "不從單次敗北估計勝率，也不宣稱經濟診斷改善或惡化勝率、通關能力、樂趣。"
+      ],
+      "sources": [
+        "visible-ui-responses/13501ea744c2493fa8200709e28c20f0.response.json",
+        "screen-0016.png",
+        "visible-ui-responses/c9cb1e6d4c3b461b85306dcab7c8ae71.response.json",
+        "screen-0018.png",
+        "event-17-false-4-defeat.png",
+        "final.png",
+        "actions.jsonl"
+      ]
+    },
+    {
+      "id": "finish",
+      "status": "原生finish請求與ok已確認；精確時刻未知",
+      "confirmed": [
+        "公開processed請求為{\"op\":\"finish\"}，對應response為{\"ok\":true}。",
+        "final.png仍呈現相同敗北結算。"
+      ],
+      "not_established": [
+        "finish這組JSON沒有wallSeconds或UTC；精確呼叫時刻為UNKNOWN。僅由該組欄位無法獨立重建其與結算observe的嚴格先後；原未封存狀態訊息主張結算後先finish且回ok。"
+      ],
+      "sources": [
+        "visible-ui-responses/e00c3a42855e44fd8fc23f40e4f35b99.processed.json",
+        "visible-ui-responses/e00c3a42855e44fd8fc23f40e4f35b99.response.json",
+        "final.png",
+        "ORIGINAL-A-STATUS-MESSAGE.json"
+      ]
+    },
+    {
+      "id": "實際開啟馬廄成本",
+      "status": "展開與內容呈現已確認；原玩家內在理解未獨立證實",
+      "confirmed": [
+        "64.337秒開總管；74.551秒可見馬廄#20控制項@79；83.212秒點擊@79後，83.713秒畫面已展開馬廄並標示等待資源／保留預算。",
+        "92.669秒畫面顯示輕騎兵正式費用65食物、20黃金，尚缺食物約38.31。161.188秒點擊畫面座標(291,498)，161.661秒完整明細表實際展開。",
+        "本復核者以view_image實際看過摘要、草稿提醒與完整成本表，並以公開文字回應核對。"
+      ],
+      "not_established": [
+        "畫面與操作能確認資訊已被開啟和呈現，不能直接證明原玩家已逐字閱讀或完整理解；原狀態訊息的已讀陳述仍不是封存REPORT。",
+        "公開協議已說明診斷功能存在；不能稱為未告知的盲測或完全無提示的自然發現。原玩家因食物低、木材多而開總管的內在動機只見於未封存狀態訊息。"
+      ],
+      "sources": [
+        "PUBLIC-PROTOCOL.md",
+        "ORIGINAL-A-STATUS-MESSAGE.json",
+        "actions.jsonl",
+        "visible-ui-responses/2fd9cf8829aa4fe9a73742d20b2abe24.response.json",
+        "screen-0008.png",
+        "visible-ui-responses/a0476a519a044067a53ff9e3f4a058ca.response.json",
+        "screen-0009.png",
+        "visible-ui-responses/8874e9d7bdd24ac08d1a8649f7660354.response.json",
+        "screen-0013.png"
+      ]
+    },
+    {
+      "id": "費用庫存保留缺口",
+      "status": "局內8:08快照的可見計算已確認",
+      "confirmed": [
+        "明細以局內8:08庫存快照計算。食物庫存約26.69、本筆費用65、全域有效保留0、此建築保留0、付款後最低庫存0、假設付款後庫存約-38.31、尚缺約38.31。",
+        "黃金庫存約180.73、本筆費用20、付款後約160.73、缺口0。木材約1299.46及石材約345.45本筆不支出／不檢查。",
+        "UI明示付款後最低庫存取全域與建築保留的較大值，不相加；保留不是花費上限；既有佇列已付款，不重複計費。",
+        "負的付款後食物是本筆費用試算，並非證據顯示實際已扣成負庫存。"
+      ],
+      "not_established": [
+        "該快照不是全部歷史支出的帳本，也不能解釋每筆已發生支出。沒有在資源門檻通過後重新核對自動佇列，不能確認自動化故障或排程保證。"
+      ],
+      "sources": [
+        "visible-ui-responses/8874e9d7bdd24ac08d1a8649f7660354.response.json",
+        "screen-0013.png"
+      ]
+    },
+    {
+      "id": "已套用與草稿",
+      "status": "兩種可見狀態已確認；完整主觀理解未證實",
+      "confirmed": [
+        "92.669秒摘要標示「依已套用設定」。經濟草稿修改後，152.340與161.661秒畫面均明示「有未套用變更；資源診斷仍依已生效設定計算」，診斷框內同時標示「依已套用設定」及「未套用變更」。",
+        "172.757秒按#steward-apply「儲存規劃」且回ok；173.547秒已關閉面板返回戰鬥。"
+      ],
+      "not_established": [
+        "沒有儲存後重新開總管核對持久值；不能把未套用草稿當成之前已生效政策，也不能把儲存回ok升格為每名村民已立即完成改派。"
+      ],
+      "sources": [
+        "visible-ui-responses/a0476a519a044067a53ff9e3f4a058ca.response.json",
+        "screen-0009.png",
+        "visible-ui-responses/ac0a7c6b4c434121a2a107036cac0697.response.json",
+        "screen-0012.png",
+        "visible-ui-responses/8874e9d7bdd24ac08d1a8649f7660354.response.json",
+        "screen-0013.png",
+        "visible-ui-responses/0e927dd139e24461b685f25259758cb9.processed.json",
+        "visible-ui-responses/0e927dd139e24461b685f25259758cb9.response.json",
+        "screen-0014.png"
+      ]
+    },
+    {
+      "id": "手動經濟調整",
+      "status": "原生修改與儲存操作已確認；效果未驗證",
+      "confirmed": [
+        "133.691秒採集策略選food；137.246秒村民目標填14。137.810秒畫面顯示食物優先、村民目標14，目標比例預覽由34/32/22/12變為64/16/12/8。",
+        "148.271秒按「將閒置村民交還總管」；172.757秒儲存。這些操作都有ok回應。",
+        "可見範圍內軍事方案仍均衡、馬廄自動開啟、佇列上限1、輕騎兵勾選、弓騎兵未勾選、預留皆0；18筆原生輸入沒有修改這些欄位。",
+        "順序為先見費用摘要，再改經濟草稿，最後才展開完整明細；不能倒寫為先讀完整明細才作出這些修改。"
+      ],
+      "not_established": [
+        "是否因診斷而改變決策、是否讀懂全部政策、採集或自動排隊是否改善，均無足夠獨立證據。不同時刻的資源變動不作為因果或故障判定。"
+      ],
+      "sources": [
+        "actions.jsonl",
+        "screen-0006.png",
+        "visible-ui-responses/e5f4b7a3689b433f9f42de9d2873c5fe.response.json",
+        "screen-0011.png",
+        "screen-0012.png",
+        "screen-0013.png",
+        "screen-0014.png"
+      ]
+    },
+    {
+      "id": "@33定位錯位",
+      "status": "公開控制項與實際開啟畫面的錯位已確認；根因未知",
+      "confirmed": [
+        "92.669秒上一筆公開observe的key33／selector@33標籤明確是輕騎兵費用摘要，範圍x287,y489.03125,w866,h21.609375。",
+        "103.946秒原生click@33回ok；104.479秒實際畫面卻是時代升級下拉選單，公開控制項key33為select[name=\"age\"]、value=auto。沒有觀察到選擇另一個時代值。",
+        "161.188秒改用可見摘要座標點擊，161.661秒才確認展開成本明細。"
+      ],
+      "not_established": [
+        "不能寫成原玩家故意開時代選單、已成功展開成本，或沒有依上一筆公開觀察使用控制編號。公開紀錄不足判斷錯位的實作根因及穩定重現性。"
+      ],
+      "sources": [
+        "visible-ui-responses/a0476a519a044067a53ff9e3f4a058ca.response.json",
+        "screen-0009.png",
+        "visible-ui-responses/6bd5bc99957c4d2d845c9bdc968643ba.processed.json",
+        "visible-ui-responses/6bd5bc99957c4d2d845c9bdc968643ba.response.json",
+        "visible-ui-responses/1f40844ee2074cec91210e11cc2bbe59.response.json",
+        "screen-0010.png",
+        "actions.jsonl",
+        "screen-0013.png"
+      ]
+    },
+    {
+      "id": "最後Q",
+      "status": "按鍵已送出；技能成功未確認",
+      "confirmed": [
+        "233.059秒原生key q回ok，233.652秒下一次觀察已是敗北結算。"
+      ],
+      "not_established": [
+        "ok只確認原生輸入被接收；沒有成功施放、命中、冷卻變更或戰鬥效果的可見證據。結算與按鍵的精確交界未知，不宣稱技能成功。"
+      ],
+      "sources": [
+        "actions.jsonl",
+        "visible-ui-responses/75be6abfff484e598c8045c3830b4257.processed.json",
+        "visible-ui-responses/75be6abfff484e598c8045c3830b4257.response.json",
+        "visible-ui-responses/c9cb1e6d4c3b461b85306dcab7c8ae71.response.json",
+        "screen-0018.png"
+      ]
+    }
+  ],
+  "cost_snapshot": {
+    "observed_wall_seconds": 161.661,
+    "snapshot_game_time": "8:08",
+    "building": "馬廄 #20",
+    "unit": "輕騎兵",
+    "applied_settings": true,
+    "unapplied_draft_visible": true,
+    "production_status": "等待資源／保留預算",
+    "rows": [
+      {
+        "resource": "食物",
+        "current_approx": 26.69,
+        "cost": 65,
+        "global_effective_reserve": 0,
+        "building_reserve": 0,
+        "minimum_after_payment": 0,
+        "hypothetical_after_payment_approx": -38.31,
+        "gap_approx": 38.31
+      },
+      {
+        "resource": "木材",
+        "current_approx": 1299.46,
+        "cost": 0,
+        "global_effective_reserve": 0,
+        "building_reserve": 0,
+        "minimum_after_payment": 0,
+        "hypothetical_after_payment_approx": 1299.46,
+        "gap_approx": null,
+        "check_status": "本筆不支出／不檢查"
+      },
+      {
+        "resource": "黃金",
+        "current_approx": 180.73,
+        "cost": 20,
+        "global_effective_reserve": 0,
+        "building_reserve": 0,
+        "minimum_after_payment": 0,
+        "hypothetical_after_payment_approx": 160.73,
+        "gap_approx": 0
+      },
+      {
+        "resource": "石材",
+        "current_approx": 345.45,
+        "cost": 0,
+        "global_effective_reserve": 0,
+        "building_reserve": 0,
+        "minimum_after_payment": 0,
+        "hypothetical_after_payment_approx": 345.45,
+        "gap_approx": null,
+        "check_status": "本筆不支出／不檢查"
+      }
+    ],
+    "interpretation": "本筆費用的假設付款試算；負數不表示已實際支出。明細不構成歷史帳本或下一筆排隊保證。"
+  },
+  "public_record_limits": [
+    "公開回應是原玩家inbox的副本；本次不審核複製流程或遊戲實作。",
+    "同一observe的PNG與文字並非完全一致的瞬間讀值：173.547秒截圖食物27、文字28；189.314秒截圖食物70／敵人10、文字食物94／敵人9。保留兩者，不將不同取樣值硬合併成同一狀態。成本表則在截圖與文字均可核對局內8:08快照。",
+    "四張event/final附圖沒有這批公開JSON所載的獨立wallSeconds；不由檔名或複製時間猜測其精確時刻。",
+    "finish回應沒有時間欄位；成功回應可確認，精確時刻與檔內嚴格排序不能補造。",
+    "未重新打開已儲存政策，也未追蹤資源條件通過後的自動佇列；沒有前後對照效果驗證。",
+    "PROFILE是AI模擬角色與操作假設；不是人類體驗、能力統計或本段實際達成的證明。"
+  ],
+  "original_subjective_report_gaps": {
+    "status": "UNSEALED_ORIGINAL_REPORT",
+    "most_fun_three": null,
+    "most_boring_three": null,
+    "most_frustrating_three": null,
+    "improvement_priorities_three": null,
+    "gdd_compatibility_assessment": null,
+    "replay_willingness": null,
+    "subjective_scores": null,
+    "reason": "原完整REPORT未封存且未存在於獲准公開來源；原狀態訊息沒有完整有趣／無聊／挫折／再玩意願。新復核者不可補造原A主觀回憶或排序。客觀定位失敗不代替原玩家的挫折評分。"
+  },
+  "claims_not_made": [
+    "沒有主張勝率、樂趣、再玩意願或通關率改善。",
+    "沒有把資源試算、不同時刻庫存或未驗證自動排隊寫成自動化Bug。",
+    "沒有把公開證據重建當成原角色封存REPORT。",
+    "沒有代替原玩家提出玩法建議或假造其改善優先序。"
+  ]
+}

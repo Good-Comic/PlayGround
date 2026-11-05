@@ -1,0 +1,626 @@
+{
+  "source": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+  "scope": "原生Start／滑鼠鍵盤移動護衛；人工目標及Fog案例另標CONTROLLED_FIXTURE。非自然戰役或實體GPU驗收。",
+  "checks": [
+    {
+      "name": "正式構建160檔案SHA256",
+      "pass": true
+    },
+    {
+      "name": "正式來源及160資源瀏覽器校驗",
+      "pass": true,
+      "verification": {
+        "source": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    },
+    {
+      "name": "原生空地點擊位置存在",
+      "pass": true
+    },
+    {
+      "name": "原生移動在短標記消失後仍有正確讀回",
+      "pass": true,
+      "immediate": {
+        "sim": 0.11659999999999991,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": false,
+        "keys": [],
+        "hero": {
+          "x": 25.4,
+          "y": 23.3
+        },
+        "selection": [
+          {
+            "id": 15,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 16,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 17,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 18,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          }
+        ],
+        "markers": 1,
+        "text": "已選戰士 4／全軍 4\n\n4 人待命",
+        "heroId": 19
+      },
+      "delayed": {
+        "sim": 1.4332000000000005,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": false,
+        "keys": [],
+        "hero": {
+          "x": 25.4,
+          "y": 23.3
+        },
+        "selection": [
+          {
+            "id": 15,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 16,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 17,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 18,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          }
+        ],
+        "markers": 0,
+        "text": "已選戰士 4／全軍 4\n\n4 人移動",
+        "heroId": 19
+      }
+    },
+    {
+      "name": "原生援護後3秒仍讀為護衛而非人工集火",
+      "pass": true,
+      "state": {
+        "sim": 5.365899999999995,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": false,
+        "keys": [],
+        "hero": {
+          "x": 25.4,
+          "y": 23.3
+        },
+        "selection": [
+          {
+            "id": 15,
+            "hero": false,
+            "state": "idle",
+            "manual": false,
+            "order": "guard",
+            "protected": 1
+          },
+          {
+            "id": 16,
+            "hero": false,
+            "state": "idle",
+            "manual": false,
+            "order": "guard",
+            "protected": 1
+          },
+          {
+            "id": 17,
+            "hero": false,
+            "state": "move",
+            "manual": false,
+            "order": "guard",
+            "protected": 1
+          },
+          {
+            "id": 18,
+            "hero": false,
+            "state": "move",
+            "manual": false,
+            "order": "guard",
+            "protected": 1
+          }
+        ],
+        "markers": 0,
+        "text": "已選戰士 4／全軍 4\n\n4 人護衛城鎮中心",
+        "heroId": 19
+      }
+    },
+    {
+      "name": "英雄直控援護保留英雄選取與持續按鍵，摘要已選零人",
+      "pass": true,
+      "state": {
+        "sim": 6.798999999999995,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": true,
+        "keys": [
+          "d"
+        ],
+        "hero": {
+          "x": 25.61401569029067,
+          "y": 22.587371004288695
+        },
+        "selection": [
+          {
+            "id": 19,
+            "hero": true,
+            "state": "move",
+            "manual": false
+          }
+        ],
+        "markers": 1,
+        "text": "英雄直控 · 已選戰士 0／全軍 4\n\n未選戰士；F2 可選全軍。",
+        "heroId": 19
+      }
+    },
+    {
+      "name": "CONTROLLED_FIXTURE原生衝車未調整HP且可見",
+      "pass": true,
+      "fixture": {
+        "id": 20,
+        "type": "ram",
+        "hp": 220,
+        "maxHp": 220,
+        "x": 29.174059662615125,
+        "y": 20.52732703196424,
+        "visible": true
+      }
+    },
+    {
+      "name": "夾具目標有正式可見且不被UI遮擋的原生點擊位置",
+      "pass": true,
+      "id": 20,
+      "point": {
+        "x": 925.501776497502,
+        "y": 457.31046616904314
+      }
+    },
+    {
+      "name": "原生右鍵敵軍確實指定同一人工目標",
+      "pass": true,
+      "state": {
+        "sim": 7.082299999999995,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": false,
+        "keys": [],
+        "hero": {
+          "x": 25.674059662615125,
+          "y": 22.52732703196424
+        },
+        "selection": [
+          {
+            "id": 15,
+            "hero": false,
+            "state": "attack",
+            "manual": true,
+            "target": 20
+          },
+          {
+            "id": 16,
+            "hero": false,
+            "state": "attack",
+            "manual": true,
+            "target": 20
+          },
+          {
+            "id": 17,
+            "hero": false,
+            "state": "attack",
+            "manual": true,
+            "target": 20
+          },
+          {
+            "id": 18,
+            "hero": false,
+            "state": "attack",
+            "manual": true,
+            "target": 20
+          }
+        ],
+        "markers": 2,
+        "text": "已選戰士 4／全軍 4\n\n4 人集火衝車",
+        "heroId": 19
+      }
+    },
+    {
+      "name": "人工集火名稱與前景標示持續且對應實體",
+      "pass": true,
+      "state": {
+        "sim": 8.3988,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": false,
+        "keys": [],
+        "hero": {
+          "x": 25.674059662615125,
+          "y": 22.52732703196424
+        },
+        "selection": [
+          {
+            "id": 15,
+            "hero": false,
+            "state": "attack",
+            "manual": true,
+            "target": 20
+          },
+          {
+            "id": 16,
+            "hero": false,
+            "state": "attack",
+            "manual": true,
+            "target": 20
+          },
+          {
+            "id": 17,
+            "hero": false,
+            "state": "attack",
+            "manual": true,
+            "target": 20
+          },
+          {
+            "id": 18,
+            "hero": false,
+            "state": "attack",
+            "manual": true,
+            "target": 20
+          }
+        ],
+        "markers": 0,
+        "text": "已選戰士 4／全軍 4\n\n4 人集火衝車",
+        "heroId": 19
+      },
+      "recentPaints": [
+        {
+          "sim": 8.282099999999998,
+          "text": "衝車 · 4 人集火"
+        },
+        {
+          "sim": 8.332099999999999,
+          "text": "衝車 · 4 人集火"
+        },
+        {
+          "sim": 8.3655,
+          "text": "衝車 · 4 人集火"
+        },
+        {
+          "sim": 8.3988,
+          "text": "衝車 · 4 人集火"
+        },
+        {
+          "sim": 8.4488,
+          "text": "衝車 · 4 人集火"
+        }
+      ]
+    },
+    {
+      "name": "CONTROLLED_FIXTURE正式Fog失去視野即不顯示舊名稱與標示",
+      "pass": true,
+      "state": {
+        "sim": 9.148700000000002,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": false,
+        "keys": [],
+        "hero": {
+          "x": 25.674059662615125,
+          "y": 22.52732703196424
+        },
+        "selection": [
+          {
+            "id": 15,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 16,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 17,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 18,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          }
+        ],
+        "markers": 0,
+        "text": "已選戰士 4／全軍 4\n\n4 人移動",
+        "heroId": 19
+      },
+      "recentPaints": []
+    },
+    {
+      "name": "改令的當下空地可操作",
+      "pass": true
+    },
+    {
+      "name": "新人工移動清除舊集火讀回",
+      "pass": true,
+      "state": {
+        "sim": 9.998600000000007,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": false,
+        "keys": [],
+        "hero": {
+          "x": 25.674059662615125,
+          "y": 22.52732703196424
+        },
+        "selection": [
+          {
+            "id": 15,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 16,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 17,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          },
+          {
+            "id": 18,
+            "hero": false,
+            "state": "move",
+            "manual": false
+          }
+        ],
+        "markers": 1,
+        "text": "已選戰士 4／全軍 4\n\n4 人移動",
+        "heroId": 19
+      }
+    },
+    {
+      "name": "正式來源及160資源瀏覽器校驗",
+      "pass": true,
+      "verification": {
+        "source": "6075dbaae8281de54ec5c932e349b0ed591f3c7f",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    },
+    {
+      "name": "原生暫停不推進模擬時間",
+      "pass": true
+    },
+    {
+      "name": "瀏覽器反覆讀回不改存檔、RNG或視效RNG",
+      "pass": true,
+      "unchanged": true,
+      "rngUnchanged": true,
+      "visualUnchanged": true
+    },
+    {
+      "name": "原生Save／Continue後讀回恢復護衛新物件",
+      "pass": true,
+      "state": {
+        "sim": 0.9664999999999999,
+        "phase": "prep",
+        "paused": false,
+        "heroControl": false,
+        "keys": [],
+        "hero": {
+          "x": 25.4,
+          "y": 23.3
+        },
+        "selection": [
+          {
+            "id": 15,
+            "hero": false,
+            "state": "move",
+            "manual": false,
+            "order": "guard",
+            "protected": 1
+          },
+          {
+            "id": 16,
+            "hero": false,
+            "state": "idle",
+            "manual": false,
+            "order": "guard",
+            "protected": 1
+          },
+          {
+            "id": 17,
+            "hero": false,
+            "state": "idle",
+            "manual": false,
+            "order": "guard",
+            "protected": 1
+          },
+          {
+            "id": 18,
+            "hero": false,
+            "state": "idle",
+            "manual": false,
+            "order": "guard",
+            "protected": 1
+          }
+        ],
+        "markers": 0,
+        "text": "已選戰士 4／全軍 4\n\n4 人護衛城鎮中心",
+        "heroId": 19
+      }
+    },
+    {
+      "name": "四語視口讀回不遮命令-zh-Hant-1440",
+      "pass": true,
+      "text": "已選戰士 4／全軍 4\n\n4 人護衛城鎮中心",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-zh-Hant-1024",
+      "pass": true,
+      "text": "已選戰士 4／全軍 4\n\n4 人護衛城鎮中心",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-zh-Hant-800",
+      "pass": true,
+      "text": "已選戰士 4／全軍 4\n\n4 人護衛城鎮中心",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-zh-Hant-390",
+      "pass": true,
+      "text": "已選戰士 4／全軍 4\n\n4 人護衛城鎮中心",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-zh-Hans-1440",
+      "pass": true,
+      "text": "已选战士 4／全军 4\n\n4 人护卫城镇中心",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-zh-Hans-1024",
+      "pass": true,
+      "text": "已选战士 4／全军 4\n\n4 人护卫城镇中心",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-zh-Hans-800",
+      "pass": true,
+      "text": "已选战士 4／全军 4\n\n4 人护卫城镇中心",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-zh-Hans-390",
+      "pass": true,
+      "text": "已选战士 4／全军 4\n\n4 人护卫城镇中心",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-en-1440",
+      "pass": true,
+      "text": "Selected 4 / Army 4\n\n4 guarding Town Center",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-en-1024",
+      "pass": true,
+      "text": "Selected 4 / Army 4\n\n4 guarding Town Center",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-en-800",
+      "pass": true,
+      "text": "Selected 4 / Army 4\n\n4 guarding Town Center",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-en-390",
+      "pass": true,
+      "text": "Selected 4 / Army 4\n\n4 guarding Town Center",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-ja-1440",
+      "pass": true,
+      "text": "選択兵 4／全軍 4\n\n4人が町の中心を護衛",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-ja-1024",
+      "pass": true,
+      "text": "選択兵 4／全軍 4\n\n4人が町の中心を護衛",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-ja-800",
+      "pass": true,
+      "text": "選択兵 4／全軍 4\n\n4人が町の中心を護衛",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口讀回不遮命令-ja-390",
+      "pass": true,
+      "text": "選択兵 4／全軍 4\n\n4人が町の中心を護衛",
+      "inside": true,
+      "headerHit": true,
+      "buttons": true
+    },
+    {
+      "name": "無瀏覽器程式錯誤",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "nativeSaveSha256": "34fa4b413000c9156f090a6579be6602a95af05c83b68fe94387bacb52805e7c",
+  "status": "PASS_WITH_CONTROLLED_FIXTURE_LIMITS"
+}

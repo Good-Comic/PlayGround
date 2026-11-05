@@ -1,0 +1,230 @@
+{
+  "source": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+  "classification": "DIRECT_CHROMIUM_UI_GAP_REPRODUCTION",
+  "rawArtifactsOnlyInDirector": true,
+  "noPublicAdapter": true,
+  "stateInjection": false,
+  "transport": "OFFLINE_ROUTE_UNCHANGED_FORMAL_PAYLOAD_NO_LISTEN_SOCKET",
+  "environmentNote": "首次 local server listen 被 sandbox 以 EPERM 拒絕；此版本改由 Playwright 靜態回應未修改正式檔案，未繞過任何遠端服務或讀取外站。",
+  "tests": [
+    {
+      "name": "原生右鍵空地是移動，0.8秒標記後無持續命令語意",
+      "ground": {
+        "x": 1060,
+        "y": 550,
+        "world": {
+          "x": 32.33144114353927,
+          "y": 24.469626370193524
+        }
+      },
+      "before": {
+        "sim": 0.21650000000000022,
+        "phase": "prep",
+        "seed": 1116648138,
+        "selection": [
+          {
+            "id": 15,
+            "type": "militia",
+            "state": "idle",
+            "manualAttack": false
+          },
+          {
+            "id": 16,
+            "type": "militia",
+            "state": "idle",
+            "manualAttack": false
+          },
+          {
+            "id": 17,
+            "type": "archer",
+            "state": "idle",
+            "manualAttack": false
+          },
+          {
+            "id": 18,
+            "type": "light_cavalry",
+            "state": "idle",
+            "manualAttack": false
+          }
+        ],
+        "markers": 0,
+        "battleText": "作戰指揮\n援護城心\n戰線 F\n全軍\n4 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 5 人\n\n選軍後右鍵移動；推進會沿途接敵。",
+        "hint": "選軍後右鍵移動；推進會沿途接敵。"
+      },
+      "immediate": {
+        "sim": 0.3165000000000002,
+        "phase": "prep",
+        "seed": 1116648138,
+        "selection": [
+          {
+            "id": 15,
+            "type": "militia",
+            "state": "move",
+            "manualAttack": false
+          },
+          {
+            "id": 16,
+            "type": "militia",
+            "state": "move",
+            "manualAttack": false
+          },
+          {
+            "id": 17,
+            "type": "archer",
+            "state": "move",
+            "manualAttack": false
+          },
+          {
+            "id": 18,
+            "type": "light_cavalry",
+            "state": "move",
+            "manualAttack": false
+          }
+        ],
+        "markers": 1,
+        "battleText": "作戰指揮\n援護城心\n戰線 F\n全軍\n4 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 5 人\n\n選軍後右鍵移動；推進會沿途接敵。",
+        "hint": "選軍後右鍵移動；推進會沿途接敵。"
+      },
+      "delayed": {
+        "sim": 1.6498,
+        "phase": "prep",
+        "seed": 1116648138,
+        "selection": [
+          {
+            "id": 15,
+            "type": "militia",
+            "state": "move",
+            "manualAttack": false
+          },
+          {
+            "id": 16,
+            "type": "militia",
+            "state": "move",
+            "manualAttack": false
+          },
+          {
+            "id": 17,
+            "type": "archer",
+            "state": "move",
+            "manualAttack": false
+          },
+          {
+            "id": 18,
+            "type": "light_cavalry",
+            "state": "idle",
+            "manualAttack": false
+          }
+        ],
+        "markers": 0,
+        "battleText": "作戰指揮\n援護城心\n戰線 F\n全軍\n4 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 3 人\n\n選軍後右鍵移動；推進會沿途接敵。",
+        "hint": "選軍後右鍵移動；推進會沿途接敵。"
+      },
+      "checks": {
+        "nativeMoveAccepted": true,
+        "markerExpired": true,
+        "staticHintUnchanged": true
+      }
+    },
+    {
+      "name": "援護城心實際接受護衛；toast後未持續顯示護衛語意",
+      "immediate": {
+        "sim": 2.5162999999999984,
+        "phase": "prep",
+        "seed": 1116648138,
+        "selection": [
+          {
+            "id": 15,
+            "type": "militia",
+            "state": "move",
+            "manualAttack": false,
+            "order": "guard",
+            "protectedId": 1
+          },
+          {
+            "id": 16,
+            "type": "militia",
+            "state": "idle",
+            "manualAttack": false,
+            "order": "guard",
+            "protectedId": 1
+          },
+          {
+            "id": 17,
+            "type": "archer",
+            "state": "move",
+            "manualAttack": false,
+            "order": "guard",
+            "protectedId": 1
+          },
+          {
+            "id": 18,
+            "type": "light_cavalry",
+            "state": "move",
+            "manualAttack": false,
+            "order": "guard",
+            "protectedId": 1
+          }
+        ],
+        "markers": 1,
+        "battleText": "作戰指揮\n援護城心\n戰線 F\n全軍\n4 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 4 人\n\n選軍後右鍵移動；推進會沿途接敵。",
+        "hint": "選軍後右鍵移動；推進會沿途接敵。"
+      },
+      "delayed": {
+        "sim": 5.566000000000001,
+        "phase": "prep",
+        "seed": 1116648138,
+        "selection": [
+          {
+            "id": 15,
+            "type": "militia",
+            "state": "idle",
+            "manualAttack": false,
+            "order": "guard",
+            "protectedId": 1
+          },
+          {
+            "id": 16,
+            "type": "militia",
+            "state": "idle",
+            "manualAttack": false,
+            "order": "guard",
+            "protectedId": 1
+          },
+          {
+            "id": 17,
+            "type": "archer",
+            "state": "idle",
+            "manualAttack": false,
+            "order": "guard",
+            "protectedId": 1
+          },
+          {
+            "id": 18,
+            "type": "light_cavalry",
+            "state": "move",
+            "manualAttack": false,
+            "order": "guard",
+            "protectedId": 1
+          }
+        ],
+        "markers": 0,
+        "battleText": "作戰指揮\n援護城心\n戰線 F\n全軍\n4 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 6 人\n\n選軍後右鍵移動；推進會沿途接敵。",
+        "hint": "選軍後右鍵移動；推進會沿途接敵。"
+      },
+      "checks": {
+        "nativeGuardAccepted": true,
+        "markerExpired": true,
+        "staticHintUnchanged": true
+      }
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "buildVerification": {
+    "commit": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+    "hash": "SHA256_MATCH_159_FILES"
+  },
+  "status": "UI_GAP_REPRODUCED_NO_GAMEPLAY_BUG_CLAIM",
+  "startedAtUtc": "2026-11-05T10:37:12.816Z",
+  "finishedAtUtc": "2026-11-05T10:37:21.375Z"
+}

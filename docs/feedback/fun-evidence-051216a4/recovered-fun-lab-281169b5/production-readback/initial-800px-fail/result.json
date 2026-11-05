@@ -1,0 +1,499 @@
+{
+  "source": "9117a02f9b6fe4989c744b90802df522dd0b7c07",
+  "resumeSha256": "1d35c76c1b35c5b4e901019dec95c02426114b582b32a3b91b5d29202f5462e4",
+  "scope": "正式構建＋原封A存檔Continue，原生暫停／總管／設定／SaveContinue；另明標單一資源小數邊界CONTROLLED_RESOURCE_FIXTURE，不當玩家流程或新平衡。純讀比較排除原生暫停仍有的camera緩動。",
+  "checks": [
+    {
+      "name": "before正式來源與全部資源",
+      "pass": true,
+      "verified": {
+        "source": "35dedfe6ee203a4d9689290dc466484c39557cf8",
+        "hash": "SHA256_MATCH_162_FILES"
+      }
+    },
+    {
+      "name": "Before仍只有原生概括狀態，沒有逐兵種成本明細",
+      "pass": true,
+      "text": "馬廄 #20 (1/5)\n\n自動生產狀態: 已達自動佇列上限\n\n自動 佇列上限 \n預留 食物 預留 木材 預留 黃金 預留 石材 \n輕騎兵 目標／上限  優先級／比例 \n弓騎兵 目標／上限  優先級／比例 "
+    },
+    {
+      "name": "after正式來源與全部資源",
+      "pass": true,
+      "verified": {
+        "source": "9117a02f9b6fe4989c744b90802df522dd0b7c07",
+        "hash": "SHA256_MATCH_163_FILES"
+      }
+    },
+    {
+      "name": "尚未展開建築時沒有重建整份診斷",
+      "pass": true
+    },
+    {
+      "name": "當前已套用合法兵種與正式費用讀回有資料",
+      "pass": true,
+      "view": {
+        "producerId": 20,
+        "producerType": "stable",
+        "at": 466.54200000008626,
+        "agePolicy": "auto",
+        "usesFallback": false,
+        "status": "queue",
+        "globalFloor": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0
+        },
+        "producerFloor": {
+          "food": 0,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0
+        },
+        "units": [
+          {
+            "type": "light_cavalry",
+            "cost": {
+              "food": 65,
+              "gold": 20
+            },
+            "resources": {
+              "food": {
+                "stock": 82.6719608159544,
+                "cost": 65,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 17.671960815954407,
+                "checked": true,
+                "shortage": 0
+              },
+              "wood": {
+                "stock": 1229.462368096238,
+                "cost": 0,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 1229.462368096238,
+                "checked": false,
+                "shortage": 0
+              },
+              "gold": {
+                "stock": 185.7301900079937,
+                "cost": 20,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 165.7301900079937,
+                "checked": true,
+                "shortage": 0
+              },
+              "stone": {
+                "stock": 325.4545230977309,
+                "cost": 0,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 325.4545230977309,
+                "checked": false,
+                "shortage": 0
+              }
+            },
+            "resourceReady": true,
+            "canTrainNow": true,
+            "restriction": null,
+            "populationRoom": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "實際表格全部四資源欄等同原生費用與底線資料",
+      "pass": true,
+      "cells": [
+        {
+          "resource": "food",
+          "checked": "true",
+          "values": {
+            "stock": 82.6719608159544,
+            "cost": 65,
+            "globalFloor": 0,
+            "producerFloor": 0,
+            "floor": 0,
+            "after": 17.671960815954407,
+            "shortage": 0
+          }
+        },
+        {
+          "resource": "wood",
+          "checked": "false",
+          "values": {
+            "stock": 1229.462368096238,
+            "cost": 0,
+            "globalFloor": 0,
+            "producerFloor": 0,
+            "floor": 0,
+            "after": 1229.462368096238,
+            "shortage": 0
+          }
+        },
+        {
+          "resource": "gold",
+          "checked": "true",
+          "values": {
+            "stock": 185.7301900079937,
+            "cost": 20,
+            "globalFloor": 0,
+            "producerFloor": 0,
+            "floor": 0,
+            "after": 165.7301900079937,
+            "shortage": 0
+          }
+        },
+        {
+          "resource": "stone",
+          "checked": "false",
+          "values": {
+            "stock": 325.4545230977309,
+            "cost": 0,
+            "globalFloor": 0,
+            "producerFloor": 0,
+            "floor": 0,
+            "after": 325.4545230977309,
+            "shortage": 0
+          }
+        }
+      ],
+      "native": {
+        "type": "light_cavalry",
+        "cost": {
+          "food": 65,
+          "gold": 20
+        },
+        "resources": {
+          "food": {
+            "stock": 82.6719608159544,
+            "cost": 65,
+            "globalFloor": 0,
+            "producerFloor": 0,
+            "floor": 0,
+            "after": 17.671960815954407,
+            "checked": true,
+            "shortage": 0
+          },
+          "wood": {
+            "stock": 1229.462368096238,
+            "cost": 0,
+            "globalFloor": 0,
+            "producerFloor": 0,
+            "floor": 0,
+            "after": 1229.462368096238,
+            "checked": false,
+            "shortage": 0
+          },
+          "gold": {
+            "stock": 185.7301900079937,
+            "cost": 20,
+            "globalFloor": 0,
+            "producerFloor": 0,
+            "floor": 0,
+            "after": 165.7301900079937,
+            "checked": true,
+            "shortage": 0
+          },
+          "stone": {
+            "stock": 325.4545230977309,
+            "cost": 0,
+            "globalFloor": 0,
+            "producerFloor": 0,
+            "floor": 0,
+            "after": 325.4545230977309,
+            "checked": false,
+            "shortage": 0
+          }
+        },
+        "resourceReady": true,
+        "canTrainNow": true,
+        "restriction": null,
+        "populationRoom": true
+      }
+    },
+    {
+      "name": "原生Enter更新不套用草稿／不關面板，更新控制節點穩定",
+      "pass": true
+    },
+    {
+      "name": "查看與顯式更新不改完整模擬快照或兩種RNG",
+      "pass": true,
+      "rngBefore": 2854088726,
+      "rngAfter": 2854088726,
+      "simBefore": 466.54200000008626,
+      "simAfter": 466.54200000008626
+    },
+    {
+      "name": "未套用草稿有全域及建築提示",
+      "pass": true
+    },
+    {
+      "name": "草稿更新仍讀已套用計畫而不替換live Game",
+      "pass": true
+    },
+    {
+      "name": "表單改回原值即清除未套用提示",
+      "pass": true
+    },
+    {
+      "name": "原生套用保留既有設定費用與暫停狀態",
+      "pass": true
+    },
+    {
+      "name": "套用後全域與建築50取max，沒有把底線相加",
+      "pass": true,
+      "view": {
+        "producerId": 20,
+        "producerType": "stable",
+        "at": 466.54200000008626,
+        "agePolicy": "auto",
+        "usesFallback": false,
+        "status": "queue",
+        "globalFloor": {
+          "food": 80,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0
+        },
+        "producerFloor": {
+          "food": 50,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0
+        },
+        "units": [
+          {
+            "type": "light_cavalry",
+            "cost": {
+              "food": 65,
+              "gold": 20
+            },
+            "resources": {
+              "food": {
+                "stock": 82.6719608159544,
+                "cost": 65,
+                "globalFloor": 80,
+                "producerFloor": 50,
+                "floor": 80,
+                "after": 17.671960815954407,
+                "checked": true,
+                "shortage": 62.32803918404559
+              },
+              "wood": {
+                "stock": 1229.462368096238,
+                "cost": 0,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 1229.462368096238,
+                "checked": false,
+                "shortage": 0
+              },
+              "gold": {
+                "stock": 185.7301900079937,
+                "cost": 20,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 165.7301900079937,
+                "checked": true,
+                "shortage": 0
+              },
+              "stone": {
+                "stock": 325.4545230977309,
+                "cost": 0,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 325.4545230977309,
+                "checked": false,
+                "shortage": 0
+              }
+            },
+            "resourceReady": false,
+            "canTrainNow": true,
+            "restriction": null,
+            "populationRoom": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "正式SaveContinue還原已套用保留與診斷",
+      "pass": true,
+      "view": {
+        "producerId": 20,
+        "producerType": "stable",
+        "at": 466.77530000008625,
+        "agePolicy": "auto",
+        "usesFallback": false,
+        "status": "queue",
+        "globalFloor": {
+          "food": 80,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0
+        },
+        "producerFloor": {
+          "food": 50,
+          "wood": 0,
+          "gold": 0,
+          "stone": 0
+        },
+        "units": [
+          {
+            "type": "light_cavalry",
+            "cost": {
+              "food": 65,
+              "gold": 20
+            },
+            "resources": {
+              "food": {
+                "stock": 82.6719608159544,
+                "cost": 65,
+                "globalFloor": 80,
+                "producerFloor": 50,
+                "floor": 80,
+                "after": 17.671960815954407,
+                "checked": true,
+                "shortage": 62.32803918404559
+              },
+              "wood": {
+                "stock": 1239.462368096238,
+                "cost": 0,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 1239.462368096238,
+                "checked": false,
+                "shortage": 0
+              },
+              "gold": {
+                "stock": 185.7301900079937,
+                "cost": 20,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 165.7301900079937,
+                "checked": true,
+                "shortage": 0
+              },
+              "stone": {
+                "stock": 325.4545230977309,
+                "cost": 0,
+                "globalFloor": 0,
+                "producerFloor": 0,
+                "floor": 0,
+                "after": 325.4545230977309,
+                "checked": false,
+                "shortage": 0
+              }
+            },
+            "resourceReady": false,
+            "canTrainNow": true,
+            "restriction": null,
+            "populationRoom": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "受控微小正缺口不被四捨五入成零或冒稱可生產",
+      "pass": true,
+      "boundary": {
+        "resource": "food",
+        "unit": {
+          "type": "light_cavalry",
+          "cost": {
+            "food": 65,
+            "gold": 20
+          },
+          "resources": {
+            "food": {
+              "stock": 144.995,
+              "cost": 65,
+              "globalFloor": 80,
+              "producerFloor": 50,
+              "floor": 80,
+              "after": 79.995,
+              "checked": true,
+              "shortage": 0.0049999999999954525
+            },
+            "wood": {
+              "stock": 1239.462368096238,
+              "cost": 0,
+              "globalFloor": 0,
+              "producerFloor": 0,
+              "floor": 0,
+              "after": 1239.462368096238,
+              "checked": false,
+              "shortage": 0
+            },
+            "gold": {
+              "stock": 30,
+              "cost": 20,
+              "globalFloor": 0,
+              "producerFloor": 0,
+              "floor": 0,
+              "after": 10,
+              "checked": true,
+              "shortage": 0
+            },
+            "stone": {
+              "stock": 325.4545230977309,
+              "cost": 0,
+              "globalFloor": 0,
+              "producerFloor": 0,
+              "floor": 0,
+              "after": 325.4545230977309,
+              "checked": false,
+              "shortage": 0
+            }
+          },
+          "resourceReady": false,
+          "canTrainNow": true,
+          "restriction": null,
+          "populationRoom": true
+        },
+        "classification": "CONTROLLED_RESOURCE_FLOAT_BOUNDARY_NOT_PLAYER_RESULT"
+      },
+      "summary": "輕騎兵 · 本筆費用 食物 65 · 黃金 20 · 尚缺 食物 <0.01",
+      "rawShortage": 0.0049999999999954525
+    },
+    {
+      "name": "四語視口診斷與固定操作列-zh-Hant-1440",
+      "pass": true,
+      "inside": true,
+      "noOuterOverflow": true,
+      "text": "馬廄 #20 (1/5)\n\n自動生產狀態: 已達自動佇列上限\n\n依已套用設定\n更新資源診斷\n\n局內7:46的庫存快照；按更新重新讀取。\n\n付款後最低庫存取全域與此建築保留的較大值，不相加；建築保留不是花費上限。全域保留已納入升級政策。 升級政策：自動。\n\n輕騎兵 · 本筆費用 食物 65 · 黃金 20 · 尚缺 食物 <0.01\n\n資源條件尚未符合；不影響上方手動、佇列、目標或人口等原有狀態。\n\n摘要的≈表示約數；此表保留原始數值。既有佇列已付款，不會再次扣除。\n資源\t目前庫存\t本筆費用\t全域有效保留\t此建築保留\t付款後最低庫存\t付款後庫存\t尚缺\n食物\t144.995\t65\t80\t50\t80\t79.995\t0.0049999999999954525\n木材\t1239.462368096238\t0\t0\t0\t0\t1239.462368096238\t本筆不支出／不檢查\n黃金\t30\t20\t0\t0\t0\t10\t0\n石材\t325.4545230977309\t0\t0\t0\t0\t325.4545230977309\t本筆不支出／不檢查\n自動 佇列上限 \n預留 食物 預留 木材 預留 黃金 預留 石材 \n輕騎兵 目標／上限  優先級／比例 \n弓騎兵 目標／上限  優先級／比例 ",
+      "controls": true
+    },
+    {
+      "name": "四語視口診斷與固定操作列-zh-Hant-1024",
+      "pass": true,
+      "inside": true,
+      "noOuterOverflow": true,
+      "text": "馬廄 #20 (1/5)\n\n自動生產狀態: 已達自動佇列上限\n\n依已套用設定\n更新資源診斷\n\n局內7:46的庫存快照；按更新重新讀取。\n\n付款後最低庫存取全域與此建築保留的較大值，不相加；建築保留不是花費上限。全域保留已納入升級政策。 升級政策：自動。\n\n輕騎兵 · 本筆費用 食物 65 · 黃金 20 · 尚缺 食物 <0.01\n\n資源條件尚未符合；不影響上方手動、佇列、目標或人口等原有狀態。\n\n摘要的≈表示約數；此表保留原始數值。既有佇列已付款，不會再次扣除。\n資源\t目前庫存\t本筆費用\t全域有效保留\t此建築保留\t付款後最低庫存\t付款後庫存\t尚缺\n食物\t144.995\t65\t80\t50\t80\t79.995\t0.0049999999999954525\n木材\t1239.462368096238\t0\t0\t0\t0\t1239.462368096238\t本筆不支出／不檢查\n黃金\t30\t20\t0\t0\t0\t10\t0\n石材\t325.4545230977309\t0\t0\t0\t0\t325.4545230977309\t本筆不支出／不檢查\n自動 佇列上限 \n預留 食物 預留 木材 預留 黃金 預留 石材 \n輕騎兵 目標／上限  優先級／比例 \n弓騎兵 目標／上限  優先級／比例 ",
+      "controls": true
+    },
+    {
+      "name": "四語視口診斷與固定操作列-zh-Hant-800",
+      "pass": false,
+      "inside": true,
+      "noOuterOverflow": false,
+      "text": "馬廄 #20 (1/5)\n\n自動生產狀態: 已達自動佇列上限\n\n依已套用設定\n更新資源診斷\n\n局內7:46的庫存快照；按更新重新讀取。\n\n付款後最低庫存取全域與此建築保留的較大值，不相加；建築保留不是花費上限。全域保留已納入升級政策。 升級政策：自動。\n\n輕騎兵 · 本筆費用 食物 65 · 黃金 20 · 尚缺 食物 <0.01\n\n資源條件尚未符合；不影響上方手動、佇列、目標或人口等原有狀態。\n\n摘要的≈表示約數；此表保留原始數值。既有佇列已付款，不會再次扣除。\n資源\t目前庫存\t本筆費用\t全域有效保留\t此建築保留\t付款後最低庫存\t付款後庫存\t尚缺\n食物\t144.995\t65\t80\t50\t80\t79.995\t0.0049999999999954525\n木材\t1239.462368096238\t0\t0\t0\t0\t1239.462368096238\t本筆不支出／不檢查\n黃金\t30\t20\t0\t0\t0\t10\t0\n石材\t325.4545230977309\t0\t0\t0\t0\t325.4545230977309\t本筆不支出／不檢查\n自動 佇列上限 \n預留 食物 預留 木材 預留 黃金 預留 石材 \n輕騎兵 目標／上限  優先級／比例 \n弓騎兵 目標／上限  優先級／比例 ",
+      "controls": true
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "status": "FAIL",
+  "failure": "Error: 四語視口診斷與固定操作列-zh-Hant-800\n    at check (/workspace/riftwatch-fun-lab-281169b5/browser-production-readback.cjs:9:122)\n    at /workspace/riftwatch-fun-lab-281169b5/browser-production-readback.cjs:73:7"
+}

@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "player": "A",
+  "round": "after",
+  "focus": "城心實際受傷回饋",
+  "perspective": "AI模擬高階策略玩家，不是人類統計、真人感受或最佳解驗證。",
+  "sessionType": "新獨立瀏覽器，與第一個After相同來源、未修改自然快照，正式Continue聚焦續玩；非全新十波、非盲測。",
+  "priorExperience": "保有自己先前續測經驗；本回合只讀新root的PROFILE與public/README，未重讀舊sealed報告或原始快照，舊sealed未修改。",
+  "status": "DEFEAT",
+  "build": {
+    "visibleLabel": "fun-lab-core-damage-r1",
+    "playtest": "955fcea"
+  },
+  "settings": {
+    "taskSpecified": "沿用A的FRK／Normal／steppe匹配自然快照。",
+    "resumedVisible": "草海平原、第IV日、帝國時代、恩賜3、度過襲擊3/10、城心68%。",
+    "unverified": "未讀存檔；Continue前主選單TEU／ash／normal／RW-09CPYM4未改，不能把預設主選單值當成續玩文明或種子驗證。"
+  },
+  "timeBasis": {
+    "description": "續玩UI沒有持續遊戲時計，使用public回傳實際牆鐘；t+0為Continue。傷害行的8:07等是該歷史傷害事件的遊戲時間，結算9:00為存檔累計統治時間。",
+    "continueWallSeconds": 29.083,
+    "firstLiveObservationWallSeconds": 29.784,
+    "outcomeObservationWallSeconds": 108.241,
+    "resumedWallDurationSeconds": 79.158,
+    "playerPauseUsed": false,
+    "noSafetyPauseObserved": true
+  },
+  "outcome": {
+    "visibleText": "裂界閉合／最後爐火熄滅／城鎮中心已然陷落。",
+    "wavesSurvived": 3,
+    "killsCumulative": 75,
+    "resourcesGatheredCumulative": 3660,
+    "cumulativeReignTime": "9:00",
+    "townCenter": "失守",
+    "finish": {
+      "onlyAfterVisibleOutcome": true,
+      "returnedOk": true
+    },
+    "platformQuotaBlockObserved": false,
+    "sessionLimitReached": false,
+    "warning": "上述擊殺、採集、統治時間含載入前自然遊玩，不能歸為本次新續測的獨立產出。"
+  },
+  "budget": {
+    "assumption": "上限24有效意圖／遊戲分鐘、最短2.5秒，是AI模擬假設而非真人實測。",
+    "successfulNativeInputs": 6,
+    "failedRequests": 1,
+    "conservativeAllAttempts": 7,
+    "minimumSuccessfulInputIntervalSeconds": 6.961,
+    "peakSuccessfulInputsPer60WallSeconds": 5,
+    "failedRequestTreatment": "末次CONTROL_NOT_VISIBLE_OR_ENABLED沒有executedAt或可見有效命令；不算已完成操作，保守總嘗試數仍計1。",
+    "note": "沒有提高上限補回辨識或工具延遲；全部7次嘗試即使集中在一遊戲分鐘仍低於24。未藉暫停增加操作。"
+  },
+  "actions": [
+    {
+      "wallSeconds": 29.083,
+      "t": 0,
+      "input": "Continue",
+      "intentCost": 1,
+      "observed": "正常繼續遠征，未使用Start Game或New Game。"
+    },
+    {
+      "wallSeconds": 36.044,
+      "t": 6.961,
+      "input": "F2",
+      "intentCost": 1,
+      "observed": "選中16名戰士；12人護衛城心、4人待命。"
+    },
+    {
+      "wallSeconds": 44.761,
+      "t": 15.678,
+      "input": "援護城心",
+      "intentCost": 1,
+      "observed": "讓待命軍隊也納入防守；後續摘要16人護衛城心。"
+    },
+    {
+      "wallSeconds": 64.398,
+      "t": 35.315,
+      "input": "援護城心",
+      "intentCost": 1,
+      "observed": "看到步弓兵實損後重新下令；回饋17人護衛城心，沒有當成集火成功。"
+    },
+    {
+      "wallSeconds": 75.691,
+      "t": 46.608,
+      "input": "右鍵1099,378",
+      "intentCost": 1,
+      "observed": "依當時可見東側步弓兵手動集火；後續確認17人集火步弓兵及人工標示。"
+    },
+    {
+      "wallSeconds": 95.756,
+      "t": 66.673,
+      "input": "I 選待命村民",
+      "intentCost": 1,
+      "observed": "原先考慮切至待命工人處理受損城心；選取與鏡頭改變，後續看到衝車重大實損，未下達修理。"
+    }
+  ],
+  "failedInput": {
+    "afterObservationT": 67.511,
+    "beforeOutcomeObservationT": 79.158,
+    "input": "click #btn-core-defense",
+    "intended": "重大衝車實損後返回軍事防守。",
+    "response": {
+      "ok": false,
+      "reason": "CONTROL_NOT_VISIBLE_OR_ENABLED"
+    },
+    "executedAt": "未提供",
+    "followup": "下一觀察已正式敗北；沒有重複盲目重試，也未聲稱成功援護。"
+  },
+  "timeline": [
+    {
+      "t": 0.701,
+      "wallSeconds": 29.784,
+      "screen": "screen-0003.png",
+      "observed": "遠征已載入；城心68%、度過3/10、全軍15、已選戰士0，目前待命村民。"
+    },
+    {
+      "t": 7.682,
+      "wallSeconds": 36.765,
+      "screen": "screen-0005.png",
+      "observed": "選中16名刀盾兵／長槍兵／輕騎兵；12人護衛城心、4人待命；HUD14名敵人，城心68%。"
+    },
+    {
+      "t": 22.742,
+      "wallSeconds": 51.825,
+      "screen": "screen-0006.png",
+      "observed": "已選16／全軍17，16人護衛城心；百分比仍68%，新行顯示城心上次實損−2.93 HP·步弓兵·8:07。"
+    },
+    {
+      "t": 36.081,
+      "wallSeconds": 65.164,
+      "screen": "screen-0007.png",
+      "observed": "重新援護後17人護衛城心，沒有改成集火；實損仍是−2.93 HP·步弓兵·8:22。文字城心62%，相鄰截圖63%，不當同一影格。"
+    },
+    {
+      "t": 47.378,
+      "wallSeconds": 76.461,
+      "screen": "screen-0008.png",
+      "observed": "已選17／全軍18；摘要17人集火步弓兵，畫面人工標示步弓兵·17人集火；敵方步弓兵29/41HP。城心58%，最近實損−2.93 HP·步弓兵·8:33。"
+    },
+    {
+      "t": 67.511,
+      "wallSeconds": 96.594,
+      "screen": "screen-0009.png",
+      "observed": "I後選待命村民、已選戰士0／全軍19，鏡頭改變。城心21%；最近實損−127.8 HP·衝車·受傷時→·8:51。畫面有多輛衝車。殘留敵方步弓兵提示0/41，不能據此認領擊殺。"
+    },
+    {
+      "t": 79.158,
+      "wallSeconds": 108.241,
+      "screen": "screen-0011.png",
+      "observed": "正式城心失守與敗北結算：3波、75擊殺、3660採集、9:00統治時間。"
+    }
+  ],
+  "coreFeedbackAssessment": {
+    "canDistinguish": true,
+    "enemyPointingAtCore": {
+      "confirmed": "沒有獨立讀到某一敵軍的明文當前攻擊目標；畫面位置、朝向或敵人數量只能是線索。",
+      "notInferred": "不把敵軍出現在城心旁、護衛命令或我方集火命令等同於敵人當下正在造成城心傷害。"
+    },
+    "guardOrder": {
+      "confirmed": "16人護衛城鎮中心、之後17人護衛城鎮中心。",
+      "meaning": "這是我方部隊的命令摘要，不保證攔截成功、抵達、命中或城心免傷。"
+    },
+    "actualCoreHpLoss": {
+      "confirmedEvents": [
+        {
+          "observedT": 22.742,
+          "lossHp": 2.93,
+          "sourceType": "步弓兵",
+          "eventGameTime": "8:07",
+          "percentStill": 68
+        },
+        {
+          "observedT": 36.081,
+          "lossHp": 2.93,
+          "sourceType": "步弓兵",
+          "eventGameTime": "8:22"
+        },
+        {
+          "observedT": 47.378,
+          "lossHp": 2.93,
+          "sourceType": "步弓兵",
+          "eventGameTime": "8:33"
+        },
+        {
+          "observedT": 67.511,
+          "lossHp": 127.8,
+          "sourceType": "衝車",
+          "eventGameTime": "8:51",
+          "eventDirection": "→"
+        }
+      ],
+      "meaning": "實損行可確認最近一次已發生的實際HP扣除與UI可確認來源類型，不是面板攻擊力、敵方意圖或全部歷史傷害總和。",
+      "unknowns": "不能由單行推算所有同期損失，也未確認具體是哪一輛衝車、其現在位置或失去視野狀態。"
+    },
+    "arrowInterpretation": "受傷時→只解讀為該次受傷當時可見近戰攻擊者的畫面方位；不是投射物來向或當前位置，沒有拿箭頭當目前座標點擊。",
+    "nextStepFound": [
+      {
+        "observedT": 22.742,
+        "nextStepT": 35.315,
+        "step": "重新援護城心",
+        "result": "17人護衛；沒有自稱已集火。"
+      },
+      {
+        "observedT": 36.081,
+        "nextStepT": 46.608,
+        "step": "手動右鍵東側當時可見步弓兵",
+        "result": "17人集火摘要與標示確認命令；不等於命中已確認。"
+      },
+      {
+        "observedT": 67.511,
+        "step": "由村民選取切回軍事，嘗試援護城心以處理重大衝車威脅",
+        "result": "按鈕已不可用，後續正式敗北；找到方向但未完成有效修正。"
+      }
+    ],
+    "causalLimit": "本次從自己曾續測的同來源自然快照開始，且決策有學習效應；不能把行動差異或勝敗歸因於HUD改動。"
+  },
+  "commandReadback": {
+    "selection": "t+47.378選中17／全軍18。",
+    "command": "17人集火步弓兵。",
+    "visibleTarget": "東側約1099,378的當時可見步弓兵，提示敵方29/41HP。",
+    "manualFocusMarkerSeen": true,
+    "markerText": "步弓兵 · 17人集火",
+    "limit": "命令與標示僅確認下令對象，不確認全軍已抵達或每一擊命中；後續0/41提示不構成我方擊殺歸因。"
+  },
+  "interesting": [
+    {
+      "t": 22.742,
+      "category": "實際損失可讀性",
+      "observation": "城心百分比仍68%時，−2.93HP·步弓兵·8:07讓已實際受傷可被確認，能和護衛命令分開理解。",
+      "evidence": "screen-0006.png"
+    },
+    {
+      "t": 47.378,
+      "category": "命令與目標可讀性",
+      "observation": "手動右鍵後同時看到17人集火步弓兵、人工標示與29/41敵方提示，可明確說出選兵、命令與可見目標。",
+      "evidence": "screen-0008.png"
+    },
+    {
+      "t": 67.511,
+      "category": "威脅判斷",
+      "observation": "傷害來源由步弓兵2.93轉成衝車127.8，並提供歷史方向和時間，使我能辨識重大實損來源與下一步方向，雖未及有效修正。",
+      "evidence": "screen-0009.png"
+    }
+  ],
+  "boring": [],
+  "boringEvidenceLimit": "約79秒且大多是即時防守、辨識與改令，沒有足夠證據支持獨立無聊時刻；不為填滿三項虛構等待或感受。",
+  "frustrating": [
+    {
+      "t": 36.081,
+      "category": "命令結果與下一步",
+      "observation": "看到步弓兵實損後重新援護仍只得到17人護衛，城心持續失血；我需要另作可見目標的手動判斷，不能把按鈕當自動化解威脅。",
+      "evidence": "screen-0006.png、screen-0007.png"
+    },
+    {
+      "t": 67.511,
+      "category": "注意力切換／判斷延遲",
+      "observation": "曾考慮選待命工人處理受損城心，I使選取與鏡頭改變；下一觀察城心已21%且是衝車重大實損。沒有完成修理，也沒有在更早階段處理可見衝車。",
+      "evidence": "screen-0008.png、screen-0009.png"
+    },
+    {
+      "t": 79.158,
+      "category": "有限反應時間／正式失敗",
+      "observation": "辨識衝車實損後雖想返回援護，控制項已不可用，下一畫面正式敗北。這是本次操作與判斷未及的結果，不虛構成功介入或怪罪單一工具因素。",
+      "evidence": "screen-0009.png、screen-0011.png"
+    }
+  ],
+  "improvements": [
+    {
+      "priority": 1,
+      "proposal": "在最近一次實損旁提供很短的近期事件摘要或最大一擊提示，保留來源與事件時間。",
+      "basis": "2.93HP步弓兵與127.8HP衝車的嚴重程度差異大；單一最近事件可被後續小傷取代，本次不能由單行重建所有同期損失。",
+      "gddCompatibility": "未讀完整GDD，相容性待核實；僅使用已公開的實際傷害事件，不揭露敵方隱藏狀態。",
+      "risk": "資訊太多會淹沒操作區，也可能過度降低注意力壓力。",
+      "validation": "使用自然戰鬥記錄，在相同操作預算下測能否辨識最大可見已發生威脅、事件新舊與下一步，並確認不顯示未見敵人。"
+    },
+    {
+      "priority": 2,
+      "proposal": "援護城心回饋明示此次是護衛還是已鎖定特定可見敵軍，並在護衛結果下給出不含猜測的未鎖定提示。",
+      "basis": "本次看到歷史步弓兵實損後按援護仍是17人護衛，需要自己再手動點可見步弓兵；歷史實損不代表按下時有可確認的當前攻擊者。",
+      "gddCompatibility": "未讀完整GDD，相容性待核實；只說明實際下達命令，不要求改變鎖定規則或自動找最優敵人。",
+      "risk": "提示若寫成沒有敵人會造成錯誤保證；應只描述這次命令是否有鎖定。",
+      "validation": "涵蓋護衛、成功集火與歷史投射傷害情境，要求玩家說出實際命令與未知資訊；不以按鈕成功回傳當攔截成功。"
+    },
+    {
+      "priority": 3,
+      "proposal": "在待命村民造成鏡頭切換時，提供可見的返回上一戰場視角入口，保留獨立輸入成本。",
+      "basis": "I後鏡頭移動、已選戰士變0，需要重新建立城心附近目標的畫面關係；本次可辨識重大實損但未及有效改令。",
+      "gddCompatibility": "未讀完整GDD，相容性待核實；僅回到玩家先前看過的視角，不自動選敵、追蹤或下令。",
+      "risk": "可能增加常駐介面，或與現有可見鏡頭功能重疊；本次未完整探索熱鍵，需先核實現有能力。",
+      "validation": "先檢查公開教學已有的返回視角功能，再以相同操作預算測量切回畫面與重新辨識目標時間，確認不移動單位或追蹤隱藏目標。"
+    }
+  ],
+  "replayIntent": {
+    "perspective": "AI模擬判斷，非真人感受。",
+    "willing": true,
+    "strength": "有條件願意",
+    "reason": "已能區分護衛命令與城心實損，也成功確認一次人工集火；希望練習更快地將實損來源轉成可見目標的有效處理。",
+    "limits": "本次正式敗北，沒有證明提示能挽救城心或提高勝率；同來源快照與既有經驗使本次不屬盲測。"
+  },
+  "integrity": {
+    "readScope": "只讀core-player的public/README.md與自己PROFILE.md；執行公開client取得可見文字、控制項與自己的當次畫面。",
+    "excluded": "未讀原始碼、Director、其他角色、private-observer、原始快照、完整GDD、隱藏敵軍或RNG。",
+    "input": "僅原生F2、I、右鍵與可見按鈕；未執行遊戲函式，未改資源、HP、單位、時間、RNG。",
+    "unexpectedSafetyIntervention": "未觀察到HARNESS安全暫停；不宣稱掌握私有介入紀錄。",
+    "sampling": "截圖與文字可能相隔更新，63%／62%等差異不合併為同影格。",
+    "latency": "畫面閱讀、模型辨識與工具往返消耗真實時間；本次不拆分三者的個別因果貢獻。"
+  },
+  "evidence": {
+    "directory": "/workspace/riftwatch-fun-lab-281169b5/core-player/players/A/after",
+    "screens": [
+      "screen-0003.png",
+      "screen-0005.png",
+      "screen-0006.png",
+      "screen-0007.png",
+      "screen-0008.png",
+      "screen-0009.png",
+      "screen-0011.png"
+    ],
+    "finalScreen": "screen-0011.png",
+    "oldSealedUntouched": true
+  }
+}
+

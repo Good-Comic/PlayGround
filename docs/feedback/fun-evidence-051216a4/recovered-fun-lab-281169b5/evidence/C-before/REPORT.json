@@ -1,0 +1,824 @@
+{
+  "reportSchemaVersion": 1,
+  "player": "C",
+  "phase": "before",
+  "perspective": "AI新手／低熟練玩家模擬；不是實際真人感受、APM量測或留存預測。",
+  "status": "DEFEAT",
+  "setup": {
+    "civilization": "FRK／法蘭克",
+    "difficulty": "normal／普通",
+    "biome": "steppe／草海平原",
+    "seed": "FUN-LAB-BASE-281",
+    "visibleBuild": "f6ae896",
+    "visibleBuildLabel": "fun-lab-before-281169b5",
+    "speed": "正常1倍速，未使用速度調整",
+    "isolation": "由協調者提供本輪全新隔離Chromium；本角色只操作C。"
+  },
+  "timeBasis": {
+    "startWallSeconds": 130.824,
+    "endObservedWallSeconds": 1108.283,
+    "elapsedRealSeconds": 977.459,
+    "elapsedReal": "16:17.459",
+    "visibleEndReignTime": "12:03",
+    "note": "過程沒有可見的持續遊戲總時計，事件時間採正常client可見wallSeconds減Start時間，含選卡、總管暫停與工具延遲；不是推算的內部遊戲時間。結算12:03獨立照錄。"
+  },
+  "result": {
+    "wavesSurvived": 4,
+    "failedWave": "V／軍閥的清算",
+    "core": "失守",
+    "kills": 113,
+    "gatheredResources": 8398,
+    "visibleReignTime": "12:03",
+    "boons": [
+      "金牙",
+      "青銅誓約",
+      "馱騾",
+      "夜巡"
+    ],
+    "rescuedWorkersMessage": "兩名工人已獲救！",
+    "ageAtDefeat": "封建時代",
+    "finalScreenshot": "screen-0064.png",
+    "finish": "已於看到正式敗北後執行client C finish，回傳ok:true。"
+  },
+  "profileAdherence": {
+    "simulationAssumptions": "每分鐘約6個有效意圖、至少10秒間隔、單一短期目標、只保留最近3則明顯提示作戰術判斷；這些是本次AI測試假設。",
+    "gameplayIntentCountIncludingStart": 43,
+    "minimumRecordedIntentGapSeconds": 10.121,
+    "intentsPerRealMinuteIncludingStart": 2.639,
+    "maxRecordedObservationGapSeconds": 36.158,
+    "scope": "只讀PROFILE.md與public/README.md，僅正常client可見文字／控制項／截圖及原生操作；未讀其他玩家、private-observer、原始碼、GDD或隱藏狀態，未呼叫內部函式，未改資源、血量、單位或時計。",
+    "pauses": "未手動暫停戰場；只發生遊戲原生選卡與總管面板暫停。",
+    "naturalErrors": [
+      "曾把城心查看意圖留到選卡後才完成。",
+      "查看旗手後未能確認正確目標，沒有宣稱擊殺旗手。",
+      "撤退反應與下令偏慢；此後只盯城心，沒有完成時代升級或理解生產支出。"
+    ],
+    "reportingMemory": "報告為遊玩後依本輪已記錄可見事件回顧；長紀錄未用於全知戰術決策。"
+  },
+  "funMoments": [
+    {
+      "id": "FUN-1",
+      "wallSeconds": 269.944,
+      "elapsedSeconds": 139.12,
+      "elapsed": "02:19",
+      "category": "短期成就／獎勵回饋",
+      "title": "第一次守住襲擊並能選恩賜",
+      "visibleEvidence": "畫面顯示「襲擊已破」、城心100%，候選為公民武備、金牙、馬鎧；金牙明寫立即獲得120黃金。",
+      "aiNoviceInterpretation": "先前只知道守城，這次有清楚的小成功與容易理解的獎勵，足以形成繼續玩的短期目標。",
+      "screenshots": [
+        "screen-0012.png",
+        "screen-0013.png"
+      ]
+    },
+    {
+      "id": "FUN-2",
+      "wallSeconds": 821.537,
+      "elapsedSeconds": 690.713,
+      "elapsed": "11:30",
+      "category": "支線探索／明確成果",
+      "title": "嘗試派英雄後看見工人獲救",
+      "visibleEvidence": "810.641秒按「派英雄前往」，821.537秒看到「兩名工人已獲救！」；英雄面板494/520生命。",
+      "aiNoviceInterpretation": "第一次從反覆守城之外取得可理解的成果；僅確認畫面訊息，不推斷路線、隱藏位置或救援機制。",
+      "screenshots": [
+        "screen-0045.png",
+        "screen-0046.png"
+      ]
+    },
+    {
+      "id": "FUN-3",
+      "wallSeconds": 979.104,
+      "elapsedSeconds": 848.28,
+      "elapsed": "14:08",
+      "category": "戲劇張力／新威脅",
+      "title": "首次面對有專名與大生命條的軍閥",
+      "visibleEvidence": "畫面出現裂界軍閥「不焚者瓦斯卡」2124/2124、巨大敵人、橘色範圍與戰旗事件。",
+      "aiNoviceInterpretation": "專名、大型外觀及長生命條令第五波有明顯變化，即使後來落敗，這個新威脅本身值得再嘗試理解。",
+      "screenshots": [
+        "screen-0058.png"
+      ]
+    }
+  ],
+  "boringMoments": [
+    {
+      "id": "BORE-1",
+      "wallSeconds": 180.622,
+      "elapsedSeconds": 49.798,
+      "elapsed": "00:49",
+      "category": "等待／下一步不明",
+      "title": "第一次訓練後停在兵營等結果",
+      "visibleEvidence": "180.045秒招募刀盾兵；180.622秒顯示訓練8秒、0名敵人；197.393秒才再次看到軍9、敵7、食物29。",
+      "aiNoviceInterpretation": "約17秒主要在等訓練與找下一個可理解目標，對本次慢速新手模擬屬輕度無聊；不是斷言所有訓練等待都應移除。",
+      "screenshots": [
+        "screen-0007.png",
+        "screen-0008.png"
+      ]
+    },
+    {
+      "id": "BORE-2",
+      "wallSeconds": 480.485,
+      "elapsedSeconds": 349.661,
+      "elapsed": "05:49",
+      "category": "表單導覽／低決策密度",
+      "title": "為一個食物優先設定捲動長表單",
+      "visibleEvidence": "479.954秒開總管；500.173秒選食物優先；510.294與529.768秒向下捲動；554.810秒才按儲存。開面板時明寫暫停模擬。",
+      "aiNoviceInterpretation": "單一想法是增加食物，卻花約75秒完成設定與找儲存；後半大多是導覽而非有趣抉擇。",
+      "screenshots": [
+        "screen-0028.png",
+        "screen-0029.png",
+        "screen-0030.png",
+        "screen-0031.png",
+        "screen-0032.png"
+      ]
+    },
+    {
+      "id": "BORE-3",
+      "wallSeconds": 873.038,
+      "elapsedSeconds": 742.214,
+      "elapsed": "12:22",
+      "category": "資訊雜訊／重複選卡流程",
+      "title": "三選一旁反覆出現大量尚未理解的卡名",
+      "visibleEvidence": "第一與第四次恩賜畫面都同時列候選、功能篩選、全部卡牌與多個分類；本次實際只讀左側三個效果並選金牙、青銅誓約、馱騾、夜巡。",
+      "aiNoviceInterpretation": "右側整套卡牌對這輪單一注意目標沒有形成決策用途，反覆顯示時成為略過的資訊；此處是AI模擬的低參與判斷，不是理解完整卡池後的評價。",
+      "screenshots": [
+        "screen-0012.png",
+        "screen-0024.png",
+        "screen-0039.png",
+        "screen-0050.png"
+      ]
+    }
+  ],
+  "frustratingMoments": [
+    {
+      "id": "FRUST-1",
+      "wallSeconds": 480.485,
+      "elapsedSeconds": 349.661,
+      "elapsed": "05:49",
+      "category": "經濟可理解性／進度受阻",
+      "title": "資源很多但食物一直不足，尚未弄懂支出",
+      "visibleEvidence": "總管開啟時食物20、木材1280，畫面曾多次顯示未由本角色這次點擊發起的訓練佇列；921.942秒城心推進時代需200食、100金，當時只有113食。",
+      "aiNoviceInterpretation": "看到黃金與木材很多，仍不能做看得懂的升級；不知道該停哪項支出。本輪僅改食物優先，沒有理解軍事自動生產規則。",
+      "screenshots": [
+        "screen-0028.png",
+        "screen-0054.png"
+      ]
+    },
+    {
+      "id": "FRUST-2",
+      "wallSeconds": 979.104,
+      "elapsedSeconds": 848.28,
+      "elapsed": "14:08",
+      "category": "限時事件／目標辨識／慢速操作成本",
+      "title": "查看旗手後仍未能確認正確目標",
+      "visibleEvidence": "958.100秒提示14秒後集結；978.230秒按查看旗手；979.104秒顯示集結剩8秒。1002.475秒才對紅旗附近右鍵，1013.548秒顯示集結已結束，沒有看見擊倒旗手確認。",
+      "aiNoviceInterpretation": "一次查看後再辨識與指定目標，已超過剩餘8秒。紅色服裝、旗幟及密集交戰使本角色無法確認那次右鍵是否正確打中旗手。",
+      "screenshots": [
+        "screen-0056.png",
+        "screen-0058.png",
+        "screen-0059.png"
+      ]
+    },
+    {
+      "id": "FRUST-3",
+      "wallSeconds": 1013.548,
+      "elapsedSeconds": 882.724,
+      "elapsed": "14:42",
+      "category": "危險可讀性／補救負擔／挫敗",
+      "title": "讀懂快移動時已在持續潰敗",
+      "visibleEvidence": "1013.548秒提示「召來裂界打擊。快移動！」，城心80%、軍16；1034.992秒向右下空地右鍵撤退；1046.007秒城心51%、選取剩4人；1066.498秒30%，1089.497秒6%，1108.283秒正式失守。",
+      "aiNoviceInterpretation": "能理解要離開危險，但查看、下令與再觀察耗時，撤退也沒有建立下一個清楚的補救目標。僅記錄同時出現的損失，不推斷每名單位的死因。",
+      "screenshots": [
+        "screen-0059.png",
+        "screen-0060.png",
+        "screen-0061.png",
+        "screen-0062.png",
+        "screen-0064.png"
+      ]
+    }
+  ],
+  "improvements": [
+    {
+      "id": "IMP-1",
+      "proposal": "在新手可見HUD簡短說明目前主要食物支出，並讓「食物優先」與儲存規劃在同一個短區塊可完成；保留完整規劃表。",
+      "basis": [
+        "FRUST-1",
+        "BORE-2"
+      ],
+      "gddCompatibility": "待核實；本角色依規則未閱讀完整GDD，不判定既有自動經濟設計是否有意如此。",
+      "risk": "資訊過度簡化可能令玩家誤以為食物優先保證立即補足；若改動自動支出或預留，會連帶改變平衡。優先只改說明與導覽。",
+      "validation": "以相同新手節奏測量能否說出食物主要花在哪、從開面板到儲存食物優先所需意圖數與時間，並核對原本採集與支出規則未因文案改變。"
+    },
+    {
+      "id": "IMP-2",
+      "proposal": "按「查看旗手」後，對已看見的旗手使用清楚且持續的輪廓、名稱與倒數，並讓下令後的目標名稱容易確認。",
+      "basis": [
+        "FRUST-2"
+      ],
+      "gddCompatibility": "待核實；須確認戰旗事件的時限與目標辨識是否屬GDD刻意保留的挑戰。",
+      "risk": "若輪廓顯示未發現的敵人會洩漏資訊；過強的提示可能削弱尋找目標的挑戰。只處理玩家已可見的旗手，不自動替玩家攻擊。",
+      "validation": "同樣每意圖至少10秒的新手模擬與真人測試分開記錄；驗證第一次查看後能否辨認旗手、是否誤點一般士兵、是否知道命令打到誰，同時檢查未發現敵人仍不顯示。"
+    },
+    {
+      "id": "IMP-3",
+      "proposal": "首次軍閥來襲前，提供可略過的短操作示意，說明危險圈與「選取後右鍵撤離」；危險圈顯示易讀的落下倒數。",
+      "basis": [
+        "FRUST-3",
+        "FUN-3"
+      ],
+      "gddCompatibility": "待核實；未讀GDD，不能保證示意時機、提示密度與Boss原定難度相容。",
+      "risk": "強提示可能降低首次Boss的驚喜或難度，示意若強制停頓也可能破壞節奏；避免自動撤退與改Boss數值。",
+      "validation": "固定相同條件比較第一次辨識危險、完成選取及移動、是否確認部隊離圈；勝敗與反應時間一併記錄，不只以通關率判定改善。"
+    }
+  ],
+  "replayIntention": {
+    "answer": "有條件願意再玩一局",
+    "strength": "中等，3／5；僅為本次AI模擬判斷。",
+    "reason": "第一次守波、工人救援與專名軍閥提供再試動機；想弄懂如何留到200食物及如何看懂危險圈。長表單、食物支出不明與首次Boss潰敗降低立即長時間重玩的意願。",
+    "limitation": "不代表真人感受、不估計人口比例或長期留存；未閱讀其他角色回饋。"
+  },
+  "evidenceLimits": [
+    "沒有讀完整GDD，三項改善相容性均待主協調者核實。",
+    "輸入與observe是離散取樣；畫面截圖與文字擷取略有時間差，因此敵人數可能差1，不能回填精確每秒事件。",
+    "只知道Q／E顯示冷卻，沒有推斷其實際傷害、吸收或單獨勝因。",
+    "不確定對旗附近右鍵是否打中旗手；不將部隊損失全部歸因於Boss特定技能。",
+    "350秒附近有一次工具輸出整理未取得完整JSON；沒有自動重送招募，375.121秒以新observe確認可見情況。",
+    "無聊與挫折分類是有可見事件支撐的AI模擬評價，不冒稱真人情緒。"
+  ],
+  "observations": [
+    {
+      "wallSeconds": 131.535,
+      "elapsedSeconds": 0.711,
+      "elapsed": "00:00"
+    },
+    {
+      "wallSeconds": 160.285,
+      "elapsedSeconds": 29.461,
+      "elapsed": "00:29"
+    },
+    {
+      "wallSeconds": 180.622,
+      "elapsedSeconds": 49.798,
+      "elapsed": "00:49"
+    },
+    {
+      "wallSeconds": 197.393,
+      "elapsedSeconds": 66.569,
+      "elapsed": "01:06"
+    },
+    {
+      "wallSeconds": 217.095,
+      "elapsedSeconds": 86.271,
+      "elapsed": "01:26"
+    },
+    {
+      "wallSeconds": 242.412,
+      "elapsedSeconds": 111.588,
+      "elapsed": "01:51"
+    },
+    {
+      "wallSeconds": 269.944,
+      "elapsedSeconds": 139.12,
+      "elapsed": "02:19"
+    },
+    {
+      "wallSeconds": 281.173,
+      "elapsedSeconds": 150.349,
+      "elapsed": "02:30"
+    },
+    {
+      "wallSeconds": 300.721,
+      "elapsedSeconds": 169.897,
+      "elapsed": "02:49"
+    },
+    {
+      "wallSeconds": 321.42,
+      "elapsedSeconds": 190.596,
+      "elapsed": "03:10"
+    },
+    {
+      "wallSeconds": 340.2,
+      "elapsedSeconds": 209.376,
+      "elapsed": "03:29"
+    },
+    {
+      "wallSeconds": 375.121,
+      "elapsedSeconds": 244.297,
+      "elapsed": "04:04"
+    },
+    {
+      "wallSeconds": 394.604,
+      "elapsedSeconds": 263.78,
+      "elapsed": "04:23"
+    },
+    {
+      "wallSeconds": 412.076,
+      "elapsedSeconds": 281.252,
+      "elapsed": "04:41"
+    },
+    {
+      "wallSeconds": 433.526,
+      "elapsedSeconds": 302.702,
+      "elapsed": "05:02"
+    },
+    {
+      "wallSeconds": 455.669,
+      "elapsedSeconds": 324.845,
+      "elapsed": "05:24"
+    },
+    {
+      "wallSeconds": 473.02,
+      "elapsedSeconds": 342.196,
+      "elapsed": "05:42"
+    },
+    {
+      "wallSeconds": 480.485,
+      "elapsedSeconds": 349.661,
+      "elapsed": "05:49"
+    },
+    {
+      "wallSeconds": 500.711,
+      "elapsedSeconds": 369.887,
+      "elapsed": "06:09"
+    },
+    {
+      "wallSeconds": 510.865,
+      "elapsedSeconds": 380.041,
+      "elapsed": "06:20"
+    },
+    {
+      "wallSeconds": 530.344,
+      "elapsedSeconds": 399.52,
+      "elapsed": "06:39"
+    },
+    {
+      "wallSeconds": 565.906,
+      "elapsedSeconds": 435.082,
+      "elapsed": "07:15"
+    },
+    {
+      "wallSeconds": 593.732,
+      "elapsedSeconds": 462.908,
+      "elapsed": "07:42"
+    },
+    {
+      "wallSeconds": 614.375,
+      "elapsedSeconds": 483.551,
+      "elapsed": "08:03"
+    },
+    {
+      "wallSeconds": 639.438,
+      "elapsedSeconds": 508.614,
+      "elapsed": "08:28"
+    },
+    {
+      "wallSeconds": 665.067,
+      "elapsedSeconds": 534.243,
+      "elapsed": "08:54"
+    },
+    {
+      "wallSeconds": 695.892,
+      "elapsedSeconds": 565.068,
+      "elapsed": "09:25"
+    },
+    {
+      "wallSeconds": 720.894,
+      "elapsedSeconds": 590.07,
+      "elapsed": "09:50"
+    },
+    {
+      "wallSeconds": 744.167,
+      "elapsedSeconds": 613.343,
+      "elapsed": "10:13"
+    },
+    {
+      "wallSeconds": 764.398,
+      "elapsedSeconds": 633.574,
+      "elapsed": "10:33"
+    },
+    {
+      "wallSeconds": 798.507,
+      "elapsedSeconds": 667.683,
+      "elapsed": "11:07"
+    },
+    {
+      "wallSeconds": 821.537,
+      "elapsedSeconds": 690.713,
+      "elapsed": "11:30"
+    },
+    {
+      "wallSeconds": 842.445,
+      "elapsedSeconds": 711.621,
+      "elapsed": "11:51"
+    },
+    {
+      "wallSeconds": 862.283,
+      "elapsedSeconds": 731.459,
+      "elapsed": "12:11"
+    },
+    {
+      "wallSeconds": 873.038,
+      "elapsedSeconds": 742.214,
+      "elapsed": "12:22"
+    },
+    {
+      "wallSeconds": 895.611,
+      "elapsedSeconds": 764.787,
+      "elapsed": "12:44"
+    },
+    {
+      "wallSeconds": 914.024,
+      "elapsedSeconds": 783.2,
+      "elapsed": "13:03"
+    },
+    {
+      "wallSeconds": 921.942,
+      "elapsedSeconds": 791.118,
+      "elapsed": "13:11"
+    },
+    {
+      "wallSeconds": 958.1,
+      "elapsedSeconds": 827.276,
+      "elapsed": "13:47"
+    },
+    {
+      "wallSeconds": 972.074,
+      "elapsedSeconds": 841.25,
+      "elapsed": "14:01"
+    },
+    {
+      "wallSeconds": 979.104,
+      "elapsedSeconds": 848.28,
+      "elapsed": "14:08"
+    },
+    {
+      "wallSeconds": 1013.548,
+      "elapsedSeconds": 882.724,
+      "elapsed": "14:42"
+    },
+    {
+      "wallSeconds": 1046.007,
+      "elapsedSeconds": 915.183,
+      "elapsed": "15:15"
+    },
+    {
+      "wallSeconds": 1066.498,
+      "elapsedSeconds": 935.674,
+      "elapsed": "15:35"
+    },
+    {
+      "wallSeconds": 1089.497,
+      "elapsedSeconds": 958.673,
+      "elapsed": "15:58"
+    },
+    {
+      "wallSeconds": 1108.283,
+      "elapsedSeconds": 977.459,
+      "elapsed": "16:17"
+    }
+  ],
+  "actionLog": [
+    {
+      "wallSeconds": 130.824,
+      "elapsedSeconds": 0.0,
+      "elapsed": "00:00",
+      "intent": "點擊披甲上陣，正常開始",
+      "visibleReason": "先前讀玩法說明，只記住選取、右鍵與守十波",
+      "visibleResultOrLimit": "131.535秒出現第一波0:44、城心100%、資源300/300/120/100。"
+    },
+    {
+      "wallSeconds": 149.076,
+      "elapsedSeconds": 18.252,
+      "elapsed": "00:18",
+      "intent": "援護城心",
+      "visibleReason": "目前唯一理解的目標是守城",
+      "visibleResultOrLimit": "159.574秒接著選左側建築。"
+    },
+    {
+      "wallSeconds": 159.574,
+      "elapsedSeconds": 28.75,
+      "elapsed": "00:28",
+      "intent": "點左側建築",
+      "visibleReason": "找能增加守軍的地方",
+      "visibleResultOrLimit": "160.285秒辨認為兵營，看到三個招募選項與精銳守衛佇列。"
+    },
+    {
+      "wallSeconds": 180.045,
+      "elapsedSeconds": 49.221,
+      "elapsed": "00:49",
+      "intent": "訓練刀盾兵",
+      "visibleReason": "看到食物足以負擔36食、9金的簡單士兵",
+      "visibleResultOrLimit": "180.622秒顯示訓練刀盾兵8秒。"
+    },
+    {
+      "wallSeconds": 206.129,
+      "elapsedSeconds": 75.305,
+      "elapsed": "01:15",
+      "intent": "按E神盾",
+      "visibleReason": "看到7名敵人與可護4人的按鈕",
+      "visibleResultOrLimit": "217.095秒顯示神盾冷卻50秒；未計算實際吸收傷害。"
+    },
+    {
+      "wallSeconds": 226.619,
+      "elapsedSeconds": 95.795,
+      "elapsed": "01:35",
+      "intent": "援護城心",
+      "visibleReason": "敵人增至12，重申守城目標",
+      "visibleResultOrLimit": "242.412秒選取6名戰士，城心94%、敵7。"
+    },
+    {
+      "wallSeconds": 253.818,
+      "elapsedSeconds": 122.994,
+      "elapsed": "02:02",
+      "intent": "按Q標記",
+      "visibleReason": "按鈕明寫可施放，想幫忙眼前戰鬥",
+      "visibleResultOrLimit": "269.944秒已轉入第一個恩賜畫面；不把過關全歸因於Q。"
+    },
+    {
+      "wallSeconds": 289.911,
+      "elapsedSeconds": 159.087,
+      "elapsed": "02:39",
+      "intent": "選金牙候選",
+      "visibleReason": "立即120黃金比其他條件容易理解",
+      "visibleResultOrLimit": "300.721秒領取按鈕變成「領取：金牙」。"
+    },
+    {
+      "wallSeconds": 310.366,
+      "elapsedSeconds": 179.542,
+      "elapsed": "02:59",
+      "intent": "領取金牙",
+      "visibleReason": "完成選卡第二步",
+      "visibleResultOrLimit": "321.420秒第II波、已持有1恩賜。"
+    },
+    {
+      "wallSeconds": 329.241,
+      "elapsedSeconds": 198.417,
+      "elapsed": "03:18",
+      "intent": "選兵營",
+      "visibleReason": "想增加守軍",
+      "visibleResultOrLimit": "340.200秒看到兵營與長槍兵佇列。"
+    },
+    {
+      "wallSeconds": 348.006,
+      "elapsedSeconds": 217.182,
+      "elapsed": "03:37",
+      "intent": "訓練刀盾兵",
+      "visibleReason": "當時看到61食與可負擔招募",
+      "visibleResultOrLimit": "之後375.121秒軍14、食物20、城心95%。"
+    },
+    {
+      "wallSeconds": 383.477,
+      "elapsedSeconds": 252.653,
+      "elapsed": "04:12",
+      "intent": "按E神盾",
+      "visibleReason": "第二波可護5人且正交戰",
+      "visibleResultOrLimit": "394.604秒顯示冷卻49秒、城心86%。"
+    },
+    {
+      "wallSeconds": 401.115,
+      "elapsedSeconds": 270.291,
+      "elapsed": "04:30",
+      "intent": "援護城心",
+      "visibleReason": "城心從95%降到86%",
+      "visibleResultOrLimit": "412.076秒選取12名戰士、城心81%。"
+    },
+    {
+      "wallSeconds": 422.292,
+      "elapsedSeconds": 291.468,
+      "elapsed": "04:51",
+      "intent": "按Q標記",
+      "visibleReason": "可施放且仍有7名敵人",
+      "visibleResultOrLimit": "433.526秒第二波已破，城心95%。"
+    },
+    {
+      "wallSeconds": 444.782,
+      "elapsedSeconds": 313.958,
+      "elapsed": "05:13",
+      "intent": "按3選青銅誓約",
+      "visibleReason": "士兵與建築生命增加可直接理解",
+      "visibleResultOrLimit": "455.669秒確認領取青銅誓約。"
+    },
+    {
+      "wallSeconds": 461.748,
+      "elapsedSeconds": 330.924,
+      "elapsed": "05:30",
+      "intent": "領取青銅誓約",
+      "visibleReason": "完成選卡",
+      "visibleResultOrLimit": "473.020秒第III波、已持有2恩賜。"
+    },
+    {
+      "wallSeconds": 479.954,
+      "elapsedSeconds": 349.13,
+      "elapsed": "05:49",
+      "intent": "開總管規劃",
+      "visibleReason": "食物偏少，想找資源設定",
+      "visibleResultOrLimit": "480.485秒面板明寫暫停；食物20、木1280。"
+    },
+    {
+      "wallSeconds": 500.173,
+      "elapsedSeconds": 369.349,
+      "elapsed": "06:09",
+      "intent": "採集策略選食物優先",
+      "visibleReason": "希望更多村民取得食物",
+      "visibleResultOrLimit": "500.711秒預覽食物64%，尚未儲存。"
+    },
+    {
+      "wallSeconds": 510.294,
+      "elapsedSeconds": 379.47,
+      "elapsed": "06:19",
+      "intent": "向下捲動",
+      "visibleReason": "找套用或儲存",
+      "visibleResultOrLimit": "510.865秒看到大量建築計畫，仍沒有儲存。"
+    },
+    {
+      "wallSeconds": 529.768,
+      "elapsedSeconds": 398.944,
+      "elapsed": "06:38",
+      "intent": "再向下捲動",
+      "visibleReason": "繼續找儲存",
+      "visibleResultOrLimit": "530.344秒底部有儲存規劃與關閉不儲存。"
+    },
+    {
+      "wallSeconds": 554.81,
+      "elapsedSeconds": 423.986,
+      "elapsed": "07:03",
+      "intent": "點儲存規劃",
+      "visibleReason": "完成食物優先設定",
+      "visibleResultOrLimit": "565.906秒回戰場、食物52、第三波0:00。"
+    },
+    {
+      "wallSeconds": 577.618,
+      "elapsedSeconds": 446.794,
+      "elapsed": "07:26",
+      "intent": "援護城心",
+      "visibleReason": "把新增守軍納入目前守城目標",
+      "visibleResultOrLimit": "593.732秒城心93%、敵9、選取16戰士。"
+    },
+    {
+      "wallSeconds": 603.252,
+      "elapsedSeconds": 472.428,
+      "elapsed": "07:52",
+      "intent": "按E神盾",
+      "visibleReason": "交戰且可護9人",
+      "visibleResultOrLimit": "614.375秒冷卻49秒、敵4、城心91%。"
+    },
+    {
+      "wallSeconds": 623.295,
+      "elapsedSeconds": 492.471,
+      "elapsed": "08:12",
+      "intent": "按Q標記",
+      "visibleReason": "仍有敵人，按鈕可施放",
+      "visibleResultOrLimit": "639.438秒敵人反而再增13，城心84%。"
+    },
+    {
+      "wallSeconds": 649.037,
+      "elapsedSeconds": 518.213,
+      "elapsed": "08:38",
+      "intent": "援護城心",
+      "visibleReason": "城心受到更多攻擊",
+      "visibleResultOrLimit": "665.067秒敵3、城心82%、選取18戰士。"
+    },
+    {
+      "wallSeconds": 684.945,
+      "elapsedSeconds": 554.121,
+      "elapsed": "09:14",
+      "intent": "對畫面右上敵人位置右鍵",
+      "visibleReason": "想清掉還看得到的敵人",
+      "visibleResultOrLimit": "695.892秒第三波已破、城心97%；無法證明該點擊是否仍打中存活目標。"
+    },
+    {
+      "wallSeconds": 709.895,
+      "elapsedSeconds": 579.071,
+      "elapsed": "09:39",
+      "intent": "按1選馱騾",
+      "visibleReason": "搬更多、走更快是容易理解的幫助",
+      "visibleResultOrLimit": "720.894秒領取按鈕確認馱騾。"
+    },
+    {
+      "wallSeconds": 721.37,
+      "elapsedSeconds": 590.546,
+      "elapsed": "09:50",
+      "intent": "領取馱騾",
+      "visibleReason": "完成選卡",
+      "visibleResultOrLimit": "744.167秒第IV波、已持有3恩賜。"
+    },
+    {
+      "wallSeconds": 752.97,
+      "elapsedSeconds": 622.146,
+      "elapsed": "10:22",
+      "intent": "援護城心",
+      "visibleReason": "新一波前叫部隊回來",
+      "visibleResultOrLimit": "764.398秒城心97%、敵14。"
+    },
+    {
+      "wallSeconds": 810.641,
+      "elapsedSeconds": 679.817,
+      "elapsed": "11:19",
+      "intent": "派英雄前往",
+      "visibleReason": "敵人曾降至1，嘗試明顯的救援按鈕",
+      "visibleResultOrLimit": "821.537秒提示兩名工人已獲救，英雄494/520。"
+    },
+    {
+      "wallSeconds": 831.391,
+      "elapsedSeconds": 700.567,
+      "elapsed": "11:40",
+      "intent": "按E神盾",
+      "visibleReason": "又有13敵，可護8人，回到眼前交戰",
+      "visibleResultOrLimit": "842.445秒冷卻49秒、城心87%。"
+    },
+    {
+      "wallSeconds": 851.199,
+      "elapsedSeconds": 720.375,
+      "elapsed": "12:00",
+      "intent": "援護城心",
+      "visibleReason": "城心下降且仍有5敵",
+      "visibleResultOrLimit": "862.283秒敵0、城心86%。"
+    },
+    {
+      "wallSeconds": 872.332,
+      "elapsedSeconds": 741.508,
+      "elapsed": "12:21",
+      "intent": "嘗試點城心",
+      "visibleReason": "敵0，想查看城心有何選項",
+      "visibleResultOrLimit": "873.038秒已轉為第四次恩賜；沒有看見城心被選取，這個查看意圖中斷。"
+    },
+    {
+      "wallSeconds": 884.548,
+      "elapsedSeconds": 753.724,
+      "elapsed": "12:33",
+      "intent": "按2選夜巡",
+      "visibleReason": "房屋可射箭是直接可理解的防守",
+      "visibleResultOrLimit": "895.611秒領取按鈕確認夜巡。"
+    },
+    {
+      "wallSeconds": 896.022,
+      "elapsedSeconds": 765.198,
+      "elapsed": "12:45",
+      "intent": "領取夜巡",
+      "visibleReason": "完成選卡",
+      "visibleResultOrLimit": "914.024秒第V波、城心100%、已持有4恩賜。"
+    },
+    {
+      "wallSeconds": 921.145,
+      "elapsedSeconds": 790.321,
+      "elapsed": "13:10",
+      "intent": "選城心",
+      "visibleReason": "再次嘗試剛才中斷的查看",
+      "visibleResultOrLimit": "921.942秒看到推進時代需200食100金、現有113食；沒有進行升級。"
+    },
+    {
+      "wallSeconds": 947.147,
+      "elapsedSeconds": 816.323,
+      "elapsed": "13:36",
+      "intent": "援護城心",
+      "visibleReason": "波次開始，先守城",
+      "visibleResultOrLimit": "958.100秒城心99%、敵3，出現擊破戰旗提示。"
+    },
+    {
+      "wallSeconds": 978.23,
+      "elapsedSeconds": 847.406,
+      "elapsed": "14:07",
+      "intent": "查看旗手",
+      "visibleReason": "照先找出旗手的明顯提示操作",
+      "visibleResultOrLimit": "979.104秒鏡頭移動，軍閥2124/2124，集結剩8秒。"
+    },
+    {
+      "wallSeconds": 1002.475,
+      "elapsedSeconds": 871.651,
+      "elapsed": "14:31",
+      "intent": "對紅旗附近右鍵",
+      "visibleReason": "想依提示打旗手，但密集單位難辨識",
+      "visibleResultOrLimit": "1013.548秒集結已結束；提示軍閥裂界打擊、快移動；沒有確認旗手倒下。"
+    },
+    {
+      "wallSeconds": 1034.992,
+      "elapsedSeconds": 904.168,
+      "elapsed": "15:04",
+      "intent": "向右下空地右鍵撤退",
+      "visibleReason": "看到危險圈與快移動，嘗試離開",
+      "visibleResultOrLimit": "1046.007秒城心51%、選取只剩4戰士；沒有精確撤離成功回饋。"
+    },
+    {
+      "wallSeconds": 1055.459,
+      "elapsedSeconds": 924.635,
+      "elapsed": "15:24",
+      "intent": "援護城心",
+      "visibleReason": "城心快速下降，重回守城目標",
+      "visibleResultOrLimit": "1066.498秒城心30%、選取7戰士。"
+    },
+    {
+      "wallSeconds": 1078.479,
+      "elapsedSeconds": 947.655,
+      "elapsed": "15:47",
+      "intent": "按Q標記",
+      "visibleReason": "剩餘可理解的協助戰鬥手段",
+      "visibleResultOrLimit": "1089.497秒Q冷卻19秒、城心6%。"
+    },
+    {
+      "wallSeconds": 1096.988,
+      "elapsedSeconds": 966.164,
+      "elapsed": "16:06",
+      "intent": "按E神盾",
+      "visibleReason": "嘗試保住附近仍可保護的1人",
+      "visibleResultOrLimit": "1108.283秒正式城心失守，沒有提前結束。"
+    }
+  ]
+}

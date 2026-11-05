@@ -1,0 +1,127 @@
+{
+  "createdAtUtc": "2026-11-05T20:47:43.141585+00:00",
+  "scope": "第六切片封存報告／兩份Director及200限定複測trace；不修改原始檔，不重跑遊戲。",
+  "sealedChecks": [
+    {
+      "path": "source-actions/B-natural-retest/REPORT.md",
+      "sourceRelativePath": "source-player/players/B/after/REPORT.md",
+      "expectedSha256": "8c2e86a7aa398465fa79d8105b8f940f7453f1ae47c20dcd5166d1dc22e6a5d6",
+      "archiveSha256": "8c2e86a7aa398465fa79d8105b8f940f7453f1ae47c20dcd5166d1dc22e6a5d6",
+      "sourceSha256": "8c2e86a7aa398465fa79d8105b8f940f7453f1ae47c20dcd5166d1dc22e6a5d6",
+      "match": true
+    },
+    {
+      "path": "source-actions/B-natural-retest/REPORT.json",
+      "sourceRelativePath": "source-player/players/B/after/REPORT.json",
+      "expectedSha256": "f0587e7efd3e77a0a962f236302cf808994477d9effc23fd086628069ff3b531",
+      "archiveSha256": "f0587e7efd3e77a0a962f236302cf808994477d9effc23fd086628069ff3b531",
+      "sourceSha256": "f0587e7efd3e77a0a962f236302cf808994477d9effc23fd086628069ff3b531",
+      "match": true
+    },
+    {
+      "path": "source-actions/director/SOURCE-ACTIONS-PLAYER-REVIEW.md",
+      "sourceRelativePath": "director-after/SOURCE-ACTIONS-PLAYER-REVIEW.md",
+      "expectedSha256": "48ff5664ef56d0d7fbfd0355e59b51264a1b6c0f4eac29e1c449a8202a702e37",
+      "archiveSha256": "48ff5664ef56d0d7fbfd0355e59b51264a1b6c0f4eac29e1c449a8202a702e37",
+      "sourceSha256": "48ff5664ef56d0d7fbfd0355e59b51264a1b6c0f4eac29e1c449a8202a702e37",
+      "match": true
+    },
+    {
+      "path": "source-actions/director/PRODUCTION-SCOPE-REVIEW.md",
+      "sourceRelativePath": "director-after/PRODUCTION-SCOPE-REVIEW.md",
+      "expectedSha256": "42336d5456b0ac891e4ea19029c5d6d07fc7b45c18113c4150d3c2c44c51bc7f",
+      "archiveSha256": "42336d5456b0ac891e4ea19029c5d6d07fc7b45c18113c4150d3c2c44c51bc7f",
+      "sourceSha256": "42336d5456b0ac891e4ea19029c5d6d07fc7b45c18113c4150d3c2c44c51bc7f",
+      "match": true
+    }
+  ],
+  "performanceR2": {
+    "path": "source-actions/performance-r2/result.json",
+    "sha256": "3e39eb1a783462950cfc8bc60c44182e5ebd589a43d2526f432f584d4c427e7f",
+    "rawStatus": "MEASURED_ABBA_SHORT_SAMPLES_LIMITED_COVERAGE_NOT_LONG_RUN_CERTIFICATION",
+    "pageErrors": [],
+    "pairs": [
+      {
+        "n": 200,
+        "repeat": 1,
+        "initialSceneEqual": true,
+        "rngEqual": true,
+        "visualRngEqual": true
+      },
+      {
+        "n": 200,
+        "repeat": 2,
+        "initialSceneEqual": true,
+        "rngEqual": true,
+        "visualRngEqual": true
+      }
+    ],
+    "traceAudit": [
+      {
+        "mode": "before",
+        "repeat": 1,
+        "source": "1456591db51ee4fb0cf6714ccb5dc6b645a33625",
+        "traceCount": 60,
+        "uiFaultFieldObservations": 0,
+        "uiFaultValues": [],
+        "uiFaultFieldAbsentNotAssumedZero": true,
+        "nativeFaultObservations": 60,
+        "nativeFaultValues": [
+          0
+        ],
+        "knownPeakSamples": 0,
+        "sourceVisibleFraction": 0.08333333333333333
+      },
+      {
+        "mode": "after",
+        "repeat": 1,
+        "source": "35dedfe6ee203a4d9689290dc466484c39557cf8",
+        "traceCount": 59,
+        "uiFaultFieldObservations": 59,
+        "uiFaultValues": [
+          0
+        ],
+        "uiFaultFieldAbsentNotAssumedZero": false,
+        "nativeFaultObservations": 59,
+        "nativeFaultValues": [
+          0
+        ],
+        "knownPeakSamples": 0,
+        "sourceVisibleFraction": 0.05084745762711865
+      },
+      {
+        "mode": "after",
+        "repeat": 2,
+        "source": "35dedfe6ee203a4d9689290dc466484c39557cf8",
+        "traceCount": 59,
+        "uiFaultFieldObservations": 59,
+        "uiFaultValues": [
+          0
+        ],
+        "uiFaultFieldAbsentNotAssumedZero": false,
+        "nativeFaultObservations": 59,
+        "nativeFaultValues": [
+          0
+        ],
+        "knownPeakSamples": 0,
+        "sourceVisibleFraction": 0.05084745762711865
+      },
+      {
+        "mode": "before",
+        "repeat": 2,
+        "source": "1456591db51ee4fb0cf6714ccb5dc6b645a33625",
+        "traceCount": 59,
+        "uiFaultFieldObservations": 0,
+        "uiFaultValues": [],
+        "uiFaultFieldAbsentNotAssumedZero": true,
+        "nativeFaultObservations": 59,
+        "nativeFaultValues": [
+          0
+        ],
+        "knownPeakSamples": 0,
+        "sourceVisibleFraction": 0.1694915254237288
+      }
+    ],
+    "interpretation": "after兩案118筆uiFaults及native faults全0；before未輸出uiFaults欄，不補為0。四案237筆native faults全0。僅短樣本未見一致額外退步，初始99.9對83.4警訊保留；非因果加速或長測／硬體通過。"
+  }
+}

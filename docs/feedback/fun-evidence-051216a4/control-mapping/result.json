@@ -1,0 +1,118 @@
+{
+  "scope": "CONTROLLED_UI_ADAPTER_REPRODUCTION：正式685構建正常Continue後立即原生暫停，僅查公開DOM及原生控制操作。不是新的玩家對局、自然勝利或主觀回報。",
+  "source": "6852cf85acca5c08923e0191a1e0703189f4d3e6",
+  "legacyGatewaySha256": "c59b1d6ea9100a4746b7c9794ddee8af4996fb40165e5d3a07e1d504e7ef1565",
+  "legacyCallbackSha256": "78cbcb0994df9dcf23b4a54ae9d3c6eb0cb8135e078b27f2a282c8d017ee1850",
+  "resumeSha256": "1d35c76c1b35c5b4e901019dec95c02426114b582b32a3b91b5d29202f5462e4",
+  "checks": [
+    {
+      "name": "舊數字別名與格式錯誤一律拒絕，不猜其他控制",
+      "pass": true
+    },
+    {
+      "name": "正式id與name等既有選取介面保持原樣",
+      "pass": true
+    },
+    {
+      "name": "新環境Chromium實際啟動且正式163資源完整",
+      "pass": true,
+      "verified": {
+        "source": "6852cf85acca5c08923e0191a1e0703189f4d3e6",
+        "hash": "SHA256_MATCH_163_FILES"
+      }
+    },
+    {
+      "name": "原685回呼重現：重新編號撞到仍在DOM的另一控制",
+      "pass": true,
+      "old": {
+        "key": "44",
+        "wanted": {
+          "tag": "SUMMARY",
+          "text": "輕騎兵 · 本筆費用 食物 65 · 黃金 20 · 資源門檻符合"
+        },
+        "first": {
+          "tag": "SELECT",
+          "name": "age",
+          "text": "手動\n先詢問\n自動"
+        },
+        "same": false,
+        "matches": 2
+      },
+      "rememberedAge": "44"
+    },
+    {
+      "name": "舊act的isVisible仍會接受離開可視區的舊控制",
+      "pass": true,
+      "target": {
+        "tag": "SELECT",
+        "name": "age",
+        "text": "手動\n先詢問\n自動"
+      }
+    },
+    {
+      "name": "舊解析器實際原生點擊落到錯誤表單控制",
+      "pass": true,
+      "focused": {
+        "tag": "SELECT",
+        "name": "age"
+      }
+    },
+    {
+      "name": "新映射不重用其他可見區的別名，精確綁同一DOM",
+      "pass": true,
+      "stable": {
+        "key": "rw-ui-130183b8-1f51-4aa3-9854-faec57ab37b6-83",
+        "unique": 1,
+        "same": true,
+        "tag": "SUMMARY",
+        "text": "輕騎兵 · 本筆費用 食物 65 · 黃金 20 · 資源門檻符合"
+      },
+      "stableAge": "rw-ui-130183b8-1f51-4aa3-9854-faec57ab37b6-44"
+    },
+    {
+      "name": "反覆觀察保留同一元素身分",
+      "pass": true
+    },
+    {
+      "name": "純觀察不改模擬快照、庫存、時間與兩種遊戲RNG",
+      "pass": true,
+      "before": {
+        "rng": 2854088726,
+        "visualRng": -610397965,
+        "sim": 466.5919000000863,
+        "paused": true
+      },
+      "after": {
+        "rng": 2854088726,
+        "visualRng": -610397965,
+        "sim": 466.5919000000863,
+        "paused": true
+      }
+    },
+    {
+      "name": "新別名原生點擊正確展開輕騎兵明細",
+      "pass": true
+    },
+    {
+      "name": "原生重新呈現移除舊元素時不把舊別名配給新元素",
+      "pass": true
+    },
+    {
+      "name": "新DOM即使同一功能也取得新的不重用身分",
+      "pass": true
+    },
+    {
+      "name": "正式Reload換文件nonce，前一頁別名不能誤綁",
+      "pass": true,
+      "oldKey": "rw-ui-130183b8-1f51-4aa3-9854-faec57ab37b6-83",
+      "freshKey": "rw-ui-da6be5e6-08e1-4e19-844a-6edb94ca77f4-1"
+    },
+    {
+      "name": "零瀏覽器程式錯誤",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "status": "LEGACY_ALIAS_COLLISION_REPRODUCED_STABLE_MAPPING_PASS"
+}

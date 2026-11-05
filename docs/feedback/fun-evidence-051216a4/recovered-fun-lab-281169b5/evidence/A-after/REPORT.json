@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "player": "A",
+  "round": "after",
+  "perspective": "AI模擬高階策略玩家；能力設定不是人類統計或真人感受。",
+  "executionInstance": "本次為新續測執行實例，不冒稱前一代理身分或記憶。",
+  "sessionType": "從自己未修改的自然快照經正式Continue聚焦續玩；不是全新十波。",
+  "status": "DEFEAT",
+  "completion": "本次聚焦續玩已看到正式敗北結算並先執行finish；不將前次額度中斷算完整場次。",
+  "visibleBuild": {
+    "playtest": "6075dba",
+    "label": "fun-command-readback-281169b5"
+  },
+  "settings": {
+    "taskSpecified": "法蘭克／Normal／草海平原／匹配自然快照",
+    "resumedVisible": "草海平原、第IV日、帝國時代、已得恩賜3、度過襲擊3/10",
+    "verificationLimit": "本次未讀快照或內部狀態；Continue前主選單顯示TEU/ash與RW-0FG9GFO，未更動，不能據此斷言續玩存檔文明或種子。"
+  },
+  "timeBasis": {
+    "primary": "本次UI未提供持續可讀遊戲時鐘，因此使用public介面回傳的實際牆鐘；t+0為Continue輸入，包含原生面板暫停及工具往返。",
+    "continueWallSeconds": 56.342,
+    "firstLiveObservationWallSeconds": 60.322,
+    "outcomeObservationWallSeconds": 191.89,
+    "resumedWallDurationSeconds": 135.548,
+    "stewardMenuApproxWallInterval": [
+      103.057,
+      152.028
+    ],
+    "outcomeCumulativeInGameTime": "9:03",
+    "cumulativeTimeWarning": "9:03、擊殺與採集統計包含載入前的自然遊玩，不能全數歸給本次新實例。"
+  },
+  "outcome": {
+    "visibleText": "裂界閉合／最後爐火熄滅／城鎮中心已然陷落。",
+    "wavesSurvived": 3,
+    "killsCumulative": 81,
+    "resourcesGatheredCumulative": 3765,
+    "cumulativeReignTime": "9:03",
+    "townCenter": "失守",
+    "finish": {
+      "calledAfterVisibleOutcome": true,
+      "returnedOk": true
+    },
+    "platformQuotaBlockObserved": false,
+    "sessionLimitReached": false
+  },
+  "informationBoundary": {
+    "read": "僅PROFILE.md、public/README.md、public/client.py正常可見UI回傳及本次自己截圖。",
+    "notRead": "其他玩家、Director、private-observer、原始碼、完整GDD、原始快照、前次未封存中斷資料、隱藏敵軍或RNG。",
+    "input": "僅公開介面的原生滑鼠鍵盤／表單／捲動；未執行遊戲函式，未修改資源、HP、單位、時間或RNG。"
+  },
+  "budget": {
+    "assumption": "24有效意圖／分鐘、至少2.5秒間隔；是本次AI模擬假設，不是人類實測。",
+    "conservativeNativeInputs": 15,
+    "includesContinueAndScroll": true,
+    "peakNativeInputsPer60WallSeconds": 9,
+    "minimumNativeInputIntervalSeconds": 3.434,
+    "pauseTreatment": "暫停期間仍逐筆計費且保留間隔。即使把本次全部15次輸入集中計入同一遊戲分鐘，也低於24，未以暫停補回額度。",
+    "observationCost": 0
+  },
+  "actions": [
+    {
+      "wallSeconds": 56.342,
+      "resumeWallSeconds": 0,
+      "action": "Continue",
+      "conservativeIntentCost": 1,
+      "observation": "正常繼續遠征；未使用 Start Game 或 New Game。"
+    },
+    {
+      "wallSeconds": 70.204,
+      "resumeWallSeconds": 13.862,
+      "action": "F2",
+      "conservativeIntentCost": 1,
+      "observation": "選取全軍；後續可見16名戰士。"
+    },
+    {
+      "wallSeconds": 86.556,
+      "resumeWallSeconds": 30.214,
+      "action": "右鍵 1024,465",
+      "conservativeIntentCost": 1,
+      "observation": "原意集火先前畫面東側持弓敵人；後續摘要卻為16人移動。"
+    },
+    {
+      "wallSeconds": 98.252,
+      "resumeWallSeconds": 41.91,
+      "action": "援護城心",
+      "conservativeIntentCost": 1,
+      "observation": "辨識移動意圖落差後，改令援護城心。"
+    },
+    {
+      "wallSeconds": 103.057,
+      "resumeWallSeconds": 46.715,
+      "action": "總管規劃",
+      "conservativeIntentCost": 1,
+      "observation": "開啟原生面板；面板明示暫停模擬。"
+    },
+    {
+      "wallSeconds": 116.578,
+      "resumeWallSeconds": 60.236,
+      "action": "採集策略=食物優先",
+      "conservativeIntentCost": 1,
+      "observation": "原生下拉選單設定。"
+    },
+    {
+      "wallSeconds": 120.103,
+      "resumeWallSeconds": 63.761,
+      "action": "將閒置村民交還總管",
+      "conservativeIntentCost": 1,
+      "observation": "按鈕由1變0。"
+    },
+    {
+      "wallSeconds": 125.181,
+      "resumeWallSeconds": 68.839,
+      "action": "捲動 617px",
+      "conservativeIntentCost": 1,
+      "observation": "查看建築計畫。"
+    },
+    {
+      "wallSeconds": 136.019,
+      "resumeWallSeconds": 79.677,
+      "action": "麥田模式=自動",
+      "conservativeIntentCost": 1,
+      "observation": "原生下拉選單設定。"
+    },
+    {
+      "wallSeconds": 139.473,
+      "resumeWallSeconds": 83.131,
+      "action": "麥田目標=3",
+      "conservativeIntentCost": 1,
+      "observation": "原生數值欄位設定。"
+    },
+    {
+      "wallSeconds": 144.935,
+      "resumeWallSeconds": 88.593,
+      "action": "捲動 1400px",
+      "conservativeIntentCost": 1,
+      "observation": "查看軍事方案與儲存按鈕。"
+    },
+    {
+      "wallSeconds": 152.028,
+      "resumeWallSeconds": 95.686,
+      "action": "儲存規劃",
+      "conservativeIntentCost": 1,
+      "observation": "關閉面板續行；後續看見麥田建造中。"
+    },
+    {
+      "wallSeconds": 170.705,
+      "resumeWallSeconds": 114.363,
+      "action": "援護城心",
+      "conservativeIntentCost": 1,
+      "observation": "城心受壓時重新下達防守命令。"
+    },
+    {
+      "wallSeconds": 174.139,
+      "resumeWallSeconds": 117.797,
+      "action": "E 神盾",
+      "conservativeIntentCost": 1,
+      "observation": "後續可見為12名士兵提供60護盾，持續5秒。"
+    },
+    {
+      "wallSeconds": 191.176,
+      "resumeWallSeconds": 134.834,
+      "action": "右鍵 841,350",
+      "conservativeIntentCost": 1,
+      "observation": "原意點擊城心東北側先前可見攻城車；之後已是敗北畫面，無有效集火或命中確認。"
+    }
+  ],
+  "visibleTimeline": [
+    {
+      "t": 3.98,
+      "screen": "screen-0004.png",
+      "observed": "Continue後：度過3/10，城心68%，帝國時代，恩賜3。全軍16，已選戰士0；選取的是待命村民。食物約20，木材約1250。"
+    },
+    {
+      "t": 17.183,
+      "screen": "screen-0005.png",
+      "observed": "F2後：16名戰士；已選16/全軍16；12人護衛城鎮中心、4人待命。HUD14名敵人；畫面東側可見紅血條持弓敵人。"
+    },
+    {
+      "t": 34.246,
+      "screen": "screen-0006.png",
+      "observed": "右鍵後已選16/全軍17，摘要16人移動；未看到有效人工集火確認，判斷與原意不符。城心66%。"
+    },
+    {
+      "t": 49.476,
+      "screen": "screen-0007.png",
+      "observed": "總管面板：食物4、木材5、黃金2、石材1、其他1，總村民13。原生面板明示暫停模擬。城心61%。"
+    },
+    {
+      "t": 69.435,
+      "screen": "screen-0008.png",
+      "observed": "閒置交還按鈕由1變0；建築表格很長，需捲動。"
+    },
+    {
+      "t": 89.164,
+      "screen": "screen-0009.png",
+      "observed": "捲到底部才見儲存規劃；軍事方案仍為均衡，未更動。"
+    },
+    {
+      "t": 96.447,
+      "screen": "screen-0010.png",
+      "observed": "儲存後看到麥田建造中；已選18/全軍18，18人護衛城鎮中心。相鄰截圖與文字採樣城心61%/57%，不視為同影格。"
+    },
+    {
+      "t": 118.604,
+      "screen": "screen-0011.png",
+      "observed": "城心22%、HUD17名敵人；已選18，合計1928/2209HP，仍18人護衛城心。神盾文字確認12名士兵獲得60護盾5秒。城心附近可見攻城車與混戰。"
+    },
+    {
+      "t": 135.548,
+      "screen": "screen-0013.png",
+      "observed": "正式敗北：城心陷落，度過3波、81擊殺、3765採集、9:03統治時間。"
+    }
+  ],
+  "commandReadback": {
+    "selectionEvidence": {
+      "t": 17.183,
+      "selected": 16,
+      "total": 16,
+      "summary": "12人護衛城鎮中心 · 4人待命",
+      "screen": "screen-0005.png"
+    },
+    "visibleIntendedTarget": "screen-0005.png東側約1024,465的紅血條持弓敵人。",
+    "naturalMismatch": {
+      "inputT": 30.214,
+      "observedT": 34.246,
+      "intended": "右鍵集火該可見敵軍",
+      "actualSummary": "16人移動",
+      "recognized": true,
+      "correctionT": 41.91,
+      "correction": "援護城心",
+      "laterConfirmation": "t+96.447，18人護衛城鎮中心",
+      "likelyExplanation": "觀察至輸入間敵人可能已移動或點到空地；未查內部狀態，原因未定。"
+    },
+    "manualFocusMarker": "未觀測到可確證的人工集火鎖定標示；不把移動、護衛、按鈕接受當成到達或命中。",
+    "finalAttempt": "t+134.834再次右鍵城心東北側先前可見攻城車位置；下一觀察已是結算，無有效攻擊確認。"
+  },
+  "interesting": [
+    {
+      "t": 34.246,
+      "category": "指令可讀性",
+      "observation": "新摘要直接顯示16人移動，使我看出原本想集火的輸入成了移動，並付出下一次意圖修正。",
+      "evidence": "screen-0005.png、screen-0006.png、screen-0010.png"
+    },
+    {
+      "t": 96.447,
+      "category": "經濟規劃",
+      "observation": "食物不足而木材累積時，可用食物優先、交還閒置工人與三座麥田目標作有方向的配置；儲存後看到麥田建造中。",
+      "evidence": "screen-0007.png至screen-0010.png"
+    },
+    {
+      "t": 118.604,
+      "category": "英雄技能",
+      "observation": "神盾有明確附近人數、60護盾與5秒作用時間；實際顯示護住12人，形成一次可見的群體防守選擇。",
+      "evidence": "screen-0011.png"
+    }
+  ],
+  "boring": [
+    {
+      "tStart": 49.476,
+      "tEnd": 96.447,
+      "category": "面板資訊密度／AI模擬低決策密度",
+      "observation": "總管的長建築參數表讓簡單的食物補強需要兩次捲動才找到儲存；大量未使用欄位使本次短窗口的掃讀比例偏高。",
+      "evidence": "screen-0007.png至screen-0010.png"
+    }
+  ],
+  "boringEvidenceLimit": "僅約136秒且多為防守壓力，不足以支持三個獨立無聊時刻，保留一項，沒有虛構另外兩項。",
+  "frustrating": [
+    {
+      "t": 34.246,
+      "category": "輸入意圖落差／工具延遲",
+      "observation": "瞄準先前東側敵軍的右鍵變成全軍移動；雖看出並修正，額外下令仍占時間與意圖。敵人移動或點空地僅是可能原因。",
+      "evidence": "screen-0005.png、screen-0006.png"
+    },
+    {
+      "t": 118.604,
+      "category": "守城壓力／目標判讀",
+      "observation": "摘要仍是18人護衛城心、部隊合計HP仍1928/2209，但城心已22%。知道命令存在，仍難從擁擠混戰快速判定誰在有效阻截攻城；未宣稱AI或尋路故障。",
+      "evidence": "screen-0010.png、screen-0011.png"
+    },
+    {
+      "t": 135.548,
+      "category": "決策／反應成本",
+      "observation": "末次想手動點城心旁攻城車，下一次觀察已是敗北，未能在可見期限內完成確認與修正。這包含我早期把注意力花在經濟面板與過慢辨識威脅的代價。",
+      "evidence": "screen-0011.png、screen-0013.png"
+    }
+  ],
+  "improvements": [
+    {
+      "priority": 1,
+      "proposal": "在右鍵命令後短暫顯示移動或集火的明確類型、對象名稱與可見位置，並讓目前選兵摘要更醒目。",
+      "basis": "自然集火意圖落差確實被16人移動摘要揭露；人工集火標示本次未成功確認。",
+      "gddCompatibility": "未讀完整GDD，相容性待核實；僅建議可見命令回饋，不自動改令。",
+      "risk": "額外文字或標記可能遮擋戰鬥；不得洩漏失去視野的目標。",
+      "validation": "用相同可見移動目標情境測量下令後能否正確說出選兵、命令與目標，以及修正意圖數；確認無新增自動追蹤。"
+    },
+    {
+      "priority": 2,
+      "proposal": "總管面板固定顯示儲存區，並提供單獨的採集摘要與常用麥田目標入口。",
+      "basis": "本次食物補強需跨長表兩次捲動，約49秒原生面板開啟窗口。",
+      "gddCompatibility": "未讀完整GDD，相容性待核實；保留原有規則與原生暫停。",
+      "risk": "精簡介面可能藏起進階條件，固定區也可能占用閱讀空間。",
+      "validation": "請同等操作預算的AI模擬完成食物優先與三麥田設定，記錄輸入數、牆鐘、設定是否成功及誤改欄位。"
+    },
+    {
+      "priority": 3,
+      "proposal": "城心持續受傷時，在可見範圍標示當前攻擊城心的敵人與簡短傷害方向提示。",
+      "basis": "護衛摘要正確存在，但城心從約61%／57%降至22%時，擁擠混戰中攻城威脅仍難快速辨識。",
+      "gddCompatibility": "未讀完整GDD，相容性待核實；提示僅限已看見且正在攻擊城心的敵人，不代下指令。",
+      "risk": "可能降低預期的注意力壓力或使畫面雜亂；須避免顯示未見敵情。",
+      "validation": "同條件比較威脅辨識時間、手動有效集火確認率、城心HP；另驗證迷霧外無提示。不憑本次單局斷言能提高勝率。"
+    }
+  ],
+  "replayIntent": {
+    "perspective": "AI模擬觀點，非真人主觀感受。",
+    "willing": true,
+    "strength": "有條件願意",
+    "reason": "指令摘要已實際協助辨識失配，經濟與英雄技能各有可見抉擇；希望在正常可見介面下嘗試更早處理攻城威脅。",
+    "limits": "本次是新實例從舊自然快照續玩，沒有讀前次未封存回饋，不能宣稱前後提升、真人樂趣或整場十波重玩評價。"
+  },
+  "evidence": {
+    "directory": "/workspace/riftwatch-fun-lab-281169b5/players/A/after",
+    "screens": [
+      "screen-0004.png",
+      "screen-0005.png",
+      "screen-0006.png",
+      "screen-0007.png",
+      "screen-0008.png",
+      "screen-0009.png",
+      "screen-0010.png",
+      "screen-0011.png",
+      "screen-0013.png"
+    ],
+    "samplingLimit": "截圖與UI文字可能是相鄰更新時刻；僅以實際讀到的值描述，不補寫精確傷害或隱藏敵軍。"
+  }
+}
+

@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: 正式Game費用、庫存、付款後底線與每項缺口皆與原生canSpend一致
+ok 1 - 正式Game費用、庫存、付款後底線與每項缺口皆與原生canSpend一致
+  ---
+  duration_ms: 21.094708
+  type: 'test'
+  ...
+# Subtest: 全域與逐建築底線取max而非相加，建築保留不是花費上限
+ok 2 - 全域與逐建築底線取max而非相加，建築保留不是花費上限
+  ---
+  duration_ms: 9.768495
+  type: 'test'
+  ...
+# Subtest: 費用為零或未列入的資源低於兩層保留不產生假缺口
+ok 3 - 費用為零或未列入的資源低於兩層保留不產生假缺口
+  ---
+  duration_ms: 7.758913
+  type: 'test'
+  ...
+# Subtest: 微小正缺口仍由原生拒絕，摘要不顯零，展開保留可回讀的原始數字
+ok 4 - 微小正缺口仍由原生拒絕，摘要不顯零，展開保留可回讀的原始數字
+  ---
+  duration_ms: 5.96021
+  type: 'test'
+  ...
+# Subtest: auto、ask、manual及研究中／滿級的全域保留直接沿用reserveCost
+ok 5 - auto、ask、manual及研究中／滿級的全域保留直接沿用reserveCost
+  ---
+  duration_ms: 55.237444
+  type: 'test'
+  ...
+# Subtest: 文明與正式卡片後使用unitCost，而非基礎表或市場費率
+ok 6 - 文明與正式卡片後使用unitCost，而非基礎表或市場費率
+  ---
+  duration_ms: 38.231618
+  type: 'test'
+  ...
+# Subtest: 指定、空集合與未設定的合法兵種回退維持原生，排除市場／城心與未選參考
+ok 7 - 指定、空集合與未設定的合法兵種回退維持原生，排除市場／城心與未選參考
+  ---
+  duration_ms: 15.029141
+  type: 'test'
+  ...
+# Subtest: 原生off狀態優先，資源條件通過也不保證立即生產
+ok 8 - 原生off狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 26.872097
+  type: 'test'
+  ...
+# Subtest: 原生construction狀態優先，資源條件通過也不保證立即生產
+ok 9 - 原生construction狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 5.762727
+  type: 'test'
+  ...
+# Subtest: 原生manual狀態優先，資源條件通過也不保證立即生產
+ok 10 - 原生manual狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 7.139826
+  type: 'test'
+  ...
+# Subtest: 原生queue狀態優先，資源條件通過也不保證立即生產
+ok 11 - 原生queue狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 5.244601
+  type: 'test'
+  ...
+# Subtest: 原生target狀態優先，資源條件通過也不保證立即生產
+ok 12 - 原生target狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 5.005808
+  type: 'test'
+  ...
+# Subtest: 原生population狀態優先，資源條件通過也不保證立即生產
+ok 13 - 原生population狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 5.459339
+  type: 'test'
+  ...
+# Subtest: 原生budget狀態優先，資源條件通過也不保證立即生產
+ok 14 - 原生budget狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 3.758833
+  type: 'test'
+  ...
+# Subtest: 原生ready狀態優先，資源條件通過也不保證立即生產
+ok 15 - 原生ready狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 3.821335
+  type: 'test'
+  ...
+# Subtest: 人口與兵種時代條件直接沿用正式Game，其他建築佇列也計入目標與人口
+ok 16 - 人口與兵種時代條件直接沿用正式Game，其他建築佇列也計入目標與人口
+  ---
+  duration_ms: 6.096873
+  type: 'test'
+  ...
+# Subtest: 已有佇列費用不重扣，手動付得起而自動仍等待是合法差異
+ok 17 - 已有佇列費用不重扣，手動付得起而自動仍等待是合法差異
+  ---
+  duration_ms: 3.105305
+  type: 'test'
+  ...
+# Subtest: 反覆唯讀查詢與輸出不改完整快照、資源、佇列、游標／時窗或兩種RNG
+ok 18 - 反覆唯讀查詢與輸出不改完整快照、資源、佇列、游標／時窗或兩種RNG
+  ---
+  duration_ms: 8.078666
+  type: 'test'
+  ...
+# Subtest: 觀察後一次正式trainArmy與未觀察組完全一致，不改輪替、權重或訂單數
+ok 19 - 觀察後一次正式trainArmy與未觀察組完全一致，不改輪替、權重或訂單數
+  ---
+  duration_ms: 8.374062
+  type: 'test'
+  ...
+# Subtest: 四語完整呈現已套用、費用、原始表格及小缺口，不顯示未翻譯key
+ok 20 - 四語完整呈現已套用、費用、原始表格及小缺口，不顯示未翻譯key
+  ---
+  duration_ms: 5.601425
+  type: 'test'
+  ...
+# Subtest: 草稿改全域／age／建築預留／兵種／目標僅顯未套用，重新診斷仍讀正式設定；取消保留完整快照
+ok 21 - 草稿改全域／age／建築預留／兵種／目標僅顯未套用，重新診斷仍讀正式設定；取消保留完整快照
+  ---
+  duration_ms: 39.299067
+  type: 'test'
+  ...
+# Subtest: 草稿恢復原值會清提示，套用後才改正式設定並在重開時反映新底線
+ok 22 - 草稿恢復原值會清提示，套用後才改正式設定並在重開時反映新底線
+  ---
+  duration_ms: 9.268236
+  type: 'test'
+  ...
+# Subtest: 確認既有升級待辦不套用草稿，實付後重新呈現依新庫存與研究中保留
+ok 23 - 確認既有升級待辦不套用草稿，實付後重新呈現依新庫存與研究中保留
+  ---
+  duration_ms: 15.398698
+  type: 'test'
+  ...
+# Subtest: 只有顯式展開或更新才建立診斷，刷新控制保持節點且關閉還原原暫停狀態
+ok 24 - 只有顯式展開或更新才建立診斷，刷新控制保持節點且關閉還原原暫停狀態
+  ---
+  duration_ms: 4.829958
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 389.759576

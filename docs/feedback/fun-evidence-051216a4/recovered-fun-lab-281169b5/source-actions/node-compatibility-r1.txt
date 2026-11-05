@@ -1,0 +1,34 @@
+✔ 一次明確命令只作用於已選戰士，未選兵與英雄／村民不變 (24.186124ms)
+✔ 攻擊欄位、命令標記、音效及模擬狀態與同點原生右鍵一致 (19.485792ms)
+✔ 反覆讀取入口與重新繪製不消耗RNG、資源、HP、冷卻或事件時間 (10.754848ms)
+✔ 空選、混合英雄／村民／建築、英雄直控及舊實體不偷偷選兵 (40.953015ms)
+✔ 暫停、面板、施工、選卡、結算、選單及過期事件一律零命令 (42.836051ms)
+✔ 已死／轉陣營／不在目前世界／霧中目標不下令且不讀隱藏座標 (14.037133ms)
+✔ 無原生命中點、UI遮擋／畫面外或點擊當下變更不退回移動／其他敵人 (15.200193ms)
+✔ 沙暴沿正式視野縮減禁用入口，恢復後才重新可用，不延長集結 (3.462402ms)
+✔ 第一個原生點被UI遮住仍可採用下一個合法點，不繞過pickAt (3.426379ms)
+✔ 入口不持續改令；後續原生移動／停止立即覆蓋 (3.424525ms)
+✔ 原生Save/Load改用新實體並保留剩餘時窗，舊旗手不被重用 (5.964513ms)
+✔ 四語有完整明確人工控制與禁用原因，不覆蓋正式既有規則 (0.166186ms)
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (15.119513ms)
+✔ Patrol completes both legs using native navigation (14.780102ms)
+✔ Guard follows a living ally then recovers when ally dies (8.161402ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (7.958752ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (2.698592ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (5.972073ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (6.196866ms)
+✔ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (16.520616ms)
+✔ mixed patrol and attack-move announce partial assignment and preserve gathering (10.942666ms)
+✔ all-military tactical commands do not warn (5.680272ms)
+✔ 雙方實際視野半徑減少20% / both teams lose20% sight (0.228848ms)
+✔ 文明視野加成先套用，建築預設6，不改射程 / bonuses before multiplier; building default6; no range mutation (0.10137ms)
+✔ 敵軍失去視野不追蹤單位並可重新獲取 / enemy loses hidden unit and reacquires after storm (2.806561ms)
+✔ 讀檔視野與RNG不變 / restored sight and RNG remain unchanged (7.043269ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3552.300636

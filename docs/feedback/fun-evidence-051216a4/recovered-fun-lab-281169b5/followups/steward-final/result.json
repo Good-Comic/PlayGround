@@ -1,0 +1,1356 @@
+{
+  "scope": "正式構建原生Start／總管設定操作，非完整自然戰役；過期確認另標CONTROLLED_FIXTURE。",
+  "sources": {
+    "before": "2bac6e36172b82e7ca8c00c42473b5447dc5ba3e",
+    "after": "3237a7f109c3fdbc343ecb05336efb5660f863cf"
+  },
+  "checks": [
+    {
+      "name": "before正式來源及160資源",
+      "pass": true,
+      "verified": {
+        "source": "2bac6e36172b82e7ca8c00c42473b5447dc5ba3e",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    },
+    {
+      "name": "Before實際重現表單頂端看不到底部套用與關閉",
+      "pass": true,
+      "layout": {
+        "scrollTop": 0,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 1887.8125,
+            "bottom": 1921.8125,
+            "inside": false,
+            "surface": false
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 1887.8125,
+            "bottom": 1921.8125,
+            "inside": false,
+            "surface": false
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 1887.8125,
+            "bottom": 1921.8125,
+            "inside": false,
+            "surface": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "after正式來源及160資源",
+      "pass": true,
+      "verified": {
+        "source": "3237a7f109c3fdbc343ecb05336efb5660f863cf",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    },
+    {
+      "name": "After頂端零捲動即可套用／關閉／查看確認提案",
+      "pass": true,
+      "layout": {
+        "scrollTop": 0,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 797,
+            "bottom": 833,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "設定中模擬時間及兩個RNG保持暫停",
+      "pass": true,
+      "before": {
+        "sim": 0.21660000000000013,
+        "rng": -644641641,
+        "visual": 1932097315,
+        "paused": true
+      },
+      "after": {
+        "sim": 0.21660000000000013,
+        "rng": -644641641,
+        "visual": 1932097315,
+        "paused": true
+      }
+    },
+    {
+      "name": "原生套用只提交既有設定並恢復先前運行",
+      "pass": true,
+      "trace": {
+        "before": {
+          "rng": -644641641,
+          "visual": 1932097315,
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "sim": 0.21660000000000013
+        },
+        "after": {
+          "rng": -644641641,
+          "visual": 1932097315,
+          "resources": {
+            "food": 300,
+            "wood": 300,
+            "gold": 120,
+            "stone": 100
+          },
+          "sim": 0.21660000000000013
+        },
+        "gather": "food",
+        "paused": false,
+        "closed": true
+      }
+    },
+    {
+      "name": "重新開啟保留實際設定",
+      "pass": true
+    },
+    {
+      "name": "關閉不誤套用未提交設定",
+      "pass": true
+    },
+    {
+      "name": "原先已暫停時套用不擅自開始戰鬥",
+      "pass": true
+    },
+    {
+      "name": "Escape關閉並恢復原運行狀態",
+      "pass": true
+    },
+    {
+      "name": "四語頂端操作列-zh-Hant-1440",
+      "pass": true,
+      "layout": {
+        "scrollTop": 0,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 797,
+            "bottom": 833,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-zh-Hant-1440",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1126,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 775.8125,
+            "bottom": 809.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 774.8125,
+            "bottom": 810.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 775.8125,
+            "bottom": 809.8125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-zh-Hant-1024",
+      "pass": true,
+      "layout": {
+        "scrollTop": 33,
+        "dialog": {
+          "top": 46.078125,
+          "bottom": 721.90625
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 673.90625,
+            "bottom": 707.90625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 672.90625,
+            "bottom": 708.90625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 673.90625,
+            "bottom": 707.90625,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-zh-Hant-1024",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1242,
+        "dialog": {
+          "top": 46.078125,
+          "bottom": 721.90625
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 651.890625,
+            "bottom": 685.890625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 650.890625,
+            "bottom": 686.890625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 651.890625,
+            "bottom": 685.890625,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-zh-Hant-800",
+      "pass": true,
+      "layout": {
+        "scrollTop": 131,
+        "dialog": {
+          "top": 36,
+          "bottom": 564
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 516,
+            "bottom": 550,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 515,
+            "bottom": 551,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 516,
+            "bottom": 550,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-zh-Hant-800",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1462,
+        "dialog": {
+          "top": 36,
+          "bottom": 564
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 493.8125,
+            "bottom": 527.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 492.8125,
+            "bottom": 528.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 493.8125,
+            "bottom": 527.8125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-zh-Hant-390",
+      "pass": true,
+      "layout": {
+        "scrollTop": 144,
+        "dialog": {
+          "top": 50.640625,
+          "bottom": 793.359375
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 702.359375,
+            "bottom": 736.359375,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 744.359375,
+            "bottom": 780.359375,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 745.359375,
+            "bottom": 779.359375,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-zh-Hant-390",
+      "pass": true,
+      "layout": {
+        "scrollTop": 2167,
+        "dialog": {
+          "top": 50.640625,
+          "bottom": 793.359375
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 680.453125,
+            "bottom": 714.453125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 722.453125,
+            "bottom": 758.453125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 723.453125,
+            "bottom": 757.453125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-zh-Hans-1440",
+      "pass": true,
+      "layout": {
+        "scrollTop": 0,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 797,
+            "bottom": 833,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-zh-Hans-1440",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1126,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 775.8125,
+            "bottom": 809.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 774.8125,
+            "bottom": 810.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 775.8125,
+            "bottom": 809.8125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-zh-Hans-1024",
+      "pass": true,
+      "layout": {
+        "scrollTop": 33,
+        "dialog": {
+          "top": 46.078125,
+          "bottom": 721.90625
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 673.90625,
+            "bottom": 707.90625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 672.90625,
+            "bottom": 708.90625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 673.90625,
+            "bottom": 707.90625,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-zh-Hans-1024",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1242,
+        "dialog": {
+          "top": 46.078125,
+          "bottom": 721.90625
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 651.890625,
+            "bottom": 685.890625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 650.890625,
+            "bottom": 686.890625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 651.890625,
+            "bottom": 685.890625,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-zh-Hans-800",
+      "pass": true,
+      "layout": {
+        "scrollTop": 131,
+        "dialog": {
+          "top": 36,
+          "bottom": 564
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 516,
+            "bottom": 550,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 515,
+            "bottom": 551,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 516,
+            "bottom": 550,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-zh-Hans-800",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1462,
+        "dialog": {
+          "top": 36,
+          "bottom": 564
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 493.8125,
+            "bottom": 527.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 492.8125,
+            "bottom": 528.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 493.8125,
+            "bottom": 527.8125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-zh-Hans-390",
+      "pass": true,
+      "layout": {
+        "scrollTop": 144,
+        "dialog": {
+          "top": 50.640625,
+          "bottom": 793.359375
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 702.359375,
+            "bottom": 736.359375,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 744.359375,
+            "bottom": 780.359375,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 745.359375,
+            "bottom": 779.359375,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-zh-Hans-390",
+      "pass": true,
+      "layout": {
+        "scrollTop": 2167,
+        "dialog": {
+          "top": 50.640625,
+          "bottom": 793.359375
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 680.453125,
+            "bottom": 714.453125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 722.453125,
+            "bottom": 758.453125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 723.453125,
+            "bottom": 757.453125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-en-1440",
+      "pass": true,
+      "layout": {
+        "scrollTop": 0,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 803,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 802,
+            "bottom": 833,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 803,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-en-1440",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1158,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 780.8125,
+            "bottom": 809.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 779.8125,
+            "bottom": 810.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 780.8125,
+            "bottom": 809.8125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-en-1024",
+      "pass": true,
+      "layout": {
+        "scrollTop": 15,
+        "dialog": {
+          "top": 46.078125,
+          "bottom": 721.90625
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 678.90625,
+            "bottom": 707.90625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 677.90625,
+            "bottom": 708.90625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 678.90625,
+            "bottom": 707.90625,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-en-1024",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1274,
+        "dialog": {
+          "top": 46.078125,
+          "bottom": 721.90625
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 656.890625,
+            "bottom": 685.890625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 655.890625,
+            "bottom": 686.890625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 656.890625,
+            "bottom": 685.890625,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-en-800",
+      "pass": true,
+      "layout": {
+        "scrollTop": 146,
+        "dialog": {
+          "top": 36,
+          "bottom": 564
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 521,
+            "bottom": 550,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 520,
+            "bottom": 551,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 521,
+            "bottom": 550,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-en-800",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1537,
+        "dialog": {
+          "top": 36,
+          "bottom": 564
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 498.8125,
+            "bottom": 527.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 497.8125,
+            "bottom": 528.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 498.8125,
+            "bottom": 527.8125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-en-390",
+      "pass": true,
+      "layout": {
+        "scrollTop": 191,
+        "dialog": {
+          "top": 50.640625,
+          "bottom": 793.359375
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 712.359375,
+            "bottom": 741.359375,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 749.359375,
+            "bottom": 780.359375,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 750.359375,
+            "bottom": 779.359375,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-en-390",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1801,
+        "dialog": {
+          "top": 50.640625,
+          "bottom": 793.359375
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 690.453125,
+            "bottom": 719.453125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 727.453125,
+            "bottom": 758.453125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 728.453125,
+            "bottom": 757.453125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-ja-1440",
+      "pass": true,
+      "layout": {
+        "scrollTop": 0,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 797,
+            "bottom": 833,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 798,
+            "bottom": 832,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-ja-1440",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1198,
+        "dialog": {
+          "top": 54,
+          "bottom": 846
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 775.8125,
+            "bottom": 809.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 774.8125,
+            "bottom": 810.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 775.8125,
+            "bottom": 809.8125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-ja-1024",
+      "pass": true,
+      "layout": {
+        "scrollTop": 57,
+        "dialog": {
+          "top": 46.078125,
+          "bottom": 721.90625
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 673.90625,
+            "bottom": 707.90625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 672.90625,
+            "bottom": 708.90625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 673.90625,
+            "bottom": 707.90625,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-ja-1024",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1314,
+        "dialog": {
+          "top": 46.078125,
+          "bottom": 721.90625
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 651.890625,
+            "bottom": 685.890625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 650.890625,
+            "bottom": 686.890625,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 651.890625,
+            "bottom": 685.890625,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-ja-800",
+      "pass": true,
+      "layout": {
+        "scrollTop": 131,
+        "dialog": {
+          "top": 36,
+          "bottom": 564
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 516,
+            "bottom": 550,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 515,
+            "bottom": 551,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 516,
+            "bottom": 550,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-ja-800",
+      "pass": true,
+      "layout": {
+        "scrollTop": 1486,
+        "dialog": {
+          "top": 36,
+          "bottom": 564
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 493.8125,
+            "bottom": 527.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 492.8125,
+            "bottom": 528.8125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 493.8125,
+            "bottom": 527.8125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語頂端操作列-ja-390",
+      "pass": true,
+      "layout": {
+        "scrollTop": 235,
+        "dialog": {
+          "top": 50.640625,
+          "bottom": 793.359375
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 702.359375,
+            "bottom": 736.359375,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 744.359375,
+            "bottom": 780.359375,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 745.359375,
+            "bottom": 779.359375,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "四語底部操作列-ja-390",
+      "pass": true,
+      "layout": {
+        "scrollTop": 2430,
+        "dialog": {
+          "top": 50.640625,
+          "bottom": 793.359375
+        },
+        "buttons": [
+          {
+            "id": "steward-confirm",
+            "disabled": true,
+            "top": 680.453125,
+            "bottom": 714.453125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-apply",
+            "disabled": false,
+            "top": 722.453125,
+            "bottom": 758.453125,
+            "inside": true,
+            "surface": true
+          },
+          {
+            "id": "steward-close",
+            "disabled": false,
+            "top": 723.453125,
+            "bottom": 757.453125,
+            "inside": true,
+            "surface": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "正式Save／Continue後總管設定與固定入口保留",
+      "pass": true
+    },
+    {
+      "name": "零瀏覽器程式錯誤",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "status": "PASS_NATIVE_INPUT_STICKY_CONTROLS_AND_STATE_SCOPE"
+}
