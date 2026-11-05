@@ -1,0 +1,269 @@
+{
+  "player": "B",
+  "profile": "一般休閒玩家；AI 模擬觀點，非人類實測",
+  "phase": "before",
+  "session": "重新啟動後的新隔離場次；本報告不代表先前中斷場次已完成",
+  "settings": {
+    "civilization": "FRK／法蘭克",
+    "difficulty": "Normal／普通",
+    "biome": "steppe／草海平原",
+    "seed": "FUN-LAB-BASE-281",
+    "visible_build": "f6ae896",
+    "speed": "正常 1 倍速"
+  },
+  "outcome": {
+    "status": "DEFEAT",
+    "formal_result_seen": true,
+    "finish_called": true,
+    "waves_survived": 3,
+    "failed_wave": 4,
+    "total_waves": 10,
+    "kills": 78,
+    "resources_gathered": 4525,
+    "official_reign_time": "8:57",
+    "end_evidence": "screen-0049.png",
+    "start_wall_seconds": 79.069,
+    "end_observation_wall_seconds": 903.469,
+    "elapsed_wall_seconds_after_start": 824.4,
+    "limit_reached": false
+  },
+  "time_basis": {
+    "official_game_time": "結算畫面明示統治時間 8:57。",
+    "moment_times": "常駐 HUD 未顯示局內累計時鐘；各時刻使用公開 client wallSeconds、Start 後牆鐘經過與波次／準備倒數。牆鐘包含總管暫停、選卡閱讀及工具延遲，不冒稱局內累計時間。",
+    "start_wall_seconds": 79.069
+  },
+  "conduct": {
+    "information_boundary": "僅閱讀自己的 PROFILE、public README 與此次 before 的正常可見畫面；未讀原始碼、完整 GDD、其他玩家、旁觀者、舊中斷遊玩資料或內部狀態。",
+    "interaction": "public client 原生滑鼠鍵盤；決策型輸入至少相隔 5 秒，失敗後重新觀察，未使用遊戲函式、修改狀態、加速或作弊。",
+    "play": "使用均衡總管，簡單規劃自動房屋上限 3、馬廄目標 1；升時代先詢問，後改食物優先。直覺選馬鎧、倒鉤繩索、攻城數學。以整隊移動／攻擊、援護城心與偶爾 Q／E 為主。救援兩名工人；未極限調參。",
+    "limitations": "這是模型在畫面與工具往返限制下的休閒玩家模擬，實際反應常慢於設定的最高意圖頻率；不能推論真人反應、勝率或整體平衡。"
+  },
+  "interesting": [
+    {
+      "id": "F1",
+      "title": "第一波接戰後守住城心並獲得可理解的騎兵卡",
+      "classification": [
+        "戰鬥回饋",
+        "短期構築選擇"
+      ],
+      "wall_seconds": 296.421,
+      "elapsed_after_start": "03:37.352",
+      "hud_game_time": "第 I 波「襲擊已破」，選擇恩賜；城心 100%",
+      "evidence": [
+        "screen-0012.png",
+        "screen-0014.png",
+        "screen-0015.png"
+      ],
+      "observation": "前一次觀察城心 96%，使用一次護盾及援護城心後擊破襲擊，收到資源與三張卡。我以法蘭克騎兵生命加成與已建馬廄為直覺理由選「馬鎧」，沒有查最佳組合。",
+      "why": "保住基地後馬上給一個看得懂的長期方向，戰鬥與選卡接得上。",
+      "confidence": "高"
+    },
+    {
+      "id": "F2",
+      "title": "派英雄救援工人有直接且清楚的成果",
+      "classification": [
+        "支線目標",
+        "探索與經濟回饋"
+      ],
+      "wall_seconds": 553.575,
+      "elapsed_after_start": "07:54.506",
+      "hud_game_time": "第 III 波準備倒數 0:08；右側顯示「兩名工人已獲救！」",
+      "evidence": [
+        "screen-0028.png",
+        "screen-0030.png"
+      ],
+      "observation": "準備期透過可見的「派英雄前往」按鈕出發；下一次觀察看到兩名工人與完成文字，村民 HUD 由 11 增到 13。英雄生命仍為 572/572。",
+      "why": "短時間離開防線有明確目的，兩個新工人是容易理解的獎勵。",
+      "confidence": "高"
+    },
+    {
+      "id": "F3",
+      "title": "第三波仍能補救並把危險轉成防禦選卡",
+      "classification": [
+        "危機與緩解",
+        "情境選卡"
+      ],
+      "wall_seconds": 700.255,
+      "elapsed_after_start": "10:21.186",
+      "hud_game_time": "第 III 波「襲擊已破」；城心 87%",
+      "evidence": [
+        "screen-0035.png",
+        "screen-0036.png",
+        "screen-0038.png"
+      ],
+      "observation": "第三波把部隊轉向右側敵人並施放護盾，之後敵人由 10 名降到 1 名，再出現擊破及選卡畫面。接戰末城心曾到 72%，波後顯示 87%；我選增加建築生命的「攻城數學」。",
+      "why": "這次選卡直接回應剛遇到的基地壓力，比抽象規劃更有投入感。不能僅憑前後畫面把勝利全歸因於護盾。",
+      "confidence": "高"
+    }
+  ],
+  "boring": [
+    {
+      "id": "B1",
+      "title": "開局總管設定花很多時間翻表格",
+      "classification": [
+        "介面資訊量",
+        "流程節奏"
+      ],
+      "wall_seconds": 94.402,
+      "elapsed_after_start": "00:15.333",
+      "hud_game_time": "第 I 波準備倒數 0:30，總管面板暫停中",
+      "evidence": [
+        "screen-0004.png",
+        "screen-0005.png",
+        "screen-0006.png",
+        "screen-0007.png"
+      ],
+      "observation": "從開啟總管到儲存約 97 秒牆鐘。只想設定升時代先詢問、三間房屋與一座馬廄，卻要經過採集百分比、預留及大量建築列，並向下捲兩次才到儲存。",
+      "why": "對只保留兩件近期目標的休閒角色，表格閱讀與翻頁的時間長於決策本身。這是此次操作成本，不能當作真人平均完成時間。",
+      "confidence": "高"
+    },
+    {
+      "id": "B2",
+      "title": "後續選卡仍同時展示完整卡牌圖，重複閱讀感偏重",
+      "classification": [
+        "資訊層級",
+        "選卡節奏"
+      ],
+      "wall_seconds": 700.255,
+      "elapsed_after_start": "10:21.186",
+      "hud_game_time": "第 III 波擊破後選擇恩賜",
+      "evidence": [
+        "screen-0027.png",
+        "screen-0038.png"
+      ],
+      "observation": "第二、三次選卡仍在三個候選旁顯示大片完整卡牌圖、功能／稀有度／狀態篩選及縮放。我這輪只依候選短文與眼前問題選卡，沒有研讀其餘卡牌。",
+      "why": "在本角色的短期選擇中，額外圖譜帶來的閱讀份量比實際用到的資訊多。這是有限的模擬感受，不表示圖譜對所有玩家無用。",
+      "confidence": "中"
+    },
+    {
+      "id": "B3",
+      "title": "第四波剛開始的零敵人階段有短暫淡場",
+      "classification": [
+        "襲擊節奏",
+        "等待回饋"
+      ],
+      "wall_seconds": 796.443,
+      "elapsed_after_start": "11:57.374",
+      "hud_game_time": "第 IV 波「襲擊已然壓境」，0 名敵人",
+      "evidence": [
+        "screen-0043.png",
+        "screen-0045.png"
+      ],
+      "observation": "18 名已選部隊幾乎滿血守在基地；HUD 已切到襲擊，當時卻顯示 0 名敵人。至下一次觀察約 40 秒牆鐘後才看到 10 名敵人與衝車。期間有觀察及等待，未跳波。",
+      "why": "當下缺少清楚的近期接敵回饋，使這小段偏向看著自動運作。只證實一個短暫淡場，不能說整波都無聊。",
+      "confidence": "中"
+    }
+  ],
+  "frustrating": [
+    {
+      "id": "R1",
+      "title": "城心遮擋與兩側聚團讓整隊指揮難判讀",
+      "classification": [
+        "戰鬥可讀性",
+        "選取與命令回饋"
+      ],
+      "wall_seconds": 656.575,
+      "elapsed_after_start": "09:37.506",
+      "hud_game_time": "第 III 波交戰；城心 78%，10 名敵人",
+      "evidence": [
+        "screen-0033.png",
+        "screen-0034.png",
+        "screen-0035.png"
+      ],
+      "observation": "城心大屋頂及兩側密集單位讓我難以立即分辨哪群正在攻城心。630.752 秒畫面中已選 12 人，但全軍顯示 15 人；656.575 秒全軍已到 17 人而選取仍是 12 人。我靠整隊右鍵攻擊與援護城心補救。",
+      "interpretation": "我知道 F2 但沒有每次補兵後重選，這包含自己的操作疏漏；僅憑畫面不能認定尋路、AI 或援護城心功能故障。",
+      "confidence": "高"
+    },
+    {
+      "id": "R2",
+      "title": "總管的升時代確認藏在長面板底部",
+      "classification": [
+        "操作流程",
+        "經濟回饋"
+      ],
+      "wall_seconds": 333.509,
+      "elapsed_after_start": "04:14.440",
+      "hud_game_time": "第 II 波準備倒數 0:21，總管面板中",
+      "evidence": [
+        "screen-0017.png",
+        "screen-0018.png",
+        "screen-0019.png",
+        "screen-0040.png",
+        "screen-0041.png",
+        "screen-0042.png"
+      ],
+      "observation": "HUD 說等待確認時代升級，但重新開總管先回到採集設定；必須向下捲到最後才找到確認，確認後面板仍開著，還要關閉／儲存。第二次升時代又走相同流程。",
+      "interpretation": "這是我確實遇到的步驟成本；預留數值有顯示，不能說遊戲完全沒解釋。升帝國後食物降到 12，我沒有事先充分權衡補兵與升級。",
+      "confidence": "高"
+    },
+    {
+      "id": "R3",
+      "title": "第四波城心崩落很快，回防未能救回",
+      "classification": [
+        "威脅告警",
+        "多路攻勢",
+        "玩家判斷失誤"
+      ],
+      "wall_seconds": 882.954,
+      "elapsed_after_start": "13:23.885",
+      "hud_game_time": "第 IV 波交戰；城心 7%；正式結算於局內 8:57 戰敗",
+      "evidence": [
+        "screen-0045.png",
+        "screen-0046.png",
+        "screen-0047.png",
+        "screen-0049.png"
+      ],
+      "observation": "我看到北側衝車後把 18 名已選部隊送過去；城心從 89% 降到 62%，再於兩次觀察相隔約 22 秒牆鐘降到 7%。我在 876.460 秒叫回全軍，882.158 秒施放護盾，畫面確認護到 16 人；最後仍失守。結算時尚有 21 名已選戰士，生命列 1983/2208。",
+      "interpretation": "我追擊北側目標、沒提早補防禦，也沒及時辨識另一側貼城衝車，是自己的錯誤。護盾保護士兵，並非修城。畫面／工具往返與 5 秒意圖間隔使補救較慢，不能把這一次失敗直接當作普通難度失衡證據。",
+      "confidence": "高"
+    }
+  ],
+  "improvements": [
+    {
+      "id": "I1",
+      "proposal": "總管加入簡短的常用規劃區，將採集偏好、村民目標、房屋目標、軍事方案與升時代提案放在第一屏，儲存／關閉保持可見；完整逐建築表格保留進階入口。",
+      "addresses": [
+        "B1",
+        "R2"
+      ],
+      "gdd_compatibility": "待根代理核實；本玩家未讀完整 GDD。若保留手動命令優先、既有成本與原總管能力，表面上屬資訊與流程調整。",
+      "risk": "簡化預設可能讓玩家誤以為自動軍事已啟用；固定按鈕也可能擠壓小螢幕內容。",
+      "validation": "以同條件新休閒玩家完成「三房、一馬廄、升時代先詢問」任務，比較有效意圖數、設定完成牆鐘、誤啟動率及是否能正確說明預留資源；不改遊戲難度。"
+    },
+    {
+      "id": "I2",
+      "proposal": "加強城心受攻與衝車威脅的可見提示：在城心 HUD 顯示近期受傷方向／來源類型，並讓援護城心後的目標或護衛狀態短暫清楚顯示。僅使用已看見或已發生的攻擊資訊。",
+      "addresses": [
+        "R1",
+        "R3"
+      ],
+      "gdd_compatibility": "待核實；不揭露迷霧後敵人、不新增自動戰鬥能力，應先作 UI 可讀性驗證。",
+      "risk": "過密告警可能壓過其他訊息；顯示來源若超出實際視野會變成額外情報。",
+      "validation": "重播可見的第四波攻城情境，檢查告警是否對應既有可見資訊，讓玩家指出受壓方向與執行一次回防；測量辨識時間、誤點、告警忽略率，另核對霧區不洩漏資訊。"
+    },
+    {
+      "id": "I3",
+      "proposal": "選卡預設優先呈現三張候選、已持有效果與簡短文明提示，把完整卡牌圖放進明確可開啟的圖鑑區；保留原本查閱能力。",
+      "addresses": [
+        "B2",
+        "F1",
+        "F3"
+      ],
+      "gdd_compatibility": "待核實；不更動抽卡機率、卡牌效果或候選資訊，只調整呈現順序。",
+      "risk": "隱藏圖譜可能讓喜歡長線構築的玩家較難發現關聯，也可能降低圖鑑使用率。",
+      "validation": "同樣三張候選做介面比較，請玩家說明選卡理由、卡牌代價與適用部隊；記錄決策時間、理解錯誤、圖鑑開啟率與選後反悔情形，不只追求最快點選。"
+    }
+  ],
+  "replay_intent": {
+    "answer": "有條件願意再玩一場。",
+    "ai_simulation_only": true,
+    "reason": "三次守住後選卡、救回工人及嘗試把當前困難轉成構築，足以形成下一次想試不同守法的動機。總管翻表與第四波的突發失守降低立即重開的意願；這是 AI 角色模擬判斷，並非人類留存數據。",
+    "would_try": "保留更多部隊在城心、早點注意衝車方向，並少花時間研究總管長表格。不是已驗證的最佳解。"
+  },
+  "instrumentation_limits": [
+    "三次輸入未如預期完成：派英雄前往曾回報 CONTROL_NOT_VISIBLE_OR_ENABLED；一次援護城心在波次轉入選卡時回報不可見；一次弓騎兵訓練逾時後觀察已出現選卡遮罩。均未自動重試，後續依新畫面判斷。不能直接列為遊戲缺陷。",
+    "曾有 12 秒 wait 的 shell 呼叫在 10 秒時返回執行中 session；已以 write_stdin 收回完成結果。後續主要使用 9 秒等待並重新觀察，沒有盲等整場。",
+    "時刻引用是本次可見畫面與公開 wallSeconds；未為了補齊時間讀存檔、記錄內部狀態或推算隱藏 RNG。"
+  ],
+  "evidence_limit": "三項各類時刻均有本場畫面；無完整真人感受、後六波或第二場資料，故不下長期平衡或留存結論。"
+}

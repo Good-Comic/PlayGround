@@ -41,7 +41,16 @@ def metrics(role,round):
   response=json.loads(f.read_text())
   if response.get('ok') is False and response.get('reason')=='CONTROL_NOT_VISIBLE_OR_ENABLED':rejected+=1
  out['control_rejections_before_dispatch']=rejected
- out.update(active_unpaused_wall_seconds_APPROX=activeWall,sim_to_active_wall_ratio_APPROX=end['sim']/activeWall if activeWall else None,native_dispatched_APM_whole_session=sum(a['ok'] for a in actions)/(result['wallSeconds']/60) if result['wallSeconds'] else None)
+ out['pre_failure_target_intentions']=[{'sim':s['sim'],'core_hp':s['core']['hp'],'enemy_targeting_core':dict(collections.Counter(u['type'] for u in s['units'] if u['alive'] and u['team']=='enemy' and u.get('target')==s['core']['id'])),'player_attack_target_types':dict(collections.Counter(next((v['type'] for v in s['units'] if v['id']==u.get('target')),'none_or_building') for u in s['units'] if u['alive'] and u['team']=='player' and u['state']=='attack'))} for s in [x for x in samples if x.get('core') and x.get('phase')=='wave'][-12:]]
+ out['target_intention_limit']='只代表原生目標參照與狀態；不把走向城心但未進射程的單位當成實際傷害來源。'
+ initialSim=(result.get('resume') or {}).get('simulationSeconds',0)
+ playedSim=end['sim']-initialSim
+ out['initial_sim_seconds']=initialSim
+ out['played_sim_seconds']=playedSim
+ out['segment_gathered_total']=end['stats']['gathered']-((result.get('resume') or {}).get('initialStats') or {}).get('gathered',0)
+ out['stop_reason']=result.get('stopReason')
+ out['clock_scope_limit']='續玩時計為累積值；played_sim_seconds扣除原始快照時鐘。抽樣與工具延遲使牆鐘比率僅供診斷。'
+ out.update(active_unpaused_wall_seconds_APPROX=activeWall,sim_to_active_wall_ratio_APPROX=playedSim/activeWall if activeWall else None,native_dispatched_APM_whole_session=sum(a['ok'] for a in actions)/(result['wallSeconds']/60) if result['wallSeconds'] else None)
  (d/'metrics.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');return out
 if __name__=='__main__':
  results=[m for role in ('A','B','C') for round in ('before','after') if (m:=metrics(role,round))]
