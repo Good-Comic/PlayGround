@@ -1,0 +1,204 @@
+{
+  "source": "955fceaadb781d9128a857636c0f20a4830ccc12",
+  "scope": "正常Continue原封A自然存檔，原生軍令後觀察實際城心命中。凍結HUD／失視野等負面條件另標CONTROLLED_FIXTURE；非AI玩家／完整自然十波。",
+  "resumeSha256": "1d35c76c1b35c5b4e901019dec95c02426114b582b32a3b91b5d29202f5462e4",
+  "checks": [
+    {
+      "name": "before正式來源與完整資源雜湊",
+      "pass": true,
+      "verified": {
+        "commit": "6a9cde03141c6800be6da28ada0e9b0dc1145be4",
+        "hash": "SHA256_MATCH_160_FILES"
+      }
+    },
+    {
+      "name": "Before有真實城心失血但沒有來源回讀",
+      "pass": true,
+      "hits": [
+        {
+          "before": 2239.494999999995,
+          "after": 2236.559999999995,
+          "loss": 2.9349999999999454,
+          "kind": "projectile"
+        }
+      ]
+    },
+    {
+      "name": "after正式來源與完整資源雜湊",
+      "pass": true,
+      "verified": {
+        "commit": "955fceaadb781d9128a857636c0f20a4830ccc12",
+        "hash": "SHA256_MATCH_161_FILES"
+      }
+    },
+    {
+      "name": "自然存檔原生命中的HP差與回讀一致",
+      "pass": true,
+      "hit": {
+        "before": 2239.494999999995,
+        "after": 2236.559999999995,
+        "loss": 2.9349999999999454,
+        "kind": "projectile",
+        "view": {
+          "loss": 2.9349999999999454,
+          "at": 487.67300000008595,
+          "sourceId": 130,
+          "name": "步弓兵",
+          "direction": null
+        }
+      },
+      "view": {
+        "loss": 2.9349999999999454,
+        "at": 487.67300000008595,
+        "sourceId": 130,
+        "name": "步弓兵",
+        "direction": null
+      }
+    },
+    {
+      "name": "正式畫面實際顯示城心失血與可見來源",
+      "pass": true,
+      "text": "城心上次實損 −2.93 HP · 步弓兵 · 8:07"
+    },
+    {
+      "name": "CONTROLLED_FIXTURE凍結HUD查看不改模擬或RNG",
+      "pass": true,
+      "pure": {
+        "snapshot": true,
+        "rng": true,
+        "visual": true
+      }
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hant-1440",
+      "pass": true,
+      "text": "城心上次實損 −2.93 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hant-1024",
+      "pass": true,
+      "text": "城心上次實損 −2.93 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hant-800",
+      "pass": true,
+      "text": "城心上次實損 −2.93 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hant-390",
+      "pass": true,
+      "text": "城心上次實損 −2.93 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hans-1440",
+      "pass": true,
+      "text": "城心上次实损 −2.93 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hans-1024",
+      "pass": true,
+      "text": "城心上次实损 −2.93 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hans-800",
+      "pass": true,
+      "text": "城心上次实损 −2.93 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-zh-Hans-390",
+      "pass": true,
+      "text": "城心上次实损 −2.93 HP · 步弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-en-1440",
+      "pass": true,
+      "text": "Last core HP loss −2.93 · Archer · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-en-1024",
+      "pass": true,
+      "text": "Last core HP loss −2.93 · Archer · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-en-800",
+      "pass": true,
+      "text": "Last core HP loss −2.93 · Archer · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-en-390",
+      "pass": true,
+      "text": "Last core HP loss −2.93 · Archer · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-ja-1440",
+      "pass": true,
+      "text": "町の直近HP損失 −2.93 · 歩弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-ja-1024",
+      "pass": true,
+      "text": "町の直近HP損失 −2.93 · 歩弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-ja-800",
+      "pass": true,
+      "text": "町の直近HP損失 −2.93 · 歩弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "四語視口受傷資訊與命令列-ja-390",
+      "pass": true,
+      "text": "町の直近HP損失 −2.93 · 歩弓兵 · 8:07",
+      "inside": true,
+      "buttons": true
+    },
+    {
+      "name": "CONTROLLED_FIXTURE失去視野同一UI更新即移除身分／方向且不重追蹤",
+      "pass": true,
+      "hidden": {
+        "before": "城心上次實損 −2.93 HP · 步弓兵 · 8:07",
+        "after": "城心上次實損 −2.93 HP · 來源未確認 · 8:07",
+        "restored": "城心上次實損 −2.93 HP · 來源未確認 · 8:07"
+      }
+    },
+    {
+      "name": "原生Save／Continue不重播舊受傷情報",
+      "pass": true
+    },
+    {
+      "name": "零瀏覽器程式錯誤",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "status": "PASS_NATIVE_HP_LOSS_AND_CONTROLLED_UI_BOUNDARIES"
+}

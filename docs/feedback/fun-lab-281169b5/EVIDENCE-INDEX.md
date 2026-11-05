@@ -15,37 +15,10 @@
 | 類別 | 倉庫內證據 |
 | --- | --- |
 | 封存／快照 | [12份報告重算](REPORT-SEAL-VERIFICATION.json)、[Before封存](BASELINE-SEALS.json)、[After封存](AFTER-SEALS.json)、[恢復點SHA](FOCUSED-RETEST-CHECKPOINTS.json)；未改副本位於evidence/checkpoints/ |
-| Director | [原初評](evidence/director/REVIEW.md)、[原初評JSON](evidence/director/DECISIONS.json)、[原複評](evidence/director-after/POST-REVIEW.md)、[原複評JSON](evidence/director-after/POST-DECISIONS.json)、[雙語裁決](GAME-DIRECTOR-DECISIONS.md) |
+| Director | [原初評](evidence/director/REVIEW.md)、[原初評JSON](evidence/director/DECISIONS.json)、[原複評](evidence/director-after/POST-REVIEW.md)、[原複評JSON](evidence/director-after/POST-DECISIONS.json)、[整理裁決](GAME-DIRECTOR-DECISIONS.md) |
 | 比較度量 | [主要前後結果](BEFORE-AFTER-RESULTS.json)、[原始分析副本](evidence/analysis/BEFORE-AFTER-RESULTS.raw.json)、[對齊窗口](MATCHED-WINDOW-RESULTS.json) |
 | 技術 | [新增Node](evidence/technical/node-readback-final.txt)、[相關回歸](evidence/technical/node-regression.txt)、[Chromium34項](evidence/direct-after/result.json)、[額外11項](evidence/direct-after-extra/result.json)、[160資源雜湊](evidence/direct-after/hashes.json) |
 | 效能 | [四個短樣本原結果](evidence/performance/result.json)、[Before100](evidence/performance/before-100.png)、[After100](evidence/performance/after-100.png)、[Before200](evidence/performance/before-200.png)、[After200](evidence/performance/after-200.png) |
 | 排除場次 | [B-before中斷](INTERRUPTION.json)、[A-after中斷](AFTER-A-INTERRUPTION.json)、[B-after啟動逾期](B-AFTER-CONTROLLER-STARTUP.json)、[控制器恢復驗證](CONTROLLER-RECOVERY-TEST.json) |
 
 完整解讀與限制見 [樂趣報告](FUN-EVALUATION-REPORT.md) 與 [測試矩陣](MULTI-AGENT-PLAYTEST-MATRIX.md)。Strict RNG Save/Load仍FAIL；N=1、知情學習、非新十波、SwiftShader非硬體、死亡使100／200負載下降及較高200 after heap／長測未證明都保留。
-
----
-
-# Evidence index
-
-The first loop is pinned to6075dbaae8281de54ec5c932e349b0ed591f3c7f. The next carrier slice is being implemented without new results here. Links point to actual repository archives. Original reports retain their wording and conclusions without translation edits.
-
-| Role | Before report / result / continuous tail | After report / result / continuous tail | Representative After frames |
-| --- | --- | --- | --- |
-| A | [Report](evidence/A-before/REPORT.md) · [JSON](evidence/A-before/REPORT.json) · [Result](evidence/A-before/final.png) · [Video](evidence/A-before/combat-ending.webm) | [Report](evidence/A-after/REPORT.md) · [JSON](evidence/A-after/REPORT.json) · [Result](evidence/A-after/final.png) · [Video](evidence/A-after/combat-ending.webm) | [0005](evidence/A-after/screen-0005.png) · [0006](evidence/A-after/screen-0006.png) · [0009](evidence/A-after/screen-0009.png) |
-| B | [Report](evidence/B-before/REPORT.md) · [JSON](evidence/B-before/REPORT.json) · [Result](evidence/B-before/final.png) · [Video](evidence/B-before/combat-ending.webm) | [Report](evidence/B-after/REPORT.md) · [JSON](evidence/B-after/REPORT.json) · [Result](evidence/B-after/final.png) · [Video](evidence/B-after/combat-ending.webm) | [0009](evidence/B-after/screen-0009.png) |
-| C | [Report](evidence/C-before/REPORT.md) · [JSON](evidence/C-before/REPORT.json) · [Result](evidence/C-before/final.png) · [Video](evidence/C-before/combat-ending.webm) | [Report](evidence/C-after/REPORT.md) · [JSON](evidence/C-after/REPORT.json) · [Result](evidence/C-after/final.png) · [Video](evidence/C-after/combat-ending.webm) | [0007](evidence/C-after/screen-0007.png) · [0008](evidence/C-after/screen-0008.png) · [0009](evidence/C-after/screen-0009.png) |
-
-Each evidence/role-round directory also has session.json, actions.jsonl, action-observer.jsonl and metrics. Player records and observer diagnostics remain separate; observer data was not supplied to active isolated players. Earlier Before metrics.json files are untouched. The final source only adds six segment/clock fields with existing values unchanged, archived as metrics-final.json. [EVIDENCE-COPY-MANIFEST.json](EVIDENCE-COPY-MANIFEST.json) lists copies and hashes.
-
-After videos are continuous original Chromium tails, stream-copied without speed changes or synthetic frames. A40s tail was requested; WebM keyframes produce actual lengths A43.20s, B44.12s and C43.28s. Existing Before tails of approximately52–54s are preserved. **Full recordings remain local only.** [LOCAL-VIDEO-MANIFEST.json](LOCAL-VIDEO-MANIFEST.json) records hashes/sizes for six completed and three excluded sessions; sourcePath is local provenance, not a download link. Tails may not contain the entire mismatch chain; read them alongside native actions and representative frames.
-
-| Category | Repository evidence |
-| --- | --- |
-| Seals/snapshots | [12-report recheck](REPORT-SEAL-VERIFICATION.json), [Before seals](BASELINE-SEALS.json), [After seals](AFTER-SEALS.json), [resume hashes](FOCUSED-RETEST-CHECKPOINTS.json); unchanged copies in evidence/checkpoints/ |
-| Director | [Initial original](evidence/director/REVIEW.md), [initial JSON](evidence/director/DECISIONS.json), [post-review original](evidence/director-after/POST-REVIEW.md), [post-review JSON](evidence/director-after/POST-DECISIONS.json), [bilingual decision](GAME-DIRECTOR-DECISIONS.md) |
-| Metrics | [Primary results](BEFORE-AFTER-RESULTS.json), [raw analysis copy](evidence/analysis/BEFORE-AFTER-RESULTS.raw.json), [matched windows](MATCHED-WINDOW-RESULTS.json) |
-| Technical | [New Node](evidence/technical/node-readback-final.txt), [related regression](evidence/technical/node-regression.txt), [34 Chromium checks](evidence/direct-after/result.json), [11 extra checks](evidence/direct-after-extra/result.json), [160 payload hashes](evidence/direct-after/hashes.json) |
-| Performance | [Four short samples](evidence/performance/result.json), [Before100](evidence/performance/before-100.png), [After100](evidence/performance/after-100.png), [Before200](evidence/performance/before-200.png), [After200](evidence/performance/after-200.png) |
-| Excluded sessions | [B-before interruption](INTERRUPTION.json), [A-after interruption](AFTER-A-INTERRUPTION.json), [B-after startup expiry](B-AFTER-CONTROLLER-STARTUP.json), [controller recovery verification](CONTROLLER-RECOVERY-TEST.json) |
-
-See the [fun report](FUN-EVALUATION-REPORT.md) and [matrix](MULTI-AGENT-PLAYTEST-MATRIX.md) for interpretation. Strict RNG Save/Load remains FAIL. N=1, informed learning, resumed rather than fresh campaigns, SwiftShader rather than hardware, death-reduced100/200 load, higher200-unit After heap and unproven long runs remain explicit limits.

@@ -1,12 +1,11 @@
 # Game Director 決策與複評
 
 > 最新續作：旗手與總管實作、最終來源及限定驗收已另存 [續作報告](FOLLOWUP-CONTROLS-REPORT.md)。本文件保留第一閉環的來源與當時判定；舊的「實作中／待驗」描述不代表最新狀態。
-> Latest follow-up: bearer/steward implementation, final source and scoped validation are in the linked follow-up report. This file preserves the first-loop snapshot; its pending-work descriptions are historical.
 
 
 **接受第一個指令回饋切片的有限閉環，接續實作「已見旗手的明確人工集火入口」。** 接受的是指令理解與 A／C 的自然錯令辨認／自主改令，沒有接受整體樂趣、勝率、有效攔截或自然十波已改善的宣稱。
 
-本文件是對兩份既有 Director 評審的雙語整理，沒有新增評審實驗。原始 [初評](evidence/director/REVIEW.md)／[決策 JSON](evidence/director/DECISIONS.json) 與 [複評](evidence/director-after/POST-REVIEW.md)／[決策 JSON](evidence/director-after/POST-DECISIONS.json) 原封封存；歷史證據中的語言、路徑與當時狀態不改字。完整結果見 [樂趣報告](FUN-EVALUATION-REPORT.md)。
+本文件是對兩份既有 Director 評審的整理，沒有新增評審實驗。原始 [初評](evidence/director/REVIEW.md)／[決策 JSON](evidence/director/DECISIONS.json) 與 [複評](evidence/director-after/POST-REVIEW.md)／[決策 JSON](evidence/director-after/POST-DECISIONS.json) 原封封存；歷史證據中的語言、路徑與當時狀態不改字。完整結果見 [樂趣報告](FUN-EVALUATION-REPORT.md)。
 
 ## 初評的三項問題及第一切片
 
@@ -59,63 +58,3 @@ Director裁決為 `APPROVED_SCOPE_EXISTING_MANUAL_COMMAND_AFFORDANCE`。GDD §2.
 定向原生Node、正式構建Chromium及C原PROFILE自然快照續測各別驗收，詳見 [NEXT-FUN-IMPROVEMENTS.md](NEXT-FUN-IMPROVEMENTS.md)。受控死亡／Fog／阻擋模式明標CONTROLLED_FIXTURE。主目標是玩家意圖與實際命令對象一致、後令優先、無假成功；自然沒遇到／沒使用就NOT_EVALUATED。A／B未自然遇到旗手窗口，不能預列通過。
 
 本文件只記第一閉環與下一切片決策；下一切片沒有新來源、Node、Chromium或玩家結果，全部維持 `IMPLEMENTING_UNVALIDATED`。整體任務由根代理繼續。
-
----
-
-# Game Director decisions and post-review
-
-**Accept the first command-feedback slice's limited loop and continue with an explicit manual-focus entry for an already visible carrier.** Acceptance covers order understanding and A/C's natural mismatch recognition and autonomous new orders. Overall fun, win rate, interception and natural ten-wave improvement were not accepted claims.
-
-This document is a bilingual curation of two existing reviews, without new review experiments. The original [initial review](evidence/director/REVIEW.md)/[JSON](evidence/director/DECISIONS.json) and [post-review](evidence/director-after/POST-REVIEW.md)/[JSON](evidence/director-after/POST-DECISIONS.json) are byte-preserved; their historical language, paths and states remain. See the [fun report](FUN-EVALUATION-REPORT.md).
-
-## Initial priorities and first slice
-
-| Initial rank | Problem and traceable evidence | Classification, decision and counterevidence |
-| --- | --- | --- |
-| 1 | Persistent order feedback missing: B-before wall850.996 intended a ram attack but 18 moved; C-before wall1002.475 intended the carrier but 12 focused a spearman; A's defense order was actually guard | A/immediate fix: selected-unit/current-order readback and visible manual-target marker. Formal Chromium reproduced the static-hint gap, not a hitbox/AI/pathfinding bug. Existing brief markers, sound and Toast are counterevidence |
-| 2 | Long steward form: A about112.227s, B about97.334s; C about74.856s and 5 intents for one food preference | A/sticky save, close and existing confirmation can be separate improvements; fuller navigation is B/existing approved gameplay enhancement. Native panel pause means wall time is not lost combat time; all settings stay |
-| 3 | Production/spending causality: A's generic wait reason, B's age/army tradeoff, C's unclear spending with20 food and1280 wood | A/reuse real gates for precise explanations; fuller summary is B. No stall was proven. Policy, reserve and cost changes are C/spec decisions outside this slice |
-
-The first slice is compatible with GDD §1 clear causality, §2.2 manual priority and automation/takeover flow, and Strategy §4/6/7 feedback and reliable control. Source6075dbaae8281de54ec5c932e349b0ed591f3c7f contains actual readback and foreground markers. Existing Node72/72, Chromium45/45 and160 payload hashes support bounded technical acceptance.
-
-## Post-review verdict
-
-The Director verified all12 reports and original/copied snapshots plus After resume hashes before reading reports and key records. After was informed normal-Continue focused play; A used a new instance and B/C read their own Before. N=1 per role prevents voting, capability-based ranking or a strict causal A/B interpretation.
-
-| Area | Verdict |
-| --- | --- |
-| Three-role understanding | At least one natural UI readback per role supports local utility |
-| A/C natural mismatch | Detected and autonomously changed to a new guard goal; original focus/interception was not completed |
-| B natural mismatch | Not evaluated; other roles cannot fill PASS |
-| Natural marker utility | One spearman case for C; insufficient evidence for A/B |
-| Input/cognitive burden | Zero mandatory inputs added; lower total burden remains unproven |
-| Overall fun/win rate | Unproven; A/B still lost wave4 and C wave5 |
-| Historical failure | Strict RNG Save/Load -1129663591→3165303705, strictStateEqual=false remains FAIL |
-
-## Next tradeoff
-
-| Candidate | Decision | Reason and risk |
-| --- | --- | --- |
-| Explicit manual focus on a visible carrier | **Selected; root implementing, unvalidated** | C has traceable carrier-intent/ordinary-soldier-target mismatches before and after. Readback makes errors legible; the next step addresses execution. Slow observation and existing View/flag cues remain counterevidence against a selection-bug claim |
-| Visible source/direction of actual core damage | Valuable later candidate | A/B's need persists; requires real damage events, not a target-reference damage ranking |
-| Sticky steward save/close and existing proposal confirmation | Separate later candidate | All Before roles and A-after show navigation cost; keep all settings and native pause |
-| Brighter summary or a third synonymous text layer | Deferred | Current readback is understood; target-intent execution is more direct |
-| Best-target automation, continuous reassignment, auto-dodge or longer events | SPEC_DECISION_REQUIRED, excluded this round | Changes decisions or difficulty and cannot be a fallback for the manual entry |
-
-Ranking uses directness, traceable repeated evidence, testability and risk, not majority voting. C's narrow sample does not establish value for A/B's fourth wave.
-
-### Authorized scope
-
-The Director decision is `APPROVED_SCOPE_EXISTING_MANUAL_COMMAND_AFFORDANCE`. GDD §2.2 already allows explicit move/attack priority, §6.1/RALLY already permits ending the buff by defeating its carrier, and Strategy §6/7 support reliable input. This round's core-control authorization covers an alternate input for the same manual attack.
-
-Add a separate “focus carrier with selected soldiers” entry. Only deliberate activation sends one existing attack to the current living, visible and natively pickable carrier. Existing View remains camera-only. Do not select troops, add recruits, track fogged targets, resend, redirect to another target or fall back to ground movement. An offscreen target requires the player's existing View action; no reliable native hit point means truthful no-order feedback.
-
-On activation, revalidate selected formal soldiers, visibility, carrier identity, RALLY state and blocking modes. A later native order must override immediately. Feedback says an order was issued, without guaranteeing arrival, hit, kill or victory. The minimal version may disable hero-direct or mixed non-soldier selections with an explanation while retaining selection, hero keys and camera.
-
-Any need to relax vision, pickability, pursuit or event timing is a separate spec decision; continue the authorized sticky steward entry if needed rather than stopping all work. Damage, HP, cost, AI, pathfinding, cards, RNG, RALLY rules,15s duration, Boss and Fog/sandstorm remain. Basic controls stay free; left three-choice plus complete right32-card tree stays permanently visible.
-
-### Acceptance and status
-
-Native Node, formal-build Chromium and C's unchanged-profile natural-save retest have separate gates in [NEXT-FUN-IMPROVEMENTS.md](NEXT-FUN-IMPROVEMENTS.md). Controlled death/Fog/blocking cases remain CONTROLLED_FIXTURE. Intent/actual-target agreement, later-order priority and truthful feedback are primary; an absent/unused natural opportunity is NOT_EVALUATED. A/B had no natural carrier window and cannot be pre-passed.
-
-This document records the first loop and next decision only. The next slice has no new source, Node, Chromium or player results here; status remains `IMPLEMENTING_UNVALIDATED`. The root agent continues the overall task.

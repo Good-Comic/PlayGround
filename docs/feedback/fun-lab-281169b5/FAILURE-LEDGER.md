@@ -34,49 +34,13 @@
 
 真人聽感、整體樂趣、勝率／平衡因果、長期留存、自然完整十波／NG+、持續高存活200與長測仍無所需證據。完整影片僅本機，SHA／大小列[manifest](LOCAL-VIDEO-MANIFEST.json)，不是可下載入口。下一旗手入口的新來源／構建／Node／Chromium／玩家結果皆PENDING，不能把第一閉環有限成果或舊測試沿算成新切片PASS。
 
----
-
-# Preserved failures and limits
-
-First-loop evidence is complete with limited command-feedback acceptance. The FAIL, INCONCLUSIVE, not-evaluated and historical records below were not promoted to PASS. The next carrier entry is being implemented without a new source or acceptance here.
-
-## Interruptions, tools and environment
-
-- Initial B-before: the player agent explicitly reported a usage limit; the process no longer existed at recovery and its exit cause was unavailable. Original before-interrupted-quota data and an unfinalized recording fragment remain local, outside completed results. Unattended/boon dwell time is not player activity. B later completed a fresh session from the same initial conditions; completed A data was reused. See [INTERRUPTION.json](INTERRUPTION.json).
-- Initial A-after: an explicit usage-limit message preceded controller-lease expiry. Three native inputs were recorded and simulation reached defeat without an independent completed report. It is INCONCLUSIVE and excluded. A new instance completed a separate After from the same unchanged save without overwriting it. The message omitted a timezone, so recovery time is not inferred. See [AFTER-A-INTERRUPTION.json](AFTER-A-INTERRUPTION.json).
-- B-after startup expiry: controller waiting expired before the first request and before Continue, with no game-progress loss. This is neither a quota incident nor a game defect. The expired session remains and the isolated session was restarted. See [B-AFTER-CONTROLLER-STARTUP.json](B-AFTER-CONTROLLER-STARTUP.json).
-- Stale @ locators, invisible controls and Playwright timeouts are tool/screen-timing limits, not automatically game bugs. Input ok is not semantic acceptance. A/B-after's final right-click before-state was already defeat, so these were not effective focus orders. Post-terminal B-before/C-before inputs are separately recorded.
-- Original local-socket/Chromium sandbox EPERM evidence remains. Approved execution outside that environment successfully reproduced the gap with unmodified formal payloads served offline. The environment failure is not a game bug. See [sandbox evidence](evidence/director/DIRECT-CHROMIUM-SANDBOX-ERROR.json).
-- Quota percentage remains UNKNOWN, without invented account status. The [lease/recording recovery check](CONTROLLER-RECOVERY-TEST.json) proves tool recovery only, not game fun or agent auto-resume.
-
-## Node fixtures and historical Save/Load failure
-
-The first new Node run returned12 PASS/2 FAIL because of fixture expectations: guard retains the same hero element but creates a new selection array, so reference equality is invalid; native restore returns to the menu and requires Continue/start before battlefield readback. Game implementation was not changed for either. Correcting fixtures and adding density/Canvas-exception/formal-sandstorm cases yielded17 new plus55 related tests,72 PASS. Default isolation reported file-level results; explicit no-isolation produced item-level logs. Initial failures remain historical, rather than unresolved failures of the same implementation.
-
-**Strict RNG Restore of the authentic pending-boon save remains FAIL: -1129663591→3165303705, strictStateEqual=false.** RNG and whole-save strict determinism were not repaired. Readback consuming no extra RNG is a separate passing check and cannot hide this failure. Interrupted B's save only supports the32-card dual-pane regression, outside completed player samples. See [extra result](evidence/direct-after-extra/result.json).
-
-## Natural-player and measurement limits
-
-- Three Before sessions naturally lost after isolated cold starts: A/B wave4, C wave5. Three After sessions used normal Continue from unchanged own snapshots and again lost wave4/4/5, not fresh campaigns. Ten natural waves were not reached; NG+ is untested. Three defeats do not prove Normal imbalance.
-- N=1 per role. After players knew the readback/marker purpose, so testing was not blind. A-after is a new instance; B/C read their own Before. Learning, actions, paths, RNG and restore timing differ, preventing strict causal A/B or capability ranking.
-- A/C naturally detected mismatches and changed to guard, but original archer/carrier goals remained unfinished. B's natural mismatch recovery is not evaluated; A/B marker use lacks evidence. Other roles cannot fill PASS. An existing order does not establish arrival, hits, damage, kills or interception.
-- Images, UI text and action states are adjacent discrete samples, not one frame. Five-second positive inventory deltas are income lower bounds; native gathered is total deliveries. Alive transitions include expiry and may miss units born/lost between samples, not complete casualties. Target/attack references do not attribute damage; congested may be historical.
-- After cumulative kills/gathered/time include pre-save history. Restore carries existing cards/cooldowns, so observer changes are not all new claims/casts. Full Before versus short After input totals do not measure efficiency; total cognitive burden was not measured.
-- A-after has only one supported boring item; B has2 fun,1 boring and2 frustrating items; C has2 boring items. Missing thirds remain without borrowed Before events. All fun/replay judgments are AI simulation preferences, not human satisfaction or retention.
-
-## Performance, memory and hardware
-
-Four initial100/200 same-machine samples use matching initial scene SHA/RNG,5 simulation seconds of warmup and30 wall seconds each, without measurement errors. Native AI/collision/damage/deaths remain and production is disabled. After warmup the100 setup starts with73 alive and ends34/32; the200 starts140 and ends58/56. This is not sustained fixed100/200 survivor load. Manual-target drawing occupies only about6–7% of frames; unchanged short-sample p95 does not prove long-run or causal performance improvement.
-
-The200-unit After heap starts17682038 and ends17617357 bytes, higher than Before11533917→14538587. Endpoints establish neither a leak nor absence of one; long-run memory remains unproven. Whole-session FPS includes menus/cards/native pauses, not continuous combat. SwiftShader is CPU software rendering, not physical GPU hardware. Status remains MEASURED_SHORT_RUN_LONG_RUN_AND_HARDWARE_INCONCLUSIVE, with HARDWARE_TEST_PENDING retained.
-
-Human listening, overall fun, win-rate/balance causality, long-term retention, natural ten waves/NG+, sustained high-survivor200 and long runs lack required evidence. Full videos remain local, with hashes/sizes in the [manifest](LOCAL-VIDEO-MANIFEST.json), not download links. The next carrier entry's source/build/Node/Chromium/player results are all PENDING; first-loop utility and old tests cannot establish a new-slice PASS.
-
-## 續作保留紀錄 / Follow-up retained failures
+## 續作保留紀錄
 
 旗手初版英文390px按鈕被遮擋是實際UI FAIL，已修正並保留重測28/28；初版Node九失敗為共用立即鏡頭夾具，總管第一次FAIL為submit監聽器microtask取樣順序，均保留原日誌。旗手200初測P95 66.8→83.3是效能警訊，後續ABBA沒有一致額外退步但不抹除原值。第二C及整理角色actual quota中斷、一次遠端審核usage-limit未執行皆保存；C僅部分回合。詳見FOLLOWUP-CONTROLS-REPORT.md與followups/CONTINUATION-INTERRUPTIONS.json。
 
-The initial English390px bearer overlay was a real UI failure, fixed with28/28 retests retained. Nine initial Node failures shared an immediate-camera fixture mistake; the first steward failure used a submit-observer microtask at the wrong listener boundary. Logs remain. The200-unit p95 change66.8→83.3ms remains a warning despite ABBA showing no consistent extra regression. Actual second-C/curator quota interruptions and an unexecuted approval-review quota failure remain recorded; C is partial evidence only. See the linked report and interruption JSON.
 
 封存原始報告與失敗日誌保留原始空白，完整git diff --check因此仍列空白警告；未修改封存bytes或SHA來消除。另對新程式與整理文件排除這四份原始資料後檢查。
-Sealed reports and raw failure logs retain original whitespace. Full git diff --check therefore reports whitespace warnings; bytes and seals were not changed to erase them. New code and curated prose are checked separately with those four raw files excluded.
+
+## 城心受傷回饋切片
+
+第一次Node11 PASS／1 FAIL是暫停夾具把原生鏡頭平滑誤當成應凍結；改以未裝觀察的Game比對，不改遊戲鏡頭或暫停規則。第一次Chromium漏傳UI.update的Game參數，屬根代理診斷腳本問題；保留原FAIL，修正後25/25通過。955來源96/96 Node、161資源、相容旗手28/28；A新聚焦續玩是真正第四波敗北且finish，無quota，但仍不證明救城／勝率改善。單次API微量測為刻意重設HP與清粒子的控制成本量測，不是200單位實戰FPS／長測PASS。

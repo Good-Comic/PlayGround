@@ -1,7 +1,6 @@
 # 多代理玩家測試矩陣
 
 > 最新續作：旗手與總管實作、最終來源及限定驗收已另存 [續作報告](FOLLOWUP-CONTROLS-REPORT.md)。本文件保留第一閉環的來源與當時判定；舊的「實作中／待驗」描述不代表最新狀態。
-> Latest follow-up: bearer/steward implementation, final source and scoped validation are in the linked follow-up report. This file preserves the first-loop snapshot; its pending-work descriptions are historical.
 
 
 第一個「遊玩→獨立報告→Director 評審→實際遊戲改動→續玩複評」閉環的證據已完成。有限成果是更容易讀懂目前選兵、實際命令與可見人工目標；整體樂趣、勝率與有效攔截改善仍未證明。下一項「已見旗手的明確人工集火入口」正由根代理實作，尚無本文件可引用的新來源或驗收結果。
@@ -84,88 +83,3 @@
 排除 B-before-interrupted-quota、A-after-interrupted-quota、B-after-startup-expired；見三個 [中斷](INTERRUPTION.json)、[A 續測中斷](AFTER-A-INTERRUPTION.json)、[B 啟動逾期](B-AFTER-CONTROLLER-STARTUP.json) 紀錄。中斷 B 的待選恩賜存檔僅供 32 卡 UI 回歸，沒有混入完成樣本。
 
 報告、代表截圖與連續影片尾段入口見 [證據索引](EVIDENCE-INDEX.md)。完整錄影僅本機，SHA／大小見 [manifest](LOCAL-VIDEO-MANIFEST.json)，其中來源路徑是識別資料，不是下載入口。
-
----
-
-# Multi-agent playtest matrix
-
-Evidence for the first play → independent reports → Director review → game change → resumed-play review loop is complete. The limited result is clearer understanding of selected soldiers, actual orders and visible manual targets. Overall fun, win rate and effective interception remain unproven. The root agent is implementing the next explicit manual-focus entry for an already visible flag carrier; this document has no new source or validation for that slice.
-
-## Sources and method
-
-| Item | Observed scope |
-| --- | --- |
-| Task / execution | FUN-LAB-281169B5 / codex-fun-lab-281169b5-20261105; project-declared identity, not platform authentication |
-| Before source | f6ae896bb3554ae7b6d131c734d9ac51d9f07131; 159 formal payload SHA checks matched |
-| First-slice After source | 6075dbaae8281de54ec5c932e349b0ed591f3c7f; 160 formal payload SHA checks matched |
-| Remote checkpoint supplied by root | 15fcb0f230cb04f7ddc2ff454334de19b5e29098; this curator did not operate Git, and this is not a source for the next slice |
-| Scenario | FRK, Normal, steppe, generation version 2, numeric seed 1116648138, normal 1× speed; Chromium 154.0.8037.57 at 1440×900 |
-| Seed text | Sessions use FUN-LAB-BASE-281169B5; reports abbreviate FUN-LAB-BASE-281. Reopening with the abbreviation does not establish the same seed |
-| Before | Three isolated player agents independently started cold and reached formal natural defeat, without wave skips or resource/HP changes |
-| After | Each unchanged natural snapshot was placed in its own native save slot and resumed through normal Continue; RESUMED_NATURAL_SAVE_FOCUSED_RETEST, not a fresh ten-wave campaign |
-| Isolation | Separate browser, save, queue and reports; players received normal visible UI and native input, without source or hidden state. This is protocol isolation, not an OS security sandbox |
-| Sealed reports | Six Markdown plus six JSON reports; 12/12 source and repository-copy hashes match in the [verification](REPORT-SEAL-VERIFICATION.json) |
-| Fourth role | Director reviewed only after each cohort's three reports were sealed. Initial review included a direct formal Chromium reproduction; post-review only read existing evidence |
-
-## Personas and input budgets
-
-All capability, reaction and attention values are AI simulation assumptions, not human statistics or measured human response times. Reading, tools and image round trips can make actual actions slower; limits were not raised to recover delay. [Original profiles](AGENT-PLAYER-PROFILES.md) are the pretest protocol; their “not started” statements describe that earlier time.
-
-| Role | Intent budget / minimum interval | Decision style | Actual retest instance and knowledge |
-| --- | --- | --- | --- |
-| A: strategic | At most 24 per game minute; 2.5 s | About 60–120 s planning, one main battle area plus one economic goal; selection, camera and orders charged separately | After used a new execution instance; previous-agent memory cannot be assumed |
-| B: casual | About 12 per minute; 5 s | About 30–60 s planning, at most two near-term goals; group control and occasional hero skills | Read its own Before report; learning remains a confound |
-| C: novice | About 6 per minute; 10 s | One short-term goal and roughly three recent salient cues, without advance tactics | Read its own Before report; learning remains a confound |
-
-All After players were informed of the new readback and marker purpose, so these were not blind tests. They were not given an optimal solution, hidden targets or other players' strategies. Each role has N=1; actions, paths, cards, RNG consumption and restore timing differ. Persona labels cannot rank performance, and votes cannot estimate fun or win rate.
-
-## Formal natural outcomes
-
-| Role | Before defeat / cumulative game time | After defeat / cumulative game time | After segment simulation time | Continue to observed result wall time |
-| --- | --- | --- | ---: | ---: |
-| A | Wave 4, cleared 3/10; 8:50 | Wave 4, cleared 3/10; 9:03 | 77.579 s | 135.548 s |
-| B | Wave 4, cleared 3/10; 8:57 | Wave 4, cleared 3/10; 9:06 | 95.046 s | 100.491 s |
-| C | Wave 5, cleared 4/10; 12:03 | Wave 5, cleared 4/10; 11:35 | 138.742 s | 143.260 s |
-
-Cumulative time, kills and gathered resources include pre-save history. Wall time includes reading, tools and native pauses; A-after had the steward panel open for approximately 48.971 s. Game-time differences are not causal survival gains from this slice.
-
-## First-slice assessment
-
-| Criterion | A | B | C |
-| --- | --- | --- | --- |
-| Natural UI understanding | Local evidence: 16 selected, 12 guard + 4 idle, then 16 moving | Local evidence: 17/18 and 17/19, 13 guard + 4 autonomous engagement | Local evidence: View issues no attack; guard and actual manual target distinguishable |
-| Natural intent mismatch | Detected: intended archer focus became move | Not evaluated: no fully observable new live mismatch | Detected: intended carrier focus targeted a spearman |
-| Autonomous correction | Guard after 7.664 s and 1 intent; original archer goal unfinished | Not evaluated; final right-click began after defeat | Guard after 24.023 s and 1 intent; original carrier goal unfinished |
-| Natural manual-marker use | Insufficient evidence | Insufficient evidence | One example: ring and “Spearman · 10 focusing” matched |
-| Mandatory new inputs | Readback adds 0 | Readback adds 0 | Readback/marker add 0 |
-| Lower total input or cognitive burden | Insufficient evidence | Insufficient evidence | Insufficient evidence |
-| Overall simulated fun / win-rate improvement | Insufficient evidence | Insufficient evidence | Insufficient evidence; stated replay rating remains 3/5 |
-
-Detecting a mismatch and choosing guard is a limited control-feedback result. It does not prove completion of the original attack, arrival, hits, damage or interception. Successful input dispatch also does not establish an effective combat order.
-
-## Windows after each same snapshot
-
-[BEFORE-AFTER-RESULTS.json](BEFORE-AFTER-RESULTS.json) preserves the full metrics, four resources, unit states, sampled cooldown changes, cards, final core-loss context and frame samples. [MATCHED-WINDOW-RESULTS.json](MATCHED-WINDOW-RESULTS.json) aligns each role's own post-snapshot windows. These are descriptive comparisons without causal ranking.
-
-| Role | Snapshot sim s / starting core HP | Before → After window sim s | Window kills | Native gathered deliveries | Inputs dispatched before terminal |
-| --- | --- | --- | --- | --- | --- |
-| A | 466.309 / 2239.495 | 64.529 → 77.579 | 12 → 18 | 550.516 → 607.385 | 5 → 13 |
-| B | 451.244 / 3207.530 | 86.212 → 95.046 | 17 → 19 | 787.128 → 700.052 | 3 → 3 |
-| C | 556.875 / 3300 | 167.091 → 138.742 | 16 → 12 | 2015.075 → 1560.657 | 6 → 6 |
-
-All six windows ended with 0 core HP and 0 additional waves cleared. Positive inventory deltas sampled every 5 s are only resource-income lower bounds because concurrent spending masks income. Sampled alive-to-not-alive transitions include expiry and can miss units born and lost between samples; they are not complete combat casualties. Target/attack references do not attribute damage, and congested may be historical. Restore carries existing cards and cooldowns, so not every change is a new claim or cast in this segment.
-
-## Technical and performance limits
-
-| Item | Existing evidence |
-| --- | --- |
-| Node / formal Chromium | 72/72 and 34+11=45/45, with 160 After payload hashes matched. Natural cases and CONTROLLED_FIXTURE are separate. This curator reran no game tests |
-| UI coverage | Move/guard/manual target; selection/death clearing; Fog/sandstorm; hero direct control; four languages/viewports; left three-choice panel and complete right 32-card tree permanently visible. This is bounded coverage |
-| Strict Save/Load | **FAIL retained:** RNG -1129663591 → 3165303705, strictStateEqual=false; strict replay was not fixed |
-| 100/200 load | Same machine and matching initial scene SHA/RNG; 5 s native warmup and four 30 s wall-time samples. AI, collision, damage and deaths remain, so these are not fixed 100/200 survivors |
-| Long run / hardware | MEASURED_SHORT_RUN_LONG_RUN_AND_HARDWARE_INCONCLUSIVE. SwiftShader is CPU software rendering, not physical GPU verification. The 200-unit After heap is higher; endpoints cannot exclude leaks |
-| Campaign / humans | Natural ten waves not reached, NG+ untested; no human listening, entertainment, retention or balance-causality evidence |
-
-B-before-interrupted-quota, A-after-interrupted-quota and B-after-startup-expired are excluded; see [B interruption](INTERRUPTION.json), [A retest interruption](AFTER-A-INTERRUPTION.json) and [B startup expiry](B-AFTER-CONTROLLER-STARTUP.json). Interrupted B's pending-boon save only supports the 32-card UI regression and is outside completed player samples.
-
-The [evidence index](EVIDENCE-INDEX.md) links reports, representative screenshots and continuous video tails. Full recordings remain local with hashes and sizes in the [manifest](LOCAL-VIDEO-MANIFEST.json); source paths identify provenance and are not download links.

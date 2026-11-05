@@ -1,7 +1,6 @@
 # 下一項樂趣改善與驗收
 
 > 最新續作：旗手與總管實作、最終來源及限定驗收已另存 [續作報告](FOLLOWUP-CONTROLS-REPORT.md)。本文件保留第一閉環的來源與當時判定；舊的「實作中／待驗」描述不代表最新狀態。
-> Latest follow-up: bearer/steward implementation, final source and scoped validation are in the linked follow-up report. This file preserves the first-loop snapshot; its pending-work descriptions are historical.
 
 
 **目前正在實作：已見旗手的明確人工集火入口。** 這是 Director 複評選定、使用者核心操控授權內的一次既有人工命令替代入口。新來源SHA、構建與驗收結果尚未提供；本文件是待驗收工作，不宣稱PASS。第一切片來源仍為6075dbaae8281de54ec5c932e349b0ed591f3c7f。
@@ -45,49 +44,3 @@
 根代理持續實作、定向驗證、玩家回饋，再按未解需求接續；一次commit／push／交接不是整項任務結束。根代理提供的既有遠端保存點是15fcb0f230cb04f7ddc2ff454334de19b5e29098；本整理沒有操作Git、Ownership或進度Feed，不以該SHA冒充未完成切片來源。
 
 本整理角色：STOP_REASON=ASSIGNED_EVIDENCE_CURATION_COMPLETED_HANDOFF_TO_ROOT；EXECUTION_DURATION=UNKNOWN（未量測本角色完整起始時刻）；NEXT_AUTHORIZED_TASK=根代理完成旗手人工集火入口、定向驗收與隔離C續測；CHECKPOINT_SHA=6075dbaae8281de54ec5c932e349b0ed591f3c7f（第一切片受評來源）；AUTO_RESUME_AVAILABLE=false；rootTaskComplete=false。
-
----
-
-# Next fun improvements and acceptance
-
-**Being implemented: an explicit manual-focus entry for an already visible carrier.** The Director selected this alternate input for one existing manual command under the user's core-control authorization. No new source SHA, build or acceptance results are available here; this is pending work without PASS. The first slice remains source6075dbaae8281de54ec5c932e349b0ed591f3c7f.
-
-## Minimal player behavior
-
-1. Add a separate “focus carrier with selected soldiers” entry beside existing View, displaying the eligible count and visible target name. View remains camera-only.
-2. Send one existing native attack only to currently selected living formal soldiers. Do not auto-F2, include recruits, heroes or workers. Hero-direct/mixed non-soldier selection may be disabled with an explanation.
-3. Require current-wave RALLY pending/active, a living currently visible carrier and a reliable native pickAt point inside the operable canvas. Offscreen targets require the player's View first; revalidate at activation.
-4. Panels, pause, terminal and construction modes block dispatch. No reliable carrier hit means truthful no-order feedback, without movement fallback, retargeting or retries.
-5. Reuse native issueCommand and existing readback/ring, confirming only dispatch. New move/stop/guard overrides immediately, and UI updates never resend.
-
-Do not change vision, pickability, pursuit, carrier selection, RALLY/15s duration, Boss, AI, pathfinding, damage, HP, costs, cards, RNG or any timing window. Basic controls stay free, with left three-choice plus complete right32-card tree permanently visible. Any rule expansion is SPEC_DECISION_REQUIRED; continue the separately authorized steward entry while that part is unresolved.
-
-## Required acceptance
-
-| Layer | Required evidence | Boundary |
-| --- | --- | --- |
-| Native Node | One activation on real Game/RALLY issues one native attack to currently selected formal soldiers, current carrier target and manualAttack=true; unselected soldiers/heroes/workers retain orders | Internal-ID force commands cannot replace native hit conditions |
-| Boundary regression | View issues zero attacks; repeated UI updates issue none. Fog/sandstorm, death, expiry/wrong wave, replaced restore entities, empty/mixed/hero-direct selection and blocking modes produce no wrong order or move fallback | Mark controlled cases CONTROLLED_FIXTURE, without claiming natural success |
-| State/later order | Read-only updates preserve snapshot, both RNGs, resources, HP and cooldowns; actual command fields match native right-click; new move/stop/guard overrides immediately | Preserve historical strict RNG Restore FAIL |
-| Formal Chromium | Pin new source and full payload hashes. Continue C's unchanged save and use native mouse/keyboard for selection, View and new entry. Preserve before frame, current visibility/pickAt, native event and immediate after | Carrier, summary and ring must agree; an order does not establish hit/kill |
-| UI/input | 1440×900,1024×768 and existing small viewport/four languages; Tab/Space/Enter focus without duplicate hotkeys; zero page errors; complete32-card dual pane retained | PENDING; first-slice45 checks cannot be carried over as new-slice passes |
-| Isolated C | Retain minimum10s intent spacing and one attention goal; explain purpose only, without location/timing/optimal strategy. Start a new round from the same unchanged save without overwriting sealed rounds | Record discovery, prior selection/target understanding, autonomous activation, first correct native order, each View/select/attack intent and nonuse reasons. Natural nonuse is NOT_EVALUATED |
-
-Primary acceptance is intent/order agreement, later override and no additional mandatory steps or false feedback; a carrier kill or victory is unnecessary. A/B have not naturally encountered this carrier window and cannot be marked player PASS. This remains informed N=1 retesting, without a general effect claim. Run affected focused checks and necessary existing72-test coverage. Do not repeat100/200 short performance runs unless implementation adds persistent scanning/drawing or a concrete regression appears.
-
-## Later independent candidates
-
-| Candidate | Need | Verification and limits |
-| --- | --- | --- |
-| Visible sources/directions of actual core damage | A/B's healthy-army/core-loss causality | Attribute actual damage events, preserve Fog, do not infer damage from target references or choose the best target |
-| Sticky steward save/close and existing confirmations | Navigation costs in all baselines and A-after | Keep every setting, native pause and costs; measure intents, scrolling, erroneous submission and small-screen overlap |
-| Precise production-wait/public-spending explanation | A's generic reason, B's age tradeoff, C's food spending | Reuse productionStatus/reserveCost; no parallel rules. Positive inventory deltas are not complete income; do not change policy/reserves |
-| Mild selection/target visual hierarchy | Discovery of an already legible summary | Test uninformed new players and distraction/overlap; no auto-tracking or hidden card tree |
-
-Natural ten waves/NG+, human listening/fun/retention, sustained100/200 survivors, long-run memory and physical GPU each need evidence. Existing performance covers only four30s SwiftShader samples with deaths; the200-unit After heap is higher and long runs remain unproven. Strict Save/Load RNG -1129663591→3165303705 remains FAIL. A new UI slice cannot promote these gaps to PASS.
-
-## Checkpoint and continuation
-
-Root continues implementation, focused verification, player feedback and remaining needs. A commit/push/handoff is not the overall stopping condition. Root supplied existing remote checkpoint15fcb0f230cb04f7ddc2ff454334de19b5e29098. This curator did not operate Git, Ownership or the progress feed, and that SHA is not presented as the unfinished slice's source.
-
-Curator record: STOP_REASON=ASSIGNED_EVIDENCE_CURATION_COMPLETED_HANDOFF_TO_ROOT; EXECUTION_DURATION=UNKNOWN (full start time not measured); NEXT_AUTHORIZED_TASK=root completes carrier entry, focused acceptance and isolated C retest; CHECKPOINT_SHA=6075dbaae8281de54ec5c932e349b0ed591f3c7f (reviewed first-slice source); AUTO_RESUME_AVAILABLE=false; rootTaskComplete=false.

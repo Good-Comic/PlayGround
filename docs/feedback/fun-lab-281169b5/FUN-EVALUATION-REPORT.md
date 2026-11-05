@@ -1,7 +1,6 @@
 # 樂趣評估報告
 
 > 最新續作：旗手與總管實作、最終來源及限定驗收已另存 [續作報告](FOLLOWUP-CONTROLS-REPORT.md)。本文件保留第一閉環的來源與當時判定；舊的「實作中／待驗」描述不代表最新狀態。
-> Latest follow-up: bearer/steward implementation, final source and scoped validation are in the linked follow-up report. This file preserves the first-loop snapshot; its pending-work descriptions are historical.
 
 
 **第一切片已形成有限的實際玩法回饋閉環：三角色讀得懂命令，A、C 自然辨認錯令並自主改令。整體「更好玩」、更有效守城、勝率與留存仍無可歸因證據。** 三個 After 仍各在相同的第 4／4／5 波自然敗北。下一項旗手人工集火入口正在實作，這份報告不預填它的結果。
@@ -66,70 +65,3 @@ Node 72／72、正式 Chromium 34＋11 共 45／45、After 160 資源 SHA 校驗
 ## 後續判斷
 
 依重複可追溯的 C 旗手意圖落差與 Director 裁決，下一切片採已選戰士、當下可見旗手的一次明確人工集火入口；保留原「查看」只移鏡頭及所有原生戰鬥規則。主驗收是玩家選定意圖與實際命令一致、後令可覆蓋、沒有假成功回饋，不以勝利或擊殺湊 PASS。實作尚未有新來源／測試，不得記作完成。詳細取捨見 [Director 決策](GAME-DIRECTOR-DECISIONS.md) 與 [下一步](NEXT-FUN-IMPROVEMENTS.md)。
-
----
-
-# Fun evaluation report
-
-**The first slice completed a limited gameplay-feedback loop: all three roles understood orders, and A/C naturally detected a mismatch and chose a new order. Attributable improvements in overall fun, defense, win rate and retention remain unproven.** After players still naturally lost at waves 4/4/5. The carrier manual-focus entry is being implemented; its results are not prefilled here.
-
-Sources are Before f6ae896bb3554ae7b6d131c734d9ac51d9f07131 and After 6075dbaae8281de54ec5c932e349b0ed591f3c7f. Before consists of three independent cold starts. After consists of normal Continue from each unchanged natural snapshot, not fresh ten-wave campaigns. N=1 per role, informed retesting, learning, actions, RNG and restore timing prevent a strict causal A/B interpretation. Fun and replay preference are AI persona simulations, without human emotions, APM or retention data. See the [matrix](MULTI-AGENT-PLAYTEST-MATRIX.md) and [12 sealed-report checks](REPORT-SEAL-VERIFICATION.json).
-
-## Existing fun to preserve
-
-Times below are each Before session's original wallSeconds, including tools and native pauses. Complete context, categories, three improvement suggestions and original evidence remain in each report. Existing mechanics are not counted again as new readback delivery.
-
-| Role | Three positive moments | Three low-engagement moments | Three frustrations |
-| --- | --- | --- | --- |
-| A | 232.797: two-worker rescue and defense tradeoff; 735.522: card choice responding to food shortage; 827.147: hero positioning changes shield coverage | 63.408–175.635: steward reading/scrolling; 298.478: wave-tail wait; from 309.347: scanning the complete card pool beside candidates | From 827.147: unclear core-loss sources; 372.981: generic production-wait reason; 270.968 and later: camera and moving-unit reselection costs |
-| B | 296.421: surviving then choosing horse armor; 553.575: rescue of two workers; 700.255: recovery in wave 3 followed by building-HP choice | 94.402–191.736: long steward form; 700.255: repeated card-information density; 796.443: short zero-enemy lull early in wave 4 | 656.575: roof/two-sided crowding and selection coverage; from 333.509: age confirmation at the bottom; 882.954: late ram-direction recognition and recovery |
-| C | 269.944: first-wave success and direct gold reward; 821.537: clear rescue outcome; 979.104: named warlord and changed threat | 180.622: training wait and unclear next step; 479.954–554.810: long-form navigation for one food preference; 873.038: repeated unfamiliar card names | 480.485/921.942: unclear food spending; 979.104: carrier identity unconfirmed after View; from 1013.548: slow evacuation and no attainable recovery goal |
-
-Rescue, situational post-wave cards, hero positioning and a new enemy's dramatic presence still provide clear goals, tradeoffs and rewards. Three defeats do not establish Normal imbalance. Late reactions, stale frames, missed reselection, economic attention and tool delay are material counterevidence.
-
-Card-tree density received feedback, but the user's permanent left three-choice plus complete right 32-card tree requirement overrides suggestions to collapse it. Visual hierarchy can be assessed; collapsing, hiding or relocating the tree is not an adopted improvement.
-
-## Actual change and limited benefit
-
-The first slice added the selected-formal-soldiers/whole-army count and current-order summary, plus foreground markers for living, currently visible manual targets. Heroes, workers and units without attacks do not count as soldiers receiving army orders. Hero direct control explicitly shows 0 selected soldiers. Native commands, AI, pathfinding, damage, HP, costs, cards, RNG and timing windows were not changed by this slice.
-
-| Role | Natural evidence chain | Supported conclusion | Unsupported conclusion |
-| --- | --- | --- | --- |
-| A | At wall 86.556 an intended archer focus produced 16 move orders; detected in readback at 90.588; autonomously guarded at 98.252, producing 18 guard orders | Mismatch was legible; a new defense order followed after 7.664 s and 1 intent | Original archer focus, natural marker utility, effective interception or overall fun improvement |
-| B | Screens 0007/0009 show 17/18, 17/19 and 13 guard + 4 autonomous engagement; final right-click before-state was defeat | Local selection-coverage and order-understanding utility | Natural move/attack mismatch recovery and manual-marker use are not evaluated; A/C cannot substitute |
-| C | At 93.473 an intended carrier click made 10 soldiers manually target spearman id183; ring/name exposed it at 94.103; guard followed at 118.126 | One natural target-recognition example; new guard intent after 24.023 s and 1 intent | Original carrier goal, earlier interception, carrier defeat or overall fun improvement |
-
-Representative frames: [A's move readback](evidence/A-after/screen-0006.png), [B's coverage and mixed orders](evidence/B-after/screen-0009.png), [C's spearman marker](evidence/C-after/screen-0008.png). Screenshots, text and immediate action states are adjacent samples, not one frame. Input dispatch, an order's existence, engagement and actual damage are separate evidence levels.
-
-Readback and markers add no mandatory input. A/C's correction intent is a new player decision, not a compulsory step added by the feature. Fewer reselections, repeated orders, lower cognitive load and faster completion of original goals were not measured. Whole Before input counts cannot be compared with short After counts as efficiency gains.
-
-## After feedback, missing counts and replay preference
-
-| Role | Supported After positives | Remaining burden | AI replay preference |
-| --- | --- | --- | --- |
-| A | Mismatch readback, food/farm planning, visible shield feedback covering 12 soldiers | Two steward scrolls; healthy army versus falling core HP remains hard to interpret | Conditionally willing. Before was 7/10; After has no matching scale, so no score increase can be calculated |
-| B | Local control confidence from readback; short-term enemy-count reduction | Roofs, two-sided rams and healthy army/core-loss gap remain frustrating | Conditionally willing, low desire to restart immediately; no comparable numeric scale |
-| C | Legible guard result, warlord threat variation and a next decision after identifying the spearman | About 6 s left after View; event ended before correction, and collapse remained fast | Before and After both 3/5; this does not establish a general null effect or improvement |
-
-Short retests did not invent three moments: A has one supported boring item; B has 2 fun, 1 boring and 2 frustrating items; C has 2 boring items. Missing slots remain, without borrowing Before events. A-after used a new execution instance; B/C read their own Before. Everyone knew the interface purpose, so unprompted discovery remains untested.
-
-## Performance and reliability
-
-Existing bounded technical evidence is Node 72/72, formal Chromium 34+11=45/45 and 160 After payload SHA checks. This curator archived and verified files without launching browsers, gameplay or performance programs. Natural gameplay, direct native reproduction and CONTROLLED_FIXTURE remain separate. Technical passes do not establish all natural cases or fun.
-
-Four performance cases used one machine, equal initial scene SHA/RNG, 5 simulation seconds of warmup and 30 wall seconds each, with native AI, collision, damage and deaths. Automatic production was disabled to define initial counts. See [performance/result.json](evidence/performance/result.json).
-
-| Initial configuration | Before → After FPS | p95 frame interval | Alive from measurement start to end | Heap start → end, bytes |
-| --- | --- | --- | --- | --- |
-| 100 | 34.431 → 35.091 | 33.4 → 33.4 ms | Before 73→34; After 73→32 | Before 12849129→13799307; After 11465215→12803680 |
-| 200 | 24.991 → 25.964 | 66.6 → 66.6 ms | Before 140→58; After 140→56 | Before 11533917→14538587; After 17682038→17617357 |
-
-With zero measurement errors, these short samples show no obvious additional frame-tail cost. Deaths reduce load, and manual-focus drawing occurs in only about 6–7% of frames; no causal performance improvement or sustained 100/200 survivors is established. The 200-unit After heap is higher; endpoints establish neither a leak nor absence of one. Long-term memory remains unverified. SwiftShader is CPU software rendering, not physical GPU hardware. Whole-session FPS includes menus, cards and pauses and cannot be pooled with short combat loads.
-
-**Historical failure retained:** strict Save/Load changes RNG -1129663591 → 3165303705 with strictStateEqual=false; strict replay was not fixed. Read-only UI consuming no extra RNG is a separate gate. Natural ten waves/NG+, human listening/fun/retention, sustained high-survivor 200-unit load, long runs and physical GPU remain unpassed or untested.
-
-Three interrupted sessions are excluded: B's initial usage limit followed by a lost process, A's retest usage limit and controller-lease expiry, and B's startup expiry before its first request. Quota percentage remains UNKNOWN; no platform recovery time is inferred. Tool locators/timeouts are not automatically game bugs. Details are in the [failure ledger](FAILURE-LEDGER.md) and [evidence index](EVIDENCE-INDEX.md).
-
-## Next decision
-
-Repeated traceable carrier-intent mismatches for C and the Director decision select one explicit manual-focus entry using currently selected soldiers and a currently visible carrier. Existing View remains camera-only and native combat rules remain. Acceptance concerns intent/order agreement, later-order override and truthful feedback, without requiring a kill or victory to fill PASS. Implementation has no new source or tests here and cannot be marked complete. See [Director decisions](GAME-DIRECTOR-DECISIONS.md) and [next improvements](NEXT-FUN-IMPROVEMENTS.md).

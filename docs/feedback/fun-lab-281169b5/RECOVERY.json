@@ -5,9 +5,9 @@
   "branch": "codex/riftwatch-fun-lab-281169b5",
   "ownership_version_last_verified": 273,
   "ownership_receipt": "097b5d3d80e18f6be9fca543af82024689eb38fe",
-  "game_source_sha": "6a9cde03141c6800be6da28ada0e9b0dc1145be4",
-  "status": "THREE_CONTROL_SLICES_VALIDATED_WITH_BOUNDED_PERFORMANCE_AND_PARTIAL_FLAG_PLAYER_EVIDENCE",
-  "actual_game_change": "目前軍令摘要／可見人工集火標示；已選戰士人工集火已見旗手；總管固定套用／關閉／確認操作列",
+  "game_source_sha": "955fceaadb781d9128a857636c0f20a4830ccc12",
+  "status": "FOUR_CONTROL_FEEDBACK_SLICES_VALIDATED_NEXT_OBSERVED_MAX_PENDING",
+  "actual_game_change": "目前軍令摘要／可見人工集火標示；已選戰士人工集火已見旗手；總管固定套用／關閉／確認操作列；城心實際HP失損與可見來源回饋",
   "completed": [
     "三角色隔離冷開自然基準局：A/B第4波敗北、完成3波；C第5波敗北、完成4波",
     "第四Director初評、正式Chromium介面缺口直接重現、第一切片實際遊戲改動",
@@ -22,8 +22,8 @@
     "RALLY專用100/200初測與200 ABBA再測完成；保留原P95警訊及長測/硬體INCONCLUSIVE"
   ],
   "in_progress": [
-    "正常Commit/Push新證據與遠端完整SHA核對",
-    "下一切片：城心實際受傷可讀性合法範圍/當前快捷鍵焦點分類"
+    "正常Push第四切片與語言修正／新證據",
+    "下一已授權切片：本波已記錄最大單次實損，讀檔後不假稱整波歷史"
   ],
   "director": "LIMITED_FIRST_LOOP_ACCEPTED_NEXT_EXISTING_MANUAL_CARRIER_ENTRY_SELECTED",
   "quota_percent": "UNKNOWN",
@@ -33,12 +33,12 @@
     "B-AFTER-CONTROLLER-STARTUP.json",
     "followups/CONTINUATION-INTERRUPTIONS.json"
   ],
-  "runtime_status": "代理與正式工具已實際恢復；所有測試瀏覽器均已關閉，沒有聲稱背景自動喚醒",
+  "runtime_status": "A第三聚焦續玩正式敗北finish且封存，無quota中斷；所有測試瀏覽器已關閉",
   "AUTO_RESUME_AVAILABLE": false,
-  "NEXT_AUTHORIZED_TASK": "保存並核對遠端後，接續城心實際受傷可讀性與未測自然玩家操作；不改傷害或AI規則",
+  "NEXT_AUTHORIZED_TASK": "保存第四切片並核對遠端，再接續本波已記錄最大單次實損純回饋",
   "feed": "其他Owner持有，沒有寫入",
   "protected_targets": "未修改main、RC、Pages、公開版本、舊Issues、OpenCode、Immutable Playtest Build",
-  "CHECKPOINT_SHA": "6a9cde03141c6800be6da28ada0e9b0dc1145be4",
+  "CHECKPOINT_SHA": "955fceaadb781d9128a857636c0f20a4830ccc12",
   "historical_failures": {
     "strict_rng_save_restore": "FAIL_REPRODUCED：原值-1129663591，原生Restore後3165303705；未改RNG程式，不當作已修復",
     "natural_ten_waves": "NOT_REACHED_NATURAL_DEFEATS_RETAINED",
@@ -48,10 +48,10 @@
     "performance_short_run": "MEASURED_WITH_NATIVE_DEATHS_NOT_FIXED_100_200_SURVIVORS",
     "200_after_heap": "HIGHER_THAN_BEFORE_LONG_RUN_MEMORY_UNPROVEN"
   },
-  "updated_at_utc": "2026-11-05T18:04:05.633862+00:00",
+  "updated_at_utc": "2026-11-05T18:45:01.305617+00:00",
   "root_reported_remote_checkpoint": {
-    "sha": "15fcb0f230cb04f7ddc2ff454334de19b5e29098",
-    "provided_by": "root",
+    "sha": "08930f29386f963348745bfd354174e46a76d77f",
+    "provided_by": "root shell ls-remote actual verification",
     "curator_git_query": false
   },
   "root_task_complete": false,
@@ -104,8 +104,23 @@
       "scope": "起始至目前牆鐘含平台中斷與使用者等待，未測得純主動執行秒數",
       "total_active_seconds": "UNKNOWN"
     },
-    "NEXT_AUTHORIZED_TASK": "保存並核對遠端後，接續城心實際受傷可讀性與未測自然玩家操作；不改傷害或AI規則",
-    "CHECKPOINT_SHA": "6a9cde03141c6800be6da28ada0e9b0dc1145be4",
+    "NEXT_AUTHORIZED_TASK": "保存第四切片並核對遠端，再接續本波已記錄最大單次實損純回饋",
+    "CHECKPOINT_SHA": "955fceaadb781d9128a857636c0f20a4830ccc12",
     "AUTO_RESUME_AVAILABLE": false
+  },
+  "core_damage_slice": {
+    "source": "955fceaadb781d9128a857636c0f20a4830ccc12",
+    "node": "96/96當前來源；先前總管32有效沿用",
+    "build_sha256": "161/161",
+    "chromium": "25/25原生扣血與HUD；28/28旗手並存回歸",
+    "player": "A_COMPLETE_NATURAL_SAVE_FOCUSED_RETEST_DEFEAT_WAVE4",
+    "player_scope": "可分辨2.93弓兵／127.8衝車實損、護衛與人工集火；救城/勝率未證明",
+    "api_cost": "控制微量測，非AI／繪圖／FPS，after5800次事件零observer faults"
+  },
+  "language": {
+    "mode": "zh-TW",
+    "authority": "使用者最新貼上測試指令第19行",
+    "rawSealedReportsPreserved": true,
+    "gameLocalesUnchanged": true
   }
 }
