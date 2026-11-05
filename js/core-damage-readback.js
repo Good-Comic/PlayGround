@@ -65,10 +65,13 @@ export function installCoreDamageReadback(g, ui) {
   const observer = observeCoreDamage(g), note = document.createElement('p');
   note.id = 'core-damage-readback'; note.hidden = true; note.setAttribute('role', 'status');
   const root = document.querySelector('#battle-actions'); root.insertBefore(note, root.querySelector('.battle-hint'));
-  let lastPaint = 0;
+  let lastPaint = 0, shownSourceId = null;
   const update = (force = false) => {
-    if (!force && performance.now() - lastPaint < 100) return; lastPaint = performance.now();
-    const text = coreDamageText(observer.view());
+    const view = observer.view();
+    // Identity loss bypasses the text throttle in the same native UI update.
+    const invalidated = !!note.textContent && (!view || shownSourceId !== view.sourceId);
+    if (!force && !invalidated && performance.now() - lastPaint < 100) return; lastPaint = performance.now();
+    const text = coreDamageText(view); shownSourceId = view?.sourceId ?? null;
     if (note.textContent !== text) note.textContent = text;
     if (note.hidden !== !text) note.hidden = !text;
     const title = t('coreDamage.help'); if (note.title !== title) note.title = title;
