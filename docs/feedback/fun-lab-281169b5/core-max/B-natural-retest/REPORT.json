@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "player": "B",
+  "round": "after",
+  "test": "本波最大實損 HUD 聚焦續玩",
+  "language": "zh-TW",
+  "perspective": "AI 模擬一般休閒 RTS 玩家，非人類實測",
+  "snapshot": {"mode": "正常 Continue 自己的原封自然快照", "freshTenWaveCampaign": false, "blindTest": false, "priorPlayMemoryRetained": true, "snapshotContentsRead": false, "playerModifiedSnapshot": false},
+  "sources": ["新root自己的players/B/PROFILE.md", "新root public/README.md", "正常可見UI、工具提示及截圖"],
+  "conditionsVisible": {"version": "1456591", "biome": "草海平原", "age": "帝國時代", "day": "IV", "speed": "依公開說明正常1倍速"},
+  "result": {
+    "status": "DEFEAT",
+    "wavesSurvived": 3,
+    "totalWaves": 10,
+    "defeatWave": 4,
+    "kills": 79,
+    "resourcesGathered": 4504,
+    "cumulativeGameTime": "9:06",
+    "continueWallSeconds": 31.587,
+    "resultObservedWallSeconds": 133.510,
+    "continueToResultWallSeconds": 101.923,
+    "wallTimeIsGameTime": false,
+    "evidence": "screen-0010.png",
+    "finishExecutedAfterObservedResultBeforeReport": true,
+    "finishResponse": "ok: true"
+  },
+  "inputDiscipline": {
+    "maximumIntentRatePerMinute": 12,
+    "minimumRequiredSpacingSeconds": 5,
+    "successfulDecisionInputs": [
+      {"wallSeconds": 31.587, "action": "正常Continue"},
+      {"wallSeconds": 91.046, "action": "F2選全軍"},
+      {"wallSeconds": 113.750, "action": "對先前可見近城衝車位置右鍵", "x": 831, "y": 322}
+    ],
+    "minimumSuccessfulDecisionInputSpacingSeconds": 22.704,
+    "readingHover": {"wallSeconds": 77.776, "x": 798, "y": 725, "purpose": "停留閱讀正常傷害列", "additionalTooltipObtained": false},
+    "failedAttempt": {"action": "援護城心", "timing": "113.750右鍵之後、133.510結算觀察之前", "exactWallSecondsAvailable": false, "response": "CONTROL_NOT_VISIBLE_OR_ENABLED", "blindRetry": false},
+    "maximumObservationGapDuringPlaySeconds": 25.539,
+    "firstEnemyObservationToFirstSelectionWallSeconds": 38.139,
+    "reactionLimit": "閱讀與工具往返使反應慢於PROFILE典型描述，不能當作真人反應速度",
+    "highIntensityMicroUsed": false,
+    "deliberatelyArrangedDamageOrSuccess": false
+  },
+  "timeline": [
+    {"wallSeconds": 32.298, "sinceContinueSeconds": 0.711, "corePercent": 89, "enemies": 0, "selected": 18, "allSoldiers": 18, "command": "18人護衛城鎮中心", "visibleTarget": "中央己方城鎮中心", "evidence": "screen-0003.png"},
+    {"wallSeconds": 52.907, "sinceContinueSeconds": 21.320, "corePercent": 87, "enemies": 9, "selected": 17, "allSoldiers": 18, "latestDamageScreenshot": {"hp": 2.93, "source": "步弓兵", "eventTime": "7:51"}, "maximumDamageScreenshot": {"hp": 4.04, "source": "刀盾兵", "historicalDirection": "↗", "eventTime": "7:50"}, "otherVisibleFeedback": "勇士對決勝利、英雄獲得60護盾", "evidence": "screen-0005.png"},
+    {"wallSeconds": 78.446, "sinceContinueSeconds": 46.859, "corePercent": 82, "enemies": 3, "selected": 17, "allSoldiers": 19, "command": "15人護衛城鎮中心、2人待命", "latestDamage": {"hp": 2.93, "sourceStatus": "來源未確認", "eventTime": "8:11"}, "maximumDamage": {"hp": 4.04, "sourceStatus": "來源未確認", "eventTime": "7:50"}, "evidence": "screen-0006.png"},
+    {"wallSeconds": 98.160, "sinceContinueSeconds": 66.573, "corePercent": 70, "enemies": 16, "selected": 20, "allSoldiers": 20, "command": "14人護衛城鎮中心、4人自主接敵、2人待命", "latestDamageScreenshot": {"hp": 4.04, "source": "刀盾兵", "historicalDirection": "→", "eventTime": "8:37"}, "latestDamageText": {"hp": 2.93, "source": "步弓兵", "eventTime": "8:37"}, "maximumDamage": {"hp": 127.8, "source": "衝車", "historicalDirection": "←", "eventTime": "8:30"}, "evidence": "screen-0007.png"},
+    {"wallSeconds": 114.517, "sinceContinueSeconds": 82.930, "corePercentText": 43, "corePercentScreenshotApproximate": 46, "enemies": 12, "selected": 16, "allSoldiers": 16, "commandText": "15人移動、1人自主接敵", "commandScreenshot": "15人移動、1人待命", "latestDamageScreenshot": {"hp": 2.93, "source": "步弓兵", "eventTime": "8:53"}, "maximumDamageScreenshot": {"hp": 127.8, "source": "衝車", "historicalDirection": "←", "eventTime": "8:30"}, "evidence": "screen-0008.png"},
+    {"wallSeconds": 133.510, "sinceContinueSeconds": 101.923, "event": "正式戰敗結算", "selected": 16, "selectedHealth": "1565/1746", "evidence": "screen-0010.png"}
+  ],
+  "damageHudAssessment": {
+    "latestVersusMaximum": {"status": "EVALUATED", "understanding": "最近一擊與本波已記錄最大單次不同；較小最近傷害沒有取代127.8HP最大衝車傷害，不是DPS、總傷害或來源排名", "evidence": ["screen-0005.png", "screen-0007.png", "screen-0008.png"]},
+    "historyScope": {"understanding": "只涵蓋本次載入後記錄，不能稱完整戰役歷史", "basis": "公開說明"},
+    "time": {"status": "PARTIALLY_EVALUATED", "understanding": "8:30讀為事件局內時刻，不是8分30秒前，並與8:37及8:53較新事件區分", "unverified": "沒有常駐總時鐘供核對，未獨立驗證時間基準或精算距現在多久"},
+    "sourceVisibility": {"status": "EVALUATED", "understanding": "來源未確認時仍保留損失與時刻，不能定位或假定同類就是同一敵人", "evidence": ["screen-0006.png"], "causeOfUnconfirmedSource": "NOT_EVALUATED"},
+    "historicalDirection": {"status": "EVALUATED", "understanding": "受傷時箭頭為歷史方向，不是敵人目前位置", "evidence": ["screen-0007.png"]},
+    "autonomousNextStep": {"formed": true, "reason": "最大127.8HP衝車紀錄促使優先處理目前畫面近城衝車", "action": "113.750右鍵先前可見近城衝車位置", "executionSucceeded": "NOT_CONFIRMED", "visibleResult": "主要為移動摘要，沒有確認攻擊目標"},
+    "causalWinRateClaim": false
+  },
+  "commandAssessment": {
+    "selectionCoverageAndVisibleTarget": {"status": "EVALUATED", "observation": "18/18護衛中央己方城心；17/19後按F2，20/20可見各組護衛、自主接敵與待命", "evidence": ["screen-0003.png", "screen-0006.png", "screen-0007.png"]},
+    "intentMismatch": {"status": "EVALUATED", "intended": "攻擊近城可見衝車", "actualVisible": "15人移動，另1人自主接敵或待命", "naturalOccurrence": true, "cause": "未確認，可能目標變動、遮蔽、誤點或判斷延遲，不能定論", "correctionAttempt": "援護城心按鈕已不可用，下一觀察為結算", "evidence": ["screen-0008.png", "screen-0010.png"]},
+    "manualFocusMarker": {"status": "NOT_EVALUATED", "reason": "未確認人工攻擊目標，不能把送出右鍵當成集火成功"}
+  },
+  "funMoments": [
+    {"wallSeconds": 98.160, "category": ["戰鬥資訊", "決策"], "observation": "127.8最大與約3至4HP最近傷害並列，讓衝車優先次序有理由，帶來短暫掌控感", "evidence": ["screen-0007.png"]},
+    {"wallSeconds": 52.907, "category": ["戰鬥回饋", "英雄表現"], "observation": "勇士對決勝利與英雄60護盾短訊提供正面回饋；沒有主動安排或核實觸發機制", "evidence": ["screen-0005.png"]}
+  ],
+  "boringMoments": [
+    {"wallSeconds": 32.298, "category": ["短暫等待", "節奏"], "observation": "續玩零敵、滿血守城，暫以觀察為主；下一觀察已有敵人，不能說期間始終零敵", "evidence": ["screen-0003.png", "screen-0005.png"]}
+  ],
+  "frustratingMoments": [
+    {"wallSecondsStart": 113.750, "wallSecondsEnd": 114.517, "category": ["目標點選", "命令回饋", "玩家反應延遲"], "observation": "想打衝車卻看到移動摘要，察覺時城心約四成；摘要能提示落差但沒有自動修正", "evidence": ["screen-0008.png"]},
+    {"wallSecondsStart": 98.160, "wallSecondsEnd": 133.510, "category": ["注意力", "危機節奏", "玩家執行"], "observation": "讀懂較大衝車傷害仍未及時完成有效處置，沒有想起英雄技能，健康部隊仍在時城心失守", "evidence": ["screen-0007.png", "screen-0008.png", "screen-0010.png"]}
+  ],
+  "momentEvidenceLimit": "約102秒片段僅有趣2、淡場1、挫折2項有獨立證據；不足三項者保留缺額，不重用舊場事件",
+  "improvements": [
+    {"proposal": "時刻提示明確標示時間基準及只記本次載入後", "gddCompatibility": "待根代理核實", "risk": "增加閱讀量並擠壓短行", "validation": "只給可見畫面，測事件時刻與多久以前、載入前歷史是否被誤解"},
+    {"proposal": "保留受傷時與來源未確認措辭，驗證來源類型與目前確認狀態是否易區分", "gddCompatibility": "待核實", "risk": "狀態擁擠或誤認可追蹤霧中來源", "validation": "正常可見來源變化時測是否把同類當同一敵人、歷史箭頭當即時位置；核對不提供霧中身分"},
+    {"proposal": "下令後移動或攻擊目標摘要短暫更醒目，先核對現有人工集火功能", "gddCompatibility": "待核實", "risk": "正常移動頻繁閃動並分散注意力", "validation": "原生點選中記錄自然落差的察覺與補救意圖數；不安排送兵、不自動改令、不只看輸贏"}
+  ],
+  "purposeAndLimits": {
+    "supported": "最大傷害資訊形成自主優先次序，但決策到實際命令仍可能失敗",
+    "unsupported": ["勝率改善", "最佳打法", "完整十波樂趣", "盲測效果", "長期平衡", "真人可用性及留存"],
+    "captureTiming": "文字與截圖不是同一瞬間，最近傷害會更新；固定證據以對應截圖為準",
+    "oldSealedReportsModified": false
+  },
+  "replayWillingness": {"decision": "有條件願意再玩，立即重開意願偏低", "reason": "較能說明衝車大傷害及察覺命令落差，但沒有守住一波取得回饋，補救仍太晚", "nextPlayThought": "用正常點選試著更早完成處置，未驗證為最佳打法", "humanRetentionEvidence": false}
+}

@@ -5,8 +5,8 @@
   "branch": "codex/riftwatch-fun-lab-281169b5",
   "ownership_version_last_verified": 273,
   "ownership_receipt": "097b5d3d80e18f6be9fca543af82024689eb38fe",
-  "game_source_sha": "955fceaadb781d9128a857636c0f20a4830ccc12",
-  "status": "FOUR_CONTROL_FEEDBACK_SLICES_VALIDATED_NEXT_OBSERVED_MAX_PENDING",
+  "game_source_sha": "1456591db51ee4fb0cf6714ccb5dc6b645a33625",
+  "status": "FIVE_CONTROL_FEEDBACK_SLICES_VALIDATED_SOURCE_ACTION_ADAPTER_IN_PROGRESS",
   "actual_game_change": "目前軍令摘要／可見人工集火標示；已選戰士人工集火已見旗手；總管固定套用／關閉／確認操作列；城心實際HP失損與可見來源回饋",
   "completed": [
     "三角色隔離冷開自然基準局：A/B第4波敗北、完成3波；C第5波敗北、完成4波",
@@ -22,8 +22,8 @@
     "RALLY專用100/200初測與200 ABBA再測完成；保留原P95警訊及長測/硬體INCONCLUSIVE"
   ],
   "in_progress": [
-    "正常Push第四切片與語言修正／新證據",
-    "下一已授權切片：本波已記錄最大單次實損，讀檔後不假稱整波歷史"
+    "穩定事件token／世界／波／來源／選兵lease保護後的人工查看與單次反擊",
+    "manual-target.js與test委派寫入未完成，不代表已驗收"
   ],
   "director": "LIMITED_FIRST_LOOP_ACCEPTED_NEXT_EXISTING_MANUAL_CARRIER_ENTRY_SELECTED",
   "quota_percent": "UNKNOWN",
@@ -33,12 +33,12 @@
     "B-AFTER-CONTROLLER-STARTUP.json",
     "followups/CONTINUATION-INTERRUPTIONS.json"
   ],
-  "runtime_status": "A第三聚焦續玩正式敗北finish且封存，無quota中斷；所有測試瀏覽器已關閉",
+  "runtime_status": "B最大實損自然聚焦續玩完成並封存，所有瀏覽器已關閉；委派manual-target兩檔開發中",
   "AUTO_RESUME_AVAILABLE": false,
-  "NEXT_AUTHORIZED_TASK": "保存第四切片並核對遠端，再接續本波已記錄最大單次實損純回饋",
+  "NEXT_AUTHORIZED_TASK": "保存第五切片後，實作綁定穩定事件的人工查看／反擊來源入口；不自動挑敵或選兵",
   "feed": "其他Owner持有，沒有寫入",
   "protected_targets": "未修改main、RC、Pages、公開版本、舊Issues、OpenCode、Immutable Playtest Build",
-  "CHECKPOINT_SHA": "955fceaadb781d9128a857636c0f20a4830ccc12",
+  "CHECKPOINT_SHA": "1456591db51ee4fb0cf6714ccb5dc6b645a33625",
   "historical_failures": {
     "strict_rng_save_restore": "FAIL_REPRODUCED：原值-1129663591，原生Restore後3165303705；未改RNG程式，不當作已修復",
     "natural_ten_waves": "NOT_REACHED_NATURAL_DEFEATS_RETAINED",
@@ -48,9 +48,9 @@
     "performance_short_run": "MEASURED_WITH_NATIVE_DEATHS_NOT_FIXED_100_200_SURVIVORS",
     "200_after_heap": "HIGHER_THAN_BEFORE_LONG_RUN_MEMORY_UNPROVEN"
   },
-  "updated_at_utc": "2026-11-05T18:45:01.305617+00:00",
+  "updated_at_utc": "2026-11-05T19:36:51.673793+00:00",
   "root_reported_remote_checkpoint": {
-    "sha": "08930f29386f963348745bfd354174e46a76d77f",
+    "sha": "9157e0e05410924947f7f966b532034d45243571",
     "provided_by": "root shell ls-remote actual verification",
     "curator_git_query": false
   },
@@ -104,8 +104,8 @@
       "scope": "起始至目前牆鐘含平台中斷與使用者等待，未測得純主動執行秒數",
       "total_active_seconds": "UNKNOWN"
     },
-    "NEXT_AUTHORIZED_TASK": "保存第四切片並核對遠端，再接續本波已記錄最大單次實損純回饋",
-    "CHECKPOINT_SHA": "955fceaadb781d9128a857636c0f20a4830ccc12",
+    "NEXT_AUTHORIZED_TASK": "保存第五切片後，實作綁定穩定事件的人工查看／反擊來源入口；不自動挑敵或選兵",
+    "CHECKPOINT_SHA": "1456591db51ee4fb0cf6714ccb5dc6b645a33625",
     "AUTO_RESUME_AVAILABLE": false
   },
   "core_damage_slice": {
@@ -122,5 +122,15 @@
     "authority": "使用者最新貼上測試指令第19行",
     "rawSealedReportsPreserved": true,
     "gameLocalesUnchanged": true
+  },
+  "max_slice": {
+    "source": "1456591db51ee4fb0cf6714ccb5dc6b645a33625",
+    "node": "101/101",
+    "resources": "161/161",
+    "chromium": "28/28雙行；29/29強制雙行與旗手並存",
+    "player": "B_COMPLETE_DEFEAT_WAVE4_FORMED_INTENT_NATIVE_MOVE_MISMATCH",
+    "time_understanding": "PARTIALLY_EVALUATED",
+    "fun_win_effect": "UNPROVEN",
+    "cpu_cost": "100/200純API ABBA；非FPS或自然戰役"
   }
 }
