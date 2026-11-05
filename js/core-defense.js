@@ -3,10 +3,10 @@ import { unitThreat } from './director.js';
 import { t } from './i18n.js';
 
 // A deliberate player shortcut through native commands, never an automatic AI override.
-export function defenseClickPoint(g, target) {
+export function defenseClickPoint(g, target, canPoint = () => true) {
   const point = g.screenPos(target.x + (target.w ? target.w / 2 : 0), target.y + (target.h ? target.h / 2 : 0)), z = g.camera.zoom;
   const offsets = target.w ? [[0,-60],[-45,-60],[45,-60],[0,-100],[-70,-90],[70,-90],[0,-20],[0,0]] : [[0,-18],[-6,-18],[6,-18],[0,-26],[0,-10]];
-  for (const [dx,dy] of offsets) { const p = { x: point.x + dx*z, y: point.y + dy*z }; if (g.pickAt(p.x,p.y) === target) return p; }
+  for (const [dx,dy] of offsets) { const p = { x: point.x + dx*z, y: point.y + dy*z }; if (canPoint(p) && g.pickAt(p.x,p.y) === target) return p; }
   return null;
 }
 export function defendCore(g, blocked = false) {

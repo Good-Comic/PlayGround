@@ -103,6 +103,11 @@ test('沙暴沿正式視野縮減禁用入口，恢復後才重新可用，不�
   g.effects.sandstorm = 0;
   assert.equal(g.isVisible(flag), true); assert.equal(rallyAttackContext(g, m).reason, undefined); assert.equal(m.state().expiresAt, expires);
 });
+test('第一個原生點被UI遮住仍可採用下一個合法點，不繞過pickAt', () => {
+  const { g, m, flag } = fixture(), first = defenseClickPoint(g, flag);
+  const context = rallyAttackContext(g, m, { canPoint: p => p.x !== first.x });
+  assert.equal(context.reason, undefined); assert.notEqual(context.point.x, first.x); assert.equal(g.pickAt(context.point.x, context.point.y), flag);
+});
 test('入口不持續改令；後續原生移動／停止立即覆蓋', () => {
   const { g, m } = fixture(); assert.equal(attackRallyCarrier(g, m).ok, true);
   g.pickAt = () => null; g.issueCommand(1100, 600);
