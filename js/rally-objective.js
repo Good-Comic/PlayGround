@@ -34,6 +34,14 @@ export function installRallyMechanic(g) {
     const flag = carrier();
     return Math.hypot(u.x - flag.x, u.y - flag.y) <= RALLY_RULE.radius ? RALLY_RULE.speed : 1;
   };
+  const applyMods = g.applyEventMods.bind(g);
+  g.applyEventMods = (u, ...args) => {
+    const result = applyMods(u, ...args);
+    // The new aura is evaluated at attack time. Never leave the old permanent
+    // global multiplier on survivors who can carry over into another wave.
+    if (matches()) u.eventAttackSpeedMul = 1;
+    return result;
+  };
   const start = g.startWave.bind(g);
   g.startWave = (...args) => {
     state = null; cachedCarrier = null; resolvedId = null;
@@ -118,7 +126,7 @@ export function installRallyObjective(g, ui, renderer) {
     if (!onScreen) return;
     ctx.save(); ctx.translate(p.x + 11 * z, p.y - 4 * z); ctx.scale(z, z);
     ctx.strokeStyle = '#fff0c3'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -48); ctx.stroke();
-    ctx.fillStyle = state === 'active' ? '#d8a643' : '#a58c68'; ctx.strokeStyle = '#642e32'; ctx.lineWidth = 2;
+    ctx.fillStyle = state === 'active' ? '#b33b35' : '#786555'; ctx.strokeStyle = '#ffe49f'; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(0, -47); ctx.lineTo(22, -44); ctx.lineTo(16, -36); ctx.lineTo(22, -28); ctx.lineTo(0, -31); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.strokeStyle = '#fff4cf'; ctx.beginPath(); ctx.moveTo(5, -39); ctx.lineTo(14, -39); ctx.moveTo(9.5, -43); ctx.lineTo(9.5, -34); ctx.stroke(); ctx.restore();
   };

@@ -53,7 +53,7 @@ test('啟動前無加成，半徑內含邊界、半徑外不加成，Boss及玩�
 test('原生冷卻下限及其他倍率不變，不重設正在運作的攻擊冷卻', () => {
   const { g, mechanic: m } = deployed(), flag = m.carrier(); flag.cooldown = .6;
   const original = Game.prototype.attackCooldown.bind(g), mods = flag.eventAttackSpeedMul;
-  assert.equal(g.attackCooldown(flag), original(flag)); assert.equal(flag.cooldown, .6); assert.equal(flag.eventAttackSpeedMul, mods);
+  assert.equal(g.attackCooldown(flag), original({ ...flag, eventAttackSpeedMul:1.1 })); assert.equal(flag.cooldown, .6); assert.equal(flag.eventAttackSpeedMul, mods);
   flag.typeDef = { ...flag.typeDef, cooldown: .1 }; assert.equal(g.attackCooldown(flag), .25);
   flag.typeDef = { ...flag.typeDef, cooldown: 1.5 }; g.waveEnraged = true;
   assert.equal(g.attackCooldown(flag), Math.max(.25, 1.5 / 1.1 / 1.15));
@@ -94,8 +94,9 @@ test('死旗手讀檔不復活、不重新指定；無效計時資料不重啟�
 });
 test('舊RALLY存檔保留原波原行為，不猜測舊旗手或重新計時', () => {
   const { g } = deployed(), saved = g.snapshot(); delete saved.rallyObjective;
+  for(const u of saved.units) if(u.team==='enemy') u.eventAttackSpeedMul=1.1; // Historical global RALLY payload.
   const h = fresh(), n = installRallyMechanic(h); h.restore(saved); const enemy = h.units.find(u => u.team === 'enemy');
-  assert.equal(n.status(), 'legacy'); assert.equal(h.attackCooldown(enemy), Game.prototype.attackCooldown.call(h, enemy)); assert.equal(h.snapshot().rallyObjective, undefined);
+  assert.equal(n.status(), 'legacy'); assert.equal(enemy.eventAttackSpeedMul,1.1); assert.equal(h.attackCooldown(enemy), Game.prototype.attackCooldown.call(h, enemy)); assert.equal(h.snapshot().rallyObjective, undefined);
 });
 test('所有其他事件與玩家單位逐一保持原生冷卻，重開清除旗手狀態', () => {
   const { g, mechanic: m } = deployed(), enemy = m.carrier(), hero = g.hero;
@@ -107,4 +108,9 @@ test('查看機制狀態與存檔不消耗模擬RNG；回傳狀態不能修改�
   const { g, mechanic: m } = deployed(), rng = g.rng.state, clock = g.waveClock, state = m.state();
   for (let i = 0; i < 100; i++) { m.status(); m.multiplier(m.carrier()); g.snapshot(); m.state().expiresAt = 999; }
   assert.equal(g.rng.state, rng); assert.equal(g.waveClock, clock); assert.deepEqual(m.state(), state);
+});
+test('本波結束後存活殘兵不攜帶舊RALLY全域加成到下一波', () => {
+  const {g, mechanic:m}=deployed(), flag=m.carrier();
+  g.waveIndex++;g.waveEvent=EVENT_MODULES.RAID;g.phase='prep';
+  assert.equal(g.attackCooldown(flag),flag.typeDef.cooldown);
 });
