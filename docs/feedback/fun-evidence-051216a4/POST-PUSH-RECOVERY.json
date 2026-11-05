@@ -1,0 +1,961 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-11-05T22:02:55.261554+00:00",
+  "trigger": "POST_PUSH",
+  "collector_commit": "4d364f779a91230df16f4a3935c146861ba335db",
+  "collector_dirty": false,
+  "local_record_status": "LOCAL_INVENTORIED_NOT_A_PUSH",
+  "remote_query": {
+    "status": "REMOTE_QUERIED",
+    "queried_at": "2026-11-05T22:02:55.261554+00:00"
+  },
+  "remote_heads": {
+    "codex/project-forge-acceptance-01": "444a9a218c49a0ec23f5b9bb31868f0cdf97118f",
+    "codex/project-forge-remediation-01": "9dfb8f51c6be44fd423d9c192a278cce1ba32d76",
+    "codex/project-forge-riftwatch-integration": "a1f9c0f5dcbd6dd0270cde7e6c5a02c7d1d8ac90",
+    "codex/project-forge-task-01": "3c5a0b9888535b956f6c7ead0b81512e0f33bc81",
+    "codex/project-forge-task-02": "38242192b4fab8bdfcd5a786f3c11a8f84c3aa06",
+    "codex/project-forge-task-03": "adc387d5e1d6025d4947b2dd4ec5b47d8c71a000",
+    "codex/project-forge-task-04": "69572e724286dcf4d335b6ed2902d7a2bc57689b",
+    "codex/project-forge-task-05": "e178ca5c1bc68f6e22f869c6f9a4380ac67f0afc",
+    "codex/project-forge-task-06": "90f7b82bf03f455ae2d0f81a9d6ff9567678161c",
+    "codex/riftwatch-b1-rally": "2a0da8a7320336ac342c1af0953a424d08ef1515",
+    "codex/riftwatch-b2-civ-training": "0b072b7ae211deb8789a88290b495ce2c58773c9",
+    "codex/riftwatch-battle-flow-b9e4": "6f1bea11f6b6eaf1291b795d3b9eb65886057204",
+    "codex/riftwatch-battle-line-61ac": "965c4167b14534a4cacec85d95bc7524a16840f8",
+    "codex/riftwatch-boss-feedback-48e291abfa21": "08e266481b9247fd59c756512417b9a6995396b7",
+    "codex/riftwatch-boss-native-e0501de87ceb": "a569e2201f4715b833424895ffbada0bd4f1c705",
+    "codex/riftwatch-build-ui-0ca7e152ba21": "2382ffa065b3f2725dada695c525339ad5d9c979",
+    "codex/riftwatch-capacity-9e31": "512f1429cf546fa09bc6da8646fb90b303db25fb",
+    "codex/riftwatch-carry-614bdb30cf15": "1a4b27bd2cc76cf7a07b8929fdd4f44d553387bc",
+    "codex/riftwatch-codex-locale-4c7a": "596f3a84250d55e4b2550f635cc234f67b3086e0",
+    "codex/riftwatch-content-e8b1893df993": "d2eef9cc3a671580b7a7f837795d96746d50d1b4",
+    "codex/riftwatch-core-defense-61ac": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+    "codex/riftwatch-decoy-0661756ac038": "76039443d8134e5caa13d8e01696c249f13a6578",
+    "codex/riftwatch-early-raid-4c9f": "afde7e08d6e03fe9e3961e8a5ffb727a472519ab",
+    "codex/riftwatch-flood-0c08fc3c9e56": "350692c5cae82adbe48f8114f22332ea99179bf7",
+    "codex/riftwatch-ford-87226313606d": "03d535565f2d0522f3f83f990209029deb2af548",
+    "codex/riftwatch-forest-0805677956d5": "770595a9495f13bb77daef203cb69509291b157f",
+    "codex/riftwatch-forge-integration": "3674a33d95c5165dc9ee5813a051f894a8c72378",
+    "codex/riftwatch-fragment-942ffeed1635": "e2c8f345da1bb25e36be31985e08ad2102cd12f5",
+    "codex/riftwatch-fun-evidence-051216a4": "4d364f779a91230df16f4a3935c146861ba335db",
+    "codex/riftwatch-fun-lab-281169b5": "6852cf85acca5c08923e0191a1e0703189f4d3e6",
+    "codex/riftwatch-gameplay-improvement": "7faa21a274847ca649a7a96b88700d4cdda5fe2e",
+    "codex/riftwatch-gameplay-integration": "2cd6f099d72a980bfa24dd7ae0f79676918884e8",
+    "codex/riftwatch-gather-count-a7c2": "1d4603665c6be6bbf8aec59e86d2a128fa6565d4",
+    "codex/riftwatch-guard-1d0bb6b18590": "2d226a694c40b42af1210703720c28b113a0ab2d",
+    "codex/riftwatch-human-feedback-518be895": "8fb185a3367101e9414de08f49fbb2b747500f8c",
+    "codex/riftwatch-idle-f3aa9e6a7971": "b71432003d2f2b6c65f872cc6584c1ac4c318223",
+    "codex/riftwatch-kite-dd660613e049": "c2e51f0b5aaea25d694a23f0d6e087cc69148351",
+    "codex/riftwatch-lifesteal-d1582b4d15b5": "3b0ddacacaa357c5d9fa7c97a49f15c2eba99aec",
+    "codex/riftwatch-military-6c42": "bab8b017fa71508a1dc45293e36f06d7affe78ed",
+    "codex/riftwatch-natural-7e91": "0f58687476028e1db487e3191d57d01fe8935dfb",
+    "codex/riftwatch-omgithub17-upgrade-candidate": "45435a323c729a28da1de454a3e53740fc9159f2",
+    "codex/riftwatch-omgithub17-upgrade-evidence": "dcbf99db4776172d9384749da80135903046dd5e",
+    "codex/riftwatch-panel-71830a3c1c71": "cc2ebb4d4d7a686a30f9736bf7ceabbd8c815343",
+    "codex/riftwatch-pixelfx-phase1-518be895": "887f460edca20da54922199ea31a5f330daafc85",
+    "codex/riftwatch-pixelfx-phase2-518be895": "904c70e7e5b7230f0f40f3f303668e90be3c89e1",
+    "codex/riftwatch-plan-confirm-83d4": "e9329ee48c64b1d1584cba0a7a069022354ddae9",
+    "codex/riftwatch-plan-save-39b7": "80d1ec2927bef435de0674276c25463fabca7710",
+    "codex/riftwatch-playtest-candidate": "3779c5d50876cb2e28590b9d250fb355fc0f8e38",
+    "codex/riftwatch-playtest-site": "5b30bda085197cfa820a594224e2f6df929bf60d",
+    "codex/riftwatch-playtest-v227": "c25ccc76178b044b061c88954ed2cf7f5a9b59fb",
+    "codex/riftwatch-playtest-v228": "a56e55f8554810ffdf1d08b6ccd75289c4a1e267",
+    "codex/riftwatch-playtest-v234": "2f475e2fac1d3b98e01a6292021d76420312da41",
+    "codex/riftwatch-production-5e8cadcf5969": "814b073d511b018e0903c937f2bb6d3e99bc5043",
+    "codex/riftwatch-progress-feed": "3bab370367258289db9075307f95163013e759fc",
+    "codex/riftwatch-raid-32d5d9f1af00": "8b74aebc6fc65889650b2d75acbfee0ec8a3d469",
+    "codex/riftwatch-rally-carrier-61ac": "52f0fcaa42e2a161e67360a8838e9a90c1f3bfd8",
+    "codex/riftwatch-ranged-boon-758bf25c0246": "ea4850497a3be6573c97d9925a5a51c14f4f1fc5",
+    "codex/riftwatch-recovery-index": "833df06875fbeac48eea3441e319f2bb43cbcc30",
+    "codex/riftwatch-rescue-c62a": "914c0aec43905127efbd6cbdbf383805934c1394",
+    "codex/riftwatch-resource-ac42058e943c": "7499d3a6e49f0c3cf8174abd829dbf462c2d505c",
+    "codex/riftwatch-reward-econ-52a1": "c0732bcc1513826b927a4d7cbe07b7e025be1154",
+    "codex/riftwatch-rts-5e8e3c9e6699": "b61a726c0d34d9aca3e027a57f7c5c22659f33d3",
+    "codex/riftwatch-rts-ad773cfc5a6d": "b2768ac7d532a74e94ea780b86473b1b4c5d9968",
+    "codex/riftwatch-sidewind-5d4fdb529e8c": "039ad344d68db0c01b5bf6d13cec4fc04cd6428b",
+    "codex/riftwatch-siege-visual-ac42058e943c": "69fc16f4030b4cb74f2cc216729d9600d736668c",
+    "codex/riftwatch-steward-recovery-6d3473ca8b": "a46a4c56366cbf517f443b08790a9894fa95640c",
+    "codex/riftwatch-tactical-0c92f30d1fc1": "981186ea2e4bdb8528ee7253eaee1f0ded1bc9fa",
+    "codex/riftwatch-tactical-pause-a82d": "a71247f68c7644b85b3fe21365228e1f666a71ca",
+    "codex/riftwatch-task-ownership": "975b10bff76294812e827f49b272c523e6ae378e",
+    "codex/riftwatch-tech-boon-f8b2a7553e": "c4b52af7cb55380a8def7b81fdbb64c793c217de",
+    "codex/riftwatch-teu-qa-de3405ae7f0d": "9e573acfaf05890d1cf19932d71e129fe99f8293",
+    "codex/riftwatch-v2-baseline": "f541c6b541d1bc06dc74050ef85bef9f3409fe84",
+    "codex/riftwatch-v22-boss": "ee0784a40db8134abbd1ae92bfa7ee61a1cedc93",
+    "codex/riftwatch-v22-civ-alignment": "c456cae581b3ec85a7dd222d017453d2e589e095",
+    "codex/riftwatch-v22-population": "0094fabc6507b41253b8869e2dacf8b0e56e3263",
+    "codex/riftwatch-v22-quality-tools": "11f8a6a29c481da0613d2765bb06739e5ce6a8b8",
+    "codex/riftwatch-v22-target-state": "2d55e6ae4c89dbb54b6b2a12b398ab364e2be4ec",
+    "codex/riftwatch-v222-prediction": "b72f9603bf2d8fd865da5cf9dccc32be1dd90830",
+    "codex/riftwatch-v222-recovery": "317ef162b4f4b69c43644cb0e7c031387dc898c1",
+    "codex/riftwatch-v224-monitor": "fa520ae3006329bd2b1c54ac90938519465bf320",
+    "codex/riftwatch-v226-delivery": "ee0d219a916d8388fab5d66ff86e3bd650aa66af",
+    "codex/riftwatch-v226-live-acceptance": "1a5a67c5373bdd5ede925484776339f95ded78a0",
+    "codex/riftwatch-v227-orders": "0f2d3f6213559380156ae2af8c84ed44d0c9cca2",
+    "codex/riftwatch-v227-ui": "6ad09704c184ee772bf88d92949e8889fca086ce",
+    "codex/riftwatch-v227-wave": "35bb4dcf8d0e48843b68831a89a1d07c41d33c36",
+    "codex/riftwatch-v228-budget": "094324e1b61e6fddf60763848d36eca107b6282f",
+    "codex/riftwatch-v228-clock": "6d11aa2fc7bb3c749a9f714c16081b4f6e98c580",
+    "codex/riftwatch-v228-groups": "56fedb49483e5843f4584eb641382c7e93b5d072",
+    "codex/riftwatch-v228-live": "8f3da5a56ee323c9fa57ac462a0223e27b9988e3",
+    "codex/riftwatch-v228-nav": "5fab2cedc770b238b37559eb81c42495e5eeb27a",
+    "codex/riftwatch-v228-save-research": "03e3a8423e4956be7face8009d7bfff48aa6a11e",
+    "codex/riftwatch-v229-group-clear": "80bec7a68cb0f822b3071642dc02bd9ff3964750",
+    "codex/riftwatch-v230-p0-input": "45435a323c729a28da1de454a3e53740fc9159f2",
+    "codex/riftwatch-v231-hero-skill-preview": "149f063e37fb68bf02e97535a389f4ef01210ad4",
+    "codex/riftwatch-v231-review": "b91a07018753900ed5f4e26cf392b6e8e8b0e449",
+    "codex/riftwatch-v232-rift-prototype": "43b3223ca8cde4ddb0cfb80e767e183af5f4d70d",
+    "codex/riftwatch-v233-dynamic-score": "20d550cc5e561e3ed84ace71f463f5f43fc0f3ed",
+    "codex/riftwatch-v233-visual-silhouettes": "055fb12c92e3d48945315937058f1423b732241c",
+    "codex/riftwatch-v234-omgithub-preview": "681d7952486853c7df79ddfb183421b871e73ae9",
+    "codex/riftwatch-v240-authoritative-strategy": "e77e0a3afe7415bdadb6d5f3ac6c92ebf31d308d",
+    "codex/riftwatch-v240-game-first": "1e87c18a42fb0b7c8d6a77e465e52eba243a54cb",
+    "codex/riftwatch-v240-rc-internal": "c55a054291a088a66ac809e5a243e3773527daa9",
+    "codex/riftwatch-v240-recovery-v3": "f047679bde2a5aa89d97ed2ea4ee27a42322de1c",
+    "codex/riftwatch-wood-beed1c3a3954": "8d7ebfa94dd75e5e67edbba4d57770d8534ee428",
+    "codex/riftwatch-workshop-70e1": "b593805b6fb952f4abe2eac127dec3cc578323b2",
+    "codex/riftwatch-zip-delivery-518be895": "2dc936270e064a1ef889495e33b11576411101a4",
+    "main": "e35a73329ee7942627496e55b844d02b2501e685",
+    "opencode-checkpoints/1": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
+    "opencode-checkpoints/11": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
+    "opencode-checkpoints/13": "5f7359c0793147b9031b880970acefa24b9988c9",
+    "opencode-checkpoints/14": "3674a33d95c5165dc9ee5813a051f894a8c72378",
+    "opencode-checkpoints/15": "909fc707786e6ae54f33c6388ca582377ff09252",
+    "opencode-checkpoints/16": "82007a506b01c0ac6c3986aeac40ef0e1d05a347",
+    "opencode-checkpoints/17": "6476a4bc6d18f688b9c44db9a95c45901d76b741",
+    "opencode-checkpoints/18": "35fde465ab40b011a7f33704d6b30d149802438e",
+    "opencode-checkpoints/19": "9866f491d71676f36185fa5f2bfffa4a9ad9f4ca",
+    "opencode-checkpoints/2": "71c23b735ec2236d71cf4120410cc5ef6d33b773",
+    "opencode-checkpoints/20": "87e1a3292e66780e0d1ed96d69b40015779c289c",
+    "opencode-checkpoints/3": "c7d7ba520a6c11db8cec2c338f0b25b5c21e9b57",
+    "opencode-checkpoints/4": "d3849df18360a209aa9b6843f409d461260ee93c",
+    "opencode-checkpoints/5": "a3764c9af5cb7ed9fec4af605f0cf0817c02c997",
+    "opencode-checkpoints/6": "d3a38e94d35caf6e6b5ed2f41656732fbbf4dd7a",
+    "opencode-checkpoints/7": "5d9cefbcea923634f4601434628bd58b0950494c",
+    "opencode-checkpoints/8": "d2864156000b002d60635be2f1c410fd6032dc62",
+    "opencode-checkpoints/9": "869802159c01d039fcc04d07660b8deaeabcf949",
+    "opencode-resume/308347c468704ec20b33": "9ad72ac8f40ef2a9d047315bfac9bae1eab09f2c",
+    "opencode-resume/4fabd2594ea403f912e7": "ad016b0a5db9bae99f0421044c28c7e27a89c883",
+    "opencode-resume/6b50ac6f83fe25cece24": "15b8a9c8065652e295d3e42fd10bb48bce76ff70",
+    "opencode-resume/a524000950833eacde3a": "d2864156000b002d60635be2f1c410fd6032dc62",
+    "opencode-resume/b8d88bff4163b1ed0d2d": "5d9cefbcea923634f4601434628bd58b0950494c",
+    "opencode-resume/b98f4f93e341e2dc797c": "c7d7ba520a6c11db8cec2c338f0b25b5c21e9b57",
+    "opencode-resume/ffa6c7ab68e84d153534": "5f7359c0793147b9031b880970acefa24b9988c9"
+  },
+  "local_branches": [
+    {
+      "branch": "codex/riftwatch-battle-flow-b9e4",
+      "head": "6f1bea11f6b6eaf1291b795d3b9eb65886057204",
+      "remote_head": "6f1bea11f6b6eaf1291b795d3b9eb65886057204",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-battle-line-61ac",
+      "head": "965c4167b14534a4cacec85d95bc7524a16840f8",
+      "remote_head": "965c4167b14534a4cacec85d95bc7524a16840f8",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-capacity-9e31",
+      "head": "512f1429cf546fa09bc6da8646fb90b303db25fb",
+      "remote_head": "512f1429cf546fa09bc6da8646fb90b303db25fb",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-codex-locale-4c7a",
+      "head": "596f3a84250d55e4b2550f635cc234f67b3086e0",
+      "remote_head": "596f3a84250d55e4b2550f635cc234f67b3086e0",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-core-defense-61ac",
+      "head": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+      "remote_head": "f6ae896bb3554ae7b6d131c734d9ac51d9f07131",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-early-raid-4c9f",
+      "head": "afde7e08d6e03fe9e3961e8a5ffb727a472519ab",
+      "remote_head": "afde7e08d6e03fe9e3961e8a5ffb727a472519ab",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-fun-evidence-051216a4",
+      "head": "4d364f779a91230df16f4a3935c146861ba335db",
+      "remote_head": "4d364f779a91230df16f4a3935c146861ba335db",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-fun-lab-281169b5",
+      "head": "6852cf85acca5c08923e0191a1e0703189f4d3e6",
+      "remote_head": "6852cf85acca5c08923e0191a1e0703189f4d3e6",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-gather-count-a7c2",
+      "head": "1d4603665c6be6bbf8aec59e86d2a128fa6565d4",
+      "remote_head": "1d4603665c6be6bbf8aec59e86d2a128fa6565d4",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-human-feedback-518be895",
+      "head": "8fb185a3367101e9414de08f49fbb2b747500f8c",
+      "remote_head": "8fb185a3367101e9414de08f49fbb2b747500f8c",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-military-6c42",
+      "head": "bab8b017fa71508a1dc45293e36f06d7affe78ed",
+      "remote_head": "bab8b017fa71508a1dc45293e36f06d7affe78ed",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-natural-7e91",
+      "head": "0f58687476028e1db487e3191d57d01fe8935dfb",
+      "remote_head": "0f58687476028e1db487e3191d57d01fe8935dfb",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-pixelfx-phase1-518be895",
+      "head": "887f460edca20da54922199ea31a5f330daafc85",
+      "remote_head": "887f460edca20da54922199ea31a5f330daafc85",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-pixelfx-phase2-518be895",
+      "head": "904c70e7e5b7230f0f40f3f303668e90be3c89e1",
+      "remote_head": "904c70e7e5b7230f0f40f3f303668e90be3c89e1",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-plan-confirm-83d4",
+      "head": "e9329ee48c64b1d1584cba0a7a069022354ddae9",
+      "remote_head": "e9329ee48c64b1d1584cba0a7a069022354ddae9",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-plan-save-39b7",
+      "head": "80d1ec2927bef435de0674276c25463fabca7710",
+      "remote_head": "80d1ec2927bef435de0674276c25463fabca7710",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-rally-carrier-61ac",
+      "head": "52f0fcaa42e2a161e67360a8838e9a90c1f3bfd8",
+      "remote_head": "52f0fcaa42e2a161e67360a8838e9a90c1f3bfd8",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-rescue-c62a",
+      "head": "914c0aec43905127efbd6cbdbf383805934c1394",
+      "remote_head": "914c0aec43905127efbd6cbdbf383805934c1394",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-reward-econ-52a1",
+      "head": "c0732bcc1513826b927a4d7cbe07b7e025be1154",
+      "remote_head": "c0732bcc1513826b927a4d7cbe07b7e025be1154",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-steward-recovery-6d3473ca8b",
+      "head": "a46a4c56366cbf517f443b08790a9894fa95640c",
+      "remote_head": "a46a4c56366cbf517f443b08790a9894fa95640c",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-tactical-pause-a82d",
+      "head": "a71247f68c7644b85b3fe21365228e1f666a71ca",
+      "remote_head": "a71247f68c7644b85b3fe21365228e1f666a71ca",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-tech-boon-f8b2a7553e",
+      "head": "c4b52af7cb55380a8def7b81fdbb64c793c217de",
+      "remote_head": "c4b52af7cb55380a8def7b81fdbb64c793c217de",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-v240-rc-internal",
+      "head": "c55a054291a088a66ac809e5a243e3773527daa9",
+      "remote_head": "c55a054291a088a66ac809e5a243e3773527daa9",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-workshop-70e1",
+      "head": "b593805b6fb952f4abe2eac127dec3cc578323b2",
+      "remote_head": "b593805b6fb952f4abe2eac127dec3cc578323b2",
+      "status": "REMOTE_SAVED"
+    },
+    {
+      "branch": "codex/riftwatch-zip-delivery-518be895",
+      "head": "2dc936270e064a1ef889495e33b11576411101a4",
+      "remote_head": "2dc936270e064a1ef889495e33b11576411101a4",
+      "status": "REMOTE_SAVED"
+    }
+  ],
+  "worktrees": [
+    {
+      "path": "/workspace/PlayGround",
+      "branch": "codex/riftwatch-fun-lab-281169b5",
+      "head": "6852cf85acca5c08923e0191a1e0703189f4d3e6",
+      "locked": false,
+      "task_id": null,
+      "last_validation": [],
+      "blockers": [
+        "NOT_ASSESSED"
+      ],
+      "next_steps": [
+        "Inspect task registry and relevant diff before writing"
+      ],
+      "remote_status": "REMOTE_SAVED",
+      "remote_head": "6852cf85acca5c08923e0191a1e0703189f4d3e6",
+      "unpushed_commits": [],
+      "changed_files": [
+        {
+          "status": " M",
+          "path": "docs/feedback/fun-lab-281169b5/EVIDENCE-INDEX.md"
+        },
+        {
+          "status": " M",
+          "path": "docs/feedback/fun-lab-281169b5/FAILURE-LEDGER.md"
+        },
+        {
+          "status": " M",
+          "path": "docs/feedback/fun-lab-281169b5/FUN-EVALUATION-REPORT.md"
+        },
+        {
+          "status": " M",
+          "path": "docs/feedback/fun-lab-281169b5/HANDOFF.md"
+        },
+        {
+          "status": " M",
+          "path": "docs/feedback/fun-lab-281169b5/MULTI-AGENT-PLAYTEST-MATRIX.md"
+        },
+        {
+          "status": " M",
+          "path": "docs/feedback/fun-lab-281169b5/NEXT-FUN-IMPROVEMENTS.md"
+        },
+        {
+          "status": " M",
+          "path": "docs/feedback/fun-lab-281169b5/RECOVERY.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/SOURCE-ACTIONS-REPORT.md"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/TERMINAL-INPUT-REPORT.md"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/UNCHANGED-COMBAT-SOURCES.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/browser-production-readback.cjs"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/build-metadata.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/final-focused.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/initial-800px-fail/after-producer-native-costs.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/initial-800px-fail/before-producer-generic-status.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/initial-800px-fail/before.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/initial-800px-fail/failed.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/initial-800px-fail/failure.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/initial-800px-fail/layout-zh-Hant-1440.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/initial-800px-fail/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/initial-800px-fail/unapplied-draft-stays-separate.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/initial-run.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/readable-values-node-r2.txt"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/resource-check.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/width-fixed-browser/after-producer-native-costs.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/width-fixed-browser/after.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/width-fixed-browser/before-producer-generic-status.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/width-fixed-browser/before.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/width-fixed-browser/layout-ja-390.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/width-fixed-browser/layout-zh-Hant-1440.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/width-fixed-browser/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/width-fixed-browser/unapplied-draft-stays-separate.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/production-readback/\u4ea4\u63a5.md"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-SEALS.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/CLIP-PROVENANCE.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/REPORT.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/REPORT.md"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/SHA256SUMS"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/action-observer.jsonl"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/actions.jsonl"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/continuous-view-retaliate-defeat.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/event-1-true-1-prep.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/event-4-false-4-wave.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/event-8-false-4-defeat.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/final.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/metrics.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/screen-0002.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/screen-0003.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/screen-0005.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/screen-0006.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/screen-0007.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/screen-0009.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/B-natural-retest/session.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/COPY-MANIFEST.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/SEAL-VERIFICATION.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser-flag-source-actions.cjs"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser-r2/continuous-browser-test.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser-r2/controlled-ja-390.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser-r2/controlled-source-retaliate.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser-r2/controlled-zh-Hant-1440.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser-r2/natural-first-core-hit.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser-r2/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser-source-actions-r2.cjs"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser-source-actions.cjs"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser/continuous-browser-test.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser/controlled-ja-390.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser/controlled-source-retaliate.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser/controlled-zh-Hant-1440.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser/natural-first-core-hit.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/browser/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/build-metadata.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/cache-debug/final-focused.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/cache-debug/focused-r1.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/cache-debug/initial-fail.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/cache-debug/\u4ea4\u63a5.md"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/director/PRODUCTION-SCOPE-REVIEW.md"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/director/SOURCE-ACTIONS-PLAYER-REVIEW.md"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility-r2/flag-after-native.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility-r2/flag-before-native.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility-r2/hero-excluded.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility-r2/layout-ja-390.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility-r2/layout-zh-Hant-1440.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility-r2/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility-r2/validation.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility/flag-after-native.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility/flag-before-native.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility/hero-excluded.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility/layout-ja-390.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility/layout-zh-Hant-1440.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/flag-compatibility/validation.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/manual-target-debug/RESULT.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/manual-target-result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/node-compatibility-r1.txt"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/node-integration-r1.txt"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/perf-source-actions-r2.cjs"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/perf-source-actions.cjs"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-initial/100-after-1.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-initial/100-after-2.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-initial/100-before-1.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-initial/100-before-2.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-initial/200-after-1.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-initial/200-after-2.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-initial/200-before-1.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-initial/200-before-2.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-initial/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-r2/200-after-1.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-r2/200-after-2.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-r2/200-before-1.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-r2/200-before-2.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/performance-r2/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/remote-receipt.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/resource-check.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/source-actions-debug/combined-r1.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/source-actions-debug/combined-r2.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/source-actions-debug/final-focused.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/source-actions-debug/first-implementation.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/source-actions-debug/initial-fail.tap"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/source-actions-debug/\u4ea4\u63a5.md"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/source-actions/\u4f86\u6e90\u5165\u53e3\u59d4\u6d3e\u4ea4\u63a5.md"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/COPY-MANIFEST.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/SEAL-VERIFICATION.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/after-node-r1.txt"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/before-node-r1.txt"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/browser-terminal-input.cjs"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/browser/after-defeat-guard.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/browser/after-defeat.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/browser/after-victory-guard.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/browser/after-victory.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/browser/before-defeat-wrong-aegis.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/browser/before-defect.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/browser/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/build-metadata.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/combined-node-r2.txt"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/final-snapshot.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cooldown-fail/after-defeat-guard.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cooldown-fail/before-defeat-wrong-aegis.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cooldown-fail/before-defect.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cooldown-fail/failed.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cooldown-fail/failure.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cooldown-fail/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cycle-fail/after-defeat-guard.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cycle-fail/before-defeat-wrong-aegis.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cycle-fail/before-defect.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cycle-fail/failed.webm"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cycle-fail/failure.png"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/initial-fixture-cycle-fail/result.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/natural-B-before-defect.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/remote-receipt.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/resource-check.json"
+        },
+        {
+          "status": "??",
+          "path": "docs/feedback/fun-lab-281169b5/terminal-input/snapshot-7-false-4-defeat.json"
+        }
+      ],
+      "dirty": true,
+      "local_record_status": "LOCAL_INVENTORIED"
+    },
+    {
+      "path": "/workspace/riftwatch-fun-evidence-051216a4/worktree",
+      "branch": "codex/riftwatch-fun-evidence-051216a4",
+      "head": "4d364f779a91230df16f4a3935c146861ba335db",
+      "locked": false,
+      "task_id": null,
+      "last_validation": [],
+      "blockers": [
+        "NOT_ASSESSED"
+      ],
+      "next_steps": [
+        "Inspect task registry and relevant diff before writing"
+      ],
+      "remote_status": "REMOTE_SAVED",
+      "remote_head": "4d364f779a91230df16f4a3935c146861ba335db",
+      "unpushed_commits": [],
+      "changed_files": [],
+      "dirty": false,
+      "local_record_status": "LOCAL_INVENTORIED"
+    }
+  ],
+  "comparison": [
+    {
+      "path": "/workspace/PlayGround",
+      "change": "NEW_OR_MANIFEST_MISSING"
+    },
+    {
+      "path": "/workspace/riftwatch-fun-evidence-051216a4/worktree",
+      "change": "NEW_OR_MANIFEST_MISSING"
+    }
+  ],
+  "snapshot_semantics": "Point-in-time observation before writing output; snapshot publication commit is necessarily later. No recursive commit loop; pending dirty files remain explicitly unsaved.",
+  "snapshot_id": "a1f59352e66990fb9bb95518f917ff777cb812c8a1c80143562e11d14ab77bfd"
+}

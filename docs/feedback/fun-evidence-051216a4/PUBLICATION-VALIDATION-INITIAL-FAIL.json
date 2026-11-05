@@ -1,0 +1,16 @@
+{
+  "classification": "PUBLICATION_CHECK_SCRIPT_GIT_PATH_QUOTING",
+  "actual_error": "初次範圍斷言誤把Git預設加引號的非ASCII檔名當成範圍外路徑。",
+  "quoted_paths": [
+    "\"docs/feedback/fun-evidence-051216a4/current-production/node-and-handoff/\\344\\272\\244\\346\\216\\245.md\"",
+    "\"docs/feedback/fun-evidence-051216a4/recovered-fun-lab-281169b5/production-readback/\\344\\272\\244\\346\\216\\245.md\"",
+    "\"docs/feedback/fun-evidence-051216a4/recovered-fun-lab-281169b5/source-actions/cache-debug/\\344\\272\\244\\346\\216\\245.md\"",
+    "\"docs/feedback/fun-evidence-051216a4/recovered-fun-lab-281169b5/source-actions/source-actions-debug/\\344\\272\\244\\346\\216\\245.md\"",
+    "\"docs/feedback/fun-evidence-051216a4/recovered-fun-lab-281169b5/source-actions/\\344\\276\\206\\346\\272\\220\\345\\205\\245\\345\\217\\243\\345\\247\\224\\346\\264\\276\\344\\272\\244\\346\\216\\245.md\""
+  ],
+  "correction": "改用git diff --name-only -z解析實際路徑，561項全部在授權範圍。",
+  "game_test_failed": false,
+  "initial_push_succeeded": true,
+  "remote_SHA_matched": "4d364f779a91230df16f4a3935c146861ba335db",
+  "original_game_and_ownership_unchanged": true
+}

@@ -64,6 +64,7 @@
 | 原數字別名誤點 | TEST_HARNESS_DEFECT；本獨立工具修正，14 項＋選單驗證，尚非新三角色全程驗證 |
 | 終局測試腳本誤期待 cycle 0、精確冷卻 60 | TEST_EXPECTATION_ERROR；修正腳本，沒有改正式首周目 1 或倒數規則 |
 | 初次選單煙霧腳本誤期待 selector | TEST_EXPECTATION_ERROR；失敗紀錄保留，改用公開 key 後 PASS |
+| 保存驗證的清單時序／中文路徑讀取 | 保存前[清單尚未產生](SAVE-PREPARATION-FAIL.json)，發布核對又[誤讀 Git 預設加引號路徑](PUBLICATION-VALIDATION-INITIAL-FAIL.json)；補齊清單並改用 `--name-only -z` 後確認授權範圍與遠端 SHA，兩者均屬整理腳本問題，未改遊戲 |
 | Strict SaveLoad RNG `-1129663591 → 3165303705` | 歷史 FAIL，位元相同但 strict 表示不同；本切片未修復 |
 | 原 A 完整主觀報告 | UNSEALED_ORIGINAL_REPORT；新的公開復核不能代寫 |
 | 自然十波、自然 NG+、長測、真人聽感、實體 GPU | 未通過／NOT_TESTED／HARDWARE_TEST_PENDING，維持原狀態 |

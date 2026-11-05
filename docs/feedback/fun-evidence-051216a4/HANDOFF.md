@@ -23,12 +23,12 @@
 3. 下次自然玩家驗證應採新的穩定控制器，在輸入後核對畫面與意圖；原 @數字 記錄保留原樣。新玩家不能冒稱為恢復出原 A 的主觀報告。
 4. 優先驗證生產阻塞資訊是否幫助玩家完成實際資源調整與恢復生產，再根據公開遊玩證據選擇下一個改善；不要直接改費用或難度來取得勝利。
 
-新證據分支的最終完整 SHA 由正常推送後收據及最終回報提供。本次快照描述發布自身前的已知提交，不為填入自己的 SHA 持續新增文件提交。`pre-save-recovery` 對新分支列出的祖先提交未推送，只表示該新分支當時尚不存在；遊戲來源 685 的原分支已遠端保存，兩者須分開解讀。
+第一份證據提交 `4d364f779a91230df16f4a3935c146861ba335db` 已正常推送並完整核對遠端，見 [推送收據](PUBLICATION-RECEIPT.json)。新證據分支包含本收據的最終完整 SHA 由最後推送後獨立收據及最終回報提供。本次快照描述發布自身前的已知提交，不為填入自己的 SHA 持續新增文件提交。`pre-save-recovery` 對新分支列出的祖先提交未推送，只表示該新分支當時尚不存在；遊戲來源 685 的原分支已遠端保存，兩者須分開解讀。
 
 **停止與自動恢復紀錄**
 
 本獨立恢復及測試工具切片以驗證、正常提交、正常推送與遠端 SHA 核對為完成條件；原遊戲任務尚未被宣告完成。安全保存後，原遊戲分支寫入資格仍受未確認交接限制。`STOP_REASON=COMPLETED_INDEPENDENT_RECOVERY_GAMEPLAY_OWNER_HANDOFF_UNCONFIRMED`；執行起點、量測範圍與最新牆鐘長度見 [RECOVERY.json](RECOVERY.json)，不是原任務的主動工時。
 
-`NEXT_AUTHORIZED_TASK=核實原遊戲 Owner 交接，採穩定控制映射繼續生產阻塞與戰鬥控制的自然玩家驗證`；`CHECKPOINT_SHA=6852cf85acca5c08923e0191a1e0703189f4d3e6` 為遊戲來源，獨立證據的自身提交另由收據給出。`AUTO_RESUME_AVAILABLE=false`、`QUOTA_PERCENT_UNKNOWN`。排程送達時已有本任務在執行，記錄 `RESUME_SKIPPED_ACTIVE_TASK`；沒有建立重複任務、改頻率或宣稱閒置自動喚醒已驗證。
+`NEXT_AUTHORIZED_TASK=核實原遊戲 Owner 交接，採穩定控制映射繼續生產阻塞與戰鬥控制的自然玩家驗證`；`GAME_CHECKPOINT_SHA=6852cf85acca5c08923e0191a1e0703189f4d3e6` 為遊戲來源，`CHECKPOINT_SHA=4d364f779a91230df16f4a3935c146861ba335db` 是本快照已核對的遠端證據提交；包含本段的自身提交另由收據給出。`AUTO_RESUME_AVAILABLE=false`、`QUOTA_PERCENT_UNKNOWN`。排程送達時已有本任務在執行，記錄 `RESUME_SKIPPED_ACTIVE_TASK`；沒有建立重複任務、改頻率或宣稱閒置自動喚醒已驗證。
 
 未修改其他 Owner 的 Progress Feed、main、RC、公開部署、Pages、舊 OmGitHub Issues、OpenCode Checkpoints 或 Immutable Playtest Build；未建立公開 Release。容量稽核只讀，暫存 Git pack 未清理。

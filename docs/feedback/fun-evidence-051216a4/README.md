@@ -2,6 +2,8 @@
 
 本次以 `6852cf85acca5c08923e0191a1e0703189f4d3e6` 為固定遊戲來源，保存先前已完成的八個切片、原始玩家證據及本次實際修正的測試控制映射。遊戲分支 `codex/riftwatch-fun-lab-281169b5` 已有上述遠端提交；本資料夾屬於另外合法認領的 `FUN-EVIDENCE-051216A4`，不代表接管原遊戲 Owner。
 
+第一份完整證據提交 `4d364f779a91230df16f4a3935c146861ba335db` 已正常推送並逐字核對遠端，見 [推送收據](PUBLICATION-RECEIPT.json)與 [POST_PUSH 恢復快照](POST-PUSH-RECOVERY.json)。本次最後再保存這份實際收據，自己的最終提交由外部回報核對。
+
 依使用者最新多 Agent 玩家測試指令，提問、整理報告及交接使用臺灣正體中文，優先於舊版雙語整理規範；正式遊戲四語、原始日誌、識別符及既有封存內容不改。
 
 **玩家現在能做什麼**
@@ -34,6 +36,8 @@
 - [恢復狀態](RECOVERY.json)、[實際執行身分](EXECUTION.json)、[Ownership 核對](OWNERSHIP-VERIFICATION.json)
 - [原工作樹保存清單](PRESERVED-WIP-MANIFEST.json)、[本資料夾及新增工具雜湊](EVIDENCE-MANIFEST.json)
 - [A 公開紀錄獨立復核](A-production-public/RECOVERY-VISIBLE-REVIEW.md)
+
+封存復核文內的絕對路徑保留當時工作區定位；在 GitHub 閱讀時，可從 [A 公開證據資料夾](A-production-public/)查看同名圖片與原生回應，原封存文件不為連結樣式改寫。
 
 `recovered-fun-lab-281169b5/` 是原 Owner 文件的原樣快照，部分文字仍停留在較早保存點。它們保留歷史狀態；最新生產介面驗收以本資料夾的報告、固定來源與原始結果為準。本文件描述自己的提交發布前觀察；自己的最終提交 SHA 由推送後獨立收據與最終回報提供，避免遞迴提交自身雜湊。
 
