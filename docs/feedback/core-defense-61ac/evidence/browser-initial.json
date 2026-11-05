@@ -1,0 +1,954 @@
+{
+  "source": "013753554c74b563d39c779640839f1f89bdba95",
+  "scope": "Native menu/keyboard/mouse controls and Save/Load. Combat subcase is CONTROLLED_ATTACKER_SETUP: one native130HP guard spawned at a legal unoccupied core edge with a native core attack order. No stat, resource, damage, cooldown, time or RNG edits. Not a natural campaign.",
+  "rows": [
+    {
+      "name": "native-click-cancels-preview-and-guards-core",
+      "pass": true
+    },
+    {
+      "name": "native-tab-traverses-without-hero-toggle",
+      "pass": true
+    },
+    {
+      "name": "held-enter-issues-only-once",
+      "pass": true
+    },
+    {
+      "name": "native-space-activates-without-pause",
+      "pass": true
+    },
+    {
+      "name": "native-load-keeps-guard-protected-core",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-zh-Hant-1366",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-zh-Hant-1366",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-zh-Hant-900",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-zh-Hant-900",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-zh-Hant-390",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-zh-Hant-390",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-zh-Hans-1366",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-zh-Hans-1366",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-zh-Hans-900",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-zh-Hans-900",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-zh-Hans-390",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-zh-Hans-390",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-en-1366",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-en-1366",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-en-900",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-en-900",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-en-390",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-en-390",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-ja-1366",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-ja-1366",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-ja-900",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-ja-900",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-core-defense-ja-390",
+      "pass": true
+    },
+    {
+      "name": "native-header-hit-btn-battle-line-ja-390",
+      "pass": true
+    },
+    {
+      "name": "real-pause-disables-defense",
+      "pass": true
+    },
+    {
+      "name": "native-guard-fixture-is-visible-and-in-real-attack-range",
+      "pass": true,
+      "fixture": {
+        "id": 20,
+        "hp": 130,
+        "baseHp": 130,
+        "range": 0.9,
+        "distance": 0.6499999999999986,
+        "core": 3000,
+        "visible": true
+      }
+    },
+    {
+      "name": "real-button-focuses-native-core-attacker",
+      "pass": true,
+      "orders": {
+        "orders": [
+          {
+            "id": 15,
+            "manual": true,
+            "target": 20
+          },
+          {
+            "id": 16,
+            "manual": true,
+            "target": 20
+          },
+          {
+            "id": 17,
+            "manual": true,
+            "target": 20
+          },
+          {
+            "id": 18,
+            "manual": true,
+            "target": 20
+          }
+        ],
+        "clicks": [
+          {
+            "rngUnchanged": true,
+            "time": 6.782600000000005
+          }
+        ]
+      }
+    },
+    {
+      "name": "native-damage-defeats-attacker-without-forced-deletion",
+      "pass": true,
+      "outcome": {
+        "time": 30.181699999999704,
+        "core": 2990.8,
+        "hits": [
+          {
+            "time": 7.099300000000007,
+            "target": 1,
+            "source": 20,
+            "team": "enemy",
+            "before": 3000,
+            "after": 2990.8,
+            "kind": "melee"
+          },
+          {
+            "time": 7.282500000000008,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 130,
+            "after": 129,
+            "kind": "projectile"
+          },
+          {
+            "time": 7.38260000000001,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 129,
+            "after": 128,
+            "kind": "projectile"
+          },
+          {
+            "time": 7.41590000000001,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 128,
+            "after": 127,
+            "kind": "melee"
+          },
+          {
+            "time": 7.532600000000011,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 127,
+            "after": 126,
+            "kind": "projectile"
+          },
+          {
+            "time": 7.665900000000012,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 126,
+            "after": 125,
+            "kind": "melee"
+          },
+          {
+            "time": 8.932500000000015,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 125,
+            "after": 124,
+            "kind": "melee"
+          },
+          {
+            "time": 8.965900000000016,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 124,
+            "after": 121,
+            "kind": "melee"
+          },
+          {
+            "time": 9.165900000000015,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 121,
+            "after": 120,
+            "kind": "melee"
+          },
+          {
+            "time": 9.299200000000011,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 120,
+            "after": 119,
+            "kind": "projectile"
+          },
+          {
+            "time": 9.332500000000012,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 119,
+            "after": 118,
+            "kind": "projectile"
+          },
+          {
+            "time": 9.39920000000001,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 118,
+            "after": 117,
+            "kind": "projectile"
+          },
+          {
+            "time": 9.932500000000001,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 117,
+            "after": 114,
+            "kind": "melee"
+          },
+          {
+            "time": 10.449199999999992,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 114,
+            "after": 113,
+            "kind": "melee"
+          },
+          {
+            "time": 10.68239999999999,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 113,
+            "after": 112,
+            "kind": "melee"
+          },
+          {
+            "time": 10.899099999999985,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 112,
+            "after": 109,
+            "kind": "melee"
+          },
+          {
+            "time": 11.149099999999981,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 109,
+            "after": 108,
+            "kind": "projectile"
+          },
+          {
+            "time": 11.149099999999981,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 108,
+            "after": 107,
+            "kind": "projectile"
+          },
+          {
+            "time": 11.31569999999998,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 107,
+            "after": 106,
+            "kind": "projectile"
+          },
+          {
+            "time": 11.432399999999978,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 106,
+            "after": 105,
+            "kind": "projectile"
+          },
+          {
+            "time": 11.849099999999972,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 105,
+            "after": 102,
+            "kind": "melee"
+          },
+          {
+            "time": 11.96569999999997,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 102,
+            "after": 101,
+            "kind": "melee"
+          },
+          {
+            "time": 12.182399999999971,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 101,
+            "after": 100,
+            "kind": "melee"
+          },
+          {
+            "time": 12.815699999999959,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 100,
+            "after": 97,
+            "kind": "melee"
+          },
+          {
+            "time": 12.948999999999957,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 97,
+            "after": 96,
+            "kind": "projectile"
+          },
+          {
+            "time": 13.332299999999952,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 96,
+            "after": 95,
+            "kind": "projectile"
+          },
+          {
+            "time": 13.432299999999953,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 95,
+            "after": 94,
+            "kind": "projectile"
+          },
+          {
+            "time": 13.482299999999952,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 94,
+            "after": 93,
+            "kind": "melee"
+          },
+          {
+            "time": 13.698999999999948,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 93,
+            "after": 92,
+            "kind": "melee"
+          },
+          {
+            "time": 13.782399999999948,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 92,
+            "after": 89,
+            "kind": "melee"
+          },
+          {
+            "time": 14.748899999999932,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 89,
+            "after": 86,
+            "kind": "melee"
+          },
+          {
+            "time": 14.76559999999993,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 86,
+            "after": 85,
+            "kind": "projectile"
+          },
+          {
+            "time": 14.998899999999928,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 85,
+            "after": 84,
+            "kind": "melee"
+          },
+          {
+            "time": 15.215599999999924,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 84,
+            "after": 83,
+            "kind": "melee"
+          },
+          {
+            "time": 15.348899999999924,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 83,
+            "after": 82,
+            "kind": "projectile"
+          },
+          {
+            "time": 15.465499999999924,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 82,
+            "after": 81,
+            "kind": "projectile"
+          },
+          {
+            "time": 15.69889999999992,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 81,
+            "after": 78,
+            "kind": "melee"
+          },
+          {
+            "time": 16.49889999999992,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 78,
+            "after": 77,
+            "kind": "melee"
+          },
+          {
+            "time": 16.582199999999922,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 77,
+            "after": 76,
+            "kind": "projectile"
+          },
+          {
+            "time": 16.582199999999922,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 76,
+            "after": 75,
+            "kind": "projectile"
+          },
+          {
+            "time": 16.648899999999923,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 75,
+            "after": 72,
+            "kind": "melee"
+          },
+          {
+            "time": 16.715599999999924,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 72,
+            "after": 71,
+            "kind": "melee"
+          },
+          {
+            "time": 17.36549999999993,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 71,
+            "after": 70,
+            "kind": "projectile"
+          },
+          {
+            "time": 17.448899999999924,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 70,
+            "after": 69,
+            "kind": "projectile"
+          },
+          {
+            "time": 17.615499999999923,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 69,
+            "after": 66,
+            "kind": "melee"
+          },
+          {
+            "time": 18.01549999999991,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 66,
+            "after": 65,
+            "kind": "melee"
+          },
+          {
+            "time": 18.2321999999999,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 65,
+            "after": 64,
+            "kind": "melee"
+          },
+          {
+            "time": 18.398799999999888,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 64,
+            "after": 63,
+            "kind": "projectile"
+          },
+          {
+            "time": 18.582099999999887,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 63,
+            "after": 60,
+            "kind": "melee"
+          },
+          {
+            "time": 19.382099999999866,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 60,
+            "after": 59,
+            "kind": "projectile"
+          },
+          {
+            "time": 19.465399999999864,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 59,
+            "after": 58,
+            "kind": "projectile"
+          },
+          {
+            "time": 19.515499999999864,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 58,
+            "after": 57,
+            "kind": "melee"
+          },
+          {
+            "time": 19.54879999999986,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 57,
+            "after": 54,
+            "kind": "melee"
+          },
+          {
+            "time": 19.748699999999857,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 54,
+            "after": 53,
+            "kind": "melee"
+          },
+          {
+            "time": 20.19869999999986,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 53,
+            "after": 52,
+            "kind": "projectile"
+          },
+          {
+            "time": 20.51539999999986,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 52,
+            "after": 49,
+            "kind": "melee"
+          },
+          {
+            "time": 21.048699999999872,
+            "target": 20,
+            "source": 16,
+            "team": "player",
+            "before": 49,
+            "after": 48,
+            "kind": "melee"
+          },
+          {
+            "time": 21.248699999999868,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 48,
+            "after": 47,
+            "kind": "melee"
+          },
+          {
+            "time": 21.41529999999987,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 47,
+            "after": 46,
+            "kind": "projectile"
+          },
+          {
+            "time": 21.465299999999868,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 46,
+            "after": 45,
+            "kind": "projectile"
+          },
+          {
+            "time": 21.481999999999868,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 45,
+            "after": 42,
+            "kind": "melee"
+          },
+          {
+            "time": 22.015399999999847,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 42,
+            "after": 41,
+            "kind": "projectile"
+          },
+          {
+            "time": 22.015399999999847,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 41,
+            "after": 40,
+            "kind": "projectile"
+          },
+          {
+            "time": 22.448699999999832,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 40,
+            "after": 37,
+            "kind": "melee"
+          },
+          {
+            "time": 22.765299999999822,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 37,
+            "after": 36,
+            "kind": "melee"
+          },
+          {
+            "time": 23.415299999999803,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 36,
+            "after": 33,
+            "kind": "melee"
+          },
+          {
+            "time": 23.415299999999803,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 33,
+            "after": 32,
+            "kind": "projectile"
+          },
+          {
+            "time": 23.481999999999807,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 32,
+            "after": 31,
+            "kind": "projectile"
+          },
+          {
+            "time": 23.831899999999795,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 31,
+            "after": 30,
+            "kind": "projectile"
+          },
+          {
+            "time": 24.281899999999794,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 30,
+            "after": 29,
+            "kind": "melee"
+          },
+          {
+            "time": 24.381899999999796,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 29,
+            "after": 26,
+            "kind": "melee"
+          },
+          {
+            "time": 25.34859999999979,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 26,
+            "after": 23,
+            "kind": "melee"
+          },
+          {
+            "time": 25.431899999999793,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 23,
+            "after": 22,
+            "kind": "projectile"
+          },
+          {
+            "time": 25.498599999999794,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 22,
+            "after": 21,
+            "kind": "projectile"
+          },
+          {
+            "time": 25.66509999999979,
+            "target": 20,
+            "source": 17,
+            "team": "player",
+            "before": 21,
+            "after": 20,
+            "kind": "projectile"
+          },
+          {
+            "time": 25.781899999999787,
+            "target": 20,
+            "source": 15,
+            "team": "player",
+            "before": 20,
+            "after": 19,
+            "kind": "melee"
+          },
+          {
+            "time": 26.315099999999774,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 19,
+            "after": 16,
+            "kind": "melee"
+          },
+          {
+            "time": 27.281699999999734,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 16,
+            "after": 13,
+            "kind": "melee"
+          },
+          {
+            "time": 27.498399999999727,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 13,
+            "after": 12,
+            "kind": "projectile"
+          },
+          {
+            "time": 27.51499999999973,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 12,
+            "after": 11,
+            "kind": "projectile"
+          },
+          {
+            "time": 28.24839999999972,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 11,
+            "after": 8,
+            "kind": "melee"
+          },
+          {
+            "time": 29.214999999999726,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 8,
+            "after": 5,
+            "kind": "melee"
+          },
+          {
+            "time": 29.498399999999712,
+            "target": 20,
+            "source": 5,
+            "team": "player",
+            "before": 5,
+            "after": 4,
+            "kind": "projectile"
+          },
+          {
+            "time": 29.548399999999713,
+            "target": 20,
+            "source": 1,
+            "team": "player",
+            "before": 4,
+            "after": 3,
+            "kind": "projectile"
+          },
+          {
+            "time": 30.181699999999704,
+            "target": 20,
+            "source": 19,
+            "team": "player",
+            "before": 3,
+            "after": 0,
+            "kind": "melee"
+          }
+        ],
+        "alive": false
+      }
+    },
+    {
+      "name": "visible-empty-manual-move-destination",
+      "pass": false
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,8 @@
+{
+  "classification": "TEST_FIXTURE_FAILURE",
+  "source": "uncommitted core-defense test prototype on base52f0fcaa42e2a161e67360a8838e9a90c1f3bfd8",
+  "problem": "200-unit Node fixture used an unbounded spawn-until-count loop at one point. Native freeSpawn can return null when its bounded local search is saturated.",
+  "termination": "Owned test PID293621: TERM did not exit while JS loop blocked; KILL used on that exact test process. No Git, server, deployment or other-owner process was stopped.",
+  "gameplay_regression": "NOT_ESTABLISHED",
+  "fix": "Bounded grid fixture; clear controlled Node arena to isolate batch dispatch. Native map/collision remain enabled for actual Chromium tests."
+}
