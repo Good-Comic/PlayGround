@@ -405,4 +405,4 @@ ui.rallyObjective=installRallyObjective(game,ui,renderer);
 
 ui.coreDefense=installCoreDefense(game,ui);
 ui.commandReadback=installCommandReadback(game,ui,renderer);
-ui.coreDamageReadback=installCoreDamageReadback(game,ui);
+ui.coreDamageReadback=installCoreDamageReadback(game,ui,renderer);
