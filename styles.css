@@ -897,3 +897,12 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 .lining-up #battle-actions{background:transparent;border-color:transparent;pointer-events:none;}
 .lining-up #battle-actions .battle-head{pointer-events:auto;background:#1b2e2ee8;padding:2px;}
 .lining-up #battle-actions .battle-buttons,.lining-up #battle-actions .battle-hint{visibility:hidden;}
+
+#rally-objective{position:fixed;top:244px;left:18px;width:280px;padding:10px 12px;background:#282318ee;border:1px solid #c7a55f;border-left:4px solid #e4b84c;color:#fff0c4;z-index:5;font-size:12px;box-shadow:0 3px 12px #0006;}
+#rally-objective[hidden]{display:none!important;}
+#rally-objective strong{font-size:15px;}#rally-objective p{margin:6px 0;line-height:1.4;}
+#rally-objective button{padding:7px 12px;background:#473a24;color:#ffedb8;border:1px solid #b89551;cursor:pointer;}
+#rally-objective button:disabled{opacity:.5;cursor:default;}
+#rally-objective[data-status=broken]{border-left-color:#90d4c3;}
+.planning-mode #rally-objective,.lining-up #rally-objective{visibility:hidden;}
+@media(max-width:760px){#rally-objective{top:120px;left:8px;width:180px;padding:8px;font-size:11px;}#rally-objective strong{font-size:13px;}}

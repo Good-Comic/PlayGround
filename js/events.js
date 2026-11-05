@@ -64,7 +64,7 @@ export const EVENT_MODULES = {
     tags: ['fire'], mods: {},
   },
   RALLY: {
-    id: 'RALLY', name: 'Rally', desc: 'Enemy attack speed increases by 10%.',
+    id: 'RALLY', name: 'Rally', desc: 'An existing flag bearer grants nearby enemies +10% attack speed within 4 tiles for 15 seconds. Defeat the bearer to end it; Boss bonuses do not stack.',
     tags: [], mods: { attackSpeedMul: 1.10 },
   },
   SCOUT: {
