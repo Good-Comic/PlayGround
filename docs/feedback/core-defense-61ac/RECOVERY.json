@@ -4,15 +4,21 @@
   "branch": "codex/riftwatch-core-defense-61ac",
   "claim_version": 271,
   "claim_receipt": "00ba804b97c4b6d21c4a57804306904c51da22e9",
-  "CHECKPOINT_SHA": "013753554c74b563d39c779640839f1f89bdba95",
-  "status": "CONTROLLED_VALIDATED_NATURAL_IN_PROGRESS",
+  "CHECKPOINT_SHA": "ec19b802a33a7bed5c3cf54d77bcae8cd76251d1",
+  "status": "FEATURES_VALIDATED_WITH_GAMEPLAY_LIMITATIONS",
   "report_language": "zh-Hant-TW",
   "tests": {
-    "node_pass": 92,
+    "node_pass": 95,
     "chromium_checks": 37,
     "hashes_pass": 159,
     "performance": "INCONCLUSIVE",
-    "natural_FRK_with_defense": "IN_PROGRESS"
+    "natural_FRK_with_defense": "NATURAL_DEFEAT_WAVE5",
+    "chromium_initial_checks": 37,
+    "chromium_hero_parallel_checks": 8,
+    "bulk_native_clicks": 6,
+    "natural_RALLY_timing": "OBSERVED_ACTIVE_THEN_EXPIRED",
+    "natural_bearer_kill": "NOT_ACHIEVED",
+    "natural_wave5_victory": "FAIL"
   },
   "historical_failures_preserved": [
     "NATURAL_DEFEAT_WAVE4_BEFORE_DEFENSE",
@@ -20,14 +26,51 @@
     "TEST_FIXTURE_VOLATILE_SAVED_AT_2_FAILURES",
     "BROWSER_FIXTURE_VISION_PROBE_MISSING_ALIVE"
   ],
-  "STOP_REASON": "CONTINUING_NATURAL_VALIDATION",
+  "STOP_REASON": "AGENT_EARLY_STOP",
   "EXECUTION_DURATION": {
-    "seconds": 1717.7,
-    "scope": "援護任務開始至本受控報告；自然重測仍在執行"
+    "seconds": 10834.6,
+    "scope": "戰線任務起始快照至此最終資料整理，涵蓋戰線、旗手、援護三切片；不含更早工作及稍後推送／釋放",
+    "current_slice_seconds": 3865.7
   },
-  "NEXT_AUTHORIZED_TASK": "完成使用手動援護的正常戰役觀察，保留敗北、第五波／旗手與Boss未完成的實際狀態",
+  "NEXT_AUTHORIZED_TASK": "獨立認領正常戰役中食物分配、城心通道及部隊接敵的診斷；先重現，再修正真實缺陷。另以更完整戰術驗證第五波旗手與Boss。",
   "AUTO_RESUME_AVAILABLE": false,
   "QUOTA_PERCENT": "UNKNOWN",
   "feed": "OTHER_OWNER_OWNED_NO_WRITE",
-  "formal_rc_status": "UNCHANGED"
+  "formal_rc_status": "UNCHANGED",
+  "natural_final": {
+    "time": 588.3797000000257,
+    "phase": "defeat",
+    "wave": 5,
+    "clock": 68.69449999999819,
+    "cleared": 4,
+    "hero": 550.5999999999999,
+    "flag": {
+      "id": 159,
+      "type": "guard",
+      "hp": 145,
+      "alive": true,
+      "visible": true
+    },
+    "resources": {
+      "food": 39.192662660833,
+      "wood": 1527.6866484104985,
+      "gold": 700.7330474867475,
+      "stone": 736.2219316605491
+    },
+    "soldiers": 13,
+    "villagers": 18,
+    "age": 3,
+    "boons": [
+      "zeal",
+      "resonant_strings",
+      "war_banner",
+      "butcher"
+    ],
+    "wall_seconds": 600.44,
+    "source": "013753554c74b563d39c779640839f1f89bdba95"
+  },
+  "stop_explanation": "本輪主動交付三項已保存並驗證的戰鬥改善；仍有合法授權的自然戰役與經濟／通道診斷工作，未觀察到平台、環境或額度阻擋，不將結束偽稱為強制中斷。",
+  "run_status": "SCHEDULED_RESUME_EXECUTED",
+  "duplicate_wake_status": "RESUME_SKIPPED_ACTIVE_TASK",
+  "ownership_release": "本報告推送後僅釋放自己的CORE-DEFENSE-61AC，實際版本／收據以遠端與最終回報為準"
 }

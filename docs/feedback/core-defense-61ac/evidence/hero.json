@@ -1,0 +1,94 @@
+{
+  "source": "ec19b802a33a7bed5c3cf54d77bcae8cd76251d1",
+  "scope": "Fresh native CHN menu; real hero toggle, held WASD plus mouse core-defense, native E and Save/Load. Read-only legal direction choice and synchronous click observation only; no gameplay state injection.",
+  "rows": [
+    {
+      "name": "native-hero-control-starts",
+      "pass": true
+    },
+    {
+      "name": "visible-native-route-for-held-key",
+      "pass": true
+    },
+    {
+      "name": "real-mouse-defense-keeps-direct-control-view-and-selection",
+      "pass": true,
+      "observation": {
+        "click": {
+          "before": {
+            "control": true,
+            "selection": [
+              19
+            ],
+            "camera": "{\"x\":99.62579715625053,\"y\":779.5681695092909,\"targetX\":115.27556779890585,\"targetY\":779.2,\"zoom\":1.1198568942983544,\"targetZoom\":1.12}",
+            "keys": [
+              "d"
+            ],
+            "rng": -535365781
+          },
+          "control": true,
+          "selection": [
+            19
+          ],
+          "sameCamera": true,
+          "sameRng": true,
+          "keys": [
+            "d"
+          ],
+          "x": 26.211405031411562,
+          "y": 22.488594968588437,
+          "army": [
+            {
+              "id": 15,
+              "guard": true,
+              "protectedId": 1
+            },
+            {
+              "id": 16,
+              "guard": true,
+              "protectedId": 1
+            },
+            {
+              "id": 17,
+              "guard": true,
+              "protectedId": 1
+            },
+            {
+              "id": 18,
+              "guard": true,
+              "protectedId": 1
+            }
+          ],
+          "core": 1
+        },
+        "hero": {
+          "x": 26.96240546604027,
+          "y": 21.73759453395973
+        },
+        "held": []
+      }
+    },
+    {
+      "name": "native-army-receives-guard-while-hero-keeps-moving",
+      "pass": true,
+      "movementAfterClick": 1.0620750000000072
+    },
+    {
+      "name": "native-key-release-clears-movement",
+      "pass": true
+    },
+    {
+      "name": "native-hero-skill-remains-usable",
+      "pass": true
+    },
+    {
+      "name": "native-continue-keeps-hero-control-and-army-guard",
+      "pass": true
+    },
+    {
+      "name": "no-page-errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
