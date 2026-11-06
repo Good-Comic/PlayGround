@@ -1,0 +1,45 @@
+✔ 空陣列與單圓原樣保留 (1.075822ms)
+✔ 完整單圓包含只省略被覆蓋的來源 (0.659796ms)
+✔ 相交但仍有外露圓弧的來源不能省略 (0.239264ms)
+✔ 多圓共同覆蓋可省略任一單圓都無法包含的來源 (6.830559ms)
+✔ 同半徑交疊、重合圓與重複引用都保留 AA 邊界 (0.210372ms)
+✖ 互相依賴的共同覆蓋不能將兩個中心來源一起刪除 (11.192684ms)
+✔ 結果保持原順序、物件引用與任意附加欄位 (0.404759ms)
+✔ 單圓包含必須留足指定的 AA 餘裕 (0.172976ms)
+✔ 共同覆蓋也必須涵蓋 AA 擴張邊界 (0.219996ms)
+✔ 實際投影中心的高低差不能被當成相同圓心 (0.251252ms)
+✔ 負座標、極大及極小尺度都維持包含判定 (0.232284ms)
+✔ 中間值溢位與次正規浮點數無法證明覆蓋時保留來源 (0.111706ms)
+✔ 任一座標、半徑或 AA 餘裕無效即交回整個原陣列 (0.138985ms)
+✔ 固定種子圓群省略繪製後的獨立聯集取樣一致 (33.37394ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 62.596827
+
+✖ failing tests:
+
+test at tests/vision-mask.test.mjs:74:1
+✖ 互相依賴的共同覆蓋不能將兩個中心來源一起刪除 (11.192684ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-vision-mask-98f98a19/worktree/tests/vision-mask.test.mjs:86:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

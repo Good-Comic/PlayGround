@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: 沙暴使用模擬時間並結束 / sandstorm expires on simulation time
+ok 1 - 沙暴使用模擬時間並結束 / sandstorm expires on simulation time
+  ---
+  duration_ms: 168.051494
+  type: 'test'
+  ...
+# Subtest: 暫停與選卡不減少剩餘時間 / pause and boon freeze remaining time
+ok 2 - 暫停與選卡不減少剩餘時間 / pause and boon freeze remaining time
+  ---
+  duration_ms: 32.507402
+  type: 'test'
+  ...
+# Subtest: 讀檔延續剩餘時間 / save load preserves remaining time
+ok 3 - 讀檔延續剩餘時間 / save load preserves remaining time
+  ---
+  duration_ms: 75.35594
+  type: 'test'
+  ...
+# Subtest: 重複事件沒有過期現實計時器 / repeated events have no stale wall timer
+ok 4 - 重複事件沒有過期現實計時器 / repeated events have no stale wall timer
+  ---
+  duration_ms: 68.542605
+  type: 'test'
+  ...
+# Subtest: 觸發不消耗RNG且不改其他事件 / trigger preserves RNG and other effects
+ok 5 - 觸發不消耗RNG且不改其他事件 / trigger preserves RNG and other effects
+  ---
+  duration_ms: 5.406473
+  type: 'test'
+  ...
+# Subtest: 雙方實際視野半徑減少20% / both teams lose20% sight
+ok 6 - 雙方實際視野半徑減少20% / both teams lose20% sight
+  ---
+  duration_ms: 0.384669
+  type: 'test'
+  ...
+# Subtest: 文明視野加成先套用，建築預設6，不改射程 / bonuses before multiplier; building default6; no range mutation
+ok 7 - 文明視野加成先套用，建築預設6，不改射程 / bonuses before multiplier; building default6; no range mutation
+  ---
+  duration_ms: 0.134038
+  type: 'test'
+  ...
+# Subtest: 敵軍失去視野不追蹤單位並可重新獲取 / enemy loses hidden unit and reacquires after storm
+ok 8 - 敵軍失去視野不追蹤單位並可重新獲取 / enemy loses hidden unit and reacquires after storm
+  ---
+  duration_ms: 6.185026
+  type: 'test'
+  ...
+# Subtest: 讀檔視野與RNG不變 / restored sight and RNG remain unchanged
+ok 9 - 讀檔視野與RNG不變 / restored sight and RNG remain unchanged
+  ---
+  duration_ms: 12.282172
+  type: 'test'
+  ...
+# Subtest: 空陣列與單圓原樣保留
+ok 10 - 空陣列與單圓原樣保留
+  ---
+  duration_ms: 0.39896
+  type: 'test'
+  ...
+# Subtest: 完整單圓包含只省略被覆蓋的來源
+ok 11 - 完整單圓包含只省略被覆蓋的來源
+  ---
+  duration_ms: 0.725344
+  type: 'test'
+  ...
+# Subtest: 相交但仍有外露圓弧的來源不能省略
+ok 12 - 相交但仍有外露圓弧的來源不能省略
+  ---
+  duration_ms: 0.198374
+  type: 'test'
+  ...
+# Subtest: 多圓共同覆蓋可省略任一單圓都無法包含的來源
+ok 13 - 多圓共同覆蓋可省略任一單圓都無法包含的來源
+  ---
+  duration_ms: 11.113401
+  type: 'test'
+  ...
+# Subtest: 同半徑交疊、重合圓與重複引用都保留 AA 邊界
+ok 14 - 同半徑交疊、重合圓與重複引用都保留 AA 邊界
+  ---
+  duration_ms: 0.174739
+  type: 'test'
+  ...
+# Subtest: 原外環配置允許保守保留，且聯集不變、中心來源不會全刪
+ok 15 - 原外環配置允許保守保留，且聯集不變、中心來源不會全刪
+  ---
+  duration_ms: 12.473354
+  type: 'test'
+  ...
+# Subtest: 加大外環重疊會觸發刪除，仍不能將兩個中心來源一起刪除
+ok 16 - 加大外環重疊會觸發刪除，仍不能將兩個中心來源一起刪除
+  ---
+  duration_ms: 12.130687
+  type: 'test'
+  ...
+# Subtest: 結果保持原順序、物件引用與任意附加欄位
+ok 17 - 結果保持原順序、物件引用與任意附加欄位
+  ---
+  duration_ms: 0.386703
+  type: 'test'
+  ...
+# Subtest: 單圓包含必須留足指定的 AA 餘裕
+ok 18 - 單圓包含必須留足指定的 AA 餘裕
+  ---
+  duration_ms: 0.122562
+  type: 'test'
+  ...
+# Subtest: 共同覆蓋也必須涵蓋 AA 擴張邊界
+ok 19 - 共同覆蓋也必須涵蓋 AA 擴張邊界
+  ---
+  duration_ms: 0.187668
+  type: 'test'
+  ...
+# Subtest: 實際投影中心的高低差不能被當成相同圓心
+ok 20 - 實際投影中心的高低差不能被當成相同圓心
+  ---
+  duration_ms: 0.08785
+  type: 'test'
+  ...
+# Subtest: 負座標、極大及極小尺度都維持包含判定
+ok 21 - 負座標、極大及極小尺度都維持包含判定
+  ---
+  duration_ms: 0.143242
+  type: 'test'
+  ...
+# Subtest: 中間值溢位與次正規浮點數無法證明覆蓋時保留來源
+ok 22 - 中間值溢位與次正規浮點數無法證明覆蓋時保留來源
+  ---
+  duration_ms: 0.143863
+  type: 'test'
+  ...
+# Subtest: 任一座標、半徑或 AA 餘裕無效即交回整個原陣列
+ok 23 - 任一座標、半徑或 AA 餘裕無效即交回整個原陣列
+  ---
+  duration_ms: 0.131404
+  type: 'test'
+  ...
+# Subtest: 固定種子圓群省略繪製後的獨立聯集取樣一致
+ok 24 - 固定種子圓群省略繪製後的獨立聯集取樣一致
+  ---
+  duration_ms: 27.860492
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 510.214052

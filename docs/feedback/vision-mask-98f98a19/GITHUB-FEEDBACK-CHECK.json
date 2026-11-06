@@ -1,0 +1,103 @@
+{
+  "queried_at_utc": "2026-11-06T04:20:03.039819+00:00",
+  "status": "READ_ONLY_SUCCESS",
+  "issues": [
+    {
+      "number": 20,
+      "title": "Riftwatch — pre-v3.0 GAME FIRST + PixelFX Phase 2 isolated OmGitHub public publish",
+      "updated_at": "2026-11-03T08:48:15Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/20",
+      "body": "# Riftwatch — new isolated OmGitHub public preview and publication (pre-v3.0)\n\n**User authorization (2026-11-03): Publish the accumulated GAME FIRST updates on omgithub.com using the previously successful isolated Issue workflow. This is a public preview/publication, not a v3.0 milestone certification.**\n\nProject: 《世紀帝國二：裂境守望》 / Riftwatch\nRepository: `Good-Comic/PlayGround`\nExact source branch: `codex/riftwatch-pixelfx-phase2-518be895`\n**Immutable source commit: `904c70e7e5b7230f0f40f3f303668e90be3c89e1`**\nPrevious internal RC report (preserve): `c55a054291a088a66ac809e5a243e3773527daa9`\n\n## Source and build integrity — mandatory\n\n1. On initialization first run `git rev-parse HEAD`; it **must exactly equal** `904c70e7e5b7230f0f40f3f303668e90be3c89e1`. If not, return `OMGITHUB_SOURCE_MISMATCH`, stop and do **not** publish an old checkout.\n2. Use the existing official `tools/qa/build_playtest.py` process to generate a **new isolated runtime artifact** from this exact source. Verify `build-metadata.json` source SHA, all resource SHA-256 and runtime integrity; do not use a raw repo directory as the served artifact. The Phase 2 build previously reported 143 verified files: use the actual newly built manifest count, never hardcode old 28/128 counts.\n3. Serve the verified artifact on the official local port used by OmGitHub (historically `127.0.0.1:3000`, verify current environment contract); provide the correct `#btn-start` and full browser game. Make startup robust to the environment's installed Node/Python and avoid blocking the official tunnel/proxy.\n4. Request a **new isolate"
+    },
+    {
+      "number": 19,
+      "title": "Riftwatch v2.3.3 isolated Preview validation",
+      "updated_at": "2026-10-27T04:50:23Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/19",
+      "body": "請建立《世紀帝國二：裂境守望》v2.3.3 的隔離 OmGitHub Preview。本次只處理精確來源 Artifact 與 Preview，不新增遊戲功能。\n\n啟動後第一個 Git 操作必須是：\n\n```bash\ngit rev-parse HEAD\n```\n\n結果必須等於：\n\n`055fb12c92e3d48945315937058f1423b732241c`\n\n若不一致，立即停止，不接受該次結果，明確回報 `OMGITHUB_SOURCE_MISMATCH`；不得修改 main、Issue #17、Issue #18、既有 Checkpoints、Pages 或任何既有 Preview。\n\n來源一致時：\n\n1. 以該完整 SHA 執行既有 `tools/qa/build_playtest.py`，在全新目錄產生完整 28 檔遊戲 Artifact。\n2. 驗證 `build-metadata.json` 的 Commit、28 個資源 SHA-256 及執行時 `SHA256_MATCH_28_FILES`。\n3. 讓官方 `127.0.0.1:3000` 直接提供生成後的 Artifact；不得提供 Repository 原始工作目錄，不得顯示 `PLAYTEST · BUILD BLOCKED`。\n4. 如需調整本次隔離 OpenCode 分支的 `start.sh`，只能讓它重新生成／驗證指定 SHA Artifact 並在端口 3000 提供服務；不可修改遊戲規則或來源分支。\n5. 保持服務可供官方 Tunnel 與 Publication 偵測，完成公開 Preview 建立。\n6. 以公開 Preview 做真實 Chromium 驗收：啟動、WASD、Shift+A、Rally Point、雙擊同類、英雄技能範圍、新版兵種輪廓、動態 BGM／關鍵音效、建築、訓練、自然第一波、Save/Load、四語。\n7. 分別記錄來源 SHA、Artifact Build SHA、OpenCode／部署 Commit、公開 URL、Console、Page Error、失敗請求與已知問題。\n\n低 FPS 模擬時間流失、嚴格 Save/Load 非確定性、歷史效能 FAIL、裂界原型自然當機缺少重現與 `HARDWARE_TEST_PENDING` 必須保留。不得以本地 Chromium 冒充公開 Preview 驗收。\n\n<!-- omgithub-request:v1 {\"branch\":\"codex/riftwatch-v233-visual-silhouettes\"} -->\n"
+    },
+    {
+      "number": 18,
+      "title": "Riftwatch latest candidate continuation — OmGitHub upgrade",
+      "updated_at": "2026-10-26T19:03:49Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/18",
+      "body": "請從已驗證的 Riftwatch 最新候選分支接續開發，不要從 Legacy Issue #17 的舊版重新開始。\n\n啟動前必須核對：\n\n- `git rev-parse HEAD` 必須等於 `45435a323c729a28da1de454a3e53740fc9159f2`。\n- 讀取最新 Recovery Manifest、Handoff、Progress Feed、Strategy v2.3.0 與現有 GDD。\n- 保留 Issue #17、`opencode-checkpoints/17`、舊 Preview 及既有 Pages SHA 目錄，不得覆寫。\n- 不得修改 `main`、Force Push 或改寫既有 Checkpoint。\n\n這個新 Issue 是從最新候選版本建立的獨立 OmGitHub 接續工作。先確認遊戲可啟動，並核對 Build／Git SHA；後續採 GAME FIRST 原則，從 Handoff 的下一個最小未完成切片繼續。每個切片必須測試、正常 Commit／Push，並更新 Recovery、Handoff 與 Progress Feed。不得把本地測試冒充 OmGitHub 線上驗收。\n\n目前已知且不得隱藏：低 FPS 模擬時間與嚴格 Save/Load 確定性仍需研究；歷史效能 FAIL 與 `HARDWARE_TEST_PENDING` 保留。\n\n<!-- omgithub-request:v1 {\"branch\":\"codex/riftwatch-omgithub17-upgrade-candidate\"} -->\n"
+    },
+    {
+      "number": 17,
+      "title": "請依OMGitHub_START.md及docs/riftwatch/spec內14份完整工作檔，實際修改目前已開啟的RTS遊戲專案，持續實作、測試與修正，不只提供計畫。",
+      "updated_at": "2026-10-24T19:36:28Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/17",
+      "body": "請依OMGitHub_START.md及docs/riftwatch/spec內14份完整工作檔，實際修改目前已開啟的RTS遊戲專案，持續實作、測試與修正，不只提供計畫。\n\n遊戲名稱：繁中「世紀帝國二：裂境守望」；簡中「世纪帝国二：裂境守望」；English「Age of Empires II: Riftwatch」；日本語「エイジ オブ エンパイア II：裂境の守り」。保留Start Game及#btn-start。\n\n先檢查正確專案及使用者修改，保留README.md、Agents.md、AGENTS.md、start.sh、capture.sh與window.ageOfAsh。沿用既有HTML/CSS/JS ES modules，不擅自換框架。不要假設歷史工作目錄、port或tmux仍有效。\n\n先執行node tools/riftwatch/check-package.mjs，再用node tools/riftwatch/read-spec.mjs list查看規格；用read PART OFFSET 6000分段讀。每次只讀一段，按NEXT_OFFSET接續到EOF，再讀下一份；不要一次讀全部。工具不可用就用內建檔案工具分段讀。\n\n完成資料契約與相容遷移後，依序對齊兵種／建築／戰鬥／經濟、十波與Boss、24模組及160實例、文明／C01–C32／地貌／宿敵導演、四語／操作／設定、存讀／回放／GM、視覺／千人性能與截圖。規格626key是來源母表，不是強迫專案總key恰好626。\n\n每階段記錄真實驗收證據與下一步後繼續。保留現有四語、導演與十波可玩功能。未完成的原生引擎、母語LQA、完整素材和指定硬體性能如實標記。若只有本套件而沒有原始碼，先要求原專案位置，不能假造已修改。\n\n<!-- omgithub-request:v1 {\"branch\":\"opencode-resume/4fabd2594ea403f912e7\"} -->\n\n<!-- omgithub-resume:v1 {\"source_repository\":\"Good-Comic/PlayGround\",\"source_issue\":11,\"checkpoint_tag\":\"opencode-checkpoint-11\",\"source_commit\":\"15b8a9c8065652e295d3e42fd10bb48bce76ff70\",\"user_prompt\":\"請依OMGitHub_START.md及docs/riftwatch/spec內14份完整工作檔，實際修改目前已開啟的RTS遊戲專案，持續實作、測試與修正，不只提供計畫。\\n\\n遊戲名稱：繁中「世紀帝國二：裂境守望」；簡中「世纪帝国二：裂境守望」；English「Age of Empires II: Riftwatch」；日本語「エイジ オブ エンパイア II：裂境の守り」。保留Start Game及#btn-start。\\n\\n先檢查正確專案及使用者修改，保留README.md、Agents.md、AGENTS.md、start.sh、capture.sh與window.ageOfAsh。沿用既有HTML/CSS/JS ES modules，不擅自換框架。不要假設歷史工作目錄、port或tmux仍有效。\\n\\n先執行node tools/riftwatch/check-package.mjs，再用node tools/riftwatch/read-spec.mjs list查看規格；用read PART OFFSET 6000分段讀。每次只讀一段，按NEXT_OFFSET接續到EOF，再讀下一份；不要一次讀全部。工具不可用就用內建檔案工具分段讀。\\n\\n完成資料契約與相容遷移後，依序對齊兵種／建築／戰鬥／"
+    },
+    {
+      "number": 16,
+      "title": "請依OMGitHub_START.md及docs/riftwatch/spec內14份完整工作檔，實際修改目前已開啟的RTS遊戲專案，持續實作、測試與修正，不只提供計畫。",
+      "updated_at": "2026-10-23T16:48:20Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/16",
+      "body": "請依OMGitHub_START.md及docs/riftwatch/spec內14份完整工作檔，實際修改目前已開啟的RTS遊戲專案，持續實作、測試與修正，不只提供計畫。\n\n遊戲名稱：繁中「世紀帝國二：裂境守望」；簡中「世纪帝国二：裂境守望」；English「Age of Empires II: Riftwatch」；日本語「エイジ オブ エンパイア II：裂境の守り」。保留Start Game及#btn-start。\n\n先檢查正確專案及使用者修改，保留README.md、Agents.md、AGENTS.md、start.sh、capture.sh與window.ageOfAsh。沿用既有HTML/CSS/JS ES modules，不擅自換框架。不要假設歷史工作目錄、port或tmux仍有效。\n\n先執行node tools/riftwatch/check-package.mjs，再用node tools/riftwatch/read-spec.mjs list查看規格；用read PART OFFSET 6000分段讀。每次只讀一段，按NEXT_OFFSET接續到EOF，再讀下一份；不要一次讀全部。工具不可用就用內建檔案工具分段讀。\n\n完成資料契約與相容遷移後，依序對齊兵種／建築／戰鬥／經濟、十波與Boss、24模組及160實例、文明／C01–C32／地貌／宿敵導演、四語／操作／設定、存讀／回放／GM、視覺／千人性能與截圖。規格626key是來源母表，不是強迫專案總key恰好626。\n\n每階段記錄真實驗收證據與下一步後繼續。保留現有四語、導演與十波可玩功能。未完成的原生引擎、母語LQA、完整素材和指定硬體性能如實標記。若只有本套件而沒有原始碼，先要求原專案位置，不能假造已修改。\n\n<!-- omgithub-request:v1 {\"branch\":\"opencode-resume/4fabd2594ea403f912e7\"} -->\n\n<!-- omgithub-resume:v1 {\"source_repository\":\"Good-Comic/PlayGround\",\"source_issue\":11,\"checkpoint_tag\":\"opencode-checkpoint-11\",\"source_commit\":\"15b8a9c8065652e295d3e42fd10bb48bce76ff70\",\"user_prompt\":\"請依OMGitHub_START.md及docs/riftwatch/spec內14份完整工作檔，實際修改目前已開啟的RTS遊戲專案，持續實作、測試與修正，不只提供計畫。\\n\\n遊戲名稱：繁中「世紀帝國二：裂境守望」；簡中「世纪帝国二：裂境守望」；English「Age of Empires II: Riftwatch」；日本語「エイジ オブ エンパイア II：裂境の守り」。保留Start Game及#btn-start。\\n\\n先檢查正確專案及使用者修改，保留README.md、Agents.md、AGENTS.md、start.sh、capture.sh與window.ageOfAsh。沿用既有HTML/CSS/JS ES modules，不擅自換框架。不要假設歷史工作目錄、port或tmux仍有效。\\n\\n先執行node tools/riftwatch/check-package.mjs，再用node tools/riftwatch/read-spec.mjs list查看規格；用read PART OFFSET 6000分段讀。每次只讀一段，按NEXT_OFFSET接續到EOF，再讀下一份；不要一次讀全部。工具不可用就用內建檔案工具分段讀。\\n\\n完成資料契約與相容遷移後，依序對齊兵種／建築／戰鬥／"
+    },
+    {
+      "number": 15,
+      "title": "請依OMGitHub_START.md及docs/riftwatch/spec內14份完整工作檔，實際修改目前已開啟的RTS遊戲專案，持續實作、測試與修正，不只提供計畫。",
+      "updated_at": "2026-10-23T10:12:13Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/15",
+      "body": "請依OMGitHub_START.md及docs/riftwatch/spec內14份完整工作檔，實際修改目前已開啟的RTS遊戲專案，持續實作、測試與修正，不只提供計畫。\n\n遊戲名稱：繁中「世紀帝國二：裂境守望」；簡中「世纪帝国二：裂境守望」；English「Age of Empires II: Riftwatch」；日本語「エイジ オブ エンパイア II：裂境の守り」。保留Start Game及#btn-start。\n\n先檢查正確專案及使用者修改，保留README.md、Agents.md、AGENTS.md、start.sh、capture.sh與window.ageOfAsh。沿用既有HTML/CSS/JS ES modules，不擅自換框架。不要假設歷史工作目錄、port或tmux仍有效。\n\n先執行node tools/riftwatch/check-package.mjs，再用node tools/riftwatch/read-spec.mjs list查看規格；用read PART OFFSET 6000分段讀。每次只讀一段，按NEXT_OFFSET接續到EOF，再讀下一份；不要一次讀全部。工具不可用就用內建檔案工具分段讀。\n\n完成資料契約與相容遷移後，依序對齊兵種／建築／戰鬥／經濟、十波與Boss、24模組及160實例、文明／C01–C32／地貌／宿敵導演、四語／操作／設定、存讀／回放／GM、視覺／千人性能與截圖。規格626key是來源母表，不是強迫專案總key恰好626。\n\n每階段記錄真實驗收證據與下一步後繼續。保留現有四語、導演與十波可玩功能。未完成的原生引擎、母語LQA、完整素材和指定硬體性能如實標記。若只有本套件而沒有原始碼，先要求原專案位置，不能假造已修改。\n\n<!-- omgithub-request:v1 {\"branch\":\"opencode-resume/4fabd2594ea403f912e7\"} -->\n\n<!-- omgithub-resume:v1 {\"source_repository\":\"Good-Comic/PlayGround\",\"source_issue\":11,\"checkpoint_tag\":\"opencode-checkpoint-11\",\"source_commit\":\"15b8a9c8065652e295d3e42fd10bb48bce76ff70\",\"user_prompt\":\"請依OMGitHub_START.md及docs/riftwatch/spec內14份完整工作檔，實際修改目前已開啟的RTS遊戲專案，持續實作、測試與修正，不只提供計畫。\\n\\n遊戲名稱：繁中「世紀帝國二：裂境守望」；簡中「世纪帝国二：裂境守望」；English「Age of Empires II: Riftwatch」；日本語「エイジ オブ エンパイア II：裂境の守り」。保留Start Game及#btn-start。\\n\\n先檢查正確專案及使用者修改，保留README.md、Agents.md、AGENTS.md、start.sh、capture.sh與window.ageOfAsh。沿用既有HTML/CSS/JS ES modules，不擅自換框架。不要假設歷史工作目錄、port或tmux仍有效。\\n\\n先執行node tools/riftwatch/check-package.mjs，再用node tools/riftwatch/read-spec.mjs list查看規格；用read PART OFFSET 6000分段讀。每次只讀一段，按NEXT_OFFSET接續到EOF，再讀下一份；不要一次讀全部。工具不可用就用內建檔案工具分段讀。\\n\\n完成資料契約與相容遷移後，依序對齊兵種／建築／戰鬥／"
+    },
+    {
+      "number": 14,
+      "title": "# 《世紀帝國二：裂境守望》v3.0 規格對齊：AI Agent 執行工作檔",
+      "updated_at": "2026-10-23T04:08:14Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/14",
+      "body": "# 《世紀帝國二：裂境守望》v3.0 規格對齊：AI Agent 執行工作檔\n\n版本：1.1｜日期：2026-10-23（Asia/Taipei）｜需求提出者：Jarvis  \n目標產品／繁中可見標題：**世紀帝國二：裂境守望**｜英文：**Age of Empires II: Riftwatch**｜日文：**エイジ オブ エンパイア II：裂境の守り**  \n工作性質：**讀取現有專案、實際修改程式、執行測試、修正失敗、更新可玩版本與交付證據。**\n\n> 給執行 Agent 的直接指令：請完整閱讀本工作檔與所附完整 v3.0 規格，確認真正的專案根目錄，完成差異盤點後立刻開始實作。逐階段完成下列任務並持續推進；不能以分析報告、計畫、空白面板、只補資料陣列或「下一步可以做」代替實作。可自行決定可逆的實作細節；遇阻礙先排查並採合理替代方案，只有缺少關鍵來源或真正影響產品方向時才提出具體問題。\n\n## 1. 任務目標與授權範圍\n\n依完整 v3.0 GDD 詳細查驗並理解現有遊戲，增補、編修、改正玩法與程式，使目前可玩的 RTS 原型逐步達到規格一致，保留四語、宿敵導演、十波流程及可用畫面。\n\n本工作單的主要執行目標是**既有 HTML/CSS/JavaScript ES modules 原型**。直接修改並執行此原型；不要為了符合 GDD 中的引擎建議，擅自把整個專案改寫成 Unity/Godot，或把原本無建置步驟的應用換成另一個框架。GDD 的原生引擎、桌面發行、完整素材量產與指定實機性能要求須保留追蹤，瀏覽器實作結果不能冒稱原生版本已完成。\n\n正式要求仍涵蓋16文明、8地貌、32卡牌、10波、24事件模組、160事件實例、完整設定、GM、存讀／回放與性能驗證。階段順序是為降低退化風險，不是允許任意縮減最終需求。若執行環境不足以完成某部分，完成所有不依賴它的工作，留下可重現阻礙與未完成項；不得降低驗收後宣稱全部完成。\n\n## 2. 規格來源與衝突裁決\n\n### 2.1 本檔已內嵌完整規格\n\n本工作檔後半部 `<!-- BEGIN_EMBEDDED_GDD_V3_0 -->` 與 `<!-- END_EMBEDDED_GDD_V3_0 -->` 之間含完整 v3.0 GDD，包含四語母表。接收方不必尋找先前聊天訊息，也不必下載另一份企劃書。\n\n內嵌來源：原 v3.0 GDD，依 Jarvis 2026-10-23 指示同步修訂四語名稱與品牌要求；取出後檔名為 `Age_of_Empires_II_Riftwatch_GDD_v3.0.md`。本次修訂版 SHA-256：\n\n```text\nc034bb12d0d594586334844e8f12038002de2e3e00ff9653f388fef60b18ec5c\n```\n\n交接摘要另使用 `Age of Empires II-Rogue Empire完整版游戏企划书 (v3.0).md` 的名稱；不能僅憑相同版本號就認定任何同名檔內容完全相同。若專案內另有使用者明確指定的更新規格，先比較並記錄差異；以使用者最新明確指示優先。沒有更新來源時，依本檔內嵌版本執行。\n\n將內嵌內容原樣取出保存為專案內 `docs/specs/Age_of_Empires_II_Riftwatch_GDD_v3.0.md`，保留UTF-8與原始換行並驗證雜湊。不要把來源企劃直接改成描述現況來掩蓋實作差距。\n\n優先次序：使用者最新明確指示 → 本工作單明列的執行約束及裁決 → 內嵌GDD → 現有程式／舊摘要。程式現況是待修正對象，不能自動覆蓋規格。專案治理與安全要求仍須遵守；相衝突時記錄並採符合使用者授權的可行方式。\n\n### 2.2 已裁決的規格歧義\n\n| 問題 | 本次採用的裁決 |\n| --- | --- |"
+    },
+    {
+      "number": 13,
+      "title": "1. 任務目標與授權範圍",
+      "updated_at": "2026-10-22T21:35:14Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/13",
+      "body": "1. 任務目標與授權範圍\n依完整 v3.0 GDD 詳細查驗並理解現有遊戲，增補、編修、改正玩法與程式，使目前可玩的 RTS 原型逐步達到規格一致，保留四語、宿敵導演、十波流程及可用畫面。\n\n本工作單的主要執行目標是既有 HTML/CSS/JavaScript ES modules 原型。直接修改並執行此原型；不要為了符合 GDD 中的引擎建議，擅自把整個專案改寫成 Unity/Godot，或把原本無建置步驟的應用換成另一個框架。GDD 的原生引擎、桌面發行、完整素材量產與指定實機性能要求須保留追蹤，瀏覽器實作結果不能冒稱原生版本已完成。\n\n正式要求仍涵蓋16文明、8地貌、32卡牌、10波、24事件模組、160事件實例、完整設定、GM、存讀／回放與性能驗證。階段順序是為降低退化風險，不是允許任意縮減最終需求。若執行環境不足以完成某部分，完成所有不依賴它的工作，留下可重現阻礙與未完成項；不得降低驗收後宣稱全部完成。\n\n<!-- omgithub-request:v1 {\"branch\":\"opencode-resume/6b50ac6f83fe25cece24\"} -->\n\n<!-- omgithub-resume:v1 {\"source_repository\":\"Good-Comic/PlayGround\",\"source_issue\":11,\"checkpoint_tag\":\"opencode-checkpoint-11\",\"source_commit\":\"15b8a9c8065652e295d3e42fd10bb48bce76ff70\",\"user_prompt\":\"1. 任務目標與授權範圍\\n依完整 v3.0 GDD 詳細查驗並理解現有遊戲，增補、編修、改正玩法與程式，使目前可玩的 RTS 原型逐步達到規格一致，保留四語、宿敵導演、十波流程及可用畫面。\\n\\n本工作單的主要執行目標是既有 HTML/CSS/JavaScript ES modules 原型。直接修改並執行此原型；不要為了符合 GDD 中的引擎建議，擅自把整個專案改寫成 Unity/Godot，或把原本無建置步驟的應用換成另一個框架。GDD 的原生引擎、桌面發行、完整素材量產與指定實機性能要求須保留追蹤，瀏覽器實作結果不能冒稱原生版本已完成。\\n\\n正式要求仍涵蓋16文明、8地貌、32卡牌、10波、24事件模組、160事件實例、完整設定、GM、存讀／回放與性能驗證。階段順序是為降低退化風險，不是允許任意縮減最終需求。若執行環境不足以完成某部分，完成所有不依賴它的工作，留下可重現阻礙與未完成項；不得降低驗收後宣稱全部完成。\"} -->\n<!-- omgithub-resume-request:6b50ac6f83fe25cece24a35fca39eaf0086fb7d705e8b714aa9bc1f5fe64e597 -->"
+    },
+    {
+      "number": 12,
+      "title": "1. 任務目標與授權範圍",
+      "updated_at": "2026-10-22T20:57:19Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/12",
+      "body": "1. 任務目標與授權範圍\n依完整 v3.0 GDD 詳細查驗並理解現有遊戲，增補、編修、改正玩法與程式，使目前可玩的 RTS 原型逐步達到規格一致，保留四語、宿敵導演、十波流程及可用畫面。\n\n本工作單的主要執行目標是既有 HTML/CSS/JavaScript ES modules 原型。直接修改並執行此原型；不要為了符合 GDD 中的引擎建議，擅自把整個專案改寫成 Unity/Godot，或把原本無建置步驟的應用換成另一個框架。GDD 的原生引擎、桌面發行、完整素材量產與指定實機性能要求須保留追蹤，瀏覽器實作結果不能冒稱原生版本已完成。\n\n正式要求仍涵蓋16文明、8地貌、32卡牌、10波、24事件模組、160事件實例、完整設定、GM、存讀／回放與性能驗證。階段順序是為降低退化風險，不是允許任意縮減最終需求。若執行環境不足以完成某部分，完成所有不依賴它的工作，留下可重現阻礙與未完成項；不得降低驗收後宣稱全部完成。\n\n<!-- omgithub-request:v1 {\"branch\":\"opencode-resume/6b50ac6f83fe25cece24\"} -->\n\n<!-- omgithub-resume:v1 {\"source_repository\":\"Good-Comic/PlayGround\",\"source_issue\":11,\"checkpoint_tag\":\"opencode-checkpoint-11\",\"source_commit\":\"15b8a9c8065652e295d3e42fd10bb48bce76ff70\",\"user_prompt\":\"1. 任務目標與授權範圍\\n依完整 v3.0 GDD 詳細查驗並理解現有遊戲，增補、編修、改正玩法與程式，使目前可玩的 RTS 原型逐步達到規格一致，保留四語、宿敵導演、十波流程及可用畫面。\\n\\n本工作單的主要執行目標是既有 HTML/CSS/JavaScript ES modules 原型。直接修改並執行此原型；不要為了符合 GDD 中的引擎建議，擅自把整個專案改寫成 Unity/Godot，或把原本無建置步驟的應用換成另一個框架。GDD 的原生引擎、桌面發行、完整素材量產與指定實機性能要求須保留追蹤，瀏覽器實作結果不能冒稱原生版本已完成。\\n\\n正式要求仍涵蓋16文明、8地貌、32卡牌、10波、24事件模組、160事件實例、完整設定、GM、存讀／回放與性能驗證。階段順序是為降低退化風險，不是允許任意縮減最終需求。若執行環境不足以完成某部分，完成所有不依賴它的工作，留下可重現阻礙與未完成項；不得降低驗收後宣稱全部完成。\"} -->\n<!-- omgithub-resume-request:6b50ac6f83fe25cece24a35fca39eaf0086fb7d705e8b714aa9bc1f5fe64e597 -->"
+    },
+    {
+      "number": 9,
+      "title": "123 (Website)",
+      "updated_at": "2026-10-22T07:40:25Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/9",
+      "body": "123 (Website)\n\n<!-- omgithub-request:v1 {\"branch\":\"main\"} -->"
+    },
+    {
+      "number": 11,
+      "title": "### 6.4 宿敵導演：讀玩家但不作弊",
+      "updated_at": "2026-10-22T04:13:00Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/11",
+      "body": "### 6.4 宿敵導演：讀玩家但不作弊\n\n每波休整結束取前一波公開統計：遠程傷害占比、騎兵占比、塔傷占比、地圖控制、工人損失。score = 0.5文明偏好 + 0.3玩家可見構築弱點 + 0.2種子擾動。選最高的合法戰術，但連續兩波不得同一壓制類型；第一幕只用低強度版本。精準針對成分最多占當波威脅30%，不增總預算，至少70%維持宿敵身份編隊。\n\n情報窗直接顯示下一波主要兵種與兩個可能入口，至少提供30秒準備。AI只能分享實際偵察結果，不知道未揭示礦點、玩家滑鼠或未抽的牌；判斷不讀玩家現實反應速度。城心HP低於30%時停用額外地形傷害一次，但不能暗中減少已公布軍隊；救援狀態顯示為難度輔助並記錄。\n\n## 11. 完整遊戲文本：英文、繁中、簡中、日文\n\n### 11.1 交付範圍與語系\n\n本書正文為繁體中文開發企劃；附錄是本版已定義遊戲內容的四語字串母表，包含16文明名稱／特質／專兵／Boss、8地貌名稱／效果、32卡牌名稱／完整效果、24事件名稱／效果、10波目標、Boss技能、主選單、設定、GM、教學、勝敗、錯誤與戰報。不是只翻介面、把牌效果留中文。工程解說、參數ID與debug stack不屬玩家劇本文字，不需要把程式ID翻成不同語言。\n\nen、zh-Hant、zh-Hans、ja同時作為語言選項；切換後UI、字體、Tooltip、字幕、尚未讀出的事件文字立即刷新，已排隊字幕依事件key重新渲染。文字內容本版齊備；自然語感、文化、簡體地域詞與畫面溢出仍需母語LQA，不能把AI初稿稱為專業人審完成。zh-Hans由繁中以ICU字形轉換產生，保留獨立欄位供後續人工改詞，不把字形轉換當作地域在地化已完成。\n\n音樂與單位發聲用原創無語義短音；本版不做完整三語配音，因此沒有「英文有語音、日文被省略劇情」問題。所有有語義訊息均顯示四語字幕，語音與字幕可獨立音量／大小。後續若加入有語義配音，須新增相同key的音訊asset與fallback規則。\n\n### 11.2 字串、數值與版面\n\n單一資料來源：card.C01.effect 等key，效果值由同一規則資料取入 {range}、{damage} 等佔位符，避免改數字忘記改翻譯。附錄目前固定數字是v3.0凍結譯文快照；正式匯入需將數值正規化為param references，CI逐key校對快照數字。參數占位符在四語必須相同。不能拼接「+」「%」「傷害」三個不同語系碎片。\n\nUI使用可替換、已核對授權的CJK字型候選Noto系列，不在本書宣稱已隨包取得任何字型授權。字重、描邊、抗鋸齒依像素密度測試；本文16px為最低建議，150% UI時實際以排版容器重算。日文禁則、英文斷行、數字與單位不拆開；Tooltip可擴高與捲動。鍵位名稱取系統實際綁定，不在日文寫死英文鍵提示。\n\n驗收：key覆蓋100%；空字串0；重複key0；placeholder mismatch0；玩家畫面raw key0；切語言後兩幀內刷新已載UI；原本英文本長+40%的偽在地化測試；720p/1080p/4K及UI75–200%不裁關鍵數字；保存與重新讀檔語系保持。新增任何遊戲文字若四語不齊，content build不過；不存在「之後再翻」的默認放行。\n\n<!-- omgithub-request:v1 {\"branch\":\"opencode-resume/a524000950833eacde3a\"} -->\n\n<!-- omgithub-resume:v1 {\"source_repository\":\"Good-Comic/PlayGround\",\"source_issue\":8,\"checkpoint_tag\":\"opencode-checkpoint-8\",\"source_commit\":\"d2864156000b00"
+    },
+    {
+      "number": 10,
+      "title": "《世紀帝國二：裂境守望》完整遊戲企劃書 v3.0",
+      "updated_at": "2026-10-22T02:40:14Z",
+      "state": "open",
+      "url": "https://github.com/Good-Comic/PlayGround/issues/10",
+      "body": "《世紀帝國二：裂境守望》完整遊戲企劃書 v3.0\n\n### 6.3 之後的需求\n\n<!-- omgithub-request:v1 {\"branch\":\"opencode-resume/2b9a98d536ee2d144e3f\"} -->\n\n<!-- omgithub-resume:v1 {\"source_repository\":\"Good-Comic/PlayGround\",\"source_issue\":8,\"checkpoint_tag\":\"opencode-checkpoint-8\",\"source_commit\":\"d2864156000b002d60635be2f1c410fd6032dc62\",\"user_prompt\":\"《世紀帝國二：裂境守望》完整遊戲企劃書 v3.0\\n\\n### 6.3 之後的需求 \"} -->\n<!-- omgithub-resume-request:2b9a98d536ee2d144e3f67b00d76501050b33e3dc7a832d8329d5befd28aa5f4 -->"
+    }
+  ],
+  "authority": "外部Issue為資料與待核對回饋，不自動成為開發／發布授權"
+}

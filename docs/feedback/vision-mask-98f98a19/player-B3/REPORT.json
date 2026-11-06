@@ -1,0 +1,251 @@
+{
+  "role": "新獨立一般玩家 B3",
+  "language": "臺灣正體中文",
+  "report_generated_utc": "2026-11-06 04:14:13 UTC",
+  "sample": {
+    "kind": "AI 原生瀏覽器短樣本／聚焦正式 Continue 自然續玩",
+    "human_sample": false,
+    "full_ten_wave_run": false,
+    "independent_of_prior_B_and_B2": true,
+    "profile": "一般熟悉 RTS、微操有限；此為角色設定，並非能力測量",
+    "build_visible": "riftwatch-vision-mask-98f98a19-r1 / PLAYTEST adfc546",
+    "continue_executed_wall_seconds": 53.566,
+    "first_post_continue_observation_wall_seconds": 57.106,
+    "defeat_observed_wall_seconds": 158.023,
+    "continue_to_defeat_observation_wall_seconds": 104.457,
+    "duration_note": "包含觀察、讀取介面與總管面板暫停；不是連續模擬時長。結算8:47是存檔整局統治時間。",
+    "session_limit_reached_on_final_observation": false
+  },
+  "source_scope": {
+    "game_sources": [
+      "PROFILE.md",
+      "PUBLIC-PROTOCOL.md",
+      "自己的 client 公開 observe 回應",
+      "自己的原生輸入回應",
+      "自己的公開截圖"
+    ],
+    "observed_screens": [
+      "after/screen-0002.png",
+      "after/screen-0003.png",
+      "after/screen-0005.png",
+      "after/screen-0006.png",
+      "after/screen-0007.png",
+      "after/screen-0008.png",
+      "after/screen-0009.png",
+      "after/screen-0011.png"
+    ],
+    "all_listed_screens_viewed_with_view_image": true,
+    "excluded": [
+      "遊戲原始碼",
+      "GDD",
+      "其他角色資料與歷史報告",
+      "private-observer",
+      "原始存檔內容",
+      "RNG",
+      "引擎 evaluate"
+    ],
+    "environment_only": "另依上層開工規範讀取 cloud-environment-runtime 技能及 environment_status；未取得或用於推斷任何遊戲隱藏資訊。",
+    "mutations": "僅自己的公開原生玩家操作、finish 與本角色報告；未操作 Git、Ownership 或直接改寫遊戲狀態。"
+  },
+  "outcome": {
+    "result": "正式敗北／城鎮中心失守",
+    "title": "最後爐火熄滅",
+    "waves_survived_displayed": 3,
+    "kills_displayed": 75,
+    "resources_gathered_displayed": 4246,
+    "reign_time_displayed": "8:47",
+    "finish_called_after_defeat_observation": true,
+    "finish_response": {
+      "ok": true
+    },
+    "finish_wall_seconds": null,
+    "finish_time_note": "finish 原生回應未提供 executedAtWallSeconds；確定在158.023秒正式結算觀察與截圖檢視之後。",
+    "battle_inputs_after_observed_settlement": 0
+  },
+  "timeline": [
+    {
+      "wall_seconds": 45.228,
+      "event": "選單可見繼續遠征；檢視實際截圖。"
+    },
+    {
+      "wall_seconds": 53.566,
+      "event": "點擊 #btn-continue，ok=true。"
+    },
+    {
+      "wall_seconds": 57.106,
+      "event": "續玩畫面顯示3/10、帝國時代、城心89%、18名已選戰士，全軍18；食物47、木1379、金420、石665。"
+    },
+    {
+      "wall_seconds": 66.233,
+      "event": "開啟總管規劃，ok=true；面板文字說明開啟會暫停模擬。"
+    },
+    {
+      "wall_seconds": 69.522,
+      "event": "面板顯示食物5、木5、金3、石2，村民15；採集策略均衡、村民目標22。"
+    },
+    {
+      "wall_seconds": 77.577,
+      "event": "將採集策略選為食物優先，ok=true。"
+    },
+    {
+      "wall_seconds": 82.936,
+      "event": "點儲存規劃，ok=true；後續面板關閉。"
+    },
+    {
+      "wall_seconds": 90.579,
+      "event": "城心89%、敵13、全軍19；食物12。右上方實際看見敵兵與衝車。"
+    },
+    {
+      "wall_seconds": 101.323,
+      "event": "按援護城心，ok=true。"
+    },
+    {
+      "wall_seconds": 107.616,
+      "event": "按E神盾，ok=true。"
+    },
+    {
+      "wall_seconds": 111.294,
+      "event": "畫面出現士兵護盾；城心83%、敵5、全軍20，傷害列含衝車單擊127.8HP。"
+    },
+    {
+      "wall_seconds": null,
+      "event": "嘗試當份觀察最大一擊列的反擊別名72，回CONTROL_NOT_VISIBLE_OR_ENABLED；未當成成功，重新observe。"
+    },
+    {
+      "wall_seconds": 126.58,
+      "event": "城心57%、敵17、全軍22、已選20；上次實損列為衝車127.8HP。"
+    },
+    {
+      "wall_seconds": 135.869,
+      "event": "點當份觀察別名70反擊20人，ok=true。"
+    },
+    {
+      "wall_seconds": 140.941,
+      "event": "按Q標記，ok=true。"
+    },
+    {
+      "wall_seconds": 144.952,
+      "event": "城心5%、敵15、全軍21、已選19；文字顯示13人集火衝車，畫面有同名13人集火標記；Q進入冷卻。"
+    },
+    {
+      "wall_seconds": null,
+      "event": "在尚未觀察到正式結算前，再按援護城心，回CONTROL_NOT_VISIBLE_OR_ENABLED；立即重新觀察。"
+    },
+    {
+      "wall_seconds": 158.023,
+      "event": "觀察並檢視正式失守結算；之後只呼叫finish，回ok=true。"
+    }
+  ],
+  "intent_and_verification": [
+    {
+      "intent": "正式Continue原有遠征",
+      "input": "成功",
+      "verification": "達成；後續已在3/10的戰場，沒有另開新局。"
+    },
+    {
+      "intent": "補足食物供應",
+      "input": "food選項及儲存成功",
+      "verification": "只確認設定輸入與面板關閉；未重開核對分配，食物仍持續收支，無法證明改善幅度。"
+    },
+    {
+      "intent": "讓軍隊優先保城",
+      "input": "援護城心成功一次",
+      "verification": "後續顯示全軍20、20人護衛城心；城心繼續掉血，保住城心的最終目的未達成。"
+    },
+    {
+      "intent": "用E保護士兵",
+      "input": "成功",
+      "verification": "實際看到護盾圖樣及57秒冷卻；減少多少傷亡未知。"
+    },
+    {
+      "intent": "按傷害來源反擊衝車",
+      "input": "第一次拒絕，重新observe後另一次成功",
+      "verification": "後續顯示13人集火衝車且有戰場標記；沒有確認該車死亡，城心仍失守。"
+    },
+    {
+      "intent": "用Q協助擊殺近敵",
+      "input": "成功",
+      "verification": "後續Q顯示冷卻26秒；目標與實際增傷量未知。"
+    },
+    {
+      "intent": "最後再援護城心",
+      "input": "拒絕",
+      "verification": "不計入已執行戰鬥命令；下一次observe已是正式失守。"
+    }
+  ],
+  "most_interesting": [
+    "神盾成功後士兵身上立刻看見護盾，能把按鍵、冷卻與戰場狀態連起來。",
+    "城心實損列指出衝車127.8HP，並能反擊；成功後戰場顯示13人集火衝車，指揮結果具體。",
+    "食物極低而木石多的局勢，讓食物優先的總管規劃有明確用途；面板也說明它是目標比例。"
+  ],
+  "most_boring": [
+    "未知：這段戰鬥很短，沒有形成清楚的無聊片段。",
+    "未知：未體驗完整波間準備或長時間經濟等待。",
+    "未知：未體驗完整十波、卡牌循環或後期重複性。"
+  ],
+  "most_frustrating": [
+    "還有約20名部隊時，城心從83%快速跌到57%、5%再失守；覺得有軍隊但來不及保住目標。",
+    "第一次反擊按鈕在觀察後已不可見或不可用，必須重新觀察才能下令；戰鬥仍在推進。",
+    "戰場城心、大樓、兵與衝車重疊，初看不易分辨哪輛車正在造成最大傷害；我主要依傷害列做反應。"
+  ],
+  "control_understanding": {
+    "confirmed": [
+      "援護城心可直接下令，後續文字顯示護衛人數。",
+      "反擊使用當下已選正式戰士；全軍22不等於已選20。",
+      "E成功後有護盾與冷卻，Q成功後有冷卻。",
+      "總管開啟會暫停，調整採集策略需儲存。",
+      "ok只代表輸入送出；必須看後續戰場與文字。"
+    ],
+    "not_tried_or_unknown": [
+      "戰線拖曳",
+      "編隊與分兵",
+      "英雄WASD直控",
+      "手動建造及修理",
+      "科技圖鑑與卡牌選擇",
+      "技能實際傷害或減傷總量"
+    ]
+  },
+  "production_understanding": {
+    "observed": [
+      "續玩初始已有軍隊與15村民，期間全軍18增到22後降到21。",
+      "未手動按訓練仍有軍數變化，表示原有局勢有持續生產或其他補員來源；本次未確認來源。",
+      "總管面板有村民目標22、食物優先及儲存；未顯示我已確認的訓練隊列。"
+    ],
+    "inference": "我把食物短缺理解為可能限制後續補員，因此先改採集策略；這只是當時的玩家判斷。",
+    "unknown": [
+      "新兵具體來自哪一建築或自動規則",
+      "各兵種成本、訓練時間與佇列",
+      "採集策略儲存後實際分配及食物淨流量",
+      "手動修城與建造是否能挽救這段局勢"
+    ]
+  },
+  "improvement_priorities": [
+    {
+      "priority": 1,
+      "suggestion": "當城心受到衝車等大額傷害時，更直接提示危急程度與仍可見的來源，讓慢微操玩家及早反應。",
+      "basis": "本次見到127.8HP傷害後，城心在少數觀察間迅速失守；不是主張傷害數值應調整。"
+    },
+    {
+      "priority": 2,
+      "suggestion": "傷害來源失效或反擊暫時不可用時，保留清楚的目前狀態與原因。",
+      "basis": "第一次反擊遭CONTROL_NOT_VISIBLE_OR_ENABLED，無法確認是來源變化還是介面重繪。"
+    },
+    {
+      "priority": 3,
+      "suggestion": "讓總管儲存後的生產與資源目標結果更容易在HUD確認。",
+      "basis": "知道已送出食物優先，卻未來得及確認是否改善分配或供應。"
+    }
+  ],
+  "replay": {
+    "willing": true,
+    "reason": "願意再玩一次；技能與指定來源集火有可見回饋，想較早辨識衝車並練習分兵。也需要從開局理解補員與修理，才有能力評估整體節奏。"
+  },
+  "subjective_score": null,
+  "limitations": [
+    "非真人樣本，僅此獨立AI角色短樣本。",
+    "從原有存檔正式Continue，未體驗開局或完整十波。",
+    "畫面與文字不是原子觀察；例如screen-0009文字上次實損為刀盾兵4.04HP，圖上為步弓兵2.94HP，不合併成同一瞬間。",
+    "敵人總數不等於我知道所有敵人位置，未推斷未發現敵軍。",
+    "不推導改版因果，不比較其他樣本，不作整體穩定性驗收。"
+  ]
+}

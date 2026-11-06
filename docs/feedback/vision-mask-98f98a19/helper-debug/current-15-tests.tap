@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: 空陣列與單圓原樣保留
+ok 1 - 空陣列與單圓原樣保留
+  ---
+  duration_ms: 0.981363
+  type: 'test'
+  ...
+# Subtest: 完整單圓包含只省略被覆蓋的來源
+ok 2 - 完整單圓包含只省略被覆蓋的來源
+  ---
+  duration_ms: 0.670112
+  type: 'test'
+  ...
+# Subtest: 相交但仍有外露圓弧的來源不能省略
+ok 3 - 相交但仍有外露圓弧的來源不能省略
+  ---
+  duration_ms: 0.232995
+  type: 'test'
+  ...
+# Subtest: 多圓共同覆蓋可省略任一單圓都無法包含的來源
+ok 4 - 多圓共同覆蓋可省略任一單圓都無法包含的來源
+  ---
+  duration_ms: 4.656422
+  type: 'test'
+  ...
+# Subtest: 同半徑交疊、重合圓與重複引用都保留 AA 邊界
+ok 5 - 同半徑交疊、重合圓與重複引用都保留 AA 邊界
+  ---
+  duration_ms: 0.219445
+  type: 'test'
+  ...
+# Subtest: 原外環配置允許保守保留，且聯集不變、中心來源不會全刪
+ok 6 - 原外環配置允許保守保留，且聯集不變、中心來源不會全刪
+  ---
+  duration_ms: 14.357081
+  type: 'test'
+  ...
+# Subtest: 加大外環重疊會觸發刪除，仍不能將兩個中心來源一起刪除
+ok 7 - 加大外環重疊會觸發刪除，仍不能將兩個中心來源一起刪除
+  ---
+  duration_ms: 12.449168
+  type: 'test'
+  ...
+# Subtest: 結果保持原順序、物件引用與任意附加欄位
+ok 8 - 結果保持原順序、物件引用與任意附加欄位
+  ---
+  duration_ms: 0.363538
+  type: 'test'
+  ...
+# Subtest: 單圓包含必須留足指定的 AA 餘裕
+ok 9 - 單圓包含必須留足指定的 AA 餘裕
+  ---
+  duration_ms: 0.203592
+  type: 'test'
+  ...
+# Subtest: 共同覆蓋也必須涵蓋 AA 擴張邊界
+ok 10 - 共同覆蓋也必須涵蓋 AA 擴張邊界
+  ---
+  duration_ms: 0.260475
+  type: 'test'
+  ...
+# Subtest: 實際投影中心的高低差不能被當成相同圓心
+ok 11 - 實際投影中心的高低差不能被當成相同圓心
+  ---
+  duration_ms: 0.144885
+  type: 'test'
+  ...
+# Subtest: 負座標、極大及極小尺度都維持包含判定
+ok 12 - 負座標、極大及極小尺度都維持包含判定
+  ---
+  duration_ms: 0.220807
+  type: 'test'
+  ...
+# Subtest: 中間值溢位與次正規浮點數無法證明覆蓋時保留來源
+ok 13 - 中間值溢位與次正規浮點數無法證明覆蓋時保留來源
+  ---
+  duration_ms: 0.104665
+  type: 'test'
+  ...
+# Subtest: 任一座標、半徑或 AA 餘裕無效即交回整個原陣列
+ok 14 - 任一座標、半徑或 AA 餘裕無效即交回整個原陣列
+  ---
+  duration_ms: 0.184073
+  type: 'test'
+  ...
+# Subtest: 固定種子圓群省略繪製後的獨立聯集取樣一致
+ok 15 - 固定種子圓群省略繪製後的獨立聯集取樣一致
+  ---
+  duration_ms: 30.737189
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 80.7909
