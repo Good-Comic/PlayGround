@@ -1,0 +1,11 @@
+{
+  "base_script": "/workspace/riftwatch-fun-lab-281169b5/perf-source-actions-r2.cjs",
+  "base_script_sha256": "6f03c75c004fcea4117bda7556e3cd21417d7984eb5e21d44dd6dcafe8e7b505",
+  "derived_script_sha256": "e6472e5ef21625a753f3636b5b21018ed4495ded13e0402a1c6eca2d6cf939c4",
+  "changes": [
+    "僅保留一個200 after來源診斷，不做ABBA比較",
+    "暖機後加入30秒CDP CPU Profiler",
+    "拿掉沒有before個案的pairs計算，保留原夾具、AI／碰撞與死亡"
+  ],
+  "scope": "獨立唯讀效能診斷；instrumented數據不冒充正式效能對照，原夾具暫停自動經濟／生產，非自然玩家流程"
+}

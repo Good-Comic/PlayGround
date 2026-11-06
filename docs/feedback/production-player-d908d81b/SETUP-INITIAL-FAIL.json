@@ -1,0 +1,10 @@
+{
+  "classification": "NEW_SPARSE_WORKTREE_NOT_MATERIALIZED",
+  "actual_error": "新工作樹已建立正確HEAD index，但15個non-skip檔案尚未實體檢出，初次clean斷言失敗。",
+  "cached_diff_empty": true,
+  "existing_files": [
+    ".git"
+  ],
+  "correction": "在全新且僅.git的自有工作樹使用checkout-index --all，只實體檢出15個non-skip檔案；不使用force、不下載全資源、不碰原工作樹。",
+  "game_test_failed": false
+}

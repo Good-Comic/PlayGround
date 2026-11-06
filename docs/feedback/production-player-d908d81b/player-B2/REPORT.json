@@ -1,0 +1,265 @@
+{
+  "task": "FUN-PRODUCTION-PLAYER-D908D81B",
+  "player": "B2",
+  "language": "zh-Hant-TW",
+  "sample": "新獨立一般 RTS 玩家代理；從原封既有進度正式 Continue 的短續玩，非新開局十波、非真人樣本",
+  "result": {
+    "type": "正式失敗",
+    "observed_wall_seconds": 160.931,
+    "screen": "after/screen-0011.png",
+    "title": "最後爐火熄滅",
+    "cause_shown": "城鎮中心已然陷落",
+    "displayed_cumulative_stats": {
+      "waves_survived": 3,
+      "kills": 73,
+      "resources_gathered": 4253,
+      "reign_time": "8:45"
+    },
+    "stats_scope": "以上為續玩結算的累積統計，不能歸為 B2 單獨取得",
+    "finish": {
+      "called_after_result": true,
+      "response": {
+        "ok": true
+      },
+      "video_path": null,
+      "video_verification": "finish 未回傳影片路徑，未另外檢查影片編碼"
+    }
+  },
+  "timeline": [
+    {
+      "wall_seconds": 48.953,
+      "screen": "after/screen-0002.png",
+      "fact": "主選單可用繼續遠征；看過實際截圖"
+    },
+    {
+      "wall_seconds": 59.84,
+      "action": "click #btn-continue",
+      "response": "ok"
+    },
+    {
+      "wall_seconds": 67.03,
+      "screen": "after/screen-0004.png",
+      "fact": "第 3/10 襲擊，14 名敵人，城心 89%，帝國時代，18 戰士已選並護衛城心；15 村民；食物 12、木材 1399、黃金 411、石材 665（公開文字）"
+    },
+    {
+      "wall_seconds": 75.871,
+      "action": "開啟總管規劃"
+    },
+    {
+      "wall_seconds": 80.277,
+      "screen": "after/screen-0005.png",
+      "fact": "總管明示開啟暫停模擬；採集均衡，食木金石目標 34/32/22/12，村民目標 22，預留各 0；目前 15 村民、5/5/3/2 分類、手動鎖定 0、閒置 0"
+    },
+    {
+      "wall_seconds": 88.29,
+      "action": "select gather=food",
+      "intent": "食物偏少，想提高食物採集",
+      "response": "ok"
+    },
+    {
+      "wall_seconds": 93.614,
+      "action": "click #steward-apply 儲存規劃",
+      "response": "ok"
+    },
+    {
+      "wall_seconds": 99.61,
+      "screen": "after/screen-0006.png",
+      "fact": "面板已關閉、戰鬥持續；城心 89%，全軍 19、原已選 18；看到城心實損來源與查看／反擊控制"
+    },
+    {
+      "wall_seconds": 108.336,
+      "action": "click #btn-core-defense 援護城心",
+      "response": "ok",
+      "verification": "後續選取變為 19，命令摘要仍以 18 人護衛城心為主，不能由 ok 宣稱已擊殺衝車"
+    },
+    {
+      "wall_seconds": 114.007,
+      "action": "key e 神盾",
+      "response": "ok",
+      "verification": "121.397 時神盾顯示 53 秒冷卻；未量測護盾吸收量"
+    },
+    {
+      "wall_seconds": 121.397,
+      "screen": "after/screen-0007.png",
+      "fact": "城心 72%；城心上次實損 -127.8 HP、來源衝車；敵軍 4；19 戰士仍多數護衛城心"
+    },
+    {
+      "wall_seconds": 127.747,
+      "action": "點擊公開反擊 19 人控制",
+      "response": "ok",
+      "intent": "集火仍可見、造成城心傷害的衝車"
+    },
+    {
+      "wall_seconds": 134.656,
+      "screen": "after/screen-0008.png",
+      "fact": "文字城心 40%、截圖 43%；敵軍 18；摘要 18 人集火衝車、1 人自主接敵；這才確認集火意圖成為命令",
+      "temporal_caveat": "截圖與文字非同一原子時刻，保留兩值"
+    },
+    {
+      "wall_seconds": 144.076,
+      "action": "click #idle-button",
+      "intent": "想找待命村民嘗試維修城心",
+      "response": "ok"
+    },
+    {
+      "wall_seconds": 151.161,
+      "screen": "after/screen-0009.png",
+      "fact": "城心顯示 0% 但尚無正式結算；待命 0，仍選 19 戰士，未成功取得村民，未下達維修命令；摘要 14 人集火衝車、3 待命、2 自主接敵"
+    },
+    {
+      "wall_seconds": 160.931,
+      "screen": "after/screen-0011.png",
+      "fact": "正式失敗結算；其後未再下戰鬥命令，立即 finish"
+    }
+  ],
+  "fun_top_three": [
+    {
+      "rank": 1,
+      "item": "有具體來源的反擊命令",
+      "subjective": "看見城心傷害來源為衝車，再看到 18 人集火衝車的摘要，讓緊急判斷有對應回饋",
+      "evidence": [
+        "after/screen-0007.png",
+        "after/screen-0008.png"
+      ]
+    },
+    {
+      "rank": 2,
+      "item": "混合部隊與城鎮防守場景",
+      "subjective": "刀盾、弓兵、騎兵與旗幟讓守城畫面有 RTS 味道；視覺上容易投入",
+      "evidence": [
+        "after/screen-0004.png",
+        "after/screen-0006.png"
+      ]
+    },
+    {
+      "rank": 3,
+      "item": "神盾介面的即時可用人數與冷卻",
+      "subjective": "可護 15 人使我願意按 E，之後冷卻能確認有施放流程；實際擋傷未知",
+      "evidence": [
+        "after/screen-0006.png",
+        "after/screen-0007.png"
+      ]
+    }
+  ],
+  "boring_top_three": [
+    {
+      "rank": 1,
+      "item": "總管填表時戰場暫停",
+      "subjective": "此短樣本中，打開大片經濟面板調一項策略的過程有短暫停滯感；它同時也讓我能閱讀",
+      "evidence": [
+        "after/screen-0005.png"
+      ]
+    },
+    {
+      "rank": 2,
+      "item": "未知",
+      "reason": "續玩太短且持續受攻，沒有足夠證據判斷其他無聊段落"
+    },
+    {
+      "rank": 3,
+      "item": "未知",
+      "reason": "未走過自然開局、完整波間準備或後續探索，不補造事件"
+    }
+  ],
+  "frustration_top_three": [
+    {
+      "rank": 1,
+      "item": "城心重傷速度超出我的處理能力",
+      "subjective": "從 72% 到約 40% 再到 0% 很快；雖然大軍仍存活且集火衝車，仍救不回城心",
+      "evidence": [
+        "after/screen-0007.png",
+        "after/screen-0008.png",
+        "after/screen-0009.png"
+      ]
+    },
+    {
+      "rank": 2,
+      "item": "援護與反擊的結果需要再次核對",
+      "subjective": "先按援護仍見多數護衛，之後按反擊才看到集火摘要；我當下無法只靠一次輸入判斷有沒有處理到最大威脅",
+      "evidence": [
+        "after/screen-0007.png",
+        "after/screen-0008.png"
+      ]
+    },
+    {
+      "rank": 3,
+      "item": "未能及時選到維修人手",
+      "subjective": "曾看到 1 待命而按待命村民，後續卻為 0 且保持戰士選取。這不是已證實按鈕故障，但我的維修意圖沒有完成",
+      "evidence": [
+        "after/screen-0008.png",
+        "after/screen-0009.png"
+      ]
+    }
+  ],
+  "understanding": {
+    "controls": "知道 F2 選全軍、右鍵移動、推進接敵、援護城心、反擊來源、E 神盾及待命村民。實際只試過援護、反擊、E 與待命；未用戰線、編隊、英雄直控或地面右鍵。",
+    "economy": "理解採集比例是目標，受手動任務、搬運與可達性影響，不等於立即人數；15 名未鎖定並不單獨證明自動經濟已啟用。資源會持續變動，但未量測每秒產出。",
+    "automatic_production": "看到全軍由 18 增至 19、20，過程沒有手動訓練。我的理解是既有進度仍有訓練／生產運作；未進入生產建築或軍事規劃，無法判斷是既有佇列還是持續自動補兵、兵種目標或其阻塞規則。",
+    "resource_reserves": "總管預留食木金石都為 0。我把它理解為保留資源底線，但沒改動或觀察扣款邊界，無法確認適用哪些自動支出。",
+    "retained_state": "Continue 後直接有帝國時代、3 恩賜、既有兵民與兩名工人已獲救訊息；我理解為載入進度，未檢視存檔，也無法判定更早取得過程。主選單顯示的條頓／火山台地與載入後草海平原不能混當本輪新開局設定。",
+    "draft_vs_active": "從「儲存後套用設定」「按套用才儲存」「關閉不儲存」理解面板是草稿，按儲存才生效。已送出食物優先與儲存，後續面板關閉；但未重開核對，沒有觀察到套用後比例，因此不宣稱食物優先已經實證生效。",
+    "unknown": [
+      "修理所需的具體操作與成本",
+      "軍事自動生產設定、保留資源互動",
+      "18 人集火時衝車仍存活的確切原因",
+      "後續七波、完整開局節奏與長期平衡"
+    ]
+  },
+  "improvement_priorities": [
+    {
+      "priority": "P1",
+      "proposal": "讓衝車造成城心大量傷害時的威脅更醒目，並在援護後顯示當下實際目標與執行人數",
+      "why": "我先看到護衛、直到再次反擊才確認大批集火；-127.8 HP 的威脅值得快速辨認"
+    },
+    {
+      "priority": "P1",
+      "proposal": "提供更直接的城心維修入口或找工人回饋，找不到待命村民時清楚解釋",
+      "why": "我的緊急維修意圖在待命狀態變化中失敗"
+    },
+    {
+      "priority": "P2",
+      "proposal": "儲存規劃後短暫顯示已生效的採集策略與比例摘要",
+      "why": "我懂草稿概念，但關閉面板後無法一眼核對實際設定"
+    },
+    {
+      "priority": "P3",
+      "proposal": "續玩受攻狀態可提供簡短當前威脅／進度提示",
+      "why": "新獨立玩家接手時已在進階時代與戰鬥中，需要重新建立局面理解；此為續玩體驗建議"
+    }
+  ],
+  "replay": {
+    "willingness": "願意再玩一次",
+    "reason": "想在較早階段準備防衝車與維修，再判斷守城與生產安排；這次失敗仍看得到下一次可嘗試的決策",
+    "condition": "不是本輪重開；本輪已依正式結果停止"
+  },
+  "subjective_ai_scores": {
+    "scale": "0–10，僅 B2 代理對這次短續玩的主觀描述，非真人評分或因果比較",
+    "overall_fun": 5,
+    "visual_engagement": 7,
+    "control_clarity": 5,
+    "recovery_confidence": 3,
+    "replay_interest": 6,
+    "explanation": "守城畫面與反擊摘要帶來投入感，但緊急目標辨認、維修及設定核對未能讓我掌握局勢；結算很快，沒有足夠內容支持完整遊戲評價"
+  },
+  "limitations": [
+    "續玩到正式結果約 101 秒牆鐘時間，含總管暫停；不足以評估完整十波",
+    "結算累積數值不是 B2 新增成績",
+    "截圖與公開文字有時間差；134.656 秒城心分別為 43% 與 40%",
+    "5 秒角色輸入限制與逐次工具觀察影響微操節奏，不等同真人反應",
+    "只判公開畫面，不判 GDD 相容性或實作正確性"
+  ],
+  "access": {
+    "game_information": [
+      "本角色 PROFILE.md",
+      "本角色 PUBLIC-PROTOCOL.md",
+      "原生 client 的公開 observe／輸入回應",
+      "公開截圖",
+      "自己的報告"
+    ],
+    "runtime_requirement": "另依上層雲端環境規範讀取 runtime 技能與環境狀態；未提供或使用額外遊戲資訊",
+    "prohibited_sources_read": false,
+    "engine_evaluate_used": false,
+    "direct_state_modified": false,
+    "git_or_ownership_modified": false
+  }
+}
