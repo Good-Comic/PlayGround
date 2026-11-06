@@ -32,12 +32,13 @@ export function installHeroCoreGuard(g, ui) {
   const box = document.querySelector('#rescue-expedition'), go = box.querySelector('button');
   const button = document.createElement('button');
   button.id = 'btn-hero-core-guard'; button.type = 'button'; button.hidden = true;
-  box.append(button);
+  go.after(button);
   const blocked = () => ui.menuVisible || ui.settingsOpen || ui.gmOpen || ui.boonsOpen || ui.pauseOpen || !ui.el.howto.hidden || !!document.querySelector('dialog[open]');
   button.addEventListener('keydown', e => {
     if ([' ', 'Enter', 'Tab'].includes(e.key)) { e.stopPropagation(); if (e.repeat && e.key !== 'Tab') e.preventDefault(); }
   });
   button.onclick = () => {
+    if (!heroCoreGuardTarget(g, blocked())) return;
     const result = guardHeroCore(g, blocked());
     g.toast(t('heroCoreGuard.' + (result.ok ? 'issued' : 'unavailable')), result.ok ? 'good' : 'bad', 2800);
     update();
