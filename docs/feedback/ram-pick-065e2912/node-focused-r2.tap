@@ -1,0 +1,868 @@
+TAP version 13
+# Subtest: 全軍排除村民、英雄、敵軍與死亡單位 / army excludes workers hero enemies and dead units
+ok 1 - 全軍排除村民、英雄、敵軍與死亡單位 / army excludes workers hero enemies and dead units
+  ---
+  duration_ms: 21.765552
+  type: 'test'
+  ...
+# Subtest: 推進與護衛沿用原生命令且不搶村民 / advance and guard reuse native commands without worker orders
+ok 2 - 推進與護衛沿用原生命令且不搶村民 / advance and guard reuse native commands without worker orders
+  ---
+  duration_ms: 22.619891
+  type: 'test'
+  ...
+# Subtest: 暫停、選卡、結算、對話框與施工不下令 / pause rewards terminal modal and placement prevent commands
+ok 3 - 暫停、選卡、結算、對話框與施工不下令 / pause rewards terminal modal and placement prevent commands
+  ---
+  duration_ms: 60.155772
+  type: 'test'
+  ...
+# Subtest: 英雄護盾使用正式冷卻與效果，重按不重複 / hero shield uses native effects and cooldown without double casting
+ok 4 - 英雄護盾使用正式冷卻與效果，重按不重複 / hero shield uses native effects and cooldown without double casting
+  ---
+  duration_ms: 5.62083
+  type: 'test'
+  ...
+# Subtest: 選軍不花費、未知命令與無軍隊保持狀態 / selection costs nothing and empty or unknown actions preserve state
+ok 5 - 選軍不花費、未知命令與無軍隊保持狀態 / selection costs nothing and empty or unknown actions preserve state
+  ---
+  duration_ms: 5.424409
+  type: 'test'
+  ...
+# Subtest: 選軍經原生切換離開英雄直控 / selecting army exits hero direct control through native toggle
+ok 6 - 選軍經原生切換離開英雄直控 / selecting army exits hero direct control through native toggle
+  ---
+  duration_ms: 5.97907
+  type: 'test'
+  ...
+# Subtest: 快捷入口切換原生英雄直控，F2路徑切回軍隊 / hero shortcut toggles native direct control and army action returns
+ok 7 - 快捷入口切換原生英雄直控，F2路徑切回軍隊 / hero shortcut toggles native direct control and army action returns
+  ---
+  duration_ms: 7.157985
+  type: 'test'
+  ...
+# Subtest: 技能預覽使用正式範圍與可見性，無目標不施放 / context uses native range/visibility and no-target casts do nothing
+ok 8 - 技能預覽使用正式範圍與可見性，無目標不施放 / context uses native range/visibility and no-target casts do nothing
+  ---
+  duration_ms: 7.959451
+  type: 'test'
+  ...
+# Subtest: 英雄接管取消尚未落點的軍隊命令 / hero takeover cancels pending army targeting
+ok 9 - 英雄接管取消尚未落點的軍隊命令 / hero takeover cancels pending army targeting
+  ---
+  duration_ms: 6.388877
+  type: 'test'
+  ...
+# Subtest: CHN hero routing isolates other heroes enemies and ordinary guards
+ok 10 - CHN hero routing isolates other heroes enemies and ordinary guards
+  ---
+  duration_ms: 0.295507
+  type: 'test'
+  ...
+# Subtest: 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring
+ok 11 - 192 distinct pose cells including cast fit actual PNG; original hero is not guard recoloring
+  ---
+  duration_ms: 2.793034
+  type: 'test'
+  ...
+# Subtest: production hero rules snapshots and visible-head selection remain unchanged
+ok 12 - production hero rules snapshots and visible-head selection remain unchanged
+  ---
+  duration_ms: 9.406573
+  type: 'test'
+  ...
+# Subtest: CHN Mark and Aegis renderer emblems differ without altering other hero feedback
+ok 13 - CHN Mark and Aegis renderer emblems differ without altering other hero feedback
+  ---
+  duration_ms: 0.657934
+  type: 'test'
+  ...
+# Subtest: offline alpha crops stay within every cell and cached draw preserves original ground anchor
+ok 14 - offline alpha crops stay within every cell and cached draw preserves original ground anchor
+  ---
+  duration_ms: 0.634459
+  type: 'test'
+  ...
+# Subtest: 空地右鍵與人工集火的讀回不同，後續人工移動立即覆蓋
+ok 15 - 空地右鍵與人工集火的讀回不同，後續人工移動立即覆蓋
+  ---
+  duration_ms: 11.523076
+  type: 'test'
+  ...
+# Subtest: 護衛中自動接敵仍讀為護衛，不假稱人工集火
+ok 16 - 護衛中自動接敵仍讀為護衛，不假稱人工集火
+  ---
+  duration_ms: 11.285244
+  type: 'test'
+  ...
+# Subtest: 推進、巡邏、移動、自主接敵、待命與固守混合不丟人數
+ok 17 - 推進、巡邏、移動、自主接敵、待命與固守混合不丟人數
+  ---
+  duration_ms: 14.676284
+  type: 'test'
+  ...
+# Subtest: 不從歷史路徑失敗欄位宣稱部隊仍卡死
+ok 18 - 不從歷史路徑失敗欄位宣稱部隊仍卡死
+  ---
+  duration_ms: 3.87767
+  type: 'test'
+  ...
+# Subtest: 只計目前正式戰士，不把空選、工人、英雄、敵軍或建築當全軍
+ok 19 - 只計目前正式戰士，不把空選、工人、英雄、敵軍或建築當全軍
+  ---
+  duration_ms: 3.74284
+  type: 'test'
+  ...
+# Subtest: 英雄直控援護保留選取、按鍵、鏡頭，摘要正確顯示已選零人
+ok 20 - 英雄直控援護保留選取、按鍵、鏡頭，摘要正確顯示已選零人
+  ---
+  duration_ms: 4.194489
+  type: 'test'
+  ...
+# Subtest: 未見目標在可見性通過前不讀名稱、類型、HP、位置或旗手資料
+ok 21 - 未見目標在可見性通過前不讀名稱、類型、HP、位置或旗手資料
+  ---
+  duration_ms: 2.679206
+  type: 'test'
+  ...
+# Subtest: 死亡、失去視野與換選取立即移除舊人工目標
+ok 22 - 死亡、失去視野與換選取立即移除舊人工目標
+  ---
+  duration_ms: 2.791943
+  type: 'test'
+  ...
+# Subtest: 旗手身分只在實際目標吻合且可見時附加
+ok 23 - 旗手身分只在實際目標吻合且可見時附加
+  ---
+  duration_ms: 4.08073
+  type: 'test'
+  ...
+# Subtest: 多個人工目標各自回報，不挑選最佳目標或改寫原令
+ok 24 - 多個人工目標各自回報，不挑選最佳目標或改寫原令
+  ---
+  duration_ms: 4.048443
+  type: 'test'
+  ...
+# Subtest: 反覆摘要與前景繪製保持snapshot、模擬RNG與視效RNG不變並成對還原Canvas狀態
+ok 25 - 反覆摘要與前景繪製保持snapshot、模擬RNG與視效RNG不變並成對還原Canvas狀態
+  ---
+  duration_ms: 5.725094
+  type: 'test'
+  ...
+# Subtest: 繪製時再次查可見性、死亡、換選取與讀檔後舊實體，不畫舊座標
+ok 26 - 繪製時再次查可見性、死亡、換選取與讀檔後舊實體，不畫舊座標
+  ---
+  duration_ms: 5.798183
+  type: 'test'
+  ...
+# Subtest: 暫停仍可純讀，選卡與結算不殘留目標；讀檔後依原生新物件回讀
+ok 27 - 暫停仍可純讀，選卡與結算不殘留目標；讀檔後依原生新物件回讀
+  ---
+  duration_ms: 9.151266
+  type: 'test'
+  ...
+# Subtest: 四語摘要完整且不出raw key或未替換參數
+ok 28 - 四語摘要完整且不出raw key或未替換參數
+  ---
+  duration_ms: 3.599428
+  type: 'test'
+  ...
+# Subtest: 正式沙暴視野縮減會隱去人工目標名稱與標示，恢復後重新讀取
+ok 29 - 正式沙暴視野縮減會隱去人工目標名稱與標示，恢復後重新讀取
+  ---
+  duration_ms: 3.646377
+  type: 'test'
+  ...
+# Subtest: 密集多目標前景限制四個，畫面外不繪製，摘要仍包含全部選兵
+ok 30 - 密集多目標前景限制四個，畫面外不繪製，摘要仍包含全部選兵
+  ---
+  duration_ms: 4.286114
+  type: 'test'
+  ...
+# Subtest: 前景繪製例外仍還原Canvas，不污染後續單位姿態
+ok 31 - 前景繪製例外仍還原Canvas，不污染後續單位姿態
+  ---
+  duration_ms: 3.847655
+  type: 'test'
+  ...
+# Subtest: 真實近戰鏈的護甲後HP差、RNG及整份snapshot與未裝版相同
+ok 32 - 真實近戰鏈的護甲後HP差、RNG及整份snapshot與未裝版相同
+  ---
+  duration_ms: 8.727027
+  type: 'test'
+  ...
+# Subtest: 完全護盾不誤報、部分護盾只算實際HP而非輸入amount
+ok 33 - 完全護盾不誤報、部分護盾只算實際HP而非輸入amount
+  ---
+  duration_ms: 3.822027
+  type: 'test'
+  ...
+# Subtest: 投射物抵達才記錄，絕不把射手現在位置當發射來向
+ok 34 - 投射物抵達才記錄，絕不把射手現在位置當發射來向
+  ---
+  duration_ms: 6.223683
+  type: 'test'
+  ...
+# Subtest: 原生zone傷害只記真實城心失血，不推測火焰方向
+ok 35 - 原生zone傷害只記真實城心失血，不推測火焰方向
+  ---
+  duration_ms: 3.04654
+  type: 'test'
+  ...
+# Subtest: 過量致命傷只記剩餘HP，死亡／敗北原流程完全不變
+ok 36 - 過量致命傷只記剩餘HP，死亡／敗北原流程完全不變
+  ---
+  duration_ms: 6.692507
+  type: 'test'
+  ...
+# Subtest: source在受傷當時已死／未見／不在世界時只顯自己的HP損失
+ok 37 - source在受傷當時已死／未見／不在世界時只顯自己的HP損失
+  ---
+  duration_ms: 13.960734
+  type: 'test'
+  ...
+# Subtest: 受傷後死亡或失視野立即去掉身分／方向，再看見也不重建追蹤
+ok 38 - 受傷後死亡或失視野立即去掉身分／方向，再看見也不重建追蹤
+  ---
+  duration_ms: 9.433814
+  type: 'test'
+  ...
+# Subtest: 只是瞄準／攻擊意圖、修復或其他單位受傷不假造城心傷害
+ok 39 - 只是瞄準／攻擊意圖、修復或其他單位受傷不假造城心傷害
+  ---
+  duration_ms: 4.863969
+  type: 'test'
+  ...
+# Subtest: 反覆查看與暫停不改任何模擬狀態或額外消耗兩種RNG
+ok 40 - 反覆查看與暫停不改任何模擬狀態或額外消耗兩種RNG
+  ---
+  duration_ms: 14.233478
+  type: 'test'
+  ...
+# Subtest: Save/Load、新局、換world及獎勵結算清除舊UI，不改存檔schema
+ok 41 - Save/Load、新局、換world及獎勵結算清除舊UI，不改存檔schema
+  ---
+  duration_ms: 26.934838
+  type: 'test'
+  ...
+# Subtest: 觀察失敗不攔截致命原生傷害，原生命令異常仍原樣拋出
+ok 42 - 觀察失敗不攔截致命原生傷害，原生命令異常仍原樣拋出
+  ---
+  duration_ms: 6.034131
+  type: 'test'
+  ...
+# Subtest: 四語具名／未知來源及微量損失格式正確，不把箭頭當投射方向
+ok 43 - 四語具名／未知來源及微量損失格式正確，不把箭頭當投射方向
+  ---
+  duration_ms: 3.112337
+  type: 'test'
+  ...
+# Subtest: 大傷後的小傷不蓋掉本波已記錄最大一擊，兩筆保留各自時間
+ok 44 - 大傷後的小傷不蓋掉本波已記錄最大一擊，兩筆保留各自時間
+  ---
+  duration_ms: 2.958579
+  type: 'test'
+  ...
+# Subtest: 未知來源大傷也計最大值，不因之後可見小傷而補猜歷史身分
+ok 45 - 未知來源大傷也計最大值，不因之後可見小傷而補猜歷史身分
+  ---
+  duration_ms: 3.163222
+  type: 'test'
+  ...
+# Subtest: last與max各自失視野去身分；不能用另一筆來源替代或重辨識
+ok 46 - last與max各自失視野去身分；不能用另一筆來源替代或重辨識
+  ---
+  duration_ms: 3.740277
+  type: 'test'
+  ...
+# Subtest: 最大值以waveIndex分界；讀檔不猜未觀察到的本波歷史
+ok 47 - 最大值以waveIndex分界；讀檔不猜未觀察到的本波歷史
+  ---
+  duration_ms: 5.960502
+  type: 'test'
+  ...
+# Subtest: 最大單次不是DPS或同來源加總，同值保留先記錄且UI不重複
+ok 48 - 最大單次不是DPS或同來源加總，同值保留先記錄且UI不重複
+  ---
+  duration_ms: 3.010616
+  type: 'test'
+  ...
+# Subtest: 沒有攻城者時，原生護衛城心，英雄與村民不加入全軍
+ok 49 - 沒有攻城者時，原生護衛城心，英雄與村民不加入全軍
+  ---
+  duration_ms: 3.512078
+  type: 'test'
+  ...
+# Subtest: 明確手動援護會沿用原生集火，選取確實正在射程內攻擊城心的可見敵軍
+ok 50 - 明確手動援護會沿用原生集火，選取確實正在射程內攻擊城心的可見敵軍
+  ---
+  duration_ms: 3.229801
+  type: 'test'
+  ...
+# Subtest: 只攔截最近攻城者，不為遠方或攻擊其他目標的敵軍追出城外
+ok 51 - 只攔截最近攻城者，不為遠方或攻擊其他目標的敵軍追出城外
+  ---
+  duration_ms: 9.3434
+  type: 'test'
+  ...
+# Subtest: 索敵範圍對照原生建築攻擊距離；不把接近中的敵軍算成已在攻城
+ok 52 - 索敵範圍對照原生建築攻擊距離；不把接近中的敵軍算成已在攻城
+  ---
+  duration_ms: 2.908936
+  type: 'test'
+  ...
+# Subtest: 不讀取迷霧中攻城者的位置，也不向其下達手動追擊
+ok 53 - 不讀取迷霧中攻城者的位置，也不向其下達手動追擊
+  ---
+  duration_ms: 3.158655
+  type: 'test'
+  ...
+# Subtest: 依城心表面距離選最近威脅，不因高價兵種而追遠方
+ok 54 - 依城心表面距離選最近威脅，不因高價兵種而追遠方
+  ---
+  duration_ms: 3.116343
+  type: 'test'
+  ...
+# Subtest: 暫停、獎勵、結算、選單、施工或對話框阻擋時完全不發令
+ok 55 - 暫停、獎勵、結算、選單、施工或對話框阻擋時完全不發令
+  ---
+  duration_ms: 25.531621
+  type: 'test'
+  ...
+# Subtest: 城心或軍隊不存在，以及目標被遮擋時，不偷改現有命令或資源
+ok 56 - 城心或軍隊不存在，以及目標被遮擋時，不偷改現有命令或資源
+  ---
+  duration_ms: 9.955346
+  type: 'test'
+  ...
+# Subtest: 命令不改時間、RNG、費用、生命、傷害或目前冷卻倒數
+ok 57 - 命令不改時間、RNG、費用、生命、傷害或目前冷卻倒數
+  ---
+  duration_ms: 6.171885
+  type: 'test'
+  ...
+# Subtest: 人工新命令立即覆寫援護，不會定時搶回部隊
+ok 58 - 人工新命令立即覆寫援護，不會定時搶回部隊
+  ---
+  duration_ms: 86.234112
+  type: 'test'
+  ...
+# Subtest: 原生Save/Load保留城心護衛身分，沒有額外持續自動化狀態
+ok 59 - 原生Save/Load保留城心護衛身分，沒有額外持續自動化狀態
+  ---
+  duration_ms: 7.918651
+  type: 'test'
+  ...
+# Subtest: 英雄直控維持，原生聲音與標記仍各一次
+ok 60 - 英雄直控維持，原生聲音與標記仍各一次
+  ---
+  duration_ms: 3.034221
+  type: 'test'
+  ...
+# Subtest: 16文明與200人批次使用相同正式入口，不更改文明參數
+ok 61 - 16文明與200人批次使用相同正式入口，不更改文明參數
+  ---
+  duration_ms: 47.540909
+  type: 'test'
+  ...
+# Subtest: 援護可與英雄直控並行，保留選取、鏡頭及持續按鍵
+ok 62 - 援護可與英雄直控並行，保留選取、鏡頭及持續按鍵
+  ---
+  duration_ms: 13.763523
+  type: 'test'
+  ...
+# Subtest: 原生指令例外也還原英雄選取並清除尚未落點模式
+ok 63 - 原生指令例外也還原英雄選取並清除尚未落點模式
+  ---
+  duration_ms: 4.030426
+  type: 'test'
+  ...
+# Subtest: 英雄直控下也可令軍隊集火，英雄的按鍵與目標不被援護接管
+ok 64 - 英雄直控下也可令軍隊集火，英雄的按鍵與目標不被援護接管
+  ---
+  duration_ms: 3.355497
+  type: 'test'
+  ...
+# Subtest: 一次明確命令只作用於已選戰士，未選兵與英雄／村民不變
+ok 65 - 一次明確命令只作用於已選戰士，未選兵與英雄／村民不變
+  ---
+  duration_ms: 4.311622
+  type: 'test'
+  ...
+# Subtest: 攻擊欄位、命令標記、音效及模擬狀態與同點原生右鍵一致
+ok 66 - 攻擊欄位、命令標記、音效及模擬狀態與同點原生右鍵一致
+  ---
+  duration_ms: 6.99274
+  type: 'test'
+  ...
+# Subtest: 反覆讀取入口與重新繪製不消耗RNG、資源、HP、冷卻或事件時間
+ok 67 - 反覆讀取入口與重新繪製不消耗RNG、資源、HP、冷卻或事件時間
+  ---
+  duration_ms: 5.725485
+  type: 'test'
+  ...
+# Subtest: 空選、混合英雄／村民／建築、英雄直控及舊實體不偷偷選兵
+ok 68 - 空選、混合英雄／村民／建築、英雄直控及舊實體不偷偷選兵
+  ---
+  duration_ms: 21.016578
+  type: 'test'
+  ...
+# Subtest: 暫停、面板、施工、選卡、結算、選單及過期事件一律零命令
+ok 69 - 暫停、面板、施工、選卡、結算、選單及過期事件一律零命令
+  ---
+  duration_ms: 27.030129
+  type: 'test'
+  ...
+# Subtest: 已死／轉陣營／不在目前世界／霧中目標不下令且不讀隱藏座標
+ok 70 - 已死／轉陣營／不在目前世界／霧中目標不下令且不讀隱藏座標
+  ---
+  duration_ms: 11.678206
+  type: 'test'
+  ...
+# Subtest: 無原生命中點、UI遮擋／畫面外或點擊當下變更不退回移動／其他敵人
+ok 71 - 無原生命中點、UI遮擋／畫面外或點擊當下變更不退回移動／其他敵人
+  ---
+  duration_ms: 10.277453
+  type: 'test'
+  ...
+# Subtest: 沙暴沿正式視野縮減禁用入口，恢復後才重新可用，不延長集結
+ok 72 - 沙暴沿正式視野縮減禁用入口，恢復後才重新可用，不延長集結
+  ---
+  duration_ms: 3.063745
+  type: 'test'
+  ...
+# Subtest: 第一個原生點被UI遮住仍可採用下一個合法點，不繞過pickAt
+ok 73 - 第一個原生點被UI遮住仍可採用下一個合法點，不繞過pickAt
+  ---
+  duration_ms: 3.065838
+  type: 'test'
+  ...
+# Subtest: 入口不持續改令；後續原生移動／停止立即覆蓋
+ok 74 - 入口不持續改令；後續原生移動／停止立即覆蓋
+  ---
+  duration_ms: 3.159416
+  type: 'test'
+  ...
+# Subtest: 原生Save/Load改用新實體並保留剩餘時窗，舊旗手不被重用
+ok 75 - 原生Save/Load改用新實體並保留剩餘時窗，舊旗手不被重用
+  ---
+  duration_ms: 5.538147
+  type: 'test'
+  ...
+# Subtest: 四語有完整明確人工控制與禁用原因，不覆蓋正式既有規則
+ok 76 - 四語有完整明確人工控制與禁用原因，不覆蓋正式既有規則
+  ---
+  duration_ms: 0.172095
+  type: 'test'
+  ...
+# Subtest: 木殼兩側、屋頂與金屬端保留已重現的實心點
+ok 77 - 木殼兩側、屋頂與金屬端保留已重現的實心點
+  ---
+  duration_ms: 0.274136
+  type: 'test'
+  ...
+# Subtest: 木殼沿原梯形斜邊判定，不擴大到外側空白
+ok 78 - 木殼沿原梯形斜邊判定，不擴大到外側空白
+  ---
+  duration_ms: 0.160036
+  type: 'test'
+  ...
+# Subtest: 下底保留實心橢圓，排除曲線外及輪圈間的空隙
+ok 79 - 下底保留實心橢圓，排除曲線外及輪圈間的空隙
+  ---
+  duration_ms: 0.117624
+  type: 'test'
+  ...
+# Subtest: 金屬端採原實心圓，圓外角落維持不可選
+ok 80 - 金屬端採原實心圓，圓外角落維持不可選
+  ---
+  duration_ms: 0.180056
+  type: 'test'
+  ...
+# Subtest: 旗幟、血條、陰影與遠方空白不列入車身
+ok 81 - 旗幟、血條、陰影與遠方空白不列入車身
+  ---
+  duration_ms: 0.157023
+  type: 'test'
+  ...
+# Subtest: E 朝向保留鏡像與景深壓縮後的車身位置
+ok 82 - E 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.133688
+  type: 'test'
+  ...
+# Subtest: W 朝向保留鏡像與景深壓縮後的車身位置
+ok 83 - W 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.072827
+  type: 'test'
+  ...
+# Subtest: N 朝向保留鏡像與景深壓縮後的車身位置
+ok 84 - N 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.125306
+  type: 'test'
+  ...
+# Subtest: S 朝向保留鏡像與景深壓縮後的車身位置
+ok 85 - S 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.041582
+  type: 'test'
+  ...
+# Subtest: NE 朝向保留鏡像與景深壓縮後的車身位置
+ok 86 - NE 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.043985
+  type: 'test'
+  ...
+# Subtest: SE 朝向保留鏡像與景深壓縮後的車身位置
+ok 87 - SE 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.031236
+  type: 'test'
+  ...
+# Subtest: NW 朝向保留鏡像與景深壓縮後的車身位置
+ok 88 - NW 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.029674
+  type: 'test'
+  ...
+# Subtest: SW 朝向保留鏡像與景深壓縮後的車身位置
+ok 89 - SW 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.028632
+  type: 'test'
+  ...
+# Subtest: 缺少或未知朝向時沿用既有 facing 回退
+ok 90 - 缺少或未知朝向時沿用既有 facing 回退
+  ---
+  duration_ms: 0.10156
+  type: 'test'
+  ...
+# Subtest: 半倍與兩倍縮放使用畫面地面錨點並保留斜邊空白
+ok 91 - 半倍與兩倍縮放使用畫面地面錨點並保留斜邊空白
+  ---
+  duration_ms: 0.107869
+  type: 'test'
+  ...
+# Subtest: 移動、返程、建造與採集依相同移動晃動修正屋頂及底緣
+ok 92 - 移動、返程、建造與採集依相同移動晃動修正屋頂及底緣
+  ---
+  duration_ms: 0.204112
+  type: 'test'
+  ...
+# Subtest: 步行相位改變時跟隨原餘弦晃動，不固定抬高車身
+ok 93 - 步行相位改變時跟隨原餘弦晃動，不固定抬高車身
+  ---
+  duration_ms: 0.228488
+  type: 'test'
+  ...
+# Subtest: 待命晃動使用傳入時間與單位編號，保留位移前後空白
+ok 94 - 待命晃動使用傳入時間與單位編號，保留位移前後空白
+  ---
+  duration_ms: 0.148049
+  type: 'test'
+  ...
+# Subtest: 攻擊動畫沿用待命晃動與原車身，不加入攻擊範圍
+ok 95 - 攻擊動畫沿用待命晃動與原車身，不加入攻擊範圍
+  ---
+  duration_ms: 0.123813
+  type: 'test'
+  ...
+# Subtest: 受擊沿 Renderer 的局部平移修正車身與原位置外緣
+ok 96 - 受擊沿 Renderer 的局部平移修正車身與原位置外緣
+  ---
+  duration_ms: 0.099477
+  type: 'test'
+  ...
+# Subtest: 西向鏡像及北向景深縮放保留受擊平移順序
+ok 97 - 西向鏡像及北向景深縮放保留受擊平移順序
+  ---
+  duration_ms: 0.12847
+  type: 'test'
+  ...
+# Subtest: 移動中受擊仍採移動晃動並套用受擊平移
+ok 98 - 移動中受擊仍採移動晃動並套用受擊平移
+  ---
+  duration_ms: 0.080128
+  type: 'test'
+  ...
+# Subtest: 不可靠的座標、地面錨點、縮放、時間與文明輸入一律拒絕
+ok 99 - 不可靠的座標、地面錨點、縮放、時間與文明輸入一律拒絕
+  ---
+  duration_ms: 0.213365
+  type: 'test'
+  ...
+# Subtest: 非衝車、死亡、缺少必要動畫資料與非有限單位數值不套用車身
+ok 100 - 非衝車、死亡、缺少必要動畫資料與非有限單位數值不套用車身
+  ---
+  duration_ms: 0.197813
+  type: 'test'
+  ...
+# Subtest: 固定輸入可重複判定，且不修改單位或地面資料
+ok 101 - 固定輸入可重複判定，且不修改單位或地面資料
+  ---
+  duration_ms: 0.178795
+  type: 'test'
+  ...
+# Subtest: 未來有通用衝車圖集時即使尚無 pickBody 也交回既有圖集流程
+ok 102 - 未來有通用衝車圖集時即使尚無 pickBody 也交回既有圖集流程
+  ---
+  duration_ms: 1.599828
+  type: 'test'
+  ...
+# Subtest: 未來文明衝車圖集依既有 key 回交，未對應的衝車仍採程序式幾何
+ok 103 - 未來文明衝車圖集依既有 key 回交，未對應的衝車仍採程序式幾何
+  ---
+  duration_ms: 0.960782
+  type: 'test'
+  ...
+# Subtest: 真實Game可拾取衝車木殼／撞頭，八向三縮放不改快照、費用、半徑或攻擊距離
+ok 104 - 真實Game可拾取衝車木殼／撞頭，八向三縮放不改快照、費用、半徑或攻擊距離
+  ---
+  duration_ms: 56.619107
+  type: 'test'
+  ...
+# Subtest: 正常中央拾取與其他兵種沿用原有流程，敵我衝車均可選取
+ok 105 - 正常中央拾取與其他兵種沿用原有流程，敵我衝車均可選取
+  ---
+  duration_ms: 7.52582
+  type: 'test'
+  ...
+# Subtest: 木殼可走原正式暫停布令、commit與手動後令覆寫，不直接指定目標冒充成功
+ok 106 - 木殼可走原正式暫停布令、commit與手動後令覆寫，不直接指定目標冒充成功
+  ---
+  duration_ms: 4.946001
+  type: 'test'
+  ...
+# Subtest: 視野與沙暴閘門仍在UI木殼判定之前：雙單位視野facade不讀取隱藏衝車
+ok 107 - 視野與沙暴閘門仍在UI木殼判定之前：雙單位視野facade不讀取隱藏衝車
+  ---
+  duration_ms: 5.304572
+  type: 'test'
+  ...
+# Subtest: 死亡衝車與旗幟／陰影／遠方空白不因新增木殼判定而可選
+ok 108 - 死亡衝車與旗幟／陰影／遠方空白不因新增木殼判定而可選
+  ---
+  duration_ms: 4.238614
+  type: 'test'
+  ...
+# Subtest: 原生快照JSON讀檔後木殼拾取、沙暴剩時與規則仍保留；不改判歷史strict RNG表示FAIL
+ok 109 - 原生快照JSON讀檔後木殼拾取、沙暴剩時與規則仍保留；不改判歷史strict RNG表示FAIL
+  ---
+  duration_ms: 9.229471
+  type: 'test'
+  ...
+# Subtest: 沙暴使用模擬時間並結束 / sandstorm expires on simulation time
+ok 110 - 沙暴使用模擬時間並結束 / sandstorm expires on simulation time
+  ---
+  duration_ms: 115.905801
+  type: 'test'
+  ...
+# Subtest: 暫停與選卡不減少剩餘時間 / pause and boon freeze remaining time
+ok 111 - 暫停與選卡不減少剩餘時間 / pause and boon freeze remaining time
+  ---
+  duration_ms: 19.01134
+  type: 'test'
+  ...
+# Subtest: 讀檔延續剩餘時間 / save load preserves remaining time
+ok 112 - 讀檔延續剩餘時間 / save load preserves remaining time
+  ---
+  duration_ms: 48.094899
+  type: 'test'
+  ...
+# Subtest: 重複事件沒有過期現實計時器 / repeated events have no stale wall timer
+ok 113 - 重複事件沒有過期現實計時器 / repeated events have no stale wall timer
+  ---
+  duration_ms: 75.319105
+  type: 'test'
+  ...
+# Subtest: 觸發不消耗RNG且不改其他事件 / trigger preserves RNG and other effects
+ok 114 - 觸發不消耗RNG且不改其他事件 / trigger preserves RNG and other effects
+  ---
+  duration_ms: 3.099167
+  type: 'test'
+  ...
+# Subtest: 儲存計畫只增加可選欄位，不消耗時間／資源／RNG或技能
+ok 115 - 儲存計畫只增加可選欄位，不消耗時間／資源／RNG或技能
+  ---
+  duration_ms: 3.615311
+  type: 'test'
+  ...
+# Subtest: 正常讀檔在進入遊戲後恢復暫停計畫，尚未執行，重按不重播
+ok 116 - 正常讀檔在進入遊戲後恢復暫停計畫，尚未執行，重按不重播
+  ---
+  duration_ms: 9.271604
+  type: 'test'
+  ...
+# Subtest: 舊存檔維持正常繼續，不強制開啟規劃；舊版可忽略新欄位
+ok 117 - 舊存檔維持正常繼續，不強制開啟規劃；舊版可忽略新欄位
+  ---
+  duration_ms: 7.897119
+  type: 'test'
+  ...
+# Subtest: 不同種子／波次／cycle／未知版本／過大資料不開啟計畫、不下令
+ok 118 - 不同種子／波次／cycle／未知版本／過大資料不開啟計畫、不下令
+  ---
+  duration_ms: 17.213869
+  type: 'test'
+  ...
+# Subtest: 失效單位、村民、未知指令、無效座標與不可見目標安全略過
+ok 119 - 失效單位、村民、未知指令、無效座標與不可見目標安全略過
+  ---
+  duration_ms: 6.096624
+  type: 'test'
+  ...
+# Subtest: 重新開局會捨棄待恢復計畫，不能跨新局突然暫停或回放
+ok 120 - 重新開局會捨棄待恢復計畫，不能跨新局突然暫停或回放
+  ---
+  duration_ms: 9.588883
+  type: 'test'
+  ...
+# Subtest: 受控標記存讀檔保留實際可見性檢查，讀取本身不施法
+ok 121 - 受控標記存讀檔保留實際可見性檢查，讀取本身不施法
+  ---
+  duration_ms: 7.967153
+  type: 'test'
+  ...
+# Subtest: 重複單位／技能的修改存檔只接受第一次，不堆疊恢復
+ok 122 - 重複單位／技能的修改存檔只接受第一次，不堆疊恢復
+  ---
+  duration_ms: 5.670553
+  type: 'test'
+  ...
+# Subtest: 16文明可續存分隊計畫；儲存、恢復與取消不改RNG／庫存
+ok 123 - 16文明可續存分隊計畫；儲存、恢復與取消不改RNG／庫存
+  ---
+  duration_ms: 143.22691
+  type: 'test'
+  ...
+# Subtest: 負數RNG讀檔雖轉無號表示，32位元及後續64次輸出一致，未消耗即時RNG
+ok 124 - 負數RNG讀檔雖轉無號表示，32位元及後續64次輸出一致，未消耗即時RNG
+  ---
+  duration_ms: 8.200138
+  type: 'test'
+  ...
+# Subtest: 護衛計畫續存保留同一友軍建築，恢復前不移動、確認後才原生護衛
+ok 125 - 護衛計畫續存保留同一友軍建築，恢復前不移動、確認後才原生護衛
+  ---
+  duration_ms: 8.690433
+  type: 'test'
+  ...
+# Subtest: 修改存檔中的未就緒技能與結算計畫不能取得免費施法或中斷結算
+ok 126 - 修改存檔中的未就緒技能與結算計畫不能取得免費施法或中斷結算
+  ---
+  duration_ms: 11.913724
+  type: 'test'
+  ...
+# Subtest: 布令不移動、不消耗資源／冷卻／RNG；取消不改模擬
+ok 127 - 布令不移動、不消耗資源／冷卻／RNG；取消不改模擬
+  ---
+  duration_ms: 3.550916
+  type: 'test'
+  ...
+# Subtest: 不同小隊同時布令、同單位最後指令優先，恢復後原生移動
+ok 128 - 不同小隊同時布令、同單位最後指令優先，恢復後原生移動
+  ---
+  duration_ms: 2.908275
+  type: 'test'
+  ...
+# Subtest: 神盾排程不重複、恢復才使用正式60秒冷卻與60護盾
+ok 129 - 神盾排程不重複、恢復才使用正式60秒冷卻與60護盾
+  ---
+  duration_ms: 3.02695
+  type: 'test'
+  ...
+# Subtest: 不存在／不可見敵人不集火，標記仍遵守正式視野
+ok 130 - 不存在／不可見敵人不集火，標記仍遵守正式視野
+  ---
+  duration_ms: 2.842067
+  type: 'test'
+  ...
+# Subtest: 原生集火與護衛入口會執行，沒有換掉玩家指定目標
+ok 131 - 原生集火與護衛入口會執行，沒有換掉玩家指定目標
+  ---
+  duration_ms: 5.899142
+  type: 'test'
+  ...
+# Subtest: 村民、敵人、建築、死亡單位不能誤入軍隊布令
+ok 132 - 村民、敵人、建築、死亡單位不能誤入軍隊布令
+  ---
+  duration_ms: 2.728409
+  type: 'test'
+  ...
+# Subtest: 選卡／結算／新局／讀檔與非暫停狀態不回放舊布令
+ok 133 - 選卡／結算／新局／讀檔與非暫停狀態不回放舊布令
+  ---
+  duration_ms: 22.754431
+  type: 'test'
+  ...
+# Subtest: 已下達命令可原生存讀檔，未下達計畫不混入存檔
+ok 134 - 已下達命令可原生存讀檔，未下達計畫不混入存檔
+  ---
+  duration_ms: 6.59378
+  type: 'test'
+  ...
+# Subtest: 恢復前失效的目標／單位安全略過，不能偷偷改打另一個敵人
+ok 135 - 恢復前失效的目標／單位安全略過，不能偷偷改打另一個敵人
+  ---
+  duration_ms: 2.766825
+  type: 'test'
+  ...
+# Subtest: 玩家恢復後手動移動可立即覆寫布令，不重播搶指揮權
+ok 136 - 玩家恢復後手動移動可立即覆寫布令，不重播搶指揮權
+  ---
+  duration_ms: 2.791572
+  type: 'test'
+  ...
+# Subtest: 16文明布令移動及取消皆不額外消耗遊戲RNG或資源
+ok 137 - 16文明布令移動及取消皆不額外消耗遊戲RNG或資源
+  ---
+  duration_ms: 43.723318
+  type: 'test'
+  ...
+# Subtest: 復原可還原分隊覆寫前的整份計畫，也可復原清除；不改模擬
+ok 138 - 復原可還原分隊覆寫前的整份計畫，也可復原清除；不改模擬
+  ---
+  duration_ms: 3.430417
+  type: 'test'
+  ...
+# Subtest: 兵種群組直接讀取正式分類，排除英雄、村民、敵軍及不存在的分類
+ok 139 - 兵種群組直接讀取正式分類，排除英雄、村民、敵軍及不存在的分類
+  ---
+  duration_ms: 3.133569
+  type: 'test'
+  ...
+# Subtest: 雙方實際視野半徑減少20% / both teams lose20% sight
+ok 140 - 雙方實際視野半徑減少20% / both teams lose20% sight
+  ---
+  duration_ms: 0.159797
+  type: 'test'
+  ...
+# Subtest: 文明視野加成先套用，建築預設6，不改射程 / bonuses before multiplier; building default6; no range mutation
+ok 141 - 文明視野加成先套用，建築預設6，不改射程 / bonuses before multiplier; building default6; no range mutation
+  ---
+  duration_ms: 0.092767
+  type: 'test'
+  ...
+# Subtest: 敵軍失去視野不追蹤單位並可重新獲取 / enemy loses hidden unit and reacquires after storm
+ok 142 - 敵軍失去視野不追蹤單位並可重新獲取 / enemy loses hidden unit and reacquires after storm
+  ---
+  duration_ms: 3.51295
+  type: 'test'
+  ...
+# Subtest: 讀檔視野與RNG不變 / restored sight and RNG remain unchanged
+ok 143 - 讀檔視野與RNG不變 / restored sight and RNG remain unchanged
+  ---
+  duration_ms: 6.498789
+  type: 'test'
+  ...
+1..143
+# tests 143
+# suites 0
+# pass 143
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4809.51402

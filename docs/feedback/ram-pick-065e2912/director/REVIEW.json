@@ -1,0 +1,447 @@
+{
+  "review": "程序式衝車車身拾取限縮唯讀複評",
+  "language": "zh-Hant-TW",
+  "task": "RAM-BODY-PICK-065E2912",
+  "created_at_utc": "2026-11-06T05:45:34.155421+00:00",
+  "source": {
+    "before": "83554e6a23d4d6c5631d3e21c8cdf7f968b64dbf",
+    "after": "b9699d627ae28f75eca33ee05aa0ac54311d27ae",
+    "immutable_build": "build-r1",
+    "build_status": "PLAYTEST-EXPERIMENTAL",
+    "verification_level": "AFTER_LOCAL_ONLY_UNTIL_AUTHORIZED_DEPLOY",
+    "three_cited_files_match_manifest": true,
+    "full_resource_verification": {
+      "source": "b9699d627ae28f75eca33ee05aa0ac54311d27ae",
+      "total": 166,
+      "pass": 166,
+      "fail": [],
+      "changed_from_83554": [
+        "js/game.js"
+      ],
+      "new": [
+        "js/ram-body-picking.js"
+      ],
+      "unchanged_existing": 164
+    },
+    "full_166_recheck_by_reviewer": false,
+    "owner_and_push_provenance": "派工提供Owner282及正常Push；本角色不操作或核驗Git／Ownership"
+  },
+  "decision": {
+    "ui_picking_fix": "ACCEPT_SCOPED_CONTROLLED_FIX",
+    "conclusion": "受控木殼／屋頂／撞頭的拾取與原生集火鏈修正成立",
+    "new_hit_or_occlusion_mechanism_approved": false,
+    "other_owner_takeover_approved": false,
+    "formal_qa_integration_release_promotion": false,
+    "natural_win_rate_or_human_fun_proven": false
+  },
+  "evidence_counts": {
+    "before_r2_checks": 10,
+    "before_r2_passed": 10,
+    "after_r1_checks": 12,
+    "after_r1_passed": 12,
+    "matrix_cases": 192,
+    "matrix_all_passed": true,
+    "matrix_dimensions": {
+      "teams": [
+        "player",
+        "enemy"
+      ],
+      "zooms": [
+        0.78,
+        1,
+        1.6
+      ],
+      "directions": [
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N",
+        "NE"
+      ],
+      "poses": [
+        "idle",
+        "move",
+        "attack",
+        "hit"
+      ]
+    },
+    "matrix_samples_per_case": {
+      "body": 4,
+      "outside": 3
+    },
+    "matrix_sample_alpha_min": 224,
+    "matrix_not_exhaustive_pixels": true,
+    "node_r2": {
+      "tests": 143,
+      "pass": 143,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "rerun_by_reviewer": false
+  },
+  "reproduction_scope": "CONTROLLED_PICKING_FIXTURE：原生Start與戰術暫停，受控新增一台可見衝車，沒有自然戰役或勝利宣稱。點擊與布令走原生滑鼠；Game只做觀察與設定明示的幾何夾具。",
+  "point_comparison": [
+    {
+      "name": "wood-right",
+      "before_rgba": [
+        109,
+        77,
+        45,
+        255
+      ],
+      "before_picked_id": 1,
+      "before_picked_type": "core",
+      "after_rgba": [
+        109,
+        77,
+        45,
+        255
+      ],
+      "after_picked_id": 20,
+      "after_picked_type": "ram"
+    },
+    {
+      "name": "wood-left",
+      "before_rgba": [
+        109,
+        77,
+        45,
+        255
+      ],
+      "before_picked_id": 5,
+      "before_picked_type": "tower",
+      "after_rgba": [
+        109,
+        77,
+        45,
+        255
+      ],
+      "after_picked_id": 20,
+      "after_picked_type": "ram"
+    },
+    {
+      "name": "metal-head",
+      "before_rgba": [
+        142,
+        138,
+        125,
+        255
+      ],
+      "before_picked_id": null,
+      "before_picked_type": null,
+      "after_rgba": [
+        142,
+        138,
+        125,
+        255
+      ],
+      "after_picked_id": 20,
+      "after_picked_type": "ram"
+    },
+    {
+      "name": "wood-roof",
+      "before_rgba": [
+        133,
+        95,
+        56,
+        255
+      ],
+      "before_picked_id": null,
+      "before_picked_type": null,
+      "after_rgba": [
+        133,
+        95,
+        56,
+        255
+      ],
+      "after_picked_id": 20,
+      "after_picked_type": "ram"
+    }
+  ],
+  "image_review": {
+    "actually_viewed": [
+      "browser-before-r2/native-wood-click.png",
+      "browser-after-r1/native-wood-click.png",
+      "browser-before-r2/native-attack-plan.png",
+      "browser-after-r1/native-attack-plan.png",
+      "browser-after-r1/native-attack-executed.png"
+    ],
+    "wood_click_image_limit": "兩張均為戰術軍隊計數0人，不能僅憑此數字判敵方衝車拾取；合併結構化ID、來源與後續命令判斷",
+    "before_attack_plan_is_central_positive_control": true,
+    "before_wood_failure_evidence": "before-r2 checks木殼未排入時summary為空",
+    "after_plan": "1. 集火敵軍 ×4",
+    "after_execution": "執行1項，略過0項；4人集火衝車；當刻220/220HP",
+    "damage_kill_or_win_claimed": false
+  },
+  "source_review": {
+    "geometry_match": "原drawRamUnit木殼梯形、底座橢圓、撞頭圓對應新函式shell/base/head",
+    "renderer_reference": "js/renderer.js:1499-1542,1943-1960",
+    "helper_reference": "js/ram-body-picking.js:5-30",
+    "picking_reference": "js/game.js:3240-3269",
+    "animation_transform_match": [
+      "原鏡像",
+      "原景深縮放",
+      "同移動／待命晃動",
+      "原受擊平移",
+      "原單位視覺scale"
+    ],
+    "retained_gates": [
+      "先判存活與isVisible",
+      "原中央圓與圖集路徑",
+      "原d<bestScore候選排序",
+      "單位先於建築再資源",
+      "有對應圖集時回交原流程"
+    ],
+    "rng_and_numeric_limit": "函式只讀，未見狀態或RNG寫入；受控快照／RNG與定向結果支持，並非全模擬等價證明",
+    "fixture_retained_values": {
+      "collision_radius": 0.4,
+      "attack_range": 1
+    },
+    "not_added_to_new_body_geometry": [
+      "旗幟",
+      "血條",
+      "陰影",
+      "斜邊外空白"
+    ],
+    "overlapping_frontmost_pixel_selection_guaranteed": false
+  },
+  "historical_failures": {
+    "browser_before_r1": {
+      "status": "FAIL",
+      "sample_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "positive_opaque_sample_prerequisite_failed": true,
+      "parent_explanation": "採樣夾具用了綁定drawUnit、畫到原ctx，非Game bug",
+      "used_as_formal_game_reproduction": false,
+      "raw_retained": true
+    },
+    "node_focused_r1": {
+      "tests": 36,
+      "pass": 29,
+      "fail": 7,
+      "reason": "七個fixture匯入時document is not defined",
+      "deleted_tests_claim": "派工明示未刪測試，本角色未作Git差異核驗",
+      "raw_retained": true
+    },
+    "strict_rng_save_load_historical_fail_cleared": false
+  },
+  "performance": {
+    "scope": "CONTROLLED_RAM_NATIVE_HOVER_LOAD：100／200各before/after一次，含受控新增友軍衝車與正常敵軍。3秒暖機、10秒活戰鬥並以原生滑鼠每80ms輪流掃過可見衝車初始螢幕位置；保留自動總管／AI／碰撞／死亡，再3次開總管及展開診斷各2秒。不是人類操作統計、ABBA、長測或實體GPU。",
+    "rows": [
+      {
+        "n": 100,
+        "repeat": 1,
+        "mode": "before",
+        "wall_seconds": 10.04909999999404,
+        "simulation_seconds": 10.065599999998824,
+        "native_hover_count": 103,
+        "fps": 30.251465305368672,
+        "p50_ms": 33.30000000000109,
+        "p95_ms": 50,
+        "alive_start": 89,
+        "alive_end": 90,
+        "auto_economy": true,
+        "auto_military": true,
+        "all_pause_cycles_unchanged": true
+      },
+      {
+        "n": 100,
+        "repeat": 1,
+        "mode": "after",
+        "wall_seconds": 10.048199999988078,
+        "simulation_seconds": 10.049399999998741,
+        "native_hover_count": 101,
+        "fps": 29.557532692457592,
+        "p50_ms": 33.30000000000109,
+        "p95_ms": 50,
+        "alive_start": 89,
+        "alive_end": 88,
+        "auto_economy": true,
+        "auto_military": true,
+        "all_pause_cycles_unchanged": true
+      },
+      {
+        "n": 200,
+        "repeat": 1,
+        "mode": "before",
+        "wall_seconds": 10.07509999999404,
+        "simulation_seconds": 9.814000000001101,
+        "native_hover_count": 102,
+        "fps": 20.148683387769857,
+        "p50_ms": 50,
+        "p95_ms": 66.60000000000036,
+        "alive_start": 178,
+        "alive_end": 160,
+        "auto_economy": true,
+        "auto_military": true,
+        "all_pause_cycles_unchanged": true
+      },
+      {
+        "n": 200,
+        "repeat": 1,
+        "mode": "after",
+        "wall_seconds": 10.06919999998808,
+        "simulation_seconds": 9.364100000001088,
+        "native_hover_count": 99,
+        "fps": 19.465300123170863,
+        "p50_ms": 50,
+        "p95_ms": 66.70000000000073,
+        "alive_start": 178,
+        "alive_end": 161,
+        "auto_economy": true,
+        "auto_military": true,
+        "all_pause_cycles_unchanged": true
+      }
+    ],
+    "pairs": [
+      {
+        "n": 100,
+        "repeat": 1,
+        "scene": true,
+        "rng": true,
+        "visualRng": true
+      },
+      {
+        "n": 200,
+        "repeat": 1,
+        "scene": true,
+        "rng": true,
+        "visualRng": true
+      }
+    ],
+    "errors": [],
+    "gpu": [
+      {
+        "vendorId": 65535,
+        "deviceId": 65535,
+        "vendorString": "Google Inc. (Google)",
+        "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+        "driverVendor": "SwANGLE",
+        "driverVersion": "5.0.0"
+      }
+    ],
+    "cpu_quota": "400000 100000",
+    "memory_limit": "34359738368",
+    "status": "MEASURED_RAM_NATIVE_HOVER_SHORT_SAMPLES_NOT_ABBA_OR_LONG_RUN",
+    "sample_count_per_condition": 1,
+    "abba": false,
+    "long_run": false,
+    "physical_gpu": false,
+    "regression_or_no_regression_conclusion": "INSUFFICIENT_DATA",
+    "limits": [
+      "活戰鬥中人數與軌跡改變",
+      "掃描初始螢幕座標不等於每次仍命中衝車",
+      "heap受GC影響，不判長期洩漏",
+      "開面板是Playwright呼叫往返，不是純UI延遲",
+      "200案牆鐘與模擬秒數差異保留，未清除低FPS時鐘問題也不直接歸因此修正"
+    ]
+  },
+  "limits": [
+    "受控新增衝車，非自然戰役",
+    "192案為有限點抽樣，非所有像素／重疊遮擋",
+    "原中心距離排序保留，沒有新前景遮擋機制",
+    "不泛化其他兵種或未來衝車圖集",
+    "不追認所有舊玩家點擊失敗同因",
+    "不評C2、自然勝率或人類樂趣"
+  ],
+  "next_candidate": {
+    "status": "INSUFFICIENT_EVIDENCE",
+    "proposal": null,
+    "reason": "沒有足夠新增直接證據核准另一獨立切片，不製造任務"
+  },
+  "operations": {
+    "git_operated": false,
+    "ownership_operated": false,
+    "browser_operated": false,
+    "game_operated": false,
+    "node_or_perf_executed": false,
+    "c2_directory_read": false,
+    "private_observer_read": false,
+    "unsealed_player_content_read": false,
+    "answers_sent_to_c2": false,
+    "existing_archives_modified": false,
+    "writes_only_this_director_reports": true
+  },
+  "continuity": {
+    "STOP_REASON": "限縮唯讀複評與封存完成",
+    "EXECUTION_DURATION_SECONDS": 379.233,
+    "EXECUTION_DURATION_SCOPE": "2026-11-06T05:39:14.922523Z首次本輪檢查至報告寫出，封存另計",
+    "NEXT_AUTHORIZED_TASK": "父任務依既有授權續作，C2保持獨立；本角色不操作遊戲",
+    "CHECKPOINT_SHA": "b9699d627ae28f75eca33ee05aa0ac54311d27ae",
+    "AUTO_RESUME_AVAILABLE": "未驗證，未建立排程"
+  },
+  "evidence_sha256": [
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/browser-before-r2/result.json",
+      "sha256": "cb0360898bd0b4560908a1f5272a584cad5884b9472fa1dfd98754d98125fc3c"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/browser-after-r1/result.json",
+      "sha256": "9d896bcf8938f893d6cf087fc9d8e73654b4cf4f4e1a3b5985809f9b9659a5fb"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/RESOURCE-VERIFICATION.json",
+      "sha256": "7a890919230347b55f00c0e249d99134c6793832742aa007944906a6f6f33e08"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/node-focused-r2.tap",
+      "sha256": "66d685e0e6c129697654194028a155bdb05de92e88468562e984671dc90549fc"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/perf-r1/result.json",
+      "sha256": "9b9f323b561174e0993da75d20bfe16144d899a98eb4768adfd5fa4a167ffce0"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/browser-before-r1/result.json",
+      "sha256": "c6bd7206e18fad28b39d61d2e99001e8ab4423b42522e73836a698e1592f954f"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/node-focused-r1.tap",
+      "sha256": "362160139b6fa182bcdf1941cf97e3cee7a5c5bad8ef3f1f5fdb1653a9430bb8"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/browser-before-r2/native-wood-click.png",
+      "sha256": "633523bd53d71fe0a280417a5b7b96c6419536799e3c25310b0d43c8a96148b7"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/browser-after-r1/native-wood-click.png",
+      "sha256": "ae82d2fb98188e8b120bc1b1cc9b46f1a28008b24d8fee5534b11d36f8c73fac"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/browser-before-r2/native-attack-plan.png",
+      "sha256": "48e0bc968c439b90452e7283826e9a0f4c2b632771f790e63be9ebb35dbf4ba4"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/browser-after-r1/native-attack-plan.png",
+      "sha256": "e49ab272652691d00ea78296120e3424f71a450427bd561ef7b49c0717d33e1b"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/browser-after-r1/native-attack-executed.png",
+      "sha256": "a875b27f2228a1dd36cd0bc5cfb016a0f767b9bcad4384c1ccedda010906b3dd"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/build-r1/build-metadata.json",
+      "sha256": "791eff1888ef32d9d63a08ecb0c1d6a38e641797321bff0d7422179a6c70b6b1"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/build-r1/js/game.js",
+      "sha256": "52c42d33d73b5ac6c8df49dfc5846133d09680c59c7b479bb905504d2d1ae47b"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/build-r1/js/ram-body-picking.js",
+      "sha256": "d90ba257e6e1a2b51311fb4854b3e06155cfbbc688e2c57c8a71495e33c2bca1"
+    },
+    {
+      "path": "/workspace/riftwatch-ram-pick-065e2912/build-r1/js/renderer.js",
+      "sha256": "a421eeb511d97184e263e7ccee1b281c0f943801acab94ffa59df870240d3ec9"
+    }
+  ]
+}

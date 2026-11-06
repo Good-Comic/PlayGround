@@ -1,0 +1,192 @@
+TAP version 13
+# Subtest: 木殼兩側、屋頂與金屬端保留已重現的實心點
+ok 1 - 木殼兩側、屋頂與金屬端保留已重現的實心點
+  ---
+  duration_ms: 1.171064
+  type: 'test'
+  ...
+# Subtest: 木殼沿原梯形斜邊判定，不擴大到外側空白
+ok 2 - 木殼沿原梯形斜邊判定，不擴大到外側空白
+  ---
+  duration_ms: 0.301096
+  type: 'test'
+  ...
+# Subtest: 下底保留實心橢圓，排除曲線外及輪圈間的空隙
+ok 3 - 下底保留實心橢圓，排除曲線外及輪圈間的空隙
+  ---
+  duration_ms: 0.17556
+  type: 'test'
+  ...
+# Subtest: 金屬端採原實心圓，圓外角落維持不可選
+ok 4 - 金屬端採原實心圓，圓外角落維持不可選
+  ---
+  duration_ms: 0.159145
+  type: 'test'
+  ...
+# Subtest: 旗幟、血條、陰影與遠方空白不列入車身
+ok 5 - 旗幟、血條、陰影與遠方空白不列入車身
+  ---
+  duration_ms: 0.238303
+  type: 'test'
+  ...
+# Subtest: E 朝向保留鏡像與景深壓縮後的車身位置
+ok 6 - E 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.166176
+  type: 'test'
+  ...
+# Subtest: W 朝向保留鏡像與景深壓縮後的車身位置
+ok 7 - W 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.103142
+  type: 'test'
+  ...
+# Subtest: N 朝向保留鏡像與景深壓縮後的車身位置
+ok 8 - N 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.075612
+  type: 'test'
+  ...
+# Subtest: S 朝向保留鏡像與景深壓縮後的車身位置
+ok 9 - S 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.100058
+  type: 'test'
+  ...
+# Subtest: NE 朝向保留鏡像與景深壓縮後的車身位置
+ok 10 - NE 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.231153
+  type: 'test'
+  ...
+# Subtest: SE 朝向保留鏡像與景深壓縮後的車身位置
+ok 11 - SE 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.102031
+  type: 'test'
+  ...
+# Subtest: NW 朝向保留鏡像與景深壓縮後的車身位置
+ok 12 - NW 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.06127
+  type: 'test'
+  ...
+# Subtest: SW 朝向保留鏡像與景深壓縮後的車身位置
+ok 13 - SW 朝向保留鏡像與景深壓縮後的車身位置
+  ---
+  duration_ms: 0.053369
+  type: 'test'
+  ...
+# Subtest: 缺少或未知朝向時沿用既有 facing 回退
+ok 14 - 缺少或未知朝向時沿用既有 facing 回退
+  ---
+  duration_ms: 0.212485
+  type: 'test'
+  ...
+# Subtest: 半倍與兩倍縮放使用畫面地面錨點並保留斜邊空白
+ok 15 - 半倍與兩倍縮放使用畫面地面錨點並保留斜邊空白
+  ---
+  duration_ms: 0.117975
+  type: 'test'
+  ...
+# Subtest: 移動、返程、建造與採集依相同移動晃動修正屋頂及底緣
+ok 16 - 移動、返程、建造與採集依相同移動晃動修正屋頂及底緣
+  ---
+  duration_ms: 0.233285
+  type: 'test'
+  ...
+# Subtest: 步行相位改變時跟隨原餘弦晃動，不固定抬高車身
+ok 17 - 步行相位改變時跟隨原餘弦晃動，不固定抬高車身
+  ---
+  duration_ms: 0.168319
+  type: 'test'
+  ...
+# Subtest: 待命晃動使用傳入時間與單位編號，保留位移前後空白
+ok 18 - 待命晃動使用傳入時間與單位編號，保留位移前後空白
+  ---
+  duration_ms: 0.110353
+  type: 'test'
+  ...
+# Subtest: 攻擊動畫沿用待命晃動與原車身，不加入攻擊範圍
+ok 19 - 攻擊動畫沿用待命晃動與原車身，不加入攻擊範圍
+  ---
+  duration_ms: 0.092737
+  type: 'test'
+  ...
+# Subtest: 受擊沿 Renderer 的局部平移修正車身與原位置外緣
+ok 20 - 受擊沿 Renderer 的局部平移修正車身與原位置外緣
+  ---
+  duration_ms: 0.093609
+  type: 'test'
+  ...
+# Subtest: 西向鏡像及北向景深縮放保留受擊平移順序
+ok 21 - 西向鏡像及北向景深縮放保留受擊平移順序
+  ---
+  duration_ms: 0.096883
+  type: 'test'
+  ...
+# Subtest: 移動中受擊仍採移動晃動並套用受擊平移
+not ok 22 - 移動中受擊仍採移動晃動並套用受擊平移
+  ---
+  duration_ms: 0.745023
+  type: 'test'
+  location: '/workspace/riftwatch-ram-pick-065e2912/worktree/tests/ram-body-picking.test.mjs:154:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-ram-pick-065e2912/worktree/tests/ram-body-picking.test.mjs:158:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 不可靠的座標、地面錨點、縮放、時間與文明輸入一律拒絕
+ok 23 - 不可靠的座標、地面錨點、縮放、時間與文明輸入一律拒絕
+  ---
+  duration_ms: 0.211032
+  type: 'test'
+  ...
+# Subtest: 非衝車、死亡、缺少必要動畫資料與非有限單位數值不套用車身
+ok 24 - 非衝車、死亡、缺少必要動畫資料與非有限單位數值不套用車身
+  ---
+  duration_ms: 0.220096
+  type: 'test'
+  ...
+# Subtest: 固定輸入可重複判定，且不修改單位或地面資料
+ok 25 - 固定輸入可重複判定，且不修改單位或地面資料
+  ---
+  duration_ms: 0.697002
+  type: 'test'
+  ...
+# Subtest: 未來有通用衝車圖集時即使尚無 pickBody 也交回既有圖集流程
+ok 26 - 未來有通用衝車圖集時即使尚無 pickBody 也交回既有圖集流程
+  ---
+  duration_ms: 1.29712
+  type: 'test'
+  ...
+# Subtest: 未來文明衝車圖集依既有 key 回交，未對應的衝車仍採程序式幾何
+ok 27 - 未來文明衝車圖集依既有 key 回交，未對應的衝車仍採程序式幾何
+  ---
+  duration_ms: 1.314285
+  type: 'test'
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 26
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 37.802562

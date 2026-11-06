@@ -1,0 +1,192 @@
+{
+  "mode": "before",
+  "source": "83554e6a23d4d6c5631d3e21c8cdf7f968b64dbf",
+  "scope": "CONTROLLED_PICKING_FIXTURE：原生Start與戰術暫停，受控新增一台可見衝車，沒有自然戰役或勝利宣稱。點擊與布令走原生滑鼠；Game只做觀察與設定明示的幾何夾具。",
+  "checks": [
+    {
+      "name": "正式來源與資源閘門",
+      "pass": true
+    },
+    {
+      "name": "原生戰術暫停已開啟",
+      "pass": true
+    },
+    {
+      "name": "衝車可見且正式木殼有不透明像素",
+      "pass": true
+    },
+    {
+      "name": "重現可見木殼未被pickAt辨識",
+      "pass": true,
+      "point": {
+        "name": "wood-right",
+        "x": 740.9926784871017,
+        "y": 428.81458086599883,
+        "rgba": [
+          109,
+          77,
+          45,
+          255
+        ],
+        "pickedId": 1,
+        "pickedType": "core"
+      }
+    },
+    {
+      "name": "原生木殼點擊確實未選到衝車",
+      "pass": true
+    },
+    {
+      "name": "原有中央點擊仍可選取",
+      "pass": true
+    },
+    {
+      "name": "木殼點擊未排入集火的流程重現",
+      "pass": true,
+      "summary": ""
+    },
+    {
+      "name": "中央點擊可排入正式集火",
+      "pass": true
+    },
+    {
+      "name": "暫停幾何查閱與選取不耗RNG或模擬時間",
+      "pass": true
+    },
+    {
+      "name": "零程式錯誤",
+      "pass": true
+    }
+  ],
+  "points": [
+    {
+      "name": "wood-right",
+      "x": 740.9926784871017,
+      "y": 428.81458086599883,
+      "rgba": [
+        109,
+        77,
+        45,
+        255
+      ],
+      "pickedId": 1,
+      "pickedType": "core"
+    },
+    {
+      "name": "wood-left",
+      "x": 699.0073215128983,
+      "y": 428.81458086599883,
+      "rgba": [
+        109,
+        77,
+        45,
+        255
+      ],
+      "pickedId": 5,
+      "pickedType": "tower"
+    },
+    {
+      "name": "metal-head",
+      "x": 747.6219453777654,
+      "y": 435.4438477566625,
+      "rgba": [
+        142,
+        138,
+        125,
+        255
+      ],
+      "pickedId": null,
+      "pickedType": null
+    },
+    {
+      "name": "wood-roof",
+      "x": 737.6780450417699,
+      "y": 417.76580271489263,
+      "rgba": [
+        133,
+        95,
+        56,
+        255
+      ],
+      "pickedId": null,
+      "pickedType": null
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "fixture": {
+    "ramId": 20,
+    "ramVisible": true,
+    "zoom": 1.104877815110616,
+    "frame": {
+      "direction": "E",
+      "mirror": 1,
+      "depthScale": 1,
+      "state": "idle"
+    },
+    "points": [
+      {
+        "name": "wood-right",
+        "x": 740.9926784871017,
+        "y": 428.81458086599883,
+        "rgba": [
+          109,
+          77,
+          45,
+          255
+        ],
+        "pickedId": 1,
+        "pickedType": "core"
+      },
+      {
+        "name": "wood-left",
+        "x": 699.0073215128983,
+        "y": 428.81458086599883,
+        "rgba": [
+          109,
+          77,
+          45,
+          255
+        ],
+        "pickedId": 5,
+        "pickedType": "tower"
+      },
+      {
+        "name": "metal-head",
+        "x": 747.6219453777654,
+        "y": 435.4438477566625,
+        "rgba": [
+          142,
+          138,
+          125,
+          255
+        ],
+        "pickedId": null,
+        "pickedType": null
+      },
+      {
+        "name": "wood-roof",
+        "x": 737.6780450417699,
+        "y": 417.76580271489263,
+        "rgba": [
+          133,
+          95,
+          56,
+          255
+        ],
+        "pickedId": null,
+        "pickedType": null
+      }
+    ],
+    "center": {
+      "x": 720,
+      "y": 430.1121993280089
+    },
+    "rng": 291569939,
+    "visualRng": 3460950923,
+    "time": 0.24999999999999978,
+    "collisionRadius": 0.4,
+    "attackRange": 1
+  },
+  "status": "REPRODUCED_UI_RAM_BODY_PICK_MISMATCH"
+}

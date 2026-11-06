@@ -1,0 +1,151 @@
+{
+  "mode": "before",
+  "source": "83554e6a23d4d6c5631d3e21c8cdf7f968b64dbf",
+  "scope": "CONTROLLED_PICKING_FIXTURE：原生Start與戰術暫停，受控新增一台可見衝車，沒有自然戰役或勝利宣稱。點擊與布令走原生滑鼠；Game只做觀察與設定明示的幾何夾具。",
+  "checks": [
+    {
+      "name": "正式來源與資源閘門",
+      "pass": true
+    },
+    {
+      "name": "原生戰術暫停已開啟",
+      "pass": true
+    },
+    {
+      "name": "衝車可見且正式木殼有不透明像素",
+      "pass": false
+    }
+  ],
+  "points": [
+    {
+      "name": "wood-right",
+      "x": 741.1545919121645,
+      "y": 428.6526431621141,
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pickedId": 1,
+      "pickedType": "core"
+    },
+    {
+      "name": "wood-left",
+      "x": 698.8454080878355,
+      "y": 428.6526431621141,
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pickedId": 5,
+      "pickedType": "tower"
+    },
+    {
+      "name": "metal-head",
+      "x": 747.8349893581112,
+      "y": 435.3330406080608,
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pickedId": null,
+      "pickedType": null
+    },
+    {
+      "name": "wood-roof",
+      "x": 737.8143931891912,
+      "y": 417.5186474188696,
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pickedId": null,
+      "pickedType": null
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "fixture": {
+    "ramId": 20,
+    "ramVisible": true,
+    "zoom": 1.1133995743244476,
+    "frame": {
+      "direction": "E",
+      "mirror": 1,
+      "depthScale": 1,
+      "state": "idle"
+    },
+    "points": [
+      {
+        "name": "wood-right",
+        "x": 741.1545919121645,
+        "y": 428.6526431621141,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pickedId": 1,
+        "pickedType": "core"
+      },
+      {
+        "name": "wood-left",
+        "x": 698.8454080878355,
+        "y": 428.6526431621141,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pickedId": 5,
+        "pickedType": "tower"
+      },
+      {
+        "name": "metal-head",
+        "x": 747.8349893581112,
+        "y": 435.3330406080608,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pickedId": null,
+        "pickedType": null
+      },
+      {
+        "name": "wood-roof",
+        "x": 737.8143931891912,
+        "y": 417.5186474188696,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pickedId": null,
+        "pickedType": null
+      }
+    ],
+    "center": {
+      "x": 720,
+      "y": 429.9588076621599
+    },
+    "rng": 291569939,
+    "visualRng": 3460950923,
+    "time": 0.28330000000000044,
+    "collisionRadius": 0.4,
+    "attackRange": 1
+  },
+  "status": "FAIL",
+  "failure": "Error: 衝車可見且正式木殼有不透明像素\n    at check (/workspace/riftwatch-ram-pick-065e2912/worktree/tools/qa/ram-pick-065e2912/browser-pick.cjs:9:122)\n    at /workspace/riftwatch-ram-pick-065e2912/worktree/tools/qa/ram-pick-065e2912/browser-pick.cjs:50:5"
+}

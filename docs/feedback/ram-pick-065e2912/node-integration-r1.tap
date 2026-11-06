@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: 真實Game可拾取衝車木殼／撞頭，八向三縮放不改快照、費用、半徑或攻擊距離
+ok 1 - 真實Game可拾取衝車木殼／撞頭，八向三縮放不改快照、費用、半徑或攻擊距離
+  ---
+  duration_ms: 62.121236
+  type: 'test'
+  ...
+# Subtest: 正常中央拾取與其他兵種沿用原有流程，敵我衝車均可選取
+ok 2 - 正常中央拾取與其他兵種沿用原有流程，敵我衝車均可選取
+  ---
+  duration_ms: 12.070126
+  type: 'test'
+  ...
+# Subtest: 木殼可走原正式暫停布令、commit與手動後令覆寫，不直接指定目標冒充成功
+ok 3 - 木殼可走原正式暫停布令、commit與手動後令覆寫，不直接指定目標冒充成功
+  ---
+  duration_ms: 5.44587
+  type: 'test'
+  ...
+# Subtest: 視野與沙暴閘門仍在UI木殼判定之前：雙單位視野facade不讀取隱藏衝車
+ok 4 - 視野與沙暴閘門仍在UI木殼判定之前：雙單位視野facade不讀取隱藏衝車
+  ---
+  duration_ms: 4.994783
+  type: 'test'
+  ...
+# Subtest: 死亡衝車與旗幟／陰影／遠方空白不因新增木殼判定而可選
+ok 5 - 死亡衝車與旗幟／陰影／遠方空白不因新增木殼判定而可選
+  ---
+  duration_ms: 7.203982
+  type: 'test'
+  ...
+# Subtest: 原生快照JSON讀檔後木殼拾取、沙暴剩時與規則仍保留；不改判歷史strict RNG表示FAIL
+ok 6 - 原生快照JSON讀檔後木殼拾取、沙暴剩時與規則仍保留；不改判歷史strict RNG表示FAIL
+  ---
+  duration_ms: 11.49875
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 183.400385
