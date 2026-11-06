@@ -2,6 +2,7 @@ import { drawWorkshop } from './workshop-expedition.js';
 import { drawRescue } from './expeditions.js';
 import { factionMark } from './factions.js';
 import { CombatVfx } from './vfx-adapter.js';
+import { pruneVisionCircles } from './vision-mask.js';
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.js';
@@ -365,9 +366,15 @@ export class Renderer {
     const c=layer.getContext('2d');c.clearRect(0,0,this.w,this.h);
     c.globalCompositeOperation='source-over';c.fillStyle='#10150e';c.fillRect(0,0,this.w,this.h);
     c.globalCompositeOperation='destination-out';
+    // 以實際螢幕中心正規化，保留地形高低差；餘裕只供AA覆蓋證明，不改遊戲視野。
+    const axisRatio=HALF_W/HALF_H, circles=[];
     for(const e of [...game.units,...game.buildings])if(e.alive&&e.team==='player'){
       const p=this.screen(game,e.x+(e.w||0)/2,e.y+(e.h||0)/2),r=game.sightRadius(e)*game.camera.zoom;
-      c.beginPath();c.ellipse(p.x,p.y,r*Math.SQRT2*HALF_W,r*Math.SQRT2*HALF_H,0,0,Math.PI*2);c.fill();
+      const rx=r*Math.SQRT2*HALF_W,ry=r*Math.SQRT2*HALF_H;
+      circles.push({x:p.x,y:p.y*axisRatio,radius:rx,screenX:p.x,screenY:p.y,rx,ry});
+    }
+    for(const s of pruneVisionCircles(circles,2*Math.max(1,Math.abs(axisRatio)))){
+      c.beginPath();c.ellipse(s.screenX,s.screenY,s.rx,s.ry,0,0,Math.PI*2);c.fill();
     }
     c.globalCompositeOperation='source-over';this.ctx.drawImage(layer,0,0);
   }
