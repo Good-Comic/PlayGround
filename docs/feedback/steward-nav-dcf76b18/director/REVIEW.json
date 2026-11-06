@@ -1,0 +1,349 @@
+{
+  "review": "總管三區直達首版與B4限定複評",
+  "language": "zh-Hant-TW",
+  "created_at_utc": "2026-11-06T05:05:51.023065+00:00",
+  "scope": {
+    "source": "82a9da4285c46f2d117e8e203967540aed0e3cad",
+    "build": "build-r1",
+    "build_status": "PLAYTEST-EXPERIMENTAL",
+    "immutable_source_manifest_checks": "引用的導航、總管表單及樣式三檔均符合首版manifest；未重新驗165項",
+    "old_b2_review_modified": false,
+    "b3_report_read": false,
+    "private_observer_read": false,
+    "raw_player_save_read": false,
+    "r2_evaluated": false,
+    "b4_r2_play_claimed": false,
+    "full_three_role_loop_repeated": false
+  },
+  "read_gate": {
+    "b4_sha256sums_present_before_report_read": true,
+    "report_md_verified": true,
+    "report_json_verified": true,
+    "rechecked_before_writing": true
+  },
+  "technical_results": {
+    "before": {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/browser-before-r2/result.json",
+      "source": "adfc546332077fc0dce33337cf506df98503f4bd",
+      "status": "REPRODUCED_DISCOVERABILITY_GAP_NOT_PRODUCTION_RULE_DEFECT",
+      "passed": 4,
+      "total": 4,
+      "scope": "CONTROLLED_NATIVE_UI：原封合法B存檔；原生滑鼠／鍵盤與表單操作。不是自然戰役、真人或勝率驗證。"
+    },
+    "after_r1": {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/browser-after-r1/result.json",
+      "source": "82a9da4285c46f2d117e8e203967540aed0e3cad",
+      "status": "PASS_CONTROLLED_UI",
+      "passed": 81,
+      "total": 81,
+      "errors": [],
+      "scope": "CONTROLLED_NATIVE_UI：原封合法B存檔；原生滑鼠／鍵盤與表單操作。不是自然戰役、真人或勝率驗證。",
+      "locales": [
+        "zh-Hant",
+        "zh-Hans",
+        "en",
+        "ja"
+      ],
+      "viewports": [
+        [
+          1440,
+          900
+        ],
+        [
+          800,
+          900
+        ],
+        [
+          390,
+          844
+        ]
+      ]
+    },
+    "rerun_by_this_reviewer": false,
+    "limits": "受控UI結果不是自然戰役、趣味、完整生產理解或每次展開後內容都進入首屏的證明"
+  },
+  "images_actually_viewed": [
+    "screen-0005.png",
+    "screen-0006.png",
+    "screen-0007.png",
+    "screen-0008.png",
+    "screen-0009.png",
+    "screen-0010.png",
+    "screen-0012.png",
+    "screen-0014.png",
+    "screen-0015.png",
+    "screen-0016.png",
+    "screen-0017.png",
+    "screen-0019.png"
+  ],
+  "player": {
+    "role": "B4",
+    "type": "隔離原生輸入代理，原生Continue短續玩，非真人、非從頭十波",
+    "formal_result": "敗北，城鎮中心陷落",
+    "displayed_cumulative_stats": {
+      "waves": 3,
+      "kills": 80,
+      "gathered": 4308,
+      "reign": "9:04"
+    },
+    "stats_are_not_all_player_increment": true,
+    "finish": "父任務及已封存報告記載ok:true；本輪未讀inbox原始回應",
+    "instructions_sent_after_finish": false
+  },
+  "assessment": [
+    {
+      "item": "三區入口與軍務到達",
+      "status": "VISUALLY_CONFIRMED",
+      "evidence": [
+        "screen-0005.png",
+        "screen-0006.png"
+      ],
+      "conclusion": "入口在畫面，軍事標題有焦點、既有生產建築可見；不透明selector不自行補造映射"
+    },
+    {
+      "item": "找到並展開診斷",
+      "status": "VISUALLY_CONFIRMED",
+      "evidence": [
+        "screen-0007.png"
+      ],
+      "conclusion": "兵營#2、佇列上限、依已套用設定、未套用變更與7:42快照可見"
+    },
+    {
+      "item": "一筆費用／保留／缺口完整判讀",
+      "status": "PARTIAL_NOT_FULL_PASS",
+      "reported_values": {
+        "unit": "刀盾兵",
+        "food_cost": 36,
+        "gold_cost": 9,
+        "food_shortage_approx": 23.71
+      },
+      "values_source": "已封存B4報告；本角色圖片中該費用列位於可視區下方",
+      "global_reserves_visually_zero": true,
+      "producer_reserve_and_post_payment_floor_reasoning_verified": false
+    },
+    {
+      "item": "當前生產阻礙與下一筆條件",
+      "status": "PARTIAL_UNDERSTANDING_SUPPORTED",
+      "conclusion": "報告區分佇列上限與下一筆缺口；不把缺口當當前唯一停產原因"
+    },
+    {
+      "item": "草稿與正式設定",
+      "status": "CONCEPT_SUPPORTED_EFFECT_UNVERIFIED",
+      "conclusion": "圖有未套用及依已生效設定提示；選food與儲存後未重開或驗證分配"
+    },
+    {
+      "item": "快照更新",
+      "status": "NOT_USED_STALENESS_NOT_PROVEN",
+      "conclusion": "未按更新不等於過期；總管期間模擬暫停，不能用牆鐘經過判過期"
+    },
+    {
+      "item": "基於完整診斷修改軍務",
+      "status": "NOT_OBSERVED",
+      "conclusion": "維持原軍務設定，未觀察付款後保留判讀及軍務設定決策核對"
+    },
+    {
+      "item": "戰術命令",
+      "status": "EXECUTION_FEEDBACK_VISIBLE_KILL_UNKNOWN",
+      "evidence": [
+        "screen-0014.png",
+        "screen-0015.png",
+        "screen-0016.png",
+        "screen-0017.png"
+      ],
+      "conclusion": "3項布令略過0，9人集火衝車；當時255/256HP，不證擊殺"
+    },
+    {
+      "item": "衝車點選",
+      "status": "FRICTION_REPORTED_DEFECT_NOT_CONFIRMED",
+      "clicks": [
+        [
+          249.515,
+          871,
+          350
+        ],
+        [
+          280.239,
+          868,
+          374
+        ]
+      ],
+      "conclusion": "兩次中間另排Q，未受控比較；不籠統判所有單位只判腳下或核准命中框修改"
+    },
+    {
+      "item": "暫停下找待命村民",
+      "status": "INPUT_FAILED_REPAIR_NOT_ISSUED",
+      "evidence": [
+        "screen-0012.png",
+        "after/actions.jsonl"
+      ],
+      "conclusion": "187.310秒點擊逾時，暫停選單遮擋；不證待命或修理機制故障"
+    }
+  ],
+  "outcome_limits": {
+    "confirmed_loss_cause_shown": "城鎮中心陷落",
+    "combat_visible": "大額衝車傷害與多方向攻城壓力可見，但AI／路徑／平衡缺陷未證",
+    "temporal_caveat": "0017圖片城心10%，報告公開文字7%，非原子同步",
+    "food_policy_effect": "未重開核對比例／採集分配，不以低庫存斷言無效",
+    "fun_or_win_rate_improvement_proven": false,
+    "b2_b3_b4_causal_comparison_allowed": false,
+    "human_evidence": false
+  },
+  "decision": {
+    "navigation": "有限採認首版三區入口、到達軍務與診斷打開",
+    "full_production_understanding": "尚不足",
+    "fun_improvement": "尚未證明",
+    "formal_qa_or_integration_promotion": false,
+    "r2": "不在本次審查範圍"
+  },
+  "single_follow_up_candidate": {
+    "title": "展開既有生產建築後，把摘要與診斷開頭帶入可視區",
+    "direct_evidence": [
+      "screen-0006.png仍有大量前區建築列",
+      "screen-0007.png診斷標頭貼近固定儲存列，費用摘要在下方",
+      "B4明確自述錨點附近建築列造成閱讀負擔"
+    ],
+    "source_inference": "首版導航僅在按鈕點擊重算scrollTop；未展開的最後區段可能受scrollMax限制，展開後未重新定位；非本角色受控重現",
+    "scope": [
+      "僅導航模組處理原DOM捲動／焦點",
+      "原生producer展開後定位摘要與原有診斷開頭",
+      "原toggle／更新仍負責刷新",
+      "保留草稿、選取、原暫停及原儲存／取消"
+    ],
+    "excluded": [
+      "Game",
+      "AI",
+      "費用與保留公式",
+      "玩法數值與時間",
+      "來源行穩定",
+      "事件訊息",
+      "命中框",
+      "新造診斷或重建表單"
+    ],
+    "status": "父任務已沿同一合法導航scope處理r2，本角色不另立重複任務；r2未審、未驗",
+    "required_acceptance": [
+      "從scrollMax受限位置展開後，摘要、狀態及第一個既有費用摘要在固定列之間可讀",
+      "同DOM、展開狀態及草稿跨區保留",
+      "不套用、不花費、不訓練、不改選取／RNG／原暫停，資料由原事件刷新",
+      "保留82a9與B4原結果，r2另記來源及定向UI結果，不倒填B4或重建三角色閉環"
+    ],
+    "fun_value": "減少展開後再次找位置或重按導航的操作；趣味提升未證，不承諾救城"
+  },
+  "ownership_boundary": {
+    "original_owner": "273",
+    "state": "依父任務資訊仍OWNED，停止未確認",
+    "independently_read_or_changed": false,
+    "takeover_approved": false,
+    "protected_scope": [
+      "來源行穩定",
+      "事件訊息",
+      "成本邏輯"
+    ]
+  },
+  "operations": {
+    "git_operated": false,
+    "ownership_operated": false,
+    "feed_operated": false,
+    "game_operated": false,
+    "browser_node_perf_started": false,
+    "player_reports_modified": false,
+    "writes_only_new_director_reports": true
+  },
+  "continuity": {
+    "STOP_REASON": "限定複評與封存完成",
+    "EXECUTION_DURATION_SECONDS": 424.977,
+    "EXECUTION_DURATION_SCOPE": "首個本輪環境／封存檢查至報告寫出，封存另計",
+    "NEXT_AUTHORIZED_TASK": "父任務同導航scope的r2定向驗證；本角色不操作遊戲或接管273",
+    "CHECKPOINT_SHA": "82a9da4285c46f2d117e8e203967540aed0e3cad",
+    "AUTO_RESUME_AVAILABLE": "未驗證，未建立排程"
+  },
+  "evidence_sha256": [
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/REPORT.md",
+      "sha256": "392199f221716cdb9c557f97a46b40a54e95e9ec9d16003600b351608d1d7a20"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/REPORT.json",
+      "sha256": "98c1f2ccd244cb9c3b2b28502b54be36dac4cb5b620861023eb6b5079c0cfa5d"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/SHA256SUMS",
+      "sha256": "7989c7d12397fff2844e339f513f8c47a919151fab4dd5338f729cd4c73f0754"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/actions.jsonl",
+      "sha256": "cdfedeaafee3387ead9b8905cb0ffafe6d5b2cc9bbb1bcbb156e13f9990ba00a"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0005.png",
+      "sha256": "43ec5fca678db905b1d6a2eb4cb30509c55a706b45c20746ad2ee30994880754"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0006.png",
+      "sha256": "b5b63a2c1ca41b64bb80f772db3c70c5894cfb91b1d4297224b39266415697a4"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0007.png",
+      "sha256": "11b51be94aed32e1c6f4316e84c5ae6f69bc9abd4faba51efb0d14df428aeecf"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0008.png",
+      "sha256": "8b17d4443cf7534623c2b2a697baa16d1a33dd09ee1f8f762c21a081e0428518"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0009.png",
+      "sha256": "b40a56b8a72c9bc7e00ec3056d7a03fe5da47167b8371a3e141f526833147e3f"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0010.png",
+      "sha256": "9ea3ca153022cba9a44e93cb15db4ba4aeb18828e323736cb9f435e73fd694dc"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0012.png",
+      "sha256": "da1e5f2b860238701076d2626e23c7ccaff7b4caf1bd0fd400731652c70afdf5"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0014.png",
+      "sha256": "e84665f25cdf0cb3d3fecaccd5ca73e95b45c0a0d85a1fa56d1e1d819d7625f0"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0015.png",
+      "sha256": "88b675faf1e0f00f289e75b6d04ef8aa134cbbc87f2be43b56a60b73c1870a46"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0016.png",
+      "sha256": "7f283eebbac239d7a29aa19ce3f46b3e1c28c8c0246c5bd033129fca226ea536"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0017.png",
+      "sha256": "897f172440d240a211421513e7263beeb36baa10cff3fd4ae40554aa54cc54e3"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/natural-B4/players/B/after/screen-0019.png",
+      "sha256": "a3dd335fdf8fe7361cbdfd82d3a7901273e774931556ec666794b735a83727ac"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/browser-after-r1/result.json",
+      "sha256": "280c81fa6dae7ea4c15997a9cffec20f916fc00da5b4bfab94d468ce07c88893"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/browser-before-r2/result.json",
+      "sha256": "d699161e7f8def263f0603160870b98d0378b9336f97d78e5716042f6f110af6"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/build-r1/build-metadata.json",
+      "sha256": "75a7c165fea6d5e582be2bb54ae9c8443f0c232c2bf8736861b40104aa8322a8"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/build-r1/js/steward-section-nav.js",
+      "sha256": "01af8b46e589166a10c2ee6375d074c1d197bd91f3979a9b1c12518513abe4bf"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/build-r1/js/steward-ui.js",
+      "sha256": "bd843af0fce9294d82ef00b647566b4ef95b5caf1954d3d431549bf3c71e6908"
+    },
+    {
+      "path": "/workspace/riftwatch-steward-nav-dcf76b18/build-r1/styles.css",
+      "sha256": "b4278088a7505f058f3043552d1909a6f026704c461501da488f02c295fab0a8"
+    }
+  ]
+}

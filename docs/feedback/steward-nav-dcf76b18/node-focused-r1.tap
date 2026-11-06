@@ -1,0 +1,358 @@
+TAP version 13
+# Subtest: 條件未達先等待，手動佇列佔用人口後按原生流程建屋 / wait above threshold then build when native manual queues reserve room
+ok 1 - 條件未達先等待，手動佇列佔用人口後按原生流程建屋 / wait above threshold then build when native manual queues reserve room
+  ---
+  duration_ms: 27.847665
+  type: 'test'
+  ...
+# Subtest: 施工中的人口供給避免同條件重複排屋 / capacity already under construction prevents duplicate threshold-triggered houses
+ok 2 - 施工中的人口供給避免同條件重複排屋 / capacity already under construction prevents duplicate threshold-triggered houses
+  ---
+  duration_ms: 12.718349
+  type: 'test'
+  ...
+# Subtest: 確認前重查人口條件，人工建屋解除需求後不再誤建 / confirmation rechecks threshold after manual housing removes demand
+ok 3 - 確認前重查人口條件，人工建屋解除需求後不再誤建 / confirmation rechecks threshold after manual housing removes demand
+  ---
+  duration_ms: 6.27194
+  type: 'test'
+  ...
+# Subtest: 舊計畫與空白條件沿用原流程 / legacy and blank conditions preserve existing plans
+ok 4 - 舊計畫與空白條件沿用原流程 / legacy and blank conditions preserve existing plans
+  ---
+  duration_ms: 18.043098
+  type: 'test'
+  ...
+# Subtest: 預估套用真實文明規則，排除敵軍與已毀施工且不改實際人口 / forecast honors real civilization caps and excludes enemy/dead construction without changing actual cap
+ok 5 - 預估套用真實文明規則，排除敵軍與已毀施工且不改實際人口 / forecast honors real civilization caps and excludes enemy/dead construction without changing actual cap
+  ---
+  duration_ms: 16.967496
+  type: 'test'
+  ...
+# Subtest: 零門檻與存讀檔保留，暫停不執行新計畫 / zero threshold and save/load persist; pause does not run plans
+ok 6 - 零門檻與存讀檔保留，暫停不執行新計畫 / zero threshold and save/load persist; pause does not run plans
+  ---
+  duration_ms: 23.524078
+  type: 'test'
+  ...
+# Subtest: 哥德半格人口門檻按原生佇列觸發並保存 / Goth half-population threshold uses native queues and persists
+ok 7 - 哥德半格人口門檻按原生佇列觸發並保存 / Goth half-population threshold uses native queues and persists
+  ---
+  duration_ms: 27.071778
+  type: 'test'
+  ...
+# Subtest: 非百分之百總和沿用正式正規化，不改設定 / non-100 totals use native normalization without mutating preferences
+ok 8 - 非百分之百總和沿用正式正規化，不改設定 / non-100 totals use native normalization without mutating preferences
+  ---
+  duration_ms: 0.23003
+  type: 'test'
+  ...
+# Subtest: 全零回退及預設模式忽略自訂值 / zero fallback and preset mode use existing allocation rules
+ok 9 - 全零回退及預設模式忽略自訂值 / zero fallback and preset mode use existing allocation rules
+  ---
+  duration_ms: 0.150663
+  type: 'test'
+  ...
+# Subtest: 村民損失後確認不得繞過最低村民條件 / confirmation after a casualty must respect minimum worker condition
+ok 10 - 村民損失後確認不得繞過最低村民條件 / confirmation after a casualty must respect minimum worker condition
+  ---
+  duration_ms: 7.552955
+  type: 'test'
+  ...
+# Subtest: 模擬更新撤回失效的村民、數量與預算提案 / simulation withdraws worker count and budget proposals that became invalid
+ok 11 - 模擬更新撤回失效的村民、數量與預算提案 / simulation withdraws worker count and budget proposals that became invalid
+  ---
+  duration_ms: 13.758749
+  type: 'test'
+  ...
+# Subtest: 停用或時代條件失效的舊提案不能直接執行 / legacy disabled or age-ineligible proposal cannot execute
+ok 12 - 停用或時代條件失效的舊提案不能直接執行 / legacy disabled or age-ineligible proposal cannot execute
+  ---
+  duration_ms: 6.810477
+  type: 'test'
+  ...
+# Subtest: 補回村民後重新提出並正常付費，只建一次 / replacement workers allow a fresh proposal and native payment once
+ok 13 - 補回村民後重新提出並正常付費，只建一次 / replacement workers allow a fresh proposal and native payment once
+  ---
+  duration_ms: 5.555771
+  type: 'test'
+  ...
+# Subtest: 自動計畫門檻不鎖住手動建造 / automatic plan conditions do not gate manual construction
+ok 14 - 自動計畫門檻不鎖住手動建造 / automatic plan conditions do not gate manual construction
+  ---
+  duration_ms: 7.045565
+  type: 'test'
+  ...
+# Subtest: 過期提案讀檔後仍受驗證，暫停不自動執行 / restored stale proposals revalidate and pause never executes them
+ok 15 - 過期提案讀檔後仍受驗證，暫停不自動執行 / restored stale proposals revalidate and pause never executes them
+  ---
+  duration_ms: 6.410546
+  type: 'test'
+  ...
+# Subtest: 既有手動藍圖優先，確認失敗不覆寫位置或扣款 / an active manual blueprint keeps priority without auto-confirm spending or placement overwrite
+ok 16 - 既有手動藍圖優先，確認失敗不覆寫位置或扣款 / an active manual blueprint keeps priority without auto-confirm spending or placement overwrite
+  ---
+  duration_ms: 2.80483
+  type: 'test'
+  ...
+# Subtest: 正式Game費用、庫存、付款後底線與每項缺口皆與原生canSpend一致
+ok 17 - 正式Game費用、庫存、付款後底線與每項缺口皆與原生canSpend一致
+  ---
+  duration_ms: 3.440391
+  type: 'test'
+  ...
+# Subtest: 全域與逐建築底線取max而非相加，建築保留不是花費上限
+ok 18 - 全域與逐建築底線取max而非相加，建築保留不是花費上限
+  ---
+  duration_ms: 2.938628
+  type: 'test'
+  ...
+# Subtest: 費用為零或未列入的資源低於兩層保留不產生假缺口
+ok 19 - 費用為零或未列入的資源低於兩層保留不產生假缺口
+  ---
+  duration_ms: 3.359682
+  type: 'test'
+  ...
+# Subtest: 微小正缺口仍由原生拒絕，摘要與表格不顯零，資料保留原始精度
+ok 20 - 微小正缺口仍由原生拒絕，摘要與表格不顯零，資料保留原始精度
+  ---
+  duration_ms: 2.992898
+  type: 'test'
+  ...
+# Subtest: auto、ask、manual及研究中／滿級的全域保留直接沿用reserveCost
+ok 21 - auto、ask、manual及研究中／滿級的全域保留直接沿用reserveCost
+  ---
+  duration_ms: 23.761589
+  type: 'test'
+  ...
+# Subtest: 文明與正式卡片後使用unitCost，而非基礎表或市場費率
+ok 22 - 文明與正式卡片後使用unitCost，而非基礎表或市場費率
+  ---
+  duration_ms: 13.792409
+  type: 'test'
+  ...
+# Subtest: 指定、空集合與未設定的合法兵種回退維持原生，排除市場／城心與未選參考
+ok 23 - 指定、空集合與未設定的合法兵種回退維持原生，排除市場／城心與未選參考
+  ---
+  duration_ms: 5.754304
+  type: 'test'
+  ...
+# Subtest: 原生off狀態優先，資源條件通過也不保證立即生產
+ok 24 - 原生off狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 5.07553
+  type: 'test'
+  ...
+# Subtest: 原生construction狀態優先，資源條件通過也不保證立即生產
+ok 25 - 原生construction狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 3.940981
+  type: 'test'
+  ...
+# Subtest: 原生manual狀態優先，資源條件通過也不保證立即生產
+ok 26 - 原生manual狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 3.785151
+  type: 'test'
+  ...
+# Subtest: 原生queue狀態優先，資源條件通過也不保證立即生產
+ok 27 - 原生queue狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 3.765251
+  type: 'test'
+  ...
+# Subtest: 原生target狀態優先，資源條件通過也不保證立即生產
+ok 28 - 原生target狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 3.42657
+  type: 'test'
+  ...
+# Subtest: 原生population狀態優先，資源條件通過也不保證立即生產
+ok 29 - 原生population狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 3.5756
+  type: 'test'
+  ...
+# Subtest: 原生budget狀態優先，資源條件通過也不保證立即生產
+ok 30 - 原生budget狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 3.541761
+  type: 'test'
+  ...
+# Subtest: 原生ready狀態優先，資源條件通過也不保證立即生產
+ok 31 - 原生ready狀態優先，資源條件通過也不保證立即生產
+  ---
+  duration_ms: 4.27138
+  type: 'test'
+  ...
+# Subtest: 人口與兵種時代條件直接沿用正式Game，其他建築佇列也計入目標與人口
+ok 32 - 人口與兵種時代條件直接沿用正式Game，其他建築佇列也計入目標與人口
+  ---
+  duration_ms: 5.541259
+  type: 'test'
+  ...
+# Subtest: 已有佇列費用不重扣，手動付得起而自動仍等待是合法差異
+ok 33 - 已有佇列費用不重扣，手動付得起而自動仍等待是合法差異
+  ---
+  duration_ms: 2.905229
+  type: 'test'
+  ...
+# Subtest: 反覆唯讀查詢與輸出不改完整快照、資源、佇列、游標／時窗或兩種RNG
+ok 34 - 反覆唯讀查詢與輸出不改完整快照、資源、佇列、游標／時窗或兩種RNG
+  ---
+  duration_ms: 7.789055
+  type: 'test'
+  ...
+# Subtest: 觀察後一次正式trainArmy與未觀察組完全一致，不改輪替、權重或訂單數
+ok 35 - 觀察後一次正式trainArmy與未觀察組完全一致，不改輪替、權重或訂單數
+  ---
+  duration_ms: 11.351366
+  type: 'test'
+  ...
+# Subtest: 四語完整呈現已套用、費用、原始表格及小缺口，不顯示未翻譯key
+ok 36 - 四語完整呈現已套用、費用、原始表格及小缺口，不顯示未翻譯key
+  ---
+  duration_ms: 4.835496
+  type: 'test'
+  ...
+# Subtest: 草稿改全域／age／建築預留／兵種／目標僅顯未套用，重新診斷仍讀正式設定；取消保留完整快照
+ok 37 - 草稿改全域／age／建築預留／兵種／目標僅顯未套用，重新診斷仍讀正式設定；取消保留完整快照
+  ---
+  duration_ms: 25.572418
+  type: 'test'
+  ...
+# Subtest: 草稿恢復原值會清提示，套用後才改正式設定並在重開時反映新底線
+ok 38 - 草稿恢復原值會清提示，套用後才改正式設定並在重開時反映新底線
+  ---
+  duration_ms: 6.455241
+  type: 'test'
+  ...
+# Subtest: 確認既有升級待辦不套用草稿，實付後重新呈現依新庫存與研究中保留
+ok 39 - 確認既有升級待辦不套用草稿，實付後重新呈現依新庫存與研究中保留
+  ---
+  duration_ms: 5.593927
+  type: 'test'
+  ...
+# Subtest: 只有顯式展開或更新才建立診斷，刷新控制保持節點且關閉還原原暫停狀態
+ok 40 - 只有顯式展開或更新才建立診斷，刷新控制保持節點且關閉還原原暫停狀態
+  ---
+  duration_ms: 6.202077
+  type: 'test'
+  ...
+# Subtest: 升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced
+ok 41 - 升級缺糧不阻擋純木建築，實際支出的資源仍須預留 / age food shortfall does not block wood-only construction; charged reserves remain enforced
+  ---
+  duration_ms: 4.046257
+  type: 'test'
+  ...
+# Subtest: 資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction
+ok 42 - 資源不足、手動放置及恢復不重複施工 / scarcity, manual placement and recovery never duplicate construction
+  ---
+  duration_ms: 5.964396
+  type: 'test'
+  ...
+# Subtest: 手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals
+ok 43 - 手動升級、資源改派與模式變更使提案失效 / manual research, reprioritized resources and mode changes invalidate proposals
+  ---
+  duration_ms: 13.398395
+  type: 'test'
+  ...
+# Subtest: 過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success
+ok 44 - 過期升級確認不得冒充新研究成功 / stale age confirmation cannot claim a new research success
+  ---
+  duration_ms: 4.360092
+  type: 'test'
+  ...
+# Subtest: 無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative
+ok 45 - 無關資源預留不阻擋軍營，實際費用與手動佇列仍優先 / unrelated reserves do not block barracks; actual costs and manual queues stay authoritative
+  ---
+  duration_ms: 4.14318
+  type: 'test'
+  ...
+# Subtest: 自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available
+ok 46 - 自動升級不得花掉玩家預留，手動升級仍可決定支出 / auto ages honor configured reserves while manual research remains available
+  ---
+  duration_ms: 8.717659
+  type: 'test'
+  ...
+# Subtest: 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research
+ok 47 - 自動升級預留包含費用加玩家底線，防止訓練吃掉可用餘額 / auto-age reserve includes fee plus player floor so training cannot starve research
+  ---
+  duration_ms: 2.704912
+  type: 'test'
+  ...
+# Subtest: 首名工人受困時其他可達工人接手 / another reachable worker builds when the first is trapped
+ok 48 - 首名工人受困時其他可達工人接手 / another reachable worker builds when the first is trapped
+  ---
+  duration_ms: 5.036032
+  type: 'test'
+  ...
+# Subtest: 全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal
+ok 49 - 全員受困不花費，解除阻塞後續查完成 / all blocked workers spend nothing and resume after obstruction removal
+  ---
+  duration_ms: 18.018781
+  type: 'test'
+  ...
+# Subtest: 受阻續查與預留在存讀檔、暫停中保留 / blocked search cursor and reserves survive save/load and pause
+ok 50 - 受阻續查與預留在存讀檔、暫停中保留 / blocked search cursor and reserves survive save/load and pause
+  ---
+  duration_ms: 16.34859
+  type: 'test'
+  ...
+# Subtest: 採集逐人重新計算比例，手動工人與搬運不被覆蓋 / distribute idle workers with cargo and manual priority
+ok 51 - 採集逐人重新計算比例，手動工人與搬運不被覆蓋 / distribute idle workers with cargo and manual priority
+  ---
+  duration_ms: 5.164963
+  type: 'test'
+  ...
+# Subtest: 升級預留不阻擋手動支出，自動等待與正常研究 / age reserve, ask and ordinary research
+ok 52 - 升級預留不阻擋手動支出，自動等待與正常研究 / age reserve, ask and ordinary research
+  ---
+  duration_ms: 2.779974
+  type: 'test'
+  ...
+# Subtest: SaveLoad 保留設定、鎖定、手動佇列及 RNG 位元 / persist plans locks manual queues and RNG bits
+ok 53 - SaveLoad 保留設定、鎖定、手動佇列及 RNG 位元 / persist plans locks manual queues and RNG bits
+  ---
+  duration_ms: 6.162178
+  type: 'test'
+  ...
+# Subtest: 逐建築目標上限、合法兵種與手動佇列 / legal military targets and manual queue priority
+ok 54 - 逐建築目標上限、合法兵種與手動佇列 / legal military targets and manual queue priority
+  ---
+  duration_ms: 3.018747
+  type: 'test'
+  ...
+# Subtest: 自動建築包含施工數量且不打斷手動放置 / construction count and manual placement precedence
+ok 55 - 自動建築包含施工數量且不打斷手動放置 / construction count and manual placement precedence
+  ---
+  duration_ms: 2.722008
+  type: 'test'
+  ...
+# Subtest: 安全建築使用真實施工流程，暫停不推進計畫 / safe placement uses normal construction and pause freezes plans
+ok 56 - 安全建築使用真實施工流程，暫停不推進計畫 / safe placement uses normal construction and pause freezes plans
+  ---
+  duration_ms: 106.706491
+  type: 'test'
+  ...
+# Subtest: 相同規劃與輸入維持模擬確定性 / same plans and inputs produce deterministic simulation
+ok 57 - 相同規劃與輸入維持模擬確定性 / same plans and inputs produce deterministic simulation
+  ---
+  duration_ms: 93.051265
+  type: 'test'
+  ...
+# Subtest: 等待升級確認不阻擋可負擔的自動建築 / pending age confirmation does not block affordable independent buildings
+ok 58 - 等待升級確認不阻擋可負擔的自動建築 / pending age confirmation does not block affordable independent buildings
+  ---
+  duration_ms: 4.738481
+  type: 'test'
+  ...
+1..58
+# tests 58
+# suites 0
+# pass 58
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3998.803017
