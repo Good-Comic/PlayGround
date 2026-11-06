@@ -17,6 +17,7 @@ import { t } from './i18n.js';
 import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, pointSegmentDist, rand, randInt, seedFromDate, formatNumber } from './utils.js';
 import { visualDirectionFromVector } from './visuals.js';
 import { atlasBodyContains } from './sprite-atlas.js';
+import { ramBodyContains } from './ram-body-picking.js';
 import { HERO_SKILLS } from './hero-skills.js';
 export { HERO_SKILLS } from './hero-skills.js';
 
@@ -3244,7 +3245,7 @@ export class Game {
       const p = this.screenPos(u.x, u.y);
       const dx = p.x - sx, dy = (p.y - 18 * z) - sy;
       const d = Math.hypot(dx, dy);
-      if (d < bestScore && (d < 18 * z || atlasBodyContains(u, this.civ?.id, sx, sy, p, z * (u.typeDef.scale || 1)))) { best = u; bestScore = d; }
+      if (d < bestScore && (d < 18 * z || atlasBodyContains(u, this.civ?.id, sx, sy, p, z * (u.typeDef.scale || 1)) || ramBodyContains(u, sx, sy, p, z * (u.typeDef.scale || 1), this.time, this.civ?.id))) { best = u; bestScore = d; }
     }
     if (best) return best;
     for (const b of this.buildings) {
