@@ -1,0 +1,2696 @@
+{
+  "pairInterpretation": "SAME_LATEST_BUILD_REPEAT_NO_GAMEPLAY_CHANGE",
+  "decomposition": "各方法時間含子呼叫、互相重疊，不可加總；pathAndMovement含原生A-star與移動，nativeAstarPerUpdate逐update累計原生A-star；render含fog，collision亦可能巢狀。",
+  "scope": "CONTROLLED_30S_ABBA_LIVE_COMBAT：每個初始100/200人數各串行A1/B1/B2/A2，每次8秒暖機+30秒實際交戰。原生AI、碰撞、傷害、死亡、刷兵皆保留，初始後存活數自然變化。雲端軟體GPU，非長期/硬體/校準改善認證。",
+  "instrumentationOverhead": "同步performance.now包裝、陣列與1Hz heap/alive取樣帶來未校準額外成本，8次一致且未扣除；heap含量測陣列/快取，不判遊戲洩漏。沒有玩家observer或錄影附著；不終止他人既有瀏覽器程序。",
+  "rows": [
+    {
+      "n": 100,
+      "runId": "A1",
+      "mode": "before",
+      "runStart": "2026-11-06T23:07:06.245Z",
+      "cpuBefore": {
+        "usage_usec": 52504595396,
+        "user_usec": 45173073854,
+        "system_usec": 7331521541,
+        "nice_usec": 0,
+        "nr_periods": 887860,
+        "nr_throttled": 651,
+        "throttled_usec": 13777823,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 52559506589,
+        "user_usec": 45225074125,
+        "system_usec": 7334432463,
+        "nice_usec": 0,
+        "nr_periods": 888280,
+        "nr_throttled": 651,
+        "throttled_usec": 13777823,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 54911193,
+        "user_usec": 52000271,
+        "system_usec": 2910922,
+        "nice_usec": 0,
+        "nr_periods": 420,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "sceneSha256": "0cf7a38f65344722306e609d9068ab6cbf79eb47f6b4e4d83b2213525ab8d259",
+      "timeline": [
+        {
+          "wallMs": 0.20000003576205927,
+          "sim": 7.232699999999993,
+          "alive": 77,
+          "heap": 15607718,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 1033.5000000357632,
+          "sim": 8.265999999999998,
+          "alive": 74,
+          "heap": 10834112,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 2066.8000000357624,
+          "sim": 9.299299999999995,
+          "alive": 74,
+          "heap": 17132545,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 3100.1000000357635,
+          "sim": 10.332599999999992,
+          "alive": 81,
+          "heap": 18632202,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 4116.6000000357635,
+          "sim": 11.349099999999995,
+          "alive": 80,
+          "heap": 18194583,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 5116.700000035762,
+          "sim": 12.349199999999993,
+          "alive": 79,
+          "heap": 13060425,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 6149.900000035763,
+          "sim": 13.382299999999995,
+          "alive": 78,
+          "heap": 16634718,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 7166.500000035761,
+          "sim": 14.398799999999994,
+          "alive": 77,
+          "heap": 15197030,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 8166.500000035761,
+          "sim": 15.398799999999996,
+          "alive": 77,
+          "heap": 27087283,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 9183.100000035764,
+          "sim": 16.4154,
+          "alive": 76,
+          "heap": 26616953,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 10199.800000035764,
+          "sim": 17.365500000000004,
+          "alive": 76,
+          "heap": 17376894,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 11233.100000035764,
+          "sim": 18.332200000000007,
+          "alive": 75,
+          "heap": 24026371,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 12249.700000035762,
+          "sim": 19.282200000000007,
+          "alive": 75,
+          "heap": 31537469,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 13249.700000035762,
+          "sim": 20.198900000000016,
+          "alive": 76,
+          "heap": 27248211,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 14266.300000035764,
+          "sim": 21.14880000000003,
+          "alive": 76,
+          "heap": 24500128,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 15299.600000035764,
+          "sim": 22.11540000000003,
+          "alive": 76,
+          "heap": 27747982,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 16332.800000035764,
+          "sim": 23.148600000000048,
+          "alive": 76,
+          "heap": 27427624,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 17332.800000035764,
+          "sim": 24.14860000000006,
+          "alive": 75,
+          "heap": 29664205,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 18332.800000035764,
+          "sim": 25.14860000000007,
+          "alive": 74,
+          "heap": 27057244,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 19349.400000035763,
+          "sim": 26.16520000000007,
+          "alive": 74,
+          "heap": 24324913,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 20349.400000035763,
+          "sim": 27.16520000000008,
+          "alive": 72,
+          "heap": 29158349,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 21366.00000003576,
+          "sim": 28.181800000000084,
+          "alive": 71,
+          "heap": 19829309,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 22382.600000035764,
+          "sim": 29.198400000000102,
+          "alive": 71,
+          "heap": 16851696,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 23399.300000035764,
+          "sim": 30.215100000000113,
+          "alive": 70,
+          "heap": 24275898,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 24415.900000035763,
+          "sim": 31.23170000000012,
+          "alive": 71,
+          "heap": 27180320,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 25432.50000003576,
+          "sim": 32.24830000000012,
+          "alive": 71,
+          "heap": 17622631,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 26465.800000035764,
+          "sim": 33.28160000000013,
+          "alive": 71,
+          "heap": 24466406,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 27482.400000035763,
+          "sim": 34.29820000000015,
+          "alive": 71,
+          "heap": 25723922,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 28482.400000035763,
+          "sim": 35.29810000000018,
+          "alive": 79,
+          "heap": 17442859,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 29515.700000035766,
+          "sim": 36.33140000000023,
+          "alive": 79,
+          "heap": 15538873,
+          "phase": "wave"
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30040.100000023842,
+      "heapStart": 19463913,
+      "heapEnd": 27959087,
+      "aliveStart": 77,
+      "aliveEnd": 79,
+      "simStart": 7.199399999999994,
+      "simEnd": 36.83130000000024,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 159526,
+          "totalMs": 696.3999998569489,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 13681,
+          "totalMs": 418.69999957084656,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 16533,
+          "totalMs": 1608.699998497963,
+          "p50Ms": 0,
+          "p95Ms": 0.2999999523162842
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 963,
+          "totalMs": 1040.900000333786,
+          "p50Ms": 0.30000001192092896,
+          "p95Ms": 1.800000011920929
+        },
+        "fog": {
+          "calls": 963,
+          "totalMs": 8201.500000715256,
+          "p50Ms": 8.300000011920929,
+          "p95Ms": 10.099999964237213
+        },
+        "renderInclusive": {
+          "calls": 963,
+          "totalMs": 13387.30000090599,
+          "p50Ms": 13.5,
+          "p95Ms": 16.399999976158142
+        },
+        "DOM": {
+          "calls": 963,
+          "totalMs": 988.6999986767769,
+          "p50Ms": 0.2999999523162842,
+          "p95Ms": 3.099999964237213
+        },
+        "target": {
+          "calls": 43370,
+          "totalMs": 255.900000333786,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 10,
+        "totalDirectRoutes": 297,
+        "totalSearches": 1014
+      },
+      "fps": 32.023861438518395,
+      "samples": 962,
+      "p50Ms": 33.29999999999927,
+      "p95Ms": 33.400000000001455
+    },
+    {
+      "n": 100,
+      "runId": "B1",
+      "mode": "after",
+      "runStart": "2026-11-06T23:07:48.303Z",
+      "cpuBefore": {
+        "usage_usec": 52559544956,
+        "user_usec": 45225096467,
+        "system_usec": 7334448489,
+        "nice_usec": 0,
+        "nr_periods": 888280,
+        "nr_throttled": 651,
+        "throttled_usec": 13777823,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 52616145398,
+        "user_usec": 45278609822,
+        "system_usec": 7337535575,
+        "nice_usec": 0,
+        "nr_periods": 888707,
+        "nr_throttled": 652,
+        "throttled_usec": 13793474,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 56600442,
+        "user_usec": 53513355,
+        "system_usec": 3087086,
+        "nice_usec": 0,
+        "nr_periods": 427,
+        "nr_throttled": 1,
+        "throttled_usec": 15651,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "sceneSha256": "0cf7a38f65344722306e609d9068ab6cbf79eb47f6b4e4d83b2213525ab8d259",
+      "timeline": [
+        {
+          "wallMs": 20.299999988079435,
+          "sim": 7.382000000000002,
+          "alive": 77,
+          "heap": 14525044,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 1020.2999999880794,
+          "sim": 8.382000000000007,
+          "alive": 74,
+          "heap": 15541535,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 2020.2999999880794,
+          "sim": 9.381900000000007,
+          "alive": 73,
+          "heap": 18768157,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 3053.4999999880783,
+          "sim": 10.415100000000006,
+          "alive": 79,
+          "heap": 16377050,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 4053.4999999880783,
+          "sim": 11.415100000000006,
+          "alive": 78,
+          "heap": 17388924,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 5053.499999988078,
+          "sim": 12.414900000000006,
+          "alive": 78,
+          "heap": 13364449,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 6053.499999988078,
+          "sim": 13.414900000000005,
+          "alive": 76,
+          "heap": 15574496,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 7069.999999988078,
+          "sim": 14.4314,
+          "alive": 76,
+          "heap": 18816470,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 8086.699999988079,
+          "sim": 15.4481,
+          "alive": 76,
+          "heap": 14981256,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 9103.299999988078,
+          "sim": 16.464700000000004,
+          "alive": 76,
+          "heap": 28962248,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 10103.299999988078,
+          "sim": 17.398000000000014,
+          "alive": 75,
+          "heap": 13450796,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 11119.89999998808,
+          "sim": 18.414600000000032,
+          "alive": 75,
+          "heap": 17863391,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 12153.199999988079,
+          "sim": 19.381200000000042,
+          "alive": 75,
+          "heap": 27055087,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 13186.39999998808,
+          "sim": 20.281000000000052,
+          "alive": 74,
+          "heap": 18662340,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 14219.799999988078,
+          "sim": 21.11440000000006,
+          "alive": 74,
+          "heap": 16562557,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 15253.09999998808,
+          "sim": 21.964300000000076,
+          "alive": 73,
+          "heap": 24541050,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 16336.299999988078,
+          "sim": 22.930900000000083,
+          "alive": 72,
+          "heap": 21086512,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 17336.39999998808,
+          "sim": 23.86430000000009,
+          "alive": 72,
+          "heap": 17874539,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 18352.89999998808,
+          "sim": 24.780700000000095,
+          "alive": 72,
+          "heap": 16296907,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 19352.89999998808,
+          "sim": 25.66400000000011,
+          "alive": 72,
+          "heap": 20395457,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 20369.49999998808,
+          "sim": 26.61400000000011,
+          "alive": 70,
+          "heap": 19938720,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 21369.49999998808,
+          "sim": 27.497300000000113,
+          "alive": 69,
+          "heap": 28614952,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 22402.799999988078,
+          "sim": 28.38060000000011,
+          "alive": 69,
+          "heap": 22481848,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 23436.09999998808,
+          "sim": 29.280600000000117,
+          "alive": 69,
+          "heap": 42660109,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 24452.69999998808,
+          "sim": 30.09740000000011,
+          "alive": 69,
+          "heap": 32932305,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 25452.69999998808,
+          "sim": 30.947400000000115,
+          "alive": 69,
+          "heap": 45119958,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 26469.299999988078,
+          "sim": 31.747300000000124,
+          "alive": 70,
+          "heap": 42062529,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 27502.59999998808,
+          "sim": 32.630500000000104,
+          "alive": 70,
+          "heap": 19034541,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 28552.59999998808,
+          "sim": 33.48050000000011,
+          "alive": 70,
+          "heap": 49089269,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 29569.19999998808,
+          "sim": 34.38060000000013,
+          "alive": 70,
+          "heap": 36143927,
+          "phase": "wave"
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30036.30000001192,
+      "heapStart": 15831978,
+      "heapEnd": 34293868,
+      "aliveStart": 77,
+      "aliveEnd": 70,
+      "simStart": 7.315400000000001,
+      "simEnd": 34.76400000000014,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 447448,
+          "totalMs": 1645.2000009417534,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 11423,
+          "totalMs": 345.59999883174896,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 15979,
+          "totalMs": 4256.399999678135,
+          "p50Ms": 0,
+          "p95Ms": 0.20000004768371582
+        },
+        "target": {
+          "calls": 36562,
+          "totalMs": 232.70000106096268,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 879,
+          "totalMs": 3774.4999995827675,
+          "p50Ms": 0.3999999761581421,
+          "p95Ms": 4.399999976158142
+        },
+        "fog": {
+          "calls": 879,
+          "totalMs": 7191.800000727177,
+          "p50Ms": 7.600000023841858,
+          "p95Ms": 10.100000023841858
+        },
+        "renderInclusive": {
+          "calls": 879,
+          "totalMs": 11937.699999630451,
+          "p50Ms": 13.199999988079071,
+          "p95Ms": 16.400000035762787
+        },
+        "DOM": {
+          "calls": 879,
+          "totalMs": 924.6000009179115,
+          "p50Ms": 0.2999999523162842,
+          "p95Ms": 3.099999964237213
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 1,
+        "totalDirectRoutes": 311,
+        "totalSearches": 962
+      },
+      "fps": 29.231296797530042,
+      "samples": 878,
+      "p50Ms": 33.29999999999927,
+      "p95Ms": 50.099999999998545
+    },
+    {
+      "n": 100,
+      "runId": "B2",
+      "mode": "after",
+      "runStart": "2026-11-06T23:08:30.993Z",
+      "cpuBefore": {
+        "usage_usec": 52616168177,
+        "user_usec": 45278628155,
+        "system_usec": 7337540021,
+        "nice_usec": 0,
+        "nr_periods": 888707,
+        "nr_throttled": 652,
+        "throttled_usec": 13793474,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 52674021687,
+        "user_usec": 45333510030,
+        "system_usec": 7340511657,
+        "nice_usec": 0,
+        "nr_periods": 889131,
+        "nr_throttled": 653,
+        "throttled_usec": 13798195,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 57853510,
+        "user_usec": 54881875,
+        "system_usec": 2971636,
+        "nice_usec": 0,
+        "nr_periods": 424,
+        "nr_throttled": 1,
+        "throttled_usec": 4721,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "sceneSha256": "0cf7a38f65344722306e609d9068ab6cbf79eb47f6b4e4d83b2213525ab8d259",
+      "timeline": [
+        {
+          "wallMs": 16,
+          "sim": 7.264799999999994,
+          "alive": 77,
+          "heap": 13375071,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 1032.6000000000004,
+          "sim": 8.281399999999998,
+          "alive": 74,
+          "heap": 17518672,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 2049.2000000000007,
+          "sim": 9.298,
+          "alive": 73,
+          "heap": 16240225,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 3049.2000000000007,
+          "sim": 10.297900000000006,
+          "alive": 79,
+          "heap": 18329219,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 4049.2000000000007,
+          "sim": 11.281000000000006,
+          "alive": 79,
+          "heap": 15954910,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 5082.4,
+          "sim": 12.314200000000001,
+          "alive": 78,
+          "heap": 18369433,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 6099,
+          "sim": 13.3308,
+          "alive": 76,
+          "heap": 16916056,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 7099,
+          "sim": 14.330699999999993,
+          "alive": 76,
+          "heap": 24673195,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 8115.5999999999985,
+          "sim": 15.347199999999987,
+          "alive": 76,
+          "heap": 27312553,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 9132.2,
+          "sim": 16.363699999999994,
+          "alive": 76,
+          "heap": 12784606,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 10132.2,
+          "sim": 17.280400000000004,
+          "alive": 75,
+          "heap": 12196181,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 11132.2,
+          "sim": 18.21370000000002,
+          "alive": 75,
+          "heap": 21285466,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 12148.8,
+          "sim": 19.113500000000013,
+          "alive": 74,
+          "heap": 17051702,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 13182.099999999999,
+          "sim": 19.963500000000018,
+          "alive": 74,
+          "heap": 21260168,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 14198.7,
+          "sim": 20.863600000000027,
+          "alive": 75,
+          "heap": 25262803,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 15215.400000000001,
+          "sim": 21.730400000000035,
+          "alive": 75,
+          "heap": 21105264,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 16232,
+          "sim": 22.680200000000042,
+          "alive": 75,
+          "heap": 24682806,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 17248.6,
+          "sim": 23.580200000000048,
+          "alive": 74,
+          "heap": 14377282,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 18248.6,
+          "sim": 24.46370000000005,
+          "alive": 74,
+          "heap": 19001988,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 19281.8,
+          "sim": 25.44690000000006,
+          "alive": 74,
+          "heap": 21912895,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 20281.8,
+          "sim": 26.380300000000066,
+          "alive": 73,
+          "heap": 19648472,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 21331.8,
+          "sim": 27.330300000000072,
+          "alive": 73,
+          "heap": 32597134,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 22331.8,
+          "sim": 28.263600000000086,
+          "alive": 72,
+          "heap": 30008964,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 23348.4,
+          "sim": 29.163700000000087,
+          "alive": 71,
+          "heap": 27447134,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 24365,
+          "sim": 30.06380000000009,
+          "alive": 70,
+          "heap": 24704056,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 25381.6,
+          "sim": 30.963800000000095,
+          "alive": 69,
+          "heap": 33755266,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 26498.300000000003,
+          "sim": 31.9472000000001,
+          "alive": 70,
+          "heap": 15660356,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 27531.5,
+          "sim": 32.93050000000012,
+          "alive": 70,
+          "heap": 29426684,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 28548.1,
+          "sim": 33.830400000000154,
+          "alive": 70,
+          "heap": 25848134,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 29564.699999999997,
+          "sim": 34.76350000000015,
+          "alive": 70,
+          "heap": 14964233,
+          "phase": "wave"
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30070.899999976158,
+      "heapStart": 15332012,
+      "heapEnd": 20671198,
+      "aliveStart": 77,
+      "aliveEnd": 78,
+      "simStart": 7.198099999999993,
+      "simEnd": 35.13030000000015,
+      "phase": "wave",
+      "subsystems": {
+        "pathAndMovementInclusive": {
+          "calls": 13146,
+          "totalMs": 3571.899999141693,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "staticCollision": {
+          "calls": 385121,
+          "totalMs": 1455.3000011444092,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 10258,
+          "totalMs": 295.1999995112419,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 39844,
+          "totalMs": 282.2999999523163,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 873,
+          "totalMs": 3142.4000002741814,
+          "p50Ms": 0,
+          "p95Ms": 4.200000047683716
+        },
+        "fog": {
+          "calls": 873,
+          "totalMs": 7273.399998009205,
+          "p50Ms": 7.899999976158142,
+          "p95Ms": 10.299999952316284
+        },
+        "renderInclusive": {
+          "calls": 873,
+          "totalMs": 12222.80000090599,
+          "p50Ms": 13.5,
+          "p95Ms": 16.69999998807907
+        },
+        "DOM": {
+          "calls": 873,
+          "totalMs": 946.9000005722046,
+          "p50Ms": 0.30000001192092896,
+          "p95Ms": 3.100000023841858
+        }
+      },
+      "navigationStats": {
+        "searches": 2,
+        "expanded": 541,
+        "ms": 15.100000023841858,
+        "directRoutes": 0,
+        "routeReuses": 9,
+        "totalDirectRoutes": 254,
+        "totalSearches": 755
+      },
+      "fps": 28.998134409036354,
+      "samples": 872,
+      "p50Ms": 33.29999999999927,
+      "p95Ms": 50
+    },
+    {
+      "n": 100,
+      "runId": "A2",
+      "mode": "before",
+      "runStart": "2026-11-06T23:09:13.377Z",
+      "cpuBefore": {
+        "usage_usec": 52674048284,
+        "user_usec": 45333526813,
+        "system_usec": 7340521470,
+        "nice_usec": 0,
+        "nr_periods": 889131,
+        "nr_throttled": 653,
+        "throttled_usec": 13798195,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 52729236469,
+        "user_usec": 45386219999,
+        "system_usec": 7343016469,
+        "nice_usec": 0,
+        "nr_periods": 889549,
+        "nr_throttled": 653,
+        "throttled_usec": 13798195,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 55188185,
+        "user_usec": 52693186,
+        "system_usec": 2494999,
+        "nice_usec": 0,
+        "nr_periods": 418,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "sceneSha256": "0cf7a38f65344722306e609d9068ab6cbf79eb47f6b4e4d83b2213525ab8d259",
+      "timeline": [
+        {
+          "wallMs": 31.200000000000728,
+          "sim": 7.265599999999995,
+          "alive": 77,
+          "heap": 20155400,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 1064.5,
+          "sim": 8.298899999999996,
+          "alive": 74,
+          "heap": 16827321,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 2081.1000000000004,
+          "sim": 9.315299999999997,
+          "alive": 74,
+          "heap": 18324127,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 3097.7000000000007,
+          "sim": 10.331899999999997,
+          "alive": 79,
+          "heap": 18454477,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 4097.700000000001,
+          "sim": 11.331799999999994,
+          "alive": 78,
+          "heap": 14618265,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 5131,
+          "sim": 12.36509999999999,
+          "alive": 78,
+          "heap": 15408677,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 6164.299999999999,
+          "sim": 13.398399999999986,
+          "alive": 77,
+          "heap": 20477084,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 7197.5999999999985,
+          "sim": 14.364999999999988,
+          "alive": 76,
+          "heap": 26197325,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 8297.599999999999,
+          "sim": 15.381599999999988,
+          "alive": 75,
+          "heap": 25785942,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 9364.2,
+          "sim": 16.398099999999985,
+          "alive": 75,
+          "heap": 13766715,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 10447.400000000001,
+          "sim": 17.414699999999993,
+          "alive": 75,
+          "heap": 16929712,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 11530.7,
+          "sim": 18.431399999999996,
+          "alive": 75,
+          "heap": 22620050,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 12530.7,
+          "sim": 19.431400000000004,
+          "alive": 75,
+          "heap": 19459947,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 13547.3,
+          "sim": 20.448000000000018,
+          "alive": 75,
+          "heap": 25275334,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 14547.3,
+          "sim": 21.44800000000001,
+          "alive": 75,
+          "heap": 20524203,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 15563.900000000001,
+          "sim": 22.464600000000022,
+          "alive": 75,
+          "heap": 18051393,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 16563.9,
+          "sim": 23.46460000000003,
+          "alive": 75,
+          "heap": 22239861,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 17580.5,
+          "sim": 24.48120000000003,
+          "alive": 74,
+          "heap": 26090974,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 18580.5,
+          "sim": 25.481200000000026,
+          "alive": 73,
+          "heap": 16380093,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 19597.1,
+          "sim": 26.497800000000037,
+          "alive": 73,
+          "heap": 26631252,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 20630.3,
+          "sim": 27.53100000000005,
+          "alive": 71,
+          "heap": 18670947,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 21647,
+          "sim": 28.547600000000056,
+          "alive": 71,
+          "heap": 29692126,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 22663.699999999997,
+          "sim": 29.564300000000056,
+          "alive": 69,
+          "heap": 27309048,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 23696.9,
+          "sim": 30.597400000000064,
+          "alive": 69,
+          "heap": 17616241,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 24713.5,
+          "sim": 31.61400000000006,
+          "alive": 70,
+          "heap": 22632334,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 25713.5,
+          "sim": 32.61400000000008,
+          "alive": 70,
+          "heap": 21737674,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 26713.5,
+          "sim": 33.61400000000009,
+          "alive": 70,
+          "heap": 23481988,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 27730.1,
+          "sim": 34.63060000000011,
+          "alive": 70,
+          "heap": 22478151,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 28763.4,
+          "sim": 35.663900000000105,
+          "alive": 78,
+          "heap": 27839042,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 29763.4,
+          "sim": 36.663900000000154,
+          "alive": 78,
+          "heap": 20847459,
+          "phase": "wave"
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30033.5,
+      "heapStart": 14473250,
+      "heapEnd": 16946567,
+      "aliveStart": 77,
+      "aliveEnd": 78,
+      "simStart": 7.1989999999999945,
+      "simEnd": 36.913800000000165,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 152391,
+          "totalMs": 612.7000002861023,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 13552,
+          "totalMs": 342.2000023126602,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 15690,
+          "totalMs": 1410.9000008702278,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "target": {
+          "calls": 44486,
+          "totalMs": 282.69999927282333,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 967,
+          "totalMs": 923.5999998450279,
+          "p50Ms": 0,
+          "p95Ms": 1.9000000357627869
+        },
+        "fog": {
+          "calls": 967,
+          "totalMs": 8111.900000691414,
+          "p50Ms": 8.100000023841858,
+          "p95Ms": 10
+        },
+        "renderInclusive": {
+          "calls": 967,
+          "totalMs": 13348.900001049042,
+          "p50Ms": 13.400000035762787,
+          "p95Ms": 16.19999998807907
+        },
+        "DOM": {
+          "calls": 967,
+          "totalMs": 1002.7999986410141,
+          "p50Ms": 0.30000001192092896,
+          "p95Ms": 3.099999964237213
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 11,
+        "totalDirectRoutes": 290,
+        "totalSearches": 884
+      },
+      "fps": 32.16408344015849,
+      "samples": 966,
+      "p50Ms": 33.29999999999927,
+      "p95Ms": 33.400000000001455
+    },
+    {
+      "n": 200,
+      "runId": "A1",
+      "mode": "before",
+      "runStart": "2026-11-06T23:09:55.179Z",
+      "cpuBefore": {
+        "usage_usec": 52729257256,
+        "user_usec": 45386236338,
+        "system_usec": 7343020918,
+        "nice_usec": 0,
+        "nr_periods": 889549,
+        "nr_throttled": 653,
+        "throttled_usec": 13798195,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 52783197140,
+        "user_usec": 45437791470,
+        "system_usec": 7345405670,
+        "nice_usec": 0,
+        "nr_periods": 889969,
+        "nr_throttled": 654,
+        "throttled_usec": 13799141,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 53939884,
+        "user_usec": 51555132,
+        "system_usec": 2384752,
+        "nice_usec": 0,
+        "nr_periods": 420,
+        "nr_throttled": 1,
+        "throttled_usec": 946,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "sceneSha256": "293e7da6d487e24a2e02d5c92099ac597576d2c66d83999ca41d9d53be9a7eba",
+      "timeline": [
+        {
+          "wallMs": 69.60000004768335,
+          "sim": 5.249999999999989,
+          "alive": 158,
+          "heap": 10348988,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 1119.500000047683,
+          "sim": 6.166499999999986,
+          "alive": 149,
+          "heap": 13639934,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 2152.800000047684,
+          "sim": 7.133199999999982,
+          "alive": 148,
+          "heap": 22205024,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 3186.1000000476834,
+          "sim": 8.08299999999998,
+          "alive": 144,
+          "heap": 24849381,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 4219.500000047683,
+          "sim": 9.08269999999999,
+          "alive": 140,
+          "heap": 18419713,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 5236.000000047683,
+          "sim": 10.015699999999999,
+          "alive": 141,
+          "heap": 26736916,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 6236.000000047683,
+          "sim": 10.882400000000011,
+          "alive": 139,
+          "heap": 13872994,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 7252.700000047684,
+          "sim": 11.83210000000002,
+          "alive": 136,
+          "heap": 15840157,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 8269.300000047682,
+          "sim": 12.848200000000032,
+          "alive": 134,
+          "heap": 24496143,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 9319.200000047684,
+          "sim": 13.897900000000043,
+          "alive": 132,
+          "heap": 13329055,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 10352.500000047683,
+          "sim": 14.814400000000045,
+          "alive": 130,
+          "heap": 25593188,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 11402.400000047684,
+          "sim": 15.597600000000055,
+          "alive": 128,
+          "heap": 14519221,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 12419.100000047685,
+          "sim": 16.53090000000006,
+          "alive": 128,
+          "heap": 22559810,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 13452.400000047684,
+          "sim": 17.447500000000062,
+          "alive": 128,
+          "heap": 20438083,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 14502.400000047684,
+          "sim": 18.28060000000007,
+          "alive": 126,
+          "heap": 21662035,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 15519.000000047683,
+          "sim": 19.29650000000009,
+          "alive": 125,
+          "heap": 20711164,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 16535.600000047685,
+          "sim": 20.26290000000011,
+          "alive": 126,
+          "heap": 22962086,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 17585.500000047683,
+          "sim": 21.229400000000112,
+          "alive": 125,
+          "heap": 18032931,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 18585.500000047683,
+          "sim": 22.129200000000115,
+          "alive": 124,
+          "heap": 19746572,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 19585.500000047683,
+          "sim": 23.062300000000132,
+          "alive": 123,
+          "heap": 15050569,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 20635.500000047683,
+          "sim": 24.01190000000014,
+          "alive": 123,
+          "heap": 17944611,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 21685.300000047682,
+          "sim": 24.96170000000014,
+          "alive": 122,
+          "heap": 18188821,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 22718.700000047684,
+          "sim": 25.99490000000014,
+          "alive": 121,
+          "heap": 36326231,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 23718.700000047684,
+          "sim": 26.994700000000158,
+          "alive": 121,
+          "heap": 19360644,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 24735.200000047684,
+          "sim": 28.011200000000162,
+          "alive": 121,
+          "heap": 35849562,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 25751.90000004768,
+          "sim": 29.027700000000173,
+          "alive": 120,
+          "heap": 19072644,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 26768.500000047687,
+          "sim": 29.944300000000183,
+          "alive": 120,
+          "heap": 27187284,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 27801.800000047682,
+          "sim": 30.877400000000197,
+          "alive": 120,
+          "heap": 43385235,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 28818.40000004768,
+          "sim": 31.777200000000203,
+          "alive": 121,
+          "heap": 21949407,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 29851.700000047684,
+          "sim": 32.7271000000002,
+          "alive": 121,
+          "heap": 36759659,
+          "phase": "wave"
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30059.700000047684,
+      "heapStart": 18279737,
+      "heapEnd": 17523395,
+      "aliveStart": 158,
+      "aliveEnd": 121,
+      "simStart": 5.14999999999999,
+      "simEnd": 32.8938000000002,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 231246,
+          "totalMs": 895.1000003814697,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "pathAndMovementInclusive": {
+          "calls": 24018,
+          "totalMs": 2604.4000002741814,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "dynamicCollision": {
+          "calls": 10048,
+          "totalMs": 419.1999982595444,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 43324,
+          "totalMs": 341.4999993443489,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 634,
+          "totalMs": 2066.100001513958,
+          "p50Ms": 0.8999999761581421,
+          "p95Ms": 2.399999976158142
+        },
+        "fog": {
+          "calls": 634,
+          "totalMs": 7525.80000013113,
+          "p50Ms": 11.600000023841858,
+          "p95Ms": 13.899999976158142
+        },
+        "renderInclusive": {
+          "calls": 634,
+          "totalMs": 13076.400000333786,
+          "p50Ms": 20.100000023841858,
+          "p95Ms": 25
+        },
+        "DOM": {
+          "calls": 634,
+          "totalMs": 1358.1999989748,
+          "p50Ms": 0.3999999761581421,
+          "p95Ms": 5.099999964237213
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 2,
+        "totalDirectRoutes": 549,
+        "totalSearches": 1060
+      },
+      "fps": 21.058094392126197,
+      "samples": 633,
+      "p50Ms": 50,
+      "p95Ms": 66.70000000000073
+    },
+    {
+      "n": 200,
+      "runId": "B1",
+      "mode": "after",
+      "runStart": "2026-11-06T23:10:37.216Z",
+      "cpuBefore": {
+        "usage_usec": 52783243691,
+        "user_usec": 45437833102,
+        "system_usec": 7345410589,
+        "nice_usec": 0,
+        "nr_periods": 889969,
+        "nr_throttled": 654,
+        "throttled_usec": 13799141,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 52837875661,
+        "user_usec": 45490086204,
+        "system_usec": 7347789457,
+        "nice_usec": 0,
+        "nr_periods": 890390,
+        "nr_throttled": 655,
+        "throttled_usec": 13807659,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 54631970,
+        "user_usec": 52253102,
+        "system_usec": 2378868,
+        "nice_usec": 0,
+        "nr_periods": 421,
+        "nr_throttled": 1,
+        "throttled_usec": 8518,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "sceneSha256": "293e7da6d487e24a2e02d5c92099ac597576d2c66d83999ca41d9d53be9a7eba",
+      "timeline": [
+        {
+          "wallMs": 60.70000000000073,
+          "sim": 5.399999999999989,
+          "alive": 155,
+          "heap": 17973927,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 1077.3999999999996,
+          "sim": 6.349899999999985,
+          "alive": 149,
+          "heap": 22740171,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 2110.6000000000004,
+          "sim": 7.382799999999984,
+          "alive": 148,
+          "heap": 16546900,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 3143.8999999999996,
+          "sim": 8.41579999999999,
+          "alive": 144,
+          "heap": 25907930,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 4160.5,
+          "sim": 9.4322,
+          "alive": 136,
+          "heap": 15814099,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 5160.5,
+          "sim": 10.431800000000006,
+          "alive": 141,
+          "heap": 23771638,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 6210.4000000000015,
+          "sim": 11.481300000000012,
+          "alive": 136,
+          "heap": 32078729,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 7227.0999999999985,
+          "sim": 12.447700000000026,
+          "alive": 134,
+          "heap": 28016672,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 8260.400000000001,
+          "sim": 13.464000000000041,
+          "alive": 133,
+          "heap": 28875740,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 9293.599999999999,
+          "sim": 14.496900000000043,
+          "alive": 130,
+          "heap": 22028486,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 10327,
+          "sim": 15.29670000000005,
+          "alive": 130,
+          "heap": 11142012,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 11360.2,
+          "sim": 16.22980000000006,
+          "alive": 129,
+          "heap": 17016433,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 12360.2,
+          "sim": 17.113000000000063,
+          "alive": 128,
+          "heap": 17578389,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 13393.5,
+          "sim": 17.946100000000072,
+          "alive": 128,
+          "heap": 17605047,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 14426.8,
+          "sim": 18.962600000000084,
+          "alive": 126,
+          "heap": 24827732,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 15493.400000000001,
+          "sim": 19.945800000000094,
+          "alive": 125,
+          "heap": 14885355,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 16510,
+          "sim": 20.96200000000011,
+          "alive": 126,
+          "heap": 19721965,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 17526.7,
+          "sim": 21.878600000000116,
+          "alive": 124,
+          "heap": 18121065,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 18526.7,
+          "sim": 22.84490000000013,
+          "alive": 123,
+          "heap": 26806698,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 19543.3,
+          "sim": 23.761600000000136,
+          "alive": 121,
+          "heap": 15950865,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 20559.9,
+          "sim": 24.67790000000015,
+          "alive": 120,
+          "heap": 24855026,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 21576.5,
+          "sim": 25.677600000000158,
+          "alive": 120,
+          "heap": 17011449,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 22593.1,
+          "sim": 26.643900000000162,
+          "alive": 120,
+          "heap": 26909579,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 23593.1,
+          "sim": 27.64390000000017,
+          "alive": 120,
+          "heap": 26580520,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 24609.699999999997,
+          "sim": 28.66040000000018,
+          "alive": 120,
+          "heap": 15868875,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 25643,
+          "sim": 29.693600000000185,
+          "alive": 120,
+          "heap": 24357831,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 26643,
+          "sim": 30.6933000000002,
+          "alive": 120,
+          "heap": 26455745,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 27676.300000000003,
+          "sim": 31.693100000000207,
+          "alive": 121,
+          "heap": 16565270,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 28709.5,
+          "sim": 32.72620000000017,
+          "alive": 121,
+          "heap": 20294958,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 29709.5,
+          "sim": 33.72620000000014,
+          "alive": 121,
+          "heap": 30381790,
+          "phase": "wave"
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30059.5,
+      "heapStart": 13519474,
+      "heapEnd": 19490426,
+      "aliveStart": 158,
+      "aliveEnd": 121,
+      "simStart": 5.299999999999989,
+      "simEnd": 34.042900000000124,
+      "phase": "wave",
+      "subsystems": {
+        "pathAndMovementInclusive": {
+          "calls": 22387,
+          "totalMs": 1960.8000010848045,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "staticCollision": {
+          "calls": 171667,
+          "totalMs": 679.5999991297722,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 8872,
+          "totalMs": 337.6000018119812,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 45557,
+          "totalMs": 382.8000013232231,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 631,
+          "totalMs": 1509.4999994039536,
+          "p50Ms": 0.699999988079071,
+          "p95Ms": 2.399999976158142
+        },
+        "fog": {
+          "calls": 631,
+          "totalMs": 7940.600001215935,
+          "p50Ms": 12.399999976158142,
+          "p95Ms": 14.799999952316284
+        },
+        "renderInclusive": {
+          "calls": 631,
+          "totalMs": 13537.799999535084,
+          "p50Ms": 21,
+          "p95Ms": 24.5
+        },
+        "DOM": {
+          "calls": 631,
+          "totalMs": 1424.8999999165535,
+          "p50Ms": 0.5,
+          "p95Ms": 5.100000023841858
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 3,
+        "totalDirectRoutes": 579,
+        "totalSearches": 888
+      },
+      "fps": 20.958432442322728,
+      "samples": 630,
+      "p50Ms": 50,
+      "p95Ms": 50.10000000000218
+    },
+    {
+      "n": 200,
+      "runId": "B2",
+      "mode": "after",
+      "runStart": "2026-11-06T23:11:19.312Z",
+      "cpuBefore": {
+        "usage_usec": 52837918348,
+        "user_usec": 45490112372,
+        "system_usec": 7347805976,
+        "nice_usec": 0,
+        "nr_periods": 890390,
+        "nr_throttled": 655,
+        "throttled_usec": 13807659,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 52892013393,
+        "user_usec": 45541882273,
+        "system_usec": 7350131120,
+        "nice_usec": 0,
+        "nr_periods": 890810,
+        "nr_throttled": 656,
+        "throttled_usec": 13809079,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 54095045,
+        "user_usec": 51769901,
+        "system_usec": 2325144,
+        "nice_usec": 0,
+        "nr_periods": 420,
+        "nr_throttled": 1,
+        "throttled_usec": 1420,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "sceneSha256": "293e7da6d487e24a2e02d5c92099ac597576d2c66d83999ca41d9d53be9a7eba",
+      "timeline": [
+        {
+          "wallMs": 71.10000000000036,
+          "sim": 5.43309999999999,
+          "alive": 155,
+          "heap": 19710169,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 1104.5,
+          "sim": 6.466199999999988,
+          "alive": 148,
+          "heap": 26407015,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 2154.3999999999996,
+          "sim": 7.51599999999999,
+          "alive": 146,
+          "heap": 18496390,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 3154.3999999999996,
+          "sim": 8.51569999999999,
+          "alive": 142,
+          "heap": 20194035,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 4187.6,
+          "sim": 9.531999999999991,
+          "alive": 139,
+          "heap": 14088588,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 5187.700000000001,
+          "sim": 10.531999999999996,
+          "alive": 141,
+          "heap": 15281491,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 6204.200000000001,
+          "sim": 11.515,
+          "alive": 138,
+          "heap": 19066782,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 7220.9000000000015,
+          "sim": 12.531700000000011,
+          "alive": 136,
+          "heap": 22323201,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 8254.2,
+          "sim": 13.564900000000014,
+          "alive": 133,
+          "heap": 14273931,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 9287.400000000001,
+          "sim": 14.598000000000015,
+          "alive": 132,
+          "heap": 21723187,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 10304.099999999999,
+          "sim": 15.614200000000023,
+          "alive": 131,
+          "heap": 26000711,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 11337.400000000001,
+          "sim": 16.647200000000037,
+          "alive": 131,
+          "heap": 26040703,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 12387.3,
+          "sim": 17.69700000000005,
+          "alive": 130,
+          "heap": 11559463,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 13404,
+          "sim": 18.563500000000058,
+          "alive": 129,
+          "heap": 21711671,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 14420.599999999999,
+          "sim": 19.48010000000006,
+          "alive": 128,
+          "heap": 29816667,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 15470.599999999999,
+          "sim": 20.446500000000075,
+          "alive": 129,
+          "heap": 18971314,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 16487.2,
+          "sim": 21.396300000000085,
+          "alive": 128,
+          "heap": 32445199,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 17520.5,
+          "sim": 22.429400000000097,
+          "alive": 128,
+          "heap": 34915971,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 18537,
+          "sim": 23.428900000000112,
+          "alive": 125,
+          "heap": 17103825,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 19537.1,
+          "sim": 24.428600000000127,
+          "alive": 125,
+          "heap": 17132565,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 20570.3,
+          "sim": 25.461700000000143,
+          "alive": 124,
+          "heap": 26027587,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 21586.9,
+          "sim": 26.478200000000147,
+          "alive": 124,
+          "heap": 21094553,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 22603.6,
+          "sim": 27.494900000000147,
+          "alive": 124,
+          "heap": 20727237,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 23636.9,
+          "sim": 28.528100000000162,
+          "alive": 124,
+          "heap": 17355217,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 24653.5,
+          "sim": 29.461300000000172,
+          "alive": 124,
+          "heap": 35694658,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 25670.199999999997,
+          "sim": 30.377800000000185,
+          "alive": 124,
+          "heap": 16030460,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 26686.800000000003,
+          "sim": 31.311000000000206,
+          "alive": 125,
+          "heap": 30327471,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 27703.4,
+          "sim": 32.227400000000195,
+          "alive": 125,
+          "heap": 46327165,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 28820,
+          "sim": 33.260600000000174,
+          "alive": 125,
+          "heap": 37654863,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 29820,
+          "sim": 34.26040000000017,
+          "alive": 125,
+          "heap": 22138092,
+          "phase": "wave"
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30028.5,
+      "heapStart": 16052093,
+      "heapEnd": 36920441,
+      "aliveStart": 157,
+      "aliveEnd": 125,
+      "simStart": 5.33309999999999,
+      "simEnd": 34.44370000000016,
+      "phase": "wave",
+      "subsystems": {
+        "pathAndMovementInclusive": {
+          "calls": 19030,
+          "totalMs": 1699.600001692772,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "staticCollision": {
+          "calls": 160104,
+          "totalMs": 621.4000010490417,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 8772,
+          "totalMs": 306.40000182390213,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 57588,
+          "totalMs": 424.09999918937683,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 700,
+          "totalMs": 1289.6999987959862,
+          "p50Ms": 0.5,
+          "p95Ms": 2.0000000596046448
+        },
+        "fog": {
+          "calls": 700,
+          "totalMs": 7059.000000655651,
+          "p50Ms": 10.800000011920929,
+          "p95Ms": 12.100000023841858
+        },
+        "renderInclusive": {
+          "calls": 700,
+          "totalMs": 13042.599998295307,
+          "p50Ms": 18.400000035762787,
+          "p95Ms": 21.400000035762787
+        },
+        "DOM": {
+          "calls": 700,
+          "totalMs": 1292.8000006079674,
+          "p50Ms": 0.30000001192092896,
+          "p95Ms": 4.900000035762787
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 4,
+        "totalDirectRoutes": 613,
+        "totalSearches": 834
+      },
+      "fps": 23.27788600829212,
+      "samples": 699,
+      "p50Ms": 33.5,
+      "p95Ms": 50.099999999998545
+    },
+    {
+      "n": 200,
+      "runId": "A2",
+      "mode": "before",
+      "runStart": "2026-11-06T23:12:01.326Z",
+      "cpuBefore": {
+        "usage_usec": 52892047110,
+        "user_usec": 45541915859,
+        "system_usec": 7350131250,
+        "nice_usec": 0,
+        "nr_periods": 890811,
+        "nr_throttled": 656,
+        "throttled_usec": 13809079,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 52945227122,
+        "user_usec": 45592722367,
+        "system_usec": 7352504755,
+        "nice_usec": 0,
+        "nr_periods": 891226,
+        "nr_throttled": 657,
+        "throttled_usec": 13819102,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 53180012,
+        "user_usec": 50806508,
+        "system_usec": 2373505,
+        "nice_usec": 0,
+        "nr_periods": 415,
+        "nr_throttled": 1,
+        "throttled_usec": 10023,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "sceneSha256": "293e7da6d487e24a2e02d5c92099ac597576d2c66d83999ca41d9d53be9a7eba",
+      "timeline": [
+        {
+          "wallMs": 55.00000001192166,
+          "sim": 5.299999999999989,
+          "alive": 158,
+          "heap": 14338958,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 1055.0000000119217,
+          "sim": 6.19969999999999,
+          "alive": 149,
+          "heap": 12014174,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 2071.60000001192,
+          "sim": 7.199299999999988,
+          "alive": 148,
+          "heap": 29709620,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 3071.60000001192,
+          "sim": 8.18219999999999,
+          "alive": 144,
+          "heap": 12997257,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 4071.60000001192,
+          "sim": 9.131699999999991,
+          "alive": 140,
+          "heap": 28026615,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 5071.60000001192,
+          "sim": 10.097900000000006,
+          "alive": 142,
+          "heap": 19201355,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 6088.200000011921,
+          "sim": 11.097500000000014,
+          "alive": 138,
+          "heap": 21312749,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 7138.200000011922,
+          "sim": 12.113800000000019,
+          "alive": 136,
+          "heap": 23517784,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 8171.4000000119195,
+          "sim": 13.146800000000022,
+          "alive": 134,
+          "heap": 17250429,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 9171.40000001192,
+          "sim": 14.13020000000003,
+          "alive": 132,
+          "heap": 26058367,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 10204.700000011922,
+          "sim": 15.163000000000043,
+          "alive": 130,
+          "heap": 20102523,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 11254.700000011922,
+          "sim": 16.212700000000044,
+          "alive": 129,
+          "heap": 23553019,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 12271.200000011922,
+          "sim": 17.22890000000005,
+          "alive": 128,
+          "heap": 23675956,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 13304.500000011922,
+          "sim": 18.112100000000066,
+          "alive": 128,
+          "heap": 15211327,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 14304.500000011922,
+          "sim": 18.99510000000008,
+          "alive": 126,
+          "heap": 27054881,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 15304.500000011922,
+          "sim": 19.994800000000083,
+          "alive": 126,
+          "heap": 25602676,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 16354.40000001192,
+          "sim": 21.01120000000009,
+          "alive": 126,
+          "heap": 16996541,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 17371.10000001192,
+          "sim": 21.92760000000011,
+          "alive": 125,
+          "heap": 23164580,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 18387.700000011922,
+          "sim": 22.94410000000012,
+          "alive": 123,
+          "heap": 21163928,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 19421.00000001192,
+          "sim": 23.977000000000125,
+          "alive": 122,
+          "heap": 21617184,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 20454.30000001192,
+          "sim": 24.926900000000142,
+          "alive": 121,
+          "heap": 29683201,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 21470.90000001192,
+          "sim": 25.843500000000148,
+          "alive": 120,
+          "heap": 44702575,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 22487.50000001192,
+          "sim": 26.760100000000158,
+          "alive": 120,
+          "heap": 22467729,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 23504.200000011922,
+          "sim": 27.659900000000164,
+          "alive": 120,
+          "heap": 24670337,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 24520.80000001192,
+          "sim": 28.676500000000175,
+          "alive": 120,
+          "heap": 40387071,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 25570.700000011922,
+          "sim": 29.726400000000186,
+          "alive": 120,
+          "heap": 20332591,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 26570.700000011922,
+          "sim": 30.726300000000194,
+          "alive": 120,
+          "heap": 31906266,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 27587.40000001192,
+          "sim": 31.742900000000198,
+          "alive": 121,
+          "heap": 22982423,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 28620.600000011924,
+          "sim": 32.7761000000002,
+          "alive": 121,
+          "heap": 40995318,
+          "phase": "wave"
+        },
+        {
+          "wallMs": 29637.200000011922,
+          "sim": 33.79270000000018,
+          "alive": 121,
+          "heap": 21371924,
+          "phase": "wave"
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30057.5,
+      "heapStart": 10817687,
+      "heapEnd": 17571413,
+      "aliveStart": 158,
+      "aliveEnd": 121,
+      "simStart": 5.1999999999999895,
+      "simEnd": 34.17600000000018,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 146669,
+          "totalMs": 635.4999985098839,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 9033,
+          "totalMs": 369.0000002980232,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 23155,
+          "totalMs": 1763.3000003695488,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 48121,
+          "totalMs": 354.6999990940094,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 665,
+          "totalMs": 1277.800000488758,
+          "p50Ms": 0.7999999523162842,
+          "p95Ms": 2.1999999284744263
+        },
+        "fog": {
+          "calls": 665,
+          "totalMs": 7761.299999892712,
+          "p50Ms": 11.400000035762787,
+          "p95Ms": 13.400000035762787
+        },
+        "renderInclusive": {
+          "calls": 665,
+          "totalMs": 13458.5,
+          "p50Ms": 19.899999976158142,
+          "p95Ms": 23.5
+        },
+        "DOM": {
+          "calls": 665,
+          "totalMs": 1389.3000004291534,
+          "p50Ms": 0.40000003576278687,
+          "p95Ms": 5
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 4,
+        "totalDirectRoutes": 591,
+        "totalSearches": 931
+      },
+      "fps": 22.09099226482575,
+      "samples": 664,
+      "p50Ms": 50,
+      "p95Ms": 50.10000000000218
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "gpu": [
+    {
+      "vendorId": 65535,
+      "deviceId": 65535,
+      "vendorString": "Google Inc. (Google)",
+      "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+      "driverVendor": "SwANGLE",
+      "driverVersion": "5.0.0"
+    }
+  ],
+  "cpuQuota": "400000 100000",
+  "pairs": [
+    {
+      "n": 100,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "rng": true,
+      "visualRng": true
+    },
+    {
+      "n": 200,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "rng": true,
+      "visualRng": true
+    }
+  ],
+  "status": "MEASURED_30S_ABBA_SOFTWARE_COHORT"
+}

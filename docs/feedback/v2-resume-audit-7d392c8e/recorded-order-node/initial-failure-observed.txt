@@ -1,0 +1,11 @@
+初次失敗觀察摘錄（原工具輸出截斷，非完整 stdout）
+Initial failure observed excerpt (original tool output truncated; not complete stdout)
+Command: node --test tests/recorded-order-group.test.mjs
+exit_code: 1
+tests 1; pass 0; fail 1
+Follow-up: node tests/recorded-order-group.test.mjs
+tests 6; pass 5; fail 1
+Failed: CONTROLLED_FIXTURE：重讀零遊戲狀態副作用，選組只有setSelection / repeated reads preserve simulation
+AssertionError: Expected values to be strictly equal
+原因：snapshot.savedAt 是牆鐘；選組後 snapshot.selection 是授權差異。測試現明確排除兩欄，其餘 snapshot、雙 RNG、模擬時間、HP 等持續比較。
+Cause: snapshot.savedAt is wall-clock time; snapshot.selection changes as authorized. Test now explicitly excludes both fields while comparing the remaining snapshot, both RNGs, simulation time and HP.
