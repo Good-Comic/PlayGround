@@ -731,3 +731,10 @@ for (const [locale, values] of Object.entries({
  en:['Unapplied changes','No unit list is specified in the applied plan. The native fallback uses this building’s legal combat units.'],
  ja:['未適用の変更','適用済み計画で兵種未指定のため、この建物で利用できる戦闘兵種を使う従来の既定動作です。']
 })) ['draftShort', 'fallback'].forEach((key, i) => STRINGS[locale]['production.' + key] = values[i]);
+
+for (const [locale, values] of Object.entries({
+ 'zh-Hant':['英雄護衛城心','向存活英雄下達一次城心護衛命令，沿原生路徑回防；其他單位不改令。可隨時手動接管。','英雄護衛命令已下達；尚未表示抵達。','目前無法下達英雄護衛命令；未變更指令。'],
+ 'zh-Hans':['英雄护卫城心','向存活英雄下达一次城心护卫命令，沿原生路径回防；其他单位不改令。可随时手动接管。','英雄护卫命令已下达；尚未表示抵达。','当前无法下达英雄护卫命令；未更改指令。'],
+ en:['Hero: guard town center','Issue one native town-center guard order to the living hero. Other units keep their orders. Manual control can take over at any time.','Hero guard order issued; arrival is not yet confirmed.','Hero guard order unavailable. No orders changed.'],
+ ja:['英雄で町の中心を護衛','生存中の英雄に一度だけ町の中心の護衛命令を出し、通常の経路で戻します。他のユニットの命令は維持。いつでも手動操作に切替可能。','英雄に護衛命令を出しました。到着はまだ確認されていません。','現在、英雄に護衛命令を出せません。命令は変更していません。']
+})) ['launch','help','issued','unavailable'].forEach((key,i)=>STRINGS[locale]['heroCoreGuard.'+key]=values[i]);

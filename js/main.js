@@ -1,3 +1,4 @@
+import { installHeroCoreGuard } from './hero-core-guard.js';
 import { installBattleLine } from './battle-line.js';
 import { installRallyObjective } from './rally-objective.js';
 import { installCoreDefense } from './core-defense.js';
@@ -398,6 +399,7 @@ ui.codex=installCodex(game,ui);
 ui.battleActions=installBattleActions(game,ui);
 
 installExpeditionUI(game,ui);
+ui.heroCoreGuard=installHeroCoreGuard(game,ui);
 
 installWorkshopUI(game,ui);
 

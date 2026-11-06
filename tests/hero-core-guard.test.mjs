@@ -1,0 +1,47 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { Game } from '../js/game.js';
+import { guardHeroCore } from '../js/hero-core-guard.js';
+import { defenseClickPoint } from '../js/core-defense.js';
+import { updateRescue } from '../js/expeditions.js';
+import { t, setLocale } from '../js/i18n.js';
+const fresh = () => { const g = new Game(); g.newRun(42,{civ:'FRK',biome:'steppe'}); g.start(); updateRescue(g); g.expedition.rescued=2; return g; };
+const snapshot = g => { const s=g.snapshot(); delete s.savedAt; return s; };
+const heroState = g => snapshot(g).units.find(u=>u.id===g.hero.id);
+test('macro matches actual native select hero → G → same core point',()=>{
+ const g=fresh(), manual=fresh(), core=manual.getTownCenter(), p=defenseClickPoint(manual,core);
+ manual.setSelection([manual.hero]);manual.command('order:guard');assert.ok(manual.issueTacticalCommand(p.x,p.y));
+ assert.ok(guardHeroCore(g).ok);assert.deepEqual(heroState(g),heroState(manual));
+ assert.equal(g.hero.tacticalOrder.protectedId,g.getTownCenter().id);
+});
+test('only hero changes: military/workers, resources, HP, skills, both RNG and selection preserved',()=>{
+ const g=fresh();const army=g.units.filter(u=>!u.hero);g.setSelection(army.slice(0,3));
+ const selection=[...g.selection], before=snapshot(g), invariants=()=>({resources:{...g.resources},rng:g.rng.state,visualRng:g.visualRng.state,units:g.units.map(u=>[u.id,u.hp,u.markCd,u.aegisCd,u.cooldown])}), a=invariants();
+ assert.ok(guardHeroCore(g).ok);const after=snapshot(g);
+ assert.deepEqual(after.units.filter(u=>u.id!==g.hero.id),before.units.filter(u=>u.id!==g.hero.id));
+ assert.deepEqual(invariants(),a);assert.deepEqual(g.selection,selection);assert.ok(selection.every(u=>u.selected));
+});
+for(const reason of ['unrescued','missingExpedition','deadHero','enemyHero','missingHero','notHero','deadCore','enemyCore','missingCore','paused','menu','placement','boon','victory','defeat','blocked','noPoint'])test('reject '+reason+' without changing selection or orders',()=>{
+ const g=fresh();g.setSelection(g.units.filter(u=>!u.hero).slice(0,2));g.orderMode='patrol';
+ if(reason==='unrescued')g.expedition.rescued=1;
+ if(reason==='missingExpedition')g.expedition=null;
+ if(reason==='deadHero')g.hero.alive=false;
+ if(reason==='enemyHero')g.hero.team='enemy';
+ if(reason==='missingHero')g.units=g.units.filter(u=>u!==g.hero);
+ if(reason==='notHero')g.hero.hero=false;
+ if(reason==='deadCore')g.getTownCenter().alive=false;
+ if(reason==='enemyCore')g.getTownCenter().team='enemy';
+ if(reason==='missingCore')g.buildings=[];
+ if(reason==='paused')g.paused=true;
+ if(reason==='menu')g.inMenu=true;
+ if(reason==='placement')g.placement={type:'house'};
+ if(['boon','victory','defeat'].includes(reason))g.phase=reason;
+ if(reason==='noPoint')g.pickAt=()=>null;
+ const before=snapshot(g),selection=[...g.selection];assert.equal(guardHeroCore(g,reason==='blocked').ok,false);
+ assert.deepEqual(snapshot(g),before);assert.deepEqual(g.selection,selection);assert.equal(g.orderMode,'patrol');
+});
+test('successful guard exits native direct control and preserves prior pending mode',()=>{const g=fresh();g.toggleHeroControl();g.orderMode='attackMove';assert.ok(guardHeroCore(g).ok);assert.equal(g.heroControl,false);assert.equal(g.orderMode,'attackMove');assert.deepEqual(g.selection,[g.hero]);});
+test('manual movement wins permanently without reissuing guard',()=>{const g=fresh();assert.ok(guardHeroCore(g).ok);g.commandMove([g.hero],30,30);for(let i=0;i<20;i++)g.update(.05);assert.equal(g.hero.tacticalOrder,null);});
+test('manual direct control takes over native guard movement',()=>{const g=fresh();assert.ok(guardHeroCore(g).ok);g.toggleHeroControl();assert.equal(g.heroControl,true);g.keys.add('d');const x=g.hero.x;for(let i=0;i<10;i++)g.update(.05);assert.ok(g.hero.x>x);assert.equal(g.heroControl,true);});
+test('Save/Load keeps native protectedId without adding automation state',()=>{const g=fresh();assert.ok(guardHeroCore(g).ok);const s=snapshot(g),h=new Game();h.restore(JSON.parse(JSON.stringify(s)));assert.deepEqual(h.hero.tacticalOrder,g.hero.tacticalOrder);assert.equal(h.expedition.rescued,2);assert.equal(s.heroCoreGuard,undefined);});
+test('four locales have complete non-key labels and accurate issued text',()=>{for(const locale of ['zh-Hant','zh-Hans','en','ja']){setLocale(locale);for(const key of ['launch','help','issued','unavailable'])assert.notEqual(t('heroCoreGuard.'+key),'heroCoreGuard.'+key);}});
