@@ -814,6 +814,9 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 
 .steward-dialog { color: #eee4d0; background: #181e23; border: 1px solid #aa9564; max-width: 960px; width: min(94vw, 960px); max-height: 88vh; overflow: auto; padding: 22px; }
 .steward-dialog::backdrop { background: #000b; }
+.steward-section-nav { position: sticky; top: -22px; z-index: 3; display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 0; background: #181e23; border-bottom: 1px solid #aa9564; box-shadow: 0 7px 10px #0004; }
+.steward-section-nav button { flex: 1 1 100px; min-width: 0; color: #ffedbe; background: #3e3525; border: 1px solid #aa9564; cursor: pointer; overflow-wrap: anywhere; }
+.steward-section-nav button:focus-visible, .steward-dialog legend:focus { outline: 2px solid #ffe6a6; outline-offset: 2px; }
 .steward-dialog fieldset { margin: 14px 0; padding: 12px; min-inline-size: 0; }
 .steward-dialog label { display: inline-block; margin: 5px; }
 .steward-dialog input[type=number] { width: 74px; }

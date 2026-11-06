@@ -2,6 +2,7 @@ import { t } from './i18n.js';
 import { BUILD_OPTIONS, UNIT_TYPES } from './data.js';
 import { RESOURCES, restoreStewards, reserveCost, confirmPlan, productionStatus, planningMilitaryRoom, gatherWeights, workerAllocation } from './stewards.js';
 import { productionReadback, productionReadbackHTML } from './production-readback.js';
+import { installStewardSectionNav } from './steward-section-nav.js';
 
 export function installStewardUI(game) {
   const button=document.createElement('button');button.id='btn-stewards';button.className='secondary-button small';
@@ -19,17 +20,18 @@ export function installStewardUI(game) {
   function render(){
     const s=game.stewards, floor=reserveCost(game);
     button.textContent=tr('title');
-    dialog.innerHTML=`<form method="dialog"><h2>${tr('title')}</h2><p>${tr('help')}</p>
+    dialog.innerHTML=`<form method="dialog"><h2>${tr('title')}</h2>
+    <nav class="steward-section-nav" data-steward-section-nav aria-label="${tr('title')}">${['economy','buildings','military'].map(section=>`<button type="button" data-steward-jump="${section}" aria-controls="steward-section-${section}">${tr(section)}</button>`).join('')}</nav><p>${tr('help')}</p>
     <p>${tr('reserve')}: ${RESOURCES.map(r=>`${t('resourceType.'+r)} ${Math.floor(floor[r])}`).join(' · ')} | ${tr(s.status||'idle')}</p>
-    <fieldset><legend>${tr('economy')}</legend><div id="steward-workforce"></div>
+    <fieldset id="steward-section-economy"><legend tabindex="-1">${tr('economy')}</legend><div id="steward-workforce"></div>
     ${label('gather',select('gather',s.gather,options(['balanced','food','wood','gold','stone','custom'])))}
     <div class="steward-grid">${RESOURCES.map((r,i)=>`<label>${t('resourceType.'+r)} % ${number('ratio'+i,s.ratios[i],0,100)}</label><label>${tr('reserve')} ${t('resourceType.'+r)} ${number('reserve'+i,s.reserve[i])}</label>`).join('')}</div>
     <p id="steward-gather-preview" role="status" aria-live="polite"></p><p>${tr('gatherPreviewHelp')}</p>
     ${label('villagers',number('villagers',s.villagers,0,200))}
     ${label('age',select('age',s.age,options(['manual','ask','auto'])))}
     <button type="button" id="steward-release">${tr('release')}</button></fieldset>
-    <fieldset><legend>${tr('buildings')}</legend><p>${tr('buildHelp')}</p><p data-military-room>${tr('roomNow')}: ${planningMilitaryRoom(game)}. ${tr('roomHelp')}</p><div class="steward-scroll"><table><thead><tr>${['type','mode','max','priority','workers','age','room'].map(k=>`<th>${tr(k)}</th>`).join('')}</tr></thead><tbody>${BUILD_OPTIONS.map(type=>{const p=s.buildings[type]||{};return `<tr data-build="${type}"><th>${t('building.'+type+'.name')}</th><td>${select(type+'mode',p.mode||'off',options(['off','ask','auto']))}</td><td>${number(type+'max',p.max||0,0,20)}</td><td>${number(type+'priority',p.priority||0,0,100)}</td><td>${number(type+'workers',p.workers||0,0,200)}</td><td>${number(type+'age',p.age||1,1,3)}</td><td>${optionalNumber(type+'room',p.militaryRoom)}</td></tr>`}).join('')}</tbody></table></div></fieldset>
-    <fieldset><legend>${tr('military')}</legend>
+    <fieldset id="steward-section-buildings"><legend tabindex="-1">${tr('buildings')}</legend><p>${tr('buildHelp')}</p><p data-military-room>${tr('roomNow')}: ${planningMilitaryRoom(game)}. ${tr('roomHelp')}</p><div class="steward-scroll"><table><thead><tr>${['type','mode','max','priority','workers','age','room'].map(k=>`<th>${tr(k)}</th>`).join('')}</tr></thead><tbody>${BUILD_OPTIONS.map(type=>{const p=s.buildings[type]||{};return `<tr data-build="${type}"><th>${t('building.'+type+'.name')}</th><td>${select(type+'mode',p.mode||'off',options(['off','ask','auto']))}</td><td>${number(type+'max',p.max||0,0,20)}</td><td>${number(type+'priority',p.priority||0,0,100)}</td><td>${number(type+'workers',p.workers||0,0,200)}</td><td>${number(type+'age',p.age||1,1,3)}</td><td>${optionalNumber(type+'room',p.militaryRoom)}</td></tr>`}).join('')}</tbody></table></div></fieldset>
+    <fieldset id="steward-section-military"><legend tabindex="-1">${tr('military')}</legend>
     ${label('army',select('army',s.army,options(['balanced','counter','defense','custom'])))}
     <p>${tr('milHelp')}</p><p id="steward-applied-notice" class="production-applied-notice" role="status" aria-live="polite">${t('production.applied')}</p>${game.buildings.filter(b=>b.alive&&b.team==='player'&&b.type!=='core'&&b.type!=='market'&&game.trainableFor(b).length).map(b=>{const p=s.military[b.id]||{};return `<details data-producer="${b.id}"><summary>${t('building.'+b.type+'.name')} #${b.id} (${b.queue.length}/5)</summary><p class="producer-status" data-production-status="${productionStatus(game,b)}">${tr('producer.label')}: ${tr('producer.'+productionStatus(game,b))}</p>
     <section class="production-readback" data-production-readback="${b.id}"><div class="production-readback-head"><strong>${t('production.applied')}</strong><span class="production-draft" data-production-draft hidden title="${t('production.draft')}">${t('production.draftShort')}</span><button type="button" data-production-refresh="${b.id}">${t('production.refresh')}</button></div><div data-production-content hidden></div></section>
@@ -40,6 +42,7 @@ export function installStewardUI(game) {
     <div class="steward-controls"><button type="button" id="steward-confirm" ${s.pending?'':'disabled'}>${tr('confirm')} ${s.pending?.kind==='building'?t('building.'+s.pending.type+'.name'):s.pending?tr('age'):''}</button>
     <button type="submit" id="steward-apply">${tr('apply')}</button><button type="button" id="steward-close">${tr('close')}</button></div></form>`;
     const form=dialog.querySelector('form');
+    installStewardSectionNav(dialog);
     const appliedFields=JSON.stringify([...new FormData(form)]);
     const draftNotice=()=>{
       const dirty=JSON.stringify([...new FormData(form)])!==appliedFields, output=dialog.querySelector('#steward-applied-notice');
