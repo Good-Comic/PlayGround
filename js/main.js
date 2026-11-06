@@ -1,3 +1,4 @@
+import { installRecordedOrderGroup } from './recorded-order-group.js';
 import { installHeroCoreGuard } from './hero-core-guard.js';
 import { installBattleLine } from './battle-line.js';
 import { installRallyObjective } from './rally-objective.js';
@@ -414,3 +415,4 @@ ui.rallyObjective=installRallyObjective(game,ui,renderer);
 ui.coreDefense=installCoreDefense(game,ui);
 ui.commandReadback=installCommandReadback(game,ui,renderer);
 ui.coreDamageReadback=installCoreDamageReadback(game,ui,renderer);
+ui.recordedOrderGroup=installRecordedOrderGroup(game,ui);

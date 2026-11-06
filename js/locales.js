@@ -62,6 +62,14 @@ function englishContent() {
 }
 
 const EN_UI = {
+  'recordedOrder.title': "Recorded obstruction",
+  'recordedOrder.count': "Selected soldiers reported obstruction: {count}",
+  'recordedOrder.select': "Select these {count}",
+  'recordedOrder.history': "Retained failure records; this does not mean they are still stuck.",
+  'recordedOrder.details': "Record details",
+  'recordedOrder.reasons': "Last records: congestion {congested}; unreachable {unreachable}.",
+  'recordedOrder.current': "For current status, see the order summary. You may select this group and adjust orders yourself.",
+
   'app.title': 'Age of Empires II: Riftwatch',
   'game.title': 'Age of Empires II: Riftwatch',
   'game.series': 'Age of Empires II:',

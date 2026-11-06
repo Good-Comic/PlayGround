@@ -1,4 +1,12 @@
 export const ui = {
+  'recordedOrder.title': "受阻記錄",
+  'recordedOrder.count': "已選戰士曾回報受阻：{count} 人",
+  'recordedOrder.select': "選出這組 {count} 人",
+  'recordedOrder.history': "這是保留的失敗記錄，不代表現在仍卡住。",
+  'recordedOrder.details': "查看記錄細節",
+  'recordedOrder.reasons': "上次記錄：壅塞 {congested} 人；無法到達 {unreachable} 人。",
+  'recordedOrder.current': "目前狀態請見軍令摘要；可選出後自行調整命令。",
+
   'group.label': "群組",
   'group.slot': "群組 {slot}：{count} 個單位",
   'group.hint': "點擊選取；Ctrl+點擊儲存；Shift 追加；右鍵清除群組。",

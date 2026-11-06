@@ -945,3 +945,17 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 .planning-mode #rally-objective,.lining-up #rally-objective{visibility:hidden;}
 @media(max-width:760px){#rally-objective{top:120px;left:8px;width:180px;padding:8px;font-size:11px;}#rally-objective strong{font-size:13px;}}
 @media(max-height:700px){#rally-objective{top:112px;}}
+
+/* 僅補充已選部隊的歷史受阻紀錄，不取代目前軍令摘要。 */
+#recorded-order-group { margin-top:5px; padding-top:5px; border-top:1px solid #a8905b80; font-size:11px; line-height:1.35; }
+#recorded-order-group[hidden] { display:none !important; }
+#recorded-order-group .recorded-order-row { display:flex; flex-wrap:wrap; align-items:center; gap:5px; }
+#recorded-order-group .recorded-order-count { flex:1 1 175px; }
+#recorded-order-group .recorded-order-history { color:#dbcaa5; font-size:10px; }
+#recorded-order-group button { font:inherit; padding:4px 7px; border:1px solid #c7b681; color:#fff0c4; background:#3b392b; cursor:pointer; max-width:100%; }
+#recorded-order-group button:disabled { opacity:.5; cursor:default; }
+#recorded-order-group button:focus-visible,#recorded-order-group summary:focus-visible { outline:2px solid #fff0b1; outline-offset:2px; }
+#recorded-order-group summary { cursor:pointer; color:#dfcf9f; }
+#recorded-order-group p { margin:4px 0; }
+#recorded-order-group details { max-height:86px; overflow:auto; scrollbar-width:thin; }
+.planning-mode #recorded-order-group,.lining-up #recorded-order-group { visibility:hidden; }

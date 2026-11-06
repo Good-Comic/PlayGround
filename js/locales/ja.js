@@ -1,4 +1,12 @@
 export const ui = {
+  'recordedOrder.title': "障害の記録",
+  'recordedOrder.count': "選択中の兵士が以前に障害を報告：{count} 人",
+  'recordedOrder.select': "この {count} 人を選択",
+  'recordedOrder.history': "保存された失敗の記録です。現在も動けないとは限りません。",
+  'recordedOrder.details': "記録の詳細",
+  'recordedOrder.reasons': "前回の記録：混雑 {congested} 人、到達不可 {unreachable} 人。",
+  'recordedOrder.current': "現在の状態は命令の概要を確認してください。この組を選択して自分で命令を調整できます。",
+
   "rules.open": "開始ルール",
   "rules.title": "今回のルール",
   "rules.objective": "町の中心を守り、すべての襲撃を生き延びましょう。現在の標準キャンペーンのルールです。",

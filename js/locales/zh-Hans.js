@@ -1,4 +1,12 @@
 export const ui = {
+  'recordedOrder.title': "受阻记录",
+  'recordedOrder.count': "已选战士曾报告受阻：{count} 人",
+  'recordedOrder.select': "选出这组 {count} 人",
+  'recordedOrder.history': "这是保留的失败记录，不代表现在仍卡住。",
+  'recordedOrder.details': "查看记录详情",
+  'recordedOrder.reasons': "上次记录：拥堵 {congested} 人；无法到达 {unreachable} 人。",
+  'recordedOrder.current': "当前状态请见军令摘要；可选出后自行调整命令。",
+
   "rules.open": "开局规则",
   "rules.title": "本局规则",
   "rules.objective": "守住城镇中心并撑过所有袭击。以下为当前标准战役的规则。",
