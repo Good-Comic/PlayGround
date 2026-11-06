@@ -6,7 +6,7 @@ English: Game source: `564a85a2a22e3754b1990f359962e96cef45468c`. Fresh official
 
 | 範圍 / Scope | 結果 / Result | 證據 / Evidence |
 | --- | --- | --- |
-| 真 Game：人工選英雄→G→同一城心點與新宏對照 / Real Game: native manual select → G → same core point compared with shortcut | PASS | `evidence/node.log` |
+| 真 Game：人工選英雄→G→同一城心點與新宏對照 / Real Game: native manual select → G → same core point compared with shortcut | PASS | `evidence/node.txt` |
 | 非英雄軍民命令、選取、資源、HP、技能、兩 RNG 不變 / Nonhero orders, selection, resources, HP, skills and both RNG unchanged | PASS | Node |
 | 未完成救援、死亡／錯隊／不在陣列英雄或城心、暫停／選單／施工／終局／blocked／無合法點完全不改令 / Invalid rescue, hero/core membership, pause/menu/placement/terminal/blocked/no legal point keep orders | PASS | Node |
 | 後續移動、直控優先；原生 Save/Load 護衛身分 / Later movement/direct control; native guard Save/Load | PASS，僅限定狀態 / scoped state only | Node |
