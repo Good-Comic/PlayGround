@@ -1,0 +1,7 @@
+# 實際平台中斷
+
+最後自然場次Director複評回傳：You’ve hit your usage limit。該複評未完成，natural-director若有部分檔案僅為未驗草稿，不列PASS；既有director技術複評及C2封存仍有效。根代理亦達本回合執行預算，先保存全部已完成成果。
+
+STOP_REASON=COLLABORATION_QUOTA_LIMIT_AND_ROOT_EXECUTION_BUDGET_EXHAUSTED。Ownership282仍由本次專案自聲明執行持有；未聲稱停止其他Owner。AUTO_RESUME_AVAILABLE=false。下輪先核對遠端／身分，再完成複評；英雄回防仍未實作。
+
+原始失敗TAP的兩行尾端空白原樣保留，不修改證據；受影響遊戲程式diff檢查已通過。GitHub接受70.70MiB影片但提出50MiB建議警示；兩影片路徑為相同blob，未刪歷史，後續可在獨立授權下規劃Artifact／LFS歸檔。
