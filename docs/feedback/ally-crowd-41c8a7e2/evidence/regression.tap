@@ -1,0 +1,551 @@
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.400000000000006},{"time":9.983333333333409,"source":20,"target":23,"actual":4.400000000000006}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":-1505350424,"visualRng":-32707541}
+ALLY_DETOUR {"team":"enemy","hold":false,"actor":{"x":6.020218140675439,"y":3.99999997266673,"state":"attack","failure":null},"hits":[{"time":3.7166666666666583,"source":20,"target":23,"actual":3.199999999999818},{"time":5.23333333333332,"source":20,"target":23,"actual":3.199999999999818},{"time":6.749999999999981,"source":20,"target":23,"actual":3.199999999999818},{"time":8.266666666666657,"source":20,"target":23,"actual":3.199999999999818},{"time":9.783333333333399,"source":20,"target":23,"actual":3.199999999999818}],"maxBlockerMove":0,"maxPenetration":0,"firstFailure":null,"rng":-1761115212,"visualRng":-280896029}
+ALLY_DETOUR {"team":"player","hold":true,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.399999999999977},{"time":9.983333333333409,"source":20,"target":23,"actual":4.399999999999977}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":-1505350424,"visualRng":2074021163}
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.400000000000006},{"time":9.983333333333409,"source":20,"target":23,"actual":4.400000000000006}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":2789616872,"visualRng":-32707541}
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.400000000000006},{"time":9.983333333333409,"source":20,"target":23,"actual":4.400000000000006}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":-1505350424,"visualRng":-32707541}
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.400000000000006},{"time":9.983333333333409,"source":20,"target":23,"actual":4.400000000000006}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":-1505350424,"visualRng":-32707541}
+HOSTILE_PURSUIT {"foeHp":0,"actorX":28.755000000000003,"penetration":0}
+TAP version 13
+# Subtest: 原地射擊的友軍不再使已接令近戰兵誤走相同堵塞路線直到退出
+ok 1 - 原地射擊的友軍不再使已接令近戰兵誤走相同堵塞路線直到退出
+  ---
+  duration_ms: 67.065268
+  type: 'test'
+  ...
+# Subtest: 同隊敵軍使用相同佔位修正，原生AI可繞過射程內友軍接敵
+ok 2 - 同隊敵軍使用相同佔位修正，原生AI可繞過射程內友軍接敵
+  ---
+  duration_ms: 55.78822
+  type: 'test'
+  ...
+# Subtest: 既有原地待命佔位繞行仍正常
+ok 3 - 既有原地待命佔位繞行仍正常
+  ---
+  duration_ms: 32.543801
+  type: 'test'
+  ...
+# Subtest: 原生存檔讀回同樣可繞行接敵，不新增持久導航欄位
+ok 4 - 原生存檔讀回同樣可繞行接敵，不新增持久導航欄位
+  ---
+  duration_ms: 41.488398
+  type: 'test'
+  ...
+# Subtest: 射程外追擊、死亡目標、敵方攻擊者與建築射程邊界不新增靜態佔位
+ok 5 - 射程外追擊、死亡目標、敵方攻擊者與建築射程邊界不新增靜態佔位
+  ---
+  duration_ms: 24.358533
+  type: 'test'
+  ...
+# Subtest: 固定種子與步進可重現，沒有新的隨機佔位決策
+ok 6 - 固定種子與步進可重現，沒有新的隨機佔位決策
+  ---
+  duration_ms: 44.431633
+  type: 'test'
+  ...
+# Subtest: macro matches actual native select hero → G → same core point
+ok 7 - macro matches actual native select hero → G → same core point
+  ---
+  duration_ms: 19.315133
+  type: 'test'
+  ...
+# Subtest: only hero changes: military/workers, resources, HP, skills, both RNG and selection preserved
+ok 8 - only hero changes: military/workers, resources, HP, skills, both RNG and selection preserved
+  ---
+  duration_ms: 6.920061
+  type: 'test'
+  ...
+# Subtest: reject unrescued without changing selection or orders
+ok 9 - reject unrescued without changing selection or orders
+  ---
+  duration_ms: 44.191122
+  type: 'test'
+  ...
+# Subtest: reject missingExpedition without changing selection or orders
+ok 10 - reject missingExpedition without changing selection or orders
+  ---
+  duration_ms: 6.456545
+  type: 'test'
+  ...
+# Subtest: reject deadHero without changing selection or orders
+ok 11 - reject deadHero without changing selection or orders
+  ---
+  duration_ms: 7.348845
+  type: 'test'
+  ...
+# Subtest: reject enemyHero without changing selection or orders
+ok 12 - reject enemyHero without changing selection or orders
+  ---
+  duration_ms: 5.877898
+  type: 'test'
+  ...
+# Subtest: reject missingHero without changing selection or orders
+ok 13 - reject missingHero without changing selection or orders
+  ---
+  duration_ms: 5.370658
+  type: 'test'
+  ...
+# Subtest: reject notHero without changing selection or orders
+ok 14 - reject notHero without changing selection or orders
+  ---
+  duration_ms: 7.062612
+  type: 'test'
+  ...
+# Subtest: reject deadCore without changing selection or orders
+ok 15 - reject deadCore without changing selection or orders
+  ---
+  duration_ms: 5.701398
+  type: 'test'
+  ...
+# Subtest: reject enemyCore without changing selection or orders
+ok 16 - reject enemyCore without changing selection or orders
+  ---
+  duration_ms: 5.330579
+  type: 'test'
+  ...
+# Subtest: reject missingCore without changing selection or orders
+ok 17 - reject missingCore without changing selection or orders
+  ---
+  duration_ms: 6.72374
+  type: 'test'
+  ...
+# Subtest: reject paused without changing selection or orders
+ok 18 - reject paused without changing selection or orders
+  ---
+  duration_ms: 5.53421
+  type: 'test'
+  ...
+# Subtest: reject menu without changing selection or orders
+ok 19 - reject menu without changing selection or orders
+  ---
+  duration_ms: 5.523844
+  type: 'test'
+  ...
+# Subtest: reject placement without changing selection or orders
+ok 20 - reject placement without changing selection or orders
+  ---
+  duration_ms: 7.025657
+  type: 'test'
+  ...
+# Subtest: reject boon without changing selection or orders
+ok 21 - reject boon without changing selection or orders
+  ---
+  duration_ms: 4.133227
+  type: 'test'
+  ...
+# Subtest: reject victory without changing selection or orders
+ok 22 - reject victory without changing selection or orders
+  ---
+  duration_ms: 4.425599
+  type: 'test'
+  ...
+# Subtest: reject defeat without changing selection or orders
+ok 23 - reject defeat without changing selection or orders
+  ---
+  duration_ms: 5.563964
+  type: 'test'
+  ...
+# Subtest: reject blocked without changing selection or orders
+ok 24 - reject blocked without changing selection or orders
+  ---
+  duration_ms: 4.58847
+  type: 'test'
+  ...
+# Subtest: reject noPoint without changing selection or orders
+ok 25 - reject noPoint without changing selection or orders
+  ---
+  duration_ms: 4.289487
+  type: 'test'
+  ...
+# Subtest: successful guard exits native direct control and preserves prior pending mode
+ok 26 - successful guard exits native direct control and preserves prior pending mode
+  ---
+  duration_ms: 5.46013
+  type: 'test'
+  ...
+# Subtest: manual movement wins permanently without reissuing guard
+ok 27 - manual movement wins permanently without reissuing guard
+  ---
+  duration_ms: 32.676607
+  type: 'test'
+  ...
+# Subtest: manual direct control takes over native guard movement
+ok 28 - manual direct control takes over native guard movement
+  ---
+  duration_ms: 15.919429
+  type: 'test'
+  ...
+# Subtest: Save/Load keeps native protectedId without adding automation state
+ok 29 - Save/Load keeps native protectedId without adding automation state
+  ---
+  duration_ms: 7.947011
+  type: 'test'
+  ...
+# Subtest: four locales have complete non-key labels and accurate issued text
+ok 30 - four locales have complete non-key labels and accurate issued text
+  ---
+  duration_ms: 0.305382
+  type: 'test'
+  ...
+# Subtest: hostile melee pursuit at60Hz reaches native damage instead of yielding away as traffic
+ok 31 - hostile melee pursuit at60Hz reaches native damage instead of yielding away as traffic
+  ---
+  duration_ms: 18.536513
+  type: 'test'
+  ...
+# Subtest: 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入
+ok 32 - 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入
+  ---
+  duration_ms: 6.145915
+  type: 'test'
+  ...
+# Subtest: 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照
+ok 33 - 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照
+  ---
+  duration_ms: 6.571855
+  type: 'test'
+  ...
+# Subtest: 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致
+ok 34 - 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致
+  ---
+  duration_ms: 8.705063
+  type: 'test'
+  ...
+# Subtest: 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵
+ok 35 - 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵
+  ---
+  duration_ms: 4.091976
+  type: 'test'
+  ...
+# Subtest: 重複選取同戰士只計一個實體，仍只發送一次原生命令
+ok 36 - 重複選取同戰士只計一個實體，仍只發送一次原生命令
+  ---
+  duration_ms: 3.126658
+  type: 'test'
+  ...
+# Subtest: 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍
+ok 37 - 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍
+  ---
+  duration_ms: 35.932787
+  type: 'test'
+  ...
+# Subtest: 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士
+ok 38 - 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士
+  ---
+  duration_ms: 5.518486
+  type: 'test'
+  ...
+# Subtest: 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野
+ok 39 - 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野
+  ---
+  duration_ms: 28.979006
+  type: 'test'
+  ...
+# Subtest: 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機
+ok 40 - 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機
+  ---
+  duration_ms: 19.377777
+  type: 'test'
+  ...
+# Subtest: 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令
+ok 41 - 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令
+  ---
+  duration_ms: 3.153387
+  type: 'test'
+  ...
+# Subtest: 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定
+ok 42 - 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定
+  ---
+  duration_ms: 3.656811
+  type: 'test'
+  ...
+# Subtest: 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照
+ok 43 - 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照
+  ---
+  duration_ms: 3.776229
+  type: 'test'
+  ...
+# Subtest: 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動
+ok 44 - 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動
+  ---
+  duration_ms: 4.993279
+  type: 'test'
+  ...
+# Subtest: 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動
+ok 45 - 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動
+  ---
+  duration_ms: 4.14224
+  type: 'test'
+  ...
+# Subtest: 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令
+ok 46 - 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令
+  ---
+  duration_ms: 3.632686
+  type: 'test'
+  ...
+# Subtest: 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令
+ok 47 - 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令
+  ---
+  duration_ms: 3.346983
+  type: 'test'
+  ...
+# Subtest: 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標
+ok 48 - 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標
+  ---
+  duration_ms: 5.935094
+  type: 'test'
+  ...
+# Subtest: 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看
+ok 49 - 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看
+  ---
+  duration_ms: 8.039157
+  type: 'test'
+  ...
+# Subtest: 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心
+ok 50 - 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心
+  ---
+  duration_ms: 3.359591
+  type: 'test'
+  ...
+# Subtest: 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義
+ok 51 - 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義
+  ---
+  duration_ms: 3.160998
+  type: 'test'
+  ...
+# Subtest: 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放
+ok 52 - 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放
+  ---
+  duration_ms: 6.975242
+  type: 'test'
+  ...
+# Subtest: 窄窗尚在縮小時以最終targetZoom偏移，保留原生兩軸與縮放緩動
+ok 53 - 窄窗尚在縮小時以最終targetZoom偏移，保留原生兩軸與縮放緩動
+  ---
+  duration_ms: 3.992328
+  type: 'test'
+  ...
+# Subtest: 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點
+ok 54 - 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點
+  ---
+  duration_ms: 3.047801
+  type: 'test'
+  ...
+# Subtest: 查看找不到free spot完全不動相機、不下命令、不清armed模式
+ok 55 - 查看找不到free spot完全不動相機、不下命令、不清armed模式
+  ---
+  duration_ms: 4.255437
+  type: 'test'
+  ...
+# Subtest: 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置
+ok 56 - 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置
+  ---
+  duration_ms: 5.237762
+  type: 'test'
+  ...
+# Subtest: 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode
+ok 57 - 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode
+  ---
+  duration_ms: 9.70411
+  type: 'test'
+  ...
+# Subtest: 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG
+ok 58 - 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG
+  ---
+  duration_ms: 7.44689
+  type: 'test'
+  ...
+# Subtest: 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機
+ok 59 - 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機
+  ---
+  duration_ms: 18.59606
+  type: 'test'
+  ...
+# Subtest: 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位
+ok 60 - 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位
+  ---
+  duration_ms: 3.573788
+  type: 'test'
+  ...
+# Subtest: 原生focusAt例外傳出，不發令或建立持續相機工作
+ok 61 - 原生focusAt例外傳出，不發令或建立持續相機工作
+  ---
+  duration_ms: 3.739574
+  type: 'test'
+  ...
+# Subtest: 原生移動1格完成後實際待命十秒，再接敵不繼承先前行程時計
+ok 62 - 原生移動1格完成後實際待命十秒，再接敵不繼承先前行程時計
+  ---
+  duration_ms: 5.469534
+  type: 'test'
+  ...
+# Subtest: 原生移動0.7格完成後實際待命十秒，再接敵不繼承先前行程時計
+ok 63 - 原生移動0.7格完成後實際待命十秒，再接敵不繼承先前行程時計
+  ---
+  duration_ms: 4.531947
+  type: 'test'
+  ...
+# Subtest: 待命時間不應使下一個正常接敵步驟立刻誤報壅塞
+ok 64 - 待命時間不應使下一個正常接敵步驟立刻誤報壅塞
+  ---
+  duration_ms: 3.10178
+  type: 'test'
+  ...
+# Subtest: 射程內交戰時間不計入目標離開射程後的移動停滯
+ok 65 - 射程內交戰時間不計入目標離開射程後的移動停滯
+  ---
+  duration_ms: 2.852512
+  type: 'test'
+  ...
+# Subtest: 暈眩與英雄直控不帶入過期自動移動計時
+ok 66 - 暈眩與英雄直控不帶入過期自動移動計時
+  ---
+  duration_ms: 2.630633
+  type: 'test'
+  ...
+# Subtest: 連續真正受阻仍按原六秒門檻回報，不延長或關閉碰撞
+ok 67 - 連續真正受阻仍按原六秒門檻回報，不延長或關閉碰撞
+  ---
+  duration_ms: 12.606396
+  type: 'test'
+  ...
+# Subtest: 不移動的計時重置不消耗雙RNG，且不加入存檔schema
+ok 68 - 不移動的計時重置不消耗雙RNG，且不加入存檔schema
+  ---
+  duration_ms: 2.864159
+  type: 'test'
+  ...
+# Subtest: A* routes around a wall through its only gap without cutting corners
+ok 69 - A* routes around a wall through its only gap without cutting corners
+  ---
+  duration_ms: 2.039448
+  type: 'test'
+  ...
+# Subtest: blocked endpoint projects onto a legal destination
+ok 70 - blocked endpoint projects onto a legal destination
+  ---
+  duration_ms: 0.842567
+  type: 'test'
+  ...
+# Subtest: water-separated destination is unreachable, never teleported to
+ok 71 - water-separated destination is unreachable, never teleported to
+  ---
+  duration_ms: 1.38495
+  type: 'test'
+  ...
+# Subtest: all unit classes navigate around a building and finish a blocked-endpoint move
+ok 72 - all unit classes navigate around a building and finish a blocked-endpoint move
+  ---
+  duration_ms: 28.134506
+  type: 'test'
+  ...
+# Subtest: moving around trees and water preserves collision clearance
+ok 73 - moving around trees and water preserves collision clearance
+  ---
+  duration_ms: 17.073687
+  type: 'test'
+  ...
+# Subtest: four resources complete at least three capacity/deposit/restart cycles each
+ok 74 - four resources complete at least three capacity/deposit/restart cycles each
+  ---
+  duration_ms: 32.998353
+  type: 'test'
+  ...
+# Subtest: depleted resource delivers remainder, switching resource cannot change carried type
+ok 75 - depleted resource delivers remainder, switching resource cannot change carried type
+  ---
+  duration_ms: 4.076473
+  type: 'test'
+  ...
+# Subtest: unreachable gathering target is replaced without losing carried cargo
+ok 76 - unreachable gathering target is replaced without losing carried cargo
+  ---
+  duration_ms: 15.549272
+  type: 'test'
+  ...
+# Subtest: destroyed dropoff reassigns to a surviving camp without duplicate credit
+ok 77 - destroyed dropoff reassigns to a surviving camp without duplicate credit
+  ---
+  duration_ms: 2.448704
+  type: 'test'
+  ...
+# Subtest: save/load restores an in-flight return and continues economic work
+ok 78 - save/load restores an in-flight return and continues economic work
+  ---
+  duration_ms: 14.620426
+  type: 'test'
+  ...
+# Subtest: old saves without stances migrate safely
+ok 79 - old saves without stances migrate safely
+  ---
+  duration_ms: 4.387153
+  type: 'test'
+  ...
+# Subtest: LIVE seed regression: food workers reach the sub-grid building edge and deposit
+ok 80 - LIVE seed regression: food workers reach the sub-grid building edge and deposit
+  ---
+  duration_ms: 125.548647
+  type: 'test'
+  ...
+# Subtest: a newly placed building invalidates an old route without clipping through it
+ok 81 - a newly placed building invalidates an old route without clipping through it
+  ---
+  duration_ms: 3.415465
+  type: 'test'
+  ...
+# Subtest: Attack-Move interrupts route to fight, kills natively and resumes destination
+ok 82 - Attack-Move interrupts route to fight, kills natively and resumes destination
+  ---
+  duration_ms: 8.749228
+  type: 'test'
+  ...
+# Subtest: Patrol completes both legs using native navigation
+ok 83 - Patrol completes both legs using native navigation
+  ---
+  duration_ms: 6.495772
+  type: 'test'
+  ...
+# Subtest: Guard follows a living ally then recovers when ally dies
+ok 84 - Guard follows a living ally then recovers when ally dies
+  ---
+  duration_ms: 6.205503
+  type: 'test'
+  ...
+# Subtest: manual movement, Hold and Stop replace pending tactical routes
+ok 85 - manual movement, Hold and Stop replace pending tactical routes
+  ---
+  duration_ms: 8.282597
+  type: 'test'
+  ...
+# Subtest: passive order does not silently enable automatic combat; villagers cannot arm tactical commands
+ok 86 - passive order does not silently enable automatic combat; villagers cannot arm tactical commands
+  ---
+  duration_ms: 2.839843
+  type: 'test'
+  ...
+# Subtest: SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation
+ok 87 - SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation
+  ---
+  duration_ms: 5.856648
+  type: 'test'
+  ...
+# Subtest: malformed optional tactical save fields are discarded and Stop cancels armed mode
+ok 88 - malformed optional tactical save fields are discarded and Stop cancels armed mode
+  ---
+  duration_ms: 6.140817
+  type: 'test'
+  ...
+# Subtest: normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer
+ok 89 - normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer
+  ---
+  duration_ms: 14.106346
+  type: 'test'
+  ...
+1..89
+# tests 89
+# suites 0
+# pass 89
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4144.455333

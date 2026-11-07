@@ -1,0 +1,5339 @@
+{
+  "uiFixture": "受控初始相同已選正式士兵歷史congested欄位，僅讓新UI處於可見負載；不是自然受阻複現。雙方相同設定，未改單位HP/攻擊/傷害/碰撞/RNG；存活數仍自然變化。",
+  "pairInterpretation": "ALLY_ATTACK_DETOUR_SHORT_ABBA",
+  "decomposition": "各方法時間含子呼叫、互相重疊，不可加總；pathAndMovement含原生A-star與移動，nativeAstarPerUpdate逐update累計原生A-star；render含fog，collision亦可能巢狀。",
+  "scope": "CONTROLLED_10S_ABBA_LIVE_COMBAT：每個初始100/200人數各串行A1/B1/B2/A2，每次3秒暖機+10秒實際交戰。原生AI、碰撞、傷害、死亡、刷兵皆保留，初始後存活數自然變化。雲端軟體GPU，非長期/硬體/校準改善認證。",
+  "instrumentationOverhead": "同步performance.now包裝、陣列與1Hz heap/alive取樣帶來未校準額外成本，8次一致且未扣除；heap含量測陣列/快取，不判遊戲洩漏。沒有玩家observer或錄影附著；不終止他人既有瀏覽器程序。",
+  "rows": [
+    {
+      "n": 100,
+      "runId": "A1",
+      "mode": "before",
+      "runStart": "2026-11-07T11:55:16.765Z",
+      "cpuBefore": {
+        "usage_usec": 55655774734,
+        "user_usec": 47881308178,
+        "system_usec": 7774466555,
+        "nice_usec": 0,
+        "nr_periods": 1034024,
+        "nr_throttled": 710,
+        "throttled_usec": 14603027,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55678250122,
+        "user_usec": 47902308724,
+        "system_usec": 7775941397,
+        "nice_usec": 0,
+        "nr_periods": 1034186,
+        "nr_throttled": 710,
+        "throttled_usec": 14603027,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 22475388,
+        "user_usec": 21000546,
+        "system_usec": 1474842,
+        "nice_usec": 0,
+        "nr_periods": 162,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e01974d3f73dda4286f352a5a1cc64e4d89e6d07",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "timeline": [
+        {
+          "wallMs": 47.89999998807889,
+          "sim": 2.5495000000000005,
+          "alive": 86,
+          "heap": 17176134,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 63,
+          "stationaryAttackers": 55,
+          "avoidanceActive": 5,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1114.399999988079,
+          "sim": 3.449399999999998,
+          "alive": 85,
+          "heap": 10445865,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 62,
+          "stationaryAttackers": 55,
+          "avoidanceActive": 16,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2114.4999999880793,
+          "sim": 4.299399999999995,
+          "alive": 85,
+          "heap": 15080787,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 62,
+          "stationaryAttackers": 54,
+          "avoidanceActive": 20,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3164.39999998808,
+          "sim": 5.199199999999995,
+          "alive": 80,
+          "heap": 16435177,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 61,
+          "stationaryAttackers": 39,
+          "avoidanceActive": 24,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4164.39999998808,
+          "sim": 6.149299999999996,
+          "alive": 78,
+          "heap": 12534955,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 36,
+          "avoidanceActive": 24,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5180.999999988078,
+          "sim": 7.165799999999996,
+          "alive": 77,
+          "heap": 16221013,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 34,
+          "avoidanceActive": 29,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6214.299999988079,
+          "sim": 8.1991,
+          "alive": 75,
+          "heap": 14824508,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 33,
+          "avoidanceActive": 32,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7247.599999988079,
+          "sim": 9.232100000000003,
+          "alive": 73,
+          "heap": 16319021,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 28,
+          "avoidanceActive": 34,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8264.199999988079,
+          "sim": 10.248600000000005,
+          "alive": 80,
+          "heap": 19923818,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 16,
+          "avoidanceActive": 32,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9280.79999998808,
+          "sim": 11.265200000000007,
+          "alive": 79,
+          "heap": 15115299,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 13,
+          "avoidanceActive": 31,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10062.900000035763,
+      "heapStart": 13611231,
+      "heapEnd": 14162614,
+      "aliveStart": 86,
+      "aliveEnd": 79,
+      "simStart": 2.449500000000001,
+      "simEnd": 12.015200000000007,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 53425,
+          "totalMs": 261.69999969005585,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 5977,
+          "totalMs": 250.89999973773956,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 7728,
+          "totalMs": 537.8999996185303,
+          "p50Ms": 0,
+          "p95Ms": 0.20000004768371582
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 236,
+          "totalMs": 214.19999998807907,
+          "p50Ms": 0.7999999523162842,
+          "p95Ms": 2.099999964237213
+        },
+        "fog": {
+          "calls": 236,
+          "totalMs": 2251.5999997258186,
+          "p50Ms": 9.300000011920929,
+          "p95Ms": 10.5
+        },
+        "renderInclusive": {
+          "calls": 236,
+          "totalMs": 4914.199999332428,
+          "p50Ms": 16,
+          "p95Ms": 36.40000003576279
+        },
+        "DOM": {
+          "calls": 236,
+          "totalMs": 335.10000026226044,
+          "p50Ms": 0.5,
+          "p95Ms": 3.300000011920929
+        },
+        "target": {
+          "calls": 3222,
+          "totalMs": 29.400000035762787,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 1,
+        "routeReuses": 23,
+        "totalDirectRoutes": 293,
+        "totalSearches": 374
+      },
+      "fps": 23.353108944654608,
+      "samples": 235,
+      "p50Ms": 33.399999999999636,
+      "p95Ms": 66.69999999999982
+    },
+    {
+      "n": 100,
+      "runId": "B1",
+      "mode": "after",
+      "runStart": "2026-11-07T11:55:32.981Z",
+      "cpuBefore": {
+        "usage_usec": 55678280472,
+        "user_usec": 47902326128,
+        "system_usec": 7775954343,
+        "nice_usec": 0,
+        "nr_periods": 1034186,
+        "nr_throttled": 710,
+        "throttled_usec": 14603027,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55703450945,
+        "user_usec": 47925956165,
+        "system_usec": 7777494779,
+        "nice_usec": 0,
+        "nr_periods": 1034361,
+        "nr_throttled": 710,
+        "throttled_usec": 14603027,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 25170473,
+        "user_usec": 23630037,
+        "system_usec": 1540436,
+        "nice_usec": 0,
+        "nr_periods": 175,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "401b362ef858327be824f94e5196dda771a05825",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "timeline": [
+        {
+          "wallMs": 56.20000003576297,
+          "sim": 2.5998999999999994,
+          "alive": 86,
+          "heap": 21801536,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 63,
+          "stationaryAttackers": 56,
+          "avoidanceActive": 7,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1089.5000000357632,
+          "sim": 3.2997999999999967,
+          "alive": 86,
+          "heap": 15602905,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 63,
+          "stationaryAttackers": 56,
+          "avoidanceActive": 15,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2206.1000000357626,
+          "sim": 3.949599999999994,
+          "alive": 85,
+          "heap": 16391140,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 62,
+          "stationaryAttackers": 54,
+          "avoidanceActive": 20,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3239.3000000357624,
+          "sim": 4.549599999999992,
+          "alive": 81,
+          "heap": 13168252,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 61,
+          "stationaryAttackers": 41,
+          "avoidanceActive": 21,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4272.700000035762,
+          "sim": 5.09949999999999,
+          "alive": 80,
+          "heap": 35000149,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 61,
+          "stationaryAttackers": 39,
+          "avoidanceActive": 23,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5272.700000035762,
+          "sim": 5.766299999999988,
+          "alive": 78,
+          "heap": 23262355,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 33,
+          "avoidanceActive": 24,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6372.6000000357635,
+          "sim": 6.632699999999991,
+          "alive": 77,
+          "heap": 23390302,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 31,
+          "avoidanceActive": 26,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7422.500000035763,
+          "sim": 7.449199999999992,
+          "alive": 77,
+          "heap": 25648687,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 35,
+          "avoidanceActive": 30,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8422.500000035763,
+          "sim": 8.315899999999992,
+          "alive": 75,
+          "heap": 23064684,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 34,
+          "avoidanceActive": 31,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9439.200000035762,
+          "sim": 9.248999999999997,
+          "alive": 73,
+          "heap": 32994802,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 19,
+          "avoidanceActive": 32,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10033.900000035763,
+      "heapStart": 18669973,
+      "heapEnd": 31984846,
+      "aliveStart": 86,
+      "aliveEnd": 72,
+      "simStart": 2.4999,
+      "simEnd": 9.815499999999998,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 353167,
+          "totalMs": 1272.6000013947487,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 4262,
+          "totalMs": 160.39999955892563,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 5701,
+          "totalMs": 2660.0999994277954,
+          "p50Ms": 0,
+          "p95Ms": 0.20000004768371582
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 169,
+          "totalMs": 2446.0999996066093,
+          "p50Ms": 1.300000011920929,
+          "p95Ms": 68.40000003576279
+        },
+        "fog": {
+          "calls": 169,
+          "totalMs": 1582.299999654293,
+          "p50Ms": 9,
+          "p95Ms": 10.900000035762787
+        },
+        "renderInclusive": {
+          "calls": 169,
+          "totalMs": 3831.5000001192093,
+          "p50Ms": 16.5,
+          "p95Ms": 37
+        },
+        "DOM": {
+          "calls": 169,
+          "totalMs": 300.09999990463257,
+          "p50Ms": 0.6000000238418579,
+          "p95Ms": 3.699999988079071
+        },
+        "target": {
+          "calls": 1235,
+          "totalMs": 13.599999964237213,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 15,
+        "totalDirectRoutes": 274,
+        "totalSearches": 276
+      },
+      "fps": 16.743240414933496,
+      "samples": 168,
+      "p50Ms": 50,
+      "p95Ms": 133.30000000000018
+    },
+    {
+      "n": 100,
+      "runId": "B2",
+      "mode": "after",
+      "runStart": "2026-11-07T11:55:50.464Z",
+      "cpuBefore": {
+        "usage_usec": 55703475155,
+        "user_usec": 47925971655,
+        "system_usec": 7777503499,
+        "nice_usec": 0,
+        "nr_periods": 1034361,
+        "nr_throttled": 710,
+        "throttled_usec": 14603027,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55727597259,
+        "user_usec": 47948439331,
+        "system_usec": 7779157927,
+        "nice_usec": 0,
+        "nr_periods": 1034531,
+        "nr_throttled": 710,
+        "throttled_usec": 14603027,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 24122104,
+        "user_usec": 22467676,
+        "system_usec": 1654428,
+        "nice_usec": 0,
+        "nr_periods": 170,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "401b362ef858327be824f94e5196dda771a05825",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "timeline": [
+        {
+          "wallMs": 55.40000001192129,
+          "sim": 2.499999999999999,
+          "alive": 86,
+          "heap": 15153796,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 63,
+          "stationaryAttackers": 56,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1088.600000011921,
+          "sim": 3.1999999999999966,
+          "alive": 86,
+          "heap": 16502222,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 63,
+          "stationaryAttackers": 56,
+          "avoidanceActive": 10,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2238.600000011921,
+          "sim": 3.8996999999999944,
+          "alive": 85,
+          "heap": 19664882,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 62,
+          "stationaryAttackers": 54,
+          "avoidanceActive": 19,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3338.5000000119217,
+          "sim": 4.5496999999999925,
+          "alive": 81,
+          "heap": 13707535,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 61,
+          "stationaryAttackers": 40,
+          "avoidanceActive": 21,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4338.500000011922,
+          "sim": 5.099699999999991,
+          "alive": 80,
+          "heap": 28608418,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 61,
+          "stationaryAttackers": 39,
+          "avoidanceActive": 23,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5338.500000011922,
+          "sim": 5.78299999999999,
+          "alive": 78,
+          "heap": 30534601,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 33,
+          "avoidanceActive": 24,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6355.000000011922,
+          "sim": 6.6159999999999926,
+          "alive": 77,
+          "heap": 23781581,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 34,
+          "avoidanceActive": 27,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7355.000000011922,
+          "sim": 7.382499999999996,
+          "alive": 77,
+          "heap": 34512437,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 34,
+          "avoidanceActive": 30,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8371.70000001192,
+          "sim": 8.332499999999998,
+          "alive": 74,
+          "heap": 27903127,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 32,
+          "avoidanceActive": 32,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9405.000000011922,
+          "sim": 9.315499999999998,
+          "alive": 72,
+          "heap": 15710481,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 18,
+          "avoidanceActive": 33,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10027.100000023842,
+      "heapStart": 14073384,
+      "heapEnd": 18305198,
+      "aliveStart": 86,
+      "aliveEnd": 72,
+      "simStart": 2.3999999999999995,
+      "simEnd": 9.9155,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 344101,
+          "totalMs": 1257.3000034093857,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 4577,
+          "totalMs": 179.10000097751617,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 5878,
+          "totalMs": 2575.300000488758,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 180,
+          "totalMs": 2350.999999821186,
+          "p50Ms": 1.100000023841858,
+          "p95Ms": 68.89999997615814
+        },
+        "fog": {
+          "calls": 180,
+          "totalMs": 1600.0000001192093,
+          "p50Ms": 8.899999976158142,
+          "p95Ms": 9.700000047683716
+        },
+        "renderInclusive": {
+          "calls": 180,
+          "totalMs": 3859.5,
+          "p50Ms": 15.399999976158142,
+          "p95Ms": 35.5
+        },
+        "DOM": {
+          "calls": 180,
+          "totalMs": 290.2000007033348,
+          "p50Ms": 0.5,
+          "p95Ms": 3.300000011920929
+        },
+        "target": {
+          "calls": 1716,
+          "totalMs": 12.999999642372131,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 13,
+        "totalDirectRoutes": 267,
+        "totalSearches": 274
+      },
+      "fps": 17.851622104055448,
+      "samples": 179,
+      "p50Ms": 49.899999999999636,
+      "p95Ms": 133.30000000000018
+    },
+    {
+      "n": 100,
+      "runId": "A2",
+      "mode": "before",
+      "runStart": "2026-11-07T11:56:07.487Z",
+      "cpuBefore": {
+        "usage_usec": 55727629093,
+        "user_usec": 47948466773,
+        "system_usec": 7779162320,
+        "nice_usec": 0,
+        "nr_periods": 1034531,
+        "nr_throttled": 710,
+        "throttled_usec": 14603027,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55750011368,
+        "user_usec": 47969170355,
+        "system_usec": 7780841012,
+        "nice_usec": 0,
+        "nr_periods": 1034691,
+        "nr_throttled": 710,
+        "throttled_usec": 14603027,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 22382275,
+        "user_usec": 20703582,
+        "system_usec": 1678692,
+        "nice_usec": 0,
+        "nr_periods": 160,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e01974d3f73dda4286f352a5a1cc64e4d89e6d07",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "timeline": [
+        {
+          "wallMs": 48.399999999999636,
+          "sim": 2.649799999999998,
+          "alive": 86,
+          "heap": 18291868,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 63,
+          "stationaryAttackers": 55,
+          "avoidanceActive": 7,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1098.3000000000002,
+          "sim": 3.5496999999999956,
+          "alive": 85,
+          "heap": 18374299,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 62,
+          "stationaryAttackers": 54,
+          "avoidanceActive": 16,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2114.8999999999996,
+          "sim": 4.449399999999993,
+          "alive": 85,
+          "heap": 16292394,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 62,
+          "stationaryAttackers": 54,
+          "avoidanceActive": 21,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3148.2000000000007,
+          "sim": 5.34909999999999,
+          "alive": 80,
+          "heap": 13148409,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 61,
+          "stationaryAttackers": 39,
+          "avoidanceActive": 24,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4164.9,
+          "sim": 6.36569999999999,
+          "alive": 78,
+          "heap": 14613638,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 34,
+          "avoidanceActive": 24,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5198.1,
+          "sim": 7.398699999999993,
+          "alive": 77,
+          "heap": 13624110,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 33,
+          "avoidanceActive": 29,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6214.700000000001,
+          "sim": 8.414999999999996,
+          "alive": 74,
+          "heap": 17202314,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 31,
+          "avoidanceActive": 33,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7214.700000000001,
+          "sim": 9.414699999999996,
+          "alive": 74,
+          "heap": 14085484,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 33,
+          "avoidanceActive": 35,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8231.4,
+          "sim": 10.431399999999998,
+          "alive": 79,
+          "heap": 16541071,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 14,
+          "avoidanceActive": 35,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9264.6,
+          "sim": 11.464399999999998,
+          "alive": 78,
+          "heap": 27964321,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "stationaryAttackers": 11,
+          "avoidanceActive": 33,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10062.100000023842,
+      "heapStart": 12485377,
+      "heapEnd": 26221896,
+      "aliveStart": 86,
+      "aliveEnd": 78,
+      "simStart": 2.5497999999999985,
+      "simEnd": 12.231,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 55554,
+          "totalMs": 239.00000250339508,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 5928,
+          "totalMs": 244.40000015497208,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 8192,
+          "totalMs": 495.8000014424324,
+          "p50Ms": 0,
+          "p95Ms": 0.20000004768371582
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 237,
+          "totalMs": 191.60000050067902,
+          "p50Ms": 0.699999988079071,
+          "p95Ms": 1.600000023841858
+        },
+        "fog": {
+          "calls": 237,
+          "totalMs": 2288.599999666214,
+          "p50Ms": 9.5,
+          "p95Ms": 11
+        },
+        "renderInclusive": {
+          "calls": 237,
+          "totalMs": 4834.999999880791,
+          "p50Ms": 16.099999964237213,
+          "p95Ms": 35.19999998807907
+        },
+        "DOM": {
+          "calls": 237,
+          "totalMs": 343.799999833107,
+          "p50Ms": 0.5,
+          "p95Ms": 3.299999952316284
+        },
+        "target": {
+          "calls": 2798,
+          "totalMs": 21.20000022649765,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 26,
+        "totalDirectRoutes": 300,
+        "totalSearches": 397
+      },
+      "fps": 23.454348495785254,
+      "samples": 236,
+      "p50Ms": 33.400000000001455,
+      "p95Ms": 66.69999999999982
+    },
+    {
+      "n": 200,
+      "runId": "A1",
+      "mode": "before",
+      "runStart": "2026-11-07T11:56:23.510Z",
+      "cpuBefore": {
+        "usage_usec": 55750037071,
+        "user_usec": 47969191242,
+        "system_usec": 7780845829,
+        "nice_usec": 0,
+        "nr_periods": 1034691,
+        "nr_throttled": 710,
+        "throttled_usec": 14603027,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55772496304,
+        "user_usec": 47990099723,
+        "system_usec": 7782396581,
+        "nice_usec": 0,
+        "nr_periods": 1034855,
+        "nr_throttled": 711,
+        "throttled_usec": 14609316,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 22459233,
+        "user_usec": 20908481,
+        "system_usec": 1550752,
+        "nice_usec": 0,
+        "nr_periods": 164,
+        "nr_throttled": 1,
+        "throttled_usec": 6289,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e01974d3f73dda4286f352a5a1cc64e4d89e6d07",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        },
+        {
+          "id": 107,
+          "cause": "congested"
+        },
+        {
+          "id": 108,
+          "cause": "congested"
+        },
+        {
+          "id": 109,
+          "cause": "congested"
+        },
+        {
+          "id": 110,
+          "cause": "congested"
+        },
+        {
+          "id": 111,
+          "cause": "congested"
+        },
+        {
+          "id": 113,
+          "cause": "congested"
+        },
+        {
+          "id": 114,
+          "cause": "congested"
+        },
+        {
+          "id": 115,
+          "cause": "congested"
+        },
+        {
+          "id": 117,
+          "cause": "congested"
+        },
+        {
+          "id": 118,
+          "cause": "congested"
+        },
+        {
+          "id": 119,
+          "cause": "congested"
+        },
+        {
+          "id": 122,
+          "cause": "congested"
+        },
+        {
+          "id": 123,
+          "cause": "congested"
+        },
+        {
+          "id": 125,
+          "cause": "congested"
+        },
+        {
+          "id": 126,
+          "cause": "congested"
+        },
+        {
+          "id": 127,
+          "cause": "congested"
+        },
+        {
+          "id": 129,
+          "cause": "congested"
+        },
+        {
+          "id": 130,
+          "cause": "congested"
+        },
+        {
+          "id": 131,
+          "cause": "congested"
+        },
+        {
+          "id": 133,
+          "cause": "congested"
+        },
+        {
+          "id": 134,
+          "cause": "congested"
+        },
+        {
+          "id": 135,
+          "cause": "congested"
+        },
+        {
+          "id": 137,
+          "cause": "congested"
+        },
+        {
+          "id": 138,
+          "cause": "congested"
+        },
+        {
+          "id": 139,
+          "cause": "congested"
+        },
+        {
+          "id": 141,
+          "cause": "congested"
+        },
+        {
+          "id": 142,
+          "cause": "congested"
+        },
+        {
+          "id": 143,
+          "cause": "congested"
+        },
+        {
+          "id": 145,
+          "cause": "congested"
+        },
+        {
+          "id": 146,
+          "cause": "congested"
+        },
+        {
+          "id": 147,
+          "cause": "congested"
+        },
+        {
+          "id": 149,
+          "cause": "congested"
+        },
+        {
+          "id": 150,
+          "cause": "congested"
+        },
+        {
+          "id": 151,
+          "cause": "congested"
+        },
+        {
+          "id": 153,
+          "cause": "congested"
+        },
+        {
+          "id": 154,
+          "cause": "congested"
+        },
+        {
+          "id": 155,
+          "cause": "congested"
+        },
+        {
+          "id": 157,
+          "cause": "congested"
+        },
+        {
+          "id": 158,
+          "cause": "congested"
+        },
+        {
+          "id": 159,
+          "cause": "congested"
+        },
+        {
+          "id": 161,
+          "cause": "congested"
+        },
+        {
+          "id": 162,
+          "cause": "congested"
+        },
+        {
+          "id": 163,
+          "cause": "congested"
+        },
+        {
+          "id": 165,
+          "cause": "congested"
+        },
+        {
+          "id": 166,
+          "cause": "congested"
+        },
+        {
+          "id": 167,
+          "cause": "congested"
+        },
+        {
+          "id": 169,
+          "cause": "congested"
+        },
+        {
+          "id": 170,
+          "cause": "congested"
+        },
+        {
+          "id": 171,
+          "cause": "congested"
+        },
+        {
+          "id": 174,
+          "cause": "congested"
+        },
+        {
+          "id": 175,
+          "cause": "congested"
+        },
+        {
+          "id": 176,
+          "cause": "congested"
+        },
+        {
+          "id": 178,
+          "cause": "congested"
+        },
+        {
+          "id": 179,
+          "cause": "congested"
+        },
+        {
+          "id": 180,
+          "cause": "congested"
+        },
+        {
+          "id": 182,
+          "cause": "congested"
+        },
+        {
+          "id": 183,
+          "cause": "congested"
+        },
+        {
+          "id": 184,
+          "cause": "congested"
+        },
+        {
+          "id": 186,
+          "cause": "congested"
+        },
+        {
+          "id": 187,
+          "cause": "congested"
+        },
+        {
+          "id": 188,
+          "cause": "congested"
+        },
+        {
+          "id": 189,
+          "cause": "congested"
+        },
+        {
+          "id": 191,
+          "cause": "congested"
+        },
+        {
+          "id": 192,
+          "cause": "congested"
+        },
+        {
+          "id": 193,
+          "cause": "congested"
+        },
+        {
+          "id": 195,
+          "cause": "congested"
+        },
+        {
+          "id": 196,
+          "cause": "congested"
+        },
+        {
+          "id": 197,
+          "cause": "congested"
+        },
+        {
+          "id": 199,
+          "cause": "congested"
+        },
+        {
+          "id": 200,
+          "cause": "congested"
+        },
+        {
+          "id": 201,
+          "cause": "congested"
+        },
+        {
+          "id": 203,
+          "cause": "congested"
+        },
+        {
+          "id": 204,
+          "cause": "congested"
+        },
+        {
+          "id": 205,
+          "cause": "congested"
+        },
+        {
+          "id": 206,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "timeline": [
+        {
+          "wallMs": 92.59999996423721,
+          "sim": 1.900000000000001,
+          "alive": 180,
+          "heap": 19586885,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 139,
+          "stationaryAttackers": 117,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1142.4999999642368,
+          "sim": 2.4499999999999993,
+          "alive": 171,
+          "heap": 19313097,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 130,
+          "stationaryAttackers": 109,
+          "avoidanceActive": 21,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2175.799999964237,
+          "sim": 3.049999999999997,
+          "alive": 170,
+          "heap": 15017570,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 130,
+          "stationaryAttackers": 114,
+          "avoidanceActive": 30,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3209.099999964237,
+          "sim": 3.699999999999995,
+          "alive": 168,
+          "heap": 20858647,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 129,
+          "stationaryAttackers": 111,
+          "avoidanceActive": 38,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4225.699999964238,
+          "sim": 4.3499999999999925,
+          "alive": 166,
+          "heap": 18102732,
+          "phase": "wave",
+          "selected": 128,
+          "recorded": 128,
+          "stationaryAttackers": 106,
+          "avoidanceActive": 55,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5242.299999964238,
+          "sim": 4.99999999999999,
+          "alive": 159,
+          "heap": 12035160,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 124,
+          "stationaryAttackers": 92,
+          "avoidanceActive": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6275.599999964237,
+          "sim": 5.749999999999988,
+          "alive": 153,
+          "heap": 18430254,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "stationaryAttackers": 82,
+          "avoidanceActive": 59,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7292.299999964238,
+          "sim": 6.649899999999986,
+          "alive": 149,
+          "heap": 27305017,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "stationaryAttackers": 83,
+          "avoidanceActive": 61,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8292.299999964238,
+          "sim": 7.549799999999983,
+          "alive": 148,
+          "heap": 14460346,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "stationaryAttackers": 76,
+          "avoidanceActive": 56,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9358.799999964238,
+          "sim": 8.499399999999987,
+          "alive": 143,
+          "heap": 16074747,
+          "phase": "wave",
+          "selected": 116,
+          "recorded": 116,
+          "stationaryAttackers": 73,
+          "avoidanceActive": 62,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10077.899999976158,
+      "heapStart": 11854813,
+      "heapEnd": 18432414,
+      "aliveStart": 180,
+      "aliveEnd": 141,
+      "simStart": 1.800000000000001,
+      "simEnd": 9.132699999999994,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 49900,
+          "totalMs": 271.39999812841415,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "dynamicCollision": {
+          "calls": 5230,
+          "totalMs": 292.59999817609787,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "pathAndMovementInclusive": {
+          "calls": 9535,
+          "totalMs": 550.7999988794327,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "target": {
+          "calls": 1707,
+          "totalMs": 26.699999690055847,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 148,
+          "totalMs": 197.20000010728836,
+          "p50Ms": 0.8999999761581421,
+          "p95Ms": 3.199999988079071
+        },
+        "fog": {
+          "calls": 148,
+          "totalMs": 1757.2000006437302,
+          "p50Ms": 11.600000023841858,
+          "p95Ms": 13.800000011920929
+        },
+        "renderInclusive": {
+          "calls": 148,
+          "totalMs": 4852.400000154972,
+          "p50Ms": 33.5,
+          "p95Ms": 48.60000002384186
+        },
+        "DOM": {
+          "calls": 148,
+          "totalMs": 449.00000035762787,
+          "p50Ms": 4.699999988079071,
+          "p95Ms": 5.800000011920929
+        }
+      },
+      "navigationStats": {
+        "searches": 2,
+        "expanded": 3,
+        "ms": 0.699999988079071,
+        "directRoutes": 5,
+        "routeReuses": 19,
+        "totalDirectRoutes": 520,
+        "totalSearches": 303
+      },
+      "fps": 14.586372160901357,
+      "samples": 147,
+      "p50Ms": 66.69999999999891,
+      "p95Ms": 100
+    },
+    {
+      "n": 200,
+      "runId": "B1",
+      "mode": "after",
+      "runStart": "2026-11-07T11:56:39.889Z",
+      "cpuBefore": {
+        "usage_usec": 55772517798,
+        "user_usec": 47990116380,
+        "system_usec": 7782401417,
+        "nice_usec": 0,
+        "nr_periods": 1034855,
+        "nr_throttled": 711,
+        "throttled_usec": 14609316,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55797620745,
+        "user_usec": 48013772411,
+        "system_usec": 7783848334,
+        "nice_usec": 0,
+        "nr_periods": 1035035,
+        "nr_throttled": 711,
+        "throttled_usec": 14609316,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 25102947,
+        "user_usec": 23656031,
+        "system_usec": 1446917,
+        "nice_usec": 0,
+        "nr_periods": 180,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "401b362ef858327be824f94e5196dda771a05825",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        },
+        {
+          "id": 107,
+          "cause": "congested"
+        },
+        {
+          "id": 108,
+          "cause": "congested"
+        },
+        {
+          "id": 109,
+          "cause": "congested"
+        },
+        {
+          "id": 110,
+          "cause": "congested"
+        },
+        {
+          "id": 111,
+          "cause": "congested"
+        },
+        {
+          "id": 113,
+          "cause": "congested"
+        },
+        {
+          "id": 114,
+          "cause": "congested"
+        },
+        {
+          "id": 115,
+          "cause": "congested"
+        },
+        {
+          "id": 117,
+          "cause": "congested"
+        },
+        {
+          "id": 118,
+          "cause": "congested"
+        },
+        {
+          "id": 119,
+          "cause": "congested"
+        },
+        {
+          "id": 122,
+          "cause": "congested"
+        },
+        {
+          "id": 123,
+          "cause": "congested"
+        },
+        {
+          "id": 125,
+          "cause": "congested"
+        },
+        {
+          "id": 126,
+          "cause": "congested"
+        },
+        {
+          "id": 127,
+          "cause": "congested"
+        },
+        {
+          "id": 129,
+          "cause": "congested"
+        },
+        {
+          "id": 130,
+          "cause": "congested"
+        },
+        {
+          "id": 131,
+          "cause": "congested"
+        },
+        {
+          "id": 133,
+          "cause": "congested"
+        },
+        {
+          "id": 134,
+          "cause": "congested"
+        },
+        {
+          "id": 135,
+          "cause": "congested"
+        },
+        {
+          "id": 137,
+          "cause": "congested"
+        },
+        {
+          "id": 138,
+          "cause": "congested"
+        },
+        {
+          "id": 139,
+          "cause": "congested"
+        },
+        {
+          "id": 141,
+          "cause": "congested"
+        },
+        {
+          "id": 142,
+          "cause": "congested"
+        },
+        {
+          "id": 143,
+          "cause": "congested"
+        },
+        {
+          "id": 145,
+          "cause": "congested"
+        },
+        {
+          "id": 146,
+          "cause": "congested"
+        },
+        {
+          "id": 147,
+          "cause": "congested"
+        },
+        {
+          "id": 149,
+          "cause": "congested"
+        },
+        {
+          "id": 150,
+          "cause": "congested"
+        },
+        {
+          "id": 151,
+          "cause": "congested"
+        },
+        {
+          "id": 153,
+          "cause": "congested"
+        },
+        {
+          "id": 154,
+          "cause": "congested"
+        },
+        {
+          "id": 155,
+          "cause": "congested"
+        },
+        {
+          "id": 157,
+          "cause": "congested"
+        },
+        {
+          "id": 158,
+          "cause": "congested"
+        },
+        {
+          "id": 159,
+          "cause": "congested"
+        },
+        {
+          "id": 161,
+          "cause": "congested"
+        },
+        {
+          "id": 162,
+          "cause": "congested"
+        },
+        {
+          "id": 163,
+          "cause": "congested"
+        },
+        {
+          "id": 165,
+          "cause": "congested"
+        },
+        {
+          "id": 166,
+          "cause": "congested"
+        },
+        {
+          "id": 167,
+          "cause": "congested"
+        },
+        {
+          "id": 169,
+          "cause": "congested"
+        },
+        {
+          "id": 170,
+          "cause": "congested"
+        },
+        {
+          "id": 171,
+          "cause": "congested"
+        },
+        {
+          "id": 174,
+          "cause": "congested"
+        },
+        {
+          "id": 175,
+          "cause": "congested"
+        },
+        {
+          "id": 176,
+          "cause": "congested"
+        },
+        {
+          "id": 178,
+          "cause": "congested"
+        },
+        {
+          "id": 179,
+          "cause": "congested"
+        },
+        {
+          "id": 180,
+          "cause": "congested"
+        },
+        {
+          "id": 182,
+          "cause": "congested"
+        },
+        {
+          "id": 183,
+          "cause": "congested"
+        },
+        {
+          "id": 184,
+          "cause": "congested"
+        },
+        {
+          "id": 186,
+          "cause": "congested"
+        },
+        {
+          "id": 187,
+          "cause": "congested"
+        },
+        {
+          "id": 188,
+          "cause": "congested"
+        },
+        {
+          "id": 189,
+          "cause": "congested"
+        },
+        {
+          "id": 191,
+          "cause": "congested"
+        },
+        {
+          "id": 192,
+          "cause": "congested"
+        },
+        {
+          "id": 193,
+          "cause": "congested"
+        },
+        {
+          "id": 195,
+          "cause": "congested"
+        },
+        {
+          "id": 196,
+          "cause": "congested"
+        },
+        {
+          "id": 197,
+          "cause": "congested"
+        },
+        {
+          "id": 199,
+          "cause": "congested"
+        },
+        {
+          "id": 200,
+          "cause": "congested"
+        },
+        {
+          "id": 201,
+          "cause": "congested"
+        },
+        {
+          "id": 203,
+          "cause": "congested"
+        },
+        {
+          "id": 204,
+          "cause": "congested"
+        },
+        {
+          "id": 205,
+          "cause": "congested"
+        },
+        {
+          "id": 206,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "timeline": [
+        {
+          "wallMs": 67.29999998807943,
+          "sim": 1.9334000000000011,
+          "alive": 180,
+          "heap": 14931275,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 139,
+          "stationaryAttackers": 118,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1233.9999999880793,
+          "sim": 2.4833999999999996,
+          "alive": 170,
+          "heap": 14311116,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 130,
+          "stationaryAttackers": 112,
+          "avoidanceActive": 24,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2300.5999999880787,
+          "sim": 2.933399999999998,
+          "alive": 170,
+          "heap": 17226956,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 130,
+          "stationaryAttackers": 112,
+          "avoidanceActive": 30,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3300.5999999880787,
+          "sim": 3.3833999999999964,
+          "alive": 168,
+          "heap": 17588177,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 129,
+          "stationaryAttackers": 108,
+          "avoidanceActive": 35,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4333.89999998808,
+          "sim": 3.783399999999995,
+          "alive": 168,
+          "heap": 20674410,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 129,
+          "stationaryAttackers": 113,
+          "avoidanceActive": 40,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5417.099999988079,
+          "sim": 4.133399999999994,
+          "alive": 167,
+          "heap": 26345627,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 129,
+          "stationaryAttackers": 113,
+          "avoidanceActive": 48,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6633.799999988079,
+          "sim": 4.633399999999992,
+          "alive": 160,
+          "heap": 30912492,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 124,
+          "stationaryAttackers": 99,
+          "avoidanceActive": 56,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7667.099999988079,
+          "sim": 5.13339999999999,
+          "alive": 157,
+          "heap": 24595052,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 124,
+          "stationaryAttackers": 91,
+          "avoidanceActive": 56,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8716.999999988078,
+          "sim": 5.483399999999989,
+          "alive": 153,
+          "heap": 39172241,
+          "phase": "wave",
+          "selected": 120,
+          "recorded": 120,
+          "stationaryAttackers": 90,
+          "avoidanceActive": 57,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9750.29999998808,
+          "sim": 5.833399999999988,
+          "alive": 151,
+          "heap": 42847325,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "stationaryAttackers": 85,
+          "avoidanceActive": 58,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10164.800000011921,
+      "heapStart": 16763375,
+      "heapEnd": 37511195,
+      "aliveStart": 180,
+      "aliveEnd": 149,
+      "simStart": 1.833400000000001,
+      "simEnd": 6.033399999999987,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 439676,
+          "totalMs": 1608.699996829033,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 3092,
+          "totalMs": 149.30000108480453,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "pathAndMovementInclusive": {
+          "calls": 4991,
+          "totalMs": 4145.400000274181,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 85,
+          "totalMs": 3958.1000002622604,
+          "p50Ms": 8.500000059604645,
+          "p95Ms": 148.80000001192093
+        },
+        "fog": {
+          "calls": 85,
+          "totalMs": 805.9999998807907,
+          "p50Ms": 9.300000011920929,
+          "p95Ms": 10.900000035762787
+        },
+        "renderInclusive": {
+          "calls": 85,
+          "totalMs": 3198.999999463558,
+          "p50Ms": 40.10000002384186,
+          "p95Ms": 45.5
+        },
+        "DOM": {
+          "calls": 85,
+          "totalMs": 326.6000002026558,
+          "p50Ms": 4.900000035762787,
+          "p95Ms": 5.900000035762787
+        },
+        "target": {
+          "calls": 1002,
+          "totalMs": 15.00000011920929,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        }
+      },
+      "navigationStats": {
+        "searches": 1,
+        "expanded": 2,
+        "ms": 0.5,
+        "directRoutes": 1,
+        "routeReuses": 33,
+        "totalDirectRoutes": 451,
+        "totalSearches": 184
+      },
+      "fps": 8.263812372097973,
+      "samples": 84,
+      "p50Ms": 100.10000000000036,
+      "p95Ms": 216.60000000000036
+    },
+    {
+      "n": 200,
+      "runId": "B2",
+      "mode": "after",
+      "runStart": "2026-11-07T11:56:57.929Z",
+      "cpuBefore": {
+        "usage_usec": 55797682069,
+        "user_usec": 48013828504,
+        "system_usec": 7783853564,
+        "nice_usec": 0,
+        "nr_periods": 1035036,
+        "nr_throttled": 711,
+        "throttled_usec": 14609316,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55822698012,
+        "user_usec": 48037165832,
+        "system_usec": 7785532179,
+        "nice_usec": 0,
+        "nr_periods": 1035217,
+        "nr_throttled": 711,
+        "throttled_usec": 14609316,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 25015943,
+        "user_usec": 23337328,
+        "system_usec": 1678615,
+        "nice_usec": 0,
+        "nr_periods": 181,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "401b362ef858327be824f94e5196dda771a05825",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        },
+        {
+          "id": 107,
+          "cause": "congested"
+        },
+        {
+          "id": 108,
+          "cause": "congested"
+        },
+        {
+          "id": 109,
+          "cause": "congested"
+        },
+        {
+          "id": 110,
+          "cause": "congested"
+        },
+        {
+          "id": 111,
+          "cause": "congested"
+        },
+        {
+          "id": 113,
+          "cause": "congested"
+        },
+        {
+          "id": 114,
+          "cause": "congested"
+        },
+        {
+          "id": 115,
+          "cause": "congested"
+        },
+        {
+          "id": 117,
+          "cause": "congested"
+        },
+        {
+          "id": 118,
+          "cause": "congested"
+        },
+        {
+          "id": 119,
+          "cause": "congested"
+        },
+        {
+          "id": 122,
+          "cause": "congested"
+        },
+        {
+          "id": 123,
+          "cause": "congested"
+        },
+        {
+          "id": 125,
+          "cause": "congested"
+        },
+        {
+          "id": 126,
+          "cause": "congested"
+        },
+        {
+          "id": 127,
+          "cause": "congested"
+        },
+        {
+          "id": 129,
+          "cause": "congested"
+        },
+        {
+          "id": 130,
+          "cause": "congested"
+        },
+        {
+          "id": 131,
+          "cause": "congested"
+        },
+        {
+          "id": 133,
+          "cause": "congested"
+        },
+        {
+          "id": 134,
+          "cause": "congested"
+        },
+        {
+          "id": 135,
+          "cause": "congested"
+        },
+        {
+          "id": 137,
+          "cause": "congested"
+        },
+        {
+          "id": 138,
+          "cause": "congested"
+        },
+        {
+          "id": 139,
+          "cause": "congested"
+        },
+        {
+          "id": 141,
+          "cause": "congested"
+        },
+        {
+          "id": 142,
+          "cause": "congested"
+        },
+        {
+          "id": 143,
+          "cause": "congested"
+        },
+        {
+          "id": 145,
+          "cause": "congested"
+        },
+        {
+          "id": 146,
+          "cause": "congested"
+        },
+        {
+          "id": 147,
+          "cause": "congested"
+        },
+        {
+          "id": 149,
+          "cause": "congested"
+        },
+        {
+          "id": 150,
+          "cause": "congested"
+        },
+        {
+          "id": 151,
+          "cause": "congested"
+        },
+        {
+          "id": 153,
+          "cause": "congested"
+        },
+        {
+          "id": 154,
+          "cause": "congested"
+        },
+        {
+          "id": 155,
+          "cause": "congested"
+        },
+        {
+          "id": 157,
+          "cause": "congested"
+        },
+        {
+          "id": 158,
+          "cause": "congested"
+        },
+        {
+          "id": 159,
+          "cause": "congested"
+        },
+        {
+          "id": 161,
+          "cause": "congested"
+        },
+        {
+          "id": 162,
+          "cause": "congested"
+        },
+        {
+          "id": 163,
+          "cause": "congested"
+        },
+        {
+          "id": 165,
+          "cause": "congested"
+        },
+        {
+          "id": 166,
+          "cause": "congested"
+        },
+        {
+          "id": 167,
+          "cause": "congested"
+        },
+        {
+          "id": 169,
+          "cause": "congested"
+        },
+        {
+          "id": 170,
+          "cause": "congested"
+        },
+        {
+          "id": 171,
+          "cause": "congested"
+        },
+        {
+          "id": 174,
+          "cause": "congested"
+        },
+        {
+          "id": 175,
+          "cause": "congested"
+        },
+        {
+          "id": 176,
+          "cause": "congested"
+        },
+        {
+          "id": 178,
+          "cause": "congested"
+        },
+        {
+          "id": 179,
+          "cause": "congested"
+        },
+        {
+          "id": 180,
+          "cause": "congested"
+        },
+        {
+          "id": 182,
+          "cause": "congested"
+        },
+        {
+          "id": 183,
+          "cause": "congested"
+        },
+        {
+          "id": 184,
+          "cause": "congested"
+        },
+        {
+          "id": 186,
+          "cause": "congested"
+        },
+        {
+          "id": 187,
+          "cause": "congested"
+        },
+        {
+          "id": 188,
+          "cause": "congested"
+        },
+        {
+          "id": 189,
+          "cause": "congested"
+        },
+        {
+          "id": 191,
+          "cause": "congested"
+        },
+        {
+          "id": 192,
+          "cause": "congested"
+        },
+        {
+          "id": 193,
+          "cause": "congested"
+        },
+        {
+          "id": 195,
+          "cause": "congested"
+        },
+        {
+          "id": 196,
+          "cause": "congested"
+        },
+        {
+          "id": 197,
+          "cause": "congested"
+        },
+        {
+          "id": 199,
+          "cause": "congested"
+        },
+        {
+          "id": 200,
+          "cause": "congested"
+        },
+        {
+          "id": 201,
+          "cause": "congested"
+        },
+        {
+          "id": 203,
+          "cause": "congested"
+        },
+        {
+          "id": 204,
+          "cause": "congested"
+        },
+        {
+          "id": 205,
+          "cause": "congested"
+        },
+        {
+          "id": 206,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "timeline": [
+        {
+          "wallMs": 100.8999999642374,
+          "sim": 1.850000000000001,
+          "alive": 180,
+          "heap": 15903164,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 139,
+          "stationaryAttackers": 115,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1167.4999999642368,
+          "sim": 2.3499999999999996,
+          "alive": 173,
+          "heap": 20751040,
+          "phase": "wave",
+          "selected": 132,
+          "recorded": 132,
+          "stationaryAttackers": 108,
+          "avoidanceActive": 16,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2217.499999964237,
+          "sim": 2.7499999999999982,
+          "alive": 170,
+          "heap": 13793338,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 130,
+          "stationaryAttackers": 114,
+          "avoidanceActive": 29,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3284.099999964237,
+          "sim": 3.2499999999999964,
+          "alive": 170,
+          "heap": 19204146,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 130,
+          "stationaryAttackers": 114,
+          "avoidanceActive": 34,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4417.3999999642365,
+          "sim": 3.7499999999999947,
+          "alive": 168,
+          "heap": 29669616,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 129,
+          "stationaryAttackers": 113,
+          "avoidanceActive": 45,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5533.999999964237,
+          "sim": 4.149999999999993,
+          "alive": 167,
+          "heap": 32280643,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 129,
+          "stationaryAttackers": 110,
+          "avoidanceActive": 52,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6667.299999964238,
+          "sim": 4.549999999999992,
+          "alive": 162,
+          "heap": 31270670,
+          "phase": "wave",
+          "selected": 125,
+          "recorded": 125,
+          "stationaryAttackers": 103,
+          "avoidanceActive": 54,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7733.8999999642365,
+          "sim": 5.09999999999999,
+          "alive": 159,
+          "heap": 30251365,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 124,
+          "stationaryAttackers": 96,
+          "avoidanceActive": 56,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8800.499999964237,
+          "sim": 5.4999999999999885,
+          "alive": 153,
+          "heap": 22048461,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "stationaryAttackers": 84,
+          "avoidanceActive": 57,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9850.499999964237,
+          "sim": 5.899999999999987,
+          "alive": 151,
+          "heap": 26786660,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "stationaryAttackers": 80,
+          "avoidanceActive": 59,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10321.299999952316,
+      "heapStart": 12784561,
+      "heapEnd": 25814890,
+      "aliveStart": 181,
+      "aliveEnd": 151,
+      "simStart": 1.7500000000000009,
+      "simEnd": 5.999999999999987,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 401523,
+          "totalMs": 1460.1999935507774,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 3339,
+          "totalMs": 167.59999948740005,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "pathAndMovementInclusive": {
+          "calls": 5133,
+          "totalMs": 3682.9999999403954,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 86,
+          "totalMs": 3472.700000166893,
+          "p50Ms": 4.899999976158142,
+          "p95Ms": 156.60000002384186
+        },
+        "fog": {
+          "calls": 86,
+          "totalMs": 1097.5999997854233,
+          "p50Ms": 12.800000011920929,
+          "p95Ms": 15
+        },
+        "renderInclusive": {
+          "calls": 86,
+          "totalMs": 3681.1000000834465,
+          "p50Ms": 44.10000002384186,
+          "p95Ms": 55.30000001192093
+        },
+        "DOM": {
+          "calls": 86,
+          "totalMs": 364.8999999165535,
+          "p50Ms": 5.100000023841858,
+          "p95Ms": 6.600000023841858
+        },
+        "target": {
+          "calls": 988,
+          "totalMs": 18.100000023841858,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        }
+      },
+      "navigationStats": {
+        "searches": 2,
+        "expanded": 17016,
+        "ms": 166.30000001192093,
+        "directRoutes": 1,
+        "routeReuses": 31,
+        "totalDirectRoutes": 421,
+        "totalSearches": 189
+      },
+      "fps": 8.235396703941625,
+      "samples": 85,
+      "p50Ms": 100,
+      "p95Ms": 216.70000000000073
+    },
+    {
+      "n": 200,
+      "runId": "A2",
+      "mode": "before",
+      "runStart": "2026-11-07T11:57:16.097Z",
+      "cpuBefore": {
+        "usage_usec": 55822725569,
+        "user_usec": 48037187876,
+        "system_usec": 7785537693,
+        "nice_usec": 0,
+        "nr_periods": 1035217,
+        "nr_throttled": 711,
+        "throttled_usec": 14609316,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55845333151,
+        "user_usec": 48058064043,
+        "system_usec": 7787269108,
+        "nice_usec": 0,
+        "nr_periods": 1035381,
+        "nr_throttled": 711,
+        "throttled_usec": 14609316,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 22607582,
+        "user_usec": 20876167,
+        "system_usec": 1731415,
+        "nice_usec": 0,
+        "nr_periods": 164,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e01974d3f73dda4286f352a5a1cc64e4d89e6d07",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        },
+        {
+          "id": 107,
+          "cause": "congested"
+        },
+        {
+          "id": 108,
+          "cause": "congested"
+        },
+        {
+          "id": 109,
+          "cause": "congested"
+        },
+        {
+          "id": 110,
+          "cause": "congested"
+        },
+        {
+          "id": 111,
+          "cause": "congested"
+        },
+        {
+          "id": 113,
+          "cause": "congested"
+        },
+        {
+          "id": 114,
+          "cause": "congested"
+        },
+        {
+          "id": 115,
+          "cause": "congested"
+        },
+        {
+          "id": 117,
+          "cause": "congested"
+        },
+        {
+          "id": 118,
+          "cause": "congested"
+        },
+        {
+          "id": 119,
+          "cause": "congested"
+        },
+        {
+          "id": 122,
+          "cause": "congested"
+        },
+        {
+          "id": 123,
+          "cause": "congested"
+        },
+        {
+          "id": 125,
+          "cause": "congested"
+        },
+        {
+          "id": 126,
+          "cause": "congested"
+        },
+        {
+          "id": 127,
+          "cause": "congested"
+        },
+        {
+          "id": 129,
+          "cause": "congested"
+        },
+        {
+          "id": 130,
+          "cause": "congested"
+        },
+        {
+          "id": 131,
+          "cause": "congested"
+        },
+        {
+          "id": 133,
+          "cause": "congested"
+        },
+        {
+          "id": 134,
+          "cause": "congested"
+        },
+        {
+          "id": 135,
+          "cause": "congested"
+        },
+        {
+          "id": 137,
+          "cause": "congested"
+        },
+        {
+          "id": 138,
+          "cause": "congested"
+        },
+        {
+          "id": 139,
+          "cause": "congested"
+        },
+        {
+          "id": 141,
+          "cause": "congested"
+        },
+        {
+          "id": 142,
+          "cause": "congested"
+        },
+        {
+          "id": 143,
+          "cause": "congested"
+        },
+        {
+          "id": 145,
+          "cause": "congested"
+        },
+        {
+          "id": 146,
+          "cause": "congested"
+        },
+        {
+          "id": 147,
+          "cause": "congested"
+        },
+        {
+          "id": 149,
+          "cause": "congested"
+        },
+        {
+          "id": 150,
+          "cause": "congested"
+        },
+        {
+          "id": 151,
+          "cause": "congested"
+        },
+        {
+          "id": 153,
+          "cause": "congested"
+        },
+        {
+          "id": 154,
+          "cause": "congested"
+        },
+        {
+          "id": 155,
+          "cause": "congested"
+        },
+        {
+          "id": 157,
+          "cause": "congested"
+        },
+        {
+          "id": 158,
+          "cause": "congested"
+        },
+        {
+          "id": 159,
+          "cause": "congested"
+        },
+        {
+          "id": 161,
+          "cause": "congested"
+        },
+        {
+          "id": 162,
+          "cause": "congested"
+        },
+        {
+          "id": 163,
+          "cause": "congested"
+        },
+        {
+          "id": 165,
+          "cause": "congested"
+        },
+        {
+          "id": 166,
+          "cause": "congested"
+        },
+        {
+          "id": 167,
+          "cause": "congested"
+        },
+        {
+          "id": 169,
+          "cause": "congested"
+        },
+        {
+          "id": 170,
+          "cause": "congested"
+        },
+        {
+          "id": 171,
+          "cause": "congested"
+        },
+        {
+          "id": 174,
+          "cause": "congested"
+        },
+        {
+          "id": 175,
+          "cause": "congested"
+        },
+        {
+          "id": 176,
+          "cause": "congested"
+        },
+        {
+          "id": 178,
+          "cause": "congested"
+        },
+        {
+          "id": 179,
+          "cause": "congested"
+        },
+        {
+          "id": 180,
+          "cause": "congested"
+        },
+        {
+          "id": 182,
+          "cause": "congested"
+        },
+        {
+          "id": 183,
+          "cause": "congested"
+        },
+        {
+          "id": 184,
+          "cause": "congested"
+        },
+        {
+          "id": 186,
+          "cause": "congested"
+        },
+        {
+          "id": 187,
+          "cause": "congested"
+        },
+        {
+          "id": 188,
+          "cause": "congested"
+        },
+        {
+          "id": 189,
+          "cause": "congested"
+        },
+        {
+          "id": 191,
+          "cause": "congested"
+        },
+        {
+          "id": 192,
+          "cause": "congested"
+        },
+        {
+          "id": 193,
+          "cause": "congested"
+        },
+        {
+          "id": 195,
+          "cause": "congested"
+        },
+        {
+          "id": 196,
+          "cause": "congested"
+        },
+        {
+          "id": 197,
+          "cause": "congested"
+        },
+        {
+          "id": 199,
+          "cause": "congested"
+        },
+        {
+          "id": 200,
+          "cause": "congested"
+        },
+        {
+          "id": 201,
+          "cause": "congested"
+        },
+        {
+          "id": 203,
+          "cause": "congested"
+        },
+        {
+          "id": 204,
+          "cause": "congested"
+        },
+        {
+          "id": 205,
+          "cause": "congested"
+        },
+        {
+          "id": 206,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "timeline": [
+        {
+          "wallMs": 89.80000000000018,
+          "sim": 1.850000000000001,
+          "alive": 180,
+          "heap": 15299224,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 139,
+          "stationaryAttackers": 115,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1123.1000000000004,
+          "sim": 2.3999999999999995,
+          "alive": 172,
+          "heap": 19895287,
+          "phase": "wave",
+          "selected": 131,
+          "recorded": 131,
+          "stationaryAttackers": 111,
+          "avoidanceActive": 19,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2139.7,
+          "sim": 2.9499999999999975,
+          "alive": 170,
+          "heap": 13197553,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 130,
+          "stationaryAttackers": 114,
+          "avoidanceActive": 29,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3156.3999999999996,
+          "sim": 3.5499999999999954,
+          "alive": 168,
+          "heap": 12669978,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 129,
+          "stationaryAttackers": 111,
+          "avoidanceActive": 36,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4239.6,
+          "sim": 4.249999999999993,
+          "alive": 167,
+          "heap": 18293990,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 129,
+          "stationaryAttackers": 107,
+          "avoidanceActive": 54,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5306.200000000001,
+          "sim": 4.94999999999999,
+          "alive": 159,
+          "heap": 14939722,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 124,
+          "stationaryAttackers": 90,
+          "avoidanceActive": 57,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6306.200000000001,
+          "sim": 5.649999999999988,
+          "alive": 153,
+          "heap": 16020923,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "stationaryAttackers": 83,
+          "avoidanceActive": 59,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7322.9,
+          "sim": 6.549899999999985,
+          "alive": 149,
+          "heap": 14009605,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "stationaryAttackers": 81,
+          "avoidanceActive": 61,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8372.8,
+          "sim": 7.499499999999984,
+          "alive": 148,
+          "heap": 22228073,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "stationaryAttackers": 75,
+          "avoidanceActive": 56,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9389.4,
+          "sim": 8.399199999999986,
+          "alive": 143,
+          "heap": 18799747,
+          "phase": "wave",
+          "selected": 116,
+          "recorded": 116,
+          "stationaryAttackers": 73,
+          "avoidanceActive": 62,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10072.899999976158,
+      "heapStart": 20011945,
+      "heapEnd": 17586513,
+      "aliveStart": 181,
+      "aliveEnd": 142,
+      "simStart": 1.7500000000000009,
+      "simEnd": 8.998999999999993,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 49836,
+          "totalMs": 262.59999972581863,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 5220,
+          "totalMs": 279.39999943971634,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "pathAndMovementInclusive": {
+          "calls": 9411,
+          "totalMs": 543.1000002622604,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 146,
+          "totalMs": 202.80000042915344,
+          "p50Ms": 0.8000000715255737,
+          "p95Ms": 3.800000011920929
+        },
+        "fog": {
+          "calls": 146,
+          "totalMs": 1748.399999499321,
+          "p50Ms": 11.599999964237213,
+          "p95Ms": 14
+        },
+        "renderInclusive": {
+          "calls": 146,
+          "totalMs": 4842.599999606609,
+          "p50Ms": 38.90000003576279,
+          "p95Ms": 47.89999997615814
+        },
+        "DOM": {
+          "calls": 146,
+          "totalMs": 465.30000030994415,
+          "p50Ms": 4.599999964237213,
+          "p95Ms": 6.099999964237213
+        },
+        "target": {
+          "calls": 1674,
+          "totalMs": 27.899999678134918,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        }
+      },
+      "navigationStats": {
+        "searches": 2,
+        "expanded": 8,
+        "ms": 1.100000023841858,
+        "directRoutes": 0,
+        "routeReuses": 23,
+        "totalDirectRoutes": 512,
+        "totalSearches": 298
+      },
+      "fps": 14.395060012542883,
+      "samples": 145,
+      "p50Ms": 66.69999999999891,
+      "p95Ms": 100
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "gpu": [
+    {
+      "vendorId": 65535,
+      "deviceId": 65535,
+      "vendorString": "Google Inc. (Google)",
+      "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+      "driverVendor": "SwANGLE",
+      "driverVersion": "5.0.0"
+    }
+  ],
+  "cpuQuota": "400000 100000",
+  "pairs": [
+    {
+      "n": 100,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "recordedFixture": true,
+      "rng": true,
+      "visualRng": true
+    },
+    {
+      "n": 200,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "recordedFixture": true,
+      "rng": true,
+      "visualRng": true
+    }
+  ],
+  "status": "MEASURED_10S_ABBA_SOFTWARE_COHORT"
+}

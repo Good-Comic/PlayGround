@@ -44,3 +44,11 @@ test('射程外追擊、死亡目標、敵方攻擊者與建築射程邊界不�
  }
 });
 test('固定種子與步進可重現，沒有新的隨機佔位決策',()=>{assert.deepEqual(battle(),battle());});
+test('只採原生避碰回報的原地攻擊阻擋者，避免無關射手使搜尋空間退化',()=>{
+ const{g,actor,target}=fixture(),x=target.x+target.w/2,y=target.y+target.h/2;
+ g.crowd=new Crowd(g.units);actor._avoidCrowdUntil=10;actor._nav={tx:x,ty:y,range:.8,status:'pending',points:[],retryAt:0};actor._crowdBlockedBy=[];
+ g.stepToward(actor,x,y,1/60,.8,target);assert.equal(actor._nav.crowdDetour,false);assert.ok(actor._crowdBlockedBy.length>0);
+ actor._nav.points=[];actor._nav.status='pending';g.navigationBudget=2;
+ g.stepToward(actor,x,y,1/60,.8,target);assert.equal(actor._nav.crowdDetour,true);
+ assert.equal(Object.hasOwn(g.snapshot().units.find(u=>u.id===actor.id),'_crowdBlockedBy'),false);
+});

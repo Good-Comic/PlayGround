@@ -1,0 +1,45 @@
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.400000000000006},{"time":9.983333333333409,"source":20,"target":23,"actual":4.400000000000006}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":-1505350424,"visualRng":-32707541}
+ALLY_DETOUR {"team":"enemy","hold":false,"actor":{"x":6.020218140675439,"y":3.99999997266673,"state":"attack","failure":null},"hits":[{"time":3.7166666666666583,"source":20,"target":23,"actual":3.199999999999818},{"time":5.23333333333332,"source":20,"target":23,"actual":3.199999999999818},{"time":6.749999999999981,"source":20,"target":23,"actual":3.199999999999818},{"time":8.266666666666657,"source":20,"target":23,"actual":3.199999999999818},{"time":9.783333333333399,"source":20,"target":23,"actual":3.199999999999818}],"maxBlockerMove":0,"maxPenetration":0,"firstFailure":null,"rng":-1761115212,"visualRng":-280896029}
+ALLY_DETOUR {"team":"player","hold":true,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.399999999999977},{"time":9.983333333333409,"source":20,"target":23,"actual":4.399999999999977}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":-1505350424,"visualRng":2074021163}
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.400000000000006},{"time":9.983333333333409,"source":20,"target":23,"actual":4.400000000000006}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":-1505350424,"visualRng":-32707541}
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.400000000000006},{"time":9.983333333333409,"source":20,"target":23,"actual":4.400000000000006}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":-1505350424,"visualRng":-32707541}
+TAP version 13
+# Subtest: 原地射擊的友軍不再使已接令近戰兵誤走相同堵塞路線直到退出
+ok 1 - 原地射擊的友軍不再使已接令近戰兵誤走相同堵塞路線直到退出
+  ---
+  duration_ms: 65.456138
+  type: 'test'
+  ...
+# Subtest: 同隊敵軍使用相同佔位修正，原生AI可繞過射程內友軍接敵
+ok 2 - 同隊敵軍使用相同佔位修正，原生AI可繞過射程內友軍接敵
+  ---
+  duration_ms: 49.352184
+  type: 'test'
+  ...
+# Subtest: 既有原地待命佔位繞行仍正常
+ok 3 - 既有原地待命佔位繞行仍正常
+  ---
+  duration_ms: 35.842889
+  type: 'test'
+  ...
+# Subtest: 射程外追擊、死亡目標、敵方攻擊者與建築射程邊界不新增靜態佔位
+ok 4 - 射程外追擊、死亡目標、敵方攻擊者與建築射程邊界不新增靜態佔位
+  ---
+  duration_ms: 38.899223
+  type: 'test'
+  ...
+# Subtest: 固定種子與步進可重現，沒有新的隨機佔位決策
+ok 5 - 固定種子與步進可重現，沒有新的隨機佔位決策
+  ---
+  duration_ms: 50.954956
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3590.625005

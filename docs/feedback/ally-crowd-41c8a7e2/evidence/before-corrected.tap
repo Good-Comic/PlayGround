@@ -1,0 +1,133 @@
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":3.009050447332043,"y":3.0016068333012647,"state":"idle","failure":"congested"},"target":{"type":"house","hp":259.2000000000003,"alive":true},"hits":[],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":6.033333333333317,"rng":-1505350424,"visualRng":-1273649981}
+ALLY_DETOUR {"team":"enemy","hold":false,"actor":{"x":3,"y":3,"state":"move","failure":null},"target":{"type":"core","hp":2973.600000000002,"alive":true},"hits":[],"maxBlockerMove":0,"maxPenetration":0,"firstFailure":null,"rng":-1761115212,"visualRng":-1273649981}
+ALLY_DETOUR {"team":"player","hold":true,"actor":{"x":6.111410890244565,"y":3.9815528726710534,"state":"attack","failure":null},"target":{"type":"house","hp":278.0000000000001,"alive":true},"hits":[{"time":3.9166666666666576,"source":20,"target":23,"actual":4.399999999999977},{"time":5.433333333333319,"source":20,"target":23,"actual":4.399999999999977},{"time":6.949999999999981,"source":20,"target":23,"actual":4.399999999999977},{"time":8.466666666666667,"source":20,"target":23,"actual":4.399999999999977},{"time":9.983333333333409,"source":20,"target":23,"actual":4.399999999999977}],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":null,"rng":-1505350424,"visualRng":2074021163}
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":3.009050447332043,"y":3.0016068333012647,"state":"idle","failure":"congested"},"target":{"type":"house","hp":259.2000000000003,"alive":true},"hits":[],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":6.033333333333317,"rng":2789616872,"visualRng":-1273649981}
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":3,"y":3,"state":"idle","failure":"congested"},"target":{"type":"ram","hp":208,"alive":true},"hits":[],"maxBlockerMove":0,"maxPenetration":0,"firstFailure":6.033333333333317,"rng":830168665,"visualRng":1238540099}
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":3.009050447332043,"y":3.0016068333012647,"state":"idle","failure":"congested"},"target":{"type":"house","hp":259.2000000000003,"alive":true},"hits":[],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":6.033333333333317,"rng":-1505350424,"visualRng":-1273649981}
+ALLY_DETOUR {"team":"player","hold":false,"actor":{"x":3.009050447332043,"y":3.0016068333012647,"state":"idle","failure":"congested"},"target":{"type":"house","hp":259.2000000000003,"alive":true},"hits":[],"maxBlockerMove":0,"maxPenetration":0.014749806382853503,"firstFailure":6.033333333333317,"rng":-1505350424,"visualRng":-1273649981}
+TAP version 13
+# Subtest: 原地射擊的友軍不再使已接令近戰兵誤走相同堵塞路線直到退出
+not ok 1 - 原地射擊的友軍不再使已接令近戰兵誤走相同堵塞路線直到退出
+  ---
+  duration_ms: 96.29117
+  type: 'test'
+  location: '/workspace/riftwatch-ally-crowd-41c8a7e2/worktree/tests/ally-attack-detour.test.mjs:28:1'
+  failureType: 'testCodeFailure'
+  error: '必須是該近戰兵的實際傷害'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-ally-crowd-41c8a7e2/worktree/tests/ally-attack-detour.test.mjs:29:26)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 同隊敵軍使用相同佔位修正，原生AI可繞過射程內友軍接敵
+not ok 2 - 同隊敵軍使用相同佔位修正，原生AI可繞過射程內友軍接敵
+  ---
+  duration_ms: 82.616199
+  type: 'test'
+  location: '/workspace/riftwatch-ally-crowd-41c8a7e2/worktree/tests/ally-attack-detour.test.mjs:31:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(r.hits.length>0)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-ally-crowd-41c8a7e2/worktree/tests/ally-attack-detour.test.mjs:32:33)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: 既有原地待命佔位繞行仍正常
+ok 3 - 既有原地待命佔位繞行仍正常
+  ---
+  duration_ms: 41.611619
+  type: 'test'
+  ...
+# Subtest: 原生存檔讀回同樣可繞行接敵，不新增持久導航欄位
+not ok 4 - 原生存檔讀回同樣可繞行接敵，不新增持久導航欄位
+  ---
+  duration_ms: 69.63761
+  type: 'test'
+  location: '/workspace/riftwatch-ally-crowd-41c8a7e2/worktree/tests/ally-attack-detour.test.mjs:35:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(r.hits.length>0)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-ally-crowd-41c8a7e2/worktree/tests/ally-attack-detour.test.mjs:35:80)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 衝車正常攻城時可繞過射擊友軍接敵，不改護甲或偽造衝車擊殺
+not ok 5 - 衝車正常攻城時可繞過射擊友軍接敵，不改護甲或偽造衝車擊殺
+  ---
+  duration_ms: 45.492794
+  type: 'test'
+  location: '/workspace/riftwatch-ally-crowd-41c8a7e2/worktree/tests/ally-attack-detour.test.mjs:36:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(r.hits.length>0)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-ally-crowd-41c8a7e2/worktree/tests/ally-attack-detour.test.mjs:36:151)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 射程外追擊、死亡目標、敵方攻擊者與建築射程邊界不新增靜態佔位
+ok 6 - 射程外追擊、死亡目標、敵方攻擊者與建築射程邊界不新增靜態佔位
+  ---
+  duration_ms: 29.068465
+  type: 'test'
+  ...
+# Subtest: 固定種子與步進可重現，沒有新的隨機佔位決策
+ok 7 - 固定種子與步進可重現，沒有新的隨機佔位決策
+  ---
+  duration_ms: 79.633805
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 3
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3821.780654
