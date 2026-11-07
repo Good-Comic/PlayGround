@@ -18,6 +18,17 @@ function fixture() {
 }
 function tick(g, dt = 1 / 60) { g.time += dt; g.updateUnits(dt); }
 
+for (const distance of [1, .7]) test(`原生移動${distance}格完成後實際待命十秒，再接敵不繼承先前行程時計`, () => {
+  const { g, u, point } = fixture(); g.time = 0; u._progress = null; u._goalProgress = null;
+  g.commandMove([u], point.x + distance, point.y);
+  for (let i = 0; i < 200; i++) tick(g, .05);
+  assert.equal(u.state, 'idle');
+  const enemy = g.spawnUnit('militia', point.x + 4, point.y, 'enemy');
+  assert.ok(enemy); assert.ok(g.canSee(u, enemy));
+  tick(g); assert.equal(u.target, enemy); tick(g);
+  assert.equal(u.target, enemy); assert.notEqual(u.orderFailure, 'congested');
+});
+
 test('待命時間不應使下一個正常接敵步驟立刻誤報壅塞', () => {
   const { g, u, point } = fixture(); tick(g);
   const enemy = g.spawnUnit('militia', point.x + 3, point.y, 'enemy');

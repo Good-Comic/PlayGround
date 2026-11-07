@@ -1,0 +1,677 @@
+TAP version 13
+# Subtest: 原生移動完成後實際待命十秒，再接敵不繼承先前行程時計
+ok 1 - 原生移動完成後實際待命十秒，再接敵不繼承先前行程時計
+  ---
+  duration_ms: 27.721075
+  type: 'test'
+  ...
+# Subtest: 待命時間不應使下一個正常接敵步驟立刻誤報壅塞
+not ok 2 - 待命時間不應使下一個正常接敵步驟立刻誤報壅塞
+  ---
+  duration_ms: 22.449351
+  type: 'test'
+  location: '/workspace/riftwatch-movement-clock-6f8c2d19/worktree/tests/movement-clock.test.mjs:32:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + null
+    - <ref *1> {
+    -   _crowdKey: 4098,
+    -   _crowdNeighbours: [
+    -     {
+    -       _avoidCrowdUntil: 15.050000000000002,
+    -       _crowdKey: 4097,
+    -       _crowdNeighbours: [
+    -         [Circular *1]
+    -       ],
+    -       _goalProgress: {
+    -         at: 10.050000000000002,
+    -         distance: 2.92
+    -       },
+    -       _heading: {
+    -         x: 1,
+    -         y: 0
+    -       },
+    -       _nav: null,
+    -       _progress: {
+    -         at: 10.050000000000002,
+    -         x: 3.04,
+    -         y: 3
+    -       },
+    -       _trafficPriority: 15,
+    -       aegisCd: 0,
+    -       alive: true,
+    -       armor: 10,
+    -       attack: 8,
+    -       attackAnim: 0,
+    -       baseMaxHp: 60,
+    -       blockedTargets: {
+    -         '20': 18.050000000000004
+    -       },
+    -       bossSkillTimer: 0,
+    -       buildTarget: null,
+    -       buildingDamageMul: 1,
+    -       buildingHint: null,
+    -       carry: 0,
+    -       carryType: null,
+    -       chargeCd: 0,
+    -       chargeReady: true,
+    -       combatAt: -99,
+    -       convertResist: false,
+    -       cooldown: 0.2433377009816468,
+    -       deathAnim: 0,
+    -       duel: false,
+    -       eventAttackSpeedMul: 1,
+    -       eventFireCd: 0,
+    -       eventFlags: [],
+    -       eventRegen: 0,
+    -       eventRetreat: 0,
+    -       eventRetreatCd: 0,
+    -       eventSpeedMul: 1,
+    -       expireIn: 0,
+    -       facing: 1,
+    -       gatherTarget: null,
+    -       guardOrigin: {
+    -         x: 3,
+    -         y: 3
+    -       },
+    -       hero: false,
+    -       hitFlash: 0,
+    -       hold: false,
+    -       hp: 60,
+    -       id: 15,
+    -       idleTimer: 0.4467618349629144,
+    -       kind: 'unit',
+    -       manualAttack: false,
+    -       markCd: 0,
+    -       marked: 0,
+    -       maxHp: 60,
+    -       orderFailure: 'congested',
+    -       pop: 1,
+    -       rageStage: 0,
+    -       rescueUsed: false,
+    -       retargetTimer: 0.8,
+    -       selected: false,
+    -       shield: 0,
+    -       shieldTime: 0,
+    -       shots: 0,
+    -       slowUntil: 0,
+    -       stance: 'defensive',
+    -       state: 'idle',
+    -       summoned: false,
+    -       target: null,
+    -       targetPos: null,
+    -       team: 'player',
+    -       type: 'militia',
+    -       typeDef: {
+    -         armor: 10,
+    -         attack: 8,
+    -         category: 'infantry',
+    -         cooldown: 1.5,
+    -         cost: {
+    -           food: 40,
+    -           gold: 10
+    -         },
+    -         desc: 'A shielded line-holder. The backbone of every levy.',
+    -         family: 'M',
+    -         hp: 60,
+    -         icon: 'sword',
+    -         name: 'Man-at-Arms',
+    -         pop: 1,
+    -         radius: 0.26,
+    -         range: 1,
+    -         role: 'Infantry',
+    -         sight: 6.5,
+    -         speed: 2.4,
+    -         threat: 1,
+    -         trainTime: 8
+    -       },
+    -       visualDirection: 'SE',
+    -       walkPhase: 3.330929734798149,
+    -       x: 3.04,
+    -       y: 3
+    -     }
+    -   ],
+    -   _goalProgress: {
+    -     at: 10.033333333333335,
+    -     distance: 2.96
+    -   },
+    -   _heading: {
+    -     x: -1,
+    -     y: 0
+    -   },
+    -   _lastTargetDist: 8.526399999999999,
+    -   _nav: {
+    -     crowdDetour: false,
+    -     goal: {
+    -       x: 4.1368,
+    -       y: 3
+    -     },
+    -     points: [
+    -       {
+    -         x: 4.1368,
+    -         y: 3
+    -       }
+    -     ],
+    -     range: 1.16,
+    -     retryAt: 0,
+    -     stalled: 0,
+    -     status: 'ready',
+    -     tx: 3,
+    -     ty: 3
+    -   },
+    -   _progress: {
+    -     at: 10.033333333333335,
+    -     x: 5.96,
+    -     y: 3
+    -   },
+    -   _recalculated: false,
+    -   _stuckTimer: 0,
+    -   _trafficPriority: 20,
+    -   aegisCd: 0,
+    -   alive: true,
+    -   armor: 10,
+    -   attack: 8,
+    -   attackAnim: 0,
+    -   baseMaxHp: 60,
+    -   bossSkillTimer: 0,
+    -   buildTarget: null,
+    -   buildingDamageMul: 1,
+    -   buildingHint: null,
+    -   carry: 0,
+    -   carryType: null,
+    -   chargeCd: 0,
+    -   chargeReady: true,
+    -   combatAt: -99,
+    -   convertResist: false,
+    -   cooldown: 0.35183869159470005,
+    -   deathAnim: 0,
+    -   duel: false,
+    -   eventAttackSpeedMul: 1,
+    -   eventFireCd: 0,
+    -   eventFlags: [],
+    -   eventRegen: 0,
+    -   eventRetreat: 0,
+    -   eventRetreatCd: 0,
+    -   eventSpeedMul: 1,
+    -   expireIn: 0,
+    -   facing: -1,
+    -   gatherTarget: null,
+    -   guardOrigin: {
+    -     x: 6,
+    -     y: 3
+    -   },
+    -   hero: false,
+    -   hitFlash: 0,
+    -   hold: false,
+    -   hp: 60,
+    -   id: 20,
+    -   idleTimer: 0.3875502021983266,
+    -   kind: 'unit',
+    -   kiteRetreatX: undefined,
+    -   kiteRetreatY: undefined,
+    -   manualAttack: false,
+    -   markCd: 0,
+    -   marked: 0,
+    -   maxHp: 60,
+    -   pop: 1,
+    -   rageStage: 0,
+    -   rescueUsed: false,
+    -   retargetTimer: 0.9343091575739284,
+    -   selected: false,
+    -   shield: 0,
+    -   shieldTime: 0,
+    -   shots: 0,
+    -   slowUntil: 0,
+    -   stance: 'defensive',
+    -   state: 'move',
+    -   summoned: false,
+    -   target: {
+    -     _avoidCrowdUntil: 15.050000000000002,
+    -     _crowdKey: 4097,
+    -     _crowdNeighbours: [
+    -       [Circular *1]
+    -     ],
+    -     _goalProgress: {
+    -       at: 10.050000000000002,
+    -       distance: 2.92
+    -     },
+    -     _heading: {
+    -       x: 1,
+    -       y: 0
+    -     },
+    -     _nav: null,
+    -     _progress: {
+    -       at: 10.050000000000002,
+    -       x: 3.04,
+    -       y: 3
+    -     },
+    -     _trafficPriority: 15,
+    -     aegisCd: 0,
+    -     alive: true,
+    -     armor: 10,
+    -     attack: 8,
+    -     attackAnim: 0,
+    -     baseMaxHp: 60,
+    -     blockedTargets: {
+    -       '20': 18.050000000000004
+    -     },
+    -     bossSkillTimer: 0,
+    -     buildTarget: null,
+    -     buildingDamageMul: 1,
+    -     buildingHint: null,
+    -     carry: 0,
+    -     carryType: null,
+    -     chargeCd: 0,
+    -     chargeReady: true,
+    -     combatAt: -99,
+    -     convertResist: false,
+    -     cooldown: 0.2433377009816468,
+    -     deathAnim: 0,
+    -     duel: false,
+    -     eventAttackSpeedMul: 1,
+    -     eventFireCd: 0,
+    -     eventFlags: [],
+    -     eventRegen: 0,
+    -     eventRetreat: 0,
+    -     eventRetreatCd: 0,
+    -     eventSpeedMul: 1,
+    -     expireIn: 0,
+    -     facing: 1,
+    -     gatherTarget: null,
+    -     guardOrigin: {
+    -       x: 3,
+    -       y: 3
+    -     },
+    -     hero: false,
+    -     hitFlash: 0,
+    -     hold: false,
+    -     hp: 60,
+    -     id: 15,
+    -     idleTimer: 0.4467618349629144,
+    -     kind: 'unit',
+    -     manualAttack: false,
+    -     markCd: 0,
+    -     marked: 0,
+    -     maxHp: 60,
+    -     orderFailure: 'congested',
+    -     pop: 1,
+    -     rageStage: 0,
+    -     rescueUsed: false,
+    -     retargetTimer: 0.8,
+    -     selected: false,
+    -     shield: 0,
+    -     shieldTime: 0,
+    -     shots: 0,
+    -     slowUntil: 0,
+    -     stance: 'defensive',
+    -     state: 'idle',
+    -     summoned: false,
+    -     target: null,
+    -     targetPos: null,
+    -     team: 'player',
+    -     type: 'militia',
+    -     typeDef: {
+    -       armor: 10,
+    -       attack: 8,
+    -       category: 'infantry',
+    -       cooldown: 1.5,
+    -       cost: {
+    -         food: 40,
+    -         gold: 10
+    -       },
+    -       desc: 'A shielded line-holder. The backbone of every levy.',
+    -       family: 'M',
+    -       hp: 60,
+    -       icon: 'sword',
+    -       name: 'Man-at-Arms',
+    -       pop: 1,
+    -       radius: 0.26,
+    -       range: 1,
+    -       role: 'Infantry',
+    -       sight: 6.5,
+    -       speed: 2.4,
+    -       threat: 1,
+    -       trainTime: 8
+    -     },
+    -     visualDirection: 'SE',
+    -     walkPhase: 3.330929734798149,
+    -     x: 3.04,
+    -     y: 3
+    -   },
+    -   targetPos: null,
+    -   team: 'enemy',
+    -   type: 'militia',
+    -   typeDef: {
+    -     armor: 10,
+    -     attack: 8,
+    -     category: 'infantry',
+    -     cooldown: 1.5,
+    -     cost: {
+    -       food: 40,
+    -       gold: 10
+    -     },
+    -     desc: 'A shielded line-holder. The backbone of every levy.',
+    -     family: 'M',
+    -     hp: 60,
+    -     icon: 'sword',
+    -     name: 'Man-at-Arms',
+    -     pop: 1,
+    -     radius: 0.26,
+    -     range: 1,
+    -     role: 'Infantry',
+    -     sight: 6.5,
+    -     speed: 2.4,
+    -     threat: 1,
+    -     trainTime: 8
+    -   },
+    -   visualDirection: 'NW',
+    -   walkPhase: 0.4998923352323472,
+    -   x: 5.92,
+    -   y: 3
+    - }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    id: 20
+    kind: 'unit'
+    team: 'enemy'
+    type: 'militia'
+    typeDef:
+      name: 'Man-at-Arms'
+      role: 'Infantry'
+      icon: 'sword'
+      category: 'infantry'
+      family: 'M'
+      hp: 60
+      attack: 8
+      range: 1
+      speed: 2.4
+      cooldown: 1.5
+      armor: 10
+      radius: 0.26
+      sight: 6.5
+      cost:
+        food: 40
+        gold: 10
+      trainTime: 8
+      pop: 1
+      threat: 1
+      desc: 'A shielded line-holder. The backbone of every levy.'
+    combatAt: -99
+    x: 5.92
+    y: 3
+    hp: 60
+    maxHp: 60
+    baseMaxHp: 60
+    pop: 1
+    armor: 10
+    attack: 8
+    state: 'move'
+    target:
+      id: 15
+      kind: 'unit'
+      team: 'player'
+      type: 'militia'
+      typeDef: <Circular>
+      combatAt: -99
+      x: 3.04
+      y: 3
+      hp: 60
+      maxHp: 60
+      baseMaxHp: 60
+      pop: 1
+      armor: 10
+      attack: 8
+      state: 'idle'
+      target: ~
+      targetPos: ~
+      gatherTarget: ~
+      buildTarget: ~
+      carry: 0
+      carryType: ~
+      cooldown: 0.2433377009816468
+      attackAnim: 0
+      walkPhase: 3.330929734798149
+      facing: 1
+      visualDirection: 'SE'
+      deathAnim: 0
+      selected: false
+      hitFlash: 0
+      alive: true
+      retargetTimer: 0.8
+      hold: false
+      stance: 'defensive'
+      guardOrigin:
+        x: 3
+        y: 3
+      manualAttack: false
+      idleTimer: 0.4467618349629144
+      buildingHint: ~
+      hero: false
+      shield: 0
+      shieldTime: 0
+      marked: 0
+      slowUntil: 0
+      shots: 0
+      rescueUsed: false
+      expireIn: 0
+      bossSkillTimer: 0
+      rageStage: 0
+      summoned: false
+      markCd: 0
+      aegisCd: 0
+      eventFlags:
+      eventSpeedMul: 1
+      eventAttackSpeedMul: 1
+      eventRegen: 0
+      buildingDamageMul: 1
+      convertResist: false
+      eventRetreat: 0
+      eventRetreatCd: 0
+      eventFireCd: 0
+      duel: false
+      chargeReady: true
+      chargeCd: 0
+      _nav: ~
+      orderFailure: 'congested'
+      _progress:
+        x: 3.04
+        y: 3
+        at: 10.050000000000002
+      _goalProgress:
+        distance: 2.92
+        at: 10.050000000000002
+      _crowdKey: 4097
+      _heading:
+        x: 1
+        y: 0
+      _crowdNeighbours:
+        0: <Circular>
+      _trafficPriority: 15
+      _avoidCrowdUntil: 15.050000000000002
+      blockedTargets:
+        20: 18.050000000000004
+    targetPos: ~
+    gatherTarget: ~
+    buildTarget: ~
+    carry: 0
+    carryType: ~
+    cooldown: 0.35183869159470005
+    attackAnim: 0
+    walkPhase: 0.4998923352323472
+    facing: -1
+    visualDirection: 'NW'
+    deathAnim: 0
+    selected: false
+    hitFlash: 0
+    alive: true
+    retargetTimer: 0.9343091575739284
+    hold: false
+    stance: 'defensive'
+    guardOrigin:
+      x: 6
+      y: 3
+    manualAttack: false
+    idleTimer: 0.3875502021983266
+    buildingHint: ~
+    hero: false
+    shield: 0
+    shieldTime: 0
+    marked: 0
+    slowUntil: 0
+    shots: 0
+    rescueUsed: false
+    expireIn: 0
+    bossSkillTimer: 0
+    rageStage: 0
+    summoned: false
+    markCd: 0
+    aegisCd: 0
+    eventFlags:
+    eventSpeedMul: 1
+    eventAttackSpeedMul: 1
+    eventRegen: 0
+    buildingDamageMul: 1
+    convertResist: false
+    eventRetreat: 0
+    eventRetreatCd: 0
+    eventFireCd: 0
+    duel: false
+    chargeReady: true
+    chargeCd: 0
+    _crowdKey: 4098
+    _nav:
+      tx: 3
+      ty: 3
+      range: 1.16
+      points:
+        0:
+          x: 4.1368
+          y: 3
+      status: 'ready'
+      retryAt: 0
+      stalled: 0
+      goal: <Circular>
+      crowdDetour: false
+    _heading:
+      x: -1
+      y: 0
+    _crowdNeighbours:
+      0: <Circular>
+    _trafficPriority: 20
+    _goalProgress:
+      distance: 2.96
+      at: 10.033333333333335
+    _progress:
+      x: 5.96
+      y: 3
+      at: 10.033333333333335
+    _stuckTimer: 0
+    _recalculated: false
+    _lastTargetDist: 8.526399999999999
+  actual: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-movement-clock-6f8c2d19/worktree/tests/movement-clock.test.mjs:38:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: 射程內交戰時間不計入目標離開射程後的移動停滯
+not ok 3 - 射程內交戰時間不計入目標離開射程後的移動停滯
+  ---
+  duration_ms: 13.770692
+  type: 'test'
+  location: '/workspace/riftwatch-movement-clock-6f8c2d19/worktree/tests/movement-clock.test.mjs:41:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + {
+    +   at: 0,
+    +   x: 3,
+    +   y: 3
+    + }
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    x: 3
+    y: 3
+    at: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-movement-clock-6f8c2d19/worktree/tests/movement-clock.test.mjs:45:19)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 暈眩與英雄直控不帶入過期自動移動計時
+not ok 4 - 暈眩與英雄直控不帶入過期自動移動計時
+  ---
+  duration_ms: 14.658095
+  type: 'test'
+  location: '/workspace/riftwatch-movement-clock-6f8c2d19/worktree/tests/movement-clock.test.mjs:50:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + {
+    +   at: 0,
+    +   x: 3,
+    +   y: 3
+    + }
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    x: 3
+    y: 3
+    at: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-movement-clock-6f8c2d19/worktree/tests/movement-clock.test.mjs:52:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 連續真正受阻仍按原六秒門檻回報，不延長或關閉碰撞
+ok 5 - 連續真正受阻仍按原六秒門檻回報，不延長或關閉碰撞
+  ---
+  duration_ms: 24.343303
+  type: 'test'
+  ...
+# Subtest: 不移動的計時重置不消耗雙RNG，且不加入存檔schema
+ok 6 - 不移動的計時重置不消耗雙RNG，且不加入存檔schema
+  ---
+  duration_ms: 8.406165
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 3
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3473.392636
