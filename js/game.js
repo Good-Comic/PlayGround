@@ -1776,7 +1776,13 @@ export class Game {
       this.navigationQueue.shift();this.navigationQueued.delete(u.id);
       this.navigationBudget = (this.navigationBudget ?? 2)-1;
       const searchStart = performance.now();
-      const occupied = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2).filter(v=>['idle','hold','gather'].includes(v.state)) : [];
+      const occupied = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2).filter(v=>{
+        if(['idle','hold','gather'].includes(v.state))return true;
+        // 射程內原地交戰的友軍也佔據身體空間；追擊中的單位不當成靜態障礙。
+        if(v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
+        const range=this.unitRange(v)+(v.target.w?(v.team==='player'?-.1:0):(v.target.typeDef.radius||.2));
+        return this.distanceTo(v,v.target)<=range;
+      }) : [];
       const planWalkable=(x,y)=>walkable(x,y) && occupied.every(v=>dist(x,y,v.x,v.y)>=(u.typeDef.radius||.24)+(v.typeDef.radius||.24));
       planWalkable.segment=(a,b)=>walkable.segment(a,b) && occupied.every(v=>{
         const dx=b.x-a.x,dy=b.y-a.y,len=dx*dx+dy*dy,t=len?clamp(((v.x-a.x)*dx+(v.y-a.y)*dy)/len,0,1):0;
