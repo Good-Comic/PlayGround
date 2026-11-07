@@ -1,0 +1,869 @@
+{
+  "status": "MEASURED_30S_ABBA_SOFTWARE_COHORT",
+  "browser": "154.0.8037.57",
+  "gpu": [
+    {
+      "vendorId": 65535,
+      "deviceId": 65535,
+      "vendorString": "Google Inc. (Google)",
+      "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+      "driverVendor": "SwANGLE",
+      "driverVersion": "5.0.0"
+    }
+  ],
+  "cpuQuota": "400000 100000",
+  "pairs": [
+    {
+      "n": 100,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "recordedFixture": true,
+      "rng": true,
+      "visualRng": true
+    },
+    {
+      "n": 200,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "recordedFixture": true,
+      "rng": true,
+      "visualRng": true
+    }
+  ],
+  "errors": [],
+  "runs": [
+    {
+      "n": 100,
+      "runId": "A1",
+      "mode": "before",
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "fps": 28.872378757666638,
+      "p50Ms": 33.30000000000291,
+      "p95Ms": 50,
+      "wallMs": 30028.69999998808,
+      "simStart": 6.965899999999992,
+      "simEnd": 36.46350000000018,
+      "aliveStart": 77,
+      "aliveEnd": 78,
+      "heapStart": 26205109,
+      "heapEnd": 29691777,
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "samples": 867,
+      "cpuDelta": {
+        "usage_usec": 54619827,
+        "user_usec": 51675605,
+        "system_usec": 2944223,
+        "nice_usec": 0,
+        "nr_periods": 420,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "subsystems": {
+        "pathAndMovementInclusive": {
+          "calls": 14791,
+          "totalMs": 1461.4999992251396,
+          "p50Ms": 0,
+          "p95Ms": 0.30000001192092896
+        },
+        "staticCollision": {
+          "calls": 136602,
+          "totalMs": 603.3999996781349,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 11750,
+          "totalMs": 348.49999886751175,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 868,
+          "totalMs": 952.1999995112419,
+          "p50Ms": 0.30000001192092896,
+          "p95Ms": 1.9999999403953552
+        },
+        "fog": {
+          "calls": 868,
+          "totalMs": 7511.79999935627,
+          "p50Ms": 8.399999976158142,
+          "p95Ms": 10
+        },
+        "renderInclusive": {
+          "calls": 868,
+          "totalMs": 12423.800000309944,
+          "p50Ms": 13.899999976158142,
+          "p95Ms": 16.900000035762787
+        },
+        "DOM": {
+          "calls": 868,
+          "totalMs": 1056.3000001311302,
+          "p50Ms": 0.40000003576278687,
+          "p95Ms": 3.199999988079071
+        },
+        "target": {
+          "calls": 37373,
+          "totalMs": 225.400000333786,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        }
+      },
+      "timelineSamples": 30,
+      "panelVisibleSamples": 0,
+      "panelVisibleRatio": 0.0,
+      "timelineAliveMinMax": [
+        69,
+        80
+      ],
+      "selectedMinMax": [
+        59,
+        60
+      ],
+      "recordedMinMax": [
+        59,
+        60
+      ],
+      "heapTimelineMinMax": [
+        13129496,
+        31607632
+      ]
+    },
+    {
+      "n": 100,
+      "runId": "B1",
+      "mode": "after",
+      "source": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+      "resources": 168,
+      "fps": 28.639268433210276,
+      "p50Ms": 33.30000000000291,
+      "p95Ms": 50,
+      "wallMs": 30028.69999998808,
+      "simStart": 6.6990999999999925,
+      "simEnd": 36.44630000000014,
+      "aliveStart": 77,
+      "aliveEnd": 79,
+      "heapStart": 15667655,
+      "heapEnd": 24170191,
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "samples": 860,
+      "cpuDelta": {
+        "usage_usec": 53590454,
+        "user_usec": 51382515,
+        "system_usec": 2207939,
+        "nice_usec": 0,
+        "nr_periods": 415,
+        "nr_throttled": 1,
+        "throttled_usec": 841,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "subsystems": {
+        "staticCollision": {
+          "calls": 144302,
+          "totalMs": 620.6999967694283,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 13210,
+          "totalMs": 419.49999809265137,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 18586,
+          "totalMs": 1469.49999833107,
+          "p50Ms": 0,
+          "p95Ms": 0.2999999523162842
+        },
+        "target": {
+          "calls": 34467,
+          "totalMs": 231.29999935626984,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 861,
+          "totalMs": 901.3000002503395,
+          "p50Ms": 0.5,
+          "p95Ms": 1.800000011920929
+        },
+        "fog": {
+          "calls": 861,
+          "totalMs": 7199.900000333786,
+          "p50Ms": 8.100000023841858,
+          "p95Ms": 9.900000035762787
+        },
+        "renderInclusive": {
+          "calls": 861,
+          "totalMs": 12226.199998915195,
+          "p50Ms": 13.900000035762787,
+          "p95Ms": 16.600000023841858
+        },
+        "DOM": {
+          "calls": 861,
+          "totalMs": 1109.5999999046326,
+          "p50Ms": 0.5,
+          "p95Ms": 3.300000011920929
+        }
+      },
+      "timelineSamples": 30,
+      "panelVisibleSamples": 30,
+      "panelVisibleRatio": 1.0,
+      "timelineAliveMinMax": [
+        70,
+        80
+      ],
+      "selectedMinMax": [
+        60,
+        60
+      ],
+      "recordedMinMax": [
+        60,
+        60
+      ],
+      "heapTimelineMinMax": [
+        11959213,
+        29795239
+      ]
+    },
+    {
+      "n": 100,
+      "runId": "B2",
+      "mode": "after",
+      "source": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+      "resources": 168,
+      "fps": 28.75686470294558,
+      "p50Ms": 33.30000000000291,
+      "p95Ms": 50,
+      "wallMs": 30045,
+      "simStart": 6.965799999999994,
+      "simEnd": 36.29710000000017,
+      "aliveStart": 77,
+      "aliveEnd": 77,
+      "heapStart": 17700560,
+      "heapEnd": 19811630,
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "samples": 864,
+      "cpuDelta": {
+        "usage_usec": 55681652,
+        "user_usec": 52675576,
+        "system_usec": 3006076,
+        "nice_usec": 0,
+        "nr_periods": 416,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "subsystems": {
+        "staticCollision": {
+          "calls": 182089,
+          "totalMs": 723.0000000596046,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 11357,
+          "totalMs": 328.0000007748604,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 14054,
+          "totalMs": 1678.7999990582466,
+          "p50Ms": 0,
+          "p95Ms": 0.20000004768371582
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 865,
+          "totalMs": 1216.8999996185303,
+          "p50Ms": 0,
+          "p95Ms": 2
+        },
+        "fog": {
+          "calls": 865,
+          "totalMs": 7226.200000941753,
+          "p50Ms": 8,
+          "p95Ms": 10.100000023841858
+        },
+        "renderInclusive": {
+          "calls": 865,
+          "totalMs": 12100.900000274181,
+          "p50Ms": 13.300000011920929,
+          "p95Ms": 16.599999964237213
+        },
+        "DOM": {
+          "calls": 865,
+          "totalMs": 1101.0999993681908,
+          "p50Ms": 0.40000003576278687,
+          "p95Ms": 3.299999952316284
+        },
+        "target": {
+          "calls": 38351,
+          "totalMs": 242.30000054836273,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        }
+      },
+      "timelineSamples": 30,
+      "panelVisibleSamples": 30,
+      "panelVisibleRatio": 1.0,
+      "timelineAliveMinMax": [
+        69,
+        80
+      ],
+      "selectedMinMax": [
+        58,
+        60
+      ],
+      "recordedMinMax": [
+        58,
+        60
+      ],
+      "heapTimelineMinMax": [
+        13465084,
+        30077452
+      ]
+    },
+    {
+      "n": 100,
+      "runId": "A2",
+      "mode": "before",
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "fps": 28.67132867132867,
+      "p50Ms": 33.30000000000291,
+      "p95Ms": 50,
+      "wallMs": 30030,
+      "simStart": 6.899099999999997,
+      "simEnd": 36.563000000000194,
+      "aliveStart": 77,
+      "aliveEnd": 79,
+      "heapStart": 16407664,
+      "heapEnd": 13684808,
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "samples": 861,
+      "cpuDelta": {
+        "usage_usec": 54361195,
+        "user_usec": 51831310,
+        "system_usec": 2529885,
+        "nice_usec": 0,
+        "nr_periods": 415,
+        "nr_throttled": 1,
+        "throttled_usec": 15745,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "subsystems": {
+        "staticCollision": {
+          "calls": 134516,
+          "totalMs": 572.9999995827675,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 9729,
+          "totalMs": 341.199998319149,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 12323,
+          "totalMs": 1305.2999980449677,
+          "p50Ms": 0,
+          "p95Ms": 0.3999999761581421
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 862,
+          "totalMs": 865.2000001072884,
+          "p50Ms": 0,
+          "p95Ms": 1.699999988079071
+        },
+        "fog": {
+          "calls": 862,
+          "totalMs": 7542.400000572205,
+          "p50Ms": 8.5,
+          "p95Ms": 10.100000023841858
+        },
+        "renderInclusive": {
+          "calls": 862,
+          "totalMs": 12459.500001370907,
+          "p50Ms": 14.199999988079071,
+          "p95Ms": 16.5
+        },
+        "DOM": {
+          "calls": 862,
+          "totalMs": 1128.3999987244606,
+          "p50Ms": 0.40000003576278687,
+          "p95Ms": 3.300000011920929
+        },
+        "target": {
+          "calls": 40215,
+          "totalMs": 247.40000176429749,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        }
+      },
+      "timelineSamples": 30,
+      "panelVisibleSamples": 0,
+      "panelVisibleRatio": 0.0,
+      "timelineAliveMinMax": [
+        70,
+        80
+      ],
+      "selectedMinMax": [
+        60,
+        60
+      ],
+      "recordedMinMax": [
+        60,
+        60
+      ],
+      "heapTimelineMinMax": [
+        12289787,
+        30427117
+      ]
+    },
+    {
+      "n": 200,
+      "runId": "A1",
+      "mode": "before",
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "fps": 19.83466673763963,
+      "p50Ms": 50,
+      "p95Ms": 66.70000000000073,
+      "wallMs": 30048.400000035763,
+      "simStart": 5.18339999999999,
+      "simEnd": 33.759000000000185,
+      "aliveStart": 157,
+      "aliveEnd": 124,
+      "heapStart": 14019099,
+      "heapEnd": 15617659,
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "samples": 596,
+      "cpuDelta": {
+        "usage_usec": 53416145,
+        "user_usec": 50797826,
+        "system_usec": 2618320,
+        "nice_usec": 0,
+        "nr_periods": 417,
+        "nr_throttled": 1,
+        "throttled_usec": 6539,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "subsystems": {
+        "pathAndMovementInclusive": {
+          "calls": 17828,
+          "totalMs": 1222.299998641014,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "staticCollision": {
+          "calls": 101560,
+          "totalMs": 465.60000014305115,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 8126,
+          "totalMs": 307.29999935626984,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 47156,
+          "totalMs": 365.3000013232231,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 597,
+          "totalMs": 795.1999996304512,
+          "p50Ms": 0.6999999284744263,
+          "p95Ms": 2.200000047683716
+        },
+        "fog": {
+          "calls": 597,
+          "totalMs": 6529.499999880791,
+          "p50Ms": 11.599999964237213,
+          "p95Ms": 13.299999952316284
+        },
+        "renderInclusive": {
+          "calls": 597,
+          "totalMs": 12146.199999511242,
+          "p50Ms": 20.099999964237213,
+          "p95Ms": 23.400000035762787
+        },
+        "DOM": {
+          "calls": 597,
+          "totalMs": 1557.5000001192093,
+          "p50Ms": 0.8999999761581421,
+          "p95Ms": 5.199999988079071
+        }
+      },
+      "timelineSamples": 30,
+      "panelVisibleSamples": 0,
+      "panelVisibleRatio": 0.0,
+      "timelineAliveMinMax": [
+        123,
+        157
+      ],
+      "selectedMinMax": [
+        114,
+        124
+      ],
+      "recordedMinMax": [
+        114,
+        124
+      ],
+      "heapTimelineMinMax": [
+        12860250,
+        33665076
+      ]
+    },
+    {
+      "n": 200,
+      "runId": "B1",
+      "mode": "after",
+      "source": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+      "resources": 168,
+      "fps": 19.137645107794363,
+      "p50Ms": 50,
+      "p95Ms": 66.70000000000073,
+      "wallMs": 30150,
+      "simStart": 4.849999999999991,
+      "simEnd": 32.72510000000018,
+      "aliveStart": 159,
+      "aliveEnd": 121,
+      "heapStart": 16559266,
+      "heapEnd": 32997337,
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "samples": 577,
+      "cpuDelta": {
+        "usage_usec": 53170629,
+        "user_usec": 50693204,
+        "system_usec": 2477426,
+        "nice_usec": 0,
+        "nr_periods": 419,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "subsystems": {
+        "staticCollision": {
+          "calls": 121498,
+          "totalMs": 551.9000012278557,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "pathAndMovementInclusive": {
+          "calls": 23477,
+          "totalMs": 1606.2000012397766,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "dynamicCollision": {
+          "calls": 9003,
+          "totalMs": 370.4000014066696,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 37912,
+          "totalMs": 298.7999991774559,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 578,
+          "totalMs": 1113,
+          "p50Ms": 0.8999999761581421,
+          "p95Ms": 2.300000011920929
+        },
+        "fog": {
+          "calls": 578,
+          "totalMs": 7035.600000441074,
+          "p50Ms": 11.900000035762787,
+          "p95Ms": 13.800000011920929
+        },
+        "renderInclusive": {
+          "calls": 578,
+          "totalMs": 12576.899999797344,
+          "p50Ms": 21,
+          "p95Ms": 25.5
+        },
+        "DOM": {
+          "calls": 578,
+          "totalMs": 1530.7000006437302,
+          "p50Ms": 4.199999988079071,
+          "p95Ms": 5.199999988079071
+        }
+      },
+      "timelineSamples": 30,
+      "panelVisibleSamples": 30,
+      "panelVisibleRatio": 1.0,
+      "timelineAliveMinMax": [
+        120,
+        158
+      ],
+      "selectedMinMax": [
+        111,
+        124
+      ],
+      "recordedMinMax": [
+        111,
+        124
+      ],
+      "heapTimelineMinMax": [
+        14545950,
+        32990820
+      ]
+    },
+    {
+      "n": 200,
+      "runId": "B2",
+      "mode": "after",
+      "source": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+      "resources": 168,
+      "fps": 20.100168056040868,
+      "p50Ms": 50,
+      "p95Ms": 66.69999999999709,
+      "wallMs": 30049.5,
+      "simStart": 4.983299999999991,
+      "simEnd": 34.19000000000015,
+      "aliveStart": 158,
+      "aliveEnd": 123,
+      "heapStart": 18218869,
+      "heapEnd": 34641195,
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "samples": 604,
+      "cpuDelta": {
+        "usage_usec": 53094465,
+        "user_usec": 50879068,
+        "system_usec": 2215397,
+        "nice_usec": 0,
+        "nr_periods": 416,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "subsystems": {
+        "pathAndMovementInclusive": {
+          "calls": 20825,
+          "totalMs": 1161.39999884367,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "staticCollision": {
+          "calls": 91005,
+          "totalMs": 439.3999996185303,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 8788,
+          "totalMs": 358.1999993920326,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 44551,
+          "totalMs": 366.2000010609627,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 605,
+          "totalMs": 670.8000001907349,
+          "p50Ms": 0.8000000715255737,
+          "p95Ms": 2.0000000596046448
+        },
+        "fog": {
+          "calls": 605,
+          "totalMs": 6379.399999141693,
+          "p50Ms": 11.399999976158142,
+          "p95Ms": 13
+        },
+        "renderInclusive": {
+          "calls": 605,
+          "totalMs": 12172.000000476837,
+          "p50Ms": 20,
+          "p95Ms": 22.400000035762787
+        },
+        "DOM": {
+          "calls": 605,
+          "totalMs": 1610.1999995708466,
+          "p50Ms": 4.300000011920929,
+          "p95Ms": 5.199999988079071
+        }
+      },
+      "timelineSamples": 30,
+      "panelVisibleSamples": 30,
+      "panelVisibleRatio": 1.0,
+      "timelineAliveMinMax": [
+        122,
+        157
+      ],
+      "selectedMinMax": [
+        113,
+        124
+      ],
+      "recordedMinMax": [
+        113,
+        124
+      ],
+      "heapTimelineMinMax": [
+        11831613,
+        44848446
+      ]
+    },
+    {
+      "n": 200,
+      "runId": "A2",
+      "mode": "before",
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "fps": 18.805688970569015,
+      "p50Ms": 50,
+      "p95Ms": 66.70000000000073,
+      "wallMs": 30044.099999964237,
+      "simStart": 4.749899999999992,
+      "simEnd": 32.12550000000024,
+      "aliveStart": 161,
+      "aliveEnd": 120,
+      "heapStart": 13512237,
+      "heapEnd": 41558576,
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "samples": 565,
+      "cpuDelta": {
+        "usage_usec": 52892758,
+        "user_usec": 50590373,
+        "system_usec": 2302385,
+        "nice_usec": 0,
+        "nr_periods": 416,
+        "nr_throttled": 1,
+        "throttled_usec": 6980,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "subsystems": {
+        "staticCollision": {
+          "calls": 161520,
+          "totalMs": 689.9000002741814,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "pathAndMovementInclusive": {
+          "calls": 24590,
+          "totalMs": 1899,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "dynamicCollision": {
+          "calls": 8621,
+          "totalMs": 378.59999907016754,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 35633,
+          "totalMs": 289.30000019073486,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 566,
+          "totalMs": 1392.399999499321,
+          "p50Ms": 0.9999999403953552,
+          "p95Ms": 3.700000047683716
+        },
+        "fog": {
+          "calls": 566,
+          "totalMs": 6951.700000405312,
+          "p50Ms": 12.099999964237213,
+          "p95Ms": 13.400000035762787
+        },
+        "renderInclusive": {
+          "calls": 566,
+          "totalMs": 12466.900000274181,
+          "p50Ms": 21.19999998807907,
+          "p95Ms": 25.899999976158142
+        },
+        "DOM": {
+          "calls": 566,
+          "totalMs": 1497.7999997735023,
+          "p50Ms": 1,
+          "p95Ms": 5.199999988079071
+        }
+      },
+      "timelineSamples": 30,
+      "panelVisibleSamples": 0,
+      "panelVisibleRatio": 0.0,
+      "timelineAliveMinMax": [
+        119,
+        159
+      ],
+      "selectedMinMax": [
+        110,
+        124
+      ],
+      "recordedMinMax": [
+        110,
+        124
+      ],
+      "heapTimelineMinMax": [
+        13793727,
+        34005735
+      ]
+    }
+  ],
+  "conclusion": "短時受控配對中兩版本FPS區間重疊，幀時間P50/P95相同量級，未觀測明顯系統性退步；不構成校準無回歸認證、長期穩定或Windows實體GPU通過。",
+  "limits": [
+    "每次只30秒，共8run，兩版本各規模僅2重複。",
+    "初始100/200，暖機及live死亡/刷兵導致量測存活非固定100/200。",
+    "初始scene/兩RNG等價不表示原生可變dt下後續世界相同。",
+    "CPU throttle為共享容器全體增量；其他既有孤兒程序未終止，無法單獨歸因本遊戲。",
+    "heap包含量測陣列、快取與GC，1Hz可能漏短峰，不判記憶體洩漏。",
+    "子系統計時inclusive互相巢狀重疊，總時間不可加總。",
+    "受控歷史orderFailure初始fixture僅測UI負載，不代表自然受阻重現；後續不每幀補寫。",
+    "量測期間採原生戰場演化，不保證全30秒持續近距離交戰；200-B1末圖0敵與待命部隊是真實結果，不作持續最壞戰鬥密度證明。"
+  ],
+  "visualInspection": {
+    "scene-100-B1.png": "實際戰場、多部隊及8敵；新歷史記錄短行與按鈕可見、未遮住主要戰術控制。",
+    "scene-200-B1.png": "實際大量部隊戰場，末圖敵人數0、所選111待命；新面板真可見。不是空畫布或載入畫面。"
+  }
+}

@@ -1,0 +1,958 @@
+{
+  "玩家": "C",
+  "性質": "獨立AI完全新手自然after，非真人受測者",
+  "閱讀邊界": "只讀共同控制、自己封存基線與自身公開HUD/截圖/原生輸入；未讀其他角色、技術程式、Director、private-observer。",
+  "條件": {
+    "文明": "FRK法蘭克",
+    "地圖": "steppe草海平原",
+    "難度": "normal普通",
+    "DOM種子": "FUN-LAB-BASE-281",
+    "actualseed": "任務與公開session提供1116648138，未讀隱藏遊戲狀態",
+    "公開來源": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+    "公開驗證": "SHA256_MATCH_168_FILES",
+    "新場": true,
+    "resume": null
+  },
+  "結果": {
+    "波次": 4,
+    "名稱": "破碎誓約",
+    "結果": "城心失守，自然完整敗北",
+    "度過": 3,
+    "擊殺": 96,
+    "採集": 4697,
+    "統治時間": "8:16",
+    "結算wallSeconds": 696.814,
+    "開始wallSeconds": 31.839,
+    "開始至結算實際秒": 664.975,
+    "框架cap": false,
+    "說明": "未見框架安全暫停/idle/cap提示；不能讀private驗不存在。"
+  },
+  "輸入統計": {
+    "成功原生請求": 43,
+    "類型": {
+      "click": 29,
+      "select": 3,
+      "key": 10,
+      "hover": 1
+    },
+    "最短間隔秒": 10.068,
+    "限制": "10秒為代理能力假設，非真人APM；成功輸入不等有效戰術。"
+  },
+  "原生存檔": {
+    "暫停": 42.004,
+    "儲存": 52.079,
+    "恢復": 62.184,
+    "階段": "第一波準備、城心100%",
+    "證據": "screen-0005.png、screen-0006.png與actions",
+    "限制": "送出原生save成功，未保留即時toast，持久化內容UNKNOWN；未載入。"
+  },
+  "經濟逐項": {
+    "食物不足": {
+      "看到": "136.395食物23伴城堡研究20秒；287.344食物8伴帝國研究23秒；385.88食物32／木783。",
+      "理解": "知道升時代與自動生產消耗，但沒有逐筆支出分配。",
+      "操作": "食物優先、自動時代。",
+      "效果": "設定保持可見，淨供應與缺兵因果UNKNOWN。"
+    },
+    "採集比例": {
+      "看到": "86.472食3木4金2石1；385.88食10木3金2石1、16村民、目標64/16/12/8。",
+      "理解": "攜帶資源優先，比例是目標而非即時人數。",
+      "操作": "93.870食物優先，114.326套用。",
+      "效果": "食物優先與64%可見；不把人數與產出全歸因單一設定。"
+    },
+    "生產等待": {
+      "看到": "軍事頁兵營#2(0/5)、手動佇列優先及依已套用設定。",
+      "理解": "改方案不是立即出兵，仍需資源與等待。",
+      "操作": "沒有逐筆展開兵營佇列或手動訓練。",
+      "效果": "具體哪筆等待、完成時間NOT_OBSERVED。"
+    },
+    "成本預留缺口": {
+      "看到": "四資源預留均0，說明所有自動支出先扣除預留。",
+      "理解": "知道存在預留機制，未理解哪筆缺口正在阻止補兵。",
+      "操作": "未改預留。",
+      "效果": "特定缺口NOT_OBSERVED，不能證明無瓶頸。"
+    },
+    "自動建造升時代": {
+      "看到": "城堡研究及帝國研究倒數，314.892帝國時代。",
+      "理解": "自動時代在條件達成後研究，非選項立即升級。",
+      "操作": "104.044自動時代，114.326套用；未設建築計畫。",
+      "效果": "升帝國可見；自動建造詳情NOT_OBSERVED。"
+    },
+    "軍事生產防禦": {
+      "看到": "軍事頁全軍方案均衡、防守優先及逐建築/手動佇列優先。",
+      "理解": "守城方向但具體配置比例未掌握。",
+      "操作": "405.831防守優先，416.179套用。",
+      "效果": "全軍後續增長，不能獨立歸因於設定；未重開逐項驗證套用結果。"
+    }
+  },
+  "遇襲鏈": [
+    {
+      "事件": "第一波援護與反擊",
+      "INTENT": "城心98%，來源起初未確認；重新援護全軍，再按當時刀盾兵實損列反擊。",
+      "COMMAND_SENT": "170.473援護、180.819反擊。",
+      "COMMAND_ACCEPTED": "173.975已選7／全軍7、7人護衛；184.067為7人集火刀盾兵。",
+      "EXECUTED": "金環與集火摘要可見；個別抵達射程、命中UNKNOWN。",
+      "EFFECT_OBSERVED": "城心98→96→95，後第一波通過且100%。",
+      "EFFECT_UNKNOWN": "原目標個別擊殺、護盾吸收與城心減傷因果UNKNOWN。",
+      "證據": [
+        "screen-0013.png",
+        "screen-0014.png",
+        "screen-0015.png",
+        "screen-0016.png",
+        "screen-0018.png"
+      ]
+    },
+    {
+      "事件": "第二波來源反擊與技能",
+      "INTENT": "287.344城心93%，看到刀盾兵來源，反擊7人以解除威脅。",
+      "COMMAND_SENT": "293.935反擊；304.065 E；314.133 Q；325.211援護。",
+      "COMMAND_ACCEPTED": "294.566提示7名已選戰士反擊；314.892刀盾兵已被標記、E冷卻50秒；325.887為9人護衛。",
+      "EXECUTED": "反擊後7人自主接敵；不能證實原目標擊殺。",
+      "EFFECT_OBSERVED": "城心93→91→85→82，後第二波通過95%。",
+      "EFFECT_UNKNOWN": "個別命中、Q增傷、E吸收與通關因果UNKNOWN。",
+      "證據": [
+        "screen-0025.png",
+        "screen-0026.png",
+        "screen-0027.png",
+        "screen-0028.png",
+        "screen-0030.png"
+      ]
+    },
+    {
+      "事件": "第三波反擊與改回援護",
+      "INTENT": "451.183看到長槍兵上次實損；反擊當前列，後9待命且城心89%而重新援護。",
+      "COMMAND_SENT": "458.582反擊；498.964援護；509.098 Q；519.219 E。",
+      "COMMAND_ACCEPTED": "459.307提示11人反擊；509.853為15人護衛與步弓兵已被標記。",
+      "EXECUTED": "459.307為9人自主接敵2待命，無原目標抵達/命中連續證據。",
+      "EFFECT_OBSERVED": "城心94→92→89→81，540.631第三波通過89%。",
+      "EFFECT_UNKNOWN": "來源在閱讀與下令間變動，不能斷定原長槍兵已被正確選中或擊殺。",
+      "證據": [
+        "screen-0037.png",
+        "screen-0038.png",
+        "screen-0039.png",
+        "screen-0040.png",
+        "screen-0042.png"
+      ]
+    },
+    {
+      "事件": "第四波衝車與來源列更正",
+      "INTENT": "647.44城心70%，看到衝車−127.8 HP，想反擊衝車；看到實際步弓兵集火後更正為最大一擊列。",
+      "COMMAND_SENT": "657.164按當前來源列；673.607按最大一擊衝車列；687.867 Q。",
+      "COMMAND_ACCEPTED": "657.951提示18人反擊但摘要18人集火步弓兵；674.354提示18人反擊且18人集火衝車；688.585 Q標記刀盾兵。",
+      "EXECUTED": "衝車金環與18人集火可見，後8人仍集火、8人自主接敵、2待命；個別抵達/射程/命中UNKNOWN。",
+      "EFFECT_OBSERVED": "城心83→70→52→36→25→2→失守；最後衝車仍有集火標示，未觀察威脅解除或個別擊殺。",
+      "EFFECT_UNKNOWN": "衝車即時生命未成功hover取樣；無個別傷害、衝車擊殺、城心減傷因果；不能將來源更新全歸為誤點或bug。",
+      "證據": [
+        "screen-0050.png",
+        "screen-0051.png",
+        "screen-0052.png",
+        "screen-0053.png",
+        "screen-0054.png",
+        "screen-0055.png",
+        "screen-0057.png"
+      ]
+    }
+  ],
+  "自然新元件": {
+    "曾受阻提示": {
+      "發現": "162.150第一波自然見曾受阻3人；560.271第四波準備曾受阻10人與10待命。",
+      "理解": "明寫保留失敗記錄，不代表現在仍卡住。",
+      "第一次細節": "約201秒用公開ref回CONTROL_NOT_VISIBLE_OR_ENABLED；不能歸玩家不會或已成功。",
+      "座標細節": "569.312點可見細節，569.983展開：上次壅塞10、無法到達0。",
+      "選出": "584.246按選出這組10人，584.972已選10／全軍16且10待命。",
+      "原生命令": "594.340右鍵(1027,319)，意圖移至城心東北旁疏開。",
+      "效果": "595.064為9移動1待命，616.045為9待命1自主接敵；不證明到達預期空地、當下疏通成功或減少受擊。落點hover房屋300/300，不能宣稱點了純空地。",
+      "後續": "626.533重新援護全軍，637.284為17護衛1待命。",
+      "結果": "理解記錄和可選組；疏通、勝敗收益UNKNOWN。",
+      "證據": [
+        "screen-0013.png",
+        "screen-0016.png",
+        "screen-0044.png",
+        "screen-0045.png",
+        "screen-0046.png",
+        "screen-0048.png",
+        "screen-0049.png",
+        "screen-0050.png"
+      ]
+    },
+    "選卡圖譜": {
+      "發現": "第一波選卡自然出現右側分類圖譜、候選與文明說明。",
+      "理解": "①②③是本次候選，金色已持有；藍邊建議不改抽取率、虛線不是研究前置。",
+      "使用": "用2選戰地救護、3選火油罐、2選狂信並明確領取；未操作篩選或縮放。",
+      "效果": "候選與領取文字可確認，配卡收益UNKNOWN。"
+    },
+    "其他元件": "未為交差刻意探索；未使用戰術布令、編隊、戰線、科技圖鑑、hold或Tab直控。相關操作效果NOT_OBSERVED。"
+  },
+  "樂趣": [
+    "救援兩名工人→英雄回防，公開結果明確。",
+    "三次選卡能說出續戰、濺射與步兵傷害方向；圖譜能區分候選及持有。",
+    "能看曾壅塞組並重新下令，提供自主嘗試入口；未證補救有效。"
+  ],
+  "低參與": "前三波常援護、等敵人與技能，主動改變戰局理解有限；不把所有等候當無聊或歸UI，工具及10秒節奏亦占時間。",
+  "前三問題": [
+    "來源列動態更新使想打衝車卻先集火步弓兵；更正最大一擊列後城心已低，仍未解除威脅。",
+    "曾壅塞細節讓原因較可說明，但我不知道哪個位置/命令可及時疏通，18人集火後只8人仍投入。",
+    "食物持續低、木材過千，仍不清補兵支出與缺口；方案有效性難判斷。"
+  ],
+  "再玩意願": "3/5中等，想再試辨識與處理衝車、疏開受阻組；若仍快速失守不懂補救會降低意願，僅AI觀點。",
+  "比較": "前次V2與本次皆第四波敗；擊殺/採集不同，卡牌與操作路徑亦不同，不能單場推論版本勝率或真人留存。",
+  "未知": [
+    "個別命中、射程、抵達與單位死因",
+    "Q增傷/E吸收/卡牌收益",
+    "衝車個別擊殺與減傷因果",
+    "第五波以後與真人體驗"
+  ],
+  "成功原生動作": [
+    {
+      "actionId": "C-1",
+      "wallSeconds": 31.839,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-start",
+        "intent": "法蘭克草海平原普通與公開種子符合，開始全新守城，先觀察第一波。"
+      },
+      "ok": true,
+      "latencyMs": 270
+    },
+    {
+      "actionId": "C-2",
+      "wallSeconds": 42.004,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-pause",
+        "intent": "第一波尚在準備且城心完整，在安全開局暫停保存原生存檔。"
+      },
+      "ok": true,
+      "latencyMs": 134
+    },
+    {
+      "actionId": "C-3",
+      "wallSeconds": 52.079,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-save",
+        "intent": "原生保存目前第一波準備期安全點，不載入或重開。"
+      },
+      "ok": true,
+      "latencyMs": 69
+    },
+    {
+      "actionId": "C-4",
+      "wallSeconds": 62.184,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-resume",
+        "intent": "開局安全存檔已送出，恢復本場準備守城，不載入。"
+      },
+      "ok": true,
+      "latencyMs": 98
+    },
+    {
+      "actionId": "C-5",
+      "wallSeconds": 72.975,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-core-defense",
+        "intent": "第一波準備剩約30秒，先讓現有戰士援護城心，不猜未看到的敵軍入口。"
+      },
+      "ok": true,
+      "latencyMs": 342
+    },
+    {
+      "actionId": "C-6",
+      "wallSeconds": 83.747,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-stewards-hud",
+        "intent": "食物139而木材336，先查看總管是否能改善食物採集與時代成長。"
+      },
+      "ok": true,
+      "latencyMs": 333
+    },
+    {
+      "actionId": "C-7",
+      "wallSeconds": 93.87,
+      "intent": {
+        "op": "select",
+        "selector": "select[name=\"gather\"]",
+        "value": "food",
+        "intent": "食物比木材少，沿用自己理解的食物優先；比例只是目標，不保證立即換人。"
+      },
+      "ok": true,
+      "latencyMs": 87
+    },
+    {
+      "actionId": "C-8",
+      "wallSeconds": 104.044,
+      "intent": {
+        "op": "select",
+        "selector": "select[name=\"age\"]",
+        "value": "auto",
+        "intent": "讓時代隨條件成長，自動升時代；目前不知道何時資源足夠。"
+      },
+      "ok": true,
+      "latencyMs": 115
+    },
+    {
+      "actionId": "C-9",
+      "wallSeconds": 114.326,
+      "intent": {
+        "op": "click",
+        "selector": "#steward-apply",
+        "intent": "套用食物優先與自動時代，回戰場守第一波。"
+      },
+      "ok": true,
+      "latencyMs": 234
+    },
+    {
+      "actionId": "C-10",
+      "wallSeconds": 170.473,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-core-defense",
+        "intent": "城心98%且來源未確認，現全軍7但只選4，重新援護全軍以處理可見攻城心敵人。"
+      },
+      "ok": true,
+      "latencyMs": 272
+    },
+    {
+      "actionId": "C-11",
+      "wallSeconds": 180.819,
+      "intent": {
+        "op": "click",
+        "selector": "@rw-ui-2712a402-c27f-41e1-9a4b-81897a16a011-86",
+        "intent": "上次城心實損來源刀盾兵，讓已選7名戰士反擊這列確認來源，希望減少後續城心受擊。"
+      },
+      "ok": true,
+      "latencyMs": 283
+    },
+    {
+      "actionId": "C-12",
+      "wallSeconds": 190.922,
+      "intent": {
+        "op": "key",
+        "key": "e",
+        "intent": "附近可護11人且士兵已失血，施神盾維持防線；尚未確認反擊造成個別傷害。"
+      },
+      "ok": true,
+      "latencyMs": 105
+    },
+    {
+      "actionId": "C-13",
+      "wallSeconds": 214.253,
+      "intent": {
+        "op": "key",
+        "key": "2",
+        "intent": "第一波士兵有損血，選戰地救護讓傷害回復生命，希望延續守城兵力；不把文明主題當前置。"
+      },
+      "ok": true,
+      "latencyMs": 13
+    },
+    {
+      "actionId": "C-14",
+      "wallSeconds": 224.347,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-claim",
+        "intent": "確認領取戰地救護，接續自然第二波。"
+      },
+      "ok": true,
+      "latencyMs": 87
+    },
+    {
+      "actionId": "C-15",
+      "wallSeconds": 234.76,
+      "intent": {
+        "op": "click",
+        "selector": "@rw-ui-2712a402-c27f-41e1-9a4b-81897a16a011-27",
+        "intent": "第二波仍有準備時間，派英雄救援工人以補經濟，士兵留城心；完成後要注意回防。"
+      },
+      "ok": true,
+      "latencyMs": 348
+    },
+    {
+      "actionId": "C-16",
+      "wallSeconds": 245.052,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-core-defense",
+        "intent": "第二波將到，舊選7人待命，重新援護城心，英雄救援不納入軍令。"
+      },
+      "ok": true,
+      "latencyMs": 272
+    },
+    {
+      "actionId": "C-17",
+      "wallSeconds": 258.184,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-hero-core-guard",
+        "intent": "兩名工人已獲救，第二波將到，命英雄護衛城心回到士兵附近供技能防線使用。"
+      },
+      "ok": true,
+      "latencyMs": 216
+    },
+    {
+      "actionId": "C-18",
+      "wallSeconds": 293.935,
+      "intent": {
+        "op": "click",
+        "selector": "@rw-ui-2712a402-c27f-41e1-9a4b-81897a16a011-86",
+        "intent": "第二波城心93%，當前確認刀盾兵造成實損，讓7名已選戰士反擊該來源以解除受擊。"
+      },
+      "ok": true,
+      "latencyMs": 234
+    },
+    {
+      "actionId": "C-19",
+      "wallSeconds": 304.065,
+      "intent": {
+        "op": "key",
+        "key": "e",
+        "intent": "第二波13名敵人，神盾可護9人，想保持士兵存活；剛才反擊接受但已變自主接敵，原目標是否死亡未知。"
+      },
+      "ok": true,
+      "latencyMs": 89
+    },
+    {
+      "actionId": "C-20",
+      "wallSeconds": 314.133,
+      "intent": {
+        "op": "key",
+        "key": "q",
+        "intent": "附近正交戰且標記可施放，用標記協助解決附近敵人；不假設指定哪一隻。"
+      },
+      "ok": true,
+      "latencyMs": 74
+    },
+    {
+      "actionId": "C-21",
+      "wallSeconds": 325.211,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-core-defense",
+        "intent": "城心85%，五人待命而仍13敵，援護全軍讓其處理城心附近攻擊者，不追剛才目標。"
+      },
+      "ok": true,
+      "latencyMs": 267
+    },
+    {
+      "actionId": "C-22",
+      "wallSeconds": 359.11,
+      "intent": {
+        "op": "key",
+        "key": "3",
+        "intent": "第二波敵人聚群，選火油罐讓遠程濺射幫忙守城；現有步弓兵可用，未量測傷害收益。"
+      },
+      "ok": true,
+      "latencyMs": 27
+    },
+    {
+      "actionId": "C-23",
+      "wallSeconds": 369.25,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-claim",
+        "intent": "領取選定火油罐，繼續第三波。"
+      },
+      "ok": true,
+      "latencyMs": 137
+    },
+    {
+      "actionId": "C-24",
+      "wallSeconds": 385.348,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-stewards-hud",
+        "intent": "上波13敵而目前9戰士，想看軍事生產能否偏守城，木材多但食物仍低，先查看規劃。"
+      },
+      "ok": true,
+      "latencyMs": 292
+    },
+    {
+      "actionId": "C-25",
+      "wallSeconds": 395.667,
+      "intent": {
+        "op": "click",
+        "selector": "@rw-ui-2712a402-c27f-41e1-9a4b-81897a16a011-178",
+        "intent": "看軍事生產方案是否有防守方向，食物採集10人但仍32，尚未知各項支出。"
+      },
+      "ok": true,
+      "latencyMs": 277
+    },
+    {
+      "actionId": "C-26",
+      "wallSeconds": 405.831,
+      "intent": {
+        "op": "select",
+        "selector": "select[name=\"army\"]",
+        "value": "defense",
+        "intent": "持續以守城為目標，改防守優先生產；手動佇列與逐建築設定優先，不當即時兵力。"
+      },
+      "ok": true,
+      "latencyMs": 117
+    },
+    {
+      "actionId": "C-27",
+      "wallSeconds": 416.179,
+      "intent": {
+        "op": "click",
+        "selector": "#steward-apply",
+        "intent": "套用防守優先回戰場，其他規劃不變。"
+      },
+      "ok": true,
+      "latencyMs": 295
+    },
+    {
+      "actionId": "C-28",
+      "wallSeconds": 429.843,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-core-defense",
+        "intent": "第三波要來，全軍已10但選8，援護讓新兵也守城。"
+      },
+      "ok": true,
+      "latencyMs": 263
+    },
+    {
+      "actionId": "C-29",
+      "wallSeconds": 458.582,
+      "intent": {
+        "op": "click",
+        "selector": "@rw-ui-2712a402-c27f-41e1-9a4b-81897a16a011-86",
+        "intent": "第三波城心94%，上次長槍兵實損，反擊當前這列希望解除持續攻城心威脅。"
+      },
+      "ok": true,
+      "latencyMs": 254
+    },
+    {
+      "actionId": "C-30",
+      "wallSeconds": 498.964,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-core-defense",
+        "intent": "城心89%、輕騎兵實損，9名已選待命，重新援護全軍讓防線處理眼前威脅。"
+      },
+      "ok": true,
+      "latencyMs": 353
+    },
+    {
+      "actionId": "C-31",
+      "wallSeconds": 509.098,
+      "intent": {
+        "op": "key",
+        "key": "q",
+        "intent": "第三波仍有敵人且標記可用，協助眼前交戰，希望加快解除威脅。"
+      },
+      "ok": true,
+      "latencyMs": 128
+    },
+    {
+      "actionId": "C-32",
+      "wallSeconds": 519.219,
+      "intent": {
+        "op": "key",
+        "key": "e",
+        "intent": "第三波城心81%且16敵，神盾可護11人，希望保住守城士兵。"
+      },
+      "ok": true,
+      "latencyMs": 115
+    },
+    {
+      "actionId": "C-33",
+      "wallSeconds": 548.95,
+      "intent": {
+        "op": "key",
+        "key": "2",
+        "intent": "第三波過關，選狂信強化現有步兵傷害與攻速，希望下波更快解除威脅。"
+      },
+      "ok": true,
+      "latencyMs": 28
+    },
+    {
+      "actionId": "C-34",
+      "wallSeconds": 559.189,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-claim",
+        "intent": "領取狂信，接續第四波。"
+      },
+      "ok": true,
+      "latencyMs": 189
+    },
+    {
+      "actionId": "C-35",
+      "wallSeconds": 569.312,
+      "intent": {
+        "op": "click",
+        "x": 652,
+        "y": 801,
+        "intent": "第四波準備期，10人曾受阻又待命，想展開可見記錄細節，先理解原因再決定是否改令。"
+      },
+      "ok": true,
+      "latencyMs": 106
+    },
+    {
+      "actionId": "C-36",
+      "wallSeconds": 584.246,
+      "intent": {
+        "op": "click",
+        "selector": "@rw-ui-2712a402-c27f-41e1-9a4b-81897a16a011-80",
+        "intent": "細節說上次壅塞10人、無法到達0，選出這組看看能否改在城心附近散開，不認定現在仍受阻。"
+      },
+      "ok": true,
+      "latencyMs": 312
+    },
+    {
+      "actionId": "C-37",
+      "wallSeconds": 594.34,
+      "intent": {
+        "op": "click",
+        "x": 1027,
+        "y": 319,
+        "button": "right",
+        "intent": "已選出曾壅塞10人，目前10人待命；右鍵城心東北旁可見空地，想疏開並留近防線，觀察有沒有移動。"
+      },
+      "ok": true,
+      "latencyMs": 95
+    },
+    {
+      "actionId": "C-38",
+      "wallSeconds": 626.533,
+      "intent": {
+        "op": "click",
+        "selector": "#btn-core-defense",
+        "intent": "第四波10敵、城心88%，改令的9人已待命且上次來源未確認，先讓全軍18援護城心。"
+      },
+      "ok": true,
+      "latencyMs": 314
+    },
+    {
+      "actionId": "C-39",
+      "wallSeconds": 636.626,
+      "intent": {
+        "op": "key",
+        "key": "q",
+        "intent": "附近已有交戰且標記可用，配合援護加快解決敵軍；不假設指定單一兵種。"
+      },
+      "ok": true,
+      "latencyMs": 106
+    },
+    {
+      "actionId": "C-40",
+      "wallSeconds": 646.73,
+      "intent": {
+        "op": "hover",
+        "x": 920,
+        "y": 323
+      },
+      "ok": true,
+      "latencyMs": 94
+    },
+    {
+      "actionId": "C-41",
+      "wallSeconds": 657.164,
+      "intent": {
+        "op": "click",
+        "selector": "@rw-ui-2712a402-c27f-41e1-9a4b-81897a16a011-86",
+        "intent": "衝車已造成−127.8 HP，城心70%，反擊這筆確認來源讓18人集火，希望阻止後續大傷害。"
+      },
+      "ok": true,
+      "latencyMs": 352
+    },
+    {
+      "actionId": "C-42",
+      "wallSeconds": 673.607,
+      "intent": {
+        "op": "click",
+        "selector": "@rw-ui-2712a402-c27f-41e1-9a4b-81897a16a011-209",
+        "intent": "剛才想打衝車卻見18人集火步弓兵，來源列變動；城心36%，現在改按最大一擊衝車這列反擊，希望確實指定衝車。"
+      },
+      "ok": true,
+      "latencyMs": 317
+    },
+    {
+      "actionId": "C-43",
+      "wallSeconds": 687.867,
+      "intent": {
+        "op": "key",
+        "key": "q",
+        "intent": "城心25%且18人集火衝車，標記可用，想加快附近敵人受傷；英雄在衝車附近但不保證指定衝車。"
+      },
+      "ok": true,
+      "latencyMs": 134
+    }
+  ],
+  "公開觀察": [
+    {
+      "wallSeconds": 26.839,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0002.png",
+      "text": "世紀帝國二\n世紀帝國二：\n裂境守望\n裂界已然開啟。十次襲擊橫亙在你的人民與匯流之地之間。\n文明\n軍事人口上限 40 · 騎兵生命 +60% · 步兵成本 −10%。\n地貌\n60% 開闊地 · 每幕一次側風，預警 8 秒後箭速 −15%，持續 12 秒\n難度\n調整普通敵軍數量與準備時間；Boss 屬性保持不變。\n種子\n↻\n相同種子，相同邊境。\n語言\nStart Game\n開局規則\n玩法說明\n設定\nGM 工具\n16\n文明\n10\n襲擊\n32\n恩賜\n始於 1152\n「當世界交會之處，總得有人守望。」\n—《匯流編年史》\n原創 2D 即時輕度 Roguelite\n⚜\n在裂界守望\nv2-recorded-order-group\nPLAYTEST · 28759c7",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 36.096,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0004.png",
+      "text": "世紀帝國II · 裂境守望\n300\n300\n120\n100\n5\n/\n40\n軍\n8\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 I 波／共 X 波\n初次襲擊\n0:40\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n封建時代\n已得恩賜\n0\n斥候報告 · 下次襲擊\n0:40\n主力部隊\n刀盾兵 · 步弓兵 · 長槍兵\n襲擊事件\n獵殺\n可能入口\n北境火堆 / 赤紅營地\n十次襲擊橫亙在法蘭克與裂界之間。守住城鎮中心。\n你的裂界守望者已就緒。按 Tab 直接操控，Q 標記，E 神盾。\n自動總管已啟用。暫停選單可開關援助。\n領主隨從\n選擇單位或建築\n—\n點選單位\n·\n拖曳框選\n右鍵資源採集 · 右鍵敵人攻擊\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n4 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 6 人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 0／全軍 4\n未選戰士；F2 可選全軍。\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 45.797,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0005.png",
+      "text": "世紀帝國II · 裂境守望\n301\n310\n120\n100\n5\n/\n40\n軍\n8\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 I 波／共 X 波\n初次襲擊\n0:34\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n封建時代\n已得恩賜\n0\n斥候報告 · 下次襲擊\n0:34\n主力部隊\n刀盾兵 · 步弓兵 · 長槍兵\n襲擊事件\n獵殺\n可能入口\n北境火堆 / 赤紅營地\n領主隨從\n選擇單位或建築\n—\n點選單位\n·\n拖曳框選\n右鍵資源採集 · 右鍵敵人攻擊\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\n戰事暫歇\n世紀帝國二：裂境守望\n已暫停\n「守住陣線。裂界終將平息。」\n村務總管\n分派村民；於總管規劃設定建築與時代升級。\n軍務總管\n自動訓練士兵並讓兵營持續運作\n總管規劃\n繼續\n戰術布令・時間已暫停\n儲存遠征\n設定\nGM 工具\n重新開始\n放棄並返回選單\n科技／圖鑑\nPLAYTEST · 28759c7",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 55.755,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0006.png",
+      "text": "世紀帝國II · 裂境守望\n301\n310\n120\n100\n5\n/\n40\n軍\n8\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 I 波／共 X 波\n初次襲擊\n0:34\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n封建時代\n已得恩賜\n0\n斥候報告 · 下次襲擊\n0:34\n主力部隊\n刀盾兵 · 步弓兵 · 長槍兵\n襲擊事件\n獵殺\n可能入口\n北境火堆 / 赤紅營地\n領主隨從\n選擇單位或建築\n—\n點選單位\n·\n拖曳框選\n右鍵資源採集 · 右鍵敵人攻擊\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\n戰事暫歇\n世紀帝國二：裂境守望\n已暫停\n「守住陣線。裂界終將平息。」\n村務總管\n分派村民；於總管規劃設定建築與時代升級。\n軍務總管\n自動訓練士兵並讓兵營持續運作\n總管規劃\n繼續\n戰術布令・時間已暫停\n儲存遠征\n設定\nGM 工具\n重新開始\n放棄並返回選單\n科技／圖鑑\nPLAYTEST · 28759c7",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 67.002,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0007.png",
+      "text": "世紀帝國II · 裂境守望\n220\n316\n130\n100\n5\n/\n40\n軍\n8\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 I 波／共 X 波\n初次襲擊\n0:30\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n封建時代\n已得恩賜\n0\n斥候報告 · 下次襲擊\n0:30\n主力部隊\n刀盾兵 · 步弓兵 · 長槍兵\n襲擊事件\n獵殺\n可能入口\n北境火堆 / 赤紅營地\n領主隨從\n選擇單位或建築\n—\n點選單位\n·\n拖曳框選\n右鍵資源採集 · 右鍵敵人攻擊\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n4 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 6 人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 0／全軍 4\n未選戰士；F2 可選全軍。\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 78.97,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0008.png",
+      "text": "世紀帝國II · 裂境守望\n139\n336\n95\n120\n6\n/\n40\n軍\n9\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 I 波／共 X 波\n初次襲擊\n0:18\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n封建時代\n已得恩賜\n0\n斥候報告 · 下次襲擊\n0:18\n主力部隊\n刀盾兵 · 步弓兵 · 長槍兵\n襲擊事件\n獵殺\n可能入口\n北境火堆 / 赤紅營地\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n4\n4 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n299 / 299\n4\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n5 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 6 人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 4／全軍 5\n4 人護衛城鎮中心\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 86.472,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0009.png",
+      "text": "世紀帝國II · 裂境守望\n140\n356\n95\n120\n6\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 I 波／共 X 波\n初次襲擊\n0:13\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n封建時代\n已得恩賜\n0\n斥候報告 · 下次襲擊\n0:13\n主力部隊\n刀盾兵 · 步弓兵 · 長槍兵\n襲擊事件\n獵殺\n可能入口\n北境火堆 / 赤紅營地\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n4\n4 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n299 / 299\n4\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n總管規劃\n經濟\n建築計畫\n軍事生產\n手動命令優先。儲存後套用設定；開啟此面板會暫停模擬。\n預留: 食物 0 · 木材 0 · 黃金 0 · 石材 0 | 待命\n經濟\n採集／搬運歸屬:\n食物: 3\n·\n木材: 4\n·\n黃金: 2\n·\n石材: 1\n·\n其他工作／未分配: 0\n村民總數: 10\n·\n手動鎖定: 0\n·\n未鎖定: 10\n·\n攜帶資源: 9\n·\n閒置: 0\n每人只計入一項資源或其他類；攜帶資源優先於下一個採集目標。下列狀態可重疊，未鎖定不代表自動經濟已啟用。\n採集策略\n食物 %\n預留 食物\n木材 %\n預留 木材\n黃金 %\n預留 黃金\n石材 %\n預留 石材\n套用後目標比例預覽: 食物 34.0% · 木材 32.0% · 黃金 22.0% · 石材 12.0%\n按總和換算；全零使用均衡比例。這是目標，不保證即時人數；手動任務、搬運與資源可達性仍優先。按套用才儲存。\n村民目標數\n時代升級\n將閒置村民交還總管 (0)\n等待確認\n儲存規劃\n關閉不儲存",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 117.184,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0010.png",
+      "text": "世紀帝國II · 裂境守望\n160\n376\n95\n120\n6\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 I 波／共 X 波\n初次襲擊\n0:10\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n封建時代\n已得恩賜\n0\n斥候報告 · 下次襲擊\n0:10\n主力部隊\n刀盾兵 · 步弓兵 · 長槍兵\n襲擊事件\n獵殺\n可能入口\n北境火堆 / 赤紅營地\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n4\n4 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n299 / 299\n4\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n5 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 8 人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 4／全軍 5\n4 人護衛城鎮中心\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 136.395,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0012.png",
+      "text": "世紀帝國II · 裂境守望\n23\n416\n25\n140\n8\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n初次襲擊\n0 名敵人\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n城堡時代 · 20秒\n已得恩賜\n0\n正在研究城堡時代 — 20 秒。請守住城鎮中心。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n4\n4 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n299 / 299\n4\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n6 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 可護 7 人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 4／全軍 6\n4 人護衛城鎮中心\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 162.15,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0013.png",
+      "text": "世紀帝國II · 裂境守望\n75\n442\n75\n170\n9\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n初次襲擊\n2 名敵人\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n98%\n當前時代\n城堡時代\n已得恩賜\n0\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n4\n4 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n285 / 329\n4\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n7 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 8 人\n城心上次實損 −3.2 HP · 來源未確認 · 局內1:17\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 4／全軍 7\n3 人護衛城鎮中心 · 1 人自主接敵\n已選戰士曾回報受阻：3 人\n選出這組 3 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 173.975,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0014.png",
+      "text": "世紀帝國II · 裂境守望\n127\n462\n95\n180\n9\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n初次襲擊\n5 名敵人\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n98%\n當前時代\n城堡時代\n已得恩賜\n0\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n510 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n7 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 9 人\n城心上次實損 −3.2 HP · 刀盾兵 · 受傷時→ · 局內1:31\n查看\n反擊 7人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 7／全軍 7\n7 人護衛城鎮中心\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 184.067,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0015.png",
+      "text": "世紀帝國II · 裂境守望\n169\n482\n115\n190\n9\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n初次襲擊\n5 名敵人\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n96%\n當前時代\n城堡時代\n已得恩賜\n0\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n484 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n7 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 11 人\n城心上次實損 −3.2 HP · 刀盾兵 · 受傷時→ · 局內1:40\n查看\n反擊 7人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 7／全軍 7\n7 人集火刀盾兵\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 196.24,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0016.png",
+      "text": "世紀帝國II · 裂境守望\n221\n512\n135\n210\n9\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n初次襲擊\n0 名敵人\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n95%\n當前時代\n城堡時代\n已得恩賜\n0\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n458 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n7 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 55s\n城心上次實損 −3.2 HP · 來源未確認 · 局內1:46\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 7／全軍 7\n7 人待命\n已選戰士曾回報受阻：3 人\n選出這組 3 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 209.48,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0018.png",
+      "text": "世紀帝國II · 裂境守望\n301\n572\n155\n210\n9\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已破\n選擇恩賜\n—\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n城堡時代\n已得恩賜\n0\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n529 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\n襲擊已破\n選擇你的恩賜\n舊王國的一份贈禮。它將塑造未來的襲擊。\n已持有恩賜（0/12）：尚無\n普通\n倒鉤繩索\n步兵命中使敵人減速 15%。\n按鍵 1\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。\n稀有\n戰地救護\n士兵以造成傷害的 8% 回復生命。\n按鍵 2\n可支援騎兵或部隊續戰；先確認此文明與目前規則可用的兵種。\n普通\n馬鎧\n騎兵生命 +20%，但移動速度 -6%。\n按鍵 3\n可支援騎兵或部隊續戰；先確認此文明與目前規則可用的兵種。\n領取恩賜\n重抽 · 25 金\n儲存遠征\n1／2／3 聚焦 · Ctrl＋Enter 明確領取\n文明說明\n本局文明：法蘭克 · 軍事人口上限 40 · 騎兵生命 +60% · 步兵成本 −10%。\n功能\n稀有度\n狀態\n全覽三張候選\n全部卡牌\n−\n120%\n＋\n已持有恩賜（0/12）：尚無\n① 倒鉤繩索\n② 戰地救護\n③ 馬鎧\n①②③ 本次候選 · ✓ 金色已擁有 · 藍邊文明建議 · 虛線僅為主題關聯，非研究前置；篩選仍保留候選。\n經濟與建設\n步兵與徵召\n徵召名冊\nC03 · 稀有\n戰時輪替\nC08 · 普通\n倒鉤繩索\nC11 · 普通\n①\n偏折盾\nC12 · 稀有\n狂信\nC26 · 稀有\n騎兵與士氣\n戰象契約\nC05 · 稀有\n戰地救護\nC13 · 稀有\n②\n老兵榮譽\nC16 · 傳承\n馬鎧\nC19 · 普通\n③\n戰旗\nC21 · 稀有\n遠程與彈道\n遠望教條\nC01 · 普通\n連動弩架\nC02 · 稀有\n重箭頭\nC09 · 稀有\n火油罐\nC10 · 稀有\n共鳴弓弦\nC15 · 稀有\n黑火藥\nC31 · 傳奇\n攻城與守禦\n巡邏補給站\nC06 · 普通\n破片彈\nC14 · 稀有\n夜巡\nC22 · 普通\n攻城數學\nC25 · 稀有\n撤退旗幟\nC29 · 稀有\n青銅誓約\nC30 · 稀有\n特種與裂境\n誘餌車\nC17 · 普通\n共享誓約\nC18 · 傳承\n救援令狀\nC23 · 傳奇\n裂界原型\nC24 · 傳奇\n裂界回聲\nC32 · 傳奇\n倒鉤繩索\nC11 · 普通\n步兵命中使敵人減速 15%。\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。 全文明共用隨機池；建議不改機率，也不保證出現或額外疊加。\nPLAYTEST · 28759c7",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 219.583,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0019.png",
+      "text": "世紀帝國II · 裂境守望\n301\n572\n155\n210\n9\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已破\n選擇恩賜\n—\n最後行軍\n挺過襲擊\n0 / 10\n守住城鎮中心\n100%\n當前時代\n城堡時代\n已得恩賜\n0\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n529 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 I 日\n你的領地\n掠襲者\n點擊巡視\n襲擊已破\n選擇你的恩賜\n舊王國的一份贈禮。它將塑造未來的襲擊。\n已持有恩賜（0/12）：尚無\n普通\n倒鉤繩索\n步兵命中使敵人減速 15%。\n按鍵 1\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。\n稀有\n戰地救護\n士兵以造成傷害的 8% 回復生命。\n按鍵 2\n可支援騎兵或部隊續戰；先確認此文明與目前規則可用的兵種。\n普通\n馬鎧\n騎兵生命 +20%，但移動速度 -6%。\n按鍵 3\n可支援騎兵或部隊續戰；先確認此文明與目前規則可用的兵種。\n領取：戰地救護\n重抽 · 25 金\n儲存遠征\n1／2／3 聚焦 · Ctrl＋Enter 明確領取\n文明說明\n本局文明：法蘭克 · 軍事人口上限 40 · 騎兵生命 +60% · 步兵成本 −10%。\n功能\n稀有度\n狀態\n全覽三張候選\n全部卡牌\n−\n120%\n＋\n已持有恩賜（0/12）：尚無\n① 倒鉤繩索\n② 戰地救護\n③ 馬鎧\n①②③ 本次候選 · ✓ 金色已擁有 · 藍邊文明建議 · 虛線僅為主題關聯，非研究前置；篩選仍保留候選。\n經濟與建設\n輕型車軸\nC04 · 普通\n公民武備\nC07 · 普通\n馱騾\nC20 · 普通\n金牙\nC27 · 普通\n屠夫之債\nC28 · 普通\n步兵與徵召\n徵召名冊\nC03 · 稀有\n戰時輪替\nC08 · 普通\n倒鉤繩索\nC11 · 普通\n①\n偏折盾\nC12 · 稀有\n狂信\nC26 · 稀有\n騎兵與士氣\n戰象契約\nC05 · 稀有\n戰地救護\nC13 · 稀有\n②\n老兵榮譽\nC16 · 傳承\n馬鎧\nC19 · 普通\n③\n戰旗\nC21 · 稀有\n遠程與彈道\n遠望教條\nC01 · 普通\n連動弩架\nC02 · 稀有\n重箭頭\nC09 · 稀有\n火油罐\nC10 · 稀有\n共鳴弓弦\nC15 · 稀有\n黑火藥\nC31 · 傳奇\n攻城與守禦\n巡邏補給站\nC06 · 普通\n破片彈\nC14 · 稀有\n夜巡\nC22 · 普通\n攻城數學\nC25 · 稀有\n撤退旗幟\nC29 · 稀有\n青銅誓約\nC30 · 稀有\n戰地救護\nC13 · 稀有\n士兵以造成傷害的 8% 回復生命。\n可支援騎兵或部隊續戰；先確認此文明與目前規則可用的兵種。 全文明共用隨機池；建議不改機率，也不保證出現或額外疊加。\nPLAYTEST · 28759c7",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 228.564,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0021.png",
+      "text": "世紀帝國II · 裂境守望\n332\n577\n165\n210\n9\n/\n40\n軍\n10\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 II 波／共 X 波\n燃燒的田野\n0:25\n最後行軍\n挺過襲擊\n1 / 10\n守住城鎮中心\n100%\n當前時代\n城堡時代\n已得恩賜\n1\n斥候報告 · 下次襲擊\n0:25\n主力部隊\n刀盾兵 · 步弓兵 · 長槍兵\n襲擊事件\n絆網\n可能入口\n赤紅營地 / 北境火堆\n已領取恩賜：戰地救護。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n529 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 II 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n7 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 49s\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 7／全軍 7\n7 人待命\n已選戰士曾回報受阻：3 人\n選出這組 3 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n已救援 0/2。離開防線尋找信號，英雄抵達後工人加入並返回城心。信號不揭露敵軍或地形。\n派英雄前往\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 245.84,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0022.png",
+      "text": "世紀帝國II · 裂境守望\n395\n587\n195\n230\n9\n/\n40\n軍\n12\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 II 波／共 X 波\n燃燒的田野\n0:08\n最後行軍\n挺過襲擊\n1 / 10\n守住城鎮中心\n100%\n當前時代\n城堡時代\n已得恩賜\n1\n斥候報告 · 下次襲擊\n0:08\n主力部隊\n刀盾兵 · 步弓兵 · 長槍兵\n襲擊事件\n絆網\n可能入口\n赤紅營地 / 北境火堆\n救出工人！本次已救援 1/2。\n救出工人！本次已救援 2/2。\n已令7名戰士護衛城心。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n529 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 II 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n7 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 32s\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 7／全軍 7\n7 人護衛城鎮中心\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 258.877,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0024.png",
+      "text": "世紀帝國II · 裂境守望\n434\n597\n225\n250\n9\n/\n40\n軍\n12\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n燃燒的田野\n0 名敵人\n最後行軍\n挺過襲擊\n1 / 10\n守住城鎮中心\n100%\n當前時代\n城堡時代\n已得恩賜\n1\n掠襲者自赤紅營地 · 北境火堆逼近。\n英雄護衛命令已下達；尚未表示抵達。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n529 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 II 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n7 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 19s\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 7／全軍 7\n7 人護衛城鎮中心\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 287.344,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0025.png",
+      "text": "世紀帝國II · 裂境守望\n8\n603\n15\n280\n10\n/\n40\n軍\n12\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n燃燒的田野\n6 名敵人\n最後行軍\n挺過襲擊\n1 / 10\n守住城鎮中心\n93%\n當前時代\n帝國時代 · 23秒\n已得恩賜\n1\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n503 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 II 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n8 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 8 人\n城心上次實損 −3.48 HP · 刀盾兵 · 受傷時↘ · 局內2:58\n查看\n反擊 7人\n本波已記錄最大一擊 −5.55 HP · 來源未確認 · 局內2:41\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 7／全軍 8\n4 人自主接敵 · 2 人護衛城鎮中心 · 1 人移動\n已選戰士曾回報受阻：5 人\n選出這組 5 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 294.566,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0026.png",
+      "text": "世紀帝國II · 裂境守望\n9\n613\n35\n280\n10\n/\n40\n軍\n13\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n燃燒的田野\n13 名敵人\n最後行軍\n挺過襲擊\n1 / 10\n守住城鎮中心\n91%\n當前時代\n帝國時代 · 15秒\n已得恩賜\n1\n已令7名已選戰士反擊這筆來源；可手動改令。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n500 / 582\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 II 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n8 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 9 人\n城心上次實損 −3.48 HP · 來源未確認 · 局內3:04\n本波已記錄最大一擊 −5.55 HP · 來源未確認 · 局內2:41\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 7／全軍 8\n7 人自主接敵\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 314.892,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0027.png",
+      "text": "世紀帝國II · 裂境守望\n59\n623\n19\n300\n10\n/\n40\n軍\n13\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n燃燒的田野\n13 名敵人\n最後行軍\n挺過襲擊\n1 / 10\n守住城鎮中心\n85%\n當前時代\n帝國時代\n已得恩賜\n1\n刀盾兵已被標記。士兵對其傷害 +10%，持續 6 秒。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n7\n7 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n543 / 635\n7\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 II 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n8 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 30s\n神盾\nE · 50s\n城心上次實損 −2.45 HP · 步弓兵 · 局內3:25\n查看\n反擊 7人\n本波已記錄最大一擊 −5.55 HP · 來源未確認 · 局內2:41\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 7／全軍 8\n5 人待命 · 2 人自主接敵\n已選戰士曾回報受阻：1 人\n選出這組 1 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 325.887,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0028.png",
+      "text": "世紀帝國II · 裂境守望\n71\n643\n29\n320\n12\n/\n40\n軍\n13\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n燃燒的田野\n8 名敵人\n最後行軍\n挺過襲擊\n1 / 10\n守住城鎮中心\n82%\n當前時代\n帝國時代\n已得恩賜\n1\n已令9名戰士護衛城心。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n9\n9 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n720 / 851\n9\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 II 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n9 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 19s\n神盾\nE · 39s\n城心上次實損 −2.45 HP · 步弓兵 · 局內3:36\n查看\n反擊 9人\n本波已記錄最大一擊 −5.55 HP · 來源未確認 · 局內2:41\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 9／全軍 9\n9 人護衛城鎮中心\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 353.102,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0030.png",
+      "text": "世紀帝國II · 裂境守望\n137\n733\n75\n340\n12\n/\n40\n軍\n15\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已破\n選擇恩賜\n—\n最後行軍\n挺過襲擊\n1 / 10\n守住城鎮中心\n95%\n當前時代\n帝國時代\n已得恩賜\n1\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n8\n8 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n775 / 779\n8\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n2\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 II 日\n你的領地\n掠襲者\n點擊巡視\n襲擊已破\n選擇你的恩賜\n舊王國的一份贈禮。它將塑造未來的襲擊。\n已持有恩賜（1/12）：戰地救護\n普通\n倒鉤繩索\n步兵命中使敵人減速 15%。\n按鍵 1\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。\n普通\n誘餌車\n每次襲擊前派出兩輛誘餌車。\n按鍵 2\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。\n稀有\n火油罐\n遠程命中對附近敵人濺射 45% 傷害。\n按鍵 3\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。\n領取恩賜\n重抽 · 25 金\n儲存遠征\n1／2／3 聚焦 · Ctrl＋Enter 明確領取\n文明說明\n本局文明：法蘭克 · 軍事人口上限 40 · 騎兵生命 +60% · 步兵成本 −10%。\n功能\n稀有度\n狀態\n全覽三張候選\n全部卡牌\n−\n111%\n＋\n已持有恩賜（1/12）：戰地救護\n① 倒鉤繩索\n② 誘餌車\n③ 火油罐\n①②③ 本次候選 · ✓ 金色已擁有 · 藍邊文明建議 · 虛線僅為主題關聯，非研究前置；篩選仍保留候選。\n經濟與建設\n輕型車軸\nC04 · 普通\n公民武備\nC07 · 普通\n馱騾\nC20 · 普通\n金牙\nC27 · 普通\n屠夫之債\nC28 · 普通\n步兵與徵召\n徵召名冊\nC03 · 稀有\n戰時輪替\nC08 · 普通\n倒鉤繩索\nC11 · 普通\n①\n偏折盾\nC12 · 稀有\n狂信\nC26 · 稀有\n騎兵與士氣\n戰象契約\nC05 · 稀有\n戰地救護\nC13 · 稀有\n✓\n老兵榮譽\nC16 · 傳承\n馬鎧\nC19 · 普通\n戰旗\nC21 · 稀有\n遠程與彈道\n遠望教條\nC01 · 普通\n連動弩架\nC02 · 稀有\n重箭頭\nC09 · 稀有\n火油罐\nC10 · 稀有\n③\n共鳴弓弦\nC15 · 稀有\n黑火藥\nC31 · 傳奇\n攻城與守禦\n巡邏補給站\nC06 · 普通\n破片彈\nC14 · 稀有\n夜巡\nC22 · 普通\n攻城數學\nC25 · 稀有\n撤退旗幟\nC29 · 稀有\n青銅誓約\nC30 · 稀有\n特種與裂境\n誘餌車\nC17 · 普通\n②\n共享誓約\nC18 · 傳承\n救援令狀\nC23 · 傳奇\n裂界原型\nC24 · 傳奇\n裂界回聲\nC32 · 傳奇\n倒鉤繩索\nC11 · 普通\n步兵命中使敵人減速 15%。\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。 全文明共用隨機池；建議不改機率，也不保證出現或額外疊加。\nPLAYTEST · 28759c7",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 374.246,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0032.png",
+      "text": "世紀帝國II · 裂境守望\n106\n763\n85\n350\n12\n/\n40\n軍\n15\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 III 波／共 X 波\n鋼鐵浪潮\n0:25\n最後行軍\n挺過襲擊\n2 / 10\n守住城鎮中心\n95%\n當前時代\n帝國時代\n已得恩賜\n2\n斥候報告 · 下次襲擊\n0:25\n主力部隊\n長槍兵 · 步弓兵 · 輕騎兵\n襲擊事件\n封鎖\n可能入口\n北境火堆 / 赤紅營地\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n8\n8 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n774 / 779\n8\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 III 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n9 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 1s\n神盾\nE · 21s\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 8／全軍 9\n8 人護衛城鎮中心\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 385.88,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0033.png",
+      "text": "世紀帝國II · 裂境守望\n32\n783\n96\n360\n13\n/\n40\n軍\n16\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 III 波／共 X 波\n鋼鐵浪潮\n0:13\n最後行軍\n挺過襲擊\n2 / 10\n守住城鎮中心\n95%\n當前時代\n帝國時代\n已得恩賜\n2\n斥候報告 · 下次襲擊\n0:13\n主力部隊\n長槍兵 · 步弓兵 · 輕騎兵\n襲擊事件\n封鎖\n可能入口\n北境火堆 / 赤紅營地\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n8\n8 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n774 / 779\n8\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 III 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n總管規劃\n經濟\n建築計畫\n軍事生產\n手動命令優先。儲存後套用設定；開啟此面板會暫停模擬。\n預留: 食物 0 · 木材 0 · 黃金 0 · 石材 0 | 待命\n經濟\n採集／搬運歸屬:\n食物: 10\n·\n木材: 3\n·\n黃金: 2\n·\n石材: 1\n·\n其他工作／未分配: 0\n村民總數: 16\n·\n手動鎖定: 0\n·\n未鎖定: 16\n·\n攜帶資源: 13\n·\n閒置: 0\n每人只計入一項資源或其他類；攜帶資源優先於下一個採集目標。下列狀態可重疊，未鎖定不代表自動經濟已啟用。\n採集策略\n食物 %\n預留 食物\n木材 %\n預留 木材\n黃金 %\n預留 黃金\n石材 %\n預留 石材\n套用後目標比例預覽: 食物 64.0% · 木材 16.0% · 黃金 12.0% · 石材 8.0%\n按總和換算；全零使用均衡比例。這是目標，不保證即時人數；手動任務、搬運與資源可達性仍優先。按套用才儲存。\n村民目標數\n時代升級\n將閒置村民交還總管 (0)\n等待確認\n儲存規劃\n關閉不儲存",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 396.121,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0034.png",
+      "text": "世紀帝國II · 裂境守望\n32\n783\n96\n360\n13\n/\n40\n軍\n16\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 III 波／共 X 波\n鋼鐵浪潮\n0:13\n最後行軍\n挺過襲擊\n2 / 10\n守住城鎮中心\n95%\n當前時代\n帝國時代\n已得恩賜\n2\n斥候報告 · 下次襲擊\n0:13\n主力部隊\n長槍兵 · 步弓兵 · 輕騎兵\n襲擊事件\n封鎖\n可能入口\n北境火堆 / 赤紅營地\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n8\n8 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n774 / 779\n8\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 III 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n經濟\n建築計畫\n軍事生產\n漁屋\n軍事生產\n全軍方案\n逐建築設定優先於全軍方案。手動佇列優先；所有自動支出先扣除預留。\n依已套用設定\n兵營 #2 (0/5)\n儲存並繼續遊戲；條件達成後，重新開啟以確認提案。\n等待確認\n儲存規劃\n關閉不儲存",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 423.62,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0035.png",
+      "text": "世紀帝國II · 裂境守望\n81\n779\n106\n360\n13\n/\n40\n軍\n17\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 III 波／共 X 波\n鋼鐵浪潮\n0:06\n最後行軍\n挺過襲擊\n2 / 10\n守住城鎮中心\n95%\n當前時代\n帝國時代\n已得恩賜\n2\n斥候報告 · 下次襲擊\n0:06\n主力部隊\n長槍兵 · 步弓兵 · 輕騎兵\n襲擊事件\n封鎖\n可能入口\n北境火堆 / 赤紅營地\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n8\n8 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n774 / 779\n8\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 III 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n10 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 3s\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 8／全軍 10\n8 人護衛城鎮中心\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 451.183,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0037.png",
+      "text": "世紀帝國II · 裂境守望\n64\n845\n111\n390\n15\n/\n40\n軍\n18\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n鋼鐵浪潮\n10 名敵人\n最後行軍\n挺過襲擊\n2 / 10\n守住城鎮中心\n94%\n當前時代\n帝國時代\n已得恩賜\n2\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n11\n11 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n977 / 983\n11\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 III 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n12 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 12 人\n城心上次實損 −1.62 HP · 長槍兵 · 受傷時→ · 局內4:40\n查看\n反擊 11人\n本波已記錄最大一擊 −2.69 HP · 步弓兵 · 局內4:37\n查看\n反擊 11人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 11／全軍 12\n10 人護衛城鎮中心 · 1 人自主接敵\n已選戰士曾回報受阻：1 人\n選出這組 1 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 459.307,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0038.png",
+      "text": "世紀帝國II · 裂境守望\n66\n875\n121\n400\n15\n/\n40\n軍\n18\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n鋼鐵浪潮\n1 名敵人\n最後行軍\n挺過襲擊\n2 / 10\n守住城鎮中心\n92%\n當前時代\n帝國時代\n已得恩賜\n2\n已令11名已選戰士反擊這筆來源；可手動改令。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n11\n11 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n981 / 983\n11\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 III 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n12 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 12 人\n城心上次實損 −2.69 HP · 來源未確認 · 局內4:47\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 11／全軍 12\n9 人自主接敵 · 2 人待命\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 489.688,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0039.png",
+      "text": "世紀帝國II · 裂境守望\n59\n921\n171\n440\n18\n/\n40\n軍\n21\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n鋼鐵浪潮\n4 名敵人\n最後行軍\n挺過襲擊\n2 / 10\n守住城鎮中心\n89%\n當前時代\n帝國時代\n已得恩賜\n2\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n11\n11 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n981 / 983\n11\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n3\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 III 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n14 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 12 人\n城心上次實損 −5.9 HP · 輕騎兵 · 受傷時↓ · 局內5:18\n查看\n反擊 11人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 11／全軍 14\n9 人待命 · 2 人自主接敵\n已選戰士曾回報受阻：1 人\n選出這組 1 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 509.853,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0040.png",
+      "text": "世紀帝國II · 裂境守望\n23\n971\n201\n470\n19\n/\n40\n軍\n21\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n鋼鐵浪潮\n16 名敵人\n最後行軍\n挺過襲擊\n2 / 10\n守住城鎮中心\n81%\n當前時代\n帝國時代\n已得恩賜\n2\n步弓兵已被標記。士兵對其傷害 +10%，持續 6 秒。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n15\n15 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1277 / 1319\n15\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 III 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n15 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 30s\n神盾\nE · 可護 11 人\n城心上次實損 −5.9 HP · 輕騎兵 · 受傷時↘ · 局內5:39\n查看\n反擊 15人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 15／全軍 15\n15 人護衛城鎮中心\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 540.631,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0042.png",
+      "text": "世紀帝國II · 裂境守望\n131\n1,116\n272\n505\n20\n/\n40\n軍\n21\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已破\n選擇恩賜\n—\n最後行軍\n挺過襲擊\n2 / 10\n守住城鎮中心\n89%\n當前時代\n帝國時代\n已得恩賜\n2\n襲擊已破。戰利品：食物 +100、木材 +75、黃金 +30。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n15\n15 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1303 / 1319\n15\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 III 日\n你的領地\n掠襲者\n點擊巡視\n襲擊已破\n選擇你的恩賜\n舊王國的一份贈禮。它將塑造未來的襲擊。\n已持有恩賜（2/12）：戰地救護 · 火油罐\n普通\n金牙\n每擊殺一名掠襲者額外獲得 2 黃金。立即獲得 120 黃金。\n按鍵 1\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。\n稀有\n狂信\n步兵傷害 +15%，攻擊速度 +10%。\n按鍵 2\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。\n普通\n馱騾\n村民負重 +7，移動速度 +12%。\n按鍵 3\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。\n領取恩賜\n重抽 · 25 金\n儲存遠征\n1／2／3 聚焦 · Ctrl＋Enter 明確領取\n文明說明\n本局文明：法蘭克 · 軍事人口上限 40 · 騎兵生命 +60% · 步兵成本 −10%。\n功能\n稀有度\n狀態\n全覽三張候選\n全部卡牌\n−\n120%\n＋\n已持有恩賜（2/12）：戰地救護 · 火油罐\n① 金牙\n② 狂信\n③ 馱騾\n①②③ 本次候選 · ✓ 金色已擁有 · 藍邊文明建議 · 虛線僅為主題關聯，非研究前置；篩選仍保留候選。\n經濟與建設\n輕型車軸\nC04 · 普通\n公民武備\nC07 · 普通\n馱騾\nC20 · 普通\n③\n金牙\nC27 · 普通\n①\n屠夫之債\nC28 · 普通\n步兵與徵召\n徵召名冊\nC03 · 稀有\n戰時輪替\nC08 · 普通\n倒鉤繩索\nC11 · 普通\n偏折盾\nC12 · 稀有\n狂信\nC26 · 稀有\n②\n騎兵與士氣\n戰象契約\nC05 · 稀有\n戰地救護\nC13 · 稀有\n✓\n老兵榮譽\nC16 · 傳承\n馬鎧\nC19 · 普通\n戰旗\nC21 · 稀有\n遠程與彈道\n遠望教條\nC01 · 普通\n連動弩架\nC02 · 稀有\n重箭頭\nC09 · 稀有\n火油罐\nC10 · 稀有\n✓\n共鳴弓弦\nC15 · 稀有\n黑火藥\nC31 · 傳奇\n攻城與守禦\n巡邏補給站\nC06 · 普通\n破片彈\nC14 · 稀有\n夜巡\nC22 · 普通\n攻城數學\nC25 · 稀有\n撤退旗幟\nC29 · 稀有\n青銅誓約\nC30 · 稀有\n金牙\nC27 · 普通\n每擊殺一名掠襲者額外獲得 2 黃金。立即獲得 120 黃金。\n這張卡供所有文明抽取；是否適合取決於目前部隊與構築。 全文明共用隨機池；建議不改機率，也不保證出現或額外疊加。\nPLAYTEST · 28759c7",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 560.271,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0044.png",
+      "text": "世紀帝國II · 裂境守望\n131\n1,126\n272\n515\n20\n/\n40\n軍\n21\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 IV 波／共 X 波\n破碎誓約\n0:28\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n89%\n當前時代\n帝國時代\n已得恩賜\n3\n斥候報告 · 下次襲擊\n0:28\n主力部隊\n刀盾兵 · 步弓兵 · 弓騎兵\n襲擊事件\n勇士對決\n可能入口\n北境火堆 / 沉沒沼澤\n已領取恩賜：狂信。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n15\n15 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1303 / 1319\n15\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n16 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 2s\n神盾\nE · 42s\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 15／全軍 16\n10 人待命 · 5 人護衛城鎮中心\n已選戰士曾回報受阻：10 人\n選出這組 10 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 569.983,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0045.png",
+      "text": "世紀帝國II · 裂境守望\n185\n1,156\n292\n525\n20\n/\n40\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 IV 波／共 X 波\n破碎誓約\n0:19\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n89%\n當前時代\n帝國時代\n已得恩賜\n3\n斥候報告 · 下次襲擊\n0:19\n主力部隊\n刀盾兵 · 步弓兵 · 弓騎兵\n襲擊事件\n勇士對決\n可能入口\n北境火堆 / 沉沒沼澤\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n15\n15 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1303 / 1319\n15\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n2\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n16 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 32s\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 15／全軍 16\n10 人待命 · 5 人護衛城鎮中心\n已選戰士曾回報受阻：10 人\n選出這組 10 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n上次記錄：壅塞 10 人；無法到達 0 人。\n目前狀態請見軍令摘要；可選出後自行調整命令。\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 584.972,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0046.png",
+      "text": "世紀帝國II · 裂境守望\n166\n1,194\n267\n545\n20\n/\n40\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n第 IV 波／共 X 波\n破碎誓約\n0:04\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n89%\n當前時代\n帝國時代\n已得恩賜\n3\n斥候報告 · 下次襲擊\n0:04\n主力部隊\n刀盾兵 · 步弓兵 · 弓騎兵\n襲擊事件\n勇士對決\n可能入口\n北境火堆 / 沉沒沼澤\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n10 名戰士\n刀盾兵 · 輕騎兵 · 長槍兵\n901 / 917\n10\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n16 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 17s\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 10／全軍 16\n10 人待命\n已選戰士曾回報受阻：10 人\n選出這組 10 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n上次記錄：壅塞 10 人；無法到達 0 人。\n目前狀態請見軍令摘要；可選出後自行調整命令。\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒\n準備好了？由你決定何時迎戰。\n提前迎戰…",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 595.064,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0048.png",
+      "text": "世紀帝國II · 裂境守望\n238\n1,214\n273\n565\n22\n/\n40\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n破碎誓約\n0 名敵人\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n89%\n當前時代\n帝國時代\n已得恩賜\n3\n房屋\n你的領地 · 300 / 300 生命\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n10 名戰士\n刀盾兵 · 輕騎兵 · 長槍兵\n901 / 917\n10\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n17 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 等待目標\n神盾\nE · 7s\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 10／全軍 17\n9 人移動 · 1 人待命\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 616.045,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0049.png",
+      "text": "世紀帝國II · 裂境守望\n276\n1,265\n288\n595\n24\n/\n40\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n破碎誓約\n10 名敵人\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n88%\n當前時代\n帝國時代\n已得恩賜\n3\n勇士對決\n房屋\n你的領地 · 300 / 300 生命\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n10 名戰士\n刀盾兵 · 輕騎兵 · 長槍兵\n905 / 917\n10\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n18 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 16 人\n城心上次實損 −4.04 HP · 來源未確認 · 局內6:59\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 10／全軍 18\n9 人待命 · 1 人自主接敵\n已選戰士曾回報受阻：5 人\n選出這組 5 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 637.284,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0050.png",
+      "text": "世紀帝國II · 裂境守望\n166\n1,396\n323\n685\n24\n/\n40\n軍\n21\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n破碎誓約\n1 名敵人\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n83%\n當前時代\n帝國時代\n已得恩賜\n3\n衝車已被標記。士兵對其傷害 +10%，持續 6 秒。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n18\n18 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1648 / 1703\n18\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n18 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 30s\n神盾\nE · 可護 17 人\n城心上次實損 −4.04 HP · 來源未確認 · 局內7:19\n本波已記錄最大一擊 −5.81 HP · 來源未確認 · 局內7:07\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 18／全軍 18\n17 人護衛城鎮中心 · 1 人待命\n已選戰士曾回報受阻：1 人\n選出這組 1 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 647.44,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0051.png",
+      "text": "世紀帝國II · 裂境守望\n168\n1,446\n373\n705\n26\n/\n40\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n破碎誓約\n1 名敵人\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n70%\n當前時代\n帝國時代\n已得恩賜\n3\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n18\n18 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1649 / 1703\n18\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n19 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 20s\n神盾\nE · 可護 13 人\n城心上次實損 −127.8 HP · 衝車 · 受傷時← · 局內7:30\n查看\n反擊 18人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 18／全軍 19\n14 人護衛城鎮中心 · 4 人待命\n已選戰士曾回報受阻：4 人\n選出這組 4 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 657.951,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0052.png",
+      "text": "世紀帝國II · 裂境守望\n107\n1,506\n388\n765\n26\n/\n40\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n破碎誓約\n14 名敵人\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n52%\n當前時代\n帝國時代\n已得恩賜\n3\n已令18名已選戰士反擊這筆來源；可手動改令。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n18\n18 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1646 / 1703\n18\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n19 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 9s\n神盾\nE · 可護 10 人\n城心上次實損 −4.04 HP · 刀盾兵 · 受傷時→ · 局內7:43\n查看\n反擊 18人\n本波已記錄最大一擊 −127.8 HP · 衝車 · 受傷時← · 局內7:25\n查看\n反擊 18人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 18／全軍 19\n18 人集火步弓兵\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 665.006,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0053.png",
+      "text": "世紀帝國II · 裂境守望\n108\n1,556\n418\n785\n26\n/\n40\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n破碎誓約\n8 名敵人\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n36%\n當前時代\n帝國時代\n已得恩賜\n3\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n18\n18 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1630 / 1703\n18\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n19 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 2s\n神盾\nE · 可護 8 人\n城心上次實損 −2.93 HP · 步弓兵 · 局內7:51\n查看\n反擊 18人\n本波已記錄最大一擊 −127.8 HP · 衝車 · 受傷時← · 局內7:25\n查看\n反擊 18人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 18／全軍 19\n16 人自主接敵 · 2 人待命\n已選戰士曾回報受阻：5 人\n選出這組 5 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 674.354,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0054.png",
+      "text": "世紀帝國II · 裂境守望\n109\n1,606\n478\n805\n28\n/\n40\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n破碎誓約\n3 名敵人\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n25%\n當前時代\n帝國時代\n已得恩賜\n3\n已令18名已選戰士反擊這筆來源；可手動改令。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n18\n18 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1630 / 1703\n18\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n1\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n20 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 可施放\n神盾\nE · 可護 9 人\n城心上次實損 −4.04 HP · 刀盾兵 · 受傷時→ · 局內8:00\n查看\n反擊 18人\n本波已記錄最大一擊 −127.8 HP · 衝車 · 受傷時← · 局內7:25\n查看\n反擊 18人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 18／全軍 20\n18 人集火衝車\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 688.585,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0055.png",
+      "text": "世紀帝國II · 裂境守望\n79\n1,629\n538\n855\n29\n/\n40\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n襲擊已然壓境\n破碎誓約\n2 名敵人\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n2%\n當前時代\n帝國時代\n已得恩賜\n3\n刀盾兵已被標記。士兵對其傷害 +10%，持續 6 秒。\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n18\n18 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1617 / 1703\n18\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n0\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\nPLAYTEST · 28759c7\n作戰指揮\n援護城心\n戰線 F\n全軍\n21 · F2\n推進\nShift+A\n護衛\nG\n英雄\nTab\n標記\nQ · 30s\n神盾\nE · 可護 22 人\n城心上次實損 −4.04 HP · 刀盾兵 · 受傷時→ · 局內8:14\n查看\n反擊 18人\n本波已記錄最大一擊 −127.8 HP · 衝車 · 受傷時← · 局內7:25\n查看\n反擊 18人\n選軍後右鍵移動；推進會沿途接敵。\n已選戰士 18／全軍 21\n8 人自主接敵 · 8 人集火衝車 · 2 人待命\n已選戰士曾回報受阻：10 人\n選出這組 10 人\n這是保留的失敗記錄，不代表現在仍卡住。\n查看記錄細節\n遠征：救援工人\n兩名工人已獲救！\n英雄護衛城心\n廢工坊：80木／30秒",
+      "sessionLimitReached": false
+    },
+    {
+      "wallSeconds": 696.814,
+      "screenshot": "/workspace/riftwatch-v2-final-validation-a61c9e70/natural-after/players/C/after/screen-0057.png",
+      "text": "世紀帝國II · 裂境守望\n17\n1,639\n503\n865\n29\n/\n20\n軍\n22\n/\n60\n經\n總管規劃\n科技／圖鑑\n裂界閉合\n最後爐火熄滅\n—\n最後行軍\n挺過襲擊\n3 / 10\n守住城鎮中心\n失守\n當前時代\n帝國時代\n已得恩賜\n3\n攻擊移動\n守衛\n巡邏\nShift+A/G/P後點目標；Ctrl+1–9編隊，Alt+1–9選取。\n群組\n1\n2\n3\n4\n5\n6\n7\n8\n9\n18\n18 名戰士\n刀盾兵 · 步弓兵 · 輕騎兵\n1617 / 1703\n18\n人持械\n0\n名村民\n1\n停止\n2\n固守\n3\n防禦\n拖曳追加 · 右鍵移動 · 1 停止 · 2 固守\n2\n待命\nWASD\n行軍\nWHEEL\n縮放\n草海平原\n第 IV 日\n你的領地\n掠襲者\n點擊巡視\n裂界閉合\n世紀帝國二：裂境守望 — 最後爐火熄滅\n城鎮中心已然陷落。你的王國化為餘燼。\n3\n度過襲擊\n96\n擊殺掠襲者\n4,697\n採集資源\n8:16\n統治時間\n新的遠征\n返回選單\nPLAYTEST · 28759c7",
+      "sessionLimitReached": false
+    }
+  ],
+  "工具失效": [
+    {
+      "ok": false,
+      "reason": "CONTROL_NOT_VISIBLE_OR_ENABLED"
+    }
+  ],
+  "結束": "結算後立即finish回ok；campaign.webm與final.png非零落盤後報告，未再操作遊戲。"
+}

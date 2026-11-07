@@ -1,0 +1,6779 @@
+{
+  "uiFixture": "受控初始相同已選正式士兵歷史congested欄位，僅讓新UI處於可見負載；不是自然受阻複現。雙方相同設定，未改單位HP/攻擊/傷害/碰撞/RNG；存活數仍自然變化。",
+  "pairInterpretation": "CONTROLLED_RECORDED_ORDER_UI_BEFORE_AFTER_ABBA",
+  "decomposition": "各方法時間含子呼叫、互相重疊，不可加總；pathAndMovement含原生A-star與移動，nativeAstarPerUpdate逐update累計原生A-star；render含fog，collision亦可能巢狀。",
+  "scope": "CONTROLLED_30S_ABBA_LIVE_COMBAT：每個初始100/200人數各串行A1/B1/B2/A2，每次8秒暖機+30秒實際交戰。原生AI、碰撞、傷害、死亡、刷兵皆保留，初始後存活數自然變化。雲端軟體GPU，非長期/硬體/校準改善認證。",
+  "instrumentationOverhead": "同步performance.now包裝、陣列與1Hz heap/alive取樣帶來未校準額外成本，8次一致且未扣除；heap含量測陣列/快取，不判遊戲洩漏。沒有玩家observer或錄影附著；不終止他人既有瀏覽器程序。",
+  "rows": [
+    {
+      "n": 100,
+      "runId": "A1",
+      "mode": "before",
+      "runStart": "2026-11-07T04:08:05.484Z",
+      "cpuBefore": {
+        "usage_usec": 54827245295,
+        "user_usec": 47189331223,
+        "system_usec": 7637914071,
+        "nice_usec": 0,
+        "nr_periods": 949819,
+        "nr_throttled": 701,
+        "throttled_usec": 14552695,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 54881865122,
+        "user_usec": 47241006828,
+        "system_usec": 7640858294,
+        "nice_usec": 0,
+        "nr_periods": 950239,
+        "nr_throttled": 701,
+        "throttled_usec": 14552695,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 54619827,
+        "user_usec": 51675605,
+        "system_usec": 2944223,
+        "nice_usec": 0,
+        "nr_periods": 420,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "timeline": [
+        {
+          "wallMs": 43.90000002384113,
+          "sim": 7.049199999999992,
+          "alive": 77,
+          "heap": 14522218,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1077.2000000238422,
+          "sim": 8.082399999999994,
+          "alive": 75,
+          "heap": 13129496,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2077.200000023842,
+          "sim": 9.065699999999996,
+          "alive": 74,
+          "heap": 15863299,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3093.8000000238426,
+          "sim": 10.082199999999997,
+          "alive": 80,
+          "heap": 17217467,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4110.400000023841,
+          "sim": 11.098799999999999,
+          "alive": 78,
+          "heap": 17217011,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5110.400000023841,
+          "sim": 12.098799999999999,
+          "alive": 78,
+          "heap": 21360548,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6127.000000023843,
+          "sim": 13.0821,
+          "alive": 78,
+          "heap": 19534187,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7127.000000023843,
+          "sim": 14.082000000000004,
+          "alive": 77,
+          "heap": 13163462,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8143.600000023842,
+          "sim": 15.0152,
+          "alive": 76,
+          "heap": 19946866,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9143.600000023842,
+          "sim": 15.931800000000008,
+          "alive": 75,
+          "heap": 26280586,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 10176.900000023841,
+          "sim": 16.965000000000025,
+          "alive": 74,
+          "heap": 14593599,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 11193.400000023841,
+          "sim": 17.898100000000035,
+          "alive": 74,
+          "heap": 29768740,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 12210.100000023842,
+          "sim": 18.84810000000004,
+          "alive": 74,
+          "heap": 21770001,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 13260.000000023843,
+          "sim": 19.814800000000048,
+          "alive": 74,
+          "heap": 16372596,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 14276.600000023842,
+          "sim": 20.831300000000052,
+          "alive": 74,
+          "heap": 23362970,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 15276.600000023842,
+          "sim": 21.83110000000006,
+          "alive": 74,
+          "heap": 20448174,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 16293.20000002384,
+          "sim": 22.84770000000007,
+          "alive": 73,
+          "heap": 19057323,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 17293.20000002384,
+          "sim": 23.847600000000075,
+          "alive": 72,
+          "heap": 23901259,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 18326.500000023843,
+          "sim": 24.880900000000086,
+          "alive": 70,
+          "heap": 15212935,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 19326.500000023843,
+          "sim": 25.880900000000096,
+          "alive": 70,
+          "heap": 31607632,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 20343.100000023842,
+          "sim": 26.897500000000104,
+          "alive": 69,
+          "heap": 25036784,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 21359.70000002384,
+          "sim": 27.814000000000114,
+          "alive": 69,
+          "heap": 15004857,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 22359.70000002384,
+          "sim": 28.814000000000124,
+          "alive": 69,
+          "heap": 15435388,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 23376.30000002384,
+          "sim": 29.830600000000132,
+          "alive": 69,
+          "heap": 29770898,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 24376.30000002384,
+          "sim": 30.830600000000143,
+          "alive": 69,
+          "heap": 27280416,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 25409.600000023842,
+          "sim": 31.86380000000016,
+          "alive": 70,
+          "heap": 25502567,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 26426.100000023842,
+          "sim": 32.88030000000017,
+          "alive": 70,
+          "heap": 22141382,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 27426.20000002384,
+          "sim": 33.88040000000018,
+          "alive": 70,
+          "heap": 17433197,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 28459.500000023843,
+          "sim": 34.91370000000017,
+          "alive": 70,
+          "heap": 15513588,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 29509.400000023845,
+          "sim": 35.96360000000018,
+          "alive": 78,
+          "heap": 19753179,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30028.69999998808,
+      "heapStart": 26205109,
+      "heapEnd": 29691777,
+      "aliveStart": 77,
+      "aliveEnd": 78,
+      "simStart": 6.965899999999992,
+      "simEnd": 36.46350000000018,
+      "phase": "wave",
+      "subsystems": {
+        "pathAndMovementInclusive": {
+          "calls": 14791,
+          "totalMs": 1461.4999992251396,
+          "p50Ms": 0,
+          "p95Ms": 0.30000001192092896
+        },
+        "staticCollision": {
+          "calls": 136602,
+          "totalMs": 603.3999996781349,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 11750,
+          "totalMs": 348.49999886751175,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 868,
+          "totalMs": 952.1999995112419,
+          "p50Ms": 0.30000001192092896,
+          "p95Ms": 1.9999999403953552
+        },
+        "fog": {
+          "calls": 868,
+          "totalMs": 7511.79999935627,
+          "p50Ms": 8.399999976158142,
+          "p95Ms": 10
+        },
+        "renderInclusive": {
+          "calls": 868,
+          "totalMs": 12423.800000309944,
+          "p50Ms": 13.899999976158142,
+          "p95Ms": 16.900000035762787
+        },
+        "DOM": {
+          "calls": 868,
+          "totalMs": 1056.3000001311302,
+          "p50Ms": 0.40000003576278687,
+          "p95Ms": 3.199999988079071
+        },
+        "target": {
+          "calls": 37373,
+          "totalMs": 225.400000333786,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 9,
+        "totalDirectRoutes": 332,
+        "totalSearches": 963
+      },
+      "fps": 28.872378757666638,
+      "samples": 867,
+      "p50Ms": 33.30000000000291,
+      "p95Ms": 50
+    },
+    {
+      "n": 100,
+      "runId": "B1",
+      "mode": "after",
+      "runStart": "2026-11-07T04:08:47.498Z",
+      "cpuBefore": {
+        "usage_usec": 54881899863,
+        "user_usec": 47241032611,
+        "system_usec": 7640867251,
+        "nice_usec": 0,
+        "nr_periods": 950239,
+        "nr_throttled": 701,
+        "throttled_usec": 14552695,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 54935490317,
+        "user_usec": 47292415126,
+        "system_usec": 7643075190,
+        "nice_usec": 0,
+        "nr_periods": 950654,
+        "nr_throttled": 702,
+        "throttled_usec": 14553536,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 53590454,
+        "user_usec": 51382515,
+        "system_usec": 2207939,
+        "nice_usec": 0,
+        "nr_periods": 415,
+        "nr_throttled": 1,
+        "throttled_usec": 841,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "timeline": [
+        {
+          "wallMs": 36.600000035763514,
+          "sim": 6.782399999999994,
+          "alive": 77,
+          "heap": 13926592,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1036.6000000357635,
+          "sim": 7.782299999999996,
+          "alive": 75,
+          "heap": 16452658,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2036.6000000357635,
+          "sim": 8.782199999999998,
+          "alive": 75,
+          "heap": 19863540,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3053.1000000357635,
+          "sim": 9.798700000000002,
+          "alive": 74,
+          "heap": 14878744,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4086.400000035763,
+          "sim": 10.832000000000008,
+          "alive": 80,
+          "heap": 13899947,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5086.400000035763,
+          "sim": 11.81520000000001,
+          "alive": 79,
+          "heap": 18057093,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6103.000000035763,
+          "sim": 12.83160000000001,
+          "alive": 78,
+          "heap": 20512798,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7119.700000035762,
+          "sim": 13.848200000000013,
+          "alive": 77,
+          "heap": 27259192,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8152.900000035763,
+          "sim": 14.88140000000001,
+          "alive": 77,
+          "heap": 15189465,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9152.900000035763,
+          "sim": 15.881100000000005,
+          "alive": 77,
+          "heap": 11959213,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 10169.500000035761,
+          "sim": 16.89750000000001,
+          "alive": 77,
+          "heap": 18327590,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 11169.500000035761,
+          "sim": 17.89740000000003,
+          "alive": 77,
+          "heap": 21640794,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 12186.100000035764,
+          "sim": 18.914000000000044,
+          "alive": 77,
+          "heap": 12575132,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 13202.700000035762,
+          "sim": 19.93050000000005,
+          "alive": 77,
+          "heap": 14046311,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 14219.300000035764,
+          "sim": 20.797200000000057,
+          "alive": 77,
+          "heap": 22693626,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 15219.300000035764,
+          "sim": 21.663900000000062,
+          "alive": 77,
+          "heap": 25066708,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 16252.600000035764,
+          "sim": 22.697100000000074,
+          "alive": 76,
+          "heap": 14978427,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 17252.600000035764,
+          "sim": 23.69710000000008,
+          "alive": 76,
+          "heap": 12723612,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 18252.600000035764,
+          "sim": 24.69700000000009,
+          "alive": 74,
+          "heap": 25268531,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 19269.200000035762,
+          "sim": 25.713500000000103,
+          "alive": 74,
+          "heap": 29795239,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 20285.700000035762,
+          "sim": 26.730000000000114,
+          "alive": 72,
+          "heap": 20011755,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 21302.400000035763,
+          "sim": 27.746700000000118,
+          "alive": 72,
+          "heap": 19964651,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 22302.400000035763,
+          "sim": 28.74670000000013,
+          "alive": 70,
+          "heap": 20184439,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 23319.00000003576,
+          "sim": 29.763300000000132,
+          "alive": 70,
+          "heap": 18680544,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 24352.300000035764,
+          "sim": 30.79660000000014,
+          "alive": 70,
+          "heap": 18386014,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 25352.300000035764,
+          "sim": 31.796600000000144,
+          "alive": 71,
+          "heap": 17373045,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 26368.800000035764,
+          "sim": 32.81300000000016,
+          "alive": 71,
+          "heap": 19208881,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 27385.50000003576,
+          "sim": 33.82970000000016,
+          "alive": 71,
+          "heap": 17317292,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 28418.800000035764,
+          "sim": 34.863000000000156,
+          "alive": 71,
+          "heap": 18142884,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 29418.800000035764,
+          "sim": 35.86300000000015,
+          "alive": 79,
+          "heap": 21910759,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30028.69999998808,
+      "heapStart": 15667655,
+      "heapEnd": 24170191,
+      "aliveStart": 77,
+      "aliveEnd": 79,
+      "simStart": 6.6990999999999925,
+      "simEnd": 36.44630000000014,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 144302,
+          "totalMs": 620.6999967694283,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 13210,
+          "totalMs": 419.49999809265137,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 18586,
+          "totalMs": 1469.49999833107,
+          "p50Ms": 0,
+          "p95Ms": 0.2999999523162842
+        },
+        "target": {
+          "calls": 34467,
+          "totalMs": 231.29999935626984,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 861,
+          "totalMs": 901.3000002503395,
+          "p50Ms": 0.5,
+          "p95Ms": 1.800000011920929
+        },
+        "fog": {
+          "calls": 861,
+          "totalMs": 7199.900000333786,
+          "p50Ms": 8.100000023841858,
+          "p95Ms": 9.900000035762787
+        },
+        "renderInclusive": {
+          "calls": 861,
+          "totalMs": 12226.199998915195,
+          "p50Ms": 13.900000035762787,
+          "p95Ms": 16.600000023841858
+        },
+        "DOM": {
+          "calls": 861,
+          "totalMs": 1109.5999999046326,
+          "p50Ms": 0.5,
+          "p95Ms": 3.300000011920929
+        }
+      },
+      "navigationStats": {
+        "searches": 1,
+        "expanded": 14,
+        "ms": 0.5,
+        "directRoutes": 0,
+        "routeReuses": 10,
+        "totalDirectRoutes": 292,
+        "totalSearches": 1090
+      },
+      "fps": 28.639268433210276,
+      "samples": 860,
+      "p50Ms": 33.30000000000291,
+      "p95Ms": 50
+    },
+    {
+      "n": 100,
+      "runId": "B2",
+      "mode": "after",
+      "runStart": "2026-11-07T04:09:29.018Z",
+      "cpuBefore": {
+        "usage_usec": 54935519540,
+        "user_usec": 47292428451,
+        "system_usec": 7643091088,
+        "nice_usec": 0,
+        "nr_periods": 950654,
+        "nr_throttled": 702,
+        "throttled_usec": 14553536,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 54991201192,
+        "user_usec": 47345104027,
+        "system_usec": 7646097164,
+        "nice_usec": 0,
+        "nr_periods": 951070,
+        "nr_throttled": 702,
+        "throttled_usec": 14553536,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 55681652,
+        "user_usec": 52675576,
+        "system_usec": 3006076,
+        "nice_usec": 0,
+        "nr_periods": 416,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "timeline": [
+        {
+          "wallMs": 25.20000003576206,
+          "sim": 7.0324999999999935,
+          "alive": 77,
+          "heap": 15992639,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1041.8000000357624,
+          "sim": 8.048999999999998,
+          "alive": 74,
+          "heap": 17516642,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2075.1000000357635,
+          "sim": 9.0822,
+          "alive": 73,
+          "heap": 19833441,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3108.3000000357624,
+          "sim": 10.115300000000001,
+          "alive": 80,
+          "heap": 14242443,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4125.000000035763,
+          "sim": 11.132000000000005,
+          "alive": 79,
+          "heap": 15482488,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5141.6000000357635,
+          "sim": 12.148400000000008,
+          "alive": 78,
+          "heap": 14902696,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 59,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6141.6000000357635,
+          "sim": 13.131800000000009,
+          "alive": 76,
+          "heap": 29096904,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7174.800000035764,
+          "sim": 14.148300000000008,
+          "alive": 76,
+          "heap": 24894088,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8191.500000035761,
+          "sim": 15.081500000000009,
+          "alive": 75,
+          "heap": 26758064,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9191.500000035761,
+          "sim": 16.014700000000015,
+          "alive": 74,
+          "heap": 16720753,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 10224.700000035762,
+          "sim": 16.91450000000002,
+          "alive": 73,
+          "heap": 16771133,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 11224.800000035764,
+          "sim": 17.781300000000034,
+          "alive": 73,
+          "heap": 27219493,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 12258.000000035761,
+          "sim": 18.68120000000004,
+          "alive": 73,
+          "heap": 19699983,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 13258.000000035761,
+          "sim": 19.61450000000005,
+          "alive": 73,
+          "heap": 27753743,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 14274.600000035764,
+          "sim": 20.58120000000006,
+          "alive": 74,
+          "heap": 24680377,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 15307.900000035763,
+          "sim": 21.61450000000006,
+          "alive": 74,
+          "heap": 24982189,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 16324.500000035761,
+          "sim": 22.63110000000007,
+          "alive": 74,
+          "heap": 16459041,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 17324.50000003576,
+          "sim": 23.631100000000078,
+          "alive": 74,
+          "heap": 13827498,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 18341.100000035764,
+          "sim": 24.64770000000009,
+          "alive": 74,
+          "heap": 19996317,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 19374.400000035763,
+          "sim": 25.681000000000097,
+          "alive": 73,
+          "heap": 21635095,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 20374.400000035763,
+          "sim": 26.681000000000108,
+          "alive": 73,
+          "heap": 20686626,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 21391.00000003576,
+          "sim": 27.69760000000012,
+          "alive": 72,
+          "heap": 30077452,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 22424.200000035762,
+          "sim": 28.730800000000126,
+          "alive": 71,
+          "heap": 23001122,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 23424.200000035766,
+          "sim": 29.73070000000014,
+          "alive": 69,
+          "heap": 13465084,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 24424.200000035766,
+          "sim": 30.730700000000148,
+          "alive": 69,
+          "heap": 18863726,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 25440.800000035764,
+          "sim": 31.747300000000156,
+          "alive": 70,
+          "heap": 27799727,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 26457.50000003576,
+          "sim": 32.76400000000017,
+          "alive": 70,
+          "heap": 29938728,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 27490.700000035766,
+          "sim": 33.797200000000174,
+          "alive": 69,
+          "heap": 18801283,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 28507.400000035763,
+          "sim": 34.78050000000019,
+          "alive": 69,
+          "heap": 17609338,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 29524.00000003576,
+          "sim": 35.79710000000018,
+          "alive": 77,
+          "heap": 21088093,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 58,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30045,
+      "heapStart": 17700560,
+      "heapEnd": 19811630,
+      "aliveStart": 77,
+      "aliveEnd": 77,
+      "simStart": 6.965799999999994,
+      "simEnd": 36.29710000000017,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 182089,
+          "totalMs": 723.0000000596046,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 11357,
+          "totalMs": 328.0000007748604,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 14054,
+          "totalMs": 1678.7999990582466,
+          "p50Ms": 0,
+          "p95Ms": 0.20000004768371582
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 865,
+          "totalMs": 1216.8999996185303,
+          "p50Ms": 0,
+          "p95Ms": 2
+        },
+        "fog": {
+          "calls": 865,
+          "totalMs": 7226.200000941753,
+          "p50Ms": 8,
+          "p95Ms": 10.100000023841858
+        },
+        "renderInclusive": {
+          "calls": 865,
+          "totalMs": 12100.900000274181,
+          "p50Ms": 13.300000011920929,
+          "p95Ms": 16.599999964237213
+        },
+        "DOM": {
+          "calls": 865,
+          "totalMs": 1101.0999993681908,
+          "p50Ms": 0.40000003576278687,
+          "p95Ms": 3.299999952316284
+        },
+        "target": {
+          "calls": 38351,
+          "totalMs": 242.30000054836273,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 12,
+        "totalDirectRoutes": 303,
+        "totalSearches": 837
+      },
+      "fps": 28.75686470294558,
+      "samples": 864,
+      "p50Ms": 33.30000000000291,
+      "p95Ms": 50
+    },
+    {
+      "n": 100,
+      "runId": "A2",
+      "mode": "before",
+      "runStart": "2026-11-07T04:10:10.615Z",
+      "cpuBefore": {
+        "usage_usec": 54991228825,
+        "user_usec": 47345123162,
+        "system_usec": 7646105662,
+        "nice_usec": 0,
+        "nr_periods": 951070,
+        "nr_throttled": 702,
+        "throttled_usec": 14553536,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55045590020,
+        "user_usec": 47396954472,
+        "system_usec": 7648635547,
+        "nice_usec": 0,
+        "nr_periods": 951485,
+        "nr_throttled": 703,
+        "throttled_usec": 14569281,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 54361195,
+        "user_usec": 51831310,
+        "system_usec": 2529885,
+        "nice_usec": 0,
+        "nr_periods": 415,
+        "nr_throttled": 1,
+        "throttled_usec": 15745,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "981f2be9142f2db5a185d40f92e217db6d3bd854937ccc8b724f8b2b49d57e55",
+      "timeline": [
+        {
+          "wallMs": 23.600000000000364,
+          "sim": 6.965799999999998,
+          "alive": 77,
+          "heap": 14074661,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1056.8999999999996,
+          "sim": 7.9990999999999985,
+          "alive": 74,
+          "heap": 13441272,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2073.5,
+          "sim": 9.015699999999999,
+          "alive": 74,
+          "heap": 20520669,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3073.5,
+          "sim": 10.015500000000001,
+          "alive": 80,
+          "heap": 12289787,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4106.700000000001,
+          "sim": 11.048600000000002,
+          "alive": 79,
+          "heap": 19075138,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5140,
+          "sim": 12.081900000000001,
+          "alive": 79,
+          "heap": 17803844,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6156.700000000001,
+          "sim": 13.098600000000006,
+          "alive": 78,
+          "heap": 16372449,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7173.200000000001,
+          "sim": 14.031700000000008,
+          "alive": 77,
+          "heap": 25098973,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8206.599999999999,
+          "sim": 14.998300000000013,
+          "alive": 77,
+          "heap": 26194992,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9223.2,
+          "sim": 16.014800000000015,
+          "alive": 76,
+          "heap": 14271498,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 10239.8,
+          "sim": 16.98140000000003,
+          "alive": 75,
+          "heap": 14383064,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 11239.8,
+          "sim": 17.93130000000003,
+          "alive": 74,
+          "heap": 25053975,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 12273.099999999999,
+          "sim": 18.897900000000035,
+          "alive": 74,
+          "heap": 20799807,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 13306.3,
+          "sim": 19.864300000000046,
+          "alive": 72,
+          "heap": 27793534,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 14323,
+          "sim": 20.88080000000006,
+          "alive": 72,
+          "heap": 15179875,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 15339.599999999999,
+          "sim": 21.897300000000072,
+          "alive": 71,
+          "heap": 26750401,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 16356.3,
+          "sim": 22.91400000000008,
+          "alive": 71,
+          "heap": 14941483,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 17372.9,
+          "sim": 23.930600000000094,
+          "alive": 70,
+          "heap": 15789943,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 18389.5,
+          "sim": 24.947200000000105,
+          "alive": 70,
+          "heap": 17729642,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 19422.8,
+          "sim": 25.980500000000113,
+          "alive": 70,
+          "heap": 19608795,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 20439.4,
+          "sim": 26.997100000000128,
+          "alive": 70,
+          "heap": 18151251,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 21456,
+          "sim": 28.013700000000135,
+          "alive": 70,
+          "heap": 22103643,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 22456,
+          "sim": 29.01360000000014,
+          "alive": 70,
+          "heap": 28940816,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 23472.6,
+          "sim": 30.030100000000154,
+          "alive": 70,
+          "heap": 14170375,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 24472.6,
+          "sim": 31.03010000000016,
+          "alive": 70,
+          "heap": 13500774,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 25505.9,
+          "sim": 32.06330000000017,
+          "alive": 71,
+          "heap": 22042965,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 26522.5,
+          "sim": 33.07990000000017,
+          "alive": 71,
+          "heap": 25616153,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 27555.699999999997,
+          "sim": 34.11300000000018,
+          "alive": 71,
+          "heap": 20773631,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 28572.4,
+          "sim": 35.12970000000018,
+          "alive": 79,
+          "heap": 18276739,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 29572.4,
+          "sim": 36.12970000000019,
+          "alive": 79,
+          "heap": 30427117,
+          "phase": "wave",
+          "selected": 60,
+          "recorded": 60,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30030,
+      "heapStart": 16407664,
+      "heapEnd": 13684808,
+      "aliveStart": 77,
+      "aliveEnd": 79,
+      "simStart": 6.899099999999997,
+      "simEnd": 36.563000000000194,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 134516,
+          "totalMs": 572.9999995827675,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 9729,
+          "totalMs": 341.199998319149,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "pathAndMovementInclusive": {
+          "calls": 12323,
+          "totalMs": 1305.2999980449677,
+          "p50Ms": 0,
+          "p95Ms": 0.3999999761581421
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 862,
+          "totalMs": 865.2000001072884,
+          "p50Ms": 0,
+          "p95Ms": 1.699999988079071
+        },
+        "fog": {
+          "calls": 862,
+          "totalMs": 7542.400000572205,
+          "p50Ms": 8.5,
+          "p95Ms": 10.100000023841858
+        },
+        "renderInclusive": {
+          "calls": 862,
+          "totalMs": 12459.500001370907,
+          "p50Ms": 14.199999988079071,
+          "p95Ms": 16.5
+        },
+        "DOM": {
+          "calls": 862,
+          "totalMs": 1128.3999987244606,
+          "p50Ms": 0.40000003576278687,
+          "p95Ms": 3.300000011920929
+        },
+        "target": {
+          "calls": 40215,
+          "totalMs": 247.40000176429749,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 10,
+        "totalDirectRoutes": 261,
+        "totalSearches": 854
+      },
+      "fps": 28.67132867132867,
+      "samples": 861,
+      "p50Ms": 33.30000000000291,
+      "p95Ms": 50
+    },
+    {
+      "n": 200,
+      "runId": "A1",
+      "mode": "before",
+      "runStart": "2026-11-07T04:10:52.112Z",
+      "cpuBefore": {
+        "usage_usec": 55045626523,
+        "user_usec": 47396985791,
+        "system_usec": 7648640731,
+        "nice_usec": 0,
+        "nr_periods": 951485,
+        "nr_throttled": 703,
+        "throttled_usec": 14569281,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55099042668,
+        "user_usec": 47447783617,
+        "system_usec": 7651259051,
+        "nice_usec": 0,
+        "nr_periods": 951902,
+        "nr_throttled": 704,
+        "throttled_usec": 14575820,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 53416145,
+        "user_usec": 50797826,
+        "system_usec": 2618320,
+        "nice_usec": 0,
+        "nr_periods": 417,
+        "nr_throttled": 1,
+        "throttled_usec": 6539,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        },
+        {
+          "id": 107,
+          "cause": "congested"
+        },
+        {
+          "id": 108,
+          "cause": "congested"
+        },
+        {
+          "id": 109,
+          "cause": "congested"
+        },
+        {
+          "id": 110,
+          "cause": "congested"
+        },
+        {
+          "id": 111,
+          "cause": "congested"
+        },
+        {
+          "id": 113,
+          "cause": "congested"
+        },
+        {
+          "id": 114,
+          "cause": "congested"
+        },
+        {
+          "id": 115,
+          "cause": "congested"
+        },
+        {
+          "id": 117,
+          "cause": "congested"
+        },
+        {
+          "id": 118,
+          "cause": "congested"
+        },
+        {
+          "id": 119,
+          "cause": "congested"
+        },
+        {
+          "id": 122,
+          "cause": "congested"
+        },
+        {
+          "id": 123,
+          "cause": "congested"
+        },
+        {
+          "id": 125,
+          "cause": "congested"
+        },
+        {
+          "id": 126,
+          "cause": "congested"
+        },
+        {
+          "id": 127,
+          "cause": "congested"
+        },
+        {
+          "id": 129,
+          "cause": "congested"
+        },
+        {
+          "id": 130,
+          "cause": "congested"
+        },
+        {
+          "id": 131,
+          "cause": "congested"
+        },
+        {
+          "id": 133,
+          "cause": "congested"
+        },
+        {
+          "id": 134,
+          "cause": "congested"
+        },
+        {
+          "id": 135,
+          "cause": "congested"
+        },
+        {
+          "id": 137,
+          "cause": "congested"
+        },
+        {
+          "id": 138,
+          "cause": "congested"
+        },
+        {
+          "id": 139,
+          "cause": "congested"
+        },
+        {
+          "id": 141,
+          "cause": "congested"
+        },
+        {
+          "id": 142,
+          "cause": "congested"
+        },
+        {
+          "id": 143,
+          "cause": "congested"
+        },
+        {
+          "id": 145,
+          "cause": "congested"
+        },
+        {
+          "id": 146,
+          "cause": "congested"
+        },
+        {
+          "id": 147,
+          "cause": "congested"
+        },
+        {
+          "id": 149,
+          "cause": "congested"
+        },
+        {
+          "id": 150,
+          "cause": "congested"
+        },
+        {
+          "id": 151,
+          "cause": "congested"
+        },
+        {
+          "id": 153,
+          "cause": "congested"
+        },
+        {
+          "id": 154,
+          "cause": "congested"
+        },
+        {
+          "id": 155,
+          "cause": "congested"
+        },
+        {
+          "id": 157,
+          "cause": "congested"
+        },
+        {
+          "id": 158,
+          "cause": "congested"
+        },
+        {
+          "id": 159,
+          "cause": "congested"
+        },
+        {
+          "id": 161,
+          "cause": "congested"
+        },
+        {
+          "id": 162,
+          "cause": "congested"
+        },
+        {
+          "id": 163,
+          "cause": "congested"
+        },
+        {
+          "id": 165,
+          "cause": "congested"
+        },
+        {
+          "id": 166,
+          "cause": "congested"
+        },
+        {
+          "id": 167,
+          "cause": "congested"
+        },
+        {
+          "id": 169,
+          "cause": "congested"
+        },
+        {
+          "id": 170,
+          "cause": "congested"
+        },
+        {
+          "id": 171,
+          "cause": "congested"
+        },
+        {
+          "id": 174,
+          "cause": "congested"
+        },
+        {
+          "id": 175,
+          "cause": "congested"
+        },
+        {
+          "id": 176,
+          "cause": "congested"
+        },
+        {
+          "id": 178,
+          "cause": "congested"
+        },
+        {
+          "id": 179,
+          "cause": "congested"
+        },
+        {
+          "id": 180,
+          "cause": "congested"
+        },
+        {
+          "id": 182,
+          "cause": "congested"
+        },
+        {
+          "id": 183,
+          "cause": "congested"
+        },
+        {
+          "id": 184,
+          "cause": "congested"
+        },
+        {
+          "id": 186,
+          "cause": "congested"
+        },
+        {
+          "id": 187,
+          "cause": "congested"
+        },
+        {
+          "id": 188,
+          "cause": "congested"
+        },
+        {
+          "id": 189,
+          "cause": "congested"
+        },
+        {
+          "id": 191,
+          "cause": "congested"
+        },
+        {
+          "id": 192,
+          "cause": "congested"
+        },
+        {
+          "id": 193,
+          "cause": "congested"
+        },
+        {
+          "id": 195,
+          "cause": "congested"
+        },
+        {
+          "id": 196,
+          "cause": "congested"
+        },
+        {
+          "id": 197,
+          "cause": "congested"
+        },
+        {
+          "id": 199,
+          "cause": "congested"
+        },
+        {
+          "id": 200,
+          "cause": "congested"
+        },
+        {
+          "id": 201,
+          "cause": "congested"
+        },
+        {
+          "id": 203,
+          "cause": "congested"
+        },
+        {
+          "id": 204,
+          "cause": "congested"
+        },
+        {
+          "id": 205,
+          "cause": "congested"
+        },
+        {
+          "id": 206,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "timeline": [
+        {
+          "wallMs": 60.80000001192093,
+          "sim": 5.28339999999999,
+          "alive": 157,
+          "heap": 18051705,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 124,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1094.1000000119202,
+          "sim": 6.166399999999987,
+          "alive": 148,
+          "heap": 13245352,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2144.10000001192,
+          "sim": 7.1492999999999896,
+          "alive": 146,
+          "heap": 28512271,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3177.300000011921,
+          "sim": 8.065799999999985,
+          "alive": 144,
+          "heap": 30114358,
+          "phase": "wave",
+          "selected": 117,
+          "recorded": 117,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4177.300000011921,
+          "sim": 9.032199999999992,
+          "alive": 139,
+          "heap": 22233004,
+          "phase": "wave",
+          "selected": 116,
+          "recorded": 116,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5210.60000001192,
+          "sim": 10.015500000000005,
+          "alive": 141,
+          "heap": 14004963,
+          "phase": "wave",
+          "selected": 116,
+          "recorded": 116,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6260.60000001192,
+          "sim": 11.03200000000002,
+          "alive": 138,
+          "heap": 25735183,
+          "phase": "wave",
+          "selected": 116,
+          "recorded": 116,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7277.200000011922,
+          "sim": 11.998400000000034,
+          "alive": 136,
+          "heap": 24036808,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8277.200000011922,
+          "sim": 12.98150000000004,
+          "alive": 136,
+          "heap": 19044414,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9293.800000011921,
+          "sim": 13.964500000000045,
+          "alive": 133,
+          "heap": 15492703,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 10310.40000001192,
+          "sim": 14.79780000000005,
+          "alive": 132,
+          "heap": 19128317,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 11327.000000011922,
+          "sim": 15.747400000000068,
+          "alive": 131,
+          "heap": 16144505,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 12360.300000011921,
+          "sim": 16.580600000000075,
+          "alive": 130,
+          "heap": 26491560,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 13393.60000001192,
+          "sim": 17.613800000000083,
+          "alive": 130,
+          "heap": 17504961,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 14393.60000001192,
+          "sim": 18.563800000000096,
+          "alive": 128,
+          "heap": 22398123,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 15426.800000011921,
+          "sim": 19.54670000000011,
+          "alive": 128,
+          "heap": 16104800,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 16443.50000001192,
+          "sim": 20.479700000000122,
+          "alive": 128,
+          "heap": 17297509,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 17460.10000001192,
+          "sim": 21.446000000000122,
+          "alive": 127,
+          "heap": 14359693,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 18476.80000001192,
+          "sim": 22.429200000000137,
+          "alive": 127,
+          "heap": 18703146,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 19510.10000001192,
+          "sim": 23.42890000000015,
+          "alive": 125,
+          "heap": 14639956,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 20560.00000001192,
+          "sim": 24.395400000000162,
+          "alive": 124,
+          "heap": 15860077,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 21560.00000001192,
+          "sim": 25.395300000000173,
+          "alive": 123,
+          "heap": 16842765,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 22593.30000001192,
+          "sim": 26.41170000000018,
+          "alive": 123,
+          "heap": 21721112,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 23643.200000011922,
+          "sim": 27.461200000000186,
+          "alive": 123,
+          "heap": 23848338,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 24693.200000011922,
+          "sim": 28.510900000000202,
+          "alive": 123,
+          "heap": 29105225,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 25709.80000001192,
+          "sim": 29.527000000000214,
+          "alive": 123,
+          "heap": 26638958,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 26759.80000001192,
+          "sim": 30.560000000000226,
+          "alive": 123,
+          "heap": 12860250,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 27776.40000001192,
+          "sim": 31.576500000000227,
+          "alive": 124,
+          "heap": 19540759,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 28792.90000001192,
+          "sim": 32.559400000000224,
+          "alive": 124,
+          "heap": 27364968,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 29793.000000011918,
+          "sim": 33.54250000000018,
+          "alive": 124,
+          "heap": 33665076,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30048.400000035763,
+      "heapStart": 14019099,
+      "heapEnd": 15617659,
+      "aliveStart": 157,
+      "aliveEnd": 124,
+      "simStart": 5.18339999999999,
+      "simEnd": 33.759000000000185,
+      "phase": "wave",
+      "subsystems": {
+        "pathAndMovementInclusive": {
+          "calls": 17828,
+          "totalMs": 1222.299998641014,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "staticCollision": {
+          "calls": 101560,
+          "totalMs": 465.60000014305115,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 8126,
+          "totalMs": 307.29999935626984,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 47156,
+          "totalMs": 365.3000013232231,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 597,
+          "totalMs": 795.1999996304512,
+          "p50Ms": 0.6999999284744263,
+          "p95Ms": 2.200000047683716
+        },
+        "fog": {
+          "calls": 597,
+          "totalMs": 6529.499999880791,
+          "p50Ms": 11.599999964237213,
+          "p95Ms": 13.299999952316284
+        },
+        "renderInclusive": {
+          "calls": 597,
+          "totalMs": 12146.199999511242,
+          "p50Ms": 20.099999964237213,
+          "p95Ms": 23.400000035762787
+        },
+        "DOM": {
+          "calls": 597,
+          "totalMs": 1557.5000001192093,
+          "p50Ms": 0.8999999761581421,
+          "p95Ms": 5.199999988079071
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 4,
+        "totalDirectRoutes": 613,
+        "totalSearches": 797
+      },
+      "fps": 19.83466673763963,
+      "samples": 596,
+      "p50Ms": 50,
+      "p95Ms": 66.70000000000073
+    },
+    {
+      "n": 200,
+      "runId": "B1",
+      "mode": "after",
+      "runStart": "2026-11-07T04:11:33.795Z",
+      "cpuBefore": {
+        "usage_usec": 55099069806,
+        "user_usec": 47447799584,
+        "system_usec": 7651270221,
+        "nice_usec": 0,
+        "nr_periods": 951902,
+        "nr_throttled": 704,
+        "throttled_usec": 14575820,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55152240435,
+        "user_usec": 47498492788,
+        "system_usec": 7653747647,
+        "nice_usec": 0,
+        "nr_periods": 952321,
+        "nr_throttled": 704,
+        "throttled_usec": 14575820,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 53170629,
+        "user_usec": 50693204,
+        "system_usec": 2477426,
+        "nice_usec": 0,
+        "nr_periods": 419,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        },
+        {
+          "id": 107,
+          "cause": "congested"
+        },
+        {
+          "id": 108,
+          "cause": "congested"
+        },
+        {
+          "id": 109,
+          "cause": "congested"
+        },
+        {
+          "id": 110,
+          "cause": "congested"
+        },
+        {
+          "id": 111,
+          "cause": "congested"
+        },
+        {
+          "id": 113,
+          "cause": "congested"
+        },
+        {
+          "id": 114,
+          "cause": "congested"
+        },
+        {
+          "id": 115,
+          "cause": "congested"
+        },
+        {
+          "id": 117,
+          "cause": "congested"
+        },
+        {
+          "id": 118,
+          "cause": "congested"
+        },
+        {
+          "id": 119,
+          "cause": "congested"
+        },
+        {
+          "id": 122,
+          "cause": "congested"
+        },
+        {
+          "id": 123,
+          "cause": "congested"
+        },
+        {
+          "id": 125,
+          "cause": "congested"
+        },
+        {
+          "id": 126,
+          "cause": "congested"
+        },
+        {
+          "id": 127,
+          "cause": "congested"
+        },
+        {
+          "id": 129,
+          "cause": "congested"
+        },
+        {
+          "id": 130,
+          "cause": "congested"
+        },
+        {
+          "id": 131,
+          "cause": "congested"
+        },
+        {
+          "id": 133,
+          "cause": "congested"
+        },
+        {
+          "id": 134,
+          "cause": "congested"
+        },
+        {
+          "id": 135,
+          "cause": "congested"
+        },
+        {
+          "id": 137,
+          "cause": "congested"
+        },
+        {
+          "id": 138,
+          "cause": "congested"
+        },
+        {
+          "id": 139,
+          "cause": "congested"
+        },
+        {
+          "id": 141,
+          "cause": "congested"
+        },
+        {
+          "id": 142,
+          "cause": "congested"
+        },
+        {
+          "id": 143,
+          "cause": "congested"
+        },
+        {
+          "id": 145,
+          "cause": "congested"
+        },
+        {
+          "id": 146,
+          "cause": "congested"
+        },
+        {
+          "id": 147,
+          "cause": "congested"
+        },
+        {
+          "id": 149,
+          "cause": "congested"
+        },
+        {
+          "id": 150,
+          "cause": "congested"
+        },
+        {
+          "id": 151,
+          "cause": "congested"
+        },
+        {
+          "id": 153,
+          "cause": "congested"
+        },
+        {
+          "id": 154,
+          "cause": "congested"
+        },
+        {
+          "id": 155,
+          "cause": "congested"
+        },
+        {
+          "id": 157,
+          "cause": "congested"
+        },
+        {
+          "id": 158,
+          "cause": "congested"
+        },
+        {
+          "id": 159,
+          "cause": "congested"
+        },
+        {
+          "id": 161,
+          "cause": "congested"
+        },
+        {
+          "id": 162,
+          "cause": "congested"
+        },
+        {
+          "id": 163,
+          "cause": "congested"
+        },
+        {
+          "id": 165,
+          "cause": "congested"
+        },
+        {
+          "id": 166,
+          "cause": "congested"
+        },
+        {
+          "id": 167,
+          "cause": "congested"
+        },
+        {
+          "id": 169,
+          "cause": "congested"
+        },
+        {
+          "id": 170,
+          "cause": "congested"
+        },
+        {
+          "id": 171,
+          "cause": "congested"
+        },
+        {
+          "id": 174,
+          "cause": "congested"
+        },
+        {
+          "id": 175,
+          "cause": "congested"
+        },
+        {
+          "id": 176,
+          "cause": "congested"
+        },
+        {
+          "id": 178,
+          "cause": "congested"
+        },
+        {
+          "id": 179,
+          "cause": "congested"
+        },
+        {
+          "id": 180,
+          "cause": "congested"
+        },
+        {
+          "id": 182,
+          "cause": "congested"
+        },
+        {
+          "id": 183,
+          "cause": "congested"
+        },
+        {
+          "id": 184,
+          "cause": "congested"
+        },
+        {
+          "id": 186,
+          "cause": "congested"
+        },
+        {
+          "id": 187,
+          "cause": "congested"
+        },
+        {
+          "id": 188,
+          "cause": "congested"
+        },
+        {
+          "id": 189,
+          "cause": "congested"
+        },
+        {
+          "id": 191,
+          "cause": "congested"
+        },
+        {
+          "id": 192,
+          "cause": "congested"
+        },
+        {
+          "id": 193,
+          "cause": "congested"
+        },
+        {
+          "id": 195,
+          "cause": "congested"
+        },
+        {
+          "id": 196,
+          "cause": "congested"
+        },
+        {
+          "id": 197,
+          "cause": "congested"
+        },
+        {
+          "id": 199,
+          "cause": "congested"
+        },
+        {
+          "id": 200,
+          "cause": "congested"
+        },
+        {
+          "id": 201,
+          "cause": "congested"
+        },
+        {
+          "id": 203,
+          "cause": "congested"
+        },
+        {
+          "id": 204,
+          "cause": "congested"
+        },
+        {
+          "id": 205,
+          "cause": "congested"
+        },
+        {
+          "id": 206,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "timeline": [
+        {
+          "wallMs": 65.20000000000073,
+          "sim": 4.94999999999999,
+          "alive": 158,
+          "heap": 21771894,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 124,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1115.1000000000004,
+          "sim": 5.699999999999988,
+          "alive": 152,
+          "heap": 17068616,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2115.1000000000004,
+          "sim": 6.549899999999985,
+          "alive": 149,
+          "heap": 24053496,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3148.3999999999996,
+          "sim": 7.4828999999999875,
+          "alive": 148,
+          "heap": 20321336,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4198.299999999999,
+          "sim": 8.482899999999992,
+          "alive": 144,
+          "heap": 19720546,
+          "phase": "wave",
+          "selected": 116,
+          "recorded": 116,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5248.299999999999,
+          "sim": 9.466200000000004,
+          "alive": 136,
+          "heap": 20291910,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6248.299999999999,
+          "sim": 10.365900000000012,
+          "alive": 141,
+          "heap": 19416433,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7264.9000000000015,
+          "sim": 11.315500000000027,
+          "alive": 137,
+          "heap": 14545950,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8264.900000000001,
+          "sim": 12.181900000000033,
+          "alive": 134,
+          "heap": 22248878,
+          "phase": "wave",
+          "selected": 112,
+          "recorded": 112,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9298.2,
+          "sim": 13.11480000000003,
+          "alive": 134,
+          "heap": 28209602,
+          "phase": "wave",
+          "selected": 112,
+          "recorded": 112,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 10314.8,
+          "sim": 14.04760000000003,
+          "alive": 133,
+          "heap": 15649320,
+          "phase": "wave",
+          "selected": 112,
+          "recorded": 112,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 11348.099999999999,
+          "sim": 15.047300000000044,
+          "alive": 130,
+          "heap": 14822366,
+          "phase": "wave",
+          "selected": 112,
+          "recorded": 112,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 12364.7,
+          "sim": 16.030400000000053,
+          "alive": 129,
+          "heap": 28483857,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 13398,
+          "sim": 16.91360000000006,
+          "alive": 129,
+          "heap": 19086754,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 14398,
+          "sim": 17.796600000000065,
+          "alive": 128,
+          "heap": 15891564,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 15464.599999999999,
+          "sim": 18.829600000000084,
+          "alive": 127,
+          "heap": 23025984,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 16481.2,
+          "sim": 19.812800000000102,
+          "alive": 126,
+          "heap": 29817069,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 17514.5,
+          "sim": 20.74590000000011,
+          "alive": 126,
+          "heap": 17358271,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 18514.5,
+          "sim": 21.679000000000123,
+          "alive": 126,
+          "heap": 19250482,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 19547.7,
+          "sim": 22.66210000000013,
+          "alive": 124,
+          "heap": 27190584,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 20581.1,
+          "sim": 23.695000000000146,
+          "alive": 123,
+          "heap": 18741273,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 21631,
+          "sim": 24.661600000000156,
+          "alive": 123,
+          "heap": 27150005,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 22647.699999999997,
+          "sim": 25.661400000000167,
+          "alive": 122,
+          "heap": 24824955,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 23664.199999999997,
+          "sim": 26.660900000000176,
+          "alive": 120,
+          "heap": 29490217,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 24664.199999999997,
+          "sim": 27.643900000000183,
+          "alive": 120,
+          "heap": 20125763,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 25697.5,
+          "sim": 28.6768000000002,
+          "alive": 120,
+          "heap": 28364081,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 26730.699999999997,
+          "sim": 29.709600000000208,
+          "alive": 120,
+          "heap": 29431912,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 27764.1,
+          "sim": 30.742400000000195,
+          "alive": 120,
+          "heap": 17325156,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 28864,
+          "sim": 31.692100000000202,
+          "alive": 121,
+          "heap": 27286036,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 30113.9,
+          "sim": 32.72510000000018,
+          "alive": 121,
+          "heap": 32990820,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30150,
+      "heapStart": 16559266,
+      "heapEnd": 32997337,
+      "aliveStart": 159,
+      "aliveEnd": 121,
+      "simStart": 4.849999999999991,
+      "simEnd": 32.72510000000018,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 121498,
+          "totalMs": 551.9000012278557,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "pathAndMovementInclusive": {
+          "calls": 23477,
+          "totalMs": 1606.2000012397766,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "dynamicCollision": {
+          "calls": 9003,
+          "totalMs": 370.4000014066696,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 37912,
+          "totalMs": 298.7999991774559,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 578,
+          "totalMs": 1113,
+          "p50Ms": 0.8999999761581421,
+          "p95Ms": 2.300000011920929
+        },
+        "fog": {
+          "calls": 578,
+          "totalMs": 7035.600000441074,
+          "p50Ms": 11.900000035762787,
+          "p95Ms": 13.800000011920929
+        },
+        "renderInclusive": {
+          "calls": 578,
+          "totalMs": 12576.899999797344,
+          "p50Ms": 21,
+          "p95Ms": 25.5
+        },
+        "DOM": {
+          "calls": 578,
+          "totalMs": 1530.7000006437302,
+          "p50Ms": 4.199999988079071,
+          "p95Ms": 5.199999988079071
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 3,
+        "totalDirectRoutes": 599,
+        "totalSearches": 923
+      },
+      "fps": 19.137645107794363,
+      "samples": 577,
+      "p50Ms": 50,
+      "p95Ms": 66.70000000000073
+    },
+    {
+      "n": 200,
+      "runId": "B2",
+      "mode": "after",
+      "runStart": "2026-11-07T04:12:15.646Z",
+      "cpuBefore": {
+        "usage_usec": 55152274139,
+        "user_usec": 47498517912,
+        "system_usec": 7653756227,
+        "nice_usec": 0,
+        "nr_periods": 952321,
+        "nr_throttled": 704,
+        "throttled_usec": 14575820,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55205368604,
+        "user_usec": 47549396980,
+        "system_usec": 7655971624,
+        "nice_usec": 0,
+        "nr_periods": 952737,
+        "nr_throttled": 704,
+        "throttled_usec": 14575820,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 53094465,
+        "user_usec": 50879068,
+        "system_usec": 2215397,
+        "nice_usec": 0,
+        "nr_periods": 416,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        },
+        {
+          "id": 107,
+          "cause": "congested"
+        },
+        {
+          "id": 108,
+          "cause": "congested"
+        },
+        {
+          "id": 109,
+          "cause": "congested"
+        },
+        {
+          "id": 110,
+          "cause": "congested"
+        },
+        {
+          "id": 111,
+          "cause": "congested"
+        },
+        {
+          "id": 113,
+          "cause": "congested"
+        },
+        {
+          "id": 114,
+          "cause": "congested"
+        },
+        {
+          "id": 115,
+          "cause": "congested"
+        },
+        {
+          "id": 117,
+          "cause": "congested"
+        },
+        {
+          "id": 118,
+          "cause": "congested"
+        },
+        {
+          "id": 119,
+          "cause": "congested"
+        },
+        {
+          "id": 122,
+          "cause": "congested"
+        },
+        {
+          "id": 123,
+          "cause": "congested"
+        },
+        {
+          "id": 125,
+          "cause": "congested"
+        },
+        {
+          "id": 126,
+          "cause": "congested"
+        },
+        {
+          "id": 127,
+          "cause": "congested"
+        },
+        {
+          "id": 129,
+          "cause": "congested"
+        },
+        {
+          "id": 130,
+          "cause": "congested"
+        },
+        {
+          "id": 131,
+          "cause": "congested"
+        },
+        {
+          "id": 133,
+          "cause": "congested"
+        },
+        {
+          "id": 134,
+          "cause": "congested"
+        },
+        {
+          "id": 135,
+          "cause": "congested"
+        },
+        {
+          "id": 137,
+          "cause": "congested"
+        },
+        {
+          "id": 138,
+          "cause": "congested"
+        },
+        {
+          "id": 139,
+          "cause": "congested"
+        },
+        {
+          "id": 141,
+          "cause": "congested"
+        },
+        {
+          "id": 142,
+          "cause": "congested"
+        },
+        {
+          "id": 143,
+          "cause": "congested"
+        },
+        {
+          "id": 145,
+          "cause": "congested"
+        },
+        {
+          "id": 146,
+          "cause": "congested"
+        },
+        {
+          "id": 147,
+          "cause": "congested"
+        },
+        {
+          "id": 149,
+          "cause": "congested"
+        },
+        {
+          "id": 150,
+          "cause": "congested"
+        },
+        {
+          "id": 151,
+          "cause": "congested"
+        },
+        {
+          "id": 153,
+          "cause": "congested"
+        },
+        {
+          "id": 154,
+          "cause": "congested"
+        },
+        {
+          "id": 155,
+          "cause": "congested"
+        },
+        {
+          "id": 157,
+          "cause": "congested"
+        },
+        {
+          "id": 158,
+          "cause": "congested"
+        },
+        {
+          "id": 159,
+          "cause": "congested"
+        },
+        {
+          "id": 161,
+          "cause": "congested"
+        },
+        {
+          "id": 162,
+          "cause": "congested"
+        },
+        {
+          "id": 163,
+          "cause": "congested"
+        },
+        {
+          "id": 165,
+          "cause": "congested"
+        },
+        {
+          "id": 166,
+          "cause": "congested"
+        },
+        {
+          "id": 167,
+          "cause": "congested"
+        },
+        {
+          "id": 169,
+          "cause": "congested"
+        },
+        {
+          "id": 170,
+          "cause": "congested"
+        },
+        {
+          "id": 171,
+          "cause": "congested"
+        },
+        {
+          "id": 174,
+          "cause": "congested"
+        },
+        {
+          "id": 175,
+          "cause": "congested"
+        },
+        {
+          "id": 176,
+          "cause": "congested"
+        },
+        {
+          "id": 178,
+          "cause": "congested"
+        },
+        {
+          "id": 179,
+          "cause": "congested"
+        },
+        {
+          "id": 180,
+          "cause": "congested"
+        },
+        {
+          "id": 182,
+          "cause": "congested"
+        },
+        {
+          "id": 183,
+          "cause": "congested"
+        },
+        {
+          "id": 184,
+          "cause": "congested"
+        },
+        {
+          "id": 186,
+          "cause": "congested"
+        },
+        {
+          "id": 187,
+          "cause": "congested"
+        },
+        {
+          "id": 188,
+          "cause": "congested"
+        },
+        {
+          "id": 189,
+          "cause": "congested"
+        },
+        {
+          "id": 191,
+          "cause": "congested"
+        },
+        {
+          "id": 192,
+          "cause": "congested"
+        },
+        {
+          "id": 193,
+          "cause": "congested"
+        },
+        {
+          "id": 195,
+          "cause": "congested"
+        },
+        {
+          "id": 196,
+          "cause": "congested"
+        },
+        {
+          "id": 197,
+          "cause": "congested"
+        },
+        {
+          "id": 199,
+          "cause": "congested"
+        },
+        {
+          "id": 200,
+          "cause": "congested"
+        },
+        {
+          "id": 201,
+          "cause": "congested"
+        },
+        {
+          "id": 203,
+          "cause": "congested"
+        },
+        {
+          "id": 204,
+          "cause": "congested"
+        },
+        {
+          "id": 205,
+          "cause": "congested"
+        },
+        {
+          "id": 206,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "timeline": [
+        {
+          "wallMs": 55.40000002384113,
+          "sim": 5.083299999999991,
+          "alive": 157,
+          "heap": 13589836,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 124,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 1105.3000000238426,
+          "sim": 5.883199999999988,
+          "alive": 150,
+          "heap": 21412083,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 2105.3000000238426,
+          "sim": 6.833099999999987,
+          "alive": 146,
+          "heap": 27278179,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 3105.3000000238426,
+          "sim": 7.8324999999999845,
+          "alive": 144,
+          "heap": 28929564,
+          "phase": "wave",
+          "selected": 117,
+          "recorded": 117,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 4171.900000023841,
+          "sim": 8.86529999999999,
+          "alive": 140,
+          "heap": 26198495,
+          "phase": "wave",
+          "selected": 116,
+          "recorded": 116,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 5205.100000023842,
+          "sim": 9.898099999999998,
+          "alive": 135,
+          "heap": 20198043,
+          "phase": "wave",
+          "selected": 116,
+          "recorded": 116,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 6255.100000023842,
+          "sim": 10.914500000000007,
+          "alive": 137,
+          "heap": 11831613,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 7255.100000023842,
+          "sim": 11.89760000000002,
+          "alive": 135,
+          "heap": 24545710,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 8305.100000023842,
+          "sim": 12.947200000000036,
+          "alive": 135,
+          "heap": 14374569,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 9338.300000023843,
+          "sim": 13.963300000000048,
+          "alive": 133,
+          "heap": 27228361,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 10355.000000023843,
+          "sim": 14.979400000000059,
+          "alive": 131,
+          "heap": 26621542,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 11371.600000023842,
+          "sim": 15.995800000000063,
+          "alive": 131,
+          "heap": 21973493,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 12388.20000002384,
+          "sim": 16.879100000000065,
+          "alive": 130,
+          "heap": 16678875,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 13421.500000023843,
+          "sim": 17.89540000000008,
+          "alive": 130,
+          "heap": 14497797,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 14421.500000023843,
+          "sim": 18.861800000000088,
+          "alive": 130,
+          "heap": 27860179,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 15454.800000023843,
+          "sim": 19.87800000000009,
+          "alive": 128,
+          "heap": 20583472,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 16504.70000002384,
+          "sim": 20.827600000000093,
+          "alive": 127,
+          "heap": 15350101,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 17554.70000002384,
+          "sim": 21.877400000000108,
+          "alive": 125,
+          "heap": 27272513,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 18588.000000023843,
+          "sim": 22.910400000000116,
+          "alive": 125,
+          "heap": 25386271,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 19604.600000023842,
+          "sim": 23.893400000000124,
+          "alive": 125,
+          "heap": 16634080,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 20604.600000023842,
+          "sim": 24.87650000000013,
+          "alive": 124,
+          "heap": 17627960,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 21604.600000023842,
+          "sim": 25.843200000000145,
+          "alive": 124,
+          "heap": 14105784,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 22637.80000002384,
+          "sim": 26.876300000000153,
+          "alive": 123,
+          "heap": 29433383,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 23671.100000023842,
+          "sim": 27.909400000000172,
+          "alive": 123,
+          "heap": 29103198,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 24721.100000023842,
+          "sim": 28.9092000000002,
+          "alive": 122,
+          "heap": 37663392,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 25754.400000023845,
+          "sim": 29.942000000000203,
+          "alive": 122,
+          "heap": 44848446,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 26771.000000023843,
+          "sim": 30.958200000000218,
+          "alive": 122,
+          "heap": 16303643,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 27771.000000023843,
+          "sim": 31.94120000000024,
+          "alive": 123,
+          "heap": 19532998,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 28787.600000023842,
+          "sim": 32.9573000000002,
+          "alive": 123,
+          "heap": 17658962,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        },
+        {
+          "wallMs": 29837.600000023842,
+          "sim": 34.00690000000016,
+          "alive": 123,
+          "heap": 22293008,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": true
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30049.5,
+      "heapStart": 18218869,
+      "heapEnd": 34641195,
+      "aliveStart": 158,
+      "aliveEnd": 123,
+      "simStart": 4.983299999999991,
+      "simEnd": 34.19000000000015,
+      "phase": "wave",
+      "subsystems": {
+        "pathAndMovementInclusive": {
+          "calls": 20825,
+          "totalMs": 1161.39999884367,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "staticCollision": {
+          "calls": 91005,
+          "totalMs": 439.3999996185303,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "dynamicCollision": {
+          "calls": 8788,
+          "totalMs": 358.1999993920326,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 44551,
+          "totalMs": 366.2000010609627,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 605,
+          "totalMs": 670.8000001907349,
+          "p50Ms": 0.8000000715255737,
+          "p95Ms": 2.0000000596046448
+        },
+        "fog": {
+          "calls": 605,
+          "totalMs": 6379.399999141693,
+          "p50Ms": 11.399999976158142,
+          "p95Ms": 13
+        },
+        "renderInclusive": {
+          "calls": 605,
+          "totalMs": 12172.000000476837,
+          "p50Ms": 20,
+          "p95Ms": 22.400000035762787
+        },
+        "DOM": {
+          "calls": 605,
+          "totalMs": 1610.1999995708466,
+          "p50Ms": 4.300000011920929,
+          "p95Ms": 5.199999988079071
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 1,
+        "totalDirectRoutes": 616,
+        "totalSearches": 934
+      },
+      "fps": 20.100168056040868,
+      "samples": 604,
+      "p50Ms": 50,
+      "p95Ms": 66.69999999999709
+    },
+    {
+      "n": 200,
+      "runId": "A2",
+      "mode": "before",
+      "runStart": "2026-11-07T04:12:57.250Z",
+      "cpuBefore": {
+        "usage_usec": 55205394653,
+        "user_usec": 47549419267,
+        "system_usec": 7655975386,
+        "nice_usec": 0,
+        "nr_periods": 952737,
+        "nr_throttled": 704,
+        "throttled_usec": 14575820,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 55258287411,
+        "user_usec": 47600009640,
+        "system_usec": 7658277771,
+        "nice_usec": 0,
+        "nr_periods": 953153,
+        "nr_throttled": 705,
+        "throttled_usec": 14582800,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 52892758,
+        "user_usec": 50590373,
+        "system_usec": 2302385,
+        "nice_usec": 0,
+        "nr_periods": 416,
+        "nr_throttled": 1,
+        "throttled_usec": 6980,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e037a4bc15e56579adf776c84b2afbf712762871",
+      "resources": 167,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "recordedFixture": [
+        {
+          "id": 15,
+          "cause": "congested"
+        },
+        {
+          "id": 16,
+          "cause": "congested"
+        },
+        {
+          "id": 17,
+          "cause": "congested"
+        },
+        {
+          "id": 18,
+          "cause": "congested"
+        },
+        {
+          "id": 20,
+          "cause": "congested"
+        },
+        {
+          "id": 21,
+          "cause": "congested"
+        },
+        {
+          "id": 22,
+          "cause": "congested"
+        },
+        {
+          "id": 24,
+          "cause": "congested"
+        },
+        {
+          "id": 25,
+          "cause": "congested"
+        },
+        {
+          "id": 27,
+          "cause": "congested"
+        },
+        {
+          "id": 28,
+          "cause": "congested"
+        },
+        {
+          "id": 29,
+          "cause": "congested"
+        },
+        {
+          "id": 31,
+          "cause": "congested"
+        },
+        {
+          "id": 32,
+          "cause": "congested"
+        },
+        {
+          "id": 33,
+          "cause": "congested"
+        },
+        {
+          "id": 35,
+          "cause": "congested"
+        },
+        {
+          "id": 36,
+          "cause": "congested"
+        },
+        {
+          "id": 38,
+          "cause": "congested"
+        },
+        {
+          "id": 39,
+          "cause": "congested"
+        },
+        {
+          "id": 40,
+          "cause": "congested"
+        },
+        {
+          "id": 42,
+          "cause": "congested"
+        },
+        {
+          "id": 43,
+          "cause": "congested"
+        },
+        {
+          "id": 44,
+          "cause": "congested"
+        },
+        {
+          "id": 46,
+          "cause": "congested"
+        },
+        {
+          "id": 47,
+          "cause": "congested"
+        },
+        {
+          "id": 49,
+          "cause": "congested"
+        },
+        {
+          "id": 50,
+          "cause": "congested"
+        },
+        {
+          "id": 51,
+          "cause": "congested"
+        },
+        {
+          "id": 53,
+          "cause": "congested"
+        },
+        {
+          "id": 54,
+          "cause": "congested"
+        },
+        {
+          "id": 55,
+          "cause": "congested"
+        },
+        {
+          "id": 57,
+          "cause": "congested"
+        },
+        {
+          "id": 58,
+          "cause": "congested"
+        },
+        {
+          "id": 60,
+          "cause": "congested"
+        },
+        {
+          "id": 62,
+          "cause": "congested"
+        },
+        {
+          "id": 63,
+          "cause": "congested"
+        },
+        {
+          "id": 64,
+          "cause": "congested"
+        },
+        {
+          "id": 66,
+          "cause": "congested"
+        },
+        {
+          "id": 68,
+          "cause": "congested"
+        },
+        {
+          "id": 69,
+          "cause": "congested"
+        },
+        {
+          "id": 70,
+          "cause": "congested"
+        },
+        {
+          "id": 72,
+          "cause": "congested"
+        },
+        {
+          "id": 73,
+          "cause": "congested"
+        },
+        {
+          "id": 74,
+          "cause": "congested"
+        },
+        {
+          "id": 76,
+          "cause": "congested"
+        },
+        {
+          "id": 77,
+          "cause": "congested"
+        },
+        {
+          "id": 79,
+          "cause": "congested"
+        },
+        {
+          "id": 80,
+          "cause": "congested"
+        },
+        {
+          "id": 81,
+          "cause": "congested"
+        },
+        {
+          "id": 83,
+          "cause": "congested"
+        },
+        {
+          "id": 84,
+          "cause": "congested"
+        },
+        {
+          "id": 85,
+          "cause": "congested"
+        },
+        {
+          "id": 87,
+          "cause": "congested"
+        },
+        {
+          "id": 88,
+          "cause": "congested"
+        },
+        {
+          "id": 89,
+          "cause": "congested"
+        },
+        {
+          "id": 91,
+          "cause": "congested"
+        },
+        {
+          "id": 92,
+          "cause": "congested"
+        },
+        {
+          "id": 93,
+          "cause": "congested"
+        },
+        {
+          "id": 95,
+          "cause": "congested"
+        },
+        {
+          "id": 96,
+          "cause": "congested"
+        },
+        {
+          "id": 97,
+          "cause": "congested"
+        },
+        {
+          "id": 99,
+          "cause": "congested"
+        },
+        {
+          "id": 100,
+          "cause": "congested"
+        },
+        {
+          "id": 101,
+          "cause": "congested"
+        },
+        {
+          "id": 103,
+          "cause": "congested"
+        },
+        {
+          "id": 104,
+          "cause": "congested"
+        },
+        {
+          "id": 105,
+          "cause": "congested"
+        },
+        {
+          "id": 107,
+          "cause": "congested"
+        },
+        {
+          "id": 108,
+          "cause": "congested"
+        },
+        {
+          "id": 109,
+          "cause": "congested"
+        },
+        {
+          "id": 110,
+          "cause": "congested"
+        },
+        {
+          "id": 111,
+          "cause": "congested"
+        },
+        {
+          "id": 113,
+          "cause": "congested"
+        },
+        {
+          "id": 114,
+          "cause": "congested"
+        },
+        {
+          "id": 115,
+          "cause": "congested"
+        },
+        {
+          "id": 117,
+          "cause": "congested"
+        },
+        {
+          "id": 118,
+          "cause": "congested"
+        },
+        {
+          "id": 119,
+          "cause": "congested"
+        },
+        {
+          "id": 122,
+          "cause": "congested"
+        },
+        {
+          "id": 123,
+          "cause": "congested"
+        },
+        {
+          "id": 125,
+          "cause": "congested"
+        },
+        {
+          "id": 126,
+          "cause": "congested"
+        },
+        {
+          "id": 127,
+          "cause": "congested"
+        },
+        {
+          "id": 129,
+          "cause": "congested"
+        },
+        {
+          "id": 130,
+          "cause": "congested"
+        },
+        {
+          "id": 131,
+          "cause": "congested"
+        },
+        {
+          "id": 133,
+          "cause": "congested"
+        },
+        {
+          "id": 134,
+          "cause": "congested"
+        },
+        {
+          "id": 135,
+          "cause": "congested"
+        },
+        {
+          "id": 137,
+          "cause": "congested"
+        },
+        {
+          "id": 138,
+          "cause": "congested"
+        },
+        {
+          "id": 139,
+          "cause": "congested"
+        },
+        {
+          "id": 141,
+          "cause": "congested"
+        },
+        {
+          "id": 142,
+          "cause": "congested"
+        },
+        {
+          "id": 143,
+          "cause": "congested"
+        },
+        {
+          "id": 145,
+          "cause": "congested"
+        },
+        {
+          "id": 146,
+          "cause": "congested"
+        },
+        {
+          "id": 147,
+          "cause": "congested"
+        },
+        {
+          "id": 149,
+          "cause": "congested"
+        },
+        {
+          "id": 150,
+          "cause": "congested"
+        },
+        {
+          "id": 151,
+          "cause": "congested"
+        },
+        {
+          "id": 153,
+          "cause": "congested"
+        },
+        {
+          "id": 154,
+          "cause": "congested"
+        },
+        {
+          "id": 155,
+          "cause": "congested"
+        },
+        {
+          "id": 157,
+          "cause": "congested"
+        },
+        {
+          "id": 158,
+          "cause": "congested"
+        },
+        {
+          "id": 159,
+          "cause": "congested"
+        },
+        {
+          "id": 161,
+          "cause": "congested"
+        },
+        {
+          "id": 162,
+          "cause": "congested"
+        },
+        {
+          "id": 163,
+          "cause": "congested"
+        },
+        {
+          "id": 165,
+          "cause": "congested"
+        },
+        {
+          "id": 166,
+          "cause": "congested"
+        },
+        {
+          "id": 167,
+          "cause": "congested"
+        },
+        {
+          "id": 169,
+          "cause": "congested"
+        },
+        {
+          "id": 170,
+          "cause": "congested"
+        },
+        {
+          "id": 171,
+          "cause": "congested"
+        },
+        {
+          "id": 174,
+          "cause": "congested"
+        },
+        {
+          "id": 175,
+          "cause": "congested"
+        },
+        {
+          "id": 176,
+          "cause": "congested"
+        },
+        {
+          "id": 178,
+          "cause": "congested"
+        },
+        {
+          "id": 179,
+          "cause": "congested"
+        },
+        {
+          "id": 180,
+          "cause": "congested"
+        },
+        {
+          "id": 182,
+          "cause": "congested"
+        },
+        {
+          "id": 183,
+          "cause": "congested"
+        },
+        {
+          "id": 184,
+          "cause": "congested"
+        },
+        {
+          "id": 186,
+          "cause": "congested"
+        },
+        {
+          "id": 187,
+          "cause": "congested"
+        },
+        {
+          "id": 188,
+          "cause": "congested"
+        },
+        {
+          "id": 189,
+          "cause": "congested"
+        },
+        {
+          "id": 191,
+          "cause": "congested"
+        },
+        {
+          "id": 192,
+          "cause": "congested"
+        },
+        {
+          "id": 193,
+          "cause": "congested"
+        },
+        {
+          "id": 195,
+          "cause": "congested"
+        },
+        {
+          "id": 196,
+          "cause": "congested"
+        },
+        {
+          "id": 197,
+          "cause": "congested"
+        },
+        {
+          "id": 199,
+          "cause": "congested"
+        },
+        {
+          "id": 200,
+          "cause": "congested"
+        },
+        {
+          "id": 201,
+          "cause": "congested"
+        },
+        {
+          "id": 203,
+          "cause": "congested"
+        },
+        {
+          "id": 204,
+          "cause": "congested"
+        },
+        {
+          "id": 205,
+          "cause": "congested"
+        },
+        {
+          "id": 206,
+          "cause": "congested"
+        }
+      ],
+      "sceneSha256": "35ba5ee4eae3a726bbcd82c5dfad965e26810d031f2b2f1b137640379fd7e28e",
+      "timeline": [
+        {
+          "wallMs": 65.59999997615887,
+          "sim": 4.849899999999992,
+          "alive": 159,
+          "heap": 13793727,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 124,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1132.1999999761574,
+          "sim": 5.549899999999989,
+          "alive": 153,
+          "heap": 19168439,
+          "phase": "wave",
+          "selected": 119,
+          "recorded": 119,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2182.1999999761574,
+          "sim": 6.449799999999986,
+          "alive": 149,
+          "heap": 19989627,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3198.799999976158,
+          "sim": 7.3496999999999835,
+          "alive": 148,
+          "heap": 16449195,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 118,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4232.199999976157,
+          "sim": 8.299499999999986,
+          "alive": 144,
+          "heap": 26548634,
+          "phase": "wave",
+          "selected": 116,
+          "recorded": 116,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5265.4999999761585,
+          "sim": 9.199399999999999,
+          "alive": 139,
+          "heap": 18712633,
+          "phase": "wave",
+          "selected": 115,
+          "recorded": 115,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6298.79999997616,
+          "sim": 10.148900000000005,
+          "alive": 141,
+          "heap": 28270076,
+          "phase": "wave",
+          "selected": 114,
+          "recorded": 114,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7365.399999976158,
+          "sim": 11.148600000000012,
+          "alive": 137,
+          "heap": 24363483,
+          "phase": "wave",
+          "selected": 113,
+          "recorded": 113,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8398.599999976159,
+          "sim": 12.081700000000025,
+          "alive": 134,
+          "heap": 19709908,
+          "phase": "wave",
+          "selected": 112,
+          "recorded": 112,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9398.599999976159,
+          "sim": 12.981600000000034,
+          "alive": 133,
+          "heap": 20272496,
+          "phase": "wave",
+          "selected": 112,
+          "recorded": 112,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 10431.899999976158,
+          "sim": 13.981500000000048,
+          "alive": 131,
+          "heap": 23510965,
+          "phase": "wave",
+          "selected": 112,
+          "recorded": 112,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 11465.099999976159,
+          "sim": 14.931400000000059,
+          "alive": 130,
+          "heap": 15638805,
+          "phase": "wave",
+          "selected": 112,
+          "recorded": 112,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 12465.099999976159,
+          "sim": 15.764400000000066,
+          "alive": 129,
+          "heap": 17805817,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 13481.79999997616,
+          "sim": 16.66420000000008,
+          "alive": 129,
+          "heap": 19780169,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 14514.999999976157,
+          "sim": 17.61390000000009,
+          "alive": 129,
+          "heap": 15861330,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 15514.999999976157,
+          "sim": 18.513400000000093,
+          "alive": 127,
+          "heap": 22732167,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 16564.999999976157,
+          "sim": 19.47950000000011,
+          "alive": 127,
+          "heap": 26863951,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 17598.29999997616,
+          "sim": 20.462200000000127,
+          "alive": 127,
+          "heap": 14340654,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 18614.899999976158,
+          "sim": 21.361900000000134,
+          "alive": 126,
+          "heap": 22210271,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 19664.899999976158,
+          "sim": 22.378500000000148,
+          "alive": 126,
+          "heap": 16607738,
+          "phase": "wave",
+          "selected": 111,
+          "recorded": 111,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 20698.199999976157,
+          "sim": 23.378100000000163,
+          "alive": 124,
+          "heap": 29295101,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 21731.399999976158,
+          "sim": 24.377500000000172,
+          "alive": 122,
+          "heap": 20859781,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 22731.399999976158,
+          "sim": 25.377200000000187,
+          "alive": 121,
+          "heap": 32559427,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 23731.399999976158,
+          "sim": 26.343900000000193,
+          "alive": 120,
+          "heap": 19063648,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 24731.399999976158,
+          "sim": 27.210500000000206,
+          "alive": 119,
+          "heap": 31986041,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 25764.69999997616,
+          "sim": 28.16020000000021,
+          "alive": 119,
+          "heap": 29026471,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 26814.499999976157,
+          "sim": 29.12640000000021,
+          "alive": 119,
+          "heap": 29767979,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 27831.19999997616,
+          "sim": 30.076300000000227,
+          "alive": 119,
+          "heap": 27908504,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 28864.499999976157,
+          "sim": 31.02590000000023,
+          "alive": 119,
+          "heap": 26688986,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 29914.499999976157,
+          "sim": 32.02560000000024,
+          "alive": 120,
+          "heap": 34005735,
+          "phase": "wave",
+          "selected": 110,
+          "recorded": 110,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 30044.099999964237,
+      "heapStart": 13512237,
+      "heapEnd": 41558576,
+      "aliveStart": 161,
+      "aliveEnd": 120,
+      "simStart": 4.749899999999992,
+      "simEnd": 32.12550000000024,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 161520,
+          "totalMs": 689.9000002741814,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "pathAndMovementInclusive": {
+          "calls": 24590,
+          "totalMs": 1899,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "dynamicCollision": {
+          "calls": 8621,
+          "totalMs": 378.59999907016754,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "target": {
+          "calls": 35633,
+          "totalMs": 289.30000019073486,
+          "p50Ms": 0,
+          "p95Ms": 0.09999996423721313
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 566,
+          "totalMs": 1392.399999499321,
+          "p50Ms": 0.9999999403953552,
+          "p95Ms": 3.700000047683716
+        },
+        "fog": {
+          "calls": 566,
+          "totalMs": 6951.700000405312,
+          "p50Ms": 12.099999964237213,
+          "p95Ms": 13.400000035762787
+        },
+        "renderInclusive": {
+          "calls": 566,
+          "totalMs": 12466.900000274181,
+          "p50Ms": 21.19999998807907,
+          "p95Ms": 25.899999976158142
+        },
+        "DOM": {
+          "calls": 566,
+          "totalMs": 1497.7999997735023,
+          "p50Ms": 1,
+          "p95Ms": 5.199999988079071
+        }
+      },
+      "navigationStats": {
+        "searches": 1,
+        "expanded": 8,
+        "ms": 0.6000000238418579,
+        "directRoutes": 0,
+        "routeReuses": 3,
+        "totalDirectRoutes": 622,
+        "totalSearches": 942
+      },
+      "fps": 18.805688970569015,
+      "samples": 565,
+      "p50Ms": 50,
+      "p95Ms": 66.70000000000073
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "gpu": [
+    {
+      "vendorId": 65535,
+      "deviceId": 65535,
+      "vendorString": "Google Inc. (Google)",
+      "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+      "driverVendor": "SwANGLE",
+      "driverVersion": "5.0.0"
+    }
+  ],
+  "cpuQuota": "400000 100000",
+  "pairs": [
+    {
+      "n": 100,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "recordedFixture": true,
+      "rng": true,
+      "visualRng": true
+    },
+    {
+      "n": 200,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "recordedFixture": true,
+      "rng": true,
+      "visualRng": true
+    }
+  ],
+  "status": "MEASURED_30S_ABBA_SOFTWARE_COHORT"
+}

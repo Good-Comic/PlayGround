@@ -1,0 +1,224 @@
+{
+  "mode": "CONTROLLED_COMPLETEWAVE_REWARD_HOOK_NOT_NATURAL_VICTORY",
+  "gameCommit": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+  "browserSource": "正式168資源構建",
+  "checks": [
+    {
+      "name": "168資源與正式來源",
+      "status": "PASS"
+    },
+    {
+      "name": "選牌前受阻元件可見",
+      "status": "PASS"
+    },
+    {
+      "name": "真選卡雙區與遮擋 1440",
+      "status": "PASS",
+      "detail": {
+        "phase": "boon",
+        "boonsOpen": true,
+        "newHidden": true,
+        "nodes": 32,
+        "cards": 3,
+        "offered": 3
+      }
+    },
+    {
+      "name": "#btn-reroll 可點 1440",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "#boon-overlay [data-fit] 可點 1440",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "#boon-overlay [data-plus] 可點 1440",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "#boon-overlay [data-filter=\"theme\"] 可點 1440",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "真選卡雙區與遮擋 1024",
+      "status": "PASS",
+      "detail": {
+        "phase": "boon",
+        "boonsOpen": true,
+        "newHidden": true,
+        "nodes": 32,
+        "cards": 3,
+        "offered": 3
+      }
+    },
+    {
+      "name": "#btn-reroll 可點 1024",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "#boon-overlay [data-fit] 可點 1024",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "#boon-overlay [data-plus] 可點 1024",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "#boon-overlay [data-filter=\"theme\"] 可點 1024",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "真選卡雙區與遮擋 390",
+      "status": "PASS",
+      "detail": {
+        "phase": "boon",
+        "boonsOpen": true,
+        "newHidden": true,
+        "nodes": 32,
+        "cards": 3,
+        "offered": 3
+      }
+    },
+    {
+      "name": "#btn-reroll 可點 390",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "#boon-overlay [data-fit] 可點 390",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "#boon-overlay [data-plus] 可點 390",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "#boon-overlay [data-filter=\"theme\"] 可點 390",
+      "status": "PASS",
+      "detail": {
+        "visible": true,
+        "hit": true
+      }
+    },
+    {
+      "name": "原生左卡右節點聚焦零領取零模擬RNG",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "phase": "boon",
+          "time": 0.6166000000000001,
+          "sim": 0.6166000000000001,
+          "rng": 555088502,
+          "visual": 1932097315,
+          "owned": [],
+          "choices": [
+            "gold_teeth",
+            "retreat_standard",
+            "citizen_arms"
+          ]
+        },
+        "focused": {
+          "phase": "boon",
+          "time": 0.6166000000000001,
+          "sim": 0.6166000000000001,
+          "rng": 555088502,
+          "visual": 1932097315,
+          "owned": [],
+          "choices": [
+            "gold_teeth",
+            "retreat_standard",
+            "citizen_arms"
+          ]
+        }
+      }
+    },
+    {
+      "name": "日文切換仍無新元件遮擋",
+      "status": "PASS"
+    },
+    {
+      "name": "原生重抽同步3候選",
+      "status": "PASS",
+      "detail": {
+        "rolled": {
+          "phase": "boon",
+          "time": 0.6166000000000001,
+          "sim": 0.6166000000000001,
+          "rng": 1754818645,
+          "visual": 1932097315,
+          "owned": [],
+          "choices": [
+            "butcher",
+            "elephant_compact",
+            "pack_mules"
+          ]
+        }
+      }
+    },
+    {
+      "name": "明確領取一次回準備",
+      "status": "PASS",
+      "detail": {
+        "phase": "prep",
+        "time": 0.6499000000000013,
+        "sim": 0.6499000000000013,
+        "rng": 1754818645,
+        "visual": 1932097315,
+        "owned": [
+          "butcher"
+        ],
+        "choices": []
+      }
+    },
+    {
+      "name": "零pageerror",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "note": "受控只設定既有歷史orderFailure並調用startWave/completeWave正式獎勵hook；不清敵、不更改戰鬥規則、不證自然波次通過。"
+}

@@ -1,0 +1,853 @@
+{
+  "scope": "自然C封存後私有唯讀交叉核對，沒有提供玩家私有資料",
+  "newComponentAction": {
+    "actionId": "C-36",
+    "intent": {
+      "op": "click",
+      "selector": "@rw-ui-2712a402-c27f-41e1-9a4b-81897a16a011-80",
+      "intent": "細節說上次壅塞10人、無法到達0，選出這組看看能否改在城心附近散開，不認定現在仍受阻。"
+    },
+    "beforeSelection": [
+      15,
+      17,
+      18,
+      21,
+      23,
+      32,
+      53,
+      69,
+      72,
+      74,
+      76,
+      78,
+      91,
+      98,
+      100
+    ],
+    "afterSelection": [
+      15,
+      18,
+      21,
+      23,
+      32,
+      76,
+      78,
+      91,
+      98,
+      100
+    ],
+    "selectedPriorCauses": {
+      "15": "congested",
+      "18": "congested",
+      "21": "congested",
+      "23": "congested",
+      "32": "congested",
+      "76": "congested",
+      "78": "congested",
+      "91": "congested",
+      "98": "congested",
+      "100": "congested"
+    },
+    "nativeCommandsDuringSelection": []
+  },
+  "followingPlayerCommand": {
+    "actionId": "C-37",
+    "intent": {
+      "op": "click",
+      "x": 1027,
+      "y": 319,
+      "button": "right",
+      "intent": "已選出曾壅塞10人，目前10人待命；右鍵城心東北旁可見空地，想疏開並留近防線，觀察有沒有移動。"
+    },
+    "nativeMethod": "commandMove",
+    "return": "undefined不代表成功；下列逐單位state/targetPos證明接受",
+    "startSim": 400.76440000007455,
+    "censorBeforeNextPlayerAction": "C-38",
+    "censorSim": 432.44660000008173,
+    "units": [
+      {
+        "id": 15,
+        "initial": {
+          "x": 24.002132213512706,
+          "y": 21.05813438194502
+        },
+        "assigned": {
+          "x": 24.427790178571428,
+          "y": 18.26194196428571
+        },
+        "nativeAccepted": true,
+        "initialDistance": 2.828405335130265,
+        "sampledMinimumDistance": 0.060454246566675335,
+        "lastObservedDistance": 4.57483360331137,
+        "closestSample": {
+          "sim": 406.66420000007594,
+          "x": 24.415987718696233,
+          "y": 18.321232923704823,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.060454246566675335
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 24.306674747174377,
+            "y": 18.87037869729948,
+            "alive": true,
+            "state": "move",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.6203742465665069
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 24.415987718696233,
+            "y": 18.321232923704823,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.060454246566675335
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 22.576945152267594,
+            "y": 20.008347544496107,
+            "alive": true,
+            "state": "attack",
+            "targetId": 118,
+            "orderFailure": "congested",
+            "distanceToAssigned": 2.5447121177028356
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 20.048904851762764,
+            "y": 18.472848957100663,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": "congested",
+            "distanceToAssigned": 4.383961503589928
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 19.85928787824895,
+            "y": 18.50254377212412,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": "congested",
+            "distanceToAssigned": 4.57483360331137
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      },
+      {
+        "id": 18,
+        "initial": {
+          "x": 24.48370206385703,
+          "y": 20.720118289834826
+        },
+        "assigned": {
+          "x": 25.22779017857143,
+          "y": 18.26194196428571
+        },
+        "nativeAccepted": true,
+        "initialDistance": 2.5683259080477643,
+        "sampledMinimumDistance": 0.03812120082850601,
+        "lastObservedDistance": 6.160597053753517,
+        "closestSample": {
+          "sim": 401.6977000000748,
+          "x": 25.21396218123187,
+          "y": 18.297466778742432,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.03812120082850601
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 25.21396218123187,
+            "y": 18.297466778742432,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.03812120082850601
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 25.21396218123187,
+            "y": 18.297466778742432,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.03812120082850601
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 20.45716922961683,
+            "y": 20.496946091151457,
+            "alive": true,
+            "state": "attack",
+            "targetId": 118,
+            "orderFailure": "congested",
+            "distanceToAssigned": 5.268212949920626
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 19.4924706007689,
+            "y": 20.511178590163823,
+            "alive": true,
+            "state": "attack",
+            "targetId": 124,
+            "orderFailure": "congested",
+            "distanceToAssigned": 6.160597053753517
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 19.4924706007689,
+            "y": 20.511178590163823,
+            "alive": true,
+            "state": "attack",
+            "targetId": 123,
+            "orderFailure": "congested",
+            "distanceToAssigned": 6.160597053753517
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      },
+      {
+        "id": 21,
+        "initial": {
+          "x": 24.609491270213695,
+          "y": 21.321337312543303
+        },
+        "assigned": {
+          "x": 26.027790178571426,
+          "y": 18.26194196428571
+        },
+        "nativeAccepted": true,
+        "initialDistance": 3.3721612788223703,
+        "sampledMinimumDistance": 0.05175177716992838,
+        "lastObservedDistance": 0.21294447082839768,
+        "closestSample": {
+          "sim": 406.66420000007594,
+          "x": 25.99605935100599,
+          "y": 18.30282473599041,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.05175177716992838
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 25.204195456821253,
+            "y": 19.32308147970075,
+            "alive": true,
+            "state": "move",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 1.343251777169868
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 25.99605935100599,
+            "y": 18.30282473599041,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.05175177716992838
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 26.085424030750232,
+            "y": 18.056945167385326,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": "congested",
+            "distanceToAssigned": 0.21294447082839768
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 26.085424030750232,
+            "y": 18.056945167385326,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": "congested",
+            "distanceToAssigned": 0.21294447082839768
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 26.085424030750232,
+            "y": 18.056945167385326,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": "congested",
+            "distanceToAssigned": 0.21294447082839768
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      },
+      {
+        "id": 23,
+        "initial": {
+          "x": 28.550394631882256,
+          "y": 27.180062361419978
+        },
+        "assigned": {
+          "x": 26.827790178571426,
+          "y": 18.26194196428571
+        },
+        "nativeAccepted": true,
+        "initialDistance": 9.082964137347926,
+        "sampledMinimumDistance": 0.05699190532817121,
+        "lastObservedDistance": 0.07609375283216893,
+        "closestSample": {
+          "sim": 406.66420000007594,
+          "x": 26.837291025742402,
+          "y": 18.318136369487377,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.05699190532817121
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 28.10706535252761,
+            "y": 25.27115737636375,
+            "alive": true,
+            "state": "move",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 7.125001450077953
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 26.837291025742402,
+            "y": 18.318136369487377,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.05699190532817121
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 26.863328828157524,
+            "y": 18.19465702090549,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.07609375283216893
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 26.863328828157524,
+            "y": 18.19465702090549,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.07609375283216893
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 26.863328828157524,
+            "y": 18.19465702090549,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.07609375283216893
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      },
+      {
+        "id": 32,
+        "initial": {
+          "x": 25.00098216243308,
+          "y": 21.001213029052277
+        },
+        "assigned": {
+          "x": 24.427790178571428,
+          "y": 19.06194196428571
+        },
+        "nativeAccepted": true,
+        "initialDistance": 2.0222070400935963,
+        "sampledMinimumDistance": 0.06918414558561121,
+        "lastObservedDistance": 3.709317445487427,
+        "closestSample": {
+          "sim": 406.66420000007594,
+          "x": 24.4302813731234,
+          "y": 19.131081243643507,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.06918414558561121
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 24.44827645663292,
+            "y": 19.6305071535336,
+            "alive": true,
+            "state": "move",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.5689341455856728
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 24.4302813731234,
+            "y": 19.131081243643507,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.06918414558561121
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 23.006139811903978,
+            "y": 20.948823086786604,
+            "alive": true,
+            "state": "attack",
+            "targetId": 118,
+            "orderFailure": "congested",
+            "distanceToAssigned": 2.3625008223270356
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 20.771151109086734,
+            "y": 18.4390241310882,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": "congested",
+            "distanceToAssigned": 3.709317445487427
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 20.771151109086734,
+            "y": 18.4390241310882,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": "congested",
+            "distanceToAssigned": 3.709317445487427
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      },
+      {
+        "id": 76,
+        "initial": {
+          "x": 23.499609578296234,
+          "y": 22.441059845924173
+        },
+        "assigned": {
+          "x": 25.22779017857143,
+          "y": 19.06194196428571
+        },
+        "nativeAccepted": true,
+        "initialDistance": 3.795397982448788,
+        "sampledMinimumDistance": 0.07943902821687018,
+        "lastObservedDistance": 3.9951044177227932,
+        "closestSample": {
+          "sim": 406.66420000007594,
+          "x": 25.18573536496112,
+          "y": 19.12933596888733,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.07943902821687018
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 24.480394121382304,
+            "y": 20.348599435068508,
+            "alive": true,
+            "state": "move",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 1.4879812879949232
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 25.18573536496112,
+            "y": 19.12933596888733,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.07943902821687018
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 24.6861522256071,
+            "y": 18.9305155866988,
+            "alive": true,
+            "state": "attack",
+            "targetId": 118,
+            "orderFailure": "congested",
+            "distanceToAssigned": 0.557354972003486
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 21.2673585180021,
+            "y": 18.53673688960701,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": "congested",
+            "distanceToAssigned": 3.9951044177227932
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 21.2673585180021,
+            "y": 18.53673688960701,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": "congested",
+            "distanceToAssigned": 3.9951044177227932
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      },
+      {
+        "id": 78,
+        "initial": {
+          "x": 26.429651377871945,
+          "y": 29.640116870682554
+        },
+        "assigned": {
+          "x": 26.027790178571426,
+          "y": 19.06194196428571
+        },
+        "nativeAccepted": true,
+        "initialDistance": 10.585805438124542,
+        "sampledMinimumDistance": 0.04965753978919657,
+        "lastObservedDistance": 0.06484294998930003,
+        "closestSample": {
+          "sim": 406.66420000007594,
+          "x": 26.042353467525214,
+          "y": 19.109415976890126,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.04965753978919657
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 27.32746340829957,
+            "y": 27.952791585872603,
+            "alive": true,
+            "state": "move",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 8.985341256610333
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 26.042353467525214,
+            "y": 19.109415976890126,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.04965753978919657
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 26.08741869596487,
+            "y": 19.087418386263188,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.06484294998930003
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 26.08741869596487,
+            "y": 19.087418386263188,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.06484294998930003
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 26.08741869596487,
+            "y": 19.087418386263188,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.06484294998930003
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      },
+      {
+        "id": 91,
+        "initial": {
+          "x": 28.849513248360164,
+          "y": 28.37776136218757
+        },
+        "assigned": {
+          "x": 26.827790178571426,
+          "y": 19.06194196428571
+        },
+        "nativeAccepted": true,
+        "initialDistance": 9.53267303673217,
+        "sampledMinimumDistance": 0.049408365426282366,
+        "lastObservedDistance": 0.06844178674852815,
+        "closestSample": {
+          "sim": 406.66420000007594,
+          "x": 26.837480674720723,
+          "y": 19.11039070893898,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.049408365426282366
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 28.389493574056434,
+            "y": 26.544599640120072,
+            "alive": true,
+            "state": "move",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 7.643891900674177
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 26.837480674720723,
+            "y": 19.11039070893898,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.049408365426282366
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 26.884215008259144,
+            "y": 19.023205459951388,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.06844178674852815
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 26.884215008259144,
+            "y": 19.023205459951388,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.06844178674852815
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 26.884215008259144,
+            "y": 19.023205459951388,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.06844178674852815
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      },
+      {
+        "id": 98,
+        "initial": {
+          "x": 28.59416844752268,
+          "y": 29.104131399518735
+        },
+        "assigned": {
+          "x": 24.427790178571428,
+          "y": 19.861941964285712
+        },
+        "nativeAccepted": true,
+        "initialDistance": 10.137888016580284,
+        "sampledMinimumDistance": 0.02383426614437982,
+        "lastObservedDistance": 5.042439055230894,
+        "closestSample": {
+          "sim": 406.66420000007594,
+          "x": 24.42912540045834,
+          "y": 19.885738800738356,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.02383426614437982
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 28.001494065396656,
+            "y": 26.947104278589315,
+            "alive": true,
+            "state": "move",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 7.935419616550704
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 24.42912540045834,
+            "y": 19.885738800738356,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.02383426614437982
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 20.704517905389967,
+            "y": 18.778845076075132,
+            "alive": true,
+            "state": "attack",
+            "targetId": 118,
+            "orderFailure": null,
+            "distanceToAssigned": 3.8776094813033053
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 19.46785625238457,
+            "y": 18.95351085870947,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": null,
+            "distanceToAssigned": 5.042439055230894
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 19.46785625238457,
+            "y": 18.95351085870947,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": null,
+            "distanceToAssigned": 5.042439055230894
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      },
+      {
+        "id": 100,
+        "initial": {
+          "x": 28.0964633821163,
+          "y": 29.197832315134228
+        },
+        "assigned": {
+          "x": 25.22779017857143,
+          "y": 19.861941964285712
+        },
+        "nativeAccepted": true,
+        "initialDistance": 9.766684933579194,
+        "sampledMinimumDistance": 0.0631796940988423,
+        "lastObservedDistance": 5.30166906525872,
+        "closestSample": {
+          "sim": 406.66420000007594,
+          "x": 25.280486901225135,
+          "y": 19.896794929266925,
+          "alive": true,
+          "state": "idle",
+          "targetId": null,
+          "orderFailure": null,
+          "distanceToAssigned": 0.0631796940988423
+        },
+        "trace": [
+          {
+            "sim": 401.6977000000748,
+            "x": 28.19070978354408,
+            "y": 27.60022557268509,
+            "alive": true,
+            "state": "move",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 8.286128516355138
+          },
+          {
+            "sim": 406.66420000007594,
+            "x": 25.280486901225135,
+            "y": 19.896794929266925,
+            "alive": true,
+            "state": "idle",
+            "targetId": null,
+            "orderFailure": null,
+            "distanceToAssigned": 0.0631796940988423
+          },
+          {
+            "sim": 421.6970000000792,
+            "x": 21.12248423856308,
+            "y": 19.06374390992172,
+            "alive": true,
+            "state": "attack",
+            "targetId": 118,
+            "orderFailure": null,
+            "distanceToAssigned": 4.182183280902249
+          },
+          {
+            "sim": 426.76350000008034,
+            "x": 19.99727133034137,
+            "y": 18.996281837081412,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": null,
+            "distanceToAssigned": 5.30166906525872
+          },
+          {
+            "sim": 431.8466000000816,
+            "x": 19.99727133034137,
+            "y": 18.996281837081412,
+            "alive": true,
+            "state": "attack",
+            "targetId": 120,
+            "orderFailure": null,
+            "distanceToAssigned": 5.30166906525872
+          }
+        ],
+        "terminalArrival": "NOT_DIRECTLY_OBSERVED_NO_TARGETPOS_CLEAR_TELEMETRY"
+      }
+    ]
+  },
+  "interpretation": "10人接令，逐ID列距離以區分靠近與偏離；本場10人都曾在採樣點進入各自assigned落點0.08內，之後部分再壅塞/自主接敵，不能把最後位置當從未靠近或把近接當全程持續疏通。採樣5秒，沒有targetPos清除逐幀紀錄，不冒稱全員終端抵達、成功疏通、衝車擊殺或城心反事實減傷。",
+  "coreMitigation": "UNKNOWN",
+  "testScenario": "NATURAL_PLAY_NO_STATE_INJECTION"
+}
