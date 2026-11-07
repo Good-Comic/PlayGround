@@ -1783,12 +1783,28 @@ export class Game {
         const range=this.unitRange(v)+(v.target.w?(v.team==='player'?-.1:0):(v.target.typeDef.radius||.2));
         return this.distanceTo(v,v.target)<=range;
       }) : [];
-      const planWalkable=(x,y)=>walkable(x,y) && occupied.every(v=>dist(x,y,v.x,v.y)>=(u.typeDef.radius||.24)+(v.typeDef.radius||.24));
-      planWalkable.segment=(a,b)=>walkable.segment(a,b) && occupied.every(v=>{
-        const dx=b.x-a.x,dy=b.y-a.y,len=dx*dx+dy*dy,t=len?clamp(((v.x-a.x)*dx+(v.y-a.y)*dy)/len,0,1):0;
-        return dist(v.x,v.y,a.x+t*dx,a.y+t*dy)>=(u.typeDef.radius||.24)+(v.typeDef.radius||.24)-.015;
+      // 只在這次同步搜尋內快取半格端點；世界狀態不會跨搜尋或更新沿用。
+      const side=this.world.size*2,mask=new Int8Array(side*side);
+      const cachedWalkable=(x,y)=>{
+        const ix=x*2,iy=y*2;
+        if(!Number.isInteger(ix)||!Number.isInteger(iy)||ix<0||iy<0||ix>=side||iy>=side)return walkable(x,y);
+        const i=iy*side+ix;if(!mask[i])mask[i]=walkable(x,y)?1:-1;return mask[i]>0;
+      };
+      cachedWalkable.segment=(a,b)=>this.segmentWalkable(a,b,u,cachedWalkable);
+      const planWalkable=(x,y)=>cachedWalkable(x,y) && occupied.every(v=>{
+        const r=(u.typeDef.radius||.24)+(v.typeDef.radius||.24);
+        return Math.abs(x-v.x)>=r || Math.abs(y-v.y)>=r || dist(x,y,v.x,v.y)>=r;
       });
-      const path = findPath(u, target, occupied.length?planWalkable:walkable, this.world.size, {range:entity?range+Math.hypot(entity.w,entity.h)/2:range, goalTest:entity?p=>this.distanceTo(p,entity)<=range:null});
+      planWalkable.segment=(a,b)=>{
+        const dx=b.x-a.x,dy=b.y-a.y,len=dx*dx+dy*dy,step=Math.sqrt(len);
+        return occupied.every(v=>{
+          const r=(u.typeDef.radius||.24)+(v.typeDef.radius||.24)-.015;
+          if(Math.abs(v.x-a.x)>r+step || Math.abs(v.y-a.y)>r+step)return true;
+          const t=len?clamp(((v.x-a.x)*dx+(v.y-a.y)*dy)/len,0,1):0;
+          return dist(v.x,v.y,a.x+t*dx,a.y+t*dy)>=r;
+        }) && cachedWalkable.segment(a,b);
+      };
+      const path = findPath(u, target, occupied.length?planWalkable:cachedWalkable, this.world.size, {range:entity?range+Math.hypot(entity.w,entity.h)/2:range, goalTest:entity?p=>this.distanceTo(p,entity)<=range:null});
       if(this.navigationStats) {
         this.navigationStats.searches++; this.navigationStats.totalSearches++;
         this.navigationStats.expanded += path.expanded; this.navigationStats.ms += performance.now()-searchStart;
@@ -1835,8 +1851,8 @@ export class Game {
     return 'moving';
   }
 
-  segmentWalkable(a,b,u) {
-    if(!this.isWalkable(b.x,b.y,u))return false;
+  segmentWalkable(a,b,u, endpointWalkable = null) {
+    if(!(endpointWalkable?endpointWalkable(b.x,b.y):this.isWalkable(b.x,b.y,u)))return false;
     const r=u?.typeDef?.radius ?? .24;
     for(const building of this.buildings) {
       if(!building.alive || u?.team==='player' && building.team==='player' && building.type==='gate' && building.construction>=1)continue;
