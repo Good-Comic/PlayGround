@@ -1,0 +1,32 @@
+{
+  "run": "run-04",
+  "toolSha256": "23edc7637a78338d38edaf87b66d8beba844b36e26d9378fb6e896dad2aa0646",
+  "afterCommit": "28759c7bff98ae34d92be9318291e1eb6979d6d4",
+  "beforeCommit": "e037a4bc15e56579adf776c84b2afbf712762871",
+  "moduleSha256": "9ba417fc53fc60c1dce73feb0f7b0844222d75b95179a0b55c7ff70d4b536ed1",
+  "checksRawPass": 15,
+  "errors": [],
+  "movementInterpretation": {
+    "rawLabel": "同組沿指定移動落點實際進展與抵達",
+    "correction": "兩兵從assigned落點距離2下降至0.6003198；僅證實朝指定落點進展/進入0.65鄰域，未等待原生moveAlong到達/idle；不得稱原生抵達完成",
+    "status": "PROGRESS_PASS_TERMINAL_ARRIVAL_NOT_TESTED"
+  },
+  "attackInterpretation": "正常視野與nativepick同敵20；兩兵原生manualAttack/target20；applyDamage逐source15/16→target20且sourceTarget20/manualAttacktrue，HP60→58→56，受控手動命中PASS；未聲稱擊殺或自然解威脅",
+  "originalFalsePositive": "舊run03 TEST_ASSERTION_FALSE_POSITIVE保留原文，舊visible API本身錯用數值而非entity；不據此認定實際看不見。舊HP下降沒有manual-target證據。",
+  "historicalStrictSaveLoad": "FAIL_RETAINED",
+  "noMoreBrowser": true,
+  "files": {
+    "after-native-continue.png": "07da7d837211cfb1d7b6a9a9ef350d9054e375e6f49976a960128fc5dc39b276",
+    "metadata.json": "f8d27208aa5ccd3c4d851a7d6a028f727e7e5d859f40df62bf2e642ee0067acd",
+    "native-attack-damage-source.png": "4ce0c69434ef62786309030fe4c50e64181266a8971bbfda13630ce0a944575c",
+    "before-native-continue.png": "571b66a425e391ed0d10bc2bb30b48fd94980419ae00273e206519beb5ab93c9",
+    "native-select-group.png": "e8fe2e1f59d15aa45a575c6a98bedbf7e733bfd6638ed42c92cd0fd62367517d",
+    "observations.json": "6bda44f90c529fd7b55c4ab7429598d20b4d7ead7c595d131e46a5a3d96298f5",
+    "native-attack-accepted.png": "f206c281d1dbacfa214a6a76bebbb1fdcdf036964d254f851ad11691c98f77a2",
+    "native-move-trace-end.png": "f6ea82d91d05e8400b6f5c0162a9ce059dabecc991c1418ff7546b16a2e8d14b",
+    "console.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "REPORT.json": "ba21910c3908061c46725e791d0c5dd3725ae08cd43334b21784e2d4f2e1ee3b",
+    "after-video/page@f4d239bf2ea4d7030735eb32f7e00e24.webm": "14745557ca204db20c14bb18d5cca23d72ac6b5a201fd8f48959bc3480630d36",
+    "before-video/page@364379b5700665cf25dcb2fa3895e843.webm": "7caf8f8e0017352bef65b413eda8d17af3abb68814f93a1c9aad0dcbd75711bb"
+  }
+}
