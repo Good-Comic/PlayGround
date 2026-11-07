@@ -1123,6 +1123,7 @@ export class Game {
     this.navigationBudget = 2; // Avoid an A* stampede; waiting units retain their orders.
     for (const u of this.units) {
       if (!u.alive) { u.deathAnim = Math.max(0, (u.deathAnim || 0) - dt); continue; }
+      u._movementAttempted = false;
       u.cooldown = Math.max(0, u.cooldown - dt);
       u.attackAnim = Math.max(0, u.attackAnim - dt * 5.5);
       u.hitFlash = Math.max(0, u.hitFlash - dt * 5);
@@ -1151,13 +1152,16 @@ export class Game {
       if (u.team === 'player' && u.typeDef.category === 'infantry' && this.effects.infantryRegen > 0 && u.hp < u.maxHp && this.time - (u.combatAt || -99) > 5) {
         u.hp = Math.min(u.maxHp, u.hp + u.maxHp * this.effects.infantryRegen * dt);
       }
-      if (u.slowUntil > this.time && u.slowAmount >= 1) continue;
+      if (u.slowUntil > this.time && u.slowAmount >= 1) { u._progress = null; u._goalProgress = null; continue; }
       if (u.hero && this.heroControl && u.team === 'player') {
+        u._progress = null; u._goalProgress = null;
         this.updateHeroDirect(u, dt);
         continue;
       }
       if (u.team === 'enemy') this.updateEnemy(u, dt);
       else this.updatePlayerUnit(u, dt);
+      // 停留、交戰或暫停移動的時間，不算在下一次移動的壅塞計時內。
+      if (!u._movementAttempted) { u._progress = null; u._goalProgress = null; }
     }
     this.navigationQueue = this.navigationQueue.filter(id=>this.navigationRequested.has(id));
     this.navigationQueued = new Set(this.navigationQueue);
@@ -1740,6 +1744,7 @@ export class Game {
   }
 
   stepToward(u, tx, ty, dt, range = 0, entity = null) {
+    u._movementAttempted = true;
     const walkable = (x, y) => this.isWalkable(x, y, u);
     walkable.segment = (a,b) => this.segmentWalkable(a,b,u);
     const target = { x: tx, y: ty };
