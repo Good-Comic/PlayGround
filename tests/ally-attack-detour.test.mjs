@@ -39,7 +39,7 @@ test('射程外追擊、死亡目標、敵方攻擊者與建築射程邊界不�
   const{g,actor,blockers,target,p}=fixture();
   for(const v of blockers){v.state='attack';v.target=target;if(kind==='chasing')v.x=p.x-1;if(kind==='dead')target.alive=false;if(kind==='opponent'){v.team='enemy';v.target=actor;}if(kind==='building-boundary')v.x=p.x-.95;}
   if(kind==='building-boundary')assert.ok(blockers.every(v=>g.distanceTo(v,target)>g.unitRange(v)-.1&&g.distanceTo(v,target)<g.unitRange(v)));
-  g.crowd=new Crowd(g.units);actor._avoidCrowdUntil=10;g.navigationBudget=2;g.stepToward(actor,target.x,target.y,1/60,.8,target);
+  g.crowd=new Crowd(g.units);actor._avoidCrowdUntil=10;actor._nav={tx:target.x,ty:target.y,range:.8,status:'pending',points:[],retryAt:0};actor._crowdBlockedBy=blockers;g.navigationBudget=2;g.stepToward(actor,target.x,target.y,1/60,.8,target);
   assert.equal(actor._nav.crowdDetour,false,kind);
  }
 });

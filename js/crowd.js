@@ -32,6 +32,7 @@ export class Crowd {
   }
   steer(u, next, clear, time) {
     const neighbours = this.nearby(u,1,u._crowdNeighbours ||= []);
+    const blockedBy = [];
     const step = Math.hypot(next.x-u.x, next.y-u.y);
     if (!step) return next;
     let dx = (next.x-u.x)/step, dy = (next.y-u.y)/step;
@@ -75,16 +76,17 @@ export class Crowd {
         if (before2 < r*r) {
           const before=Math.sqrt(before2);
           // Old saves may overlap. Permit only motion that increases separation.
-          if (Math.hypot(p.x-v.x,p.y-v.y) <= before+1e-6) return false;
-        } else if (closest2 < r*r) return false;
+          if (Math.hypot(p.x-v.x,p.y-v.y) <= before+1e-6) { blockedBy.push(v); return false; }
+        } else if (closest2 < r*r) { blockedBy.push(v); return false; }
       }
       return true;
     };
     for (const angle of [0,.35,-.35,.7,-.7,1.05,-1.05,1.45,-1.45]) {
       const cos=Math.cos(angle),sin=Math.sin(angle);
       const p={x:u.x+(dx*cos-dy*sin)*step,y:u.y+(dx*sin+dy*cos)*step};
-      if(safe(p))return p;
+      if(safe(p)){u._crowdBlockedBy=blockedBy;return p;}
     }
+    u._crowdBlockedBy=blockedBy;
     return null;
   }
 }

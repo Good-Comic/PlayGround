@@ -1751,6 +1751,7 @@ export class Game {
     let nav = u._nav;
     if (!nav || Math.hypot(tx-nav.tx, ty-nav.ty) > .6 || nav.range !== range) {
       nav = u._nav = { tx, ty, range, points: [], status: 'pending', retryAt: 0, stalled: 0 };
+      u._crowdBlockedBy = null;
     }
     if (entity ? this.distanceTo(u,entity)<=range : range && dist(u.x,u.y,tx,ty)<=range) return 'arrived';
     if (!range && walkable(tx, ty) && dist(u.x,u.y,tx,ty)<.08) return 'arrived';
@@ -1779,7 +1780,7 @@ export class Game {
       const occupied = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2).filter(v=>{
         if(['idle','hold','gather'].includes(v.state))return true;
         // 射程內原地交戰的友軍也佔據身體空間；追擊中的單位不當成靜態障礙。
-        if(v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
+        if(!u._crowdBlockedBy?.includes(v) || v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
         const range=this.unitRange(v)+(v.target.w?(v.team==='player'?-.1:0):(v.target.typeDef.radius||.2));
         return this.distanceTo(v,v.target)<=range;
       }) : [];
