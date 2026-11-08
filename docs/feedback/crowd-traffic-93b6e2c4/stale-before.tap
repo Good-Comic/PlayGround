@@ -1,0 +1,47 @@
+TAP version 13
+# Subtest: 已停止並在射程內射擊的友軍不保留舊移動朝向，使後方單位誤讓行倒退
+not ok 1 - 已停止並在射程內射擊的友軍不保留舊移動朝向，使後方單位誤讓行倒退
+  ---
+  duration_ms: 20.237112
+  type: 'test'
+  location: '/workspace/riftwatch-crowd-traffic-93b6e2c4/worktree/tests/stale-traffic.test.mjs:13:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + {
+    +   x: -1,
+    +   y: 0
+    + }
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    x: -1
+    y: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-crowd-traffic-93b6e2c4/worktree/tests/stale-traffic.test.mjs:15:73)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 真正在移動的單位仍保留朝向與合法交通讓行資料
+ok 2 - 真正在移動的單位仍保留朝向與合法交通讓行資料
+  ---
+  duration_ms: 10.740577
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3393.442028
