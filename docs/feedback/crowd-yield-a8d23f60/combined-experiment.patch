@@ -1,0 +1,22 @@
+diff --git a/js/crowd.js b/js/crowd.js
+index 6180e35..c3f7012 100644
+--- a/js/crowd.js
++++ b/js/crowd.js
+@@ -48,7 +48,7 @@ export class Crowd {
+     }
+     let leader=null;
+     for(const v of neighbours) {
+-      if(fighting(v)||(v._trafficPriority||v.id)>=priority || !['move','gather','return','attack','build'].includes(v.state))continue;
++      if(fighting(v)||((v._trafficPriority||v.id)>priority || (v._trafficPriority||v.id)===priority&&v.id>=u.id) || !['move','gather','return','attack','build'].includes(v.state))continue;
+       const heading=v._heading;
+       // Opposite headings alone also describe units walking away from each other.
+       // Grant head-on right-of-way only when both headings point toward the other body.
+@@ -57,7 +57,7 @@ export class Crowd {
+         && (u.x-v.x)*heading.x+(u.y-v.y)*heading.y>0){leader=v;break;}
+     }
+     if (leader) u._yieldTo = { id: leader.id, priority:leader._trafficPriority||leader.id, until: time+4, dx:u.x-leader.x, dy:u.y-leader.y };
+-    if(u._yieldTo){const anchor=neighbours.find(v=>v.id===u._yieldTo.id);if(anchor&&fighting(anchor))u._yieldTo=null;}
++    if(u._yieldTo){const anchor=neighbours.find(v=>v.id===u._yieldTo.id);if(anchor&&(fighting(anchor)||!anchor._heading||(anchor.x-u.x)*dx+(anchor.y-u.y)*dy<=0||(u.x-anchor.x)*anchor._heading.x+(u.y-anchor.y)*anchor._heading.y<=0))u._yieldTo=null;}
+     const yielding = u._yieldTo && u._yieldTo.until > time ? u._yieldTo : null;
+     if (yielding) {
+       const anchor=neighbours.find(v=>v.id===yielding.id);

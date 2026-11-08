@@ -1,0 +1,167 @@
+TAP version 13
+# Subtest: 新手動集火清除舊目標與舊讓行狀態，保留新人工指定敵軍
+not ok 1 - 新手動集火清除舊目標與舊讓行狀態，保留新人工指定敵軍
+  ---
+  duration_ms: 21.8234
+  type: 'test'
+  location: '/workspace/riftwatch-crowd-yield-a8d23f60/worktree/tests/attack-intent-reset.test.mjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + {
+    +   at: 0,
+    +   distance: 3.03944777765789
+    + }
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    distance: 3.03944777765789
+    at: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-crowd-yield-a8d23f60/worktree/tests/attack-intent-reset.test.mjs:5:181)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 新目標在另一方向時，實際首步向新目標前進，不被舊讓行帶離
+not ok 2 - 新目標在另一方向時，實際首步向新目標前進，不被舊讓行帶離
+  ---
+  duration_ms: 16.894985
+  type: 'test'
+  location: '/workspace/riftwatch-crowd-yield-a8d23f60/worktree/tests/attack-intent-reset.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(actor.y<y)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-crowd-yield-a8d23f60/worktree/tests/attack-intent-reset.test.mjs:6:264)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: 集火只重設已選單位，不改未選友軍、戰鬥數值或雙RNG
+ok 3 - 集火只重設已選單位，不改未選友軍、戰鬥數值或雙RNG
+  ---
+  duration_ms: 5.539148
+  type: 'test'
+  ...
+# Subtest: 從真實舊移動讓行歷史改集火後，三秒內能造成正式傷害
+ok 4 - 從真實舊移動讓行歷史改集火後，三秒內能造成正式傷害
+  ---
+  duration_ms: 25.834145
+  type: 'test'
+  ...
+# Subtest: 新人工目標與傷害可由原生Save／Load恢復
+ok 5 - 新人工目標與傷害可由原生Save／Load恢復
+  ---
+  duration_ms: 40.027041
+  type: 'test'
+  ...
+# Subtest: 暫停不消耗舊讓行的模擬時間或進度
+ok 6 - 暫停不消耗舊讓行的模擬時間或進度
+  ---
+  duration_ms: 6.003075
+  type: 'test'
+  ...
+# Subtest: 未獲合法攻擊能力的村民不被套用軍隊新指令狀態重設
+ok 7 - 未獲合法攻擊能力的村民不被套用軍隊新指令狀態重設
+  ---
+  duration_ms: 6.181139
+  type: 'test'
+  ...
+# Subtest: 對向單位轉向離開後，不繼續執行已失效的讓行
+not ok 8 - 對向單位轉向離開後，不繼續執行已失效的讓行
+  ---
+  duration_ms: 0.705634
+  type: 'test'
+  location: '/workspace/riftwatch-crowd-yield-a8d23f60/worktree/tests/yield-lifecycle.test.mjs:4:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(p.x>3)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-crowd-yield-a8d23f60/worktree/tests/yield-lifecycle.test.mjs:4:146)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 對向單位停下後，舊讓行不讓本單位持續倒退
+not ok 9 - 對向單位停下後，舊讓行不讓本單位持續倒退
+  ---
+  duration_ms: 0.543594
+  type: 'test'
+  location: '/workspace/riftwatch-crowd-yield-a8d23f60/worktree/tests/yield-lifecycle.test.mjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(p.x>3)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-crowd-yield-a8d23f60/worktree/tests/yield-lifecycle.test.mjs:5:157)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 真正迎面尚未通過時仍讓行，原四秒最大租約不變
+ok 10 - 真正迎面尚未通過時仍讓行，原四秒最大租約不變
+  ---
+  duration_ms: 0.26293
+  type: 'test'
+  ...
+# Subtest: 附近車隊傳遞仍在接近的來源讓行時，不取消合法傳遞
+ok 11 - 附近車隊傳遞仍在接近的來源讓行時，不取消合法傳遞
+  ---
+  duration_ms: 0.308366
+  type: 'test'
+  ...
+# Subtest: 靜態或身體無法通行時，取消過期讓行也不能穿越
+ok 12 - 靜態或身體無法通行時，取消過期讓行也不能穿越
+  ---
+  duration_ms: 0.12855
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 8
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3487.63523
