@@ -1161,7 +1161,7 @@ export class Game {
       if (u.team === 'enemy') this.updateEnemy(u, dt);
       else this.updatePlayerUnit(u, dt);
       // 停留、交戰或暫停移動的時間，不算在下一次移動的壅塞計時內。
-      if (!u._movementAttempted) { u._progress = null; u._goalProgress = null; }
+      if (!u._movementAttempted) { u._progress = null; u._goalProgress = null; u._heading = null; u._yieldTo = null; u._trafficPriority = u.id; }
     }
     this.navigationQueue = this.navigationQueue.filter(id=>this.navigationRequested.has(id));
     this.navigationQueued = new Set(this.navigationQueue);
