@@ -3334,7 +3334,7 @@ export class Game {
           if (u.hero) this.heroControl = false;
           u.tacticalOrder = null;
           if (u.type === 'villager') { u.gatherTarget = null; u.buildTarget = null; }
-          u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1; u.manualAttack = true; u.blockedTargets = {}; u.orderFailure = null; u._progress=null; u._nav=null;
+          u.state = 'attack'; u.target = hit; u.targetPos = null; u.retargetTimer = 1.1; u.manualAttack = true; u.blockedTargets = {}; u.orderFailure = null; u._progress=null; u._goalProgress=null; u._nav=null; u._yieldTo=null; u._trafficPriority=u.id;
           u.hold = false;
         }
         if (!assigned) {

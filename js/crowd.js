@@ -57,7 +57,16 @@ export class Crowd {
         && (u.x-v.x)*heading.x+(u.y-v.y)*heading.y>0){leader=v;break;}
     }
     if (leader) u._yieldTo = { id: leader.id, priority:leader._trafficPriority||leader.id, until: time+4, dx:u.x-leader.x, dy:u.y-leader.y };
-    if(u._yieldTo){const anchor=neighbours.find(v=>v.id===u._yieldTo.id);if(anchor&&fighting(anchor))u._yieldTo=null;}
+    if(u._yieldTo){
+      const anchor=neighbours.find(v=>v.id===u._yieldTo.id);
+      if(anchor){
+        const heading=anchor._heading;
+        const ahead=(anchor.x-u.x)*dx+(anchor.y-u.y)*dy>0;
+        const approaching=heading && (u.x-anchor.x)*heading.x+(u.y-anchor.y)*heading.y>0;
+        // The lease is a maximum: a stopped or passed anchor no longer needs right-of-way.
+        if(fighting(anchor)||!ahead||!approaching)u._yieldTo=null;
+      }
+    }
     const yielding = u._yieldTo && u._yieldTo.until > time ? u._yieldTo : null;
     if (yielding) {
       const anchor=neighbours.find(v=>v.id===yielding.id);
