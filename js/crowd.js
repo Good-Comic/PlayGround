@@ -50,7 +50,11 @@ export class Crowd {
     for(const v of neighbours) {
       if(fighting(v)||(v._trafficPriority||v.id)>=priority || !['move','gather','return','attack','build'].includes(v.state))continue;
       const heading=v._heading;
-      if(heading && (v.x-u.x)**2+(v.y-u.y)**2<3.24 && heading.x*dx+heading.y*dy<-.5){leader=v;break;}
+      // Opposite headings alone also describe units walking away from each other.
+      // Grant head-on right-of-way only when both headings point toward the other body.
+      if(heading && (v.x-u.x)**2+(v.y-u.y)**2<3.24 && heading.x*dx+heading.y*dy<-.5
+        && (v.x-u.x)*dx+(v.y-u.y)*dy>0
+        && (u.x-v.x)*heading.x+(u.y-v.y)*heading.y>0){leader=v;break;}
     }
     if (leader) u._yieldTo = { id: leader.id, priority:leader._trafficPriority||leader.id, until: time+4, dx:u.x-leader.x, dy:u.y-leader.y };
     if(u._yieldTo){const anchor=neighbours.find(v=>v.id===u._yieldTo.id);if(anchor&&fighting(anchor))u._yieldTo=null;}
