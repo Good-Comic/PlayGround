@@ -1805,7 +1805,7 @@ export class Game {
           return dist(v.x,v.y,a.x+t*dx,a.y+t*dy)>=r;
         }) && cachedWalkable.segment(a,b);
       };
-      const path = findPath(u, target, occupied.length?planWalkable:cachedWalkable, this.world.size, {range:entity?range+Math.hypot(entity.w,entity.h)/2:range, goalTest:entity?p=>this.distanceTo(p,entity)<=range:null});
+      const path = findPath(u, target, occupied.length?planWalkable:cachedWalkable, this.world.size, {range:entity?range+Math.hypot(entity.w,entity.h)/2:range, goalTest:entity?p=>this.distanceTo(p,entity)<=range:null, goalBounds:entity?{left:entity.x-range,right:entity.x+entity.w+range,top:entity.y-range,bottom:entity.y+entity.h+range}:null});
       if(this.navigationStats) {
         this.navigationStats.searches++; this.navigationStats.totalSearches++;
         this.navigationStats.expanded += path.expanded; this.navigationStats.ms += performance.now()-searchStart;

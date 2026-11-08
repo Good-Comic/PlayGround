@@ -11,7 +11,7 @@ class Heap {
   push(v) { const a=this.a; a.push(v); let i=a.length-1; while(i) { const p=(i-1)>>1; if(a[p].f<=v.f) break; a[i]=a[p]; i=p; } a[i]=v; }
   pop() { const a=this.a, top=a[0], v=a.pop(); if(a.length) { let i=0; while(i*2+1<a.length) { let j=i*2+1; if(j+1<a.length&&a[j+1].f<a[j].f) j++; if(a[j].f>=v.f) break; a[i]=a[j];i=j; } a[i]=v; } return top; }
 }
-export function findPath(start, target, walkable, size, { range = 0, maxNodes = 10000, goalTest = null } = {}) {
+export function findPath(start, target, walkable, size, { range = 0, maxNodes = 10000, goalTest = null, goalBounds = null } = {}) {
   const cell=.5, n=size*2, total=n*n, point=i=>({x:(i%n)*cell,y:Math.floor(i/n)*cell});
   const mask=new Int8Array(total), costs=new Float64Array(total).fill(Infinity), parents=new Int32Array(total).fill(-1);
   const open=new Heap(), closed=new Uint8Array(total);
@@ -30,10 +30,21 @@ export function findPath(start, target, walkable, size, { range = 0, maxNodes = 
       const a=i*Math.PI/16,p={x:target.x+Math.cos(a)*range*fraction,y:target.y+Math.sin(a)*range*fraction};
       if(walkable(p.x,p.y)&&(!goalTest||goalTest(p)))interactionGoals.push(p);
     }
-    if(!interactionGoals.length)return {status:'unreachable',points:[],expanded:0};
   }
   const h=p=>Math.max(0,Math.hypot(p.x-goal.x,p.y-goal.y)-range);
   const reached=p=>goalTest ? goalTest(p) : range ? distance(p)<=range : Math.hypot(p.x-goal.x,p.y-goal.y)<=.4&&segmentClear(walkable,p,goal);
+  // Finite interaction samples can miss a valid grid goal in a tight approach.
+  // Keep the cheap unreachable result only when A* has no legal terminal node either.
+  if(range && !interactionGoals.length) {
+    // A caller-provided box must enclose every point accepted by goalTest.
+    // Ordinary circular goals have an exact known box; arbitrary goalTest remains unbounded.
+    const bounds=goalBounds || (!goalTest && range>0?{left:target.x-range,right:target.x+range,top:target.y-range,bottom:target.y+range}:null);
+    const x0=bounds?Math.max(0,Math.floor(bounds.left/cell)):0,x1=bounds?Math.min(n-1,Math.ceil(bounds.right/cell)):n-1;
+    const y0=bounds?Math.max(0,Math.floor(bounds.top/cell)):0,y1=bounds?Math.min(n-1,Math.ceil(bounds.bottom/cell)):n-1;
+    let gridGoal=false;
+    for(let y=y0;y<=y1&&!gridGoal;y++)for(let x=x0;x<=x1;x++){const i=y*n+x;if(reached(point(i))&&legal(i)){gridGoal=true;break;}}
+    if(!gridGoal)return {status:'unreachable',points:[],expanded:0};
+  }
   // Connect the actual (non-grid) unit position without crossing obstacles.
   const sx=Math.floor(start.x/cell),sy=Math.floor(start.y/cell);
   for(let y=Math.max(0,sy-2);y<=Math.min(n-1,sy+2);y++) for(let x=Math.max(0,sx-2);x<=Math.min(n-1,sx+2);x++) {

@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import '../tools/qa/ram-pick-065e2912/node-dom-fixture.mjs';
+import {Game} from '../js/game.js';
+import {Crowd} from '../js/crowd.js';
+import {findPath} from '../js/navigation.js';
+import {defenseClickPoint} from '../js/core-defense.js';
+import {geometry} from '../tools/qa/nav-goal-d7b3a6e1/fixture.mjs';
+function order(g,actor,target){const p=defenseClickPoint(g,target);assert.equal(g.pickAt(p.x,p.y),target);g.setSelection([actor]);g.issueCommand(p.x,p.y);assert.equal(actor.target,target);assert.ok(actor.manualAttack);}
+function battle(g,actor,target){let hits=0;const apply=g.applyDamage;g.applyDamage=function(t,a,u,...args){const hp=t.hp,r=apply.call(this,t,a,u,...args);if(u===actor&&t===target&&t.hp<hp){assert.equal(hp-t.hp,1);hits++;}return r;};for(let i=0;i<600;i++){g.time+=1/60;g.updateUnits(1/60);g.updateProjectiles(1/60);assert.ok(g.isWalkable(actor.x,actor.y,actor),'每一步都必須通過正式靜態碰撞');}return hits;}
+test('正式牆體尺寸與原生命令可接近並實際傷害目標，不更改數值',()=>{const f=geometry(Game);order(f.g,f.actor,f.target);assert.equal(battle(f.g,f.actor,f.target),6);assert.ok(!f.actor.orderFailure);});
+test('敵軍也使用相同的合法目標fallback，沒有穿牆或額外RNG',()=>{const{g,actor,target}=geometry(Game,'enemy');g.crowd=new Crowd(g.units);const rng=g.rng.state,visual=g.visualRng.state;let status;for(let i=0;i<300;i++){g.time+=1/60;g.navigationBudget=2;status=g.stepToward(actor,target.x+.5,target.y+.5,1/60,1.3,target);assert.ok(g.isWalkable(actor.x,actor.y,actor));if(status==='arrived')break;}assert.equal(status,'arrived');assert.ok(g.distanceTo(actor,target)<=1.3);assert.equal(g.rng.state,rng);assert.equal(g.visualRng.state,visual);});
+test('原生Save／Load恢復浮點幾何、實際命令及傷害結果',()=>{const a=geometry(Game);order(a.g,a.actor,a.target);const snap=a.g.snapshot(),g=new Game();g.restore(snap);const actor=g.units.find(u=>u.id===a.actor.id),target=g.buildings.find(u=>u.id===a.target.id);assert.equal(actor.target,target);assert.ok(actor.manualAttack);const expected=battle(a.g,a.actor,a.target),actual=battle(g,actor,target);assert.equal(actual,expected);assert.equal(actor.x,a.actor.x);assert.equal(actor.y,a.actor.y);assert.equal(target.hp,a.target.hp);});
+test('暫停時不推進路線、冷卻或模擬時間',()=>{const{g,actor,target}=geometry(Game);order(g,actor,target);g.paused=true;const before={x:actor.x,y:actor.y,time:g.time,run:g.runTime,cooldown:actor.cooldown,rng:g.rng.state};g.update(.5);assert.deepEqual({x:actor.x,y:actor.y,time:g.time,run:g.runTime,cooldown:actor.cooldown,rng:g.rng.state},before);});
+test('重複查詢路線不消耗戰鬥或視覺RNG，不改候選命令',()=>{const{g,actor,target}=geometry(Game);order(g,actor,target);const before=[g.rng.state,g.visualRng.state],f=(x,y)=>g.isWalkable(x,y,actor);f.segment=(a,b)=>g.segmentWalkable(a,b,actor);const args=[actor,{x:target.x+.5,y:target.y+.5},f,g.world.size,{range:1.3+Math.SQRT1_2,goalTest:p=>g.distanceTo(p,target)<=1.3}];const a=findPath(...args),b=findPath(...args);assert.equal(a.status,'ready');assert.deepEqual(a,b);assert.deepEqual([g.rng.state,g.visualRng.state],before);assert.equal(actor.target,target);assert.ok(actor.manualAttack);});
