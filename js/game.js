@@ -1831,7 +1831,7 @@ export class Game {
     u._heading={x:(p.x-u.x)/d,y:(p.y-u.y)/d};
     const next=this.crowd ? this.crowd.steer(u,desired,(a,b)=>segmentClear(walkable,a,b),this.time) : desired;
     if(next && segmentClear(walkable,u,next)) {
-      const faceDx=next.x-u.x,faceDy=next.y-u.y;u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=faceDx>=0?1:-1;u.visualDirection=visualDirectionFromVector(faceDx,faceDy,u.visualDirection);nav.stalled=0;
+      const faceDx=next.x-u.x,faceDy=next.y-u.y;const actualStep=Math.hypot(faceDx,faceDy);if(actualStep>0)u._heading={x:faceDx/actualStep,y:faceDy/actualStep};u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=faceDx>=0?1:-1;u.visualDirection=visualDirectionFromVector(faceDx,faceDy,u.visualDirection);nav.stalled=0;
       this.crowd?.moved(u);
     } else {
       nav.stalled+=dt;
