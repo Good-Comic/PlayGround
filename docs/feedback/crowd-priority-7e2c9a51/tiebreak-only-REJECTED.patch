@@ -1,0 +1,11 @@
+--- a/js/crowd.js
++++ b/js/crowd.js
+@@ -48,7 +48,7 @@
+     }
+     let leader=null;
+     for(const v of neighbours) {
+-      if(fighting(v)||(v._trafficPriority||v.id)>=priority || !['move','gather','return','attack','build'].includes(v.state))continue;
++      if(fighting(v)||((v._trafficPriority||v.id)>priority || (v._trafficPriority||v.id)===priority&&v.id>=u.id) || !['move','gather','return','attack','build'].includes(v.state))continue;
+       const heading=v._heading;
+       if(heading && (v.x-u.x)**2+(v.y-u.y)**2<3.24 && heading.x*dx+heading.y*dy<-.5){leader=v;break;}
+     }

@@ -1,0 +1,54 @@
+TAP version 13
+# Subtest: 相反朝向但正在遠離時，不應被視為迎面來車而無故偏航
+not ok 1 - 相反朝向但正在遠離時，不應被視為迎面來車而無故偏航
+  ---
+  duration_ms: 1.747045
+  type: 'test'
+  location: '/workspace/riftwatch-crowd-priority-7e2c9a51/worktree/tests/crowd-approach.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 2.988530753112734
+    - 3
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 3
+  actual: 2.988530753112734
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-crowd-priority-7e2c9a51/worktree/tests/crowd-approach.test.mjs:13:22)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 真正互相靠近的友軍仍由高ID讓行，沒有取消交通規則
+ok 2 - 真正互相靠近的友軍仍由高ID讓行，沒有取消交通規則
+  ---
+  duration_ms: 0.266395
+  type: 'test'
+  ...
+# Subtest: 正在交戰的對手不獲交通通行權，仍保留硬碰撞
+ok 3 - 正在交戰的對手不獲交通通行權，仍保留硬碰撞
+  ---
+  duration_ms: 0.221218
+  type: 'test'
+  ...
+# Subtest: 沒有合法靜態路段時仍拒絕移動
+ok 4 - 沒有合法靜態路段時仍拒絕移動
+  ---
+  duration_ms: 0.159966
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 3
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17.384488
