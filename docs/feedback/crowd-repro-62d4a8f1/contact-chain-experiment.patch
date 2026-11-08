@@ -1,0 +1,18 @@
+diff --git a/js/game.js b/js/game.js
+index 41ad940..90a014e 100644
+--- a/js/game.js
++++ b/js/game.js
+@@ -1777,10 +1777,12 @@ export class Game {
+       this.navigationQueue.shift();this.navigationQueued.delete(u.id);
+       this.navigationBudget = (this.navigationBudget ?? 2)-1;
+       const searchStart = performance.now();
++      const contacts=new Set(u._crowdBlockedBy||[]);
++      for(const v of contacts)if(v.team===u.team)for(const b of v._crowdBlockedBy||[])if(b.alive&&b.team===u.team)contacts.add(b);
+       const occupied = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2).filter(v=>{
+         if(['idle','hold','gather'].includes(v.state))return true;
+         // 射程內原地交戰的友軍也佔據身體空間；追擊中的單位不當成靜態障礙。
+-        if(!u._crowdBlockedBy?.includes(v) || v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
++        if(!contacts.has(v) || v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
+         const range=this.unitRange(v)+(v.target.w?(v.team==='player'?-.1:0):(v.target.typeDef.radius||.2));
+         return this.distanceTo(v,v.target)<=range;
+       }) : [];

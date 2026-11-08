@@ -1,0 +1,31 @@
+--- a/js/game.js
++++ b/js/game.js
+@@ -1752,6 +1752,7 @@
+     if (!nav || Math.hypot(tx-nav.tx, ty-nav.ty) > .6 || nav.range !== range) {
+       nav = u._nav = { tx, ty, range, points: [], status: 'pending', retryAt: 0, stalled: 0 };
+       u._crowdBlockedBy = null;
++      delete u._crowdBlockedSince;
+     }
+     if (entity ? this.distanceTo(u,entity)<=range : range && dist(u.x,u.y,tx,ty)<=range) return 'arrived';
+     if (!range && walkable(tx, ty) && dist(u.x,u.y,tx,ty)<.08) return 'arrived';
+@@ -1782,7 +1783,7 @@
+         // 射程內原地交戰的友軍也佔據身體空間；追擊中的單位不當成靜態障礙。
+         if(!u._crowdBlockedBy?.includes(v) || v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
+         const range=this.unitRange(v)+(v.target.w?(v.team==='player'?-.1:0):(v.target.typeDef.radius||.2));
+-        return this.distanceTo(v,v.target)<=range;
++        return this.distanceTo(v,v.target)<=range || v._crowdBlockedSince!=null && this.time-v._crowdBlockedSince>2;
+       }) : [];
+       // 只在這次同步搜尋內快取半格端點；世界狀態不會跨搜尋或更新沿用。
+       const side=this.world.size*2,mask=new Int8Array(side*side);
+@@ -1831,9 +1832,11 @@
+     u._heading={x:(p.x-u.x)/d,y:(p.y-u.y)/d};
+     const next=this.crowd ? this.crowd.steer(u,desired,(a,b)=>segmentClear(walkable,a,b),this.time) : desired;
+     if(next && segmentClear(walkable,u,next)) {
++      delete u._crowdBlockedSince;
+       const faceDx=next.x-u.x,faceDy=next.y-u.y;u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=faceDx>=0?1:-1;u.visualDirection=visualDirectionFromVector(faceDx,faceDy,u.visualDirection);nav.stalled=0;
+       this.crowd?.moved(u);
+     } else {
++      u._crowdBlockedSince ??= this.time;
+       nav.stalled+=dt;
+       if(nav.stalled>.3) {nav.points=[];nav.status='pending';nav.retryAt=this.time;}
+     }
