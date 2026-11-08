@@ -1,0 +1,1531 @@
+{
+  "sources": [
+    {
+      "name": "samples.jsonl",
+      "bytes": 1852824,
+      "sha256": "d25598729c1a5a3d30aec541bb4342eba513a0b881f36e3db5d600f7e272b3e4"
+    },
+    {
+      "name": "snapshot-43-false-4-wave.json",
+      "bytes": 206249,
+      "sha256": "51169c91bf5c22972f705d24f265cba38ccba1525307e9f4a83b4ce8b14ce37a"
+    },
+    {
+      "name": "snapshot-48-false-4-defeat.json",
+      "bytes": 266292,
+      "sha256": "7555a292c2aac3d0d8224ad3922f12a9cfb79150e659e8417a1790e00c74335a"
+    }
+  ],
+  "scope": "原地圖按正式snapshot.restore重建；建築與單位位置取相同採樣。分別使用波初及敗北樹木資源狀態，沒有憑空補造中間狀態。路線查詢保留正式碰撞/射程/速度，未推進戰鬥、未改傷害。",
+  "limitations": [
+    "採樣缺當時_nav/_heading/_yieldTo/交通優先序，firstStep是重建姿態下的查詢，不能冒稱當時真實路線或碰撞序列。",
+    "建築隊伍依本場友軍建築重建；兩資源快照一致不等於中間逐幀完全相同。",
+    "靜態有路不保證動態接敵成功，單步無路也不代表不存在繞行方案。",
+    "瞬時buff與原先導航佇列也未完整保留；查詢採正式snapshot的相關屬性，不冒稱逐幀精確重播。"
+  ],
+  "rows": [
+    {
+      "actualContacts": [
+        {
+          "id": 105,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 1.7211528571251267,
+          "range": 1.9
+        },
+        {
+          "id": 85,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 2.419513759691115,
+          "range": 1.4
+        }
+      ],
+      "resourceSnapshot": "snapshot-43-false-4-wave.json",
+      "snapshotSim": 395.2658000000748,
+      "sampleSim": 468.91320000009154,
+      "id": 16,
+      "position": {
+        "x": 24.064640230287598,
+        "y": 22.39192830830261
+      },
+      "target": {
+        "id": 126,
+        "x": 24.999073845992676,
+        "y": 24.02544614055665
+      },
+      "range": 1.2999999999999998,
+      "staticPath": {
+        "status": "ready",
+        "expanded": 1,
+        "points": [
+          {
+            "x": 24,
+            "y": 22.5
+          },
+          {
+            "x": 24.079835030450162,
+            "y": 23.10620732501414
+          }
+        ],
+        "goal": {
+          "x": 24.079835030450162,
+          "y": 23.10620732501414
+        }
+      },
+      "firstStepWithSampledBodies": null,
+      "probes": [
+        {
+          "next": {
+            "x": 24.00304288585358,
+            "y": 22.4949126137024
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.971464273218512,
+            "y": 22.46754736029521
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 24.042090458266333,
+            "y": 22.509790548998215
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.951183671593334,
+            "y": 22.431012950929293
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 24.083872293686202,
+            "y": 22.510377148471825
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.94466019669477,
+            "y": 22.389739349859806
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 24.123322153445663,
+            "y": 22.496601284253764
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.95498372185427,
+            "y": 22.343189718271596
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 24.159451437540977,
+            "y": 22.465486686337723
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 127,
+              "team": "enemy",
+              "state": "move"
+            }
+          ]
+        }
+      ],
+      "nearbyDetourEligible": [],
+      "nearbyAttackers": [
+        19,
+        85,
+        142,
+        145,
+        140,
+        144,
+        70,
+        72,
+        105,
+        24,
+        134,
+        17,
+        108,
+        126,
+        135,
+        136
+      ]
+    },
+    {
+      "actualContacts": [
+        {
+          "id": 85,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 2.419513759691115,
+          "range": 1.4
+        },
+        {
+          "id": 72,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 2.2358267954588706,
+          "range": 1.9
+        }
+      ],
+      "resourceSnapshot": "snapshot-43-false-4-wave.json",
+      "snapshotSim": 395.2658000000748,
+      "sampleSim": 468.91320000009154,
+      "id": 70,
+      "position": {
+        "x": 23.15993157579144,
+        "y": 22.0108699083969
+      },
+      "target": {
+        "id": 126,
+        "x": 24.999073845992676,
+        "y": 24.02544614055665
+      },
+      "range": 1.2999999999999998,
+      "staticPath": {
+        "status": "ready",
+        "expanded": 1,
+        "points": [
+          {
+            "x": 24,
+            "y": 23
+          },
+          {
+            "x": 23.798030453728003,
+            "y": 23.527957678482032
+          }
+        ],
+        "goal": {
+          "x": 23.798030453728003,
+          "y": 23.527957678482032
+        }
+      },
+      "firstStepWithSampledBodies": null,
+      "probes": [
+        {
+          "next": {
+            "x": 23.237612222715562,
+            "y": 22.10233420248727
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.201539749924244,
+            "y": 22.123425493977244
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.26426556173234,
+            "y": 22.07015244695324
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.160422095690834,
+            "y": 22.130868905851997
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.278267927698288,
+            "y": 22.030782412442825
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.119244963675833,
+            "y": 22.123761890373274
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.277921469688934,
+            "y": 21.98899789573097
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.07849451591245,
+            "y": 22.0990061964868
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.26009010183164,
+            "y": 21.944777021779238
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        }
+      ],
+      "nearbyDetourEligible": [
+        22
+      ],
+      "nearbyAttackers": [
+        19,
+        85,
+        142,
+        145,
+        140,
+        144,
+        72,
+        105,
+        16,
+        24,
+        134,
+        17,
+        108,
+        126,
+        135,
+        136
+      ]
+    },
+    {
+      "actualContacts": [
+        {
+          "id": 105,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 1.7211528571251267,
+          "range": 1.9
+        },
+        {
+          "id": 85,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 2.419513759691115,
+          "range": 1.4
+        }
+      ],
+      "resourceSnapshot": "snapshot-43-false-4-wave.json",
+      "snapshotSim": 395.2658000000748,
+      "sampleSim": 468.91320000009154,
+      "id": 72,
+      "position": {
+        "x": 23.403934233107176,
+        "y": 22.45877735785388
+      },
+      "target": {
+        "id": 126,
+        "x": 24.999073845992676,
+        "y": 24.02544614055665
+      },
+      "range": 1.7999999999999998,
+      "staticPath": {
+        "status": "ready",
+        "expanded": 1,
+        "points": [
+          {
+            "x": 23.5,
+            "y": 22.5
+          },
+          {
+            "x": 23.502428543848094,
+            "y": 23.025419721121366
+          }
+        ],
+        "goal": {
+          "x": 23.502428543848094,
+          "y": 23.025419721121366
+        }
+      },
+      "firstStepWithSampledBodies": null,
+      "probes": [
+        {
+          "next": {
+            "x": 23.5,
+            "y": 22.5
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.480040639555625,
+            "y": 22.530441523876494
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.50831094677448,
+            "y": 22.464560042198343
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.450853029195443,
+            "y": 22.552193439808974
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.503965739565846,
+            "y": 22.428418907468153
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.415976300188664,
+            "y": 22.562618228490727
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.487491254624455,
+            "y": 22.395958873716054
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 70,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.374588171675814,
+            "y": 22.55911053518162
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 105,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.456432676442507,
+            "y": 22.368379065604632
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 70,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 85,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        }
+      ],
+      "nearbyDetourEligible": [
+        22
+      ],
+      "nearbyAttackers": [
+        19,
+        85,
+        142,
+        145,
+        140,
+        144,
+        70,
+        105,
+        16,
+        24,
+        134,
+        17,
+        108,
+        126,
+        135,
+        136
+      ]
+    },
+    {
+      "actualContacts": [
+        {
+          "id": 72,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 2.2358267954588706,
+          "range": 1.9
+        },
+        {
+          "id": 16,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 1.881899755686153,
+          "range": 1.4
+        },
+        {
+          "id": 70,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 2.72781261915549,
+          "range": 1.4
+        },
+        {
+          "id": 139,
+          "team": "enemy",
+          "state": "move",
+          "target": 1,
+          "targetAlive": true,
+          "targetTeam": "player",
+          "distance": 3.4237716665632583,
+          "range": 1
+        }
+      ],
+      "resourceSnapshot": "snapshot-43-false-4-wave.json",
+      "snapshotSim": 395.2658000000748,
+      "sampleSim": 468.91320000009154,
+      "id": 85,
+      "position": {
+        "x": 23.71048455357592,
+        "y": 21.977621814887204
+      },
+      "target": {
+        "id": 126,
+        "x": 24.999073845992676,
+        "y": 24.02544614055665
+      },
+      "range": 1.2999999999999998,
+      "staticPath": {
+        "status": "ready",
+        "expanded": 1,
+        "points": [
+          {
+            "x": 24,
+            "y": 22.5
+          },
+          {
+            "x": 24.079835030450162,
+            "y": 23.10620732501414
+          }
+        ],
+        "goal": {
+          "x": 24.079835030450162,
+          "y": 23.10620732501414
+        }
+      },
+      "firstStepWithSampledBodies": null,
+      "probes": [
+        {
+          "next": {
+            "x": 23.761383712126595,
+            "y": 22.069460127474237
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 16,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.726806678198813,
+            "y": 22.081345429593764
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 16,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.789788990251818,
+            "y": 22.046439009857057
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 16,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.690250511998126,
+            "y": 22.080653768966645
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 16,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 70,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.808578242667387,
+            "y": 22.015073492558926
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 16,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 139,
+              "team": "enemy",
+              "state": "move"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.65614781589543,
+            "y": 22.067469012607788
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 16,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 70,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.81547318657014,
+            "y": 21.979166788027694
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 16,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 139,
+              "team": "enemy",
+              "state": "move"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.625448957159627,
+            "y": 22.039216841814103
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 70,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 72,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.807787129119863,
+            "y": 21.938160329961832
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 16,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 139,
+              "team": "enemy",
+              "state": "move"
+            }
+          ]
+        }
+      ],
+      "nearbyDetourEligible": [
+        22
+      ],
+      "nearbyAttackers": [
+        19,
+        142,
+        145,
+        140,
+        144,
+        70,
+        72,
+        105,
+        16,
+        24,
+        134,
+        17,
+        108,
+        126,
+        135,
+        136
+      ]
+    },
+    {
+      "actualContacts": [
+        {
+          "id": 113,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 5.711519455416914,
+          "range": 1.4
+        },
+        {
+          "id": 132,
+          "team": "enemy",
+          "state": "attack",
+          "target": 1,
+          "targetAlive": true,
+          "targetTeam": "player",
+          "distance": 0.9971054465524812,
+          "range": 1
+        }
+      ],
+      "resourceSnapshot": "snapshot-43-false-4-wave.json",
+      "snapshotSim": 395.2658000000748,
+      "sampleSim": 468.91320000009154,
+      "id": 109,
+      "position": {
+        "x": 22.94479841452665,
+        "y": 29.867317599230994
+      },
+      "target": {
+        "id": 126,
+        "x": 24.999073845992676,
+        "y": 24.02544614055665
+      },
+      "range": 1.7999999999999998,
+      "staticPath": {
+        "status": "ready",
+        "expanded": 41,
+        "points": [
+          {
+            "x": 22.5,
+            "y": 29
+          },
+          {
+            "x": 22.5,
+            "y": 28.5
+          },
+          {
+            "x": 22.5,
+            "y": 28
+          },
+          {
+            "x": 22.5,
+            "y": 27.5
+          },
+          {
+            "x": 22.5,
+            "y": 27
+          },
+          {
+            "x": 22.5,
+            "y": 26.5
+          },
+          {
+            "x": 22.5,
+            "y": 26
+          },
+          {
+            "x": 22.5,
+            "y": 25.5
+          },
+          {
+            "x": 22.5,
+            "y": 25
+          },
+          {
+            "x": 22.5,
+            "y": 24.5
+          },
+          {
+            "x": 23.233660341266862,
+            "y": 24.376608720185683
+          }
+        ],
+        "goal": {
+          "x": 23.233660341266862,
+          "y": 24.376608720185683
+        }
+      },
+      "firstStepWithSampledBodies": null,
+      "probes": [
+        {
+          "next": {
+            "x": 22.88775678672284,
+            "y": 29.756091466072046
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 113,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.929354263063306,
+            "y": 29.743275355678332
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 113,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.853075868679404,
+            "y": 29.782394253893568
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 113,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.972824413414966,
+            "y": 29.745499934722464
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 113,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.82951672888687,
+            "y": 29.818994385802554
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 110,
+              "team": "player",
+              "state": "return"
+            },
+            {
+              "id": 113,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.012896283201943,
+            "y": 29.762495462819434
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 113,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.819936020811774,
+            "y": 29.86145392838487
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 110,
+              "team": "player",
+              "state": "return"
+            },
+            {
+              "id": 113,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 23.048340367736834,
+            "y": 29.79728857720854
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 113,
+              "team": "player",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.827509113077305,
+            "y": 29.910540507110092
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 110,
+              "team": "player",
+              "state": "return"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        }
+      ],
+      "nearbyDetourEligible": [
+        10,
+        43,
+        106
+      ],
+      "nearbyAttackers": [
+        108,
+        126,
+        135,
+        136,
+        130,
+        133,
+        113,
+        132,
+        148
+      ]
+    },
+    {
+      "actualContacts": [
+        {
+          "id": 109,
+          "team": "player",
+          "state": "attack",
+          "target": 126,
+          "targetAlive": true,
+          "targetTeam": "enemy",
+          "distance": 6.192536611760873,
+          "range": 1.9
+        },
+        {
+          "id": 132,
+          "team": "enemy",
+          "state": "attack",
+          "target": 1,
+          "targetAlive": true,
+          "targetTeam": "player",
+          "distance": 0.9971054465524812,
+          "range": 1
+        }
+      ],
+      "resourceSnapshot": "snapshot-43-false-4-wave.json",
+      "snapshotSim": 395.2658000000748,
+      "sampleSim": 468.91320000009154,
+      "id": 113,
+      "position": {
+        "x": 22.87232598123019,
+        "y": 29.32623834638156
+      },
+      "target": {
+        "id": 126,
+        "x": 24.999073845992676,
+        "y": 24.02544614055665
+      },
+      "range": 1.2999999999999998,
+      "staticPath": {
+        "status": "ready",
+        "expanded": 39,
+        "points": [
+          {
+            "x": 22.5,
+            "y": 29.5
+          },
+          {
+            "x": 22.5,
+            "y": 29
+          },
+          {
+            "x": 22.5,
+            "y": 28.5
+          },
+          {
+            "x": 22.5,
+            "y": 28
+          },
+          {
+            "x": 22.5,
+            "y": 27.5
+          },
+          {
+            "x": 22.5,
+            "y": 27
+          },
+          {
+            "x": 22.5,
+            "y": 26.5
+          },
+          {
+            "x": 22.5,
+            "y": 26
+          },
+          {
+            "x": 22.5,
+            "y": 25.5
+          },
+          {
+            "x": 22.5,
+            "y": 25
+          },
+          {
+            "x": 22.5,
+            "y": 24.5
+          },
+          {
+            "x": 23,
+            "y": 24.5
+          },
+          {
+            "x": 23.798030453728003,
+            "y": 24.522934602631267
+          }
+        ],
+        "goal": {
+          "x": 23.798030453728003,
+          "y": 24.522934602631267
+        }
+      },
+      "firstStepWithSampledBodies": null,
+      "probes": [
+        {
+          "next": {
+            "x": 22.777177684732422,
+            "y": 29.370643319904502
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 109,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.76771989976514,
+            "y": 29.335325024571517
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.798172635887408,
+            "y": 29.400577309075928
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 109,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.770946080675646,
+            "y": 29.298904927942758
+          },
+          "staticClear": false,
+          "blockingBodies": [
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.828159019365245,
+            "y": 29.421497358971557
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 109,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.786465038270997,
+            "y": 29.265799133331104
+          },
+          "staticClear": false,
+          "blockingBodies": [
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.86350084900237,
+            "y": 29.430866817846844
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 109,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        },
+        {
+          "next": {
+            "x": 22.816778953918718,
+            "y": 29.23713431865633
+          },
+          "staticClear": false,
+          "blockingBodies": []
+        },
+        {
+          "next": {
+            "x": 22.904941742084524,
+            "y": 29.42604421867319
+          },
+          "staticClear": true,
+          "blockingBodies": [
+            {
+              "id": 109,
+              "team": "player",
+              "state": "attack"
+            },
+            {
+              "id": 132,
+              "team": "enemy",
+              "state": "attack"
+            }
+          ]
+        }
+      ],
+      "nearbyDetourEligible": [
+        10,
+        43,
+        106
+      ],
+      "nearbyAttackers": [
+        108,
+        126,
+        135,
+        136,
+        130,
+        133,
+        109,
+        132,
+        148
+      ]
+    }
+  ]
+}
