@@ -1,0 +1,104 @@
+TAP version 13
+# Subtest: 互動端點取樣全部錯過時，仍可走到合法半格目標區域
+not ok 1 - 互動端點取樣全部錯過時，仍可走到合法半格目標區域
+  ---
+  duration_ms: 2.358291
+  type: 'test'
+  location: '/workspace/riftwatch-nav-goal-d7b3a6e1/worktree/tests/navigation-goal-fallback.test.mjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'unreachable'
+    - 'ready'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'ready'
+  actual: 'unreachable'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-nav-goal-d7b3a6e1/worktree/tests/navigation-goal-fallback.test.mjs:7:9)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 自訂goalTest的正式到達判定不應被輔助圓形取樣否決
+not ok 2 - 自訂goalTest的正式到達判定不應被輔助圓形取樣否決
+  ---
+  duration_ms: 0.326644
+  type: 'test'
+  location: '/workspace/riftwatch-nav-goal-d7b3a6e1/worktree/tests/navigation-goal-fallback.test.mjs:10:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'unreachable'
+    - 'ready'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'ready'
+  actual: 'unreachable'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-nav-goal-d7b3a6e1/worktree/tests/navigation-goal-fallback.test.mjs:11:125)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: 沒有任何合法目標節點時，仍快速回報不可達，不展開整張地圖
+ok 3 - 沒有任何合法目標節點時，仍快速回報不可達，不展開整張地圖
+  ---
+  duration_ms: 0.868806
+  type: 'test'
+  ...
+# Subtest: 存在目標節點但路段被阻隔，不能跳過碰撞連接
+ok 4 - 存在目標節點但路段被阻隔，不能跳過碰撞連接
+  ---
+  duration_ms: 0.255287
+  type: 'test'
+  ...
+# Subtest: fallback仍遵守原搜尋預算，不直接傳送到合法目標
+not ok 5 - fallback仍遵守原搜尋預算，不直接傳送到合法目標
+  ---
+  duration_ms: 0.291611
+  type: 'test'
+  location: '/workspace/riftwatch-nav-goal-d7b3a6e1/worktree/tests/navigation-goal-fallback.test.mjs:19:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'unreachable'
+    - 'budget_exhausted'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'budget_exhausted'
+  actual: 'unreachable'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-nav-goal-d7b3a6e1/worktree/tests/navigation-goal-fallback.test.mjs:20:87)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 2
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17.048962

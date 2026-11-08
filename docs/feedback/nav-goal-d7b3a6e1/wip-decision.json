@@ -1,0 +1,169 @@
+{
+  "decision": "DO_NOT_INTEGRATE_WIP",
+  "acceptedParent": "689b28c4921a71056f5cda6fa6698e8ba9048a81",
+  "rejectedCandidate": "10a247325768ca4a7f5d70c0dba07eba0cf98d13",
+  "sources": [
+    {
+      "name": "manual-before-corrected.json",
+      "sha256": "52d51e6556d229e39af0e02c19833ba160cc8b5122ecc9295acad9b72cdb20a1"
+    },
+    {
+      "name": "manual-after.json",
+      "sha256": "5e1b48698398c2e1b6746542c3ccbe491c3eb67966e358451d5b18548e9f3eec"
+    }
+  ],
+  "rows": [
+    {
+      "mixed": false,
+      "n": 6,
+      "spacing": 0.55,
+      "manualEventsIdentical": true,
+      "autoBefore": [],
+      "autoAfter": [],
+      "firstPoseDifference": null
+    },
+    {
+      "mixed": false,
+      "n": 6,
+      "spacing": 0.7,
+      "manualEventsIdentical": true,
+      "autoBefore": [],
+      "autoAfter": [],
+      "firstPoseDifference": null
+    },
+    {
+      "mixed": false,
+      "n": 10,
+      "spacing": 0.55,
+      "manualEventsIdentical": true,
+      "autoBefore": [],
+      "autoAfter": [],
+      "firstPoseDifference": null
+    },
+    {
+      "mixed": false,
+      "n": 10,
+      "spacing": 0.7,
+      "manualEventsIdentical": true,
+      "autoBefore": [],
+      "autoAfter": [],
+      "firstPoseDifference": null
+    },
+    {
+      "mixed": true,
+      "n": 6,
+      "spacing": 0.55,
+      "manualEventsIdentical": true,
+      "autoBefore": [],
+      "autoAfter": [],
+      "firstPoseDifference": null
+    },
+    {
+      "mixed": true,
+      "n": 6,
+      "spacing": 0.7,
+      "manualEventsIdentical": true,
+      "autoBefore": [],
+      "autoAfter": [],
+      "firstPoseDifference": null
+    },
+    {
+      "mixed": true,
+      "n": 10,
+      "spacing": 0.55,
+      "manualEventsIdentical": true,
+      "autoBefore": [],
+      "autoAfter": [],
+      "firstPoseDifference": null
+    },
+    {
+      "mixed": true,
+      "n": 10,
+      "spacing": 0.7,
+      "manualEventsIdentical": true,
+      "autoBefore": [
+        {
+          "sim": 19.566666666666837,
+          "id": 24,
+          "manual": false,
+          "target": 30,
+          "actual": 1.199999999999818
+        },
+        {
+          "sim": 19.75000000000016,
+          "id": 22,
+          "manual": false,
+          "target": 30,
+          "actual": 9.199999999999818
+        }
+      ],
+      "autoAfter": [
+        {
+          "sim": 19.75000000000016,
+          "id": 22,
+          "manual": false,
+          "target": 30,
+          "actual": 9.199999999999818
+        }
+      ],
+      "firstPoseDifference": {
+        "sampleTime": 20.000000000000146,
+        "id": 20,
+        "before": {
+          "id": 20,
+          "x": 7.495922400544896,
+          "y": 3.7927123817866697,
+          "state": "attack",
+          "manual": false,
+          "failure": "congested",
+          "blockedBy": [
+            24,
+            21
+          ],
+          "heading": {
+            "x": 0.9862482660925406,
+            "y": 0.16527055887077152
+          },
+          "yieldTo": null,
+          "nav": {
+            "status": "ready",
+            "points": [
+              {
+                "x": 8.485827833178663,
+                "y": 3.9585957903616507
+              }
+            ],
+            "crowdDetour": false
+          }
+        },
+        "after": {
+          "id": 20,
+          "x": 7.677284863675901,
+          "y": 4.160164361158434,
+          "state": "attack",
+          "manual": false,
+          "failure": "congested",
+          "blockedBy": [
+            23
+          ],
+          "heading": {
+            "x": 0.31213919032573356,
+            "y": 0.9500363813364179
+          },
+          "yieldTo": null,
+          "nav": {
+            "status": "ready",
+            "points": [
+              {
+                "x": 8.485827833178663,
+                "y": 3.9585957903616507
+              }
+            ],
+            "crowdDetour": false
+          }
+        }
+      }
+    }
+  ],
+  "limitations": "採樣約每秒，不能當逐幀因果；只確認手動傷害相同與自動接敵差異，不能據此保證WIP沒有其他影響。"
+}

@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: 互動端點取樣全部錯過時，仍可走到合法半格目標區域
+ok 1 - 互動端點取樣全部錯過時，仍可走到合法半格目標區域
+  ---
+  duration_ms: 1.505418
+  type: 'test'
+  ...
+# Subtest: 自訂goalTest的正式到達判定不應被輔助圓形取樣否決
+ok 2 - 自訂goalTest的正式到達判定不應被輔助圓形取樣否決
+  ---
+  duration_ms: 0.335467
+  type: 'test'
+  ...
+# Subtest: 沒有任何合法目標節點時，仍快速回報不可達，不展開整張地圖
+ok 3 - 沒有任何合法目標節點時，仍快速回報不可達，不展開整張地圖
+  ---
+  duration_ms: 0.24996
+  type: 'test'
+  ...
+# Subtest: 存在目標節點但路段被阻隔，不能跳過碰撞連接
+ok 4 - 存在目標節點但路段被阻隔，不能跳過碰撞連接
+  ---
+  duration_ms: 0.29732
+  type: 'test'
+  ...
+# Subtest: fallback仍遵守原搜尋預算，不直接傳送到合法目標
+ok 5 - fallback仍遵守原搜尋預算，不直接傳送到合法目標
+  ---
+  duration_ms: 0.205464
+  type: 'test'
+  ...
+# Subtest: 正式目標外框可限制回退檢查，不改合法終點
+ok 6 - 正式目標外框可限制回退檢查，不改合法終點
+  ---
+  duration_ms: 1.577825
+  type: 'test'
+  ...
+# Subtest: 封閉目標有外框時只檢查局部網格，仍不展開A星
+ok 7 - 封閉目標有外框時只檢查局部網格，仍不展開A星
+  ---
+  duration_ms: 0.248548
+  type: 'test'
+  ...
+# Subtest: 任意goalTest未提供外框時，不擅自假定目標必在圓形範圍內
+ok 8 - 任意goalTest未提供外框時，不擅自假定目標必在圓形範圍內
+  ---
+  duration_ms: 0.231643
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 19.267795
