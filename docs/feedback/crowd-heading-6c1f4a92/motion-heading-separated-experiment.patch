@@ -1,0 +1,35 @@
+diff --git a/js/crowd.js b/js/crowd.js
+index 6180e35..66f64f7 100644
+--- a/js/crowd.js
++++ b/js/crowd.js
+@@ -49,7 +49,7 @@ export class Crowd {
+     let leader=null;
+     for(const v of neighbours) {
+       if(fighting(v)||(v._trafficPriority||v.id)>=priority || !['move','gather','return','attack','build'].includes(v.state))continue;
+-      const heading=v._heading;
++      const heading=v._motionHeading===undefined?v._heading:v._motionHeading;
+       // Opposite headings alone also describe units walking away from each other.
+       // Grant head-on right-of-way only when both headings point toward the other body.
+       if(heading && (v.x-u.x)**2+(v.y-u.y)**2<3.24 && heading.x*dx+heading.y*dy<-.5
+diff --git a/js/game.js b/js/game.js
+index 8c07d86..3e75bb6 100644
+--- a/js/game.js
++++ b/js/game.js
+@@ -1161,7 +1161,7 @@ export class Game {
+       if (u.team === 'enemy') this.updateEnemy(u, dt);
+       else this.updatePlayerUnit(u, dt);
+       // 停留、交戰或暫停移動的時間，不算在下一次移動的壅塞計時內。
+-      if (!u._movementAttempted) { u._progress = null; u._goalProgress = null; u._heading = null; u._yieldTo = null; u._trafficPriority = u.id; }
++      if (!u._movementAttempted) { u._progress = null; u._goalProgress = null; u._heading = null; u._motionHeading = null; u._yieldTo = null; u._trafficPriority = u.id; }
+     }
+     this.navigationQueue = this.navigationQueue.filter(id=>this.navigationRequested.has(id));
+     this.navigationQueued = new Set(this.navigationQueue);
+@@ -1831,7 +1831,7 @@ export class Game {
+     u._heading={x:(p.x-u.x)/d,y:(p.y-u.y)/d};
+     const next=this.crowd ? this.crowd.steer(u,desired,(a,b)=>segmentClear(walkable,a,b),this.time) : desired;
+     if(next && segmentClear(walkable,u,next)) {
+-      const faceDx=next.x-u.x,faceDy=next.y-u.y;u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=faceDx>=0?1:-1;u.visualDirection=visualDirectionFromVector(faceDx,faceDy,u.visualDirection);nav.stalled=0;
++      const faceDx=next.x-u.x,faceDy=next.y-u.y;const actualStep=Math.hypot(faceDx,faceDy);if(actualStep>0)u._motionHeading={x:faceDx/actualStep,y:faceDy/actualStep};u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=faceDx>=0?1:-1;u.visualDirection=visualDirectionFromVector(faceDx,faceDy,u.visualDirection);nav.stalled=0;
+       this.crowd?.moved(u);
+     } else {
+       nav.stalled+=dt;
