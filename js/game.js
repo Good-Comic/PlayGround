@@ -1864,10 +1864,16 @@ export class Game {
         if(this.world.tile(x+.5,y+.5)?.terrain==='water' && crossesRect(a,b,x-r,y-r,x+1+r,y+1+r))return false;
       }
     const dx=b.x-a.x,dy=b.y-a.y,len=dx*dx+dy*dy;
+    const treeRadius=r+.22,treeRadius2=treeRadius**2;
+    // Conservative broad phase only; the final collision threshold is unchanged.
+    const margin=treeRadius+1e-9;
+    const minX=Math.min(a.x,b.x)-margin,maxX=Math.max(a.x,b.x)+margin;
+    const minY=Math.min(a.y,b.y)-margin,maxY=Math.max(a.y,b.y)+margin;
     for(const n of this.world.resources) {
-      if(!n.alive || !['oak','pine'].includes(n.kind))continue;
+      if(!n.alive || (n.kind!=='oak' && n.kind!=='pine'))continue;
+      if(n.x<minX || n.x>maxX || n.y<minY || n.y>maxY)continue;
       const t=len?clamp(((n.x-a.x)*dx+(n.y-a.y)*dy)/len,0,1):0;
-      if(dist2(n.x,n.y,a.x+dx*t,a.y+dy*t)<(r+.22)**2)return false;
+      if(dist2(n.x,n.y,a.x+dx*t,a.y+dy*t)<treeRadius2)return false;
     }
     return true;
   }
