@@ -1,0 +1,51 @@
+TAP version 13
+# Subtest: 四個原生地圖種子、雙方及正式兵種半徑的16000條線段與凍結實作相同
+not ok 1 - 四個原生地圖種子、雙方及正式兵種半徑的16000條線段與凍結實作相同
+  ---
+  duration_ms: 170.125829
+  type: 'test'
+  location: '/workspace/riftwatch-static-sweep-4d72b1c9/worktree/tests/static-sweep-equivalence.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(typeDef)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-static-sweep-4d72b1c9/worktree/tests/static-sweep-equivalence.test.mjs:8:291)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: 零長度、正反向、貼邊與極近切線仍使用原始最終門檻
+ok 2 - 零長度、正反向、貼邊與極近切線仍使用原始最終門檻
+  ---
+  duration_ms: 19.512716
+  type: 'test'
+  ...
+# Subtest: 森林死亡／再生與資源種類變化立即反映，不使用過期快取
+ok 3 - 森林死亡／再生與資源種類變化立即反映，不使用過期快取
+  ---
+  duration_ms: 18.154782
+  type: 'test'
+  ...
+# Subtest: 端點快取回呼仍只呼叫一次並保留立即拒絕語意
+ok 4 - 端點快取回呼仍只呼叫一次並保留立即拒絕語意
+  ---
+  duration_ms: 9.977625
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 3
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3727.350688
