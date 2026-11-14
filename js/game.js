@@ -14,7 +14,7 @@ import {
 import { createWorld } from './world.js';
 import { NemesisDirector, unitThreat } from './director.js';
 import { t } from './i18n.js';
-import { clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, pointSegmentDist, rand, randInt, seedFromDate, formatNumber } from './utils.js';
+import { TILE_W, clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, pointSegmentDist, rand, randInt, seedFromDate, formatNumber } from './utils.js';
 import { visualDirectionFromVector } from './visuals.js';
 import { atlasBodyContains } from './sprite-atlas.js';
 import { ramBodyContains } from './ram-body-picking.js';
@@ -994,6 +994,17 @@ export class Game {
     this.camera.x = lerp(this.camera.x, this.camera.targetX, k);
     this.camera.y = lerp(this.camera.y, this.camera.targetY, k);
     this.camera.zoom = lerp(this.camera.zoom, this.camera.targetZoom, 1 - Math.pow(0.002, dt));
+    if (!(dt > 0)) return;
+    // Settle invisible interpolation tails so exact terrain-cache keys can stabilize.
+    // This is a CSS-pixel drawing tolerance, never a world collision/vision tolerance.
+    const pixelTolerance = 0.01;
+    const zoomExtent = Math.max(window.innerWidth, window.innerHeight, this.world.size * TILE_W);
+    if (Math.abs(this.camera.zoom - this.camera.targetZoom) * zoomExtent <= pixelTolerance)
+      this.camera.zoom = this.camera.targetZoom;
+    if (Math.abs(this.camera.x - this.camera.targetX) * this.camera.zoom <= pixelTolerance)
+      this.camera.x = this.camera.targetX;
+    if (Math.abs(this.camera.y - this.camera.targetY) * this.camera.zoom <= pixelTolerance)
+      this.camera.y = this.camera.targetY;
   }
 
   updateBuildings(dt) {
