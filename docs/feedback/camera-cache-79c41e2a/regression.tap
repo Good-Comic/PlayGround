@@ -1,0 +1,280 @@
+TAP version 13
+# Subtest: 停止輸入後相機可精確收斂，地形key不再持續改變
+ok 1 - 停止輸入後相機可精確收斂，地形key不再持續改變
+  ---
+  duration_ms: 130.236655
+  type: 'test'
+  ...
+# Subtest: 仍可見的大幅移動與縮放保留原始插值與速度
+ok 2 - 仍可見的大幅移動與縮放保留原始插值與速度
+  ---
+  duration_ms: 35.76034
+  type: 'test'
+  ...
+# Subtest: 僅在既定CSS像素尾差內貼齊，dt=0維持原座標
+ok 3 - 僅在既定CSS像素尾差內貼齊，dt=0維持原座標
+  ---
+  duration_ms: 29.284501
+  type: 'test'
+  ...
+# Subtest: 持續按鍵與英雄追蹤仍更新目標，不被尾差收斂鎖住
+ok 4 - 持續按鍵與英雄追蹤仍更新目標，不被尾差收斂鎖住
+  ---
+  duration_ms: 190.536275
+  type: 'test'
+  ...
+# Subtest: 四種視窗與縮放下screenPos／worldAt互逆
+ok 5 - 四種視窗與縮放下screenPos／worldAt互逆
+  ---
+  duration_ms: 83.796004
+  type: 'test'
+  ...
+# Subtest: 相機收斂不改模擬、單位、資源、時間或雙RNG
+ok 6 - 相機收斂不改模擬、單位、資源、時間或雙RNG
+  ---
+  duration_ms: 9.98655
+  type: 'test'
+  ...
+# Subtest: 原生Save／Load恢復後仍能收斂且不更動遊戲狀態
+ok 7 - 原生Save／Load恢復後仍能收斂且不更動遊戲狀態
+  ---
+  duration_ms: 15.205346
+  type: 'test'
+  ...
+# Subtest: right-click ground exits direct control and preserves hero move through update
+ok 8 - right-click ground exits direct control and preserves hero move through update
+  ---
+  duration_ms: 39.978263
+  type: 'test'
+  ...
+# Subtest: right-click enemy exits direct control and keeps explicit attack
+ok 9 - right-click enemy exits direct control and keeps explicit attack
+  ---
+  duration_ms: 36.484996
+  type: 'test'
+  ...
+# Subtest: villager-only command or mixed gathering does not exit unassigned hero direct control
+ok 10 - villager-only command or mixed gathering does not exit unassigned hero direct control
+  ---
+  duration_ms: 10.127149
+  type: 'test'
+  ...
+# Subtest: mixed hero, melee, ranged and villager attack assigns eligible units and preserves villager work
+ok 11 - mixed hero, melee, ranged and villager attack assigns eligible units and preserves villager work
+  ---
+  duration_ms: 5.715735
+  type: 'test'
+  ...
+# Subtest: selection rectangle follows pointer across both sides of its fixed origin
+ok 12 - selection rectangle follows pointer across both sides of its fixed origin
+  ---
+  duration_ms: 1.27908
+  type: 'test'
+  ...
+# Subtest: resource selection renders remaining amount instead of reading undefined unit combat data
+ok 13 - resource selection renders remaining amount instead of reading undefined unit combat data
+  ---
+  duration_ms: 10.876577
+  type: 'test'
+  ...
+# Subtest: already-delivered native pause is resumed once and verified, unpaused state is untouched
+ok 14 - already-delivered native pause is resumed once and verified, unpaused state is untouched
+  ---
+  duration_ms: 2.59444
+  type: 'test'
+  ...
+# Subtest: unrecoverable pause surfaces a blocker rather than silently spinning for the campaign duration
+ok 15 - unrecoverable pause surfaces a blocker rather than silently spinning for the campaign duration
+  ---
+  duration_ms: 1.811134
+  type: 'test'
+  ...
+# Subtest: 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入
+ok 16 - 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入
+  ---
+  duration_ms: 14.716582
+  type: 'test'
+  ...
+# Subtest: 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照
+ok 17 - 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照
+  ---
+  duration_ms: 15.161232
+  type: 'test'
+  ...
+# Subtest: 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致
+ok 18 - 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致
+  ---
+  duration_ms: 11.994718
+  type: 'test'
+  ...
+# Subtest: 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵
+ok 19 - 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵
+  ---
+  duration_ms: 5.331201
+  type: 'test'
+  ...
+# Subtest: 重複選取同戰士只計一個實體，仍只發送一次原生命令
+ok 20 - 重複選取同戰士只計一個實體，仍只發送一次原生命令
+  ---
+  duration_ms: 4.89262
+  type: 'test'
+  ...
+# Subtest: 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍
+ok 21 - 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍
+  ---
+  duration_ms: 53.942289
+  type: 'test'
+  ...
+# Subtest: 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士
+ok 22 - 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士
+  ---
+  duration_ms: 8.391539
+  type: 'test'
+  ...
+# Subtest: 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野
+ok 23 - 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野
+  ---
+  duration_ms: 37.779429
+  type: 'test'
+  ...
+# Subtest: 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機
+ok 24 - 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機
+  ---
+  duration_ms: 30.389266
+  type: 'test'
+  ...
+# Subtest: 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令
+ok 25 - 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令
+  ---
+  duration_ms: 6.469051
+  type: 'test'
+  ...
+# Subtest: 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定
+ok 26 - 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定
+  ---
+  duration_ms: 5.694091
+  type: 'test'
+  ...
+# Subtest: 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照
+ok 27 - 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照
+  ---
+  duration_ms: 6.995492
+  type: 'test'
+  ...
+# Subtest: 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動
+ok 28 - 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動
+  ---
+  duration_ms: 8.589797
+  type: 'test'
+  ...
+# Subtest: 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動
+ok 29 - 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動
+  ---
+  duration_ms: 5.971521
+  type: 'test'
+  ...
+# Subtest: 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令
+ok 30 - 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令
+  ---
+  duration_ms: 5.302285
+  type: 'test'
+  ...
+# Subtest: 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令
+ok 31 - 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令
+  ---
+  duration_ms: 4.724126
+  type: 'test'
+  ...
+# Subtest: 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標
+ok 32 - 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標
+  ---
+  duration_ms: 8.737699
+  type: 'test'
+  ...
+# Subtest: 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看
+ok 33 - 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看
+  ---
+  duration_ms: 10.015539
+  type: 'test'
+  ...
+# Subtest: 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心
+ok 34 - 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心
+  ---
+  duration_ms: 6.727528
+  type: 'test'
+  ...
+# Subtest: 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義
+ok 35 - 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義
+  ---
+  duration_ms: 4.376514
+  type: 'test'
+  ...
+# Subtest: 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放
+ok 36 - 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放
+  ---
+  duration_ms: 9.451986
+  type: 'test'
+  ...
+# Subtest: 窄窗尚在縮小時以最終targetZoom偏移，保留原生兩軸與縮放緩動
+ok 37 - 窄窗尚在縮小時以最終targetZoom偏移，保留原生兩軸與縮放緩動
+  ---
+  duration_ms: 7.193771
+  type: 'test'
+  ...
+# Subtest: 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點
+ok 38 - 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點
+  ---
+  duration_ms: 3.870195
+  type: 'test'
+  ...
+# Subtest: 查看找不到free spot完全不動相機、不下命令、不清armed模式
+ok 39 - 查看找不到free spot完全不動相機、不下命令、不清armed模式
+  ---
+  duration_ms: 5.135986
+  type: 'test'
+  ...
+# Subtest: 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置
+ok 40 - 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置
+  ---
+  duration_ms: 4.963006
+  type: 'test'
+  ...
+# Subtest: 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode
+ok 41 - 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode
+  ---
+  duration_ms: 13.1395
+  type: 'test'
+  ...
+# Subtest: 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG
+ok 42 - 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG
+  ---
+  duration_ms: 8.502242
+  type: 'test'
+  ...
+# Subtest: 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機
+ok 43 - 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機
+  ---
+  duration_ms: 36.683279
+  type: 'test'
+  ...
+# Subtest: 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位
+ok 44 - 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位
+  ---
+  duration_ms: 8.304262
+  type: 'test'
+  ...
+# Subtest: 原生focusAt例外傳出，不發令或建立持續相機工作
+ok 45 - 原生focusAt例外傳出，不發令或建立持續相機工作
+  ---
+  duration_ms: 7.393769
+  type: 'test'
+  ...
+1..45
+# tests 45
+# suites 0
+# pass 45
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4279.692944

@@ -1,0 +1,65 @@
+TAP version 13
+# Subtest: 停止輸入後相機可精確收斂，地形key不再持續改變
+ok 1 - 停止輸入後相機可精確收斂，地形key不再持續改變
+  ---
+  duration_ms: 105.998318
+  type: 'test'
+  ...
+# Subtest: 仍可見的大幅移動與縮放保留原始插值與速度
+ok 2 - 仍可見的大幅移動與縮放保留原始插值與速度
+  ---
+  duration_ms: 20.916206
+  type: 'test'
+  ...
+# Subtest: 僅在既定CSS像素尾差內貼齊，dt=0維持原座標
+ok 3 - 僅在既定CSS像素尾差內貼齊，dt=0維持原座標
+  ---
+  duration_ms: 24.297647
+  type: 'test'
+  ...
+# Subtest: 持續按鍵與英雄追蹤仍更新目標，不被尾差收斂鎖住
+ok 4 - 持續按鍵與英雄追蹤仍更新目標，不被尾差收斂鎖住
+  ---
+  duration_ms: 160.073109
+  type: 'test'
+  ...
+# Subtest: 四種視窗與縮放下screenPos／worldPos互逆
+not ok 5 - 四種視窗與縮放下screenPos／worldPos互逆
+  ---
+  duration_ms: 9.002493
+  type: 'test'
+  location: '/workspace/riftwatch-camera-cache-79c41e2a/worktree/tests/camera-cache-settle.test.mjs:24:1'
+  failureType: 'testCodeFailure'
+  error: 'g.worldPos is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-camera-cache-79c41e2a/worktree/tests/camera-cache-settle.test.mjs:25:414)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 相機收斂不改模擬、單位、資源、時間或雙RNG
+ok 6 - 相機收斂不改模擬、單位、資源、時間或雙RNG
+  ---
+  duration_ms: 12.453221
+  type: 'test'
+  ...
+# Subtest: 原生Save／Load恢復後仍能收斂且不更動遊戲狀態
+ok 7 - 原生Save／Load恢復後仍能收斂且不更動遊戲狀態
+  ---
+  duration_ms: 19.415177
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 6
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3646.236197
