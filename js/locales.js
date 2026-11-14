@@ -746,3 +746,14 @@ for (const [locale, values] of Object.entries({
  en:['Hero: guard town center','Issue one native town-center guard order to the living hero. Other units keep their orders. Manual control can take over at any time.','Hero guard order issued; arrival is not yet confirmed.','Hero guard order unavailable. No orders changed.'],
  ja:['英雄で町の中心を護衛','生存中の英雄に一度だけ町の中心の護衛命令を出し、通常の経路で戻します。他のユニットの命令は維持。いつでも手動操作に切替可能。','英雄に護衛命令を出しました。到着はまだ確認されていません。','現在、英雄に護衛命令を出せません。命令は変更していません。']
 })) ['launch','help','issued','unavailable'].forEach((key,i)=>STRINGS[locale]['heroCoreGuard.'+key]=values[i]);
+
+// 集火的幾何射程回讀；不將指令或射程內狀態冒稱實際傷害。
+for (const [locale, values] of Object.entries({
+ 'zh-Hant':['射程內{inside}／射程外{outside}','射程人數使用當下正式攻擊距離；射程內仍可能等待冷卻，不代表已命中。射程外不代表正在移動或卡死。'],
+ 'zh-Hans':['射程内{inside}／射程外{outside}','射程人数使用当前正式攻击距离；射程内仍可能等待冷却，不代表已命中。射程外不代表正在移动或卡死。'],
+ en:['In range {inside} / Out of range {outside}','Counts use current attack range. In-range units may still be on cooldown; this does not confirm a hit. Out of range does not prove movement or obstruction.'],
+ ja:['射程内{inside}／射程外{outside}','現在の攻撃距離を使用。射程内でもクールダウン中の場合があり、命中を保証しません。射程外は移動中や立往生を意味しません。']
+})) {
+ STRINGS[locale]['readback.range'] = values[0];
+ STRINGS[locale]['readback.help'] += ' ' + values[1];
+}

@@ -17,7 +17,7 @@ export function commandReadback(g, { carrier = null } = {}) {
     return visibility.get(target);
   };
   for (const u of actors) {
-    let kind = 'idle', key, name = '';
+    let kind = 'idle', key, name = '', inRange = false;
     const order = u.tacticalOrder;
     if (order?.type === 'guard') {
       kind = 'guard'; const ally = allies.get(order.protectedId);
@@ -28,6 +28,8 @@ export function commandReadback(g, { carrier = null } = {}) {
       if (visible(u.target) && u.target.team === 'enemy') {
         const target = u.target; kind = 'focus'; key = `focus:${target.id}`;
         name = target === carrier ? t('readback.flag', { name: nameOf(target) }) : nameOf(target);
+        const range = g.unitRange(u) + (target.w ? -0.1 : (target.typeDef.radius || 0.2));
+        inRange = g.distanceTo(u, target) <= range;
         const entry = targets.get(target) || { target, count: 0, name };
         entry.count++; targets.set(target, entry);
       } else kind = 'unseen';
@@ -36,6 +38,10 @@ export function commandReadback(g, { carrier = null } = {}) {
     else if (u.state === 'attack' && u.target) kind = 'auto';
     key ||= kind;
     const group = groups.get(key) || { key, kind, name, count: 0 };
+    if (kind === 'focus') {
+      group.inRange = (group.inRange || 0) + Number(inRange);
+      group.outOfRange = (group.outOfRange || 0) + Number(!inRange);
+    }
     group.count++; groups.set(key, group);
   }
   const ordered = [...groups.values()].sort((a, b) => b.count - a.count || a.key.localeCompare(b.key));
@@ -43,7 +49,10 @@ export function commandReadback(g, { carrier = null } = {}) {
     actors, groups: ordered, targets: [...targets.values()].sort((a,b) => b.count-a.count || a.target.id-b.target.id) };
 }
 
-export const readbackGroupText = group => t('readback.' + group.kind, { count: group.count, name: group.name });
+export const readbackGroupText = group => {
+  const order = t('readback.' + group.kind, { count: group.count, name: group.name });
+  return group.kind === 'focus' ? `${order} · ${t('readback.range', { inside: group.inRange, outside: group.outOfRange })}` : order;
+};
 
 // 前景提示只對到目前已選戰士的人工目標。死亡／失去視野／改令時逐幀剔除。
 export function drawCommandReadback(renderer, g, view) {
