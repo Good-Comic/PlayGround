@@ -1,0 +1,66 @@
+TAP version 13
+# Subtest: 同一人工目標區分兩側射程，不把attack／冷卻當作傷害
+ok 1 - 同一人工目標區分兩側射程，不把attack／冷卻當作傷害
+  ---
+  duration_ms: 62.048107
+  type: 'test'
+  ...
+# Subtest: 建築沿用正式外緣距離與-0.1門檻，不用中心或加單位半徑
+not ok 2 - 建築沿用正式外緣距離與-0.1門檻，不用中心或加單位半徑
+  ---
+  duration_ms: 29.204938
+  type: 'test'
+  location: '/workspace/riftwatch-contact-chain-b6148c2f/worktree/tests/focus-range-readback.test.mjs:7:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/riftwatch-contact-chain-b6148c2f/worktree/tests/focus-range-readback.test.mjs:7:325)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: 目標未通過可見性時不查射程、名稱或座標
+ok 3 - 目標未通過可見性時不查射程、名稱或座標
+  ---
+  duration_ms: 10.160779
+  type: 'test'
+  ...
+# Subtest: 反覆回讀不下令、不耗雙RNG、不改快照或冷卻
+ok 4 - 反覆回讀不下令、不耗雙RNG、不改快照或冷卻
+  ---
+  duration_ms: 13.502477
+  type: 'test'
+  ...
+# Subtest: 四語文字明確顯示數量且沒有未替換參數
+ok 5 - 四語文字明確顯示數量且沒有未替換參數
+  ---
+  duration_ms: 16.834517
+  type: 'test'
+  ...
+# Subtest: 暫停與原生Save／Load只重新推導範圍，不存UI欄位
+ok 6 - 暫停與原生Save／Load只重新推導範圍，不存UI欄位
+  ---
+  duration_ms: 23.699964
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3447.21839

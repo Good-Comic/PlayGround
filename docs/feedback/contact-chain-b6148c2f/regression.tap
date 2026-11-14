@@ -1,0 +1,370 @@
+TAP version 13
+# Subtest: 同一人工目標區分兩側射程，不把attack／冷卻當作傷害
+ok 1 - 同一人工目標區分兩側射程，不把attack／冷卻當作傷害
+  ---
+  duration_ms: 40.021179
+  type: 'test'
+  ...
+# Subtest: 建築沿用正式外緣距離與-0.1門檻，不用中心或加單位半徑
+ok 2 - 建築沿用正式外緣距離與-0.1門檻，不用中心或加單位半徑
+  ---
+  duration_ms: 17.730292
+  type: 'test'
+  ...
+# Subtest: 目標未通過可見性時不查射程、名稱或座標
+ok 3 - 目標未通過可見性時不查射程、名稱或座標
+  ---
+  duration_ms: 13.086518
+  type: 'test'
+  ...
+# Subtest: 反覆回讀不下令、不耗雙RNG、不改快照或冷卻
+ok 4 - 反覆回讀不下令、不耗雙RNG、不改快照或冷卻
+  ---
+  duration_ms: 20.783733
+  type: 'test'
+  ...
+# Subtest: 四語文字明確顯示數量且沒有未替換參數
+ok 5 - 四語文字明確顯示數量且沒有未替換參數
+  ---
+  duration_ms: 16.037099
+  type: 'test'
+  ...
+# Subtest: 暫停與原生Save／Load只重新推導範圍，不存UI欄位
+ok 6 - 暫停與原生Save／Load只重新推導範圍，不存UI欄位
+  ---
+  duration_ms: 27.247638
+  type: 'test'
+  ...
+# Subtest: 空地右鍵與人工集火的讀回不同，後續人工移動立即覆蓋
+ok 7 - 空地右鍵與人工集火的讀回不同，後續人工移動立即覆蓋
+  ---
+  duration_ms: 20.408845
+  type: 'test'
+  ...
+# Subtest: 護衛中自動接敵仍讀為護衛，不假稱人工集火
+ok 8 - 護衛中自動接敵仍讀為護衛，不假稱人工集火
+  ---
+  duration_ms: 21.196666
+  type: 'test'
+  ...
+# Subtest: 推進、巡邏、移動、自主接敵、待命與固守混合不丟人數
+ok 9 - 推進、巡邏、移動、自主接敵、待命與固守混合不丟人數
+  ---
+  duration_ms: 80.17394
+  type: 'test'
+  ...
+# Subtest: 不從歷史路徑失敗欄位宣稱部隊仍卡死
+ok 10 - 不從歷史路徑失敗欄位宣稱部隊仍卡死
+  ---
+  duration_ms: 11.59454
+  type: 'test'
+  ...
+# Subtest: 只計目前正式戰士，不把空選、工人、英雄、敵軍或建築當全軍
+ok 11 - 只計目前正式戰士，不把空選、工人、英雄、敵軍或建築當全軍
+  ---
+  duration_ms: 9.155635
+  type: 'test'
+  ...
+# Subtest: 英雄直控援護保留選取、按鍵、鏡頭，摘要正確顯示已選零人
+ok 12 - 英雄直控援護保留選取、按鍵、鏡頭，摘要正確顯示已選零人
+  ---
+  duration_ms: 21.063896
+  type: 'test'
+  ...
+# Subtest: 未見目標在可見性通過前不讀名稱、類型、HP、位置或旗手資料
+ok 13 - 未見目標在可見性通過前不讀名稱、類型、HP、位置或旗手資料
+  ---
+  duration_ms: 26.469281
+  type: 'test'
+  ...
+# Subtest: 死亡、失去視野與換選取立即移除舊人工目標
+ok 14 - 死亡、失去視野與換選取立即移除舊人工目標
+  ---
+  duration_ms: 12.237573
+  type: 'test'
+  ...
+# Subtest: 旗手身分只在實際目標吻合且可見時附加
+ok 15 - 旗手身分只在實際目標吻合且可見時附加
+  ---
+  duration_ms: 5.322486
+  type: 'test'
+  ...
+# Subtest: 多個人工目標各自回報，不挑選最佳目標或改寫原令
+ok 16 - 多個人工目標各自回報，不挑選最佳目標或改寫原令
+  ---
+  duration_ms: 8.638145
+  type: 'test'
+  ...
+# Subtest: 反覆摘要與前景繪製保持snapshot、模擬RNG與視效RNG不變並成對還原Canvas狀態
+ok 17 - 反覆摘要與前景繪製保持snapshot、模擬RNG與視效RNG不變並成對還原Canvas狀態
+  ---
+  duration_ms: 11.814201
+  type: 'test'
+  ...
+# Subtest: 繪製時再次查可見性、死亡、換選取與讀檔後舊實體，不畫舊座標
+ok 18 - 繪製時再次查可見性、死亡、換選取與讀檔後舊實體，不畫舊座標
+  ---
+  duration_ms: 12.032313
+  type: 'test'
+  ...
+# Subtest: 暫停仍可純讀，選卡與結算不殘留目標；讀檔後依原生新物件回讀
+ok 19 - 暫停仍可純讀，選卡與結算不殘留目標；讀檔後依原生新物件回讀
+  ---
+  duration_ms: 26.33249
+  type: 'test'
+  ...
+# Subtest: 四語摘要完整且不出raw key或未替換參數
+ok 20 - 四語摘要完整且不出raw key或未替換參數
+  ---
+  duration_ms: 20.980896
+  type: 'test'
+  ...
+# Subtest: 正式沙暴視野縮減會隱去人工目標名稱與標示，恢復後重新讀取
+ok 21 - 正式沙暴視野縮減會隱去人工目標名稱與標示，恢復後重新讀取
+  ---
+  duration_ms: 13.109514
+  type: 'test'
+  ...
+# Subtest: 密集多目標前景限制四個，畫面外不繪製，摘要仍包含全部選兵
+ok 22 - 密集多目標前景限制四個，畫面外不繪製，摘要仍包含全部選兵
+  ---
+  duration_ms: 13.075306
+  type: 'test'
+  ...
+# Subtest: 前景繪製例外仍還原Canvas，不污染後續單位姿態
+ok 23 - 前景繪製例外仍還原Canvas，不污染後續單位姿態
+  ---
+  duration_ms: 12.580287
+  type: 'test'
+  ...
+# Subtest: 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入
+ok 24 - 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入
+  ---
+  duration_ms: 18.302541
+  type: 'test'
+  ...
+# Subtest: 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照
+ok 25 - 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照
+  ---
+  duration_ms: 9.149179
+  type: 'test'
+  ...
+# Subtest: 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致
+ok 26 - 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致
+  ---
+  duration_ms: 9.634178
+  type: 'test'
+  ...
+# Subtest: 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵
+ok 27 - 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵
+  ---
+  duration_ms: 5.294275
+  type: 'test'
+  ...
+# Subtest: 重複選取同戰士只計一個實體，仍只發送一次原生命令
+ok 28 - 重複選取同戰士只計一個實體，仍只發送一次原生命令
+  ---
+  duration_ms: 4.042363
+  type: 'test'
+  ...
+# Subtest: 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍
+ok 29 - 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍
+  ---
+  duration_ms: 59.631847
+  type: 'test'
+  ...
+# Subtest: 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士
+ok 30 - 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士
+  ---
+  duration_ms: 4.956185
+  type: 'test'
+  ...
+# Subtest: 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野
+ok 31 - 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野
+  ---
+  duration_ms: 41.264762
+  type: 'test'
+  ...
+# Subtest: 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機
+ok 32 - 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機
+  ---
+  duration_ms: 26.163301
+  type: 'test'
+  ...
+# Subtest: 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令
+ok 33 - 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令
+  ---
+  duration_ms: 3.796001
+  type: 'test'
+  ...
+# Subtest: 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定
+ok 34 - 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定
+  ---
+  duration_ms: 4.287256
+  type: 'test'
+  ...
+# Subtest: 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照
+ok 35 - 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照
+  ---
+  duration_ms: 4.813568
+  type: 'test'
+  ...
+# Subtest: 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動
+ok 36 - 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動
+  ---
+  duration_ms: 5.276664
+  type: 'test'
+  ...
+# Subtest: 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動
+ok 37 - 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動
+  ---
+  duration_ms: 7.88142
+  type: 'test'
+  ...
+# Subtest: 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令
+ok 38 - 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令
+  ---
+  duration_ms: 12.430709
+  type: 'test'
+  ...
+# Subtest: 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令
+ok 39 - 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令
+  ---
+  duration_ms: 17.602184
+  type: 'test'
+  ...
+# Subtest: 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標
+ok 40 - 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標
+  ---
+  duration_ms: 25.559635
+  type: 'test'
+  ...
+# Subtest: 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看
+ok 41 - 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看
+  ---
+  duration_ms: 13.995274
+  type: 'test'
+  ...
+# Subtest: 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心
+ok 42 - 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心
+  ---
+  duration_ms: 14.318704
+  type: 'test'
+  ...
+# Subtest: 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義
+ok 43 - 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義
+  ---
+  duration_ms: 11.157027
+  type: 'test'
+  ...
+# Subtest: 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放
+ok 44 - 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放
+  ---
+  duration_ms: 17.137612
+  type: 'test'
+  ...
+# Subtest: 窄窗尚在縮小時以最終targetZoom偏移，保留原生兩軸與縮放緩動
+ok 45 - 窄窗尚在縮小時以最終targetZoom偏移，保留原生兩軸與縮放緩動
+  ---
+  duration_ms: 8.382757
+  type: 'test'
+  ...
+# Subtest: 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點
+ok 46 - 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點
+  ---
+  duration_ms: 7.52566
+  type: 'test'
+  ...
+# Subtest: 查看找不到free spot完全不動相機、不下命令、不清armed模式
+ok 47 - 查看找不到free spot完全不動相機、不下命令、不清armed模式
+  ---
+  duration_ms: 11.127253
+  type: 'test'
+  ...
+# Subtest: 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置
+ok 48 - 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置
+  ---
+  duration_ms: 8.231291
+  type: 'test'
+  ...
+# Subtest: 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode
+ok 49 - 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode
+  ---
+  duration_ms: 15.961147
+  type: 'test'
+  ...
+# Subtest: 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG
+ok 50 - 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG
+  ---
+  duration_ms: 9.554743
+  type: 'test'
+  ...
+# Subtest: 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機
+ok 51 - 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機
+  ---
+  duration_ms: 43.955244
+  type: 'test'
+  ...
+# Subtest: 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位
+ok 52 - 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位
+  ---
+  duration_ms: 8.114356
+  type: 'test'
+  ...
+# Subtest: 原生focusAt例外傳出，不發令或建立持續相機工作
+ok 53 - 原生focusAt例外傳出，不發令或建立持續相機工作
+  ---
+  duration_ms: 9.113174
+  type: 'test'
+  ...
+# Subtest: 停止輸入後相機可精確收斂，地形key不再持續改變
+ok 54 - 停止輸入後相機可精確收斂，地形key不再持續改變
+  ---
+  duration_ms: 15.746415
+  type: 'test'
+  ...
+# Subtest: 仍可見的大幅移動與縮放保留原始插值與速度
+ok 55 - 仍可見的大幅移動與縮放保留原始插值與速度
+  ---
+  duration_ms: 12.419473
+  type: 'test'
+  ...
+# Subtest: 僅在既定CSS像素尾差內貼齊，dt=0維持原座標
+ok 56 - 僅在既定CSS像素尾差內貼齊，dt=0維持原座標
+  ---
+  duration_ms: 6.888292
+  type: 'test'
+  ...
+# Subtest: 持續按鍵與英雄追蹤仍更新目標，不被尾差收斂鎖住
+ok 57 - 持續按鍵與英雄追蹤仍更新目標，不被尾差收斂鎖住
+  ---
+  duration_ms: 34.913899
+  type: 'test'
+  ...
+# Subtest: 四種視窗與縮放下screenPos／worldAt互逆
+ok 58 - 四種視窗與縮放下screenPos／worldAt互逆
+  ---
+  duration_ms: 45.97795
+  type: 'test'
+  ...
+# Subtest: 相機收斂不改模擬、單位、資源、時間或雙RNG
+ok 59 - 相機收斂不改模擬、單位、資源、時間或雙RNG
+  ---
+  duration_ms: 4.088272
+  type: 'test'
+  ...
+# Subtest: 原生Save／Load恢復後仍能收斂且不更動遊戲狀態
+ok 60 - 原生Save／Load恢復後仍能收斂且不更動遊戲狀態
+  ---
+  duration_ms: 7.732036
+  type: 'test'
+  ...
+1..60
+# tests 60
+# suites 0
+# pass 60
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4339.920387
