@@ -1,0 +1,47 @@
+diff --git a/js/game.js b/js/game.js
+index 1cd83b8..936f106 100644
+--- a/js/game.js
++++ b/js/game.js
+@@ -21,6 +21,9 @@ import { ramBodyContains } from './ram-body-picking.js';
+ import { HERO_SKILLS } from './hero-skills.js';
+ export { HERO_SKILLS } from './hero-skills.js';
+ 
++// Transient actual contacts belong to one navigation intent, never to a save.
++const contactedCrowdByNavigation = new WeakMap();
++
+ const DEFAULT_EFFECTS = () => ({
+   woodMul: 1, foodMul: 1, goldMul: 1, stoneMul: 1, woodYield: 1,
+   farmMul: 1, attackSpeedMul: 1, archerDamageMul: 1, archerRange: 0,
+@@ -1788,13 +1791,16 @@ export class Game {
+       this.navigationQueue.shift();this.navigationQueued.delete(u.id);
+       this.navigationBudget = (this.navigationBudget ?? 2)-1;
+       const searchStart = performance.now();
+-      const occupied = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2).filter(v=>{
++      const contacted = contactedCrowdByNavigation.get(nav);
++      const nearby = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2) : [];
++      const occupied = nearby.filter(v=>{
+         if(['idle','hold','gather'].includes(v.state))return true;
+         // 射程內原地交戰的友軍也佔據身體空間；追擊中的單位不當成靜態障礙。
+-        if(!u._crowdBlockedBy?.includes(v) || v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
++        if(!(u._crowdBlockedBy?.includes(v) || contacted?.has(v)) || v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
+         const range=this.unitRange(v)+(v.target.w?(v.team==='player'?-.1:0):(v.target.typeDef.radius||.2));
+         return this.distanceTo(v,v.target)<=range;
+-      }) : [];
++      });
++      if (contacted) for (const v of contacted) if (!v.alive || v.team!==u.team || !nearby.includes(v)) contacted.delete(v);
+       // 只在這次同步搜尋內快取半格端點；世界狀態不會跨搜尋或更新沿用。
+       const side=this.world.size*2,mask=new Int8Array(side*side);
+       const cachedWalkable=(x,y)=>{
+@@ -1841,6 +1847,12 @@ export class Game {
+     const desired={x:u.x+(p.x-u.x)/d*step,y:u.y+(p.y-u.y)/d*step};
+     u._heading={x:(p.x-u.x)/d,y:(p.y-u.y)/d};
+     const next=this.crowd ? this.crowd.steer(u,desired,(a,b)=>segmentClear(walkable,a,b),this.time) : desired;
++    for (const v of u._crowdBlockedBy || []) {
++      if (!v.alive || v.team!==u.team) continue;
++      let contacted = contactedCrowdByNavigation.get(nav);
++      if (!contacted) contactedCrowdByNavigation.set(nav, contacted = new Set());
++      contacted.add(v);
++    }
+     if(next && segmentClear(walkable,u,next)) {
+       const faceDx=next.x-u.x,faceDy=next.y-u.y;u.x=next.x;u.y=next.y;u.walkPhase+=step*5.3;u.facing=faceDx>=0?1:-1;u.visualDirection=visualDirectionFromVector(faceDx,faceDy,u.visualDirection);nav.stalled=0;
+       this.crowd?.moved(u);

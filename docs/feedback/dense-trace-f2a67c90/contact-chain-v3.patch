@@ -1,0 +1,31 @@
+diff --git a/js/game.js b/js/game.js
+index 1cd83b8..01fa98e 100644
+--- a/js/game.js
++++ b/js/game.js
+@@ -1788,13 +1788,23 @@ export class Game {
+       this.navigationQueue.shift();this.navigationQueued.delete(u.id);
+       this.navigationBudget = (this.navigationBudget ?? 2)-1;
+       const searchStart = performance.now();
+-      const occupied = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2).filter(v=>{
++      const nearby = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2) : [];
++      const contacts = new Set(u._crowdBlockedBy || []);
++      // A pursuing ally can itself be blocked by a stationary front-line fighter.
++      // Follow one actual contact hop, never add unrelated nearby attackers.
++      for (const blocker of u._crowdBlockedBy || []) {
++        if (!blocker.alive || blocker.team!==u.team || blocker.state!=='attack' || !blocker.target?.alive || blocker.target.team===blocker.team || !nearby.includes(blocker)) continue;
++        const range=this.unitRange(blocker)+(blocker.target.w?(blocker.team==='player'?-.1:0):(blocker.target.typeDef.radius||.2));
++        if (this.distanceTo(blocker,blocker.target)<=range) continue;
++        for (const v of blocker._crowdBlockedBy || []) if (v!==u && v.alive && v.team===u.team && nearby.includes(v)) contacts.add(v);
++      }
++      const occupied = nearby.filter(v=>{
+         if(['idle','hold','gather'].includes(v.state))return true;
+         // 射程內原地交戰的友軍也佔據身體空間；追擊中的單位不當成靜態障礙。
+-        if(!u._crowdBlockedBy?.includes(v) || v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
++        if(!contacts.has(v) || v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
+         const range=this.unitRange(v)+(v.target.w?(v.team==='player'?-.1:0):(v.target.typeDef.radius||.2));
+         return this.distanceTo(v,v.target)<=range;
+-      }) : [];
++      });
+       // 只在這次同步搜尋內快取半格端點；世界狀態不會跨搜尋或更新沿用。
+       const side=this.world.size*2,mask=new Int8Array(side*side);
+       const cachedWalkable=(x,y)=>{
