@@ -1163,7 +1163,7 @@ export class Game {
       if (u.team === 'player' && u.typeDef.category === 'infantry' && this.effects.infantryRegen > 0 && u.hp < u.maxHp && this.time - (u.combatAt || -99) > 5) {
         u.hp = Math.min(u.maxHp, u.hp + u.maxHp * this.effects.infantryRegen * dt);
       }
-      if (u.slowUntil > this.time && u.slowAmount >= 1) { u._progress = null; u._goalProgress = null; continue; }
+      if (u.slowUntil > this.time && u.slowAmount >= 1) { u._progress = null; u._goalProgress = null; u._heading = null; u._yieldTo = null; u._trafficPriority = u.id; continue; }
       if (u.hero && this.heroControl && u.team === 'player') {
         u._progress = null; u._goalProgress = null;
         this.updateHeroDirect(u, dt);
