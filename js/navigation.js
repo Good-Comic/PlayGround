@@ -57,7 +57,8 @@ export function findPath(start, target, walkable, size, { range = 0, maxNodes = 
     const p=point(i);
     // 所有互動端點都在range圓內；距離超過range+1的節點不可能通過既有.8檢查。
     // 只略過必定失敗的掃描，不改端點順序、路線、搜尋上限或碰撞。
-    const endpoint=range && (range<0 || distance(p)<=range+1) ? interactionGoals.find(q=>Math.hypot(p.x-q.x,p.y-q.y)<=.8&&segmentClear(walkable,p,q)) : null;
+    // Cheap axis bounds reject only impossible terminals; retain original order and swept tests.
+    const endpoint=range && (range<0 || distance(p)<=range+1) ? interactionGoals.find(q=>Math.abs(p.x-q.x)<=.8&&Math.abs(p.y-q.y)<=.8&&Math.hypot(p.x-q.x,p.y-q.y)<=.8&&segmentClear(walkable,p,q)) : null;
     if(reached(p) || endpoint) {
       const points=[];for(let k=i;k!==-1;k=parents[k])points.push(point(k));points.reverse();
       if(!range)points.push({...goal});else if(endpoint)points.push(endpoint);
