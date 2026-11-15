@@ -1754,6 +1754,16 @@ export class Game {
     return result === 'arrived' || result === 'unreachable';
   }
 
+  waitForPathBudget(u, dt) {
+    const progress = u._progress;
+    // CPU queue time is not a failed collision step; count it once per update.
+    if (progress && dt > 0 && progress.waitedAt !== this.time) {
+      progress.at = Math.min(this.time, progress.at + dt);
+      progress.waitedAt = this.time;
+    }
+    return 'pending';
+  }
+
   stepToward(u, tx, ty, dt, range = 0, entity = null) {
     u._movementAttempted = true;
     const walkable = (x, y) => this.isWalkable(x, y, u);
@@ -1784,7 +1794,7 @@ export class Game {
       this.navigationRequested?.add(u.id);
       this.navigationQueue ||= []; this.navigationQueued ||= new Set();
       if(!this.navigationQueued.has(u.id)) {this.navigationQueue.push(u.id);this.navigationQueued.add(u.id);}
-      if ((this.navigationBudget ?? 2) <= 0 || this.navigationQueue[0] !== u.id) return 'pending';
+      if ((this.navigationBudget ?? 2) <= 0 || this.navigationQueue[0] !== u.id) return this.waitForPathBudget(u,dt);
       this.navigationQueue.shift();this.navigationQueued.delete(u.id);
       this.navigationBudget = (this.navigationBudget ?? 2)-1;
       const searchStart = performance.now();
