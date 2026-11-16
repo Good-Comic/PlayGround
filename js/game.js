@@ -303,6 +303,7 @@ export class Game {
       waveSpawns: this.waveSpawns.map(group => ({ ...group, units: { ...group.units } })),
       camera: { ...this.camera },
       rngState: this.rng.state,
+      visualRngState: this.visualRng.state >>> 0,
       director: {
         seed: this.director.seed,
         previousSuppression: this.director.previousSuppression,
@@ -522,6 +523,10 @@ export class Game {
     for (const entity of this.selection) entity.selected = true;
     this.nextId = Math.max(snapshot.nextId || 1, ...this.units.map(unit => unit.id + 1), ...this.buildings.map(building => building.id + 1));
     this.rng.restore(snapshot.rngState ?? (this.seed ^ 0x5f3759df));
+    // Optional v1 extension: old or malformed saves retain the existing seeded visual fallback.
+    if (Number.isInteger(snapshot.visualRngState) && snapshot.visualRngState >= 0 && snapshot.visualRngState <= 0xffffffff) {
+      this.visualRng.restore(snapshot.visualRngState);
+    }
     this.inMenu = true;
     this.paused = false;
     this.endShown = false;
