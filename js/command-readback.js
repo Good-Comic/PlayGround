@@ -1,4 +1,4 @@
-import { battleArmy } from './battle-actions.js';
+import { battleArmy, battleCanAct } from './battle-actions.js';
 import { t } from './i18n.js';
 
 // 只回讀已選正式戰士；不下令、不替玩家選軍，也不把 attack 當成已命中。
@@ -11,7 +11,7 @@ export function commandReadback(g, { carrier = null } = {}) {
   const available = !g.inMenu && ['prep', 'wave'].includes(g.phase);
   const actors = available ? army.filter(u => selected.has(u)) : [];
   const allies = new Map([...g.units, ...g.buildings].filter(e => e.team === 'player').map(e => [e.id, e]));
-  const groups = new Map(), targets = new Map(), visibility = new Map();
+  const groups = new Map(), targets = new Map(), visibility = new Map(), outsideActors=[];
   const visible = target => {
     if (!visibility.has(target)) visibility.set(target, !!target.alive && g.isVisible(target));
     return visibility.get(target);
@@ -30,6 +30,7 @@ export function commandReadback(g, { carrier = null } = {}) {
         name = target === carrier ? t('readback.flag', { name: nameOf(target) }) : nameOf(target);
         const range = g.unitRange(u) + (target.w ? -0.1 : (target.typeDef.radius || 0.2));
         inRange = g.distanceTo(u, target) <= range;
+        if(!inRange)outsideActors.push(u);
         const entry = targets.get(target) || { target, count: 0, name };
         entry.count++; targets.set(target, entry);
       } else kind = 'unseen';
@@ -46,7 +47,19 @@ export function commandReadback(g, { carrier = null } = {}) {
   }
   const ordered = [...groups.values()].sort((a, b) => b.count - a.count || a.key.localeCompare(b.key));
   return { available, selected: actors.length, army: army.length, heroDirect: !!g.heroControl,
-    actors, groups: ordered, targets: [...targets.values()].sort((a,b) => b.count-a.count || a.target.id-b.target.id) };
+    actors, outsideActors, groups: ordered, targets: [...targets.values()].sort((a,b) => b.count-a.count || a.target.id-b.target.id) };
+}
+
+// Selection only: revalidate visibility before querying each enemy position.
+export function outOfRangeActors(g) {
+  return commandReadback(g).outsideActors;
+}
+export function selectOutOfRangeActors(g, candidates=outOfRangeActors(g), world=g.world, blocked=false) {
+  if(world!==g.world || !battleCanAct(g,blocked) || g.heroControl || g.orderMode)return false;
+  const actors=outOfRangeActors(g).filter(u=>candidates.includes(u));
+  if(!actors.length)return false;
+  g.setSelection(actors);
+  return true;
 }
 
 export const readbackGroupText = group => {
@@ -88,7 +101,10 @@ export function drawCommandReadback(renderer, g, view) {
 
 export function installCommandReadback(g, ui, renderer) {
   const panel = document.createElement('section'); panel.id = 'command-readback';
-  panel.innerHTML = '<strong></strong><p></p>';
+  panel.innerHTML = '<strong></strong><p></p><button type="button" data-select-outside hidden></button>';
+  const outsideButton=panel.querySelector('[data-select-outside]');
+  const blocked=()=>!!(ui.menuVisible||ui.settingsOpen||ui.gmOpen||ui.boonsOpen||ui.pauseOpen||document.body.classList.contains('planning-mode')||document.body.classList.contains('lining-up')||(ui.el?.howto&&!ui.el.howto.hidden)||document.querySelector('dialog[open]'));
+  let outsideCandidates=[],outsideWorld=null;
   document.querySelector('#battle-actions').append(panel);
   let view = null, lastPaint = -Infinity, signature = '', world = null, selection = null, observed = [], lastCarrier = null;
   const carrier = () => ['pending','active'].includes(ui.rallyObjective?.status()) ? ui.rallyObjective.carrier() : null;
@@ -106,12 +122,20 @@ export function installCommandReadback(g, ui, renderer) {
     const head = (view.heroDirect ? t('readback.direct')+' · ' : '') + t('readback.coverage', { selected:view.selected,total:view.army });
     const shown = view.groups.slice(0,4), rest = view.groups.slice(4).reduce((n,e)=>n+e.count,0);
     const detail = shown.map(readbackGroupText).join(' · ') + (rest ? ' · '+t('readback.more',{count:rest}) : '') || t('readback.none');
+    outsideCandidates=view.outsideActors;outsideWorld=g.world;
+    outsideButton.hidden=!outsideCandidates.length;
+    outsideButton.disabled=!battleCanAct(g,blocked())||!!g.heroControl||!!g.orderMode;
+    const outsideLabel=t('readback.selectOutside',{count:outsideCandidates.length});
+    if(outsideButton.textContent!==outsideLabel)outsideButton.textContent=outsideLabel;
+    outsideButton.title=t('readback.selectOutsideHelp');
     const key = [document.documentElement.lang,head,detail].join('|');
     if (key !== signature) {
       signature = key; panel.querySelector('strong').textContent = head; panel.querySelector('p').textContent = detail;
       panel.setAttribute('aria-label',t('readback.title')); panel.title=t('readback.help');
     }
   };
+  outsideButton.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')e.stopPropagation();});
+  outsideButton.addEventListener('click',()=>{if(!panel.parentElement.hidden)selectOutOfRangeActors(g,outsideCandidates,outsideWorld,blocked());update(true);});
   const oldUpdate = ui.update.bind(ui); ui.update = (...args) => { const result=oldUpdate(...args); update(); return result; };
   const draw = renderer.draw.bind(renderer);
   renderer.draw = (...args) => { const result=draw(...args); if(world===g.world && !panel.parentElement.hidden) drawCommandReadback(renderer,g,view); return result; };

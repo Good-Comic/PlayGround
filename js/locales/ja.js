@@ -1,4 +1,6 @@
 export const ui = {
+  'readback.selectOutside': "射程外の{count}人を選択",
+  'readback.selectOutsideHelp': "選択中の兵士から手動目標の射程外にいる者だけを選択します。命令は出さず、攻撃中の前衛は動かしません。",
   'recordedOrder.title': "障害の記録",
   'recordedOrder.count': "選択中の兵士が以前に障害を報告：{count} 人",
   'recordedOrder.select': "この {count} 人を選択",

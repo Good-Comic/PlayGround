@@ -62,6 +62,8 @@ function englishContent() {
 }
 
 const EN_UI = {
+  'readback.selectOutside': "Select {count} out of range",
+  'readback.selectOutsideHelp': "Select only currently selected soldiers outside their manual target’s range. Does not issue orders or move the attacking front line.",
   'recordedOrder.title': "Recorded obstruction",
   'recordedOrder.count': "Selected soldiers reported obstruction: {count}",
   'recordedOrder.select': "Select these {count}",

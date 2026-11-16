@@ -1,4 +1,6 @@
 export const ui = {
+  'readback.selectOutside': '选出射程外 {count} 人',
+  'readback.selectOutsideHelp': '仅选取已选战士中尚未进入手动目标射程者；不下令，不移动已在攻击的前排。',
   'recordedOrder.title': "受阻记录",
   'recordedOrder.count': "已选战士曾报告受阻：{count} 人",
   'recordedOrder.select': "选出这组 {count} 人",
