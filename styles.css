@@ -960,4 +960,6 @@ html[lang="zh-Hant"] .menu-title, html[lang="zh-Hans"] .menu-title, html[lang="j
 #recorded-order-group details { max-height:86px; overflow:auto; scrollbar-width:thin; }
 .planning-mode #recorded-order-group,.lining-up #recorded-order-group { visibility:hidden; }
 
-#command-readback [data-select-outside] { margin-top:4px; max-width:100%; white-space:normal; font-size:12px; }
+#command-readback [data-select-outside] { margin-top:4px; max-width:100%; white-space:normal; font-size:12px; border:1px solid #b59a56; background:#423921; color:#fff1ce; padding:4px 8px; cursor:pointer; }
+#command-readback [data-select-outside]:focus-visible { outline:2px solid #c9edf0; outline-offset:2px; }
+#command-readback [data-select-outside]:disabled { opacity:.5; cursor:default; }
