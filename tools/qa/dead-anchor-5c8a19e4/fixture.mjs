@@ -1,0 +1,2 @@
+import {Crowd}from'../../../js/crowd.js';
+export function fixture(g){g.newRun(42,{civ:'FRK',biome:'steppe'});g.start();g.units=[];g.buildings=[];g.hero=null;g.time=0;g.autoEconomy=g.autoMilitary=false;const leader=g.spawnUnit('militia',4.2,3),actor=g.spawnUnit('militia',3,3);leader.state='move';leader.targetPos={x:2,y:3};actor.state='move';actor.targetPos={x:7,y:3};g.crowd=new Crowd(g.units);g.stepToward(leader,2,3,.01);g.stepToward(actor,7,3,.02);if(actor._yieldTo?.id!==leader.id)throw Error('native head-on lease missing');return{g,leader,actor};}

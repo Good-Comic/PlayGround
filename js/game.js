@@ -2215,6 +2215,7 @@ export class Game {
     target.alive = false;
     target.deathAnim = 1.2;
     for (const u of this.units) {
+      if (u._yieldTo?.id === target.id) { u._yieldTo = null; u._trafficPriority = u.id; }
       if (u.target !== target) continue;
       u.target=null;u.manualAttack=false;u._nav=null;
       if(u.state==='attack') {
