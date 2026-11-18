@@ -12,3 +12,5 @@ test('WASD持續按鍵仍加入集合，keyup與blur仍解除移動',()=>{const 
 test('設定輸入及結算畫面的原生重複空白鍵不被戰鬥攔截',()=>{const f=fixture();f.ui.settingsOpen=true;assert.equal(f.down(' ',true,'Space').prevented,false);f.ui.settingsOpen=false;f.game.phase='victory';assert.equal(f.down(' ',true,'Space').prevented,false);assert.equal(f.calls.pause,0);});
 
 test('暫停選單已聚焦控制元件的Space交由原生行為，不恢復遊戲',()=>{const f=fixture();f.game.paused=f.ui.pauseOpen=true;const target={closest:()=>({})};assert.equal(f.down(' ',false,'Space',target).prevented,false);assert.equal(f.down(' ',true,'Space',target).prevented,false);assert.equal(f.game.paused,true);assert.equal(f.calls.pause,0);});
+
+test('暫停畫面的Tab重複保留原生焦點巡覽，不啟動英雄控制',()=>{const f=fixture();f.game.paused=f.ui.pauseOpen=true;assert.equal(f.down('Tab',true).prevented,false);assert.equal(f.calls.hero,0);});

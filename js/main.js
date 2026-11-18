@@ -223,7 +223,7 @@ window.addEventListener('keydown', e => {
   // Paused native controls retain Space activation (save, resume and checkboxes).
   if (game.paused && e.code === 'Space' && e.target?.closest?.('button,input,select,textarea,[contenteditable=true]')) return;
   // Held toggle keys must not undo the first press; movement keys still repeat normally.
-  if (e.repeat && (e.code === 'Space' || e.key === 'Tab' || e.key === 'Escape')) { e.preventDefault(); return; }
+  if (e.repeat && (e.code === 'Space' || e.key === 'Escape' || e.key === 'Tab' && !game.paused)) { e.preventDefault(); return; }
   if (e.key === 'Escape') {
     if(game.orderMode){game.orderMode=null;ui.updateSelection(true);return;}
     if (game.placement) { game.cancelPlacement(); return; }
