@@ -220,6 +220,8 @@ window.addEventListener('keydown', e => {
   }
   // 結算後不再接受戰場快捷鍵；原生結算按鈕仍可用 Enter 啟動。
   if (game.phase === 'victory' || game.phase === 'defeat') return;
+  // Paused native controls retain Space activation (save, resume and checkboxes).
+  if (game.paused && e.code === 'Space' && e.target?.closest?.('button,input,select,textarea,[contenteditable=true]')) return;
   // Held toggle keys must not undo the first press; movement keys still repeat normally.
   if (e.repeat && (e.code === 'Space' || e.key === 'Tab' || e.key === 'Escape')) { e.preventDefault(); return; }
   if (e.key === 'Escape') {
