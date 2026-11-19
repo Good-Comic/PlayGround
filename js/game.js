@@ -1803,13 +1803,17 @@ export class Game {
       this.navigationQueue.shift();this.navigationQueued.delete(u.id);
       this.navigationBudget = (this.navigationBudget ?? 2)-1;
       const searchStart = performance.now();
-      const occupied = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2).filter(v=>{
+      const nearby = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2) : [];
+      // 攻擊落點已被友軍占用時，避讓重算納入當刻友軍占位；不影響一般路線。
+      const occupiedAttackGoal = entity && u.state==='attack' && u.target===entity && entity.team!==u.team && nav.goal && nearby.some(v=>v.team===u.team && Math.hypot(nav.goal.x-v.x,nav.goal.y-v.y)<(u.typeDef.radius||.24)+(v.typeDef.radius||.24)-.015);
+      const occupied = nearby.filter(v=>{
+        if(occupiedAttackGoal && v.team===u.team)return true;
         if(['idle','hold','gather'].includes(v.state))return true;
         // 射程內原地交戰的友軍也佔據身體空間；追擊中的單位不當成靜態障礙。
         if(!u._crowdBlockedBy?.includes(v) || v.team!==u.team || v.state!=='attack' || !v.target?.alive || v.target.team===v.team)return false;
         const range=this.unitRange(v)+(v.target.w?(v.team==='player'?-.1:0):(v.target.typeDef.radius||.2));
         return this.distanceTo(v,v.target)<=range;
-      }) : [];
+      });
       // 只在這次同步搜尋內快取半格端點；世界狀態不會跨搜尋或更新沿用。
       const side=this.world.size*2,mask=new Int8Array(side*side);
       const cachedWalkable=(x,y)=>{
@@ -1819,7 +1823,7 @@ export class Game {
       };
       cachedWalkable.segment=(a,b)=>this.segmentWalkable(a,b,u,cachedWalkable);
       const planWalkable=(x,y)=>cachedWalkable(x,y) && occupied.every(v=>{
-        const r=(u.typeDef.radius||.24)+(v.typeDef.radius||.24);
+        const r=(u.typeDef.radius||.24)+(v.typeDef.radius||.24)-(occupiedAttackGoal ? .015 : 0);
         return Math.abs(x-v.x)>=r || Math.abs(y-v.y)>=r || dist(x,y,v.x,v.y)>=r;
       });
       planWalkable.segment=(a,b)=>{
