@@ -759,3 +759,11 @@ for (const [locale, values] of Object.entries({
  STRINGS[locale]['readback.range'] = values[0];
  STRINGS[locale]['readback.help'] += ' ' + values[1];
 }
+
+// 近接受阻只是目前掃掠回讀，不表示無法抵達或已造成傷害。
+for(const [locale,values] of Object.entries({
+ 'zh-Hant':['友軍近接受阻{count}','近接受阻只計射程外、近期持續被友軍身體擋住的選兵。可用「選取射程外」後手動改走側翼；不代表路線不可達。'],
+ 'zh-Hans':['友军近接受阻{count}','近接受阻只计射程外、近期持续被友军身体挡住的选兵。可用“选取射程外”后手动改走侧翼；不代表路线不可达。'],
+ en:['Blocked near allies: {count}','Counts selected out-of-range soldiers recently stopped by allied bodies. Use Select out of range, then order a flank manually. This does not prove the route is unreachable.'],
+ ja:['味方との接近で停止：{count}','射程外で味方との衝突により最近停止した選択中の兵士を表示。「射程外を選択」で選び、手動で側面へ移動できます。経路が到達不能という意味ではありません。']
+})) {STRINGS[locale]['readback.friendBlocked']=values[0];STRINGS[locale]['readback.help']+=' '+values[1];}
