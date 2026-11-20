@@ -1804,8 +1804,10 @@ export class Game {
       this.navigationBudget = (this.navigationBudget ?? 2)-1;
       const searchStart = performance.now();
       const nearby = this.crowd && u._avoidCrowdUntil > this.time ? this.crowd.nearby(u,2) : [];
+      // 單位攻擊使用中心點，建築攻擊另傳entity；不把風箏／移動座標當攻擊目標。
+      const attackTarget=entity || (u.state==='attack' && u.target?.alive && u.target.x===tx && u.target.y===ty ? u.target : null);
       // 攻擊落點已被友軍占用時，避讓重算納入當刻友軍占位；不影響一般路線。
-      const occupiedAttackGoal = entity && u.state==='attack' && u.target===entity && entity.team!==u.team && nav.goal && nearby.some(v=>v.team===u.team && Math.hypot(nav.goal.x-v.x,nav.goal.y-v.y)<(u.typeDef.radius||.24)+(v.typeDef.radius||.24)-.015);
+      const occupiedAttackGoal = attackTarget && u.state==='attack' && u.target===attackTarget && attackTarget.team!==u.team && nav.goal && nearby.some(v=>v.team===u.team && Math.hypot(nav.goal.x-v.x,nav.goal.y-v.y)<(u.typeDef.radius||.24)+(v.typeDef.radius||.24)-.015);
       const occupied = nearby.filter(v=>{
         if(occupiedAttackGoal && v.team===u.team)return true;
         if(['idle','hold','gather'].includes(v.state))return true;
