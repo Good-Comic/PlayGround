@@ -64,7 +64,12 @@ export class Crowd {
         const ahead=(anchor.x-u.x)*dx+(anchor.y-u.y)*dy>0;
         const approaching=heading && (u.x-anchor.x)*heading.x+(u.y-anchor.y)*heading.y>0;
         // The lease is a maximum: a stopped or passed anchor no longer needs right-of-way.
-        if(fighting(anchor)||!ahead||!approaching)u._yieldTo=null;
+        // 已離開原本迎面讓路的近距離範圍，不再沿用舊方向倒退。
+        const separated=(anchor.x-u.x)**2+(anchor.y-u.y)**2>=3.24;
+        const convoy=separated && neighbours.some(v=>v!==anchor && v._yieldTo?.id===anchor.id && v._yieldTo.until>time
+          && (v.x-u.x)**2+(v.y-u.y)**2<3.24 && (v.x-u.x)*dx+(v.y-u.y)*dy>0
+          && v._heading && v._heading.x*dx+v._heading.y*dy>.5);
+        if(fighting(anchor)||!ahead||!approaching||(separated&&!convoy))u._yieldTo=null;
       }
     }
     const yielding = u._yieldTo && u._yieldTo.until > time ? u._yieldTo : null;
