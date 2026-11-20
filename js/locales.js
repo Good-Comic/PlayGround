@@ -767,3 +767,11 @@ for(const [locale,values] of Object.entries({
  en:['Blocked near allies: {count}','Counts selected out-of-range soldiers recently stopped by allied bodies. Use Select out of range, then order a flank manually. This does not prove the route is unreachable.'],
  ja:['味方との接近で停止：{count}','射程外で味方との衝突により最近停止した選択中の兵士を表示。「射程外を選択」で選び、手動で側面へ移動できます。経路が到達不能という意味ではありません。']
 })) {STRINGS[locale]['readback.friendBlocked']=values[0];STRINGS[locale]['readback.help']+=' '+values[1];}
+
+// 顯示交通讓路與接敵結果的差異，不改變正式命令。
+for(const [locale,values] of Object.entries({
+ 'zh-Hant':['讓路中{count}','讓路中表示射程外戰士正依有效友軍讓路安排避讓，不代表已接敵或命中。可選取射程外部隊，手動改走側翼。'],
+ 'zh-Hans':['让路中{count}','让路中表示射程外战士正依有效友军让路安排避让，不代表已接敌或命中。可选取射程外部队，手动改走侧翼。'],
+ en:['Yielding to allies: {count}','Selected out-of-range soldiers are following an active allied right-of-way arrangement. This does not confirm contact or a hit. Select out-of-range troops to order a flank manually.'],
+ ja:['味方に道を譲る：{count}','射程外の選択中の兵士が、有効な味方優先の通行に従って退避しています。接敵や命中を意味しません。射程外の部隊を選び、手動で側面へ移動できます。']
+})) {STRINGS[locale]['readback.friendYielding']=values[0];STRINGS[locale]['readback.help']+=' '+values[1];}

@@ -17,7 +17,7 @@ export function commandReadback(g, { carrier = null } = {}) {
     return visibility.get(target);
   };
   for (const u of actors) {
-    let kind = 'idle', key, name = '', inRange = false, friendBlocked = false;
+    let kind = 'idle', key, name = '', inRange = false, friendBlocked = false, friendYielding = false;
     const order = u.tacticalOrder;
     if (order?.type === 'guard') {
       kind = 'guard'; const ally = allies.get(order.protectedId);
@@ -33,6 +33,9 @@ export function commandReadback(g, { carrier = null } = {}) {
         if(!inRange){
           outsideActors.push(u);
           // 僅回讀本次近接掃掠的友軍阻擋，不從歷史orderFailure推斷。
+          const anchor=allies.get(u._yieldTo?.id);
+          // 只回讀目前有效且已嘗試移動的友軍讓路；不把暫停或過期資料當路徑失敗。
+          friendYielding=u.state==='attack' && !!u._movementAttempted && u._yieldTo?.until>g.time && !!anchor?.alive && !!anchor._heading && (u._nav?.stalled||0)<=.1;
           friendBlocked=u.state==='attack' && (u._nav?.stalled||0)>.1 && !!u._crowdBlockedBy?.some(v=>v.alive && v.team===u.team && allies.get(v.id)===v);
         }
         const entry = targets.get(target) || { target, count: 0, name };
@@ -47,6 +50,7 @@ export function commandReadback(g, { carrier = null } = {}) {
       group.inRange = (group.inRange || 0) + Number(inRange);
       group.outOfRange = (group.outOfRange || 0) + Number(!inRange);
       group.friendBlocked = (group.friendBlocked || 0) + Number(friendBlocked);
+      group.friendYielding = (group.friendYielding || 0) + Number(friendYielding);
     }
     group.count++; groups.set(key, group);
   }
@@ -69,7 +73,7 @@ export function selectOutOfRangeActors(g, candidates=outOfRangeActors(g), world=
 
 export const readbackGroupText = group => {
   const order = t('readback.' + group.kind, { count: group.count, name: group.name });
-  return group.kind === 'focus' ? `${order} · ${t('readback.range', { inside: group.inRange, outside: group.outOfRange })}${group.friendBlocked ? ' · '+t('readback.friendBlocked',{count:group.friendBlocked}) : ''}` : order;
+  return group.kind === 'focus' ? `${order} · ${t('readback.range', { inside: group.inRange, outside: group.outOfRange })}${group.friendBlocked ? ' · '+t('readback.friendBlocked',{count:group.friendBlocked}) : ''}${group.friendYielding ? ' · '+t('readback.friendYielding',{count:group.friendYielding}) : ''}` : order;
 };
 
 // 前景提示只對到目前已選戰士的人工目標。死亡／失去視野／改令時逐幀剔除。
