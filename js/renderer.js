@@ -362,10 +362,8 @@ export class Renderer {
   drawVisibility(game) {
     if(game.inMenu)return;
     const layer=this.visionLayer||(this.visionLayer=document.createElement('canvas'));
-    if(layer.width!==this.w||layer.height!==this.h){layer.width=this.w;layer.height=this.h;}
-    const c=layer.getContext('2d');c.clearRect(0,0,this.w,this.h);
-    c.globalCompositeOperation='source-over';c.fillStyle='#10150e';c.fillRect(0,0,this.w,this.h);
-    c.globalCompositeOperation='destination-out';
+    const resized=layer.width!==this.w||layer.height!==this.h;
+    if(resized){layer.width=this.w;layer.height=this.h;}
     // 以實際螢幕中心正規化，保留地形高低差；餘裕只供AA覆蓋證明，不改遊戲視野。
     const axisRatio=HALF_W/HALF_H, circles=[];
     for(const e of [...game.units,...game.buildings])if(e.alive&&e.team==='player'){
@@ -373,10 +371,21 @@ export class Renderer {
       const rx=r*Math.SQRT2*HALF_W,ry=r*Math.SQRT2*HALF_H;
       circles.push({x:p.x,y:p.y*axisRatio,radius:rx,screenX:p.x,screenY:p.y,rx,ry});
     }
-    for(const s of pruneVisionCircles(clipVisionCircles(circles,this.w,this.h),2*Math.max(1,Math.abs(axisRatio)))){
-      c.beginPath();c.ellipse(s.screenX,s.screenY,s.rx,s.ry,0,0,Math.PI*2);c.fill();
+    const shapes=pruneVisionCircles(clipVisionCircles(circles,this.w,this.h),2*Math.max(1,Math.abs(axisRatio)));
+    const prior=this.visionMaskCache;
+    const same=!resized && prior?.layer===layer && prior.w===this.w && prior.h===this.h && prior.shapes.length===shapes.length
+      && shapes.every((s,i)=>{const p=prior.shapes[i];return p[0]===s.screenX && p[1]===s.screenY && p[2]===s.rx && p[3]===s.ry;});
+    if(!same){
+      // 完全相同的投影才重用；不近似位置或視野，失敗的繪圖不得留下有效快取。
+      this.visionMaskCache=null;
+      const c=layer.getContext('2d');c.clearRect(0,0,this.w,this.h);
+      c.globalCompositeOperation='source-over';c.fillStyle='#10150e';c.fillRect(0,0,this.w,this.h);
+      c.globalCompositeOperation='destination-out';
+      for(const s of shapes){c.beginPath();c.ellipse(s.screenX,s.screenY,s.rx,s.ry,0,0,Math.PI*2);c.fill();}
+      c.globalCompositeOperation='source-over';
+      this.visionMaskCache={layer,w:this.w,h:this.h,shapes:shapes.map(s=>[s.screenX,s.screenY,s.rx,s.ry])};
     }
-    c.globalCompositeOperation='source-over';this.ctx.drawImage(layer,0,0);
+    this.ctx.drawImage(layer,0,0);
   }
 
   visibleBounds(game) {

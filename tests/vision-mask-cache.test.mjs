@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import '../tools/qa/ram-pick-065e2912/node-dom-fixture.mjs';
+const{Renderer}=await import(process.env.RENDERER_TEST_SOURCE||'../js/renderer.js');
+function fixture(){const counts={clear:0,ellipse:0,composite:0},c={clearRect(){counts.clear++;},fillRect(){},beginPath(){},ellipse(){counts.ellipse++;if(c.fail)throw Error('CONTROLLED_MASK_FAILURE');},fill(){}};const layer={width:640,height:480,getContext:()=>c};const r={w:640,h:480,visionLayer:layer,ctx:{drawImage(){counts.composite++;}},screen:(g,x,y)=>({x:x*32*g.camera.zoom-g.camera.x,y:y*16*g.camera.zoom-g.camera.y})};const u={x:5,y:5,team:'player',alive:true,sight:6},g={inMenu:false,camera:{x:0,y:0,zoom:1},units:[u],buildings:[],sightRadius:e=>e.sight};return{r,g,u,c,counts,draw:()=>Renderer.prototype.drawVisibility.call(r,g)};}
+test('同投影只重畫一次，但每幀仍合成遮罩',()=>{const{draw,counts}=fixture();draw();draw();assert.equal(counts.clear,1);assert.equal(counts.ellipse,1);assert.equal(counts.composite,2);});
+test('任意微小移動、鏡頭、縮放與有效視野變化立即重畫',()=>{const{draw,counts,g,u}=fixture();draw();u.x+=1e-8;draw();g.camera.x+=1e-8;draw();g.camera.zoom=.8;draw();u.sight*=.8;draw();assert.equal(counts.clear,5);});
+test('死亡／陣營變更與新來源不沿用舊洞',()=>{const{draw,counts,g,u}=fixture();draw();u.alive=false;draw();u.alive=true;draw();u.team='enemy';draw();u.team='player';g.units=[u,{...u,x:15}];draw();assert.equal(counts.clear,5);});
+test('尺寸、圖層替換與被外部改錯的圖層尺寸都失效',()=>{const{draw,counts,r,c}=fixture();draw();r.w=800;draw();r.visionLayer={width:800,height:480,getContext:()=>c};draw();r.visionLayer.width=123;draw();assert.equal(counts.clear,4);});
+test('圖繪例外清除快取，恢復舊投影仍須重畫',()=>{const{draw,counts,u,c}=fixture();draw();u.x+=1;c.fail=true;assert.throws(draw,/CONTROLLED_MASK_FAILURE/);c.fail=false;u.x-=1;draw();assert.equal(counts.clear,3);});
+test('在大視野內移動但可見遮罩相同可重用，且不改遊戲資料',()=>{const{draw,counts,g,u}=fixture();g.buildings=[{x:4,y:4,w:2,h:2,team:'player',alive:true,sight:10}];draw();u.x+=.1;const before=JSON.stringify(g),sight=g.sightRadius;draw();assert.equal(counts.clear,1);assert.equal(JSON.stringify(g),before);assert.equal(g.sightRadius,sight);});
