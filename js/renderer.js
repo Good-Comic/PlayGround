@@ -2,7 +2,7 @@ import { drawWorkshop } from './workshop-expedition.js';
 import { drawRescue } from './expeditions.js';
 import { factionMark } from './factions.js';
 import { CombatVfx } from './vfx-adapter.js';
-import { pruneVisionCircles } from './vision-mask.js';
+import { pruneVisionCircles, clipVisionCircles } from './vision-mask.js';
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.js';
@@ -373,7 +373,7 @@ export class Renderer {
       const rx=r*Math.SQRT2*HALF_W,ry=r*Math.SQRT2*HALF_H;
       circles.push({x:p.x,y:p.y*axisRatio,radius:rx,screenX:p.x,screenY:p.y,rx,ry});
     }
-    for(const s of pruneVisionCircles(circles,2*Math.max(1,Math.abs(axisRatio)))){
+    for(const s of pruneVisionCircles(clipVisionCircles(circles,this.w,this.h),2*Math.max(1,Math.abs(axisRatio)))){
       c.beginPath();c.ellipse(s.screenX,s.screenY,s.rx,s.ry,0,0,Math.PI*2);c.fill();
     }
     c.globalCompositeOperation='source-over';this.ctx.drawImage(layer,0,0);

@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {clipVisionCircles}from'../js/vision-mask.js';
+const circle=(x,y,r=10)=>Object.freeze({x,y:y*2,radius:r,screenX:x,screenY:y,rx:r,ry:r/2});
+test('只省略完整畫外圓，保留相交與涵蓋畫面的圓、原引用與順序',()=>{const a=circle(-20,50),b=circle(0,50),c=circle(100,50),d=circle(50,50,300),e=circle(50,130);const input=Object.freeze([a,b,c,d,e]);assert.deepEqual(clipVisionCircles(input,100,100),[b,c,d]);assert.equal(clipVisionCircles(input,100,100)[0],b);});
+test('四邊抗鋸齒餘裕相切仍保留，超過才省略',()=>{for(const[a,b]of[[circle(-12,50),circle(-12.001,50)],[circle(112,50),circle(112.001,50)],[circle(50,-7),circle(50,-7.001)],[circle(50,107),circle(50,107.001)]]){assert.equal(clipVisionCircles([a],100,100).length,1);assert.equal(clipVisionCircles([b],100,100).length,0);}});
+test('壞資料及未知視窗沿用原有處理，不藉裁剪吞掉錯誤',()=>{const c=circle(50,50),input=[c];for(const dims of [[0,100],[NaN,100],[100,Infinity]])assert.equal(clipVisionCircles(input,...dims),input);for(const bad of [null,{...c,rx:-1},{...c,radius:NaN},{...c,screenX:Infinity}])assert.equal(clipVisionCircles([bad],100,100)[0],bad);});

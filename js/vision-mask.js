@@ -81,3 +81,15 @@ export function pruneVisionCircles(circles, inset) {
   }
   return circles.filter(circle => active.has(circle));
 }
+
+// 只裁掉連同抗鋸齒餘裕都在畫面外的圓；不影響實際視野或原物件順序。
+export function clipVisionCircles(circles, width, height, padding = 2) {
+  if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0
+    || !Number.isFinite(padding) || padding < 0) return circles;
+  return circles.filter(c => {
+    if (!c || ![c.x,c.y,c.radius,c.screenX,c.screenY,c.rx,c.ry].every(Number.isFinite)
+      || c.radius <= 0 || c.rx < 0 || c.ry < 0) return true;
+    return !(c.screenX + c.rx < -padding || c.screenX - c.rx > width + padding
+      || c.screenY + c.ry < -padding || c.screenY - c.ry > height + padding);
+  });
+}
