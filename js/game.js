@@ -3482,7 +3482,8 @@ export class Game {
       if(u.target&&this.distanceTo(goal,u.target)>8){u.target=null;u.state='idle';u._nav=null;}
     }
     if(u.state==='attack'&&u.target?.alive){order.engaged=true;return false;}
-    if(order.engaged){order.engaged=false;u._nav=null;u._progress=null;u._goalProgress=null;u._yieldTo=null;}
+    // 接敵失敗只結束本次交戰；原戰術目的地仍由下方正式尋路獨立判定。
+    if(order.engaged){order.engaged=false;u.orderFailure=null;u._nav=null;u._progress=null;u._goalProgress=null;u._yieldTo=null;}
     if(u.state==='attack'){u.target=null;u.manualAttack=false;u.state='idle';}
     if(this.time>=(u._orderScanAt||0)) {
       u._orderScanAt=this.time+.25;
