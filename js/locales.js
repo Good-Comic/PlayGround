@@ -770,8 +770,15 @@ for(const [locale,values] of Object.entries({
 
 // 顯示交通讓路與接敵結果的差異，不改變正式命令。
 for(const [locale,values] of Object.entries({
- 'zh-Hant':['讓路中{count}','讓路中表示射程外戰士正依有效友軍讓路安排避讓，不代表已接敵或命中。可選取射程外部隊，手動改走側翼。'],
- 'zh-Hans':['让路中{count}','让路中表示射程外战士正依有效友军让路安排避让，不代表已接敌或命中。可选取射程外部队，手动改走侧翼。'],
- en:['Yielding to allies: {count}','Selected out-of-range soldiers are following an active allied right-of-way arrangement. This does not confirm contact or a hit. Select out-of-range troops to order a flank manually.'],
- ja:['味方に道を譲る：{count}','射程外の選択中の兵士が、有効な味方優先の通行に従って退避しています。接敵や命中を意味しません。射程外の部隊を選び、手動で側面へ移動できます。']
+ 'zh-Hant':['讓路中{count}','讓路中表示戰士正依有效友軍安排避讓，不代表已接敵或命中。短暫讓路可先觀察；持續未接敵時再考慮個別改令，避免一併撤走正在接近的部隊。'],
+ 'zh-Hans':['让路中{count}','让路中表示战士正依有效友军安排避让，不代表已接敌或命中。短暂让路可先观察；持续未接敌时再考虑个别改令，避免一并撤走正在接近的部队。'],
+ en:['Yielding to allies: {count}','Soldiers are following an active allied right-of-way arrangement; this does not confirm contact or a hit. Brief yielding may clear on its own. Consider individual orders if contact remains delayed, rather than withdrawing every approaching soldier.'],
+ ja:['味方に道を譲る：{count}','兵士が有効な味方優先の通行に従って退避しています。接敵や命中を意味しません。一時的な退避は様子を見て、接敵が遅れ続ける場合に個別の命令を検討してください。接近中の部隊をまとめて引き戻さないよう注意してください。']
 })) {STRINGS[locale]['readback.friendYielding']=values[0];STRINGS[locale]['readback.help']+=' '+values[1];}
+
+for(const [locale,text] of Object.entries({
+ 'zh-Hant':'只變更選取，不下達移動命令。射程外不等於卡住；請先查看路線、讓路與敵軍威脅，再決定是否改令。',
+ 'zh-Hans':'只改变选择，不下达移动命令。射程外不等于卡住；请先查看路线、让路与敌军威胁，再决定是否改令。',
+ en:'Changes selection only; issues no movement order. Out of range does not mean stuck. Check routes, yielding and enemy threats before deciding whether to redirect troops.',
+ ja:'選択だけを変更し、移動命令は出しません。射程外は立往生とは限りません。経路、退避、敵の脅威を確認してから命令の変更を判断してください。'
+})) STRINGS[locale]['readback.selectOutsideHelp']=text;
