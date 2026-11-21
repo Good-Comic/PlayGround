@@ -387,7 +387,7 @@ export class Renderer {
       this.visionMaskCache={layer,w:this.w,h:this.h,shapes:shapes.map(s=>[s.screenX,s.screenY,s.rx,s.ry]),clearRect:transparentVisionRect(shapes,this.w,this.h)};
     }
     const clear=this.visionMaskCache.clearRect;
-    if(clear){
+    if(clear && typeof Path2D==='function' && typeof this.ctx.clip==='function'){
       this.ctx.save();
       try{
         const path=new Path2D();path.rect(-2,-2,this.w+4,this.h+4);
