@@ -1,0 +1,5 @@
+import test from'node:test';import assert from'node:assert/strict';import{transparentVisionRect}from'../js/vision-composite.js';
+const shapes=()=>Array.from({length:7},(_,i)=>({screenX:100+i*100,screenY:200,rx:220,ry:220}));
+test('合併覆蓋矩形內每個抽樣點保有二像素AA餘裕，不改輸入',()=>{const s=shapes(),before=structuredClone(s),r=transparentVisionRect(s,800,400);assert.ok(r);for(let y=r.top;y<=r.bottom;y+=2)for(let x=r.left;x<=r.right;x+=2)assert.ok(s.some(e=>((Math.abs(x-e.screenX)+2)/e.rx)**2+((Math.abs(y-e.screenY)+2)/e.ry)**2<=1));assert.deepEqual(s,before);});
+test('空、狹窄、無效與極端資料保留原合成路徑',()=>{for(const s of[[],[{screenX:400,screenY:200,rx:10,ry:10}],[{screenX:NaN,screenY:200,rx:220,ry:220}],[{screenX:1e9,screenY:200,rx:1e9,ry:220}]])assert.equal(transparentVisionRect(s,800,400),null);assert.equal(transparentVisionRect(shapes(),0,400),null);});
+test('分離視野不能跨越中間缺口',()=>{const s=[{screenX:100,screenY:200,rx:160,ry:200},{screenX:700,screenY:200,rx:160,ry:200}],r=transparentVisionRect(s,800,400);assert.ok(!r||r.right<=260||r.left>=540);});

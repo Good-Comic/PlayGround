@@ -3,6 +3,7 @@ import { drawRescue } from './expeditions.js';
 import { factionMark } from './factions.js';
 import { CombatVfx } from './vfx-adapter.js';
 import { pruneVisionCircles, clipVisionCircles } from './vision-mask.js';
+import { transparentVisionRect } from './vision-composite.js';
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.js';
@@ -383,9 +384,17 @@ export class Renderer {
       c.globalCompositeOperation='destination-out';
       for(const s of shapes){c.beginPath();c.ellipse(s.screenX,s.screenY,s.rx,s.ry,0,0,Math.PI*2);c.fill();}
       c.globalCompositeOperation='source-over';
-      this.visionMaskCache={layer,w:this.w,h:this.h,shapes:shapes.map(s=>[s.screenX,s.screenY,s.rx,s.ry])};
+      this.visionMaskCache={layer,w:this.w,h:this.h,shapes:shapes.map(s=>[s.screenX,s.screenY,s.rx,s.ry]),clearRect:transparentVisionRect(shapes,this.w,this.h)};
     }
-    this.ctx.drawImage(layer,0,0);
+    const clear=this.visionMaskCache.clearRect;
+    if(clear){
+      this.ctx.save();
+      try{
+        this.ctx.beginPath();this.ctx.rect(-2,-2,this.w+4,this.h+4);
+        this.ctx.rect(clear.left,clear.top,clear.right-clear.left,clear.bottom-clear.top);
+        this.ctx.clip('evenodd');this.ctx.drawImage(layer,0,0);
+      }finally{this.ctx.restore();}
+    }else this.ctx.drawImage(layer,0,0);
   }
 
   visibleBounds(game) {
