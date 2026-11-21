@@ -390,9 +390,9 @@ export class Renderer {
     if(clear){
       this.ctx.save();
       try{
-        this.ctx.beginPath();this.ctx.rect(-2,-2,this.w+4,this.h+4);
-        this.ctx.rect(clear.left,clear.top,clear.right-clear.left,clear.bottom-clear.top);
-        this.ctx.clip('evenodd');this.ctx.drawImage(layer,0,0);
+        const path=new Path2D();path.rect(-2,-2,this.w+4,this.h+4);
+        path.rect(clear.left,clear.top,clear.right-clear.left,clear.bottom-clear.top);
+        this.ctx.clip(path,'evenodd');this.ctx.drawImage(layer,0,0);
       }finally{this.ctx.restore();}
     }else this.ctx.drawImage(layer,0,0);
   }
