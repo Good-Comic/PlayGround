@@ -4,6 +4,22 @@ import { RESOURCES, restoreStewards, reserveCost, confirmPlan, productionStatus,
 import { productionReadback, productionReadbackHTML } from './production-readback.js';
 import { installStewardSectionNav } from './steward-section-nav.js';
 
+// Read-only preview of the applied proposal; never confirms or consumes RNG.
+export function planConfirmation(game) {
+  const p = game.stewards.pending;
+  const age = p?.kind === 'age' && game.ageLevel < 3;
+  const building = p?.kind === 'building' && BUILD_OPTIONS.includes(p.type);
+  if (!age && !building) return { label: t('steward.noProposal'), detail: '', cost: null };
+  const cost = age ? game.ageCost() : game.buildingCost(p.type);
+  const target = age ? t('age.' + (game.ageLevel + 1)) : t('building.' + p.type + '.name');
+  const price = RESOURCES.filter(r => cost[r] > 0).map(r => `${cost[r]}${t('resourceShort.' + r)}`).join(' · ');
+  const detail = RESOURCES.filter(r => cost[r] > 0).map(r => t('steward.proposalResource', {
+    resource: t('resourceType.' + r), cost: cost[r], stock: Math.floor(game.resources[r] || 0),
+    gap: Math.ceil(Math.max(0, cost[r] - (game.resources[r] || 0))),
+  })).join(' · ');
+  return { label: t(age ? 'steward.confirmAgeAction' : 'steward.confirmBuildAction', { target, cost: price }), detail, cost };
+}
+
 export function installStewardUI(game) {
   const button=document.createElement('button');button.id='btn-stewards';button.className='secondary-button small';
   document.querySelector('.pause-actions').prepend(button);
@@ -18,7 +34,7 @@ export function installStewardUI(game) {
   const options=keys=>keys.map(k=>[k,tr(k)]);
   const close=()=>{dialog.close();game.paused=wasPaused;};
   function render(){
-    const s=game.stewards, floor=reserveCost(game);
+    const s=game.stewards, floor=reserveCost(game), proposal=planConfirmation(game);
     button.textContent=tr('title');
     dialog.innerHTML=`<form method="dialog"><h2>${tr('title')}</h2>
     <nav class="steward-section-nav" data-steward-section-nav aria-label="${tr('title')}">${['economy','buildings','military'].map(section=>`<button type="button" data-steward-jump="${section}" aria-controls="steward-section-${section}">${tr(section)}</button>`).join('')}</nav><p>${tr('help')}</p>
@@ -39,7 +55,8 @@ export function installStewardUI(game) {
     <div>${RESOURCES.map((r,i)=>`<label>${tr('reserve')} ${t('resourceType.'+r)} ${number('budget'+b.id+'_'+i,p.budget?.[i]||0)}</label>`).join('')}</div>
     ${game.trainableFor(b).map(type=>{const e=p.targets?.[type];return `<div data-unit="${type}"><label><input type="checkbox" name="unit${b.id}_${type}" ${(!p.units||p.units.includes(type))?'checked':''}>${t('unit.'+type+'.name')}</label> ${tr('max')} ${number('target'+b.id+'_'+type,e?.count??200,0,200)} ${tr('priority')} ${number('weight'+b.id+'_'+type,e?.priority||1,1,100)} ${game.trainingRestriction(type)?t('training.ageRequired',{age:t('age.'+(UNIT_TYPES[type]?.minAge||3))}):''}</div>`}).join('')}</details>`}).join('')}
     </fieldset><p>${tr('confirmHelp')}</p><p id="steward-notice" class="steward-notice" role="alert" ${notice?'':'hidden'}>${notice?tr('stalePlan'):''}</p>
-    <div class="steward-controls"><button type="button" id="steward-confirm" ${s.pending?'':'disabled'}>${tr('confirm')} ${s.pending?.kind==='building'?t('building.'+s.pending.type+'.name'):s.pending?tr('age'):''}</button>
+    <p id="steward-confirm-preview" role="status">${proposal.detail}</p>${s.pending?`<p>${tr('confirmActionHelp')}</p>`:''}
+    <div class="steward-controls"><button type="button" id="steward-confirm" ${proposal.cost?'':'disabled'}>${proposal.label}</button>
     <button type="submit" id="steward-apply">${tr('apply')}</button><button type="button" id="steward-close">${tr('close')}</button></div></form>`;
     const form=dialog.querySelector('form');
     installStewardSectionNav(dialog);
