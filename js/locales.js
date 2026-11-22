@@ -782,3 +782,10 @@ for(const [locale,text] of Object.entries({
  en:'Changes selection only; issues no movement order. Out of range does not mean stuck. Check routes, yielding and enemy threats before deciding whether to redirect troops.',
  ja:'選択だけを変更し、移動命令は出しません。射程外は立往生とは限りません。経路、退避、敵の脅威を確認してから命令の変更を判断してください。'
 })) STRINGS[locale]['readback.selectOutsideHelp']=text;
+
+for (const [locale, values] of Object.entries({
+ 'zh-Hant': ['維修', '手動維修：每恢復10 HP花1木（不足10 HP仍以1木計），波斯加收15%。城心每次最多恢復30 HP，兩次至少相隔1模擬秒。', '建築生命值已滿。', '下一次維修還需{seconds}模擬秒。', '本次恢復{hp} HP，花費{cost}。'],
+ 'zh-Hans': ['维修', '手动维修：每恢复10 HP花1木（不足10 HP仍以1木计），波斯加收15%。城心每次最多恢复30 HP，两次至少相隔1模拟秒。', '建筑生命值已满。', '下次维修还需{seconds}模拟秒。', '本次恢复{hp} HP，花费{cost}。'],
+ en: ['Repair', 'Manual repair: 1 wood per 10 HP, rounded up; Persia costs 15% more. Town center: up to 30 HP per action, at least 1 simulation second apart.', 'Building health is full.', 'Next repair in {seconds} simulation seconds.', 'Restore {hp} HP for {cost}.'],
+ ja: ['修理', '手動修理：10 HPごとに木材1（端数切り上げ）、ペルシアは15%増。町の中心は1回最大30 HP、次の修理までシミュレーション時間で1秒必要。', '建物のHPは最大です。', '次の修理まで{seconds}シミュレーション秒。', '{cost}で{hp} HP回復。']
+})) ['repair', 'repairHelp', 'repairFull', 'repairWait', 'repairBatch'].forEach((key, i) => STRINGS[locale]['command.' + key] = values[i]);

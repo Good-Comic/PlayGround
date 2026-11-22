@@ -223,7 +223,7 @@ export class Game {
     ];
     const buildingKeys = [
       'id', 'team', 'type', 'x', 'y', 'w', 'h', 'hp', 'maxHp', 'baseMaxHp', 'armor',
-      'manualProductionUntil', 'construction', 'alive', 'cooldown', 'queue', 'rally', 'hitFlash', 'foodStore', 'goldStore', 'flooded',
+      'lastCoreRepairTime', 'manualProductionUntil', 'construction', 'alive', 'cooldown', 'queue', 'rally', 'hitFlash', 'foodStore', 'goldStore', 'flooded',
     ];
     const pick = (source, keys) => {
       const out = {};
@@ -473,6 +473,7 @@ export class Game {
         armor: saved.armor ?? def.armor ?? 6, construction: saved.construction ?? 1,
         alive: saved.alive !== false, selected: false, queue: (saved.queue || []).map(item => ({ ...item })),
         cooldown: saved.cooldown || 0, rally: saved.rally && Number.isFinite(saved.rally.x) && Number.isFinite(saved.rally.y) && saved.rally.x>=0 && saved.rally.y>=0 && saved.rally.x<this.world.size && saved.rally.y<this.world.size ? {...saved.rally} : null, hitFlash: saved.hitFlash || 0,
+        lastCoreRepairTime: Number.isFinite(saved.lastCoreRepairTime) && saved.lastCoreRepairTime >= 0 && saved.lastCoreRepairTime <= this.time ? saved.lastCoreRepairTime : undefined,
         foodStore: saved.foodStore || 0, goldStore: saved.goldStore || 0,
         flooded: Number.isFinite(saved.flooded) ? Math.max(0, saved.flooded) : 0,
       };
@@ -2990,7 +2991,7 @@ export class Game {
     if (this.phase === 'victory' || this.phase === 'defeat') return;
     if(id.startsWith('order:')) {const mode=id.slice(6);if(['attackMove','guard','patrol'].includes(mode)&&this.selection.some(u=>u.alive&&u.team==='player'&&!u.w&&u.type!=='villager')) {this.orderMode=mode;this.hooks.selectionChanged?.();}return;}
     if(id==='stop'||id==='hold'||id.startsWith('stance:')){this.orderMode=null;for(const u of this.selection)u.tacticalOrder=null;this.hooks.selectionChanged?.();}
-    if(id==='train:page'){const b=this.selection[0];if(b?.w&&b.alive&&b.team==='player')b.trainingPage=((b.trainingPage||0)+1)%Math.max(1,Math.ceil(this.trainableFor(b).length/4));this.hooks.selectionChanged?.();return;}
+    if(id==='train:page'){const b=this.selection[0];if(b?.w&&b.alive&&b.team==='player')b.trainingPage=((b.trainingPage||0)+1)%Math.max(1,Math.ceil(this.trainableFor(b).length/(b.type==='core'&&this.ageLevel<3?3:4)));this.hooks.selectionChanged?.();return;}
     if (id === 'build:page') {
       const pages = Math.max(1, Math.ceil(BUILD_OPTIONS.length / 4));
       this.buildPage = ((this.buildPage || 0) + 1) % pages;
@@ -3075,31 +3076,29 @@ export class Game {
     this.hooks.selectionChanged?.();
   }
 
-    repairBuilding(b) {
-    if (!b.alive || b.hp >= b.maxHp) return;
-    const missingHp = b.maxHp - b.hp;
-    const woodCost = Math.ceil(missingHp / 10);
-    // Persian repair cost +15%
-    const costMul = this.civ?.id === 'PER' ? 1.15 : 1;
-    const totalWoodCost = Math.ceil(woodCost * (this.civ?.id === 'PER' ? 1.15 : 1));
-    if (this.resources.wood < totalWoodCost) {
+  repairPlan(b) {
+    if (!b?.w || b.team !== 'player' || !b.alive || b.construction < 1 || b.hp >= b.maxHp) return { hp: 0, wood: 0, wait: 0 };
+    const hp = Math.min(b.maxHp - b.hp, b.type === 'core' ? 30 : Infinity);
+    const wood = Math.ceil(Math.ceil(hp / 10) * (this.civ?.id === 'PER' ? 1.15 : 1));
+    const wait = b.type === 'core' && Number.isFinite(b.lastCoreRepairTime)
+      ? Math.max(0, 1 - (this.time - b.lastCoreRepairTime)) : 0;
+    return { hp, wood, wait };
+  }
+
+  repairBuilding(b) {
+    const plan = this.repairPlan(b);
+    if (!plan.hp || plan.wait > 0) return false;
+    if (this.resources.wood < plan.wood) {
       this.toast(t('toast.notEnough', { name: t('resource.wood') }), 'bad', 2000);
-      return;
+      return false;
     }
-    // Core repairs max 30 HP/s
-    const isCore = b.type === 'core';
-    const maxHpPerSec = isCore ? 30 : Infinity;
-    const hpToRepair = Math.min(missingHp, maxHpPerSec);
-    const woodPerSec = Math.ceil(hpToRepair / 10);
-    // Check 3s no auto-repair after damage
-    if (b._lastDamageTime && this.time - b._lastDamageTime < 3) {
-      this.toast(t('toast.repairDelayed'), 'bad', 2000);
-      return;
-    }
-    this.resources.wood -= totalWoodCost;
-    b.hp = Math.min(b.maxHp, b.hp + hpToRepair);
-    this.addFloating(b.x + b.w / 2, b.y + b.h / 2, `+${hpToRepair}HP`, 'rgba(100,200,100,ALPHA)');
+    // Explicit manual action. GDD's post-hit delay applies to automatic repair.
+    this.resources.wood -= plan.wood;
+    b.hp = Math.min(b.maxHp, b.hp + plan.hp);
+    if (b.type === 'core') b.lastCoreRepairTime = this.time;
+    this.addFloating(b.x + b.w / 2, b.y + b.h / 2, `+${plan.hp}HP`, 'rgba(100,200,100,ALPHA)');
     this.sound?.repair?.();
+    return true;
   }
 
   advanceAge() {

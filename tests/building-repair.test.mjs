@@ -1,0 +1,12 @@
+import '../tools/qa/ram-pick-065e2912/node-dom-fixture.mjs';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { Game } from '../js/game.js';
+import { UI } from '../js/ui.js';
+import { setLocale } from '../js/i18n.js';
+function setup(civ='CHN') {const g=new Game();g.newRun(42,{civ});g.inMenu=false;g.time=0;g.resources.wood=100;const b=g.getTownCenter();b.hp=b.maxHp-300;g.selection=[b];return {g,b};}
+test('城心只收本次30HP費用，同秒連點無效，零時刻亦受限',()=>{const{g,b}=setup();const hp=b.hp;assert.equal(g.repairBuilding(b),true);assert.equal(b.hp,hp+30);assert.equal(g.resources.wood,97);assert.equal(g.repairBuilding(b),false);g.time=.999;assert.equal(g.repairBuilding(b),false);g.time=1;assert.equal(g.repairBuilding(b),true);assert.equal(g.resources.wood,94);});
+test('木材只夠本批仍可修，波斯加價與不足費用不扣款',()=>{for(const[civ,cost]of[['CHN',3],['PER',4]]){const{g,b}=setup(civ);g.resources.wood=cost-1;assert.equal(g.repairBuilding(b),false);assert.equal(g.resources.wood,cost-1);g.resources.wood=cost;assert.equal(g.repairBuilding(b),true);assert.equal(g.resources.wood,0);}});
+test('尾數及一般建築按實際補血計價，拒絕敵軍／死者／未完工',()=>{const{g,b}=setup();b.hp=b.maxHp-1;assert.equal(g.repairBuilding(b),true);assert.equal(g.resources.wood,99);const h=g.addBuilding('house',18,18,true);h.hp=h.maxHp-47;assert.deepEqual(g.repairPlan(h),{hp:47,wood:5,wait:0});assert.equal(g.repairBuilding(h),true);for(const extra of[{team:'enemy'},{alive:false},{construction:.5}])assert.equal(g.repairPlan({...h,hp:1,...extra}).hp,0);});
+test('存讀保留城心節流，舊存檔無此欄位仍可讀',()=>{const{g,b}=setup();g.repairBuilding(b);const snap=structuredClone(g.snapshot());const restored=new Game();restored.restore(snap);const rb=restored.getTownCenter();assert.equal(restored.repairBuilding(rb),false);restored.time=1;assert.equal(restored.repairBuilding(rb),true);for(const x of snap.buildings)delete x.lastCoreRepairTime;const old=new Game();old.restore(snap);assert.equal(old.repairBuilding(old.getTownCenter()),true);});
+test('四語維修入口、所有城心生產項目不被六格上限遮掉',()=>{const{g,b}=setup();for(const locale of['zh-Hant','zh-Hans','en','ja']){setLocale(locale);const cmd=UI.prototype.getCommands.call({},g);assert.equal(cmd[0].id,'repair');assert.ok(cmd[0].tooltip.length>20);assert.ok(cmd.length<=6);}const seen=new Set();for(let i=0;i<10;i++){for(const c of UI.prototype.getCommands.call({},g))if(c.id.startsWith('train:')&&c.id!=='train:page')seen.add(c.id.slice(6));g.command('train:page');}assert.deepEqual([...seen].sort(),g.trainableFor(b).sort());});

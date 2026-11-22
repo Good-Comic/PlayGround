@@ -890,7 +890,7 @@ export class UI {
     if (onlyBuildings && sel.length === 1) {
       const b = sel[0];
       if (b.team !== 'player' || b.construction < 1) return [];
-      const commands = [];
+      const commands = [{ id: 'repair', label: t('command.repair'), icon: 'hammer', cost: shortCost({ wood: game.repairPlan(b).wood }), tooltip: t('command.repairHelp') }];
       if (b.type === 'core' && b.team === 'player' && game.ageLevel < 3) {
         const cost = game.ageCost();
         if (game.ageResearch) {
@@ -905,8 +905,9 @@ export class UI {
           });
         }
       }
-      const allTrainable=game.trainableFor(b),pages=Math.ceil(allTrainable.length/4);b.trainingPage=Math.min(b.trainingPage||0,Math.max(0,pages-1));
-      const trainable=pages>1?allTrainable.slice(b.trainingPage*4,b.trainingPage*4+4):allTrainable;
+      const pageSize=b.type==='core'&&game.ageLevel<3?3:4;
+      const allTrainable=game.trainableFor(b),pages=Math.ceil(allTrainable.length/pageSize);b.trainingPage=Math.min(b.trainingPage||0,Math.max(0,pages-1));
+      const trainable=pages>1?allTrainable.slice(b.trainingPage*pageSize,b.trainingPage*pageSize+pageSize):allTrainable;
       if(pages>1)commands.push({id:'train:page',label:t('training.page'),icon:'scroll',tag:`${b.trainingPage+1}/${pages}`,tooltip:t('training.page')});
       commands.push(...trainable.map(type => {
         const def = UNIT_TYPES[type];
@@ -963,7 +964,15 @@ export class UI {
       const id = b.dataset.command;
       if (!id) continue;
       let cost = null;
-      if (id.startsWith('train:')) {
+      if (id === 'repair') {
+        const plan = game.repairPlan(game.selection[0]);
+        cost = { wood: plan.wood };
+        b.disabled = !plan.hp || plan.wait > 0 || !game.canAfford(cost);
+        b.title = t('command.repairHelp') + ' ' + (!plan.hp ? t('command.repairFull') : plan.wait > 0 ? t('command.repairWait', { seconds: Math.ceil(plan.wait) }) : t('command.repairBatch', { hp: plan.hp, cost: shortCost(cost) }));
+        const readout = b.querySelector('.cmd-cost');
+        if (readout) readout.textContent = plan.wait > 0 ? `${Math.ceil(plan.wait)}s` : shortCost(cost);
+      }
+      else if (id.startsWith('train:')) {
         const building = game.selection.length === 1 ? game.selection[0] : null;
         if(id==='train:page')continue;
         cost = game.unitCost(id.slice(6), building?.type === 'market');
