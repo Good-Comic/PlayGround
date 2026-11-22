@@ -9,6 +9,22 @@ import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.
 import { atlasFrame, atlasActionProgress, loadUnitSpriteAtlases, unitSpriteAtlasKey } from './sprite-atlas.js';
 import { heroCastVisual, bossStrikeVisual } from './hero-skills.js';
 
+// 原離屏餘裕只擴大、不縮小；大型圖集依實際錨點、縮放與血條保留可見部分。
+export function unitSpriteOnscreen(p,width,height,scale,descriptor) {
+  let left=80,right=80,top=80,bottom=100;
+  if(descriptor?.bakedPose){
+    const f=descriptor.frame,a=descriptor.anchor,ox=descriptor.offset?.x??0,oy=descriptor.offset?.y??0,ds=scale*descriptor.scale;
+    if(f&&a&&[f.width,f.height,a.x,a.y,ox,oy,ds].every(Number.isFinite)&&ds>0){
+      left=Math.max(left,(ox-a.x+f.width)*ds+2);
+      right=Math.max(right,(a.x-ox)*ds+2);
+      top=Math.max(top,(oy-a.y+f.height)*ds+2);
+      bottom=Math.max(bottom,(a.y-oy)*ds+2);
+      if(Number.isFinite(descriptor.healthBarHeight))bottom=Math.max(bottom,(descriptor.healthBarHeight+8)*scale+2);
+    }
+  }
+  return !(p.x < -left || p.x > width+right || p.y < -top || p.y > height+bottom);
+}
+
 const TERRAIN_COLORS = {
   grass: ['#62753a', '#697d3f', '#5d7037', '#708341'],
   forest: ['#4b5f32', '#506636', '#465b2e', '#576b39'],
@@ -1507,9 +1523,10 @@ export class Renderer {
 
   drawUnit(u, game, time) {
     const p = this.screen(game, u.x, u.y);
-    if (p.x < -80 || p.x > this.w + 80 || p.y < -80 || p.y > this.h + 100) return;
     const z = game.camera.zoom;
     const scale = z * (u.typeDef.scale || 1);
+    const atlasKey=unitSpriteAtlasKey(u,game.civ?.id),entry=this.unitSpriteAtlases?.get(atlasKey);
+    if(!unitSpriteOnscreen(p,this.w,this.h,scale,entry?.descriptor))return;
     const team = u.team === 'player' ? { ...PLAYER_COLORS, ...game.playerColors, trim: PLAYER_COLORS.trim } : ENEMY_COLORS;
     const moving = u.state === 'move' || u.state === 'return' || u.state === 'build' || u.state === 'gather';
     const walk = moving ? Math.sin(u.walkPhase) : 0;
@@ -1517,8 +1534,7 @@ export class Renderer {
     ctxSave(this.ctx, () => {
       const ctx = this.ctx;
       const frame = directionalAnimationFrame(u);
-      frame.atlasKey = unitSpriteAtlasKey(u, game.civ?.id);
-      const entry = this.unitSpriteAtlases?.get(frame.atlasKey);
+      frame.atlasKey = atlasKey;
       const bakedPose = entry?.descriptor.bakedPose && entry.ready && !entry.failed && entry.image?.naturalWidth;
       const casting = heroCastVisual(u);
       if (bakedPose && entry.descriptor.states.cast && casting && !['hit', 'death'].includes(frame.state)) {
