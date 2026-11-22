@@ -1,0 +1,31 @@
+✔ 城心只收本次30HP費用，同秒連點無效，零時刻亦受限 (26.443723ms)
+✔ 木材只夠本批仍可修，波斯加價與不足費用不扣款 (20.749726ms)
+✔ 尾數及一般建築按實際補血計價，拒絕敵軍／死者／未完工 (10.667818ms)
+✔ 存讀保留城心節流，舊存檔無此欄位仍可讀 (30.991171ms)
+✔ 四語維修入口、所有城心生產項目不被六格上限遮掉 (9.156451ms)
+✔ 讀取維修方案及四語HUD不消耗任一RNG，手動維修不新增自動行為 (7.333152ms)
+✖ 城心跨時代多頁生產完整可達，維修與升級不擠掉兵種 (9.905777ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 130.839502
+
+✖ failing tests:
+
+test at tests/building-repair.test.mjs:14:1
+✖ 城心跨時代多頁生產完整可達，維修與升級不擠掉兵種 (9.905777ms)
+  TypeError: Cannot read properties of undefined (reading 'icon')
+      at file:///workspace/riftwatch-building-repair-9c42e7a1/worktree/js/ui.js:915:73
+      at Array.map (<anonymous>)
+      at Object.getCommands (file:///workspace/riftwatch-building-repair-9c42e7a1/worktree/js/ui.js:912:34)
+      at TestContext.<anonymous> (file:///workspace/riftwatch-building-repair-9c42e7a1/worktree/tests/building-repair.test.mjs:14:339)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
