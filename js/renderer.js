@@ -861,7 +861,9 @@ export class Renderer {
 
   drawBuilding(b, game, time) {
     const p = this.screen(game, b.x + b.w / 2, b.y + b.h / 2);
-    if (p.x < -250 || p.x > this.w + 250 || p.y < -250 || p.y > this.h + 250) return;
+    // 建築旗幟與煙柱也隨鏡頭放大；縮小時不縮減原有剔除餘裕。
+    const margin=250*Math.max(1,game.camera.zoom);
+    if (p.x < -margin || p.x > this.w + margin || p.y < -margin || p.y > this.h + margin) return;
     if (b.construction < 1) { this.drawConstruction(b, game, time); return; }
     if (b.type === 'core') this.drawTownCenter(b, game, time);
     else if (b.type === 'house') this.drawHouse(b, game, time);

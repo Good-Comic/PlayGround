@@ -1,0 +1,5 @@
+import test from'node:test';import assert from'node:assert/strict';import'../tools/qa/ram-pick-065e2912/node-dom-fixture.mjs';import{Renderer}from'../js/renderer.js';
+function draw(x,y,zoom,construction=1){let painted=0;const r={w:256,h:256,screen:()=>({x,y}),drawTownCenter(){painted++;},drawConstruction(){painted++;},drawBuildingDamageState(){},drawBuildingBar(){},drawProductionIndicator(){}},b={type:'core',x:0,y:0,w:4,h:4,construction,team:'enemy'},g={camera:{zoom}};Renderer.prototype.drawBuilding.call(r,b,g,.5);return painted;}
+test('放大城心仍有旗幟與煙柱可見時，不因錨點超過250像素而消失',()=>{assert.equal(draw(128,517,1.6),1);assert.equal(draw(128,1000,1.6),0);});
+test('縮小與1倍縮放保留既有250像素界線',()=>{for(const zoom of[.78,1])for(const x of[-251,-250,0,506,507])for(const y of[-251,-250,0,506,507])assert.equal(draw(x,y,zoom),Number(!(x< -250||x>506||y< -250||y>506)));});
+test('施工與完成建築均使用同一保守界線，畫面內部路徑不變',()=>{assert.equal(draw(128,128,1.6,.5),1);assert.equal(draw(128,517,1.6,.5),1);assert.equal(draw(128,1000,1.6,.5),0);});
