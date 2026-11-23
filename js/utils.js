@@ -51,6 +51,11 @@ export function formatNumber(n) {
   return Math.round(n).toLocaleString('en-US');
 }
 
+// Display only: never use this rounded label for repair cost or simulation.
+export function formatRepairHp(hp) {
+  return hp > 0 && hp < .01 ? '<0.01' : String(Number(hp.toFixed(2)));
+}
+
 export function formatTime(seconds) {
   const s = Math.max(0, Math.floor(seconds));
   return `${String(Math.floor(s / 60)).padStart(1, '0')}:${String(s % 60).padStart(2, '0')}`;

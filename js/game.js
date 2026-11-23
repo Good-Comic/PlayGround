@@ -14,7 +14,7 @@ import {
 import { createWorld } from './world.js';
 import { NemesisDirector, unitThreat } from './director.js';
 import { t } from './i18n.js';
-import { TILE_W, clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, pointSegmentDist, rand, randInt, seedFromDate, formatNumber } from './utils.js';
+import { TILE_W, clamp, dist, dist2, iso, lerp, mulberry32, pick, pointInRect, pointSegmentDist, rand, randInt, seedFromDate, formatNumber, formatRepairHp } from './utils.js';
 import { visualDirectionFromVector } from './visuals.js';
 import { atlasBodyContains } from './sprite-atlas.js';
 import { ramBodyContains } from './ram-body-picking.js';
@@ -3096,7 +3096,7 @@ export class Game {
     this.resources.wood -= plan.wood;
     b.hp = Math.min(b.maxHp, b.hp + plan.hp);
     if (b.type === 'core') b.lastCoreRepairTime = this.time;
-    this.addFloating(b.x + b.w / 2, b.y + b.h / 2, `+${plan.hp}HP`, 'rgba(100,200,100,ALPHA)');
+    this.addFloating(b.x + b.w / 2, b.y + b.h / 2, `+${formatRepairHp(plan.hp)}HP`, 'rgba(100,200,100,ALPHA)');
     this.sound?.repair?.();
     return true;
   }

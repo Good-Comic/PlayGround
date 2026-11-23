@@ -1,6 +1,6 @@
 import { BUILDING_TYPES, UNIT_TYPES, BUILD_OPTIONS, BOONS, MAX_BOONS, WAVES, CIVILIZATIONS, BIOMES, PLAYER_COLORS, ENEMY_COLORS } from './data.js';
 import { difficultyId, DIFFICULTIES } from './campaign.js';
-import { formatNumber, formatTime, roman, clamp, createSeedText } from './utils.js';
+import { formatNumber, formatTime, roman, clamp, createSeedText, formatRepairHp } from './utils.js';
 import { applyStaticTranslations, getLocale, localeOptions, setLocale as setAppLocale, t } from './i18n.js';
 import { atlasFrame } from './sprite-atlas.js';
 import { applySettings, loadSettings, resetSettings, saveSettings } from './settings.js';
@@ -968,7 +968,7 @@ export class UI {
         const plan = game.repairPlan(game.selection[0]);
         cost = { wood: plan.wood };
         b.disabled = !plan.hp || plan.wait > 0 || !game.canAfford(cost);
-        b.title = t('command.repairHelp') + ' ' + (!plan.hp ? t('command.repairFull') : plan.wait > 0 ? t('command.repairWait', { seconds: Math.ceil(plan.wait) }) : t('command.repairBatch', { hp: plan.hp, cost: shortCost(cost) }));
+        b.title = t('command.repairHelp') + ' ' + (!plan.hp ? t('command.repairFull') : plan.wait > 0 ? t('command.repairWait', { seconds: Math.ceil(plan.wait) }) : t('command.repairBatch', { hp: formatRepairHp(plan.hp), cost: shortCost(cost) }));
         const readout = b.querySelector('.cmd-cost');
         if (readout) readout.textContent = plan.wait > 0 ? `${Math.ceil(plan.wait)}s` : shortCost(cost);
       }
