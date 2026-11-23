@@ -1,0 +1,53 @@
+✖ 手動佇列完成後的剩餘保護期讀檔不丟失，到原期限才恢復自動訓練 (83.866585ms)
+✖ 暫停及再次存讀不重置剩餘保護期，不改RNG (28.799672ms)
+✔ 舊存檔缺欄位與非有限／負值不虛構新保護期 (181.942789ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 312.18124
+
+✖ failing tests:
+
+test at tests/manual-production-save.test.mjs:6:1
+✖ 手動佇列完成後的剩餘保護期讀檔不丟失，到原期限才恢復自動訓練 (83.866585ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 113
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-manual-save-8d24a6c1/worktree/tests/manual-production-save.test.mjs:6:168)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 113,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/manual-production-save.test.mjs:7:1
+✖ 暫停及再次存讀不重置剩餘保護期，不改RNG (28.799672ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 113
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-manual-save-8d24a6c1/worktree/tests/manual-production-save.test.mjs:7:161)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 113,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
