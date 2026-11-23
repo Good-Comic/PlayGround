@@ -473,6 +473,7 @@ export class Game {
         armor: saved.armor ?? def.armor ?? 6, construction: saved.construction ?? 1,
         alive: saved.alive !== false, selected: false, queue: (saved.queue || []).map(item => ({ ...item })),
         cooldown: saved.cooldown || 0, rally: saved.rally && Number.isFinite(saved.rally.x) && Number.isFinite(saved.rally.y) && saved.rally.x>=0 && saved.rally.y>=0 && saved.rally.x<this.world.size && saved.rally.y<this.world.size ? {...saved.rally} : null, hitFlash: saved.hitFlash || 0,
+        manualProductionUntil: Number.isFinite(saved.manualProductionUntil) && saved.manualProductionUntil >= 0 ? saved.manualProductionUntil : undefined,
         lastCoreRepairTime: Number.isFinite(saved.lastCoreRepairTime) && saved.lastCoreRepairTime >= 0 && saved.lastCoreRepairTime <= this.time ? saved.lastCoreRepairTime : undefined,
         foodStore: saved.foodStore || 0, goldStore: saved.goldStore || 0,
         flooded: Number.isFinite(saved.flooded) ? Math.max(0, saved.flooded) : 0,
