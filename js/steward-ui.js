@@ -20,6 +20,22 @@ export function planConfirmation(game) {
   return { label: t(age ? 'steward.confirmAgeAction' : 'steward.confirmBuildAction', { target, cost: price }), detail, cost };
 }
 
+export function captureStewardDraft(form) {
+  return Array.from(form?.elements || []).filter(e => e.name).map(e => ({
+    name: e.name, type: e.type, value: e.value, checked: e.checked,
+  }));
+}
+
+export function restoreStewardDraft(form, draft) {
+  const fields = new Map((draft || []).map(e => [e.name, e]));
+  for (const input of Array.from(form?.elements || [])) {
+    const saved = fields.get(input.name);
+    if (!saved || saved.type !== input.type) continue;
+    if (input.type === 'checkbox') input.checked = saved.checked;
+    else input.value = saved.value;
+  }
+}
+
 export function installStewardUI(game) {
   const button=document.createElement('button');button.id='btn-stewards';button.className='secondary-button small';
   document.querySelector('.pause-actions').prepend(button);
@@ -33,7 +49,7 @@ export function installStewardUI(game) {
   const select=(name,value,items)=>`<select name="${name}">${items.map(([v,text])=>`<option value="${v}" ${v===value?'selected':''}>${text}</option>`).join('')}</select>`;
   const options=keys=>keys.map(k=>[k,tr(k)]);
   const close=()=>{dialog.close();game.paused=wasPaused;};
-  function render(){
+  function render(draft=null){
     const s=game.stewards, floor=reserveCost(game), proposal=planConfirmation(game);
     button.textContent=tr('title');
     dialog.innerHTML=`<form method="dialog"><h2>${tr('title')}</h2>
@@ -61,6 +77,7 @@ export function installStewardUI(game) {
     const form=dialog.querySelector('form');
     installStewardSectionNav(dialog);
     const appliedFields=JSON.stringify([...new FormData(form)]);
+    restoreStewardDraft(form,draft);
     const draftNotice=()=>{
       const dirty=JSON.stringify([...new FormData(form)])!==appliedFields, output=dialog.querySelector('#steward-applied-notice');
       output.textContent=t('production.'+(dirty?'draft':'applied'));output.classList.toggle('has-draft',dirty);output.dataset.draft=String(dirty);
@@ -103,10 +120,10 @@ export function installStewardUI(game) {
     form.addEventListener('submit',e=>{e.preventDefault();save();close();});
     dialog.querySelector('#steward-close').onclick=close;
     dialog.querySelector('#steward-release').onclick=()=>{for(const u of game.units)if(u.alive&&u.team==='player'&&u.type==='villager'&&u.state==='idle')u.manualEconomy=false;renderWorkforce();};
-    dialog.querySelector('#steward-confirm').onclick=()=>{notice=!confirmPlan(game);render();if(notice){dialog.querySelector('#steward-notice').scrollIntoView({block:'nearest'});dialog.querySelector('#steward-close').focus();}};
+    dialog.querySelector('#steward-confirm').onclick=()=>{const draft=captureStewardDraft(form);notice=!confirmPlan(game);render(draft);if(notice){dialog.querySelector('#steward-notice').scrollIntoView({block:'nearest'});dialog.querySelector('#steward-close').focus();}};
   }
   button.onclick=hudButton.onclick=()=>{if(game.inMenu)return;wasPaused=game.paused;notice=false;game.paused=true;render();dialog.showModal();};
   dialog.addEventListener('cancel',e=>{e.preventDefault();close();});
-  document.addEventListener('localechange',()=>{button.textContent=hudButton.textContent=tr('title');if(dialog.open)render();});
+  document.addEventListener('localechange',()=>{button.textContent=hudButton.textContent=tr('title');if(dialog.open)render(captureStewardDraft(dialog.querySelector('form')));});
   button.textContent=hudButton.textContent=tr('title');
 }

@@ -1,0 +1,6 @@
+import '../tools/qa/ram-pick-065e2912/node-dom-fixture.mjs';
+import test from 'node:test';import assert from 'node:assert/strict';
+import { captureStewardDraft, restoreStewardDraft } from '../js/steward-ui.js';
+const form=()=>({elements:[{name:'gather',type:'select-one',value:'balanced'},{name:'ratio0',type:'number',value:'34'},{name:'enabled4',type:'checkbox',value:'on',checked:true},{name:'',type:'submit',value:''}]});
+test('文字數值、下拉及未勾選狀態在重建後完整保留，無名控制不納入',()=>{const f=form();f.elements[0].value='food';f.elements[1].value='43';f.elements[2].checked=false;const draft=captureStewardDraft(f);assert.equal(draft.length,3);const target=form();restoreStewardDraft(target,draft);assert.deepEqual(captureStewardDraft(target),draft);assert.equal(f.elements[2].checked,false);});
+test('新增欄位保持正式預設，已移除或類型改變欄位不覆蓋其他控制',()=>{const target=form();target.elements.push({name:'newProducer',type:'checkbox',checked:true,value:'on'});restoreStewardDraft(target,[{name:'gather',type:'number',value:'999'},{name:'missing',type:'number',value:'999'}]);assert.equal(target.elements[0].value,'balanced');assert.equal(target.elements[4].checked,true);restoreStewardDraft(target,null);assert.equal(target.elements[1].value,'34');});

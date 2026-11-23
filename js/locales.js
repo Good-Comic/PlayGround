@@ -791,8 +791,8 @@ for (const [locale, values] of Object.entries({
 })) ['repair', 'repairHelp', 'repairFull', 'repairWait', 'repairBatch'].forEach((key, i) => STRINGS[locale]['command.' + key] = values[i]);
 
 for (const [locale, values] of Object.entries({
- 'zh-Hant': ['目前沒有待確認計畫', '立即升級至{target} · {cost}', '確認建造{target} · {cost}', '{resource}：需{cost}／現有{stock}／缺{gap}', '此按鈕會依已套用的計畫立即扣款並送出升級或建造，不是查看詳情。尚未套用的設定不會一併儲存；確認後畫面會重新載入已套用設定。'],
- 'zh-Hans': ['目前没有待确认计划', '立即升级至{target} · {cost}', '确认建造{target} · {cost}', '{resource}：需{cost}／现有{stock}／缺{gap}', '此按钮会按已应用的计划立即扣款并发出升级或建造，不是查看详情。未应用的设置不会同时保存；确认后会重新载入已应用设置。'],
- en: ['No proposal awaiting confirmation', 'Upgrade to {target} now · {cost}', 'Confirm {target} construction · {cost}', '{resource}: need {cost} / have {stock} / short {gap}', 'This action spends resources and starts the applied upgrade or building plan; it does not open details. Unapplied edits are not saved and will reset to applied settings after confirmation.'],
- ja: ['確認待ちの計画はありません', '今すぐ{target}に進化 · {cost}', '{target}の建設を確定 · {cost}', '{resource}：必要{cost}／所持{stock}／不足{gap}', 'このボタンは適用済みの計画で資源を消費し、進化や建設を開始します。詳細表示ではありません。未適用の編集は保存されず、確認後は適用済み設定に戻ります。']
+ 'zh-Hant': ['目前沒有待確認計畫', '立即升級至{target} · {cost}', '確認建造{target} · {cost}', '{resource}：需{cost}／現有{stock}／缺{gap}', '此按鈕會依已套用的計畫立即扣款並送出升級或建造，不是查看詳情。尚未套用的設定會保留為草稿，仍須按「儲存規劃」才會生效。'],
+ 'zh-Hans': ['目前没有待确认计划', '立即升级至{target} · {cost}', '确认建造{target} · {cost}', '{resource}：需{cost}／现有{stock}／缺{gap}', '此按钮会按已应用的计划立即扣款并发出升级或建造，不是查看详情。未应用的设置会保留为草稿，仍须点击“保存规划”才会生效。'],
+ en: ['No proposal awaiting confirmation', 'Upgrade to {target} now · {cost}', 'Confirm {target} construction · {cost}', '{resource}: need {cost} / have {stock} / short {gap}', 'This action spends resources and starts the applied upgrade or building plan; it does not open details. Unapplied edits remain as a draft; use Save Plan to apply them.'],
+ ja: ['確認待ちの計画はありません', '今すぐ{target}に進化 · {cost}', '{target}の建設を確定 · {cost}', '{resource}：必要{cost}／所持{stock}／不足{gap}', 'このボタンは適用済みの計画で資源を消費し、進化や建設を開始します。詳細表示ではありません。未適用の編集は下書きとして保持されます。「計画を保存」で適用してください。']
 })) ['noProposal', 'confirmAgeAction', 'confirmBuildAction', 'proposalResource', 'confirmActionHelp'].forEach((key, i) => STRINGS[locale]['steward.' + key] = values[i]);
