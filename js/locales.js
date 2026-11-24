@@ -796,3 +796,10 @@ for (const [locale, values] of Object.entries({
  en: ['No proposal awaiting confirmation', 'Upgrade to {target} now · {cost}', 'Confirm {target} construction · {cost}', '{resource}: need {cost} / have {stock} / short {gap}', 'This action spends resources and starts the applied upgrade or building plan; it does not open details. Unapplied edits remain as a draft; use Save Plan to apply them.'],
  ja: ['確認待ちの計画はありません', '今すぐ{target}に進化 · {cost}', '{target}の建設を確定 · {cost}', '{resource}：必要{cost}／所持{stock}／不足{gap}', 'このボタンは適用済みの計画で資源を消費し、進化や建設を開始します。詳細表示ではありません。未適用の編集は下書きとして保持されます。「計画を保存」で適用してください。']
 })) ['noProposal', 'confirmAgeAction', 'confirmBuildAction', 'proposalResource', 'confirmActionHelp'].forEach((key, i) => STRINGS[locale]['steward.' + key] = values[i]);
+
+for (const [locale, values] of Object.entries({
+ 'zh-Hant': ['來源目前無法定位', '「來源目前無法定位」表示受擊時曾確認來源，但現在無法安全追蹤；不代表知道其目前位置或存活狀態。'],
+ 'zh-Hans': ['来源目前无法定位', '“来源目前无法定位”表示受击时曾确认来源，但现在无法安全追踪；不代表知道其当前位置或存活状态。'],
+ en: ['Source no longer locatable', '“Source no longer locatable” means the source was confirmed at impact but cannot safely be tracked now. It does not disclose its current position or whether it is alive.'],
+ ja: ['発生源は現在追跡不可', '「発生源は現在追跡不可」は被弾時に確認できた発生源を、現在は安全に追跡できないことを示します。現在地や生死は示しません。']
+})) { STRINGS[locale]['coreDamage.sourceUnavailable'] = values[0]; STRINGS[locale]['coreDamage.help'] += ' ' + values[1]; }

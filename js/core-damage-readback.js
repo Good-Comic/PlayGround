@@ -17,9 +17,10 @@ export function observeCoreDamage(g) {
     let before = null;
     try {
       if (target?.alive && target.type === 'core' && target.team === 'player' && target === g.getTownCenter()) {
-        before = { hp: target.hp, world: g.world, wave: g.waveIndex, source: null, direction: null };
+        before = { hp: target.hp, world: g.world, wave: g.waveIndex, source: null, direction: null, knownAtImpact: false };
         if (known(g, source)) {
           before.source = source;
+          before.knownAtImpact = true;
           // A visible melee attacker's position at impact, not projectile origin.
           if (kind === 'melee') {
             const p = g.screenPos(source.x + (source.w || 0) / 2, source.y + (source.h || 0) / 2);
@@ -61,7 +62,7 @@ export function observeCoreDamage(g) {
       let name = null, sourceId = null;
       try { if (row.source) { sourceId = row.source.id; name = t((row.source.w ? 'building.' : 'unit.') + row.source.type + '.name'); } }
       catch { faults++; row.source = null; row.direction = null; sourceId = null; }
-      return { loss: row.loss, at: row.at, sourceId, name, direction: row.direction, token: row.token };
+      return { loss: row.loss, at: row.at, sourceState: row.source ? 'visible' : row.knownAtImpact ? 'unavailable' : 'unknown', sourceId, name, direction: row.direction, token: row.token };
     };
     const latest = expose(last);
     return { ...latest, peak: peak === last ? latest : expose(peak) };
@@ -120,7 +121,7 @@ function rowText(row, key) {
   const damage = displayLoss(row.loss);
   const clock = Math.floor(row.at / 60) + ':' + String(Math.floor(row.at % 60)).padStart(2, '0');
   const time = t('coreDamage.time', { time: clock });
-  const source = !row.name ? t('coreDamage.unknown') : row.name + (row.direction ? ' · ' + t('coreDamage.direction', { arrow: row.direction }) : '');
+  const source = !row.name ? t(row.sourceState === 'unavailable' ? 'coreDamage.sourceUnavailable' : 'coreDamage.unknown') : row.name + (row.direction ? ' · ' + t('coreDamage.direction', { arrow: row.direction }) : '');
   return t('coreDamage.' + key, { damage, source, time });
 }
 
