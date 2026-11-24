@@ -1208,7 +1208,11 @@ export class Game {
       u.state = 'hold';
       if (u.cooldown <= 0) {
         const near = u.stance === 'passive' ? null : this.acquireTarget(u, Math.max(1.5, this.unitRange(u) + 0.5));
-        if (near) this.attackUnit(u, near);
+        if (near) {
+          // Target preference preserves manual orders; it does not grant attack range.
+          const range = this.unitRange(u) + (near.w ? -0.1 : (near.typeDef.radius || 0.2));
+          if (this.distanceTo(u, near) <= range) this.attackUnit(u, near);
+        }
       }
     }
   }

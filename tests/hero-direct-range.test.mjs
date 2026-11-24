@@ -1,0 +1,8 @@
+import '../tools/qa/ram-pick-065e2912/node-dom-fixture.mjs';
+import test from 'node:test';import assert from 'node:assert/strict';
+import { Game } from '../js/game.js';import { CIVILIZATIONS } from '../js/data.js';
+function setup(civ='CHN',distance=4,manual=true){const g=new Game();g.newRun(42,{civ});const u=g.hero,e=g.spawnUnit('militia',u.x+distance,u.y,'enemy');g.units=[u,e];g.buildings=[];u.cooldown=0;u.stance='aggressive';if(manual){u.target=e;u.manualAttack=true;}return{g,u,e};}
+test('16文明直控均遵守既有單位攻擊距離，近身命中、遠方不命中且不浪費冷卻',()=>{for(const civ of CIVILIZATIONS)for(const manual of[true,false])for(const distance of[1.1,1.4,4]){const{g,u,e}=setup(civ.id,distance,manual);const hp=e.hp,reach=g.unitRange(u)+e.typeDef.radius;g.updateHeroDirect(u,1/60);if(distance<=reach)assert.ok(e.hp<hp,civ.id);else{assert.equal(e.hp,hp,civ.id);assert.equal(u.cooldown,0);}}});
+test('手動遠目標優先權保留，不自動改打附近敵人',()=>{const{g,u,e}=setup();const close=g.spawnUnit('militia',u.x+1,u.y,'enemy'),hp=close.hp;g.updateHeroDirect(u,1/60);assert.equal(u.target,e);assert.equal(u.manualAttack,true);assert.equal(close.hp,hp);});
+test('建築使用既有一般玩家攻擊距離，沒有另設直控加成',()=>{for(const distance of[.6,1]){const{g,u}=setup();g.units=[u];const b=g.addBuilding('house',u.x+distance,u.y,true);b.team='enemy';u.target=b;u.manualAttack=true;const hp=b.hp;g.updateHeroDirect(u,1/60);assert.equal(b.hp<hp,distance<=g.unitRange(u)-.1);}});
+test('未發現目標仍不可攻擊，原技能和戰鬥RNG不由距離檢查消耗',()=>{const{g,u,e}=setup('CHN',20);const hp=e.hp,rng=g.rng.state,visual=g.visualRng.state;assert.equal(g.isVisible(e),false);g.updateHeroDirect(u,1/60);assert.equal(e.hp,hp);assert.equal(g.rng.state,rng);assert.equal(g.visualRng.state,visual);});
