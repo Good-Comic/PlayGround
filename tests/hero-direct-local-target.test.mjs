@@ -1,0 +1,8 @@
+import '../tools/qa/ram-pick-065e2912/node-dom-fixture.mjs';
+import test from 'node:test';import assert from 'node:assert/strict';
+import { Game } from '../js/game.js';import { CIVILIZATIONS } from '../js/data.js';
+function setup(civ='CHN',manual=false){const g=new Game();g.newRun(42,{civ});const u=g.hero,near=g.spawnUnit('militia',u.x,u.y+1.1,'enemy'),far=g.spawnUnit('militia',u.x+1.4,u.y,'enemy');g.units=[u,near,far];g.buildings=[];u.cooldown=0;u.stance='aggressive';u.target=far;u.manualAttack=manual;return{g,u,near,far};}
+test('16文明直控不再黏住射程外自動目標，會命中身旁合法敵人',()=>{for(const civ of CIVILIZATIONS){const{g,u,near,far}=setup(civ.id);const hp=near.hp,farHp=far.hp;g.updateHeroDirect(u,1/60);assert.ok(near.hp<hp,civ.id);assert.equal(far.hp,farHp);assert.equal(u.target,near);}});
+test('人工指定遠目標仍優先，附近敵人不會取代玩家命令',()=>{const{g,u,near,far}=setup('CHN',true),hp=near.hp,farHp=far.hp;g.updateHeroDirect(u,1/60);assert.equal(near.hp,hp);assert.equal(far.hp,farHp);assert.equal(u.target,far);assert.equal(u.cooldown,0);});
+test('一般索敵不受新篩選影響，篩選本身不消耗RNG或改候選狀態',()=>{const{g,u,near,far}=setup();const snapshot=JSON.stringify([near,far]),rng=g.rng.state,visual=g.visualRng.state;assert.equal(g.acquireTarget(u,1.5),far);assert.equal(g.acquireTarget(u,1.5,(target,d)=>d<=1.16),near);assert.equal(JSON.stringify([near,far]),snapshot);assert.equal(g.rng.state,rng);assert.equal(g.visualRng.state,visual);});
+test('沒有合法目標及被動姿態不攻擊，手動目標不被自動篩選丟棄',()=>{const{g,u,near,far}=setup();near.alive=false;g.updateHeroDirect(u,1/60);assert.equal(u.cooldown,0);near.alive=true;u.stance='passive';const hp=near.hp;g.updateHeroDirect(u,1/60);assert.equal(near.hp,hp);u.stance='aggressive';u.manualAttack=true;assert.equal(g.acquireTarget(u,1.5,()=>false),far);});

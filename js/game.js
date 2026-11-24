@@ -1207,12 +1207,11 @@ export class Game {
     } else {
       u.state = 'hold';
       if (u.cooldown <= 0) {
-        const near = u.stance === 'passive' ? null : this.acquireTarget(u, Math.max(1.5, this.unitRange(u) + 0.5));
-        if (near) {
-          // Target preference preserves manual orders; it does not grant attack range.
-          const range = this.unitRange(u) + (near.w ? -0.1 : (near.typeDef.radius || 0.2));
-          if (this.distanceTo(u, near) <= range) this.attackUnit(u, near);
-        }
+        const inRange = (target, distance = this.distanceTo(u, target)) =>
+          distance <= this.unitRange(u) + (target.w ? -0.1 : (target.typeDef.radius || 0.2));
+        const near = u.stance === 'passive' ? null : this.acquireTarget(u, Math.max(1.5, this.unitRange(u) + 0.5), inRange);
+        // Explicit manual targets retain priority, but still require attack range.
+        if (near && inRange(near)) this.attackUnit(u, near);
       }
     }
   }
@@ -1447,10 +1446,10 @@ export class Game {
   canSee(observer, target) { return canSee(this, observer, target); }
   sightRadius(entity) { return sightRadius(this, entity); }
 
-  acquireTarget(u, radius = (u.typeDef.sight || 6)*.72) {
+  acquireTarget(u, radius = (u.typeDef.sight || 6)*.72, eligible = null) {
     if (u.stance === 'passive' || u.type === 'villager' || u.typeDef?.noAttack) return null;
     const candidates = this.crowd ? this.crowd.nearby(u, Math.ceil(radius/2)+1) : this.units;
-    return scoredTarget(this,u,[...candidates,...this.buildings],radius);
+    return scoredTarget(this,u,[...candidates,...this.buildings],radius,eligible);
   }
 
   updatePlayerUnit(u, dt) {

@@ -1,10 +1,11 @@
 // Shared, deterministic target preference. Damage/cooldown/range remain in Game.
-export function scoredTarget(g,u,candidates,radius) {
+export function scoredTarget(g,u,candidates,radius,eligible=null) {
   if(u.manualAttack&&u.target?.alive&&g.canSee(u,u.target))return u.target;
   let best=null,bestScore=-Infinity;
   for(const e of candidates){
     if(!e.alive||e.team===u.team||!['player','enemy'].includes(e.team)||!g.canSee(u,e)||(u.blockedTargets?.[e.id]||0)>g.time)continue;
     const d=g.distanceTo(u,e);if(d>=radius)continue;
+    if(eligible && !eligible(e,d))continue;
     if(u.stance==='defensive'&&u.guardOrigin&&g.distanceTo(u.guardOrigin,e)>8)continue;
     // Existing navigation failures exclude inaccessible opponents; never issue A* for every candidate.
     const rawCounter=g.counterMultiplier(u,e);
