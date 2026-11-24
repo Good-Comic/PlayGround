@@ -1,0 +1,104 @@
+✖ 16文明直控不再黏住射程外自動目標，會命中身旁合法敵人 (57.710928ms)
+✔ 人工指定遠目標仍優先，附近敵人不會取代玩家命令 (29.333974ms)
+✖ 一般索敵不受新篩選影響，篩選本身不消耗RNG或改候選狀態 (13.190257ms)
+✔ 沒有合法目標及被動姿態不攻擊，手動目標不被自動篩選丟棄 (8.344711ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 127.555783
+
+✖ failing tests:
+
+test at tests/hero-direct-local-target.test.mjs:5:1
+✖ 16文明直控不再黏住射程外自動目標，會命中身旁合法敵人 (57.710928ms)
+  AssertionError [ERR_ASSERTION]: MNG
+      at TestContext.<anonymous> (file:///workspace/riftwatch-hero-local-target-4c28b7d1/worktree/tests/hero-direct-local-target.test.mjs:5:171)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/hero-direct-local-target.test.mjs:7:1
+✖ 一般索敵不受新篩選影響，篩選本身不消耗RNG或改候選狀態 (13.190257ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be reference-equal to "expected":
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      aegisCd: 0,
+      alive: true,
+      armor: 10,
+      attack: 8,
+  ...
+      convertResist: false,
+  +   cooldown: 0.04078065939247608,
+  -   cooldown: 0.3851720249280334,
+      deathAnim: 0,
+      duel: false,
+      eventAttackSpeedMul: 1,
+      eventFireCd: 0,
+      eventFlags: [],
+  ...
+      guardOrigin: {
+  +     x: 26.799999999999997,
+  +     y: 23.3
+  -     x: 25.4,
+  -     y: 24.400000000000002
+      },
+      hero: false,
+      hitFlash: 0,
+      hold: false,
+      hp: 60,
+  +   id: 21,
+  +   idleTimer: 0.8997230397071689,
+  -   id: 20,
+  -   idleTimer: 0.3875502021983266,
+      kind: 'unit',
+      manualAttack: false,
+      markCd: 0,
+      marked: 0,
+      maxHp: 60,
+  ...
+      rescueUsed: false,
+  +   retargetTimer: 0.2618013255298138,
+  -   retargetTimer: 0.2513521034270525,
+      selected: false,
+      shield: 0,
+      shieldTime: 0,
+      shots: 0,
+      slowUntil: 0,
+  ...
+      visualDirection: 'SE',
+  +   walkPhase: 5.528120238184929,
+  +   x: 26.799999999999997,
+  +   y: 23.3
+  -   walkPhase: 0.07589233523234726,
+  -   x: 25.4,
+  -   y: 24.400000000000002
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-hero-local-target-4c28b7d1/worktree/tests/hero-direct-local-target.test.mjs:7:201)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
