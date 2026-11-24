@@ -1,0 +1,54 @@
+✖ 16文明直控均遵守既有單位攻擊距離，近身命中、遠方不命中且不浪費冷卻 (71.851345ms)
+✔ 手動遠目標優先權保留，不自動改打附近敵人 (9.366087ms)
+✖ 建築使用既有一般玩家攻擊距離，沒有另設直控加成 (20.074371ms)
+✔ 未發現目標仍不可攻擊，原技能和戰鬥RNG不由距離檢查消耗 (6.979625ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 123.612756
+
+✖ failing tests:
+
+test at tests/hero-direct-range.test.mjs:5:1
+✖ 16文明直控均遵守既有單位攻擊距離，近身命中、遠方不命中且不浪費冷卻 (71.851345ms)
+  AssertionError [ERR_ASSERTION]: MNG
+  
+  48 !== 60
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-hero-range-fix-9b42d7a1/worktree/tests/hero-direct-range.test.mjs:5:324)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 48,
+    expected: 60,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/hero-direct-range.test.mjs:7:1
+✖ 建築使用既有一般玩家攻擊距離，沒有另設直控加成 (20.074371ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-hero-range-fix-9b42d7a1/worktree/tests/hero-direct-range.test.mjs:7:244)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
