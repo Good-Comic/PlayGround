@@ -369,6 +369,7 @@ export class Renderer {
     this.drawParticles(game, time);
     this.drawBuildGhost(game, time);
     this.drawAtmosphere(game, time);
+    this.drawBossWarnings(game);
     this.drawVisibility(game);
     drawRescue(ctx,game,(x,y)=>this.screen(game,x,y));
     drawWorkshop(ctx,game,(x,y)=>this.screen(game,x,y));
@@ -615,7 +616,18 @@ export class Renderer {
       ctx.beginPath();
       ctx.ellipse(p.x, p.y, rx * progress, ry * progress, 0, 0, Math.PI * 2);
       ctx.stroke();
-      if (strike) this.drawBossStrike(zone, strike, p, z);
+      ctx.restore();
+    }
+  }
+
+  drawBossWarnings(game) {
+    const ctx = this.ctx, z = game.camera.zoom;
+    for (const zone of game.zones) {
+      const visual = bossStrikeVisual(zone);
+      if (!visual) continue;
+      ctx.save();
+      ctx.setLineDash([]);
+      this.drawBossStrike(zone, visual, this.screen(game, zone.x, zone.y), z);
       ctx.restore();
     }
   }
