@@ -1,0 +1,4809 @@
+{
+  "scope": "受控100/200初始存活單位，正式地圖與完整遊戲update；原生F2選兵及HUD堅守，3秒暖機+10秒量測ABBA。不是自然戰役、長測、Windows實體GPU或真人趣味驗收。",
+  "decomposition": "方法時間包含子呼叫，不可加總。渲染含迷霧；移動包含路徑與部分碰撞。計時器與取樣陣列成本未校準，各組一致。",
+  "rows": [
+    {
+      "n": 100,
+      "runId": "A1",
+      "mode": "before",
+      "runStart": "2026-11-25T11:49:06.128Z",
+      "cpuBefore": {
+        "usage_usec": 4342175717,
+        "user_usec": 3097812656,
+        "system_usec": 1244363061,
+        "nice_usec": 0,
+        "nr_periods": 515161,
+        "nr_throttled": 488,
+        "throttled_usec": 29408831,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 4371017833,
+        "user_usec": 3123702911,
+        "system_usec": 1247314922,
+        "nice_usec": 0,
+        "nr_periods": 515348,
+        "nr_throttled": 490,
+        "throttled_usec": 29448985,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 28842116,
+        "user_usec": 25890255,
+        "system_usec": 2951861,
+        "nice_usec": 0,
+        "nr_periods": 187,
+        "nr_throttled": 2,
+        "throttled_usec": 40154,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e07cab7daebe7c6fe3316f4d4bdfb6f2c0c08a47",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "holdFixture": [
+        {
+          "id": 15
+        },
+        {
+          "id": 16
+        },
+        {
+          "id": 17
+        },
+        {
+          "id": 18
+        },
+        {
+          "id": 20
+        },
+        {
+          "id": 21
+        },
+        {
+          "id": 22
+        },
+        {
+          "id": 24
+        },
+        {
+          "id": 25
+        },
+        {
+          "id": 27
+        },
+        {
+          "id": 28
+        },
+        {
+          "id": 29
+        },
+        {
+          "id": 31
+        },
+        {
+          "id": 32
+        },
+        {
+          "id": 33
+        },
+        {
+          "id": 35
+        },
+        {
+          "id": 36
+        },
+        {
+          "id": 38
+        },
+        {
+          "id": 39
+        },
+        {
+          "id": 40
+        },
+        {
+          "id": 42
+        },
+        {
+          "id": 43
+        },
+        {
+          "id": 44
+        },
+        {
+          "id": 46
+        },
+        {
+          "id": 47
+        },
+        {
+          "id": 49
+        },
+        {
+          "id": 50
+        },
+        {
+          "id": 51
+        },
+        {
+          "id": 53
+        },
+        {
+          "id": 54
+        },
+        {
+          "id": 55
+        },
+        {
+          "id": 57
+        },
+        {
+          "id": 58
+        },
+        {
+          "id": 60
+        },
+        {
+          "id": 62
+        },
+        {
+          "id": 63
+        },
+        {
+          "id": 64
+        },
+        {
+          "id": 66
+        },
+        {
+          "id": 68
+        },
+        {
+          "id": 69
+        },
+        {
+          "id": 70
+        },
+        {
+          "id": 72
+        },
+        {
+          "id": 73
+        },
+        {
+          "id": 74
+        },
+        {
+          "id": 76
+        },
+        {
+          "id": 77
+        },
+        {
+          "id": 79
+        },
+        {
+          "id": 80
+        },
+        {
+          "id": 81
+        },
+        {
+          "id": 83
+        },
+        {
+          "id": 84
+        },
+        {
+          "id": 85
+        },
+        {
+          "id": 87
+        },
+        {
+          "id": 88
+        },
+        {
+          "id": 89
+        },
+        {
+          "id": 91
+        },
+        {
+          "id": 92
+        },
+        {
+          "id": 93
+        },
+        {
+          "id": 95
+        },
+        {
+          "id": 96
+        },
+        {
+          "id": 97
+        },
+        {
+          "id": 99
+        },
+        {
+          "id": 100
+        },
+        {
+          "id": 101
+        },
+        {
+          "id": 103
+        },
+        {
+          "id": 104
+        },
+        {
+          "id": 105
+        }
+      ],
+      "command": {
+        "selected": 67,
+        "accepted": true
+      },
+      "sceneSha256": "5467e217317ecb648ff72cf0d0dca5d2e12a5788d4c0368b12f86cb1766b2a5f",
+      "pathBudgetWaits": 12,
+      "terrainCache": {
+        "calls": 218,
+        "rebuilds": 0
+      },
+      "timeline": [
+        {
+          "wallMs": 61.50000000596083,
+          "sim": 2.1833000000000005,
+          "alive": 90,
+          "heap": 16026167,
+          "phase": "wave",
+          "selected": 66,
+          "recorded": 0,
+          "stationaryAttackers": 50,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1061.5000000059608,
+          "sim": 2.949899999999998,
+          "alive": 86,
+          "heap": 16599719,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 0,
+          "stationaryAttackers": 44,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2111.4000000059605,
+          "sim": 3.949899999999994,
+          "alive": 83,
+          "heap": 18258402,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 0,
+          "stationaryAttackers": 39,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3111.4000000059605,
+          "sim": 4.882999999999991,
+          "alive": 82,
+          "heap": 12511819,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 0,
+          "stationaryAttackers": 39,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4128.000000005961,
+          "sim": 5.816299999999987,
+          "alive": 79,
+          "heap": 17580557,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 33,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5161.30000000596,
+          "sim": 6.8325999999999825,
+          "alive": 77,
+          "heap": 18571935,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 32,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6177.9000000059605,
+          "sim": 7.76569999999998,
+          "alive": 77,
+          "heap": 19386728,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 32,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7177.9000000059605,
+          "sim": 8.699099999999984,
+          "alive": 77,
+          "heap": 18140591,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 28,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8211.20000000596,
+          "sim": 9.71559999999998,
+          "alive": 75,
+          "heap": 13796372,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 24,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9227.80000000596,
+          "sim": 10.665199999999992,
+          "alive": 81,
+          "heap": 17249922,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 0,
+          "stationaryAttackers": 24,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10067.90000000596,
+      "heapStart": 13858720,
+      "heapEnd": 21704652,
+      "aliveStart": 90,
+      "aliveEnd": 80,
+      "simStart": 2.083300000000001,
+      "simEnd": 11.465100000000001,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 42044,
+          "totalMs": 249.6000000834465,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "dynamicCollision": {
+          "calls": 1533,
+          "totalMs": 88.79999980330467,
+          "p50Ms": 0,
+          "p95Ms": 0.19999998807907104
+        },
+        "pathAndMovementInclusive": {
+          "calls": 1609,
+          "totalMs": 484.8999998867512,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.29999998211860657
+        },
+        "target": {
+          "calls": 8080,
+          "totalMs": 52.999999940395355,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 218,
+          "totalMs": 363.5999999642372,
+          "p50Ms": 0,
+          "p95Ms": 3
+        },
+        "terrain": {
+          "calls": 218,
+          "totalMs": 7.699999809265137,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "propDraw": {
+          "calls": 16132,
+          "totalMs": 63.20000034570694,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "resourceDraw": {
+          "calls": 17440,
+          "totalMs": 230.39999961853027,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "unitDraw": {
+          "calls": 17430,
+          "totalMs": 1209.9999992251396,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.19999998807907104
+        },
+        "buildingDraw": {
+          "calls": 1308,
+          "totalMs": 98.20000061392784,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "fog": {
+          "calls": 218,
+          "totalMs": 1859.000000089407,
+          "p50Ms": 11.699999988079071,
+          "p95Ms": 14.399999976158142
+        },
+        "renderInclusive": {
+          "calls": 218,
+          "totalMs": 3764.899999797344,
+          "p50Ms": 19.099999994039536,
+          "p95Ms": 26.5
+        },
+        "DOM": {
+          "calls": 218,
+          "totalMs": 421.7000000476837,
+          "p50Ms": 0.699999988079071,
+          "p95Ms": 4.300000011920929
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 15,
+        "totalDirectRoutes": 63,
+        "totalSearches": 49
+      },
+      "fps": 21.553650711655013,
+      "samples": 217,
+      "p50Ms": 50,
+      "p95Ms": 66.70000000000073
+    },
+    {
+      "n": 100,
+      "runId": "B1",
+      "mode": "after",
+      "runStart": "2026-11-25T11:49:24.815Z",
+      "cpuBefore": {
+        "usage_usec": 4371089236,
+        "user_usec": 3123748852,
+        "system_usec": 1247340383,
+        "nice_usec": 0,
+        "nr_periods": 515348,
+        "nr_throttled": 490,
+        "throttled_usec": 29448985,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 4399638287,
+        "user_usec": 3149467711,
+        "system_usec": 1250170575,
+        "nice_usec": 0,
+        "nr_periods": 515534,
+        "nr_throttled": 492,
+        "throttled_usec": 29456874,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 28549051,
+        "user_usec": 25718859,
+        "system_usec": 2830192,
+        "nice_usec": 0,
+        "nr_periods": 186,
+        "nr_throttled": 2,
+        "throttled_usec": 7889,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "c7bb2b7b20a570281de37ed1f5209b8dc3b23fed",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "holdFixture": [
+        {
+          "id": 15
+        },
+        {
+          "id": 16
+        },
+        {
+          "id": 17
+        },
+        {
+          "id": 18
+        },
+        {
+          "id": 20
+        },
+        {
+          "id": 21
+        },
+        {
+          "id": 22
+        },
+        {
+          "id": 24
+        },
+        {
+          "id": 25
+        },
+        {
+          "id": 27
+        },
+        {
+          "id": 28
+        },
+        {
+          "id": 29
+        },
+        {
+          "id": 31
+        },
+        {
+          "id": 32
+        },
+        {
+          "id": 33
+        },
+        {
+          "id": 35
+        },
+        {
+          "id": 36
+        },
+        {
+          "id": 38
+        },
+        {
+          "id": 39
+        },
+        {
+          "id": 40
+        },
+        {
+          "id": 42
+        },
+        {
+          "id": 43
+        },
+        {
+          "id": 44
+        },
+        {
+          "id": 46
+        },
+        {
+          "id": 47
+        },
+        {
+          "id": 49
+        },
+        {
+          "id": 50
+        },
+        {
+          "id": 51
+        },
+        {
+          "id": 53
+        },
+        {
+          "id": 54
+        },
+        {
+          "id": 55
+        },
+        {
+          "id": 57
+        },
+        {
+          "id": 58
+        },
+        {
+          "id": 60
+        },
+        {
+          "id": 62
+        },
+        {
+          "id": 63
+        },
+        {
+          "id": 64
+        },
+        {
+          "id": 66
+        },
+        {
+          "id": 68
+        },
+        {
+          "id": 69
+        },
+        {
+          "id": 70
+        },
+        {
+          "id": 72
+        },
+        {
+          "id": 73
+        },
+        {
+          "id": 74
+        },
+        {
+          "id": 76
+        },
+        {
+          "id": 77
+        },
+        {
+          "id": 79
+        },
+        {
+          "id": 80
+        },
+        {
+          "id": 81
+        },
+        {
+          "id": 83
+        },
+        {
+          "id": 84
+        },
+        {
+          "id": 85
+        },
+        {
+          "id": 87
+        },
+        {
+          "id": 88
+        },
+        {
+          "id": 89
+        },
+        {
+          "id": 91
+        },
+        {
+          "id": 92
+        },
+        {
+          "id": 93
+        },
+        {
+          "id": 95
+        },
+        {
+          "id": 96
+        },
+        {
+          "id": 97
+        },
+        {
+          "id": 99
+        },
+        {
+          "id": 100
+        },
+        {
+          "id": 101
+        },
+        {
+          "id": 103
+        },
+        {
+          "id": 104
+        },
+        {
+          "id": 105
+        }
+      ],
+      "command": {
+        "selected": 67,
+        "accepted": true
+      },
+      "sceneSha256": "5467e217317ecb648ff72cf0d0dca5d2e12a5788d4c0368b12f86cb1766b2a5f",
+      "pathBudgetWaits": 19,
+      "terrainCache": {
+        "calls": 223,
+        "rebuilds": 0
+      },
+      "timeline": [
+        {
+          "wallMs": 54.10000001788103,
+          "sim": 2.2332000000000005,
+          "alive": 90,
+          "heap": 14693088,
+          "phase": "wave",
+          "selected": 66,
+          "recorded": 0,
+          "stationaryAttackers": 55,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1070.8000000178818,
+          "sim": 2.9662999999999977,
+          "alive": 85,
+          "heap": 13775311,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 0,
+          "stationaryAttackers": 47,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2087.400000017882,
+          "sim": 3.816099999999996,
+          "alive": 82,
+          "heap": 18422154,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 0,
+          "stationaryAttackers": 40,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3104.0000000178807,
+          "sim": 4.799199999999996,
+          "alive": 79,
+          "heap": 20176160,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 0,
+          "stationaryAttackers": 33,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4137.300000017882,
+          "sim": 5.815699999999997,
+          "alive": 76,
+          "heap": 17046174,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 26,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5137.300000017882,
+          "sim": 6.749099999999993,
+          "alive": 75,
+          "heap": 21562529,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 28,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6137.300000017882,
+          "sim": 7.682299999999995,
+          "alive": 75,
+          "heap": 17364504,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 28,
+          "avoidanceActive": 5,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7153.900000017882,
+          "sim": 8.698799999999999,
+          "alive": 75,
+          "heap": 10660034,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 24,
+          "avoidanceActive": 5,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8203.800000017882,
+          "sim": 9.7487,
+          "alive": 73,
+          "heap": 19076342,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 22,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9220.400000017882,
+          "sim": 10.714800000000006,
+          "alive": 81,
+          "heap": 16781083,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 23,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10044.800000011921,
+      "heapStart": 12986722,
+      "heapEnd": 17693388,
+      "aliveStart": 90,
+      "aliveEnd": 80,
+      "simStart": 2.133200000000001,
+      "simEnd": 11.497700000000018,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 33131,
+          "totalMs": 252.80000057816505,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "dynamicCollision": {
+          "calls": 1587,
+          "totalMs": 106.99999985098839,
+          "p50Ms": 0,
+          "p95Ms": 0.20000001788139343
+        },
+        "pathAndMovementInclusive": {
+          "calls": 1637,
+          "totalMs": 487.29999953508377,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.30000001192092896
+        },
+        "target": {
+          "calls": 8325,
+          "totalMs": 57.80000016093254,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 223,
+          "totalMs": 334.1000000536442,
+          "p50Ms": 0,
+          "p95Ms": 4
+        },
+        "terrain": {
+          "calls": 223,
+          "totalMs": 9.399999916553497,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "propDraw": {
+          "calls": 16502,
+          "totalMs": 65.39999988675117,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "resourceDraw": {
+          "calls": 17840,
+          "totalMs": 234.70000004768372,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "unitDraw": {
+          "calls": 17457,
+          "totalMs": 1284.9000010490417,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "buildingDraw": {
+          "calls": 1338,
+          "totalMs": 97.99999961256981,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.19999998807907104
+        },
+        "fog": {
+          "calls": 223,
+          "totalMs": 1644.8999999463558,
+          "p50Ms": 11.599999994039536,
+          "p95Ms": 14.599999994039536
+        },
+        "renderInclusive": {
+          "calls": 223,
+          "totalMs": 3662.199999898672,
+          "p50Ms": 18.599999994039536,
+          "p95Ms": 27.5
+        },
+        "DOM": {
+          "calls": 223,
+          "totalMs": 423.29999989271164,
+          "p50Ms": 0.6000000238418579,
+          "p95Ms": 4.300000011920929
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 16,
+        "totalDirectRoutes": 61,
+        "totalSearches": 48
+      },
+      "fps": 22.100987575634807,
+      "samples": 222,
+      "p50Ms": 49.900000000001455,
+      "p95Ms": 66.69999999999982
+    },
+    {
+      "n": 100,
+      "runId": "B2",
+      "mode": "after",
+      "runStart": "2026-11-25T11:49:43.440Z",
+      "cpuBefore": {
+        "usage_usec": 4399686350,
+        "user_usec": 3149500235,
+        "system_usec": 1250186114,
+        "nice_usec": 0,
+        "nr_periods": 515534,
+        "nr_throttled": 492,
+        "throttled_usec": 29456874,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 4430951463,
+        "user_usec": 3177524669,
+        "system_usec": 1253426794,
+        "nice_usec": 0,
+        "nr_periods": 515718,
+        "nr_throttled": 494,
+        "throttled_usec": 29458219,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 31265113,
+        "user_usec": 28024434,
+        "system_usec": 3240680,
+        "nice_usec": 0,
+        "nr_periods": 184,
+        "nr_throttled": 2,
+        "throttled_usec": 1345,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "c7bb2b7b20a570281de37ed1f5209b8dc3b23fed",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "holdFixture": [
+        {
+          "id": 15
+        },
+        {
+          "id": 16
+        },
+        {
+          "id": 17
+        },
+        {
+          "id": 18
+        },
+        {
+          "id": 20
+        },
+        {
+          "id": 21
+        },
+        {
+          "id": 22
+        },
+        {
+          "id": 24
+        },
+        {
+          "id": 25
+        },
+        {
+          "id": 27
+        },
+        {
+          "id": 28
+        },
+        {
+          "id": 29
+        },
+        {
+          "id": 31
+        },
+        {
+          "id": 32
+        },
+        {
+          "id": 33
+        },
+        {
+          "id": 35
+        },
+        {
+          "id": 36
+        },
+        {
+          "id": 38
+        },
+        {
+          "id": 39
+        },
+        {
+          "id": 40
+        },
+        {
+          "id": 42
+        },
+        {
+          "id": 43
+        },
+        {
+          "id": 44
+        },
+        {
+          "id": 46
+        },
+        {
+          "id": 47
+        },
+        {
+          "id": 49
+        },
+        {
+          "id": 50
+        },
+        {
+          "id": 51
+        },
+        {
+          "id": 53
+        },
+        {
+          "id": 54
+        },
+        {
+          "id": 55
+        },
+        {
+          "id": 57
+        },
+        {
+          "id": 58
+        },
+        {
+          "id": 60
+        },
+        {
+          "id": 62
+        },
+        {
+          "id": 63
+        },
+        {
+          "id": 64
+        },
+        {
+          "id": 66
+        },
+        {
+          "id": 68
+        },
+        {
+          "id": 69
+        },
+        {
+          "id": 70
+        },
+        {
+          "id": 72
+        },
+        {
+          "id": 73
+        },
+        {
+          "id": 74
+        },
+        {
+          "id": 76
+        },
+        {
+          "id": 77
+        },
+        {
+          "id": 79
+        },
+        {
+          "id": 80
+        },
+        {
+          "id": 81
+        },
+        {
+          "id": 83
+        },
+        {
+          "id": 84
+        },
+        {
+          "id": 85
+        },
+        {
+          "id": 87
+        },
+        {
+          "id": 88
+        },
+        {
+          "id": 89
+        },
+        {
+          "id": 91
+        },
+        {
+          "id": 92
+        },
+        {
+          "id": 93
+        },
+        {
+          "id": 95
+        },
+        {
+          "id": 96
+        },
+        {
+          "id": 97
+        },
+        {
+          "id": 99
+        },
+        {
+          "id": 100
+        },
+        {
+          "id": 101
+        },
+        {
+          "id": 103
+        },
+        {
+          "id": 104
+        },
+        {
+          "id": 105
+        }
+      ],
+      "command": {
+        "selected": 67,
+        "accepted": true
+      },
+      "sceneSha256": "5467e217317ecb648ff72cf0d0dca5d2e12a5788d4c0368b12f86cb1766b2a5f",
+      "pathBudgetWaits": 16,
+      "terrainCache": {
+        "calls": 188,
+        "rebuilds": 0
+      },
+      "timeline": [
+        {
+          "wallMs": 47.69999998807907,
+          "sim": 2.183300000000002,
+          "alive": 90,
+          "heap": 14567133,
+          "phase": "wave",
+          "selected": 66,
+          "recorded": 0,
+          "stationaryAttackers": 55,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1080.899999988079,
+          "sim": 2.883199999999999,
+          "alive": 85,
+          "heap": 17962113,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 0,
+          "stationaryAttackers": 47,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2114.199999988079,
+          "sim": 3.882899999999996,
+          "alive": 82,
+          "heap": 16294170,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 0,
+          "stationaryAttackers": 41,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3164.199999988079,
+          "sim": 4.782799999999997,
+          "alive": 79,
+          "heap": 22265256,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 0,
+          "stationaryAttackers": 33,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4197.499999988078,
+          "sim": 5.765799999999997,
+          "alive": 76,
+          "heap": 21564197,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 26,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5214.099999988079,
+          "sim": 6.682399999999993,
+          "alive": 75,
+          "heap": 19527937,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 27,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6230.799999988079,
+          "sim": 7.5488999999999935,
+          "alive": 75,
+          "heap": 14966023,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 26,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7280.699999988079,
+          "sim": 8.531899999999997,
+          "alive": 75,
+          "heap": 14667043,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 27,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8280.699999988079,
+          "sim": 9.481800000000007,
+          "alive": 74,
+          "heap": 19367015,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 23,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9297.29999998808,
+          "sim": 10.331700000000017,
+          "alive": 82,
+          "heap": 19330356,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 25,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10082.800000011921,
+      "heapStart": 12556842,
+      "heapEnd": 13889017,
+      "aliveStart": 90,
+      "aliveEnd": 82,
+      "simStart": 2.083300000000002,
+      "simEnd": 10.898400000000025,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 30189,
+          "totalMs": 235.89999946951866,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "dynamicCollision": {
+          "calls": 1172,
+          "totalMs": 87.09999990463257,
+          "p50Ms": 0,
+          "p95Ms": 0.20000001788139343
+        },
+        "pathAndMovementInclusive": {
+          "calls": 1209,
+          "totalMs": 461.1999997496605,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.4000000059604645
+        },
+        "target": {
+          "calls": 6946,
+          "totalMs": 61.30000004172325,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 188,
+          "totalMs": 330.9999999701977,
+          "p50Ms": 0,
+          "p95Ms": 4.100000023841858
+        },
+        "terrain": {
+          "calls": 188,
+          "totalMs": 8.699999928474426,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "propDraw": {
+          "calls": 13912,
+          "totalMs": 63.500000327825546,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "resourceDraw": {
+          "calls": 15040,
+          "totalMs": 212.09999948740005,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "unitDraw": {
+          "calls": 14858,
+          "totalMs": 1219.200000166893,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "buildingDraw": {
+          "calls": 1128,
+          "totalMs": 91.19999960064888,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "fog": {
+          "calls": 188,
+          "totalMs": 2192.800000011921,
+          "p50Ms": 12.599999994039536,
+          "p95Ms": 19.30000001192093
+        },
+        "renderInclusive": {
+          "calls": 188,
+          "totalMs": 4084.3999998271465,
+          "p50Ms": 21.599999994039536,
+          "p95Ms": 37.19999998807907
+        },
+        "DOM": {
+          "calls": 188,
+          "totalMs": 519.0999998450279,
+          "p50Ms": 2.4000000059604645,
+          "p95Ms": 6.199999988079071
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 14,
+        "totalDirectRoutes": 52,
+        "totalSearches": 36
+      },
+      "fps": 18.54643551392261,
+      "samples": 187,
+      "p50Ms": 50,
+      "p95Ms": 83.29999999999927
+    },
+    {
+      "n": 100,
+      "runId": "A2",
+      "mode": "before",
+      "runStart": "2026-11-25T11:50:01.822Z",
+      "cpuBefore": {
+        "usage_usec": 4431007732,
+        "user_usec": 3177564708,
+        "system_usec": 1253443024,
+        "nice_usec": 0,
+        "nr_periods": 515718,
+        "nr_throttled": 494,
+        "throttled_usec": 29458219,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 4460070641,
+        "user_usec": 3203640207,
+        "system_usec": 1256430434,
+        "nice_usec": 0,
+        "nr_periods": 515901,
+        "nr_throttled": 495,
+        "throttled_usec": 29494130,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 29062909,
+        "user_usec": 26075499,
+        "system_usec": 2987410,
+        "nice_usec": 0,
+        "nr_periods": 183,
+        "nr_throttled": 1,
+        "throttled_usec": 35911,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e07cab7daebe7c6fe3316f4d4bdfb6f2c0c08a47",
+      "resources": 168,
+      "alive": 100,
+      "rng": 1085101475,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "holdFixture": [
+        {
+          "id": 15
+        },
+        {
+          "id": 16
+        },
+        {
+          "id": 17
+        },
+        {
+          "id": 18
+        },
+        {
+          "id": 20
+        },
+        {
+          "id": 21
+        },
+        {
+          "id": 22
+        },
+        {
+          "id": 24
+        },
+        {
+          "id": 25
+        },
+        {
+          "id": 27
+        },
+        {
+          "id": 28
+        },
+        {
+          "id": 29
+        },
+        {
+          "id": 31
+        },
+        {
+          "id": 32
+        },
+        {
+          "id": 33
+        },
+        {
+          "id": 35
+        },
+        {
+          "id": 36
+        },
+        {
+          "id": 38
+        },
+        {
+          "id": 39
+        },
+        {
+          "id": 40
+        },
+        {
+          "id": 42
+        },
+        {
+          "id": 43
+        },
+        {
+          "id": 44
+        },
+        {
+          "id": 46
+        },
+        {
+          "id": 47
+        },
+        {
+          "id": 49
+        },
+        {
+          "id": 50
+        },
+        {
+          "id": 51
+        },
+        {
+          "id": 53
+        },
+        {
+          "id": 54
+        },
+        {
+          "id": 55
+        },
+        {
+          "id": 57
+        },
+        {
+          "id": 58
+        },
+        {
+          "id": 60
+        },
+        {
+          "id": 62
+        },
+        {
+          "id": 63
+        },
+        {
+          "id": 64
+        },
+        {
+          "id": 66
+        },
+        {
+          "id": 68
+        },
+        {
+          "id": 69
+        },
+        {
+          "id": 70
+        },
+        {
+          "id": 72
+        },
+        {
+          "id": 73
+        },
+        {
+          "id": 74
+        },
+        {
+          "id": 76
+        },
+        {
+          "id": 77
+        },
+        {
+          "id": 79
+        },
+        {
+          "id": 80
+        },
+        {
+          "id": 81
+        },
+        {
+          "id": 83
+        },
+        {
+          "id": 84
+        },
+        {
+          "id": 85
+        },
+        {
+          "id": 87
+        },
+        {
+          "id": 88
+        },
+        {
+          "id": 89
+        },
+        {
+          "id": 91
+        },
+        {
+          "id": 92
+        },
+        {
+          "id": 93
+        },
+        {
+          "id": 95
+        },
+        {
+          "id": 96
+        },
+        {
+          "id": 97
+        },
+        {
+          "id": 99
+        },
+        {
+          "id": 100
+        },
+        {
+          "id": 101
+        },
+        {
+          "id": 103
+        },
+        {
+          "id": 104
+        },
+        {
+          "id": 105
+        }
+      ],
+      "command": {
+        "selected": 67,
+        "accepted": true
+      },
+      "sceneSha256": "5467e217317ecb648ff72cf0d0dca5d2e12a5788d4c0368b12f86cb1766b2a5f",
+      "pathBudgetWaits": 16,
+      "terrainCache": {
+        "calls": 212,
+        "rebuilds": 0
+      },
+      "timeline": [
+        {
+          "wallMs": 45.999999976158506,
+          "sim": 2.000000000000001,
+          "alive": 90,
+          "heap": 14543668,
+          "phase": "wave",
+          "selected": 66,
+          "recorded": 0,
+          "stationaryAttackers": 50,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1079.3999999761581,
+          "sim": 2.849699999999998,
+          "alive": 86,
+          "heap": 14406164,
+          "phase": "wave",
+          "selected": 63,
+          "recorded": 0,
+          "stationaryAttackers": 44,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2129.299999976158,
+          "sim": 3.7328999999999954,
+          "alive": 83,
+          "heap": 14559932,
+          "phase": "wave",
+          "selected": 62,
+          "recorded": 0,
+          "stationaryAttackers": 39,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3145.899999976158,
+          "sim": 4.616099999999994,
+          "alive": 82,
+          "heap": 17943740,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 0,
+          "stationaryAttackers": 39,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4162.4999999761585,
+          "sim": 5.565899999999991,
+          "alive": 82,
+          "heap": 14500554,
+          "phase": "wave",
+          "selected": 61,
+          "recorded": 0,
+          "stationaryAttackers": 39,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5179.199999976157,
+          "sim": 6.49909999999999,
+          "alive": 79,
+          "heap": 19001362,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 30,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6212.4999999761585,
+          "sim": 7.432299999999993,
+          "alive": 77,
+          "heap": 15523664,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 29,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7229.099999976159,
+          "sim": 8.398699999999996,
+          "alive": 77,
+          "heap": 24283378,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 31,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8262.399999976158,
+          "sim": 9.415299999999998,
+          "alive": 75,
+          "heap": 15602898,
+          "phase": "wave",
+          "selected": 59,
+          "recorded": 0,
+          "stationaryAttackers": 27,
+          "avoidanceActive": 2,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9312.299999976158,
+          "sim": 10.39850000000001,
+          "alive": 82,
+          "heap": 14365710,
+          "phase": "wave",
+          "selected": 58,
+          "recorded": 0,
+          "stationaryAttackers": 26,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10048.199999988079,
+      "heapStart": 13867855,
+      "heapEnd": 19451055,
+      "aliveStart": 90,
+      "aliveEnd": 82,
+      "simStart": 1.900000000000001,
+      "simEnd": 11.09840000000002,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 49237,
+          "totalMs": 311.5000002682209,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "dynamicCollision": {
+          "calls": 1389,
+          "totalMs": 99.29999986290932,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "pathAndMovementInclusive": {
+          "calls": 1506,
+          "totalMs": 637.2000000476837,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.30000001192092896
+        },
+        "target": {
+          "calls": 7608,
+          "totalMs": 68.00000020861626,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 212,
+          "totalMs": 500.59999999403954,
+          "p50Ms": 0,
+          "p95Ms": 5.5999999940395355
+        },
+        "terrain": {
+          "calls": 212,
+          "totalMs": 10.600000023841858,
+          "p50Ms": 0,
+          "p95Ms": 0.10000002384185791
+        },
+        "propDraw": {
+          "calls": 15688,
+          "totalMs": 81.19999980926514,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "resourceDraw": {
+          "calls": 16960,
+          "totalMs": 239.1999998986721,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "unitDraw": {
+          "calls": 17084,
+          "totalMs": 1369.5000003874302,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "buildingDraw": {
+          "calls": 1272,
+          "totalMs": 102.200000166893,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "fog": {
+          "calls": 212,
+          "totalMs": 1338.0999998152256,
+          "p50Ms": 0.9000000059604645,
+          "p95Ms": 15.299999982118607
+        },
+        "renderInclusive": {
+          "calls": 212,
+          "totalMs": 3488.400000065565,
+          "p50Ms": 13.900000005960464,
+          "p95Ms": 27.80000001192093
+        },
+        "DOM": {
+          "calls": 212,
+          "totalMs": 436.7000001966953,
+          "p50Ms": 0.699999988079071,
+          "p95Ms": 4.899999976158142
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 1,
+        "routeReuses": 14,
+        "totalDirectRoutes": 72,
+        "totalSearches": 40
+      },
+      "fps": 20.998785852217345,
+      "samples": 211,
+      "p50Ms": 50,
+      "p95Ms": 66.70000000000073
+    },
+    {
+      "n": 200,
+      "runId": "A1",
+      "mode": "before",
+      "runStart": "2026-11-25T11:50:20.137Z",
+      "cpuBefore": {
+        "usage_usec": 4460119370,
+        "user_usec": 3203684805,
+        "system_usec": 1256434564,
+        "nice_usec": 0,
+        "nr_periods": 515901,
+        "nr_throttled": 495,
+        "throttled_usec": 29494130,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 4487479882,
+        "user_usec": 3228740463,
+        "system_usec": 1258739418,
+        "nice_usec": 0,
+        "nr_periods": 516086,
+        "nr_throttled": 496,
+        "throttled_usec": 29515562,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 27360512,
+        "user_usec": 25055658,
+        "system_usec": 2304854,
+        "nice_usec": 0,
+        "nr_periods": 185,
+        "nr_throttled": 1,
+        "throttled_usec": 21432,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e07cab7daebe7c6fe3316f4d4bdfb6f2c0c08a47",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "holdFixture": [
+        {
+          "id": 15
+        },
+        {
+          "id": 16
+        },
+        {
+          "id": 17
+        },
+        {
+          "id": 18
+        },
+        {
+          "id": 20
+        },
+        {
+          "id": 21
+        },
+        {
+          "id": 22
+        },
+        {
+          "id": 24
+        },
+        {
+          "id": 25
+        },
+        {
+          "id": 27
+        },
+        {
+          "id": 28
+        },
+        {
+          "id": 29
+        },
+        {
+          "id": 31
+        },
+        {
+          "id": 32
+        },
+        {
+          "id": 33
+        },
+        {
+          "id": 35
+        },
+        {
+          "id": 36
+        },
+        {
+          "id": 38
+        },
+        {
+          "id": 39
+        },
+        {
+          "id": 40
+        },
+        {
+          "id": 42
+        },
+        {
+          "id": 43
+        },
+        {
+          "id": 44
+        },
+        {
+          "id": 46
+        },
+        {
+          "id": 47
+        },
+        {
+          "id": 49
+        },
+        {
+          "id": 50
+        },
+        {
+          "id": 51
+        },
+        {
+          "id": 53
+        },
+        {
+          "id": 54
+        },
+        {
+          "id": 55
+        },
+        {
+          "id": 57
+        },
+        {
+          "id": 58
+        },
+        {
+          "id": 60
+        },
+        {
+          "id": 62
+        },
+        {
+          "id": 63
+        },
+        {
+          "id": 64
+        },
+        {
+          "id": 66
+        },
+        {
+          "id": 68
+        },
+        {
+          "id": 69
+        },
+        {
+          "id": 70
+        },
+        {
+          "id": 72
+        },
+        {
+          "id": 73
+        },
+        {
+          "id": 74
+        },
+        {
+          "id": 76
+        },
+        {
+          "id": 77
+        },
+        {
+          "id": 79
+        },
+        {
+          "id": 80
+        },
+        {
+          "id": 81
+        },
+        {
+          "id": 83
+        },
+        {
+          "id": 84
+        },
+        {
+          "id": 85
+        },
+        {
+          "id": 87
+        },
+        {
+          "id": 88
+        },
+        {
+          "id": 89
+        },
+        {
+          "id": 91
+        },
+        {
+          "id": 92
+        },
+        {
+          "id": 93
+        },
+        {
+          "id": 95
+        },
+        {
+          "id": 96
+        },
+        {
+          "id": 97
+        },
+        {
+          "id": 99
+        },
+        {
+          "id": 100
+        },
+        {
+          "id": 101
+        },
+        {
+          "id": 103
+        },
+        {
+          "id": 104
+        },
+        {
+          "id": 105
+        },
+        {
+          "id": 107
+        },
+        {
+          "id": 108
+        },
+        {
+          "id": 109
+        },
+        {
+          "id": 110
+        },
+        {
+          "id": 111
+        },
+        {
+          "id": 113
+        },
+        {
+          "id": 114
+        },
+        {
+          "id": 115
+        },
+        {
+          "id": 117
+        },
+        {
+          "id": 118
+        },
+        {
+          "id": 119
+        },
+        {
+          "id": 122
+        },
+        {
+          "id": 123
+        },
+        {
+          "id": 125
+        },
+        {
+          "id": 126
+        },
+        {
+          "id": 127
+        },
+        {
+          "id": 129
+        },
+        {
+          "id": 130
+        },
+        {
+          "id": 131
+        },
+        {
+          "id": 133
+        },
+        {
+          "id": 134
+        },
+        {
+          "id": 135
+        },
+        {
+          "id": 137
+        },
+        {
+          "id": 138
+        },
+        {
+          "id": 139
+        },
+        {
+          "id": 141
+        },
+        {
+          "id": 142
+        },
+        {
+          "id": 143
+        },
+        {
+          "id": 145
+        },
+        {
+          "id": 146
+        },
+        {
+          "id": 147
+        },
+        {
+          "id": 149
+        },
+        {
+          "id": 150
+        },
+        {
+          "id": 151
+        },
+        {
+          "id": 153
+        },
+        {
+          "id": 154
+        },
+        {
+          "id": 155
+        },
+        {
+          "id": 157
+        },
+        {
+          "id": 158
+        },
+        {
+          "id": 159
+        },
+        {
+          "id": 161
+        },
+        {
+          "id": 162
+        },
+        {
+          "id": 163
+        },
+        {
+          "id": 165
+        },
+        {
+          "id": 166
+        },
+        {
+          "id": 167
+        },
+        {
+          "id": 169
+        },
+        {
+          "id": 170
+        },
+        {
+          "id": 171
+        },
+        {
+          "id": 174
+        },
+        {
+          "id": 175
+        },
+        {
+          "id": 176
+        },
+        {
+          "id": 178
+        },
+        {
+          "id": 179
+        },
+        {
+          "id": 180
+        },
+        {
+          "id": 182
+        },
+        {
+          "id": 183
+        },
+        {
+          "id": 184
+        },
+        {
+          "id": 186
+        },
+        {
+          "id": 187
+        },
+        {
+          "id": 188
+        },
+        {
+          "id": 189
+        },
+        {
+          "id": 191
+        },
+        {
+          "id": 192
+        },
+        {
+          "id": 193
+        },
+        {
+          "id": 195
+        },
+        {
+          "id": 196
+        },
+        {
+          "id": 197
+        },
+        {
+          "id": 199
+        },
+        {
+          "id": 200
+        },
+        {
+          "id": 201
+        },
+        {
+          "id": 203
+        },
+        {
+          "id": 204
+        },
+        {
+          "id": 205
+        },
+        {
+          "id": 206
+        }
+      ],
+      "command": {
+        "selected": 142,
+        "accepted": true
+      },
+      "sceneSha256": "9f816b52c283b1588e925b16d86f713ecbaff7d40ace0bd8c6aeaa0ad4dadf38",
+      "terrainCache": {
+        "calls": 142,
+        "rebuilds": 7
+      },
+      "timeline": [
+        {
+          "wallMs": 111.30000001192093,
+          "sim": 1.5000000000000007,
+          "alive": 188,
+          "heap": 19861930,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 0,
+          "stationaryAttackers": 140,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1194.600000011921,
+          "sim": 2.000000000000001,
+          "alive": 185,
+          "heap": 22548006,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 0,
+          "stationaryAttackers": 127,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2261.2000000119206,
+          "sim": 2.549999999999999,
+          "alive": 172,
+          "heap": 14054954,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 0,
+          "stationaryAttackers": 109,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3294.5000000119217,
+          "sim": 3.2499999999999964,
+          "alive": 170,
+          "heap": 17288995,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 0,
+          "stationaryAttackers": 100,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4327.800000011921,
+          "sim": 4.049999999999994,
+          "alive": 165,
+          "heap": 15091088,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 0,
+          "stationaryAttackers": 92,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5377.700000011921,
+          "sim": 4.799999999999991,
+          "alive": 160,
+          "heap": 14936863,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 0,
+          "stationaryAttackers": 84,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6411.000000011922,
+          "sim": 5.4999999999999885,
+          "alive": 153,
+          "heap": 15606998,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 74,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7427.700000011921,
+          "sim": 6.199999999999986,
+          "alive": 151,
+          "heap": 13571966,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 72,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8477.60000001192,
+          "sim": 7.049999999999983,
+          "alive": 148,
+          "heap": 16254445,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 64,
+          "avoidanceActive": 6,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9494.300000011921,
+          "sim": 7.9496999999999804,
+          "alive": 145,
+          "heap": 21005202,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 60,
+          "avoidanceActive": 5,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10065,
+      "heapStart": 18410803,
+      "heapEnd": 30763808,
+      "aliveStart": 189,
+      "aliveEnd": 145,
+      "simStart": 1.4000000000000006,
+      "simEnd": 8.449499999999988,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 13246,
+          "totalMs": 133.99999913573265,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "dynamicCollision": {
+          "calls": 1331,
+          "totalMs": 133.49999982118607,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.29999998211860657
+        },
+        "pathAndMovementInclusive": {
+          "calls": 1464,
+          "totalMs": 261.3999996781349,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.5
+        },
+        "target": {
+          "calls": 9260,
+          "totalMs": 118.90000036358833,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 142,
+          "totalMs": 94.70000007748604,
+          "p50Ms": 0,
+          "p95Ms": 2.9000000059604645
+        },
+        "terrain": {
+          "calls": 142,
+          "totalMs": 165.39999985694885,
+          "p50Ms": 0,
+          "p95Ms": 0.5
+        },
+        "propDraw": {
+          "calls": 10508,
+          "totalMs": 51.5000002682209,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "resourceDraw": {
+          "calls": 11360,
+          "totalMs": 162.3000007867813,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "unitDraw": {
+          "calls": 23416,
+          "totalMs": 1656.2999991178513,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "buildingDraw": {
+          "calls": 852,
+          "totalMs": 65.40000021457672,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.19999998807907104
+        },
+        "fog": {
+          "calls": 142,
+          "totalMs": 1100.8999999463558,
+          "p50Ms": 1.800000011920929,
+          "p95Ms": 23.80000001192093
+        },
+        "renderInclusive": {
+          "calls": 142,
+          "totalMs": 3558.5999997258186,
+          "p50Ms": 17.900000005960464,
+          "p95Ms": 62.099999994039536
+        },
+        "DOM": {
+          "calls": 142,
+          "totalMs": 602.2000003159046,
+          "p50Ms": 5.799999982118607,
+          "p95Ms": 7.5
+        }
+      },
+      "navigationStats": {
+        "searches": 1,
+        "expanded": 10,
+        "ms": 1.100000023841858,
+        "directRoutes": 1,
+        "routeReuses": 13,
+        "totalDirectRoutes": 101,
+        "totalSearches": 61
+      },
+      "fps": 14.008941877794337,
+      "samples": 141,
+      "p50Ms": 66.70000000000073,
+      "p95Ms": 116.69999999999891
+    },
+    {
+      "n": 200,
+      "runId": "B1",
+      "mode": "after",
+      "runStart": "2026-11-25T11:50:38.606Z",
+      "cpuBefore": {
+        "usage_usec": 4487519350,
+        "user_usec": 3228771289,
+        "system_usec": 1258748060,
+        "nice_usec": 0,
+        "nr_periods": 516086,
+        "nr_throttled": 496,
+        "throttled_usec": 29515562,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 4515199072,
+        "user_usec": 3253819322,
+        "system_usec": 1261379750,
+        "nice_usec": 0,
+        "nr_periods": 516272,
+        "nr_throttled": 497,
+        "throttled_usec": 29532133,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 27679722,
+        "user_usec": 25048033,
+        "system_usec": 2631690,
+        "nice_usec": 0,
+        "nr_periods": 186,
+        "nr_throttled": 1,
+        "throttled_usec": 16571,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "c7bb2b7b20a570281de37ed1f5209b8dc3b23fed",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "holdFixture": [
+        {
+          "id": 15
+        },
+        {
+          "id": 16
+        },
+        {
+          "id": 17
+        },
+        {
+          "id": 18
+        },
+        {
+          "id": 20
+        },
+        {
+          "id": 21
+        },
+        {
+          "id": 22
+        },
+        {
+          "id": 24
+        },
+        {
+          "id": 25
+        },
+        {
+          "id": 27
+        },
+        {
+          "id": 28
+        },
+        {
+          "id": 29
+        },
+        {
+          "id": 31
+        },
+        {
+          "id": 32
+        },
+        {
+          "id": 33
+        },
+        {
+          "id": 35
+        },
+        {
+          "id": 36
+        },
+        {
+          "id": 38
+        },
+        {
+          "id": 39
+        },
+        {
+          "id": 40
+        },
+        {
+          "id": 42
+        },
+        {
+          "id": 43
+        },
+        {
+          "id": 44
+        },
+        {
+          "id": 46
+        },
+        {
+          "id": 47
+        },
+        {
+          "id": 49
+        },
+        {
+          "id": 50
+        },
+        {
+          "id": 51
+        },
+        {
+          "id": 53
+        },
+        {
+          "id": 54
+        },
+        {
+          "id": 55
+        },
+        {
+          "id": 57
+        },
+        {
+          "id": 58
+        },
+        {
+          "id": 60
+        },
+        {
+          "id": 62
+        },
+        {
+          "id": 63
+        },
+        {
+          "id": 64
+        },
+        {
+          "id": 66
+        },
+        {
+          "id": 68
+        },
+        {
+          "id": 69
+        },
+        {
+          "id": 70
+        },
+        {
+          "id": 72
+        },
+        {
+          "id": 73
+        },
+        {
+          "id": 74
+        },
+        {
+          "id": 76
+        },
+        {
+          "id": 77
+        },
+        {
+          "id": 79
+        },
+        {
+          "id": 80
+        },
+        {
+          "id": 81
+        },
+        {
+          "id": 83
+        },
+        {
+          "id": 84
+        },
+        {
+          "id": 85
+        },
+        {
+          "id": 87
+        },
+        {
+          "id": 88
+        },
+        {
+          "id": 89
+        },
+        {
+          "id": 91
+        },
+        {
+          "id": 92
+        },
+        {
+          "id": 93
+        },
+        {
+          "id": 95
+        },
+        {
+          "id": 96
+        },
+        {
+          "id": 97
+        },
+        {
+          "id": 99
+        },
+        {
+          "id": 100
+        },
+        {
+          "id": 101
+        },
+        {
+          "id": 103
+        },
+        {
+          "id": 104
+        },
+        {
+          "id": 105
+        },
+        {
+          "id": 107
+        },
+        {
+          "id": 108
+        },
+        {
+          "id": 109
+        },
+        {
+          "id": 110
+        },
+        {
+          "id": 111
+        },
+        {
+          "id": 113
+        },
+        {
+          "id": 114
+        },
+        {
+          "id": 115
+        },
+        {
+          "id": 117
+        },
+        {
+          "id": 118
+        },
+        {
+          "id": 119
+        },
+        {
+          "id": 122
+        },
+        {
+          "id": 123
+        },
+        {
+          "id": 125
+        },
+        {
+          "id": 126
+        },
+        {
+          "id": 127
+        },
+        {
+          "id": 129
+        },
+        {
+          "id": 130
+        },
+        {
+          "id": 131
+        },
+        {
+          "id": 133
+        },
+        {
+          "id": 134
+        },
+        {
+          "id": 135
+        },
+        {
+          "id": 137
+        },
+        {
+          "id": 138
+        },
+        {
+          "id": 139
+        },
+        {
+          "id": 141
+        },
+        {
+          "id": 142
+        },
+        {
+          "id": 143
+        },
+        {
+          "id": 145
+        },
+        {
+          "id": 146
+        },
+        {
+          "id": 147
+        },
+        {
+          "id": 149
+        },
+        {
+          "id": 150
+        },
+        {
+          "id": 151
+        },
+        {
+          "id": 153
+        },
+        {
+          "id": 154
+        },
+        {
+          "id": 155
+        },
+        {
+          "id": 157
+        },
+        {
+          "id": 158
+        },
+        {
+          "id": 159
+        },
+        {
+          "id": 161
+        },
+        {
+          "id": 162
+        },
+        {
+          "id": 163
+        },
+        {
+          "id": 165
+        },
+        {
+          "id": 166
+        },
+        {
+          "id": 167
+        },
+        {
+          "id": 169
+        },
+        {
+          "id": 170
+        },
+        {
+          "id": 171
+        },
+        {
+          "id": 174
+        },
+        {
+          "id": 175
+        },
+        {
+          "id": 176
+        },
+        {
+          "id": 178
+        },
+        {
+          "id": 179
+        },
+        {
+          "id": 180
+        },
+        {
+          "id": 182
+        },
+        {
+          "id": 183
+        },
+        {
+          "id": 184
+        },
+        {
+          "id": 186
+        },
+        {
+          "id": 187
+        },
+        {
+          "id": 188
+        },
+        {
+          "id": 189
+        },
+        {
+          "id": 191
+        },
+        {
+          "id": 192
+        },
+        {
+          "id": 193
+        },
+        {
+          "id": 195
+        },
+        {
+          "id": 196
+        },
+        {
+          "id": 197
+        },
+        {
+          "id": 199
+        },
+        {
+          "id": 200
+        },
+        {
+          "id": 201
+        },
+        {
+          "id": 203
+        },
+        {
+          "id": 204
+        },
+        {
+          "id": 205
+        },
+        {
+          "id": 206
+        }
+      ],
+      "command": {
+        "selected": 142,
+        "accepted": true
+      },
+      "sceneSha256": "9f816b52c283b1588e925b16d86f713ecbaff7d40ace0bd8c6aeaa0ad4dadf38",
+      "pathBudgetWaits": 1,
+      "terrainCache": {
+        "calls": 131,
+        "rebuilds": 7
+      },
+      "timeline": [
+        {
+          "wallMs": 121.70000001192057,
+          "sim": 1.5000000000000007,
+          "alive": 183,
+          "heap": 16472390,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 0,
+          "stationaryAttackers": 138,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1271.7000000119206,
+          "sim": 1.950000000000001,
+          "alive": 180,
+          "heap": 11868671,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 0,
+          "stationaryAttackers": 125,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2271.7000000119206,
+          "sim": 2.3,
+          "alive": 175,
+          "heap": 11130826,
+          "phase": "wave",
+          "selected": 134,
+          "recorded": 0,
+          "stationaryAttackers": 117,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3288.300000011921,
+          "sim": 2.8999999999999977,
+          "alive": 169,
+          "heap": 17488431,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 0,
+          "stationaryAttackers": 110,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4304.900000011921,
+          "sim": 3.649899999999995,
+          "alive": 163,
+          "heap": 11832379,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 0,
+          "stationaryAttackers": 98,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5371.500000011922,
+          "sim": 4.499899999999992,
+          "alive": 156,
+          "heap": 15482954,
+          "phase": "wave",
+          "selected": 125,
+          "recorded": 0,
+          "stationaryAttackers": 79,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6388.200000011921,
+          "sim": 5.14989999999999,
+          "alive": 153,
+          "heap": 19811971,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 0,
+          "stationaryAttackers": 74,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7438.10000001192,
+          "sim": 5.749899999999988,
+          "alive": 144,
+          "heap": 19843475,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 60,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8471.400000011921,
+          "sim": 6.599699999999987,
+          "alive": 143,
+          "heap": 20166477,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 60,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9538.000000011922,
+          "sim": 7.549399999999984,
+          "alive": 143,
+          "heap": 15681470,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 55,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10103.700000017881,
+      "heapStart": 15927178,
+      "heapEnd": 18142132,
+      "aliveStart": 184,
+      "aliveEnd": 142,
+      "simStart": 1.4000000000000006,
+      "simEnd": 7.899399999999983,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 10724,
+          "totalMs": 105.20000034570694,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "dynamicCollision": {
+          "calls": 1133,
+          "totalMs": 95.90000036358833,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "pathAndMovementInclusive": {
+          "calls": 1257,
+          "totalMs": 205.10000044107437,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.4000000059604645
+        },
+        "target": {
+          "calls": 8548,
+          "totalMs": 87.90000021457672,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 131,
+          "totalMs": 73.59999999403954,
+          "p50Ms": 0,
+          "p95Ms": 3.699999988079071
+        },
+        "terrain": {
+          "calls": 131,
+          "totalMs": 180.8000001013279,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 23
+        },
+        "propDraw": {
+          "calls": 9694,
+          "totalMs": 50.200000405311584,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "resourceDraw": {
+          "calls": 10480,
+          "totalMs": 160.00000008940697,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "unitDraw": {
+          "calls": 21246,
+          "totalMs": 1656.7999995052814,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "buildingDraw": {
+          "calls": 786,
+          "totalMs": 70.69999995827675,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "fog": {
+          "calls": 131,
+          "totalMs": 1453.6000002026558,
+          "p50Ms": 2.0999999940395355,
+          "p95Ms": 32.20000001788139
+        },
+        "renderInclusive": {
+          "calls": 131,
+          "totalMs": 3930.099999755621,
+          "p50Ms": 20,
+          "p95Ms": 72.40000000596046
+        },
+        "DOM": {
+          "calls": 131,
+          "totalMs": 617.0000001192093,
+          "p50Ms": 5.699999988079071,
+          "p95Ms": 12
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 4,
+        "totalDirectRoutes": 81,
+        "totalSearches": 48
+      },
+      "fps": 12.866573631419177,
+      "samples": 130,
+      "p50Ms": 66.70000000000073,
+      "p95Ms": 133.29999999999927
+    },
+    {
+      "n": 200,
+      "runId": "B2",
+      "mode": "after",
+      "runStart": "2026-11-25T11:50:57.222Z",
+      "cpuBefore": {
+        "usage_usec": 4515244254,
+        "user_usec": 3253849622,
+        "system_usec": 1261394632,
+        "nice_usec": 0,
+        "nr_periods": 516272,
+        "nr_throttled": 497,
+        "throttled_usec": 29532133,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 4543816087,
+        "user_usec": 3279801762,
+        "system_usec": 1264014325,
+        "nice_usec": 0,
+        "nr_periods": 516459,
+        "nr_throttled": 497,
+        "throttled_usec": 29532133,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 28571833,
+        "user_usec": 25952140,
+        "system_usec": 2619693,
+        "nice_usec": 0,
+        "nr_periods": 187,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "c7bb2b7b20a570281de37ed1f5209b8dc3b23fed",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "holdFixture": [
+        {
+          "id": 15
+        },
+        {
+          "id": 16
+        },
+        {
+          "id": 17
+        },
+        {
+          "id": 18
+        },
+        {
+          "id": 20
+        },
+        {
+          "id": 21
+        },
+        {
+          "id": 22
+        },
+        {
+          "id": 24
+        },
+        {
+          "id": 25
+        },
+        {
+          "id": 27
+        },
+        {
+          "id": 28
+        },
+        {
+          "id": 29
+        },
+        {
+          "id": 31
+        },
+        {
+          "id": 32
+        },
+        {
+          "id": 33
+        },
+        {
+          "id": 35
+        },
+        {
+          "id": 36
+        },
+        {
+          "id": 38
+        },
+        {
+          "id": 39
+        },
+        {
+          "id": 40
+        },
+        {
+          "id": 42
+        },
+        {
+          "id": 43
+        },
+        {
+          "id": 44
+        },
+        {
+          "id": 46
+        },
+        {
+          "id": 47
+        },
+        {
+          "id": 49
+        },
+        {
+          "id": 50
+        },
+        {
+          "id": 51
+        },
+        {
+          "id": 53
+        },
+        {
+          "id": 54
+        },
+        {
+          "id": 55
+        },
+        {
+          "id": 57
+        },
+        {
+          "id": 58
+        },
+        {
+          "id": 60
+        },
+        {
+          "id": 62
+        },
+        {
+          "id": 63
+        },
+        {
+          "id": 64
+        },
+        {
+          "id": 66
+        },
+        {
+          "id": 68
+        },
+        {
+          "id": 69
+        },
+        {
+          "id": 70
+        },
+        {
+          "id": 72
+        },
+        {
+          "id": 73
+        },
+        {
+          "id": 74
+        },
+        {
+          "id": 76
+        },
+        {
+          "id": 77
+        },
+        {
+          "id": 79
+        },
+        {
+          "id": 80
+        },
+        {
+          "id": 81
+        },
+        {
+          "id": 83
+        },
+        {
+          "id": 84
+        },
+        {
+          "id": 85
+        },
+        {
+          "id": 87
+        },
+        {
+          "id": 88
+        },
+        {
+          "id": 89
+        },
+        {
+          "id": 91
+        },
+        {
+          "id": 92
+        },
+        {
+          "id": 93
+        },
+        {
+          "id": 95
+        },
+        {
+          "id": 96
+        },
+        {
+          "id": 97
+        },
+        {
+          "id": 99
+        },
+        {
+          "id": 100
+        },
+        {
+          "id": 101
+        },
+        {
+          "id": 103
+        },
+        {
+          "id": 104
+        },
+        {
+          "id": 105
+        },
+        {
+          "id": 107
+        },
+        {
+          "id": 108
+        },
+        {
+          "id": 109
+        },
+        {
+          "id": 110
+        },
+        {
+          "id": 111
+        },
+        {
+          "id": 113
+        },
+        {
+          "id": 114
+        },
+        {
+          "id": 115
+        },
+        {
+          "id": 117
+        },
+        {
+          "id": 118
+        },
+        {
+          "id": 119
+        },
+        {
+          "id": 122
+        },
+        {
+          "id": 123
+        },
+        {
+          "id": 125
+        },
+        {
+          "id": 126
+        },
+        {
+          "id": 127
+        },
+        {
+          "id": 129
+        },
+        {
+          "id": 130
+        },
+        {
+          "id": 131
+        },
+        {
+          "id": 133
+        },
+        {
+          "id": 134
+        },
+        {
+          "id": 135
+        },
+        {
+          "id": 137
+        },
+        {
+          "id": 138
+        },
+        {
+          "id": 139
+        },
+        {
+          "id": 141
+        },
+        {
+          "id": 142
+        },
+        {
+          "id": 143
+        },
+        {
+          "id": 145
+        },
+        {
+          "id": 146
+        },
+        {
+          "id": 147
+        },
+        {
+          "id": 149
+        },
+        {
+          "id": 150
+        },
+        {
+          "id": 151
+        },
+        {
+          "id": 153
+        },
+        {
+          "id": 154
+        },
+        {
+          "id": 155
+        },
+        {
+          "id": 157
+        },
+        {
+          "id": 158
+        },
+        {
+          "id": 159
+        },
+        {
+          "id": 161
+        },
+        {
+          "id": 162
+        },
+        {
+          "id": 163
+        },
+        {
+          "id": 165
+        },
+        {
+          "id": 166
+        },
+        {
+          "id": 167
+        },
+        {
+          "id": 169
+        },
+        {
+          "id": 170
+        },
+        {
+          "id": 171
+        },
+        {
+          "id": 174
+        },
+        {
+          "id": 175
+        },
+        {
+          "id": 176
+        },
+        {
+          "id": 178
+        },
+        {
+          "id": 179
+        },
+        {
+          "id": 180
+        },
+        {
+          "id": 182
+        },
+        {
+          "id": 183
+        },
+        {
+          "id": 184
+        },
+        {
+          "id": 186
+        },
+        {
+          "id": 187
+        },
+        {
+          "id": 188
+        },
+        {
+          "id": 189
+        },
+        {
+          "id": 191
+        },
+        {
+          "id": 192
+        },
+        {
+          "id": 193
+        },
+        {
+          "id": 195
+        },
+        {
+          "id": 196
+        },
+        {
+          "id": 197
+        },
+        {
+          "id": 199
+        },
+        {
+          "id": 200
+        },
+        {
+          "id": 201
+        },
+        {
+          "id": 203
+        },
+        {
+          "id": 204
+        },
+        {
+          "id": 205
+        },
+        {
+          "id": 206
+        }
+      ],
+      "command": {
+        "selected": 142,
+        "accepted": true
+      },
+      "sceneSha256": "9f816b52c283b1588e925b16d86f713ecbaff7d40ace0bd8c6aeaa0ad4dadf38",
+      "terrainCache": {
+        "calls": 139,
+        "rebuilds": 8
+      },
+      "timeline": [
+        {
+          "wallMs": 128.29999998807943,
+          "sim": 1.4500000000000006,
+          "alive": 183,
+          "heap": 15116848,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 0,
+          "stationaryAttackers": 136,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1228.2999999880794,
+          "sim": 1.950000000000001,
+          "alive": 180,
+          "heap": 18748217,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 0,
+          "stationaryAttackers": 125,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2228.2999999880794,
+          "sim": 2.4499999999999993,
+          "alive": 170,
+          "heap": 10105269,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 0,
+          "stationaryAttackers": 111,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3244.89999998808,
+          "sim": 3.1498999999999966,
+          "alive": 169,
+          "heap": 13943713,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 0,
+          "stationaryAttackers": 110,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4311.599999988079,
+          "sim": 3.9997999999999934,
+          "alive": 163,
+          "heap": 17559415,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 0,
+          "stationaryAttackers": 97,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5394.799999988079,
+          "sim": 4.84979999999999,
+          "alive": 153,
+          "heap": 13863118,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 0,
+          "stationaryAttackers": 72,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6428.099999988079,
+          "sim": 5.549799999999988,
+          "alive": 150,
+          "heap": 18010894,
+          "phase": "wave",
+          "selected": 121,
+          "recorded": 0,
+          "stationaryAttackers": 72,
+          "avoidanceActive": 3,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7478.099999988079,
+          "sim": 6.299799999999985,
+          "alive": 144,
+          "heap": 16201475,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 57,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8494.699999988079,
+          "sim": 7.182899999999982,
+          "alive": 143,
+          "heap": 13280498,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 56,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9577.89999998808,
+          "sim": 7.98279999999998,
+          "alive": 141,
+          "heap": 17057302,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 54,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10154.300000011921,
+      "heapStart": 17044501,
+      "heapEnd": 14390218,
+      "aliveStart": 184,
+      "aliveEnd": 141,
+      "simStart": 1.3500000000000005,
+      "simEnd": 8.232799999999983,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 11880,
+          "totalMs": 109.00000056624413,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "dynamicCollision": {
+          "calls": 1208,
+          "totalMs": 108.10000082850456,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.29999998211860657
+        },
+        "pathAndMovementInclusive": {
+          "calls": 1337,
+          "totalMs": 220.70000064373016,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.5
+        },
+        "target": {
+          "calls": 9110,
+          "totalMs": 87.8999999165535,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 139,
+          "totalMs": 81.09999987483025,
+          "p50Ms": 0,
+          "p95Ms": 3.600000023841858
+        },
+        "terrain": {
+          "calls": 139,
+          "totalMs": 198.4000000357628,
+          "p50Ms": 0,
+          "p95Ms": 20.69999998807907
+        },
+        "propDraw": {
+          "calls": 10286,
+          "totalMs": 58.30000001192093,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "resourceDraw": {
+          "calls": 11120,
+          "totalMs": 168.80000022053719,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "unitDraw": {
+          "calls": 22439,
+          "totalMs": 1629.2999999523163,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "buildingDraw": {
+          "calls": 834,
+          "totalMs": 68.19999969005585,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "fog": {
+          "calls": 139,
+          "totalMs": 1465.200000166893,
+          "p50Ms": 2.100000023841858,
+          "p95Ms": 25.599999994039536
+        },
+        "renderInclusive": {
+          "calls": 139,
+          "totalMs": 3961.600000202656,
+          "p50Ms": 20.80000001192093,
+          "p95Ms": 63.20000001788139
+        },
+        "DOM": {
+          "calls": 139,
+          "totalMs": 613.7000000178814,
+          "p50Ms": 6,
+          "p95Ms": 10
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 1,
+        "routeReuses": 11,
+        "totalDirectRoutes": 83,
+        "totalSearches": 56
+      },
+      "fps": 13.59030164559231,
+      "samples": 138,
+      "p50Ms": 66.70000000000073,
+      "p95Ms": 116.69999999999982
+    },
+    {
+      "n": 200,
+      "runId": "A2",
+      "mode": "before",
+      "runStart": "2026-11-25T11:51:15.926Z",
+      "cpuBefore": {
+        "usage_usec": 4543862902,
+        "user_usec": 3279836112,
+        "system_usec": 1264026790,
+        "nice_usec": 0,
+        "nr_periods": 516459,
+        "nr_throttled": 497,
+        "throttled_usec": 29532133,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuAfter": {
+        "usage_usec": 4570994013,
+        "user_usec": 3304683382,
+        "system_usec": 1266310630,
+        "nice_usec": 0,
+        "nr_periods": 516643,
+        "nr_throttled": 499,
+        "throttled_usec": 29544709,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuDelta": {
+        "usage_usec": 27131111,
+        "user_usec": 24847270,
+        "system_usec": 2283840,
+        "nice_usec": 0,
+        "nr_periods": 184,
+        "nr_throttled": 2,
+        "throttled_usec": 12576,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "source": "e07cab7daebe7c6fe3316f4d4bdfb6f2c0c08a47",
+      "resources": 168,
+      "alive": 200,
+      "rng": -727980941,
+      "visualRng": 1932097315,
+      "autoEconomy": true,
+      "autoMilitary": true,
+      "holdFixture": [
+        {
+          "id": 15
+        },
+        {
+          "id": 16
+        },
+        {
+          "id": 17
+        },
+        {
+          "id": 18
+        },
+        {
+          "id": 20
+        },
+        {
+          "id": 21
+        },
+        {
+          "id": 22
+        },
+        {
+          "id": 24
+        },
+        {
+          "id": 25
+        },
+        {
+          "id": 27
+        },
+        {
+          "id": 28
+        },
+        {
+          "id": 29
+        },
+        {
+          "id": 31
+        },
+        {
+          "id": 32
+        },
+        {
+          "id": 33
+        },
+        {
+          "id": 35
+        },
+        {
+          "id": 36
+        },
+        {
+          "id": 38
+        },
+        {
+          "id": 39
+        },
+        {
+          "id": 40
+        },
+        {
+          "id": 42
+        },
+        {
+          "id": 43
+        },
+        {
+          "id": 44
+        },
+        {
+          "id": 46
+        },
+        {
+          "id": 47
+        },
+        {
+          "id": 49
+        },
+        {
+          "id": 50
+        },
+        {
+          "id": 51
+        },
+        {
+          "id": 53
+        },
+        {
+          "id": 54
+        },
+        {
+          "id": 55
+        },
+        {
+          "id": 57
+        },
+        {
+          "id": 58
+        },
+        {
+          "id": 60
+        },
+        {
+          "id": 62
+        },
+        {
+          "id": 63
+        },
+        {
+          "id": 64
+        },
+        {
+          "id": 66
+        },
+        {
+          "id": 68
+        },
+        {
+          "id": 69
+        },
+        {
+          "id": 70
+        },
+        {
+          "id": 72
+        },
+        {
+          "id": 73
+        },
+        {
+          "id": 74
+        },
+        {
+          "id": 76
+        },
+        {
+          "id": 77
+        },
+        {
+          "id": 79
+        },
+        {
+          "id": 80
+        },
+        {
+          "id": 81
+        },
+        {
+          "id": 83
+        },
+        {
+          "id": 84
+        },
+        {
+          "id": 85
+        },
+        {
+          "id": 87
+        },
+        {
+          "id": 88
+        },
+        {
+          "id": 89
+        },
+        {
+          "id": 91
+        },
+        {
+          "id": 92
+        },
+        {
+          "id": 93
+        },
+        {
+          "id": 95
+        },
+        {
+          "id": 96
+        },
+        {
+          "id": 97
+        },
+        {
+          "id": 99
+        },
+        {
+          "id": 100
+        },
+        {
+          "id": 101
+        },
+        {
+          "id": 103
+        },
+        {
+          "id": 104
+        },
+        {
+          "id": 105
+        },
+        {
+          "id": 107
+        },
+        {
+          "id": 108
+        },
+        {
+          "id": 109
+        },
+        {
+          "id": 110
+        },
+        {
+          "id": 111
+        },
+        {
+          "id": 113
+        },
+        {
+          "id": 114
+        },
+        {
+          "id": 115
+        },
+        {
+          "id": 117
+        },
+        {
+          "id": 118
+        },
+        {
+          "id": 119
+        },
+        {
+          "id": 122
+        },
+        {
+          "id": 123
+        },
+        {
+          "id": 125
+        },
+        {
+          "id": 126
+        },
+        {
+          "id": 127
+        },
+        {
+          "id": 129
+        },
+        {
+          "id": 130
+        },
+        {
+          "id": 131
+        },
+        {
+          "id": 133
+        },
+        {
+          "id": 134
+        },
+        {
+          "id": 135
+        },
+        {
+          "id": 137
+        },
+        {
+          "id": 138
+        },
+        {
+          "id": 139
+        },
+        {
+          "id": 141
+        },
+        {
+          "id": 142
+        },
+        {
+          "id": 143
+        },
+        {
+          "id": 145
+        },
+        {
+          "id": 146
+        },
+        {
+          "id": 147
+        },
+        {
+          "id": 149
+        },
+        {
+          "id": 150
+        },
+        {
+          "id": 151
+        },
+        {
+          "id": 153
+        },
+        {
+          "id": 154
+        },
+        {
+          "id": 155
+        },
+        {
+          "id": 157
+        },
+        {
+          "id": 158
+        },
+        {
+          "id": 159
+        },
+        {
+          "id": 161
+        },
+        {
+          "id": 162
+        },
+        {
+          "id": 163
+        },
+        {
+          "id": 165
+        },
+        {
+          "id": 166
+        },
+        {
+          "id": 167
+        },
+        {
+          "id": 169
+        },
+        {
+          "id": 170
+        },
+        {
+          "id": 171
+        },
+        {
+          "id": 174
+        },
+        {
+          "id": 175
+        },
+        {
+          "id": 176
+        },
+        {
+          "id": 178
+        },
+        {
+          "id": 179
+        },
+        {
+          "id": 180
+        },
+        {
+          "id": 182
+        },
+        {
+          "id": 183
+        },
+        {
+          "id": 184
+        },
+        {
+          "id": 186
+        },
+        {
+          "id": 187
+        },
+        {
+          "id": 188
+        },
+        {
+          "id": 189
+        },
+        {
+          "id": 191
+        },
+        {
+          "id": 192
+        },
+        {
+          "id": 193
+        },
+        {
+          "id": 195
+        },
+        {
+          "id": 196
+        },
+        {
+          "id": 197
+        },
+        {
+          "id": 199
+        },
+        {
+          "id": 200
+        },
+        {
+          "id": 201
+        },
+        {
+          "id": 203
+        },
+        {
+          "id": 204
+        },
+        {
+          "id": 205
+        },
+        {
+          "id": 206
+        }
+      ],
+      "command": {
+        "selected": 142,
+        "accepted": true
+      },
+      "sceneSha256": "9f816b52c283b1588e925b16d86f713ecbaff7d40ace0bd8c6aeaa0ad4dadf38",
+      "terrainCache": {
+        "calls": 141,
+        "rebuilds": 8
+      },
+      "timeline": [
+        {
+          "wallMs": 131.19999998211824,
+          "sim": 1.4500000000000006,
+          "alive": 188,
+          "heap": 14317086,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 0,
+          "stationaryAttackers": 138,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 1214.4999999821193,
+          "sim": 1.900000000000001,
+          "alive": 185,
+          "heap": 16684228,
+          "phase": "wave",
+          "selected": 139,
+          "recorded": 0,
+          "stationaryAttackers": 126,
+          "avoidanceActive": 0,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 2231.1999999821182,
+          "sim": 2.3999999999999995,
+          "alive": 175,
+          "heap": 17053879,
+          "phase": "wave",
+          "selected": 131,
+          "recorded": 0,
+          "stationaryAttackers": 113,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 3247.7999999821186,
+          "sim": 2.9999999999999973,
+          "alive": 172,
+          "heap": 13944891,
+          "phase": "wave",
+          "selected": 130,
+          "recorded": 0,
+          "stationaryAttackers": 110,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 4314.299999982119,
+          "sim": 3.8499999999999943,
+          "alive": 165,
+          "heap": 18411975,
+          "phase": "wave",
+          "selected": 129,
+          "recorded": 0,
+          "stationaryAttackers": 92,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 5314.399999982119,
+          "sim": 4.6499999999999915,
+          "alive": 160,
+          "heap": 16826938,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 0,
+          "stationaryAttackers": 85,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 6314.399999982119,
+          "sim": 5.299999999999989,
+          "alive": 160,
+          "heap": 23073734,
+          "phase": "wave",
+          "selected": 124,
+          "recorded": 0,
+          "stationaryAttackers": 85,
+          "avoidanceActive": 1,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 7380.899999982119,
+          "sim": 5.999899999999987,
+          "alive": 152,
+          "heap": 13447591,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 72,
+          "avoidanceActive": 4,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 8414.199999982118,
+          "sim": 6.849799999999986,
+          "alive": 148,
+          "heap": 15459849,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 71,
+          "avoidanceActive": 6,
+          "recordedPanelVisible": false
+        },
+        {
+          "wallMs": 9430.899999982117,
+          "sim": 7.783099999999982,
+          "alive": 145,
+          "heap": 23521965,
+          "phase": "wave",
+          "selected": 118,
+          "recorded": 0,
+          "stationaryAttackers": 61,
+          "avoidanceActive": 5,
+          "recordedPanelVisible": false
+        }
+      ],
+      "truncated": false,
+      "wallMs": 10068.199999988079,
+      "heapStart": 15981520,
+      "heapEnd": 23359942,
+      "aliveStart": 190,
+      "aliveEnd": 145,
+      "simStart": 1.3500000000000005,
+      "simEnd": 8.332999999999982,
+      "phase": "wave",
+      "subsystems": {
+        "staticCollision": {
+          "calls": 13153,
+          "totalMs": 129.5000004172325,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "dynamicCollision": {
+          "calls": 1285,
+          "totalMs": 139.8000005185604,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.30000001192092896
+        },
+        "pathAndMovementInclusive": {
+          "calls": 1416,
+          "totalMs": 277.10000017285347,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.5999999940395355
+        },
+        "target": {
+          "calls": 9149,
+          "totalMs": 115.39999967813492,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "nativeAstarPerUpdate": {
+          "calls": 141,
+          "totalMs": 103.59999996423721,
+          "p50Ms": 0,
+          "p95Ms": 3.699999988079071
+        },
+        "terrain": {
+          "calls": 141,
+          "totalMs": 228,
+          "p50Ms": 0,
+          "p95Ms": 24.099999994039536
+        },
+        "propDraw": {
+          "calls": 10434,
+          "totalMs": 46.79999977350235,
+          "p50Ms": 0,
+          "p95Ms": 0
+        },
+        "resourceDraw": {
+          "calls": 11280,
+          "totalMs": 156.59999999403954,
+          "p50Ms": 0,
+          "p95Ms": 0.09999999403953552
+        },
+        "unitDraw": {
+          "calls": 23330,
+          "totalMs": 1674.4000005126,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "buildingDraw": {
+          "calls": 846,
+          "totalMs": 64.90000024437904,
+          "p50Ms": 0.09999999403953552,
+          "p95Ms": 0.20000001788139343
+        },
+        "fog": {
+          "calls": 141,
+          "totalMs": 1085.400000244379,
+          "p50Ms": 1.800000011920929,
+          "p95Ms": 23.700000017881393
+        },
+        "renderInclusive": {
+          "calls": 141,
+          "totalMs": 3599.899999886751,
+          "p50Ms": 18,
+          "p95Ms": 65
+        },
+        "DOM": {
+          "calls": 141,
+          "totalMs": 612.7999999821186,
+          "p50Ms": 5.700000017881393,
+          "p95Ms": 8
+        }
+      },
+      "navigationStats": {
+        "searches": 0,
+        "expanded": 0,
+        "ms": 0,
+        "directRoutes": 0,
+        "routeReuses": 13,
+        "totalDirectRoutes": 98,
+        "totalSearches": 59
+      },
+      "fps": 13.905166762694995,
+      "samples": 140,
+      "p50Ms": 66.69999999999891,
+      "p95Ms": 133.29999999999927
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "gpu": [
+    {
+      "vendorId": 65535,
+      "deviceId": 65535,
+      "vendorString": "Google Inc. (Google)",
+      "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+      "driverVendor": "SwANGLE",
+      "driverVersion": "5.0.0"
+    }
+  ],
+  "cpuQuota": "400000 100000",
+  "pairs": [
+    {
+      "n": 100,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "holdFixture": true,
+      "rng": true,
+      "visualRng": true
+    },
+    {
+      "n": 200,
+      "runs": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "scene": true,
+      "holdFixture": true,
+      "rng": true,
+      "visualRng": true
+    }
+  ],
+  "status": "MEASURED_10S_ABBA_SOFTWARE_COHORT"
+}
