@@ -388,8 +388,14 @@ export class Renderer {
       const rx=r*Math.SQRT2*HALF_W,ry=r*Math.SQRT2*HALF_H;
       circles.push({x:p.x,y:p.y*axisRatio,radius:rx,screenX:p.x,screenY:p.y,rx,ry});
     }
-    const shapes=pruneVisionCircles(clipVisionCircles(circles,this.w,this.h),2*Math.max(1,Math.abs(axisRatio)));
     const prior=this.visionMaskCache;
+    // 原始投影完全相同時，覆蓋裁剪結果必定相同；先略過重複的覆蓋證明。
+    const sameInput=!resized && prior?.layer===layer && prior.w===this.w && prior.h===this.h
+      && prior.rawShapes?.length===circles.length && circles.every((s,i)=>{
+        const p=prior.rawShapes[i];return p[0]===s.screenX && p[1]===s.screenY && p[2]===s.rx && p[3]===s.ry;
+      });
+    if(sameInput){this.ctx.drawImage(layer,0,0);return;}
+    const shapes=pruneVisionCircles(clipVisionCircles(circles,this.w,this.h),2*Math.max(1,Math.abs(axisRatio)));
     const same=!resized && prior?.layer===layer && prior.w===this.w && prior.h===this.h && prior.shapes.length===shapes.length
       && shapes.every((s,i)=>{const p=prior.shapes[i];return p[0]===s.screenX && p[1]===s.screenY && p[2]===s.rx && p[3]===s.ry;});
     if(!same){
@@ -402,6 +408,7 @@ export class Renderer {
       c.globalCompositeOperation='source-over';
       this.visionMaskCache={layer,w:this.w,h:this.h,shapes:shapes.map(s=>[s.screenX,s.screenY,s.rx,s.ry])};
     }
+    this.visionMaskCache.rawShapes=circles.map(s=>[s.screenX,s.screenY,s.rx,s.ry]);
     this.ctx.drawImage(layer,0,0);
   }
 
