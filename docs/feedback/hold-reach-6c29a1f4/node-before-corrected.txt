@@ -1,0 +1,441 @@
+✖ 16文明堅守單位能在既有合法體型射程還擊，位置不變 (43.414909ms)
+✖ 敵人從射程邊緣攻擊時，堅守受擊者取得合法還擊目標 (32.43145ms)
+✖ 不追擊射程外目標，且不因寬索敵黏住遠方高分目標 (9.28878ms)
+✖ 合法射程邊界可選取，建築仍使用原有較短距離 (7.251274ms)
+✔ 保留迷霧、被動、人工目標優先；查詢不消耗RNG (8.292062ms)
+✖ Save/Load保留堅守與合法還擊能力 (27.741636ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 1
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 141.948172
+
+✖ failing tests:
+
+test at tests/hold-reach.test.mjs:5:1
+✖ 16文明堅守單位能在既有合法體型射程還擊，位置不變 (43.414909ms)
+  AssertionError [ERR_ASSERTION]: MNG
+      at TestContext.<anonymous> (file:///workspace/riftwatch-hold-reach-6c29a1f4/worktree/tests/hold-reach.test.mjs:5:177)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/hold-reach.test.mjs:6:1
+✖ 敵人從射程邊緣攻擊時，堅守受擊者取得合法還擊目標 (32.43145ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - {
+  -   _crowdKey: 24582,
+  -   _goalProgress: null,
+  -   _heading: null,
+  -   _lastTargetDist: 1.4399999999999984,
+  -   _movementAttempted: false,
+  -   _progress: null,
+  -   _recalculated: false,
+  -   _stuckTimer: 0,
+  -   _trafficPriority: 21,
+  -   _yieldTo: null,
+  -   aegisCd: 0,
+  -   alive: true,
+  -   armor: 10,
+  -   attack: 8,
+  -   attackAnim: 1,
+  -   baseMaxHp: 60,
+  -   bossSkillTimer: 0,
+  -   buildTarget: null,
+  -   buildingDamageMul: 1,
+  -   buildingHint: null,
+  -   carry: 0,
+  -   carryType: null,
+  -   chargeCd: 0,
+  -   chargeReady: true,
+  -   combatAt: 0,
+  -   convertResist: false,
+  -   cooldown: 1.5,
+  -   deathAnim: 0,
+  -   duel: false,
+  -   eventAttackSpeedMul: 1,
+  -   eventFireCd: 0,
+  -   eventFlags: [],
+  -   eventRegen: 0,
+  -   eventRetreat: 0,
+  -   eventRetreatCd: 0,
+  -   eventSpeedMul: 1,
+  -   expireIn: 0,
+  -   facing: 1,
+  -   gatherTarget: null,
+  -   guardOrigin: {
+  -     x: 13.2,
+  -     y: 12
+  -   },
+  -   hero: false,
+  -   hitFlash: 0,
+  -   hold: false,
+  -   hp: 60,
+  -   id: 21,
+  -   idleTimer: 0.8997230397071689,
+  -   kind: 'unit',
+  -   kiteRetreatX: undefined,
+  -   kiteRetreatY: undefined,
+  -   manualAttack: false,
+  -   markCd: 0,
+  -   marked: 0,
+  -   maxHp: 60,
+  -   pop: 1,
+  -   rageStage: 0,
+  -   rescueUsed: false,
+  -   retargetTimer: 98.98333333333333,
+  -   selected: false,
+  -   shield: 0,
+  -   shieldTime: 0,
+  -   shots: 0,
+  -   slowUntil: 0,
+  -   stance: 'defensive',
+  -   state: 'attack',
+  -   summoned: false,
+  -   target: {
+  -     _crowdKey: 24582,
+  -     _goalProgress: null,
+  -     _heading: null,
+  -     _movementAttempted: false,
+  -     _nav: null,
+  -     _progress: null,
+  -     _trafficPriority: 20,
+  -     _yieldTo: null,
+  -     aegisCd: 0,
+  -     alive: true,
+  -     armor: 10,
+  -     attack: 8,
+  -     attackAnim: 0,
+  -     baseMaxHp: 60,
+  -     bossSkillTimer: 0,
+  -     buildTarget: null,
+  -     buildingDamageMul: 1,
+  -     buildingHint: null,
+  -     carry: 0,
+  -     carryType: null,
+  -     chargeCd: 0,
+  -     chargeReady: true,
+  -     combatAt: 0,
+  -     convertResist: false,
+  -     cooldown: 0,
+  -     deathAnim: 0,
+  -     duel: false,
+  -     eventAttackSpeedMul: 1,
+  -     eventFireCd: 0,
+  -     eventFlags: [],
+  -     eventRegen: 0,
+  -     eventRetreat: 0,
+  -     eventRetreatCd: 0,
+  -     eventSpeedMul: 1,
+  -     expireIn: 0,
+  -     facing: 1,
+  -     gatherTarget: null,
+  -     guardOrigin: {
+  -       x: 12,
+  -       y: 12
+  -     },
+  -     hero: false,
+  -     hitFlash: 1,
+  -     hold: true,
+  -     hp: 58,
+  -     id: 20,
+  -     idleTimer: 0.3875502021983266,
+  -     kind: 'unit',
+  -     manualAttack: false,
+  -     markCd: 0,
+  -     marked: 0,
+  -     maxHp: 60,
+  -     pop: 1,
+  -     rageStage: 0,
+  -     rescueUsed: false,
+  -     retargetTimer: 0.2513521034270525,
+  -     selected: false,
+  -     shield: 0,
+  -     shieldTime: 0,
+  -     shots: 0,
+  -     slowUntil: 0,
+  -     stance: 'hold',
+  -     state: 'hold',
+  -     summoned: false,
+  -     tacticalOrder: null,
+  -     target: null,
+  -     targetPos: null,
+  -     team: 'player',
+  -     type: 'militia',
+  -     typeDef: {
+  -       armor: 10,
+  -       attack: 8,
+  -       category: 'infantry',
+  -       cooldown: 1.5,
+  -       cost: {
+  -         food: 40,
+  -         gold: 10
+  -       },
+  -       desc: 'A shielded line-holder. The backbone of every levy.',
+  -       family: 'M',
+  -       hp: 60,
+  -       icon: 'sword',
+  -       name: 'Man-at-Arms',
+  -       pop: 1,
+  -       radius: 0.26,
+  -       range: 1,
+  -       role: 'Infantry',
+  -       sight: 6.5,
+  -       speed: 2.4,
+  -       threat: 1,
+  -       trainTime: 8
+  -     },
+  -     visualDirection: 'SE',
+  -     walkPhase: 0.07589233523234726,
+  -     x: 12,
+  -     y: 12
+  -   },
+  -   targetPos: null,
+  -   team: 'enemy',
+  -   type: 'militia',
+  -   typeDef: {
+  -     armor: 10,
+  -     attack: 8,
+  -     category: 'infantry',
+  -     cooldown: 1.5,
+  -     cost: {
+  -       food: 40,
+  -       gold: 10
+  -     },
+  -     desc: 'A shielded line-holder. The backbone of every levy.',
+  -     family: 'M',
+  -     hp: 60,
+  -     icon: 'sword',
+  -     name: 'Man-at-Arms',
+  -     pop: 1,
+  -     radius: 0.26,
+  -     range: 1,
+  -     role: 'Infantry',
+  -     sight: 6.5,
+  -     speed: 2.4,
+  -     threat: 1,
+  -     trainTime: 8
+  -   },
+  -   visualDirection: 'NW',
+  -   walkPhase: 5.528120238184929,
+  -   x: 13.2,
+  -   y: 12
+  - }
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-hold-reach-6c29a1f4/worktree/tests/hold-reach.test.mjs:6:170)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: [Object],
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/hold-reach.test.mjs:7:1
+✖ 不追擊射程外目標，且不因寬索敵黏住遠方高分目標 (9.28878ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   aegisCd: 0,
+  +   alive: true,
+  +   armor: 10,
+  +   attack: 8,
+  +   attackAnim: 0,
+  +   baseMaxHp: 60,
+  +   bossSkillTimer: 0,
+  +   buildTarget: null,
+  +   buildingDamageMul: 1,
+  +   buildingHint: null,
+  +   carry: 0,
+  +   carryType: null,
+  +   chargeCd: 0,
+  +   chargeReady: true,
+  +   combatAt: -99,
+  +   convertResist: false,
+  +   cooldown: 0.04078065939247608,
+  +   deathAnim: 0,
+  +   duel: false,
+  +   eventAttackSpeedMul: 1,
+  +   eventFireCd: 0,
+  +   eventFlags: [],
+  +   eventRegen: 0,
+  +   eventRetreat: 0,
+  +   eventRetreatCd: 0,
+  +   eventSpeedMul: 1,
+  +   expireIn: 0,
+  +   facing: 1,
+  +   gatherTarget: null,
+  +   guardOrigin: {
+  +     x: 13.3,
+  +     y: 12
+  +   },
+  +   hero: false,
+  +   hitFlash: 0,
+  +   hold: false,
+  +   hp: 60,
+  +   id: 21,
+  +   idleTimer: 0.8997230397071689,
+  +   kind: 'unit',
+  +   manualAttack: false,
+  +   markCd: 0,
+  +   marked: 0,
+  +   maxHp: 60,
+  +   pop: 1,
+  +   rageStage: 0,
+  +   rescueUsed: false,
+  +   retargetTimer: 0.2618013255298138,
+  +   selected: false,
+  +   shield: 0,
+  +   shieldTime: 0,
+  +   shots: 0,
+  +   slowUntil: 0,
+  +   stance: 'defensive',
+  +   state: 'idle',
+  +   summoned: false,
+  +   target: null,
+  +   targetPos: null,
+  +   team: 'enemy',
+  +   type: 'militia',
+  +   typeDef: {
+  +     armor: 10,
+  +     attack: 8,
+  +     category: 'infantry',
+  +     cooldown: 1.5,
+  +     cost: {
+  +       food: 40,
+  +       gold: 10
+  +     },
+  +     desc: 'A shielded line-holder. The backbone of every levy.',
+  +     family: 'M',
+  +     hp: 60,
+  +     icon: 'sword',
+  +     name: 'Man-at-Arms',
+  +     pop: 1,
+  +     radius: 0.26,
+  +     range: 1,
+  +     role: 'Infantry',
+  +     sight: 6.5,
+  +     speed: 2.4,
+  +     threat: 1,
+  +     trainTime: 8
+  +   },
+  +   visualDirection: 'SE',
+  +   walkPhase: 5.528120238184929,
+  +   x: 13.3,
+  +   y: 12
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-hold-reach-6c29a1f4/worktree/tests/hold-reach.test.mjs:7:78)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/hold-reach.test.mjs:8:1
+✖ 合法射程邊界可選取，建築仍使用原有較短距離 (7.251274ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   alive: true,
+  +   armor: 6,
+  +   baseMaxHp: 300,
+  +   construction: 1,
+  +   cooldown: 0.24856892961543053,
+  +   h: 2,
+  +   hitFlash: 0,
+  +   hp: 300,
+  +   id: 22,
+  +   kind: 'building',
+  +   maxHp: 300,
+  +   queue: [],
+  +   rally: null,
+  +   selected: false,
+  +   team: 'enemy',
+  +   type: 'house',
+  +   typeDef: {
+  +     armor: 6,
+  +     buildTime: 8,
+  +     cost: {
+  +       wood: 60
+  +     },
+  +     desc: 'Raises military population capacity by ten.',
+  +     h: 2,
+  +     hp: 300,
+  +     icon: 'house',
+  +     name: 'House',
+  +     pop: 10,
+  +     w: 2
+  +   },
+  +   w: 2,
+  +   x: 14,
+  +   y: 12
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-hold-reach-6c29a1f4/worktree/tests/hold-reach.test.mjs:8:209)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/hold-reach.test.mjs:10:1
+✖ Save/Load保留堅守與合法還擊能力 (27.741636ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(enemy.hp<enemy.maxHp)
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-hold-reach-6c29a1f4/worktree/tests/hold-reach.test.mjs:10:294)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
