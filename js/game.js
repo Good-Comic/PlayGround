@@ -19,6 +19,7 @@ import { visualDirectionFromVector } from './visuals.js';
 import { atlasBodyContains } from './sprite-atlas.js';
 import { ramBodyContains } from './ram-body-picking.js';
 import { HERO_SKILLS } from './hero-skills.js';
+const MAX_TARGET_BODY_RADIUS = Math.max(.2, ...Object.values(UNIT_TYPES).map(def => def.radius || .2));
 export { HERO_SKILLS } from './hero-skills.js';
 
 const DEFAULT_EFFECTS = () => ({
@@ -1447,6 +1448,13 @@ export class Game {
   sightRadius(entity) { return sightRadius(this, entity); }
 
   acquireTarget(u, radius = (u.typeDef.sight || 6)*.72, eligible = null) {
+    if (u.hold || u.stance === 'hold') {
+      const priorEligible = eligible;
+      // 堅守沿用實際攻擊的體型射程，但不取得需要追擊的目標。
+      const reach = this.unitRange(u);
+      radius = reach + MAX_TARGET_BODY_RADIUS + Number.EPSILON * 16;
+      eligible = (target, distance) => distance <= reach + (target.w ? -.1 : (target.typeDef.radius || .2)) && (!priorEligible || priorEligible(target, distance));
+    }
     if (u.stance === 'passive' || u.type === 'villager' || u.typeDef?.noAttack) return null;
     const candidates = this.crowd ? this.crowd.nearby(u, Math.ceil(radius/2)+1) : this.units;
     return scoredTarget(this,u,[...candidates,...this.buildings],radius,eligible);
@@ -2181,7 +2189,7 @@ export class Game {
       this.zones.push({ x: target.x, y: target.y, r: 1.7, delay: .45, damage: 8, source, kind: 'fire', elapsed: 0, done: false });
     }
     if (target.team === 'player' && !target.w && target.type !== 'villager' && !target.typeDef?.noAttack && source?.team === 'enemy' && source.alive && !target.manualAttack && ['idle', 'hold'].includes(target.state) && target.stance !== 'passive') {
-      const canReach = !target.hold && target.stance !== 'hold' || this.distanceTo(target, source) <= this.unitRange(target);
+      const canReach = !target.hold && target.stance !== 'hold' || this.distanceTo(target, source) <= this.unitRange(target) + (source.w ? -.1 : (source.typeDef.radius || .2));
       const insideGuard = target.stance !== 'defensive' || !target.guardOrigin || this.distanceTo(target.guardOrigin, source) <= 8;
       if (canReach && insideGuard) { target.target = source; target.state = 'attack'; }
     }
