@@ -6,7 +6,7 @@ import { pruneVisionCircles, clipVisionCircles } from './vision-mask.js';
 import { TILE_W, TILE_H, HALF_W, HALF_H, iso, isoToWorld, clamp, lerp, hash2, shade, rgba } from './utils.js';
 import { PLAYER_COLORS, ENEMY_COLORS, BIOMES } from './data.js';
 import { civilizationVisualProfile, directionalAnimationFrame } from './visuals.js';
-import { atlasFrame, atlasActionProgress, loadUnitSpriteAtlases, unitSpriteAtlasKey } from './sprite-atlas.js';
+import { atlasFrame, atlasActionProgress, loadUnitSpriteAtlases, unitSpriteAtlasKey, vectorFrameImage } from './sprite-atlas.js';
 import { heroCastVisual, bossStrikeVisual } from './hero-skills.js';
 
 // 原離屏餘裕只擴大、不縮小；大型圖集依實際錨點、縮放與血條保留可見部分。
@@ -1704,12 +1704,14 @@ export class Renderer {
     const frame = atlasFrame(descriptor, visual.direction, visual.state, time, progress);
     if (!frame) return false;
     const drawScale = scale * descriptor.scale;
-    const image = descriptor.cacheFrames ? this.spriteFrameImage(entry, frame) : entry.image;
+    const vector = vectorFrameImage(entry,frame);
+    const image = vector || (descriptor.cacheFrames ? this.spriteFrameImage(entry, frame) : entry.image);
+    const cropped = !!vector || descriptor.cacheFrames;
     // 命中快取後直接使用裁格矩形，避免每單位讀取 DOM 圖片尺寸／重新索引。 / Reuse cached crop rectangles, avoiding per-unit DOM image-size reads/indexing.
-    const crop = descriptor.cacheFrames ? image.atlasFrameCrop : null;
+    const crop = descriptor.cacheFrames && !vector ? image.atlasFrameCrop : null;
     const cx = crop ? crop[0] : 0, cy = crop ? crop[1] : 0;
     const cw = crop ? crop[2] : frame.sw, ch = crop ? crop[3] : frame.sh;
-    this.ctx.drawImage(image, descriptor.cacheFrames ? 0 : frame.sx, descriptor.cacheFrames ? 0 : frame.sy, cw, ch,
+    this.ctx.drawImage(image, cropped ? 0 : frame.sx, cropped ? 0 : frame.sy, cw, ch,
       p.x + (descriptor.offset.x - descriptor.anchor.x + cx) * drawScale,
       p.y + (descriptor.offset.y - descriptor.anchor.y + cy) * drawScale,
       cw * drawScale, ch * drawScale);

@@ -59,6 +59,7 @@ export const UNIT_SPRITE_ATLASES = Object.freeze({
   }),
   militia: Object.freeze({
     bakedPose: true,
+    vectorFrameHash: '24baa4cc550837041573999038d89265b4e81ec0b239c54837fd0ebd8417b1ee',
     id: 'militia-v1',
     src: 'assets/sprites/militia-atlas.svg',
     frame: Object.freeze({ width: 64, height: 64 }),
@@ -360,4 +361,45 @@ export function loadUnitSpriteAtlases(descriptors = { ...UNIT_SPRITE_ATLASES, ..
     if (!deferred) entry.load();
   }
   return loaded;
+}
+
+// 僅供雜湊鎖定的militia圖集；不是任意SVG的通用裁減規則。
+export function militiaVectorFrameSource(text, frame) {
+  if (![frame.sx,frame.sy].every(v=>Number.isInteger(v)&&v>=0&&v%64===0) || frame.sx>960 || frame.sy>256 || frame.sw!==64 || frame.sh!==64) throw Error('UNSUPPORTED_VECTOR_FRAME');
+  const svg=new DOMParser().parseFromString(text,'image/svg+xml').documentElement;
+  const groups=[...svg.children].filter(e=>e.localName==='g');
+  if(svg.localName!=='svg'||svg.getAttribute('width')!=='1024'||svg.getAttribute('height')!=='320'||groups.length!==80)throw Error('UNSUPPORTED_VECTOR_SOURCE');
+  for(const child of groups){
+    const match=/^translate\(([-\d.]+)[ ,]+([-\d.]+)\)/.exec(child.getAttribute('transform')||'');
+    if(!match)throw Error('UNSUPPORTED_VECTOR_GROUP');
+    const col=Math.floor(Number(match[1])/64),row=Math.floor(Number(match[2])/64);
+    if(Math.abs(col-frame.sx/64)>1||Math.abs(row-frame.sy/64)>1)child.remove();
+  }
+  svg.setAttribute('x',String(-frame.sx));svg.setAttribute('y',String(-frame.sy));
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">${new XMLSerializer().serializeToString(svg)}</svg>`;
+}
+
+export function vectorFrameImage(entry, frame) {
+  const hash=entry.descriptor.vectorFrameHash;
+  if(!hash||entry.vectorFailed||entry.failed||!entry.ready||typeof Image!=='function'||typeof DOMParser!=='function'||!globalThis.crypto?.subtle)return null;
+  if(![frame.sx,frame.sy].every(v=>Number.isInteger(v)&&v>=0&&v%64===0)||frame.sx>960||frame.sy>256||frame.sw!==64||frame.sh!==64)return null;
+  const key=frame.sy*1024+frame.sx,cache=entry.vectorFrames||(entry.vectorFrames=new Map());
+  const existing=cache.get(key);if(existing)return existing.image;
+  // 固定上限，不驅逐使用中的影格，避免多方向部隊造成反覆解碼。
+  if(cache.size>=64)return null;
+  const record={image:null};cache.set(key,record);const requestedFrame={...frame};
+  if(!entry.vectorSource)entry.vectorSource=fetch(entry.descriptor.src).then(async response=>{
+    if(!response.ok)throw Error('VECTOR_SOURCE_FETCH');const bytes=await response.arrayBuffer();
+    const digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('');
+    if(digest!==hash)throw Error('VECTOR_SOURCE_HASH');return new TextDecoder().decode(bytes);
+  });
+  entry.vectorSource.then(text=>{
+    const schedule=globalThis.requestIdleCallback||((fn)=>setTimeout(fn,0));
+    schedule(async()=>{let url;
+      try{url=URL.createObjectURL(new Blob([militiaVectorFrameSource(text,requestedFrame)],{type:'image/svg+xml'}));const image=new Image();image.src=url;await image.decode();if(!entry.vectorFailed)record.image=image;}
+      catch{record.image=null;}
+      finally{if(url)URL.revokeObjectURL(url);}
+    });
+  }).catch(()=>{entry.vectorFailed=true;cache.clear();});
+  return null;
 }
