@@ -339,7 +339,6 @@ export class Renderer {
       drawables.push({ kind: b.alive ? 'building' : 'ruin', obj: b, depth: b.x + b.y + b.w * 0.4 + b.h * 0.4 });
     }
     for (const u of game.units) {
-      if (u.team==='enemy' && !game.isVisible(u)) continue;
       if (!u.alive && !(u.deathAnim > 0)) continue;
       drawables.push({ kind: 'unit', obj: u, depth: u.x + u.y + 0.1 });
     }
@@ -1548,6 +1547,8 @@ export class Renderer {
     const scale = z * (u.typeDef.scale || 1);
     const atlasKey=unitSpriteAtlasKey(u,game.civ?.id),entry=this.unitSpriteAtlases?.get(atlasKey);
     if(!unitSpriteOnscreen(p,this.w,this.h,scale,entry?.descriptor))return;
+    // 離屏Sprite不需要查詢全隊視野；畫面內仍使用同一正式迷霧判定。
+    if(u.team==='enemy' && !game.isVisible(u))return;
     const team = u.team === 'player' ? { ...PLAYER_COLORS, ...game.playerColors, trim: PLAYER_COLORS.trim } : ENEMY_COLORS;
     const moving = u.state === 'move' || u.state === 'return' || u.state === 'build' || u.state === 'gather';
     const walk = moving ? Math.sin(u.walkPhase) : 0;

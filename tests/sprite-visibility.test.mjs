@@ -1,0 +1,7 @@
+import '../tools/qa/ram-pick-065e2912/node-dom-fixture.mjs';
+import test from'node:test';import assert from'node:assert/strict';import{Renderer}from'../js/renderer.js';import{Game}from'../js/game.js';
+function fixture(p,visible=false){const g=new Game();g.newRun(42,{civ:'CHN'});const u=g.spawnUnit('militia',12,12,'enemy');g.units=[u];g.buildings=[];g.world.resources=[];g.world.props=[];g.world.wildlife=[];let queries=0,bodies=0;g.isVisible=()=>{queries++;return visible;};const r=Object.create(Renderer.prototype);for(const key of Object.getOwnPropertyNames(Renderer.prototype))if(!['constructor','draw','drawUnit'].includes(key)&&typeof r[key]==='function')r[key]=()=>{};r.ctx=new Proxy({},{get:()=>()=>{},set:()=>true});r.w=1440;r.h=900;r.dpr=1;r.screen=()=>p;r.drawFactionMarker=()=>bodies++;return{g,u,draw:()=>r.draw(g,0),counts:()=>({queries,bodies})};}
+test('完全離屏敵軍不再查詢全隊視野',()=>{const f=fixture({x:10000,y:10000});f.draw();assert.deepEqual(f.counts(),{queries:0,bodies:0});});
+test('畫面內隱藏敵軍仍查詢視野且不繪製',()=>{const f=fixture({x:600,y:400});f.draw();assert.deepEqual(f.counts(),{queries:1,bodies:0});});
+test('畫面內合法可見敵軍仍繪製，友軍不查詢敵軍視野',()=>{const f=fixture({x:600,y:400},true);f.draw();assert.deepEqual(f.counts(),{queries:1,bodies:1});const p=fixture({x:600,y:400},false);p.u.team='player';p.draw();assert.deepEqual(p.counts(),{queries:0,bodies:1});});
+test('已無死亡動畫的單位不參與視野查詢',()=>{const f=fixture({x:600,y:400});f.u.alive=false;f.u.deathAnim=0;f.draw();assert.deepEqual(f.counts(),{queries:0,bodies:0});});
