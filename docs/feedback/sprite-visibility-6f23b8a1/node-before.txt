@@ -1,0 +1,64 @@
+✖ 完全離屏敵軍不再查詢全隊視野 (40.648079ms)
+✔ 畫面內隱藏敵軍仍查詢視野且不繪製 (27.136408ms)
+✔ 畫面內合法可見敵軍仍繪製，友軍不查詢敵軍視野 (23.584463ms)
+✖ 已無死亡動畫的單位不參與視野查詢 (15.398885ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 120.854257
+
+✖ failing tests:
+
+test at tests/sprite-visibility.test.mjs:4:1
+✖ 完全離屏敵軍不再查詢全隊視野 (40.648079ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      bodies: 0,
+  +   queries: 1
+  -   queries: 0
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-sprite-visibility-6f23b8a1/worktree/tests/sprite-visibility.test.mjs:4:79)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sprite-visibility.test.mjs:7:1
+✖ 已無死亡動畫的單位不參與視野查詢 (15.398885ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      bodies: 0,
+  +   queries: 1
+  -   queries: 0
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-sprite-visibility-6f23b8a1/worktree/tests/sprite-visibility.test.mjs:7:109)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
