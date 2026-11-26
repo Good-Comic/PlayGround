@@ -373,7 +373,7 @@ export function militiaVectorFrameSource(text, frame) {
     const match=/^translate\(([-\d.]+)[ ,]+([-\d.]+)\)/.exec(child.getAttribute('transform')||'');
     if(!match)throw Error('UNSUPPORTED_VECTOR_GROUP');
     const col=Math.floor(Number(match[1])/64),row=Math.floor(Number(match[2])/64);
-    if(Math.abs(col-frame.sx/64)>1||Math.abs(row-frame.sy/64)>1)child.remove();
+    if(Math.abs(col-frame.sx/64)>2||Math.abs(row-frame.sy/64)>2)child.remove();
   }
   svg.setAttribute('x',String(-frame.sx));svg.setAttribute('y',String(-frame.sy));
   return `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">${new XMLSerializer().serializeToString(svg)}</svg>`;
