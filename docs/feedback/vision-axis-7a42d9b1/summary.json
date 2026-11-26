@@ -1,0 +1,210 @@
+{
+  "status": "MEASURED_SHORT_ABBA_NOT_HARDWARE_ACCEPTANCE",
+  "rows": [
+    {
+      "n": 100,
+      "mode": "before",
+      "frameP50MedianMs": 50.0,
+      "frameP95MedianMs": 83.29999999999973,
+      "fpsMedian": 18.507725217554427,
+      "aliveStart": [
+        91,
+        90
+      ],
+      "aliveEnd": [
+        81,
+        81
+      ],
+      "simSeconds": [
+        8.749300000000021,
+        8.715500000000024
+      ],
+      "heapStartMB": [
+        10.269267,
+        14.147379
+      ],
+      "heapEndMB": [
+        17.281437,
+        18.286687
+      ],
+      "visionCache": [
+        {
+          "calls": 190,
+          "hits": 0
+        },
+        {
+          "calls": 185,
+          "hits": 0
+        }
+      ],
+      "subsystemMsPerFrame": {
+        "renderInclusive": 21.670548654089195,
+        "fog": 10.335242693505501,
+        "pathAndMovementInclusive": 2.540178574803357,
+        "staticCollision": 1.3014995994079324,
+        "dynamicCollision": 0.5411390079010114,
+        "target": 0.2910987454476591,
+        "DOM": 2.4304074644699627,
+        "nativeAstarPerUpdate": 1.8127185423531311
+      }
+    },
+    {
+      "n": 100,
+      "mode": "after",
+      "frameP50MedianMs": 50.0,
+      "frameP95MedianMs": 66.75000000000045,
+      "fpsMedian": 20.00371653689096,
+      "aliveStart": [
+        90,
+        90
+      ],
+      "aliveEnd": [
+        81,
+        80
+      ],
+      "simSeconds": [
+        8.86460000000002,
+        9.198100000000021
+      ],
+      "heapStartMB": [
+        13.247431,
+        14.642201
+      ],
+      "heapEndMB": [
+        16.961885,
+        15.484611
+      ],
+      "visionCache": [
+        {
+          "calls": 192,
+          "hits": 0
+        },
+        {
+          "calls": 212,
+          "hits": 0
+        }
+      ],
+      "subsystemMsPerFrame": {
+        "renderInclusive": 18.745955434724866,
+        "fog": 8.75745763135416,
+        "pathAndMovementInclusive": 2.548789113141778,
+        "staticCollision": 1.3456676024804473,
+        "dynamicCollision": 0.4857199585361459,
+        "target": 0.3056140050045394,
+        "DOM": 2.1600679897252766,
+        "nativeAstarPerUpdate": 1.8848204761029934
+      }
+    },
+    {
+      "n": 200,
+      "mode": "before",
+      "frameP50MedianMs": 66.70000000000073,
+      "frameP95MedianMs": 116.75000000000091,
+      "fpsMedian": 13.219544231552,
+      "aliveStart": [
+        184,
+        184
+      ],
+      "aliveEnd": [
+        141,
+        142
+      ],
+      "simSeconds": [
+        6.699399999999986,
+        6.632799999999986
+      ],
+      "heapStartMB": [
+        15.826789,
+        16.853963
+      ],
+      "heapEndMB": [
+        32.206546,
+        24.281802
+      ],
+      "visionCache": [
+        {
+          "calls": 135,
+          "hits": 0
+        },
+        {
+          "calls": 134,
+          "hits": 0
+        }
+      ],
+      "subsystemMsPerFrame": {
+        "renderInclusive": 28.344001794015902,
+        "fog": 10.190057234373937,
+        "pathAndMovementInclusive": 1.3780832700293388,
+        "staticCollision": 0.722183258272812,
+        "dynamicCollision": 0.691072834235706,
+        "target": 0.6672483421264307,
+        "DOM": 4.604573000684396,
+        "nativeAstarPerUpdate": 0.4917994616088101
+      }
+    },
+    {
+      "n": 200,
+      "mode": "after",
+      "frameP50MedianMs": 66.70000000000073,
+      "frameP95MedianMs": 133.30000000000018,
+      "fpsMedian": 13.008657615495633,
+      "aliveStart": [
+        184,
+        186
+      ],
+      "aliveEnd": [
+        142,
+        142
+      ],
+      "simSeconds": [
+        6.599399999999986,
+        6.499499999999982
+      ],
+      "heapStartMB": [
+        18.7401,
+        14.232857
+      ],
+      "heapEndMB": [
+        14.122804,
+        17.911002
+      ],
+      "visionCache": [
+        {
+          "calls": 133,
+          "hits": 0
+        },
+        {
+          "calls": 131,
+          "hits": 0
+        }
+      ],
+      "subsystemMsPerFrame": {
+        "renderInclusive": 27.675635194222686,
+        "fog": 8.793601399173825,
+        "pathAndMovementInclusive": 1.6157400912442408,
+        "staticCollision": 0.8146911400285635,
+        "dynamicCollision": 0.8445687625861112,
+        "target": 0.7116375258162027,
+        "DOM": 4.854883451565302,
+        "nativeAstarPerUpdate": 0.5421678326277188
+      }
+    }
+  ],
+  "gpu": [
+    {
+      "vendorId": 65535,
+      "deviceId": 65535,
+      "vendorString": "Google Inc. (Google)",
+      "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+      "driverVendor": "SwANGLE",
+      "driverVersion": "5.0.0"
+    }
+  ],
+  "cpuQuota": "400000 100000",
+  "limitations": [
+    "方法時間重疊，不可加總",
+    "兩次各10秒量測不足以認定顯著效能變化或洩漏",
+    "修復會改變實際命中與後續戰況，初始一致不代表後續相同工作量",
+    "非自然戰役、非Windows實體GPU"
+  ]
+}

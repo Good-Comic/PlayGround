@@ -1,0 +1,29 @@
+✖ 200個重疊圓保留清單不變，斜邊運算次數下降 (48.192806ms)
+✔ 固定種子2000組與極大極小尺度的保留物件、順序及輸入均等價 (239.630508ms)
+✔ 相切、無效與溢位資料沿用原處理 (0.392861ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 296.817516
+
+✖ failing tests:
+
+test at tests/vision-axis.test.mjs:6:1
+✖ 200個重疊圓保留清單不變，斜邊運算次數下降 (48.192806ms)
+  AssertionError [ERR_ASSERTION]: 183664 < 183664
+      at TestContext.<anonymous> (file:///workspace/riftwatch-vision-axis-7a42d9b1/worktree/tests/vision-axis.test.mjs:6:136)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
