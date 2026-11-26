@@ -393,13 +393,23 @@ export function vectorFrameImage(entry, frame) {
     const digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('');
     if(digest!==hash)throw Error('VECTOR_SOURCE_HASH');return new TextDecoder().decode(bytes);
   });
-  entry.vectorSource.then(text=>{
-    const schedule=globalThis.requestIdleCallback||((fn)=>setTimeout(fn,0));
-    schedule(async()=>{let url;
-      try{url=URL.createObjectURL(new Blob([militiaVectorFrameSource(text,requestedFrame)],{type:'image/svg+xml'}));const image=new Image();image.src=url;await image.decode();if(!entry.vectorFailed)record.image=image;}
-      catch{record.image=null;}
-      finally{if(url)URL.revokeObjectURL(url);}
-    });
-  }).catch(()=>{entry.vectorFailed=true;cache.clear();});
+  (entry.vectorJobs||(entry.vectorJobs=[])).push({record,frame:requestedFrame});
+  if(!entry.vectorPump){
+    entry.vectorPump=true;
+    entry.vectorSource.then(text=>{
+      const pump=()=>{
+        const job=entry.vectorJobs.shift();
+        if(!job){entry.vectorPump=false;return;}
+        const run=async()=>{let url;
+          try{url=URL.createObjectURL(new Blob([militiaVectorFrameSource(text,job.frame)],{type:'image/svg+xml'}));const image=new Image();image.src=url;await image.decode();if(!entry.vectorFailed)job.record.image=image;}
+          catch{job.record.image=null;}
+          finally{if(url)URL.revokeObjectURL(url);pump();}
+        };
+        // 忙碌戰鬥也能逐格前進；一次只產生一格，避免64個逾時工作同時突發。
+        if(globalThis.requestIdleCallback)requestIdleCallback(run,{timeout:50});else setTimeout(run,0);
+      };
+      pump();
+    }).catch(()=>{entry.vectorFailed=true;cache.clear();entry.vectorJobs.length=0;entry.vectorPump=false;});
+  }
   return null;
 }
