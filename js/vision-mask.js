@@ -16,7 +16,8 @@ function boxCovered(minX, minY, maxX, maxY, sourceRadius, donors, depth, allowan
     const farX = Math.max(Math.abs(minX - donor.x), Math.abs(maxX - donor.x));
     const farY = Math.max(Math.abs(minY - donor.y), Math.abs(maxY - donor.y));
     // 圓是凸集合；涵蓋最遠角點便涵蓋整個矩形。
-    if (Math.hypot(farX, farY) <= donor.radius) return true;
+    // 任一軸已超出半徑就不可能覆蓋，避免無效的斜邊計算；邊界仍走原判定。
+    if (farX <= donor.radius && farY <= donor.radius && Math.hypot(farX, farY) <= donor.radius) return true;
   }
   if (depth === 0) return false;
 
