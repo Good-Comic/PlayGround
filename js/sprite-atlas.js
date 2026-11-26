@@ -365,7 +365,7 @@ export function loadUnitSpriteAtlases(descriptors = { ...UNIT_SPRITE_ATLASES, ..
 
 // 僅供雜湊鎖定的militia圖集；不是任意SVG的通用裁減規則。
 export function militiaVectorFrameSource(text, frame) {
-  if (![frame.sx,frame.sy].every(v=>Number.isInteger(v)&&v>=0&&v%64===0) || frame.sx>960 || frame.sy>256 || frame.sw!==64 || frame.sh!==64) throw Error('UNSUPPORTED_VECTOR_FRAME');
+  if (![frame.sx,frame.sy].every(v=>Number.isInteger(v)&&v>=0&&v%64===0) || frame.sx>960 || frame.sy>192 || frame.sw!==64 || frame.sh!==64) throw Error('UNSUPPORTED_VECTOR_FRAME');
   const svg=new DOMParser().parseFromString(text,'image/svg+xml').documentElement;
   const groups=[...svg.children].filter(e=>e.localName==='g');
   if(svg.localName!=='svg'||svg.getAttribute('width')!=='1024'||svg.getAttribute('height')!=='320'||groups.length!==80)throw Error('UNSUPPORTED_VECTOR_SOURCE');
@@ -382,7 +382,7 @@ export function militiaVectorFrameSource(text, frame) {
 export function vectorFrameImage(entry, frame) {
   const hash=entry.descriptor.vectorFrameHash;
   if(!hash||entry.vectorFailed||entry.failed||!entry.ready||typeof Image!=='function'||typeof DOMParser!=='function'||!globalThis.crypto?.subtle)return null;
-  if(![frame.sx,frame.sy].every(v=>Number.isInteger(v)&&v>=0&&v%64===0)||frame.sx>960||frame.sy>256||frame.sw!==64||frame.sh!==64)return null;
+  if(![frame.sx,frame.sy].every(v=>Number.isInteger(v)&&v>=0&&v%64===0)||frame.sx>960||frame.sy>192||frame.sw!==64||frame.sh!==64)return null;
   const key=frame.sy*1024+frame.sx,cache=entry.vectorFrames||(entry.vectorFrames=new Map());
   const existing=cache.get(key);if(existing)return existing.image;
   // 固定上限，不驅逐使用中的影格，避免多方向部隊造成反覆解碼。
