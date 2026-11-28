@@ -803,3 +803,10 @@ for (const [locale, values] of Object.entries({
  en: ['Source no longer locatable', '“Source no longer locatable” means the source was confirmed at impact but cannot safely be tracked now. It does not disclose its current position or whether it is alive.'],
  ja: ['発生源は現在追跡不可', '「発生源は現在追跡不可」は被弾時に確認できた発生源を、現在は安全に追跡できないことを示します。現在地や生死は示しません。']
 })) { STRINGS[locale]['coreDamage.sourceUnavailable'] = values[0]; STRINGS[locale]['coreDamage.help'] += ' ' + values[1]; }
+
+for (const [locale, values] of Object.entries({
+ 'zh-Hant': ['最近命中：{name} −{damage} HP', '最近擊破：{name}'],
+ 'zh-Hans': ['最近命中：{name} −{damage} HP', '最近击破：{name}'],
+ en: ['Recent hit: {name} −{damage} HP', 'Recent kill: {name}'],
+ ja: ['直近の命中：{name} −{damage} HP', '直近の撃破：{name}']
+})) { STRINGS[locale]['readback.effectHit'] = values[0]; STRINGS[locale]['readback.effectKill'] = values[1]; }

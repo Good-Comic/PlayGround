@@ -1,5 +1,6 @@
 import { battleArmy, battleCanAct } from './battle-actions.js';
 import { t } from './i18n.js';
+import { observeFocusEffect, focusEffectText } from './focus-effect.js';
 
 // 只回讀已選正式戰士；不下令、不替玩家選軍，也不把 attack 當成已命中。
 const nameOf = e => {
@@ -109,6 +110,7 @@ export function drawCommandReadback(renderer, g, view) {
 }
 
 export function installCommandReadback(g, ui, renderer) {
+  const effects = observeFocusEffect(g);
   const panel = document.createElement('section'); panel.id = 'command-readback';
   panel.innerHTML = '<strong></strong><p></p><button type="button" data-select-outside hidden></button>';
   const outsideButton=panel.querySelector('[data-select-outside]');
@@ -130,7 +132,9 @@ export function installCommandReadback(g, ui, renderer) {
     observed = view.actors.map(u=>({u,state:u.state,manual:u.manualAttack,target:u.target,order:u.tacticalOrder}));
     const head = (view.heroDirect ? t('readback.direct')+' · ' : '') + t('readback.coverage', { selected:view.selected,total:view.army });
     const shown = view.groups.slice(0,4), rest = view.groups.slice(4).reduce((n,e)=>n+e.count,0);
-    const detail = shown.map(readbackGroupText).join(' · ') + (rest ? ' · '+t('readback.more',{count:rest}) : '') || t('readback.none');
+    const orders = shown.map(readbackGroupText).join(' · ') + (rest ? ' · '+t('readback.more',{count:rest}) : '') || t('readback.none');
+    const effect = focusEffectText(effects.view());
+    const detail = orders + (effect ? ' · '+effect : '');
     outsideCandidates=view.outsideActors;outsideWorld=g.world;
     outsideButton.hidden=!outsideCandidates.length;
     outsideButton.disabled=!battleCanAct(g,blocked())||!!g.heroControl||!!g.orderMode;
