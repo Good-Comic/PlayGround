@@ -1,0 +1,84 @@
+✔ 空地右鍵與人工集火的讀回不同，後續人工移動立即覆蓋 (116.522396ms)
+✔ 護衛中自動接敵仍讀為護衛，不假稱人工集火 (38.769406ms)
+✔ 推進、巡邏、移動、自主接敵、待命與固守混合不丟人數 (40.49469ms)
+✔ 不從歷史路徑失敗欄位宣稱部隊仍卡死 (12.899221ms)
+✔ 只計目前正式戰士，不把空選、工人、英雄、敵軍或建築當全軍 (33.018076ms)
+✔ 英雄直控援護保留選取、按鍵、鏡頭，摘要正確顯示已選零人 (33.830978ms)
+✔ 未見目標在可見性通過前不讀名稱、類型、HP、位置或旗手資料 (13.193707ms)
+✔ 死亡、失去視野與換選取立即移除舊人工目標 (6.642013ms)
+✔ 旗手身分只在實際目標吻合且可見時附加 (6.729277ms)
+✔ 多個人工目標各自回報，不挑選最佳目標或改寫原令 (19.273309ms)
+✔ 反覆摘要與前景繪製保持snapshot、模擬RNG與視效RNG不變並成對還原Canvas狀態 (24.175095ms)
+✔ 繪製時再次查可見性、死亡、換選取與讀檔後舊實體，不畫舊座標 (27.096417ms)
+✔ 暫停仍可純讀，選卡與結算不殘留目標；讀檔後依原生新物件回讀 (13.679437ms)
+✔ 四語摘要完整且不出raw key或未替換參數 (5.208744ms)
+✔ 正式沙暴視野縮減會隱去人工目標名稱與標示，恢復後重新讀取 (6.111186ms)
+✔ 密集多目標前景限制四個，畫面外不繪製，摘要仍包含全部選兵 (5.518414ms)
+✔ 前景繪製例外仍還原Canvas，不污染後續單位姿態 (13.240024ms)
+✖ actual selected manual damage is reported; overkill clamps to remaining HP (5.610365ms)
+✔ a command or projectile launch alone is not a damage result (13.212976ms)
+✔ unselected, automatic, hidden, friendly and zero-HP-loss events do not claim success (53.865053ms)
+✔ observer preserves native snapshot, RNG and return value (22.078185ms)
+✔ readback expires in simulation time and clears on selection/world replacement (27.277627ms)
+✔ all four locales describe observed hits and kills without command-success wording (0.434161ms)
+✔ 已選戰士只取目前正式軍隊實體交集，死亡／舊實體／英雄／村民／支援兵不混入 (6.445901ms)
+✔ 可用情境回傳原生同實體命中點；重讀不消耗模擬或視覺RNG及快照 (10.141343ms)
+✔ 人工攻擊與同點原生右鍵完整快照、全部命令欄位、一次音效與標記一致 (8.556728ms)
+✔ 只對點擊當下選兵發令，保留未選兵、英雄、村民、相機及持續按鍵 (4.951209ms)
+✔ 重複選取同戰士只計一個實體，仍只發送一次原生命令 (3.325321ms)
+✔ 空選、混選、死選、支援兵、英雄直控及同ID舊戰士一律拒絕，不暗選全軍 (81.205102ms)
+✔ 西班牙原生可攻擊村民仍不被本入口納入已選正式戰士 (7.146158ms)
+✔ 暫停、面板阻擋、施工、選卡、結算與選單先拒絕，三個入口零命令且不查視野 (53.752268ms)
+✔ 死亡、轉陣營、移出世界、空目標與霧中目標都不讀座標、不發令或移相機 (38.267263ms)
+✔ 正式沙暴視野縮減會即時禁用，恢復視野後才可再下人工命令 (6.335881ms)
+✔ 第一個點被Canvas檢查拒絕可用原生offset，不繞過命中判定 (4.070842ms)
+✔ 所有Canvas點拒絕時零pick與零命令，保留armed模式及快照 (5.529556ms)
+✔ 原生pick被同位置其他敵軍擋住時不改打其他敵軍、不退回移動 (6.736441ms)
+✔ 派送前第二次pick改變就停止，不嘗試其他點、其他目標或原生移動 (5.712108ms)
+✔ 原生音效例外直接傳出且只呼叫一次，已清armed模式，不恢復或重試命令 (4.720886ms)
+✔ 原生命令沒有完成指定target的manualAttack時回失敗，不補發命令 (4.727884ms)
+✔ 後續人工原生移動與停止立即覆寫，不因重讀情境或查看而搶回舊目標 (8.028324ms)
+✔ 原生Save／Load使用新目標實體；同ID舊參考拒絕、新實體可攻擊與查看 (11.077847ms)
+✔ 目前世界的可見敵軍建築也走原生命中與一次命令，查看定位建築中心 (6.884159ms)
+✔ 原生focusAt只設定目標而非瞬移；查看中心會保留該緩動語義 (5.862397ms)
+✔ 窄窗與寬窗中心被HUD擋住可上移，依原生目標縮放計算偏移且不改縮放 (10.910814ms)
+✔ 窄窗尚在縮小時以最終targetZoom偏移，保留原生兩軸與縮放緩動 (8.708475ms)
+✔ 中心與上方都被擋可選右上free spot，原生相機兩軸緩動後落在合法點 (5.066376ms)
+✔ 查看找不到free spot完全不動相機、不下命令、不清armed模式 (6.067396ms)
+✔ 英雄直控拒絕查看，不取代追蹤相機或讀取Canvas位置 (4.614449ms)
+✔ 人工查看不要求選兵，空選及混選保留原狀，也不改hero／keys／orderMode (9.483901ms)
+✔ 查看只更新相機目標；後續每幀不再讀Canvas配置，也不消耗模擬或視覺RNG (4.885883ms)
+✔ 無效視口或目標縮放回noPoint，不將NaN或Infinity寫入相機 (39.386949ms)
+✔ 原生相機邊界無法容納任何free spot時回noPoint，不製造緩動後被裁掉的假定位 (13.111934ms)
+✔ 原生focusAt例外傳出，不發令或建立持續相機工作 (9.701066ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 52
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4497.639764
+
+✖ failing tests:
+
+test at tests/focus-effect.test.mjs:5:1
+✖ actual selected manual damage is reported; overkill clamps to remaining HP (5.610365ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 5
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-vector-native-b-5d82a1c7/worktree/tests/focus-effect.test.mjs:5:147)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
