@@ -3499,7 +3499,9 @@ export class Game {
     if(this.time>=(u._orderScanAt||0)) {
       u._orderScanAt=this.time+.25;
       if(order.type!=='guard')u.guardOrigin={x:u.x,y:u.y};
-      const near=!u.typeDef.noAttack?this.acquireTarget(u,u.stance==='hold'?this.unitRange(u):(u.typeDef.sight||6)*.72):null;
+      // 護衛索敵沿用上方既有八格退出邊界，避免進取姿態反覆重選已放棄的外側敵軍。
+      const eligible=order.type==='guard'?target=>this.distanceTo(goal,target)<=8:null;
+      const near=!u.typeDef.noAttack?this.acquireTarget(u,u.stance==='hold'?this.unitRange(u):(u.typeDef.sight||6)*.72,eligible):null;
       if(near){order.engaged=true;u.target=near;u.manualAttack=false;u.state='attack';u._nav=null;return false;}
     }
     if(u.orderFailure){u.tacticalOrder=null;return true;}
