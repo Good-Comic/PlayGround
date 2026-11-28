@@ -6,7 +6,8 @@ export function scoredTarget(g,u,candidates,radius,eligible=null) {
     if(!e.alive||e.team===u.team||!['player','enemy'].includes(e.team)||!g.canSee(u,e)||(u.blockedTargets?.[e.id]||0)>g.time)continue;
     const d=g.distanceTo(u,e);if(d>=radius)continue;
     if(eligible && !eligible(e,d))continue;
-    if(u.stance==='defensive'&&u.guardOrigin&&g.distanceTo(u.guardOrigin,e)>8)continue;
+    // 護衛的初次索敵與交戰換目標，均遵守既有八格退出邊界。
+    if((u.stance==='defensive'||u.tacticalOrder?.type==='guard')&&u.guardOrigin&&g.distanceTo(u.guardOrigin,e)>8)continue;
     // Existing navigation failures exclude inaccessible opponents; never issue A* for every candidate.
     const rawCounter=g.counterMultiplier(u,e);
     const counter=u.typeDef.family==='K'&&d>g.unitRange(u)+(e.typeDef?.radius||0.2)?1:rawCounter;
