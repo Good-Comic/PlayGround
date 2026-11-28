@@ -1,0 +1,46 @@
+✔ guard does not repeatedly reacquire a visible enemy outside the existing eight-tile leash (48.855312ms)
+✔ guard can still acquire an enemy at the exact existing leash boundary (29.424294ms)
+✔ guard filters an outside candidate without suppressing an eligible nearby enemy (7.797603ms)
+✔ saved guard retains its leash after restore; manual attack remains unrestricted by it (31.180078ms)
+✔ macro matches actual native select hero → G → same core point (68.699081ms)
+✔ only hero changes: military/workers, resources, HP, skills, both RNG and selection preserved (29.934762ms)
+✔ reject unrescued without changing selection or orders (11.126851ms)
+✔ reject missingExpedition without changing selection or orders (8.304707ms)
+✔ reject deadHero without changing selection or orders (8.973223ms)
+✔ reject enemyHero without changing selection or orders (6.262014ms)
+✔ reject missingHero without changing selection or orders (6.062614ms)
+✔ reject notHero without changing selection or orders (8.204967ms)
+✔ reject deadCore without changing selection or orders (7.418979ms)
+✔ reject enemyCore without changing selection or orders (9.254923ms)
+✔ reject missingCore without changing selection or orders (12.648472ms)
+✔ reject paused without changing selection or orders (9.936076ms)
+✔ reject menu without changing selection or orders (6.282289ms)
+✔ reject placement without changing selection or orders (7.26466ms)
+✔ reject boon without changing selection or orders (5.903265ms)
+✔ reject victory without changing selection or orders (6.940516ms)
+✔ reject defeat without changing selection or orders (6.950672ms)
+✔ reject blocked without changing selection or orders (5.897972ms)
+✔ reject noPoint without changing selection or orders (5.407712ms)
+✔ successful guard exits native direct control and preserves prior pending mode (5.216008ms)
+✔ manual movement wins permanently without reissuing guard (44.800816ms)
+✔ manual direct control takes over native guard movement (23.084477ms)
+✔ Save/Load keeps native protectedId without adding automation state (21.606206ms)
+✔ four locales have complete non-key labels and accurate issued text (0.372409ms)
+✔ Attack-Move interrupts route to fight, kills natively and resumes destination (18.786844ms)
+✔ Patrol completes both legs using native navigation (12.228226ms)
+✔ Guard follows a living ally then recovers when ally dies (9.208812ms)
+✔ manual movement, Hold and Stop replace pending tactical routes (11.946553ms)
+✔ passive order does not silently enable automatic combat; villagers cannot arm tactical commands (4.208069ms)
+✔ SaveLoad clones patrol/group state, prunes dead group units and preserves plain movement formation (7.501762ms)
+✔ malformed optional tactical save fields are discarded and Stop cancels armed mode (8.512516ms)
+✔ normal-health prolonged combat resumes destination without inheriting pre-combat congestion timer (26.357174ms)
+✔ 騎兵優先弓兵、槍兵優先騎兵，雙方共享評分 / cavalry prefers archers and spear prefers cavalry (7.989431ms)
+✔ 不追逐遠方或未見目標，手動目標與防禦範圍優先 / range visibility manual priority and guard leash (4.037317ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3865.756094

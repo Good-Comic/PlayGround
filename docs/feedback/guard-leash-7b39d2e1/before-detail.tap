@@ -1,0 +1,25 @@
+✔ guard does not repeatedly reacquire a visible enemy outside the existing eight-tile leash (54.022112ms)
+✔ guard can still acquire an enemy at the exact existing leash boundary (31.536183ms)
+✔ guard filters an outside candidate without suppressing an eligible nearby enemy (9.951082ms)
+✖ saved guard retains its leash after restore; manual attack remains unrestricted by it (30.864296ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 267.400931
+
+✖ failing tests:
+
+test at tests/guard-leash.test.mjs:10:1
+✖ saved guard retains its leash after restore; manual attack remains unrestricted by it (30.864296ms)
+  TypeError: g.rightClick is not a function
+      at TestContext.<anonymous> (file:///workspace/riftwatch-vector-native-b-5d82a1c7/worktree/tests/guard-leash.test.mjs:10:304)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

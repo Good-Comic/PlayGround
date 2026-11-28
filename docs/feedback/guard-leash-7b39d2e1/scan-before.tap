@@ -1,0 +1,126 @@
+✔ guard does not repeatedly reacquire a visible enemy outside the existing eight-tile leash (49.816852ms)
+✔ guard can still acquire an enemy at the exact existing leash boundary (26.439759ms)
+✔ guard filters an outside candidate without suppressing an eligible nearby enemy (9.42525ms)
+✔ saved guard retains its leash after restore; manual attack remains unrestricted by it (23.329581ms)
+✖ all automatic scans during a guard engagement obey the same existing leash (9.927802ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 264.87264
+
+✖ failing tests:
+
+test at tests/guard-leash.test.mjs:12:1
+✖ all automatic scans during a guard engagement obey the same existing leash (9.927802ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   aegisCd: 0,
+  +   alive: true,
+  +   armor: 10,
+  +   attack: 8,
+  +   attackAnim: 0,
+  +   baseMaxHp: 60,
+  +   bossSkillTimer: 0,
+  +   buildTarget: null,
+  +   buildingDamageMul: 1,
+  +   buildingHint: null,
+  +   carry: 0,
+  +   carryType: null,
+  +   chargeCd: 0,
+  +   chargeReady: true,
+  +   combatAt: -99,
+  +   convertResist: false,
+  +   cooldown: 0.15057291500270367,
+  +   deathAnim: 0,
+  +   duel: false,
+  +   eventAttackSpeedMul: 1,
+  +   eventFireCd: 0,
+  +   eventFlags: [],
+  +   eventRegen: 0,
+  +   eventRetreat: 0,
+  +   eventRetreatCd: 0,
+  +   eventSpeedMul: 1,
+  +   expireIn: 0,
+  +   facing: 1,
+  +   gatherTarget: null,
+  +   guardOrigin: {
+  +     x: 13,
+  +     y: 10
+  +   },
+  +   hero: false,
+  +   hitFlash: 0,
+  +   hold: false,
+  +   hp: 60,
+  +   id: 23,
+  +   idleTimer: 0.6541973412968218,
+  +   kind: 'unit',
+  +   manualAttack: false,
+  +   markCd: 0,
+  +   marked: 0,
+  +   maxHp: 60,
+  +   pop: 1,
+  +   rageStage: 0,
+  +   rescueUsed: false,
+  +   retargetTimer: 0.3185399325564504,
+  +   selected: false,
+  +   shield: 0,
+  +   shieldTime: 0,
+  +   shots: 0,
+  +   slowUntil: 0,
+  +   stance: 'defensive',
+  +   state: 'idle',
+  +   summoned: false,
+  +   target: null,
+  +   targetPos: null,
+  +   team: 'enemy',
+  +   type: 'militia',
+  +   typeDef: {
+  +     armor: 10,
+  +     attack: 8,
+  +     category: 'infantry',
+  +     cooldown: 1.5,
+  +     cost: {
+  +       food: 40,
+  +       gold: 10
+  +     },
+  +     desc: 'A shielded line-holder. The backbone of every levy.',
+  +     family: 'M',
+  +     hp: 60,
+  +     icon: 'sword',
+  +     name: 'Man-at-Arms',
+  +     pop: 1,
+  +     radius: 0.26,
+  +     range: 1,
+  +     role: 'Infantry',
+  +     sight: 6.5,
+  +     speed: 2.4,
+  +     threat: 1,
+  +     trainTime: 8
+  +   },
+  +   visualDirection: 'SE',
+  +   walkPhase: 0.8281599013321101,
+  +   x: 13,
+  +   y: 10
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///workspace/riftwatch-vector-native-b-5d82a1c7/worktree/tests/guard-leash.test.mjs:12:147)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
